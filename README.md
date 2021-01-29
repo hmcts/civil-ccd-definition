@@ -1,6 +1,6 @@
-# unspec-service
+# civil-damages-ccd-definition
 
-[![Build Status](https://travis-ci.org/hmcts/unspec-service.svg?branch=master)](https://travis-ci.org/hmcts/unspec-service)
+[![Build Status](https://travis-ci.org/hmcts/civil-damages-ccd-definition.svg?branch=master)](https://travis-ci.org/hmcts/civil-damages-ccd-definition)
 
 Civil Unspecified's CCD Callback Service.
 
