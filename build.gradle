@@ -203,7 +203,7 @@ project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
 
 sonarqube {
   properties {
-    property "sonar.projectName", "civil-damages-ccd-definition"
+    property "sonar.projectName", "UNSPEC :: civil-damages-ccd-definition"
     property "sonar.projectKey", "civil-damages-ccd-definition"
     property "sonar.coverage.exclusions", "**/model/**, **/config/**/*Configuration.java, **/testingsupport/**, **/*ExternalTaskListener.java, **/stereotypes/**, **/*Exception.java"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
@@ -329,6 +329,9 @@ dependencies {
 
   testImplementation libraries.junit5
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+
+  integrationTestImplementation sourceSets.main.runtimeClasspath
+  integrationTestImplementation sourceSets.test.runtimeClasspath
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
