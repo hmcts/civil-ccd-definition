@@ -59,6 +59,10 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
+  before('smoketest:aat') {
+    env.URL = "https://manage-case.aat.platform.hmcts.net"
+  }
+
   after('functionalTest:aat') {
     archiveCoreCaseDataDefinitions('aat')
   }
