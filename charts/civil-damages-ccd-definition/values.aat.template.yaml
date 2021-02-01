@@ -1,7 +1,7 @@
 java:
   applicationPort: 4000
   image: 'hmctspublic.azurecr.io/unspec/service:latest'
-  ingressHost: civil-damages-ccd-definition-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: civil-damages-ccd-definition-staging.service.core-compute-aat.internal
   aadIdentityName: unspec
   keyVaults:
     unspec:
