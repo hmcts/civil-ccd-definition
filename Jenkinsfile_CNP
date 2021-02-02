@@ -39,7 +39,13 @@ def archiveCoreCaseDataDefinitions(env) {
   }
 
   dir("${WORKSPACE}/build") {
-    steps.archiveArtifacts artifacts: "ccd-release-config/ccd-unspec-${env}.xlsx"
+    steps.archiveArtifacts artifacts: "ccd-release-config/civil-damages-ccd-definition-${env}.xlsx"
+  }
+}
+
+def createGithubRelease() {
+  dir("${WORKSPACE}/bin") {
+    sh "./create-github-release.sh"
   }
 }
 
@@ -59,11 +65,16 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
+  before('smoketest:preview') {
+    env.URL="https://xui-civil-damages-ccd-definition-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+  }
+
   before('smoketest:aat') {
     env.URL = "https://manage-case.aat.platform.hmcts.net"
   }
 
   after('functionalTest:aat') {
     archiveCoreCaseDataDefinitions('aat')
+//    createGithubRelease()
   }
 }
