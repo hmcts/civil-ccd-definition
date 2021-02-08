@@ -161,29 +161,14 @@ task integration(type: Test) {
 }
 
 task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
-  onlyIf(new Spec<Task>() {
-    boolean isSatisfiedBy(Task task) {
-      return 'false'
-    }
-  })
   commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'install'
 }
 
 task checkDependenciesIntegrity(type: Exec, description: 'Checks integrity of Yarn dependencies.') {
-  onlyIf(new Spec<Task>() {
-    boolean isSatisfiedBy(Task task) {
-      return 'false'
-    }
-  })
   commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'check', '--integrity'
 }
 
 task lintUserInterfaceTests(type: Exec, description: 'Runs linting of E2E tests.') {
-  onlyIf(new Spec<Task>() {
-    boolean isSatisfiedBy(Task task) {
-      return 'false'
-    }
-  })
   commandLine '/usr/bin/yarn', '--silent', 'lint'
 }
 
@@ -192,20 +177,10 @@ task awaitApplicationReadiness(type: Exec, description: 'Awaits until applicatio
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
-  onlyIf(new Spec<Task>() {
-    boolean isSatisfiedBy(Task task) {
-      return 'false'
-    }
-  })
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
 task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
-  onlyIf(new Spec<Task>() {
-    boolean isSatisfiedBy(Task task) {
-      return 'false'
-    }
-  })
   commandLine '/usr/bin/yarn', '--silent', 'test:functional'
 }
 
@@ -217,11 +192,11 @@ def inStrictOrder(Task... tasks) {
 }
 
 task smoke(description: 'Runs the smoke tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
@@ -230,7 +205,6 @@ sonarqube {
   properties {
     property "sonar.projectName", "UNSPEC :: civil-damages-ccd-definition"
     property "sonar.projectKey", "civil-damages-ccd-definition"
-    property "sonar.coverage.exclusions", "**/model/**, **/config/**/*Configuration.java, **/testingsupport/**, **/*ExternalTaskListener.java, **/stereotypes/**, **/*Exception.java"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
     property "sonar.host.url", "https://sonar.reform.hmcts.net/"
   }
