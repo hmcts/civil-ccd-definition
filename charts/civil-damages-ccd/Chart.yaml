@@ -1,6 +1,6 @@
 apiVersion: v2
-description: A Helm chart for civil-damages-ccd-definition App
-name: civil-damages-ccd-definition
+description: A Helm chart for civil-damages-ccd App
+name: civil-damages-ccd
 home: https://github.com/hmcts/civil-damages-ccd-definition
 version: 0.0.3
 maintainers:

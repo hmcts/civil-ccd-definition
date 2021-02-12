@@ -1,4 +1,4 @@
-# civil-damages-ccd-definition
+# civil-damages-ccd
 
 [![Build Status](https://travis-ci.org/hmcts/civil-damages-ccd-definition.svg?branch=master)](https://travis-ci.org/hmcts/civil-damages-ccd-definition)
 

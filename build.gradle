@@ -107,15 +107,6 @@ sourceSets {
     resources.srcDir file('src/functionalTest/resources')
   }
 
-  integrationTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/integrationTest/java')
-    }
-    resources.srcDir file('src/integrationTest/resources')
-  }
-
   smokeTest {
     java {
       compileClasspath += main.output
@@ -123,15 +114,6 @@ sourceSets {
       srcDir file('src/smokeTest/java')
     }
     resources.srcDir file('src/smokeTest/resources')
-  }
-
-  contractTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/contractTest/java')
-    }
-    resources.srcDir file('src/contractTest/resources')
   }
 }
 
@@ -149,15 +131,6 @@ tasks.withType(Test) {
 
 test {
   failFast = true
-}
-
-task integration(type: Test) {
-  description = "Runs integration tests"
-  group = "Verification"
-  testClassesDirs = sourceSets.integrationTest.output.classesDirs
-  classpath = sourceSets.integrationTest.runtimeClasspath
-  failFast = true
-  testLogging.showStandardStreams = false
 }
 
 task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
@@ -196,22 +169,22 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
 }
 
-project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
+project.tasks['sonarqube'].dependsOn test, jacocoTestReport
 
 sonarqube {
   properties {
-    property "sonar.projectName", "UNSPEC :: civil-damages-ccd-definition"
-    property "sonar.projectKey", "civil-damages-ccd-definition"
+    property "sonar.projectName", "UNSPEC :: civil-damages-camunda-bpmn-definition"
+    property "sonar.projectKey", "civil-damages-camunda-bpmn-definition"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
     property "sonar.host.url", "https://sonar.reform.hmcts.net/"
   }
 }
 
 jacocoTestReport {
-  executionData(test, integration)
+  executionData(test)
   executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
   subprojects.each {
     sourceSets it.sourceSets.main
@@ -319,18 +292,8 @@ dependencies {
 
   implementation group: 'com.launchdarkly', name: 'launchdarkly-java-server-sdk', version: '5.2.2'
 
-  testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.7.7'
-  testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.7.7'
-  testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.7.7'
-
-  testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
-  testCompileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
-
   testImplementation libraries.junit5
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-
-  integrationTestImplementation sourceSets.main.runtimeClasspath
-  integrationTestImplementation sourceSets.test.runtimeClasspath
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
