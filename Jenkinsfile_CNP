@@ -74,6 +74,8 @@ withPipeline(type, product, component) {
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/add-roles.sh
       ./bin/import-ccd-definition.sh
+      ./bin/pull-latest-release-asset.sh civil-damages-camunda-bpmn-definition civil-damages-camunda-bpmn-definition.zip
+      ./bin/import-bpmn-diagram.sh .
     """
     env.URL="https://xui-civil-damages-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
   }
@@ -88,13 +90,6 @@ withPipeline(type, product, component) {
     env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-civil-damages-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.UNSPEC_SERVICE_URL="http://civil-damages-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-    dir("${WORKSPACE}/bin") {
-      sh """
-        eval \$(./variables/load-preview-environment-variables.sh ${CHANGE_ID})
-        ./pull-latest-release-asset.sh civil-damages-camunda-bpmn-definition civil-damages-camunda-bpmn-definition.zip
-        ./import-bpmn-diagram.sh ${WORKSPACE}
-      """
-    }
   }
 
   after('functionalTest:preview') {
@@ -106,6 +101,8 @@ withPipeline(type, product, component) {
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
       ./bin/import-ccd-definition.sh
+      ./bin/pull-latest-release-asset.sh civil-damages-camunda-bpmn-definition civil-damages-camunda-bpmn-definition.zip
+      ./bin/import-bpmn-diagram.sh .
     """
     env.URL="https://xui-civil-damages-ccd-staging.service.core-compute-preview.internal"
     archiveCoreCaseDataDefinitions('staging')
@@ -122,14 +119,6 @@ withPipeline(type, product, component) {
     env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-civil-damages-ccd-staging.service.core-compute-preview.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.UNSPEC_SERVICE_URL="http://civil-damages-ccd-staging.service.core-compute-preview.internal"
-
-    dir("${WORKSPACE}/bin") {
-      sh """
-        eval \$(./variables/load-staging-environment-variables.sh)
-        ./pull-latest-release-asset.sh civil-damages-camunda-bpmn-definition civil-damages-camunda-bpmn-definition.zip
-        ./import-bpmn-diagram.sh ${WORKSPACE}
-      """
-    }
   }
 
   after('functionalTest:aat') {

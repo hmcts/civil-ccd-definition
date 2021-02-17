@@ -1,47 +1,32 @@
-# civil-damages-ccd
+# civil-damages-ccd-definition
 
-[![Build Status](https://travis-ci.org/hmcts/civil-damages-ccd-definition.svg?branch=master)](https://travis-ci.org/hmcts/civil-damages-ccd-definition)
-
-Civil Unspecified's CCD Callback Service.
+Civil Damages CCD Definition and E2E tests
 
 ### Contents:
-- [Prerequisites](#prerequisites)
-- [Testing](#testing)
 - [Building and deploying application](#building-and-deploying-the-application)
-- [Camunda](#camunda)
+- [Testing](#testing)
 
-## Prerequisites:
-- [Docker](https://www.docker.com)
-- [realpath-osx](https://github.com/harto/realpath-osx) (Mac OS only)
-- [jq](https://stedolan.github.io/jq/)
+## Building and deploying the application
 
-Run command:
-```
-git submodule init
-git submodule update
-```
+### Dependencies
 
-Add services, roles and users (in this order) from civil-unspecified-docker repository using scripts located in bin directory.
+The project is dependent on other Civil Damages repositories:
+- [civil-damages-service](https://github.com/hmcts/civil-damages-service)
+- [civil-damages-camunda-bpmn-definition](https://github.com/hmcts/civil-damages-camunda-bpmn-definition)
 
-Load CCD definition:
+To set up complete local environment for Civil Damages check [civil-damages-sdk](https://github.com/hmcts/civil-damages-sdk)
 
-CCD definition is stored in JSON format. To load it into CCD instance run:
+### Preview environment
 
-```bash
-$ ./bin/import-ccd-definition.sh
-```
+Preview environment will be created when opening new PR.
+Camunda BPMN definitions will be pulled from the latest GitHub release.
+Service instance will be running the latest image version deployed to ACR.
 
-Note: Above script will export JSON content into XLSX file and upload it into instance of CCD definition store.
+To access XUI visit url (make sure that it starts with `https`, otherwise IDAM won't let you log in):
+- `https://xui-civil-damages-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
-Additional note:
-
-You can skip some of the files by using -e option on the import-ccd-definitions, i.e.
-
-```bash
-$ ./bin/import-ccd-definition.sh -e UserProfile.json,*-nonprod.json
-```
-
-The command above will skip UserProfile.json and all files with -nonprod suffix (from the folders).
+To access Camunda visit url (login and password are both `admin`):
+- `https://camunda-civil-damages-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 ## Testing
 The repo uses codeceptjs framework for e2e tests.
@@ -61,127 +46,6 @@ To run smoke tests enter `yarn test:smoke`.
 ### API test
 
 To run API tests enter `yarn test:api`.
-
-### Pact or contract testing
-
-#### Run and generate pact
-
-You can run contract or pact tests as follows:
-
-```
-./gradlew contract
-```
-#### Run pact broker local docker
-You can then publish your pact tests locally by first running the pact docker-compose:
-
-```
-docker-compose -f docker-pactbroker-compose.yml up -d
-```
-#### Publish pact to broker
-and then using it to publish your tests:
-
-```
-./gradlew pactPublish
-```
-if you want to publish the pact to hmcts pact broker, please set this env variable accordingly before running the publish command.
-```
-export PACT_BROKER_FULL_URL=http://pact-broker.platform.hmcts.net/
-./gradlew pactPublish
-```
-
-## Building and deploying the application
-
-### Building the application
-
-The project uses [Gradle](https://gradle.org) as a build tool. It already contains
-`./gradlew` wrapper script, so there's no need to install gradle.
-
-To build the project execute the following command:
-
-```bash
-  ./gradlew build
-```
-
-### Running the application
-
-Create the image of the application by executing the following command:
-
-```bash
-  ./gradlew assemble
-```
-
-Create docker image:
-
-```bash
-  docker-compose build
-```
-
-Run the distribution (created in `build/install/unspec-service` directory)
-by executing the following command:
-
-```bash
-  docker-compose up
-```
-
-This will start the API container exposing the application's port
-(set to `4000` in this template app).
-
-In order to test if the application is up, you can call its health endpoint:
-
-```bash
-  curl http://localhost:4000/health
-```
-
-You should get a response similar to this:
-
-```
-  {"status":"UP","diskSpace":{"status":"UP","total":249644974080,"free":137188298752,"threshold":10485760}}
-```
-
-### Alternative script to run application
-
-To skip all the setting up and building, just execute the following command:
-
-```bash
-./bin/run-in-docker.sh
-```
-
-For more information:
-
-```bash
-./bin/run-in-docker.sh -h
-```
-
-Script includes bare minimum environment variables necessary to start api instance. Whenever any variable is changed or any other script regarding docker image/container build, the suggested way to ensure all is cleaned up properly is by this command:
-
-```bash
-docker-compose rm
-```
-
-It clears stopped containers correctly. Might consider removing clutter of images too, especially the ones fiddled with:
-
-```bash
-docker images
-
-docker image rm <image-id>
-```
-
-There is no need to remove postgres and java or similar core images.
-
-## Camunda
-
-Camunda UI runs on `http:localhost:9404`. You can login with:
-```$xslt
-username: demo
-password: demo
-```
-
-The REST API is available at `http:localhost:9404/engine-rest/`. The REST API documentation is available [here](https://docs.camunda.org/manual/latest/reference/rest/).
-
-To upload all bpmn diagrams via the REST API there is a script located in `./bin directory`.
-Run `./bin/import-bpmn-diagram.sh .` to upload it to Camunda. The diagram must exist within
-`src/main/resources/camunda`. By setting `CAMUNDA_BASE_URL` env variable you can also use this script to upload diagrams to
-Camunda in other environments.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

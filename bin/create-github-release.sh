@@ -40,6 +40,11 @@ uploadReleaseAsset() {
     https://uploads.github.com/repos/hmcts/${repoName}/releases/${releaseId}/assets?name=${assetName}
 }
 
+if [ -z "$BUILD_URL" ]; then
+  echo "Error: this script should only be run by Jenkins"
+  exit 1
+fi
+
 zip -r civil-damages-ccd-definition.zip ccd-definition
 zip -r civil-damages-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock
 cp build/ccd-release-config/civil-damages-ccd-definition-aat.xlsx civil-damages-ccd-definition-aat.xlsx
