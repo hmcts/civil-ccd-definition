@@ -8,24 +8,27 @@ const loginPage = require('./pages/login.page');
 const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
+const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
+const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
+const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
+const defendantSolicitorEmail = require('./pages/createClaim/defendantSolicitorEmail.page');
 const chooseCourtPage = require('./pages/createClaim/chooseCourt.page');
 const claimantLitigationDetails = require('./pages/createClaim/claimantLitigationDetails.page');
 const claimTypePage = require('./pages/createClaim/claimType.page');
 const respondentRepresentedPage = require('./pages/createClaim/isRespondentRepresented.page');
 const personalInjuryTypePage = require('./pages/createClaim/personalInjuryType.page');
+const detailsOfClaimPage = require('./pages/createClaim/detailsOfClaim.page');
 const uploadParticularsOfClaim = require('./pages/createClaim/uploadParticularsOfClaim.page');
 const claimValuePage = require('./pages/createClaim/claimValue.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
 
-const responseIntentionPage = require('./pages/acknowledgeSerivce/responseIntention.page');
+const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntention.page');
 
-const proposeDeadline = require('./pages/requestExtension/proposeDeadline.page');
-const extensionAlreadyAgreed = require('./pages/requestExtension/extensionAlreadyAgreed.page');
+const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
+const takeCaseOffline = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
-const respondToExtensionPage = require('./pages/respondExtension/respond.page');
-const counterExtensionPage = require('./pages/respondExtension/counter.page');
-const rejectionReasonPage = require('./pages/respondExtension/reason.page');
+const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
 
 const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
@@ -57,6 +60,10 @@ const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 const address = require('./fixtures/address.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
+const JURISDICTION_LOCATOR = '#wb-jurisdiction > option';
+const TYPE_LOCATOR = '#wb-case-type > option';
+const STATE_LOCATOR = '#wb-case-state > option';
+const CASE_NUMBER_INPUT_LOCATOR = 'input[type$="number"]';
 const CASE_HEADER = 'ccd-case-header > h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
@@ -88,7 +95,29 @@ module.exports = function () {
       return await this.grabTextFrom(CASE_HEADER);
     },
 
-    async createCase() {
+    async goToCase(caseId) {
+      this.click('Case list');
+
+      this.waitForElement(JURISDICTION_LOCATOR);
+      this.selectOption('jurisdiction', 'Civil');
+
+      this.waitForElement(TYPE_LOCATOR);
+      this.selectOption('case-type', 'Damages Claim');
+
+      this.waitForElement(STATE_LOCATOR);
+      this.selectOption('state', 'Any');
+
+      this.waitForElement(CASE_NUMBER_INPUT_LOCATOR);
+      this.fillField(CASE_NUMBER_INPUT_LOCATOR, caseId);
+
+      const caseLinkLocator = `a[href$="/cases/case-details/${caseId}"]`;
+      await this.retryUntilExists(() => this.click('Apply'), caseLinkLocator);
+
+      this.click(caseLinkLocator);
+      this.waitForElement(CASE_HEADER);
+    },
+
+    async createCase(litigantInPerson = false) {
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => createCasePage.selectCaseType(), 'ccd-markdown');
@@ -97,27 +126,58 @@ module.exports = function () {
       await chooseCourtPage.enterCourt();
       await party.enterParty('applicant1', address);
       await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
+      await claimantSolicitorIdamDetailsPage.enterUserEmail();
+      await claimantSolicitorOrganisation.enterOrganisationDetails();
       await party.enterParty('respondent1', address);
-      await respondentRepresentedPage.enterRespondentRepresented();
+      if (litigantInPerson) {
+        await respondentRepresentedPage.enterRespondentRepresented('no');
+      } else {
+        await respondentRepresentedPage.enterRespondentRepresented('yes');
+        await defendantSolicitorOrganisation.enterOrganisationDetails();
+        await defendantSolicitorEmail.enterSolicitorEmail();
+      }
       await claimTypePage.selectClaimType();
       await personalInjuryTypePage.selectPersonalInjuryType();
+      await detailsOfClaimPage.enterDetailsOfClaim();
       await uploadParticularsOfClaim.upload(TEST_FILE_PATH);
       await claimValuePage.enterClaimValue();
       await pbaNumberPage.selectPbaNumber();
       await paymentReferencePage.updatePaymentReference();
       await statementOfTruth.enterNameAndRole('claim');
-      await event.submit('Issue claim', 'Your claim has been issued');
-      await event.returnToCaseDetails();
+      let expectedMessage = litigantInPerson ? 'Your claim will now progress offline' : 'Your claim has been issued';
+      await event.submit('Issue claim', expectedMessage);
 
+      await event.returnToCaseDetails();
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
 
-    async acknowledgeService() {
-      await caseViewPage.startEvent('Acknowledge service', caseId);
+    async notifyClaim() {
+      await caseViewPage.startEvent('Notify claim', caseId);
+      await this.clickContinue();
+      await event.submit('Submit', 'Notification of claim sent');
+      await event.returnToCaseDetails();
+    },
+
+    async notifyClaimDetails() {
+      await caseViewPage.startEvent('Notify claim details', caseId);
+      await this.clickContinue();
+      await event.submit('Submit', 'Defendant notified');
+      await event.returnToCaseDetails();
+    },
+
+    async acknowledgeClaim(responseIntention) {
+      await caseViewPage.startEvent('Acknowledge claim', caseId);
       await respondentDetails.verifyDetails();
       await confirmDetailsPage.confirmReference();
-      await responseIntentionPage.selectResponseIntention();
-      await event.submit('Acknowledge service', 'You\'ve acknowledged service');
+      await responseIntentionPage.selectResponseIntention(responseIntention);
+      await event.submit('Acknowledge claim', 'You\'ve acknowledged claim');
+      await event.returnToCaseDetails();
+    },
+
+    async informAgreedExtensionDate() {
+      await caseViewPage.startEvent('Inform agreed extension date', caseId);
+      await extensionDatePage.enterExtensionDate();
+      await event.submit('Submit', 'Extension deadline submitted');
       await event.returnToCaseDetails();
     },
 
@@ -128,26 +188,17 @@ module.exports = function () {
       await this.retryUntilExists(() => this.click('Submit'), CASE_HEADER);
     },
 
-    async requestExtension() {
-      await caseViewPage.startEvent('Request extension', caseId);
-      await proposeDeadline.enterExtensionProposedDeadline();
-      await extensionAlreadyAgreed.selectAlreadyAgreed();
-      await event.submit('Ask for extension', 'You asked for extra time to respond');
-      await event.returnToCaseDetails();
-    },
-
-    async respondToExtension() {
-      await caseViewPage.startEvent('Respond to extension request', caseId);
-      await respondToExtensionPage.selectDoNotAccept();
-      await counterExtensionPage.enterCounterDate();
-      await rejectionReasonPage.enterResponse();
-      await event.submit('Respond to request', 'You\'ve responded to the request for more time');
-      await event.returnToCaseDetails();
-    },
-
-    async respondToClaim() {
+    async respondToClaim(responseType) {
       await caseViewPage.startEvent('Respond to claim', caseId);
-      await responseTypePage.selectFullDefence();
+      await responseTypePage.selectResponseType(responseType);
+      if (responseType === 'fullDefence') {
+        await this.respondToClaimFullDefence();
+      }
+      await event.submit('Submit response', 'You\'ve submitted your response');
+      await event.returnToCaseDetails();
+    },
+
+    async respondToClaimFullDefence() {
       await uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH);
       await respondentDetails.verifyDetails();
       await confirmDetailsPage.confirmReference();
@@ -156,15 +207,13 @@ module.exports = function () {
       await disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.RESPONDENT_SOLICITOR_1);
       await expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1);
       await witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1);
+      await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1);
       await hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1);
       await draftDirectionsPage.enterDraftDirections(parties.RESPONDENT_SOLICITOR_1);
       await requestedCourtPage.selectSpecificCourtForHearing(parties.RESPONDENT_SOLICITOR_1);
       await hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1);
       await furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1);
-      await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1);
       await statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ');
-      await event.submit('Submit response', 'You\'ve submitted your response');
-      await event.returnToCaseDetails();
     },
 
     async respondToDefence() {
@@ -176,14 +225,31 @@ module.exports = function () {
       await disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1);
       await expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1);
       await witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1);
+      await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1);
       await hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1);
       await draftDirectionsPage.enterDraftDirections(parties.APPLICANT_SOLICITOR_1);
       await hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1);
       await furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1);
-      await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1);
       await statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ');
       await event.submit('Submit your response', 'You\'ve decided to proceed with the claim');
       await this.click('Close and Return to case details');
+    },
+
+    async respondToDefenceDropClaim() {
+      await caseViewPage.startEvent('View and respond to defence', caseId);
+      await proceedPage.dropClaim();
+      await event.submit('Submit your response', 'You have chosen not to proceed with the claim');
+      await this.click('Close and Return to case details');
+    },
+
+    async caseProceedsInCaseman() {
+      await caseViewPage.startEvent('Case proceeds in Caseman', caseId);
+      await caseProceedsInCasemanPage.enterTransferDate();
+      await takeCaseOffline.takeCaseOffline();
+    },
+
+    async assertNoEventsAvailable() {
+      await caseViewPage.assertNoEventsAvailable();
     },
 
     async clickContinue() {

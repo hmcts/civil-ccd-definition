@@ -21,8 +21,8 @@ module.exports = {
         primaryAddress: buildAddress('respondent')
       },
       solicitorReferences: {
-        applicantSolicitor1Reference: 'Applicant test reference',
-        respondentSolicitor1Reference: 'Respondent test reference'
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
       }
     },
     FileDirectionsQuestionnaire: {
@@ -89,7 +89,7 @@ module.exports = {
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        name: 'Example court',
+        responseCourtCode: '343',
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
       }
@@ -104,7 +104,6 @@ module.exports = {
     },
     Language: {
       respondent1DQLanguage: {
-        isPartyWelsh: 'Yes',
         evidence: 'WELSH',
         court: 'WELSH',
         documents: 'WELSH'

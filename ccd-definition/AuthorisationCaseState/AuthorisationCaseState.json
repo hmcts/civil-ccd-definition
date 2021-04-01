@@ -1,0 +1,51 @@
+[
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "CREATED",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "AWAITING_CLAIMANT_INTENTION",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "CLOSED",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "PROCEEDS_WITH_OFFLINE_JOURNEY",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "AWAITING_CASE_NOTIFICATION",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
+    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "CRUD": "CRUD"
+  }
+]

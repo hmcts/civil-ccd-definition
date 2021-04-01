@@ -11,7 +11,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\nUse this service if you’re representing a claimant and:\n* issuing a claim for an unspecified (unfixed) amount of money\n* able to pay the full issue fee using fee account\n* serving the claim form yourself to a defendant who lives in the UK\n* serving a claim form in English\n* have an email and UK postal address\n\n### About the claimant\n The claimant must: \n* have a litigation friend if they are a child under 18\n* have an address in England or Wales\n* not have a civil restraint, all or civil proceedings order against them\n\n### About the claim\nThe claim must not be against the crown or ordinarily follow the Part 8 procedure.",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nUse this service if you’re representing a claimant and:\n* issuing a claim for damages\n* able to pay the full issue fee using fee account\n* notifying the claim details (serving the claim) yourself\n* living in the UK with a UK postal address and an email address\n\n### About the claimant\n The claimant must: \n* have a litigation friend if they are a child under 18\n* have an address in England or Wales\n* not have a civil restraint, all or civil proceedings order against them\n\n### About the claim\nThe claim must not be against the crown or ordinarily follow the Part 8 procedure.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -27,7 +27,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "courtLocation",
-    "Label": "Choose court location",
+    "Label": "Court Code",
     "FieldType": "CourtLocation",
     "SecurityClassification": "Public"
   },
@@ -78,8 +78,17 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "respondent1OrgRegistered",
+    "Label": "Is the organisation registered with MyHMCTS?",
+    "HintText": "If the organisation is not registered or if you can't find it, select 'No' to continue and enter the details manually. If you don't know if the organisation is registered, try searching by selecting 'Yes'.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "claimValue",
-    "Label": "Enter expected claim value",
+    "Label": "Expected claim value",
     "FieldType": "ClaimValue",
     "SecurityClassification": "Public"
   },
@@ -87,7 +96,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "claimType",
-    "Label": "What type of claim is this?",
+    "Label": "Type of claim",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimType",
     "SecurityClassification": "Public"
@@ -130,7 +139,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "claimFee",
-    "Label": "Pay fee using Payment by Account (PBA)",
+    "Label": "Claim fee",
     "FieldType": "Fee",
     "SecurityClassification": "Public"
   },
@@ -138,7 +147,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicantSolicitor1PbaAccounts",
-    "Label": "Select a PBA",
+    "Label": "PBA Number",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
@@ -190,8 +199,8 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "claimIssuedDate",
-    "Label": "Claim issued date",
+    "ID": "issueDate",
+    "Label": "Date claim issued",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "_Definition":  "The derived legal date the claim is deemed issued. It is based on the date time when the claim was submitted digitally",
@@ -200,8 +209,8 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "claimSubmittedDateTime",
-    "Label": "Claim Submitted at",
+    "ID": "submittedDate",
+    "Label": "Date claim Submitted",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
@@ -209,15 +218,15 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "servedDocumentFiles",
-    "Label": "Upload your documents",
+    "Label": "Upload documents in the following machine readable formats",
     "FieldType": "ServedDocumentFiles",
     "SecurityClassification": "Public"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1ResponseDeadline",
-    "Label": "Response deadline",
+    "ID": "respondent1ResponseDeadline",
+    "Label": "Respondent solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "_Definition":  "The date time by which the first respondent solicitor has to submit the response to the claim.",
@@ -226,69 +235,10 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionProposedDeadline",
-    "Label": "Proposed new deadline",
-    "HintText": "This can't be later than 28 working days after the current deadline. All deadlines require a response before 23:59 on the deadline day.",
+    "ID": "respondentSolicitor1AgreedDeadlineExtension",
+    "Label": "Enter the extension date that was agreed with the other party",
+    "HintText": "This date cannot be more than 28 days from the original deadline.",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionAlreadyAgreed",
-    "Label": "Have you already agreed the new deadline with the claimant's legal representative?",
-    "HintText": "If not, you can propose it using this service.",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionReason",
-    "Label": "Reason why more time is needed.",
-    "HintText": "This is mandatory - the claimant will see your answer.",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionLabel4pm",
-    "Label": "All deadlines require a response before 4pm on the deadline day",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionAccepted",
-    "Label": "Do you agree to extend the deadline to this date?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionCounter",
-    "Label": "Would you like to set a different extended deadline?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionCounterDate",
-    "Label": "New deadline",
-    "HintText": "This can't be later than 28 working days after the current deadline. All deadlines require a response before 23:59 on the deadline day.",
-    "FieldType": "Date",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "respondentSolicitor1claimResponseExtensionRejectionReason",
-    "Label": "Add a response",
-    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
   {
@@ -347,7 +297,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "applicantSolicitorResponseDeadlineToRespondentSolicitor1",
+    "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
@@ -373,7 +323,7 @@
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "legacyCaseReference",
     "FieldType": "Text",
-    "Label": "CaseMan Reference number",
+    "Label": "CaseMan reference number",
     "SecurityClassification": "Public"
   },
   {
@@ -436,7 +386,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQExperts",
-    "Label": "Experts",
+    "Label": "Respondent 1 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
   },
@@ -444,7 +394,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQWitnesses",
-    "Label": "Witnesses",
+    "Label": "Respondent 1 witnesses",
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
@@ -452,7 +402,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQHearing",
-    "Label": "Hearing",
+    "Label": "Respondent 1 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -477,7 +427,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQRequestedCourt",
-    "Label": "The claimant requested court is",
+    "Label": "Court Code",
     "FieldType": "RequestedCourt",
     "SecurityClassification": "Public"
   },
@@ -485,7 +435,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQHearingSupport",
-    "Label": "Hearing support requirements",
+    "Label": "Respondent 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
     "SecurityClassification": "Public"
   },
@@ -493,7 +443,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQFurtherInformation",
-    "Label": "Further information",
+    "Label": "Respondent 1 Further information",
     "FieldType": "FurtherInformation",
     "SecurityClassification": "Public"
   },
@@ -557,7 +507,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1DQExperts",
-    "Label": "Experts",
+    "Label": "Applicant 1 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
   },
@@ -565,7 +515,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1DQWitnesses",
-    "Label": "Witnesses",
+    "Label": "Applicant 1 witnesses",
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
@@ -573,7 +523,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1DQHearing",
-    "Label": "Hearing",
+    "Label": "Applicant 1 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -598,7 +548,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1DQHearingSupport",
-    "Label": "Hearing support requirements",
+    "Label": "Applicant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
     "SecurityClassification": "Public"
   },
@@ -606,7 +556,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1DQFurtherInformation",
-    "Label": "Further information",
+    "Label": "Applicant 1 Further information",
     "FieldType": "FurtherInformation",
     "SecurityClassification": "Public"
   },
@@ -645,17 +595,17 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "applicantSolicitorSecondResponseDeadlineToRespondentSolicitor1",
-    "Label": "Case strikeout deadline",
+    "ID": "claimDismissedDeadline",
+    "Label": "Case dismissed deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "defendantResponseDate",
+    "ID": "respondent1ResponseDate",
     "Label": "Defendant response date",
-    "FieldType": "Date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
@@ -688,6 +638,174 @@
     "ID": "respondent2OrganisationPolicy",
     "Label": "Respondent 2 organisation policy",
     "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "respondentSolicitor1EmailAddress",
+    "Label": "Enter defendant legal representative's email address to be used for notifications",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "respondentSolicitor1OrganisationDetails",
+    "Label": " ",
+    "FieldType": "SolicitorOrganisationDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "respondentSolicitor1OrgLabel",
+    "Label": "Enter organisation details manually. The claim will then continue offline.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "claimProceedsInCaseman",
+    "Label": "Case proceeds in Caseman",
+    "FieldType": "ClaimProceedsInCaseman",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "claimNotificationDate",
+    "Label": "Date claim notified",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "notifyClaimLabel",
+    "Label": "If you continue the defendant legal representative's organisation will be notified and will be granted access to this claim.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "applicantSolicitor1CheckEmail",
+    "Label": "Notifications",
+    "FieldType": "CorrectEmail",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "applicantSolicitor1UserDetails",
+    "Label": "Notification details",
+    "FieldType": "UserDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "detailsOfClaimLabel",
+    "Label": "## Provide a summary of the claim\nBriefly describe the claim. Don’t include the Particulars of claim details. You can upload the Particulars on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "detailsOfClaim",
+    "Label": "Description of claim",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "claimDetailsNotificationDate",
+    "Label": "Case details notification date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "pbaPaymentFailedLabel",
+    "Label": "#### Your payment did not go through. To resubmit the same claim please try again by selecting the PBA account number",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "amendPartyDetailsLabel",
+    "Label": "Update a legal representative's email address by replacing the existing email.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "paymentSuccessfulDate",
+    "Label": "Payment successful date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "claimNotificationDeadline",
+    "Label": "Claim notification deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "claimDetailsNotificationDeadline",
+    "Label": "Case details notification deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "respondent1TimeExtensionDate",
+    "Label": "Date respondent 1 submitted time extension",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "respondent1AcknowledgeNotificationDate",
+    "Label": "Date respondent 1 acknowledged notification",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "applicant1ResponseDate",
+    "Label": "Date applicant 1 responded to defence",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "takenOfflineDate",
+    "Label": "Date claim moved offline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "claimDismissedDate",
+    "Label": "Claim dismissed date",
+    "FieldType": "Date",
     "SecurityClassification": "Public"
   }
 ]

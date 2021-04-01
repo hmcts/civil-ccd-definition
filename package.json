@@ -5,10 +5,11 @@
   "scripts": {
     "lint": "eslint e2e",
     "test": "npx codeceptjs run --steps",
-    "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
     "test:smoke": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests --reporter mocha-multi --verbose",
-    "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --invert --grep @smoke-tests --reporter mocha-multi --verbose",
-    "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @claim-tests --reporter mocha-multi --verbose"
+    "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
+    "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
+    "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@api-tests|@e2e-tests' --reporter mocha-multi --verbose",
+    "test:rpa": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose"
   },
   "husky": {
     "hooks": {
@@ -22,8 +23,6 @@
     "deep-equal-in-any-order": "^1.0.28",
     "eslint": "^7.3.1",
     "eslint-plugin-codeceptjs": "^1.3.0",
-    "http-proxy-agent": "^4.0.1",
-    "https-proxy-agent": "^5.0.0",
     "husky": "^4.2.5",
     "mocha-multi": "^1.1.3",
     "mochawesome": "^6.1.1",

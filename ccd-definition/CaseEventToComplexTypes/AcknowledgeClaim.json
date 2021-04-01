@@ -1,0 +1,33 @@
+[
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "SolicitorReferences",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "solicitorReferences",
+    "ListElementCode": "respondentSolicitor1Reference",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualDateOfBirth",
+    "EventElementLabel": "Defendant's date of birth",
+    "EventHintText": "You must enter this if you know it.",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderDateOfBirth",
+    "EventElementLabel": "Defendant's date of birth",
+    "EventHintText": "You must enter this if you know it.",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  }
+]
