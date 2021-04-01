@@ -104,7 +104,7 @@ withPipeline(type, product, component) {
       ./bin/pull-latest-release-asset.sh civil-damages-camunda-bpmn-definition civil-damages-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
-    env.URL="http://civil-damages-ccd-xui-staging-aat.service.core-compute-aat.internal"
+    env.URL="https://civil-damages-ccd-xui-staging.aat.platform.hmcts.net"
     archiveCoreCaseDataDefinitions('staging')
     uploadCoreCaseDataDefinitions('staging')
   }
