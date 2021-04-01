@@ -10,18 +10,26 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "CREATED",
-    "Name": "Claim created",
-    "Description": "Case is created",
+    "ID": "AWAITING_CASE_NOTIFICATION",
+    "Name": "Awaiting case notification",
+    "Description": "Awaiting case notification",
     "DisplayOrder": 2
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "STAYED",
-    "Name": "Stayed",
-    "Description": "Case is in stayed state",
+    "ID": "AWAITING_CASE_DETAILS_NOTIFICATION",
+    "Name": "Awaiting claim details notification",
+    "Description": "Awaiting claim details notification",
     "DisplayOrder": 3
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "CREATED",
+    "Name": "Claim created",
+    "Description": "Case is created",
+    "DisplayOrder": 4
   },
   {
     "LiveFrom": "01/01/2017",
@@ -29,7 +37,7 @@
     "ID": "AWAITING_CLAIMANT_INTENTION",
     "Name": "Awaiting claimant intention",
     "Description": "Awaiting claimant intention",
-    "DisplayOrder": 4
+    "DisplayOrder": 5
   },
   {
     "LiveFrom": "01/01/2017",
@@ -37,7 +45,7 @@
     "ID": "CLOSED",
     "Name": "Closed",
     "Description": "Case is closed",
-    "DisplayOrder": 5
+    "DisplayOrder": 6
   },
   {
     "LiveFrom": "01/01/2017",
@@ -45,6 +53,14 @@
     "ID": "PROCEEDS_WITH_OFFLINE_JOURNEY",
     "Name": "Proceeds with offline journey",
     "Description": "Case is to be handled offline",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "CLAIM_DISMISSED",
+    "Name": "Claim dismissed",
+    "Description": "Case is dismissed",
+    "DisplayOrder": 8
   }
 ]
