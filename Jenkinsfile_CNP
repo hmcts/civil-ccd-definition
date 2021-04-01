@@ -33,6 +33,12 @@ def secrets = [
   ]
 ]
 
+def createGithubRelease() {
+  sh """
+    ./bin/create-github-release.sh
+  """
+}
+
 def archiveCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin") {
     sh "./build-release-ccd-definition.sh ${env}"
@@ -125,6 +131,7 @@ withPipeline(type, product, component) {
 
   after('functionalTest:aat') {
     archiveCoreCaseDataDefinitions('aat')
+    createGithubRelease()
     //TODO: uncomment once pipeline gets stable
 //    uploadCoreCaseDataDefinitions('aat')
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
