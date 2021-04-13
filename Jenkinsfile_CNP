@@ -75,6 +75,25 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
+  after('checkout') {
+    onMaster {
+      withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
+        try {
+          sh '''
+            set -e
+
+            git remote set-url origin $(git config remote.origin.url | sed "s/github.com/${BEARER_TOKEN}@github.com/g")
+
+            git fetch origin demo:demo
+            git push --force origin HEAD:demo
+          '''
+        } catch (err) {
+          notifyBuildEvent channel: '#unspec_notification', color: 'warning', message: 'civil-damages-ccd-definition: failed to update demo branch'
+        }
+      }
+    }
+  }
+
   before('smoketest:preview') {
     sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
@@ -132,8 +151,7 @@ withPipeline(type, product, component) {
   after('functionalTest:aat') {
     archiveCoreCaseDataDefinitions('aat')
     createGithubRelease()
-    //TODO: uncomment once pipeline gets stable
-//    uploadCoreCaseDataDefinitions('aat')
+    uploadCoreCaseDataDefinitions('aat')
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
   }
 
@@ -142,8 +160,7 @@ withPipeline(type, product, component) {
     withSubscription(subscription) {
       withTeamSecrets(pipelineConf, 'demo') {
         archiveCoreCaseDataDefinitions('demo')
-        //TODO: uncomment once pipeline gets stable
-//        uploadCoreCaseDataDefinitions('demo')
+        uploadCoreCaseDataDefinitions('demo')
       }
     }
   }
