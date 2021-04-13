@@ -92,6 +92,16 @@ withPipeline(type, product, component) {
         }
       }
     }
+
+    onDemo {
+      def subscription = 'nonprod'
+      withSubscription(subscription) {
+        withTeamSecrets(pipelineConf, 'demo') {
+          archiveCoreCaseDataDefinitions('demo')
+          uploadCoreCaseDataDefinitions('demo')
+        }
+      }
+    }
   }
 
   before('smoketest:preview') {
@@ -153,15 +163,5 @@ withPipeline(type, product, component) {
     createGithubRelease()
     uploadCoreCaseDataDefinitions('aat')
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
-  }
-
-  before('buildinfra:demo') {
-    def subscription = 'nonprod'
-    withSubscription(subscription) {
-      withTeamSecrets(pipelineConf, 'demo') {
-        archiveCoreCaseDataDefinitions('demo')
-        uploadCoreCaseDataDefinitions('demo')
-      }
-    }
   }
 }
