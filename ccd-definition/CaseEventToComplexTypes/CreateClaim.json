@@ -375,17 +375,8 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "ID": "Upload",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "particularsOfClaimDocument",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -395,7 +386,7 @@
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "particularsOfClaimText",
     "EventElementLabel": "If you prefer you can copy and paste the details of claim here.",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -404,7 +395,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "medicalReports",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "Min": 1,
     "FieldShowCondition": "claimType=\"CLINICAL_NEGLIGENCE\" OR claimType=\"PERSONAL_INJURY\""
@@ -414,7 +405,16 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "scheduleOfLoss",
+    "ListElementCode": "scheduleOfLoss.document",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Upload",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "servedDocumentFiles",
+    "ListElementCode": "certificateOfSuitability.document",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -423,17 +423,8 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "certificateOfSuitability",
+    "ListElementCode": "other.document",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "ID": "Upload",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "other",
-    "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -451,7 +442,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
     "ListElementCode": "label",
-    "EventElementLabel": "The claimant believes that the facts in this claim form are true. I'm duly authorised by the claimant to sign this statement.",
+    "EventElementLabel": "The claimant believes that the facts in this claim form are true. \n\nI'm duly authorised by the claimant to sign this statement.",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -460,8 +451,28 @@
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
-    "ListElementCode": "name",
+    "ListElementCode": "label2",
+    "EventElementLabel": "I understand that proceedings for contempt of court may be brought against anyone",
     "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "StatementOfTruth",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
+    "ListElementCode": "label3",
+    "EventElementLabel": "who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "StatementOfTruth",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
+    "ListElementCode": "name",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -470,7 +481,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
     "ListElementCode": "role",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {

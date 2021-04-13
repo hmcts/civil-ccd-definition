@@ -27,7 +27,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "courtLocation",
-    "Label": "Court Code",
+    "Label": "Court location code",
     "FieldType": "CourtLocation",
     "SecurityClassification": "Public"
   },
@@ -45,7 +45,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1LitigationFriendRequired",
-    "Label": "Is the claimant a child?",
+    "Label": "Is the claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -53,7 +53,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1LitigationFriend",
-    "Label": "Claimant litigation details",
+    "Label": "Claimant litigation friend details",
     "FieldType": "LitigationFriend",
     "SecurityClassification": "Public"
   },
@@ -218,7 +218,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "servedDocumentFiles",
-    "Label": "Upload documents in the following machine readable formats",
+    "Label": "Upload your documents in a common, text readable file format, for example doc, docx, html, odt, pdf, rtf, txt or xls.",
     "FieldType": "ServedDocumentFiles",
     "SecurityClassification": "Public"
   },
@@ -427,7 +427,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1DQRequestedCourt",
-    "Label": "Court Code",
+    "Label": "Court location code",
     "FieldType": "RequestedCourt",
     "SecurityClassification": "Public"
   },
@@ -805,7 +805,7 @@
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
-    "FieldType": "Date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]
