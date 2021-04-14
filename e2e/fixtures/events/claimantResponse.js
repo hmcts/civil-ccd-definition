@@ -95,6 +95,16 @@ module.exports = {
     }
   },
   invalid: {
+    Experts: {
+      emptyDetails: {
+        applicant1DQExperts: {
+          details: [],
+          expertRequired: 'Yes',
+          expertReportsSent: 'NOT_OBTAINED',
+          jointExpertSuitable: 'Yes'
+        }
+      }
+    },
     Hearing: {
       past: {
         applicant1DQHearing: {

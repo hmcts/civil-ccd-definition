@@ -30,7 +30,6 @@
     "FieldTypeParameter": "Expert",
     "ElementLabel": "Expert details",
     "FieldShowCondition": "expertRequired = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Min": 1
+    "SecurityClassification": "Public"
   }
 ]
