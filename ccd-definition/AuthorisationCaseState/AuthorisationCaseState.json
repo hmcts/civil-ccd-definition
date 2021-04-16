@@ -3,49 +3,81 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "PENDING_CASE_ISSUED",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "UserRoles": [
+      "[APPLICANTSOLICITORONE]",
+      "[CREATOR]",
+      "caseworker-civil-admin"
+    ],
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "CASE_DISMISSED",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "CASE_ISSUED",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
+    "UserRoles": [
+      "[APPLICANTSOLICITORONE]",
+      "caseworker-civil-admin"
+    ],
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
-    "UserRoles": ["caseworker-civil-solicitor","caseworker-civil-admin"],
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

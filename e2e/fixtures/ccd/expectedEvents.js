@@ -1,7 +1,7 @@
 const events = require('./events.js');
 
 module.exports = {
-  solicitor: {
+  applicant_solicitor: {
     CASE_ISSUED: [
       events.NOTIFY_DEFENDANT_OF_CLAIM,
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
@@ -13,10 +13,7 @@ module.exports = {
       events.ADD_OR_AMEND_CLAIM_DOCUMENTS
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
-      events.ACKNOWLEDGE_CLAIM,
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
-      events.DEFENDANT_RESPONSE,
-      events.INFORM_AGREED_EXTENSION_DATE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -28,6 +25,16 @@ module.exports = {
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
       events.NOTIFY_DEFENDANT_OF_CLAIM
     ]
+  },
+  defendant_solicitor: {
+    AWAITING_CASE_DETAILS_NOTIFICATION: [],
+    AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
+      events.ACKNOWLEDGE_CLAIM,
+      events.DEFENDANT_RESPONSE,
+      events.INFORM_AGREED_EXTENSION_DATE
+    ],
+    PROCEEDS_IN_HERITAGE_SYSTEM: [],
+    AWAITING_APPLICANT_INTENTION: [],
   },
   admin: {
     CASE_ISSUED: [
