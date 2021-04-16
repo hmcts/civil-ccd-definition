@@ -52,22 +52,20 @@ module.exports = {
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM);
 
+     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
+       header: 'Your claim has been received',
+       body: 'Your claim will not be issued until payment is confirmed.'
+     }, true);
+     await assignCaseToDefendant(caseId);
+
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
     let i;
-    for (i = 0; i < data[eventName].invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
+    for(i=0; i<data[eventName].invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
       await assertError('Court', data[eventName].invalid.Court.courtLocation.applicantPreferredCourt[i],
         null, 'Case data validation failed');
     }
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment is confirmed.'
-    }, true);
-
-    await assignCaseToDefendant(caseId);
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -86,9 +84,11 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assignCaseToDefendant(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
   },
 
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
@@ -104,8 +104,9 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assignCaseToDefendant(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -122,12 +123,9 @@ module.exports = {
       header: 'Your claim has been received',
       body: 'You have until DATE to notify the defendant of the claim and claim details.'
     }, true);
-
     await assignCaseToDefendant(caseId);
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
-    await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
+
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'PENDING_CASE_ISSUED');
   },
 
   resubmitClaim: async (user) => {
@@ -141,15 +139,10 @@ module.exports = {
       body: 'What happens next'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
-    await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'CASE_ISSUED');
   },
 
-  amendClaimDocuments: async (user) => {
-    await apiRequest.setupTokens(user);
-
+  amendClaimDocuments: async () => {
     eventName = 'ADD_OR_AMEND_CLAIM_DOCUMENTS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -159,6 +152,7 @@ module.exports = {
 
     await assertError('Upload', data[eventName].invalid.Upload.duplicateError,
       'More than one Particulars of claim details added');
+
     await assertError('Upload', data[eventName].invalid.Upload.nullError,
       'You must add Particulars of claim details');
 
@@ -167,15 +161,12 @@ module.exports = {
       body: '<br />'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
-  notifyClaim: async (user) => {
-    await apiRequest.setupTokens(user);
-
+  notifyClaim: async () => {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -185,15 +176,12 @@ module.exports = {
       body: 'What happens next'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
-  notifyClaimDetails: async (user) => {
-    await apiRequest.setupTokens(user);
-
+  notifyClaimDetails: async() => {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -205,13 +193,12 @@ module.exports = {
       body: 'What happens next'
     });
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  amendPartyDetails: async (user) => {
+  amendPartyDetails: async(user) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'AMEND_PARTY_DETAILS';
@@ -225,8 +212,7 @@ module.exports = {
       body: ' '
     });
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
@@ -250,15 +236,12 @@ module.exports = {
       body: 'You need to respond before'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  informAgreedExtension: async (user) => {
-    await apiRequest.setupTokens(user);
-
+  informAgreedExtensionDate: async () => {
     eventName = 'INFORM_AGREED_EXTENSION_DATE';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -277,15 +260,12 @@ module.exports = {
       body: 'What happens next'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  defendantResponse: async (user) => {
-    await apiRequest.setupTokens(user);
-
+  defendantResponse: async () => {
     eventName = 'DEFENDANT_RESPONSE';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -307,15 +287,12 @@ module.exports = {
       body: 'We will let you know when they respond.'
     }, true);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'AWAITING_APPLICANT_INTENTION');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
   },
 
-  claimantResponse: async (user) => {
-    await apiRequest.setupTokens(user);
-
+  claimantResponse: async () => {
     eventName = 'CLAIMANT_RESPONSE';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -333,9 +310,9 @@ module.exports = {
       header: 'You\'ve chosen to proceed with the claim',
       body: '>We\'ll review the case and contact you to tell you what to do next.'
     }, true);
-
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
@@ -369,8 +346,7 @@ module.exports = {
       body: ''
     }, false);
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.solicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   }
@@ -400,13 +376,13 @@ const assertValidData = async (data, pageId) => {
   assert.deepEqual(responseBody.data, caseData);
 };
 
-const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings' ) => {
   const response = await apiRequest.validatePage(eventName, pageId, {...caseData, ...eventData}, 422);
   const responseBody = await response.json();
 
   assert.equal(response.status, 422);
   assert.equal(responseBody.message, responseBodyMessage);
-  if (responseBody.callbackErrors != null) {
+  if(responseBody.callbackErrors != null){
     assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
   }
 };
@@ -446,14 +422,9 @@ const deleteCaseFields = (...caseFields) => {
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} has correct permissions`);
+  await waitForFinishedBusinessProcess(caseId);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
-};
-
-const assertCaseNotAvailableToUser = async (user) => {
-  console.log(`Asserting user ${user.type} does not have permission to case`);
-  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId, 404);
-  assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 };
 
 function addMidEventFields(pageId, responseBody) {

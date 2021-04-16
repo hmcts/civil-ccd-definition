@@ -29,12 +29,12 @@ module.exports = {
       .then(response => response.text());
   },
 
-  fetchCaseForDisplay: async(user, caseId, response = 200) => {
+  fetchCaseForDisplay: async(user, caseId) => {
     let eventUserAuth = await idamHelper.accessToken(user);
     let eventUserId = await idamHelper.userId(eventUserAuth);
     let url = getCcdCaseUrl(eventUserId, caseId);
 
-    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
+    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET')
       .then(response => response.json());
   },
 

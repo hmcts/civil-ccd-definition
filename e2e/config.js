@@ -19,15 +19,15 @@ module.exports = {
     microservice: 'unspec_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
-  applicantSolicitorUser: {
+  solicitorUser: {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
-    type: 'applicant_solicitor'
+    type: 'solicitor'
   },
   defendantSolicitorUser: {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'solicitor'
   },
   adminUser: {
     password: defaultPassword,
