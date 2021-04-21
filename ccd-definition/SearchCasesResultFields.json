@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[CASE_REFERENCE]",
@@ -10,7 +9,6 @@
     "UseCase": "orgcases"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -20,7 +18,6 @@
     "UseCase": "orgcases"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "legacyCaseReference",
@@ -29,7 +26,6 @@
     "UseCase": "orgcases"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[LAST_MODIFIED_DATE]",
@@ -38,7 +34,6 @@
     "UseCase": "orgcases"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[STATE]",
