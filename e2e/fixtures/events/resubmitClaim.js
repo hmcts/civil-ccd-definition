@@ -10,8 +10,7 @@ module.exports = {
           listElement('PBA0078094')
         ],
         value: selectedPBA
-      },
-      paymentReference: 'Updated reference'
-    },
+      }
+    }
   }
 };

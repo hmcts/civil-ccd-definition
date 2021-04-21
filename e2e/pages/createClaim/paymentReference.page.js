@@ -3,7 +3,7 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    paymentReference: '#paymentReference',
+    paymentReference: '#claimIssuedPaymentDetails_customerReference',
   },
 
   async updatePaymentReference() {

@@ -123,7 +123,9 @@ const createClaimData = (legalRepresentation, useValidPba) => {
       }
     },
     PaymentReference: {
-      paymentReference: 'Applicant reference'
+      claimIssuedPaymentDetails:  {
+        customerReference: 'Applicant reference'
+      }
     },
     StatementOfTruth: {
       applicantSolicitor1ClaimStatementOfTruth: {
@@ -150,7 +152,9 @@ module.exports = {
           code: 'FEE0209',
           version: '3'
         },
-        paymentReference: 'Applicant reference',
+        claimIssuedPaymentDetails:  {
+          customerReference: 'Applicant reference'
+        },
         applicant1: applicant1WithPartyName,
         respondent1: respondent1WithPartyName,
       },
@@ -165,7 +169,9 @@ module.exports = {
     valid: {
       ...createClaimData('Yes', true),
       PaymentReference: {
-        paymentReference: 'Applicant reference'
+        claimIssuedPaymentDetails:  {
+          customerReference: 'Applicant reference'
+        }
       }
     },
     invalid:{

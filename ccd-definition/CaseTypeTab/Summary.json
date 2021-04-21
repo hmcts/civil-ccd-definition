@@ -84,7 +84,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "paymentDetails",
+    "CaseFieldID": "claimIssuedPaymentDetails",
     "TabFieldDisplayOrder": 11
   }
 ]

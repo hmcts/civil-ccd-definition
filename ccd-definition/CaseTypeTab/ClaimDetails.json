@@ -20,7 +20,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "paymentDetails",
+    "CaseFieldID": "claimIssuedPaymentDetails",
     "TabFieldDisplayOrder": 3
   },
   {
