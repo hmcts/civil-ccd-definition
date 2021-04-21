@@ -10,7 +10,7 @@ const RETRY_TIMEOUT_MS = 1000;
 
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
-    const authToken = await idamHelper.accessToken(config.solicitorUser);
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     await retry(() => {
       return restHelper.request(
@@ -57,7 +57,7 @@ module.exports =  {
   },
 
   updateCaseData: async (caseId, caseData) => {
-    const authToken = await idamHelper.accessToken(config.solicitorUser);
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     await restHelper.retriedRequest(
       `${config.url.unspecService}/testing-support/case/${caseId}`,

@@ -7,7 +7,7 @@ const getCaseId = caseNumber => `${caseNumber.split('-').join('').replace(/#/, '
 Feature('RPA handoff points tests @rpa-handoff-tests');
 
 Scenario('Take claim offline', async (I) => {
-  await I.login(config.solicitorUser);
+  await I.login(config.applicantSolicitorUser);
   await I.createCase();
   let caseId = getCaseId(await I.grabCaseNumber());
   await I.notifyClaim();

@@ -34,5 +34,14 @@
     "Description": "Respondent Solicitor 2 role",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "[CREATOR]",
+    "Name": "Creator",
+    "Description": "Creator of case",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
   }
 ]

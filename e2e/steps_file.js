@@ -60,6 +60,7 @@ const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 const address = require('./fixtures/address.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_OUT_SELECTOR = '#global-header';
 const JURISDICTION_LOCATOR = '#wb-jurisdiction > option';
 const TYPE_LOCATOR = '#wb-case-type > option';
 const STATE_LOCATOR = '#wb-case-state > option';
@@ -79,13 +80,9 @@ module.exports = function () {
         this.amOnPage(config.url.manageCase);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-          if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-            this.click('Sign out');
-          }
-
-          loginPage.signIn(user);
+          output.log(`Signing in user: ${user.type}`);
+          await loginPage.signIn(user);
         }
-
       }, SIGNED_IN_SELECTOR);
     },
 
@@ -93,6 +90,12 @@ module.exports = function () {
       this.waitForElement(CASE_HEADER);
 
       return await this.grabTextFrom(CASE_HEADER);
+    },
+
+    async signOut() {
+      await this.retryUntilExists(() => {
+        this.click('Sign out');
+      }, SIGNED_OUT_SELECTOR);
     },
 
     async goToCase(caseId) {
@@ -321,6 +324,22 @@ module.exports = function () {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);
         }
       }
+    },
+
+    async navigateToCaseDetails(caseId) {
+      await this.retryUntilExists(async () => {
+        const normalizeCaseId = caseId.toString().replace(/\D/g, '');
+        output.log(`Navigating to case: ${normalizeCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizeCaseId}`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async navigateToCaseDetailsAs(user, caseId) {
+      await this.signOut();
+      await this.login(user);
+      await this.navigateToCaseDetails(caseId);
     },
   });
 };
