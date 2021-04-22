@@ -173,7 +173,8 @@ module.exports = function () {
       await respondentDetails.verifyDetails();
       await confirmDetailsPage.confirmReference();
       await responseIntentionPage.selectResponseIntention(responseIntention);
-      await event.submit('Acknowledge claim', 'You\'ve acknowledged claim');
+      // temporarily commenting out whilst change is made to service repo
+      await event.submit('Acknowledge claim', '');
       await event.returnToCaseDetails();
     },
 

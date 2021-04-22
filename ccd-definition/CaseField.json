@@ -180,7 +180,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "claimStatementOfTruthLabel",
-    "Label": "The claimant believes that the facts in this claim form are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nI understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "Label": "The claimant believes that the facts in this claim form are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -216,7 +216,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "servedDocumentFiles",
-    "Label": "Upload your documents in a common, text readable file format, for example doc, docx, html, odt, pdf, rtf, txt or xls.",
+    "Label": "Uploaded documents must be in one of the following machine readable formats:",
     "FieldType": "ServedDocumentFiles",
     "SecurityClassification": "Public"
   },
@@ -706,7 +706,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "detailsOfClaimLabel",
-    "Label": "## Provide a summary of the claim\nBriefly describe the claim. Don’t include the Particulars of claim details. You can upload the Particulars on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
+    "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

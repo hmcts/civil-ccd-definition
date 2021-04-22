@@ -4,8 +4,35 @@
     "ID": "Upload",
     "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "particularsOfClaimDocument",
+    "ListElementCode": "documentsLabel",
     "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Upload",
+    "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
+    "CaseFieldID": "servedDocumentFiles",
+    "ListElementCode": "medicalReportsLabel",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Upload",
+    "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
+    "CaseFieldID": "servedDocumentFiles",
+    "ListElementCode": "spreadsheetsLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Upload",
+    "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
+    "CaseFieldID": "servedDocumentFiles",
+    "ListElementCode": "particularsOfClaimDocument",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -15,7 +42,7 @@
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "particularsOfClaimText",
     "EventElementLabel": "If you prefer you can copy and paste the details of claim here.",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -24,7 +51,7 @@
     "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "medicalReports",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL",
     "Min": 1,
     "FieldShowCondition": "claimType=\"CLINICAL_NEGLIGENCE\" OR claimType=\"PERSONAL_INJURY\""
@@ -35,7 +62,7 @@
     "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "scheduleOfLoss.document",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -44,7 +71,7 @@
     "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "certificateOfSuitability.document",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -53,7 +80,7 @@
     "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "other.document",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL"
   }
 ]

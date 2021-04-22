@@ -1,6 +1,27 @@
 [
   {
     "ID": "ServedDocumentFiles",
+    "ListElementCode": "documentsLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Text documents: .docm, .docx, .html, .odf, .ooxml, .pdf, .rtf, .sgml, .txt, .xhtml",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ServedDocumentFiles",
+    "ListElementCode": "medicalReportsLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Medical reports can be scanned.\n\nPDFs must be text based and in a machine readable format.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ServedDocumentFiles",
+    "ListElementCode": "spreadsheetsLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Spreadsheets: .csv, .ods, .xls, .xlsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ServedDocumentFiles",
     "ListElementCode": "particularsOfClaimDocument",
     "FieldType": "Document",
     "ElementLabel": "Particulars of claim",
