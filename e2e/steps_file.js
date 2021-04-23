@@ -61,10 +61,6 @@ const address = require('./fixtures/address.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
-const JURISDICTION_LOCATOR = '#wb-jurisdiction > option';
-const TYPE_LOCATOR = '#wb-case-type > option';
-const STATE_LOCATOR = '#wb-case-state > option';
-const CASE_NUMBER_INPUT_LOCATOR = 'input[type$="number"]';
 const CASE_HEADER = 'ccd-case-header > h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
@@ -98,28 +94,6 @@ module.exports = function () {
       }, SIGNED_OUT_SELECTOR);
     },
 
-    async goToCase(caseId) {
-      this.click('Case list');
-
-      this.waitForElement(JURISDICTION_LOCATOR);
-      this.selectOption('jurisdiction', 'Civil');
-
-      this.waitForElement(TYPE_LOCATOR);
-      this.selectOption('case-type', 'Damages Claim');
-
-      this.waitForElement(STATE_LOCATOR);
-      this.selectOption('state', 'Any');
-
-      this.waitForElement(CASE_NUMBER_INPUT_LOCATOR);
-      this.fillField(CASE_NUMBER_INPUT_LOCATOR, caseId);
-
-      const caseLinkLocator = `a[href$="/cases/case-details/${caseId}"]`;
-      await this.retryUntilExists(() => this.click('Apply'), caseLinkLocator);
-
-      this.click(caseLinkLocator);
-      this.waitForElement(CASE_HEADER);
-    },
-
     async createCase(litigantInPerson = false) {
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
@@ -147,7 +121,8 @@ module.exports = function () {
       await pbaNumberPage.selectPbaNumber();
       await paymentReferencePage.updatePaymentReference();
       await statementOfTruth.enterNameAndRole('claim');
-      let expectedMessage = litigantInPerson ? 'Your claim will now progress offline' : 'Your claim has been received\nClaim number: ';
+      let expectedMessage = litigantInPerson ?
+        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
       await event.submit('Issue claim', expectedMessage);
 
       await event.returnToCaseDetails();
@@ -242,7 +217,7 @@ module.exports = function () {
     async respondToDefenceDropClaim() {
       await caseViewPage.startEvent('View and respond to defence', caseId);
       await proceedPage.dropClaim();
-      await event.submit('Submit your response', 'You have chosen not to proceed with the claim');
+      await event.submit('Submit your response', 'You\'ve chosen not to proceed with the claim');
       await this.click('Close and Return to case details');
     },
 
@@ -327,20 +302,20 @@ module.exports = function () {
       }
     },
 
-    async navigateToCaseDetails(caseId) {
+    async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
-        const normalizeCaseId = caseId.toString().replace(/\D/g, '');
-        output.log(`Navigating to case: ${normalizeCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizeCaseId}`);
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async navigateToCaseDetailsAs(user, caseId) {
+    async navigateToCaseDetailsAs(user, caseNumber) {
       await this.signOut();
       await this.login(user);
-      await this.navigateToCaseDetails(caseId);
+      await this.navigateToCaseDetails(caseNumber);
     },
   });
 };
