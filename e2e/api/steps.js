@@ -245,11 +245,10 @@ module.exports = {
     await assertError('ConfirmDetails', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
 
-    // temporarily commenting out to make change in service repo
-    // await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-    //   header: 'You\'ve acknowledged claim',
-    //   body: 'You need to respond before'
-    // }, true);
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
