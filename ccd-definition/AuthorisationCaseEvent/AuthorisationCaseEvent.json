@@ -150,6 +150,69 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseEventID": "CLAIM_ISSUE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseEventID": "PAYMENT_FAILED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseEventID": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "AccessControl": [
       {
