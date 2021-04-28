@@ -1,7 +1,7 @@
 {
-  "name": "civil-damages-service",
+  "name": "civil-ccd-definition",
   "version": "0.0.1",
-  "description": "Civil Unspecified e2e tests",
+  "description": "Civil e2e tests",
   "scripts": {
     "lint": "eslint e2e",
     "test": "npx codeceptjs run --steps",

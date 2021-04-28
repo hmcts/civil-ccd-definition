@@ -45,17 +45,17 @@ if [ -z "$BUILD_URL" ]; then
   exit 1
 fi
 
-zip -r civil-damages-ccd-definition.zip ccd-definition
-zip -r civil-damages-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock
-cp build/ccd-release-config/civil-damages-ccd-aat.xlsx civil-damages-ccd-aat.xlsx
+zip -r civil-ccd-definition.zip ccd-definition
+zip -r civil-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock
+cp build/ccd-release-config/civil-ccd-aat.xlsx civil-ccd-aat.xlsx
 
 az login --identity
-releaseId=$(createNewRelease civil-damages-ccd-definition)
+releaseId=$(createNewRelease civil-ccd-definition)
 
-uploadReleaseAsset civil-damages-ccd-definition $releaseId civil-damages-ccd-definition.zip
-uploadReleaseAsset civil-damages-ccd-definition $releaseId civil-damages-e2e.zip
-uploadReleaseAsset civil-damages-ccd-definition $releaseId civil-damages-ccd-aat.xlsx
+uploadReleaseAsset civil-ccd-definition $releaseId civil-ccd-definition.zip
+uploadReleaseAsset civil-ccd-definition $releaseId civil-e2e.zip
+uploadReleaseAsset civil-ccd-definition $releaseId civil-ccd-aat.xlsx
 
-rm civil-damages-ccd-definition.zip
-rm civil-damages-e2e.zip
-rm civil-damages-ccd-aat.xlsx
+rm civil-ccd-definition.zip
+rm civil-e2e.zip
+rm civil-ccd-aat.xlsx
