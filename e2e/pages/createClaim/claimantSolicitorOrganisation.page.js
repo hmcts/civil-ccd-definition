@@ -10,6 +10,7 @@ module.exports = {
   async enterOrganisationDetails() {
     I.waitForElement(this.fields.orgPolicyReference);
     I.fillField(this.fields.orgPolicyReference, 'Claimant policy reference');
+    I.waitForElement(this.fields.searchText);
     I.fillField(this.fields.searchText, 'Civil Damages Claims');
     I.click('a[title="Select the organisation Civil Damages Claims - Organisation 1"]');
     await I.clickContinue();
