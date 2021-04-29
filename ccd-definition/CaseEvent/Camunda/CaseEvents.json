@@ -5,7 +5,7 @@
     "ID": "CLAIM_ISSUE",
     "Name": "Issue claim",
     "Description": "Issue claim",
-    "PreConditionState(s)": "PENDING_CASE_ISSUED",
+    "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED",
     "PostConditionState": "CASE_ISSUED",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
