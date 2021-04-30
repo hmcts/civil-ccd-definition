@@ -221,7 +221,7 @@
     "CaseFieldID": "respondent1DQDraftDirections",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "DraftDirections",
     "ShowSummaryChangeOption": "Y"
   },

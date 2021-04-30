@@ -188,7 +188,7 @@
     "CaseFieldID": "applicant1DQDraftDirections",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "DraftDirections",
     "ShowSummaryChangeOption": "Y"
   },
