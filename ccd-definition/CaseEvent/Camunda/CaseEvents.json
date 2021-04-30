@@ -2,7 +2,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "CLAIM_ISSUE",
+    "ID": "PROCESS_CLAIM_ISSUE",
     "Name": "Issue claim",
     "Description": "Issue claim",
     "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED",
@@ -16,7 +16,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "PAYMENT_FAILED",
+    "ID": "PROCESS_PAYMENT_FAILED",
     "Name": "Payment failed",
     "Description": "Payment failed",
     "PreConditionState(s)": "PENDING_CASE_ISSUED",
@@ -43,7 +43,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "ID": "FULL_DEFENCE",
+    "ID": "PROCESS_FULL_DEFENCE",
     "Name": "Full defence",
     "Description": "Full defence",
     "PreConditionState(s)": "AWAITING_APPLICANT_INTENTION",

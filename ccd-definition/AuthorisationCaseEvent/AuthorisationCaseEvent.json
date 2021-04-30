@@ -150,7 +150,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "CaseEventID": "CLAIM_ISSUE",
+    "CaseEventID": "PROCESS_CLAIM_ISSUE",
     "AccessControl": [
       {
         "UserRoles": [
@@ -171,7 +171,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "CaseEventID": "PAYMENT_FAILED",
+    "CaseEventID": "PROCESS_PAYMENT_FAILED",
     "AccessControl": [
       {
         "UserRoles": [
@@ -213,7 +213,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "CaseEventID": "FULL_DEFENCE",
+    "CaseEventID": "PROCESS_FULL_DEFENCE",
     "AccessControl": [
       {
         "UserRoles": [
