@@ -411,5 +411,16 @@
     "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "statementOfTruthSubmitLabel",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 19,
+    "PageColumnNumber": 1
   }
 ]

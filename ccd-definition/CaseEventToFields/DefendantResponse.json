@@ -274,5 +274,15 @@
     "PageID": "StatementOfTruth",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "statementOfTruthSubmitLabel",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth"
   }
 ]
