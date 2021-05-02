@@ -612,7 +612,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "applicant1OrganisationPolicy",
-    "Label": "Applicant 1 organisation policy",
+    "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   },
@@ -628,7 +628,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1OrganisationPolicy",
-    "Label": "Respondent 1 organisation policy",
+    "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   },
