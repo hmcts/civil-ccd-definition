@@ -188,7 +188,7 @@ module.exports = function () {
       await witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1);
       await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1);
       await hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1);
-      await draftDirectionsPage.enterDraftDirections(parties.RESPONDENT_SOLICITOR_1);
+      await draftDirectionsPage.upload(parties.RESPONDENT_SOLICITOR_1, TEST_FILE_PATH);
       await requestedCourtPage.selectSpecificCourtForHearing(parties.RESPONDENT_SOLICITOR_1);
       await hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1);
       await furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1);
@@ -206,7 +206,7 @@ module.exports = function () {
       await witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1);
       await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1);
       await hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1);
-      await draftDirectionsPage.enterDraftDirections(parties.APPLICANT_SOLICITOR_1);
+      await draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH);
       await hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1);
       await furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1);
       await statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ');

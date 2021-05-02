@@ -13,7 +13,7 @@
     "ID": "Upload",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "medicalReportsLabel",
+    "ListElementCode": "spreadsheetsLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -22,7 +22,7 @@
     "ID": "Upload",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "spreadsheetsLabel",
+    "ListElementCode": "medicalReportsLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -50,7 +50,7 @@
     "ID": "Upload",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "medicalReports",
+    "ListElementCode": "medicalReport.document",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL",
     "Min": 1,

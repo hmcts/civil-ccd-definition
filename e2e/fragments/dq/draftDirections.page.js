@@ -8,9 +8,10 @@ module.exports = {
     };
   },
 
-  async enterDraftDirections(party) {
+  async upload(party, file) {
     I.waitForElement(this.fields(party).draftDirections);
-    I.fillField(this.fields(party).draftDirections, 'Draft directions');
+    await I.attachFile(this.fields(party).draftDirections, file);
+    await I.waitForInvisible(locate('.error-message').withText('Uploading...'));
 
     await I.clickContinue();
   }
