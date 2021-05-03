@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseType",
     "PageDisplayOrder": 1,
@@ -12,7 +12,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "responseHandOffLabel",
     "PageDisplayOrder": 1,
@@ -24,7 +24,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -36,7 +36,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "claimType",
     "PageDisplayOrder": 1,
@@ -48,7 +48,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseDocument",
     "PageDisplayOrder": 2,
@@ -62,7 +62,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentDetails",
     "PageLabel": "Confirm defendant details",
@@ -75,7 +75,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "solicitorReferences",
     "PageLabel": "Confirm defendant details",
@@ -89,7 +89,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseEventFieldLabel": " ",
     "CaseFieldID": "respondent1",
@@ -102,7 +102,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 5,
@@ -114,7 +114,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 6,
@@ -126,7 +126,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureOfNonElectronicDocuments",
     "PageDisplayOrder": 7,
@@ -138,7 +138,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureReport",
     "PageDisplayOrder": 8,
@@ -150,7 +150,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQExperts",
     "PageDisplayOrder": 9,
@@ -164,7 +164,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
     "PageDisplayOrder": 10,
@@ -177,7 +177,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQLanguage",
     "PageDisplayOrder": 11,
@@ -189,7 +189,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearing",
     "PageDisplayOrder": 12,
@@ -204,7 +204,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDraftDirectionsLabel",
     "PageDisplayOrder": 13,
@@ -216,7 +216,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDraftDirections",
     "PageDisplayOrder": 13,
@@ -227,7 +227,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQRequestedCourt",
     "PageDisplayOrder": 14,
@@ -239,7 +239,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageDisplayOrder": 15,
@@ -252,7 +252,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
     "PageDisplayOrder": 16,
@@ -265,7 +265,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQStatementOfTruth",
     "PageDisplayOrder": 17,

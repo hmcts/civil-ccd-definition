@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "[APPLICANTSOLICITORONE]",
     "Name": "Applicant Solicitor 1",
     "Description": "Applicant Solicitor 1 role",
@@ -10,7 +10,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "[APPLICANTSOLICITORTWO]",
     "Name": "Applicant Solicitor 2",
     "Description": "Applicant Solicitor 2 role",
@@ -19,7 +19,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "[RESPONDENTSOLICITORONE]",
     "Name": "Respondent Solicitor 1",
     "Description": "Respondent Solicitor 1 role",
@@ -28,7 +28,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "[RESPONDENTSOLICITORTWO]",
     "Name": "Respondent Solicitor 2",
     "Description": "Respondent Solicitor 2 role",
@@ -37,7 +37,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "[CREATOR]",
     "Name": "Creator",
     "Description": "Creator of case",

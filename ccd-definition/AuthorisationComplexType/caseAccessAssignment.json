@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-caa",
@@ -9,7 +9,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
     "UserRole": "caseworker-caa",
@@ -17,7 +17,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation",
     "UserRole": "caseworker-caa",
@@ -25,7 +25,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "UserRole": "caseworker-caa",
@@ -33,7 +33,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationName",
     "UserRole": "caseworker-caa",
@@ -41,7 +41,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-caa",
@@ -49,7 +49,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
     "UserRole": "caseworker-caa",
@@ -57,7 +57,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation",
     "UserRole": "caseworker-caa",
@@ -65,7 +65,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "UserRole": "caseworker-caa",
@@ -73,7 +73,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationName",
     "UserRole": "caseworker-caa",

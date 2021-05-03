@@ -13,10 +13,10 @@ module.exports = {
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    unspecService: process.env.UNSPEC_SERVICE_URL || 'http://localhost:4000',
+    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
   },
   s2s: {
-    microservice: 'unspec_service',
+    microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   applicantSolicitorUser: {
@@ -36,6 +36,6 @@ module.exports = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'UNSPECIFIED_CLAIMS',
+    caseType: 'CIVIL',
   }
 };

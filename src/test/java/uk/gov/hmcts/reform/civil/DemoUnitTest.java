@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.unspec;
+package uk.gov.hmcts.reform.civil;
 
 import org.junit.jupiter.api.Test;
 

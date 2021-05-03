@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "DISPATCH_BUSINESS_PROCESS",
     "Name": "Dispatch business process",
     "Description": "Set READY business process status to DISPATCHED",
@@ -17,7 +17,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "START_BUSINESS_PROCESS",
     "Name": "Start business process",
     "Description": "Start business process",
@@ -31,7 +31,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "END_BUSINESS_PROCESS",
     "Name": "End business process",
     "Description": "End business process",
@@ -43,7 +43,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1",
     "Name": "Assign to applicantSolicitor1",
     "Description": "Assign case to applicant solicitor 1",

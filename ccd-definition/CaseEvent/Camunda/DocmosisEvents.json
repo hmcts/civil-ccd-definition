@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_CLAIM_FORM",
     "Name": "Generate claim form",
     "Description": "Generates claim form after successful payment",
@@ -15,7 +15,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM",
     "Name": "Generate aoc",
     "Description": "Generates acknowledgement of claim",
@@ -29,7 +29,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DIRECTIONS_QUESTIONNAIRE",
     "Name": "Generate dq",
     "Description": "Generates directions questionnaire",
