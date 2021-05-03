@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
@@ -8,7 +8,7 @@
     "TabFieldDisplayOrder": 1
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
@@ -16,7 +16,7 @@
     "TabFieldDisplayOrder": 2
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
@@ -24,7 +24,7 @@
     "TabFieldDisplayOrder": 3
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
@@ -32,7 +32,7 @@
     "TabFieldDisplayOrder": 4
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
@@ -40,7 +40,7 @@
     "TabFieldDisplayOrder": 5
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,

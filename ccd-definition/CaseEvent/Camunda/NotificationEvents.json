@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_ISSUE",
     "Name": "Notify claim issue",
     "Description": "Notify respondent solicitor 1 for claim issue",
@@ -15,7 +15,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_ACKNOWLEDGEMENT",
     "Name": "Notify claim acknowledgement",
     "Description": "Notify applicant solicitor 1 for claim acknowledgement",
@@ -29,7 +29,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE",
     "Name": "Notify response",
     "Description": "Notify applicant solicitor 1 for defendant response",
@@ -43,7 +43,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CASE_HANDED_OFFLINE",
     "Name": "Notify handed offline",
     "Description": "Notify respondent solicitor 1 for case to be handed offline",
@@ -57,7 +57,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_UNREGISTERED_SOLICITOR",
     "Name": "Notify handed offline",
     "Description": "Notify applicant solicitor 1 for unregistered solicitor",
@@ -71,7 +71,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_HANDED_OFFLINE",
     "Name": "Notify handed offline",
     "Description": "Notify applicant solicitor 1 for case to be handed offline",
@@ -85,7 +85,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CASE_TRANSFERRED_TO_LOCAL_COURT",
     "Name": "Notify transferred local court",
     "Description": "Notify respondent solicitor 1 for case to be transferred to local court",
@@ -99,7 +99,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_TRANSFERRED_TO_LOCAL_COURT",
     "Name": "Notify transferred local court",
     "Description": "Notify applicant solicitor 1 for case to be transferred to local court",
@@ -113,7 +113,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_FAILED_PAYMENT",
     "Name": "Notify failed payment",
     "Description": "Notify applicant solicitor 1 for failed payment",
@@ -127,7 +127,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_CLAIM_DISMISSED",
     "Name": "Notify of struck out claim",
     "Description": "Notify applicant solicitor 1 of struck out claim",
@@ -141,7 +141,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_CLAIM_DISMISSED",
     "Name": "Notify of struck out claim",
     "Description": "Notify respondent solicitor 1 of struck out claim",
@@ -155,7 +155,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON",
     "Name": "Notify handed offline",
     "Description": "Notify applicant solicitor 1 of claim moving offline due to respondent litigant in person",
@@ -169,7 +169,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_DETAILS",
     "Name": "Notify defendant claim details",
     "Description": "Notify respondent solicitor 1 of claim details",

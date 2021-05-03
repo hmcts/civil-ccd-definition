@@ -14,7 +14,7 @@ module.exports =  {
 
     await retry(() => {
       return restHelper.request(
-        `${config.url.unspecService}/testing-support/case/${caseId}/business-process`,
+        `${config.url.civilService}/testing-support/case/${caseId}/business-process`,
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
@@ -38,7 +38,7 @@ module.exports =  {
 
     await retry(() => {
       return restHelper.request(
-        `${config.url.unspecService}/testing-support/assign-case/${caseId}`,
+        `${config.url.civilService}/testing-support/assign-case/${caseId}`,
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}` },
@@ -60,7 +60,7 @@ module.exports =  {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     await restHelper.retriedRequest(
-      `${config.url.unspecService}/testing-support/case/${caseId}`,
+      `${config.url.civilService}/testing-support/case/${caseId}`,
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,

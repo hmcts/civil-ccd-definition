@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "WITHDRAW_CLAIM",
     "Name": "Withdraw claim",
     "Description": "Withdraw a claim",
@@ -17,7 +17,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "DISCONTINUE_CLAIM",
     "Name": "Discontinue claim",
     "Description": "Discontinue a claim",

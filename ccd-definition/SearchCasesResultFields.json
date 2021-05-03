@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[CASE_REFERENCE]",
     "Label": "Case Reference",
@@ -9,7 +9,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
@@ -18,7 +18,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "legacyCaseReference",
     "Label": "Case Number",
@@ -26,7 +26,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[LAST_MODIFIED_DATE]",
     "Label": "Last Modified Date",
@@ -34,7 +34,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[STATE]",
     "Label": "State",
