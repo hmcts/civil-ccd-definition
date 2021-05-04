@@ -123,7 +123,7 @@ module.exports = function () {
       await statementOfTruth.enterNameAndRole('claim');
       let expectedMessage = litigantInPerson ?
         'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-      await event.submit('Issue claim', expectedMessage);
+      await event.submit('Submit', expectedMessage);
 
       await event.returnToCaseDetails();
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
