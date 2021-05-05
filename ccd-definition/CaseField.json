@@ -80,7 +80,7 @@
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "If the organisation is not registered or if you can't find it, select 'No' to continue and enter the details manually. If you don't know if the organisation is registered, try searching by selecting 'Yes'.",
+    "HintText": "If the organisation is not registered, or if you can't find it, select No to continue and enter the details manually. If you don't know the organisation is registered try searching by selecting yes.  By selecting yes you are confirming that the Defendant has agreed to receive electronic notifications for this claim through the MyHMCTS portal.",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
