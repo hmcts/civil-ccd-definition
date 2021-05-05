@@ -21,12 +21,12 @@ module.exports = {
   },
   applicantSolicitorUser: {
     password: defaultPassword,
-    email: 'civil+organisation.1.solicitor.1@gmail.com',
+    email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
     type: 'applicant_solicitor'
   },
   defendantSolicitorUser: {
     password: defaultPassword,
-    email: 'civil+organisation.2.solicitor.1@gmail.com',
+    email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
     type: 'defendant_solicitor'
   },
   adminUser: {

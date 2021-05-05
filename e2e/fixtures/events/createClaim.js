@@ -57,7 +57,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     },
     Notifications: {
       applicantSolicitor1CheckEmail: {
-        email: 'civil+organisation.1.solicitor.1@gmail.com',
+        email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
         correct: 'No'
       },
       applicantSolicitor1UserDetails: {
@@ -162,7 +162,7 @@ module.exports = {
         applicant1: applicant1WithPartyName,
         applicant1LitigationFriend: applicant1LitigationFriend,
         applicantSolicitor1CheckEmail: {
-          email: 'civil+organisation.1.solicitor.1@gmail.com',
+          email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
         },
       },
     },
