@@ -418,6 +418,25 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseFieldID": "statementOfTruthSubmitLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseFieldID": "respondent1ResponseDeadline",
     "AccessControl": [
       {
@@ -1747,14 +1766,5 @@
       "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
-    "CaseFieldID": "statementOfTruthSubmitLabel",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "R"
   }
 ]
