@@ -80,7 +80,7 @@
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "If the organisation is not registered, or if you can't find it, select No to continue and enter the details manually. If you don't know the organisation is registered try searching by selecting yes.  By selecting yes you are confirming that the Defendant has agreed to receive electronic notifications for this claim through the MyHMCTS portal.",
+    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -180,7 +180,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "claimStatementOfTruthLabel",
-    "Label": "The claimant believes that [the answers given] [the facts in the brief description of claim] are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "Label": "The claimant believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
