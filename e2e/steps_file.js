@@ -163,8 +163,8 @@ module.exports = function () {
     async addDefendantLitigationFriend() {
       await caseViewPage.startEvent('Add litigation friend', caseId);
       await defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(address, TEST_FILE_PATH);
-      this.waitForText('Submit');
-      await this.retryUntilExists(() => this.click('Submit'), CASE_HEADER);
+      await event.submit('Submit', 'You have added litigation friend details');
+      await event.returnToCaseDetails();
     },
 
     async respondToClaim(responseType) {

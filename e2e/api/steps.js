@@ -348,6 +348,10 @@ module.exports = {
     caseData = returnedCaseData;
 
     await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND);
+    await assertSubmittedEvent('ADD_DEFENDANT_LITIGATION_FRIEND', {
+      header: 'You have added litigation friend details',
+      body: '<br />'
+    }, true);
   },
 
   moveCaseToCaseman: async (user) => {
