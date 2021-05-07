@@ -3,12 +3,22 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "PENDING_CASE_ISSUED",
-    "UserRoles": [
-      "[APPLICANTSOLICITORONE]",
-      "[CREATOR]",
-      "caseworker-civil-admin"
-    ],
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "[CREATOR]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "LiveFrom": "01/01/2017",
@@ -54,11 +64,21 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "CaseStateID": "CASE_ISSUED",
-    "UserRoles": [
-      "[APPLICANTSOLICITORONE]",
-      "caseworker-civil-admin"
-    ],
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "LiveFrom": "01/01/2017",
@@ -74,7 +94,8 @@
       },
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
