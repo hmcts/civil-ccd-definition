@@ -5,7 +5,7 @@
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "ListElementCode": "email",
-    "EventElementLabel": "Defendant's legal representative's details",
+    "EventElementLabel": "Claimant's legal representative's details",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   }
