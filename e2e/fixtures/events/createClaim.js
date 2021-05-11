@@ -150,7 +150,7 @@ module.exports = {
         claimFee: {
           calculatedAmountInPence: '150000',
           code: 'FEE0209',
-          version: '1'
+          version: '3'
         },
         claimIssuedPaymentDetails:  {
           customerReference: 'Applicant reference'
