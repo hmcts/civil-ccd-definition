@@ -6,8 +6,8 @@ module.exports = {
     ResubmitClaim: {
       applicantSolicitor1PbaAccounts: {
         list_items: [
-          selectedPBA
-          // listElement('PBA0078094')
+          selectedPBA,
+          listElement('PBA0078095')
         ],
         value: selectedPBA
       }

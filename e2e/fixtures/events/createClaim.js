@@ -30,7 +30,7 @@ const applicant1LitigationFriend = {
 
 let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
-const invalidPba = listElement('PBA0078094');
+const invalidPba = listElement('PBA0078095');
 
 const createClaimData = (legalRepresentation, useValidPba) => {
   selectedPba = useValidPba ? validPba : invalidPba;
@@ -150,7 +150,7 @@ module.exports = {
         claimFee: {
           calculatedAmountInPence: '150000',
           code: 'FEE0209',
-          version: '3'
+          version: '1'
         },
         claimIssuedPaymentDetails:  {
           customerReference: 'Applicant reference'
