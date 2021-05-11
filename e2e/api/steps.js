@@ -57,6 +57,8 @@ module.exports = {
       await assertError('Court', data[eventName].invalid.Court.courtLocation.applicantPreferredCourt[i],
         null, 'Case data validation failed');
     }
+    await assertError('Upload', data[eventName].invalid.Upload.servedDocumentFiles.particularsOfClaimDocumentNew,
+      null, 'Case data validation failed');
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
@@ -158,7 +160,7 @@ module.exports = {
     await validateEventPages(data[eventName]);
 
     await assertError('Upload', data[eventName].invalid.Upload.duplicateError,
-      'More than one Particulars of claim details added');
+      'You need to either upload 1 Particulars of claim only or enter the Particulars of claim text in the field provided. You cannot do both.');
     await assertError('Upload', data[eventName].invalid.Upload.nullError,
       'You must add Particulars of claim details');
 

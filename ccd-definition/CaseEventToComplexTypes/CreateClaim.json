@@ -402,7 +402,7 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "particularsOfClaimDocument",
+    "ListElementCode": "particularsOfClaimDocumentNew",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },

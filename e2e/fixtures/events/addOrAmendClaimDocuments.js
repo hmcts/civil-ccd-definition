@@ -1,10 +1,10 @@
-const {document} = require('../../api/dataHelper');
+const {document, element} = require('../../api/dataHelper');
 
 module.exports = {
   valid: {
     Upload: {
       servedDocumentFiles: {
-        particularsOfClaimDocument: document('particularsOfClaim.pdf')
+        particularsOfClaimDocumentNew: [element(document('particularsOfClaim.pdf'))]
       }
     },
   },
@@ -12,7 +12,7 @@ module.exports = {
     Upload: {
       duplicateError: {
         servedDocumentFiles: {
-          particularsOfClaimDocument: document('particularsOfClaim.pdf'),
+          particularsOfClaimDocumentNew: [element(document('particularsOfClaim.pdf'))],
           particularsOfClaimText: 'Some text'
         }
       },
