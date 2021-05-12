@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "PENDING_CASE_ISSUED",
     "AccessControl": [
       {
@@ -22,7 +22,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -32,7 +32,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -42,7 +42,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -52,7 +52,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -62,7 +62,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_ISSUED",
     "AccessControl": [
       {
@@ -82,7 +82,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "AccessControl": [
       {

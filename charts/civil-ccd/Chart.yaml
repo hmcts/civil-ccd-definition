@@ -1,10 +1,10 @@
 apiVersion: v2
-description: A Helm chart for civil-damages-ccd App
-name: civil-damages-ccd
-home: https://github.com/hmcts/civil-damages-ccd-definition
+description: A Helm chart for civil-ccd App
+name: civil-ccd
+home: https://github.com/hmcts/civil-ccd-definition
 version: 0.0.5
 maintainers:
-  - name: HMCTS Unspecified team
+  - name: HMCTS Civil team
 
 dependencies:
   - name: java
@@ -14,7 +14,7 @@ dependencies:
     version: 5.0.2
     repository: '@hmctspublic'
     tags:
-      - unspec-ccd-stack
+      - civil-ccd-stack
   - name: xui-webapp
     version: ~0.2.1
     repository: '@hmctspublic'

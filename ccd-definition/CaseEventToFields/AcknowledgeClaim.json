@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondentDetails",
     "PageFieldDisplayOrder": 1,
@@ -13,7 +13,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "solicitorReferences",
     "CaseEventFieldLabel": "Confirm your details",
@@ -28,7 +28,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1",
     "CaseEventFieldLabel": " ",
@@ -41,7 +41,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1ClaimResponseIntentionType",
     "CaseEventFieldLabel": "The defendant intends to:",

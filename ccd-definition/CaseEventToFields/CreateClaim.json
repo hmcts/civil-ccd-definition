@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "eligibilityQuestions",
     "PageFieldDisplayOrder": 1,
@@ -14,7 +14,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "solicitorReferences",
     "PageFieldDisplayOrder": 1,
@@ -26,7 +26,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "courtLocation",
     "PageFieldDisplayOrder": 1,
@@ -38,7 +38,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
     "PageFieldDisplayOrder": 1,
@@ -52,7 +52,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriendRequired",
     "PageFieldDisplayOrder": 1,
@@ -65,7 +65,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriend",
     "PageFieldDisplayOrder": 2,
@@ -78,7 +78,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
     "PageFieldDisplayOrder": 1,
@@ -90,7 +90,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "PageFieldDisplayOrder": 2,
@@ -103,7 +103,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "PageFieldDisplayOrder": 1,
@@ -117,7 +117,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "PageFieldDisplayOrder": 1,
@@ -129,7 +129,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1Represented",
     "PageFieldDisplayOrder": 1,
@@ -141,7 +141,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrgRegistered",
     "PageFieldDisplayOrder": 1,
@@ -156,7 +156,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "PageFieldDisplayOrder": 2,
@@ -169,7 +169,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1EmailAddress",
     "PageFieldDisplayOrder": 1,
@@ -182,7 +182,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrgLabel",
     "PageFieldDisplayOrder": 1,
@@ -196,7 +196,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "PageFieldDisplayOrder": 2,
@@ -208,7 +208,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimType",
     "PageFieldDisplayOrder": 1,
@@ -221,7 +221,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimTypeOther",
     "PageFieldDisplayOrder": 2,
@@ -234,7 +234,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "personalInjuryType",
     "PageFieldDisplayOrder": 1,
@@ -247,7 +247,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "personalInjuryTypeOther",
     "PageFieldDisplayOrder": 2,
@@ -260,7 +260,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaimLabel",
     "PageFieldDisplayOrder": 1,
@@ -272,7 +272,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaim",
     "PageFieldDisplayOrder": 2,
@@ -284,7 +284,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "PageFieldDisplayOrder": 1,
@@ -297,7 +297,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimValue",
     "PageFieldDisplayOrder": 1,
@@ -311,7 +311,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1PbaAccountsIsEmpty",
     "PageFieldDisplayOrder": 1,
@@ -326,7 +326,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimFee",
     "PageFieldDisplayOrder": 2,
@@ -338,7 +338,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1PbaAccounts",
     "PageFieldDisplayOrder": 3,
@@ -351,7 +351,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "pbaAccountsInformationLabel",
     "PageFieldDisplayOrder": 4,
@@ -364,7 +364,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "noPbaAccountsLabel",
     "PageFieldDisplayOrder": 5,
@@ -377,7 +377,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimIssuedPaymentDetails",
     "PageFieldDisplayOrder": 1,
@@ -389,7 +389,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStatementOfTruthLabel",
     "PageFieldDisplayOrder": 1,
@@ -402,7 +402,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
     "PageFieldDisplayOrder": 2,
@@ -414,7 +414,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "statementOfTruthSubmitLabel",
     "PageFieldDisplayOrder": 3,

@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "caseHistory",
     "Label": " ",
     "FieldType": "CaseHistoryViewer",
@@ -9,7 +9,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
     "Label": "## Issue civil court proceedings with the Damages Claims Portal (DCP)\n### Who can use this service?\nUse this service if you are representing a claimant and:\n* Bringing a claim for damages\n* able to pay the full issue fee using payment by fee account\n\n### About the claimant\n The claimant must: \n* have a litigation friend if the claimant is under the age of 18 (in which case a statement of suitability must be provided); \n* not be a protected party within the meaning of CPR 21.1(2)(d);\n* not have in force against them -\n<br/>   (i) a civil proceedings order;\n<br/>   (ii) an all proceedings order; or\n<br/>   (iii) a civil restraint order; and\n* have an address in England or Wales\n\n### About the claim\nA claim is only suitable for the pilot if all the following conditions are met:\n* the claim is a claim for damages only;\n* the claim would not ordinarily follow the Part 8 procedure;\n* the claim is not made under one of the provisions of the Consumer Credit Act 1974 specified in CPR PD 7B paragraph 3.1;\n* the claimant is represented by a legal representative who is registered with MyHMCTS and has been provided with access to the DCP;\n* the claim is conducted in English;\n* the claimant believes that the defendant -\n<br/>   (i) has a postal address for service within England and Wales;\n<br/>   (ii)  is aged 18 years or older; and\n<br/>   (iii) is not a \"protected party\".",
     "FieldType": "Label",
@@ -17,7 +17,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
     "Label": "Claim references",
     "FieldType": "SolicitorReferences",
@@ -25,7 +25,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "courtLocation",
     "Label": "Court location code",
     "FieldType": "CourtLocation",
@@ -33,7 +33,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1",
     "Label": "Claimant details",
     "FieldType": "Party",
@@ -43,7 +43,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1LitigationFriendRequired",
     "Label": "Is the claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
@@ -51,7 +51,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1LitigationFriend",
     "Label": "Claimant litigation friend details",
     "FieldType": "LitigationFriend",
@@ -59,7 +59,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1",
     "Label": "Defendant details",
     "FieldType": "Party",
@@ -69,7 +69,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Represented",
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
@@ -77,7 +77,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
     "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
@@ -86,7 +86,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimValue",
     "Label": "Expected claim value",
     "FieldType": "ClaimValue",
@@ -94,7 +94,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimType",
     "Label": "Type of claim",
     "FieldType": "FixedRadioList",
@@ -103,7 +103,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimTypeOther",
     "Label": "Enter Claim type",
     "FieldType": "Text",
@@ -111,7 +111,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "personalInjuryType",
     "Label": "What type of personal injury is this?",
     "FieldType": "FixedRadioList",
@@ -120,7 +120,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "personalInjuryTypeOther",
     "Label": "Enter personal injury type",
     "FieldType": "Text",
@@ -128,7 +128,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "allocatedTrack",
     "Label": "Allocated track",
     "FieldType": "FixedList",
@@ -137,7 +137,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimFee",
     "Label": "Claim fee",
     "FieldType": "Fee",
@@ -145,7 +145,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1PbaAccounts",
     "Label": "PBA Number",
     "FieldType": "DynamicList",
@@ -153,7 +153,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "noPbaAccountsLabel",
     "Label": "### You don't have a registered PBA.\n### This case will not be saved.\n## Register an existing PBA with MyHMCTS\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Apply to get a new PBA\n\nYou can <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/form-fee-account-application-form-fee-account-customer-application-form\">use this form to apply for a new PBA account.</a>\n\nYou’ll need to provide details for you and your organisation, including the required credit limit for your account.\n\nOnce your account has been registered, you’ll need to start your claim again to pay the fee.\n\nRead more information on <a target=\"_blank\" href=\"https://www.gov.uk/guidance/myhmcts-online-case-management-for-legal-professionals\">registering a PBA.</a>",
     "FieldType": "Label",
@@ -161,7 +161,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1PbaAccountsIsEmpty",
     "Label": "Hide pba and show noPbaAccountLabel",
     "FieldType": "YesOrNo",
@@ -170,7 +170,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "pbaAccountsInformationLabel",
     "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## If there’s 1 PBA listed\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## If there are 2 PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nIf you want to remove a PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk. You should include the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n\n\nSelect ‘cancel’ below to discard the case.\n</div></details><br />",
     "FieldType": "Label",
@@ -178,7 +178,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimStatementOfTruthLabel",
     "Label": "The claimant believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
@@ -186,7 +186,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1ClaimStatementOfTruth",
     "Label": " ",
     "FieldType": "StatementOfTruth",
@@ -196,7 +196,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "issueDate",
     "Label": "Date claim issued",
     "FieldType": "Date",
@@ -206,7 +206,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "submittedDate",
     "Label": "Date claim Submitted",
     "FieldType": "DateTime",
@@ -214,7 +214,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "servedDocumentFiles",
     "Label": "Documents which are uploaded must be in one of the following machine readable formats:",
     "FieldType": "ServedDocumentFiles",
@@ -222,7 +222,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDeadline",
     "Label": "Respondent solicitor deadline",
     "FieldType": "DateTime",
@@ -232,7 +232,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1AgreedDeadlineExtension",
     "Label": "Enter the extension date that was agreed with the other party",
     "HintText": "This date cannot be more than 28 days from the original deadline.",
@@ -241,7 +241,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "systemGeneratedCaseDocuments",
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
@@ -250,7 +250,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondentDetails",
     "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n**Party type:** ${respondent1.partyTypeDisplayValue}\n\n**Name:** ${respondent1.partyName} ${respondent1.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1.primaryAddress.AddressLine1}<br />${respondent1.primaryAddress.AddressLine2}<br />${respondent1.primaryAddress.AddressLine3}<br />${respondent1.primaryAddress.PostTown}<br />${respondent1.primaryAddress.County}<br />${respondent1.primaryAddress.PostCode}",
     "FieldType": "Label",
@@ -258,7 +258,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseIntentionType",
     "Label": "Response intention",
     "FieldType": "FixedRadioList",
@@ -269,7 +269,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseType",
     "Label": "The defendant:",
     "FieldType": "FixedRadioList",
@@ -278,7 +278,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "responseHandOffLabel",
     "Label": "This online service only currently supports full defences. Post your response to:\n\nCounty Court Money Claims Centre\n\nPO Box 527\n\nSalford\n\nM5 0BY\n\nDX:702634 Salford 5",
     "FieldType": "Label",
@@ -286,7 +286,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseDocument",
     "Label": "Upload defence",
     "FieldType": "ResponseDocument",
@@ -294,7 +294,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",
@@ -302,7 +302,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaim",
     "Label": "Do you want to proceed with the claim",
     "FieldType": "YesOrNo",
@@ -310,7 +310,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocument",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
@@ -318,7 +318,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "legacyCaseReference",
     "FieldType": "Text",
     "Label": "CaseMan reference number",
@@ -326,7 +326,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "withdrawClaim",
     "Label": "Withdraw claim",
     "FieldType": "CloseClaim",
@@ -334,7 +334,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "discontinueClaim",
     "Label": "Discontinue claim",
     "FieldType": "CloseClaim",
@@ -342,7 +342,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "businessProcess",
     "Label": "Business process for camunda",
     "FieldType": "BusinessProcess",
@@ -350,7 +350,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
@@ -358,7 +358,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
@@ -366,7 +366,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
@@ -374,7 +374,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureReport",
     "Label": "Disclosure report",
     "FieldType": "DisclosureReport",
@@ -382,7 +382,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQExperts",
     "Label": "Respondent 1 experts",
     "FieldType": "Experts",
@@ -390,7 +390,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnesses",
     "Label": "Respondent 1 witnesses",
     "FieldType": "Witnesses",
@@ -398,7 +398,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearing",
     "Label": "Respondent 1 Hearing",
     "FieldType": "Hearing",
@@ -406,7 +406,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
@@ -414,7 +414,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
@@ -424,7 +424,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",
@@ -432,7 +432,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingSupport",
     "Label": "Respondent 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
@@ -440,7 +440,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFurtherInformation",
     "Label": "Respondent 1 Further information",
     "FieldType": "FurtherInformation",
@@ -448,7 +448,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
@@ -456,7 +456,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -464,7 +464,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
@@ -472,7 +472,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
@@ -480,7 +480,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocumentsLabel",
     "Label": "## Disclosure of non-electronic documents",
     "FieldType": "Label",
@@ -488,7 +488,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
@@ -496,7 +496,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureReport",
     "Label": "Disclosure report",
     "FieldType": "DisclosureReport",
@@ -504,7 +504,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQExperts",
     "Label": "Applicant 1 experts",
     "FieldType": "Experts",
@@ -512,7 +512,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQWitnesses",
     "Label": "Applicant 1 witnesses",
     "FieldType": "Witnesses",
@@ -520,7 +520,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearing",
     "Label": "Applicant 1 Hearing",
     "FieldType": "Hearing",
@@ -528,7 +528,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
@@ -536,7 +536,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
@@ -546,7 +546,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingSupport",
     "Label": "Applicant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
@@ -554,7 +554,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFurtherInformation",
     "Label": "Applicant 1 Further information",
     "FieldType": "FurtherInformation",
@@ -562,7 +562,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
@@ -570,7 +570,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -578,7 +578,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
@@ -586,7 +586,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
@@ -594,7 +594,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDeadline",
     "Label": "Case dismissed deadline",
     "FieldType": "DateTime",
@@ -602,7 +602,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDate",
     "Label": "Defendant response date",
     "FieldType": "DateTime",
@@ -610,7 +610,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1OrganisationPolicy",
     "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
@@ -618,7 +618,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant2OrganisationPolicy",
     "Label": "Applicant 2 organisation policy",
     "FieldType": "OrganisationPolicy",
@@ -626,7 +626,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1OrganisationPolicy",
     "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
@@ -634,7 +634,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2OrganisationPolicy",
     "Label": "Respondent 2 organisation policy",
     "FieldType": "OrganisationPolicy",
@@ -642,7 +642,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1EmailAddress",
     "Label": "Enter defendant legal representative's email address to be used for notifications",
     "FieldType": "Email",
@@ -650,7 +650,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
@@ -658,7 +658,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
@@ -666,7 +666,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimProceedsInCaseman",
     "Label": "Case proceeds in Caseman",
     "FieldType": "ClaimProceedsInCaseman",
@@ -674,7 +674,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimNotificationDate",
     "Label": "Date claim notified",
     "FieldType": "DateTime",
@@ -682,7 +682,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "notifyClaimLabel",
     "Label": "If you continue the defendant legal representative's organisation will be notified and will be granted access to this claim.",
     "FieldType": "Label",
@@ -690,7 +690,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1CheckEmail",
     "Label": "Notifications",
     "FieldType": "CorrectEmail",
@@ -698,7 +698,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1UserDetails",
     "Label": "Notification details",
     "FieldType": "UserDetails",
@@ -706,7 +706,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaimLabel",
     "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
     "FieldType": "Label",
@@ -714,7 +714,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaim",
     "Label": "Description of claim",
     "FieldType": "TextArea",
@@ -722,7 +722,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimDetailsNotificationDate",
     "Label": "Case details notification date",
     "FieldType": "DateTime",
@@ -730,7 +730,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "pbaPaymentFailedLabel",
     "Label": "#### Your payment did not go through. To resubmit the same claim please try again by selecting the PBA account number",
     "FieldType": "Label",
@@ -738,7 +738,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "amendPartyDetailsLabel",
     "Label": "Update a legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
@@ -746,7 +746,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "paymentSuccessfulDate",
     "Label": "Payment successful date",
     "FieldType": "DateTime",
@@ -754,7 +754,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimNotificationDeadline",
     "Label": "Claim notification deadline",
     "FieldType": "DateTime",
@@ -762,7 +762,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimDetailsNotificationDeadline",
     "Label": "Case details notification deadline",
     "FieldType": "DateTime",
@@ -770,7 +770,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1TimeExtensionDate",
     "Label": "Date respondent 1 submitted time extension",
     "FieldType": "DateTime",
@@ -778,7 +778,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1AcknowledgeNotificationDate",
     "Label": "Date respondent 1 acknowledged notification",
     "FieldType": "DateTime",
@@ -786,7 +786,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
@@ -794,7 +794,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "takenOfflineDate",
     "Label": "Date claim moved offline",
     "FieldType": "DateTime",
@@ -802,7 +802,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "takenOfflineByStaffDate",
     "Label": "Date claim moved offline by staff",
     "FieldType": "DateTime",
@@ -810,7 +810,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
@@ -818,7 +818,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "statementOfTruthSubmitLabel",
     "Label": "In order to verify the claim by a statement of truth please click “submit” on the next screen. Doing so will be taken as verifying the claim by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the “submit” button.",
     "FieldType": "Label",

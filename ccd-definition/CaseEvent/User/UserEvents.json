@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIM",
     "Name": "Create claim",
     "Description": "Case created, post actions triggered",
@@ -21,7 +21,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "Name": "Notify claim",
     "Description": "Notify defendant solicitor of claim",
@@ -40,7 +40,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "Name": "Notify claim details",
     "Description": "Inform the defendant of particulars of claim",
@@ -59,7 +59,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "ACKNOWLEDGE_CLAIM",
     "Name": "Acknowledge claim",
     "Description": "Defendant solicitor is acknowledging claim",
@@ -79,7 +79,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "Name": "Add litigation friend",
     "Description": "Add litigation friend",
@@ -95,7 +95,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "DEFENDANT_RESPONSE",
     "Name": "Respond to claim",
     "Description": "Defendant response to claim",
@@ -115,7 +115,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "CLAIMANT_RESPONSE",
     "Name": "View and respond to defence",
     "Description": "View and respond to defendant",
@@ -135,7 +135,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "DISMISS_CLAIM",
     "Name": "Move claim to dismissed",
     "Description": "Moves a claim to dismissed",
@@ -153,7 +153,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Case proceeds in Caseman",
     "Description": "Case will proceed offline in Caseman system",
@@ -173,7 +173,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "Name": "Add or amend claim documents",
     "Description": "Add or amend documents attached to the claim",
@@ -192,7 +192,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "RESUBMIT_CLAIM",
     "Name": "Resubmit claim",
     "Description": "Resubmits claim for unsuccessful PBA payment",
@@ -211,7 +211,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "INFORM_AGREED_EXTENSION_DATE",
     "Name": "Inform agreed extension date",
     "Description": "Enter an extension date that has already been agreed with other parties",
@@ -230,7 +230,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "AMEND_PARTY_DETAILS",
     "Name": "Amend party details",
     "Description": "Update defendant and claimant solicitor email addresses",
@@ -247,7 +247,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "TAKE_CASE_OFFLINE",
     "Name": "Take case offline",
     "Description": "Take case offline",

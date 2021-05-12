@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "WITHDRAW_CLAIM",
     "CaseFieldID": "withdrawClaim",
     "PageFieldDisplayOrder": 1,

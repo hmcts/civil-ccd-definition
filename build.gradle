@@ -156,7 +156,7 @@ task lintUserInterfaceTests(type: Exec, description: 'Runs linting of E2E tests.
 
 task awaitApplicationReadiness(type: Exec, description: 'Awaits until application is ready.') {
   commandLine './bin/wait-for.sh', System.env.URL
-  commandLine './bin/wait-for.sh', System.env.UNSPEC_SERVICE_URL
+  commandLine './bin/wait-for.sh', System.env.CIVIL_SERVICE_URL
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
@@ -190,8 +190,8 @@ project.tasks['sonarqube'].dependsOn test, jacocoTestReport
 
 sonarqube {
   properties {
-    property "sonar.projectName", "UNSPEC :: civil-damages-camunda-bpmn-definition"
-    property "sonar.projectKey", "civil-damages-camunda-bpmn-definition"
+    property "sonar.projectName", "CIVIL :: ccd-definition"
+    property "sonar.projectKey", "civil-ccd-definition"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
     property "sonar.host.url", "https://sonar.reform.hmcts.net/"
   }
@@ -319,7 +319,7 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
 }
 
-mainClassName = 'uk.gov.hmcts.reform.unspec.Application'
+mainClassName = 'uk.gov.hmcts.reform.civil.Application'
 
 bootJar {
   getArchiveFileName().set(provider {
@@ -347,7 +347,7 @@ pact {
     tags = [System.getenv("PACT_BRANCH_NAME") ?: getCheckedOutGitCommitHash(), 'latest']
     version = project.pactVersion
     if(pactBrokerUrl != 'https://pact-broker.platform.hmcts.net/'){
-      excludes = ['unspec_service-Idam_api']
+      excludes = ['civil_service-Idam_api']
     }
   }
 }

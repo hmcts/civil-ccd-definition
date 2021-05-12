@@ -28,9 +28,9 @@ const applicant1LitigationFriend = {
   primaryAddress: buildAddress('litigant friend')
 };
 
-let selectedPba = listElement('PBA0077597');
-const validPba = listElement('PBA0077597');
-const invalidPba = listElement('PBA0078094');
+let selectedPba = listElement('PBA0088192');
+const validPba = listElement('PBA0088192');
+const invalidPba = listElement('PBA0078095');
 
 const createClaimData = (legalRepresentation, useValidPba) => {
   selectedPba = useValidPba ? validPba : invalidPba;
@@ -57,7 +57,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     },
     Notifications: {
       applicantSolicitor1CheckEmail: {
-        email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
+        email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
         correct: 'No'
       },
       applicantSolicitor1UserDetails: {
@@ -162,7 +162,7 @@ module.exports = {
         applicant1: applicant1WithPartyName,
         applicant1LitigationFriend: applicant1LitigationFriend,
         applicantSolicitor1CheckEmail: {
-          email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
+          email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
         },
       },
     },

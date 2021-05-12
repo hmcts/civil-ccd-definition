@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RPA_ON_CASE_HANDED_OFFLINE",
     "Name": "Notify RPA on case offline",
     "Description": "Notify by email with attached RPA JSON to robotics on case handed offline",
@@ -15,7 +15,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "RETRY_NOTIFY_RPA_ON_CASE_HANDED_OFFLINE",
     "Name": "Retry RPA notification",
     "Description": "Retry notification by email with attached RPA JSON to robotics on case handed offline",
@@ -29,7 +29,7 @@
   },
   {
     "LiveFrom": "01/01/2017",
-    "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "CaseTypeID": "CIVIL",
     "ID": "RESET_RPA_NOTIFICATION_BUSINESS_PROCESS",
     "Name": "Reset RPA notification",
     "Description": "Reset business process for RPA Notification",
