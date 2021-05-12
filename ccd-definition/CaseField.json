@@ -11,7 +11,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\nUse this service if you’re representing a claimant and:\n* issuing a claim for civil\n* able to pay the full issue fee using fee account\n* notifying the claim details (serving the claim) yourself\n* living in the UK with a UK postal address and an email address\n\n### About the claimant\n The claimant must: \n* have a litigation friend if they are a child under 18\n* have an address in England or Wales\n* not have a civil restraint, all or civil proceedings order against them\n\n### About the claim\nThe claim must not be against the crown or ordinarily follow the Part 8 procedure.",
+    "Label": "## Issue civil court proceedings with the Damages Claims Portal (DCP)\n### Who can use this service?\nUse this service if you are representing a claimant and:\n* Bringing a claim for damages\n* able to pay the full issue fee using payment by fee account\n\n### About the claimant\n The claimant must: \n* have a litigation friend if the claimant is under the age of 18 (in which case a statement of suitability must be provided); \n* not be a protected party within the meaning of CPR 21.1(2)(d);\n* not have in force against them -\n<br/>   (i) a civil proceedings order;\n<br/>   (ii) an all proceedings order; or\n<br/>   (iii) a civil restraint order; and\n* have an address in England or Wales\n\n### About the claim\nA claim is only suitable for the pilot if all the following conditions are met:\n* the claim is a claim for damages only;\n* the claim would not ordinarily follow the Part 8 procedure;\n* the claim is not made under one of the provisions of the Consumer Credit Act 1974 specified in CPR PD 7B paragraph 3.1;\n* the claimant is represented by a legal representative who is registered with MyHMCTS and has been provided with access to the DCP;\n* the claim is conducted in English;\n* the claimant believes that the defendant -\n<br/>   (i) has a postal address for service within England and Wales;\n<br/>   (ii)  is aged 18 years or older; and\n<br/>   (iii) is not a \"protected party\".",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -80,7 +80,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "If the organisation is not registered or if you can't find it, select 'No' to continue and enter the details manually. If you don't know if the organisation is registered, try searching by selecting 'Yes'.",
+    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -180,7 +180,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimStatementOfTruthLabel",
-    "Label": "The claimant believes that the facts in this claim form are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "Label": "The claimant believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -216,7 +216,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "servedDocumentFiles",
-    "Label": "Uploaded documents must be in one of the following machine readable formats:",
+    "Label": "Documents which are uploaded must be in one of the following machine readable formats:",
     "FieldType": "ServedDocumentFiles",
     "SecurityClassification": "Public"
   },
@@ -417,8 +417,9 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDraftDirections",
     "Label": "Upload file",
-    "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, doc, docx, jpg, jpeg, xls, xlsx, png.",
+    "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
     "FieldType": "Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
   },
   {
@@ -538,8 +539,9 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDraftDirections",
     "Label": "Upload file",
-    "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, doc, docx, jpg, jpeg, xls, xlsx, png.",
+    "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
     "FieldType": "Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
   },
   {
@@ -610,7 +612,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1OrganisationPolicy",
-    "Label": "Applicant 1 organisation policy",
+    "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   },
@@ -626,7 +628,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrganisationPolicy",
-    "Label": "Respondent 1 organisation policy",
+    "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   },
@@ -706,7 +708,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaimLabel",
-    "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.",
+    "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -812,6 +814,14 @@
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "statementOfTruthSubmitLabel",
+    "Label": "In order to verify the claim by a statement of truth please click “submit” on the next screen. Doing so will be taken as verifying the claim by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the “submit” button.",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]

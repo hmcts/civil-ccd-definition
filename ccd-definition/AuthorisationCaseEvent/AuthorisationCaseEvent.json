@@ -32,8 +32,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -106,15 +105,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[CREATOR]"
+          "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
@@ -150,7 +148,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIM_ISSUE",
+    "CaseEventID": "PROCESS_CLAIM_ISSUE",
     "AccessControl": [
       {
         "UserRoles": [
@@ -161,8 +159,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -171,7 +168,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "PAYMENT_FAILED",
+    "CaseEventID": "PROCESS_PAYMENT_FAILED",
     "AccessControl": [
       {
         "UserRoles": [
@@ -182,8 +179,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -207,6 +203,19 @@
           "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "PROCESS_FULL_DEFENCE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
@@ -240,12 +249,6 @@
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "R"
       }
     ]
   },

@@ -13,7 +13,6 @@
     "FieldTypeParameter": "Witness",
     "ElementLabel": "Witness details",
     "FieldShowCondition": "witnessesToAppear = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Min": 1
+    "SecurityClassification": "Public"
   }
 ]

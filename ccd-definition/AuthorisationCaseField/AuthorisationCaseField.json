@@ -418,6 +418,25 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "statementOfTruthSubmitLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ResponseDeadline",
     "AccessControl": [
       {
@@ -1236,16 +1255,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "[RESPONDENTSOLICITORONE]"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },

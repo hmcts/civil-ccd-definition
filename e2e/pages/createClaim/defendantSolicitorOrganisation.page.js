@@ -21,6 +21,7 @@ module.exports = {
     });
     I.waitForElement(this.fields.orgPolicyReference);
     I.fillField(this.fields.orgPolicyReference, 'Defendant policy reference');
+    I.waitForElement(this.fields.searchText);
     I.fillField(this.fields.searchText, 'Civil');
     I.click('a[title="Select the organisation Civil - Organisation 2"]');
     await I.clickContinue();

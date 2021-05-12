@@ -17,7 +17,7 @@
     "CaseFieldID": "respondentSolicitor1EmailAddress",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "CaseEventFieldLabel": "Claimant's legal representative's details",
+    "CaseEventFieldLabel": "Defendant's legal representative's details",
     "PageID": "Email",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y"

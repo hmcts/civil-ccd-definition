@@ -18,7 +18,7 @@
     "ID": "FurtherInformation",
     "ListElementCode": "otherInformationForJudge",
     "FieldType": "TextArea",
-    "ElementLabel": "Provide any other information that the judge may need",
+    "ElementLabel": "Please provide any further information the Judge may need, including if you do not agree with the provisional track allocation of this claim",
     "SecurityClassification": "Public"
   }
 ]

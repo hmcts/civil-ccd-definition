@@ -10,7 +10,7 @@
     "ID": "DisclosureOfNonElectronicDocuments",
     "ListElementCode": "standardDirectionsRequired",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Do you want standard directions?",
+    "ElementLabel": "Do you want standard disclosure?",
     "FieldShowCondition": "directionsForDisclosureProposed = \"Yes\"",
     "SecurityClassification": "Public"
   },

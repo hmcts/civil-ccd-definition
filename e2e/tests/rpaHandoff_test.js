@@ -33,6 +33,9 @@ Scenario('Defendant - Litigant In Person', async (I) => {
 Scenario('Defendant - Defend part of Claim', async (I) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'partDefence', 'partAdmission');
+
+  await waitForFinishedBusinessProcess(caseId());
+  await I.navigateToCaseDetails(caseNumber);
   await I.assertNoEventsAvailable();
   await I.signOut();
 });

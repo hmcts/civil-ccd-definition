@@ -384,7 +384,7 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "medicalReportsLabel",
+    "ListElementCode": "spreadsheetsLabel",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -393,7 +393,7 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "spreadsheetsLabel",
+    "ListElementCode": "medicalReportsLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -421,7 +421,7 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "medicalReports",
+    "ListElementCode": "medicalReport.document",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL",
     "Min": 1,

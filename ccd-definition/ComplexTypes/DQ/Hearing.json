@@ -43,7 +43,6 @@
     "FieldTypeParameter": "UnavailableDate",
     "ElementLabel": "Unavailable date",
     "FieldShowCondition": "unavailableDatesRequired = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Min": 1
+    "SecurityClassification": "Public"
   }
 ]
