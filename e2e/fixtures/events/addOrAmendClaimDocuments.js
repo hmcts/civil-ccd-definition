@@ -16,9 +16,6 @@ module.exports = {
           particularsOfClaimText: 'Some text'
         }
       },
-      nullError: {
-        servedDocumentFiles: {}
-      }
     }
   }
 };

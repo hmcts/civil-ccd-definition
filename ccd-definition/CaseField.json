@@ -819,6 +819,14 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "UNSPECIFIED_CLAIMS",
+    "ID": "uploadParticularsOfClaim",
+    "Label": "Do you want to upload Particulars of claim?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "UNSPECIFIED_CLAIMS",
     "ID": "statementOfTruthSubmitLabel",
     "Label": "In order to verify the claim by a statement of truth please click “submit” on the next screen. Doing so will be taken as verifying the claim by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the “submit” button.",
     "FieldType": "Label",
