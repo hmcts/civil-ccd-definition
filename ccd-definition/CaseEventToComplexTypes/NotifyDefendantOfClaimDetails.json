@@ -31,7 +31,7 @@
     "ID": "Upload",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "particularsOfClaimDocumentNew",
+    "ListElementCode": "particularsOfClaimDocument",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
