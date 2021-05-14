@@ -128,7 +128,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
       }
     },
     StatementOfTruth: {
-      applicantSolicitor1ClaimStatementOfTruth: {
+      uiStatementOfTruth: {
         name: 'John Doe',
         role: 'Test Solicitor'
       }
@@ -164,6 +164,10 @@ module.exports = {
         applicantSolicitor1CheckEmail: {
           email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
         },
+      },
+      // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
+      StatementOfTruth: {
+        applicantSolicitor1ClaimStatementOfTruth: {}
       },
     },
     valid: {

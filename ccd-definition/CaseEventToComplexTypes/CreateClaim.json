@@ -476,7 +476,7 @@
     "LiveFrom": "01/01/2017",
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
+    "CaseFieldID": "uiStatementOfTruth",
     "ListElementCode": "name",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -485,7 +485,7 @@
     "LiveFrom": "01/01/2017",
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
+    "CaseFieldID": "uiStatementOfTruth",
     "ListElementCode": "role",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
