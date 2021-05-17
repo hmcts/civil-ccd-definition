@@ -31,7 +31,7 @@
     "ID": "Upload",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "particularsOfClaimDocument",
+    "ListElementCode": "particularsOfClaimDocumentNew",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -52,9 +52,18 @@
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "medicalReport.document",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "Upload",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "servedDocumentFiles",
+    "ListElementCode": "medicalReport",
     "DisplayContext": "OPTIONAL",
-    "Min": 1,
-    "FieldShowCondition": "claimType=\"CLINICAL_NEGLIGENCE\" OR claimType=\"PERSONAL_INJURY\""
+    "FieldDisplayOrder": 6,
+    "FieldShowCondition": "claimType=\"CLINICAL_NEGLIGENCE\" OR claimType=\"PERSONAL_INJURY\"",
+    "Comment": "medicalreports.document is just the document input,so this must be defined to hide the whole element"
   },
   {
     "LiveFrom": "01/01/2017",

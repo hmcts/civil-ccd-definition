@@ -1,4 +1,3 @@
-const assert = require('assert').strict;
 const config = require('../config.js');
 
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
@@ -6,7 +5,7 @@ const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
 
-const {expect} = chai;
+const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
 const apiRequest = require('./apiRequest.js');
@@ -32,11 +31,25 @@ const data = {
 const midEventFieldForPage = {
   ClaimValue: {
     id: 'applicantSolicitor1PbaAccounts',
-    dynamicList: true
+    dynamicList: true,
+    uiField: {
+      remove: false,
+    },
   },
   ClaimantLitigationFriend: {
     id: 'applicantSolicitor1CheckEmail',
-    dynamicList: false
+    dynamicList: false,
+    uiField: {
+      remove: false,
+    },
+  },
+  StatementOfTruth: {
+    id: 'applicantSolicitor1ClaimStatementOfTruth',
+    dynamicList: false,
+    uiField: {
+      remove: true,
+      field: 'uiStatementOfTruth'
+    },
   }
 };
 
@@ -57,6 +70,8 @@ module.exports = {
       await assertError('Court', data[eventName].invalid.Court.courtLocation.applicantPreferredCourt[i],
         null, 'Case data validation failed');
     }
+    await assertError('Upload', data[eventName].invalid.Upload.servedDocumentFiles.particularsOfClaimDocumentNew,
+      null, 'Case data validation failed');
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
@@ -148,6 +163,15 @@ module.exports = {
   },
 
   amendClaimDocuments: async (user) => {
+    // Temporary work around from CMC-1497 - statement of truth field is removed due to callback code in service repo.
+    // Currently the mid event sets uiStatementOfTruth to null. When EXUI is involved this has the appearance of
+    // resetting the field in the UI, most likely due to some caching mechanism, but the data is still available for the
+    // about to submit. As these tests talk directly to the data store API the field is actually removed in the about
+    // to submit callback. This gives the situation where uiStatementOfTruth is a defined field but with internal fields
+    // set to null. In the about to submit callback this overwrites applicantSolicitor1ClaimStatementOfTruth with null
+    // fields. When data is fetched here, the field does not exist.
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
     await apiRequest.setupTokens(user);
 
     eventName = 'ADD_OR_AMEND_CLAIM_DOCUMENTS';
@@ -158,9 +182,7 @@ module.exports = {
     await validateEventPages(data[eventName]);
 
     await assertError('Upload', data[eventName].invalid.Upload.duplicateError,
-      'More than one Particulars of claim details added');
-    await assertError('Upload', data[eventName].invalid.Upload.nullError,
-      'You must add Particulars of claim details');
+      'You need to either upload 1 Particulars of claim only or enter the Particulars of claim text in the field provided. You cannot do both.');
 
     await assertSubmittedEvent('CASE_ISSUED', {
       header: 'Documents uploaded successfully',
@@ -314,6 +336,9 @@ module.exports = {
   },
 
   claimantResponse: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
     await apiRequest.setupTokens(user);
 
     eventName = 'CLAIMANT_RESPONSE';
@@ -355,6 +380,9 @@ module.exports = {
   },
 
   moveCaseToCaseman: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
     await apiRequest.setupTokens(user);
 
     eventName = 'CASE_PROCEEDS_IN_CASEMAN';
@@ -399,10 +427,22 @@ const assertValidData = async (data, pageId) => {
   // eslint-disable-next-line no-prototype-builtins
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
+    caseData = removeUiFields(pageId, caseData);
   }
 
   assert.deepEqual(responseBody.data, caseData);
 };
+
+function removeUiFields(pageId, caseData) {
+  console.log(`Removing ui fields for pageId: ${pageId}`);
+  const midEventField = midEventFieldForPage[pageId];
+
+  if (midEventField.uiField.remove === true) {
+    const fieldToRemove = midEventField.uiField.field;
+    delete caseData[fieldToRemove];
+  }
+  return caseData;
+}
 
 const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
   const response = await apiRequest.validatePage(eventName, pageId, {...caseData, ...eventData}, 422);
@@ -424,8 +464,8 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.equal(responseBody.after_submit_callback_response.confirmation_header.includes(submittedCallbackResponseContains.header), true);
-    assert.equal(responseBody.after_submit_callback_response.confirmation_body.includes(submittedCallbackResponseContains.body), true);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
   }
 
   if (eventName === 'CREATE_CLAIM') {
@@ -436,8 +476,7 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 
 const assertContainsPopulatedFields = returnedCaseData => {
   for (let populatedCaseField of Object.keys(caseData)) {
-    assert.equal(populatedCaseField in returnedCaseData, true,
-      'Expected case data to contain field: ' + populatedCaseField);
+    assert.property(returnedCaseData,  populatedCaseField);
   }
 };
 
