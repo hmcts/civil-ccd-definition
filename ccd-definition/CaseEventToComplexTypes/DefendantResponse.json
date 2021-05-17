@@ -243,7 +243,7 @@
     "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQStatementOfTruth",
+    "CaseFieldID": "uiStatementOfTruth",
     "ListElementCode": "label",
     "EventElementLabel": "I believe that the facts stated are true",
     "FieldDisplayOrder": 1,
@@ -253,7 +253,7 @@
     "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQStatementOfTruth",
+    "CaseFieldID": "uiStatementOfTruth",
     "ListElementCode": "name",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -262,7 +262,7 @@
     "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQStatementOfTruth",
+    "CaseFieldID": "uiStatementOfTruth",
     "ListElementCode": "role",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"

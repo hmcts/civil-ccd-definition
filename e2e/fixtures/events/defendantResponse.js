@@ -18,7 +18,9 @@ module.exports = {
         individualLastName: 'Doe',
         individualTitle: 'Sir',
         individualDateOfBirth: date(-1),
-        primaryAddress: buildAddress('respondent')
+        primaryAddress: buildAddress('respondent'),
+        partyName: 'Sir John Doe',
+        partyTypeDisplayValue: 'Individual',
       },
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
@@ -74,7 +76,7 @@ module.exports = {
     Hearing: {
       respondent1DQHearing: {
         hearingLength: 'MORE_THAN_DAY',
-        hearingLengthDays: 5,
+        hearingLengthDays: '5',
         unavailableDatesRequired: 'Yes',
         unavailableDates: [
           element({
@@ -110,11 +112,17 @@ module.exports = {
       }
     },
     StatementOfTruth: {
-      respondent1DQStatementOfTruth: {
+      uiStatementOfTruth: {
         name: 'John Doe',
         role: 'Tester'
       }
     }
+  },
+  midEventData: {
+    // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
+    StatementOfTruth: {
+      applicantSolicitor1ClaimStatementOfTruth: {}
+    },
   },
   invalid: {
     ConfirmDetails: {
