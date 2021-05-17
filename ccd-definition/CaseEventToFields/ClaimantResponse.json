@@ -100,7 +100,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
