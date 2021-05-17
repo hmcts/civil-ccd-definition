@@ -70,7 +70,7 @@ module.exports = {
       await assertError('Court', data[eventName].invalid.Court.courtLocation.applicantPreferredCourt[i],
         null, 'Case data validation failed');
     }
-    await assertError('Upload', data[eventName].invalid.Upload.servedDocumentFiles.particularsOfClaimDocumentNew,
+    await assertError('Upload', data[eventName].invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
