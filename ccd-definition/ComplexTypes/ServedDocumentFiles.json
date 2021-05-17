@@ -23,14 +23,6 @@
   {
     "ID": "ServedDocumentFiles",
     "ListElementCode": "particularsOfClaimDocument",
-    "FieldType": "Document",
-    "ElementLabel": "Particulars of claim",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "ServedDocumentFiles",
-    "ListElementCode": "particularsOfClaimDocumentNew",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "ElementLabel": "Particulars of claim",
