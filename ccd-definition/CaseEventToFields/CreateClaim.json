@@ -276,7 +276,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaim",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "Details",
     "PageDisplayOrder": 14,
     "PageColumnNumber": 1,
