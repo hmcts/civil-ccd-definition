@@ -131,7 +131,7 @@
     "CaseFieldID": "respondent1DQDisclosureOfNonElectronicDocuments",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
