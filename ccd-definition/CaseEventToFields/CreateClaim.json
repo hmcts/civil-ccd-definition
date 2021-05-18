@@ -373,7 +373,7 @@
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"No\""
+    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"No\" OR applicantSolicitor1PbaAccountsIsEmpty = \"\""
   },
   {
     "LiveFrom": "01/01/2017",
