@@ -13,6 +13,7 @@ module.exports = {
 
   async selectPersonalInjuryType() {
     I.waitForElement(this.fields.personalInjuryType.id);
+    await I.runAccessibilityTest();
     await within(this.fields.personalInjuryType.id, () => {
       I.click(this.fields.personalInjuryType.options.roadAccident);
     });

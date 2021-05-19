@@ -9,6 +9,7 @@ module.exports = {
 
   async enterOrganisationDetails() {
     I.waitForElement(this.fields.orgPolicyReference);
+    await I.runAccessibilityTest();
     I.fillField(this.fields.orgPolicyReference, 'Claimant policy reference');
     I.waitForElement(this.fields.searchText);
     I.fillField(this.fields.searchText, 'Civil');

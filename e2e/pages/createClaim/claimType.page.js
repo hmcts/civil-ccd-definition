@@ -13,6 +13,7 @@ module.exports = {
 
   async selectClaimType() {
     I.waitForElement(this.fields.claimType.id);
+    await I.runAccessibilityTest();
     await within(this.fields.claimType.id, () => {
       I.click(this.fields.claimType.options.personalInjury);
     });

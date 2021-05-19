@@ -1,5 +1,3 @@
-/* global process */
-
 exports.config = {
   tests: './e2e/tests/*_test.js',
   output: './output',
@@ -16,6 +14,9 @@ exports.config = {
     },
     PuppeteerHelpers: {
       require: './e2e/helpers/puppeteer_helper.js',
+    },
+    GenerateReportHelper: {
+      require: './e2e/helpers/generate_report_helper.js'
     },
   },
   include: {

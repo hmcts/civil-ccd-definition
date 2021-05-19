@@ -15,6 +15,7 @@ module.exports = {
 
   async enterUserEmail() {
     I.waitForElement(this.fields.idamEmailIsCorrect.id);
+    await I.runAccessibilityTest();
     I.click(this.fields.idamEmailIsCorrect.options.yes);
     await I.clickContinue();
   }

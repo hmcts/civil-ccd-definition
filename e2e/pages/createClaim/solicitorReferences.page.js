@@ -9,6 +9,7 @@ module.exports = {
 
   async enterReferences() {
     I.waitForElement(this.fields.applicantReference);
+    await I.runAccessibilityTest();
     I.fillField(this.fields.applicantReference, 'Applicant Reference');
     I.fillField(this.fields.respondentReference, 'Respondent Reference');
     await I.clickContinue();

@@ -13,6 +13,7 @@ module.exports = {
 
   async selectPbaNumber() {
     I.waitForElement(this.fields.pbaNumber.id);
+    await I.runAccessibilityTest();
     I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options.activeAccount);
     await I.clickContinue();
   }

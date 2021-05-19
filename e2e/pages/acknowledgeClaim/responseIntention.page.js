@@ -19,6 +19,7 @@ module.exports = {
       throw new Error(`Response intention: ${responseIntention} does not exist`);
     }
     I.waitForElement(this.fields.responseIntention.id);
+    await I.runAccessibilityTest();
     await within(this.fields.responseIntention.id, () => {
       I.click(this.fields.responseIntention.options[responseIntention]);
     });
