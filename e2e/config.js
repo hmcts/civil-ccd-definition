@@ -37,5 +37,5 @@ module.exports = {
     caseType: 'CIVIL',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || './output',
-  TestForAccessibility: true
+  TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
 };
