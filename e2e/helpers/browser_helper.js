@@ -1,7 +1,11 @@
 const testConfig = require('../config.js');
 const {runAccessibility} = require('./accessibility/runner');
 
-module.exports = class PuppeteerHelpers extends Helper {
+module.exports = class BrowserHelpers extends Helper {
+
+  getHelper() {
+    return this.helpers['Puppeteer'] || this.helpers['WebDriver'];
+  }
 
   /**
    * Finds elements described by selector.
@@ -11,7 +15,7 @@ module.exports = class PuppeteerHelpers extends Helper {
    * @returns {Promise<Array>} - promise holding either collection of elements or empty collection if element is not found
    */
   async locateSelector(selector) {
-    return this.helpers['Puppeteer']._locate(selector);
+    return this.getHelper()._locate(selector);
   }
 
   async hasSelector(selector) {
@@ -28,8 +32,8 @@ module.exports = class PuppeteerHelpers extends Helper {
    * @returns {Promise<undefined|*>} - promise holding either an element or undefined if element is not found
    */
   async waitForSelector(locator, sec) {
-    const waitTimeout = sec ? sec * 1000 : this.helpers['Puppeteer'].options.waitForTimeout;
-    const context = await this.helpers['Puppeteer']._getContext();
+    const waitTimeout = sec ? sec * 1000 : this.getHelper().options.waitForTimeout;
+    const context = await this.getHelper()._getContext();
     try {
       return await context.waitForSelector(locator, {timeout: waitTimeout});
     } catch (error) {
@@ -41,8 +45,8 @@ module.exports = class PuppeteerHelpers extends Helper {
     if (!testConfig.TestForAccessibility) {
       return;
     }
-    const url = await this.helpers['Puppeteer'].grabCurrentUrl();
-    const {page} = await this.helpers['Puppeteer'];
+    const url = await this.getHelper().grabCurrentUrl();
+    const {page} = await this.getHelper();
 
     runAccessibility(url, page);
   }
