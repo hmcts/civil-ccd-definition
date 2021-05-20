@@ -29,6 +29,7 @@
     "node-fetch": "^2.6.1",
     "puppeteer": "^4.0.1",
     "totp-generator": "^0.0.7",
-    "uuid": "^3.4.0"
+    "uuid": "^3.4.0",
+    "html_codesniffer": "^2.5.1"
   }
 }

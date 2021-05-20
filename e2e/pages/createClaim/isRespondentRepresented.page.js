@@ -18,6 +18,7 @@ module.exports = {
       throw new Error(`Respondent represented option: ${respondentRepresentedOption} does not exist`);
     }
     I.waitForElement(this.fields.respondent1Represented.id);
+    await I.runAccessibilityTest();
     await within(this.fields.respondent1Represented.id, () => {
       I.click(this.fields.respondent1Represented.options[respondentRepresentedOption]);
     });

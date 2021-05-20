@@ -20,6 +20,7 @@ module.exports = {
   },
 
   async enterTransferDate() {
+    await I.runAccessibilityTest();
     await date.enterDate(this.fields.transferredDate.id, -1);
     await within(this.fields.claimProceedsInCasemanReason.id, () => {
       I.click(this.fields.claimProceedsInCasemanReason.options.other);

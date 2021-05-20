@@ -12,6 +12,7 @@ module.exports = {
 
   async enterDate(fieldId = '', plusDays = 28) {
     I.waitForElement(this.fields(fieldId).day);
+    await I.runAccessibilityTest();
     const date = new Date();
     date.setDate(date.getDate() + plusDays);
     I.fillField(this.fields(fieldId).day, date.getDate());

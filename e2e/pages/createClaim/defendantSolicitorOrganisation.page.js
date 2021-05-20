@@ -16,6 +16,7 @@ module.exports = {
 
   async enterOrganisationDetails () {
     I.waitForElement(this.fields.respondent1OrgRepresented.id);
+    await I.runAccessibilityTest();
     await within(this.fields.respondent1OrgRepresented.id, () => {
       I.click(this.fields.respondent1OrgRepresented.options.yes);
     });

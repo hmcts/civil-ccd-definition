@@ -24,6 +24,7 @@ module.exports = {
 
   async enterDirectionsProposedForDisclosure(party) {
     I.waitForElement(this.fields(party).directionsForDisclosureProposed.id);
+    await I.runAccessibilityTest();
     await within(this.fields(party).directionsForDisclosureProposed.id, () => {
       I.click(this.fields(party).directionsForDisclosureProposed.options.yes);
     });

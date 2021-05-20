@@ -10,6 +10,7 @@ module.exports = {
 
   async verifyDetails() {
     I.waitForElement(this.fields.respondentDetails.id);
+    await I.runAccessibilityTest();
     await I.see('Example company');
 
     await I.clickContinue();

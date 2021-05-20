@@ -23,6 +23,7 @@ module.exports = {
 
   async enterWitnessInformation(party) {
     I.waitForElement(this.fields(party).witnessesToAppear.id);
+    await I.runAccessibilityTest();
     await within(this.fields(party).witnessesToAppear.id, () => {
       I.click(this.fields(party).witnessesToAppear.options.yes);
     });

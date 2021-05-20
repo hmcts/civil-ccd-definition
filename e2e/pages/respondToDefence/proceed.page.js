@@ -14,6 +14,7 @@ module.exports = {
 
   async proceedWithClaim() {
     I.waitForElement(this.fields.proceed.id);
+    await I.runAccessibilityTest();
     await within(this.fields.proceed.id, () => {
       I.click(this.fields.proceed.options.yes);
     });
@@ -22,6 +23,7 @@ module.exports = {
 
   async dropClaim() {
     I.waitForElement(this.fields.proceed.id);
+    await I.runAccessibilityTest();
     await within(this.fields.proceed.id, () => {
       I.click(this.fields.proceed.options.no);
     });

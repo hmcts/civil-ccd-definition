@@ -20,6 +20,7 @@ module.exports = {
       throw new Error(`Response type: ${responseType} does not exist`);
     }
     I.waitForElement(this.fields.respondent1ClaimResponseType.id);
+    await I.runAccessibilityTest();
     await within(this.fields.respondent1ClaimResponseType.id, () => {
       I.click(this.fields.respondent1ClaimResponseType.options[responseType]);
     });

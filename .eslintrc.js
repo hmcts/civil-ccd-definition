@@ -1,25 +1,26 @@
 module.exports = {
-  "plugins": [
-    "codeceptjs"
+  'plugins': [
+    'codeceptjs'
   ],
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es2020": true,
-    "codeceptjs/codeceptjs": true
+  'env': {
+    'browser': true,
+    'commonjs': true,
+    'es2020': true,
+    'codeceptjs/codeceptjs': true,
+    'node': true
   },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 11
+  'extends': 'eslint:recommended',
+  'parserOptions': {
+    'ecmaVersion': 11
   },
-  "rules": {
-    "quotes": [
-      "error",
-      "single"
+  'rules': {
+    'quotes': [
+      'error',
+      'single'
     ],
-    "semi": [
-      "error",
-      "always"
+    'semi': [
+      'error',
+      'always'
     ]
   }
 };

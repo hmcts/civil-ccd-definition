@@ -14,6 +14,7 @@ module.exports = {
 
   async chooseYesUploadParticularsOfClaim() {
     I.waitForElement(this.fields.uploadQuestion.id);
+    await I.runAccessibilityTest();
     await within(this.fields.uploadQuestion.id, () => {
       I.click(this.fields.uploadQuestion.options['yes']);
     });

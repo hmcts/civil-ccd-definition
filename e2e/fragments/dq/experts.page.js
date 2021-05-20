@@ -39,6 +39,7 @@ module.exports = {
 
   async enterExpertInformation(party) {
     I.waitForElement(this.fields(party).expertRequired.id);
+    await I.runAccessibilityTest();
     await within(this.fields(party).expertRequired.id, () => {
       I.click(this.fields(party).expertRequired.options.yes);
     });

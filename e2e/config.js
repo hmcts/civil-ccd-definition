@@ -1,5 +1,3 @@
-/*global process*/
-
 const defaultPassword = 'Password12!';
 
 module.exports = {
@@ -37,5 +35,7 @@ module.exports = {
   definition: {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
-  }
+  },
+  TestOutputDir: process.env.E2E_OUTPUT_DIR || './output',
+  TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
 };

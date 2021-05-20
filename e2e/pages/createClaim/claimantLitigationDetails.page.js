@@ -15,6 +15,7 @@ module.exports = {
 
   async enterLitigantFriendWithDifferentAddressToApplicant(address, file) {
     I.waitForElement(this.fields.childApplicant.id);
+    await I.runAccessibilityTest();
     await within(this.fields.childApplicant.id, () => {
       I.click(this.fields.childApplicant.options.yes);
     });

@@ -3,6 +3,7 @@ const {I} = inject();
 module.exports = {
 
   async upload(file, documents) {
+    await I.runAccessibilityTest();
     for (const fileType of documents) {
       await within(fileType, async () => {
         I.click('Add new');

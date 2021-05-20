@@ -8,6 +8,7 @@ module.exports = {
 
   async enterClaimValue() {
     I.waitForElement(this.fields.statementOfValue);
+    await I.runAccessibilityTest();
     I.fillField(this.fields.statementOfValue, '30000');
     await I.clickContinue();
   }
