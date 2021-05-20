@@ -10,6 +10,7 @@ module.exports = {
 
   async confirmReference() {
     I.waitForElement(this.fields.solicitorReferences.id);
+    await I.runAccessibilityTest();
     I.fillField(this.fields.solicitorReferences.id, 'Defendant Reference ++');
     await I.clickContinue();
   }

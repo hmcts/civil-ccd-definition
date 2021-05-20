@@ -30,6 +30,7 @@ module.exports = {
 
   async fileDirectionsQuestionnaire(party) {
     I.waitForElement(this.fields(party).explainedToClient.id);
+    await I.runAccessibilityTest();
     I.checkOption(this.fields(party).explainedToClient.options.confirm);
 
     await within(this.fields(party).oneMonthStay.id, () => {

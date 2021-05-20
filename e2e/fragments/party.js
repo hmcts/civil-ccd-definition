@@ -22,6 +22,7 @@ module.exports = {
 
   async enterParty(partyType, address) {
     I.waitForElement(this.fields(partyType).type.id);
+    await I.runAccessibilityTest();
     await within(this.fields(partyType).type.id, () => {
       I.click(this.fields(partyType).type.options.company);
     });

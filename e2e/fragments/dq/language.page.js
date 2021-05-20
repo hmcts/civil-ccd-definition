@@ -27,6 +27,7 @@ module.exports = {
 
   async enterWelshLanguageRequirements(party) {
     I.waitForElement(this.fields(party).evidence.id);
+    await I.runAccessibilityTest();
 
     I.click(this.fields(party).evidence.options.welsh);
     I.click(this.fields(party).court.options.welsh);

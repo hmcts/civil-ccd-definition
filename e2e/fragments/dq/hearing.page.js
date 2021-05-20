@@ -34,6 +34,7 @@ module.exports = {
 
   async enterHearingInformation(party) {
     I.waitForElement(this.fields(party).hearingLength.id);
+    await I.runAccessibilityTest();
     await within(this.fields(party).hearingLength.id, () => {
       I.click(this.fields(party).hearingLength.options.lessThanOneDay);
     });
