@@ -7,6 +7,10 @@ module.exports = class BrowserHelpers extends Helper {
     return this.helpers['Puppeteer'] || this.helpers['WebDriver'];
   }
 
+  isPuppeteer(){
+    return this.helpers['Puppeteer'];
+  }
+
   /**
    * Finds elements described by selector.
    * If element cannot be found an empty collection is returned.
@@ -32,10 +36,16 @@ module.exports = class BrowserHelpers extends Helper {
    * @returns {Promise<undefined|*>} - promise holding either an element or undefined if element is not found
    */
   async waitForSelector(locator, sec) {
-    const waitTimeout = sec ? sec * 1000 : this.getHelper().options.waitForTimeout;
+    const helper = this.getHelper();
+    const waitTimeout = sec ? sec * 1000 : helper.options.waitForTimeout;
     const context = await this.getHelper()._getContext();
     try {
-      return await context.waitForSelector(locator, {timeout: waitTimeout});
+      if (this.isPuppeteer()) {
+        const context = await helper._getContext();
+        return await context.waitForSelector(locator, {timeout: waitTimeout});
+      } else {
+        return await helper.waitForElement(locator, waitTimeout);
+      }
     } catch (error) {
       return undefined;
     }
