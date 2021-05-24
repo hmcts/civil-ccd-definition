@@ -175,7 +175,7 @@ module.exports = function () {
       if (responseType === 'fullDefence') {
         await this.respondToClaimFullDefence();
       }
-      await event.submit('Submit response', 'You\'ve submitted your response');
+      await event.submit('Submit', 'You\'ve submitted your response');
       await event.returnToCaseDetails();
     },
 
