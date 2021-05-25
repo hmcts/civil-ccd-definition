@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "CaseFieldID": "claimProceedsInCaseman",

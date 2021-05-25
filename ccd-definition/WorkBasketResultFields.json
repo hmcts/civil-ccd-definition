@@ -1,13 +1,11 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "[CASE_REFERENCE]",
     "Label": "CCD Case Number",
     "DisplayOrder": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "[STATE]",
     "Label": "State",
