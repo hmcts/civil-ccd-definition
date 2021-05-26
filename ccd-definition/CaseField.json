@@ -840,5 +840,21 @@
     "FieldType": "StatementOfTruth",
     "SecurityClassification": "Public",
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specEligibilityQuestions",
+    "Label": "## Issue civil court proceedings\nTo use this service you must be:\n* issuing a claim for an specified (fixed) amount of money\n* serving the claim yourself, with a UK postal address and an email address\n* able to pay the full issue fee using Payment by Account\n* issuing and conducting the claim in English\n* representing a claimant who has no civil proceedings order, civil restraint order or all proceedings order against them\n* representing a claimant who is not seeking Help With Fees\n\nBoth claimant and defendant must:\n\n* have an address in England or Wales\n* be 18 or older and not a protected party\n\nThe claim you’re issuing must not:\n\n* ordinarily follow the Part 8 procedure\n* be brought under the Consumer Credit Act 1974\n* be against the Crown",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specCheckList",
+    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim details template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://www.gov.uk/guidance/myhmcts-online-case-management-for-legal-professionals\">Claim details template.</a> \n\n<p class='govuk-inset-text'>You can only upload the Claim details template. You will not be able to upload any other documents.</p> \n\nYou can also manually enter your timeline in this service without using the template.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
