@@ -2223,5 +2223,17 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specEligibilityQuestions",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specCheckList",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
   }
 ]
