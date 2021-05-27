@@ -25,9 +25,16 @@
     "ID": "LitigationFriend",
     "ListElementCode": "certificateOfSuitability",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentOrImageWithRegex",
+    "FieldTypeParameter": "Document",
     "ElementLabel": "Upload the certificate of suitability",
     "SecurityClassification": "Public",
     "Min": 1
-  }
+  },
+  {"ID": "LitigationFriend",
+    "ListElementCode": "certificateOfSuitabilityNew",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentOrImageWithRegex",
+    "ElementLabel": "Upload the certificate of suitability",
+    "SecurityClassification": "Public",
+    "Min": 1}
 ]
