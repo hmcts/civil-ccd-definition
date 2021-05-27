@@ -14,7 +14,7 @@ module.exports = {
         }
       },
       litigantInFriendAddress: `#${partyType}LitigationFriend_primaryAddress_primaryAddress`,
-      certificateOfSuitability: `#${partyType}LitigationFriend_certificateOfSuitabilityNew_0_document`
+      certificateOfSuitability: `#${partyType}LitigationFriend_certificateOfSuitability_0_document`
     };
   },
 
