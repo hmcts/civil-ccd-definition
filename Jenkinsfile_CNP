@@ -1,5 +1,20 @@
 #!groovy
 
+properties([
+  parameters([
+    string(name: 'CIVIL_SERVICE_PR', defaultValue: '123',
+      description: 'PR number on civil-service repo'),
+    string(name: 'CIVIL_CCD_DEFINITION_PR', defaultValue: '123',
+      description: 'PR number on civil-ccd-definition repo'),
+    string(name: 'CIVIL_CAMUNDA_BPMN_DEFINITION_PR', defaultValue: '123',
+      description: 'PR number on civil-camunda-bpmn-definition repo'),
+    string(name: 'PREVIEW_URL', defaultValue: 'civil-ccd-pr-000.service.core-compute-preview.internal',
+      description: 'Preview URL where orchestrated environment should be deployed (SERVICE_FQDN)'),
+    string(name: 'PREVIEW_SERVICE_NAME', defaultValue: 'civil-ccd-pr-000',
+      description: 'Preview service name used for releaseNameOverride (SERVICE_NAME)'),
+  ])
+])
+
 @Library("Infrastructure")
 import uk.gov.hmcts.contino.AppPipelineConfig
 
@@ -60,6 +75,12 @@ def uploadCoreCaseDataDefinitions(env) {
 }
 
 withPipeline(type, product, component) {
+  env.CIVIL_SERVICE_PR = params.CIVIL_SERVICE_PR
+  env.CIVIL_CCD_DEFINITION_PR=params.CIVIL_CCD_DEFINITION_PR
+  env.CIVIL_CAMUNDA_BPMN_DEFINITION_PR=params.CIVIL_CAMUNDA_BPMN_DEFINITION_PR
+  env.PREVIEW_ENVIRONMENT_URL=params.PREVIEW_ENVIRONMENT_URL
+  env.PREVIEW_SERVICE_NAME=params.PREVIEW_SERVICE_NAME
+
   pipelineConf = config
   disableLegacyDeployment()
   enableAksStagingDeployment()
@@ -85,18 +106,47 @@ withPipeline(type, product, component) {
         }
       }
     }
+
+    onPR {
+      withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
+        try {
+          sh '''
+          set -e
+
+          git fetch origin pull/${CIVIL_CCD_DEFINITION_PR}/head:civil-ccd-pr-branch
+          git checkout civil-ccd-pr-branch
+        '''
+        } catch (err) {
+          notifyBuildEvent channel: '#civil_notification', color: 'warning', message: 'Failed to orchestrate civil-ccd-definition branch'
+        }
+      }
+    }
   }
 
   before('smoketest:preview') {
+    withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
+      try {
+        sh '''
+          set -e
+
+          git remote add civil-camunda https://github.com/hmcts/civil-camunda-bpmn-definition
+          git fetch civil-camunda pull/${CIVIL_CAMUNDA_BPMN_DEFINITION_PR}/head:civil-camunda-pr-branch
+          git checkout civil-camunda-pr-branch -- src/main/resources/camunda
+          mv src/main/resources/camunda camunda
+        '''
+      } catch (err) {
+        notifyBuildEvent channel: '#civil_notification', color: 'warning', message: 'Failed to orchestrate civil-ccd-definition branch'
+      }
+    }
+
     sh """
-      eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
+      eval \$(./bin/variables/load-preview-environment-variables.sh ${PREVIEW_SERVICE_NAME})
       ./bin/add-roles.sh
       ./bin/import-ccd-definition.sh
-      ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
-    env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-    env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.URL="https://xui-${PREVIEW_SERVICE_NAME}.service.core-compute-preview.internal"
+    env.CIVIL_SERVICE_URL="http://${PREVIEW_SERVICE_NAME}.service.core-compute-preview.internal"
   }
 
   after('smoketest:preview') {
@@ -106,9 +156,9 @@ withPipeline(type, product, component) {
   before('functionalTest:preview') {
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-    env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-${PREVIEW_SERVICE_NAME}.service.core-compute-preview.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-    env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.CIVIL_SERVICE_URL="http://${PREVIEW_SERVICE_NAME}.service.core-compute-preview.internal"
   }
 
   after('functionalTest:preview') {
