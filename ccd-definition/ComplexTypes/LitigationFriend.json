@@ -30,7 +30,8 @@
     "SecurityClassification": "Public",
     "Min": 1
   },
-  {"ID": "LitigationFriend",
+  {
+    "ID": "LitigationFriend",
     "ListElementCode": "certificateOfSuitabilityNew",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentOrImageWithRegex",
