@@ -126,13 +126,5 @@
     "ListElementCode": "address",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolicitor1OrganisationEmail",
-    "ListElementCode": "email",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
   }
 ]
