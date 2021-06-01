@@ -1,6 +1,6 @@
 /// <reference types='codeceptjs' />
 type steps_file = typeof import('./e2e/steps_file.js');
-type PuppeteerHelpers = import('./e2e/helpers/puppeteer_helper.js');
+type PuppeteerHelpers = import('./e2e/helpers/browser_helper.js');
 
 declare namespace CodeceptJS {
   interface SupportObject { I: CodeceptJS.I }
