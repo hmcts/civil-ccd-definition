@@ -12,11 +12,14 @@ exports.config = {
         ignoreHTTPSErrors: true
       },
     },
-    PuppeteerHelpers: {
-      require: './e2e/helpers/puppeteer_helper.js',
+    BrowserHelpers: {
+      require: './e2e/helpers/browser_helper.js',
     },
     GenerateReportHelper: {
       require: './e2e/helpers/generate_report_helper.js'
+    },
+    SauceLabsReportingHelper: {
+      require: './e2e/helpers/sauce_labs_reporting_helper.js',
     },
   },
   include: {

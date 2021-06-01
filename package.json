@@ -9,7 +9,9 @@
     "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
     "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@api-tests|@e2e-tests' --reporter mocha-multi --verbose",
-    "test:rpa": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose"
+    "test:rpa": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
+    "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep \"${SMOKE_TESTS_SELECTOR:=@smoke-tests}\" ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
+    "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh"
   },
   "husky": {
     "hooks": {
@@ -30,6 +32,7 @@
     "puppeteer": "^4.0.1",
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
-    "html_codesniffer": "^2.5.1"
+    "html_codesniffer": "^2.5.1",
+    "webdriverio": "^6.12.1"
   }
 }

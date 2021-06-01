@@ -9,6 +9,7 @@ module.exports = {
     I.waitForText(buttonText);
     await I.runAccessibilityTest();
     await I.retryUntilExists(() => I.click(buttonText), CONFIRMATION_HEADER);
+    await I.runAccessibilityTest();
     await within(CONFIRMATION_HEADER, () => {
       I.see(expectedMessage);
     });
