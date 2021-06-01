@@ -46,7 +46,7 @@ if [ -z "$BUILD_URL" ]; then
 fi
 
 zip -r civil-ccd-definition.zip ccd-definition
-zip -r civil-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock
+zip -r civil-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock saucelabs.conf.js
 cp build/ccd-release-config/civil-ccd-aat.xlsx civil-ccd-aat.xlsx
 
 az login --identity
