@@ -643,24 +643,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentSolicitor1OrganisationEmail",
-    "Label": " ",
-    "FieldType": "SolicitorOrganisationEmail",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrgLabel",
-    "Label": "Use the email address of the legal representative's firm if you have it, otherwise use their personal email.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "ID": "respondentSolicitor1OrgOfflineLabel",
-    "Label": "<div class=\"panel\">You can still issue the claim without their email address but the claim will then continue offline.</div>",
+    "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
