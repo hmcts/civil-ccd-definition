@@ -651,6 +651,14 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1ContactEmailAddress",
+    "Label": "Email Address",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
