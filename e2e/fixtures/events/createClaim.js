@@ -70,7 +70,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: '0FA7S8S'
+          OrganisationID: 'Q1KOKP2'
         }
       }
     },
@@ -86,7 +86,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         OrgPolicyReference: 'Defendant policy reference',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
         Organisation: {
-          OrganisationID: 'N5AFUXG'
+          OrganisationID: '79ZRSOU'
         },
       },
     },
