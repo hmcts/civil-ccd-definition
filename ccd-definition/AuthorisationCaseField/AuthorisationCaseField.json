@@ -1377,6 +1377,16 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1ContactEmailAddress",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "AccessControl": [
       {
@@ -1397,6 +1407,25 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor1OrgLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1OrgOfflineLabel",
     "AccessControl": [
       {
         "UserRoles": [
