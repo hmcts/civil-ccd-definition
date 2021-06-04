@@ -117,7 +117,6 @@
     "PageColumnNumber": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "addApplicant2",
@@ -129,7 +128,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -225,7 +223,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
@@ -238,7 +235,6 @@
     "PageShowCondition": "addRespondent2=\"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2Represented",
@@ -251,7 +247,6 @@
     "PageShowCondition": "addRespondent2=\"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2SameLegalRepresentative",
@@ -264,7 +259,6 @@
     "PageShowCondition": "respondent2Represented=\"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2OrgRegistered",
@@ -279,7 +273,6 @@
     "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2OrganisationPolicy",
@@ -292,7 +285,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimType",

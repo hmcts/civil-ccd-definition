@@ -1275,7 +1275,8 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL", "CaseFieldID": "respondentSolicitor1EmailAddress",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1EmailAddress",
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
