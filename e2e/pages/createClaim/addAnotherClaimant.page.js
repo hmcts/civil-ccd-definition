@@ -13,7 +13,6 @@ module.exports = {
   },
 
   async enterAddAnotherClaimant() {
-
     I.waitForElement(this.fields.addApplicant2.id);
     await I.runAccessibilityTest();
     await within(this.fields.addApplicant2.id, () => {

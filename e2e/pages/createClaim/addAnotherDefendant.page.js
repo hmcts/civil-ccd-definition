@@ -13,7 +13,6 @@ module.exports = {
   },
 
   async enterAddAnotherDefendant() {
-
     I.waitForElement(this.fields.addRespondent2.id);
     await I.runAccessibilityTest();
     await within(this.fields.addRespondent2.id, () => {

@@ -13,7 +13,6 @@ module.exports = {
   },
 
   async enterRespondent2SameLegalRepresentative() {
-
     I.waitForElement(this.fields.respondent2SameLegalRepresentative.id);
     await I.runAccessibilityTest();
     await within(this.fields.respondent2SameLegalRepresentative.id, () => {
