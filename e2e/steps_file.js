@@ -110,7 +110,9 @@ module.exports = function () {
       await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
       await claimantSolicitorIdamDetailsPage.enterUserEmail();
       await claimantSolicitorOrganisation.enterOrganisationDetails();
-      await addAnotherClaimant.enterAddAnotherClaimant();
+      if (config.multipartyTestsEnabled) {
+        await addAnotherClaimant.enterAddAnotherClaimant();
+      }
       await party.enterParty('respondent1', address);
       if (litigantInPerson) {
         await respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no');
@@ -119,11 +121,13 @@ module.exports = function () {
         await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
         await defendantSolicitorEmail.enterSolicitorEmail();
       }
-      await addAnotherDefendant.enterAddAnotherDefendant();
-      await party.enterParty('respondent2', address);
-      await respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes');
-      await respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative();
-      await defendantSolicitorOrganisation.enterOrganisationDetails('respondent2');
+      if (config.multipartyTestsEnabled) {
+        await addAnotherDefendant.enterAddAnotherDefendant();
+        await party.enterParty('respondent2', address);
+        await respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes');
+        await respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative();
+        await defendantSolicitorOrganisation.enterOrganisationDetails('respondent2');
+      }
       await claimTypePage.selectClaimType();
       await personalInjuryTypePage.selectPersonalInjuryType();
       await detailsOfClaimPage.enterDetailsOfClaim();
