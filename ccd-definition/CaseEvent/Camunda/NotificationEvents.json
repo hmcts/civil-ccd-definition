@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_ISSUE",
     "Name": "Email: Notify claim",
@@ -14,7 +13,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_ISSUE_CC",
     "Name": "Email: Notify claim",
@@ -28,7 +26,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_CONTINUING_ONLINE",
     "Name": "Email: issue claim",
@@ -42,7 +39,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_ACKNOWLEDGEMENT",
     "Name": "Email:Acknowledge notification",
@@ -56,7 +52,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_ACKNOWLEDGEMENT_CC",
     "Name": "Email:Acknowledge notification",
@@ -70,7 +65,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_AGREED_EXTENSION_DATE",
     "Name": "Email: Notify of extension",
@@ -84,7 +78,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_AGREED_EXTENSION_DATE_CC",
     "Name": "Email: Notify of extension",
@@ -98,7 +91,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED",
     "Name": "Email: C intends to proceed?",
@@ -112,7 +104,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED_CC",
     "Name": "Email: C intends to proceed?",
@@ -126,7 +117,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_NOT_TO_PROCEED",
     "Name": "Email: Transferred offline",
@@ -140,7 +130,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_NOT_TO_PROCEED_CC",
     "Name": "Email: Transferred offline",
@@ -154,7 +143,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CASE_TAKEN_OFFLINE",
     "Name": "Email: Transfer claim offline",
@@ -168,7 +156,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_TAKEN_OFFLINE",
     "Name": "Email: Transfer claim offline",
@@ -182,7 +169,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Notify respondent caseman",
@@ -196,7 +182,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Notify applicant caseman",
@@ -210,7 +195,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_LITIGATION_FRIEND_ADDED",
     "Name": "Email: Add litigation friend",
@@ -224,7 +208,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_LITIGATION_FRIEND_ADDED",
     "Name": "Email: Add litigation friend",
@@ -238,7 +221,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE",
     "Name": "Email: Respond to claim",
@@ -252,7 +234,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CC",
     "Name": "Email: Respond to claim",
@@ -266,7 +247,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CASE_HANDED_OFFLINE",
     "Name": "Email: Transferred offline",
@@ -280,7 +260,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_HANDED_OFFLINE",
     "Name": "Email: Transferred offline",
@@ -294,7 +273,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_FAILED_PAYMENT",
     "Name": "Email: Payment failed",
@@ -308,7 +286,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_DISMISSED",
     "Name": "Email: Claim dismissed",
@@ -322,7 +299,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_DISMISSED",
     "Name": "Email: Claim dismissed",
@@ -336,7 +312,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON",
     "Name": "Email: Transferred offline",
@@ -350,7 +325,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_DETAILS",
     "Name": "Email: Notify claim details",
@@ -364,7 +338,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_DETAILS_CC",
     "Name": "Email: Notify claim details",

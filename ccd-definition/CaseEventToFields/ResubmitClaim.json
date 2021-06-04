@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RESUBMIT_CLAIM",
     "CaseFieldID": "claimFee",
@@ -12,7 +11,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RESUBMIT_CLAIM",
     "CaseFieldID": "applicantSolicitor1PbaAccounts",
@@ -25,7 +23,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RESUBMIT_CLAIM",
     "CaseFieldID": "pbaPaymentFailedLabel",

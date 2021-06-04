@@ -96,7 +96,6 @@
     "TabFieldDisplayOrder": 12
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
@@ -105,7 +104,6 @@
     "TabFieldDisplayOrder": 13
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",

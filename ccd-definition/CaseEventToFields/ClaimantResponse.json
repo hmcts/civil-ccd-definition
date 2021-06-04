@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseType",
@@ -11,7 +10,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseDocument",
@@ -23,7 +21,6 @@
     "CaseEventFieldLabel": "Response document"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1ProceedWithClaim",
@@ -34,7 +31,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
@@ -45,7 +41,6 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimType",
@@ -56,7 +51,6 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DefenceResponseDocument",
@@ -68,7 +62,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQFileDirectionsQuestionnaire",
@@ -80,7 +73,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQDisclosureOfElectronicDocuments",
@@ -92,7 +84,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQDisclosureOfNonElectronicDocuments",
@@ -104,7 +95,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQDisclosureReport",
@@ -116,7 +106,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQExperts",
@@ -130,7 +119,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQWitnesses",
@@ -144,7 +132,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQLanguage",
@@ -156,7 +143,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQHearing",
@@ -171,7 +157,6 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQDraftDirectionsLabel",
@@ -183,7 +168,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQDraftDirections",
@@ -194,7 +178,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQHearingSupport",
@@ -207,7 +190,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQFurtherInformation",
@@ -220,7 +202,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "uiStatementOfTruth",
@@ -233,7 +214,6 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "statementOfTruthSubmitLabel",
