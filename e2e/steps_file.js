@@ -99,6 +99,7 @@ module.exports = function () {
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => createCasePage.selectCaseType(), 'ccd-markdown');
+      await this.runAccessibilityTest();
       await this.clickContinue();
       await solicitorReferencesPage.enterReferences();
       await chooseCourtPage.enterCourt();
@@ -133,6 +134,7 @@ module.exports = function () {
 
     async notifyClaim() {
       await caseViewPage.startEvent('Notify claim', caseId);
+      await this.runAccessibilityTest();
       await this.clickContinue();
       await event.submit('Submit', 'Notification of claim sent');
       await event.returnToCaseDetails();
@@ -140,6 +142,7 @@ module.exports = function () {
 
     async notifyClaimDetails() {
       await caseViewPage.startEvent('Notify claim details', caseId);
+      await this.runAccessibilityTest();
       await this.clickContinue();
       await event.submit('Submit', 'Defendant notified');
       await event.returnToCaseDetails();
@@ -175,7 +178,7 @@ module.exports = function () {
       if (responseType === 'fullDefence') {
         await this.respondToClaimFullDefence();
       }
-      await event.submit('Submit response', 'You\'ve submitted your response');
+      await event.submit('Submit', 'You\'ve submitted your response');
       await event.returnToCaseDetails();
     },
 
