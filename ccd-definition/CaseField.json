@@ -558,13 +558,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2OrganisationPolicy",
-    "Label": "Respondent 2 organisation policy",
-    "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1EmailAddress",
     "Label": "Enter defendant legal representative's email address to be used for notifications",
     "FieldType": "Email",
@@ -740,11 +733,68 @@
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "casePaymentHistoryViewer",
     "Label": "Custom Payment History Viewer",
     "FieldType": "CasePaymentHistoryViewer",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "multipleApplicantsLabel",
+    "Label": "You can add another Claimant after you have issued the claim but you will need to submit a separate application.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "multipleApplicants",
+    "Label": "Do you want to add another Claimant at this time?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "multipleRespondents",
+    "Label": "Is there another Defendant?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2",
+    "Label": "Second Defendant's details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2Represented",
+    "Label": "Does the second defendant have a legal representative?",
+    "HintText": "If they are not legally represented you can still continue with the claim but the Defendant will be served offline (on paper)",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sameLegalRepresentative",
+    "Label": "Does the second Defendant have the same legal representative?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrgRegistered",
+    "Label": "Is the organisation registered with MyHMCTS?",
+    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationPolicy",
+    "Label": "Respondent 2 organisation policy",
+    "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   }
 ]

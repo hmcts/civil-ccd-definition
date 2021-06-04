@@ -190,5 +190,61 @@
     "CaseFieldID": "detailsOfClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "multipleApplicantsLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "multipleApplicants",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "multipleRespondents",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2Represented",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sameLegalRepresentative",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2OrgRegistered",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
