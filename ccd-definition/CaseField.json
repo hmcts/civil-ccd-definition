@@ -741,21 +741,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "multipleApplicantsLabel",
+    "ID": "addApplicant2Label",
     "Label": "You can add another Claimant after you have issued the claim but you will need to submit a separate application.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "multipleApplicants",
+    "ID": "addApplicant2",
     "Label": "Do you want to add another Claimant at this time?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "multipleRespondents",
+    "ID": "addRespondent2",
     "Label": "Is there another Defendant?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
@@ -777,7 +777,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sameLegalRepresentative",
+    "ID": "respondent2SameLegalRepresentative",
     "Label": "Does the second Defendant have the same legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"

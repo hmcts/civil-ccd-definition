@@ -1693,7 +1693,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "multipleApplicantsLabel",
+    "CaseFieldID": "addApplicant2Label",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1711,7 +1711,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "multipleApplicants",
+    "CaseFieldID": "addApplicant2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1729,7 +1729,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "multipleRespondents",
+    "CaseFieldID": "addRespondent2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1783,7 +1783,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sameLegalRepresentative",
+    "CaseFieldID": "respondent2SameLegalRepresentative",
     "AccessControl": [
       {
         "UserRoles": [

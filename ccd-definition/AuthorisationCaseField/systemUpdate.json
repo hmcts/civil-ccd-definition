@@ -194,21 +194,21 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "multipleApplicantsLabel",
+    "CaseFieldID": "addApplicant2Label",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "multipleApplicants",
+    "CaseFieldID": "addApplicant2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "multipleRespondents",
+    "CaseFieldID": "addRespondent2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
@@ -229,7 +229,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sameLegalRepresentative",
+    "CaseFieldID": "respondent2SameLegalRepresentative",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
