@@ -9,11 +9,14 @@ const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
+const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
 const defendantSolicitorEmail = require('./pages/createClaim/defendantSolicitorEmail.page');
 const chooseCourtPage = require('./pages/createClaim/chooseCourt.page');
 const claimantLitigationDetails = require('./pages/createClaim/claimantLitigationDetails.page');
+const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
+const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const claimTypePage = require('./pages/createClaim/claimType.page');
 const respondentRepresentedPage = require('./pages/createClaim/isRespondentRepresented.page');
 const personalInjuryTypePage = require('./pages/createClaim/personalInjuryType.page');
@@ -107,14 +110,20 @@ module.exports = function () {
       await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
       await claimantSolicitorIdamDetailsPage.enterUserEmail();
       await claimantSolicitorOrganisation.enterOrganisationDetails();
+      await addAnotherClaimant.enterAddAnotherClaimant();
       await party.enterParty('respondent1', address);
       if (litigantInPerson) {
-        await respondentRepresentedPage.enterRespondentRepresented('no');
+        await respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no');
       } else {
-        await respondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisation.enterOrganisationDetails();
+        await respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes');
+        await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
         await defendantSolicitorEmail.enterSolicitorEmail();
       }
+      await addAnotherDefendant.enterAddAnotherDefendant();
+      await party.enterParty('respondent2', address);
+      await respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes');
+      await respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative();
+      await defendantSolicitorOrganisation.enterOrganisationDetails('respondent2');
       await claimTypePage.selectClaimType();
       await personalInjuryTypePage.selectPersonalInjuryType();
       await detailsOfClaimPage.enterDetailsOfClaim();
