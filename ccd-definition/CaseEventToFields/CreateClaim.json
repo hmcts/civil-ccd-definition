@@ -112,7 +112,7 @@
     "CaseFieldID": "addApplicant2Label",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "MultipleClaimants",
+    "PageID": "AddAnotherClaimant",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1
   },
@@ -123,7 +123,7 @@
     "CaseFieldID": "addApplicant2",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageID": "MultipleClaimants",
+    "PageID": "AddAnotherClaimant",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -219,7 +219,7 @@
     "CaseFieldID": "addRespondent2",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageID": "MultipleDefendants",
+    "PageID": "AddAnotherDefendant",
     "PageDisplayOrder": 13,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -257,7 +257,7 @@
     "CaseFieldID": "respondent2SameLegalRepresentative",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageID": "respondent2SameLegalRepresentative",
+    "PageID": "SameLegalRepresentative",
     "PageDisplayOrder": 16,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
