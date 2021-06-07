@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "DISPATCH_BUSINESS_PROCESS",
     "Name": "Dispatch business process",
@@ -16,7 +15,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "START_BUSINESS_PROCESS",
     "Name": "Start business process",
@@ -30,7 +28,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "END_BUSINESS_PROCESS",
     "Name": "End business process",
@@ -42,7 +39,6 @@
     "ShowEventNotes": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1",
     "Name": "Assign to applicantSolicitor1",
@@ -55,7 +51,6 @@
     "ShowEventNotes": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "VALIDATE_FEE",
     "Name": "Validate fee",

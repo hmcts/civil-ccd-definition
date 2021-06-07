@@ -23,7 +23,7 @@
   },
   {
     "ID": "LitigationFriend",
-    "ListElementCode": "certificateOfSuitability",
+    "ListElementCode": "certificateOfSuitabilityNew",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentOrImageWithRegex",
     "ElementLabel": "Upload the certificate of suitability",

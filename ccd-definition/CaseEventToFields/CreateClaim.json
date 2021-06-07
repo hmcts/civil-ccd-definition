@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "eligibilityQuestions",
@@ -13,7 +12,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "solicitorReferences",
@@ -25,7 +23,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "courtLocation",
@@ -37,7 +34,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -51,7 +47,6 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriendRequired",
@@ -64,7 +59,6 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/idam-email"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriend",
@@ -77,7 +71,6 @@
     "FieldShowCondition": "applicant1LitigationFriendRequired = \"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
@@ -89,7 +82,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1UserDetails",
@@ -102,7 +94,6 @@
     "FieldShowCondition": "applicantSolicitor1CheckEmail.correct = \"No\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -116,7 +107,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -128,7 +118,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1Represented",
@@ -140,7 +129,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrgRegistered",
@@ -155,7 +143,6 @@
     "PageShowCondition": "respondent1Represented=\"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -168,7 +155,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1EmailAddress",
@@ -181,7 +167,6 @@
     "PageShowCondition": "respondent1OrgRegistered=\"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrgLabel",
@@ -195,7 +180,6 @@
     "PageShowCondition": "respondent1OrgRegistered=\"No\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -207,7 +191,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimType",
@@ -220,7 +203,6 @@
     "CaseEventFieldLabel": "What type of claim is this?"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimTypeOther",
@@ -233,7 +215,6 @@
     "FieldShowCondition": "claimType = \"OTHER\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "personalInjuryType",
@@ -246,7 +227,6 @@
     "PageShowCondition": "claimType = \"PERSONAL_INJURY\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "personalInjuryTypeOther",
@@ -259,7 +239,6 @@
     "FieldShowCondition": "personalInjuryType = \"PERSONAL_INJURY_OTHER\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaimLabel",
@@ -271,7 +250,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaim",
@@ -283,7 +261,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uploadParticularsOfClaim",
@@ -295,7 +272,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -309,7 +285,6 @@
     "PageShowCondition": "uploadParticularsOfClaim=\"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimValue",
@@ -323,7 +298,6 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/fee"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1PbaAccountsIsEmpty",
@@ -338,7 +312,6 @@
     "Comment": "Hidden field to show noPbaAccountsLabel when applicantSolicitor1PbaAccounts is empty"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimFee",
@@ -350,7 +323,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1PbaAccounts",
@@ -363,7 +335,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "pbaAccountsInformationLabel",
@@ -376,7 +347,6 @@
     "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"No\" OR applicantSolicitor1PbaAccountsIsEmpty = \"\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "noPbaAccountsLabel",
@@ -389,7 +359,6 @@
     "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"Yes\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimIssuedPaymentDetails",
@@ -401,7 +370,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStatementOfTruthLabel",
@@ -415,7 +383,6 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uiStatementOfTruth",
@@ -427,7 +394,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "statementOfTruthSubmitLabel",

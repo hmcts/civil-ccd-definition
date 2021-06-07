@@ -1,9 +1,29 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "[CASE_REFERENCE]",
     "Label": "CCD Case Number",
     "DisplayOrder": 1
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "[STATE]",
+    "Label": "State",
+    "DisplayOrder": 2
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "legacyCaseReference",
+    "Label": "CaseMan reference number",
+    "DisplayOrder": 3
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "issueDate",
+    "Label": "Date claim issued",
+    "DisplayOrder": 4
   }
 ]
