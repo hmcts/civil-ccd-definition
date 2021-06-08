@@ -856,5 +856,56 @@
     "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://www.gov.uk/guidance/myhmcts-online-case-management-for-legal-professionals\">Claim details template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimTimeline",
+    "Label": "## Claim timeline\nIf you do not know the exact date, tell us the month and year.\n### Example timeline\n* 12 January 2017 - John Smith gave me a quote to replace the roof.\n* 14 January 2017 - We agreed and signed a contract for the work.\n* 21 March 2017 - I noticed a leak on the landing and told Mr Smith about this.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "timelineOfEvents",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TimelineEvents",
+    "SecurityClassification": "Public"
+  },
+  {
+  "LiveFrom": "01/01/2017",
+  "CaseTypeID": "CIVIL",
+  "ID": "listYourEvidenceLabel",
+  "Label": "## List your evidence\nTell us about any evidence you wish to provide. You do not need to send us any evidence now. If your case goes to a court hearing, and is not settled, you will need to provide evidence.",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+},
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "listYourEvidenceList",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "EvidenceList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "claimAmountLabel",
+    "Label": "## Claim Amount\n Your claim can be for single or multiple amounts. Do not include interest or the claim fee, you can add these on the next page.\n\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "claimAmountBreakup",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ClaimAmountBreakup",
+    "SecurityClassification": "Public"
   }
 ]

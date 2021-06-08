@@ -1374,5 +1374,42 @@
     "DisplayContext": "MANDATORY",
     "EventElementLabel": "Enter a reference for your PBA account statements",
     "EventHintText": "This should be your own unique reference to identify the case. It will appear on your statements."
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineDate",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineDescription",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "EvidenceList",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "listYourEvidenceList",
+    "ListElementCode": "listOfEvidences",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "ClaimAmountBreakup",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "claimAmountBreakup",
+    "ListElementCode": "listOfClaimAmounts",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
   }
+
 ]
