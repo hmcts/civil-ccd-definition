@@ -76,7 +76,7 @@
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
-    "ListElementCode": "certificateOfSuitabilityNew.document",
+    "ListElementCode": "certificateOfSuitability.document",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   }
