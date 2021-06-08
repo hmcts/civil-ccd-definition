@@ -3,13 +3,14 @@
 set -eu
 
 environment=${1:-prod}
+excludeNonProdFiles=${2:-true}
 
 if [[ ${environment} != "prod" && ${environment} != "staging" && ${environment} != "aat" && ${environment} != "demo" ]]; then
   echo "Environment '${environment}' is not supported!"
   exit 1
 fi
 
-if [ ${environment} == "prod" ]; then
+if [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 else
   excludedFilenamePatterns="-e UserProfile.json"
