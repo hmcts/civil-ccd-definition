@@ -907,5 +907,22 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "ClaimAmountBreakup",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "claimAmountBreakup2",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ClaimAmountBreakup",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "totalClaimAmount",
+    "Label": "Total",
+    "FieldType": "Number",
+    "SecurityClassification": "Public"
   }
 ]
