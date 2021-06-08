@@ -1008,7 +1008,50 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentSolicitor1OrgOfflineLabel",
-    "Label": "<div class=\"panel\">You can still issue the claim without their email address but the claim will then continue offline.</div>",
+    "Label": "<div class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specDetailsOfClaimLabel",
+    "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.\n\nYou'll have to pay an extra fee if you want to change the details of the claim later.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specDetailsOfClaimUploadDocumentLabel",
+    "Label": "## Upload supporting documents (optional)\n\n<div class=\"govuk-inset-text\">You can upload documents in support of the claim details above.</div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimDetailsDocumentFiles",
+    "Label": "Upload file",
+    "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimTimelineList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimTimelineList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimTimelineListLabel",
+    "Label": "## How do you want to add your claim timeline?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
