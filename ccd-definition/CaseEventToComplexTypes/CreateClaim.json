@@ -1374,5 +1374,14 @@
     "DisplayContext": "MANDATORY",
     "EventElementLabel": "Enter a reference for your PBA account statements",
     "EventHintText": "This should be your own unique reference to identify the case. It will appear on your statements."
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "RespondentSolicitor1Organisation",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]
