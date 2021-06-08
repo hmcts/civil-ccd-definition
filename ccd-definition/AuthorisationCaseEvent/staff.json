@@ -120,77 +120,66 @@
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_TAKEN_OFFLINE",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_DISMISSED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_LITIGATION_FRIEND_ADDED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED_CC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_FULL_DEFENCE",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RESUBMIT_CLAIM",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INFORM_AGREED_EXTENSION_DATE",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "UserRole": "caseworker-civil-staff",
