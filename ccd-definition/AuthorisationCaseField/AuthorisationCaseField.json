@@ -1863,7 +1863,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimAmountBreakup2",
+    "CaseFieldID": "totalClaimAmount",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],
@@ -1872,7 +1872,16 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "totalClaimAmount",
+    "CaseFieldID": "claimAmountBreakupSummaryLabel",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimAmountBreakupSummaryObject",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],
