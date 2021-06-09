@@ -112,6 +112,16 @@ test {
   failFast = true
 }
 
+jar {
+  getArchiveFileName().set(provider {
+    'empty.jar'
+  })
+
+  manifest {
+    attributes('Implementation-Version': project.version.toString())
+  }
+}
+
 task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
   commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'install'
 }
