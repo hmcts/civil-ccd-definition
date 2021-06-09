@@ -153,9 +153,8 @@ module.exports = {
     await validateEventPages(data.RESUBMIT_CLAIM);
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Claim pending',
-      body: 'What happens next'
+      body: 'Your claim will be processed. Wait for us to contact you.'
     }, true);
-
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
@@ -204,8 +203,8 @@ module.exports = {
 
     await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
       header: 'Notification of claim sent',
-      body: 'What happens next'
-    });
+      body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -224,8 +223,8 @@ module.exports = {
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Defendant notified',
-      body: 'What happens next'
-    });
+      body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -296,7 +295,7 @@ module.exports = {
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Extension deadline submitted',
-      body: 'What happens next'
+      body: 'You must respond to the claimant by'
     }, true);
 
     await waitForFinishedBusinessProcess(caseId);
