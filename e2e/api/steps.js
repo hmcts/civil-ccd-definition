@@ -4,7 +4,7 @@ const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
-
+chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');

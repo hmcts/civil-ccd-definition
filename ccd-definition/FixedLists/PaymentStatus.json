@@ -1,13 +1,11 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "PaymentStatus",
     "ListElementCode": "SUCCESS",
     "ListElement": "Success",
     "DisplayOrder": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "PaymentStatus",
     "ListElementCode": "FAILED",
     "ListElement": "Failed",

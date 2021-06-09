@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseType",
@@ -11,7 +10,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "responseHandOffLabel",
@@ -23,7 +21,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
@@ -35,7 +32,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "claimType",
@@ -47,7 +43,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseDocument",
@@ -61,7 +56,6 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentDetails",
@@ -74,7 +68,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "solicitorReferences",
@@ -88,7 +81,6 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseEventFieldLabel": " ",
@@ -101,7 +93,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFileDirectionsQuestionnaire",
@@ -113,7 +104,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
@@ -125,7 +115,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureOfNonElectronicDocuments",
@@ -137,7 +126,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureReport",
@@ -149,7 +137,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQExperts",
@@ -163,7 +150,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
@@ -177,7 +163,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQLanguage",
@@ -189,7 +174,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearing",
@@ -204,7 +188,6 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDraftDirectionsLabel",
@@ -216,7 +199,6 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDraftDirections",
@@ -227,7 +209,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQRequestedCourt",
@@ -239,7 +220,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearingSupport",
@@ -252,7 +232,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
@@ -265,7 +244,6 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "uiStatementOfTruth",
@@ -278,7 +256,6 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "statementOfTruthSubmitLabel",

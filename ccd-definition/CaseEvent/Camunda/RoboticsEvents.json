@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RPA_ON_CASE_HANDED_OFFLINE",
     "Name": "Notify RPA on case offline",
@@ -14,7 +13,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "RETRY_NOTIFY_RPA_ON_CASE_HANDED_OFFLINE",
     "Name": "Retry RPA notification",
@@ -28,7 +26,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "RESET_RPA_NOTIFICATION_BUSINESS_PROCESS",
     "Name": "Reset RPA notification",

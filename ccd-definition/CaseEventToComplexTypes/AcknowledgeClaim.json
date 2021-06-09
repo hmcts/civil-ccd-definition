@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "SolicitorReferences",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "solicitorReferences",
@@ -9,7 +8,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "SolicitorReferences",
     "CaseEventID": "ACKNOWLEDGE_SERVICE",
     "CaseFieldID": "solicitorReferences",
@@ -19,7 +17,6 @@
     "FieldShowCondition": "respondentSolicitor1Reference = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "Party",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -30,7 +27,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "Party",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1",
