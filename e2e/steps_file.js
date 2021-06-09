@@ -5,7 +5,7 @@ const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
-const emptyPage = require('./pages/emptyPage.page');
+const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
@@ -123,13 +123,10 @@ module.exports = function () {
     async createCase(litigantInPerson = false) {
       eventName = 'Create case';
 
-      this.click(eventName);
-      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-      await this.takeScreenshot();
-      await this.retryUntilExists(() => createCasePage.selectCaseType(), 'ccd-markdown');
-
       await this.triggerStepsWithScreenshot([
-        () => emptyPage.continue(),
+        () => this.click(eventName),
+        () => this.retryUntilExists(() => createCasePage.selectCaseType(config.definition.jurisdiction), 'ccd-markdown'),
+        () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
         () => party.enterParty('applicant1', address),
@@ -167,7 +164,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => emptyPage.continue(),
+        () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
       ]);
@@ -178,7 +175,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => emptyPage.continue(),
+        () => continuePage.continue(),
         () => event.submit('Submit', 'Defendant notified'),
         () => event.returnToCaseDetails()
       ]);
@@ -269,6 +266,7 @@ module.exports = function () {
         () => event.submit('Submit your response', 'You\'ve chosen to proceed with the claim\nClaim number: '),
         () => this.click('Close and Return to case details')
       ]);
+      await this.takeScreenshot();
     },
 
     async respondToDefenceDropClaim() {
@@ -280,6 +278,7 @@ module.exports = function () {
         () => event.submit('Submit your response', 'You\'ve chosen not to proceed with the claim'),
         () => this.click('Close and Return to case details')
       ]);
+      await this.takeScreenshot();
     },
 
     async caseProceedsInCaseman() {
@@ -288,8 +287,9 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
-        () => takeCaseOffline.takeCaseOffline(),
+        () => takeCaseOffline.takeCaseOffline()
       ]);
+      await this.takeScreenshot();
     },
 
     async assertNoEventsAvailable() {
