@@ -5,6 +5,7 @@ const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
+const emptyPage = require('./pages/emptyPage.page');
 const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
@@ -69,7 +70,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 
-const getScreenshotName= () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 
 module.exports = function () {
   return actor({
@@ -127,9 +128,8 @@ module.exports = function () {
       await this.takeScreenshot();
       await this.retryUntilExists(() => createCasePage.selectCaseType(), 'ccd-markdown');
 
-      await this.runAccessibilityTest();
       await this.triggerStepsWithScreenshot([
-        () => this.clickContinue(),
+        () => emptyPage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
         () => party.enterParty('applicant1', address),
@@ -164,11 +164,10 @@ module.exports = function () {
 
     async notifyClaim() {
       eventName = 'Notify claim';
-      await caseViewPage.startEvent(eventName, caseId);
 
-      await this.runAccessibilityTest();
       await this.triggerStepsWithScreenshot([
-        () => this.clickContinue(),
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => emptyPage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
       ]);
@@ -176,11 +175,10 @@ module.exports = function () {
 
     async notifyClaimDetails() {
       eventName = 'Notify claim details';
-      await caseViewPage.startEvent(eventName, caseId);
 
-      await this.runAccessibilityTest();
       await this.triggerStepsWithScreenshot([
-        () => this.clickContinue(),
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => emptyPage.continue(),
         () => event.submit('Submit', 'Defendant notified'),
         () => event.returnToCaseDetails()
       ]);
@@ -188,9 +186,9 @@ module.exports = function () {
 
     async acknowledgeClaim(responseIntention) {
       eventName = 'Acknowledge claim';
-      await caseViewPage.startEvent(eventName, caseId);
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
         () => confirmDetailsPage.confirmReference(),
         () => responseIntentionPage.selectResponseIntention(responseIntention),
@@ -202,9 +200,9 @@ module.exports = function () {
 
     async informAgreedExtensionDate() {
       eventName = 'Inform agreed extension date';
-      await caseViewPage.startEvent(eventName, caseId);
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => extensionDatePage.enterExtensionDate(),
         () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
@@ -213,9 +211,9 @@ module.exports = function () {
 
     async addDefendantLitigationFriend() {
       eventName = 'Add litigation friend';
-      await caseViewPage.startEvent(eventName, caseId);
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(address, TEST_FILE_PATH),
         () => event.submit('Submit', 'You have added litigation friend details'),
         () => event.returnToCaseDetails()
@@ -224,9 +222,9 @@ module.exports = function () {
 
     async respondToClaim(responseType) {
       eventName = 'Respond to claim';
-      await caseViewPage.startEvent(eventName, caseId);
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => responseTypePage.selectResponseType(responseType),
         ...responseType === 'fullDefence' ? [
           () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
@@ -252,9 +250,9 @@ module.exports = function () {
 
     async respondToDefence() {
       eventName = 'View and respond to defence';
-      await caseViewPage.startEvent(eventName, caseId);
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.proceedWithClaim(),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
@@ -274,9 +272,10 @@ module.exports = function () {
     },
 
     async respondToDefenceDropClaim() {
-      await caseViewPage.startEvent('View and respond to defence', caseId);
+      eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.dropClaim(),
         () => event.submit('Submit your response', 'You\'ve chosen not to proceed with the claim'),
         () => this.click('Close and Return to case details')
@@ -285,9 +284,9 @@ module.exports = function () {
 
     async caseProceedsInCaseman() {
       eventName = 'Case proceeds in Caseman';
-      await caseViewPage.startEvent(eventName, caseId);
 
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
         () => takeCaseOffline.takeCaseOffline(),
       ]);
