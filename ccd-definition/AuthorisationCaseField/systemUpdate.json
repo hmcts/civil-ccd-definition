@@ -285,5 +285,161 @@
     "CaseFieldID": "totalClaimAmount",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimInterestLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimInterest",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimInterestHelpTextLink",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimOptionsLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimOptions",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sameRateInterestSelectionLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sameRateInterestSelection",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breakDownInterestLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breakDownInterestTotal",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breakDownInterestDescription",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimFromLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimFrom",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimUntilLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimUntil",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestFromSpecificDateLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestFromSpecificDate",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestFromSpecificDateDescription",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "calculatedInterest",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
   }
 ]

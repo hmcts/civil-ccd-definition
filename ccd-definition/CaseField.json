@@ -931,5 +931,152 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+  "LiveFrom": "01/01/2017",
+  "CaseTypeID": "CIVIL",
+  "ID": "claimInterestLabel",
+  "Label": "## Do you want to claim interest?",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+},
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "claimInterest",
+    "Label": "You can claim interest on the money your client is owed. The court will decide if they’re entitled to it.\n\n",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "claimInterestHelpTextLink",
+    "Label": " Help with interest rates\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate.\n The court will decide if you're entitled to some, or all, of the interest claimed.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestClaimOptionsLabel",
+    "Label": "## How do you want to claim interest?\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestClaimOptions",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "InterestOptions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "sameRateInterestSelectionLabel",
+    "Label": "## What annual rate of interest do you want to claim?\n You can claim 8% per year unless you know that a different rate applies\n\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "sameRateInterestSelection",
+    "Label": " ",
+    "FieldType": "SameRateInterestOptions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "breakDownInterestLabel",
+    "Label": "## What is the total interest for your claim?\n Calculate interest for different periods of time, or items, and let us know the total. We’ll add it to your claim amount.\n\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "breakDownInterestTotal",
+    "Label": "Total interest amount\n",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "breakDownInterestDescription",
+    "Label": "Show how you calculated the amount\n",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestClaimFromLabel",
+    "Label": "## When are you claiming interest from?\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestClaimFrom",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "InterestClaimFrom",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestClaimUntilLabel",
+    "Label": "## When are you claiming interest to?\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestClaimUntil",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "InterestClaimUntil",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestFromSpecificDateLabel",
+    "Label": "## Date you want to claim interest from\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestFromSpecificDate",
+    "Label": "For example, 22 04 2021\n",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "interestFromSpecificDateDescription",
+    "Label": "Explain why you’re claiming from this date\n",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "calculatedInterest",
+    "Label": "Total Interest",
+    "FieldType": "Number",
+    "SecurityClassification": "Public"
   }
 ]
