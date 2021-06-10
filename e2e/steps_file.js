@@ -5,6 +5,7 @@ const output = require('codeceptjs').output;
 const config = require('./config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
+const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
@@ -66,7 +67,10 @@ const CASE_HEADER = 'ccd-case-header > h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
-let caseId;
+let caseId, screenshotNumber, eventName, currentEventName;
+let eventNumber = 0;
+
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 
 module.exports = function () {
   return actor({
@@ -95,141 +99,197 @@ module.exports = function () {
       }, SIGNED_OUT_SELECTOR);
     },
 
-    async createCase(litigantInPerson = false) {
-      this.click('Create case');
-      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-      await this.retryUntilExists(() => createCasePage.selectCaseType(), 'ccd-markdown');
-      await this.runAccessibilityTest();
-      await this.clickContinue();
-      await solicitorReferencesPage.enterReferences();
-      await chooseCourtPage.enterCourt();
-      await party.enterParty('applicant1', address);
-      await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
-      await claimantSolicitorIdamDetailsPage.enterUserEmail();
-      await claimantSolicitorOrganisation.enterOrganisationDetails();
-      await party.enterParty('respondent1', address);
-      if (litigantInPerson) {
-        await respondentRepresentedPage.enterRespondentRepresented('no');
-      } else {
-        await respondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisation.enterOrganisationDetails();
-        await defendantSolicitorEmail.enterSolicitorEmail();
+    async takeScreenshot() {
+      if (currentEventName !== eventName) {
+        currentEventName = eventName;
+        eventNumber++;
+        screenshotNumber = 0;
       }
-      await claimTypePage.selectClaimType();
-      await personalInjuryTypePage.selectPersonalInjuryType();
-      await detailsOfClaimPage.enterDetailsOfClaim();
-      await uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim();
-      await uploadParticularsOfClaim.upload(TEST_FILE_PATH);
-      await claimValuePage.enterClaimValue();
-      await pbaNumberPage.selectPbaNumber();
-      await paymentReferencePage.updatePaymentReference();
-      await statementOfTruth.enterNameAndRole('claim');
-      let expectedMessage = litigantInPerson ?
-        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-      await event.submit('Submit', expectedMessage);
+      screenshotNumber++;
+      await this.saveScreenshot(getScreenshotName(), true);
+    },
 
-      await event.returnToCaseDetails();
+    triggerStepsWithScreenshot: async function (steps) {
+      for (let i = 0; i < steps.length; i++) {
+        try {
+          await this.takeScreenshot();
+        } catch {
+          output.log(`Error taking screenshot: ${getScreenshotName()}`);
+        }
+        await steps[i]();
+      }
+    },
+
+    async createCase(litigantInPerson = false) {
+      eventName = 'Create case';
+
+      await this.triggerStepsWithScreenshot([
+        () => this.click(eventName),
+        () => this.retryUntilExists(() => createCasePage.selectCaseType(config.definition.jurisdiction), 'ccd-markdown'),
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.enterCourt(),
+        () => party.enterParty('applicant1', address),
+        () => claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH),
+        () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
+        () => claimantSolicitorOrganisation.enterOrganisationDetails(),
+        () => party.enterParty('respondent1', address),
+        ... litigantInPerson ? [
+          () => respondentRepresentedPage.enterRespondentRepresented('no')
+        ] : [],
+        ... !litigantInPerson ? [
+          () => respondentRepresentedPage.enterRespondentRepresented('yes'),
+          () => defendantSolicitorOrganisation.enterOrganisationDetails(),
+          () => defendantSolicitorEmail.enterSolicitorEmail()
+        ] : [],
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(),
+        () => pbaNumberPage.selectPbaNumber(),
+        () => paymentReferencePage.updatePaymentReference(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit', litigantInPerson ?
+          'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: '),
+        () => event.returnToCaseDetails()
+      ]);
+
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
 
     async notifyClaim() {
-      await caseViewPage.startEvent('Notify claim', caseId);
-      await this.runAccessibilityTest();
-      await this.clickContinue();
-      await event.submit('Submit', 'Notification of claim sent');
-      await event.returnToCaseDetails();
+      eventName = 'Notify claim';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => continuePage.continue(),
+        () => event.submit('Submit', 'Notification of claim sent'),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async notifyClaimDetails() {
-      await caseViewPage.startEvent('Notify claim details', caseId);
-      await this.runAccessibilityTest();
-      await this.clickContinue();
-      await event.submit('Submit', 'Defendant notified');
-      await event.returnToCaseDetails();
+      eventName = 'Notify claim details';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => continuePage.continue(),
+        () => event.submit('Submit', 'Defendant notified'),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async acknowledgeClaim(responseIntention) {
-      await caseViewPage.startEvent('Acknowledge claim', caseId);
-      await respondentDetails.verifyDetails();
-      await confirmDetailsPage.confirmReference();
-      await responseIntentionPage.selectResponseIntention(responseIntention);
-      // temporarily commenting out whilst change is made to service repo
-      await event.submit('Acknowledge claim', '');
-      await event.returnToCaseDetails();
+      eventName = 'Acknowledge claim';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => respondentDetails.verifyDetails(),
+        () => confirmDetailsPage.confirmReference(),
+        () => responseIntentionPage.selectResponseIntention(responseIntention),
+        // temporarily commenting out whilst change is made to service repo
+        () => event.submit('Acknowledge claim', ''),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async informAgreedExtensionDate() {
-      await caseViewPage.startEvent('Inform agreed extension date', caseId);
-      await extensionDatePage.enterExtensionDate();
-      await event.submit('Submit', 'Extension deadline submitted');
-      await event.returnToCaseDetails();
+      eventName = 'Inform agreed extension date';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => extensionDatePage.enterExtensionDate(),
+        () => event.submit('Submit', 'Extension deadline submitted'),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async addDefendantLitigationFriend() {
-      await caseViewPage.startEvent('Add litigation friend', caseId);
-      await defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(address, TEST_FILE_PATH);
-      await event.submit('Submit', 'You have added litigation friend details');
-      await event.returnToCaseDetails();
+      eventName = 'Add litigation friend';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(address, TEST_FILE_PATH),
+        () => event.submit('Submit', 'You have added litigation friend details'),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async respondToClaim(responseType) {
-      await caseViewPage.startEvent('Respond to claim', caseId);
-      await responseTypePage.selectResponseType(responseType);
-      if (responseType === 'fullDefence') {
-        await this.respondToClaimFullDefence();
-      }
-      await event.submit('Submit', 'You\'ve submitted your response');
-      await event.returnToCaseDetails();
-    },
+      eventName = 'Respond to claim';
 
-    async respondToClaimFullDefence() {
-      await uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH);
-      await respondentDetails.verifyDetails();
-      await confirmDetailsPage.confirmReference();
-      await fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1);
-      await disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.RESPONDENT_SOLICITOR_1);
-      await disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.RESPONDENT_SOLICITOR_1);
-      await expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1);
-      await witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1);
-      await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1);
-      await hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1);
-      await draftDirectionsPage.upload(parties.RESPONDENT_SOLICITOR_1, TEST_FILE_PATH);
-      await requestedCourtPage.selectSpecificCourtForHearing(parties.RESPONDENT_SOLICITOR_1);
-      await hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1);
-      await furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1);
-      await statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ');
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => responseTypePage.selectResponseType(responseType),
+        ...responseType === 'fullDefence' ? [
+          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
+          () => respondentDetails.verifyDetails(),
+          () => confirmDetailsPage.confirmReference(),
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.RESPONDENT_SOLICITOR_1),
+          () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.RESPONDENT_SOLICITOR_1),
+          () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+          () => hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => draftDirectionsPage.upload(parties.RESPONDENT_SOLICITOR_1, TEST_FILE_PATH),
+          () => requestedCourtPage.selectSpecificCourtForHearing(parties.RESPONDENT_SOLICITOR_1),
+          () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+          () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+        ] : [],
+        () => event.submit('Submit', 'You\'ve submitted your response'),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async respondToDefence() {
-      await caseViewPage.startEvent('View and respond to defence', caseId);
-      await proceedPage.proceedWithClaim();
-      await uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH);
-      await fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1);
-      await disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1);
-      await disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1);
-      await expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1);
-      await witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1);
-      await welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1);
-      await hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1);
-      await draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH);
-      await hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1);
-      await furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1);
-      await statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ');
-      await event.submit('Submit your response', 'You\'ve chosen to proceed with the claim\nClaim number: ');
-      await this.click('Close and Return to case details');
+      eventName = 'View and respond to defence';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => proceedPage.proceedWithClaim(),
+        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
+        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
+        () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
+        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+        () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1),
+        () => draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
+        () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit your response', 'You\'ve chosen to proceed with the claim\nClaim number: '),
+        () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
     },
 
     async respondToDefenceDropClaim() {
-      await caseViewPage.startEvent('View and respond to defence', caseId);
-      await proceedPage.dropClaim();
-      await event.submit('Submit your response', 'You\'ve chosen not to proceed with the claim');
-      await this.click('Close and Return to case details');
+      eventName = 'View and respond to defence';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => proceedPage.dropClaim(),
+        () => event.submit('Submit your response', 'You\'ve chosen not to proceed with the claim'),
+        () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
     },
 
     async caseProceedsInCaseman() {
-      await caseViewPage.startEvent('Case proceeds in Caseman', caseId);
-      await caseProceedsInCasemanPage.enterTransferDate();
-      await takeCaseOffline.takeCaseOffline();
+      eventName = 'Case proceeds in Caseman';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseProceedsInCasemanPage.enterTransferDate(),
+        () => takeCaseOffline.takeCaseOffline()
+      ]);
+      await this.takeScreenshot();
     },
 
     async assertNoEventsAvailable() {
