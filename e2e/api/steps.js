@@ -76,7 +76,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'Your claim will not be issued until payment is confirmed.'
-    }, true);
+    });
 
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
@@ -99,7 +99,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -117,7 +117,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -136,7 +136,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'You have until DATE to notify the defendant of the claim and claim details.'
-    }, true);
+    });
 
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
@@ -154,7 +154,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Claim pending',
       body: 'Your claim will be processed. Wait for us to contact you.'
-    }, true);
+    });
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
@@ -186,7 +186,7 @@ module.exports = {
     await assertSubmittedEvent('CASE_ISSUED', {
       header: 'Documents uploaded successfully',
       body: ''
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -204,7 +204,7 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
       header: 'Notification of claim sent',
       body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -224,7 +224,7 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Defendant notified',
       body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -269,7 +269,7 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -296,7 +296,7 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Extension deadline submitted',
       body: 'You must respond to the claimant by'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -326,7 +326,7 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
       header: 'You\'ve submitted your response',
       body: 'We will let you know when they respond.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
@@ -356,7 +356,7 @@ module.exports = {
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: 'You\'ve chosen to proceed with the claim',
       body: '>We\'ll review the case and contact you to tell you what to do next.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -375,7 +375,7 @@ module.exports = {
     await assertSubmittedEvent('ADD_DEFENDANT_LITIGATION_FRIEND', {
       header: 'You have added litigation friend details',
       body: '<br />'
-    }, true);
+    });
   },
 
   moveCaseToCaseman: async (user) => {
@@ -454,11 +454,10 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
   }
 };
 
-const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback) => {
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
-
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
