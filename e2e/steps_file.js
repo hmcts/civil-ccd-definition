@@ -74,6 +74,7 @@ let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 module.exports = function () {
   return actor({
@@ -136,25 +137,25 @@ module.exports = function () {
         () => claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH),
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
-        ... config.multipartyTestsEnabled ? [
+        ... conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherClaimant.enterAddAnotherClaimant()
-        ] : [],
+        ]),
         () => party.enterParty('respondent1', address),
-        ... litigantInPerson ? [
+        ... conditionalSteps(litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
-        ] : [],
-        ...!litigantInPerson ? [
+        ]),
+        ... conditionalSteps(!litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent1'),
           () => defendantSolicitorEmail.enterSolicitorEmail()
-        ] : [],
-        ...config.multipartyTestsEnabled ? [
+        ]),
+        ... conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherDefendant.enterAddAnotherDefendant(),
           () => party.enterParty('respondent2', address),
           () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
           () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent2')
-        ] : [],
+        ]),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -236,7 +237,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => responseTypePage.selectResponseType(responseType),
-        ...responseType === 'fullDefence' ? [
+        ... conditionalSteps(responseType === 'fullDefence', [
           () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
           () => respondentDetails.verifyDetails(),
           () => confirmDetailsPage.confirmReference(),
@@ -252,7 +253,7 @@ module.exports = function () {
           () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
           () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
           () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
-        ] : [],
+        ]),
         () => event.submit('Submit', 'You\'ve submitted your response'),
         () => event.returnToCaseDetails()
       ]);
