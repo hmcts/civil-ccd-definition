@@ -47,6 +47,7 @@ fi
 
 zip -r civil-ccd-definition.zip ccd-definition
 zip -r civil-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock saucelabs.conf.js
+zip -r civil-screenshots.zip output
 cp build/ccd-release-config/civil-ccd-aat.xlsx civil-ccd-aat.xlsx
 cp build/ccd-release-config/civil-ccd-prod.xlsx civil-ccd-prod.xlsx
 
@@ -57,6 +58,7 @@ uploadReleaseAsset civil-ccd-definition $releaseId civil-ccd-definition.zip
 uploadReleaseAsset civil-ccd-definition $releaseId civil-e2e.zip
 uploadReleaseAsset civil-ccd-definition $releaseId civil-ccd-aat.xlsx
 uploadReleaseAsset civil-ccd-definition $releaseId civil-ccd-prod.xlsx
+uploadReleaseAsset civil-ccd-definition $releaseId civil-screenshots.zip
 
 rm civil-ccd-definition.zip
 rm civil-e2e.zip
