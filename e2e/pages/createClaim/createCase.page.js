@@ -9,12 +9,16 @@ module.exports = {
   },
   startButton: 'Start',
 
-  async selectCaseType(jurisdiction) {
+  async createCase(jurisdiction) {
+    I.click('Create case');
     I.waitForElement(`#cc-jurisdiction > option[value="${jurisdiction}"]`);
-    I.selectOption(this.fields.jurisdiction, 'Civil');
-    I.selectOption(this.fields.caseType, 'Civil');
-    I.selectOption(this.fields.event, 'Create claim');
-    await I.click(this.startButton);
+
+    await I.retryUntilExists(() => {
+      I.selectOption(this.fields.jurisdiction, 'Civil');
+      I.selectOption(this.fields.caseType, 'Civil');
+      I.selectOption(this.fields.event, 'Create claim');
+      I.click(this.startButton);
+    }, 'ccd-markdown');
   }
 };
 
