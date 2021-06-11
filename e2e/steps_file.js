@@ -2,7 +2,7 @@
 
 const output = require('codeceptjs').output;
 
-const config = require('./config.js');
+const config = require('config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
 const continuePage = require('./pages/continuePage.page');
