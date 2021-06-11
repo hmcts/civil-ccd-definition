@@ -1007,14 +1007,6 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "specRespondentSolicitor1OrgOfflineLabel",
-    "Label": "<div class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</div>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
     "ID": "specDetailsOfClaimLabel",
     "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.",
     "FieldType": "Label",

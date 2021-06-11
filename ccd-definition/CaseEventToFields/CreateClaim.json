@@ -538,7 +538,7 @@
     "PageID": "Defendant",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent1",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/applicant",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -602,7 +602,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "UnRegisteredDefendantSolicitorOrganisation",
-    "PageLabel": "Defendant's legal representative’s details",
+    "PageLabel": "Add defendant's legal representative’s details",
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
@@ -612,25 +612,13 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "specRespondentSolicitor1OrgOfflineLabel",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "UnRegisteredDefendantSolicitorOrganisation",
-    "PageLabel": "Defendant's legal representative’s details",
-    "PageDisplayOrder": 10,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
+    "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "UnRegisteredDefendantSolicitorOrganisation",
-    "PageDisplayOrder": 10,
+    "PageDisplayOrder": 11,
     "PageColumnNumber": 1,
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/applicant",
     "ShowSummaryChangeOption": "Y"
   },
   {

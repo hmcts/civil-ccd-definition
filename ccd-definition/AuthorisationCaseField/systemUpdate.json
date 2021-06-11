@@ -343,12 +343,5 @@
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specRespondentSolicitor1OrgOfflineLabel",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
   }
 ]
