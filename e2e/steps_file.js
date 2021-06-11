@@ -123,9 +123,8 @@ module.exports = function () {
     async createCase(litigantInPerson = false) {
       eventName = 'Create case';
 
+      await createCasePage.createCase(config.definition.jurisdiction);
       await this.triggerStepsWithScreenshot([
-        () => this.click(eventName),
-        () => this.retryUntilExists(() => createCasePage.selectCaseType(config.definition.jurisdiction), 'ccd-markdown'),
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
