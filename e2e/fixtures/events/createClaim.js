@@ -1,4 +1,5 @@
 const { document, element, listElement, buildAddress } = require('../../api/dataHelper');
+const config = require('../../config.js');
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -34,7 +35,7 @@ const invalidPba = listElement('PBA0078095');
 
 const createClaimData = (legalRepresentation, useValidPba) => {
   selectedPba = useValidPba ? validPba : invalidPba;
-  return {
+  const claimData = {
     References: {
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
@@ -74,6 +75,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         }
       }
     },
+    AddAnotherClaimant: {},
     Defendant: {
       respondent1: respondent1
     },
@@ -93,6 +95,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
     },
+    AddAnotherDefendant: {},
     ClaimType: {
       claimType: 'PERSONAL_INJURY'
     },
@@ -134,6 +137,19 @@ const createClaimData = (legalRepresentation, useValidPba) => {
       }
     },
   };
+
+  if (config.multipartyTestsEnabled) {
+    return {
+      ...claimData,
+      AddAnotherClaimant: {
+        addApplicant2: 'No'
+      },
+      AddAnotherDefendant: {
+        addRespondent2: 'No'
+      },
+    };
+  }
+  return claimData;
 };
 
 module.exports = {

@@ -10,11 +10,14 @@ const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
+const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
 const defendantSolicitorEmail = require('./pages/createClaim/defendantSolicitorEmail.page');
 const chooseCourtPage = require('./pages/createClaim/chooseCourt.page');
 const claimantLitigationDetails = require('./pages/createClaim/claimantLitigationDetails.page');
+const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
+const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const claimTypePage = require('./pages/createClaim/claimType.page');
 const respondentRepresentedPage = require('./pages/createClaim/isRespondentRepresented.page');
 const personalInjuryTypePage = require('./pages/createClaim/personalInjuryType.page');
@@ -71,6 +74,7 @@ let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 module.exports = function () {
   return actor({
@@ -132,15 +136,25 @@ module.exports = function () {
         () => claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH),
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
+        ... conditionalSteps(config.multipartyTestsEnabled, [
+          () => addAnotherClaimant.enterAddAnotherClaimant()
+        ]),
         () => party.enterParty('respondent1', address),
-        ... litigantInPerson ? [
-          () => respondentRepresentedPage.enterRespondentRepresented('no')
-        ] : [],
-        ... !litigantInPerson ? [
-          () => respondentRepresentedPage.enterRespondentRepresented('yes'),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails(),
+        ... conditionalSteps(litigantInPerson, [
+          () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
+        ]),
+        ... conditionalSteps(!litigantInPerson, [
+          () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
+          () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent1'),
           () => defendantSolicitorEmail.enterSolicitorEmail()
-        ] : [],
+        ]),
+        ... conditionalSteps(config.multipartyTestsEnabled, [
+          () => addAnotherDefendant.enterAddAnotherDefendant(),
+          () => party.enterParty('respondent2', address),
+          () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
+          () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
+          () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent2')
+        ]),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -222,7 +236,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => responseTypePage.selectResponseType(responseType),
-        ...responseType === 'fullDefence' ? [
+        ... conditionalSteps(responseType === 'fullDefence', [
           () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
           () => respondentDetails.verifyDetails(),
           () => confirmDetailsPage.confirmReference(),
@@ -238,7 +252,7 @@ module.exports = function () {
           () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
           () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
           () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
-        ] : [],
+        ]),
         () => event.submit('Submit', 'You\'ve submitted your response'),
         () => event.returnToCaseDetails()
       ]);
