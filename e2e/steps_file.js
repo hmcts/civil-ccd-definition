@@ -10,9 +10,11 @@ const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
+const claimantSolicitorServiceAddress = require('./pages/createClaim/claimantSolicitorServiceAddress.page');
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
+const defendantSolicitorServiceAddress = require('./pages/createClaim/defendantSolicitorServiceAddress.page');
 const defendantSolicitorEmail = require('./pages/createClaim/defendantSolicitorEmail.page');
 const chooseCourtPage = require('./pages/createClaim/chooseCourt.page');
 const claimantLitigationDetails = require('./pages/createClaim/claimantLitigationDetails.page');
@@ -136,6 +138,7 @@ module.exports = function () {
         () => claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH),
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
+        () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
         ... conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherClaimant.enterAddAnotherClaimant()
         ]),
@@ -146,6 +149,7 @@ module.exports = function () {
         ... conditionalSteps(!litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent1'),
+          () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => defendantSolicitorEmail.enterSolicitorEmail()
         ]),
         ... conditionalSteps(config.multipartyTestsEnabled, [
