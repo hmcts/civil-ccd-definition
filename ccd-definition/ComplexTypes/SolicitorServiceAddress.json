@@ -4,6 +4,7 @@
     "ListElementCode": "hasSolicitorServiceAddress",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want to enter a service address for correspondence?",
+    "HintText": "This should be the address provided by the Claimant’s legal representative.",
     "SecurityClassification": "Public"
   },
   {
