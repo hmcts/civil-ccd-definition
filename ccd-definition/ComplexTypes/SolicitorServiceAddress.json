@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "SolicitorServiceAddress",
+    "ListElementCode": "hasSolicitorServiceAddress",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you want to enter a service address for correspondence?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SolicitorServiceAddress",
+    "ListElementCode": "address",
+    "FieldType": "AddressUK",
+    "ElementLabel": "Enter the correspondence address of the organisation",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hasSolicitorServiceAddress = \"Yes\""
+  }
+]

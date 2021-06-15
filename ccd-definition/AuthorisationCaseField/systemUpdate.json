@@ -25,6 +25,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1LitigationFriend",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -32,6 +38,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },

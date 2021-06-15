@@ -6,7 +6,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "AddAnotherClaimant",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1
   },
   {
@@ -16,7 +16,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "AddAnotherClaimant",
-    "PageDisplayOrder": 8,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -27,7 +27,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "AddAnotherDefendant",
-    "PageDisplayOrder": 13,
+    "PageDisplayOrder": 15,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -38,7 +38,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "SecondDefendant",
-    "PageDisplayOrder": 14,
+    "PageDisplayOrder": 16,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "addRespondent2=\"Yes\""
@@ -50,7 +50,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "SecondDefendantLegalRepresentation",
-    "PageDisplayOrder": 15,
+    "PageDisplayOrder": 17,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "addRespondent2=\"Yes\""
@@ -62,7 +62,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "SameLegalRepresentative",
-    "PageDisplayOrder": 16,
+    "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent2Represented=\"Yes\""
@@ -75,7 +75,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SecondDefendantSolicitorOrganisation",
     "PageLabel": "Search for the second defendant's legal representative",
-    "PageDisplayOrder": 17,
+    "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/rep2OrgPolicy",
@@ -88,9 +88,22 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "SecondDefendantSolicitorOrganisation",
-    "PageDisplayOrder": 17,
+    "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
     "FieldShowCondition": "respondent2OrgRegistered=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SecondDefendantSolicitorServiceAddress",
+    "PageLabel": "Second respondent representative’s service address",
+    "PageDisplayOrder": 20,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
   }
 ]

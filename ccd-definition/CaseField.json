@@ -544,6 +544,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitor1ServiceAddress",
+    "Label": " ",
+    "FieldType": "SolicitorServiceAddress",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant2OrganisationPolicy",
     "Label": "Applicant 2 organisation policy",
     "FieldType": "OrganisationPolicy",
@@ -554,6 +561,20 @@
     "ID": "respondent1OrganisationPolicy",
     "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1ServiceAddress",
+    "Label": " ",
+    "FieldType": "SolicitorServiceAddress",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2ServiceAddress",
+    "Label": " ",
+    "FieldType": "SolicitorServiceAddress",
     "SecurityClassification": "Public"
   },
   {
