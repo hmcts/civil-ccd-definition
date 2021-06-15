@@ -175,7 +175,7 @@
     "ID": "Respondent2ServiceAddress",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2ServiceAddress",
-    "ListElementCode": "hasSolicitorServiceAddress",
+    "ListElementCode": "hasServiceAddress",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },

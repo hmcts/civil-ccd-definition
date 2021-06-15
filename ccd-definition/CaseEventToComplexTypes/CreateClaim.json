@@ -196,7 +196,7 @@
     "ID": "Claimant1ServiceAddress",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ServiceAddress",
-    "ListElementCode": "hasSolicitorServiceAddress",
+    "ListElementCode": "hasServiceAddress",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -397,7 +397,7 @@
     "ID": "Respondent1ServiceAddress",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1ServiceAddress",
-    "ListElementCode": "hasSolicitorServiceAddress",
+    "ListElementCode": "hasServiceAddress",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },

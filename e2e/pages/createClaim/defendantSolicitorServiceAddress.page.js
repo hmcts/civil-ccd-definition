@@ -6,8 +6,8 @@ const postcodeLookup = require('./../../fragments/addressPostcodeLookup');
 module.exports = {
 
   fields: {
-    respondentSolicitor1ServiceAddress_hasSolicitorServiceAddress: {
-      id: '#respondentSolicitor1ServiceAddress_hasSolicitorServiceAddress',
+    respondentSolicitor1ServiceAddress_hasServiceAddress: {
+      id: '#respondentSolicitor1ServiceAddress_hasServiceAddress',
       options: {
         yes: 'Yes',
         no: 'No'
@@ -16,10 +16,10 @@ module.exports = {
   },
 
   async enterOrganisationServiceAddress() {
-    I.waitForElement(this.fields.respondentSolicitor1ServiceAddress_hasSolicitorServiceAddress.id);
+    I.waitForElement(this.fields.respondentSolicitor1ServiceAddress_hasServiceAddress.id);
     await I.runAccessibilityTest();
-    await within(this.fields.respondentSolicitor1ServiceAddress_hasSolicitorServiceAddress.id, () => {
-      I.click(this.fields.respondentSolicitor1ServiceAddress_hasSolicitorServiceAddress.options.yes);
+    await within(this.fields.respondentSolicitor1ServiceAddress_hasServiceAddress.id, () => {
+      I.click(this.fields.respondentSolicitor1ServiceAddress_hasServiceAddress.options.yes);
     });
 
     postcodeLookup.enterAddressManually(address);
