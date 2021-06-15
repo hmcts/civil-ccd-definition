@@ -538,7 +538,7 @@
     "PageID": "Defendant",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/applicant",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent1",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -606,6 +606,7 @@
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondentSolicitor1",
     "PageShowCondition": "respondent1OrgRegistered=\"No\""
   },
   {
@@ -618,7 +619,7 @@
     "PageID": "UnRegisteredDefendantSolicitorOrganisation",
     "PageDisplayOrder": 11,
     "PageColumnNumber": 1,
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/applicant",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondentSolicitor1",
     "ShowSummaryChangeOption": "Y"
   },
   {
