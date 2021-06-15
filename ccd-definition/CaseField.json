@@ -1016,7 +1016,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specDetailsOfClaimLabel",
-    "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.\n\nYou'll have to pay an extra fee if you want to change the details of the claim later.",
+    "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
