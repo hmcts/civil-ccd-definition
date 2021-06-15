@@ -22,7 +22,7 @@ module.exports = {
       I.click(this.fields.applicantSolicitor1ServiceAddress_hasSolicitorServiceAddress.options.yes);
     });
 
-    postcodeLookup.enterAddressManually(address)
+    postcodeLookup.enterAddressManually(address);
 
     await I.clickContinue();
   }
