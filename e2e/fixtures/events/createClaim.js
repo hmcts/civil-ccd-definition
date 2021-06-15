@@ -75,6 +75,12 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         }
       }
     },
+    ClaimantSolicitorServiceAddress: {
+      applicantSolicitor1ServiceAddress: {
+        hasServiceAddress: 'Yes',
+        address: buildAddress('service')
+      }
+    },
     AddAnotherClaimant: {},
     Defendant: {
       respondent1: respondent1
@@ -91,6 +97,12 @@ const createClaimData = (legalRepresentation, useValidPba) => {
           OrganisationID: '79ZRSOU'
         },
       },
+    },
+    DefendantSolicitorServiceAddress: {
+      respondentSolicitor1ServiceAddress: {
+        hasServiceAddress: 'Yes',
+        address: buildAddress('service')
+      }
     },
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
