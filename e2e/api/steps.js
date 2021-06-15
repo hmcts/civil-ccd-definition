@@ -323,9 +323,10 @@ module.exports = {
     await assertError('Hearing', data[eventName].invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
+    //TODO: update when service repo has new content (CMC-1265)
     await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
-      header: 'You\'ve submitted your response',
-      body: 'We will let you know when they respond.'
+      header: '',
+      body: ''
     });
 
     await waitForFinishedBusinessProcess(caseId);
