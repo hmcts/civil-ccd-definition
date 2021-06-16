@@ -436,7 +436,16 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "calculatedInterest",
+    "CaseFieldID": "sameInterestHelpTextLink",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "calculatedInterestPageLabel",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],

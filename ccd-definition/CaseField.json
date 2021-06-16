@@ -952,7 +952,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimInterestHelpTextLink",
-    "Label": " Help with interest rates\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate.\n The court will decide if you're entitled to some, or all, of the interest claimed.",
+    "Label": "<details><summary><u>Help with interest rates</u></summary><div class=\"panel\">\n\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate. \n\n The court will decide if you're entitled to some, or all, of the interest claimed.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -987,6 +987,14 @@
     "ID": "sameRateInterestSelection",
     "Label": " ",
     "FieldType": "SameRateInterestOptions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "sameInterestHelpTextLink",
+    "Label": "<details><summary><u>Help with interest rates</u></summary><div class=\"panel\">\n\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate. \n\n The court will decide if you're entitled to some, or all, of the interest claimed.</div></details><br />",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -1074,9 +1082,25 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "ID": "calculatedInterestLabel",
+    "Label": " ${calculatedInterest} ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "ID": "calculatedInterest",
-    "Label": "Total Interest",
-    "FieldType": "Number",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "calculatedInterestPageLabel",
+    "Label": "<details><summary><u>How interest to date is calculated</u></summary><div class=\"panel\">\n\n For most types of debt the rate is usually 8%.\n\n To calculate this, we use the steps below.\n\n 1. Work out the yearly interest: take the amount you’re claiming and multiply it by 0.08 (which is 8%). \n\n 2. Work out the daily interest: divide your yearly interest from step 1 by 365 (the number of days in a year). \n\n 3. Work out the total amount of interest: multiply the daily interest from step 2 by the number of days the debt has been overdue.\n\n * The rate of annual interest is 8%.\n\n * Annual interest on, for example, £1,000 is £80 (1000 x 0.08)\n\n * Daily interest on £1,000 is 22p (80 / 365)\n\n * Total amount of interest on £1,000 for 2 days is 44p (80 x 2 / 365)\n\n </div></details><br /> \n\n There may be additional fees as your case progresses. <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/fees-in-the-civil-and-family-courts-main-fees-ex50\">There may be additional fees as your case progresses.</a> ",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
