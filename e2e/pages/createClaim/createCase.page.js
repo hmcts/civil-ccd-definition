@@ -10,8 +10,11 @@ module.exports = {
   startButton: 'Start',
 
   async createCase(jurisdiction) {
-    I.click('Create case');
-    I.waitForElement(`#cc-jurisdiction > option[value="${jurisdiction}"]`);
+    await I.waitForElement('Create case');
+
+    await I.retryUntilExists( () => {
+      I.click('Create case');
+    }, `#cc-jurisdiction > option[value="${jurisdiction}"]`);
 
     await I.retryUntilExists(() => {
       I.selectOption(this.fields.jurisdiction, 'Civil');

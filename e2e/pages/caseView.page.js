@@ -13,11 +13,22 @@ module.exports = {
   },
   goButton: 'Go',
 
-  async startEvent(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
+  start: function (event) {
     I.selectOption(this.fields.eventDropdown, event);
     I.click(this.goButton);
     I.waitForElement(EVENT_TRIGGER_LOCATOR);
+  },
+
+  async startEvent(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    this.start(event);
+
+    if (I.dontSee(event, '.h1')) {
+     await I.retryUntilExists(() => {
+        I.navigateToCaseDetails(caseId);
+        this.start(event);
+      }, event);
+    }
   },
 
   async assertNoEventsAvailable() {

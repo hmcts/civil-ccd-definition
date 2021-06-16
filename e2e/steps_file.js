@@ -310,7 +310,9 @@ module.exports = function () {
     },
 
     async clickContinue() {
+      let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilInvisible(() => this.click('Continue'), locate('.error-summary'));
+      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
     /**
@@ -376,6 +378,41 @@ module.exports = function () {
         }
         if (tryNumber === maxNumberOfTries) {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);
+        }
+      }
+    },
+
+    /**
+     * Retries defined action util url is changed by given action. If url does not change
+     * after 4 tries (run + 3 retries) this step throws an error. If url is already changed, will exit.
+     *
+     * Warning: action logic should avoid framework steps that stop test execution upon step failure as it will
+     *          stop test execution even if there are retries still available. Catching step error does not help.
+     *
+     * @param action - an action that will be retried until either condition is met or max number of retries is reached
+     * @param urlBefore - the url before the action has occurred
+     * @param maxNumberOfTries - maximum number to retry the function for before failing
+     * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
+     */
+    async retryUntilUrlChanges(action, urlBefore, maxNumberOfTries = 6) {
+      let urlAfter = await this.grabCurrentUrl();
+
+      for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
+        output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): starting try #${tryNumber}`);
+        if (tryNumber > 1 && urlBefore !== urlAfter) {
+          output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed before try #${tryNumber} was executed`);
+          break;
+        }
+        await action();
+        urlAfter = await this.grabCurrentUrl();
+        if (urlBefore !== urlAfter) {
+          output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changes after try #${tryNumber} was executed`);
+          break;
+        } else {
+          output.print(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url did not change after try #${tryNumber} was executed`);
+        }
+        if (tryNumber === maxNumberOfTries) {
+          throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached trying to change urls. Before: ${urlBefore}. After: ${urlAfter}`);
         }
       }
     },
