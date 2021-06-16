@@ -817,5 +817,26 @@
     "Label": "Respondent 2 organisation policy",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2EmailAddress",
+    "Label": "Enter defendant legal representative's email address to be used for notifications",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2OrgLabel",
+    "Label": "Enter organisation details manually. The claim will then continue offline.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2OrganisationDetails",
+    "Label": " ",
+    "FieldType": "SolicitorOrganisationDetails",
+    "SecurityClassification": "Public"
   }
 ]
