@@ -57,7 +57,7 @@
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "applicant1LitigationFriendRequired = \"Yes\""
+    "FieldShowCondition": "applicant2LitigationFriendRequired = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",

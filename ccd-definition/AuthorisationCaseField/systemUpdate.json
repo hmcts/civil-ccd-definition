@@ -265,7 +265,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolicitor1OrgLabel",
+    "CaseFieldID": "respondentSolicitor2OrgLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
