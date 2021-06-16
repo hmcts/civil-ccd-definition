@@ -311,7 +311,6 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilInvisible(() => this.click('Continue'), locate('.error-summary'));
       await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
