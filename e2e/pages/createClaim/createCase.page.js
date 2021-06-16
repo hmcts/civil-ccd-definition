@@ -10,7 +10,7 @@ module.exports = {
   startButton: 'Start',
 
   async createCase(jurisdiction) {
-    await I.waitForElement('Create case');
+    await I.waitForElement(locate('.a').withText('Create case'));
 
     await I.retryUntilExists( () => {
       I.click('Create case');
