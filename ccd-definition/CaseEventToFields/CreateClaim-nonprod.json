@@ -136,11 +136,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2Reference",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SecondDefendantSolicitorReference",
+    "PageDisplayOrder": 20,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "SecondDefendantSolicitorEmail",
-    "PageDisplayOrder": 20,
+    "PageLabel": "Second Defendant's legal representative's email",
+    "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
@@ -153,7 +166,7 @@
     "DisplayContext": "READONLY",
     "PageID": "UnRegisteredSecondDefendantSolicitorOrganisation",
     "PageLabel": "Defendant's legal representative’s details",
-    "PageDisplayOrder": 20,
+    "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "respondent2OrgRegistered=\"No\""
@@ -165,7 +178,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "UnRegisteredSecondDefendantSolicitorOrganisation",
-    "PageDisplayOrder": 20,
+    "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }
