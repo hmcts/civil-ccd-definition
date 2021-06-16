@@ -755,6 +755,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant2",
+    "Label": "Second Claimant's details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriendRequired",
+    "Label": "Is the second Claimant a child i.e. under the age of 18?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriend",
+    "Label": "Second Claimant litigation friend details",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "addRespondent2",
     "Label": "Is there another Defendant?",
     "FieldType": "YesOrNo",

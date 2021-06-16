@@ -598,6 +598,27 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriendRequired",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addRespondent2",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

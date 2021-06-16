@@ -205,6 +205,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriendRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addRespondent2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
