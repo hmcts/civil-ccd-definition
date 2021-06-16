@@ -33,7 +33,7 @@
     "ID": "Hearing",
     "ListElementCode": "unavailableDatesRequired",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Are there any dates when you, your client(s), experts or any witnesses are unavailable?",
+    "ElementLabel": "Are there any dates when you, your client, experts or any witnesses are unavailable?",
     "SecurityClassification": "Public"
   },
   {
