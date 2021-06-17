@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "TimelineEvents",
+    "ListElementCode": "timelineDate",
+    "FieldType": "Text",
+    "ElementLabel": "Date",
+    "HintText": "For example 9 December 2020",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TimelineEvents",
+    "ListElementCode": "timelineDescription",
+    "FieldType": "TextArea",
+    "ElementLabel": "What happened",
+    "HintText": "For example you might have signed a contract",
+    "SecurityClassification": "Public"
+  }
+]
