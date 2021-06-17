@@ -1813,6 +1813,13 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specClaimTimeline",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
     "AccessControl": [
       {
@@ -1849,7 +1856,7 @@
     "CaseFieldID": "specClaimTimelineListLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
-  },  
+  },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
