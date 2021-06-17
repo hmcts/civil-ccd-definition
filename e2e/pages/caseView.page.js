@@ -21,10 +21,10 @@ module.exports = {
 
   async startEvent(event, caseId) {
     await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(() => {
-      I.navigateToCaseDetails(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
       this.start(event);
-    }, event);
+    }, locate('.govuk-heading-l'));
   },
 
   async assertNoEventsAvailable() {
