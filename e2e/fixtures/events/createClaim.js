@@ -197,7 +197,9 @@ module.exports = {
         },
         applicant1: applicant1WithPartyName,
         respondent1: respondent1WithPartyName,
-        respondent2: respondent2WithPartyName,
+        ...config.multipartyTestsEnabled ? {
+          respondent2: respondent2WithPartyName
+        } : {}
       },
       ClaimantLitigationFriend: {
         applicant1: applicant1WithPartyName,
