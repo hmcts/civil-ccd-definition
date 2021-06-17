@@ -23,7 +23,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     this.start(event);
 
-    if (I.dontSee(event, '.h1')) {
+    if (I.dontSee(event)) {
      await I.retryUntilExists(() => {
         I.navigateToCaseDetails(caseId);
         this.start(event);
