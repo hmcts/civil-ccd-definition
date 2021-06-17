@@ -77,7 +77,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     },
     ClaimantSolicitorServiceAddress: {
       applicantSolicitor1ServiceAddress: {
-        hasServiceAddress: 'Yes',
+        required: 'Yes',
         address: buildAddress('service')
       }
     },
@@ -100,7 +100,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     },
     DefendantSolicitorServiceAddress: {
       respondentSolicitor1ServiceAddress: {
-        hasServiceAddress: 'Yes',
+        required: 'Yes',
         address: buildAddress('service')
       }
     },

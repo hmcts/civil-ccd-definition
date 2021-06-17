@@ -1,7 +1,7 @@
 [
   {
     "ID": "SolicitorServiceAddress",
-    "ListElementCode": "hasServiceAddress",
+    "ListElementCode": "required",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want to enter a service address for correspondence?",
     "HintText": "This should be the address provided by the Claimant’s legal representative.",
@@ -13,6 +13,6 @@
     "FieldType": "AddressUK",
     "ElementLabel": "Enter the correspondence address of the organisation",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "hasServiceAddress = \"Yes\""
+    "FieldShowCondition": "required = \"Yes\""
   }
 ]

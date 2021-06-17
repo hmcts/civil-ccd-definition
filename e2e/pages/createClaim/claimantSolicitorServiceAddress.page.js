@@ -6,23 +6,26 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    applicantSolicitor1ServiceAddress_hasServiceAddress: {
-      id: '#applicantSolicitor1ServiceAddress_hasServiceAddress',
+    applicantSolicitor1ServiceAddressRequired: {
+      id: '#applicantSolicitor1ServiceAddress_required',
       options: {
         yes: 'Yes',
         no: 'No'
       }
-    }
+    },
+    applicantSolicitor1ServiceAddress: '#applicantSolicitor1ServiceAddress_address_address'
   },
 
   async enterOrganisationServiceAddress() {
-    I.waitForElement(this.fields.applicantSolicitor1ServiceAddress_hasServiceAddress.id);
+    I.waitForElement(this.fields.applicantSolicitor1ServiceAddressRequired.id);
     await I.runAccessibilityTest();
-    await within(this.fields.applicantSolicitor1ServiceAddress_hasServiceAddress.id, () => {
-      I.click(this.fields.applicantSolicitor1ServiceAddress_hasServiceAddress.options.yes);
+    await within(this.fields.applicantSolicitor1ServiceAddressRequired.id, () => {
+      I.click(this.fields.applicantSolicitor1ServiceAddressRequired.options.yes);
     });
 
-    postcodeLookup.enterAddressManually(address);
+    await within(this.fields.applicantSolicitor1ServiceAddress, () => {
+      postcodeLookup.enterAddressManually(address);
+    });
 
     await I.clickContinue();
   }
