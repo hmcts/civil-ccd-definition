@@ -426,10 +426,9 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async navigateToCaseDetailsAs(user, caseNumber) {
+    async loginAs(user) {
       await this.signOut();
       await this.login(user);
-      await this.navigateToCaseDetails(caseNumber);
     },
   });
 };
