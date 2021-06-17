@@ -166,7 +166,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         respondent2: respondent2
       },
       SecondDefendantLegalRepresentation: {
-        respondent1Represented: 'Yes'
+        respondent2Represented: 'Yes'
       },
       SameLegalRepresentative: {
         respondent2SameLegalRepresentative: 'Yes'
