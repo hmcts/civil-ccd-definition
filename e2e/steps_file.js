@@ -259,7 +259,7 @@ module.exports = function () {
           () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
           () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
         ]),
-        () => event.submit('Submit', 'You\'ve submitted your response'),
+        () => event.submit('Submit', ''),
         () => event.returnToCaseDetails()
       ]);
     },
