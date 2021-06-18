@@ -391,7 +391,7 @@
     "CaseFieldID": "respondentSolicitor1ServiceAddress",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Respondent1ServiceAddress",
@@ -439,7 +439,7 @@
     "CaseFieldID": "respondentSolicitor1ServiceAddress",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Upload",
