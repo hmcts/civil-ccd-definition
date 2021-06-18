@@ -544,9 +544,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitor1ServiceAddressRequired",
+    "Label": "Do you want to enter a service address for correspondence?",
+    "HintText": "This should be the address provided by the Claimant’s legal representative.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1ServiceAddress",
-    "Label": " ",
-    "FieldType": "SolicitorServiceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {
@@ -565,16 +573,32 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1ServiceAddressRequired",
+    "Label": "Do you want to enter a service address for correspondence?",
+    "HintText": "This should be the address provided by the Claimant’s legal representative.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1ServiceAddress",
-    "Label": " ",
-    "FieldType": "SolicitorServiceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2ServiceAddressRequired",
+    "Label": "Do you want to enter a service address for correspondence?",
+    "HintText": "This should be the address provided by the Claimant’s legal representative.",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2ServiceAddress",
-    "Label": " ",
-    "FieldType": "SolicitorServiceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {

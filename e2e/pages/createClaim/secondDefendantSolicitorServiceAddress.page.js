@@ -7,13 +7,13 @@ module.exports = {
 
   fields: {
     respondentSolicitor2ServiceAddressRequired: {
-      id: '#respondentSolicitor2ServiceAddress_required',
+      id: '#respondentSolicitor2ServiceAddressRequired',
       options: {
         yes: 'Yes',
         no: 'No'
       }
     },
-    respondentSolicitor2ServiceAddress: '#respondentSolicitor2ServiceAddress_address_address'
+    respondentSolicitor2ServiceAddress: '#respondentSolicitor2ServiceAddress_respondentSolicitor2ServiceAddress'
   },
 
   async enterOrganisationServiceAddress() {

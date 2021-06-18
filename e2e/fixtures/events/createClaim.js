@@ -76,10 +76,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
       }
     },
     ClaimantSolicitorServiceAddress: {
-      applicantSolicitor1ServiceAddress: {
-        required: 'Yes',
-        address: buildAddress('service')
-      }
+      applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
     AddAnotherClaimant: {},
     Defendant: {
@@ -99,10 +96,7 @@ const createClaimData = (legalRepresentation, useValidPba) => {
       },
     },
     DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: {
-        required: 'Yes',
-        address: buildAddress('service')
-      }
+      respondentSolicitor1ServiceAddress: buildAddress('service')
     },
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'

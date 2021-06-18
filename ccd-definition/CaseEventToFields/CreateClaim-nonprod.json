@@ -96,14 +96,27 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "CaseFieldID": "respondentSolicitor2ServiceAddressRequired",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "SecondDefendantSolicitorServiceAddress",
     "PageLabel": "Second respondent representative’s service address",
     "PageDisplayOrder": 20,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SecondDefendantSolicitorServiceAddress",
+    "PageLabel": "Second respondent representative’s service address",
+    "PageDisplayOrder": 20,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "respondentSolicitor2ServiceAddressRequired=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]

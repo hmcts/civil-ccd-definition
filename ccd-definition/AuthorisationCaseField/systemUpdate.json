@@ -25,6 +25,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitor1ServiceAddress",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -43,7 +49,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1ServiceAddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2ServiceAddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
