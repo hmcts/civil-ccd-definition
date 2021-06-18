@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-getToken() {
-  az keyvault secret show --vault-name infra-vault-nonprod --name hmcts-github-apikey --query value -o tsv
-}
-
 repoName=$1
 assetName=$2
-token=$(getToken)
+
+az login --identity
+token=$(az keyvault secret show --vault-name infra-vault-nonprod --name hmcts-github-apikey \
+ --query value -o tsv)
 
 latestAssetId=$(curl -H "Authorization: token ${token}" \
   https://api.github.com/repos/hmcts/${repoName}/releases/latest \
