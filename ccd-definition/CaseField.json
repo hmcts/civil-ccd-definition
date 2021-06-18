@@ -1075,7 +1075,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "listYourEvidenceLabel",
+    "ID": "speclistYourEvidenceLabel",
     "Label": "## List your evidence\nTell us about any evidence you wish to provide. You do not need to send us any evidence now. If your case goes to a court hearing, and is not settled, you will need to provide evidence.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1083,7 +1083,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "listYourEvidenceList",
+    "ID": "speclistYourEvidenceList",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "EvidenceList",
@@ -1092,7 +1092,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "claimAmountLabel",
+    "ID": "specClaimAmountLabel",
     "Label": "## Claim Amount\n Your claim can be for single or multiple amounts. Do not include interest or the claim fee, you can add these on the next page.\n\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
