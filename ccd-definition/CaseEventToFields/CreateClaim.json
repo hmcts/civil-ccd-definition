@@ -879,7 +879,7 @@
     "PageDisplayOrder": 20,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\" OR claimInterest = \"Yes\""
+    "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\" AND claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -916,7 +916,7 @@
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\" OR claimInterest = \"Yes\""
+    "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\" AND claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -978,7 +978,7 @@
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "interestClaimFrom = \"FROM_A_SPECIFIC_DATE\" OR claimInterest = \"Yes\""
+    "PageShowCondition": "interestClaimFrom = \"FROM_A_SPECIFIC_DATE\" AND claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
