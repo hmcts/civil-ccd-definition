@@ -656,7 +656,7 @@
     "PageID": "Details",
     "PageDisplayOrder": 11,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -853,7 +853,7 @@
     "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimInterest = \"Yes\""
+    "PageShowCondition": "claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -879,7 +879,7 @@
     "PageDisplayOrder": 20,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\""
+    "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\" OR claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -916,7 +916,7 @@
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\""
+    "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\" OR claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -952,7 +952,8 @@
     "PageID": "InterestClaimFrom",
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -977,7 +978,7 @@
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "interestClaimFrom = \"FROM_A_SPECIFIC_DATE\""
+    "PageShowCondition": "interestClaimFrom = \"FROM_A_SPECIFIC_DATE\" OR claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -1027,7 +1028,8 @@
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/interest-calc"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/interest-calc",
+    "PageShowCondition": "claimInterest = \"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
