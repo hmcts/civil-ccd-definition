@@ -397,15 +397,11 @@ module.exports = function () {
       let urlAfter = await this.grabCurrentUrl();
 
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
-        output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): starting try #${tryNumber}`);
-        if (tryNumber > 1 && urlBefore !== urlAfter) {
-          output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed before try #${tryNumber} was executed`);
-          break;
-        }
+        output.log(`Checking if URL has changed, starting try #${tryNumber}`);
         await action();
         urlAfter = await this.grabCurrentUrl();
         if (urlBefore !== urlAfter) {
-          output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changes after try #${tryNumber} was executed`);
+          output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed after try #${tryNumber} was executed`);
           break;
         } else {
           output.print(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url did not change after try #${tryNumber} was executed`);

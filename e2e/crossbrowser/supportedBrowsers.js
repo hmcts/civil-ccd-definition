@@ -16,7 +16,6 @@ const supportedBrowsers = {
       browserName: 'MicrosoftEdge',
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
-      remoteFileUpload: 'false',
       'sauce:options': {
         name: 'Civil: Edge_Win10',
       },
