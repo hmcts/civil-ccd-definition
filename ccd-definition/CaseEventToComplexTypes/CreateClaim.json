@@ -1340,5 +1340,23 @@
     "ListElementCode": "email",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineDate",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineDescription",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]
