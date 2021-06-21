@@ -325,8 +325,8 @@ module.exports = {
 
     //TODO: update when service repo has new content (CMC-1265)
     await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
-      header: '',
-      body: ''
+      header: 'You have submitted the Defendant\'s defence',
+      body: 'The Claimant legal representative will get a notification'
     });
 
     await waitForFinishedBusinessProcess(caseId);
