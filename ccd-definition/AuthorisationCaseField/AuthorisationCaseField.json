@@ -1820,6 +1820,15 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "timelineOfEvents",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
     "AccessControl": [
       {
