@@ -1208,7 +1208,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "breakDownInterestTotal",
     "Label": "Total interest amount\n",
-    "FieldType": "MoneyGBP",
+    "FieldType": "Number",
     "SecurityClassification": "Public"
   },
   {
