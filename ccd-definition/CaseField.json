@@ -1169,5 +1169,13 @@
     "Label": "## Total amount of claim",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specPbaAccountsInformationLabel",
+    "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## One PBA listed\n\nTo pay with a different PBA, email: MyHMCTSsupport@justice.gov.uk \n\nAsk for your PBA to be registered with your MyHMCTS account and include your organisation name and PBA number. \n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Two PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nTo remove a PBA, email: MyHMCTSsupport@justice.gov.uk. \n\nInclude the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]

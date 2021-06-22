@@ -1130,7 +1130,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "pbaAccountsInformationLabel",
+    "CaseFieldID": "specPbaAccountsInformationLabel",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "PbaNumber",
