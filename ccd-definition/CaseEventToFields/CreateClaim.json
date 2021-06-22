@@ -736,7 +736,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "speclistYourEvidenceList",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "EvidenceList",
     "PageDisplayOrder": 15,
     "PageColumnNumber": 1,
@@ -816,7 +816,8 @@
     "PageID": "ClaimInterest",
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ClaimInterest"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -828,7 +829,8 @@
     "PageID": "ClaimInterest",
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ClaimInterest"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -840,7 +842,8 @@
     "PageID": "ClaimInterest",
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ClaimInterest"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -865,8 +868,7 @@
     "PageID": "ClaimInterestOptions",
     "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimInterest = \"Yes\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -1036,6 +1038,19 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "calculatedInterestLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "InterestSummary",
+    "PageDisplayOrder": 25,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/spec-fee"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "calculatedInterestHeading",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "InterestSummary",
@@ -1049,7 +1064,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "calculatedInterest",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "InterestSummary",
     "PageDisplayOrder": 25,
@@ -1063,7 +1078,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "calculatedInterestPageLabel",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "InterestSummary",
     "PageDisplayOrder": 25,

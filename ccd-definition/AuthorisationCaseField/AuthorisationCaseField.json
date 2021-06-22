@@ -2484,6 +2484,13 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "calculatedInterestHeading",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "calculatedInterestPageLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
