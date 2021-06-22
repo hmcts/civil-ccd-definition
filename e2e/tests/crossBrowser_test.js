@@ -27,7 +27,7 @@ Scenario('Full end-to-end journey', async (I) => {
   console.log('Applicant solicitor notified defendant solicitor of claim details');
   await I.see(caseEventMessage('Notify claim details'));
 
-  await I.loginAs(config.defendantSolicitorUser, caseNumber);
+  await I.login(config.defendantSolicitorUser, caseNumber);
   await I.acknowledgeClaim('fullDefence');
   console.log('Defendant solicitor acknowledged claim');
   await I.see(caseEventMessage('Acknowledge claim'));
@@ -36,17 +36,17 @@ Scenario('Full end-to-end journey', async (I) => {
   console.log('Defendant solicitor requested deadline extension');
   await I.see(caseEventMessage('Inform agreed extension date'));
 
-  await I.loginAs(config.defendantSolicitorUser, caseNumber);
+  await I.login(config.defendantSolicitorUser, caseNumber);
   await I.addDefendantLitigationFriend();
   console.log('Defendant solicitor added defendant litigation friend');
   await I.see(caseEventMessage('Add litigation friend'));
 
-  await I.loginAs(config.defendantSolicitorUser, caseNumber);
+  await I.login(config.defendantSolicitorUser, caseNumber);
   await I.respondToClaim('fullDefence');
   console.log('Defendant solicitor responded to claim');
   await I.see(caseEventMessage('Respond to claim'));
 
-  await I.loginAs(config.applicantSolicitorUser, caseNumber);
+  await I.login(config.applicantSolicitorUser, caseNumber);
   await I.respondToDefence();
   console.log('Applicant solicitor responded to defence');
   await I.see(caseEventMessage('View and respond to defence'));

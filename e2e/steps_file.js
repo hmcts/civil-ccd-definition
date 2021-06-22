@@ -84,10 +84,15 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         this.amOnPage(config.url.manageCase);
 
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
+        }
+
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
           await loginPage.signIn(user);
         }
+
       }, SIGNED_IN_SELECTOR);
     },
 
@@ -420,11 +425,6 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
-    },
-
-    async loginAs(user) {
-      await this.signOut();
-      await this.login(user);
-    },
+    }
   });
 };
