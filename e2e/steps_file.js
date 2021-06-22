@@ -81,18 +81,17 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
+      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+        await this.signOut();
+      }
+
       await this.retryUntilExists(async () => {
         this.amOnPage(config.url.manageCase);
-
-        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          await this.signOut();
-        }
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
           await loginPage.signIn(user);
         }
-
       }, SIGNED_IN_SELECTOR);
     },
 
