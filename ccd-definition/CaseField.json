@@ -984,7 +984,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
-    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://cmc-citizen-frontend-pr-3135.service.core-compute-preview.internal/pdf/timeline-event-template.pdf\">Claim details template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
+    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://cmc-citizen-frontend-pr-3135.service.core-compute-preview.internal/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
