@@ -704,7 +704,8 @@
     "DisplayContext": "READONLY",
     "PageID": "ClaimTimeline",
     "PageDisplayOrder": 13,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "specClaimTimelineList = \"MANUAL\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -714,8 +715,31 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "ClaimTimeline",
-    "PageDisplayOrder": 14,
+    "PageDisplayOrder": 13,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specClaimTimelineUpload",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "ClaimTimelineUpload",
+    "PageDisplayOrder": 14,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "specClaimTimelineList = \"UPLOAD\""
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specClaimTemplateDocumentFiles",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ClaimTimelineUpload",
+    "PageDisplayOrder": 14,
     "ShowSummaryChangeOption": "Y"
   },
   {
