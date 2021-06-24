@@ -2,8 +2,21 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "respondentDetails",
+    "CaseFieldID": "respondent1Copy",
+    "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "PageLabel": "Confirm your details",
+    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondentDetails",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
     "PageLabel": "Confirm name and address",

@@ -58,10 +58,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1Copy",
+    "CaseEventFieldLabel": " ",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentDetails",
     "PageLabel": "Confirm defendant details",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
