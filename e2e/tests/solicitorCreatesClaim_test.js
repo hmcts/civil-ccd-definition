@@ -50,9 +50,9 @@ Scenario('Defendant solicitor responds to claim', async (I) => {
   await I.see(caseEventMessage('Respond to claim'));
 });
 
-Scenario('Applicant solicitor responds to defence', async (I) => {
-  await I.navigateToCaseDetailsAs(config.applicantSolicitorUser, caseNumber);
-  await I.respondToDefence();
-  await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseId());
-});
+//Scenario('Applicant solicitor responds to defence', async (I) => {
+//  await I.navigateToCaseDetailsAs(config.applicantSolicitorUser, caseNumber);
+//  await I.respondToDefence();
+//  await I.see(caseEventMessage('View and respond to defence'));
+//  await waitForFinishedBusinessProcess(caseId());
+//});
