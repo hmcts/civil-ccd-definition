@@ -3,11 +3,10 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1Copy",
-    "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "PageLabel": "Confirm your details",
+    "PageLabel": "Confirm name and address",
     "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N"

@@ -125,20 +125,8 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1Copy",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",

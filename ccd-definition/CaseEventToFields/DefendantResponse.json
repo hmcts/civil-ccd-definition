@@ -59,13 +59,13 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1Copy",
-    "CaseEventFieldLabel": " ",
+    "PageLabel": "Confirm defendant details",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "ConfirmNameAddress",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
     "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "N"
   },
   {
