@@ -1899,7 +1899,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakup",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CR"
+    "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
