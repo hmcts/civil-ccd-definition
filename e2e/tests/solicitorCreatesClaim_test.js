@@ -1,5 +1,6 @@
 const config = require('../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+//const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {assignCaseToDefendant} = require('../api/testingSupport');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
