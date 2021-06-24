@@ -64,6 +64,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
     "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N"
   },
@@ -76,7 +77,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "N"
   },
   {
