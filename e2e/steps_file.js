@@ -81,6 +81,10 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
+      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+        await this.signOut();
+      }
+
       await this.retryUntilExists(async () => {
         this.amOnPage(config.url.manageCase);
 
@@ -310,7 +314,8 @@ module.exports = function () {
     },
 
     async clickContinue() {
-      await this.retryUntilInvisible(() => this.click('Continue'), locate('.error-summary'));
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
     },
 
     /**
@@ -380,6 +385,37 @@ module.exports = function () {
       }
     },
 
+    /**
+     * Retries defined action util url is changed by given action. If url does not change
+     * after 4 tries (run + 3 retries) this step throws an error. If url is already changed, will exit.
+     *
+     * Warning: action logic should avoid framework steps that stop test execution upon step failure as it will
+     *          stop test execution even if there are retries still available. Catching step error does not help.
+     *
+     * @param action - an action that will be retried until either condition is met or max number of retries is reached
+     * @param urlBefore - the url before the action has occurred
+     * @param maxNumberOfTries - maximum number to retry the function for before failing
+     * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
+     */
+    async retryUntilUrlChanges(action, urlBefore, maxNumberOfTries = 6) {
+      let urlAfter = await this.grabCurrentUrl();
+
+      for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
+        output.log(`Checking if URL has changed, starting try #${tryNumber}`);
+        await action();
+        urlAfter = await this.grabCurrentUrl();
+        if (urlBefore !== urlAfter) {
+          output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed after try #${tryNumber} was executed`);
+          break;
+        } else {
+          output.print(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url did not change after try #${tryNumber} was executed`);
+        }
+        if (tryNumber === maxNumberOfTries) {
+          throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached trying to change urls. Before: ${urlBefore}. After: ${urlAfter}`);
+        }
+      }
+    },
+
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -388,12 +424,6 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
-    },
-
-    async navigateToCaseDetailsAs(user, caseNumber) {
-      await this.signOut();
-      await this.login(user);
-      await this.navigateToCaseDetails(caseNumber);
-    },
+    }
   });
 };

@@ -9,11 +9,13 @@ Feature('RPA handoff points tests @rpa-handoff-tests');
 Scenario('Take claim offline', async (I) => {
   await createCaseUpUntilNotifyClaimDetails(I);
 
-  await I.navigateToCaseDetailsAs(config.defendantSolicitorUser, caseNumber);
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim('fullDefence');
   await I.informAgreedExtensionDate();
 
-  await I.navigateToCaseDetailsAs(config.adminUser, caseNumber);
+  await I.login(config.adminUser);
+  await I.navigateToCaseDetails(caseNumber);
   await I.caseProceedsInCaseman();
   await I.assertNoEventsAvailable();
   await I.signOut();
@@ -44,7 +46,8 @@ Scenario('Defendant - Defends, Claimant decides not to proceed', async (I) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
-  await I.navigateToCaseDetailsAs(config.applicantSolicitorUser, caseNumber);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefenceDropClaim();
   await I.assertNoEventsAvailable();
   await I.signOut();
@@ -54,7 +57,8 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async (I) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
-  await I.navigateToCaseDetailsAs(config.applicantSolicitorUser, caseNumber);
+  await I.login(config.applicantSolicitorUser);
+  await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefence();
   await I.assertNoEventsAvailable();
   await I.signOut();
@@ -70,7 +74,8 @@ const createCaseUpUntilNotifyClaimDetails = async (I) => {
 };
 
 const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse, respondToClaimResponse) => {
-  await I.navigateToCaseDetailsAs(config.defendantSolicitorUser, caseNumber);
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim(acknowledgeClaimResponse);
   await I.informAgreedExtensionDate();
   await I.respondToClaim(respondToClaimResponse);
