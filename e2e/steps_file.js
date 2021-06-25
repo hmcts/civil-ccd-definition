@@ -276,7 +276,7 @@ module.exports = function () {
         () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
         () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-        () => event.submit('Submit your response', 'You\'ve chosen to proceed with the claim\nClaim number: '),
+        () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
         () => this.click('Close and Return to case details')
       ]);
       await this.takeScreenshot();
@@ -288,7 +288,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.dropClaim(),
-        () => event.submit('Submit your response', 'You\'ve chosen not to proceed with the claim'),
+        () => event.submit('Submit your response', 'You have chosen not to proceed with the claim'),
         () => this.click('Close and Return to case details')
       ]);
       await this.takeScreenshot();

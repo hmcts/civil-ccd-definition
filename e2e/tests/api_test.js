@@ -34,9 +34,9 @@ Scenario('Defendant response', async (api) => {
   await api.defendantResponse(config.defendantSolicitorUser);
 });
 
-//Scenario('Claimant response', async (api) => {
-//  await api.claimantResponse(config.applicantSolicitorUser);
-//});
+Scenario('Claimant response', async (api) => {
+  await api.claimantResponse(config.applicantSolicitorUser);
+});
 
 Scenario('Create claim where respondent is litigant in person', async (api) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser);
