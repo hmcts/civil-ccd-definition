@@ -406,7 +406,7 @@ module.exports = function () {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`Checking if URL has changed, starting try #${tryNumber}`);
         await action();
-        await this.sleep(1000 * tryNumber);
+        await this.sleep(3000 * tryNumber);
         urlAfter = await this.grabCurrentUrl();
         if (urlBefore !== urlAfter) {
           output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed after try #${tryNumber} was executed`);
