@@ -355,8 +355,8 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
-      header: 'You\'ve chosen to proceed with the claim',
-      body: '>We\'ll review the case and contact you to tell you what to do next.'
+      header: 'You have chosen to proceed with the claim',
+      body: '>We will review the case and contact you to tell you what to do next.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
