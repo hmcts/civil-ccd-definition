@@ -385,6 +385,10 @@ module.exports = function () {
       }
     },
 
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    },
+
     /**
      * Retries defined action util url is changed by given action. If url does not change
      * after 4 tries (run + 3 retries) this step throws an error. If url is already changed, will exit.
@@ -398,11 +402,11 @@ module.exports = function () {
      * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
      */
     async retryUntilUrlChanges(action, urlBefore, maxNumberOfTries = 6) {
-      let urlAfter = await this.grabCurrentUrl();
-
+      let urlAfter;
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`Checking if URL has changed, starting try #${tryNumber}`);
         await action();
+        await this.sleep(1000 * tryNumber);
         urlAfter = await this.grabCurrentUrl();
         if (urlBefore !== urlAfter) {
           output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed after try #${tryNumber} was executed`);
