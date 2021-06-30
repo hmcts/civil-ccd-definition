@@ -193,6 +193,62 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -327,6 +383,62 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.PostCode",
     "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {

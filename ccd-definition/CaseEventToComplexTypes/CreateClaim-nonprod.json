@@ -170,5 +170,61 @@
     "ListElementCode": "OrgPolicyReference",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent2ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
   }
 ]
