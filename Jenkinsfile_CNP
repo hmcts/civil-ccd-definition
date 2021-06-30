@@ -142,9 +142,11 @@ withPipeline(type, product, component) {
 
   after('functionalTest:aat') {
     archiveCoreCaseDataDefinitions('aat')
+    archiveCoreCaseDataDefinitions('demo')
     archiveCoreCaseDataDefinitions('prod')
     createGithubRelease()
     uploadCoreCaseDataDefinitions('aat')
+    uploadCoreCaseDataDefinitions('demo')
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
   }
 }

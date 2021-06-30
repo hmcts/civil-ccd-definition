@@ -57,6 +57,6 @@ module.exports = class BrowserHelpers extends Helper {
     const url = await this.getHelper().grabCurrentUrl();
     const {page} = await this.getHelper();
 
-    runAccessibility(url, page);
+    await runAccessibility(url, page);
   }
 };
