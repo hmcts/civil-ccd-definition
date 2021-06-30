@@ -12,14 +12,6 @@ const supportedBrowsers = {
         screenResolution: '1400x1050',
       },
     },
-    edge_win_latest: {
-      browserName: 'MicrosoftEdge',
-      platformName: LATEST_WINDOWS,
-      browserVersion: 'latest',
-      'sauce:options': {
-        name: 'Civil: Edge_Win10',
-      },
-    },
   },
   safari: {
     safari_mac_latest: {

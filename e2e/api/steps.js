@@ -275,6 +275,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    deleteCaseFields('respondent1Copy');
   },
 
   informAgreedExtension: async (user) => {
@@ -325,14 +326,15 @@ module.exports = {
 
     //TODO: update when service repo has new content (CMC-1265)
     await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
-      header: '',
-      body: ''
+      header: 'You have submitted the Defendant\'s defence',
+      body: 'The Claimant legal representative will get a notification'
     });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
+    deleteCaseFields('respondent1Copy');
   },
 
   claimantResponse: async (user) => {
@@ -355,8 +357,8 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
-      header: 'You\'ve chosen to proceed with the claim',
-      body: '>We\'ll review the case and contact you to tell you what to do next.'
+      header: 'You have chosen to proceed with the claim',
+      body: '>We will review the case and contact you to tell you what to do next.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
