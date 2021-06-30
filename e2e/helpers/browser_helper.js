@@ -54,9 +54,14 @@ module.exports = class BrowserHelpers extends Helper {
     if (!testConfig.TestForAccessibility) {
       return;
     }
-    const url = await this.getHelper().grabCurrentUrl();
-    const {page} = await this.getHelper();
 
-    await runAccessibility(url, page);
+    let helper = this.getHelper();
+    if (helper === this.helpers['WebDriver']) {
+      await Promise.resolve();
+    } else {
+      const url = await helper.grabCurrentUrl();
+      const {page} = await helper;
+      await runAccessibility(url, page);
+    }
   }
 };
