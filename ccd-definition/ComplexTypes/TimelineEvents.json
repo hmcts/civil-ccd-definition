@@ -2,7 +2,7 @@
   {
     "ID": "TimelineEvents",
     "ListElementCode": "timelineDate",
-    "FieldType": "Text",
+    "FieldType": "Date",
     "ElementLabel": "Date",
     "HintText": "For example 9 December 2020",
     "SecurityClassification": "Public"
