@@ -704,7 +704,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ClaimTimeline",
     "PageDisplayOrder": 13,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "PageShowCondition": "specClaimTimelineList = \"MANUAL\""
   },
   {
@@ -840,7 +840,7 @@
     "PageID": "ClaimInterest",
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ClaimInterest"
   },
   {
@@ -853,7 +853,7 @@
     "PageID": "ClaimInterest",
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ClaimInterest"
   },
   {
@@ -879,7 +879,7 @@
     "PageID": "ClaimInterestOptions",
     "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "claimInterest = \"Yes\""
   },
   {
@@ -892,7 +892,7 @@
     "PageID": "ClaimInterestOptions",
     "PageDisplayOrder": 19,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -904,7 +904,7 @@
     "PageID": "SameRateInterestSelection",
     "PageDisplayOrder": 20,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\" AND claimInterest = \"Yes\""
   },
   {
@@ -917,7 +917,7 @@
     "PageID": "SameRateInterestSelection",
     "PageDisplayOrder": 20,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -941,7 +941,7 @@
     "PageID": "BreakDownInterest",
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\" AND claimInterest = \"Yes\""
   },
   {
@@ -954,7 +954,7 @@
     "PageID": "BreakDownInterest",
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -966,7 +966,7 @@
     "PageID": "BreakDownInterest",
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -978,7 +978,7 @@
     "PageID": "InterestClaimFrom",
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "claimInterest = \"Yes\""
   },
   {
@@ -991,7 +991,7 @@
     "PageID": "InterestClaimFrom",
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -1003,7 +1003,7 @@
     "PageID": "InterestFromSpecificDate",
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "interestClaimFrom = \"FROM_A_SPECIFIC_DATE\" AND claimInterest = \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
@@ -1017,7 +1017,7 @@
     "PageID": "InterestFromSpecificDate",
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
@@ -1030,7 +1030,7 @@
     "PageID": "InterestFromSpecificDate",
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
@@ -1043,7 +1043,7 @@
     "PageID": "InterestClaimUntil",
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/interest-calc"
   },
   {
@@ -1056,7 +1056,7 @@
     "PageID": "InterestClaimUntil",
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/interest-calc",
     "PageShowCondition": "claimInterest = \"Yes\""
   },
@@ -1070,7 +1070,7 @@
     "PageID": "InterestSummary",
     "PageDisplayOrder": 25,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/spec-fee"
   },
   {
@@ -1083,7 +1083,7 @@
     "PageID": "InterestSummary",
     "PageDisplayOrder": 25,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/spec-fee"
   },
   {
@@ -1096,7 +1096,7 @@
     "PageID": "InterestSummary",
     "PageDisplayOrder": 25,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "totalClaimAmount = \"DO_NOT_SHOW_IN_UI\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/spec-fee"
   },
