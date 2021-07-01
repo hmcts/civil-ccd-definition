@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\nUse this service if you are representing a Claimant and:\n* bringing a claim for damages\n* able to pay the full issue fee using Payment by Account\n\n### About the Claimant\n The Claimant must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendant \nThe Defendant must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be: \n* representing 1 Claimant against up to 2 Defendants, or 2 Claimants against 1 Defendant\n* able to pay the full issue fee using Payment by Account (PBA)\n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \nDefendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -30,7 +30,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1",
-    "Label": "Claimant details",
+    "Label": "Claimant's details",
     "FieldType": "Party",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the first applicant on the case",
@@ -158,7 +158,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimStatementOfTruthLabel",
-    "Label": "The claimant believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "Label": "The Claimant(s) believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the Claimant(s) to sign this statement.\n\nThe Claimant(s) understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -190,7 +190,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "servedDocumentFiles",
-    "Label": "Documents which are uploaded must be in one of the following machine readable formats:",
+    "Label": "Upload documents",
     "FieldType": "ServedDocumentFiles",
     "SecurityClassification": "Public"
   },
@@ -803,8 +803,29 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "addApplicant2",
-    "Label": "Do you want to add another Claimant at this time?",
+    "Label": "Do you want to add another Claimant now?",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2",
+    "Label": "Second Claimant's details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriendRequired",
+    "Label": "Is the second Claimant a child i.e. under the age of 18?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriend",
+    "Label": "Second Claimant litigation friend details",
+    "FieldType": "LitigationFriend",
     "SecurityClassification": "Public"
   },
   {
@@ -849,6 +870,35 @@
     "ID": "respondent2OrganisationPolicy",
     "Label": "Respondent 2 organisation policy",
     "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2EmailAddress",
+    "Label": "Enter the second Defendant legal representatives email address to be used for notifications",
+    "HintText": "This should be the email address that the Defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2OrgLabel",
+    "Label": "Enter organisation details manually. The claim will then continue offline.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2OrganisationDetails",
+    "Label": " ",
+    "FieldType": "SolicitorOrganisationDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2Reference",
+    "Label": "Defendant's legal representative's reference",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
