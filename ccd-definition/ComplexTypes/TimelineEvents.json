@@ -1,6 +1,6 @@
 [
   {
-    "ID": "TimelineEvents",
+    "ID": "TimelineOfEvents",
     "ListElementCode": "timelineDate",
     "FieldType": "Date",
     "ElementLabel": "Date",
@@ -8,7 +8,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "TimelineEvents",
+    "ID": "TimelineOfEvents",
     "ListElementCode": "timelineDescription",
     "FieldType": "TextArea",
     "ElementLabel": "What happened",

@@ -938,7 +938,7 @@
     "ID": "timelineOfEvents",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "TimelineEvents",
+    "FieldTypeParameter": "TimelineOfEvents",
     "SecurityClassification": "Public"
   },
   {
