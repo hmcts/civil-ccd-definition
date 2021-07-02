@@ -18,9 +18,6 @@ exports.config = {
     GenerateReportHelper: {
       require: './e2e/helpers/generate_report_helper.js'
     },
-    SauceLabsReportingHelper: {
-      require: './e2e/helpers/sauce_labs_reporting_helper.js',
-    },
   },
   include: {
     I: './e2e/steps_file.js',
