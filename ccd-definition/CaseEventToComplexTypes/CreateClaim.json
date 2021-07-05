@@ -193,6 +193,62 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Claimant1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -330,6 +386,62 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Respondent1ServiceAddress",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -341,24 +453,8 @@
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "spreadsheetsLabel",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "Upload",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "servedDocumentFiles",
-    "ListElementCode": "medicalReportsLabel",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "Upload",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "particularsOfClaimDocument",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -367,7 +463,7 @@
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "particularsOfClaimText",
     "EventElementLabel": "If you prefer you can copy and paste the details of claim here.",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -375,7 +471,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "medicalReport.document",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -384,7 +480,7 @@
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "medicalReport",
     "DisplayContext": "OPTIONAL",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 4,
     "FieldShowCondition": "claimType=\"CLINICAL_NEGLIGENCE\" OR claimType=\"PERSONAL_INJURY\"",
     "Comment": "medicalreports.document is just the document input,so this must be defined to hide the whole element"
   },
@@ -393,7 +489,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "scheduleOfLoss.document",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -401,7 +497,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "certificateOfSuitability.document",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -409,7 +505,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "ListElementCode": "other.document",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
   },
   {

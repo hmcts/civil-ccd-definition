@@ -37,6 +37,16 @@
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type=\"SOLE_TRADER\""
   },
+
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
   {
     "ID": "Party",
     "CaseEventID": "DEFENDANT_RESPONSE",

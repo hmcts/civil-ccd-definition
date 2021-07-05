@@ -70,6 +70,42 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddressRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1LitigationFriend",
     "AccessControl": [
       {
@@ -124,6 +160,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1Copy",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1Represented",
     "AccessControl": [
       {
@@ -143,6 +185,78 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrgRegistered",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1ServiceAddressRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2ServiceAddressRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
     "AccessControl": [
       {
         "UserRoles": [
@@ -506,24 +620,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1Copy",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1748,6 +1844,60 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriendRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addRespondent2",
     "AccessControl": [
       {
@@ -1839,6 +1989,69 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2OrganisationPolicy",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2EmailAddress",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2OrgLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2OrganisationDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor2Reference",
     "AccessControl": [
       {
         "UserRoles": [
