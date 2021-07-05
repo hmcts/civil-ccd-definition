@@ -265,9 +265,9 @@ module.exports = function () {
           () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
           () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
           () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+          () => event.submit('Submit', ''),
+          () => event.returnToCaseDetails()
         ]),
-        () => event.submit('Submit', ''),
-        () => event.returnToCaseDetails()
       ]);
     },
 
