@@ -1321,10 +1321,9 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTemplateDocumentFiles",
-    "Label": "Upload file",
-    "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
+    "Label": "Upload files",
     "FieldType": "Document",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   }
 ]
