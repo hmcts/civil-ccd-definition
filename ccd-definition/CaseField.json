@@ -805,5 +805,23 @@
     "Label": "Respondent 2 organisation policy",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNote",
+    "Label": "Note",
+    "HintText": "Add note detail, including relevant dates and people involved",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Comment": "The note field to be displayed in an event"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNotes",
+    "Label": "Note",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseNote",
+    "SecurityClassification": "Public",
+    "Comment": "The note fields to be displayed in the tab"
   }
 ]

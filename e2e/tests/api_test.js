@@ -6,6 +6,10 @@ Scenario('Create claim', async (api) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
 });
 
+Scenario('HMCTS admin adds a case note to case', async (api) => {
+  await api.addCaseNote(config.adminUser);
+});
+
 Scenario('Amend claim documents', async (api) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
 });
