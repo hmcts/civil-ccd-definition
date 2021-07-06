@@ -21,6 +21,7 @@ const chooseCourtPage = require('./pages/createClaim/chooseCourt.page');
 const claimantLitigationDetails = require('./pages/createClaim/claimantLitigationDetails.page');
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
+const secondDefendantSolicitorReference = require('./pages/createClaim/secondDefendantSolicitorReference.page');
 const claimTypePage = require('./pages/createClaim/claimType.page');
 const respondentRepresentedPage = require('./pages/createClaim/isRespondentRepresented.page');
 const personalInjuryTypePage = require('./pages/createClaim/personalInjuryType.page');
@@ -155,7 +156,7 @@ module.exports = function () {
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent1'),
           () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => defendantSolicitorEmail.enterSolicitorEmail()
+          () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
         ... conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherDefendant.enterAddAnotherDefendant(),
@@ -163,7 +164,9 @@ module.exports = function () {
           () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
           () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent2'),
-          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress()
+          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+          () => secondDefendantSolicitorReference.enterReference(),
+          () => defendantSolicitorEmail.enterSolicitorEmail('2')
         ]),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
