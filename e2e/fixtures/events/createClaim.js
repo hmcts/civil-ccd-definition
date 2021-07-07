@@ -8,9 +8,21 @@ const respondent1 = {
   individualTitle: 'Sir',
   primaryAddress: buildAddress('respondent')
 };
+const respondent2 = {
+  type: 'INDIVIDUAL',
+  individualFirstName: 'Foo',
+  individualLastName: 'Bar',
+  individualTitle: 'Dr',
+  primaryAddress: buildAddress('second respondent')
+};
 const respondent1WithPartyName = {
   ...respondent1,
   partyName: 'Sir John Doe',
+  partyTypeDisplayValue: 'Individual',
+};
+const respondent2WithPartyName = {
+  ...respondent2,
+  partyName: 'Dr Foo Bar',
   partyTypeDisplayValue: 'Individual',
 };
 const applicant1 = {
@@ -75,6 +87,9 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         }
       }
     },
+    ClaimantSolicitorServiceAddress: {
+      applicantSolicitor1ServiceAddress:  buildAddress('service')
+    },
     AddAnotherClaimant: {},
     Defendant: {
       respondent1: respondent1
@@ -92,10 +107,16 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         },
       },
     },
+    DefendantSolicitorServiceAddress: {
+      respondentSolicitor1ServiceAddress: buildAddress('service')
+    },
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
     },
     AddAnotherDefendant: {},
+    SecondDefendant: {},
+    SecondDefendantLegalRepresentation: {},
+    SameLegalRepresentative: {},
     ClaimType: {
       claimType: 'PERSONAL_INJURY'
     },
@@ -145,7 +166,16 @@ const createClaimData = (legalRepresentation, useValidPba) => {
         addApplicant2: 'No'
       },
       AddAnotherDefendant: {
-        addRespondent2: 'No'
+        addRespondent2: 'Yes'
+      },
+      SecondDefendant: {
+        respondent2: respondent2
+      },
+      SecondDefendantLegalRepresentation: {
+        respondent2Represented: 'Yes'
+      },
+      SameLegalRepresentative: {
+        respondent2SameLegalRepresentative: 'Yes'
       },
     };
   }
@@ -173,6 +203,9 @@ module.exports = {
         },
         applicant1: applicant1WithPartyName,
         respondent1: respondent1WithPartyName,
+        ...config.multipartyTestsEnabled ? {
+          respondent2: respondent2WithPartyName
+        } : {}
       },
       ClaimantLitigationFriend: {
         applicant1: applicant1WithPartyName,

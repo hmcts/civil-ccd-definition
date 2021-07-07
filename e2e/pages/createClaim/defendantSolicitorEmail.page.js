@@ -1,16 +1,17 @@
-const { I } = inject();
+const {I} = inject();
 
 module.exports = {
 
-  fields: {
-
-    emailAddress: '#respondentSolicitor1EmailAddress'
+  fields: respondentSolicitorNumber => {
+    return {
+      emailAddress: `#respondentSolicitor${respondentSolicitorNumber}EmailAddress`
+    };
   },
 
-  async enterSolicitorEmail() {
-    I.waitForElement(this.fields.emailAddress);
+  async enterSolicitorEmail(respondentSolicitorNumber) {
+    I.waitForElement(this.fields(respondentSolicitorNumber).emailAddress);
     await I.runAccessibilityTest();
-    I.fillField(this.fields.emailAddress, 'civilunspecified@gmail.com');
+    I.fillField(this.fields(respondentSolicitorNumber).emailAddress, 'civilunspecified@gmail.com');
     await I.clickContinue();
   },
 };

@@ -26,7 +26,7 @@ module.exports = {
         id: `#${party}DQHearing_unavailableDates`,
         element: {
           who: `#${party}DQHearing_unavailableDates_0_who`,
-          date: `${party}DQHearing_unavailableDates_0_date`,
+          date: 'date',
         }
       },
     };

@@ -10,14 +10,18 @@ const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
+const claimantSolicitorServiceAddress = require('./pages/createClaim/claimantSolicitorServiceAddress.page');
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
+const defendantSolicitorServiceAddress = require('./pages/createClaim/defendantSolicitorServiceAddress.page');
+const secondDefendantSolicitorServiceAddress = require('./pages/createClaim/secondDefendantSolicitorServiceAddress.page');
 const defendantSolicitorEmail = require('./pages/createClaim/defendantSolicitorEmail.page');
 const chooseCourtPage = require('./pages/createClaim/chooseCourt.page');
 const claimantLitigationDetails = require('./pages/createClaim/claimantLitigationDetails.page');
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
+const secondDefendantSolicitorReference = require('./pages/createClaim/secondDefendantSolicitorReference.page');
 const claimTypePage = require('./pages/createClaim/claimType.page');
 const respondentRepresentedPage = require('./pages/createClaim/isRespondentRepresented.page');
 const personalInjuryTypePage = require('./pages/createClaim/personalInjuryType.page');
@@ -140,6 +144,7 @@ module.exports = function () {
         () => claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH),
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
+        () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
         ... conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherClaimant.enterAddAnotherClaimant()
         ]),
@@ -150,14 +155,18 @@ module.exports = function () {
         ... conditionalSteps(!litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
           () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent1'),
-          () => defendantSolicitorEmail.enterSolicitorEmail()
+          () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+          () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
         ... conditionalSteps(config.multipartyTestsEnabled, [
           () => addAnotherDefendant.enterAddAnotherDefendant(),
           () => party.enterParty('respondent2', address),
           () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
           () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent2')
+          () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent2'),
+          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+          () => secondDefendantSolicitorReference.enterReference(),
+          () => defendantSolicitorEmail.enterSolicitorEmail('2')
         ]),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
@@ -385,6 +394,10 @@ module.exports = function () {
       }
     },
 
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    },
+
     /**
      * Retries defined action util url is changed by given action. If url does not change
      * after 4 tries (run + 3 retries) this step throws an error. If url is already changed, will exit.
@@ -398,11 +411,11 @@ module.exports = function () {
      * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
      */
     async retryUntilUrlChanges(action, urlBefore, maxNumberOfTries = 6) {
-      let urlAfter = await this.grabCurrentUrl();
-
+      let urlAfter;
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`Checking if URL has changed, starting try #${tryNumber}`);
         await action();
+        await this.sleep(3000 * tryNumber);
         urlAfter = await this.grabCurrentUrl();
         if (urlBefore !== urlAfter) {
           output.log(`retryUntilUrlChanges(before: ${urlBefore}, after: ${urlAfter}): url changed after try #${tryNumber} was executed`);

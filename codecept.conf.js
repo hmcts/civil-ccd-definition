@@ -5,7 +5,7 @@ exports.config = {
     Puppeteer: {
       restart: false,
       keepCookies: true,
-      show: process.env.SHOW_BROWSER_WINDOW || false,
+      show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       windowSize: '1200x900',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 40000),
       chrome: {
@@ -17,9 +17,6 @@ exports.config = {
     },
     GenerateReportHelper: {
       require: './e2e/helpers/generate_report_helper.js'
-    },
-    SauceLabsReportingHelper: {
-      require: './e2e/helpers/sauce_labs_reporting_helper.js',
     },
   },
   include: {
