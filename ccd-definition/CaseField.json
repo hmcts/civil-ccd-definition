@@ -1323,7 +1323,7 @@
     "ID": "specClaimTemplateDocumentFiles",
     "Label": "Upload files",
     "FieldType": "Document",
-    "HintText": "We accept only document in pdf format.",
+    "HintText": "We only accept documents in pdf format.",
     "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   }
