@@ -2013,7 +2013,9 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
-      }]},
+      }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
@@ -2050,7 +2052,9 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
-      }]},
+      }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
