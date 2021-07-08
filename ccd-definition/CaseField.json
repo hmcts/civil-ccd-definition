@@ -869,7 +869,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentSolicitor1OrgLabel",
-    "Label": "Use the email address of the legal representative's firm if you have it, otherwise use their personal email.",
+    "Label": "## Email for defendant’s legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1194,6 +1194,30 @@
     "FieldType": "Document",
     "HintText": "We only accept documents in pdf format.",
     "RegularExpression": ".pdf",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentSolicitor1EmailAddress",
+    "Label": "Email address",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondent1Represented",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondent1RepresentedLabel",
+    "Label": "## Does the defendant have a legal representative?",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]

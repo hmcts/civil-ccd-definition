@@ -268,5 +268,12 @@
       "caseworker-civil-systemupdate"
     ],
     "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentSolicitor1EmailAddress",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
