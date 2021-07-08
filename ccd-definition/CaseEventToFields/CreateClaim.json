@@ -611,7 +611,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "DefendantSolicitorEmail",
     "PageDisplayOrder": 10,
     "PageColumnNumber": 1,
