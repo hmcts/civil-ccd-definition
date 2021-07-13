@@ -51,7 +51,7 @@ zip -r civil-screenshots.zip output
 cp build/ccd-release-config/civil-ccd-aat.xlsx civil-ccd-aat.xlsx
 cp build/ccd-release-config/civil-ccd-prod.xlsx civil-ccd-prod.xlsx
 
-az login --identity
+az login --identity > /dev/null
 releaseId=$(createNewRelease civil-ccd-definition)
 
 uploadReleaseAsset civil-ccd-definition $releaseId civil-ccd-definition.zip
