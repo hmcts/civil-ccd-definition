@@ -569,17 +569,6 @@
   {
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
-    "DefaultValue": "YES",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "TRUE"
-  },
-  {
-    "ID": "SolicitorCreate",
-    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "FieldDisplayOrder": 1,
@@ -611,16 +600,6 @@
     "ListElementCode": "OrgPolicyReference",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "SolicitorCreate",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
-    "DefaultValue": "NO",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\""
   },
   {
     "ID": "RespondentSolicitor1Organisation",
