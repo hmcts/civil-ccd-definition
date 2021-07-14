@@ -221,12 +221,12 @@ module.exports = function () {
       ]);
     },
 
-    async informAgreedExtensionDate() {
+    async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
       eventName = 'Inform agreed extension date';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => extensionDatePage.enterExtensionDate(),
+        () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
         () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
       ]);

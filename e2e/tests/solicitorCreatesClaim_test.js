@@ -20,6 +20,9 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim', async (I) 
   await I.notifyClaim();
   await I.see(caseEventMessage('Notify claim'));
   await assignCaseToDefendant(caseId());
+  if (config.multipartyTestsEnabled) {
+    await assignCaseToDefendant(caseId(), 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  }
 });
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim details', async (I) => {
@@ -36,6 +39,11 @@ Scenario('Defendant solicitor acknowledges claim', async (I) => {
 Scenario('Defendant solicitor requests deadline extension', async (I) => {
   await I.informAgreedExtensionDate();
   await I.see(caseEventMessage('Inform agreed extension date'));
+  if (config.multipartyTestsEnabled) {
+    await I.login(config.secondDefendantSolicitorUser);
+    await I.informAgreedExtensionDate('2');
+    await I.see(caseEventMessage('Inform agreed extension date'));
+  }
 });
 
 Scenario('Defendant solicitor adds defendant litigation friend', async (I) => {
