@@ -8,7 +8,7 @@ module.exports = {
 
   async enterOrganisationDetails() {
     I.waitForElement(this.fields.searchText);
-    I.waitForText('Civil - Organisation 1');
+    I.wait(10);
     await I.runAccessibilityTest();
     await I.clickContinue();
   }
