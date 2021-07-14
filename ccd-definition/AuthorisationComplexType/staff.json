@@ -128,7 +128,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNotes",
-    "ListElementCode": "date",
+    "ListElementCode": "createdOn",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
