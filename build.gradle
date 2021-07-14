@@ -65,6 +65,9 @@ allprojects {
     jcenter()
     mavenCentral()
     maven {
+      url 'https://jitpack.io'
+    }
+    maven {
       url "https://dl.bintray.com/hmcts/hmcts-maven"
     }
     maven {
@@ -120,6 +123,12 @@ jar {
   manifest {
     attributes('Implementation-Version': project.version.toString())
   }
+}
+
+task highLevelDataSetup(type: JavaExec) {
+  main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
+  classpath += sourceSets.main.runtimeClasspath
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
 
 task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
@@ -211,6 +220,7 @@ ext.libraries = [
 ]
 
 dependencies {
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.2.0'
 
   testImplementation libraries.junit5
 

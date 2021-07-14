@@ -18,18 +18,18 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 
 def secrets = [
   's2s-${env}': [
-    secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_SECRET'),
+    secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
     secret('microservicekey-ccd-data', 'CCD_DATA_STORE_S2S_SECRET'),
     secret('microservicekey-ccd-definition', 'CCD_DEFINITION_STORE_S2S_SECRET')
   ],
   'ccd-${env}': [
-    secret('ccd-api-gateway-oauth2-client-secret', 'CCD_API_GATEWAY_IDAM_CLIENT_SECRET'),
+    secret('ccd-api-gateway-oauth2-client-secret', 'CCD_API_GATEWAY_OAUTH2_CLIENT_SECRET'),
     secret('postcode-info-address-lookup-token', 'ADDRESS_LOOKUP_TOKEN')
   ],
   'civil-${env}': [
     secret('microservicekey-civil-service', 'S2S_SECRET'),
-    secret('ccd-importer-username', 'CCD_CONFIGURER_IMPORTER_USERNAME'),
-    secret('ccd-importer-password', 'CCD_CONFIGURER_IMPORTER_PASSWORD')
+    secret('ccd-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
+    secret('ccd-importer-password', 'DEFINITION_IMPORTER_PASSWORD')
   ]
 ]
 
@@ -64,6 +64,12 @@ withPipeline(type, product, component) {
   disableLegacyDeployment()
   enableAksStagingDeployment()
   enableSlackNotifications('#civil_notifications')
+  syncBranchesWithMaster(['demo'])
+
+  MetricsPublisher metricsPublisher = new MetricsPublisher(this, currentBuild, product, component, params.subscription )
+  approvedEnvironmentRepository(params.environment, metricsPublisher) {
+    enableHighLevelDataSetup()
+  }
 
   onPR {
     loadVaultSecrets(secrets)
@@ -76,22 +82,6 @@ withPipeline(type, product, component) {
   }
 
   after('checkout') {
-    onMaster {
-      withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
-        try {
-          sh '''
-            set -e
-
-            git remote set-url origin $(git config remote.origin.url | sed "s/github.com/${BEARER_TOKEN}@github.com/g")
-
-            git fetch origin demo:demo
-            git push --force origin HEAD:demo
-          '''
-        } catch (err) {
-          notifyBuildEvent channel: '#civil_notifications', color: 'warning', message: 'Failed to update demo branch'
-        }
-      }
-    }
 
     onDemo {
       def subscription = 'nonprod'
