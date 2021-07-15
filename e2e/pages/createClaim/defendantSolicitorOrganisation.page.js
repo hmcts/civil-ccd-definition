@@ -11,7 +11,7 @@ module.exports = {
           no: 'No'
         }
       },
-      orgPolicyReference: `#${respondentNumber}OrganisationPolicy_OrgPolicyReference`,
+      orgPolicyReference: `#respondent${respondentNumber}OrganisationPolicy_OrgPolicyReference`,
       searchText: '#search-org-text',
     };
   },
