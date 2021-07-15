@@ -42,7 +42,6 @@ def createGithubRelease() {
 def archiveCoreCaseDataDefinitions() {
   dir("${WORKSPACE}/bin") {
     sh """
-      echo sh(script: 'env|sort', returnStdout: true)
       echo 'environment variable : ${env}'
       eval \\\$(./bin/variables/load-${env}-environment-variables.sh ${CHANGE_ID})
       ./build-release-ccd-definition.sh ${env}"
