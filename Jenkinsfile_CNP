@@ -42,13 +42,14 @@ def createGithubRelease() {
 def archiveCoreCaseDataDefinitions() {
   dir("${WORKSPACE}/bin") {
     sh """
-      eval \$(./variables/load-${env.CCD_DEF_NAME}-environment-variables.sh ${CHANGE_ID})
-      eval \$(./build-release-ccd-definition.sh ${env.CCD_DEF_NAME})
+      eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
+      eval \$(./build-release-ccd-definition.sh ${env.ENVIRONMENT})
+      ./add-roles.sh
     """
   }
 
   dir("${WORKSPACE}/build") {
-    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.CCD_DEF_NAME}.xlsx"
+    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
   }
 }
 
@@ -69,22 +70,19 @@ withPipeline(type, product, component) {
   enableSlackNotifications('#civil_notifications')
   syncBranchesWithMaster(['demo'])
   enableHighLevelDataSetup()
+  loadVaultSecrets(secrets)
 
   onPR {
-    loadVaultSecrets(secrets)
-    env.CCD_DEF_NAME = "preview"
+    env.ENVIRONMENT = "preview"
   }
   onMaster {
-    loadVaultSecrets(secrets)
-    env.CCD_DEF_NAME="aat"
+    env.ENVIRONMENT="aat"
   }
   onDemo {
-    loadVaultSecrets(secrets)
-    env.CCD_DEF_NAME = "demo"
+    env.ENVIRONMENT = "demo"
   }
   onPerftest{
-    loadVaultSecrets(secrets)
-    env.CCD_DEF_NAME = "perftest"
+    env.ENVIRONMENT = "perftest"
   }
 
   before('highleveldatasetup') {
@@ -92,12 +90,13 @@ withPipeline(type, product, component) {
   }
 
   before('smoketest:preview') {
-    uploadCoreCaseDataDefinitions('preview')
     sh """
       ./bin/add-roles.sh
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
+    uploadCoreCaseDataDefinitions('preview')
+
     env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
   }
@@ -112,8 +111,6 @@ withPipeline(type, product, component) {
     env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-
-    uploadCoreCaseDataDefinitions('preview')
   }
 
   after('functionalTest:preview') {
