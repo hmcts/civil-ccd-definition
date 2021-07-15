@@ -30,8 +30,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     protected boolean shouldTolerateDataSetupFailure() {
         return true;
     }
-
-
+    
     @Override
     protected List<String> getAllDefinitionFilesToLoadAt(String definitionsPath) {
         return List.of(String.format("/build/ccd-release-config/civil-ccd-%s.xlsx", environment.name()));
