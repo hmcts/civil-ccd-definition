@@ -81,16 +81,16 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
-  before('High Level Data Setup:preview') {
+  before('highLevelDataSetup:preview') {
     archiveCoreCaseDataDefinitions('preview')
   }
-  before('High Level Data Setup:aat') {
+  before('highLevelDataSetup:aat') {
     archiveCoreCaseDataDefinitions('aat')
   }
-  before('High Level Data Setup:demo') {
+  before('highLevelDataSetup:demo') {
     archiveCoreCaseDataDefinitions('demo')
   }
-  before('High Level Data Setup:prod') {
+  before('highLevelDataSetup:prod') {
     archiveCoreCaseDataDefinitions('prod')
   }
 
