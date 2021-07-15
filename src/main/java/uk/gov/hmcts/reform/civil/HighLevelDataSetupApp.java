@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
+    
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
 
     private final CcdEnvironment environment;
@@ -30,7 +31,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     protected boolean shouldTolerateDataSetupFailure() {
         return true;
     }
-    
+
     @Override
     protected List<String> getAllDefinitionFilesToLoadAt(String definitionsPath) {
         return List.of(String.format("/build/ccd-release-config/civil-ccd-%s.xlsx", environment.name()));
