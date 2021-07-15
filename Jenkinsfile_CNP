@@ -39,7 +39,7 @@ def createGithubRelease() {
   """
 }
 
-def archiveCoreCaseDataDefinitions() {
+def archiveCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin") {
     sh """
       echo 'environment variable : ${env}'
@@ -82,8 +82,8 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
-  before('highleveldatasetup') {
-    archiveCoreCaseDataDefinitions()
+  before('highleveldatasetup:preview') {
+    archiveCoreCaseDataDefinitions('preview')
   }
 
   before('smoketest:preview') {
