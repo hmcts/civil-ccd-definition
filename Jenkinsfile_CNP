@@ -39,18 +39,18 @@ def createGithubRelease() {
   """
 }
 
-def archiveCoreCaseDataDefinitions(env) {
+def archiveCoreCaseDataDefinitions() {
   dir("${WORKSPACE}/bin") {
     sh """
-      echo 'environment variable : ${env}'
-      eval \\\$(./bin/variables/load-${env}-environment-variables.sh ${CHANGE_ID})
-      ./build-release-ccd-definition.sh ${env}"
+      echo 'environment variable : ${environment}'
+      eval \\\$(./bin/variables/load-${environment}-environment-variables.sh ${CHANGE_ID})
+      ./build-release-ccd-definition.sh ${environment}"
       ./bin/add-roles.sh
     """
   }
 
   dir("${WORKSPACE}/build") {
-    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env}.xlsx"
+    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${environment}.xlsx"
   }
 }
 
@@ -82,8 +82,8 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
-  before('highleveldatasetup:preview') {
-    archiveCoreCaseDataDefinitions('preview')
+  before('highleveldatasetup') {
+    archiveCoreCaseDataDefinitions()
   }
 
   before('smoketest:preview') {
