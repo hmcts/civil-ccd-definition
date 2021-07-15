@@ -112,7 +112,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -1311,7 +1311,7 @@
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1886,7 +1886,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
