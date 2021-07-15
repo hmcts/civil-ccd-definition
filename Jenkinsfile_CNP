@@ -42,15 +42,15 @@ def createGithubRelease() {
 def archiveCoreCaseDataDefinitions() {
   dir("${WORKSPACE}/bin") {
     sh """
-      echo 'environment variable : ${environment}'
-      eval \\\$(./bin/variables/load-${environment}-environment-variables.sh ${CHANGE_ID})
-      ./build-release-ccd-definition.sh ${environment}"
+      echo 'environment variable : ${env.CCD_DEF_NAME}'
+      eval \\\$(./bin/variables/load-${env.CCD_DEF_NAME}-environment-variables.sh ${CHANGE_ID})
+      ./build-release-ccd-definition.sh ${env.CCD_DEF_NAME}"
       ./bin/add-roles.sh
     """
   }
 
   dir("${WORKSPACE}/build") {
-    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${environment}.xlsx"
+    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.CCD_DEF_NAME}.xlsx"
   }
 }
 
@@ -58,7 +58,7 @@ def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin"){
     ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
     sh """
-      eval \$(./variables/load-${env}-environment-variables.sh)
+      eval \$(./variables/load-${env}-environment-variables.sh  ${CHANGE_ID})
       ${WORKSPACE}/bin/utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
     """
   }
@@ -74,12 +74,19 @@ withPipeline(type, product, component) {
 
   onPR {
     loadVaultSecrets(secrets)
+    env.CCD_DEF_NAME = "preview"
   }
   onMaster {
     loadVaultSecrets(secrets)
+    env.CCD_DEF_NAME="aat"
   }
   onDemo {
     loadVaultSecrets(secrets)
+    env.CCD_DEF_NAME = "demo"
+  }
+  onPerftest{
+    loadVaultSecrets(secrets)
+    env.CCD_DEF_NAME = "perftest"
   }
 
   before('highleveldatasetup') {
@@ -105,6 +112,8 @@ withPipeline(type, product, component) {
     env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+
+    uploadCoreCaseDataDefinitions('preview')
   }
 
   after('functionalTest:preview') {
