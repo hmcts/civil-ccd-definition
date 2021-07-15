@@ -41,7 +41,11 @@ def createGithubRelease() {
 
 def archiveCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin") {
-    sh "./build-release-ccd-definition.sh ${env}"
+    sh """
+      eval \\\$(./bin/variables/load-${env}-environment-variables.sh ${CHANGE_ID})
+      ./build-release-ccd-definition.sh ${env}"
+      ./bin/add-roles.sh
+    """
   }
 
   dir("${WORKSPACE}/build") {
@@ -65,11 +69,7 @@ withPipeline(type, product, component) {
   enableAksStagingDeployment()
   enableSlackNotifications('#civil_notifications')
   syncBranchesWithMaster(['demo'])
-
-  MetricsPublisher metricsPublisher = new MetricsPublisher(this, currentBuild, product, component, params.subscription )
-  approvedEnvironmentRepository(params.environment, metricsPublisher) {
-    enableHighLevelDataSetup()
-  }
+  enableHighLevelDataSetup()
 
   onPR {
     loadVaultSecrets(secrets)
@@ -81,24 +81,21 @@ withPipeline(type, product, component) {
     loadVaultSecrets(secrets)
   }
 
-  after('checkout') {
-
-    onDemo {
-      def subscription = 'nonprod'
-      withSubscription(subscription) {
-        withTeamSecrets(pipelineConf, 'demo') {
-          archiveCoreCaseDataDefinitions('demo')
-          uploadCoreCaseDataDefinitions('demo')
-        }
-      }
-    }
+  before('High Level Data Setup:preview') {
+    archiveCoreCaseDataDefinitions('preview')
+  }
+  before('High Level Data Setup:aat') {
+    archiveCoreCaseDataDefinitions('aat')
+  }
+  before('High Level Data Setup:demo') {
+    archiveCoreCaseDataDefinitions('demo')
+  }
+  before('High Level Data Setup:prod') {
+    archiveCoreCaseDataDefinitions('prod')
   }
 
   before('smoketest:preview') {
     sh """
-      eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-      ./bin/add-roles.sh
-      ./bin/import-ccd-definition.sh "-e *-nonprod.json"
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
@@ -148,10 +145,7 @@ withPipeline(type, product, component) {
   }
 
   after('functionalTest:aat') {
-    archiveCoreCaseDataDefinitions('aat')
-    archiveCoreCaseDataDefinitions('prod')
     createGithubRelease()
-    uploadCoreCaseDataDefinitions('aat')
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
   }
 }

@@ -34,6 +34,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     protected List<String> getAllDefinitionFilesToLoadAt(String definitionsPath) {
-        return List.of("build/ccd-config/ccd-nfd-" + environment.name().toLowerCase(Locale.UK) + ".xlsx");
+        return List.of(String.format("/build/ccd-release-config/civil-ccd-%s.xlsx", environment.name()));
     }
 }
