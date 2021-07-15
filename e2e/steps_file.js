@@ -21,6 +21,18 @@ const detailsOfClaimPage = require('./pages/createClaim/detailsOfClaim.page');
 const uploadParticularsOfClaimQuestion = require('./pages/createClaim/uploadParticularsOfClaimQuestion.page');
 const uploadParticularsOfClaim = require('./pages/createClaim/uploadParticularsOfClaim.page');
 const claimValuePage = require('./pages/createClaim/claimValue.page');
+const specCreateCasePage = require('./pages/createClaim/specCreateCase.page');
+const specRespondentRepresentedPage = require('./pages/createClaim/specIsRespondentRepresented.page');
+const specDefendantSolicitorEmailPage = require('./pages/createClaim/specDefendantSolicitorEmail.page');
+const specTimelinePage = require('./pages/createClaim/specClaimTimeline.page');
+const specAddTimelinePage = require('./pages/createClaim/specAddTimeline.page');
+const specListEvidencePage = require('./pages/createClaim/specClaimListEvidence.page');
+const specInterestPage = require('./pages/createClaim/specInterest.page');
+const specInterestValuePage = require('./pages/createClaim/specInterestValue.page');
+const specInterestRatePage = require('./pages/createClaim/specInterestRate.page');
+const specInterestDateStartPage = require('./pages/createClaim/specInterestDateStart.page');
+const specInterestDateEndPage = require('./pages/createClaim/specInterestDateEnd.page');
+const specClaimAmountPage = require('./pages/createClaim/specClaimAmount.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
 
@@ -114,6 +126,9 @@ module.exports = function () {
         await defendantSolicitorOrganisation.enterOrganisationDetails();
         await defendantSolicitorEmail.enterSolicitorEmail();
       }
+      await defendantSolicitorOrganisation.enterOrganisationDetails();
+      await defendantSolicitorEmail.enterSolicitorEmail();
+
       await claimTypePage.selectClaimType();
       await personalInjuryTypePage.selectPersonalInjuryType();
       await detailsOfClaimPage.enterDetailsOfClaim();
@@ -127,6 +142,52 @@ module.exports = function () {
         'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
       await event.submit('Submit', expectedMessage);
 
+      await event.returnToCaseDetails();
+      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+    },
+
+    async createCaseSpec(litigantInPerson = false) {
+      this.click('Create case');
+      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
+      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
+      await this.clickContinue();
+      await this.clickContinue();
+      await solicitorReferencesPage.enterReferences();
+      // await chooseCourtPage.enterCourt();
+      await party.enterParty('applicant1', address);
+      // await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
+      await claimantSolicitorIdamDetailsPage.enterUserEmail();
+      await claimantSolicitorOrganisation.enterOrganisationDetails();
+      await party.enterParty('respondent1', address);
+      if (litigantInPerson) {
+        await specRespondentRepresentedPage.enterRespondentRepresented('no');
+      } else {
+        await specRespondentRepresentedPage.enterRespondentRepresented('yes');
+        await defendantSolicitorOrganisation.enterOrganisationDetails();
+        await specDefendantSolicitorEmailPage.enterSolicitorEmail();
+      }
+      // await claimTypePage.selectClaimType();
+      // await personalInjuryTypePage.selectPersonalInjuryType();
+      await detailsOfClaimPage.enterDetailsOfClaim();
+      // await uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim();
+      // await uploadParticularsOfClaim.upload(TEST_FILE_PATH);
+      await specTimelinePage.addManually();
+      await specAddTimelinePage.addTimeline();
+      await specListEvidencePage.addEvidence();
+      await specClaimAmountPage.addClaimItem();
+      await this.clickContinue();
+      await specInterestPage.addInterest();
+      await specInterestValuePage.selectInterest();
+      await specInterestRatePage.selectInterestRate();
+      await specInterestDateStartPage.selectInterestDateStart();
+      await specInterestDateEndPage.selectInterestDateEnd();
+      await this.clickContinue();
+      await pbaNumberPage.selectPbaNumber();
+      await paymentReferencePage.updatePaymentReference();
+      await statementOfTruth.enterNameAndRole('claim');
+      let expectedMessage = litigantInPerson ?
+        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
+      await event.submit('Submit', expectedMessage);
       await event.returnToCaseDetails();
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
