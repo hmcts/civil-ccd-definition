@@ -44,7 +44,7 @@ def archiveCoreCaseDataDefinitions() {
     sh """
       echo 'environment variable : ${env.CCD_DEF_NAME}'
       eval \\\$(./bin/variables/load-${env.CCD_DEF_NAME}-environment-variables.sh ${CHANGE_ID})
-      ./build-release-ccd-definition.sh ${env.CCD_DEF_NAME}"
+      eval \\\$(./build-release-ccd-definition.sh ${env.CCD_DEF_NAME})
       ./bin/add-roles.sh
     """
   }
