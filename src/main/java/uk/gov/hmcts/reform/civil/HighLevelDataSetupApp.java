@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
 
     private final CcdEnvironment environment;
