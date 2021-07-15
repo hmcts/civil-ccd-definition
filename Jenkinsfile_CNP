@@ -42,10 +42,8 @@ def createGithubRelease() {
 def archiveCoreCaseDataDefinitions() {
   dir("${WORKSPACE}/bin") {
     sh """
-      echo 'environment variable : ${env.CCD_DEF_NAME}'
       eval \$(./variables/load-${env.CCD_DEF_NAME}-environment-variables.sh ${CHANGE_ID})
       eval \$(./build-release-ccd-definition.sh ${env.CCD_DEF_NAME})
-      eval \$(./add-roles.sh)
     """
   }
 
@@ -94,7 +92,9 @@ withPipeline(type, product, component) {
   }
 
   before('smoketest:preview') {
+    uploadCoreCaseDataDefinitions('preview')
     sh """
+      ./bin/add-roles.sh
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
