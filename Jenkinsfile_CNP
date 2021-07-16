@@ -56,7 +56,6 @@ def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin"){
     ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
     sh """
-      eval \$(./variables/load-${env}-environment-variables.sh  ${CHANGE_ID})
       ${WORKSPACE}/bin/utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
     """
   }
@@ -93,6 +92,7 @@ withPipeline(type, product, component) {
 
   before('smoketest:preview') {
     sh """
+      eval \$(./variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/add-roles.sh
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
