@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure")
+@Library("Infrastructure@8.3.0.prerelease.1")
 import uk.gov.hmcts.contino.AppPipelineConfig
 
 def type = "java"
