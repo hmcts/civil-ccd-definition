@@ -12,6 +12,5 @@ echo "export IDAM_API_URL_BASE=https://idam-api.aat.platform.hmcts.net"
 echo "export CCD_IDAM_REDIRECT_URL=https://ccd-case-management-web-aat.service.core-compute-aat.internal/oauth2redirect"
 echo "export DEFINITION_STORE_URL_BASE=https://ccd-definition-store-civil-ccd-pr-${pr}.service.core-compute-preview.internal"
 echo "export CAMUNDA_BASE_URL=https://camunda-civil-ccd-pr-${pr}.service.core-compute-preview.internal"
-
 # definition placeholders
 echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-pr-${pr}.service.core-compute-preview.internal"
