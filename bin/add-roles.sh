@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+root_dir=$(realpath $(dirname ${0})/..)
+
 # User used during the CCD import and ccd-role creation
 ${root_dir}/bin/utils/ccd-add-role.sh "caseworker-civil"
 ${root_dir}/bin/utils/ccd-add-role.sh "caseworker-caa"
