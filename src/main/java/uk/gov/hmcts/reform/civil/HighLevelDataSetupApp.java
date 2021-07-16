@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.civil;
 
-import uk.gov.hmcts.befta.DefaultTestAutomationAdapter;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 
@@ -11,17 +10,13 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     private final CcdEnvironment environment;
 
-    public HighLevelDataSetupApp(CcdEnvironment dataSetupEnvironment ) {
-        super(new DefaultTestAutomationAdapter(), VALID_CCD_TEST_DEFINITIONS_PATH, dataSetupEnvironment);
+    public HighLevelDataSetupApp(CcdEnvironment dataSetupEnvironment) {
+        super(dataSetupEnvironment);
         environment = dataSetupEnvironment;
     }
 
     public static void main(String[] args) throws Throwable {
         if (CcdEnvironment.valueOf(args[0].toUpperCase(Locale.UK)).equals(CcdEnvironment.PROD)) {
-            return;
-        }
-
-        if (CcdEnvironment.valueOf(args[0].toUpperCase(Locale.UK)).equals(CcdEnvironment.PREVIEW)) {
             return;
         }
 
