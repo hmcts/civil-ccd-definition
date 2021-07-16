@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@8.3.0.prerelease.1")
+@Library("Infrastructure")
 import uk.gov.hmcts.contino.AppPipelineConfig
 
 def type = "java"
@@ -44,7 +44,6 @@ def archiveCoreCaseDataDefinitions() {
     sh """
       eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
       ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
-      ./add-roles.sh
     """
   }
 
