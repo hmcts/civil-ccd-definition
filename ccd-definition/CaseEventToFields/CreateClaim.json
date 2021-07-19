@@ -693,8 +693,7 @@
     "PageID": "Details",
     "PageDisplayOrder": 11,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/particulars-of-claim"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2017",
