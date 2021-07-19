@@ -8,6 +8,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "CaseNote",
     "PageDisplayOrder": 1,
-    "PageColumnNumber": 1
+    "PageColumnNumber": 1,
+    "ShowSummaryContentOption": 1
   }
 ]
