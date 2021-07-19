@@ -7,7 +7,7 @@ module.exports = {
   },
   url: {
     manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.S2S_URL_BASE || 'http://localhost:4502',
+    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',

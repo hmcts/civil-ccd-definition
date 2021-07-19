@@ -5,7 +5,7 @@ set -e
 username=${1}
 password=${2}
 
-IDAM_API_URL=${IDAM_API_URL_BASE:-http://localhost:5000}
+IDAM_API_URL=${IDAM_API_BASE_URL:-http://localhost:5000}
 IDAM_URL=${IDAM_STUB_LOCALHOST:-$IDAM_API_URL}
 
 clientSecret=${CCD_API_GATEWAY_IDAM_CLIENT_SECRET:-ccd_gateway_secret}
