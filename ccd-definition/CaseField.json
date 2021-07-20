@@ -766,6 +766,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1LitigationFriendDate",
+    "Label": "Date respondent 1 added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "uploadParticularsOfClaim",
     "Label": "Do you want to upload Particulars of claim?",
     "FieldType": "YesOrNo",
