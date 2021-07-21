@@ -1219,5 +1219,61 @@
     "Label": "## Does the defendant have a legal representative?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specCorrespondenceAddressSubHeadingLabel",
+    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specCorrespondenceAddressRequired",
+    "Label": "Do you want to enter a different address?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicantCorrespondenceAddressdetails",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "CorrespondenceAddressDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressSubHeadingLabel",
+    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressRequired",
+    "Label": "Do you want to enter a different address?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressdetails",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "CorrespondenceAddressDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "totalInterest",
+    "Label": "Interest",
+    "FieldType": "Number",
+    "SecurityClassification": "Public"
   }
 ]
