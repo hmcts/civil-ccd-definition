@@ -238,9 +238,7 @@ module.exports = function () {
       await this.clickContinue();
       await this.clickContinue();
       await solicitorReferencesPage.enterReferences();
-      // await chooseCourtPage.enterCourt();
       await party.enterParty('applicant1', address);
-      // await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
       await claimantSolicitorIdamDetailsPage.enterUserEmail();
       await claimantSolicitorOrganisation.enterOrganisationDetails();
       await party.enterParty('respondent1', address);
@@ -251,11 +249,7 @@ module.exports = function () {
         await defendantSolicitorOrganisation.enterOrganisationDetails();
         await specDefendantSolicitorEmailPage.enterSolicitorEmail();
       }
-      // await claimTypePage.selectClaimType();
-      // await personalInjuryTypePage.selectPersonalInjuryType();
       await detailsOfClaimPage.enterDetailsOfClaim();
-      // await uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim();
-      // await uploadParticularsOfClaim.upload(TEST_FILE_PATH);
       await specTimelinePage.addManually();
       await specAddTimelinePage.addTimeline();
       await specListEvidencePage.addEvidence();
