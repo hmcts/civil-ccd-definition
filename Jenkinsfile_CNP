@@ -70,8 +70,8 @@ def archiveCoreCaseDataDefinitions() {
   } else {
     dir("${WORKSPACE}/bin") {
       sh """
-          eval \$(./variables/load-${ENVIRONMENT}-environment-variables.sh)
-          ./build-release-ccd-definition.sh ${ENVIRONMENT}
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh)
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
         """
     }
 
