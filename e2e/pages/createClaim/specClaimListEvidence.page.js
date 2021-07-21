@@ -16,7 +16,7 @@ module.exports = {
     I.waitForElement(this.fields.evidence.type);
     I.selectOption(this.fields.evidence.type, 'other');
     I.waitForElement(this.fields.evidence.other);
-    I.fillField(this.fields.evidence.other, 'Test evidence details');
+    I.fillField(this.fields.evidence.other, 'evidence');
     await I.clickContinue();
   },
 };
