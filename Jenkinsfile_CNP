@@ -42,8 +42,18 @@ def createGithubRelease() {
 def archiveCoreCaseDataDefinitions() {
   dir("${WORKSPACE}/bin") {
     sh """
-      eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
-      ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
+      if [${env.ENVIRONMENT} -eq "aat"] then
+         echo "main environemnt is ${env.ENVIRONMENT}"
+         for PROD_ENV in "aat" "prod"
+         do
+            echo "environemnt is ${PROD_ENV}"
+            eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
+            ./build-release-ccd-definition.sh ${PROD_ENV}
+         done
+      else
+          eval \\\$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
+      fi
     """
   }
 
@@ -72,22 +82,17 @@ withPipeline(type, product, component) {
   loadVaultSecrets(secrets)
 
   onPR {
-    echo "Building CIVIL infrastructure in environment '${params.ENVIRONMENT}'"
     env.ENVIRONMENT = "preview"
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
   }
   onMaster {
     env.ENVIRONMENT="aat"
-    env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
-
   }
   onDemo {
     env.ENVIRONMENT = "demo"
-    env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-demo.service.core-compute-demo.internal"
   }
   onPerftest{
     env.ENVIRONMENT = "perftest"
-    env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-perftest.service.core-compute-perftest.internal"
   }
 
   before('highleveldatasetup') {
