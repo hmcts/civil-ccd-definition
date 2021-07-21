@@ -2208,7 +2208,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specCorrespondenceAddressRequired",
+    "CaseFieldID": "specApplicantCorrespondenceAddressRequired",
     "AccessControl": [
       {
         "UserRoles": [

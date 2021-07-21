@@ -1231,7 +1231,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "specCorrespondenceAddressRequired",
+    "ID": "specApplicantCorrespondenceAddressRequired",
     "Label": "Do you want to enter a different address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
@@ -1241,7 +1241,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "specApplicantCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
-    "FieldType": "CorrespondenceAddressDetails",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {
@@ -1265,7 +1265,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
-    "FieldType": "CorrespondenceAddressDetails",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {
