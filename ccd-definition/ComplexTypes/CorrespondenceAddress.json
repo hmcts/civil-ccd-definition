@@ -1,0 +1,9 @@
+[
+    {
+        "ID": "CorrespondenceAddressDetails",
+        "ListElementCode": "address",
+        "FieldType": "AddressUK",
+        "ElementLabel": " ",
+        "SecurityClassification": "Public"
+    }
+]
