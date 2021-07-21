@@ -540,19 +540,21 @@
     "PageLabel": "Postal address for claimant's legal representative",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "specCorrespondenceAddressRequired",
+    "CaseFieldID": "specApplicantCorrespondenceAddressRequired",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "specCorrespondenceAddress",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -564,8 +566,9 @@
     "PageID": "specCorrespondenceAddress",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "specCorrespondenceAddressRequired=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "FieldShowCondition": "specApplicantCorrespondenceAddressRequired=\"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -696,7 +699,9 @@
     "PageLabel": "Postal address for respondent's legal representative",
     "PageDisplayOrder": 13,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specRespondentCorrespondenceAddress",
+    "PageShowCondition": "respondent1OrgRegistered=\"Yes\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -708,7 +713,8 @@
     "PageID": "specRespondentCorrespondenceAddress",
     "PageDisplayOrder": 13,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specRespondentCorrespondenceAddress"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -721,7 +727,8 @@
     "PageDisplayOrder": 13,
     "PageColumnNumber": 1,
     "FieldShowCondition": "specRespondentCorrespondenceAddressRequired=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specRespondentCorrespondenceAddress"
   },
   {
     "LiveFrom": "01/01/2017",

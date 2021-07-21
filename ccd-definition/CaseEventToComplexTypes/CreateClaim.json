@@ -1364,7 +1364,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.AddressLine1",
+    "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -1373,7 +1373,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.AddressLine2",
+    "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
@@ -1382,7 +1382,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.AddressLine3",
+    "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -1391,7 +1391,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.PostTown",
+    "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -1400,7 +1400,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.County",
+    "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -1409,7 +1409,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.Country",
+    "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
@@ -1418,7 +1418,7 @@
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
-    "ListElementCode": "address.PostCode",
+    "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -1427,7 +1427,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.AddressLine1",
+    "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -1436,7 +1436,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.AddressLine2",
+    "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
@@ -1445,7 +1445,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.AddressLine3",
+    "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -1454,7 +1454,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.PostTown",
+    "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -1463,7 +1463,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.County",
+    "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -1472,7 +1472,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.Country",
+    "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
@@ -1481,7 +1481,7 @@
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "ListElementCode": "address.PostCode",
+    "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   }
