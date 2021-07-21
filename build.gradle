@@ -65,6 +65,9 @@ allprojects {
     jcenter()
     mavenCentral()
     maven {
+      url 'https://jitpack.io'
+    }
+    maven {
       url "https://dl.bintray.com/hmcts/hmcts-maven"
     }
     maven {
@@ -122,6 +125,12 @@ jar {
   }
 }
 
+task highLevelDataSetup(type: JavaExec) {
+  main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
+  classpath += sourceSets.main.runtimeClasspath
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+}
+
 task installDependencies(type: Exec, description: 'Installs Yarn dependencies.') {
   commandLine '/usr/bin/yarn', '--mutex', 'network', '--frozen-lockfile', '--silent', 'install'
 }
@@ -173,6 +182,7 @@ sonarqube {
     property "sonar.projectName", "CIVIL :: ccd-definition"
     property "sonar.projectKey", "civil-ccd-definition"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
+    property "sonar.coverage.exclusions", "**/HighLevelDataSetupApp.java"
     property "sonar.host.url", "https://sonar.reform.hmcts.net/"
   }
 }
@@ -211,6 +221,7 @@ ext.libraries = [
 ]
 
 dependencies {
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.2.0'
 
   testImplementation libraries.junit5
 
