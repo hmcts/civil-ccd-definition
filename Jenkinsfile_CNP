@@ -46,18 +46,25 @@ def archiveCoreCaseDataDefinitions() {
       echo "environemnt is ${PROD_ENV}"
       dir("${WORKSPACE}/bin") {
         sh """
-          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh ${CHANGE_ID})
+          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
           ./build-release-ccd-definition.sh ${PROD_ENV}
         """
       }
     }
 
+  } else if ( env.ENVIRONMENT == 'preview') {
+    dir("${WORKSPACE}/bin") {
+      sh """
+          eval \$(./variables/load-preview-environment-variables.sh ${CHANGE_ID})
+          ./build-release-ccd-definition.sh preview
+      """
+    }
   } else {
     dir("${WORKSPACE}/bin") {
       sh """
-          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
-          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
-      """
+          eval \$(./variables/load-${ENVIRONMENT}-environment-variables.sh)
+          ./build-release-ccd-definition.sh ${ENVIRONMENT}
+        """
     }
   }
 
