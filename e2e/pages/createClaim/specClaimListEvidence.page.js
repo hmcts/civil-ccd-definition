@@ -12,7 +12,7 @@ module.exports = {
     I.waitForElement(this.fields.evidence.id);
     await I.runAccessibilityTest();
     I.click('Add new');
-    I.waitForElement('#speclistYourEvidenceList_0_evidenceType');
+    I.waitForElement('#speclistYourEvidenceList_0_evidenceType > option');
     I.selectOption(this.fields.evidence.type, 'other');
     I.waitForElement('#speclistYourEvidenceList_0_otherEvidence');
     I.fillField('#speclistYourEvidenceList_0_otherEvidence', 'Test evidence details');
