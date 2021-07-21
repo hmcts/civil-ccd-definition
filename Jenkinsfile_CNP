@@ -50,6 +50,10 @@ def archiveCoreCaseDataDefinitions() {
           ./build-release-ccd-definition.sh ${PROD_ENV}
         """
       }
+
+      dir("${WORKSPACE}/build") {
+        steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx"
+      }
     }
 
   } else if ( env.ENVIRONMENT == 'preview') {
@@ -59,6 +63,10 @@ def archiveCoreCaseDataDefinitions() {
           ./build-release-ccd-definition.sh preview
       """
     }
+
+    dir("${WORKSPACE}/build") {
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-preview.xlsx"
+    }
   } else {
     dir("${WORKSPACE}/bin") {
       sh """
@@ -66,10 +74,10 @@ def archiveCoreCaseDataDefinitions() {
           ./build-release-ccd-definition.sh ${ENVIRONMENT}
         """
     }
-  }
 
-  dir("${WORKSPACE}/build") {
-    steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+    dir("${WORKSPACE}/build") {
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+    }
   }
 }
 
