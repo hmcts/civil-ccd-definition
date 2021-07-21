@@ -40,7 +40,7 @@ def createGithubRelease() {
 }
 
 def archiveCoreCaseDataDefinitions() {
-  if ( ${env.ENVIRONMENT} == 'aat') {
+  if ( env.ENVIRONMENT == 'aat') {
     echo "current environemnt is ${env.ENVIRONMENT}"
     for(PROD_ENV in ["aat","prod"]){
       echo "environemnt is ${PROD_ENV}"
