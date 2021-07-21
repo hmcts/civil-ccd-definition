@@ -40,22 +40,25 @@ def createGithubRelease() {
 }
 
 def archiveCoreCaseDataDefinitions() {
-  dir("${WORKSPACE}/bin") {
-    sh """
-      if [${env.ENVIRONMENT} == 'aat']
-      then
-         echo "current environemnt is ${env.ENVIRONMENT}"
-         for PROD_ENV in "aat" "prod"
-         do
-            echo "environemnt is ${PROD_ENV}"
-            eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
-            ./build-release-ccd-definition.sh ${PROD_ENV}
-         done
-      else
-          eval \\\$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
+  if ( ${env.ENVIRONMENT} == 'aat') {
+    echo "current environemnt is ${env.ENVIRONMENT}"
+    for(PROD_ENV in ["aat","prod"]){
+      echo "environemnt is ${PROD_ENV}"
+      dir("${WORKSPACE}/bin") {
+        sh """
+          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh ${CHANGE_ID})
+          ./build-release-ccd-definition.sh ${PROD_ENV}
+        """
+      }
+    }
+
+  } else {
+    dir("${WORKSPACE}/bin") {
+      sh """
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
           ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
-      fi
-    """
+      """
+    }
   }
 
   dir("${WORKSPACE}/build") {
