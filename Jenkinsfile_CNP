@@ -46,18 +46,25 @@ def archiveCoreCaseDataDefinitions() {
       echo "environemnt is ${PROD_ENV}"
       dir("${WORKSPACE}/bin") {
         sh """
-          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh ${CHANGE_ID})
+          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
           ./build-release-ccd-definition.sh ${PROD_ENV}
         """
       }
     }
 
+  } else if ( env.ENVIRONMENT == 'preview') {
+    dir("${WORKSPACE}/bin") {
+      sh """
+          eval \$(./variables/load-preview-environment-variables.sh ${CHANGE_ID})
+          ./build-release-ccd-definition.sh preview
+      """
+    }
   } else {
     dir("${WORKSPACE}/bin") {
       sh """
-          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
-          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
-      """
+          eval \$(./variables/load-${ENVIRONMENT}-environment-variables.sh)
+          ./build-release-ccd-definition.sh ${ENVIRONMENT}
+        """
     }
   }
 
@@ -70,7 +77,7 @@ def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin"){
     ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
     sh """
-      eval \$(./variables/load-${env}-environment-variables.sh ${CHANGE_ID})
+      eval \$(./variables/load-${env}-environment-variables.sh)
       ./utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
     """
   }
@@ -135,7 +142,7 @@ withPipeline(type, product, component) {
     sh """
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
-      .bin/build-release-ccd-definition.sh staging
+      ./bin/build-release-ccd-definition.sh staging
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
