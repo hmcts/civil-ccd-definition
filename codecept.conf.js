@@ -5,9 +5,10 @@ exports.config = {
     Puppeteer: {
       restart: false,
       keepCookies: true,
-      show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
+      show: process.env.SHOW_BROWSER_WINDOW === 'true' || true,
       windowSize: '1200x900',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 40000),
+      waitForNavigation: "networkidle2",
       chrome: {
         ignoreHTTPSErrors: true
       },
