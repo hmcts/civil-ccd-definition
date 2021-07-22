@@ -53,9 +53,6 @@ def archiveCoreCaseDataDefinitions() {
 
       dir("${WORKSPACE}/build") {
         steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx"
-        sh """
-           cp "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx" "github-release/civil-ccd-${PROD_ENV}.xlsx"
-        """
       }
     }
 
@@ -69,9 +66,6 @@ def archiveCoreCaseDataDefinitions() {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-preview.xlsx"
-      sh """
-           cp "ccd-release-config/civil-ccd-preview.xlsx" "github-release/civil-ccd-preview.xlsx"
-      """
     }
   } else {
     dir("${WORKSPACE}/bin") {
@@ -83,9 +77,6 @@ def archiveCoreCaseDataDefinitions() {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
-      sh """
-          cp "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx" "github-release/civil-ccd-${env.ENVIRONMENT}.xlsx"
-      """
     }
   }
 }
