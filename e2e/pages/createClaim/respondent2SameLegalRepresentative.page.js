@@ -16,7 +16,7 @@ module.exports = {
     I.waitForElement(this.fields.respondent2SameLegalRepresentative.id);
     await I.runAccessibilityTest();
     await within(this.fields.respondent2SameLegalRepresentative.id, () => {
-      I.click(this.fields.respondent2SameLegalRepresentative.options.no);
+      I.click(this.fields.respondent2SameLegalRepresentative.options.yes);
     });
 
     await I.clickContinue();

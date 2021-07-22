@@ -69,7 +69,8 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondent1ResponseDeadline",
-    "TabFieldDisplayOrder": 9
+    "TabFieldDisplayOrder": 9,
+    "Comment": "is respondent2ResponseDeadline needed here?"
   },
   {
     "CaseTypeID": "CIVIL",

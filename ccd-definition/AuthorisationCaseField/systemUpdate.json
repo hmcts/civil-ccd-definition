@@ -133,10 +133,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimResponseIntentionType",
+    "CaseFieldID": "respondentFirstClaimResponseIntentionType",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "respondentSecondClaimResponseIntentionType",
+  "UserRole": "caseworker-civil-systemupdate",
+  "CRUD": "R"
+},
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ClaimResponseType",

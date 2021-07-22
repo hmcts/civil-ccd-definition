@@ -151,6 +151,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2ResponseDeadline",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "submittedDate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -181,7 +187,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimResponseIntentionType",
+    "CaseFieldID": "respondentFirstClaimResponseIntentionType",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSecondClaimResponseIntentionType",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },

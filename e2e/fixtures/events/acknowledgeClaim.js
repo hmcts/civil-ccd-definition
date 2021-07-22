@@ -18,7 +18,7 @@ module.exports = {
       }
     },
     ResponseIntention: {
-      respondent1ClaimResponseIntentionType: 'FULL_DEFENCE'
+      respondentFirstClaimResponseIntentionType: 'FULL_DEFENCE'
     }
   },
   invalid: {
