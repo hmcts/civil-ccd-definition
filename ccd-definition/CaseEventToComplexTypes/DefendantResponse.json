@@ -8,21 +8,20 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SolicitorReferences",
+    "ID": "ResponseDocument",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "solicitorReferences",
-    "ListElementCode": "respondentSolicitor1Reference",
+    "CaseFieldID": "respondent2ClaimResponseDocument",
+    "ListElementCode": "file",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Party",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualDateOfBirth",
-    "EventElementLabel": "Defendant's date of birth",
-    "EventHintText": "You must enter this if you know it.",
-    "FieldDisplayOrder": 2,
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type=\"INDIVIDUAL\""
   },
@@ -31,8 +30,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderDateOfBirth",
-    "EventElementLabel": "Defendant's date of birth",
-    "EventHintText": "You must enter this if you know it.",
+    "EventElementLabel": "Date of birth",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type=\"SOLE_TRADER\""
@@ -42,6 +40,36 @@
     "ID": "Defendant",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "individualDateOfBirth",
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1.type=\"INDIVIDUAL\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "soleTraderDateOfBirth",
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1.type=\"SOLE_TRADER\""
+  },
+
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
