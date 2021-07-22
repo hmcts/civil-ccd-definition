@@ -68,9 +68,6 @@ allprojects {
       url 'https://jitpack.io'
     }
     maven {
-      url "https://dl.bintray.com/hmcts/hmcts-maven"
-    }
-    maven {
       url  "http://repo.spring.io/milestone"
     }
     maven {
