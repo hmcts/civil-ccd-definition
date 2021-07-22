@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "Fee",
     "CaseEventID": "RESUBMIT_CLAIM",
     "CaseFieldID": "claimFee",

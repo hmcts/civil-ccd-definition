@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "AccessControl": [
@@ -19,7 +18,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "AccessControl": [
@@ -39,7 +37,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "AccessControl": [
@@ -59,7 +56,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "AccessControl": [
@@ -79,7 +75,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "AccessControl": [
@@ -99,7 +94,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "AccessControl": [
@@ -119,21 +113,18 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_CLAIM_FORM",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_CLAIM_FORM_SPEC",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "AccessControl": [
@@ -153,7 +144,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_CLAIM_ISSUE",
     "AccessControl": [
@@ -173,7 +163,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_CLAIM_ISSUE_SPEC",
     "AccessControl": [
@@ -193,7 +182,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_PAYMENT_FAILED",
     "AccessControl": [
@@ -213,7 +201,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_FAILED_PAYMENT",
     "AccessControl": [
@@ -233,7 +220,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_FAILED_PAYMENT_SPEC",
     "AccessControl": [
@@ -253,7 +239,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON",
     "AccessControl": [
@@ -274,7 +259,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_CONTINUING_ONLINE",
     "AccessControl": [
@@ -294,7 +278,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
     "AccessControl": [
@@ -314,7 +297,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
     "AccessControl": [
@@ -334,7 +316,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_DETAILS_CC",
     "AccessControl": [
@@ -355,7 +336,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_AGREED_EXTENSION_DATE_CC",
     "AccessControl": [
@@ -376,7 +356,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_ACKNOWLEDGEMENT_CC",
     "AccessControl": [
@@ -397,7 +376,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CC",
     "AccessControl": [
@@ -418,7 +396,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_HANDED_OFFLINE",
     "AccessControl": [
@@ -439,7 +416,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_ISSUE_CC",
     "AccessControl": [
@@ -460,7 +436,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_NOT_TO_PROCEED_CC",
     "AccessControl": [
@@ -481,7 +456,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_TAKEN_OFFLINE",
     "AccessControl": [
@@ -502,7 +476,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_DISMISSED",
     "AccessControl": [
@@ -523,7 +496,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_LITIGATION_FRIEND_ADDED",
     "AccessControl": [
@@ -544,7 +516,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED_CC",
     "AccessControl": [
@@ -565,7 +536,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "AccessControl": [
@@ -586,7 +556,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_FULL_DEFENCE",
     "AccessControl": [
@@ -599,7 +568,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "AccessControl": [
@@ -619,7 +587,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RESUBMIT_CLAIM",
     "AccessControl": [
@@ -632,7 +599,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INFORM_AGREED_EXTENSION_DATE",
     "AccessControl": [
@@ -652,7 +618,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "AccessControl": [
@@ -671,7 +636,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "AccessControl": [
@@ -690,7 +654,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "AccessControl": [
@@ -709,7 +672,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIMANT_LR_SPEC",
     "AccessControl": [
@@ -729,7 +691,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_LR_SPEC",
     "AccessControl": [

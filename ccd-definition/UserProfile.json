@@ -1,20 +1,17 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "UserIDAMId": "solicitor@example.com",
     "WorkBasketDefaultJurisdiction": "CIVIL",
     "WorkBasketDefaultCaseType": "CIVIL",
     "WorkBasketDefaultState": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT"
   },
   {
-    "LiveFrom": "01/01/2017",
     "UserIDAMId": "hmcts.civil+organisation.1.solicitor.1@gmail.com",
     "WorkBasketDefaultJurisdiction": "CIVIL",
     "WorkBasketDefaultCaseType": "CIVIL",
     "WorkBasketDefaultState": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT"
   },
   {
-    "LiveFrom": "01/01/2017",
     "UserIDAMId": "hmcts.civil+organisation.2.solicitor.1@gmail.com",
     "WorkBasketDefaultJurisdiction": "CIVIL",
     "WorkBasketDefaultCaseType": "CIVIL",

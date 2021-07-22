@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "WITHDRAW_CLAIM",
     "Name": "Withdraw claim",
@@ -16,7 +15,6 @@
     "RetriesTimeoutAboutToStartEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "DISCONTINUE_CLAIM",
     "Name": "Discontinue claim",

@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "PENDING_CASE_ISSUED",
     "Name": "Claim Issue Pending",
@@ -8,7 +7,6 @@
     "DisplayOrder": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "CASE_ISSUED",
     "Name": "Awaiting Claim Notification",
@@ -16,7 +14,6 @@
     "DisplayOrder": 2
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "Name": "Awaiting Claim Details Notification",
@@ -24,7 +21,6 @@
     "DisplayOrder": 3
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "Name": "Awaiting Defendant Response",
@@ -32,7 +28,6 @@
     "DisplayOrder": 4
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "AWAITING_APPLICANT_INTENTION",
     "Name": "Claimant Intent Pending",
@@ -40,7 +35,6 @@
     "DisplayOrder": 5
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "CASE_DISMISSED",
     "Name": "Claim Dismissed",
@@ -48,7 +42,6 @@
     "DisplayOrder": 6
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "Name": "Case Proceeds Offline",

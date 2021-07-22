@@ -13,11 +13,18 @@ module.exports = {
   },
   goButton: 'Go',
 
-  async startEvent(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
+  start: function (event) {
     I.selectOption(this.fields.eventDropdown, event);
     I.click(this.goButton);
     I.waitForElement(EVENT_TRIGGER_LOCATOR);
+  },
+
+  async startEvent(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
+      this.start(event);
+    }, locate('.govuk-heading-l'));
   },
 
   async assertNoEventsAvailable() {

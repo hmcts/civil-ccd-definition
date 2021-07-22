@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "GENERATE_CLAIM_FORM",
     "Name": "Generate claim form",
@@ -14,7 +13,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "GENERATE_CLAIM_FORM_SPEC",
     "Name": "Generate claim form",
@@ -42,7 +40,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DIRECTIONS_QUESTIONNAIRE",
     "Name": "Generate dq",

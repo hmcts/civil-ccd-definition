@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "PROCESS_CLAIM_ISSUE",
     "Name": "Issue claim",
@@ -14,7 +13,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "PROCESS_CLAIM_ISSUE_SPEC",
     "Name": "Issue claim",
@@ -41,7 +39,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "Name": "Proceed in heritage system",
@@ -55,7 +52,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "PROCESS_FULL_DEFENCE",
     "Name": "Full defence",
