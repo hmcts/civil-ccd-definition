@@ -1443,13 +1443,5 @@
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
     "SecurityClassification": "Public"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "ID": "totalInterest",
-    "Label": "Interest",
-    "FieldType": "Number",
-    "SecurityClassification": "Public"
   }
 ]
