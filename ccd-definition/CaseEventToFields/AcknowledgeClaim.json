@@ -51,13 +51,35 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "respondent1ClaimResponseIntentionType",
-    "CaseEventFieldLabel": "The defendant intends to:",
+    "CaseFieldID": "respondent1PartyNameLabelVsApplicant1",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondentFirstClaimResponseIntentionType",
+    "CaseEventFieldLabel": "",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseIntention",
     "PageLabel": "Response intention",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "applicant1PartyNameLabelVsRespondent1",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
   }
 ]

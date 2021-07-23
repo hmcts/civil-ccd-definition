@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
     responseIntention: {
-      id: '#respondent1ClaimResponseIntentionType',
+      id: '#respondentFirstClaimResponseIntentionType',
       options: {
         fullDefence: 'Defend all of the claim',
         partDefence: 'Defend part of the claim',

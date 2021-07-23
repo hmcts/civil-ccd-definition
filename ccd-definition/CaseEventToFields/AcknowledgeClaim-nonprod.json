@@ -1,0 +1,78 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "addRespondent2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "addApplicant2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent1PartyNameLabelVsApplicant2",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2PartyNameLabelVsApplicant1",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondentSecondClaimResponseIntentionType",
+    "CaseEventFieldLabel": "",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "applicant1PartyNameLabelVsRespondent2",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "applicant2PartyNameLabelVsRespondent1",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  }
+]

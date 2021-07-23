@@ -205,6 +205,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2ResponseDeadline",
+    "Label": "Respondent solicitor deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "The date time by which the second respondent solicitor has to submit the response to the claim.",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1AgreedDeadlineExtension",
     "Label": "Enter the extension date that was agreed with the other party",
     "HintText": "This date cannot be more than 28 days from the original deadline.",
@@ -237,12 +246,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1ClaimResponseIntentionType",
-    "Label": "Response intention",
+    "ID": "respondentFirstClaimResponseIntentionType",
+    "Label": "",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
     "SecurityClassification": "Public",
-    "_Definition":  "The intended response of the first respondent to the claim",
+    "_Definition":  "The first intended response in the claim",
     "_Category":  "CIVIL"
   },
   {
@@ -906,6 +915,58 @@
     "ID": "respondentSolicitor2Reference",
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSecondClaimResponseIntentionType",
+    "Label": "",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseIntention",
+    "SecurityClassification": "Public",
+    "_Definition":  "The second intended response in the claim",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelVsApplicant1",
+    "Label": "### Defendant: ${respondent1.partyName} intends to",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelVsApplicant2",
+    "Label": "### Defendant: ${respondent1.partyName} intends to",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelVsApplicant1",
+    "Label": "### Defendant: ${respondent2.partyName} intends to",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelVsRespondent1",
+    "Label": "### against Claimant: ${applicant1.partyName} \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelVsRespondent2",
+    "Label": "### against Claimant: ${applicant1.partyName} \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyNameLabelVsRespondent1",
+    "Label": "### against Claimant: ${applicant2.partyName} ",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
