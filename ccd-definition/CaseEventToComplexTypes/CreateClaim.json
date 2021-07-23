@@ -1492,5 +1492,131 @@
     "ListElementCode": "timelineDescription",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "SpecCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "LiveFrom": "01/01/2020",
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
   }
 ]
