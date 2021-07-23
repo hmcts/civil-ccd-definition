@@ -430,7 +430,8 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
+
+    // caseNote is set to null in service
     deleteCaseFields('caseNote');
   }
 };
