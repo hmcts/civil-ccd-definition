@@ -2713,12 +2713,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "totalInterest",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
   }
 ]
