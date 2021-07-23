@@ -3,8 +3,8 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "addRespondent2",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "ResponseIntention",
     "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
@@ -13,8 +13,8 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "addApplicant2",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "ResponseIntention",
     "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
