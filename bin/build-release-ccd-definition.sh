@@ -5,6 +5,8 @@ set -eu
 environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
+excludedFilenamePatterns="-e UserProfile.json"
+
 root_dir=$(realpath $(dirname ${0})/..)
 config_dir=${root_dir}/ccd-definition
 build_dir=${root_dir}/build/ccd-release-config
