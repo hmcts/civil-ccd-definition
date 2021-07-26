@@ -112,7 +112,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -1330,7 +1330,7 @@
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1828,6 +1828,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LitigationFriendDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "uiStatementOfTruth",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -1945,7 +1964,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
