@@ -139,6 +139,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_SOLS_OF_CLAIM_1_VS_2_DIFFERENT_SOLS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "[CREATOR]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_CLAIM_ISSUE",
     "AccessControl": [
       {
