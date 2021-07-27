@@ -3,13 +3,11 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    respondentDetails: {
-      id: '#respondentDetails'
-    }
+      respondentDetails: '#respondent1Details',
   },
 
   async verifyDetails() {
-    I.waitForElement(this.fields.respondentDetails.id);
+    I.waitForElement(this.fields.respondentDetails);
     await I.runAccessibilityTest();
     await I.see('Example respondent1 company');
 
