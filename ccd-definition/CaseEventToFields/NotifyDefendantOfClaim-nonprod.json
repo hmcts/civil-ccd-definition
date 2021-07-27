@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_SOLS_OF_CLAIM_1_VS_2_DIFFERENT_SOLS",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "defendantSolicitorNotifyClaimOptions",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -11,7 +11,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_SOLS_OF_CLAIM_1_VS_2_DIFFERENT_SOLS",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "notifyClaimLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
