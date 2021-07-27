@@ -2,14 +2,6 @@ const { date, document, element, buildAddress } = require('../../api/dataHelper'
 
 module.exports = {
   valid: {
-    RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE'
-    },
-    Upload: {
-      respondent1ClaimResponseDocument: {
-        file: document('claimResponse.pdf')
-      }
-    },
     ConfirmNameAddress: {},
     ConfirmDetails: {
       respondent1: {
@@ -22,9 +14,17 @@ module.exports = {
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
       },
-      solicitorReferences: {
-        applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference'
+      // solicitorReferences: {
+      //   applicantSolicitor1Reference: 'Applicant reference',
+      //   respondentSolicitor1Reference: 'Respondent reference'
+      // }
+    },
+    RespondentResponseType: {
+      respondent1ClaimResponseType: 'FULL_DEFENCE'
+    },
+    Upload: {
+      respondent1ClaimResponseDocument: {
+        file: document('claimResponse.pdf')
       }
     },
     FileDirectionsQuestionnaire: {
