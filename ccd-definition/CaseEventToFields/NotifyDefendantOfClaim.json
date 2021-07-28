@@ -2,11 +2,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "defendantSolicitorNotifyClaimOptions",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitorToNotify",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "notifyClaimLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "AccessGrantedWarning",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N"
   }
 ]

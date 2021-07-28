@@ -28,23 +28,5 @@
     "EndButtonLabel": "Discontinue claim",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "RetriesTimeoutAboutToStartEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_DEFENDANT_SOLS_OF_CLAIM_1_VS_2_DIFFERENT_SOLS",
-    "Name": "Notify claim",
-    "Description": "Notify defendant solicitors of claim",
-    "DisplayOrder": 3,
-    "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED",
-    "PostConditionState": "AWAITING_CASE_DETAILS_NOTIFICATION",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "ShowSummary": "Y",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
