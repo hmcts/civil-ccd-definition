@@ -673,6 +673,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORTWO]",
           "caseworker-civil-admin"
         ],
@@ -1788,6 +1789,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1AcknowledgeNotificationDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2AcknowledgeNotificationDate",
     "AccessControl": [
       {
         "UserRoles": [

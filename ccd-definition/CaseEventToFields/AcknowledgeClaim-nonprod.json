@@ -44,7 +44,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondentSecondClaimResponseIntentionType",
-    "CaseEventFieldLabel": "",
+    "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseIntention",
