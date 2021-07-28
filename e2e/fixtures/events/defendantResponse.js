@@ -13,14 +13,16 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-      },
-      // solicitorReferences: {
-      //   applicantSolicitor1Reference: 'Applicant reference',
-      //   respondentSolicitor1Reference: 'Respondent reference'
-      // }
+      }
     },
     RespondentResponseType: {
       respondent1ClaimResponseType: 'FULL_DEFENCE'
+    },
+    SolicitorReferences: {
+      solicitorReferences: {
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      }
     },
     Upload: {
       respondent1ClaimResponseDocument: {

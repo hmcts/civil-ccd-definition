@@ -25,6 +25,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent1Details",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "solicitorReferences",
     "CaseEventFieldLabel": "Confirm your details",
     "PageFieldDisplayOrder": 1,

@@ -8,6 +8,14 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "SolicitorReferences",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "solicitorReferences",
+    "ListElementCode": "respondentSolicitor1Reference",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
     "ID": "ResponseDocument",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseDocument",
