@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "DefendantLitigationFriend",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -9,7 +8,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "DefendantLitigationFriend",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -19,7 +17,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -28,7 +25,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -37,7 +33,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -46,7 +41,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -55,7 +49,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -64,7 +57,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -73,7 +65,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
@@ -82,11 +73,10 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
-    "ListElementCode": "certificateOfSuitability",
+    "ListElementCode": "certificateOfSuitability.document",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   }

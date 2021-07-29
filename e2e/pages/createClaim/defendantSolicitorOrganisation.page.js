@@ -2,37 +2,31 @@ const { I } = inject();
 
 module.exports = {
 
-  fields: {
-    respondent1OrgRepresented: {
-      id: '#respondent1OrgRegistered',
-      options: {
-        yes: 'Yes',
-        no: 'No'
-      }
-    },
-    orgPolicyReference: '#respondent1OrganisationPolicy_OrgPolicyReference',
-    searchText: '#search-org-text',
+  fields: respondent => {
+    return {
+      respondentOrgRepresented: {
+        id: `#${respondent}OrgRegistered`,
+        options: {
+          yes: 'Yes',
+          no: 'No'
+        }
+      },
+      orgPolicyReference: `#${respondent}OrganisationPolicy_OrgPolicyReference`,
+      searchText: '#search-org-text',
+    };
   },
 
-  async enterOrganisationDetails () {
-    I.waitForElement(this.fields.respondent1OrgRepresented.id);
+  async enterOrganisationDetails (respondent) {
+    I.waitForElement(this.fields(respondent).respondentOrgRepresented.id);
     await I.runAccessibilityTest();
-    await within(this.fields.respondent1OrgRepresented.id, () => {
-      I.click(this.fields.respondent1OrgRepresented.options.yes);
+    await within(this.fields(respondent).respondentOrgRepresented.id, () => {
+      I.click(this.fields(respondent).respondentOrgRepresented.options.yes);
     });
-    I.waitForElement(this.fields.orgPolicyReference);
-    I.fillField(this.fields.orgPolicyReference, 'Defendant policy reference');
-    I.waitForElement(this.fields.searchText);
-    I.fillField(this.fields.searchText, 'Civil');
+    I.waitForElement(this.fields(respondent).orgPolicyReference);
+    I.fillField(this.fields(respondent).orgPolicyReference, 'Defendant policy reference');
+    I.waitForElement(this.fields(respondent).searchText);
+    I.fillField(this.fields(respondent).searchText, 'Civil');
     I.click('a[title="Select the organisation Civil - Organisation 2"]');
-    await I.clickContinue();
-  },
-
-  async organisationNotRegisteredInMyHMCTS () {
-    I.waitForElement(this.fields.respondent1OrgRepresented.id);
-    await within(this.fields.respondent1OrgRepresented.id, () => {
-      I.click(this.fields.respondent1OrgRepresented.options.no);
-    });
     await I.clickContinue();
   }
 };

@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PENDING_CASE_ISSUED",
     "AccessControl": [
@@ -21,7 +20,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
@@ -31,7 +29,6 @@
     "CRUD": "CRUD"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
@@ -41,7 +38,6 @@
     "CRUD": "CRUD"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
@@ -51,7 +47,6 @@
     "CRUD": "CRUD"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
@@ -61,7 +56,6 @@
     "CRUD": "CRUD"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_ISSUED",
     "AccessControl": [
@@ -81,7 +75,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "AccessControl": [

@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "caseHistory",
     "Label": " ",
@@ -8,15 +7,13 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings with the Damages Claims Portal (DCP)\n### Who can use this service?\nUse this service if you are representing a claimant and:\n* Bringing a claim for damages\n* able to pay the full issue fee using payment by fee account\n\n### About the claimant\n The claimant must: \n* have a litigation friend if the claimant is under the age of 18 (in which case a statement of suitability must be provided); \n* not be a protected party within the meaning of CPR 21.1(2)(d);\n* not have in force against them -\n<br/>   (i) a civil proceedings order;\n<br/>   (ii) an all proceedings order; or\n<br/>   (iii) a civil restraint order; and\n* have an address in England or Wales\n\n### About the claim\nA claim is only suitable for the pilot if all the following conditions are met:\n* the claim is a claim for damages only;\n* the claim would not ordinarily follow the Part 8 procedure;\n* the claim is not made under one of the provisions of the Consumer Credit Act 1974 specified in CPR PD 7B paragraph 3.1;\n* the claimant is represented by a legal representative who is registered with MyHMCTS and has been provided with access to the DCP;\n* the claim is conducted in English;\n* the claimant believes that the defendant -\n<br/>   (i) has a postal address for service within England and Wales;\n<br/>   (ii)  is aged 18 years or older; and\n<br/>   (iii) is not a \"protected party\".",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be: \n* representing 1 Claimant against up to 2 Defendants, or 2 Claimants against 1 Defendant\n* able to pay the full issue fee using Payment by Account (PBA)\n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \nDefendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
     "Label": "Claim references",
@@ -24,7 +21,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "courtLocation",
     "Label": "Court location code",
@@ -32,10 +28,9 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1",
-    "Label": "Claimant details",
+    "Label": "Claimant's details",
     "FieldType": "Party",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the first applicant on the case",
@@ -216,7 +211,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "servedDocumentFiles",
-    "Label": "Documents which are uploaded must be in one of the following machine readable formats:",
+    "Label": "Upload documents",
     "FieldType": "ServedDocumentFiles",
     "SecurityClassification": "Public"
   },
@@ -249,10 +244,18 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1Copy",
+    "Label": "Workaround for respondentDetails label",
+    "FieldType": "Party",
+    "SecurityClassification": "Public",
+    "_Comments": "Field interpolation can be used only with case fields present on the same or one of the previous pages - otherwise the data will be removed on clicking previous.",
+    "_Category": "WORKAROUND"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "respondentDetails",
-    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n**Party type:** ${respondent1.partyTypeDisplayValue}\n\n**Name:** ${respondent1.partyName} ${respondent1.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1.primaryAddress.AddressLine1}<br />${respondent1.primaryAddress.AddressLine2}<br />${respondent1.primaryAddress.AddressLine3}<br />${respondent1.primaryAddress.PostTown}<br />${respondent1.primaryAddress.County}<br />${respondent1.primaryAddress.PostCode}",
+    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -617,7 +620,21 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitor1ServiceAddressRequired",
+    "Label": "Postal correspondence for the Claimant’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
+    "HintText": "This is the address to which postal correspondence for the Claimant’s legal representative will be sent.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitor1ServiceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2OrganisationPolicy",
     "Label": "Applicant 2 organisation policy",
@@ -633,11 +650,33 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2OrganisationPolicy",
-    "Label": "Respondent 2 organisation policy",
-    "FieldType": "OrganisationPolicy",
+    "ID": "respondentSolicitor1ServiceAddressRequired",
+    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
+    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1ServiceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2ServiceAddressRequired",
+    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
+    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2ServiceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {
@@ -817,7 +856,13 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1LitigationFriendDate",
+    "Label": "Date respondent 1 added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "uploadParticularsOfClaim",
     "Label": "Do you want to upload Particulars of claim?",
@@ -840,6 +885,121 @@
     "FieldType": "StatementOfTruth",
     "SecurityClassification": "Public",
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePaymentHistoryViewer",
+    "Label": "Custom Payment History Viewer",
+    "FieldType": "CasePaymentHistoryViewer",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addApplicant2Label",
+    "Label": "You can add another Claimant after you have issued the claim but you will need to submit a separate application.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addApplicant2",
+    "Label": "Do you want to add another Claimant now?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2",
+    "Label": "Second Claimant's details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriendRequired",
+    "Label": "Is the second Claimant a child i.e. under the age of 18?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriend",
+    "Label": "Second Claimant litigation friend details",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addRespondent2",
+    "Label": "Is there another Defendant?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2",
+    "Label": "Second Defendant's details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2Represented",
+    "Label": "Does the second defendant have a legal representative?",
+    "HintText": "If they are not legally represented you can still continue with the claim but the Defendant will be served offline (on paper)",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2SameLegalRepresentative",
+    "Label": "Does the second Defendant have the same legal representative?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrgRegistered",
+    "Label": "Is the organisation registered with MyHMCTS?",
+    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationPolicy",
+    "Label": "Respondent 2 organisation policy",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2EmailAddress",
+    "Label": "Enter the second Defendant legal representatives email address to be used for notifications",
+    "HintText": "This should be the email address that the Defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2OrgLabel",
+    "Label": "Enter organisation details manually. The claim will then continue offline.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2OrganisationDetails",
+    "Label": " ",
+    "FieldType": "SolicitorOrganisationDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2Reference",
+    "Label": "Defendant's legal representative's reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   },
   {
     "LiveFrom": "01/01/2017",
@@ -981,6 +1141,22 @@
     "ID": "totalClaimAmount",
     "Label": "Total",
     "FieldType": "Number",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "totalInterest",
+    "Label": "Total Interest",
+    "FieldType": "Number",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "superClaimType",
+    "Label": "Total Interest",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
@@ -1218,6 +1394,54 @@
     "ID": "specRespondent1RepresentedLabel",
     "Label": "## Does the defendant have a legal representative?",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specCorrespondenceAddressSubHeadingLabel",
+    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicantCorrespondenceAddressRequired",
+    "Label": "Do you want to enter a different address?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicantCorrespondenceAddressdetails",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressSubHeadingLabel",
+    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressRequired",
+    "Label": "Do you want to enter a different address?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressdetails",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   }
 ]

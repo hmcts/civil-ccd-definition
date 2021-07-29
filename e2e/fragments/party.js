@@ -27,7 +27,7 @@ module.exports = {
       I.click(this.fields(partyType).type.options.company);
     });
 
-    I.fillField(this.fields(partyType).company.name, 'Example company');
+    I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
 
     await within(this.fields(partyType).address, () => {
       postcodeLookup.enterAddressManually(address);

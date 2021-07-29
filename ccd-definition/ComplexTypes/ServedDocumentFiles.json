@@ -3,21 +3,7 @@
     "ID": "ServedDocumentFiles",
     "ListElementCode": "documentsLabel",
     "FieldType": "Label",
-    "ElementLabel": "Text documents: .pdf, .txt, .doc, .dot, .docx, .rtf",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "ServedDocumentFiles",
-    "ListElementCode": "spreadsheetsLabel",
-    "FieldType": "Label",
-    "ElementLabel": "Spreadsheets: .xlt, .xlsx",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "ServedDocumentFiles",
-    "ListElementCode": "medicalReportsLabel",
-    "FieldType": "Label",
-    "ElementLabel": "Aside from the medical report (which may be scanned), any pdf must be text-based and machine readable (rather than a scanned document)",
+    "ElementLabel": "Aside from medical reports, any documents you upload must be in the following machine readable format: doc, docx, dot, pdf, rtf, txt, xlt or xlsx. Pdf’s must be text based, not a scanned document.",
     "SecurityClassification": "Public"
   },
   {

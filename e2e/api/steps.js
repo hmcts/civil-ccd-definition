@@ -4,7 +4,7 @@ const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
-
+chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
@@ -76,7 +76,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'Your claim will not be issued until payment is confirmed.'
-    }, true);
+    });
 
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
@@ -99,7 +99,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -117,7 +117,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -136,7 +136,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'You have until DATE to notify the defendant of the claim and claim details.'
-    }, true);
+    });
 
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
@@ -153,9 +153,8 @@ module.exports = {
     await validateEventPages(data.RESUBMIT_CLAIM);
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Claim pending',
-      body: 'What happens next'
-    }, true);
-
+      body: 'Your claim will be processed. Wait for us to contact you.'
+    });
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
@@ -187,7 +186,7 @@ module.exports = {
     await assertSubmittedEvent('CASE_ISSUED', {
       header: 'Documents uploaded successfully',
       body: ''
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -204,7 +203,7 @@ module.exports = {
 
     await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
       header: 'Notification of claim sent',
-      body: 'What happens next'
+      body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
@@ -224,7 +223,7 @@ module.exports = {
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Defendant notified',
-      body: 'What happens next'
+      body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
@@ -270,12 +269,13 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
-    }, true);
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    deleteCaseFields('respondent1Copy');
   },
 
   informAgreedExtension: async (user) => {
@@ -296,8 +296,8 @@ module.exports = {
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Extension deadline submitted',
-      body: 'What happens next'
-    }, true);
+      body: 'You must respond to the claimant by'
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -324,15 +324,17 @@ module.exports = {
     await assertError('Hearing', data[eventName].invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
+    //TODO: update when service repo has new content (CMC-1265)
     await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
-      header: 'You\'ve submitted your response',
-      body: 'We will let you know when they respond.'
-    }, true);
+      header: 'You have submitted the Defendant\'s defence',
+      body: 'The Claimant legal representative will get a notification'
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
+    deleteCaseFields('respondent1Copy');
   },
 
   claimantResponse: async (user) => {
@@ -355,9 +357,9 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
-      header: 'You\'ve chosen to proceed with the claim',
-      body: '>We\'ll review the case and contact you to tell you what to do next.'
-    }, true);
+      header: 'You have chosen to proceed with the claim',
+      body: '>We will review the case and contact you to tell you what to do next.'
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -376,7 +378,7 @@ module.exports = {
     await assertSubmittedEvent('ADD_DEFENDANT_LITIGATION_FRIEND', {
       header: 'You have added litigation friend details',
       body: '<br />'
-    }, true);
+    });
   },
 
   moveCaseToCaseman: async (user) => {
@@ -455,11 +457,10 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
   }
 };
 
-const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback) => {
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
-
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {

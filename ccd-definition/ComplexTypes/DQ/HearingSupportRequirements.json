@@ -4,7 +4,7 @@
     "ListElementCode": "requirements",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "HearingSupportRequirements",
-    "ElementLabel": "Select any support you, your client and any experts of witnesses would require for a court hearing",
+    "ElementLabel": "Select any support you, your client(s) and any experts or witnesses would require for a court hearing",
     "SecurityClassification": "Public"
   },
   {

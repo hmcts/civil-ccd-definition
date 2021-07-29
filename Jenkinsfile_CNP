@@ -76,6 +76,23 @@ withPipeline(type, product, component) {
   }
 
   after('checkout') {
+    onMaster {
+      withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
+        try {
+          sh '''
+            set -e
+
+            git remote set-url origin $(git config remote.origin.url | sed "s/github.com/${BEARER_TOKEN}@github.com/g")
+
+            git fetch origin demo:demo
+            git push --force origin HEAD:demo
+          '''
+        } catch (err) {
+          notifyBuildEvent channel: '#civil_notifications', color: 'warning', message: 'Failed to update demo branch'
+        }
+      }
+    }
+
     onDemo {
       def subscription = 'nonprod'
       withSubscription(subscription) {
@@ -91,7 +108,7 @@ withPipeline(type, product, component) {
     sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/add-roles.sh
-      ./bin/import-ccd-definition.sh
+      ./bin/import-ccd-definition.sh "-e *-nonprod.json"
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
@@ -119,7 +136,6 @@ withPipeline(type, product, component) {
     sh """
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
-      ./bin/import-ccd-definition.sh
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
     """
@@ -143,6 +159,7 @@ withPipeline(type, product, component) {
 
   after('functionalTest:aat') {
     archiveCoreCaseDataDefinitions('aat')
+    archiveCoreCaseDataDefinitions('prod')
     createGithubRelease()
     uploadCoreCaseDataDefinitions('aat')
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'

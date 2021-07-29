@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
@@ -9,7 +8,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
@@ -18,7 +16,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
@@ -27,7 +24,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQStatementOfTruth",
@@ -37,7 +33,6 @@
     "DisplayContext": "READONLY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQStatementOfTruth",
@@ -46,7 +41,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQStatementOfTruth",
