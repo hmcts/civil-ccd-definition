@@ -41,6 +41,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "RespondentResponseType",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Yes",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -52,6 +53,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "RespondentResponseType",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Yes",
     "ShowSummaryChangeOption": "Y"
   },
   {
