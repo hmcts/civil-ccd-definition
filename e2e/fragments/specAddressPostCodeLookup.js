@@ -16,13 +16,13 @@ module.exports = {
         country: `input[id$="spec${party}CorrespondenceAddressdetails__detailCountry"]`,
         postcode: `input[id$="spec${party}CorrespondenceAddressdetails__detailPostCode"]`,
       },
-      findAddressButton: "Find address",
-      cantEnterPostcodeLink: locate("a").withText("I can't enter a UK postcode"),
+      findAddressButton: 'Find address',
+      cantEnterPostcodeLink: locate('a').withText("I can't enter a UK postcode"),
     };
   },
 
   enterAddressManually(party, address) {
-    I.click(this.fields(party).cantEnterPostcodeLink);
+    I.click(this.fields(party).fields.cantEnterPostcodeLink);
     I.fillField(this.fields(party).fields.buildingAndStreet.lineOne, address.buildingAndStreet.lineOne);
     I.fillField(this.fields(party).fields.buildingAndStreet.lineTwo, address.buildingAndStreet.lineTwo);
     I.fillField(this.fields(party).fields.buildingAndStreet.lineThree, address.buildingAndStreet.lineThree);

@@ -1,5 +1,5 @@
 const { I } = inject();
-const postcodeLookup = require("./specAddressPostCodeLookup");
+const postcodeLookup = require('./specAddressPostCodeLookup');
 
 module.exports = {
   fields: function (party) {
@@ -12,7 +12,7 @@ module.exports = {
   async enterSpecParty(party, address) {
     I.waitForElement(this.fields(party).id);
     await I.runAccessibilityTest();
-    await I.click("Yes");
+    await I.click('Yes');
     await within(this.fields(party).container, () => {
       postcodeLookup.enterAddressManually(party, address);
     });
