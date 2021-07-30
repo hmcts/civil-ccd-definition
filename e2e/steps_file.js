@@ -61,6 +61,7 @@ const defendantLitigationFriendPage = require('./pages/addDefendantLitigationFri
 
 const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
+const specParty = require('./fragments/specParty');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
@@ -79,6 +80,8 @@ const furtherInformationPage = require('./fragments/dq/furtherInformation.page')
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 
 const address = require('./fixtures/address.js');
+const specClaimantLRPostalAddress = require('./fixtures/specClaimantLRPostalAddress');
+const specDefendantLRPostalAddress = require('./fixtures/specDefendantLRPostalAddress');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -203,24 +206,20 @@ module.exports = function () {
           await this.clickContinue();
           await this.clickContinue();
           await solicitorReferencesPage.enterReferences();
-          // await chooseCourtPage.enterCourt();
           await party.enterParty('applicant1', address);
-          // await claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH);
           await claimantSolicitorIdamDetailsPage.enterUserEmail();
           await claimantSolicitorOrganisation.enterOrganisationDetails();
+          await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
           await party.enterParty('respondent1', address);
           if (litigantInPerson) {
             await specRespondentRepresentedPage.enterRespondentRepresented('no');
           } else {
             await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-            await defendantSolicitorOrganisation.enterOrganisationDetails();
+            await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
             await specDefendantSolicitorEmailPage.enterSolicitorEmail();
           }
-          // await claimTypePage.selectClaimType();
-          // await personalInjuryTypePage.selectPersonalInjuryType();
+          await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
           await detailsOfClaimPage.enterDetailsOfClaim();
-          // await uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim();
-          // await uploadParticularsOfClaim.upload(TEST_FILE_PATH);
           await specTimelinePage.addManually();
           await specAddTimelinePage.addTimeline();
           await specListEvidencePage.addEvidence();
