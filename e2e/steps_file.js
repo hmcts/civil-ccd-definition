@@ -61,6 +61,7 @@ const defendantLitigationFriendPage = require('./pages/addDefendantLitigationFri
 
 const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
+const specParty = require('./fragments/specParty');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
@@ -79,6 +80,8 @@ const furtherInformationPage = require('./fragments/dq/furtherInformation.page')
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 
 const address = require('./fixtures/address.js');
+const specClaimantLRPostalAddress = require('./fixtures/specClaimantLRPostalAddress');
+const specDefendantLRPostalAddress = require('./fixtures/specDefendantLRPostalAddress');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -230,46 +233,47 @@ module.exports = function () {
       await event.returnToCaseDetails();
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
-
-    async createCaseSpec(litigantInPerson = false) {
-      this.click('Create case');
-      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-      await this.clickContinue();
-      await this.clickContinue();
-      await solicitorReferencesPage.enterReferences();
-      await party.enterParty('applicant1', address);
-      await claimantSolicitorIdamDetailsPage.enterUserEmail();
-      await claimantSolicitorOrganisation.enterOrganisationDetails();
-      await party.enterParty('respondent1', address);
-      if (litigantInPerson) {
-        await specRespondentRepresentedPage.enterRespondentRepresented('no');
-      } else {
-        await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisation.enterOrganisationDetails();
-        await specDefendantSolicitorEmailPage.enterSolicitorEmail();
-      }
-      await detailsOfClaimPage.enterDetailsOfClaim();
-      await specTimelinePage.addManually();
-      await specAddTimelinePage.addTimeline();
-      await specListEvidencePage.addEvidence();
-      await specClaimAmountPage.addClaimItem();
-      await this.clickContinue();
-      await specInterestPage.addInterest();
-      await specInterestValuePage.selectInterest();
-      await specInterestRatePage.selectInterestRate();
-      await specInterestDateStartPage.selectInterestDateStart();
-      await specInterestDateEndPage.selectInterestDateEnd();
-      await this.clickContinue();
-      await pbaNumberPage.selectPbaNumber();
-      await paymentReferencePage.updatePaymentReference();
-      await statementOfTruth.enterNameAndRole('claim');
-      let expectedMessage = litigantInPerson ?
-        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-      await event.submit('Submit', expectedMessage);
-      await event.returnToCaseDetails();
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-    },
+     async createCaseSpec(litigantInPerson = false) {
+          this.click('Create case');
+          this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
+          await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
+          await this.clickContinue();
+          await this.clickContinue();
+          await solicitorReferencesPage.enterReferences();
+          await party.enterParty('applicant1', address);
+          await claimantSolicitorIdamDetailsPage.enterUserEmail();
+          await claimantSolicitorOrganisation.enterOrganisationDetails();
+          await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
+          await party.enterParty('respondent1', address);
+          if (litigantInPerson) {
+            await specRespondentRepresentedPage.enterRespondentRepresented('no');
+          } else {
+            await specRespondentRepresentedPage.enterRespondentRepresented('yes');
+            await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
+            await specDefendantSolicitorEmailPage.enterSolicitorEmail();
+          }
+          await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
+          await detailsOfClaimPage.enterDetailsOfClaim();
+          await specTimelinePage.addManually();
+          await specAddTimelinePage.addTimeline();
+          await specListEvidencePage.addEvidence();
+          await specClaimAmountPage.addClaimItem();
+          await this.clickContinue();
+          await specInterestPage.addInterest();
+          await specInterestValuePage.selectInterest();
+          await specInterestRatePage.selectInterestRate();
+          await specInterestDateStartPage.selectInterestDateStart();
+          await specInterestDateEndPage.selectInterestDateEnd();
+          await this.clickContinue();
+          await pbaNumberPage.selectPbaNumber();
+          await paymentReferencePage.updatePaymentReference();
+          await statementOfTruth.enterNameAndRole('claim');
+          let expectedMessage = litigantInPerson ?
+            'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
+          await event.submit('Submit', expectedMessage);
+          await event.returnToCaseDetails();
+          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+        },
 
     async notifyClaim() {
       eventName = 'Notify claim';
