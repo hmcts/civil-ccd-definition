@@ -17,7 +17,7 @@ module.exports = {
         postcode: `input[id$="spec${party}CorrespondenceAddressdetails__detailPostCode"]`,
       },
       findAddressButton: 'Find address',
-      cantEnterPostcodeLink: locate('a').withText("I can't enter a UK postcode"),
+      cantEnterPostcodeLink: locate('a').withText('I can\'t enter a UK postcode'),
     };
   },
 
