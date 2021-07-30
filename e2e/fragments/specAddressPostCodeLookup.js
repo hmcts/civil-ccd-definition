@@ -22,7 +22,7 @@ module.exports = {
   },
 
   enterAddressManually(party, address) {
-    I.click(this.fields(party).fields.cantEnterPostcodeLink);
+    I.click(this.fields(party).cantEnterPostcodeLink);
     I.fillField(this.fields(party).fields.buildingAndStreet.lineOne, address.buildingAndStreet.lineOne);
     I.fillField(this.fields(party).fields.buildingAndStreet.lineTwo, address.buildingAndStreet.lineTwo);
     I.fillField(this.fields(party).fields.buildingAndStreet.lineThree, address.buildingAndStreet.lineThree);
