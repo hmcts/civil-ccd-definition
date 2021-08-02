@@ -1443,5 +1443,44 @@
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentDetails",
+    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.\n\n**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSApplicantCorrespondenceAddressdetails",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSApplicantCorrespondenceAddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentCorrespondenceAddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentCorrespondenceAddressdetails",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
   }
 ]

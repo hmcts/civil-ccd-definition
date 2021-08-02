@@ -676,5 +676,11 @@
     "CaseFieldID": "respondentSolicitor2Reference",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondentDetails",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

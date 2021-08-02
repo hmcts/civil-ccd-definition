@@ -184,5 +184,11 @@
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
