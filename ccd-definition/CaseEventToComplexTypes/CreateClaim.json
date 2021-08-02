@@ -1360,7 +1360,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1369,7 +1368,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1378,7 +1376,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1387,7 +1384,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1396,7 +1392,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1405,7 +1400,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1414,7 +1408,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1423,7 +1416,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1432,7 +1424,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1441,7 +1432,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1450,7 +1440,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1459,7 +1448,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1468,7 +1456,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1477,7 +1464,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
