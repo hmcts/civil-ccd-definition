@@ -62,6 +62,7 @@ const defendantLitigationFriendPage = require('./pages/addDefendantLitigationFri
 const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const specParty = require('./fragments/specParty');
+const specPartyDetails = require('./fragments/specClaimantDetails');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
@@ -199,18 +200,18 @@ module.exports = function () {
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
-     async createCaseSpec(litigantInPerson = false) {
+     async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
           this.click('Create case');
           this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
           await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
           await this.clickContinue();
           await this.clickContinue();
           await solicitorReferencesPage.enterReferences();
-          await party.enterParty('applicant1', address);
+          await specPartyDetails.enterDetails('applicant1', address, applicantType);
           await claimantSolicitorIdamDetailsPage.enterUserEmail();
           await claimantSolicitorOrganisation.enterOrganisationDetails();
           await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
-          await party.enterParty('respondent1', address);
+          await specPartyDetails.enterDetails('respondent1', address, defendantType);
           if (litigantInPerson) {
             await specRespondentRepresentedPage.enterRespondentRepresented('no');
           } else {
