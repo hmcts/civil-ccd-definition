@@ -1482,5 +1482,12 @@
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
     "SecurityClassification": "Public"
+  },  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specResponseCheckList",
+    "Label": "<p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n <p>Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. </p>\n\n <a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
