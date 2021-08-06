@@ -409,11 +409,5 @@
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specResponseCheckList",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
   }
 ]
