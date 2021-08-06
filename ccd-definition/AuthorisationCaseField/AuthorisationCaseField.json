@@ -2685,5 +2685,11 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specResponseCheckList",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
   }
 ]
