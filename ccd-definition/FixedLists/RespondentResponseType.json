@@ -2,7 +2,7 @@
   {
     "ID": "RespondentResponseType",
     "ListElementCode": "FULL_DEFENCE",
-    "ListElement": "Defends all of the claim",
+    "ListElement": "Rejects all of the claim",
     "DisplayOrder": 1
   },
   {
