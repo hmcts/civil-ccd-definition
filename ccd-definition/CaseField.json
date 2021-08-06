@@ -1013,7 +1013,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
-    "Label": "## Check if you need to complete the claim timeline template \n\n <p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n\n Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n <a target=\"_blank\" href=\"https://cmc-citizen-frontend-pr-3135.service.core-compute-preview.internal/pdf/timeline-event-template.pdf\">Claim timeline template</a> \n\n You can upload as many templates as needed to record all events in your timeline. \n\n You can also manually enter your timeline in this service without using the template.",
+    "Label": "## Check if you need to complete the claim timeline template \n\n <p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n\n Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n <a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">Claim timeline template</a> \n\n You can upload as many templates as needed to record all events in your timeline. \n\n You can also manually enter your timeline in this service without using the template.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
