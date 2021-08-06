@@ -2685,12 +2685,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specResponseCheckList",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CR"
   }
 ]
