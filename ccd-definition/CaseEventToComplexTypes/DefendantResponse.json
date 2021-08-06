@@ -247,5 +247,117 @@
     "ListElementCode": "role",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
   }
 ]
