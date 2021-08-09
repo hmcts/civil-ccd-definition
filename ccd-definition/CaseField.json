@@ -291,7 +291,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseDocument",
-    "Label": "Upload defence",
+    "Label": " ",
     "FieldType": "ResponseDocument",
     "SecurityClassification": "Public"
   },
@@ -1492,12 +1492,69 @@
     "SecurityClassification": "Public"
   },
   {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTypeForSpecLabel",
+    "Label": "## Defendant: ${respondent1.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpec",
-    "Label": "Defendant: ${respondent1.partyName} ",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceRouteRequired",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseAdmissionType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAmountClaimedLabel",
+    "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaim",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1> \n <div><p>Do not give us a detailed timeline - we'll ask for that separately.</p><p>You'll have to pay an extra fee if you want to change the details of the claim later.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "detailsOfWhyDoesYouDisputeTheClaim",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentHelpLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n <p class=\"govuk-inset-text\">You can upload any supporting evidence, for example, receipts or bank statements.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel2",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName} has paid less than the total claim amount</h1> \n <div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
