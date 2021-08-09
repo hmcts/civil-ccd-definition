@@ -251,7 +251,7 @@
     "CaseFieldID": "respondent1ClaimResponseDocument",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y",
