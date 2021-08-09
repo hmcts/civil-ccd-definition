@@ -231,7 +231,7 @@
     "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y"
   },
