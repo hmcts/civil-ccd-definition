@@ -1013,7 +1013,7 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
-    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://cmc-citizen-frontend-pr-3135.service.core-compute-preview.internal/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
+    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1442,6 +1442,127 @@
     "ID": "specRespondentCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentDetails",
+    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.\n\n**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSApplicantCorrespondenceAddressdetails",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSApplicantCorrespondenceAddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentCorrespondenceAddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentCorrespondenceAddressdetails",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specResponseCheckList",
+    "Label": "<p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n <p>Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. </p>\n\n <a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTypeForSpecLabel",
+    "Label": "## Defendant: ${respondent1.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTypeForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceRouteRequired",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseAdmissionType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAmountClaimedLabel",
+    "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaim",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1> \n <div><p>Do not give us a detailed timeline - we'll ask for that separately.</p><p>You'll have to pay an extra fee if you want to change the details of the claim later.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "detailsOfWhyDoesYouDisputeTheClaim",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentHelpLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n <p class=\"govuk-inset-text\">You can upload any supporting evidence, for example, receipts or bank statements.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel2",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName} has paid less than the total claim amount</h1> \n <div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+    {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1SpecDefenceResponseDocument",
+    "Label": " ",
+    "FieldType": "ResponseSpecDocument",
     "SecurityClassification": "Public"
   }
 ]

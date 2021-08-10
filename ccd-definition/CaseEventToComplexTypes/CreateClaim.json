@@ -1,6 +1,5 @@
 [
   {
-
     "ID": "CourtLocation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "courtLocation",
@@ -9,7 +8,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "CourtLocation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "courtLocation",
@@ -18,7 +16,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -28,7 +25,6 @@
     "EventElementLabel": "Claimant type"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -37,7 +33,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -46,7 +41,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -55,7 +49,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -64,7 +57,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -73,7 +65,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -82,7 +73,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -91,7 +81,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -100,7 +89,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -109,7 +97,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -118,7 +105,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -127,7 +113,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -136,7 +121,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -145,7 +129,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -154,7 +137,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -163,7 +145,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -172,7 +153,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -181,7 +161,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -190,7 +169,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "IdamEmail",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
@@ -199,7 +177,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "IdamEmail",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
@@ -208,7 +185,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "IdamDetails",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1UserDetails",
@@ -282,7 +258,6 @@
     "EventElementLabel": "Defendant type"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -291,7 +266,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -300,7 +274,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -309,7 +282,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -318,7 +290,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -327,7 +298,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -336,7 +306,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -345,7 +314,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -354,7 +322,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -363,7 +330,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -372,7 +338,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -381,7 +346,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -390,7 +354,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -399,7 +362,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -408,7 +370,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -417,7 +378,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
@@ -490,7 +450,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -499,7 +458,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -509,7 +467,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -518,7 +475,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -529,7 +485,6 @@
     "Comment": "medicalreports.document is just the document input,so this must be defined to hide the whole element"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -538,7 +493,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -547,7 +501,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
@@ -556,7 +509,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Fee",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimFee",
@@ -565,7 +517,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uiStatementOfTruth",
@@ -574,7 +525,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uiStatementOfTruth",
@@ -583,15 +533,14 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
-  },  {
-
+  },
+  {
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -600,7 +549,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -612,7 +560,6 @@
     "RetainHiddenValue": "TRUE"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -621,7 +568,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -630,7 +576,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -639,7 +584,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -651,7 +595,6 @@
     "RetainHiddenValue": "TRUE"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -660,7 +603,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -669,7 +611,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -678,7 +619,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -687,7 +627,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -696,7 +635,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -705,7 +643,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -714,7 +651,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -723,7 +659,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -732,7 +667,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -741,7 +675,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -750,7 +683,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -759,7 +691,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -768,7 +699,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "PaymentReference",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimIssuedPaymentDetails",
@@ -779,7 +709,6 @@
     "EventHintText": "This should be your own unique reference to identify the case. It will appear on your statements."
   },
   {
-
     "ID": "CourtLocation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "courtLocation",
@@ -788,7 +717,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "CourtLocation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "courtLocation",
@@ -797,7 +725,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -807,7 +734,6 @@
     "EventElementLabel": "Claimant type"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -816,7 +742,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -825,7 +750,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -834,7 +758,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -843,7 +766,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -852,7 +774,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -861,7 +782,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -870,7 +790,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -879,7 +798,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -888,7 +806,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -897,7 +814,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -906,7 +822,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -915,7 +830,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -924,7 +838,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -933,7 +846,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -942,7 +854,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -951,7 +862,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -960,7 +870,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1",
@@ -969,7 +878,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "IdamEmail",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
@@ -978,7 +886,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "IdamEmail",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
@@ -987,7 +894,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "IdamDetails",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicantSolicitor1UserDetails",
@@ -996,7 +902,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1006,7 +911,6 @@
     "EventElementLabel": "Defendant type"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1015,7 +919,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1024,7 +927,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1033,7 +935,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1042,7 +943,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1051,7 +951,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1060,7 +959,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1069,7 +967,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1078,7 +975,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1087,7 +983,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1096,7 +991,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1105,7 +999,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1114,7 +1007,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1123,7 +1015,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1132,7 +1023,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1141,7 +1031,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
@@ -1150,7 +1039,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1159,7 +1047,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1168,7 +1055,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1177,7 +1063,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1186,7 +1071,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1196,7 +1080,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1205,7 +1088,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1216,7 +1098,6 @@
     "Comment": "medicalreports.document is just the document input,so this must be defined to hide the whole element"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1225,7 +1106,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1234,7 +1114,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Upload",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "servedDocumentFiles",
@@ -1243,7 +1122,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "Fee",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "claimFee",
@@ -1252,7 +1130,6 @@
     "DisplayContext": "READONLY"
   },
   {
-
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "uiStatementOfTruth",
@@ -1261,7 +1138,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "uiStatementOfTruth",
@@ -1270,7 +1146,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -1279,7 +1154,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -1288,7 +1162,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -1300,7 +1173,6 @@
     "RetainHiddenValue": "TRUE"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1OrganisationPolicy",
@@ -1309,7 +1181,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -1318,7 +1189,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -1327,7 +1197,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -1339,7 +1208,6 @@
     "RetainHiddenValue": "TRUE"
   },
   {
-
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1OrganisationPolicy",
@@ -1348,7 +1216,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1357,7 +1224,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1366,7 +1232,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1375,7 +1240,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1384,7 +1248,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1393,7 +1256,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1402,7 +1264,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1411,7 +1272,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1420,7 +1280,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1429,7 +1288,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1438,7 +1296,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1447,7 +1304,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
@@ -1456,7 +1312,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "PaymentReference",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "claimIssuedPaymentDetails",
@@ -1467,7 +1322,6 @@
     "EventHintText": "This should be your own unique reference to identify the case. It will appear on your statements."
   },
   {
-
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
@@ -1476,7 +1330,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "TimelineEvents",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "timelineOfEvents",
@@ -1485,7 +1338,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-
     "ID": "TimelineEvents",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "timelineOfEvents",
@@ -1494,7 +1346,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1503,7 +1354,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1512,7 +1362,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1521,7 +1370,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1530,7 +1378,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1539,7 +1386,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1548,7 +1394,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "SpecCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
@@ -1557,7 +1402,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1566,7 +1410,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1575,7 +1418,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1584,7 +1426,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1593,7 +1434,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1602,7 +1442,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
@@ -1611,7 +1450,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "LiveFrom": "01/01/2020",
     "ID": "specRespondentCorrespondenceAddress",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",

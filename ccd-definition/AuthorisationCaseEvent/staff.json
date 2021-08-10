@@ -175,6 +175,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "INFORM_AGREED_EXTENSION_DATE_SPEC",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -182,6 +188,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

@@ -1,0 +1,47 @@
+[
+  {
+    "ID": "RespondToClaim",
+    "ListElementCode": "howMuchWasPaidLabel",
+    "ElementLabel": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest. \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondToClaim",
+    "ListElementCode": "howMuchWasPaid",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "How much was paid?",
+    "Max": "2500000",
+    "SecurityClassification": "Public",
+    "Label": "How much was paid?"
+  },
+  {
+    "ID": "RespondToClaim",
+    "ListElementCode": "whenWasThisAmountPaid",
+    "FieldType": "Date",
+    "ElementLabel": "When was this amount paid?",
+    "HintText": "For example 9 December 2020",
+    "SecurityClassification": "Public",
+    "Label": "When was this amount paid?"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "HowWasThisAmountPaid",
+    "ID": "RespondToClaim",
+    "Label": " ",
+    "ElementLabel": "How was this amount paid?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HowWasThisAmountPaid",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "HowWasThisAmountPaidOthers",
+    "ID": "RespondToClaim",
+    "Label": " ",
+    "ElementLabel": "Tell us how",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HowWasThisAmountPaid = \"OTHERS\""
+  }
+]
