@@ -1519,5 +1519,48 @@
     "Label": " ",
     "FieldType": "ResponseSpecDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimResponseTimelineList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimTimelineList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specResponseTimelineDocumentFiles",
+    "Label": "Upload files",
+    "FieldType": "Document",
+    "HintText": "We only accept documents in pdf format.",
+    "RegularExpression": ".pdf",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "specResponseTimelineOfEvents",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TimelineOfEvents",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteManualTimelineLabel",
+    "Label": "List the events in order. Provide dates if you know them.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specResponselistYourEvidenceList",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "EvidenceList",
+    "SecurityClassification": "Public"
   }
 ]
