@@ -4,7 +4,7 @@ module.exports = {
 
   fields: {
 
-    emailAddress: '#specRespondentSolicitor1EmailAddress'
+    emailAddress: '#respondentSolicitor1EmailAddress'
   },
 
   async enterSolicitorEmail() {
