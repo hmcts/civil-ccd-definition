@@ -724,5 +724,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel2",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
