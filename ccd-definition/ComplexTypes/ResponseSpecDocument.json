@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "ResponseSpecDocument",
+    "ListElementCode": "file",
+    "FieldType": "Document",
+    "ElementLabel": " ",
+    "RegularExpression": ".pdf",
+    "SecurityClassification": "Public"
+  }
+]

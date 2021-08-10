@@ -248,7 +248,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1ClaimResponseDocument",
+    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
