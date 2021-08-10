@@ -126,8 +126,10 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     Details: {
       detailsOfClaim: 'Test details of claim'
     },
-    uploadParticularsOfClaim: {
-      uploadParticularsOfClaim: 'No',
+    Upload: {
+      servedDocumentFiles: {
+        particularsOfClaimDocument: [element(document('particularsOfClaim.pdf'))]
+      }
     },
     ClaimValue: {
       claimValue: {
