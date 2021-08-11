@@ -138,7 +138,20 @@ ccd:
         PROXY_DOCUMENT_MANAGEMENT: http://dm-store-aat.service.core-compute-aat.internal
       ingressHost: gateway-${SERVICE_FQDN}
       ingressIP: ${INGRESS_IP}
-      keyVaults: []
+      keyVaults:
+        ccd:
+          resourceGroup: ccd-shared
+          secrets:
+            - name: data-store-api-draft-key
+              alias: CCD_DRAFT_ENCRYPTION_KEY
+            - name: ccd-data-s2s-secret
+              alias: DATA_STORE_IDAM_KEY
+            - name: idam-data-store-client-secret
+              alias: IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET
+            - name: idam-data-store-system-user-username
+              alias: IDAM_DATA_STORE_SYSTEM_USER_USERNAME
+            - name: idam-data-store-system-user-password
+              alias: IDAM_DATA_STORE_SYSTEM_USER_PASSWORD
   ccd-data-store-api:
     java:
       imagePullPolicy: Always
