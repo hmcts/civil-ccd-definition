@@ -19,6 +19,7 @@ postgresql:
       CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "user-profile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      CREATE DATABASE "javadatabase" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
   postgresqlUsername: hmcts
   postgresqlPassword: hmcts
   persistence:
@@ -195,8 +196,8 @@ ccd:
     configTpl:
       xpack.monitoring.enabled: "false"
       db.url: jdbc:postgresql://${SERVICE_NAME}-postgresql:5432/javadatabase?stringtype=unspecified
-      db.user: "javapostgres"
-      db.pwd: "javapassword"
+      db.user: hmcts
+      db.pwd: hmcts
       es.data.nodes.url: http://${SERVICE_NAME}-es-master:9200
 
   ccd-definition-store-api:
