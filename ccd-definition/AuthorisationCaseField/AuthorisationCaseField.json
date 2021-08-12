@@ -2006,18 +2006,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNote",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -2045,6 +2033,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNote",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNotes",
     "AccessControl": [
       {
@@ -2052,6 +2058,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
       }
     ]
   },

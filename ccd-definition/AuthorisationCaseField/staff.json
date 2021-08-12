@@ -649,18 +649,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNotes",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNote",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"

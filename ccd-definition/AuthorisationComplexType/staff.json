@@ -113,13 +113,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNotes",
-    "ListElementCode": "createdBy",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-civil-staff",
@@ -127,22 +120,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNotes",
-    "ListElementCode": "createdOn",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNotes",
-    "ListElementCode": "note",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
