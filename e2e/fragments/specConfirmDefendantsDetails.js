@@ -2,7 +2,7 @@ const { I } = inject();
 
 module.exports = {
   fields: {
-    id: "#specAoSApplicantCorrespondenceAddressRequired_Yes",
+    id: '#specAoSApplicantCorrespondenceAddressRequired_Yes',
   },
 
   async confirmDetails() {

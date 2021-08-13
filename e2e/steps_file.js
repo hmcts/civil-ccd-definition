@@ -246,7 +246,6 @@ module.exports = function () {
 
     async notifyClaim() {
       eventName = 'Notify claim';
-e
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => continuePage.continue(),
