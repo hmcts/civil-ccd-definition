@@ -63,6 +63,8 @@ const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const specParty = require('./fragments/specParty');
 const specPartyDetails = require('./fragments/specClaimantDetails');
+const specConfirmLegalRepDetails = require ('./fragments/specConfirmLegalRepDetails');
+const specConfirmDefendantsDetails = require ('./fragments/specConfirmDefendantsDetails');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
@@ -200,51 +202,51 @@ module.exports = function () {
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
-     async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
-          this.click('Create case');
-          this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-          await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-          await this.clickContinue();
-          await this.clickContinue();
-          await solicitorReferencesPage.enterReferences();
-          await specPartyDetails.enterDetails('applicant1', address, applicantType);
-          await claimantSolicitorIdamDetailsPage.enterUserEmail();
-          await claimantSolicitorOrganisation.enterOrganisationDetails();
-          await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
-          await specPartyDetails.enterDetails('respondent1', address, defendantType);
-          if (litigantInPerson) {
-            await specRespondentRepresentedPage.enterRespondentRepresented('no');
-          } else {
-            await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-            await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
-            await specDefendantSolicitorEmailPage.enterSolicitorEmail();
-          }
-          await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
-          await detailsOfClaimPage.enterDetailsOfClaim();
-          await specTimelinePage.addManually();
-          await specAddTimelinePage.addTimeline();
-          await specListEvidencePage.addEvidence();
-          await specClaimAmountPage.addClaimItem();
-          await this.clickContinue();
-          await specInterestPage.addInterest();
-          await specInterestValuePage.selectInterest();
-          await specInterestRatePage.selectInterestRate();
-          await specInterestDateStartPage.selectInterestDateStart();
-          await specInterestDateEndPage.selectInterestDateEnd();
-          await this.clickContinue();
-          await pbaNumberPage.selectPbaNumber();
-          await paymentReferencePage.updatePaymentReference();
-          await statementOfTruth.enterNameAndRole('claim');
-          let expectedMessage = litigantInPerson ?
-            'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-          await event.submit('Submit', expectedMessage);
-          await event.returnToCaseDetails();
-          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-        },
+    async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
+      this.click('Create case');
+      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
+      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
+      await this.clickContinue();
+      await this.clickContinue();
+      await solicitorReferencesPage.enterReferences();
+      await specPartyDetails.enterDetails('applicant1', address, applicantType);
+      await claimantSolicitorIdamDetailsPage.enterUserEmail();
+      await claimantSolicitorOrganisation.enterOrganisationDetails();
+      await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
+      await specPartyDetails.enterDetails('respondent1', address, defendantType);
+      if (litigantInPerson) {
+        await specRespondentRepresentedPage.enterRespondentRepresented('no');
+      } else {
+        await specRespondentRepresentedPage.enterRespondentRepresented('yes');
+        await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
+        await specDefendantSolicitorEmailPage.enterSolicitorEmail();
+      }
+      await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
+      await detailsOfClaimPage.enterDetailsOfClaim();
+      await specTimelinePage.addManually();
+      await specAddTimelinePage.addTimeline();
+      await specListEvidencePage.addEvidence();
+      await specClaimAmountPage.addClaimItem();
+      await this.clickContinue();
+      await specInterestPage.addInterest();
+      await specInterestValuePage.selectInterest();
+      await specInterestRatePage.selectInterestRate();
+      await specInterestDateStartPage.selectInterestDateStart();
+      await specInterestDateEndPage.selectInterestDateEnd();
+      await this.clickContinue();
+      await pbaNumberPage.selectPbaNumber();
+      await paymentReferencePage.updatePaymentReference();
+      await statementOfTruth.enterNameAndRole('claim');
+      let expectedMessage = litigantInPerson ?
+        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
+      await event.submit('Submit', expectedMessage);
+      await event.returnToCaseDetails();
+      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+    },
 
     async notifyClaim() {
       eventName = 'Notify claim';
-
+e
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => continuePage.continue(),
@@ -273,6 +275,17 @@ module.exports = function () {
         () => confirmDetailsPage.confirmReference(),
         () => responseIntentionPage.selectResponseIntention(responseIntention),
         // temporarily commenting out whilst change is made to service repo
+        () => event.submit('Acknowledge claim', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async acknowledgeClaimSpec() {
+      eventName = 'Acknowledgement of Service';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => specConfirmDefendantsDetails.confirmDetails(),
+        () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
       ]);
