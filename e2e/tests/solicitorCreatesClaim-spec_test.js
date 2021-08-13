@@ -1,4 +1,8 @@
 const config = require('../config.js');
+const {assignCaseToDefendant} = require('../api/testingSupport');
+
+const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
+const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
@@ -115,4 +119,11 @@ Scenario('Applicant solicitor creates specified claim organisation-to-organisati
   await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
+});
+
+Scenario('Defendant solicitor acknowledges claim', async (I) => {
+  await assignCaseToDefendant(caseId());
+  await I.login(config.defendantSolicitorUser);
+  await I.acknowledgeClaimSpec();
+  await I.see(caseEventMessage('Acknowledgement of Service'));
 });
