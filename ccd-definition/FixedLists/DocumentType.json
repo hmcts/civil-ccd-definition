@@ -13,8 +13,14 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "ListElement": "Acknowledgement of service form",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "DIRECTIONS_QUESTIONNAIRE",
     "ListElement": "Directions questionnaire form",
-    "DisplayOrder": 3
+    "DisplayOrder": 4
   }
 ]
