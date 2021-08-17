@@ -4,7 +4,8 @@ module.exports = {
   fields: {
     evidence: {
       id: '#speclistYourEvidenceList',
-      type: '#speclistYourEvidenceList_0_evidenceType'
+      type: '#speclistYourEvidenceList_0_evidenceType',
+      other: '#speclistYourEvidenceList_0_otherEvidence',
     },
   },
 
@@ -12,9 +13,10 @@ module.exports = {
     I.waitForElement(this.fields.evidence.id);
     await I.runAccessibilityTest();
     I.click('Add new');
+    I.waitForElement(this.fields.evidence.type);
     I.selectOption(this.fields.evidence.type, 'other');
-    I.waitForElement('#speclistYourEvidenceList_0_otherEvidence');
-    I.fillField('#speclistYourEvidenceList_0_otherEvidence', 'Test evidence details');
+    I.waitForElement(this.fields.evidence.other);
+    I.fillField(this.fields.evidence.other, 'evidence');
     await I.clickContinue();
   },
 };

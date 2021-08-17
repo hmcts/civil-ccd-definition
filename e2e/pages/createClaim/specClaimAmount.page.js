@@ -3,7 +3,9 @@ const { I } = inject();
 module.exports = {
   fields: {
     claimAmount: {
-      id: '#fieldset-case-data'
+      id: '#claimAmountBreakup',
+      details: '#claimAmountBreakup_0_claimReason',
+      amount: '#claimAmountBreakup_0_claimAmount',
     },
   },
 
@@ -11,9 +13,8 @@ module.exports = {
     I.waitForElement(this.fields.claimAmount.id);
     await I.runAccessibilityTest();
     I.click('Add new');
-    I.waitForElement('#claimAmountBreakup_0_claimReason');
-    I.fillField('#claimAmountBreakup_0_claimReason', 'Test claim item details');
-    I.fillField('#claimAmountBreakup_0_claimAmount', 1000);
+    I.fillField(this.fields.claimAmount.details, 'Test claim item details');
+    I.fillField(this.fields.claimAmount.amount, 1000);
     await I.clickContinue();
   },
 };
