@@ -220,8 +220,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "INFORM_AGREED_EXTENSION_DATE_SPEC",
-    "Name": "Spec agreed extension date",
-    "Description": "Enter an extension date that has already been agreed with other parties",
+    "Name": "Inform agreed extension date",
+    "Description": "Specified Enter an extension date that has already been agreed with other parties",
     "DisplayOrder": 12,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
