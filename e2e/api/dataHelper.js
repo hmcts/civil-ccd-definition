@@ -18,10 +18,11 @@ module.exports = {
   },
 
   document: filename => {
+    const documentId = uuid.v1();
     return {
-      document_url: `${config.url.dmStore}/documents/fakeUrl`,
+      document_url: `${config.url.dmStore}/documents/${documentId}`,
       document_filename: filename,
-      document_binary_url: `${config.url.dmStore}/documents/fakeUrl/binary`
+      document_binary_url: `${config.url.dmStore}/documents/${documentId}/binary`
     };
   },
 
