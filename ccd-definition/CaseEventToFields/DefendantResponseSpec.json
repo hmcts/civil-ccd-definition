@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specResponseCheckList",
-    "PageLabel": "Confirm defendant details",
+    "PageLabel": "Check if you need to complete the claim timeline template",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
