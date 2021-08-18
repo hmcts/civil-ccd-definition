@@ -9,7 +9,7 @@ let attempt = 1;
 
 Feature('End-to-end journey @cross-browser-tests');
 
-Scenario('Full end-to-end journey', async (I) => {
+Scenario('Full end-to-end journey', async ({I}) => {
   console.log(`Test run attempt: #${attempt++}`);
   await I.login(config.applicantSolicitorUser);
   await I.createCase();
