@@ -47,7 +47,9 @@ module.exports = {
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS
     ],
-    PROCEEDS_IN_HERITAGE_SYSTEM: [],
+    PROCEEDS_IN_HERITAGE_SYSTEM: [
+      events.AMEND_PARTY_DETAILS
+    ],
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS

@@ -6,7 +6,7 @@ module.exports = {
 
   fields: {
     transferredDate: {
-      id: 'claimProceedsInCaseman_date'
+      id: 'date'
     },
     claimProceedsInCasemanReason: {
       id: '#claimProceedsInCaseman_reason',

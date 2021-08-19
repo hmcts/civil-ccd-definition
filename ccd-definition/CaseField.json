@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be: \n* representing 1 Claimant against up to 2 Defendants, or 2 Claimants against 1 Defendant\n* able to pay the full issue fee using Payment by Account (PBA)\n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \nDefendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nUse this service if you are representing a Claimant and:\n* bringing a claim for damages\n* able to pay the full issue fee using Payment by Account\n\n### About the Claimant\n The Claimant must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendant \nThe Defendant must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -37,7 +37,6 @@
     "_Category":  "COMMON"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1LitigationFriendRequired",
     "Label": "Is the claimant a child i.e. under the age of 18?",
@@ -45,7 +44,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1LitigationFriend",
     "Label": "Claimant litigation friend details",
@@ -53,7 +51,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1",
     "Label": "Defendant details",
@@ -63,7 +60,6 @@
     "_Category":  "COMMON"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1Represented",
     "Label": "Does the defendant have a legal representative?",
@@ -71,7 +67,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
@@ -80,7 +75,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimValue",
     "Label": "Expected claim value",
@@ -88,7 +82,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimType",
     "Label": "Type of claim",
@@ -97,7 +90,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimTypeOther",
     "Label": "Enter Claim type",
@@ -105,7 +97,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "personalInjuryType",
     "Label": "What type of personal injury is this?",
@@ -114,7 +105,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "personalInjuryTypeOther",
     "Label": "Enter personal injury type",
@@ -122,7 +112,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "allocatedTrack",
     "Label": "Allocated track",
@@ -131,7 +120,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimFee",
     "Label": "Claim fee",
@@ -139,7 +127,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1PbaAccounts",
     "Label": "PBA Number",
@@ -147,7 +134,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "noPbaAccountsLabel",
     "Label": "### You don't have a registered PBA.\n### This case will not be saved.\n## Register an existing PBA with MyHMCTS\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Apply to get a new PBA\n\nYou can <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/form-fee-account-application-form-fee-account-customer-application-form\">use this form to apply for a new PBA account.</a>\n\nYou’ll need to provide details for you and your organisation, including the required credit limit for your account.\n\nOnce your account has been registered, you’ll need to start your claim again to pay the fee.\n\nRead more information on <a target=\"_blank\" href=\"https://www.gov.uk/guidance/myhmcts-online-case-management-for-legal-professionals\">registering a PBA.</a>",
@@ -155,7 +141,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1PbaAccountsIsEmpty",
     "Label": "Hide pba and show noPbaAccountLabel",
@@ -164,7 +149,6 @@
     "Comment": "workaround field to show noPbaAccountsLabel when applicantSolicitor1PbaAccounts is empty. Also hides applicantSolicitor1PbaAccounts"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "pbaAccountsInformationLabel",
     "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## If there’s 1 PBA listed\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## If there are 2 PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nIf you want to remove a PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk. You should include the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n\n\nSelect ‘cancel’ below to discard the case.\n</div></details><br />",
@@ -172,15 +156,13 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimStatementOfTruthLabel",
-    "Label": "The claimant believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "Label": "The Claimant(s) believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the Claimant(s) to sign this statement.\n\nThe Claimant(s) understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1ClaimStatementOfTruth",
     "Label": " ",
@@ -190,7 +172,6 @@
     "_Category":  "CIVIL"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "issueDate",
     "Label": "Date claim issued",
@@ -200,7 +181,6 @@
     "_Category":  "CIVIL"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "submittedDate",
     "Label": "Date claim Submitted",
@@ -208,7 +188,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "servedDocumentFiles",
     "Label": "Upload documents",
@@ -216,7 +195,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDeadline",
     "Label": "Respondent solicitor deadline",
@@ -226,7 +204,15 @@
     "_Category":  "CIVIL"
   },
   {
-    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ResponseDeadline",
+    "Label": "Respondent solicitor deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "The date time by which the second respondent solicitor has to submit the response to the claim.",
+    "_Category":  "CIVIL"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1AgreedDeadlineExtension",
     "Label": "Enter the extension date that was agreed with the other party",
@@ -235,7 +221,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2AgreedDeadlineExtension",
+    "Label": "Enter the extension date that was agreed with the other party",
+    "HintText": "This date cannot be more than 28 days from the original deadline.",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "systemGeneratedCaseDocuments",
     "Label": "System generated Case Documents",
@@ -260,7 +253,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseIntentionType",
     "Label": "Response intention",
@@ -271,7 +263,6 @@
     "_Category":  "CIVIL"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseType",
     "Label": "The defendant:",
@@ -280,7 +271,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "responseHandOffLabel",
     "Label": "This online service only currently supports full defences. Post your response to:\n\nCounty Court Money Claims Centre\n\nPO Box 527\n\nSalford\n\nM5 0BY\n\nDX:702634 Salford 5",
@@ -288,7 +278,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseDocument",
     "Label": "Upload defence",
@@ -296,7 +285,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
@@ -304,7 +292,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaim",
     "Label": "Do you want to proceed with the claim",
@@ -312,7 +299,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocument",
     "Label": "Respond to the defence",
@@ -320,7 +306,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "legacyCaseReference",
     "FieldType": "Text",
@@ -328,7 +313,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "withdrawClaim",
     "Label": "Withdraw claim",
@@ -336,7 +320,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "discontinueClaim",
     "Label": "Discontinue claim",
@@ -344,7 +327,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "businessProcess",
     "Label": "Business process for camunda",
@@ -352,7 +334,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
@@ -360,7 +341,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
@@ -368,7 +348,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
@@ -376,7 +355,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureReport",
     "Label": "Disclosure report",
@@ -384,7 +362,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQExperts",
     "Label": "Respondent 1 experts",
@@ -392,7 +369,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnesses",
     "Label": "Respondent 1 witnesses",
@@ -400,7 +376,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearing",
     "Label": "Respondent 1 Hearing",
@@ -408,7 +383,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
@@ -416,7 +390,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDraftDirections",
     "Label": "Upload file",
@@ -426,7 +399,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRequestedCourt",
     "Label": "Court location code",
@@ -434,7 +406,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingSupport",
     "Label": "Respondent 1 Hearing support requirements",
@@ -442,7 +413,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFurtherInformation",
     "Label": "Respondent 1 Further information",
@@ -450,7 +420,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQLanguage",
     "Label": "Welsh language",
@@ -458,7 +427,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
@@ -466,7 +434,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
@@ -474,7 +441,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
@@ -482,7 +448,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocumentsLabel",
     "Label": "## Disclosure of non-electronic documents",
@@ -490,7 +455,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
@@ -498,7 +462,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureReport",
     "Label": "Disclosure report",
@@ -506,7 +469,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQExperts",
     "Label": "Applicant 1 experts",
@@ -514,7 +476,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQWitnesses",
     "Label": "Applicant 1 witnesses",
@@ -522,7 +483,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearing",
     "Label": "Applicant 1 Hearing",
@@ -530,7 +490,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
@@ -538,7 +497,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDraftDirections",
     "Label": "Upload file",
@@ -548,7 +506,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingSupport",
     "Label": "Applicant 1 Hearing support requirements",
@@ -556,7 +513,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFurtherInformation",
     "Label": "Applicant 1 Further information",
@@ -564,7 +520,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQLanguage",
     "Label": "Welsh language",
@@ -572,7 +527,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQStatementOfTruth",
     "Label": "Statement of truth",
@@ -580,7 +534,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriend",
     "Label": "Defendant litigation details",
@@ -588,7 +541,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPaymentDetails",
     "Label": "Details of PBA payment",
@@ -596,7 +548,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDeadline",
     "Label": "Case dismissed deadline",
@@ -604,7 +555,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDate",
     "Label": "Defendant response date",
@@ -612,7 +562,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1OrganisationPolicy",
     "Label": "Claimant's legal representative",
@@ -642,7 +591,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrganisationPolicy",
     "Label": "Defendant's legal representative",
@@ -680,7 +628,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1EmailAddress",
     "Label": "Enter defendant legal representative's email address to be used for notifications",
@@ -688,7 +635,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrganisationDetails",
     "Label": " ",
@@ -696,7 +642,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
@@ -704,7 +649,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimProceedsInCaseman",
     "Label": "Case proceeds in Caseman",
@@ -712,7 +656,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimNotificationDate",
     "Label": "Date claim notified",
@@ -720,7 +663,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "notifyClaimLabel",
     "Label": "If you continue the defendant legal representative's organisation will be notified and will be granted access to this claim.",
@@ -728,7 +670,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1CheckEmail",
     "Label": "Notifications",
@@ -736,7 +677,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1UserDetails",
     "Label": "Notification details",
@@ -744,7 +684,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaimLabel",
     "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
@@ -752,7 +691,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaim",
     "Label": "Description of claim",
@@ -760,7 +698,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimDetailsNotificationDate",
     "Label": "Case details notification date",
@@ -768,7 +705,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "pbaPaymentFailedLabel",
     "Label": "#### Your payment did not go through. To resubmit the same claim please try again by selecting the PBA account number",
@@ -776,7 +712,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "amendPartyDetailsLabel",
     "Label": "Update a legal representative's email address by replacing the existing email.",
@@ -784,7 +719,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "paymentSuccessfulDate",
     "Label": "Payment successful date",
@@ -792,7 +726,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimNotificationDeadline",
     "Label": "Claim notification deadline",
@@ -800,7 +733,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimDetailsNotificationDeadline",
     "Label": "Case details notification deadline",
@@ -808,7 +740,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1TimeExtensionDate",
     "Label": "Date respondent 1 submitted time extension",
@@ -816,7 +747,13 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2TimeExtensionDate",
+    "Label": "Date respondent 2 submitted time extension",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1AcknowledgeNotificationDate",
     "Label": "Date respondent 1 acknowledged notification",
@@ -824,7 +761,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDate",
     "Label": "Date applicant 1 responded to defence",
@@ -832,7 +768,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "takenOfflineDate",
     "Label": "Date claim moved offline",
@@ -840,7 +775,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "takenOfflineByStaffDate",
     "Label": "Date claim moved offline by staff",
@@ -848,7 +782,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
@@ -870,7 +803,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "statementOfTruthSubmitLabel",
     "Label": "In order to verify the claim by a statement of truth please click “submit” on the next screen. Doing so will be taken as verifying the claim by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the “submit” button.",
@@ -878,7 +810,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "uiStatementOfTruth",
     "Label": " ",
@@ -1000,6 +931,15 @@
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isRespondent1",
+    "Label": "Is respondent1?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "_Comments": "Temporary workaround - flag used to indicate respondent for whom an event should apply.",
+    "_Category": "WORKAROUND"
   },
   {
     "LiveFrom": "01/01/2017",
