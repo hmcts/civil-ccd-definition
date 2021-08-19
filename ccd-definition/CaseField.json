@@ -1555,5 +1555,50 @@
     "Label": "Enter Claim type",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimMediationSpecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h1>\n <p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimMediationSpecRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecLabel",
+    "Label": "## Use of experts in court",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaim_experts",
+    "FieldType": "ExpertDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimWitnesses",
+    "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

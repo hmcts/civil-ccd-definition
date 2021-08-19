@@ -269,9 +269,74 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimMediationSpecLabel",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimMediationSpecRequired",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Mediation",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimExpertSpecLabel",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaimExperts",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimExpertSpecRequired",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimExperts",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim_experts",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimExperts",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "responseClaimExpertSpecRequired = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimWitnesses",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimWitnesses",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -282,8 +347,8 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimTrack= \"SMALL_CLAIM\""
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -294,7 +359,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimelineUpload",
-    "PageShowCondition": "specClaimResponseTimelineList=\"UPLOAD\"",
+    "PageShowCondition": "specClaimResponseTimelineList=\"UPLOAD\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -328,6 +393,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "evidence",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -338,7 +404,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -349,7 +415,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -360,7 +426,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -371,7 +437,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -383,7 +449,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y"
   },
@@ -396,7 +462,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": "Witnesses",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
     "ShowSummaryChangeOption": "Y"
   },
@@ -420,7 +486,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Hearing",
     "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
