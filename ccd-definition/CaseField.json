@@ -1547,5 +1547,13 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "EvidenceList",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimTrack",
+    "Label": "Enter Claim type",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
