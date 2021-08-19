@@ -1,0 +1,33 @@
+[
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "expertDetails",
+    "ElementLabel": "## Expert details \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "expertName",
+    "FieldType": "Text",
+    "ElementLabel": "Expert name (optional)",
+    "SecurityClassification": "Public",
+    "Label": "Expert name (optional)"
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "fieldofExpertise",
+    "FieldType": "TextArea",
+    "ElementLabel": "Field of expertise",
+    "SecurityClassification": "Public",
+    "Label": "Field of expertise"
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "estimatedCost",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Estimated cost",
+    "SecurityClassification": "Public",
+    "Label": "Estimated cost"
+  }
+]
