@@ -3066,5 +3066,12 @@
     "CaseFieldID": "specResponselistYourEvidenceList",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CUR"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimTrack",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
   }
 ]
