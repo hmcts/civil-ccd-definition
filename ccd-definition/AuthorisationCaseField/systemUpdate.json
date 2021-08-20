@@ -499,5 +499,11 @@
     "CaseFieldID": "responseClaimWitnesses",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "SmallClaimHearingInterpreterDescription",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]

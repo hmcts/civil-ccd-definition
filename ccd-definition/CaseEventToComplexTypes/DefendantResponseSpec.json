@@ -391,5 +391,53 @@
     "ListElementCode": "HowWasThisAmountPaid",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "ListElementCode": "unavailableDatesRequired",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "ListElementCode": "SmallClaimUnavailableDate.who",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "ListElementCode": "SmallClaimUnavailableDate.SmallClaimUnavailableDateType",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "ListElementCode": "SmallClaimUnavailableDate.date",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "ListElementCode": "SmallClaimUnavailableDate.fromDate",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "ListElementCode": "SmallClaimUnavailableDate.toDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   }
 ]

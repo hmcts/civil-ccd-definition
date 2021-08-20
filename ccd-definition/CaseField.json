@@ -1615,5 +1615,26 @@
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHearingSmallClaim",
+    "Label": "Respondent 1 Hearing",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SmallClaimHearingInterpreterRequired",
+    "FieldType": "YesOrNo",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SmallClaimHearingInterpreterDescription",
+    "FieldType": "TextArea",
+    "Label": "Type of interpreter",
+    "SecurityClassification": "Public"
   }
 ]
