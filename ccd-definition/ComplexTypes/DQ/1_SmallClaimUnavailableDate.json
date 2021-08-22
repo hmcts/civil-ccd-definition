@@ -19,6 +19,7 @@
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",
+    "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SmallClaimUnavailableDateType = \"SINGLE_DATE\""
   },
@@ -27,6 +28,7 @@
     "ListElementCode": "fromDate",
     "FieldType": "Date",
     "ElementLabel": "Date from",
+    "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SmallClaimUnavailableDateType = \"DATE_RANGE\""
   },
@@ -35,6 +37,7 @@
     "ListElementCode": "toDate",
     "FieldType": "Date",
     "ElementLabel": "Date to",
+    "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "SmallClaimUnavailableDateType = \"DATE_RANGE\""
   }
