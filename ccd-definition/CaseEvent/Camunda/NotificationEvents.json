@@ -27,6 +27,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIM_ISSUE",
+    "Name": "Email: Notify claim",
+    "Description": "Notify respondent solicitor 2 for claim issue CC to applicant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIM_ISSUE_CC",
     "Name": "Email: Notify claim",
     "Description": "Notify respondent solicitor 1 for claim issue CC to applicant",
