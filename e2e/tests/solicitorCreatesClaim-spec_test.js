@@ -127,3 +127,9 @@ Scenario('Defendant solicitor acknowledges claim', async (I) => {
   await I.acknowledgeClaimSpec();
   await I.see(caseEventMessage('Acknowledgement of Service'));
 });
+
+Scenario('Defendant solicitor informs agreed extension date', async (I) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.informAgreedExtensionDateSpec();
+  await I.see(caseEventMessage('Inform agreed extension date'));
+});

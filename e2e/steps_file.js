@@ -218,7 +218,7 @@ module.exports = function () {
         await specRespondentRepresentedPage.enterRespondentRepresented('no');
       } else {
         await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
+        await defendantSolicitorOrganisation.enterOrganisationDetails();
         await specDefendantSolicitorEmailPage.enterSolicitorEmail();
       }
       await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
@@ -286,6 +286,16 @@ module.exports = function () {
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
+      eventName = 'Inform agreed extension date';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
+        () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
       ]);
     },
