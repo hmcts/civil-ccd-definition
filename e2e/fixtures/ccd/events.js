@@ -76,5 +76,11 @@ module.exports = {
     id: 'AMEND_PARTY_DETAILS',
     name: 'Amend party details',
     order: 13
+  },
+  ADD_CASE_NOTE: {
+    description: 'Add a case note',
+    id: 'ADD_CASE_NOTE',
+    name: 'Add a case note',
+    order: 16
   }
 };
