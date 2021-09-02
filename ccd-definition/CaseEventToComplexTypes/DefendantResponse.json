@@ -61,7 +61,7 @@
     "EventElementLabel": "Date of birth",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent1.type=\"INDIVIDUAL\""
+    "FieldShowCondition": "respondent2.type=\"INDIVIDUAL\""
   },
   {
     "ID": "Party",
@@ -71,7 +71,7 @@
     "EventElementLabel": "Date of birth",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent1.type=\"SOLE_TRADER\""
+    "FieldShowCondition": "respondent2.type=\"SOLE_TRADER\""
   },
 
   {
