@@ -674,6 +674,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2ResponseDate",
+    "Label": "Defendant 2 response date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1OrganisationPolicy",
     "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
