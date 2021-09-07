@@ -687,6 +687,13 @@
           "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -700,7 +707,7 @@
         ],
         "CRUD": "R"
       }
-    ]
+      ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -753,6 +760,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
@@ -772,6 +780,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
