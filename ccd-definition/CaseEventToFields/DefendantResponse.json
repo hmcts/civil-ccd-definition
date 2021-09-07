@@ -9,7 +9,8 @@
     "DisplayContext": "READONLY",
     "FieldShowCondition": "respondent1ClaimResponseType = \"DO_NOT_SHOW_IN_UI\"",
     "PageID": "ConfirmDetails",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -20,7 +21,8 @@
     "DisplayContext": "READONLY",
     "FieldShowCondition": "respondent1ClaimResponseType = \"DO_NOT_SHOW_IN_UI\"",
     "PageID": "ConfirmDetails",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -31,7 +33,8 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +45,8 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -52,7 +56,8 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -62,7 +67,8 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -72,7 +78,8 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "TRUE"
   },
   {
     "CaseTypeID": "CIVIL",
