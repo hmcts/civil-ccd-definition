@@ -283,6 +283,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQDraftDirectionsLabel",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -770,12 +776,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimWitnesses",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQHearingSmallClaim",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
