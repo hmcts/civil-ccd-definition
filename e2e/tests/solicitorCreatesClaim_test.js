@@ -27,7 +27,11 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
   await I.notifyClaimDetails();
+  pause();
   await I.see(caseEventMessage('Notify claim details'));
+  pause();
+  await I.login(config.defendantSolicitorUser);
+  pause();
 });
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
