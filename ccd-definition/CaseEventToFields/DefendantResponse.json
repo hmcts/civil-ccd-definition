@@ -31,7 +31,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +42,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -52,7 +52,8 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -62,7 +63,8 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -72,7 +74,8 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -169,8 +172,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "SolicitorReferences",
-    "ShowSummaryChangeOption": "Y",
-    "RetriesTimeoutURLMidEvent": 0
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -239,6 +241,7 @@
     "CaseEventFieldLabel": "Experts",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
+    "RetriesTimeoutURLMidEvent": 0,
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -252,6 +255,7 @@
     "CaseEventFieldLabel": "Witnesses",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
+    "RetriesTimeoutURLMidEvent": 0,
     "ShowSummaryChangeOption": "Y"
   },
   {
