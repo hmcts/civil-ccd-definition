@@ -6,7 +6,9 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
-    "PageID": "ConfirmDetails"
+    "PageID": "ConfirmDetails",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -17,7 +19,8 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "COMPLEX",
     "PageID": "ConfirmDetails",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -27,7 +30,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
-    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
+    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -38,7 +41,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -49,7 +52,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -59,7 +62,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\"",
+    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -114,6 +117,6 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y",
-    "Comment": "\"FieldShowCondition\": \"respondent2SameLegalRepresentative != \"Yes\"\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"Yes\""
   }
 ]

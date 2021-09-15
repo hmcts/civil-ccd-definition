@@ -33,7 +33,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "TRUE"
   },
   {
@@ -45,7 +45,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "TRUE"
   },
   {
@@ -57,6 +57,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "TRUE"
   },
   {
@@ -68,6 +69,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "TRUE"
   },
   {
@@ -79,6 +81,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "TRUE"
   },
   {
@@ -88,7 +91,8 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
-    "PageID": "ConfirmDetails"
+    "PageID": "ConfirmDetails",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -97,7 +101,8 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
-    "PageID": "ConfirmDetails"
+    "PageID": "ConfirmDetails",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -110,7 +115,7 @@
     "PageID": "ConfirmDetails",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
     "RetriesTimeoutURLMidEvent": 0,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
