@@ -31,7 +31,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame = \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +42,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -53,7 +53,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -63,7 +63,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\"",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

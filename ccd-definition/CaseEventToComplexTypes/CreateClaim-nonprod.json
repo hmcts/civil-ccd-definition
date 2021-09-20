@@ -314,7 +314,7 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Yes"
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SecondSolicitorCreate",
