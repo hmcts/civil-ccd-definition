@@ -42,7 +42,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -53,7 +53,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -63,7 +63,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame != \"Yes\"",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -119,156 +119,5 @@
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFileDirectionsQuestionnaire",
-    "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQDisclosureOfElectronicDocuments",
-    "PageDisplayOrder": 7,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQDisclosureOfNonElectronicDocuments",
-    "PageDisplayOrder": 8,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQDisclosureReport",
-    "PageDisplayOrder": 9,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "DisclosureReport",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQExperts",
-    "PageDisplayOrder": 10,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Experts",
-    "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Witnesses",
-    "CaseEventFieldLabel": "Witnesses",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQLanguage",
-    "PageDisplayOrder": 12,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Language",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQHearing",
-    "PageDisplayOrder": 13,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Hearing",
-    "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
-    "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQDraftDirectionsLabel",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "DraftDirections",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQDraftDirections",
-    "PageDisplayOrder": 15,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DraftDirections",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQRequestedCourt",
-    "PageDisplayOrder": 15,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourt",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQHearingSupport",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "HearingSupport",
-    "CaseEventFieldLabel": "Hearing support requirements",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFurtherInformation",
-    "PageDisplayOrder": 17,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FurtherInformation",
-    "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
   }
 ]

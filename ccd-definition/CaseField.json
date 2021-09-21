@@ -595,13 +595,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQDraftDirectionsLabel",
-    "Label": "## Upload draft directions",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
