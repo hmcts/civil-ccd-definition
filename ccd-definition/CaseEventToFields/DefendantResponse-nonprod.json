@@ -31,7 +31,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\" AND respondentResponseIsSame = \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
