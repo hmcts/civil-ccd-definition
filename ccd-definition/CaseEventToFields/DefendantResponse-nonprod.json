@@ -118,6 +118,6 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"Yes\""
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
   }
 ]
