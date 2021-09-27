@@ -15,5 +15,5 @@ module.exports = {
 
     I.retry(5).waitForElement(this.submitButton);
     I.click(this.submitButton);
-  },add
+  },
 };
