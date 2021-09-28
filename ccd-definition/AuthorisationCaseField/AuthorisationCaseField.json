@@ -545,6 +545,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondStatementOfTruthLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ResponseDeadline",
     "AccessControl": [
       {
