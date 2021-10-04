@@ -19,8 +19,8 @@
   },
   {
     "ID": "HowWasThisAmountPaid",
-    "ListElementCode": "CHECK",
-    "ListElement": "Check",
+    "ListElementCode": "CHEQUE",
+    "ListElement": "Cheque",
     "DisplayOrder": 2
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "ID": "HowWasThisAmountPaid",
-    "ListElementCode": "OTHERS",
+    "ListElementCode": "OTHER",
     "ListElement": "Other",
     "DisplayOrder": 4
   }
