@@ -909,6 +909,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriendDate",
+    "Label": "Date respondent 1 added or last updated litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1LitigationFriendCreatedDate",
     "Label": "Date respondent 1 added litigation friend",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
