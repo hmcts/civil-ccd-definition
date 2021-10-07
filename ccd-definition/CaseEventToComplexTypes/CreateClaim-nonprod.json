@@ -329,7 +329,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "PrepopulateToUsersOrganisation",
-    "DefaultValue": "YES",
+    "DefaultValue": "NO",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
