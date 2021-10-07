@@ -325,7 +325,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "SolicitorCreate",
+    "ID": "SecondSolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "PrepopulateToUsersOrganisation",
