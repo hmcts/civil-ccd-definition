@@ -569,6 +569,15 @@
   {
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "ListElementCode": "PrepopulateToUsersOrganisation",
+    "DefaultValue": "YES",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "FieldDisplayOrder": 1,
@@ -599,6 +608,15 @@
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "ListElementCode": "PrepopulateToUsersOrganisation",
+    "DefaultValue": "NO",
+    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
