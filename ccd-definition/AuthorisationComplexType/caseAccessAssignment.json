@@ -78,13 +78,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-caa",
@@ -115,13 +108,6 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationName",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   }
