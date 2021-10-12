@@ -325,15 +325,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "SecondSolicitorCreate",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
-    "DefaultValue": "NO",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "Respondent2ServiceAddress",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2ServiceAddress",

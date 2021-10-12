@@ -611,15 +611,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "SolicitorCreate",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
-    "DefaultValue": "NO",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
