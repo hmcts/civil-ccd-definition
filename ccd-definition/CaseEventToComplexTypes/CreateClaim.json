@@ -556,7 +556,7 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "TRUE"
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SolicitorCreate",
@@ -565,6 +565,17 @@
     "ListElementCode": "OrgPolicyReference",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "ListElementCode": "PrepopulateToUsersOrganisation",
+    "DefaultValue": "YES",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SolicitorCreate",
@@ -591,7 +602,7 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "TRUE"
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SolicitorCreate",
