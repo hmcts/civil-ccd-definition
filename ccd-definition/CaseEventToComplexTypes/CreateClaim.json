@@ -573,7 +573,8 @@
     "ListElementCode": "PrepopulateToUsersOrganisation",
     "DefaultValue": "YES",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\""
   },
   {
     "ID": "SolicitorCreate",
