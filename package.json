@@ -11,22 +11,18 @@
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@api-tests|@e2e-tests' --reporter mocha-multi --verbose",
     "test:rpa": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
-    "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn lint"
-    }
+    "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
+    "prepare": "husky install"
   },
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
-    "codeceptjs": "^3.1.1",
+    "codeceptjs": "^3.1.2",
     "deep-equal-in-any-order": "^1.0.28",
     "eslint": "^7.3.1",
     "eslint-plugin-codeceptjs": "^1.3.0",
     "html_codesniffer": "^2.5.1",
-    "husky": "^4.2.5",
+    "husky": "^7.0.2",
     "mocha-multi": "^1.1.3",
     "mochawesome": "^6.1.1",
     "node-fetch": "^2.6.1",

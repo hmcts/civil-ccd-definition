@@ -595,6 +595,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LitigationFriendCreatedDate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "uiStatementOfTruth",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
