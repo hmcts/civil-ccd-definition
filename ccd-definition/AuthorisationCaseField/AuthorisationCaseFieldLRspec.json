@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondent1Represented",
     "AccessControl": [
@@ -43,35 +42,30 @@
     "CRUD": "CRUD"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specEligibilityQuestions",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specCheckList",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimTimeline",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimTimelineUpload",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "timelineOfEvents",
     "UserRoles": [
@@ -80,7 +74,6 @@
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
     "AccessControl": [
@@ -99,245 +92,210 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDetailsOfClaimLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDetailsOfClaimUploadDocumentLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimTimelineListLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "speclistYourEvidenceLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "speclistYourEvidenceList",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimAmountLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakup",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakupSummaryLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakupSummaryObject",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "totalClaimAmount",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "totalInterest",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "superClaimType",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimInterestLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimInterest",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimInterestHelpTextLink",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestClaimOptionsLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestClaimOptions",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "sameRateInterestSelectionLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "sameRateInterestSelection",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "sameInterestHelpTextLink",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "breakDownInterestLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "breakDownInterestTotal",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "breakDownInterestDescription",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestClaimFromLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestClaimFrom",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestFromSpecificDateLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestFromSpecificDate",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestFromSpecificDateDescription",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestClaimUntilLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "interestClaimUntil",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "calculatedInterestLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "calculatedInterest",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "calculatedInterestHeading",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "calculatedInterestPageLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimDetailsDocumentFiles",
     "AccessControl": [
@@ -357,7 +315,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimTimelineList",
     "AccessControl": [
@@ -377,7 +334,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specPbaAccountsInformationLabel",
     "AccessControl": [
@@ -396,7 +352,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",
     "UserRoles": [
@@ -406,7 +361,6 @@
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimTemplateDocumentFiles",
     "AccessControl": [
@@ -426,28 +380,24 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1OrgLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondent1RepresentedLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specCorrespondenceAddressSubHeadingLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specApplicantCorrespondenceAddressRequired",
     "AccessControl": [
@@ -466,7 +416,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
     "AccessControl": [
@@ -485,14 +434,12 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentCorrespondenceAddressSubHeadingLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentCorrespondenceAddressRequired",
     "AccessControl": [
@@ -511,7 +458,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
     "AccessControl": [
@@ -548,7 +494,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
     "AccessControl": [
@@ -567,7 +512,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "AccessControl": [
@@ -586,7 +530,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
     "AccessControl": [
@@ -605,7 +548,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
     "AccessControl": [
@@ -686,7 +628,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim",
     "UserRoles": [
@@ -808,7 +749,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specClaimResponseTimelineList",
     "AccessControl": [
@@ -828,7 +768,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineDocumentFiles",
     "AccessControl": [
@@ -848,7 +787,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineOfEvents",
     "UserRoles": [
@@ -876,14 +814,12 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponselistYourEvidenceList",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CUR"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimTrack",
     "UserRole": "caseworker-civil-solicitor",
@@ -909,7 +845,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "AccessControl": [
@@ -947,7 +882,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimExpertSpecRequired",
     "AccessControl": [
@@ -966,7 +900,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim_experts",
     "UserRoles": [
@@ -1012,7 +945,6 @@
     ]
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
     "AccessControl": [

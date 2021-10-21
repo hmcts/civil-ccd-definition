@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "InterestClaimFrom",
     "ListElementCode": "FROM_CLAIM_SUBMIT_DATE",
     "ListElement": "The date you submit the claim. \n\n If you submit after 4pm it will be the next working day.",
@@ -8,7 +7,6 @@
     "DisplayOrder": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "InterestClaimFrom",
     "ListElementCode": "FROM_A_SPECIFIC_DATE",
     "ListElement": "A specific date. \n\n\n For example, the date an invoice was overdue, or the date that you told someone they owed you money.",

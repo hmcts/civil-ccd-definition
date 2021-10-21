@@ -1,6 +1,5 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",

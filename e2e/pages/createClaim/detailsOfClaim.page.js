@@ -10,7 +10,6 @@ module.exports = {
     I.waitForElement(this.fields.detailsOfClaim);
     await I.runAccessibilityTest();
     I.fillField(this.fields.detailsOfClaim, 'Test details of claim');
-    
     await I.clickContinue();
   }
 };

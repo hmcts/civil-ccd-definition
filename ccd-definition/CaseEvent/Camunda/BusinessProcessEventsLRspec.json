@@ -12,7 +12,6 @@
     "ShowEventNotes": "N"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "VALIDATE_FEE_SPEC",
     "Name": "Validate fee",

@@ -1,13 +1,11 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "SameRateInterestSelectionList",
     "ListElementCode": "SAME_RATE_INTEREST_8_PC",
     "ListElement": "8%",
     "DisplayOrder": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "SameRateInterestSelectionList",
     "ListElementCode": "SAME_RATE_INTEREST_DIFFERENT_RATE",
     "ListElement": "A different rate",

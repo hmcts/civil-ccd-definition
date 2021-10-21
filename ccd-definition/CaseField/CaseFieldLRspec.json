@@ -7,7 +7,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specEligibilityQuestions",
     "Label": "## Issue civil court proceedings\nTo use this service you must be:\n* issuing a claim for a specified (fixed) amount of money\n* have an address in England or Wales and an email address\n* able to pay the full issue fee using fee account\n* serving a claim form in English\n\nThe claimant must:\n\n* have an address in England or Wales\n* not have a civil proceedings order, civil restraint order, or all proceedings order against them\n\nThe claim you’re issuing must not:\n* ordinarily follow the Part 8 procedure\n* be brought under the Consumer Credit Act 1974\n* be against the Crown",
@@ -15,7 +14,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
     "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
@@ -23,7 +21,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentSolicitor1OrganisationEmail",
     "Label": " ",
@@ -31,7 +28,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentSolicitor1OrgLabel",
     "Label": "## Email for defendant’s legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
@@ -39,7 +35,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specDetailsOfClaimLabel",
     "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.",
@@ -47,7 +42,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specDetailsOfClaimUploadDocumentLabel",
     "Label": "## Upload supporting documents (optional)\n\n<div class=\"govuk-inset-text\">You can upload documents in support of the claim details above.</div>",
@@ -55,7 +49,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimDetailsDocumentFiles",
     "Label": "Upload file",
@@ -65,7 +58,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTimelineList",
     "Label": " ",
@@ -74,7 +66,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTimelineListLabel",
     "Label": "## How do you want to add your claim timeline?",
@@ -82,7 +73,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTimeline",
     "Label": "## Claim timeline\nIf you do not know the exact date, tell us the month and year.\n### Example timeline\n* 12 January 2020 - John Smith gave me a quote to replace the roof.\n* 14 January 2021 - We agreed and signed a contract for the work.\n* 21 March 2021 - I noticed a leak on the landing and told Mr Smith about this.",
@@ -90,7 +80,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "calculatedInterestPageLabel",
     "Label": "<details><summary>How interest to date is calculated</summary><div class=\"panel panel-border-narrow\"><p>For most types of debt the rate is usually 8%.</p><p>To calculate this, we use the steps below.</p><ol class=\"list list-number\"><li><p>Work out the yearly interest: take the amount you’re claiming and multiply it by 0.08 (which is 8%).</p></li><li><p>Work out the daily interest: divide your yearly interest from step 1 by 365 (the number of days in a year).</p></li><li><p>Work out the total amount of interest: multiply the daily interest from step 2 by the number of days the debt has been overdue.</p></li></ol><div><strong class=\"govuk-tag govuk-tag--grey\">EXAMPLE</strong><br /><ol class=\"panel list\"><li>The rate of annual interest is 8%.</li><li>Annual interest on, for example, £1,000 is £80 (1000 x 0.08)</li><li>Daily interest on £1,000 is 22p (80 / 365)</li><li>Total amount of interest on £1,000 for 2 days is 44p (80 x 2 / 365)</li></ol></div></div></details><br /> \n\n There may be additional fees as your case progresses. <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/fees-in-the-civil-and-family-courts-main-fees-ex50\">There may be additional fees as your case progresses.</a> ",
@@ -98,7 +87,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "timelineOfEvents",
     "Label": " ",
@@ -107,7 +95,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "speclistYourEvidenceLabel",
     "Label": "## List your evidence\nTell us about any evidence you wish to provide. You do not need to send us any evidence now. If your case goes to a court hearing, and is not settled, you will need to provide evidence.",
@@ -115,7 +102,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "speclistYourEvidenceList",
     "Label": " ",
@@ -124,7 +110,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimAmountLabel",
     "Label": "## Claim Amount\n Your claim can be for single or multiple amounts. Do not include interest or the claim fee, you can add these on the next page.\n\n",
@@ -132,7 +117,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimAmountBreakup",
     "Label": " ",
@@ -141,7 +125,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "totalClaimAmount",
     "Label": "Total",
@@ -149,7 +132,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "totalInterest",
     "Label": "Total Interest",
@@ -157,7 +139,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "superClaimType",
     "Label": "Total Interest",
@@ -165,7 +146,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimAmountBreakupSummaryLabel",
     "Label": "${claimAmountBreakupSummaryObject}",
@@ -173,7 +153,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimAmountBreakupSummaryObject",
     "Label": " ",
@@ -181,7 +160,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimInterestLabel",
     "Label": "## Do you want to claim interest?",
@@ -189,7 +167,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimInterest",
     "Label": "You can claim interest on the money your client is owed. The court will decide if they’re entitled to it.\n\n",
@@ -197,7 +174,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "claimInterestHelpTextLink",
     "Label": "<details><summary><u>Help with interest rates</u></summary><div class=\"panel\">\n\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate. \n\n The court will decide if you're entitled to some, or all, of the interest claimed.</div></details><br />",
@@ -205,7 +181,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestClaimOptionsLabel",
     "Label": "## How do you want to claim interest?\n",
@@ -213,7 +188,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestClaimOptions",
     "Label": " ",
@@ -222,7 +196,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "sameRateInterestSelectionLabel",
     "Label": "## What annual rate of interest do you want to claim?\n You can claim 8% per year unless you know that a different rate applies\n\n",
@@ -230,7 +203,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "sameRateInterestSelection",
     "Label": " ",
@@ -238,7 +210,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "sameInterestHelpTextLink",
     "Label": "<details><summary><u>Help with interest rates</u></summary><div class=\"panel\">\n\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate. \n\n The court will decide if you're entitled to some, or all, of the interest claimed.</div></details><br />",
@@ -246,7 +217,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "breakDownInterestLabel",
     "Label": "## What is the total interest for your claim?\n Calculate interest for different periods of time, or items, and let us know the total. We’ll add it to your claim amount.\n\n ",
@@ -254,7 +224,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "breakDownInterestTotal",
     "Label": "Total interest amount\n",
@@ -262,7 +231,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "breakDownInterestDescription",
     "Label": "Show how you calculated the amount\n",
@@ -270,7 +238,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestClaimFromLabel",
     "Label": "## When are you claiming interest from?\n",
@@ -278,7 +245,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestClaimFrom",
     "Label": " ",
@@ -287,7 +253,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestClaimUntilLabel",
     "Label": "## When are you claiming interest to?\n",
@@ -295,7 +260,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestClaimUntil",
     "Label": " ",
@@ -304,7 +268,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestFromSpecificDateLabel",
     "Label": "## Date you want to claim interest from\n",
@@ -312,7 +275,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestFromSpecificDate",
     "Label": "For example, 22 04 2021\n",
@@ -320,7 +282,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "interestFromSpecificDateDescription",
     "Label": "Explain why you’re claiming from this date\n",
@@ -328,7 +289,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "calculatedInterestLabel",
     "Label": " ${calculatedInterest} ",
@@ -336,7 +296,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "calculatedInterest",
     "Label": " ",
@@ -344,7 +303,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "calculatedInterestHeading",
     "Label": "## Total amount of claim",
@@ -352,7 +310,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specPbaAccountsInformationLabel",
     "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## One PBA listed\n\nTo pay with a different PBA, email: MyHMCTSsupport@justice.gov.uk \n\nAsk for your PBA to be registered with your MyHMCTS account and include your organisation name and PBA number. \n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Two PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nTo remove a PBA, email: MyHMCTSsupport@justice.gov.uk. \n\nInclude the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n</div></details><br />",
@@ -360,7 +317,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTimelineUpload",
     "Label": "## Upload Claim timeline template",
@@ -368,7 +324,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTemplateDocumentFiles",
     "Label": "Upload files",
@@ -378,7 +333,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentSolicitor1EmailAddress",
     "Label": "Email address",
@@ -386,7 +340,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent1Represented",
     "Label": " ",
@@ -394,7 +347,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent1RepresentedLabel",
     "Label": "## Does the defendant have a legal representative?",
@@ -402,7 +354,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specCorrespondenceAddressSubHeadingLabel",
     "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
@@ -410,7 +361,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specApplicantCorrespondenceAddressRequired",
     "Label": "Do you want to enter a different address?",
@@ -418,7 +368,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specApplicantCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
@@ -426,7 +375,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressSubHeadingLabel",
     "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
@@ -434,7 +382,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressRequired",
     "Label": "Do you want to enter a different address?",
@@ -442,7 +389,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
@@ -457,7 +403,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specAoSApplicantCorrespondenceAddressdetails",
     "Label": "Add the address you want",
@@ -465,7 +410,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specAoSApplicantCorrespondenceAddressRequired",
     "Label": "Is this address correct?",
@@ -473,7 +417,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentCorrespondenceAddressRequired",
     "Label": "Is this address correct?",
@@ -481,7 +424,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentCorrespondenceAddressdetails",
     "Label": "Add the address you want",
@@ -489,7 +431,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specResponseCheckList",
     "Label": "<p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n <p>Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. </p>\n\n <a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template.",
@@ -504,7 +445,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpec",
     "Label": " ",
@@ -563,7 +503,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "respondent1SpecDefenceResponseDocument",
     "Label": " ",
@@ -571,7 +510,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specClaimResponseTimelineList",
     "Label": " ",
@@ -580,7 +518,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specResponseTimelineDocumentFiles",
     "Label": "Upload files",
@@ -590,7 +527,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "specResponseTimelineOfEvents",
     "Label": " ",
@@ -614,7 +550,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimTrack",
     "Label": "Enter Claim type",
@@ -629,7 +564,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecRequired",
     "Label": " ",
@@ -644,7 +578,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
@@ -659,7 +592,6 @@
     "SecurityClassification": "Public"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimWitnesses",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",

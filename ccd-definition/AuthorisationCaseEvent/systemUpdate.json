@@ -96,14 +96,12 @@
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_CLAIM_FORM",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISMISS_CLAIM",
     "UserRole": "caseworker-civil-systemupdate",
@@ -164,14 +162,12 @@
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_FEE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CASE_DATA",
     "UserRole": "caseworker-civil-systemupdate",

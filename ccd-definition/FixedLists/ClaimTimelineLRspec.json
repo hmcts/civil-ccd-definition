@@ -1,13 +1,11 @@
 [
   {
-    "LiveFrom": "01/01/2017",
     "ID": "ClaimTimelineList",
     "ListElementCode": "UPLOAD",
     "ListElement": "Upload claim timeline template",
     "DisplayOrder": 1
   },
   {
-    "LiveFrom": "01/01/2017",
     "ID": "ClaimTimelineList",
     "ListElementCode": "MANUAL",
     "ListElement": "Add manually",
