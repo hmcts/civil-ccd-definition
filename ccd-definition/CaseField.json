@@ -965,5 +965,13 @@
     "SecurityClassification": "Public",
     "_Comments": "Temporary workaround - flag used to indicate respondent for whom an event should apply.",
     "_Category": "WORKAROUND"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantSolicitorNotifyClaimOptions",
+    "Label": "Which defendant legal representative do you want to notify?",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public",
+    "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   }
 ]
