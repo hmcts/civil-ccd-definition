@@ -1,5 +1,5 @@
 const { I } = inject();
-const postcodeLookup = require('./specAddressPostCodeLookup');
+const postcodeLookup = require('./addressPostCodeLookupLRspec');
 
 module.exports = {
   fields: function (party) {

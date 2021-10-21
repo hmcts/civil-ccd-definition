@@ -9,7 +9,7 @@ const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
-const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
+const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisationLRspec.page');
 const claimantSolicitorServiceAddress = require('./pages/createClaim/claimantSolicitorServiceAddress.page');
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
@@ -29,6 +29,18 @@ const detailsOfClaimPage = require('./pages/createClaim/detailsOfClaim.page');
 const uploadParticularsOfClaimQuestion = require('./pages/createClaim/uploadParticularsOfClaimQuestion.page');
 const uploadParticularsOfClaim = require('./pages/createClaim/uploadParticularsOfClaim.page');
 const claimValuePage = require('./pages/createClaim/claimValue.page');
+const specCreateCasePage = require('./pages/createClaim/createCaseLRspec.page');
+const specRespondentRepresentedPage = require('./pages/createClaim/isRespondentRepresentedLRspec.page');
+const specDefendantSolicitorEmailPage = require('./pages/createClaim/defendantSolicitorEmailLRspec.page');
+const specTimelinePage = require('./pages/createClaim/claimTimelineLRspec.page');
+const specAddTimelinePage = require('./pages/createClaim/addTimelineLRspec.page');
+const specListEvidencePage = require('./pages/createClaim/claimListEvidenceLRspec.page');
+const specInterestPage = require('./pages/createClaim/interestLRspec.page');
+const specInterestValuePage = require('./pages/createClaim/interestValueLRspec.page');
+const specInterestRatePage = require('./pages/createClaim/interestRateLRspec.page');
+const specInterestDateStartPage = require('./pages/createClaim/interestDateStartLRspec.page');
+const specInterestDateEndPage = require('./pages/createClaim/interestDateEndLRspec.page');
+const specClaimAmountPage = require('./pages/createClaim/claimAmountLRspec.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
 
@@ -49,6 +61,10 @@ const defendantLitigationFriendPage = require('./pages/addDefendantLitigationFri
 
 const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
+const specParty = require('./fragments/partyLRspec');
+const specPartyDetails = require('./fragments/claimantDetailsLRspec');
+const specConfirmLegalRepDetails = require ('./fragments/confirmLegalRepDetailsLRspec');
+const specConfirmDefendantsDetails = require ('./fragments/confirmDefendantsDetailsLRspec');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
@@ -67,6 +83,8 @@ const furtherInformationPage = require('./fragments/dq/furtherInformation.page')
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 
 const address = require('./fixtures/address.js');
+const specClaimantLRPostalAddress = require('./fixtures/claimantLRPostalAddressLRspec');
+const specDefendantLRPostalAddress = require('./fixtures/defendantLRPostalAddressLRspec');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -154,7 +172,7 @@ module.exports = function () {
         ]),
         ... conditionalSteps(!litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('1'),
+          () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent1'),
           () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
@@ -163,7 +181,7 @@ module.exports = function () {
           () => party.enterParty('respondent2', address),
           () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
           () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
+          () => defendantSolicitorOrganisation.enterOrganisationDetails('respondent2'),
           () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => secondDefendantSolicitorReference.enterReference(),
           () => defendantSolicitorEmail.enterSolicitorEmail('2')
@@ -184,10 +202,50 @@ module.exports = function () {
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
+    async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
+      this.click('Create case');
+      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
+      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
+      await this.clickContinue();
+      await this.clickContinue();
+      await solicitorReferencesPage.enterReferences();
+      await specPartyDetails.enterDetails('applicant1', address, applicantType);
+      await claimantSolicitorIdamDetailsPage.enterUserEmail();
+      await claimantSolicitorOrganisation.enterOrganisationDetails();
+      await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
+      await specPartyDetails.enterDetails('respondent1', address, defendantType);
+      if (litigantInPerson) {
+        await specRespondentRepresentedPage.enterRespondentRepresented('no');
+      } else {
+        await specRespondentRepresentedPage.enterRespondentRepresented('yes');
+        await defendantSolicitorOrganisation.enterOrganisationDetails('respondent1');
+        await specDefendantSolicitorEmailPage.enterSolicitorEmail();
+      }
+      await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
+      await detailsOfClaimPage.enterDetailsOfClaim();
+      await specTimelinePage.addManually();
+      await specAddTimelinePage.addTimeline();
+      await specListEvidencePage.addEvidence();
+      await specClaimAmountPage.addClaimItem();
+      await this.clickContinue();
+      await specInterestPage.addInterest();
+      await specInterestValuePage.selectInterest();
+      await specInterestRatePage.selectInterestRate();
+      await specInterestDateStartPage.selectInterestDateStart();
+      await specInterestDateEndPage.selectInterestDateEnd();
+      await this.clickContinue();
+      await pbaNumberPage.selectPbaNumber();
+      await paymentReferencePage.updatePaymentReference();
+      await statementOfTruth.enterNameAndRole('claim');
+      let expectedMessage = litigantInPerson ?
+        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
+      await event.submit('Submit', expectedMessage);
+      await event.returnToCaseDetails();
+      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+    },
 
     async notifyClaim() {
       eventName = 'Notify claim';
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => continuePage.continue(),
@@ -216,6 +274,17 @@ module.exports = function () {
         () => confirmDetailsPage.confirmReference(),
         () => responseIntentionPage.selectResponseIntention(responseIntention),
         // temporarily commenting out whilst change is made to service repo
+        () => event.submit('Acknowledge claim', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async acknowledgeClaimSpec() {
+      eventName = 'Acknowledgement of Service';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => specConfirmDefendantsDetails.confirmDetails(),
+        () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
       ]);

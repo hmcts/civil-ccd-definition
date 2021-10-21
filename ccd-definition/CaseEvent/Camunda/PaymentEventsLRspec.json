@@ -1,9 +1,10 @@
 [
   {
+    "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "MAKE_PBA_PAYMENT",
+    "ID": "MAKE_PBA_PAYMENT_SPEC",
     "Name": "Make PBA payment",
-    "Description": "Make PBA payment for issued claim",
+    "Description": "Make PBA payment for issued claim for Spec",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

@@ -1,0 +1,178 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specEligibilityQuestions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specCheckList",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "timelineOfEvents",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimOptionsLabel",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "interestClaimOptions",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentSolicitor1EmailAddress",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondentDetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specResponseCheckList",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpecLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaim",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteAmountClaimedLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentHelpLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabel2",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specResponseTimelineOfEvents",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specResponselistYourEvidenceList",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimMediationSpecLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimExpertSpecLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaim_experts",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimWitnesses",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "SmallClaimHearingInterpreterDescription",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  }
+]

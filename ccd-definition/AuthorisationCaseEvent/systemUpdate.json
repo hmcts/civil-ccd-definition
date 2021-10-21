@@ -90,21 +90,9 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MAKE_PBA_PAYMENT_SPEC",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_CLAIM_FORM",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_CLAIM_FORM_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -124,12 +112,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -176,21 +158,9 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1_SPEC",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_FEE",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "VALIDATE_FEE_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

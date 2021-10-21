@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_CLAIM_FORM",
+    "ID": "GENERATE_CLAIM_FORM_SPEC",
     "Name": "Generate claim form",
     "Description": "Generates claim form after successful payment",
     "PreConditionState(s)": "*",
@@ -15,9 +15,9 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM",
-    "Name": "Generate aoc",
-    "Description": "Generates acknowledgement of claim",
+    "ID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM_SPEC",
+    "Name": "Generate AoS",
+    "Description": "Generates acknowledgement of service",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
