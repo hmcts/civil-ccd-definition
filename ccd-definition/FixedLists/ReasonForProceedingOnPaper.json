@@ -13,8 +13,20 @@
   },
   {
     "ID": "ReasonForProceedingOnPaper",
+    "ListElementCode": "DEFENDANT_DOES_NOT_CONSENT",
+    "ListElement": "Defendant solicitor does not consent to accept service through MyHMCTS",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "ReasonForProceedingOnPaper",
+    "ListElementCode": "CASE_SETTLED",
+    "ListElement": "Case settled",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "ReasonForProceedingOnPaper",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 3
+    "DisplayOrder": 5
   }
 ]
