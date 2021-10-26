@@ -539,8 +539,7 @@
     "ListElementCode": "Organisation.OrganisationID",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
-  },
-  {
+  },  {
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
