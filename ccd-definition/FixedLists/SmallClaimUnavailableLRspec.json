@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "SmallClaimUnavailable",
+    "ListElementCode": "SINGLE_DATE",
+    "ListElement": "Single date",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "SmallClaimUnavailable",
+    "ListElementCode": "DATE_RANGE",
+    "ListElement": "Date range",
+    "DisplayOrder": 2
+  }
+]

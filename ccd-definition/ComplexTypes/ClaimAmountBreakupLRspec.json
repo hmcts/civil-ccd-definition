@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "ClaimAmountBreakup",
+    "ListElementCode": "claimReason",
+    "FieldType": "Text",
+    "ElementLabel": "What you are claiming for",
+    "HintText": "Briefly explain each item, for example: broken tiles, roof damage.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimAmountBreakup",
+    "ListElementCode": "claimAmount",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Amount",
+    "Max": "2500000",
+    "SecurityClassification": "Public"
+  }
+]
