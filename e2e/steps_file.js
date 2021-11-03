@@ -450,7 +450,6 @@ module.exports = function () {
     },
 
     async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
-      console.log(" inside createCaseSpec function ");
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
