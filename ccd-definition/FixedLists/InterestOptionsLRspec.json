@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "InterestOptions",
+    "ListElementCode": "SAME_RATE_INTEREST",
+    "ListElement": "Same rate for whole period of time",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "InterestOptions",
+    "ListElementCode": "BREAK_DOWN_INTEREST",
+    "ListElement": "Break down interest for different periods of time, or items",
+    "DisplayOrder": 2
+  }
+]

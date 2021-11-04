@@ -1,0 +1,15 @@
+[
+  {
+    "ID": "InterestClaimUntil",
+    "ListElementCode": "UNTIL_CLAIM_SUBMIT_DATE",
+    "ListElement": "When you submit the claim. \nIf you submit after 4pm it will be next working day.",
+    "HintText": "If you submit after 4pm it will be next working day.",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "InterestClaimUntil",
+    "ListElementCode": "UNTIL_SETTLED_OR_JUDGEMENT_MADE",
+    "ListElement": "Until the claim is settled or judgment made.",
+    "DisplayOrder": 2
+  }
+]
