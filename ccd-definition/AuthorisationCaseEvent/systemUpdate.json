@@ -157,6 +157,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIM_DETAILS",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

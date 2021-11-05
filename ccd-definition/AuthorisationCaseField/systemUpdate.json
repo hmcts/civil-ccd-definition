@@ -322,5 +322,17 @@
     "CaseFieldID": "defendantSolicitorNotifyClaimOptions",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+    {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimProceedsInCaseman",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
