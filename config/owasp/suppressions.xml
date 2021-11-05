@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-  <suppress until="2030-01-01">
+  <createClaim.jssuppress until="2030-01-01">
     <notes><![CDATA[
      Suppressing as it's a false positive (see: https://pivotal.io/security/cve-2018-1258)
    ]]></notes>
     <gav regex="true">.*</gav>
     <cpe>cpe:/a:pivotal_software:spring_security</cpe>
     <cve>CVE-2018-1258</cve>
-  </suppress>
+  </createClaim.jssuppress>
   <suppress until="2030-01-01">
     <notes><![CDATA[Awaiting version bump from jackson-module-kotlin to take 1.3.7 -> 1.4]]></notes>
     <cve>CVE-2020-15824</cve>
@@ -75,5 +75,19 @@
     <cve>CVE-2020-5398</cve>
     <cve>CVE-2020-5421</cve>
     <cve>CVE-2018-15756</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: ansi-regex:4.1.0
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/ansi\-regex@.*$</packageUrl>
+    <vulnerabilityName>1002401</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: validator:10.11.0
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/validator@.*$</packageUrl>
+    <vulnerabilityName>1004784</vulnerabilityName>
   </suppress>
 </suppressions>

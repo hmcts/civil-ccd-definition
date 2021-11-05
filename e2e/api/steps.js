@@ -1,5 +1,5 @@
 const config = require('../config.js');
-
+const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
 
@@ -11,6 +11,7 @@ const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const testingSupport = require("./testingSupport");
 
 const data = {
   CREATE_CLAIM: claimData.createClaim,
@@ -54,14 +55,18 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId, eventName, document;
 let caseData = {};
 
+
 module.exports = {
+
   createClaimWithRepresentedRespondent: async (user) => {
+
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM);
@@ -181,7 +186,10 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertError('Upload', data[eventName].invalid.Upload.duplicateError,
+    const document = await testingSupport.uploadDocument();
+    let errorData = await updateCaseDataWithPlaceholders(data[eventName], document);
+
+    await assertError('Upload', errorData.invalid.Upload.duplicateError,
       'You need to either upload 1 Particulars of claim only or enter the Particulars of claim text in the field provided. You cannot do both.');
 
     await assertSubmittedEvent('CASE_ISSUED', {
@@ -438,13 +446,21 @@ module.exports = {
 };
 
 const validateEventPages = async (data) => {
+  //transform the data
+  console.log('validateEventPages');
   for (let pageId of Object.keys(data.valid)) {
+    if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+   // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId);
   }
 };
 
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
+
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
 
@@ -552,3 +568,16 @@ function removeUuidsFromDynamicList(data, dynamicListField) {
   // eslint-disable-next-line no-unused-vars
   return dynamicElements.map(({code, ...item}) => item);
 }
+
+async function updateCaseDataWithPlaceholders(data, document) {
+  const placeholders = {
+    TEST_DOCUMENT_URL: document.document_url,
+    TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
+    TEST_DOCUMENT_FILENAME: document.document_filename
+  };
+
+  data = lodash.template(JSON.stringify(data))(placeholders);
+
+  return JSON.parse(data);
+
+};
