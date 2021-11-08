@@ -465,7 +465,7 @@ module.exports = function () {
          await specRespondentRepresentedPage.enterRespondentRepresented('no');
       } else {
         await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1')
+        await defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1');
         await specDefendantSolicitorEmailPage.enterSolicitorEmail();
       }
       await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
