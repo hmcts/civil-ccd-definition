@@ -11,7 +11,7 @@ const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
-const testingSupport = require("./testingSupport");
+const testingSupport = require('./testingSupport');
 
 const data = {
   CREATE_CLAIM: claimData.createClaim,
@@ -55,7 +55,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName, document;
+let caseId, eventName;
 let caseData = {};
 
 
@@ -580,4 +580,4 @@ async function updateCaseDataWithPlaceholders(data, document) {
 
   return JSON.parse(data);
 
-};
+}
