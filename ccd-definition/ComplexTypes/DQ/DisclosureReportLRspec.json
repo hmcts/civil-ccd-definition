@@ -1,0 +1,22 @@
+[
+  {
+    "ID": "DisclosureReport",
+    "ListElementCode": "disclosureFormFiledAndServed",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Have you filed and served a disclosure report? (Optional)",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisclosureReport",
+    "FieldType": "Label",
+    "ElementLabel": "Form N263 - see Civil Procedure Rules Part 31",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisclosureReport",
+    "ListElementCode": "disclosureProposalAgreed",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Have you agreed a proposal in relation to disclosure that meets the overriding objective? (Optional)",
+    "SecurityClassification": "Public"
+  }
+]
