@@ -454,6 +454,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponsePaymentAdmissionForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defenceRouteRequired",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -491,7 +499,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentHelpLabel",
-    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n <p class=\"govuk-inset-text\">You can upload any supporting evidence, for example, receipts or bank statements.</p>",
+    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n <p class=\"govuk-inset-text\">If you've referred to evidence in the above box, please upload them here.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
