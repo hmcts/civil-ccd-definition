@@ -222,6 +222,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponsePaymentAdmissionForSpec",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "defenceRoute",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
@@ -269,7 +279,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec != \"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
