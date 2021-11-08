@@ -534,23 +534,35 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQDraftDirectionsLabel",
+    "CaseFieldID": "responseClaimCourtLocationLabel",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "DraftDirections",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "N"
+    "PageID": "SmallClaimCourtLocation",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQDraftDirections",
+    "CaseFieldID": "responseClaimCourtLocationRequired",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageID": "DraftDirections",
+    "PageID": "SmallClaimCourtLocation",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToCourtLocation",
+    "PageDisplayOrder": 19,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimCourtLocation",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
