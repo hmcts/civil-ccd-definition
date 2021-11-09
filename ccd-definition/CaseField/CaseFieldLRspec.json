@@ -610,7 +610,7 @@
     "Label": " ",
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
-    "FieldType": "ExpertDetails",
+    "FieldType": "RequestedCourtLocation",
     "SecurityClassification": "Public"
   },
   {

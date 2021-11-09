@@ -940,6 +940,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToCourtLocation",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimWitnesses",
     "AccessControl": [
       {
