@@ -167,6 +167,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToCourtLocation",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimWitnesses",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
