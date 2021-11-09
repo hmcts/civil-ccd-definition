@@ -413,10 +413,11 @@
     "CaseFieldID": "respondent1DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "FileDirectionsQuestionnaire",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/lr-confirmed-explained-to-client"
   },
   {
     "CaseTypeID": "CIVIL",
