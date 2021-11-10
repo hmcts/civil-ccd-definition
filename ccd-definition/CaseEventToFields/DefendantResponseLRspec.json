@@ -258,7 +258,6 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
-    "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y"
   },
