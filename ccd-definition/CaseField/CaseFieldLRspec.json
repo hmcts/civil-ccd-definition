@@ -594,8 +594,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
-    "Label": "Do you want hearing to be held at specific court ?\n",
-    "HintText" : "If the defendant is individual the case will be held at defendant's preferred court",
+    "Label": "Do you want hearing to be held at specific court ? \n",
+    "HintText" : "If the defendant is individual the case will be held at defendant's preferred court ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
