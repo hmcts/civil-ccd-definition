@@ -1,5 +1,5 @@
-const config = require('../config.js');
-const {assignCaseToDefendant} = require('../api/testingSupport');
+const config = require('../../config.js');
+const {assignCaseToDefendant} = require('../../api/testingSupport');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -136,7 +136,7 @@ Scenario('Applicant solicitor creates specified claim organisation-to-organisati
   await I.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
-Scenario.skip('Defendant soli5citor acknowledges claim-spec', async ({I}) => {
+Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   console.log(' Defendant solicitor acknowledges claim-spec: ' + caseId());
   await assignCaseToDefendant(caseId());
   await I.login(config.defendantSolicitorUser);
