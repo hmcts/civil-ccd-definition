@@ -176,7 +176,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "DisclosureReport",
+    "ID": "DisclosureReportLRSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQDisclosureReport",
     "ListElementCode": "disclosureFormFiledAndServed",
@@ -184,7 +184,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DisclosureReport",
+    "ID": "DisclosureReportSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQDisclosureReport",
     "ListElementCode": "disclosureProposalAgreed",
@@ -192,7 +192,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DisclosureReport",
+    "ID": "DisclosureReportLRSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQDisclosureReport",
     "ListElementCode": "draftOrderNumber",

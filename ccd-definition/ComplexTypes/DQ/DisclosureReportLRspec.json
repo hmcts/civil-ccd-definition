@@ -1,22 +1,24 @@
 [
   {
-    "ID": "DisclosureReport",
+    "ID": "DisclosureReportLRSpec",
     "ListElementCode": "disclosureFormFiledAndServed",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Have you filed and served a disclosure report? (Optional)",
+    "ElementLabel": "Have you filed and served a disclosure report? (Optional) <br> Form N263 - see Civil Procedure Rules Part 31",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DisclosureReport",
-    "FieldType": "Label",
-    "ElementLabel": "Form N263 - see Civil Procedure Rules Part 31",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisclosureReport",
+    "ID": "DisclosureReportLRSpec",
     "ListElementCode": "disclosureProposalAgreed",
     "FieldType": "YesOrNo",
     "ElementLabel": "Have you agreed a proposal in relation to disclosure that meets the overriding objective? (Optional)",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisclosureReportLRSpec",
+    "ListElementCode": "draftOrderNumber",
+    "FieldType": "Text",
+    "ElementLabel": "Please ensure this is contained within the proposed directions attached and specify the draft order number",
+    "FieldShowCondition": "disclosureProposalAgreed = \"Yes\"",
     "SecurityClassification": "Public"
   }
 ]
