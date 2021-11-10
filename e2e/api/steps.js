@@ -80,6 +80,7 @@ module.exports = {
     });
 
     await assignCaseToDefendant(caseId);
+    await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
