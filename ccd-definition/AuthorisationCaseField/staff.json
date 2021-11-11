@@ -700,5 +700,11 @@
     "CaseFieldID": "respondentSolicitor2Reference",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

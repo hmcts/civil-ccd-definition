@@ -1,5 +1,8 @@
-const { document, element, listElement, buildAddress } = require('../../api/dataHelper');
+const {listElement, buildAddress } = require('../../api/dataHelper');
 const config = require('../../config.js');
+const uuid = require('uuid');
+
+const docUuid = uuid.v1();
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -128,7 +131,16 @@ const createClaimData = (legalRepresentation, useValidPba) => {
     },
     Upload: {
       servedDocumentFiles: {
-        particularsOfClaimDocument: [element(document('particularsOfClaim.pdf'))]
+        particularsOfClaimDocument: [
+          {
+            id: docUuid,
+            value: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          }
+        ]
       }
     },
     ClaimValue: {
@@ -230,7 +242,24 @@ module.exports = {
     invalid:{
       Upload:{
         servedDocumentFiles: {
-          particularsOfClaimDocument: [element(document('particularsOfClaim.pdf')),element(document('particularsOfClaim.pdf'))]
+          particularsOfClaimDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            },
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ]
         }
       },
       Court: {
