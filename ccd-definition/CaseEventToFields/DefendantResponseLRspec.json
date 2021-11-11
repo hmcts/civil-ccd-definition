@@ -280,7 +280,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec != \"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
