@@ -7,9 +7,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "selectALitigationFriend",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start"
-  },
+    "ShowSummaryChangeOption": "Y"},
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
