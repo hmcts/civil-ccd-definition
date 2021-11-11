@@ -457,7 +457,7 @@
     "ID": "respondent1ClaimResponsePaymentAdmissionForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponseTypeSpecPaidLess",
+    "FieldTypeParameter": "RespondentResponseTypeSpecPaidStatus",
     "SecurityClassification": "Public"
   },
   {
