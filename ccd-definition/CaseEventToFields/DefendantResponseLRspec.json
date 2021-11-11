@@ -437,7 +437,7 @@
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
-    "PageID": "DisclosureReport",
+    "PageID": "DisclosureReportLRSpec",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
