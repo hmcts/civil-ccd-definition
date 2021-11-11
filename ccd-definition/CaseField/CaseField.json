@@ -984,7 +984,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "selectLitigationFriend",
+    "ID": "addLitigationFriendDeadLine",
     "Label": "Who requires a litigation friend?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
