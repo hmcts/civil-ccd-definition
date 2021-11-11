@@ -618,5 +618,12 @@
     "FieldType": "TextArea",
     "Label": "Type of interpreter",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimProceedsInCaseman",
+    "Label": "Case proceeds in Caseman",
+    "FieldType": "ClaimProceedsInCaseman",
+    "SecurityClassification": "Public"
   }
 ]
