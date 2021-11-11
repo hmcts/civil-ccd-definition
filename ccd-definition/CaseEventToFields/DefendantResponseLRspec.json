@@ -574,8 +574,7 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/hearingSupport"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
