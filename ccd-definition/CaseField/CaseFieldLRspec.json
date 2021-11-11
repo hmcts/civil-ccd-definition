@@ -600,16 +600,16 @@
     "SecurityClassification": "Public"
   },
   {
-    "Label": " ",
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaim_experts",
+    "Label": " ",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public"
   },
   {
-    "Label": " ",
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
+    "Label": " ",
     "FieldType": "RequestedCourtLocation",
     "SecurityClassification": "Public"
   },
