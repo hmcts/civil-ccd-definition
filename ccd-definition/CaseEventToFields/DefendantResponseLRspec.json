@@ -223,6 +223,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponsePaymentAdmissionForSpec",
+    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\" OR respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
@@ -279,7 +280,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PART_ADMISSION\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
