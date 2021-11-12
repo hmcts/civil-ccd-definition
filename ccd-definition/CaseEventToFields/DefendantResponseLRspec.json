@@ -411,22 +411,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
+    "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfElectronicDocuments",
+    "PageID": "DisclosureOfElectronicDocumentsLRspec",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQDisclosureOfNonElectronicDocuments",
+    "CaseFieldID": "specRespondent1DQDisclosureOfNonElectronicDocuments",
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfNonElectronicDocuments",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
