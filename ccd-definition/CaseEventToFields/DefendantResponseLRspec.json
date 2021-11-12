@@ -269,7 +269,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec != \"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec != \"FULL_DEFENCE\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
