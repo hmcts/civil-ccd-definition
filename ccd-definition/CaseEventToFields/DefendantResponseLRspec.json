@@ -563,7 +563,7 @@
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\""
-     },
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
