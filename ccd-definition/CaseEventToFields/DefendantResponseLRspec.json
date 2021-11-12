@@ -604,7 +604,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "uiStatementOfTruth",
-    "PageDisplayOrder": 24,
+    "PageDisplayOrder": 22,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
