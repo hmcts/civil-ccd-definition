@@ -1,13 +1,13 @@
 [
   {
-    "ID": "RequestedCourtLocation",
+    "ID": "RequestedCourtLocationLRspec",
     "ListElementCode": "courtFinderLabel",
     "FieldType": "Label",
     "ElementLabel": "<a target=\"_blank\" href=\"https://courttribunalfinder.service.gov.uk/search/address\">Court and tribunals finder (open in new tab)</a> \n Use 3 digits court location code, not the court name",
     "SecurityClassification": "Public"
   },
    {
-    "ID": "RequestedCourtLocation",
+    "ID": "RequestedCourtLocationLRspec",
     "ListElementCode": "responseCourtCode",
     "FieldType": "Text",
     "ElementLabel": "Court location code",

@@ -538,7 +538,7 @@
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "RequestedCourtLocation",
+    "PageID": "RequestedCourtLocationLRspec",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
@@ -550,7 +550,7 @@
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourtLocation",
+    "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -560,7 +560,7 @@
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourtLocation",
+    "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\""
      },
@@ -568,7 +568,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSupport",
-    "PageDisplayOrder": 20,
+    "PageDisplayOrder": 21,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",

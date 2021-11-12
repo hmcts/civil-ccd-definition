@@ -610,7 +610,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
     "Label": " ",
-    "FieldType": "RequestedCourtLocation",
+    "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
