@@ -2244,7 +2244,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "addLitigationFriendDeadLine",
+    "CaseFieldID": "selectLitigationFriend",
     "AccessControl": [
       {
         "UserRoles": [

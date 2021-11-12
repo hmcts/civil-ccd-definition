@@ -45,7 +45,7 @@
     "PreConditionState(s)": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "PostConditionState": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "SecurityClassification": "Public",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-start",
+    "CallBackURLAboutToStartEvent": "-",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/submitted",
     "ShowSummary": "Y",

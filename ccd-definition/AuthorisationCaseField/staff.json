@@ -707,7 +707,6 @@
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
-  //timestamp error
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "selectLitigationFriend",
