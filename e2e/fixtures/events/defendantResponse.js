@@ -1,7 +1,19 @@
-const { date, document, element, buildAddress } = require('../../api/dataHelper');
+const { date, element, buildAddress } = require('../../api/dataHelper');
 
 module.exports = {
   valid: {
+    RespondentResponseType: {
+      respondent1ClaimResponseType: 'FULL_DEFENCE'
+    },
+    Upload: {
+      respondent1ClaimResponseDocument: {
+        file: {
+          document_url: '${TEST_DOCUMENT_URL}',
+          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+          document_filename: '${TEST_DOCUMENT_FILENAME}'
+        }
+      }
+    },
     ConfirmNameAddress: {},
     ConfirmDetails: {
       respondent1: {
@@ -89,7 +101,11 @@ module.exports = {
       }
     },
     DraftDirections: {
-      respondent1DQDraftDirections: document('draftDirections.pdf')
+      respondent1DQDraftDirections: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      }
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
