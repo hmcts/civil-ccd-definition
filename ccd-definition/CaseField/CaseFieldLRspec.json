@@ -579,16 +579,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimCourtLocationLabel",
+    "Label": "## Court Location",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimCourtLocationRequired",
+    "Label": "Do you want hearing to be held at specific court ? \n",
+    "HintText" : "If the defendant is individual the case will be held at defendant's preferred court ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaim_experts",
+    "Label": " ",
     "FieldType": "ExpertDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToCourtLocation",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
