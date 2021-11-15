@@ -79,6 +79,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimCourtLocationLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimWitnesses",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -86,6 +92,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "SmallClaimHearingInterpreterDescription",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent1DQDisclosureOfNonElectronicDocuments",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
