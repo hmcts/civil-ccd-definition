@@ -223,7 +223,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponsePaymentAdmissionForSpec",
-    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\" OR respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\"",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
