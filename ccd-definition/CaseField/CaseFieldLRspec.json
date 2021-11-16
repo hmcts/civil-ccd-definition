@@ -454,6 +454,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponsePaymentAdmissionForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpecPaidStatus",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defenceRouteRequired",
     "Label": " ",
     "FieldType": "FixedRadioList",

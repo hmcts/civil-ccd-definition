@@ -222,6 +222,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponsePaymentAdmissionForSpec",
+    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "defenceRoute",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
@@ -269,7 +280,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec != \"FULL_DEFENCE\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -388,18 +399,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specResponselistYourEvidenceList",
-    "PageLabel": "List the evidence",
-    "PageDisplayOrder": 10,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "evidence",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
@@ -458,11 +457,12 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnesses",
+    "PageLabel": "Witnesses",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Witnesses",
-    "CaseEventFieldLabel": "Witnesses",
+    "CaseEventFieldLabel": " ",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
     "ShowSummaryChangeOption": "Y"
