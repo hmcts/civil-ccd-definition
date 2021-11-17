@@ -44,7 +44,7 @@
     "PageID": "ConfirmDefendantDetails",
     "PageLabel": "Confirm Defendants' details",
     "PageDisplayOrder": 1,
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callback/version/V_1/mid/confirm-details",
     "ShowSummaryChangeOption": "N"
   },
   {

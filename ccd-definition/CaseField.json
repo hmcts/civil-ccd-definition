@@ -809,6 +809,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2AcknowledgeNotificationDate",
+    "Label": "Date respondent 2 acknowledged notification",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
