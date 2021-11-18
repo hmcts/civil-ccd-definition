@@ -3,14 +3,14 @@
     "ID": "FutureApplications",
     "ListElementCode": "intentionToMakeFutureApplications",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Do you want to propose directions for disclosure?",
+    "ElementLabel": "Do you intend to make any applications in the future?",
     "SecurityClassification": "Public"
   },
   {
     "ID": "FutureApplications",
     "ListElementCode": "whatWillFutureApplicationsBeMadeFor",
     "FieldType": "Text",
-    "ElementLabel": "What directions are proposed for disclosure?",
+    "ElementLabel": "For what?",
     "FieldShowCondition": "intentionToMakeFutureApplications = \"Yes\"",
     "SecurityClassification": "Public"
   }

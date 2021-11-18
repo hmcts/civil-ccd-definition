@@ -583,10 +583,20 @@
     "PageLabel": "Applications",
     "PageDisplayOrder": 21,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "Applications",
-    "CaseEventFieldLabel": "Applications CEFL",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack=\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "additionalInformationForJudge",
+    "PageDisplayOrder": 21,
+    "PageFieldDisplayOrder": 2,
+    "CaseEventFieldLabel": "Provide any other information the judge may need",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Applications",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -598,7 +608,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FurtherInformation",
     "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack!=\"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

@@ -673,8 +673,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFutureApplications",
-    "Label": "Future application stuff",
+    "Label": " ",
     "FieldType": "FutureApplications",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalInformationForJudge",
+    "Label": " ",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]
