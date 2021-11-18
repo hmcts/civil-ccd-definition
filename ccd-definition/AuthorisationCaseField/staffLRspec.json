@@ -106,5 +106,11 @@
     "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQFutureApplications",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "FutureApplications",
+    "ListElementCode": "intentionToMakeFutureApplications",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you want to propose directions for disclosure?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FutureApplications",
+    "ListElementCode": "whatWillFutureApplicationsBeMadeFor",
+    "FieldType": "Text",
+    "ElementLabel": "What directions are proposed for disclosure?",
+    "FieldShowCondition": "intentionToMakeFutureApplications = \"Yes\"",
+    "SecurityClassification": "Public"
+  }
+]

@@ -669,5 +669,12 @@
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFutureApplications",
+    "Label": "Future application stuff",
+    "FieldType": "FutureApplications",
+    "SecurityClassification": "Public"
   }
 ]
