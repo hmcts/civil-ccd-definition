@@ -1004,6 +1004,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
     "AccessControl": [
       {

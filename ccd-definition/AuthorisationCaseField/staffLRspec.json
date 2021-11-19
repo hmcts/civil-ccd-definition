@@ -7,6 +7,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSRespondentDetails",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

@@ -520,11 +520,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
     "PageDisplayOrder": 18,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
-    "PageID": "Hearing",
+    "PageID": "HearingLRspec",
     "CaseEventFieldLabel": "Hearing",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND responseClaimTrack= \"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y",

@@ -637,6 +637,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHearingFastClaim",
+    "Label": "Respondent 1 Hearing",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "SmallClaimHearingInterpreterRequired",
     "FieldType": "YesOrNo",
     "Label": " ",
