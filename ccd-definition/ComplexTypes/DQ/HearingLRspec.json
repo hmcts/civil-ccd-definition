@@ -4,7 +4,7 @@
     "ListElementCode": "hearingLength",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingLength",
-    "ElementLabel": "INDU How long do you estimate the hearing will take?",
+    "ElementLabel": "How long do you estimate the hearing will take?",
     "SecurityClassification": "Public"
   },
   {
@@ -38,9 +38,9 @@
   },
   {
     "ID": "HearingLRspec",
-    "ListElementCode": "unavailableDates",
+    "ListElementCode": "unavailableDatesLRspec",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UnavailableDate",
+    "FieldTypeParameter": "UnavailableDateLRspec",
     "ElementLabel": "Unavailable date",
     "FieldShowCondition": "unavailableDatesRequired = \"Yes\"",
     "SecurityClassification": "Public"
