@@ -10,7 +10,7 @@
     "ID": "FutureApplications",
     "ListElementCode": "whatWillFutureApplicationsBeMadeFor",
     "FieldType": "Text",
-    "ElementLabel": "For what?",
+    "ElementLabel": "What for?",
     "FieldShowCondition": "intentionToMakeFutureApplications = \"Yes\"",
     "SecurityClassification": "Public"
   }
