@@ -228,7 +228,18 @@
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "defenceRouteRequired = \"DISPUTES_THE_CLAIM\""
+    "FieldShowCondition": "defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefenceRoutePayFeeIfChangeDetails",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Upload",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
   {
     "CaseTypeID": "CIVIL",

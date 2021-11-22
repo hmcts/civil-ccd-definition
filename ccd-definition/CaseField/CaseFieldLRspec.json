@@ -483,6 +483,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRoutePayFeeIfChangeDetails",
+    "Label": "<div><p>You'll have to pay an extra fee if you want to change the details of the claim later.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "detailsOfWhyDoesYouDisputeTheClaim",
     "Label": " ",
     "FieldType": "TextArea",
