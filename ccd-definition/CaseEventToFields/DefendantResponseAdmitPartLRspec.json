@@ -9,7 +9,7 @@
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "PageID": "defenceAdmittedRoute",
     "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +21,7 @@
     "PageID": "defenceAdmittedRoute",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -33,7 +33,7 @@
     "PageID": "defenceAdmittedRoute",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "specDefenceAdmittedRequired = \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -45,6 +45,6 @@
     "PageID": "defenceAdmittedRoute",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "specDefenceAdmittedRequired = \"No\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
   }
 ]
