@@ -42,9 +42,9 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
+    "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1",
+    "CaseFieldID": "applicantSolicitor1UserDetails",
     "TabFieldDisplayOrder": 6
   },
   {
@@ -52,7 +52,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1LitigationFriend",
+    "CaseFieldID": "respondent1",
     "TabFieldDisplayOrder": 7
   },
   {
@@ -60,7 +60,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1DQExperts",
+    "CaseFieldID": "respondent1LitigationFriend",
     "TabFieldDisplayOrder": 8
   },
   {
@@ -68,7 +68,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1DQExperts",
+    "CaseFieldID": "applicant1DQExperts",
     "TabFieldDisplayOrder": 9
   },
   {
@@ -76,7 +76,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1DQWitnesses",
+    "CaseFieldID": "respondent1DQExperts",
     "TabFieldDisplayOrder": 10
   },
   {
@@ -84,7 +84,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1DQWitnesses",
+    "CaseFieldID": "applicant1DQWitnesses",
     "TabFieldDisplayOrder": 11
   },
   {
@@ -92,15 +92,15 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "courtLocation",
+    "CaseFieldID": "respondent1DQWitnesses",
     "TabFieldDisplayOrder": 12
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim Details",
+    "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1OrganisationPolicy",
+    "CaseFieldID": "courtLocation",
     "TabFieldDisplayOrder": 13
   },
   {
@@ -108,7 +108,15 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1OrganisationPolicy",
+    "CaseFieldID": "applicant1OrganisationPolicy",
     "TabFieldDisplayOrder": 14
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "TabFieldDisplayOrder": 15
   }
 ]
