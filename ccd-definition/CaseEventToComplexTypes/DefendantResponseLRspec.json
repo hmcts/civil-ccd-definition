@@ -181,7 +181,7 @@
   "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
   "CaseFieldID": "respondent1DQHearingFastClaim",
   "ListElementCode": "unavailableDatesLRspec.unavailableDateType",
-  "FieldDisplayOrder": 6,
+  "FieldDisplayOrder": 7,
   "DisplayContext": "MANDATORY"
   },
   {
@@ -189,7 +189,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "unavailableDatesLRspec.fromDate",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -197,7 +197,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "unavailableDatesLRspec.toDate",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL"
   },
   {
