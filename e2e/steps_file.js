@@ -87,6 +87,14 @@ const specInterestDateStartPage = require('./pages/createClaim/interestDateStart
 const specInterestDateEndPage = require('./pages/createClaim/interestDateEndLRspec.page');
 const specConfirmDefendantsDetails = require('./fragments/confirmDefendantsDetailsLRspec');
 const specConfirmLegalRepDetails = require('./fragments/confirmLegalRepDetailsLRspec');
+const responseTypeSpecPage = require('./pages/respondToClaimSpec/responseTypeSpec.page');
+const defenceTypePage = require('./pages/respondToClaimSpec/defenceType.page');
+const freeMediationPage = require('./pages/respondToClaimSpec/freeMediation.page');
+const chooseCourtSpecPage = require('./pages/respondToClaimSpec/chooseCourtSpec.page');
+const smallClaimsHearingPage = require('./pages/respondToClaimSpec/hearingSmallClaims.page');
+const useExpertPage = require('./pages/respondToClaimSpec/useExpert.page');
+const respondentCheckListPage = require('./pages/respondToClaimSpec/respondentCheckList.page');
+const enterWitnessesPage = require('./pages/respondToClaimSpec/enterWitnesses.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -501,6 +509,32 @@ module.exports = function () {
         () => event.returnToCaseDetails()
       ]);
     },
+
+    async respondToClaimSpec(responseType,defenceType,amountPaid) {
+          console.log('Respond to claim spec   '+responseType+', '+defenceType);
+          eventName = 'Respond to claim';
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => respondentCheckListPage.claimTimelineTemplate(),
+            () => specConfirmDefendantsDetails.confirmDetails(),
+            () => specConfirmLegalRepDetails.confirmDetails(),
+            () => responseTypeSpecPage.selectResponseType(responseType),
+             ... conditionalSteps(responseType === 'fullDefence', [
+             () => defenceTypePage.selectDefenceType(defenceType,amountPaid),
+             () => freeMediationPage.selectMediation('yes'),
+             () => useExpertPage.claimExpert('no'),
+             () => enterWitnessesPage.howManyWitnesses(),
+             () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+             () => smallClaimsHearingPage.selectHearing('no'),
+             () => chooseCourtSpecPage.chooseCourt('yes'),
+             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+             () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+             () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+            ]),
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails()
+          ]);
+        },
 
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {

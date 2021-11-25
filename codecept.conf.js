@@ -1,11 +1,11 @@
 exports.config = {
-  tests: './e2e/tests/*_test.js',
+  tests: './e2e/tests/solicitorCreatesClaim-LRspec_test.js',
   output: './output',
   helpers: {
     Puppeteer: {
       restart: false,
       keepCookies: true,
-      show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
+      show: process.env.SHOW_BROWSER_WINDOW === 'true' || true,
       windowSize: '1200x900',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 40000),
       chrome: {

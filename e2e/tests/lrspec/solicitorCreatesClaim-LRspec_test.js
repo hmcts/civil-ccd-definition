@@ -143,3 +143,9 @@ Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   await I.acknowledgeClaimSpec();
   await I.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
+
+Scenario('Defendant solicitor responds to claim', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpec('fullDefence','hasPaid',1000);
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
