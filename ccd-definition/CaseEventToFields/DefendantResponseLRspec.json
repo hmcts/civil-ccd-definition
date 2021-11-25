@@ -294,7 +294,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -313,7 +313,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteManualTimelineLabel",
-    "PageDisplayOrder": 9,
+    "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimelineManual",
@@ -324,7 +324,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specResponseTimelineOfEvents",
     "PageLabel": "Add timeline of events (Optional)",
-    "PageDisplayOrder": 9,
+    "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "HowToAddTimelineManual",
