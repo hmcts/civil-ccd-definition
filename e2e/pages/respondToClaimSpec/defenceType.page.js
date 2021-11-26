@@ -25,7 +25,7 @@ module.exports = {
   },
 
   async selectDefenceType(defenceType,amountPaid) {
-
+    // eslint-disable-next-line no-prototype-builtins
     if (!this.fields.DefenceType.options.hasOwnProperty(defenceType)) {
       throw new Error(`Response type: ${defenceType} does not exist`);
     }

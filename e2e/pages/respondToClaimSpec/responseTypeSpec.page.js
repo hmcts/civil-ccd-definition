@@ -15,6 +15,7 @@ module.exports = {
   },
 
   async selectResponseType(responseType) {
+    // eslint-disable-next-line no-prototype-builtins
     if (!this.fields.respondent1ClaimResponseType.options.hasOwnProperty(responseType)) {
       throw new Error(`Response type: ${responseType} does not exist`);
     }

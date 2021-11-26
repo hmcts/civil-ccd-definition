@@ -19,7 +19,7 @@ module.exports = {
     I.waitForElement(this.fields.useExpert.id);
     await I.runAccessibilityTest();
     await within(this.fields.useExpert.id, () => {
-    I.click(this.fields.useExpert.options[responseType])
+    I.click(this.fields.useExpert.options[responseType]);
     });
 
     await I.clickContinue();
