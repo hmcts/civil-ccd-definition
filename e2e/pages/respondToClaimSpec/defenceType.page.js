@@ -25,12 +25,11 @@ module.exports = {
   },
 
   async selectDefenceType(defenceType,amountPaid) {
-    // eslint-disable-next-line no-prototype-builtins
+
     if (!this.fields.DefenceType.options.hasOwnProperty(defenceType)) {
       throw new Error(`Response type: ${defenceType} does not exist`);
     }
     I.waitForElement(this.fields.DefenceType.id);
-    console.log(' Defence Type 1 ' + defenceType);
     await I.runAccessibilityTest();
     await within(this.fields.DefenceType.id, () => {
     I.click(this.fields.DefenceType.options[defenceType]);

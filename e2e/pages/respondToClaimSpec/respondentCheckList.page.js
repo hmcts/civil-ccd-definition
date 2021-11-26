@@ -9,4 +9,3 @@ module.exports = {
   },
 };
 
-//*[@id="specResponseCheckList"]/dt/ccd-markdown/div/markdown/p[3]/a

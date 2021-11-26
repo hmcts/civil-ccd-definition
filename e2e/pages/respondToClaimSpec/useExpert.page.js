@@ -19,14 +19,7 @@ module.exports = {
     I.waitForElement(this.fields.useExpert.id);
     await I.runAccessibilityTest();
     await within(this.fields.useExpert.id, () => {
-    I.click(this.fields.useExpert.options[responseType]);
-    if ('yes' === responseType) {
-       //await I.fillField(this.fields.useExpert.expertName, 'john');
-       // await I.fillField(this.fields.expertField, 'roofing expert');
-       //await I.fillField(this.fields.cost, 2000);
-       ////*[@id="responseClaimWitnesses"]
-    }
-
+    I.click(this.fields.useExpert.options[responseType])
     });
 
     await I.clickContinue();

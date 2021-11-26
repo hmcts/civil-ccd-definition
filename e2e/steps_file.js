@@ -511,7 +511,6 @@ module.exports = function () {
     },
 
     async respondToClaimSpec(responseType,defenceType,amountPaid) {
-          console.log('Respond to claim spec   '+responseType+', '+defenceType);
           eventName = 'Respond to claim';
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),

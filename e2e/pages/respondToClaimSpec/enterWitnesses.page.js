@@ -11,4 +11,3 @@ fields: {
   },
 };
 
-////*[@id="responseClaimWitnesses"]
