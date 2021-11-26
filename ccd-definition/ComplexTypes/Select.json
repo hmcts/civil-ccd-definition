@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "SelectWhichLitigationFriend",
+    "ListElementCode": "pickLitigationFriend",
+    "FieldType": "Text",
+    "ElementLabel": "Choose who the Litigation friend is for",
+    "SecurityClassification": "Public"
+  }
+]

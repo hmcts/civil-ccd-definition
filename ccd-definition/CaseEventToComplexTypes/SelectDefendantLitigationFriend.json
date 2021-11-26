@@ -1,0 +1,11 @@
+[
+  {
+    "ID": "SelectALitigationFriend",
+    "CaseEventID": "SELECT_DEFENDANT_LITIGATION_FRIEND",
+    "CaseFieldID": "selectLitigationFriend",
+    "ListElementCode": "pickLitigationFriend",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+
+]

@@ -706,5 +706,11 @@
     "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
