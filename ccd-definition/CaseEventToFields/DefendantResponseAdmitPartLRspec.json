@@ -93,12 +93,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "partAdmissionWhenWillDefendantPayBySetDateLRspec",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\""
+    "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
   }
 ]

@@ -1206,7 +1206,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partAdmissionWhenWillDefendantPayBySetDateLRspec",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "AccessControl": [
       {
         "UserRoles": [

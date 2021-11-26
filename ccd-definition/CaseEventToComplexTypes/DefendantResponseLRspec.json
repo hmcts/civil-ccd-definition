@@ -354,7 +354,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "RespondToClaim",
+    "CaseFieldID": "respondToClaim",
     "ListElementCode": "howMuchWasPaidLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -362,7 +362,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "RespondToClaim",
+    "CaseFieldID": "respondToClaim",
     "ListElementCode": "howMuchWasPaid",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -370,7 +370,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "RespondToClaim",
+    "CaseFieldID": "respondToClaim",
     "ListElementCode": "whenWasThisAmountPaid",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -378,9 +378,17 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "RespondToClaim",
+    "CaseFieldID": "respondToClaim",
     "ListElementCode": "howWasThisAmountPaid",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "ListElementCode": "whenWillThisAmountBePaid",
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {

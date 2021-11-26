@@ -743,7 +743,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "partAdmissionWhenWillDefendantPayBySetDateLRspec",
+    "ID": "respondToClaimAdmitPartLRspec",
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
