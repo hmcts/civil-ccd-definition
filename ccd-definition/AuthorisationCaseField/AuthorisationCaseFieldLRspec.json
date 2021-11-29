@@ -37,6 +37,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondStatementOfTruthSubmitLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specEligibilityQuestions",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
