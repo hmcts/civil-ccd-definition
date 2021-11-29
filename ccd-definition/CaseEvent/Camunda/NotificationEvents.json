@@ -197,7 +197,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_PROCEEDS_IN_CASEMAN",
-    "Name": "Notify applicant caseman",
+    "Name": "Email: Transferred offline",
     "Description": "Notify applicant solicitor 1 for case proceeds in caseman",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",

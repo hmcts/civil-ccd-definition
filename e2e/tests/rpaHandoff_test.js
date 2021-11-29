@@ -6,7 +6,7 @@ let caseNumber;
 
 Feature('RPA handoff points tests @rpa-handoff-tests');
 
-Scenario.skip('Take claim offline', async ({I}) => {
+Scenario('Take claim offline', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
 
   await I.login(config.defendantSolicitorUser);
@@ -21,7 +21,7 @@ Scenario.skip('Take claim offline', async ({I}) => {
   await I.signOut();
 });
 
-Scenario.skip('Defendant - Litigant In Person', async ({I}) => {
+Scenario('Defendant - Litigant In Person', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(true);
   caseNumber = await I.grabCaseNumber();
@@ -32,7 +32,7 @@ Scenario.skip('Defendant - Litigant In Person', async ({I}) => {
   await I.signOut();
 });
 
-Scenario.skip('Defendant - Defend part of Claim', async ({I}) => {
+Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'partDefence', 'partAdmission');
 
@@ -42,7 +42,7 @@ Scenario.skip('Defendant - Defend part of Claim', async ({I}) => {
   await I.signOut();
 });
 
-Scenario.skip('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
+Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
@@ -53,7 +53,7 @@ Scenario.skip('Defendant - Defends, Claimant decides not to proceed', async ({I}
   await I.signOut();
 });
 
-Scenario.skip('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
+Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
