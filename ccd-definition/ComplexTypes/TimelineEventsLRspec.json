@@ -4,7 +4,7 @@
     "ListElementCode": "timelineDate",
     "FieldType": "Date",
     "ElementLabel": "Date",
-    "HintText": "For example 9 December 2020",
+    "HintText": "For example, 12 11 2007",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +12,6 @@
     "ListElementCode": "timelineDescription",
     "FieldType": "TextArea",
     "ElementLabel": "What happened",
-    "HintText": "For example you might have signed a contract",
     "SecurityClassification": "Public"
   }
 ]
