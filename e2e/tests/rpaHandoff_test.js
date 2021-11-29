@@ -19,7 +19,7 @@ Scenario('Take claim offline', async ({I}) => {
   await I.caseProceedsInCaseman();
   await I.assertNoEventsAvailable();
   await I.signOut();
-});
+}).retry(3);
 
 Scenario('Defendant - Litigant In Person', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -30,7 +30,7 @@ Scenario('Defendant - Litigant In Person', async ({I}) => {
   await I.navigateToCaseDetails(caseNumber);
   await I.assertNoEventsAvailable();
   await I.signOut();
-});
+}).retry(3);
 
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -40,7 +40,7 @@ Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await I.navigateToCaseDetails(caseNumber);
   await I.assertNoEventsAvailable();
   await I.signOut();
-});
+}).retry(3);
 
 Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -51,7 +51,7 @@ Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => 
   await I.respondToDefenceDropClaim();
   await I.assertNoEventsAvailable();
   await I.signOut();
-});
+}).retry(3);
 
 Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -62,7 +62,7 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await I.respondToDefence();
   await I.assertNoEventsAvailable();
   await I.signOut();
-});
+}).retry(3);
 
 const createCaseUpUntilNotifyClaimDetails = async (I) => {
   await I.login(config.applicantSolicitorUser);
