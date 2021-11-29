@@ -19,7 +19,7 @@
     "ListElementCode": "whenWasThisAmountPaid",
     "FieldType": "Date",
     "ElementLabel": "When was this amount paid?",
-    "HintText": "For example 9 December 2020",
+    "HintText": "For example, 12 11 2007",
     "SecurityClassification": "Public",
     "Label": "When was this amount paid?"
   },
