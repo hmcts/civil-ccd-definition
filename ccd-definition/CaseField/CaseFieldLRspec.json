@@ -470,8 +470,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceAdmittedRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedLabel",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
+    "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -480,6 +494,20 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaim",
     "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaim",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaimOwingAmount",
+    "Label": "How much money does your client admit to owing?",
+    "FieldType": "Number",
     "SecurityClassification": "Public"
   },
   {
