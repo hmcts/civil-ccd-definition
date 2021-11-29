@@ -536,7 +536,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriend",
-    "Label": "Defendant litigation details",
+    "Label": "Enter the details of the litigation friend",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriend",
+    "Label": "Enter the details of the litigation friend",
     "FieldType": "LitigationFriend",
     "SecurityClassification": "Public"
   },
@@ -557,6 +564,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDate",
+    "Label": "Defendant response date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ResponseDate",
     "Label": "Defendant response date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
@@ -799,6 +813,20 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriendCreatedDate",
     "Label": "Date respondent 1 added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriendDate",
+    "Label": "Date respondent 2 added or last updated litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriendCreatedDate",
+    "Label": "Date respondent 2 added litigation friend",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
