@@ -14,7 +14,7 @@
     "CaseEventID": "SELECT_DEFENDANT_LITIGATION_FRIEND",
     "CaseFieldID": "respondent1LitigationFriend",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "LitigationFriend",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y"
