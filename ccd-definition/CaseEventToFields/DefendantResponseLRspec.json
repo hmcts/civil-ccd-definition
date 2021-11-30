@@ -240,7 +240,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "defenceRouteRequired = \"DISPUTES_THE_CLAIM\""
+    "FieldShowCondition": "defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -281,7 +281,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -294,7 +294,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\"",
+    "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -313,8 +313,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteManualTimelineLabel",
-    "PageLabel": "Add timeline of events (Optional)",
-    "PageDisplayOrder": 9,
+    "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimelineManual",
@@ -324,7 +323,8 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specResponseTimelineOfEvents",
-    "PageDisplayOrder": 9,
+    "PageLabel": "Add timeline of events (Optional)",
+    "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "HowToAddTimelineManual",
