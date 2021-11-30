@@ -7,7 +7,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SelectALitigationFriend",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"},
+    "ShowSummaryChangeOption": "Y"
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
@@ -16,6 +17,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "LitigationFriend",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent1LitigationFriend=\"Yes\""
   }
 ]
