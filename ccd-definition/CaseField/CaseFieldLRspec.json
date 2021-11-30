@@ -638,7 +638,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
     "Label": "Do you want hearing to be held at specific court ? \n",
-    "HintText" : "If the defendant is individual the case will be held at defendant's preferred court ",
+    "HintText": "If the defendant is individual the case will be held at defendant's preferred court ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -761,6 +761,28 @@
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRoutePayFeeIfChangeDetails",
+    "Label": "<div><p>You'll have to pay an extra fee if you want to change the details of the claim later.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "minusBeforeOverdrawnAmount",
+    "Label": "<h1 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h1> \n<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1BankAccountList",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "BankAccount",
     "SecurityClassification": "Public"
   }
 ]
