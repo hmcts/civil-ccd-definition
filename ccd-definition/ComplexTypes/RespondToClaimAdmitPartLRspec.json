@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "RespondToClaimAdmitPartLRspec",
+    "ListElementCode": "whenWillThisAmountBePaidLabel",
+    "ElementLabel": "The claimant can request a County Court Judgement (CCJ) against your client if the amount is not paid immediately. \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondToClaimAdmitPartLRspec",
+    "ListElementCode": "whenWillThisAmountBePaid",
+    "FieldType": "Date",
+    "ElementLabel": "Enter the date your client will pay on.",
+    "HintText": "For example 9 December 2020",
+    "SecurityClassification": "Public",
+    "Label": "When will this amount be paid?"
+  }
+]

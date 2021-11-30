@@ -1,3 +1,4 @@
+
 [
   {
     "ID": "ResponseDocument",
@@ -130,7 +131,7 @@
   {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "hearingLength",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -138,7 +139,7 @@
   {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "hearingLengthHours",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -146,7 +147,7 @@
   {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "hearingLengthDays",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -154,7 +155,7 @@
   {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -162,18 +163,42 @@
   {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
-    "ListElementCode": "unavailableDates.who",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "ListElementCode": "unavailableDatesLRspec.who",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
+  "ID": "Hearing",
+  "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+  "CaseFieldID": "respondent1DQHearingFastClaim",
+  "ListElementCode": "unavailableDatesLRspec.unavailableDateType",
+  "FieldDisplayOrder": 6,
+  "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearing",
-    "ListElementCode": "unavailableDates.date",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "ListElementCode": "unavailableDatesLRspec.date",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "ListElementCode": "unavailableDatesLRspec.fromDate",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "ListElementCode": "unavailableDatesLRspec.toDate",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisclosureReport",

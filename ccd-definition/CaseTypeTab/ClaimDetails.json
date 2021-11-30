@@ -118,5 +118,13 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent1OrganisationPolicy",
     "TabFieldDisplayOrder": 15
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "TabFieldDisplayOrder": 16
   }
 ]
