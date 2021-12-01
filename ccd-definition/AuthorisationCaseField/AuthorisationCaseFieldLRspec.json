@@ -1092,7 +1092,6 @@
       }
     ]
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
@@ -1255,6 +1254,25 @@
       {
         "UserRoles": [
           "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }

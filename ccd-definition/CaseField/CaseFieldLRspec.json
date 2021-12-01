@@ -762,5 +762,12 @@
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "Label": " ",
+    "FieldType": "PayingMoneyDetails",
+    "SecurityClassification": "Public"
   }
 ]

@@ -455,5 +455,13 @@
     "ListElementCode": "SmallClaimUnavailableDate.toDate",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PayingMoneyDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingMoneyDetailsLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]
