@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "EmploymentTypeComplexTypeLRspec",
+    "ListElementCode": "employmentType",
+    "ElementLabel": "Employed or self-employed?. \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "EmploymentTypeComplexTypeLRspec",
+    "ListElementCode": "whenWillThisAmountBePaid",
+    "FieldType": "Date",
+    "ElementLabel": "Enter the date your client will pay on.",
+    "HintText": "For example 9 December 2020",
+    "SecurityClassification": "Public",
+    "Label": "When will this amount be paid?"
+  }
+]

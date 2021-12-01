@@ -55,7 +55,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
   {
@@ -101,5 +101,48 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "EmploymentDeclaration",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceAdmitPartEmploymentTypeRequired",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EmploymentDeclaration",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspec",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EmploymentDeclaration",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defenceAdmitPartEmploymentTypeRequired=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspec",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EmploymentDeclaration",
+    "FieldShowCondition": "defenceAdmitPartEmploymentTypeRequired=\"No\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]

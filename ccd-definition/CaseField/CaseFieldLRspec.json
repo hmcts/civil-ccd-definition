@@ -762,5 +762,34 @@
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartEmploymentTypeRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
+    "Label": " ",
+    "HintText": "For example 9 December 2020",
+    "FieldType": "EmploymentTypeComplexTypeDQ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartUnemployedLRspec",
+    "Label": " ",
+    "FieldType": "UnemployedComplexTypeLRspec",
+    "SecurityClassification": "Public"
   }
 ]
