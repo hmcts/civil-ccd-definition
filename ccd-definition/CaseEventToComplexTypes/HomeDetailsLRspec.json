@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "HomeDetailsLRspec",
+    "CaseEventID": "CIVIL",
+    "CaseFieldID": "homeDetailsLRspec",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HomeDetailsLRspec",
+    "CaseEventID": "CIVIL",
+    "CaseFieldID": "homeDetailsLRspec",
+    "ListElementCode": "typeOtherDetails",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "type = \"OTHER\""
+  }
+]

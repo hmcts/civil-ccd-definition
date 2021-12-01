@@ -101,5 +101,26 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "homeOptionsTitleLRspec",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "defendantHomeOptions",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHomeDetails",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "defendantHomeOptions",
+    "ShowSummaryChangeOption": "N"
   }
 ]
