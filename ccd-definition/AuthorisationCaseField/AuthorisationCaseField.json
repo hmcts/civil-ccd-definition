@@ -1341,8 +1341,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORTWO]"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       },
