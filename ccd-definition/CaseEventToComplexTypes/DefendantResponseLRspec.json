@@ -463,5 +463,13 @@
     "ListElementCode": "payingMoneyDetailsLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PayingMoneyDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingDetailsRequired",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
   }
 ]
