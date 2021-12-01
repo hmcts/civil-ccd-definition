@@ -19,7 +19,7 @@ Scenario('Take claim offline', async ({I}) => {
   await I.caseProceedsInCaseman();
   await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3);
+}).retry(4);
 
 Scenario('Defendant - Litigant In Person', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
