@@ -1261,25 +1261,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "payingMoneyAsAResultOfCourtOrderLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "AccessControl": [
       {

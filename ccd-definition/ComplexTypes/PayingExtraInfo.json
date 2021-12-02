@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "PayingExtraInfo",
+    "ListElementCode": "claimNumber",
+    "FieldType": "Number",
+    "FieldTypeParameter": " ",
+    "ElementLabel": "Claim Number",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PayingExtraInfo",
+    "ListElementCode": "amountOwed",
+    "FieldType": "MoneyGBP",
+    "FieldTypeParameter": " ",
+    "ElementLabel": "Amount Owed",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PayingExtraInfo",
+    "ListElementCode": "monthlyInstalmentAmount",
+    "FieldType": "MoneyGBP",
+    "FieldTypeParameter": " ",
+    "ElementLabel": "Monthly Installment Amount",
+    "SecurityClassification": "Public"
+  }
+]

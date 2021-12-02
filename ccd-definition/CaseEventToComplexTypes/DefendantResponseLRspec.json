@@ -460,7 +460,7 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetailsLabelIndu",
+    "ListElementCode": "payingMoneyDetailsLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -476,7 +476,7 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingextraInfo",
+    "ListElementCode": "payingMoneyDetails",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -484,7 +484,7 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingextraInfo.claimNumber",
+    "ListElementCode": "payingMoneyDetails.claimNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -492,7 +492,7 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingextraInfo.amountOwed",
+    "ListElementCode": "payingMoneyDetails.amountOwed",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -500,7 +500,7 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingextraInfo.monthlyInstalmentAmount",
+    "ListElementCode": "payingMoneyDetails.monthlyInstalmentAmount",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   }

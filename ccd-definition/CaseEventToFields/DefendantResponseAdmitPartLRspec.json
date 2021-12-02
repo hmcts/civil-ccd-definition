@@ -105,21 +105,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "payingMoneyAsAResultOfCourtOrderLabel",
-    "PageDisplayOrder": 10,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
-    "PageID": "DetailsOfPayingMoney",
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "PageDisplayOrder": 10,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
     "PageID": "DetailsOfPayingMoney",

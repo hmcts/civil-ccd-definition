@@ -1,0 +1,25 @@
+[
+  {
+    "ID": "PayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingMoneyDetailsLabel",
+    "FieldType": "Label",
+    "ElementLabel": "## Is ${respondent1.partyName} paying money as a result of court order? \n",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingDetailsRequired",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingMoneyDetails",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PayingExtraInfo",
+    "ElementLabel": " ",
+    "FieldShowCondition": "payingDetailsRequired = \"Yes\"",
+    "SecurityClassification": "Public"
+  }
+]
