@@ -476,8 +476,32 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "unavailableDatesLRspec",
+    "ListElementCode": "payingextraInfo",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PayingMoneyDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingextraInfo.claimNumber",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PayingMoneyDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingextraInfo.amountOwed",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PayingMoneyDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "payingextraInfo.monthlyInstalmentAmount",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   }
 ]
