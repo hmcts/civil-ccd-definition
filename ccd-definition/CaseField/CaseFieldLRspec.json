@@ -765,6 +765,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "payingMoneyAsAResultOfCourtOrderLabel",
+    "Label": "## Is Indu ${respondent1.partyName} paying money as a result of court order? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "Label": " ",
     "FieldType": "PayingMoneyDetails",

@@ -460,7 +460,7 @@
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetailsLabel",
+    "ListElementCode": "payingMoneyDetailsLabelIndu",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -470,6 +470,14 @@
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "ListElementCode": "payingDetailsRequired",
     "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PayingMoneyDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ListElementCode": "unavailableDatesLRspec",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]
