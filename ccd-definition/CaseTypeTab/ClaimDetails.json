@@ -110,21 +110,5 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent1OrganisationPolicy",
     "TabFieldDisplayOrder": 14
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "respondent1LitigationFriend",
-    "TabLabel": "respondent 1 Litigation Friend",
-    "TabDisplayOrder": 8,
-    "CaseFieldID": "respondent1LitigationFriend",
-    "TabFieldDisplayOrder": 15
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "respondent2LitigationFriend",
-    "TabLabel": "respondent 2 Litigation Friend",
-    "TabDisplayOrder": 9,
-    "CaseFieldID": "respondent2LitigationFriend",
-    "TabFieldDisplayOrder": 16
   }
 ]
