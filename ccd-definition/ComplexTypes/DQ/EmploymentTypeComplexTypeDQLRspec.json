@@ -1,7 +1,7 @@
 [
   {
-    "ID": "EmploymentTypeComplexTypeDQ",
-    "ListElementCode": "employmentTypeComplexTypeDQ",
+    "ID": "EmploymentTypeComplexTypeDQLRspec",
+    "ListElementCode": "employmentTypeComplexTypeDQLRspec",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
     "ElementLabel": "Employed or self-employed?",

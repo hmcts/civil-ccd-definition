@@ -735,10 +735,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "defenceAdmitPartRouteRequired",
+    "ID": "defenceAdmitPartPaymentTimeRouteRequired",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTime",
+    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
     "SecurityClassification": "Public"
   },
   {
@@ -782,7 +782,7 @@
     "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
     "Label": " ",
     "HintText": "For example 9 December 2020",
-    "FieldType": "EmploymentTypeComplexTypeDQ",
+    "FieldType": "EmploymentTypeComplexTypeDQLRspec",
     "SecurityClassification": "Public"
   },
   {
