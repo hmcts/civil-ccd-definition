@@ -478,13 +478,13 @@
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "ListElementCode": "payingMoneyDetails",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "PayingMoneyDetails",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetails.claimNumber",
+    "ListElementCode": "payingMoneyDetails.claimNumberText",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },

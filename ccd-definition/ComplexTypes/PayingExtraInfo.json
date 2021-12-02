@@ -1,10 +1,10 @@
 [
   {
     "ID": "PayingExtraInfo",
-    "ListElementCode": "claimNumber",
-    "FieldType": "Number",
-    "FieldTypeParameter": " ",
-    "ElementLabel": "Claim Number",
+    "ListElementCode": "claimNumberText",
+    "FieldType": "Text",
+    "FieldTypeParameter": "",
+    "ElementLabel": "Claim number",
     "SecurityClassification": "Public"
   },
   {

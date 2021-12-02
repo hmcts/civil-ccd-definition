@@ -109,9 +109,8 @@
     "PageDisplayOrder": 10,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
-    "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
+    "PageShowCondition": "defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
     "PageID": "DetailsOfPayingMoney",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+    "ShowSummaryChangeOption": "Y"
   }
 ]
