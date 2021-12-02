@@ -1336,7 +1336,45 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ResponseDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2ResponseDate",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1847,6 +1885,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriendDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1LitigationFriendCreatedDate",
     "AccessControl": [
       {
@@ -1861,6 +1918,43 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriendCreatedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },

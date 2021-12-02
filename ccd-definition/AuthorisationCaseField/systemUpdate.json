@@ -334,5 +334,11 @@
     "CaseFieldID": "claimProceedsInCaseman",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
