@@ -1277,5 +1277,17 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDebtListPageLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefendant1DebtList",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
   }
 ]

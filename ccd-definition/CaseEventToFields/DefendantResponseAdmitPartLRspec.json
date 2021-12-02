@@ -101,5 +101,59 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specFinancialDetailsPurpose",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "FinancialDetailsPurpose",
+    "PageShowCondition": "defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "minusBeforeOverdrawnAmount",
+    "PageID": "DefendantBankAccounts",
+    "PageDisplayOrder": 11,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1BankAccountList",
+    "PageID": "DefendantBankAccounts",
+    "PageDisplayOrder": 11,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDebtListPageLabel",
+    "PageID": "DefendantDebtDetails",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1DebtList",
+    "PageID": "DefendantDebtDetails",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   }
 ]

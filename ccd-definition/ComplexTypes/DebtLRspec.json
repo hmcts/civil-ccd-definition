@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "DebtList",
+    "ListElementCode": "evidenceType",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ListOfEvidences",
+    "ElementLabel": "Please make a selection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DebtList",
+    "ListElementCode": "contractAndAgreementsEvidence",
+    "FieldType": "TextArea",
+    "ElementLabel": "Describe this evidence in more detail (optional). For example, a signed contract.",
+    "FieldShowCondition": "evidenceType = \"CONTRACTS_AND_AGREEMENTS\"",
+    "SecurityClassification": "Public"
+  }
+]
