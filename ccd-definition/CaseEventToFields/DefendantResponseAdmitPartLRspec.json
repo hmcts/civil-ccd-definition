@@ -137,8 +137,8 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specDebtListPageLabel",
-    "PageID": "DefendantDebtDetails",
+    "CaseFieldID": "specDebtPageLabel",
+    "PageID": "DefendantDebts",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
@@ -148,12 +148,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specDefendant1DebtList",
-    "PageID": "DefendantDebtDetails",
+    "CaseFieldID": "specDefendant1Debts",
+    "PageID": "DefendantDebts",
     "PageDisplayOrder": 12,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageColumnNumber": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   }
 ]

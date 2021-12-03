@@ -794,17 +794,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specDebtListPageLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h1> \n <div><p>Add details of any debts owed by your client.</p></div>",
+    "ID": "specDebtPageLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h1> \n</div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specDefendant1DebtList",
+    "ID": "specDefendant1Debts",
     "Label": " ",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "DebtList",
+    "FieldType": "Debts",
     "SecurityClassification": "Public"
   }
 ]

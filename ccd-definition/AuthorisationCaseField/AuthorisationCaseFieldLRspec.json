@@ -1280,14 +1280,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specDebtListPageLabel",
+    "CaseFieldID": "specDebtPageLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specDefendant1DebtList",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CR"
+    "CaseFieldID": "specDefendant1Debts",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

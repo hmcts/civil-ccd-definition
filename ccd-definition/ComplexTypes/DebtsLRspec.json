@@ -1,0 +1,33 @@
+[
+  {
+    "ID": "Debts",
+    "ListElementCode": "debtAddLabel",
+    "ElementLabel": "### Add details of any debts owed by your client. \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Debts",
+    "ListElementCode": "debtDetails",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Debt",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Debts",
+    "ListElementCode": "hasLoanCardDebtQ",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Does your client have any loans, or credit card debts?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Debts",
+    "ListElementCode": "loanCardDetails",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "LoanCardDebt",
+    "ElementLabel": " ",
+    "FieldShowCondition": "hasLoanCardDebtQ = \"Yes\"",
+    "SecurityClassification": "Public"
+  }
+]
