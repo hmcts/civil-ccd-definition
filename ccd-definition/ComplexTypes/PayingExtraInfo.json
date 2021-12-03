@@ -9,7 +9,7 @@
   },
   {
     "ID": "PayingExtraInfo",
-    "ListElementCode": "amountOwed123",
+    "ListElementCode": "amountOwed",
     "FieldType": "MoneyGBP",
     "FieldTypeParameter": " ",
     "ElementLabel": "Amount owed",
@@ -20,7 +20,7 @@
     "ListElementCode": "monthlyInstalmentAmount",
     "FieldType": "MoneyGBP",
     "FieldTypeParameter": " ",
-    "ElementLabel": "Monthly installment amount",
+    "ElementLabel": "Monthly instalment amount",
     "SecurityClassification": "Public"
   }
 ]

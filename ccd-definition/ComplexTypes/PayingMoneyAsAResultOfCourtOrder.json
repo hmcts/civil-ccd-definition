@@ -3,7 +3,7 @@
     "ID": "PayingMoneyAsAResultOfCourtOrder",
     "ListElementCode": "payingMoneyDetailsLabel",
     "FieldType": "Label",
-    "ElementLabel": "## Is ${respondent1.partyName} paying money as a result of court order? \n",
+    "ElementLabel": "## Is ${respondent1.partyName} paying money as a result of any court order? \n",
     "SecurityClassification": "Public"
   },
   {
