@@ -375,13 +375,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2ClaimResponseDocument",
-    "Label": "Upload defence",
-    "FieldType": "ResponseDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",

@@ -75,16 +75,5 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2ClaimResponseDocument",
-    "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Upload",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
   }
 ]
