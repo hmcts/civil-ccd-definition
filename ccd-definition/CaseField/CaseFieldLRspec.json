@@ -751,7 +751,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
-    "Label": "The claimant can request a County Court Judgement (CCJ) against your client if the amount is not paid immediately.",
+    "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -780,7 +780,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
-    "Label": " ",
+    "Label": "Employed or self-employed?",
+    "HintText":"Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
     "SecurityClassification": "Public"

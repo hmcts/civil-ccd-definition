@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "EmploymentTypeComplexTypeLRspec",
-    "ListElementCode": "employmentType",
-    "ElementLabel": "Employed or self-employed?. \n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  }
-]
