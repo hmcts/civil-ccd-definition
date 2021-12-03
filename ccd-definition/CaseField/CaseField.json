@@ -61,6 +61,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "generalApplicationTypeList",
+    "Label": "Type of General Application",
+    "FieldType": "GeneralApplicationTypes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderAgreement",
+    "Label": "Has the respondent agreed to the order that you want the judge to make?1",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeOrderApprovalRequiredYesOrNo",
+    "Label": "A judge will still need to approve this order1",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Represented",
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",

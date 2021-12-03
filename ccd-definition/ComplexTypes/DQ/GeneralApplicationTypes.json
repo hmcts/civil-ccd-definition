@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "GeneralApplicationTypes",
+    "ListElementCode": "typeOfApplicationToBeCreated",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "GeneralApplicationTypes",
+    "ElementLabel": "What Type of application do you want to make?1",
+    "SecurityClassification": "Public"
+  }
+]
