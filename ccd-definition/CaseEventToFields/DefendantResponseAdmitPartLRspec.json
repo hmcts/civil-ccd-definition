@@ -109,7 +109,7 @@
     "PageDisplayOrder": 10,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
-    "PageShowCondition": "defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
+    "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
     "PageID": "DetailsOfPayingMoney",
     "ShowSummaryChangeOption": "Y"
   }
