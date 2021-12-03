@@ -49,7 +49,7 @@
     "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "debtAddLabel",
@@ -57,7 +57,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "debtDetails.debtType",
@@ -65,7 +65,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "debtDetails.repaymentAmount",
@@ -73,7 +73,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "debtDetails.repaymentFrequency",
@@ -81,15 +81,15 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "hasLoanCardDebtQ",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "loanCardDetails.loanCardDebtDetail",
@@ -97,7 +97,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "loanCardDetails.totalOwedAmount",
@@ -105,7 +105,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Experts",
+    "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "ListElementCode": "loanCardDetails.monthlyPayment",
