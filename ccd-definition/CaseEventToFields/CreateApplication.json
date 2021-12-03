@@ -5,9 +5,9 @@
     "CaseFieldID": "generalApplicationTypeList",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "GApplicationTypes",
-    "CaseEventFieldLabel": "What Type of application do you want to make?2",
+    "CaseEventFieldLabel": "What Type of application do you want to make?",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -19,7 +19,7 @@
     "PageID": "OrderApprovalByJudgeRequirement",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Has the respondent agreed to the order that you want the judge to make?2"
   },
   {
