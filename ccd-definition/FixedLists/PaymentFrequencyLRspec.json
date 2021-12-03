@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "PaymentFrequency",
+    "ListElementCode": "ONE_WEEK",
+    "ListElement": "Paid every week",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "PaymentFrequency",
+    "ListElementCode": "TWO_WEEK",
+    "ListElement": "Paid every 2 weeks",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "PaymentFrequency",
+    "ListElementCode": "FOUR_WEEK",
+    "ListElement": "Paid every 4 weeks",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "PaymentFrequency",
+    "ListElementCode": "MONTH",
+    "ListElement": "Paid repaid every month",
+    "DisplayOrder": 4
+  }
+]
