@@ -9,7 +9,7 @@
   },
   {
     "ID": "Debt",
-    "ListElementCode": "repaymentAmount",
+    "ListElementCode": "paymentAmount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Repayment amount",
     "HintText": "Only include the amount paid to clear previously missed regular payments",
@@ -17,7 +17,7 @@
   },
   {
     "ID": "Debt",
-    "ListElementCode": "repaymentFrequency",
+    "ListElementCode": "paymentFrequency",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentFrequency",
     "ElementLabel": "Select one option.",

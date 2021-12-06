@@ -8,7 +8,7 @@
   },
   {
     "ID": "LoanCardDebt",
-    "ListElementCode": "totalOwedAmount",
+    "ListElementCode": "totalOwed",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Total amount owed",
     "SecurityClassification": "Public"
@@ -17,7 +17,7 @@
     "ID": "LoanCardDebt",
     "ListElementCode": "monthlyPayment",
     "FieldType": "MoneyGBP",
-    "ElementLabel": "Monthly payment",
+    "ElementLabel": "Monthly payments",
     "SecurityClassification": "Public"
   }
 ]
