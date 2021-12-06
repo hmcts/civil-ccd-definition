@@ -765,13 +765,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specDefenceRoutePayFeeIfChangeDetails",
-    "Label": "<div><p>You'll have to pay an extra fee if you want to change the details of the claim later.</p></div>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "minusBeforeOverdrawnAmount",
     "Label": "<h1 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h1> \n<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
     "FieldType": "Label",
