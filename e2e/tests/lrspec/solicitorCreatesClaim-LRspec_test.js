@@ -144,7 +144,7 @@ Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   await I.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
-Scenario('Defendant solicitor responds to claim', async ({I}) => {
+Scenario('Defendant solicitor responds to claim (Small claims) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaimSpec('fullDefence','hasPaid',1000);
   await I.see(caseEventMessage('Respond to claim'));
