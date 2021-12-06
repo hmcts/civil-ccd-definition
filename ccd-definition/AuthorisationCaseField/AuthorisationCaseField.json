@@ -70,6 +70,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitor1ServiceAddressRequired",
     "AccessControl": [
       {

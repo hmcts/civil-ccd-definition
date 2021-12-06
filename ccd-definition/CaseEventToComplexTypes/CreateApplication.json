@@ -1,6 +1,15 @@
 [
   {
-    "ID": "GeneralApplication",
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "EventElementLabel": "Claimant type"
+  },
+  {
+    "ID": "GeneralApplicationChild",
     "CaseEventID": "CREATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalApplicationDetails",
     "ListElementCode": "applicationType",
@@ -9,10 +18,10 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "GeneralApplication",
+    "ID": "GeneralApplicationChild",
     "CaseEventID": "CREATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalApplicationDetails",
-    "ListElementCode": "judgeApprovalRequired",
+    "ListElementCode": "orderAgreementYesNo",
     "EventElementLabel": "judgeApprovalRequired",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"

@@ -61,13 +61,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationDetails",
-    "Label": " ABC ",
-    "FieldType": "GeneralApplication",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1Represented",
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
@@ -988,5 +981,14 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalApplicationDetails",
+    "Label": " ABC ",
+    "FieldType": "GeneralApplication",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
   }
 ]
