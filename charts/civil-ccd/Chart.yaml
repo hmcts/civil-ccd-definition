@@ -4,7 +4,7 @@ name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
 version: 0.0.9
 maintainers:
-  - name: HMCTS Civil team
+  - name: HMCTS Civil team.
 
 dependencies:
   - name: java
