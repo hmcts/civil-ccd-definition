@@ -12,6 +12,9 @@ xui-webapp:
 
 camunda-bpm:
   enabled: false
+  
+am-role-assignment-service:
+  enabled: false
 
 java:
   applicationPort: 4000
