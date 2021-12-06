@@ -158,14 +158,6 @@ ccd:
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
       keyVaults: []
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
-      
-  am-role-assignment-service:
-    java:
-      keyVaults: 
-        am:
-          secrets:
-            - role-assignment-service-LD-SDK-KEY
-
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
