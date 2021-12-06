@@ -197,6 +197,6 @@ camunda-bpm:
       CAMUNDA_DB_CONN_OPTIONS: ""
 
 am-role-assignment-service:
+  enabled: true
   java:
-    enabled: true
     keyVaults: []
