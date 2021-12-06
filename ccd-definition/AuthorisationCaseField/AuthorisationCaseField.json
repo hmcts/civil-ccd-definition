@@ -1336,6 +1336,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "genericLitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2LitigationFriend",
     "AccessControl": [
       {
