@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "GeneralApplication",
+    "CaseEventID": "CREATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalApplicationDetails",
+    "ListElementCode": "applicationType",
+    "EventElementLabel": "generalApplicationDetails",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GeneralApplication",
+    "CaseEventID": "CREATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalApplicationDetails",
+    "ListElementCode": "judgeApprovalRequired",
+    "EventElementLabel": "judgeApprovalRequired",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  }
+]

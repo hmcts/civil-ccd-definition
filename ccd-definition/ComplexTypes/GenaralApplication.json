@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "GeneralApplication",
+    "ListElementCode": "type",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "GeneralApplicationTypes",
+    "ElementLabel": "General Application type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplication",
+    "ListElementCode": "orderAgreementYesNo",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Has the respondent agreed?",
+    "SecurityClassification": "Public"
+  }
+]

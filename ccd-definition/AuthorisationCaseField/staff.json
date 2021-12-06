@@ -706,23 +706,5 @@
     "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationTypeList",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "orderAgreement",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgeOrderApprovalRequiredYesOrNo",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]

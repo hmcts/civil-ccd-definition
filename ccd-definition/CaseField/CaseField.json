@@ -61,23 +61,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationTypeList",
-    "Label": "Type of General Application",
-    "FieldType": "GeneralApplicationTypes",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "orderAgreement",
-    "Label": "A judge will still need to approve this order1",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "judgeOrderApprovalRequiredYesOrNo",
-    "Label": " ",
-    "FieldType": "YesOrNo",
+    "ID": "generalApplicationDetails",
+    "Label": " ABC ",
+    "FieldType": "GeneralApplication",
     "SecurityClassification": "Public"
   },
   {
