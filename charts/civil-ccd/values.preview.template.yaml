@@ -158,14 +158,6 @@ ccd:
         IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
       keyVaults: []
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
-      
-  am-role-assignment-service:
-    java:
-      keyVaults: 
-        am:
-          secrets:
-            - role-assignment-service-LD-SDK-KEY
-
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
@@ -202,3 +194,8 @@ camunda-bpm:
       CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
       S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
       CAMUNDA_DB_CONN_OPTIONS: ""
+
+am-role-assignment-service:
+  enabled: true
+  java:
+    keyVaults: []

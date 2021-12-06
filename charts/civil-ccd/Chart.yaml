@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.8
+version: 0.0.9
 maintainers:
   - name: HMCTS Civil team
 
@@ -31,3 +31,7 @@ dependencies:
     version: 0.0.18
     repository: '@hmctspublic'
     condition: camunda-bpm.enabled
+  - name: am-role-assignment-service
+    version: 0.0.49
+    repository: '@hmctspublic'
+    condition: am-role-assignment-service.enabled
