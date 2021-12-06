@@ -118,6 +118,8 @@ ccd:
       enabled: false
     postgresql:
       enabled: false
+    am-role-assignment-service:
+      enabled: false
 
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
