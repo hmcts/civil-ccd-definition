@@ -7,7 +7,7 @@
   },
   {
     "ID": "EmploymentTypeCheckboxFixedListLRspec",
-    "ListElementCode": "SELF_EMPLOYED",
+    "ListElementCode": "SELF",
     "ListElement": "Self-employed",
     "DisplayOrder": 2
   }

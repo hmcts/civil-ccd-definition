@@ -792,5 +792,28 @@
     "Label": " ",
     "FieldType": "UnemployedComplexTypeLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimAddEmployerSpecLabel",
+    "Label": "## Name of employer (if employed by someone else)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartEmployer",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "EmployerDetails",
+    "SecurityClassification": "Public"
   }
+
 ]
