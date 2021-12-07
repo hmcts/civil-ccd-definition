@@ -149,3 +149,15 @@ Scenario('Defendant solicitor responds to claim (Small claims) -> Defends all of
   await I.respondToClaimSpec('fullDefence','hasPaid',1000);
   await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);
+
+Scenario.skip('Defendant solicitor responds to claim (Small Track claim) -> Defends all of the claim -> has paid amount less than claimed amount ', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.respondToClaimSpec('fullDefence','hasPaid',100);
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Defendant solicitor responds to claim (Fast Track claim) -> Defends all of the claim -> dispute ', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.respondToClaimSpec('fullDefence','dispute',10000);
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
