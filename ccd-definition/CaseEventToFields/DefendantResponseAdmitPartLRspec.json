@@ -139,7 +139,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDebtPageLabel",
     "PageID": "DefendantDebts",
-    "PageDisplayOrder": 12,
+    "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "DisplayContext": "READONLY",
@@ -150,10 +150,9 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "PageID": "DefendantDebts",
-    "PageDisplayOrder": 12,
+    "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
