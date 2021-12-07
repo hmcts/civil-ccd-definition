@@ -144,7 +144,7 @@
     "PageID": "EmploymentDeclaration",
     "FieldShowCondition": "defenceAdmitPartEmploymentTypeRequired=\"No\"",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-whole-number"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-length-of-unemployment"
   },
   {
     "CaseTypeID": "CIVIL",
