@@ -19,6 +19,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespondentAgreement",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaType",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant2",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

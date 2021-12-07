@@ -1,29 +1,20 @@
 [
   {
-    "ID": "Claimant",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicant1",
-    "ListElementCode": "type",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Claimant type"
-  },
-  {
-    "ID": "GeneralApplicationChild",
+    "ID": "GARespondentAgreementPage",
     "CaseEventID": "CREATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalApplicationDetails",
-    "ListElementCode": "applicationType",
-    "EventElementLabel": "generalApplicationDetails",
+    "CaseFieldID": "gaRespondentAgreement",
+    "ListElementCode": "orderAgreementYesNo",
+    "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "GeneralApplicationChild",
+    "ID": "GATypePage",
     "CaseEventID": "CREATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalApplicationDetails",
-    "ListElementCode": "orderAgreementYesNo",
-    "EventElementLabel": "judgeApprovalRequired",
-    "FieldDisplayOrder": 2,
+    "CaseFieldID": "gaType",
+    "ListElementCode": "childApplicationType",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   }
 ]

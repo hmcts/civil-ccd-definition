@@ -31,6 +31,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespondentAgreement",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaType",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitor1ServiceAddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

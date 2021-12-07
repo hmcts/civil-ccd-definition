@@ -37,6 +37,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespondentAgreement",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaType",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1LitigationFriend",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
