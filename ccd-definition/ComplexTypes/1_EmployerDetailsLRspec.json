@@ -4,15 +4,13 @@
     "ListElementCode": "employerName",
     "FieldType": "Text",
     "ElementLabel": "Employer's name",
-    "SecurityClassification": "Public",
-    "Label": "Employer's name"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "EmployerDetail",
     "ListElementCode": "jobTitle",
     "FieldType": "Text",
     "ElementLabel": "Job title",
-    "SecurityClassification": "Public",
-    "Label": "Job title"
+    "SecurityClassification": "Public"
   }
 ]
