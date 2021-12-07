@@ -118,7 +118,7 @@ ccd:
       enabled: false
     postgresql:
       enabled: false
-    rsa:
+    ras:
       enabled: true
 
   global:
