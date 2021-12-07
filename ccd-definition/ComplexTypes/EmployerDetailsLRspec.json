@@ -1,18 +1,17 @@
 [
   {
-    "ID": "EmployerDetails",
-    "ListElementCode": "employerName",
-    "FieldType": "Text",
-    "ElementLabel": "Employer's name",
-    "SecurityClassification": "Public",
-    "Label": "Expert name"
+    "ID": "AdmitPartEmployer",
+    "ListElementCode": "employerDetailsLabel",
+    "FieldType": "Label",
+    "ElementLabel": "## Name of employer (if employed by someone else)",
+    "SecurityClassification": "Public"
   },
   {
-    "ID": "EmployerDetails",
-    "ListElementCode": "jobTitle",
-    "FieldType": "Text",
-    "ElementLabel": "Job title",
-    "SecurityClassification": "Public",
-    "Label": "Job title"
+    "ID": "AdmitPartEmployer",
+    "ListElementCode": "employerDetails",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "EmployerDetail",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
