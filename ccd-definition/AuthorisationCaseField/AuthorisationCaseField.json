@@ -2018,7 +2018,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -2036,7 +2037,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -2360,6 +2362,30 @@
         "[APPLICANTSOLICITORONE]"
       ],
       "CRUD": "R"
+    }
+  ]
+},{
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "applicantClaimResponseIntentionType",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]",
+        "[RESPONDENTSOLICITORTWO]"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+}, {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "respondent2Copy",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]",
+        "[RESPONDENTSOLICITORTWO]"
+      ],
+      "CRUD": "CRU"
     }
   ]
 }

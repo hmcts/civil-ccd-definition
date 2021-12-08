@@ -14,6 +14,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2Copy",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "PageLabel": "Confirm Defendant’s details",
+    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondentDetails",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
@@ -54,6 +66,7 @@
   "PageLabel": "Confirm Defendant’s details",
   "PageDisplayOrder": 1,
   "ShowSummaryChangeOption": "N"
+
 },
   {
     "CaseTypeID": "CIVIL",
@@ -96,6 +109,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "addApplicant2",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "claimant1Name",
     "CaseEventFieldLabel": "against **Claimant: ${applicant1.partyName}**",
     "PageFieldDisplayOrder": 2,
@@ -103,9 +128,21 @@
     "PageID": "ResponseIntention",
     "PageLabel": "Response intention",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
   },
-
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "PageFieldDisplayOrder": 0,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "PageLabel": "Confirm Defendant’s details",
+    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
@@ -116,7 +153,21 @@
     "PageID": "ResponseIntention",
     "PageLabel": "Response intention",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "applicantClaimResponseIntentionType",
+    "CaseEventFieldLabel": "${respondent1.partyName} intends to:",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ResponseIntention",
+    "PageLabel": "Response intention",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -128,7 +179,8 @@
     "PageID": "ResponseIntention",
     "PageLabel": "Response intention",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -142,24 +194,11 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "applicant2",
-    "PageFieldDisplayOrder": 10,
-    "DisplayContext": "READONLY",
-    "PageID": "ConfirmNameAddress",
-    "PageLabel": "Confirm Defendant’s details",
-    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "respondent2",
-    "PageFieldDisplayOrder": 7,
+    "CaseFieldID": "addRespondent2",
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
     "PageLabel": "Confirm Defendant’s details",
@@ -176,7 +215,8 @@
     "PageID": "ConfirmNameAddress",
     "PageLabel": "Confirm Defendant’s details",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -188,6 +228,7 @@
     "PageID": "ConfirmNameAddress",
     "PageLabel": "Confirm Defendant’s details",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   }
 ]

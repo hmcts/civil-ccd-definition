@@ -1029,8 +1029,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2Copy",
+    "Label": "Workaround for respondentDetails label",
+    "FieldType": "Party",
+    "SecurityClassification": "Public",
+    "_Comments": "Field interpolation can be used only with case fields present on the same or one of the previous pages - otherwise the data will be removed on clicking previous.",
+    "_Category": "WORKAROUND"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defendant2Details",
-    "Label": "**Second Defendant**\n\n**Name:** ${respondent2.partyName} ${respondent2.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2.primaryAddress.AddressLine1}<br />${respondent2.primaryAddress.AddressLine2}<br />${respondent2.primaryAddress.AddressLine3}<br />${respondent2.primaryAddress.PostTown}<br />${respondent2.primaryAddress.County}<br /><br />${respondent2.primaryAddress.PostCode}",
+    "Label": "**Second Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br /><br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1039,6 +1048,15 @@
   "ID": "defendant2Dob",
   "Label": "Confirm Defendant’s details",
   "FieldType": "Date",
+  "FieldTypeParameter": "ResponseIntentionClaimant2",
+  "SecurityClassification": "Public",
+  "_Definition":  "The intended response of the first respondent to the claim",
+  "_Category":  "CIVIL"
+},{
+  "CaseTypeID": "CIVIL",
+  "ID": "applicantClaimResponseIntentionType",
+  "Label": "Response intention",
+  "FieldType": "FixedRadioList",
   "FieldTypeParameter": "ResponseIntentionClaimant2",
   "SecurityClassification": "Public",
   "_Definition":  "The intended response of the first respondent to the claim",
