@@ -120,7 +120,7 @@ ccd:
     postgresql:
       enabled: false
     ras:
-      enabled: false
+      enabled: true
 
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
