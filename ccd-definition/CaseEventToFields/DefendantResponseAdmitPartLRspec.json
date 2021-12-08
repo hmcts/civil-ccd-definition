@@ -139,7 +139,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specSelfEmployedPageLabel",
     "PageID": "DefendantSelfEmployment",
-    "PageDisplayOrder": 18,
+    "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
     "DisplayContext": "READONLY",
@@ -150,7 +150,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1SelfEmploymentDetails",
     "PageID": "DefendantSelfEmployment",
-    "PageDisplayOrder": 18,
+    "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
