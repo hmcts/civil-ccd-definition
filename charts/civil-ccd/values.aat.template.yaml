@@ -124,7 +124,7 @@ ccd:
     postgresql:
       enabled: false
     ras:
-      enabled: true
+      enabled: false
 
   global:
     ccdApiGatewayIngress: http://civil-ccd-gateway-staging-aat.service.core-compute-aat.internal
