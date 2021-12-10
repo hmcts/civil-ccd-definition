@@ -152,7 +152,7 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   }
 ]
