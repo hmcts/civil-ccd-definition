@@ -108,7 +108,7 @@
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "PageDisplayOrder": 10,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageShowCondition": "defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
     "PageID": "DetailsOfPayingMoney",
     "ShowSummaryChangeOption": "Y"

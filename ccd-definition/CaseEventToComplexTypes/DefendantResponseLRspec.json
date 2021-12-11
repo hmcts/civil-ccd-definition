@@ -455,53 +455,5 @@
     "ListElementCode": "SmallClaimUnavailableDate.toDate",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "PayingMoneyDetails",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetailsLabel",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "PayingMoneyDetails",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingDetailsRequired",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "PayingMoneyDetails",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetails",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "PayingMoneyDetails",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetails.claimNumberText",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "PayingMoneyDetails",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetails.amountOwed",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "PayingMoneyDetails",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
-    "ListElementCode": "payingMoneyDetails.monthlyInstalmentAmount",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
   }
 ]
