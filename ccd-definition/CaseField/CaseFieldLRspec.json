@@ -769,6 +769,13 @@
     "Label": " ",
     "FieldType": "PayingMoneyAsAResultOfCourtOrder",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentToPayingMoneyAsAResultOfCourtOrderBySetDate",
+    "Label": " ",
+    "FieldType": "PayingMoneyAsAResultOfCourtOrder",
+    "SecurityClassification": "Public"
   }
 
 ]

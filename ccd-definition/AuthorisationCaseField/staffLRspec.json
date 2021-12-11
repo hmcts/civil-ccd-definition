@@ -142,5 +142,11 @@
     "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrderBySetDate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
