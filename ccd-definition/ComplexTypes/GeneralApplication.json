@@ -2,16 +2,15 @@
   {
     "ID": "GeneralApplication",
     "ListElementCode": "applicationType",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "GeneralApplicationTypes",
-    "ElementLabel": "General Application type",
+    "FieldType": "GAType",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GeneralApplication",
-    "ListElementCode": "orderAgreementYesNo",
-    "FieldType": "YesOrNo",
-    "ElementLabel": "Has the respondent agreed?",
+    "ListElementCode": "respondentAgreementOnOrder",
+    "FieldType": "GARespondentAgreement",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]

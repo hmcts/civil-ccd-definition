@@ -986,7 +986,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "generalApplicationDetails",
     "Label": " ABC ",
-    "FieldType": "GeneralApplication",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplication",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the child application on the case",
     "_Category":  "COMMON"

@@ -74,15 +74,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -92,15 +87,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -110,15 +100,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },

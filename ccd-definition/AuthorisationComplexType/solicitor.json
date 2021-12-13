@@ -187,5 +187,33 @@
     "ListElementCode": "address",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationDetails",
+    "ListElementCode": "applicationType",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationDetails",
+    "ListElementCode": "applicationType.childApplicationType",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationDetails",
+    "ListElementCode": "respondentAgreementOnOrder",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationDetails",
+    "ListElementCode": "respondentAgreementOnOrder.orderAgreementYesNo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
   }
 ]

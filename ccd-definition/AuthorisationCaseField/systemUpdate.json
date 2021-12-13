@@ -27,19 +27,19 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplicationDetails",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaRespondentAgreement",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaType",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",

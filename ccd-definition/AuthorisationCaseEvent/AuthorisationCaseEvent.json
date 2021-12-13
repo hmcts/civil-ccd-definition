@@ -19,6 +19,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CASE_DATA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_GENERAL_APPLICATION",
     "AccessControl": [
       {
