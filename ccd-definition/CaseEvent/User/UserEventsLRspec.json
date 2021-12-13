@@ -97,8 +97,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "DEFAULT_JUDGEMENT_SPEC",
-    "Name": "Request Default Judgement",
-    "Description": "Request Default Judgement",
+    "Name": "Request Default Judgment",
+    "Description": "Request Default Judgment",
     "DisplayOrder": 10,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT,ACKNOWLEDGEMENT_OF_SERVICE,INFORM_AGREED_EXTENSION_DATE_SPEC,DEFENDANT_RESPONSE_SPEC",
     "PostConditionState": "*",
