@@ -139,7 +139,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrderRepaymentPlan",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },

@@ -4,7 +4,7 @@
     "ListElementCode": "claimNumberText",
     "FieldType": "Text",
     "ElementLabel": "Claim number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
   },
   {
     "ID": "PayingExtraInfo",

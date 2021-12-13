@@ -765,7 +765,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "ID": "respondentToPayingMoneyAsAResultOfCourtOrderRepaymentPlan",
     "Label": " ",
     "FieldType": "PayingMoneyAsAResultOfCourtOrder",
     "SecurityClassification": "Public"

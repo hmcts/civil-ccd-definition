@@ -1261,7 +1261,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrderRepaymentPlan",
     "AccessControl": [
       {
         "UserRoles": [

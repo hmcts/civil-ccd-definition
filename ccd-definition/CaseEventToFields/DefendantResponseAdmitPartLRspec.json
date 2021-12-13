@@ -105,14 +105,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrder",
+    "CaseFieldID": "respondentToPayingMoneyAsAResultOfCourtOrderRepaymentPlan",
     "PageDisplayOrder": 18,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
-    "PageID": "DetailsOfPayingMoney",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+    "PageID": "DetailsOfPayingMoneyRepaymentPlan",
+    "ShowSummaryChangeOption": "Y"
+
+
+
   },
   {
     "CaseTypeID": "CIVIL",
@@ -123,7 +125,6 @@
     "DisplayContext": "MANDATORY",
     "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
     "PageID": "DetailsOfPayingMoneyBySetDate",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+    "ShowSummaryChangeOption": "Y"
   }
 ]
