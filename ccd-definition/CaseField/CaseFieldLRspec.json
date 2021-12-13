@@ -767,14 +767,14 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPaymentByPlan",
     "Label": " ",
-    "FieldType": "PayingMoneyAsAResultOfCourtOrder",
+    "FieldType": "PaymentUponCourtOrderLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPaymentByDate",
     "Label": " ",
-    "FieldType": "PayingMoneyAsAResultOfCourtOrder",
+    "FieldType": "PaymentUponCourtOrderLRspec",
     "SecurityClassification": "Public"
   }
 

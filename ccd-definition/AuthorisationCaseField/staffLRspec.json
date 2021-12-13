@@ -136,17 +136,5 @@
     "CaseFieldID": "additionalInformationForJudge",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1CourtOrderPaymentByPlan",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1CourtOrderPaymentByDate",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]
