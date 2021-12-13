@@ -765,14 +765,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentToPayingMoneyAsAResultOfCourtOrderRepaymentPlan",
+    "ID": "respondent1CourtOrderPaymentByPlan",
     "Label": " ",
     "FieldType": "PayingMoneyAsAResultOfCourtOrder",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentToPayingMoneyAsAResultOfCourtOrderBySetDate",
+    "ID": "respondent1CourtOrderPaymentByDate",
     "Label": " ",
     "FieldType": "PayingMoneyAsAResultOfCourtOrder",
     "SecurityClassification": "Public"

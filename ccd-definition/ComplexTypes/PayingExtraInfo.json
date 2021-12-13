@@ -5,6 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Claim number",
     "SecurityClassification": "Public",
+    "RegularExpression": "[0-9A-Za-z]*"
   },
   {
     "ID": "PayingExtraInfo",
