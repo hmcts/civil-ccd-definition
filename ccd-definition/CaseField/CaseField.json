@@ -906,7 +906,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrganisationPolicy",
-    "Label": "Respondent 2 organisation policy",
+    "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public"
   },

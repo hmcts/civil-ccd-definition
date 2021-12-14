@@ -8,6 +8,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondStatementOfTruthSubmitLabel",
+    "Label": "In order to verify the response to claim by a statement of truth please click “submit” on the next screen. Doing so will be taken as verifying the response by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the “submit” button.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specEligibilityQuestions",
     "Label": "## Issue civil court proceedings\nTo use this service you must be:\n* issuing a claim for a specified (fixed) amount of money\n* have an address in England or Wales and an email address\n* able to pay the full issue fee using fee account\n* serving a claim form in English\n\nThe claimant must:\n\n* have an address in England or Wales\n* not have a civil proceedings order, civil restraint order, or all proceedings order against them\n\nThe claim you’re issuing must not:\n* ordinarily follow the Part 8 procedure\n* be brought under the Consumer Credit Act 1974\n* be against the Crown",
     "FieldType": "Label",
@@ -470,8 +477,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceAdmittedRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedLabel",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
+    "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -480,6 +501,20 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaim",
     "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaim",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaimOwingAmount",
+    "Label": "How much money does your client admit to owing?",
+    "FieldType": "Number",
     "SecurityClassification": "Public"
   },
   {
@@ -637,6 +672,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHearingFastClaim",
+    "Label": "Respondent 1 Hearing",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "SmallClaimHearingInterpreterRequired",
     "FieldType": "YesOrNo",
     "Label": " ",
@@ -668,6 +710,57 @@
     "ID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFutureApplications",
+    "Label": " ",
+    "FieldType": "FutureApplications",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalInformationForJudge",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartRouteRequired",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmissionWhenWillDefendantPayImmediatelyLabel",
+    "Label": "You must contact the claimant to arrange payment of the full amount within 5 days. Any cheques or transfers must be clear in their account.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
+    "Label": "The claimant can request a County Court Judgement (CCJ) against your client if the amount is not paid immediately.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartLRspec",
+    "Label": " ",
+    "HintText": "For example 9 December 2020",
+    "FieldType": "RespondToClaimAdmitPartLRspec",
     "SecurityClassification": "Public"
   }
 ]
