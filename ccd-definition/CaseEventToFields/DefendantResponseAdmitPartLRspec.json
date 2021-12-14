@@ -110,7 +110,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
   {
@@ -121,6 +121,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "defendantHomeOptions",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   }
 ]
