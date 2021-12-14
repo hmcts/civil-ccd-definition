@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "PayingExtraInfo",
+    "ListElementCode": "claimNumberText",
+    "FieldType": "Text",
+    "ElementLabel": "Claim number",
+    "SecurityClassification": "Public",
+    "RegularExpression": "[0-9A-Za-z]*"
+  },
+  {
+    "ID": "PayingExtraInfo",
+    "ListElementCode": "amountOwed",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Amount owed",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PayingExtraInfo",
+    "ListElementCode": "monthlyInstalmentAmount",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Monthly instalment amount",
+    "SecurityClassification": "Public"
+  }
+]
