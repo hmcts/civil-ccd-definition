@@ -105,6 +105,38 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specFinancialDetailsPurpose",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "FinancialDetailsPurpose",
+    "PageShowCondition": "defenceAdmitPartRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartRouteRequired=\"BY_SET_DATE\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "minusBeforeOverdrawnAmount",
+    "PageID": "DefendantBankAccounts",
+    "PageDisplayOrder": 11,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1BankAccountList",
+    "PageID": "DefendantBankAccounts",
+    "PageDisplayOrder": 11,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 1,
@@ -166,6 +198,27 @@
     "DisplayContext": "MANDATORY",
     "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartPaymentTimeRouteRequired=\"BY_SET_DATE\"",
     "PageID": "DetailsOfPayingMoneyBySetDate",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDebtPageLabel",
+    "PageID": "DefendantDebts",
+    "PageDisplayOrder": 19,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "PageID": "DefendantDebts",
+    "PageDisplayOrder": 19,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   }
 ]
