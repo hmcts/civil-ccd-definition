@@ -795,16 +795,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h1>",
-    "FieldType": "Label",
+    "ID": "respondent1CourtOrderPaymentByPlan",
+    "Label": " ",
+    "FieldType": "PaymentUponCourtOrderLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseClaimAdmitPartEmployer",
+    "ID": "respondent1CourtOrderPaymentByDate",
     "Label": " ",
-    "FieldType": "AdmitPartEmployer",
+    "FieldType": "PaymentUponCourtOrderLRspec",
     "SecurityClassification": "Public"
   },
   {
@@ -841,6 +841,20 @@
     "ID": "specDefendant1Debts",
     "Label": " ",
     "FieldType": "Debts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartEmployer",
+    "Label": " ",
+    "FieldType": "AdmitPartEmployer",
     "SecurityClassification": "Public"
   },
   {
