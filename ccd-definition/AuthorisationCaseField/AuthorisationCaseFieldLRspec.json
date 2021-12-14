@@ -1226,7 +1226,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defenceAdmitPartRouteRequired",
+    "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired",
     "AccessControl": [
       {
         "UserRoles": [
