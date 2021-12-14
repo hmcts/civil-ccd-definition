@@ -128,7 +128,7 @@ Scenario('Applicant solicitor creates specified claim organisation-to-organisati
   await I.login(config.applicantSolicitorUser);
   await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant,false,1000);
   caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`)
+  await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
 Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {

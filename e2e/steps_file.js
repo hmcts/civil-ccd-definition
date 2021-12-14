@@ -96,7 +96,6 @@ const useExpertPage = require('./pages/respondToClaimLRspec/useExpert.page');
 const respondentCheckListPage = require('./pages/respondToClaimLRspec/respondentCheckList.page');
 const enterWitnessesPage = require('./pages/respondToClaimLRspec/enterWitnesses.page');
 const disputeClaimDetailsPage = require('./pages/respondToClaimLRspec/disputeClaimDetails.page');
-const addTimelineLRspecPage = require('./pages/createClaim/addTimelineLRspec.page');
 const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/claimResponseTimelineLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
