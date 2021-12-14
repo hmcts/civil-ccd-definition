@@ -735,10 +735,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "defenceAdmitPartRouteRequired",
+    "ID": "defenceAdmitPartPaymentTimeRouteRequired",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTime",
+    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
     "SecurityClassification": "Public"
   },
   {
@@ -751,7 +751,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
-    "Label": "The claimant can request a County Court Judgement (CCJ) against your client if the amount is not paid immediately.",
+    "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -761,6 +761,36 @@
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartEmploymentTypeRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
+    "Label": "Employed or self-employed?",
+    "HintText":"Select both if your client is employed and self-employed",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartUnemployedLRspec",
+    "Label": " ",
+    "FieldType": "UnemployedComplexTypeLRspec",
     "SecurityClassification": "Public"
   },
   {
