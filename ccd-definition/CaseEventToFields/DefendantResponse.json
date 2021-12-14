@@ -178,9 +178,8 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y",
-    "Comment": "need to add OR respondent2ClaimResponseType=\"FULL_DEFENCE\" to show condition"
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
