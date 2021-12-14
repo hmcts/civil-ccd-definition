@@ -55,7 +55,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
   {
