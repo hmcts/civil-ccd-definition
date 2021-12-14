@@ -795,6 +795,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1CourtOrderPaymentByPlan",
+    "Label": " ",
+    "FieldType": "PaymentUponCourtOrderLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1CourtOrderPaymentByDate",
+    "Label": " ",
+    "FieldType": "PaymentUponCourtOrderLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "minusBeforeOverdrawnAmount",
     "Label": "<h1 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h1> \n<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
     "FieldType": "Label",
