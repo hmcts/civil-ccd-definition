@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_RESPONDENT_ONE_ACKNOWLEDGEMENT",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"

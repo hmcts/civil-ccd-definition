@@ -36,11 +36,6 @@ module.exports = {
         respondentSolicitor1Reference: 'Respondent reference'
       }
     },
-    Upload: {
-      respondent1ClaimResponseDocument: {
-        file: document('claimResponse.pdf')
-      }
-    },
     FileDirectionsQuestionnaire: {
       respondent1DQFileDirectionsQuestionnaire: {
         explainedToClient: ['CONFIRM'],

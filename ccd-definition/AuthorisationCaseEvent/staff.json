@@ -25,6 +25,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_ONE_RESPONSE",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

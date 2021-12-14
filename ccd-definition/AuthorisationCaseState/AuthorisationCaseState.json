@@ -30,6 +30,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_RESPONDENT_ONE_ACKNOWLEDGEMENT",
+    "UserRoles": [
+      "[RESPONDENTSOLICITORONE]",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-civil-solicitor",

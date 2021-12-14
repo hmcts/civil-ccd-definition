@@ -28,5 +28,24 @@
     "EndButtonLabel": "Discontinue claim",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "RetriesTimeoutAboutToStartEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DEFENDANT_ONE_RESPONSE",
+    "Name": "Respond to claim Respondent 1",
+    "Description": "Defendant response to claim",
+    "DisplayOrder": 20,
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ONE_ACKNOWLEDGEMENT",
+    "PostConditionState": "AWAITING_APPLICANT_INTENTION",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
