@@ -795,36 +795,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h1>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defenceAdmitPartEmploymentTypeRequired",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
-    "Label": "Employed or self-employed?",
-    "HintText":"Select both if your client is employed and self-employed",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondToClaimAdmitPartUnemployedLRspec",
-    "Label": " ",
-    "FieldType": "UnemployedComplexTypeLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
     "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h1>",
     "FieldType": "Label",
