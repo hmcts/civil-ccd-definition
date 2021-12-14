@@ -136,5 +136,17 @@
     "CaseFieldID": "additionalInformationForJudge",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDebtPageLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefendant1Debts",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

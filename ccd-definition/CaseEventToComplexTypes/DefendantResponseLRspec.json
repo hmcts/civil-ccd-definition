@@ -38,7 +38,6 @@
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type=\"SOLE_TRADER\""
   },
-
   {
     "ID": "Defendant",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
@@ -454,6 +453,94 @@
     "CaseFieldID": "respondent1DQHearingSmallClaim",
     "ListElementCode": "SmallClaimUnavailableDate.toDate",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "debtAddLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "debtDetails",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "debtDetails.debtType",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "debtDetails.paymentAmount",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "debtDetails.paymentFrequency",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "hasLoanCardDebtQLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "hasLoanCardDebtQ",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "loanCardDebtDetails",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "loanCardDebtDetails.loanCardDebtDetail",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "loanCardDebtDetails.totalOwed",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Debts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1Debts",
+    "ListElementCode": "loanCardDebtDetails.monthlyPayment",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]
