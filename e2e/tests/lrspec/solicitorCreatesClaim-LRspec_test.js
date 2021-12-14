@@ -123,10 +123,10 @@ Scenario.skip('Applicant solicitor creates specified claim soletrader-to-organis
   await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario.skip('Applicant solicitor creates specified claim organisation-to-organisation @create-claim-spec ', async ({I}) => {
+Scenario('Applicant solicitor creates specified claim organisation-to-organisation @create-claim-spec ', async ({I}) => {
   console.log(' Applicant solicitor creates specified claim organisation-to-organisation @create-claim-spec');
   await I.login(config.applicantSolicitorUser);
-  await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant,false,15000);
+  await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant,false,1000);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`)
 }).retry(3);
