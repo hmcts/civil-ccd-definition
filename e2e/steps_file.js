@@ -462,7 +462,7 @@ module.exports = function () {
       }
     },
 
-    async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
+    async createCaseSpec(applicantType, defendantType, litigantInPerson = false, claimAmount) {
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
@@ -486,7 +486,7 @@ module.exports = function () {
       await specTimelinePage.addManually();
       await specAddTimelinePage.addTimeline();
       await specListEvidencePage.addEvidence();
-      await specClaimAmountPage.addClaimItem();
+      await specClaimAmountPage.addClaimItem(claimAmount);
       await this.clickContinue();
       await specInterestPage.addInterest();
       await specInterestValuePage.selectInterest();
@@ -538,15 +538,23 @@ module.exports = function () {
                () => disputeClaimDetailsPage.enterReasons(),
                () => claimResponseTimelineLRspecPage.addManually(),
                () => this.clickContinue(),
-               () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-               () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
-               () => this.clickContinue(),
-               () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-               () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-               () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-               () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-               () => hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1),
-             ]),
+                    () => freeMediationPage.selectMediation('yes'),
+                    () => useExpertPage.claimExpert('no'),
+                    () => enterWitnessesPage.howManyWitnesses(),
+                    () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                    () => smallClaimsHearingPage.selectHearing('no'),
+                    () => chooseCourtSpecPage.chooseCourt('yes'),
+                ]),
+               ... conditionalSteps(paidAmount > 10000, [
+                  () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                  () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+                  () => this.clickContinue(),
+                  () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+                  () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                  () => hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1),
+                ]),
               () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
               () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
               () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
