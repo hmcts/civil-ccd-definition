@@ -34,7 +34,6 @@ module.exports = {
     await within(this.fields.DefenceType.id, () => {
     I.click(this.fields.DefenceType.options[defenceType]);
     });
-    console.log(' 1 ' + this.fields.DefenceType.options.hasPaid);
     if ('hasPaid' === defenceType) {
       await I.fillField(this.fields.howMuchWasPaid,amountPaid);
       await I.fillField(this.fields.dayOfPayment, 1);

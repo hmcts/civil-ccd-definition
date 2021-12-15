@@ -123,12 +123,14 @@ Scenario.skip('Applicant solicitor creates specified claim soletrader-to-organis
   await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario('Applicant solicitor creates specified claim organisation-to-organisation @create-claim-spec ', async ({I}) => {
+Scenario.skip('Applicant solicitor creates small track for claim amount £1000 organisation-to-organisation @create-claim-spec ', async ({I}) => {
   console.log(' Applicant solicitor creates specified claim organisation-to-organisation @create-claim-spec');
   await I.login(config.applicantSolicitorUser);
   await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant,false,1000);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
+  await assignCaseToDefendant(caseId());
+  await I.login(config.defendantSolicitorUser);
 }).retry(3);
 
 Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
@@ -139,36 +141,49 @@ Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   await I.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
-Scenario.skip('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
+Scenario('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaimSpec('fullDefence','hasPaid',1000);
   await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);
 
-Scenario.skip('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount less than claimed amount ', async ({I}) => {
+Scenario.skip('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid £ 100 less than claimed amount ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaimSpec('fullDefence','hasPaid',100);
   await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);
 
-Scenario('Fast Track claim -> Defendant solicitor responds to claim (£ 15000) -> Defends all of the claim -> dispute ', async ({I}) => {
-  await I.login(config.applicantSolicitorUser);
-  await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant,false,15000);
-  caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`);
-  await assignCaseToDefendant(caseId());
+Scenario.skip('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> dispute the claim ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.respondToClaimSpec('fullDefence','dispute');
+  await I.respondToClaimSpec('fullDefence','dispute',100);
   await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);
 
-Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim (£ 15000) -> Defends all of the claim -> hasPaid less than claimed amount ', async ({I}) => {
+
+Scenario.skip('Applicant solicitor creates Fast Track claim for amount £ 15000 organisation-to-organisation @create-claim-spec ', async ({I}) => {
+  console.log(' Applicant solicitor creates specified claim organisation-to-organisation @create-claim-spec');
   await I.login(config.applicantSolicitorUser);
   await I.createCaseSpec(journeys.journey10.applicant, journeys.journey10.defendant,false,15000);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
   await assignCaseToDefendant(caseId());
   await I.login(config.defendantSolicitorUser);
-  await I.respondToClaimSpec('fullDefence','hasPaid',11000);
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> dispute ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpec('fullDefence','dispute',10000);
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid Equal to claimed amount ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpec('fullDefence','hasPaid',15000);
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid  10000 less than claimed amount ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpec('fullDefence','hasPaid',10000);
   await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);

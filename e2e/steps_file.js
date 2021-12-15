@@ -97,6 +97,8 @@ const respondentCheckListPage = require('./pages/respondToClaimLRspec/respondent
 const enterWitnessesPage = require('./pages/respondToClaimLRspec/enterWitnesses.page');
 const disputeClaimDetailsPage = require('./pages/respondToClaimLRspec/disputeClaimDetails.page');
 const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/claimResponseTimelineLRspec.page');
+const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.page');
+const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 
@@ -533,7 +535,7 @@ module.exports = function () {
                () => smallClaimsHearingPage.selectHearing('no'),
                () => chooseCourtSpecPage.chooseCourt('yes'),
              ]),
-             ... conditionalSteps(defenceType === 'dispute' || defenceType === 'hasPaid' && paidAmount < 1000, [
+             ... conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
                () => disputeClaimDetailsPage.enterReasons(),
                () => claimResponseTimelineLRspecPage.addManually(),
                () => this.clickContinue(),
@@ -544,7 +546,7 @@ module.exports = function () {
                     () => smallClaimsHearingPage.selectHearing('no'),
                     () => chooseCourtSpecPage.chooseCourt('yes'),
                 ]),
-               ... conditionalSteps(paidAmount > 10000, [
+               ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
                   () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
                   () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                   () => this.clickContinue(),
@@ -552,10 +554,30 @@ module.exports = function () {
                   () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
                   () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
                   () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                  () => hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+                  () => chooseCourtSpecPage.chooseCourt('yes'),
+                  ]),
+               ... conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+                  () => disputeClaimDetailsPage.enterReasons(),
+                  () => claimResponseTimelineLRspecPage.addManually(),
+                  () => this.clickContinue(),
+                  () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                  () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+                  () => this.clickContinue(),
+                  () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+                  () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                  () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+                  () => chooseCourtSpecPage.chooseCourt('yes'),
                 ]),
               () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
-              () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+              ... conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+                    () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+               ]),
+                ... conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+                   () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+               ]),
               () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
               () => event.submit('Submit', ''),
               () => event.returnToCaseDetails()
