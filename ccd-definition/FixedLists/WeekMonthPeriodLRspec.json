@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "WeekMonthPeriod",
+    "ListElementCode": "WEEK_1",
+    "ListElement": "Every week",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "WeekMonthPeriod",
+    "ListElementCode": "WEEK_2",
+    "ListElement": "Every 2 weeks",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "WeekMonthPeriod",
+    "ListElementCode": "WEEK_3",
+    "ListElement": "Every 3 weeks",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "WeekMonthPeriod",
+    "ListElementCode": "WEEK_4",
+    "ListElement": "Every 4 weeks",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "WeekMonthPeriod",
+    "ListElementCode": "MONTH_1",
+    "ListElement": "Every month",
+    "DisplayOrder": 5
+  }
+]
