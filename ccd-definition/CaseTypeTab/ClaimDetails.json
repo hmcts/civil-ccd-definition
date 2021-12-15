@@ -133,5 +133,13 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "applicant2",
     "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "applicantSolicitor1UserDetails",
+    "TabFieldDisplayOrder": 18
   }
 ]

@@ -1,0 +1,103 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2Details",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseEventFieldLabel": " ",
+    "CaseFieldID": "respondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmNameAddress",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "isRespondent1",
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "ConfirmNameAddress",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2PartyNameLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2ClaimResponseType",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ResponseIntention",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "applicant1PartyNameLabel2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent1PartyNameLabel2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent1ClaimResponseIntentionTypeApplicant2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ResponseIntention",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "applicant2PartyNameLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseIntention",
+    "FieldShowCondition": "addApplicant2 = \"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

@@ -16,7 +16,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
-    "Label": "Claim references",
+    "Label": "Your File Reference",
     "FieldType": "SolicitorReferences",
     "SecurityClassification": "Public"
   },
@@ -248,7 +248,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentDetails",
-    "Label": "The Claimant legal representative has provided the following names and addresses for the Defendant.\n\nIf these are not correct, you should contact the Claimant’s legal representative.",
+    "Label": "<br/>The Claimant legal representative has provided the following name and address for the Defendant.\nIf these are not correct, you should contact the Claimant's legal representative.\n\n**Claimant's email address**<br/>${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -262,7 +262,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseIntentionType",
-    "Label": "Response intention",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
     "SecurityClassification": "Public",
@@ -1061,5 +1061,88 @@
   "SecurityClassification": "Public",
   "_Definition":  "The intended response of the first respondent to the claim",
   "_Category":  "CIVIL"
+},
+  {
+    "CaseTypeID": "CIVIL",
+  "ID": "respondent1Details",
+  "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondentResponseIsSame",
+  "Label": "Do the Defendants intend to file a single response to the claim?",
+  "FieldType": "YesOrNo",
+  "SecurityClassification": "Public"
+}, {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2ClaimResponseIntentionType",
+  "Label": " ",
+  "FieldType": "FixedRadioList",
+  "FieldTypeParameter": "ResponseIntention",
+  "SecurityClassification": "Public"
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent1PartyNameLabel",
+  "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "applicant1PartyNameLabel",
+  "Label": "**against Claimant: ${applicant1.partyName}**",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2Details",
+  "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+},{
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2PartyNameLabel",
+  "Label": "**Defendant: ${respondent2.partyName} intends to**",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+}, {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2ClaimResponseType",
+  "Label": " ",
+  "FieldType": "FixedRadioList",
+  "FieldTypeParameter": "RespondentResponseType",
+  "SecurityClassification": "Public"
+},{
+  "CaseTypeID": "CIVIL",
+  "ID": "applicant1PartyNameLabel2",
+  "Label": "**against Claimant: ${applicant1.partyName}**",
+  "FieldType": "Label",
+  "SecurityClassification": "Public",
+  "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
+},{
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent1PartyNameLabel2",
+  "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
+  "FieldType": "Label",
+  "SecurityClassification": "Public",
+  "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
+},{
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent1ClaimResponseIntentionTypeApplicant2",
+  "Label": " ",
+  "FieldType": "FixedRadioList",
+  "FieldTypeParameter": "ResponseIntention",
+  "SecurityClassification": "Public"
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "applicant2PartyNameLabel",
+  "Label": "**against Claimant: ${applicant2.partyName}**",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
 }
 ]
