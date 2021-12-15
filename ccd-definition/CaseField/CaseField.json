@@ -989,5 +989,15 @@
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppType",
+    "Label": "What type of application do you want to make?",
+    "HintText": "  ",
+    "FieldType": "GAType",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
   }
 ]
