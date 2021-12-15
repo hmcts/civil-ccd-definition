@@ -981,5 +981,13 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalApplicationTypeLabel",
+    "Label": "To make an application not shown on this list, you'll need to submit a paper application to the court.",
+    "HintText": "  ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
