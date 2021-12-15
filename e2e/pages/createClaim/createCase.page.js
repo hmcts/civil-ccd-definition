@@ -19,7 +19,7 @@ module.exports = {
       I.selectOption(this.fields.caseType, 'Civil');
       I.selectOption(this.fields.event, 'Create claim');
       I.click(this.startButton);
-    }, 'ccd-markdown');
+    }, 'wb-case-state');
   }
 };
 

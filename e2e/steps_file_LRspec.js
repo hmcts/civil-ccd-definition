@@ -205,7 +205,7 @@ module.exports = function () {
     async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
+      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'wb-case-state');
       await this.clickContinue();
       await this.clickContinue();
       await solicitorReferencesPage.enterReferences();
