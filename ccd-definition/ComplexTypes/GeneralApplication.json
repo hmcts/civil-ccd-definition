@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "GeneralApplication",
+    "ListElementCode": "generalAppType",
+    "FieldType": "GAType",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplication",
+    "ListElementCode": "generalAppRespondentAgreement",
+    "FieldType": "GARespondentAgreement",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
