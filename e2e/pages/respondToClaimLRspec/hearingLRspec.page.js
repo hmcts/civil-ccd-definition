@@ -45,11 +45,4 @@ module.exports = {
 
     await I.clickContinue();
   },
-
-  async addUnavailableDates(party) {
-    await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields(party).unavailableDates.element.who);
-    I.fillField(this.fields(party).unavailableDates.element.who, 'John Smith');
-    await date.enterDate(this.fields(party).unavailableDates.element.date);
-  },
 };
