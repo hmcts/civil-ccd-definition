@@ -999,5 +999,14 @@
     "SecurityClassification": "Public",
     "_Definition":  "Type of the child application on the case",
     "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppRespondentAgreement",
+    "Label": "Has respondent agreed to the order that you want the judge to make?",
+    "FieldType": "GARespondentAgreement",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case related to respondent agreement",
+    "_Category":  "COMMON"
   }
 ]
