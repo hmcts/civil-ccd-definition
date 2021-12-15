@@ -994,7 +994,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationTypeLabel",
+    "ID": "generalAppTypeLabel",
     "Label": "To make an application not shown on this list, you'll need to submit a paper application to the court.",
     "HintText": "  ",
     "FieldType": "Label",
