@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "GeneralApplicationsStatementOfTruth",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": "Label",
+    "SecurityClassification": "Public",
+    "Comment": "This label should be set in caseEventToComplexTypes"
+  },
+  {
+    "ID": "GeneralApplicationsStatementOfTruth",
+    "ListElementCode": "name",
+    "FieldType": "Text",
+    "ElementLabel": "Name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationsStatementOfTruth",
+    "ListElementCode": "role",
+    "FieldType": "Text",
+    "ElementLabel": "Role",
+    "SecurityClassification": "Public"
+  }
+]

@@ -706,5 +706,23 @@
     "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthConsent",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

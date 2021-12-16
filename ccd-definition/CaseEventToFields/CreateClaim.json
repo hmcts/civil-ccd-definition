@@ -425,24 +425,23 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimStatementOfTruthLabel",
+    "CaseFieldID": "generalAppStatementOfTruthLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "Statement of truth",
     "PageDisplayOrder": 33,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "uiStatementOfTruth",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 33,
+    "PageDisplayOrder": 34,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -453,7 +452,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 33,
+    "PageDisplayOrder": 35,
     "PageColumnNumber": 1
   }
 ]

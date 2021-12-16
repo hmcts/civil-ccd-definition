@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "GeneralApplicationsStatementOfTruthConsent",
+    "ListElementCode": "ConsentAgreementCheckBox",
+    "FieldType": "MultiSelectList",
+    "ListElement": "The application believes that the facts stated above (and any continuation sheets) are true. I\nam authorised by the applicant to sign this statement",
+    "DisplayOrder": 1
+  }
+]
