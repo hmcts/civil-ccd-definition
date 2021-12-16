@@ -1,0 +1,39 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalApplications",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppTypeLabel",
+    "Label": "To make an application not shown on this list, you'll need to submit a paper application to the court.",
+    "HintText": "  ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppType",
+    "Label": "What type of application do you want to make?",
+    "HintText": "  ",
+    "FieldType": "GATypeGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppRespondentAgreement",
+    "Label": "Has respondent agreed to the order that you want the judge to make?",
+    "FieldType": "GARespondentAgreementGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case related to respondent agreement",
+    "_Category":  "COMMON"
+  }
+]
