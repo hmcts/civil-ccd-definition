@@ -2,13 +2,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "respondent2SameLegalRepresentative",
-    "PageFieldDisplayOrder": 2,
+    "CaseFieldID": "genericLitigationFriend",
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageID": "SelectALitigationFriend",
-    "PageDisplayOrder": 3,
+    "PageID": "LitigationFriend",
+    "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "genericLitigationFriend=\"DO NOT SHOW IN UI\""
+    "PageShowCondition": "genericLitigationFriend=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -24,12 +24,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
-    "PageFieldDisplayOrder": 1,
+    "CaseFieldID": "respondent2SameLegalRepresentative",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageID": "LitigationFriend",
-    "PageDisplayOrder": 1,
+    "PageID": "SelectALitigationFriend",
+    "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "genericLitigationFriend=\"Yes\""
+    "FieldShowCondition": "genericLitigationFriend=\"DO NOT SHOW IN UI\""
   }
 ]

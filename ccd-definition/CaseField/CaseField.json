@@ -825,8 +825,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriendCreatedDate",
+    "Label": "Date generic respondent  added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2LitigationFriendDate",
     "Label": "Date respondent 2 added or last updated litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriendDate",
+    "Label": "Date generic respondent added or last updated litigation friend",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
