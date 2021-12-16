@@ -988,16 +988,8 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
-  }, {
-  "CaseTypeID": "CIVIL",
-  "ID": "respondent1ClaimResponseIntentionType1",
-  "Label": "Response intention",
-  "FieldType": "FixedRadioList",
-  "FieldTypeParameter": "ResponseIntentionClaimant2",
-  "SecurityClassification": "Public",
-  "_Definition":  "The intended response of the first respondent to the claim",
-  "_Category":  "CIVIL"
-},{
+  },
+  {
   "CaseTypeID": "CIVIL",
   "ID": "claimant1Name",
   "Label": "Claimant 1 Name",
@@ -1010,24 +1002,7 @@
   "FieldType": "Label",
   "SecurityClassification": "Public"
 },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendant1Details",
-    "Label": "\n\n**First Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br /><br />${respondent1Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendant1Dob",
-    "Label": "Confirm Defendant’s details",
-    "FieldType": "Date",
-    "FieldTypeParameter": "ResponseIntentionClaimant2",
-    "SecurityClassification": "Public",
-    "_Definition":  "The intended response of the first respondent to the claim",
-    "_Category":  "CIVIL"
-  },
-  {
+     {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2Copy",
     "Label": "Workaround for respondentDetails label",
@@ -1036,33 +1011,7 @@
     "_Comments": "Field interpolation can be used only with case fields present on the same or one of the previous pages - otherwise the data will be removed on clicking previous.",
     "_Category": "WORKAROUND"
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendant2Details",
-    "Label": "**Second Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br /><br />${respondent2Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-  "CaseTypeID": "CIVIL",
-  "ID": "defendant2Dob",
-  "Label": "Confirm Defendant’s details",
-  "FieldType": "Date",
-  "FieldTypeParameter": "ResponseIntentionClaimant2",
-  "SecurityClassification": "Public",
-  "_Definition":  "The intended response of the first respondent to the claim",
-  "_Category":  "CIVIL"
-},{
-  "CaseTypeID": "CIVIL",
-  "ID": "applicantClaimResponseIntentionType",
-  "Label": "Response intention",
-  "FieldType": "FixedRadioList",
-  "FieldTypeParameter": "ResponseIntentionClaimant2",
-  "SecurityClassification": "Public",
-  "_Definition":  "The intended response of the first respondent to the claim",
-  "_Category":  "CIVIL"
-},
-  {
+   {
     "CaseTypeID": "CIVIL",
   "ID": "respondent1Details",
   "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",

@@ -2253,37 +2253,8 @@
         "CRUD": "CRUD"
       }
     ]
-  }, {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "respondent1ClaimResponseIntentionType1",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]"
-      ],
-      "CRUD": "CRU"
-    }
-  ]
-},{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "defendant1Dob",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]",
-        "[RESPONDENTSOLICITORTWO]"
-      ],
-      "CRUD": "CRU"
-    },
-    {
-      "UserRoles": [
-        "caseworker-civil-admin",
-        "[APPLICANTSOLICITORONE]"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},{
+  },
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "applicantSolicitor1UserDetails",
   "AccessControl": [
@@ -2318,19 +2289,8 @@
       "CRUD": "R"
     }
   ]
-},{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "defendant2Details",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORTWO]",
-        "[RESPONDENTSOLICITORONE]"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "claimantSolicitorEmail",
   "AccessControl": [
@@ -2342,50 +2302,8 @@
       "CRUD": "R"
     }
   ]
-},{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "defendant1Details",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]",
-        "[RESPONDENTSOLICITORTWO]"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "defendant2Dob",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]",
-        "[RESPONDENTSOLICITORTWO]"
-      ],
-      "CRUD": "CRU"
-    },
-    {
-      "UserRoles": [
-        "caseworker-civil-admin",
-        "[APPLICANTSOLICITORONE]"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "applicantClaimResponseIntentionType",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]",
-        "[RESPONDENTSOLICITORTWO]"
-      ],
-      "CRUD": "CRU"
-    }
-  ]
-},  {
+},
+ {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent2Copy",
   "UserRole": "caseworker-civil-solicitor",

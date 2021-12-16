@@ -160,7 +160,8 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseIntention",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -172,18 +173,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y"
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "responseHandOffLabel",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 11,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseIntention",
-    "FieldShowCondition": "respondent1ClaimResponseIntentionType=\"FULL_DEFENCE\" OR respondent1ClaimResponseIntentionType=\"PART_DEFENCE\" OR respondent1ClaimResponseIntentionType=\"CONTEST_JURISDICTION\"",
-    "Comment": "Need to add other claimResponses to show hide condition"
-  },
-  {
+    {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "solicitorReferences",
