@@ -5,7 +5,7 @@ set -eu
 dir=$(dirname ${0})
 
 role=${1}
-
+echo "ENVIRONMENT IS: " $ENVIRONMENT
 case "$ENVIRONMENT" in
 "preview")
 userToken=$(${dir}/idam-lease-user-token.sh ${DEFINITION_IMPORTER_USERNAME:-ccd.docker.default@hmcts.net} ${DEFINITION_IMPORTER_PASSWORD:-Password12!});;
