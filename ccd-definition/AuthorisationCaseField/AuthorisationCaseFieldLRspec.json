@@ -1358,26 +1358,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1CourtOrderPaymentByPlan",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1CourtOrderPaymentByDate",
+    "CaseFieldID": "respondent1CourtOrderPayment",
     "AccessControl": [
       {
         "UserRoles": [
