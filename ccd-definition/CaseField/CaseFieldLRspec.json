@@ -856,5 +856,19 @@
     "Label": " ",
     "FieldType": "AdmitPartEmployer",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1RepaymentPlanLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1RepaymentPlan",
+    "Label": " ",
+    "FieldType": "RepaymentPlanLRspec",
+    "SecurityClassification": "Public"
   }
 ]
