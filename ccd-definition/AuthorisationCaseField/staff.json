@@ -709,19 +709,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppStatementOfTruthLabel",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppStatementOfTruthConsent",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppUIStatementOfTruth",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

@@ -2244,25 +2244,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppStatementOfTruthLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
+    "CaseFieldID": "generalAppStatementOfTruthConsent",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppUIStatementOfTruth",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthLabel",
     "AccessControl": [
       {
         "UserRoles": [
