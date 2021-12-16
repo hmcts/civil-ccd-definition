@@ -16,5 +16,23 @@
     "CaseFieldID": "generalAppRespondentAgreement",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthConsent",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -17,5 +17,21 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "StatementOfTruth",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "ListElementCode": "name",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "StatementOfTruth",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "ListElementCode": "role",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
   }
 ]
