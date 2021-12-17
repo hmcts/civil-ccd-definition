@@ -308,7 +308,8 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "R"
       }
