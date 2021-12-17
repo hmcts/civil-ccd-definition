@@ -870,5 +870,19 @@
     "Label": " ",
     "FieldType": "SelfEmployment",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "homeOptionsTitleLRspec",
+    "Label": "<h1 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHomeDetails",
+    "Label": " ",
+    "FieldType": "HomeDetailsLRspec",
+    "SecurityClassification": "Public"
   }
 ]
