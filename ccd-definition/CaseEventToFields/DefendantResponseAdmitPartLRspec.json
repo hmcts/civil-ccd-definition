@@ -249,6 +249,7 @@
     "PageDisplayOrder": 22,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "N"
   },
