@@ -12,7 +12,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppTypeLabel",
-    "Label": "To make an application not shown on this list, you'll need to submit a paper application to the court.",
+    "Label": "<p class=\"govuk-inset-text\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -30,7 +30,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppRespondentAgreement",
-    "Label": "Has respondent agreed to the order that you want the judge to make?",
+    "Label": "Has the respondent agreed to the order that you want the judge to make?",
     "FieldType": "GARespondentAgreementGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the child application on the case related to respondent agreement",
@@ -59,6 +59,30 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "StatementOfTruthConsentGAspec",
     "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUrgencyRequirement",
+    "Label": " ",
+    "FieldType": "GAUrgencyRecordGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isApplicationUrgentLabel",
+    "Label": "<h1 class=\"govuk-heading-m\">Is this an urgent application? 1</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isApplicationUrgent",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAIsUrgentGAspec",
     "SecurityClassification": "Public"
   }
 ]
