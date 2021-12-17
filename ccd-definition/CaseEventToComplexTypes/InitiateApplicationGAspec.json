@@ -33,5 +33,13 @@
     "ListElementCode": "role",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "StatementOfTruth",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppUploadEvidences",
+    "ListElementCode": "evidenceDocument",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]
