@@ -320,7 +320,9 @@ module.exports = {
 
     eventName = 'DEFENDANT_RESPONSE';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    console.log('returned case data: ', returnedCaseData);
     assertContainsPopulatedFields(returnedCaseData);
+    console.log('assertContainsPopulatedFields done');
     caseData = returnedCaseData;
     deleteCaseFields('respondent1', 'solicitorReferences');
 
