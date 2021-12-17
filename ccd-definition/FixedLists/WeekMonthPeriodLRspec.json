@@ -1,31 +1,31 @@
 [
   {
     "ID": "WeekMonthPeriod",
-    "ListElementCode": "WEEK_1",
+    "ListElementCode": "ONCE_ONE_WEEK",
     "ListElement": "Every week",
     "DisplayOrder": 1
   },
   {
     "ID": "WeekMonthPeriod",
-    "ListElementCode": "WEEK_2",
+    "ListElementCode": "ONCE_TWO_WEEKS",
     "ListElement": "Every 2 weeks",
     "DisplayOrder": 2
   },
   {
     "ID": "WeekMonthPeriod",
-    "ListElementCode": "WEEK_3",
+    "ListElementCode": "ONCE_THREE_WEEKS",
     "ListElement": "Every 3 weeks",
     "DisplayOrder": 3
   },
   {
     "ID": "WeekMonthPeriod",
-    "ListElementCode": "WEEK_4",
+    "ListElementCode": "ONCE_FOUR_WEEKS",
     "ListElement": "Every 4 weeks",
     "DisplayOrder": 4
   },
   {
     "ID": "WeekMonthPeriod",
-    "ListElementCode": "MONTH_1",
+    "ListElementCode": "ONCE_ONE_MONTH",
     "ListElement": "Every month",
     "DisplayOrder": 5
   }
