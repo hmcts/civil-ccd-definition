@@ -202,6 +202,27 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specSelfEmployedPageLabel",
+    "PageID": "DefendantSelfEmployment",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"SELF\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1SelfEmploymentDetails",
+    "PageID": "DefendantSelfEmployment",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1CourtOrderPaymentByPlan",
     "PageDisplayOrder": 18,
     "PageFieldDisplayOrder": 1,
