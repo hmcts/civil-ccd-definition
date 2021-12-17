@@ -87,6 +87,20 @@ const specInterestDateStartPage = require('./pages/createClaim/interestDateStart
 const specInterestDateEndPage = require('./pages/createClaim/interestDateEndLRspec.page');
 const specConfirmDefendantsDetails = require('./fragments/confirmDefendantsDetailsLRspec');
 const specConfirmLegalRepDetails = require('./fragments/confirmLegalRepDetailsLRspec');
+const responseTypeSpecPage = require('./pages/respondToClaimLRspec/responseTypeLRspec.page');
+const defenceTypePage = require('./pages/respondToClaimLRspec/defenceTypeLRspec.page');
+const freeMediationPage = require('./pages/respondToClaimLRspec/freeMediationLRspec.page');
+const chooseCourtSpecPage = require('./pages/respondToClaimLRspec/chooseCourtLRspec.page');
+const smallClaimsHearingPage = require('./pages/respondToClaimLRspec/hearingSmallClaimsLRspec.page');
+const useExpertPage = require('./pages/respondToClaimLRspec/useExpertLRspec.page');
+const respondentCheckListPage = require('./pages/respondToClaimLRspec/respondentCheckListLRspec.page');
+const enterWitnessesPage = require('./pages/respondToClaimLRspec/enterWitnessesLRspec.page');
+const disputeClaimDetailsPage = require('./pages/respondToClaimLRspec/disputeClaimDetailsLRspec.page');
+const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/claimResponseTimelineLRspec.page');
+const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.page');
+const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
+const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
+
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -449,7 +463,7 @@ module.exports = function () {
       }
     },
 
-    async createCaseSpec(applicantType, defendantType, litigantInPerson = false,) {
+    async createCaseSpec(applicantType, defendantType, litigantInPerson = false, claimAmount) {
       this.click('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
@@ -473,7 +487,7 @@ module.exports = function () {
       await specTimelinePage.addManually();
       await specAddTimelinePage.addTimeline();
       await specListEvidencePage.addEvidence();
-      await specClaimAmountPage.addClaimItem();
+      await specClaimAmountPage.addClaimItem(claimAmount);
       await this.clickContinue();
       await specInterestPage.addInterest();
       await specInterestValuePage.selectInterest();
@@ -501,6 +515,74 @@ module.exports = function () {
         () => event.returnToCaseDetails()
       ]);
     },
+
+    async respondToClaimSpec(responseType,defenceType,paidAmount) {
+          eventName = 'Respond to claim';
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => respondentCheckListPage.claimTimelineTemplate(),
+            () => specConfirmDefendantsDetails.confirmDetails(),
+            () => specConfirmLegalRepDetails.confirmDetails(),
+            () => responseTypeSpecPage.selectResponseType(responseType),
+             ... conditionalSteps(responseType === 'fullDefence', [
+                () => defenceTypePage.selectDefenceType(defenceType,paidAmount)
+              ]),
+             ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 1000, [
+               () => freeMediationPage.selectMediation('yes'),
+               () => useExpertPage.claimExpert('no'),
+               () => enterWitnessesPage.howManyWitnesses(),
+               () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+               () => smallClaimsHearingPage.selectHearing('no'),
+               () => chooseCourtSpecPage.chooseCourt('yes'),
+             ]),
+             ... conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
+               () => disputeClaimDetailsPage.enterReasons(),
+               () => claimResponseTimelineLRspecPage.addManually(),
+               () => this.clickContinue(),
+                    () => freeMediationPage.selectMediation('yes'),
+                    () => useExpertPage.claimExpert('no'),
+                    () => enterWitnessesPage.howManyWitnesses(),
+                    () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                    () => smallClaimsHearingPage.selectHearing('no'),
+                    () => chooseCourtSpecPage.chooseCourt('yes'),
+                ]),
+               ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
+                  () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                  () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+                  () => this.clickContinue(),
+                  () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+                  () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                  () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+                  () => chooseCourtSpecPage.chooseCourt('yes'),
+                  ]),
+               ... conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+                  () => disputeClaimDetailsPage.enterReasons(),
+                  () => claimResponseTimelineLRspecPage.addManually(),
+                  () => this.clickContinue(),
+                  () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                  () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+                  () => this.clickContinue(),
+                  () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+                  () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                  () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+                  () => chooseCourtSpecPage.chooseCourt('yes'),
+                ]),
+              () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+              ... conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+                    () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+               ]),
+                ... conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+                   () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+               ]),
+              () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+              () => event.submit('Submit', ''),
+              () => event.returnToCaseDetails()
+          ]);
+        },
 
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
