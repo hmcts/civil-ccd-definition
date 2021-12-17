@@ -125,9 +125,9 @@ withPipeline(type, product, component) {
   before('smoketest:preview') {
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     sh """
-      echo $ENVIRONMENT
+      $ENVIRONMENT
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-      echo $ENVIRONMENT
+      $ENVIRONMENT
       ./gradlew highLevelDataSetup --args="PREVIEW"
       ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
       ./bin/import-bpmn-diagram.sh .
