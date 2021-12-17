@@ -856,5 +856,19 @@
     "Label": " ",
     "FieldType": "AdmitPartEmployer",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specSelfEmployedPageLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h1> \n</div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefendant1SelfEmploymentDetails",
+    "Label": " ",
+    "FieldType": "SelfEmployment",
+    "SecurityClassification": "Public"
   }
 ]
