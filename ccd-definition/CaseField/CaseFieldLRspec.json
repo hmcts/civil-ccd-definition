@@ -873,6 +873,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "homeOptionsTitleLRspec",
+    "Label": "<h1 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHomeDetails",
+    "Label": " ",
+    "FieldType": "HomeDetailsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
     "Label": "<h1 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h1>",
     "FieldType": "Label",
