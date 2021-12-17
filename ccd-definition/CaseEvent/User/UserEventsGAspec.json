@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "INITIATE_GENERAL_APPLICATION",
+    "Name": "Make an application",
+    "Description": "Application created, post actions triggered",
+    "DisplayOrder": 17,
+    "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
+  }
+]
