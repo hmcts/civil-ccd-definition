@@ -499,7 +499,7 @@
     "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
-    "ListElementCode": "hasLoanCardDebtQLabel",
+    "ListElementCode": "hasLoanCardDebtLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -507,7 +507,7 @@
     "ID": "Debts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
-    "ListElementCode": "hasLoanCardDebtQ",
+    "ListElementCode": "hasLoanCardDebt",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
