@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "HomeDetailsLRspec",
+    "ListElementCode": "type",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HomeOption",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HomeDetailsLRspec",
+    "ListElementCode": "typeOtherDetails",
+    "FieldType": "Text",
+    "ElementLabel": "What type of housing",
+    "FieldShowCondition": "type = \"OTHER\"",
+    "SecurityClassification": "Public"
+  }
+]
