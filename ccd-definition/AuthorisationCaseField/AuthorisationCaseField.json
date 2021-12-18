@@ -1744,8 +1744,27 @@
     ]
   },
   {
+        "CaseTypeID": "CIVIL",
+        "CaseFieldID": "respondent1AcknowledgeNotificationDate",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin",
+              "caseworker-civil-systemupdate"
+            ],
+            "CRUD": "R"
+          }
+        ]
+  },
+  {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1AcknowledgeNotificationDate",
+    "CaseFieldID": "respondent2AcknowledgeNotificationDate",
     "AccessControl": [
       {
         "UserRoles": [
