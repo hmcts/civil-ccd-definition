@@ -259,6 +259,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "genericLitigationFriend",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addRespondent2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -329,7 +335,13 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
-    {
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimProceedsInCaseman",
     "UserRole": "caseworker-civil-systemupdate",

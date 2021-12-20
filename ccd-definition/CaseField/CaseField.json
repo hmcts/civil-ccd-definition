@@ -981,5 +981,33 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectLitigationFriend",
+    "Label": "Who requires a litigation friend?",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriend",
+    "Label": "Generic Defendant litigation Friend",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriendDate",
+    "Label": "Date generic respondent added or last updated litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriendCreatedDate",
+    "Label": "Date generic respondent  added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
