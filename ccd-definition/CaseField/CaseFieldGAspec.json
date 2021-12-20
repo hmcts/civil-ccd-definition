@@ -73,7 +73,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "isApplicationUrgentLabel",
-    "Label": "<h1 class=\"govuk-heading-m\">Is this an urgent application? 1</h1>",
+    "Label": "<h1 class=\"govuk-heading-m\">Is this an urgent application?</h1>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
