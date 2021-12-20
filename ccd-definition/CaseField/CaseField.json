@@ -981,5 +981,16 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "GeneralApplicationTabList",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "generalApplicationCaseList",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
   }
 ]

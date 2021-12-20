@@ -455,5 +455,15 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 33,
     "PageColumnNumber": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "GeneralApplicationTabList",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 34,
+    "PageColumnNumber": 1
   }
 ]
