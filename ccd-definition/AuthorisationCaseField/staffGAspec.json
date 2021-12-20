@@ -34,5 +34,11 @@
     "CaseFieldID": "generalAppStatementOfTruthLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppUrgencyRequirement",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
