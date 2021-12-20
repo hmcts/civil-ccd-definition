@@ -282,7 +282,8 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
     "EndButtonLabel": "Submit",
-    "RetriesTimeoutAboutToStartEvent": 0,
+    "CallBackURLAboutToSubmitEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/submitted",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
   }
