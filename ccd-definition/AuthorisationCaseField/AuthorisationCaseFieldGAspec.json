@@ -87,7 +87,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isApplicationUrgent",
+    "CaseFieldID": "generalAppInformOtherParty",
     "AccessControl": [
       {
         "UserRoles": [
@@ -100,7 +100,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUrgent",
+    "CaseFieldID": "isApplicationUrgent",
     "AccessControl": [
       {
         "UserRoles": [
