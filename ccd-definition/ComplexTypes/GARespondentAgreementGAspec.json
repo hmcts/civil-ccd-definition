@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "GARespondentAgreementGAspec",
+    "ListElementCode": "hasAgreed",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "A judge will still need to approve this order.",
+    "SecurityClassification": "Public"
+  }
+]

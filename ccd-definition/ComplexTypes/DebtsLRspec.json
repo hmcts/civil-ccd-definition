@@ -16,14 +16,14 @@
   },
   {
     "ID": "Debts",
-    "ListElementCode": "hasLoanCardDebtQLabel",
+    "ListElementCode": "hasLoanCardDebtLabel",
     "ElementLabel": "## Does your client have any loans, or credit card debts?\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "Debts",
-    "ListElementCode": "hasLoanCardDebtQ",
+    "ListElementCode": "hasLoanCardDebt",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
@@ -34,7 +34,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "LoanCardDebt",
     "ElementLabel": " ",
-    "FieldShowCondition": "hasLoanCardDebtQ = \"Yes\"",
+    "FieldShowCondition": "hasLoanCardDebt = \"Yes\"",
     "SecurityClassification": "Public"
   }
 ]
