@@ -20,14 +20,5 @@
     "FieldType": "Text",
     "ElementLabel": "Role",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "StatementOfTruthGAspec",
-    "ListElementCode": "evidenceDocument",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "ElementLabel": "Supporting evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
   }
 ]
