@@ -12,5 +12,12 @@
     "FieldType": "GARespondentAgreementGAspec",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppUrgencyRequirement",
+    "FieldType": "GAUrgencyRecordGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
