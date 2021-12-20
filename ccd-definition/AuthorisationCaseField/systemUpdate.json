@@ -283,6 +283,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "genericLitigationFriend",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2OrgRegistered",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
