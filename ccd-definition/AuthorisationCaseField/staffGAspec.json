@@ -43,6 +43,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppDetailsOfOrderLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

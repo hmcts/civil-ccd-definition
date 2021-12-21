@@ -19,26 +19,10 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "StatementOfTruth",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppUIStatementOfTruth",
-    "ListElementCode": "name",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "StatementOfTruth",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppUIStatementOfTruth",
-    "ListElementCode": "role",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "GAUrgencyRecordPage",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppUrgencyRequirement",
-    "ListElementCode": "generalAppUrgent",
+    "ListElementCode": "generalAppUrgency",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -68,6 +52,40 @@
     "ListElementCode": "ConsentAgreementCheckBox",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAWithOrWithoutNoticePage",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "ListElementCode": "isWithNotice",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GAWithOrWithoutNoticePage",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "ListElementCode": "reasonsForWithoutNotice",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "StatementOfTruth",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "ListElementCode": "name",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "StatementOfTruth",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "ListElementCode": "role",
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {

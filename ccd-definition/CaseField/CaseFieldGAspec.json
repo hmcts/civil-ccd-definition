@@ -20,7 +20,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppType",
-    "Label": "What type of application do you want to make?",
+    "Label": "What type of applications do you want to make?",
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
     "SecurityClassification": "Public",
@@ -63,18 +63,11 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUrgencyRequirement",
-    "Label": " ",
+    "Label": "Is this an urgent application?",
     "FieldType": "GAUrgencyRecordGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
     "_Category":  "COMMON"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "isApplicationUrgentLabel",
-    "Label": "<h1 class=\"govuk-heading-m\">Is this an urgent application?</h1>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -86,10 +79,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppUrgent",
-    "Label": "Is this an urgent application?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "ID": "generalAppInformOtherParty",
+    "Label": "Do you want the court to inform the other party of this application?\n",
+    "FieldType": "GAWithOrWithoutNotice",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds whether or not the other party should be notified of this application. If no, then reasons behind not notifying.",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
