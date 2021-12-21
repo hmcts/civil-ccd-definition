@@ -18,7 +18,7 @@
     "ID": "RepaymentPlanLRspec",
     "ListElementCode": "repaymentFrequency",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RepaymentFrequency",
+    "FieldTypeParameter": "RepaymentFrequencyLRspec",
     "ElementLabel": "How often will your client make payments?",
     "SecurityClassification": "Public"
   },
