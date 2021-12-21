@@ -2244,64 +2244,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "genericLitigationFriend",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "genericLitigationFriendDate",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "genericLitigationFriendCreatedDate",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "selectLitigationFriend",
     "AccessControl": [
       {

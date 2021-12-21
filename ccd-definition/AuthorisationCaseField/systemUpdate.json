@@ -259,12 +259,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "genericLitigationFriend",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addRespondent2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
