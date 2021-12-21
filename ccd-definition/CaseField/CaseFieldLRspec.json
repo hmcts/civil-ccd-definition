@@ -887,20 +887,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h1>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
-    "Label": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQIncomeAndExpenseLabel",
     "Label": "## ${respondent1.partyName}'s income and expenses\n",
     "FieldType": "Label",
@@ -927,6 +913,20 @@
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
+    "Label": " ",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]
