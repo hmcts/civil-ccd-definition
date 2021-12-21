@@ -51,9 +51,9 @@ def createGithubRelease() {
 
 def archiveCoreCaseDataDefinitions() {
   if ( env.ENVIRONMENT == 'aat') {
-    echo "current environemnt is ${env.ENVIRONMENT}"
+    echo "current environment is ${env.ENVIRONMENT}"
     for(PROD_ENV in ["aat","prod"]){
-      echo "environemnt is ${PROD_ENV}"
+      echo "environnt is ${PROD_ENV}"
       dir("${WORKSPACE}/bin") {
         sh """
           eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
