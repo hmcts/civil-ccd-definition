@@ -328,6 +328,27 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
+    "PageID": "WhyDoesNotPayImmediately",
+    "PageDisplayOrder": 21,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec",
+    "PageID": "WhyDoesNotPayImmediately",
+    "PageDisplayOrder": 21,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1RepaymentPlanLabel",
     "PageDisplayOrder": 22,
     "PageFieldDisplayOrder": 1,
