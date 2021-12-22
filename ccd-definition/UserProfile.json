@@ -16,5 +16,11 @@
     "WorkBasketDefaultJurisdiction": "CIVIL",
     "WorkBasketDefaultCaseType": "CIVIL",
     "WorkBasketDefaultState": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT"
+  },
+  {
+    "UserIDAMId": "judge-civil-01@example.com",
+    "WorkBasketDefaultJurisdiction": "CIVIL",
+    "WorkBasketDefaultCaseType": "CIVIL",
+    "WorkBasketDefaultState": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT"
   }
 ]
