@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "generalAppFeeToPayLabel",
+    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> <£108 without notice> or <£275 with notice><p class=\"govuk-body\">   </p>",
+    "HintText": "  ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "applicantsPbaAccountsList",
+    "ElementLabel": "\n\n\nSelect your payment by account number (PBA)\n",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "PbaNumber",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "pbaReferenceLabel",
+    "ElementLabel": "<h4 class=\"govuk-fieldset__heading\">Enter a reference for your PBA account statements (optional)</h4>\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "pbaReference",
+    "ElementLabel": "This should be your own unique reference to identify the case. it will appear on your statements.\n",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]

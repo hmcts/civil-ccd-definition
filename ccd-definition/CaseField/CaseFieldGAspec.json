@@ -128,5 +128,14 @@
     "Label": " ",
     "FieldType": "StatementOfTruthGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppPBADetails",
+    "Label": "Pay for application with PBA\n",
+    "FieldType": "GAPBADetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds applicant's PBA details.",
+    "_Category":  "COMMON"
   }
 ]
