@@ -94,5 +94,11 @@
     "CaseFieldID": "generalAppUploadEvidenceLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDetails",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

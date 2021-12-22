@@ -1,0 +1,10 @@
+[
+    {
+        "CaseTypeID": "CIVIL",
+        "TabID": "Applications",
+        "TabLabel": "Applications",
+        "TabDisplayOrder": 8,
+        "CaseFieldID": "GeneralApplicationTabList",
+        "TabFieldDisplayOrder": 1
+      }
+]
