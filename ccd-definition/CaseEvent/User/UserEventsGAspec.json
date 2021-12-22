@@ -11,7 +11,26 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
     "EndButtonLabel": "Submit",
+    "CallBackURLAboutToSubmitEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",gi
+    "ID": "CREATE_GENERAL_APPLICATION",
+    "Name": "Make an application",
+    "Description": "Application created, post actions triggered",
+    "DisplayOrder": 17,
+    "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "CallBackURLAboutToSubmitEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/submitted",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
   }
