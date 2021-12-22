@@ -795,14 +795,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1CourtOrderPaymentByPlan",
-    "Label": " ",
-    "FieldType": "PaymentUponCourtOrderLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent1CourtOrderPaymentByDate",
+    "ID": "respondent1CourtOrderPayment",
     "Label": " ",
     "FieldType": "PaymentUponCourtOrderLRspec",
     "SecurityClassification": "Public"

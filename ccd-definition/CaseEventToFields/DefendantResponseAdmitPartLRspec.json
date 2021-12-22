@@ -120,7 +120,7 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
   },
@@ -143,7 +143,7 @@
     "DisplayContext": "READONLY",
     "PageID": "EmploymentDeclaration",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -223,23 +223,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1CourtOrderPaymentByPlan",
+    "CaseFieldID": "respondent1CourtOrderPayment",
     "PageDisplayOrder": 18,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
+    "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1CourtOrderPaymentByDate",
-    "PageDisplayOrder": 18,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartPaymentTimeRouteRequired=\"BY_SET_DATE\"",
-    "PageID": "DetailsOfPayingMoneyBySetDate",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -249,7 +238,7 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -272,7 +261,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\""
   },
   {
     "CaseTypeID": "CIVIL",
