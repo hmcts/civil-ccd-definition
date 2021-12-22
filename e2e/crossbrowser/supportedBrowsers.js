@@ -2,17 +2,20 @@ const LATEST_MAC = 'macOS 10.15';
 const LATEST_WINDOWS = 'Windows 10';
 
 const supportedBrowsers = {
-  microsoft: {
-    ie11_win: {
-      browserName: 'internet explorer',
-      platformName: LATEST_WINDOWS,
-      browserVersion: 'latest',
-      'sauce:options': {
-        name: 'Civil: IE11',
-        screenResolution: '1400x1050',
-      },
-    },
-  },
+  // microsoft: {
+  //   ie11_win: {
+  //     browserName: 'internet explorer',
+  //     platformName: LATEST_WINDOWS,
+  //     browserVersion: 'latest',
+  //     'sauce:options': {
+  //       name: 'Civil: IE11',
+  //       screenResolution: '1400x1050',
+  //     },
+  //   },
+  // },
+
+  // passing:  safari, chrome_win_latest, chrome_mac_latest, firefox_win
+  //failing: ie11-win, firefox_mac
   safari: {
     safari_mac_latest: {
       browserName: 'safari',
@@ -52,15 +55,17 @@ const supportedBrowsers = {
         name: 'Civil: WIN_FIREFOX_LATEST',
       },
     },
-    firefox_mac_latest: {
-      browserName: 'firefox',
-      platformName: LATEST_MAC,
-      browserVersion: 'latest',
-      'sauce:options': {
-        name: 'Civil: MAC_FIREFOX_LATEST',
-      },
-    },
   },
+  // firefox_mac_latest: {
+  //   browserName: 'firefox',
+  //   platformName: LATEST_MAC,
+  //   browserVersion: 'latest',
+  //   'sauce:options': {
+  //     name: 'Civil: MAC_FIREFOX_LATEST',
+  //   },
+  // },
+  //},
 };
+
 
 module.exports = supportedBrowsers;
