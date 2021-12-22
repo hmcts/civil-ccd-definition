@@ -981,5 +981,12 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectLitigationFriend",
+    "Label": "Who requires a litigation friend?",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
   }
 ]
