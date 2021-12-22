@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "respondent1LitigationFriend",
+    "CaseFieldID": "genericLitigationFriend",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "LitigationFriend",
@@ -29,7 +29,7 @@
     "PageID": "SelectALitigationFriend",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1LitigationFriend=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "genericLitigationFriend=\"DO NOT SHOW IN UI\""
   }
 ]
 
