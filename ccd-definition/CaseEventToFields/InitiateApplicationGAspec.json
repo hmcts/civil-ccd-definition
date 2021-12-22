@@ -62,7 +62,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -73,7 +73,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -152,6 +152,18 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "HearingDetails",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "PageLabel": "Scheduled hearings and trials",
     "ShowSummaryChangeOption": "Y"
   }
 ]
