@@ -1,0 +1,54 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DISPATCH_BUSINESS_PROCESS_GASPEC",
+    "Name": "Dispatch ga business process",
+    "Description": "Set READY ga business process status to DISPATCHED",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "START_BUSINESS_PROCESS_GASPEC",
+    "Name": "Start ga business process",
+    "Description": "Start ga business process",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "END_BUSINESS_PROCESS_GASPEC",
+    "Name": "End business process",
+    "Description": "End business process",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CREATE_GENERAL_APPLICATION_CASE",
+    "Name": "Create general application",
+    "Description": "Create general application",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
