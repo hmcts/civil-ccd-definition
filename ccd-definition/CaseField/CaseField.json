@@ -981,5 +981,12 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantDetails",
+    "Label": "PBA Number",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
   }
 ]

@@ -276,7 +276,7 @@
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
     "DisplayOrder": 17,
-    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT;PENDING_CASE_ISSUED;CASE_ISSUED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
