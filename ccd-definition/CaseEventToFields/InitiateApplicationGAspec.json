@@ -165,5 +165,17 @@
     "PageColumnNumber": 1,
     "PageLabel": "Scheduled hearings and trials",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppPBADetails",
+    "DisplayContext": "COMPLEX",
+    "PageID": "GAPBADetailsGAspec",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   }
+
 ]
