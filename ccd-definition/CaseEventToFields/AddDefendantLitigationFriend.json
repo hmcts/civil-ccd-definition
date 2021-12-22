@@ -7,8 +7,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "LitigationFriend",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "genericLitigationFriend=\"Yes\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,7 +18,7 @@
     "PageID": "SelectALitigationFriend",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "respondent2SameLegalRepresentative=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
