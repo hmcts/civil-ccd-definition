@@ -877,5 +877,63 @@
     "Label": " ",
     "FieldType": "HomeDetailsLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQIncomeAndExpenseLabel",
+    "Label": "## ${respondent1.partyName}'s income and expenses\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQCarerAllowanceCredit",
+    "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRecurringIncome",
+    "Label": "Add details of any regular income your client receives:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringIncome",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRecurringExpenses",
+    "Label": "Add details of any regular expenses your client has:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringExpense",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1RepaymentPlanLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1RepaymentPlan",
+    "Label": " ",
+    "FieldType": "RepaymentPlanLRspec",
+    "SecurityClassification": "Public"
   }
 ]
