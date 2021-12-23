@@ -175,7 +175,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y"
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "solicitorReferences",
@@ -184,6 +184,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "SolicitorReferences",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
   }
 ]

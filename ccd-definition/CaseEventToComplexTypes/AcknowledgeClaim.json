@@ -9,6 +9,14 @@
   },
   {
     "ID": "SolicitorReferences",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "solicitorReferences",
+    "ListElementCode": "respondentSolicitor2Reference",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorReferences",
     "CaseEventID": "ACKNOWLEDGE_SERVICE",
     "CaseFieldID": "solicitorReferences",
     "ListElementCode": "applicantSolicitor1Reference",

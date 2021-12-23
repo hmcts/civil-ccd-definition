@@ -98,5 +98,19 @@
     "PageID": "ResponseIntention",
     "FieldShowCondition": "addApplicant2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseEventFieldLabel": "Your File Reference",
+    "CaseFieldID": "respondentSolicitor2Reference",
+    "PageLabel": "Solicitor References",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SolicitorReferences",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent1 = \"No\" AND respondent2SameLegalRepresentative = \"No\" "
   }
+
 ]
