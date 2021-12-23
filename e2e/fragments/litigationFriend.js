@@ -5,7 +5,7 @@ module.exports = {
 
   fields: function (partyType) {
     return {
-      litigationFriendName: `#${partyType}GenericLitigationFriend_fullName`,
+      litigationFriendName: `#${partyType}genericLitigationFriend_fullName`,
       litigantInFriendDifferentAddress: {
         id: `#${partyType}LitigationFriend_hasSameAddressAsLitigant`,
         options: {
