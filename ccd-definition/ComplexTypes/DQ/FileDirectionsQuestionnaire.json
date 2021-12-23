@@ -1,13 +1,6 @@
 [
   {
     "ID": "FileDirectionsQuestionnaire",
-    "ListElementCode": "label",
-    "FieldType": "Label",
-    "ElementLabel": "This claim has been provisionally allocated to ${allocatedTrack} Track.",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FileDirectionsQuestionnaire",
     "ListElementCode": "explainedToClient",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FileDirectionsQuestionnaireConfirm",
