@@ -5,7 +5,7 @@ module.exports = {
 
   fields: function () {
     return {
-      litigationFriendName: 'genericLitigationFriend_fullName',
+      litigationFriendName: '#genericLitigationFriend_fullName',
       litigantInFriendDifferentAddress: {
         id: 'LitigationFriend_hasSameAddressAsLitigant',
         options: {
@@ -13,8 +13,8 @@ module.exports = {
           no: 'No'
         }
       },
-      litigantInFriendAddress: 'genericLitigationFriend_primaryAddress_primaryAddress',
-      certificateOfSuitability: 'genericLitigationFriend_certificateOfSuitability_0_document'
+      litigantInFriendAddress: '#genericLitigationFriend_primaryAddress_primaryAddress',
+      certificateOfSuitability: '#genericLitigationFriend_certificateOfSuitability_0_document'
     };
   },
 
