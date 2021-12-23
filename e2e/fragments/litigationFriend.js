@@ -3,18 +3,18 @@ const postcodeLookup = require('./addressPostcodeLookup');
 
 module.exports = {
 
-  fields: function (partyType) {
+  fields: function () {
     return {
-      litigationFriendName: `#${partyType}genericLitigationFriend_fullName`,
+      litigationFriendName: 'genericLitigationFriend_fullName',
       litigantInFriendDifferentAddress: {
-        id: `#${partyType}LitigationFriend_hasSameAddressAsLitigant`,
+        id: 'LitigationFriend_hasSameAddressAsLitigant',
         options: {
           yes: 'Yes',
           no: 'No'
         }
       },
-      litigantInFriendAddress: `#${partyType}LitigationFriend_primaryAddress_primaryAddress`,
-      certificateOfSuitability: `#${partyType}LitigationFriend_certificateOfSuitability_0_document`
+      litigantInFriendAddress: 'genericLitigationFriend_primaryAddress_primaryAddress',
+      certificateOfSuitability: 'genericLitigationFriend_certificateOfSuitability_0_document'
     };
   },
 
