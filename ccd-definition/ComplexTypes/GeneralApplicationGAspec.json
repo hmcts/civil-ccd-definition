@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppType",
+    "FieldType": "GATypeGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppRespondentAgreement",
+    "FieldType": "GARespondentAgreementGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppUrgencyRequirement",
+    "FieldType": "GAUrgencyRecordGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
