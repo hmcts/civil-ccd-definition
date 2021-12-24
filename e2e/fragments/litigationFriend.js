@@ -7,7 +7,7 @@ module.exports = {
     return {
       litigationFriendName: '#genericLitigationFriend_fullName',
       litigantInFriendDifferentAddress: {
-        id: 'genericLitigationFriend_hasSameAddressAsLitigant',
+        id: '#genericLitigationFriend_hasSameAddressAsLitigant',
         options: {
           yes: 'Yes',
           no: 'No'
