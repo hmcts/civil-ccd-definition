@@ -20,7 +20,7 @@ module.exports = {
       I.click(this.fields.childApplicant.options.yes);
     });
 
-   await litigationFriend.enterLitigantFriendWithDifferentAddressToLitigant('applicant1', address, file);
+   await litigationFriend.enterLitigantFriendWithDifferentAddressToLitigant(address, file);
 
     await I.clickContinue();
   }

@@ -5,7 +5,7 @@ module.exports = {
 
   async enterLitigantFriendWithDifferentAddressToDefendant(address, file) {
     await I.runAccessibilityTest();
-    await litigationFriend.enterLitigantFriendWithDifferentAddressToLitigant('genericLitigationFriend', address, file);
+    await litigationFriend.enterLitigantFriendWithDifferentAddressToLitigant(address, file);
     await I.clickContinue();
   }
 };
