@@ -3,35 +3,35 @@ const postcodeLookup = require('./addressPostcodeLookup');
 
 module.exports = {
 
-  fields: function () {
+  fields: function (partyType) {
     return {
-      litigationFriendName: '#genericLitigationFriend_fullName',
+      litigationFriendName: `#${partyType}LitigationFriend_fullName`,
       litigantInFriendDifferentAddress: {
-        id: '#genericLitigationFriend_hasSameAddressAsLitigant',
+        id: `#${partyType}LitigationFriend_hasSameAddressAsLitigant`,
         options: {
           yes: 'Yes',
           no: 'No'
         }
       },
-      litigantInFriendAddress: '#genericLitigationFriend_primaryAddress_primaryAddress',
-      certificateOfSuitability: '#genericLitigationFriend_certificateOfSuitability_0_document'
+      litigantInFriendAddress: `#${partyType}LitigationFriend_primaryAddress_primaryAddress`,
+      certificateOfSuitability: `#${partyType}LitigationFriend_certificateOfSuitability_0_document`
     };
   },
 
   async enterLitigantFriendWithDifferentAddressToLitigant(partyType, address, file) {
-    I.fillField(this.fields.litigationFriendName, 'John Smith');
+    I.fillField(this.fields(partyType).litigationFriendName, 'John Smith');
 
-    await within(this.fields.litigantInFriendDifferentAddress.id, () => {
-      I.click(this.fields.litigantInFriendDifferentAddress.options.no);
+    await within(this.fields(partyType).litigantInFriendDifferentAddress.id, () => {
+      I.click(this.fields(partyType).litigantInFriendDifferentAddress.options.no);
     });
 
-    await within(this.fields.litigantInFriendAddress, () => {
+    await within(this.fields(partyType).litigantInFriendAddress, () => {
       postcodeLookup.enterAddressManually(address);
     });
 
     await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields.certificateOfSuitability);
-    I.attachFile(this.fields.certificateOfSuitability, file);
+    I.waitForElement(this.fields(partyType).certificateOfSuitability);
+    I.attachFile(this.fields(partyType).certificateOfSuitability, file);
     await I.waitForInvisible(locate('.error-message').withText('Uploading...'));
   }
 };
