@@ -2,7 +2,7 @@
   {
     "ID": "DefendantLitigationFriend",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "fullName",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -10,7 +10,7 @@
   {
     "ID": "DefendantLitigationFriend",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "hasSameAddressAsLitigant",
     "EventElementLabel": "Is the address of the Defendant’s litigation friend the same as the address of the Defendant?",
     "FieldDisplayOrder": 2,
@@ -19,7 +19,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.AddressLine1",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -27,7 +27,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.AddressLine2",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -35,7 +35,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
@@ -43,7 +43,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.PostTown",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
@@ -51,7 +51,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.County",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -59,7 +59,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.Country",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
@@ -67,7 +67,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress.PostCode",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
@@ -75,7 +75,7 @@
   {
     "ID": "RespondentSolicitor1Organisation",
     "CaseEventID": "ADD_DEFENDANT_LITIGATION_FRIEND",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "certificateOfSuitability.document",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
