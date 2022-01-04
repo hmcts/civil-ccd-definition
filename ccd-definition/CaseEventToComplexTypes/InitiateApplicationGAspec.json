@@ -89,27 +89,11 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "StatementOfTruth",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppUploadEvidences",
-    "ListElementCode": "evidenceDocument",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingDetails",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "hearingDateLabel",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "HearingDetails",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "hearingYesorNo",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -117,15 +101,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "hearingDate",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingDetails",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "judgeRequiredLabel",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -133,7 +109,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "judgeRequiredYesOrNo",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -141,15 +117,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "judgeName",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingDetails",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "trialDateFixedLabel",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -157,7 +125,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "trialRequiredYesOrNo",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -165,7 +133,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "trialRequiredLabel",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -173,7 +141,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "trialDateFrom",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -181,7 +149,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "trialDateTo",
-    "FieldDisplayOrder": 11,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -189,7 +157,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingPreferencesDetailLabel",
-    "FieldDisplayOrder": 12,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -197,7 +165,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingPreferencesPreferredType",
-    "FieldDisplayOrder": 13,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -205,7 +173,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "TelephoneHearingPreferredType",
-    "FieldDisplayOrder": 14,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -213,7 +181,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "ReasonForPreferredHearingType",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -221,7 +189,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingPreferredLocationLabel",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -229,7 +197,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingPreferredLocation",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -237,7 +205,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingDetailsTelephoneNumber",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -245,7 +213,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingDetailsEmailID",
-    "FieldDisplayOrder": 19,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -253,15 +221,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingDuration",
-    "FieldDisplayOrder": 20,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingDetails",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "UnavailableTrialDateFixedLabel",
-    "FieldDisplayOrder": 21,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -269,7 +229,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "UnavailableTrailRequiredYesOrNo",
-    "FieldDisplayOrder": 22,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -277,7 +237,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "UnavailableTrailDateFrom",
-    "FieldDisplayOrder": 23,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -285,7 +245,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "UnavailableTrailDateTo",
-    "FieldDisplayOrder": 24,
+    "FieldDisplayOrder": 20,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -293,7 +253,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingSupportRequirementsLabel",
-    "FieldDisplayOrder": 25,
+    "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -301,7 +261,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "SupportRequirement",
-    "FieldDisplayOrder": 26,
+    "FieldDisplayOrder": 22,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -309,7 +269,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "SupportRequirementSignLanguage",
-    "FieldDisplayOrder": 27,
+    "FieldDisplayOrder": 23,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -317,7 +277,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "SupportRequirementLanguageInterpreter",
-    "FieldDisplayOrder": 28,
+    "FieldDisplayOrder": 24,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -325,7 +285,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "SupportRequirementOther",
-    "FieldDisplayOrder": 29,
+    "FieldDisplayOrder": 25,
     "DisplayContext": "MANDATORY"
   },
   {
