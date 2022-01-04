@@ -135,7 +135,7 @@ withPipeline(type, product, component) {
       ./gradlew highLevelDataSetup --args="PREVIEW"
       git clone https://github.com/hmcts/civil-camunda-bpmn-definition.git
       git checkout master
-      cp ./civil-camunda-bpmn-definition/src/main/resources/camunda .
+      cp -r ./civil-camunda-bpmn-definition/src/main/resources/camunda .
       rm -rf ./civil-camunda-bpmn-definition
       ./bin/import-bpmn-diagram.sh .
     """
