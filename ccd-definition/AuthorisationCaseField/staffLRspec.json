@@ -148,5 +148,17 @@
     "CaseFieldID": "specDefendant1Debts",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "SmallClaimHearingInterpreterDescriptionPartAdmit",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -647,5 +647,42 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "Statement of truth",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "PageDisplayOrder": 30,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaimHearingPartAdmit",
+    "CaseEventFieldLabel": "Hearing",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND responseClaimTrack= \"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "SmallClaimHearingInterpreterRequiredPartAdmit",
+    "PageDisplayOrder": 30,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimHearingPartAdmit",
+    "CaseEventFieldLabel": "Will you be using an interpreter at the hearing, either for your client, or for a witness?",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "SmallClaimHearingInterpreterDescriptionPartAdmit",
+    "PageDisplayOrder": 30,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimHearingPartAdmit",
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Type of interpreter",
+    "FieldShowCondition": "SmallClaimHearingInterpreterRequiredPartAdmit=\"Yes\""
   }
 ]

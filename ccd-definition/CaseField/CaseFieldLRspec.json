@@ -935,5 +935,26 @@
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHearingSmallClaimPartAdmit",
+    "Label": "Respondent 1 Hearing",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SmallClaimHearingInterpreterRequiredPartAdmit",
+    "FieldType": "YesOrNo",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SmallClaimHearingInterpreterDescriptionPartAdmit",
+    "FieldType": "TextArea",
+    "Label": "Type of interpreter",
+    "SecurityClassification": "Public"
   }
 ]

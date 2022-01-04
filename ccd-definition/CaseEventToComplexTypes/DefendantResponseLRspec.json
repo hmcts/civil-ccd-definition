@@ -542,5 +542,53 @@
     "ListElementCode": "loanCardDebtDetails.monthlyPayment",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "ListElementCode": "unavailableDatesRequired",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "ListElementCode": "SmallClaimUnavailableDate.who",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "ListElementCode": "SmallClaimUnavailableDate.SmallClaimUnavailableDateType",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "ListElementCode": "SmallClaimUnavailableDate.date",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "ListElementCode": "SmallClaimUnavailableDate.fromDate",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaimPartAdmit",
+    "ListElementCode": "SmallClaimUnavailableDate.toDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   }
 ]
