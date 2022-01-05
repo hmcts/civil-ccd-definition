@@ -532,9 +532,9 @@ const deleteCaseFields = (...caseFields) => {
 };
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+  console.log("Env type..", config.env);
   console.log(`Asserting user ${user.type} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  console.log("Env type..", config.env);
   if (config.env == 'preview') {
     expect(caseForDisplay.triggers).to.include(expectedEvents[user.type][state]);
   } else {
