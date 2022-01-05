@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "STRIKE_OUT",
+    "ListElement": "Strike Out",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "SUMMARY_JUDGEMENT",
+    "ListElement": "Summary Judgement",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "STAY_THE_CLAIM",
+    "ListElement": "Stay the claim",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "EXTEND_TIME",
+    "ListElement": "Extend Time",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "SET_ASIDE_JUDGEMENT",
+    "ListElement": "Set aside judgement",
+    "DisplayOrder": 5
+  }
+]
