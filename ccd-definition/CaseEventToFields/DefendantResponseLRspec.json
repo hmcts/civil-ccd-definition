@@ -604,7 +604,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFurtherInformation",
-    "PageDisplayOrder": 33,
+    "PageDisplayOrder": 21,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "FurtherInformation",
