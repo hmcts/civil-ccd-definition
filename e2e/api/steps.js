@@ -87,8 +87,8 @@ module.exports = {
     await assignCaseToDefendant(caseId);
     console.log("Env type..", config.env);
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED', config.env);
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED', config.env);
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED', config.env);
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED', config.env);
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
