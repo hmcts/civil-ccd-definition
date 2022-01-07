@@ -86,8 +86,8 @@ module.exports = {
 
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED', config.runningEnv);
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED', config.runningEnv);
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
@@ -531,10 +531,14 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
-const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-  console.log(`Asserting user ${user.type} ....modify has correct permissions`);
+const assertCorrectEventsAreAvailableToUser = async (user, state, runningEnv) => {
+  console.log(`Asserting user ${user.type} ....modify env..${runningEnv}.. has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+  if (env == 'preview') {
+    expect(caseForDisplay.triggers).to.include(expectedEvents[user.type][state]);
+  } else {
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+  }
 };
 
 // const assertCaseNotAvailableToUser = async (user) => {
