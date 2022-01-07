@@ -535,7 +535,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state, runningEnv) =>
   console.log(`Asserting user ${user.type} ....modify env..${runningEnv}.. has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (runningEnv == 'preview') {
-    expect(caseForDisplay.triggers).to.include(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include(expectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
