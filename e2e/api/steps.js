@@ -532,7 +532,7 @@ const deleteCaseFields = (...caseFields) => {
 };
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-  console.log(`Asserting user ${user.type} in env ${env} has correct permissions`);
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (config.runningEnv == 'preview') {
     expect(caseForDisplay.triggers).to.depp.include.members(expectedEvents[user.type][state]);
