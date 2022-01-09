@@ -134,9 +134,10 @@ withPipeline(type, product, component) {
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./gradlew highLevelDataSetup --args="PREVIEW"
       git clone https://github.com/hmcts/civil-camunda-bpmn-definition.git
+      cd civil-camunda-bpmn-definition
       git checkout master
-      cp -r ./civil-camunda-bpmn-definition/src/main/resources/camunda .
-      rm -rf ./civil-camunda-bpmn-definition
+      cp -r ./src/main/resources/camunda ../
+      rm -rf ../civil-camunda-bpmn-definition
       ./bin/import-bpmn-diagram.sh .
     """
     env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
