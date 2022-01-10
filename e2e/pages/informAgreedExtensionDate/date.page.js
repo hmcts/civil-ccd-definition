@@ -14,7 +14,7 @@ module.exports = {
 
   async enterExtensionDate(respondentSolicitorNumber) {
     await I.runAccessibilityTest();
-    await date.enterDate(this.fields(respondentSolicitorNumber).extensionDate.id, 50);
+    await date.enterDate(this.fields(respondentSolicitorNumber).extensionDate.id);
     await I.clickContinue();
   }
 };
