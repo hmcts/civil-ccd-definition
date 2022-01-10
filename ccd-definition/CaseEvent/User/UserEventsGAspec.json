@@ -18,7 +18,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",a
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_GENERAL_APPLICATION",
     "Name": "Make an application",
     "Description": "Application created, post actions triggered",
