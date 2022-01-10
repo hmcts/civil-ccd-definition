@@ -6,7 +6,7 @@ branchName=$1
 git clone https://github.com/hmcts/civil-camunda-bpmn-definition.git
 cd civil-camunda-bpmn-definition
 
-echo "$(Switch to ${branchName} branch on civil-camunda-bpmn-definition)"
+echo "Switch to ${branchName} branch on civil-camunda-bpmn-definition"
 git checkout ${branchName}
 cd ..
 
