@@ -12,8 +12,13 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
