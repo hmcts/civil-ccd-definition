@@ -85,9 +85,8 @@ module.exports = {
     });
 
     await assignCaseToDefendant(caseId);
-    console.log("Env type..", config.env);
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED', config.runningEnv);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED', config.runningEnv);
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
@@ -533,9 +532,9 @@ const deleteCaseFields = (...caseFields) => {
 };
 
 const assertCorrectEventsAreAvailableToUser = async (user, state, runningEnv) => {
-  console.log(`Asserting user ${user.type} has correct permissions`);
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  if (runningEnv == 'preview') {
+  if (config.runningEnv == 'preview') {
     expect(caseForDisplay.triggers).to.depp.include.members(expectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
