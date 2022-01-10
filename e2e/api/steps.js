@@ -87,7 +87,7 @@ module.exports = {
     await assignCaseToDefendant(caseId);
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED', config.runningEnv);
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
     // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
