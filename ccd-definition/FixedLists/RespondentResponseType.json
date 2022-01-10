@@ -20,7 +20,7 @@
   {
     "ID": "RespondentResponseType",
     "ListElementCode": "COUNTER_CLAIM",
-    "ListElement": "Defends all of the claim and wants to counterclaim",
+    "ListElement": "Reject all of the claim and wants to counterclaim",
     "DisplayOrder": 4
   }
 ]

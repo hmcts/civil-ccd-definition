@@ -9,7 +9,7 @@ module.exports = {
         fullDefence: 'Rejects all of the claim',
         fullAdmission: 'Admits all of the claim',
         partAdmission: 'Admits part of the claim',
-        counterClaim: 'Defends all of the claim and wants to counterclaim'
+        counterClaim: 'Reject all of the claim and wants to counterclaim'
       }
     }
   },
