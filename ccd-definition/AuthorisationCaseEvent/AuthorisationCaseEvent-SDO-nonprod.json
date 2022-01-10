@@ -6,17 +6,12 @@
       {
         "UserRoles": [
 
-          "caseworker-civil-judge"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-judge",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
-      {
+     {
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
