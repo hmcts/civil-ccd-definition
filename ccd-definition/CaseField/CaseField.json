@@ -1061,7 +1061,7 @@
   "SecurityClassification": "Public"
 },{
   "CaseTypeID": "CIVIL",
-  "ID": "respondent2PartyNameLabel",
+  "ID": "respondent2PartyName",
   "Label": "**Defendant: ${respondent2.partyName} intends to**",
   "FieldType": "Label",
   "SecurityClassification": "Public"

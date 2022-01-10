@@ -2415,7 +2415,7 @@
   ]
 }, {
   "CaseTypeID": "CIVIL",
-  "CaseFieldID": "respondent2PartyNameLabel",
+  "CaseFieldID": "respondent2PartyName",
   "AccessControl": [
     {
       "UserRoles": [

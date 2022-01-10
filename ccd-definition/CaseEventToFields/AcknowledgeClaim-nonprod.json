@@ -36,7 +36,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "respondent2PartyNameLabel",
+    "CaseFieldID": "respondent2PartyName",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
