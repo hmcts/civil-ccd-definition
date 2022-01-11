@@ -19,7 +19,8 @@
     "PageID": "SelectALitigationFriend",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2SameLegalRepresentative=\"Yes\""
+    "PageShowCondition": "respondent2SameLegalRepresentative=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/select-litigant-friend"
   },
   {
     "CaseTypeID": "CIVIL",
