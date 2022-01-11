@@ -1,0 +1,34 @@
+[
+  {
+    "ID": "RecurringExpense",
+    "ListElementCode": "type",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ExpenseType",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RecurringExpense",
+    "ListElementCode": "typeOtherDetails",
+    "FieldType": "Text",
+    "ElementLabel": "Type of expense",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "type = \"OTHER\""
+  },
+  {
+    "ID": "RecurringExpense",
+    "ListElementCode": "amount",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Amount paid",
+    "HintText": "Only include the amount your client is paying to clear previously missed regular payments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RecurringExpense",
+    "ListElementCode": "frequency",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "WeekMonthPeriod",
+    "ElementLabel": "Paid every:",
+    "SecurityClassification": "Public"
+  }
+]
