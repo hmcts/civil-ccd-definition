@@ -1,16 +1,9 @@
 [
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "hearingDateLabel",
-    "ElementLabel": "### Do you have a hearing scheduled?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "hearingYesorNo",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Do you have a hearing scheduled?",
     "SecurityClassification": "Public"
   },
   {
@@ -23,16 +16,9 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "judgeRequiredLabel",
-    "ElementLabel": "### Is your case reserved to a judge?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "judgeRequiredYesOrNo",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Is your case reserved to a judge?",
     "SecurityClassification": "Public"
   },
   {
@@ -43,18 +29,12 @@
     "SecurityClassification": "Public",
     "FieldShowCondition": "judgeRequiredYesOrNo = \"Yes\""
   },
-  {
-    "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "trialDateFixedLabel",
-    "ElementLabel": "### Has the trial been fixed?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
+
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "trialRequiredYesOrNo",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Has the trial been fixed?",
     "SecurityClassification": "Public"
   },
   {
@@ -84,14 +64,14 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesDetailLabel",
-    "ElementLabel": "## Your hearing preferences\n #### Choose your preferred type of hearing.\nA judge will still need to approve the hearing.\n",
+    "ElementLabel": "## Your hearing preferences\n #### A judge will still need to approve the hearing.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesPreferredType",
-    "ElementLabel": " ",
+    "ElementLabel": "Choose your preferred type of hearing.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingTypeGAspec",
     "SecurityClassification": "Public"
@@ -149,16 +129,9 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "UnavailableTrialDateFixedLabel",
-    "ElementLabel": "### Are there any dates when you cannot attend a hearing within the next 3 months?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "UnavailableTrailRequiredYesOrNo",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
     "SecurityClassification": "Public"
   },
   {
@@ -180,7 +153,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
-    "ElementLabel": "#### Support requirements(optional)\n Select any support you, your client and any experts or\nwitness you would require for a court hearing\n",
+    "ElementLabel": "#### Support requirements(optional)\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -189,7 +162,7 @@
     "ListElementCode": "SupportRequirement",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
-    "ElementLabel": " ",
+    "ElementLabel": "Select any support you, your client and any experts or witness you would require for a court hearing",
     "SecurityClassification": "Public"
   },
   {
