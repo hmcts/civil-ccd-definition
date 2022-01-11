@@ -549,6 +549,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "selectedLitigationFriend",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "genericLitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
