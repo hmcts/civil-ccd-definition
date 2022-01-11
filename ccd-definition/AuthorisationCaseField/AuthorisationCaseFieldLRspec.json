@@ -375,8 +375,7 @@
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin",
-      "caseworker-civil-judge"
+      "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },

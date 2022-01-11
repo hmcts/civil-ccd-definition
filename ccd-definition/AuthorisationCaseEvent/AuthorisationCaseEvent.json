@@ -568,14 +568,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -587,14 +587,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
