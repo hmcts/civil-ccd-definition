@@ -52,6 +52,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseType",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
@@ -108,16 +109,5 @@
     "PageID": "RespondentResponseType",
     "FieldShowCondition": "addApplicant2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2ClaimResponseDocument",
-    "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Upload",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
   }
 ]
