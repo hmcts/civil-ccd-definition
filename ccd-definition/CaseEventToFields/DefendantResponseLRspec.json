@@ -146,7 +146,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" OR respondent1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "N"
   },
   {
