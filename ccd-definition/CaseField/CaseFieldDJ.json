@@ -23,14 +23,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CPRConfirmation1",
-    "Label": "I certify that all of these statements apply to the defendant",
+    "Label": "I certify that all of these statements are correct and apply to the defendant",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "CPRConfirmation2",
-    "Label": "I certify that all of these statements apply to the defendants",
+    "Label": "I certify that all of these statements are correct and apply to the defendants",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
