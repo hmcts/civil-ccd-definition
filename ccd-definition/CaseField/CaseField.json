@@ -549,13 +549,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "selectedLitigationFriend",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "genericLitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
@@ -578,20 +571,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDate",
-    "Label": "Defendant response date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2ResponseDate",
-    "Label": "Defendant response date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "genericResponseDate",
     "Label": "Defendant response date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
@@ -832,20 +811,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2LitigationFriendDate",
-    "Label": "Date respondent 2 added or last updated litigation friend",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "genericLitigationFriendDate",
-    "Label": "Date generic respondent  added or last updated litigation friend",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriendCreatedDate",
     "Label": "Date respondent 1 added litigation friend",
     "FieldType": "DateTime",
@@ -853,15 +818,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2LitigationFriendCreatedDate",
-    "Label": "Date respondent 2 added litigation friend",
+    "ID": "respondent2LitigationFriendDate",
+    "Label": "Date respondent 2 added or last updated litigation friend",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "genericLitigationFriendCreatedDate",
-    "Label": "Date generic respondent added litigation friend",
+    "ID": "respondent2LitigationFriendCreatedDate",
+    "Label": "Date respondent 2 added litigation friend",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
