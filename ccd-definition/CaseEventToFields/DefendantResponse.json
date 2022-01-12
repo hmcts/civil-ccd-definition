@@ -192,7 +192,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "SolicitorReferences",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -239,7 +238,6 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
     "ShowSummaryChangeOption": "Y"
   },
   {
