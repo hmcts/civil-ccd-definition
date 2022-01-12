@@ -24,7 +24,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "[CREATOR]"
+          "[CREATOR]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       },
