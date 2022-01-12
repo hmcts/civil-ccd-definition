@@ -9,7 +9,68 @@
 "PageDisplayOrder": 1,
 "PageColumnNumber": 1,
 "CaseEventFieldLabel": "Against which Defendant are you requesting default judgment ?",
-"ShowSummaryChangeOption": "Y"
+"ShowSummaryChangeOption": "Y",
+"CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/showcertifystatement"
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "CPRcertify",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "showcertifystatement",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "bothDefendants=\"One\"",
+    "PageLabel": "Do all of these statements apply to the Defendant?"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "CPRcertifys",
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "bothDefendants=\"Both Defendants\"",
+    "DisplayContext": "READONLY",
+    "PageLabel": "Do all of these statements apply to the Defendants?",
+    "PageID": "showcertifystatement1",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "CPRConfirmation1",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "showcertifystatement",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "CPRConfirmation2",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "showcertifystatement1",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "bothDefendants",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "showcertifystatement",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "defendantDetails=\"Both\""
+  }
+]
 
-}
-  ]

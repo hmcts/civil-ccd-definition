@@ -982,4 +982,5 @@
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   }
-]
+  ]
+
