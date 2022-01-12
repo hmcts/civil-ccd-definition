@@ -543,7 +543,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2LitigationFriend",
-    "Label": "Defendant litigation details",
+    "Label": "Defendant 2 litigation details",
     "FieldType": "LitigationFriend",
     "SecurityClassification": "Public"
   },
