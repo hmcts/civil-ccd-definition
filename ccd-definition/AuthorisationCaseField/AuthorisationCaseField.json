@@ -2241,23 +2241,5 @@
         "CRUD": "CRUD"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendantDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
