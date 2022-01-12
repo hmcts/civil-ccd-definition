@@ -68,7 +68,19 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND specDefenceAdmittedRequired = \"No\""
+    "PageShowCondition": "specDefenceFullAdmittedRequired =\"No\" OR specDefenceAdmittedRequired = \"No\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
+    "PageDisplayOrder": 9,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\""
   },
   {
     "CaseTypeID": "CIVIL",
