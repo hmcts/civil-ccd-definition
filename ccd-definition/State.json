@@ -30,7 +30,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "AWAITING_APPLICANT_INTENTION",
-    "Name": "Claimant Intent Pending",
+    "Name": "Do not merge",
     "Description": "Claimant Intent Pending",
     "DisplayOrder": 5
   },
