@@ -30,7 +30,7 @@
     "PageID": "LitigationFriend",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "respondent2SameLegalRepresentative!=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
