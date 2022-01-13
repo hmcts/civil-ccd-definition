@@ -88,30 +88,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppDetailsOfOrderLabel",
-    "Label": "What order do you want the court to make?",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "generalAppDetailsOfOrder",
-    "Label": " ",
+    "Label": "What order do you want the court to make?",
     "HintText": "This is the draft order that you are requesting from the court",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppReasonsOfOrderLabel",
-    "Label": "Reasons for requesting this order",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "generalAppReasonsOfOrder",
-    "Label": " ",
+    "Label": "Reasons for requesting this order",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
@@ -120,13 +106,6 @@
     "ID": "generalAppUploadEvidenceLabel",
     "Label": "## Upload any evidence that supports your application (optional) \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "generalAppUploadEvidences",
-    "Label": " ",
-    "FieldType": "StatementOfTruthGAspec",
     "SecurityClassification": "Public"
   },
   {
@@ -143,7 +122,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppHearingDetails",
-    "Label": " ",
+    "Label": "Scheduled hearings and trials",
     "FieldType": "GAHearingDetailsGAspec",
     "SecurityClassification": "Public"
   },
@@ -155,5 +134,14 @@
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds applicant's PBA details.",
     "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "evidenceDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Supporting evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
   }
 ]
