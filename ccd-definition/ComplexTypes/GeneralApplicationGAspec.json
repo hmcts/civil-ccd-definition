@@ -80,7 +80,7 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "evidenceDocument",
+    "ListElementCode": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "ElementLabel": " ",

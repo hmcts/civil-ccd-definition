@@ -304,7 +304,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "evidenceDocument",
+    "ListElementCode": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }

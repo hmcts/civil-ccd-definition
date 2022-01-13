@@ -25,7 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "evidenceDocument",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },

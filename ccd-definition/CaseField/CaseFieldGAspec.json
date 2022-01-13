@@ -137,7 +137,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "evidenceDocument",
+    "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Supporting evidence",

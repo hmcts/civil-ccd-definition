@@ -53,7 +53,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "evidenceDocument",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "AccessControl": [
       {
         "UserRoles": [

@@ -91,7 +91,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "evidenceDocument",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
