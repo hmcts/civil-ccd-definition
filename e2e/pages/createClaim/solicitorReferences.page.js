@@ -1,4 +1,5 @@
 const {I} = inject();
+const { solicitorReferences } = require('../../fixtures/events/createClaim.js').createClaim.valid.References;
 
 module.exports = {
 
@@ -10,8 +11,8 @@ module.exports = {
   async enterReferences() {
     I.waitForElement(this.fields.applicantReference);
     await I.runAccessibilityTest();
-    I.fillField(this.fields.applicantReference, 'Applicant Reference');
-    I.fillField(this.fields.respondentReference, 'Respondent Reference');
+    I.fillField(this.fields.applicantReference, solicitorReferences.applicantSolicitor1Reference);
+    I.fillField(this.fields.respondentReference, solicitorReferences.respondentSolicitor1Reference);
     await I.clickContinue();
   }
 };

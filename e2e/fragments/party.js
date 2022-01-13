@@ -1,4 +1,5 @@
 const {I} = inject();
+const { applicant1: claimant } = require('../fixtures/events/createClaim.js').createClaim.valid.Claimant;
 const postcodeLookup = require('./addressPostcodeLookup');
 
 module.exports = {
@@ -6,12 +7,6 @@ module.exports = {
     return {
       type: {
         id: `#${partyType}_type`,
-        options: {
-          individual: 'Individual',
-          company: 'Company',
-          organisation: 'Organisation',
-          soleTrader: 'Sole trader',
-        }
       },
       company: {
         name: `#${partyType}_companyName`
@@ -24,10 +19,10 @@ module.exports = {
     I.waitForElement(this.fields(partyType).type.id);
     await I.runAccessibilityTest();
     await within(this.fields(partyType).type.id, () => {
-      I.click(this.fields(partyType).type.options.company);
+      I.click({id: `${partyType}_type-${claimant.type}`});
     });
 
-    I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
+    I.fillField(this.fields(partyType).company.name, claimant.companyName);
 
     await within(this.fields(partyType).address, () => {
       postcodeLookup.enterAddressManually(address);
