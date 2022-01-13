@@ -93,5 +93,12 @@
     "ElementLabel": " ",
     "FieldType": "BusinessProcess",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isMultiParty",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
