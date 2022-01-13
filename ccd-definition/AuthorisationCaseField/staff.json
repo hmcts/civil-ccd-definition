@@ -97,6 +97,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigantFriendSelection",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFee",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

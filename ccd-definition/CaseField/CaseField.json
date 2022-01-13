@@ -121,6 +121,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "litigantFriendSelection",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimFee",
     "Label": "Claim fee",
     "FieldType": "Fee",

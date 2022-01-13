@@ -109,6 +109,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigantFriendSelection",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
