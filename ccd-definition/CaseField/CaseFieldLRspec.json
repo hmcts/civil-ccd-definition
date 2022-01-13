@@ -661,6 +661,7 @@
     "ID": "responseClaimWitnesses",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
+    "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
   },
   {
