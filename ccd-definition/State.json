@@ -47,5 +47,12 @@
     "Name": "Case Proceeds Offline",
     "Description": "Claim is not able to be progressed online in CCD and will be taken offline",
     "DisplayOrder": 7
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SDO_ISSUED",
+    "Name": "SDO Issued",
+    "Description": "Judge has issued an SDO on a claim",
+    "DisplayOrder": 8
   }
 ]

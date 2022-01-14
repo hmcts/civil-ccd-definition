@@ -142,6 +142,44 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "drawDirectionsOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "drawDirectionsOrderRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1",
     "AccessControl": [
       {

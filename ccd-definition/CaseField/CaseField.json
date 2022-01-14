@@ -981,5 +981,20 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrderRequired",
+    "Label": "Do you wish to enter judgement for a sum of damages to be decided?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrder",
+    "Label": "Judgement for the claimant is made for 100% of their claim for a sum to be decided by the court.",
+    "HintText": "Enter a different percentage for judgement (optional)",
+    "FieldType": "Number",
+    "SecurityClassification": "Public"
   }
 ]
