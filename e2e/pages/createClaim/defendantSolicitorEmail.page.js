@@ -1,4 +1,6 @@
 const {I} = inject();
+const { respondentSolicitor1EmailAddress } = require('../../fixtures/events/createClaim.js').createClaim
+  .valid.DefendantSolicitorEmail;
 
 module.exports = {
 
@@ -11,7 +13,7 @@ module.exports = {
   async enterSolicitorEmail(respondentSolicitorNumber) {
     I.waitForElement(this.fields(respondentSolicitorNumber).emailAddress);
     await I.runAccessibilityTest();
-    I.fillField(this.fields(respondentSolicitorNumber).emailAddress, 'civilunspecified@gmail.com');
+    I.fillField(this.fields(respondentSolicitorNumber).emailAddress, respondentSolicitor1EmailAddress);
     await I.clickContinue();
   },
 };

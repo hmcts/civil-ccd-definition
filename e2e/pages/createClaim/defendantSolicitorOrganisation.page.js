@@ -1,4 +1,6 @@
 const { I } = inject();
+const { OrgPolicyReference: defendantPolicyReference } = require('../../fixtures/events/createClaim.js').createClaim
+  .valid.DefendantSolicitorOrganisation.respondent1OrganisationPolicy;
 
 module.exports = {
 
@@ -23,7 +25,7 @@ module.exports = {
       I.click(this.fields(respondentNumber).respondentOrgRepresented.options.yes);
     });
     I.waitForElement(this.fields(respondentNumber).orgPolicyReference);
-    I.fillField(this.fields(respondentNumber).orgPolicyReference, 'Defendant policy reference');
+    I.fillField(this.fields(respondentNumber).orgPolicyReference, defendantPolicyReference);
     I.waitForElement(this.fields(respondentNumber).searchText);
     I.fillField(this.fields(respondentNumber).searchText, 'Civil');
     I.click(`a[title="Select the organisation Civil - Organisation ${respondentNumber}"]`);
