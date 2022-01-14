@@ -53,7 +53,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "evidenceDocument",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "AccessControl": [
       {
         "UserRoles": [
@@ -87,7 +87,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "CaseFieldID": "generalAppStatementOfTruth",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],

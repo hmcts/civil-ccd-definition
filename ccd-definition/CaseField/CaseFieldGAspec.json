@@ -44,9 +44,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppUIStatementOfTruth",
+    "ID": "generalAppStatementOfTruth",
     "Label": " ",
-    "FieldType": "StatementOfTruthGAspec",
+    "FieldType": "GAStatementOfTruthGAspec",
     "SecurityClassification": "Public",
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
@@ -137,7 +137,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "evidenceDocument",
+    "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Supporting evidence",

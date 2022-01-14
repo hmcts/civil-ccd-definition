@@ -25,7 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "evidenceDocument",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
@@ -43,7 +43,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "CaseFieldID": "generalAppStatementOfTruth",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
