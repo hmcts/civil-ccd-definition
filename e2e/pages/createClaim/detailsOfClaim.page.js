@@ -1,4 +1,6 @@
 const {I} = inject();
+const { detailsOfClaim } = require('../../fixtures/events/createClaim.js').createClaim
+  .valid.Details;
 
 module.exports = {
 
@@ -9,7 +11,7 @@ module.exports = {
   async enterDetailsOfClaim() {
     I.waitForElement(this.fields.detailsOfClaim);
     await I.runAccessibilityTest();
-    I.fillField(this.fields.detailsOfClaim, 'Test details of claim');
+    I.fillField(this.fields.detailsOfClaim, detailsOfClaim);
     await I.clickContinue();
   }
 };
