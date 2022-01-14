@@ -146,7 +146,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "[CREATOR]",
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONE]"
