@@ -6,6 +6,7 @@ import uk.gov.hmcts.contino.AppPipelineConfig
 def type = "java"
 def product = "civil"
 def component = "ccd"
+def camundaBranch = "master"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -29,14 +30,17 @@ def secrets = [
     secret('ccd-admin-web-oauth2-client-secret', 'ADMIN_WEB_IDAM_SECRET'),
     secret('idam-data-store-client-secret','IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET'),
     secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
-    secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD')
+    secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
+    secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY')
   ],
   'civil-${env}': [
     secret('microservicekey-civil-service', 'S2S_SECRET'),
     secret('ccd-importer-username', 'CCD_CONFIGURER_IMPORTER_USERNAME'),
-    secret('ccd-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
     secret('ccd-importer-password', 'CCD_CONFIGURER_IMPORTER_PASSWORD'),
+    secret('ccd-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
     secret('ccd-importer-password', 'DEFINITION_IMPORTER_PASSWORD'),
+    secret('postgres-user', 'POSTGRES_USER'),
+    secret('postgres-password', 'POSTGRES_PASSWORD')
   ]
 ]
 
@@ -48,9 +52,9 @@ def createGithubRelease() {
 
 def archiveCoreCaseDataDefinitions() {
   if ( env.ENVIRONMENT == 'aat') {
-    echo "current environemnt is ${env.ENVIRONMENT}"
+    echo "current environment is ${env.ENVIRONMENT}"
     for(PROD_ENV in ["aat","prod"]){
-      echo "environemnt is ${PROD_ENV}"
+      echo "environnt is ${PROD_ENV}"
       dir("${WORKSPACE}/bin") {
         sh """
           eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
@@ -130,8 +134,8 @@ withPipeline(type, product, component) {
     sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./gradlew highLevelDataSetup --args="PREVIEW"
-      ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-      ./bin/import-bpmn-diagram.sh .
+
+      ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
     env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"

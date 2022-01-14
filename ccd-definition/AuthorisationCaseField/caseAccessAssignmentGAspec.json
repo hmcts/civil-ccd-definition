@@ -16,5 +16,11 @@
     "CaseFieldID": "generalAppRespondentAgreement",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppUrgencyRequirement",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

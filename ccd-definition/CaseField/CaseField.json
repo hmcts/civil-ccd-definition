@@ -121,6 +121,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "litigantFriendSelection",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimFee",
     "Label": "Claim fee",
     "FieldType": "Fee",
@@ -549,6 +556,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriend",
+    "Label": "Defendant 2 litigation details",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriend",
+    "Label": "Defendant litigation details",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
@@ -818,6 +839,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriendDate",
+    "Label": "Date respondent 2 added or last updated litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriendCreatedDate",
+    "Label": "Date respondent 2 added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "uploadParticularsOfClaim",
     "Label": "Do you want to upload Particulars of claim?",
     "FieldType": "YesOrNo",
@@ -997,6 +1032,7 @@
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   },
   {
+<<<<<<< HEAD
   "CaseTypeID": "CIVIL",
   "ID": "claimant1Name",
   "Label": "Claimant 1 Name",
@@ -1059,34 +1095,39 @@
   "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
   "FieldType": "Label",
   "SecurityClassification": "Public"
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "ID": "respondent2PartyName",
   "Label": "**Defendant: ${respondent2.partyName} intends to**",
   "FieldType": "Label",
   "SecurityClassification": "Public"
-}, {
+},
+  {
   "CaseTypeID": "CIVIL",
   "ID": "respondent2ClaimResponseType",
   "Label": " ",
   "FieldType": "FixedRadioList",
   "FieldTypeParameter": "RespondentResponseType",
   "SecurityClassification": "Public"
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "ID": "applicant1PartyNameLabel2",
   "Label": "**against Claimant: ${applicant1.partyName}**",
   "FieldType": "Label",
   "SecurityClassification": "Public",
   "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "ID": "respondent1PartyNameLabel2",
   "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
   "FieldType": "Label",
   "SecurityClassification": "Public",
   "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "ID": "respondent1ClaimResponseIntentionTypeApplicant2",
   "Label": " ",
@@ -1100,5 +1141,12 @@
   "Label": "**against Claimant: ${applicant2.partyName}**",
   "FieldType": "Label",
   "SecurityClassification": "Public"
-}
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectLitigationFriend",
+    "Label": "Who requires a litigation friend?",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  }
 ]

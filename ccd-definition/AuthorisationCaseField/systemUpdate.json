@@ -109,6 +109,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigantFriendSelection",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitor1ClaimStatementOfTruth",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -329,7 +335,13 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
-    {
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimProceedsInCaseman",
     "UserRole": "caseworker-civil-systemupdate",
