@@ -63,6 +63,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "addApplicant2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmDetails",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2SameLegalRepresentative",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,

@@ -3,7 +3,7 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    respondentDetails: '#respondentDetails',
+      respondentDetails: '#respondentDetails',
   },
 
   async verifyDetails() {

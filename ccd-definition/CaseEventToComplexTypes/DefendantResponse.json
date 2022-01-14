@@ -16,6 +16,14 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "ResponseDocument",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2ClaimResponseDocument",
+    "ListElementCode": "file",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Party",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",

@@ -42,7 +42,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -53,7 +53,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -63,7 +63,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\"",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -87,5 +87,49 @@
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y",
     "Comment": "need to add OR respondent2ClaimResponseType=\"FULL_DEFENCE\" to show condition"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1PartyNameLabel2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponseType",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponseType",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addApplicant2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "applicant2PartyNameLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponseType",
+    "FieldShowCondition": "addApplicant2 = \"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2ClaimResponseDocument",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Upload",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
   }
 ]

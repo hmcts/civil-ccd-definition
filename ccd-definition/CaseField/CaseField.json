@@ -338,7 +338,29 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyNameLabel",
+    "Label": "**against Claimant: ${applicant2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseType",
+    "Label": "The defendant:",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSingleResponseRequiredLabel",
+    "Label": "You will be required to complete a single directions questionnaire for all defendants.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTypeToApplicant2",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
@@ -354,13 +376,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentSingleResponseRequiredLabel",
-    "Label": "You will be required to complete a single directions questionnaire for all defendants.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "responseHandOffLabel",
     "Label": "This online service only currently supports full defences. Post your response to:\n\nCounty Court Money Claims Centre\n\nPO Box 527\n\nSalford\n\nM5 0BY\n\nDX:702634 Salford 5",
     "FieldType": "Label",
@@ -369,6 +384,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseDocument",
+    "Label": "Upload defence",
+    "FieldType": "ResponseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ClaimResponseDocument",
     "Label": "Upload defence",
     "FieldType": "ResponseDocument",
     "SecurityClassification": "Public"

@@ -146,7 +146,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "[CREATOR]",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "CRU"
       },
@@ -651,6 +654,12 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -749,11 +758,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2ClaimResponseType",
+    "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "CRU"
       },
@@ -761,6 +770,25 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimResponseDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
@@ -841,17 +869,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimResponseDocument",
+    "CaseFieldID": "respondent2ClaimResponseType",
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
@@ -2183,7 +2212,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "[CREATOR]",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
