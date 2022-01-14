@@ -1,0 +1,34 @@
+[
+  {
+    "ID": "SolicitorReferences",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim_experts",
+    "ListElementCode": "expertDetails",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SolicitorReferences",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim_experts",
+    "ListElementCode": "expertName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorReferences",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim_experts",
+    "ListElementCode": "fieldofExpertise",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SolicitorReferences",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim_experts",
+    "ListElementCode": "estimatedCost",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  }
+]

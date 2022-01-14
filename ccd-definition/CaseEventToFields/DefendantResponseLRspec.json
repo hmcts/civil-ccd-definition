@@ -438,7 +438,7 @@
     "CaseFieldID": "respondToClaim_experts",
     "PageDisplayOrder": 27,
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "responseClaimExpertSpecRequired = \"Yes\""
