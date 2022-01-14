@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantDetailsSpec",
+    "Label": "Defendant Details",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  }
+]

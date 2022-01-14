@@ -1,0 +1,14 @@
+[
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "defendantDetailsSpec",
+    "DisplayContext": "MANDATORY",
+    "PageID": "defendantDetailsSpec",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "CaseEventFieldLabel": "Against which Defendant are you requesting default judgment?",
+    "ShowSummaryChangeOption": "Y"
+  }
+]
