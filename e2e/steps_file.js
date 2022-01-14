@@ -55,6 +55,11 @@ const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
 
+const applicationTypePage = require('./pages/generalApplication/applicationType.page');
+const consentCheckPage = require('./pages/generalApplication/consentCheck.page');
+const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
+const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
+const enterApplicationDetailsPage = require('./pages/generalApplication/applicationDetails.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -227,6 +232,19 @@ module.exports = function () {
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async makeAnApplication(applicationType) {
+      eventName = 'Make an application';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => applicationTypePage.selectApplicationType(applicationType),
+        () => consentCheckPage.selectConsentCheck('no'),
+        () => urgencyCheckPage.selectUrgencyRequirement('yes'),
+        () => withOutNoticePage.selectNotice('no'),
+        () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH)
       ]);
     },
 
