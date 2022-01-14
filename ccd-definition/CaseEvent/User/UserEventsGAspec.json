@@ -12,6 +12,7 @@
     "ShowEventNotes": "N",
     "EndButtonLabel": "Submit",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "http://docker.for.mac.localhost:4550/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
