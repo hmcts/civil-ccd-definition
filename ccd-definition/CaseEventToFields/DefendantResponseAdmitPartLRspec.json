@@ -167,7 +167,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartPaymentTimeRouteRequired=\"BY_A_SET_DATE\""
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartPaymentTimeRouteRequired=\"BY_SET_DATE\""
   },
   {
     "CaseTypeID": "CIVIL",
