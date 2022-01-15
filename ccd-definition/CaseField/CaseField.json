@@ -308,6 +308,34 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelDisclosureOfElectronicDocuments",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelFileDirectionsQuestionnaire",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelUpload",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelUpload",
+    "Label": "<br/>**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabel2",
     "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
     "FieldType": "Label",
@@ -323,7 +351,49 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelFileDirectionsQuestionnaire",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabel",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelFileDirectionsQuestionnaire1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelFileDirectionsQuestionnaire2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelUpload1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelUpload2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1207,5 +1277,299 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelFurtherInformation",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelHearingSupport",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelRequestedCourt",
+    "Label": "**Defendant: ${respondent2.partyName} intends to**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelDraftDirections",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelHearing",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelLanguage",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelWitnesses",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelExperts",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelDisclosureReport",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelDisclosureOfElectronicDocuments",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDisclosureReport1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDisclosureReport2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelExperts1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelExperts2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelWitnesses1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelWitnesses2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelLanguage1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelLanguage2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelHearing1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelHearing2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDraftDirections1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelDraftDirections2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelRequestedCourt1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelRequestedCourt2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelHearingSupport1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelHearingSupport2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelFurtherInformation1",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelFurtherInformation2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelDisclosureOfNonElectronicDocuments",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelDisclosureReport",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelExperts",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelWitnesses",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelLanguage",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelHearing",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelDraftDirections",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelRequestedCourt",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelHearingSupport",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelFurtherInformation",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
