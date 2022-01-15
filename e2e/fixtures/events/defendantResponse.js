@@ -27,10 +27,18 @@ module.exports = {
         partyTypeDisplayValue: 'Individual',
       }
     },
+    RespondentResponseType: {
+      respondent1ClaimResponseType: 'FULL_DEFENCE'
+    },
     SolicitorReferences: {
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
         respondentSolicitor1Reference: 'Respondent reference'
+      }
+    },
+    Upload: {
+      respondent1ClaimResponseDocument: {
+        file: document('claimResponse.pdf')
       }
     },
     FileDirectionsQuestionnaire: {
