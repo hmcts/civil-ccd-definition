@@ -97,6 +97,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigantFriendSelection",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFee",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -409,6 +415,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriend",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "genericLitigationFriend",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ResponseDate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -607,6 +625,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriendDate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriendCreatedDate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "uiStatementOfTruth",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -710,6 +740,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

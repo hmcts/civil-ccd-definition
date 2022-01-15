@@ -60,6 +60,14 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2LitigationFriend",
+    "TabFieldDisplayOrder": 7
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
     "CaseFieldID": "applicant1DQExperts",
     "TabFieldDisplayOrder": 8
   },

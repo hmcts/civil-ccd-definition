@@ -384,6 +384,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigantFriendSelection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFee",
     "AccessControl": [
       {
@@ -1339,6 +1357,44 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "genericLitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ResponseDate",
     "AccessControl": [
       {
@@ -1888,6 +1944,44 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriendDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LitigationFriendCreatedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "uiStatementOfTruth",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -2297,7 +2391,8 @@
       "CRUD": "R"
     }
   ]
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "claimant2Name",
   "AccessControl": [
@@ -2327,7 +2422,8 @@
   "CaseFieldID": "respondent2Copy",
   "UserRole": "caseworker-civil-solicitor",
   "CRUD": "CRU"
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent1Details",
   "AccessControl": [
@@ -2338,7 +2434,8 @@
       "CRUD": "R"
     }
   ]
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondentResponseIsSame",
   "AccessControl": [
@@ -2377,7 +2474,8 @@
         "CRUD": "R"
       }
     ]
-  },{
+  },
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent1PartyNameLabel",
   "AccessControl": [
@@ -2388,7 +2486,8 @@
       "CRUD": "R"
     }
   ]
-}, {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "applicant1PartyNameLabel",
   "AccessControl": [
@@ -2399,7 +2498,8 @@
       "CRUD": "R"
     }
   ]
-},  {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent2Details",
   "AccessControl": [
@@ -2413,7 +2513,8 @@
       "CRUD": "R"
     }
   ]
-}, {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent2PartyName",
   "AccessControl": [
@@ -2425,7 +2526,8 @@
       "CRUD": "R"
     }
   ]
-}, {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent2ClaimResponseType",
   "AccessControl": [
@@ -2444,7 +2546,8 @@
       "CRUD": "R"
     }
   ]
-},  {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "applicant1PartyNameLabel2",
   "AccessControl": [
@@ -2455,7 +2558,8 @@
       "CRUD": "R"
     }
   ]
-},{
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent1PartyNameLabel2",
   "AccessControl": [
@@ -2466,7 +2570,8 @@
       "CRUD": "R"
     }
   ]
-},  {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "respondent1ClaimResponseIntentionTypeApplicant2",
   "AccessControl": [
@@ -2485,7 +2590,8 @@
       "CRUD": "R"
     }
   ]
-}, {
+},
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "applicant2PartyNameLabel",
   "AccessControl": [
@@ -2496,5 +2602,23 @@
       "CRUD": "R"
     }
   ]
-}
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "selectLitigationFriend",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
 ]
