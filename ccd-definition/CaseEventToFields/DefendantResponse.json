@@ -120,9 +120,32 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "multiPartyResponseTypeFlags",
+    "CaseFieldID": "respondent2Details",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmDetails",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseEventFieldLabel": " ",
+    "CaseFieldID": "respondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmDetails",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "multiPartyResponseTypeFlags",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
