@@ -616,7 +616,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h1>\n <p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
+    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n <p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -743,7 +743,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -839,7 +839,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDebtPageLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h1> \n</div>",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h2> \n</div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -881,7 +881,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "homeOptionsTitleLRspec",
-    "Label": "<h1 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -925,7 +925,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
