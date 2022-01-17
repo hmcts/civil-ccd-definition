@@ -616,7 +616,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n <p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
+    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimMediationSpecLabel2",
+    "Label": "<p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

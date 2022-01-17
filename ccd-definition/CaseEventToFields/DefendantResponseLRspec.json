@@ -371,9 +371,21 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimMediationSpecRequired",
+    "CaseFieldID": "responseClaimMediationSpecLabel2",
     "PageDisplayOrder": 23,
     "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "PageShowCondition": "",
+    "ShowSummaryChangeOption": "N",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimMediationSpecRequired",
+    "PageDisplayOrder": 23,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "ShowSummaryChangeOption": "Y"
