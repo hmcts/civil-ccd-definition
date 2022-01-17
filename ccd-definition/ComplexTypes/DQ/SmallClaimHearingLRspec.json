@@ -9,7 +9,7 @@
   },
   {
     "ID": "SmallClaimHearing",
-    "ListElementCode": "SmallClaimUnavailableDate",
+    "ListElementCode": "smallClaimUnavailableDate",
     "FieldType": "Collection",
     "FieldTypeParameter": "SmallClaimUnavailableDate",
     "ElementLabel": "Unavailable date",

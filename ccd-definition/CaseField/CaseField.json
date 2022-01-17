@@ -121,6 +121,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "litigantFriendSelection",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimFee",
     "Label": "Claim fee",
     "FieldType": "Fee",
@@ -831,6 +838,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriend",
+    "Label": "Defendant 2 litigation details",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "genericLitigationFriend",
+    "Label": "Defendant litigation details",
+    "FieldType": "LitigationFriend",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
@@ -1095,6 +1116,20 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriendCreatedDate",
     "Label": "Date respondent 1 added litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriendDate",
+    "Label": "Date respondent 2 added or last updated litigation friend",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LitigationFriendCreatedDate",
+    "Label": "Date respondent 2 added litigation friend",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
@@ -1570,6 +1605,13 @@
     "ID": "respondent1PartyNameLabelFurtherInformation",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectLitigationFriend",
+    "Label": "Who requires a litigation friend?",
+    "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   }
 ]

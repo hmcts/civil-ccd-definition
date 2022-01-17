@@ -1,0 +1,33 @@
+[
+  {
+    "ID": "RepaymentPlanLRspec",
+    "ListElementCode": "repaymentPlanLabel",
+    "FieldType": "Label",
+    "ElementLabel": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.\n",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RepaymentPlanLRspec",
+    "ListElementCode": "paymentAmount",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Regular payments of\n",
+    "HintText" : "For example, £50",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RepaymentPlanLRspec",
+    "ListElementCode": "repaymentFrequency",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RepaymentFrequencyLRspec",
+    "ElementLabel": "How often will your client make payments?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RepaymentPlanLRspec",
+    "ListElementCode": "firstRepaymentDate",
+    "FieldType": "Date",
+    "ElementLabel": "When will your client make the first payment?",
+    "HintText": "For example, 12 11 2007 ",
+    "SecurityClassification": "Public"
+  }
+]
