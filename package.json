@@ -5,7 +5,6 @@
   "scripts": {
     "lint": "eslint e2e",
     "test": "npx codeceptjs run --steps",
-    "local": "MOCHAWESOME_REPORTFILENAME=local npx codeceptjs run --grep @ga --reporter mocha-multi --verbose",
     "test:smoke": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests --reporter mocha-multi --verbose",
     "test:smoke-spec": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests-spec --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",

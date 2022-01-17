@@ -17,4 +17,4 @@ Scenario('Applicant solicitor creates Strike out general application @ga', async
   await waitForFinishedBusinessProcess(caseId());
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-}).retry(0);
+}).retry(1);

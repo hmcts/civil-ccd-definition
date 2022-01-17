@@ -14,7 +14,6 @@ module.exports = {
 
   async selectConsentCheck(consentCheck) {
     I.waitForElement(this.fields.respondentAgreementHasAgreed.id);
-    await I.runAccessibilityTest();
     await within(this.fields.respondentAgreementHasAgreed.id, () => {
       I.click(this.fields.respondentAgreementHasAgreed.options[consentCheck]);
     });

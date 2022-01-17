@@ -15,7 +15,6 @@ module.exports = {
 
   async selectNotice(noticeCheck) {
     I.waitForElement(this.fields.informOtherPartyWithNotice.id);
-    await I.runAccessibilityTest();
     if ('no' === noticeCheck) {
       await within(this.fields.informOtherPartyWithNotice.id, () => {
         I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);

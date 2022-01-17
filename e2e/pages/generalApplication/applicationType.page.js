@@ -21,7 +21,6 @@ module.exports = {
     }
 
     I.waitForElement(this.fields.applicationType.id);
-    // await I.runAccessibilityTest();
     await within(this.fields.applicationType.id, () => {
       I.click(this.fields.applicationType.options[applicationType]);
     });
