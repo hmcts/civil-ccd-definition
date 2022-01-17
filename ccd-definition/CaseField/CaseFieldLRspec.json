@@ -405,7 +405,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentDetails",
-    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative. 1",
+    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
