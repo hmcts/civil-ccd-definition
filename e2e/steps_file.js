@@ -60,6 +60,8 @@ const consentCheckPage = require('./pages/generalApplication/consentCheck.page')
 const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
 const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
 const enterApplicationDetailsPage = require('./pages/generalApplication/applicationDetails.page');
+const hearingAndTrialPage = require('./pages/generalApplication/hearingDetails.page');
+const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -184,9 +186,7 @@ module.exports = function () {
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
         () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherClaimant.enterAddAnotherClaimant()
-        ]),
+        () => addAnotherClaimant.enterAddAnotherClaimant(),
         () => party.enterParty('respondent1', address),
         ... conditionalSteps(litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
@@ -244,7 +244,15 @@ module.exports = function () {
         () => consentCheckPage.selectConsentCheck('no'),
         () => urgencyCheckPage.selectUrgencyRequirement('yes'),
         () => withOutNoticePage.selectNotice('no'),
-        () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH)
+        () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
+        () => hearingAndTrialPage.isHearingScheduled('no'),
+        () => hearingAndTrialPage.isJudgeRequired('no'),
+        () => hearingAndTrialPage.isTrialRequired('no'),
+        () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
+        () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
+        () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
+        () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
+        () => event.submit('Submit', 'You have made an application')
       ]);
     },
 

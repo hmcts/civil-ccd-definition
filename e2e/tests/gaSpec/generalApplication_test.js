@@ -1,8 +1,7 @@
-const config = require('../config.js');
-/*const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
-
+const config = require('../../config.js');
+const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;*/
+const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
@@ -14,5 +13,8 @@ Scenario('Applicant solicitor creates Strike out general application @ga', async
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
   await I.makeAnApplication('strikeOut');
-  pause();
-}).retry(2);
+  await I.see(caseNumber);
+  await waitForFinishedBusinessProcess(caseId());
+  await I.click('Close and Return to case details');
+  await I.see(caseEventMessage('Make an application'));
+}).retry(0);

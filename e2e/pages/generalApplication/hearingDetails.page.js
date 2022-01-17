@@ -121,8 +121,32 @@ module.exports = {
         I.click(this.fields.trialRequired.options[trialRequired]);
       });
     }
-  }
+  },
 
-  // to do hearingPreferences
+  async selectHearingPreferences(hearingPreferences) {
+    I.waitForElement(this.fields.hearingPreferences.id);
+    await within(this.fields.hearingPreferences.id, () => {
+      I.click(this.fields.hearingPreferences.options[hearingPreferences]);
+    });
+    await I.fillField(this.fields.reasonForPreferredHearingType, 'Test Test');
+    await I.fillField(this.fields.hearingDetailsTelephoneNumber, '07446775177');
+    await I.fillField(this.fields.hearingDetailsEmailID, 'test@gmail.com');
+  },
+
+  async selectHearingDuration(hearingDuration) {
+    I.waitForElement(this.fields.hearingDuration.id);
+    await within(this.fields.hearingDuration.id, () => {
+      I.click(this.fields.hearingDuration.options[hearingDuration]);
+    });
+    I.click(this.fields.unavailableTrailRequired.options.no);
+  },
+
+  async selectSupportRequirement(supportRequirement) {
+    I.waitForElement(this.fields.supportRequirement.id);
+    await within(this.fields.supportRequirement.id, () => {
+      I.click(this.fields.supportRequirement.options[supportRequirement]);
+    });
+    await I.clickContinue();
+  }
 };
 

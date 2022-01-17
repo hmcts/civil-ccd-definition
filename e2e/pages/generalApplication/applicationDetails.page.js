@@ -9,11 +9,11 @@ module.exports = {
     generalAppReasonsOfOrder: '#generalAppReasonsOfOrder',
     consentAgreementCheckBox: '#generalAppStatementOfTruthConsent-ConsentAgreementCheckBox',
     reasonsForUrgency: '#generalAppUrgencyRequirement_reasonsForUrgency',
-    statementOfTruth_name: '#generalAppUIStatementOfTruth_name',
-    statementOfTruth_role: '#generalAppUIStatementOfTruth_role',
+    statementOfTruth_name: '#generalAppStatementOfTruth_name',
+    statementOfTruth_role: '#generalAppStatementOfTruth_role',
     supportingEvidenceDocumentFiles: {
       options: [
-        '#evidenceDocument'
+        '#generalAppEvidenceDocument'
       ]
     }
   },
