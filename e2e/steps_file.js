@@ -197,16 +197,14 @@ module.exports = function () {
           () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherDefendant.enterAddAnotherDefendant(),
-          () => party.enterParty('respondent2', address),
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
-          () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
-          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => secondDefendantSolicitorReference.enterReference(),
-          () => defendantSolicitorEmail.enterSolicitorEmail('2')
-        ]),
+        () => addAnotherDefendant.enterAddAnotherDefendant(),
+        () => party.enterParty('respondent2', address),
+        () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
+        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
+        () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
+        () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+        () => secondDefendantSolicitorReference.enterReference(),
+        () => defendantSolicitorEmail.enterSolicitorEmail('2'),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -250,6 +248,7 @@ module.exports = function () {
         () => hearingAndTrialPage.isTrialRequired('no'),
         () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
         () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
+        () => hearingAndTrialPage.isUnavailableTrailRequired('no'),
         () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
         () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
         () => event.submit('Submit', 'You have made an application')

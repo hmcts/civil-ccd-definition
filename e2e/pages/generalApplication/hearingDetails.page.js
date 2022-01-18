@@ -138,7 +138,13 @@ module.exports = {
     await within(this.fields.hearingDuration.id, () => {
       I.click(this.fields.hearingDuration.options[hearingDuration]);
     });
-    I.click(this.fields.unavailableTrailRequired.options.no);
+  },
+
+  async isUnavailableTrailRequired(trailRequired) {
+    I.waitForElement(this.fields.unavailableTrailRequired.id);
+    await within(this.fields.unavailableTrailRequired.id, () => {
+      I.click(this.fields.unavailableTrailRequired.options[trailRequired]);
+    });
   },
 
   async selectSupportRequirement(supportRequirement) {

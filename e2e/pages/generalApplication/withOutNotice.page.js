@@ -19,7 +19,7 @@ module.exports = {
       await within(this.fields.informOtherPartyWithNotice.id, () => {
         I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);
       });
-      await I.fillField(this.fields.reasonsForWithoutNotice, 'hashjdgas jshdjkasdg');
+      await I.fillField(this.fields.reasonsForWithoutNotice, 'Test Reason for Without Notice');
     } else {
       await within(this.fields.informOtherPartyWithNotice.id, () => {
         I.click(this.fields.informOtherPartyWithNotice.options[noticeCheck]);
