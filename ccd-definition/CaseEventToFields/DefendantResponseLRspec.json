@@ -126,7 +126,8 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleResponseType"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -305,7 +306,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimelineUpload",
-    "PageShowCondition": "specClaimResponseTimelineList=\"UPLOAD\"",
+    "PageShowCondition": "specClaimResponseTimelineList=\"UPLOAD\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -334,7 +335,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimMediationSpecLabel",
+  "CaseFieldID": "responseClaimMediationSpecLabel",
     "PageDisplayOrder": 23,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
