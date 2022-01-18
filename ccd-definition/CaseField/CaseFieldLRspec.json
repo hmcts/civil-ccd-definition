@@ -824,7 +824,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "minusBeforeOverdrawnAmount",
-    "Label": "<h1 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h1> \n<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
+    "Label": "<h2 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h2> \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "minusBeforeOverdrawnAmount2",
+    "Label": "<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
