@@ -7,7 +7,7 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim = \"DO_NOT_SHOW_IN_UI\"",
     "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y"
@@ -20,7 +20,7 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentDetails = \"DO_NOT_SHOW_IN_UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim = \"DO_NOT_SHOW_IN_UI\"",
     "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y"
@@ -33,7 +33,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -45,7 +45,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -57,7 +57,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -69,7 +69,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -81,14 +81,14 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
-    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
-    "CaseFieldID": "respondentDetails",
+    "CaseFieldID": "respondentDetailsAcknowledgeClaim",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
@@ -127,7 +127,7 @@
     "PageID": "ConfirmNameAddress",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -138,7 +138,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SingleResponse",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondentDetails=\"DO NOT SHOW IN UI\""
+    "PageShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
