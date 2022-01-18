@@ -99,6 +99,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "SolicitorReferences",
     "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "isRespondent1 = \"No\" AND respondent2SameLegalRepresentative = \"No\" "
   }
 

@@ -34,6 +34,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "solicitorReferencesCopy",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtLocation",
     "AccessControl": [
       {
