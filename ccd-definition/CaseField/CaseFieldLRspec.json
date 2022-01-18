@@ -404,6 +404,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentDetailLabel",
+    "Label": "## Confirm name and address",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentDetails",
     "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.",
     "FieldType": "Label",
@@ -794,7 +801,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -967,7 +974,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RepaymentPlanLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
