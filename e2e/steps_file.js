@@ -55,6 +55,13 @@ const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
 
+const applicationTypePage = require('./pages/generalApplication/applicationType.page');
+const consentCheckPage = require('./pages/generalApplication/consentCheck.page');
+const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
+const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
+const enterApplicationDetailsPage = require('./pages/generalApplication/applicationDetails.page');
+const hearingAndTrialPage = require('./pages/generalApplication/hearingDetails.page');
+const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -179,9 +186,7 @@ module.exports = function () {
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
         () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherClaimant.enterAddAnotherClaimant()
-        ]),
+        () => addAnotherClaimant.enterAddAnotherClaimant(),
         () => party.enterParty('respondent1', address),
         ... conditionalSteps(litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
@@ -192,16 +197,14 @@ module.exports = function () {
           () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherDefendant.enterAddAnotherDefendant(),
-          () => party.enterParty('respondent2', address),
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
-          () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
-          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => secondDefendantSolicitorReference.enterReference(),
-          () => defendantSolicitorEmail.enterSolicitorEmail('2')
-        ]),
+        () => addAnotherDefendant.enterAddAnotherDefendant(),
+        () => party.enterParty('respondent2', address),
+        () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
+        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
+        () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
+        () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+        () => secondDefendantSolicitorReference.enterReference(),
+        () => defendantSolicitorEmail.enterSolicitorEmail('2'),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -227,6 +230,28 @@ module.exports = function () {
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async makeAnApplication(applicationType) {
+      eventName = 'Make an application';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => applicationTypePage.selectApplicationType(applicationType),
+        () => consentCheckPage.selectConsentCheck('no'),
+        () => urgencyCheckPage.selectUrgencyRequirement('yes'),
+        () => withOutNoticePage.selectNotice('no'),
+        () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
+        () => hearingAndTrialPage.isHearingScheduled('no'),
+        () => hearingAndTrialPage.isJudgeRequired('no'),
+        () => hearingAndTrialPage.isTrialRequired('no'),
+        () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
+        () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
+        () => hearingAndTrialPage.isUnavailableTrailRequired('no'),
+        () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
+        () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
+        () => event.submit('Submit', 'You have made an application')
       ]);
     },
 
