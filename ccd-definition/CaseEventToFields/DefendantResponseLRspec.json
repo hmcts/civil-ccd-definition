@@ -328,7 +328,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "HowToAddTimelineManual",
-    "PageShowCondition": "specClaimResponseTimelineList=\"MANUAL\"",
+    "PageShowCondition": "specClaimResponseTimelineList=\"MANUAL\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
