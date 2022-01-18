@@ -132,6 +132,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondentDetails",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondentDetailsAcknowledgeClaim=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondentResponseIsSame",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
