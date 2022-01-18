@@ -305,7 +305,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimelineUpload",
-    "PageShowCondition": "specClaimResponseTimelineList=\"UPLOAD\"",
+    "PageShowCondition": "specClaimResponseTimelineList=\"UPLOAD\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -334,7 +334,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimMediationSpecLabel",
+  "CaseFieldID": "responseClaimMediationSpecLabel",
     "PageDisplayOrder": 23,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
