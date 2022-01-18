@@ -312,13 +312,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specClaimResponseTimelineList",
-    "PageLabel": "How do you want to add the claim timeline?",
+    "CaseFieldID": "specClaimResponseTimelineLabel",
+    "PageLabel": " ",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
     "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specClaimResponseTimelineList",
+    "PageLabel": " ",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HowToAddTimeline",
+    "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -599,7 +611,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\""
   },
   {

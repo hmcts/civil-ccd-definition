@@ -568,6 +568,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specClaimResponseTimelineLabel",
+    "Label": "## How do you want to add the claim timeline? ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specClaimResponseTimelineList",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -812,6 +819,13 @@
     "ID": "respondToClaimAdmitPartUnemployedLRspec",
     "Label": " ",
     "FieldType": "UnemployedComplexTypeLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1CourtOrderPaymentLabel",
+    "Label": "## Is ${respondent1.partyName} paying money as a result of any court order? \n",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {

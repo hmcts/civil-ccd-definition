@@ -871,6 +871,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specClaimResponseTimelineLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineDocumentFiles",
     "AccessControl": [
       {
@@ -1396,6 +1415,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1CourtOrderPayment",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1CourtOrderPaymentLabel",
     "AccessControl": [
       {
         "UserRoles": [
