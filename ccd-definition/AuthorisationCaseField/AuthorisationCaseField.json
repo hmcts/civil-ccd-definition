@@ -146,9 +146,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[CREATOR]",
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -2726,9 +2724,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[CREATOR]",
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
