@@ -10,7 +10,7 @@ if [ ${environment} == preview ]; then
 elif [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json,*GAspec.json"
 else
-  excludedFilenamePatterns="-e UserProfile.json,*LRspec.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*LRspec.json,*GAspec.json,*-prod.json"
 fi
 
 root_dir=$(realpath $(dirname ${0})/..)
