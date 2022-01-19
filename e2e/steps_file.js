@@ -186,7 +186,9 @@ module.exports = function () {
         () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
         () => claimantSolicitorOrganisation.enterOrganisationDetails(),
         () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        () => addAnotherClaimant.enterAddAnotherClaimant(),
+        ... conditionalSteps(config.multipartyTestsEnabled, [
+          () => addAnotherClaimant.enterAddAnotherClaimant()
+        ]),
         () => party.enterParty('respondent1', address),
         ... conditionalSteps(litigantInPerson, [
           () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
@@ -197,14 +199,16 @@ module.exports = function () {
           () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
           () => defendantSolicitorEmail.enterSolicitorEmail('1')
         ]),
-        () => addAnotherDefendant.enterAddAnotherDefendant(),
-        () => party.enterParty('respondent2', address),
-        () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
-        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-        () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
-        () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        () => secondDefendantSolicitorReference.enterReference(),
-        () => defendantSolicitorEmail.enterSolicitorEmail('2'),
+        ... conditionalSteps(config.multipartyTestsEnabled, [
+          () => addAnotherDefendant.enterAddAnotherDefendant(),
+          () => party.enterParty('respondent2', address),
+          () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
+          () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
+          () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
+          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+          () => secondDefendantSolicitorReference.enterReference(),
+          () => defendantSolicitorEmail.enterSolicitorEmail('2')
+        ]),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
