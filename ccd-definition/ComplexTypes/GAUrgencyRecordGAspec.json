@@ -19,6 +19,7 @@
     "ListElementCode": "reasonsForUrgency",
     "ElementLabel": "Reasons for urgency. Disclose all relevant information to the court, including any information that may undermine the need for urgency.\n",
     "FieldType": "TextArea",
+    "Max": "400",
     "SecurityClassification": "Public",
     "FieldShowCondition": "generalAppUrgency = \"Yes\""
   },
