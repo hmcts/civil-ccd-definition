@@ -616,7 +616,7 @@ module.exports = function () {
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        output.log(`Navigating to case: ${normalizedCaseId}`);
+        console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
       }, SIGNED_IN_SELECTOR);
 
