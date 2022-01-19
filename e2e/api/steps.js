@@ -266,10 +266,13 @@ module.exports = {
 
     eventName = 'ACKNOWLEDGE_CLAIM';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
+
     deleteCaseFields('systemGeneratedCaseDocuments');
     deleteCaseFields('solicitorReferences');
+    deleteCaseFields('solicitorReferencesCopy');
 
     await validateEventPages(data.ACKNOWLEDGE_CLAIM);
 
@@ -468,8 +471,8 @@ const assertValidData = async (data, pageId) => {
   caseData = {...caseData, ...validDataForPage};
 
   const response = await apiRequest.validatePage(eventName, pageId, caseData);
-  const responseBody = await response.json();
 
+  const responseBody = await response.json();
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins

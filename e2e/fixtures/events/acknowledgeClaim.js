@@ -10,6 +10,10 @@ module.exports = {
       solicitorReferences:{
         applicantSolicitor1Reference: 'Applicant reference',
         respondentSolicitor1Reference: 'Respondent reference'
+      },
+      solicitorReferencesCopy:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
       }
     },
     ConfirmDetails: {
