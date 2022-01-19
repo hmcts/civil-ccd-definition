@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DirectionOrderClaimTrackRequired",
+    "Label": "What track are you allocating the claim to?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]
