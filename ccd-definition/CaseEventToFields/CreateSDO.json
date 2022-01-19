@@ -10,18 +10,5 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "drawDirectionsOrderRequired",
-  "PageFieldDisplayOrder": 2,
-  "DisplayContext": "COMPLEX",
-  "PageID": "DirectionsOrderJudgementSum",
-  "PageLabel": "Draw directions order - Judge",
-  "PageDisplayOrder": 1,
-  "PageColumnNumber": 1,
-  "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\"",
-  "ShowSummaryChangeOption": "Y"
   }
 ]
