@@ -16,13 +16,20 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "ResponseDocument",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2ClaimResponseDocument",
+    "ListElementCode": "file",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Party",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualDateOfBirth",
-    "EventElementLabel": "Defendant's date of birth",
-    "EventHintText": "You must enter this if you know it.",
-    "FieldDisplayOrder": 2,
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type=\"INDIVIDUAL\""
   },
@@ -31,8 +38,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderDateOfBirth",
-    "EventElementLabel": "Defendant's date of birth",
-    "EventHintText": "You must enter this if you know it.",
+    "EventElementLabel": "Date of birth",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type=\"SOLE_TRADER\""
@@ -42,6 +48,36 @@
     "ID": "Defendant",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "individualDateOfBirth",
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2.type=\"INDIVIDUAL\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "soleTraderDateOfBirth",
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2.type=\"SOLE_TRADER\""
+  },
+
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
@@ -104,6 +140,62 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "expertRequired",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "expertReportsSent",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "jointExpertSuitable",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.name",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.fieldOfExpertise",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.whyRequired",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.estimatedCost",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
@@ -123,6 +215,30 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "witnessesToAppear",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.name",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
     "ListElementCode": "details.reasonForWitness",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -176,6 +292,54 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "hearingLength",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "hearingLengthHours",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "hearingLengthDays",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "unavailableDatesRequired",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "unavailableDates.who",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "unavailableDates.date",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "DisclosureReport",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureReport",
@@ -200,6 +364,30 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "DisclosureReport",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQDisclosureReport",
+    "ListElementCode": "disclosureFormFiledAndServed",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisclosureReport",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQDisclosureReport",
+    "ListElementCode": "disclosureProposalAgreed",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisclosureReport",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQDisclosureReport",
+    "ListElementCode": "draftOrderNumber",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
@@ -219,6 +407,30 @@
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
+    "ListElementCode": "otherInformationForJudge",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "RespondToClaim",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQFurtherInformation",
+    "ListElementCode": "futureApplications",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RespondToClaim",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQFurtherInformation",
+    "ListElementCode": "reasonForFutureApplications",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RespondToClaim",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQFurtherInformation",
     "ListElementCode": "otherInformationForJudge",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
