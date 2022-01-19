@@ -1,0 +1,32 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CREATE_SDO",
+    "Name": "Standard Direction Order",
+    "Description": "Standard Direction Order",
+    "DisplayOrder": 17,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "Draw_Directions_Order_Judge",
+    "Name": "Draw directions order - Judge",
+    "Description": "Allocating track to the claim",
+    "DisplayOrder": 1,
+    "PostConditionState": "*",
+    "Comment": "No",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
