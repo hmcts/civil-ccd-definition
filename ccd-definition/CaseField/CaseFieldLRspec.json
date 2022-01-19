@@ -405,7 +405,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentDetailLabel",
-    "Label": "## Confirm name and address",
+    "Label": "<h2 class=\"govuk-heading-m\">Confirm name and address</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -707,6 +707,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHearingFastClaimLabel",
+    "Label": "Hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaim",
     "Label": "Respondent 1 Hearing",
     "FieldType": "HearingLRspec",
@@ -745,6 +752,13 @@
     "ID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFutureApplicationsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Application</h2>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -983,6 +997,13 @@
     "ID": "respondent1RepaymentPlan",
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Witnesses </h2>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
