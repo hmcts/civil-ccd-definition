@@ -7,7 +7,7 @@ let caseNumber;
 
 Feature('General Application creation @e2e-tests-spec');
 
-Scenario('Applicant solicitor creates Strike out general application @ga', async ({I}) => {
+Scenario.skip('Applicant solicitor creates Strike out general application @ga', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase();
   caseNumber = await I.grabCaseNumber();
