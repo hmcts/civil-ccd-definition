@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "JudgementSum",
+    "ListElementCode": "fullName",
+    "FieldType": "Text",
+    "ElementLabel": "Judge text here ...",
+    "SecurityClassification": "Public"
+  }
+]
