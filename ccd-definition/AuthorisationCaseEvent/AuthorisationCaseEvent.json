@@ -610,7 +610,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-judge",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
         ],
