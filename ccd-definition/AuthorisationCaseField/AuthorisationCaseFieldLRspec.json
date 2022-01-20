@@ -489,42 +489,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specAoSRespondentDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specAoSRespondentDetailLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSRespondentInformation",
     "AccessControl": [
       {
@@ -889,25 +853,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specClaimResponseTimelineLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineDocumentFiles",
     "AccessControl": [
       {
@@ -967,25 +912,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimMediationSpecLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "responseClaimMediationSpecLabel2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1149,25 +1075,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQHearingFastClaimLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQHearingFastClaim",
     "AccessControl": [
       {
@@ -1244,25 +1151,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQFutureApplicationsLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1489,25 +1377,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1CourtOrderPaymentLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimAdmitPartEmployer",
     "AccessControl": [
       {
@@ -1660,25 +1529,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1RepaymentPlan",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQWitnessesLabel",
     "AccessControl": [
       {
         "UserRoles": [
