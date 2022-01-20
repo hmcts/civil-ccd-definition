@@ -15,7 +15,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "drawDirectionsOrder",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "Complex",
+    "DisplayContext": "Mandatory",
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
