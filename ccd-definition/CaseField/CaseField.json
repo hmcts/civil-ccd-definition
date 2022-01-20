@@ -1035,7 +1035,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrder",
     "Label": "Not sure ...",
-    "FieldType": "JudgementSum",
+    "FieldType": "Number",
     "SecurityClassification": "Public"
   }
 ]

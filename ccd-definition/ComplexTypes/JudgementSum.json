@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "JudgementSum",
-    "ListElementCode": "sumAmount",
-    "FieldType": "Text",
-    "ElementLabel": "Ele label",
-    "SecurityClassification": "Public"
-  }
-]
