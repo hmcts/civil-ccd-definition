@@ -6,10 +6,10 @@ module.exports = {
     applicationType: {
       id: '#generalAppType_types',
       options: {
-        strikeOut: 'Strike Out',
-        summaryJudgement: 'Summary Judgement',
+        strikeOut: 'Strike out',
+        summaryJudgement: 'Summary judgement',
         stayTheClaim: 'Stay the claim',
-        extendTime: 'Extend Time'
+        extendTime: 'Extend time'
       }
     },
   },
