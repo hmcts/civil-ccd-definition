@@ -2360,15 +2360,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-admin",
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -2378,15 +2373,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-admin",
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   }
