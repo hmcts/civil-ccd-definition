@@ -673,6 +673,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2AcknowledgeNotificationDate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1ResponseDate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
