@@ -1027,7 +1027,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrderRequired",
-    "Label": "<b>Do you wish to enter judgement for a sum of damages to be decided ?</b>",
+    "Label": "## Do you wish to enter judgement for a sum of damages to be decided ?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
