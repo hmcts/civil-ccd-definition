@@ -60,7 +60,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1",
+    "CaseFieldID": "respondent1DetailsForClaimDetailsTab",
     "TabFieldDisplayOrder": 8
   },
   {
@@ -68,7 +68,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent2",
+    "CaseFieldID": "respondent2DetailsForClaimDetailsTab",
     "TabFieldDisplayOrder": 8
   },
   {
