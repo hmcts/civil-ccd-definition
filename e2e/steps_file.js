@@ -247,8 +247,8 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
-        () => confirmDetailsPage.confirmReference(),
         () => responseIntentionPage.selectResponseIntention(responseIntention),
+        () => confirmDetailsPage.confirmReference(),
         // temporarily commenting out whilst change is made to service repo
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
