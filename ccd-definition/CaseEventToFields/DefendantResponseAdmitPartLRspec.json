@@ -263,7 +263,7 @@
     "PageID": "DefendantSelfEmployment",
     "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"SELF\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND defenceAdmitPartEmploymentTypeRequired=\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"SELF\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
