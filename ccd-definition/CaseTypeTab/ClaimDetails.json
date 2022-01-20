@@ -173,7 +173,6 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "TabFieldDisplayOrder": 18
-    "TabFieldDisplayOrder": 17
   },
   {
     "CaseTypeID": "CIVIL",
@@ -181,7 +180,7 @@
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2DQExperts",
-    "TabFieldDisplayOrder": 18
+    "TabFieldDisplayOrder": 19
   },
   {
     "CaseTypeID": "CIVIL",
@@ -189,6 +188,6 @@
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2DQWitnesses",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 20
   }
 ]
