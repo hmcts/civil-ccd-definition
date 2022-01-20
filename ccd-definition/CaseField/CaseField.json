@@ -1026,14 +1026,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "drawDirectionsOrder",
+    "ID": "drawDirectionsOrderRequired",
     "Label": "Do you wish to enter judgement for a sum of damages to be decided ?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "drawDirectionsOrderRequired",
+    "ID": "drawDirectionsOrder",
     "Label": "Not sure ...",
     "FieldType": "JudgementSum",
     "SecurityClassification": "Public"

@@ -1,9 +1,9 @@
 [
   {
     "ID": "JudgementSum",
-    "ListElementCode": "fullName",
+    "ListElementCode": "sumAmount",
     "FieldType": "Text",
-    "ElementLabel": "Judge text here ...",
+    "ElementLabel": "Ele label",
     "SecurityClassification": "Public"
   }
 ]

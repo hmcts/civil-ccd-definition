@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "drawDirectionsOrder",
+    "CaseFieldID": "drawDirectionsOrderRequired",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "SDO",
@@ -13,13 +13,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "drawDirectionsOrderRequired",
+    "CaseFieldID": "drawDirectionsOrder",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "drawDirectionsOrder = \"Yes\""
+    "FieldShowCondition": "drawDirectionsOrderRequired = \"Yes\""
   }
 ]
