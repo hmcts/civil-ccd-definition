@@ -167,18 +167,6 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "DEFENDANT_RESPONSE",
-  "CaseFieldID": "respondent1PartyNameLabelHearingSupport",
-  "PageLabel": "Respond to claim",
-  "PageDisplayOrder": 16,
-  "PageFieldDisplayOrder": 1,
-  "DisplayContext": "READONLY",
-  "PageID": "HearingSupport",
-  "ShowSummaryChangeOption": "Y",
-  "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
-},
-  {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelRequestedCourt2",
