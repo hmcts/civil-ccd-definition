@@ -2353,5 +2353,24 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "drawDirectionsOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
