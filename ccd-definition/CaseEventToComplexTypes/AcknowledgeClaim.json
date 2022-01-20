@@ -9,6 +9,14 @@
   },
   {
     "ID": "SolicitorReferences",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "solicitorReferences",
+    "ListElementCode": "respondentSolicitor2Reference",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorReferences",
     "CaseEventID": "ACKNOWLEDGE_SERVICE",
     "CaseFieldID": "solicitorReferences",
     "ListElementCode": "applicantSolicitor1Reference",
@@ -21,19 +29,43 @@
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualDateOfBirth",
-    "EventElementLabel": "Defendant's date of birth",
-    "EventHintText": "You must enter this if you know it.",
+    "EventElementLabel": "Date of birth",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1Copy.type=\"INDIVIDUAL\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "ID": "Party",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderDateOfBirth",
-    "EventElementLabel": "Defendant's date of birth",
-    "EventHintText": "You must enter this if you know it.",
+    "EventElementLabel": "Date of birth",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1Copy.type=\"SOLE_TRADER\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "individualDateOfBirth",
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2Copy.type=\"INDIVIDUAL\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "soleTraderDateOfBirth",
+    "EventElementLabel": "Date of birth",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2Copy.type=\"SOLE_TRADER\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
