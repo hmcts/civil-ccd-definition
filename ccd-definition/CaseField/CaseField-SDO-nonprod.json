@@ -3,7 +3,21 @@
     "CaseTypeID": "CIVIL",
     "ID": "DirectionOrderClaimTrackRequired",
     "Label": "What track are you allocating the claim to?",
-    "FieldType": "YesOrNo",
+    "FieldType": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SmallClaimsTrack",
+    "Label": "Select additional directions, if any (Optional)",
+    "FieldType": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "FastTrack",
+    "Label": "Select additional directions, if any (Optional)",
+    "FieldType": "ClaimsTrack",
     "SecurityClassification": "Public"
   }
 ]
