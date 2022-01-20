@@ -1027,14 +1027,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrderRequired",
-    "Label": "Do you wish to enter judgement for a sum of damages to be decided ???",
+    "Label": "Do you wish to enter judgement for a sum of damages to be decided ?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrder",
-    "Label": "Not sure ...",
+    "Label": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court.",
+    "HintText": "Enter a different percentage for judgement (optional)",
     "FieldType": "Number",
     "SecurityClassification": "Public"
   }

@@ -18,7 +18,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SDO",
     "PageDisplayOrder": 1,
-    "PageColumnNumber": 2,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
   }
