@@ -1,0 +1,59 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "DirectionOrderClaimTrackRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "SmallClaimsTrack",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "FastTrack",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-judge",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "TrackType",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrackType",
+    "ElementLabel": "Track Type",
+    "SecurityClassification": "Public"
+  },
+  {
+  "ID": "ClaimsTrack",
+  "ListElementCode": "CreditHire",
+  "FieldType": "MultiSelectList",
+  "ElementLabel": "Credit Hire",
+  "FieldShowCondition": "type = \"SMALL_CLAIMS_TRACK\"",
+  "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "RoadTrafficAccident",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Road Traffic Accident",
+    "FieldShowCondition": "type = \"SMALL_CLAIMS_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "BuildingDispute",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Building Dispute",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "ClinicalNegligence",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Clinical Negligence",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "CreditHire",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Credit Hire",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "EmployersLiability",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Employers Liability",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "HousingDisrepair",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Housing Disrepair",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "PersonalInjury",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Personal Injury",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrack",
+    "ListElementCode": "RoadTrafficAccident",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Road Traffic Accident",
+    "FieldShowCondition": "type = \"FAST_TRACK\"",
+    "SecurityClassification": "Public"
+  }
+]

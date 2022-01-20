@@ -1,82 +1,82 @@
 [
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "smallClaimTrack",
-    "ListElementCode": "type",
+    "CaseFieldID": "DirectionOrderClaimTrackRequired",
+    "ListElementCode": "TrackType",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "EventElementLabel": "TrackType"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "smallClaimTrack",
-    "ListElementCode": "smallClaimCreditHire",
+    "CaseFieldID": "SmallClaimsTrack",
+    "ListElementCode": "CreditHire",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "smallClaimTrack",
-    "ListElementCode": "smallClaimRoadTrafficAccident",
+    "CaseFieldID": "SmallClaimsTrack",
+    "ListElementCode": "RoadTrafficAccident",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimBuildingDispute",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "BuildingDispute",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimClinicalNegligence",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "ClinicalNegligence",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimCreditHire",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "CreditHire",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimEmployersLiability",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "EmployersLiability",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimHousingDisrepair",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "HousingDisrepair",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimPersonalInjury",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "PersonalInjury",
     "FieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Judge",
+    "ID": "ClaimsTrack",
     "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "fastClaimTrack",
-    "ListElementCode": "fastClaimRoadTrafficAccident",
+    "CaseFieldID": "FastTrack",
+    "ListElementCode": "RoadTrafficAccident",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   }

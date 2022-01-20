@@ -1,0 +1,37 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "Draw_Directions_Order_Judge",
+    "CaseFieldID": "DirectionOrderClaimTrackRequired",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "Draw_Directions_Order_Judge",
+    "CaseFieldID": "SmallClaimsTrack",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "DirectionOrderClaimTrackRequired = \"SMALL_CLAIMS_TRACK\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "Draw_Directions_Order_Judge",
+    "CaseFieldID": "FastTrack",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "DirectionOrderClaimTrackRequired = \"FAST_TRACK\""
+  }
+]
