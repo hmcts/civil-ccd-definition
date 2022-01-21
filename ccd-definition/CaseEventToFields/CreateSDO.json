@@ -9,7 +9,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ?"
+    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ? 1"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -22,6 +22,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": " ",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\"",
+    "CaseEventFieldLabel": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court. 1"
   }
 ]

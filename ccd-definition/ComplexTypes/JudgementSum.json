@@ -3,15 +3,15 @@
     "ID": "JudgementSum",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court.",
-    "HintText": "Enter a different percentage for judgement (optional)",
+    "ElementLabel": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court. 3",
     "SecurityClassification": "Public"
   },
   {
     "ID": "JudgementSum",
     "ListElementCode": "judgementSum",
     "FieldType": "Number",
-    "ElementLabel": " ",
+    "ElementLabel": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court. 4",
+    "HintText": "Enter a different percentage for judgement (optional) 2",
     "SecurityClassification": "Public",
     "Min": 0,
     "Max": 100
