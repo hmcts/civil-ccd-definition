@@ -40,5 +40,55 @@
     "Label": "Both Defendants",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingLabel",
+    "Label": "## How would you like the court to decide the amount of damages?\n While your preference will be taken into account, the court will make the final decision",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "HearingSelection",
+    "Label": "Hearing type",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDisposalText",
+    "Label": "This is a hearing that lasts a maximum of 30 minutes, where information is presented only on paper, with no spoken evidence.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTrialText",
+    "Label": "This is a hearing which lasts longer than 30 minutes, where the court will receive evidence on paper and listen to any spoken evidence that you wish it to consider when deciding the amount of damages.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDirectionsLabel",
+    "Label": "## What directions would you like the court to give? \n You can use the court's standard directions as out here or you may set out your preferred directions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "detailsOfDirection",
+    "Label": "Your directions",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingSupportRequirementsDJ",
+    "Label": "Hearing requirements",
+    "FieldType": "HearingSupportRequirementsDJ",
+    "SecurityClassification": "Public"
   }
 ]
