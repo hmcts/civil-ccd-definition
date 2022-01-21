@@ -34,6 +34,7 @@
     "ListElementCode": "pbaReference",
     "ElementLabel": "This should be your own unique reference to identify the case. it will appear on your statements.\n",
     "FieldType": "TextArea",
+    "Max": 400,
     "SecurityClassification": "Public"
   }
 ]
