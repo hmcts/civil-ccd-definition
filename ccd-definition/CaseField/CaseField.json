@@ -9,7 +9,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
-    "Label": "Claim references",
+    "Label": "Your File Reference",
+    "FieldType": "SolicitorReferences",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "solicitorReferencesCopy",
+    "Label": "Workaround for solicitorReferences label",
     "FieldType": "SolicitorReferences",
     "SecurityClassification": "Public"
   },
@@ -256,8 +263,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentDetailsAcknowledgeClaim",
+    "Label": "<br/>The Claimant legal representative has provided the following name and address for the Defendant.\nIf these are not correct, you should contact the Claimant's legal representative.\n\n**Claimant's email address**<br/>${applicantSolicitor1UserDetails.email}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentDetails",
     "Label": "<br/>The Claimant legal representative has provided the following name and address for the Defendant.\nIf these are not correct, you should contact the Claimant's legal representative.\n\n**Claimant's email address**<br/>${applicantSolicitor1UserDetails.email}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+    {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantSolicitorEmail",
+    "Label": "**Claimant’s email address:** ${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -265,13 +286,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1Details",
     "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2Details",
-    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -285,7 +299,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseIntentionType",
-    "Label": "Response intention",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
     "SecurityClassification": "Public",
@@ -1072,6 +1086,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2AcknowledgeNotificationDate",
+    "Label": "Date respondent 2 acknowledged notification",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
@@ -1305,6 +1326,50 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant1Name",
+    "Label": "Claimant 1 Name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant2Name",
+    "Label": "Claimant 2 Name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ClaimResponseIntentionType",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseIntention",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2Details",
+    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyName",
+    "Label": "**Defendant: ${respondent2.partyName} intends to**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseIntentionTypeApplicant2",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseIntention",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -149,7 +149,7 @@
     "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2OrganisationPolicy",
-    "TabFieldDisplayOrder": 17
+    "TabFieldDisplayOrder": 15
   },
   {
     "CaseTypeID": "CIVIL",
@@ -157,7 +157,7 @@
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2DQExperts",
-    "TabFieldDisplayOrder": 18
+    "TabFieldDisplayOrder": 19
   },
   {
     "CaseTypeID": "CIVIL",
@@ -165,6 +165,6 @@
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2DQWitnesses",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 20
   }
 ]
