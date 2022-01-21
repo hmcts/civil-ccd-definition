@@ -8,8 +8,7 @@
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ? 1"
+    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ?"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -20,9 +19,7 @@
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": " ",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\"",
-    "CaseEventFieldLabel": " "
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
   }
 ]
