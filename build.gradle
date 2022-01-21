@@ -225,7 +225,6 @@ dependencies {
     }
   }
 
-
   testImplementation libraries.junit5
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
