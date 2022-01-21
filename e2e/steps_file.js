@@ -237,7 +237,7 @@ module.exports = function () {
       ]);
     },
 
-    async makeAnApplication(applicationType) {
+    async makeAnApplication(applicationType, caseId) {
       eventName = 'Make an application';
 
       await this.triggerStepsWithScreenshot([

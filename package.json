@@ -9,7 +9,7 @@
     "test:smoke-spec": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests-spec --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests --reporter mocha-multi --verbose",
     "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
-    "test:ga-e2e": "MOCHAWESOME_REPORTFILENAME=gaFunctional npx codeceptjs run --grep @ga-e2e-tests --reporter mocha-multi --verbose",
+    "test:ga": "MOCHAWESOME_REPORTFILENAME=gaFunctional npx codeceptjs run --grep @ga-spec --reporter mocha-multi --verbose",
     "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-tests-spec --reporter mocha-multi --verbose",
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@api-tests|@e2e-tests' --reporter mocha-multi --verbose",
     "test:rpa": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
