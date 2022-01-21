@@ -1035,10 +1035,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrder",
     "Label": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court.",
-    "HintText": "Enter a different percentage for judgement (optional)",
-    "FieldType": "Number",
-    "SecurityClassification": "Public",
-    "Min": 0,
-    "Max": 100
+    "FieldType": "JudgementSum",
+    "SecurityClassification": "Public"
   }
 ]
