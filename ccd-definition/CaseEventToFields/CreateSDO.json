@@ -8,7 +8,8 @@
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ?"
+    "ShowSummaryChangeOption": "N",
+    "CaseEventFieldLabel": "<strong>Do you wish to enter judgement for a sum of damages to be decided ?</strong>"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,6 +20,7 @@
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " ",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
   }
