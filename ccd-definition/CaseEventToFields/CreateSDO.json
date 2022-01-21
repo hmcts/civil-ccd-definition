@@ -8,8 +8,7 @@
     "PageID": "SDO",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ?"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
