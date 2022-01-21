@@ -1036,7 +1036,6 @@
     "ID": "drawDirectionsOrder",
     "Label": " ",
     "FieldType": "JudgementSum",
-    "HintText": "Enter a different percentage for judgement (optional)",
     "SecurityClassification": "Public"
   }
 ]
