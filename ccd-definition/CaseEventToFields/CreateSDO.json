@@ -9,7 +9,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": "<strong>Do you wish to enter judgement for a sum of damages to be decided ?</strong>"
+    "CaseEventFieldLabel": "Do you wish to enter judgement for a sum of damages to be decided ?"
   },
   {
     "CaseTypeID": "CIVIL",
