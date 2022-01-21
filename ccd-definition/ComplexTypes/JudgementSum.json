@@ -11,7 +11,7 @@
     "ID": "JudgementSum",
     "ListElementCode": "judgementSum",
     "FieldType": "Number",
-    "ElementLabel": "Judgement Sum",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Min": 0,
     "Max": 100

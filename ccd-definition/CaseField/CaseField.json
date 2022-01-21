@@ -1034,7 +1034,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrder",
-    "Label": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court.",
+    "Label": " ",
     "FieldType": "JudgementSum",
     "SecurityClassification": "Public"
   }
