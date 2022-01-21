@@ -328,6 +328,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
     deleteCaseFields('respondent1', 'solicitorReferences');
+    deleteCaseFields('systemGeneratedCaseDocuments');
 
     await validateEventPages(data.DEFENDANT_RESPONSE);
 
