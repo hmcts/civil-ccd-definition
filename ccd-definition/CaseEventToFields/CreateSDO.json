@@ -23,6 +23,6 @@
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": " ",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\"",
-    "CaseEventFieldLabel": "Judgement for the Claimant is made for 100% of their claim for a sum to be decided by the court. 1"
+    "CaseEventFieldLabel": " "
   }
 ]
