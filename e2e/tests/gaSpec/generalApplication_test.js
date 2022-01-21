@@ -1,22 +1,25 @@
 const config = require('../../config.js');
 const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
-const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
-
 let caseNumber;
+let caseId;
 
-Feature('General Application creation @e2e-tests-spec');
+const caseEventMessage = eventName => `Case ${caseId} has been updated with event: ${eventName}`;
 
-Scenario.skip('Applicant solicitor creates Strike out general application @ga', async ({I}) => {
+Feature('General Application creation @ga-spec');
+
+Scenario('Create case for @ga', async ({api}) => {
+  caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  console.log('Case created for general application: ' + caseNumber);
+});
+
+Scenario('Applicant solicitor creates Strike out general application @ga', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase();
-  caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`);
-  console.log('Case created: ' + caseNumber);
-  await I.makeAnApplication('strikeOut');
-  await I.see(caseNumber);
-  await waitForFinishedBusinessProcess(caseId());
+  await I.navigateToCaseDetails(caseNumber);
+  caseId = await I.grabCaseNumber();
+  await I.makeAnApplication('strikeOut', caseNumber);
+  console.log('General Application created: ' + caseNumber);
+  await I.see(caseId);
+  await waitForFinishedBusinessProcess(caseNumber);
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-  console.log('Application created: ' + caseNumber);
 }).retry(3);
