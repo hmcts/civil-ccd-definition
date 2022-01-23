@@ -689,6 +689,12 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -3013,7 +3019,8 @@
     {
       "UserRoles": [
         "[APPLICANTSOLICITORONE]",
-        "caseworker-civil-admin"
+        "caseworker-civil-admin",
+        "caseworker-civil-solicitor"
       ],
       "CRUD": "CRUD"
     },
