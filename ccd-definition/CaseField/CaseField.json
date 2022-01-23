@@ -608,6 +608,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQExperts",
+    "Label": "Respondent 2 experts",
+    "FieldType": "Experts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnesses",
     "Label": "Defendant 1 witnesses",
     "FieldType": "Witnesses",
@@ -622,6 +629,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQWitnesses",
+    "Label": "Respondent 2 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearing",
     "Label": "Defendant 1 Hearing",
     "FieldType": "Hearing",
@@ -631,6 +645,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQHearing",
     "Label": "Defendant 2 Hearing",
+    "FieldType": "Hearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQHearing",
+    "Label": "Respondent 2 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -696,6 +717,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQHearingSupport",
+    "Label": "Respondent 1 Hearing support requirements",
+    "FieldType": "HearingSupportRequirements",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFurtherInformation",
     "Label": "Defendant 1 Further information",
     "FieldType": "FurtherInformation",
@@ -705,6 +733,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFurtherInformation",
     "Label": "Defendant 2 Further information",
+    "FieldType": "FurtherInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFurtherInformation",
+    "Label": "Respondent 1 Further information",
     "FieldType": "FurtherInformation",
     "SecurityClassification": "Public"
   },
