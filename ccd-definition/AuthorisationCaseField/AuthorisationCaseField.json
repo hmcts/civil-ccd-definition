@@ -34,6 +34,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "solicitorReferencesCopy",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtLocation",
     "AccessControl": [
       {
@@ -141,17 +159,17 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[CREATOR]",
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]"
-        ],
-        "CRUD": "CRU"
-      },
+        "CaseTypeID": "CIVIL",
+        "CaseFieldID": "respondent1",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "[CREATOR]",
+              "[APPLICANTSOLICITORONE]",
+              "[RESPONDENTSOLICITORONE]"
+            ],
+            "CRUD": "CRU"
+          },
       {
         "UserRoles": [
           "caseworker-civil-admin"
@@ -671,6 +689,12 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -719,6 +743,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentDetailsAcknowledgeClaim",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSingleResponseRequiredLabel",
     "AccessControl": [
       {
@@ -727,7 +769,7 @@
         ],
         "CRUD": "R"
       }
-      ]
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -735,7 +777,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -1523,25 +1566,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRequestedCourt",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQHearingSupport",
     "AccessControl": [
       {
@@ -2171,15 +2195,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolicitor1UserDetails",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
-    ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "detailsOfClaimLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
@@ -2412,8 +2427,27 @@
     ]
   },
   {
+        "CaseTypeID": "CIVIL",
+        "CaseFieldID": "respondent1AcknowledgeNotificationDate",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "CRU"
+          },
+          {
+            "UserRoles": [
+              "caseworker-civil-admin",
+              "caseworker-civil-systemupdate"
+            ],
+            "CRUD": "R"
+          }
+        ]
+  },
+  {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1AcknowledgeNotificationDate",
+    "CaseFieldID": "respondent2AcknowledgeNotificationDate",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2749,6 +2783,12 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
+      },{
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
+        ],
+        "CRUD": "R"
       },
       {
         "UserRoles": [
@@ -2953,6 +2993,118 @@
       }
     ]
   },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "applicantSolicitor1UserDetails",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[APPLICANTSOLICITORONE]",
+        "caseworker-civil-admin",
+        "caseworker-civil-solicitor"
+      ],
+      "CRUD": "CRUD"
+    },
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]",
+        "[RESPONDENTSOLICITORTWO]"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},{
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "claimant1Name",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]",
+        "[RESPONDENTSOLICITORTWO]"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "claimant2Name",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "claimantSolicitorEmail",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]",
+        "[RESPONDENTSOLICITORTWO]"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2ClaimResponseIntentionType",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "respondent2PartyName",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]",
+        "[RESPONDENTSOLICITORTWO]"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "respondent1ClaimResponseIntentionTypeApplicant2",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "[RESPONDENTSOLICITORONE]"
+      ],
+      "CRUD": "CRU"
+    },
+    {
+      "UserRoles": [
+        "caseworker-civil-admin",
+        "caseworker-civil-systemupdate",
+        "[APPLICANTSOLICITORONE]"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "selectLitigationFriend",
