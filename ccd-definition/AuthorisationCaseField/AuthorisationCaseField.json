@@ -4,7 +4,8 @@
     "CaseFieldID": "caseHistory",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRU"
   },
@@ -26,7 +27,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -44,7 +46,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -62,7 +65,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -80,7 +84,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -98,7 +103,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -116,7 +122,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -134,7 +141,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -152,7 +160,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -176,7 +185,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -194,7 +204,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -212,7 +223,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -230,7 +242,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -248,7 +261,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -266,7 +280,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -284,7 +299,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -302,7 +318,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -320,7 +337,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -338,7 +356,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -356,7 +375,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -374,7 +394,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -392,7 +413,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -410,7 +432,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -428,7 +451,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -446,7 +470,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -464,7 +489,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -482,7 +508,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -500,7 +527,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -518,7 +546,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -536,7 +565,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -555,7 +585,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -574,7 +605,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -593,7 +625,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -611,7 +644,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -630,7 +664,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -648,7 +683,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -666,7 +702,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -685,7 +722,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -704,7 +742,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -723,7 +762,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -742,7 +782,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -761,7 +802,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -780,7 +822,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -798,7 +841,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -816,7 +860,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -834,7 +879,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -853,7 +899,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -872,7 +919,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -891,7 +939,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -910,7 +959,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -929,7 +979,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -948,7 +999,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -967,7 +1019,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -978,7 +1031,8 @@
     "CaseFieldID": "respondent1DQDraftDirectionsLabel",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "R"
   },
@@ -995,7 +1049,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1014,7 +1069,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1033,7 +1089,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1052,7 +1109,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1071,7 +1129,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1090,7 +1149,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1109,7 +1169,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1128,7 +1189,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1147,7 +1209,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1166,7 +1229,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1185,7 +1249,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1204,7 +1269,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1223,7 +1289,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1234,7 +1301,8 @@
     "CaseFieldID": "applicant1DQDraftDirectionsLabel",
     "UserRoles": [
       "[APPLICANTSOLICITORONE]",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "R"
   },
@@ -1251,7 +1319,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1270,7 +1339,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1289,7 +1359,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1308,7 +1379,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1327,7 +1399,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1340,7 +1413,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
@@ -1359,7 +1433,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
@@ -1378,7 +1453,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
@@ -1403,7 +1479,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1421,7 +1498,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1439,7 +1517,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1457,7 +1536,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1468,7 +1548,8 @@
     "CaseFieldID": "respondentSolicitor1EmailAddress",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRU"
   },
@@ -1484,7 +1565,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1502,7 +1584,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1521,7 +1604,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1532,7 +1616,8 @@
     "CaseFieldID": "notifyClaimLabel",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "R"
   },
@@ -1548,7 +1633,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1559,7 +1645,8 @@
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRUD"
   },
@@ -1581,7 +1668,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1600,7 +1688,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1624,7 +1713,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1644,7 +1734,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1664,7 +1755,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1689,7 +1781,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
@@ -1708,7 +1801,8 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
@@ -1727,7 +1821,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       },
@@ -1752,7 +1847,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1771,7 +1867,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1790,7 +1887,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1809,7 +1907,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1828,7 +1927,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1847,7 +1947,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -1866,7 +1967,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -1878,7 +1980,8 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
-      "caseworker-civil-systemupdate"
+      "caseworker-civil-systemupdate",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRU"
   },
@@ -1895,7 +1998,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1914,7 +2018,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1933,7 +2038,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1952,7 +2058,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1979,7 +2086,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -1991,7 +2099,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2009,7 +2118,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2027,7 +2137,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2045,7 +2156,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2063,7 +2175,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2081,7 +2194,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2099,7 +2213,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2117,7 +2232,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2135,7 +2251,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2153,7 +2270,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2171,7 +2289,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2189,7 +2308,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2200,7 +2320,8 @@
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRU"
   },
@@ -2216,7 +2337,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2228,7 +2350,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRUD"
       },
@@ -2246,7 +2369,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       },
@@ -2270,7 +2394,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2288,7 +2413,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -2312,7 +2438,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRUD"
       }
@@ -2330,7 +2457,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRUD"
       }
@@ -2348,7 +2476,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRUD"
       }
@@ -2361,7 +2490,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -2374,7 +2504,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
