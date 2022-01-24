@@ -5,7 +5,7 @@ const options = {
   fullAdmission: 'Admit all of the claim',
   partAdmission: 'Admit part of the claim',
   counterClaim: 'Reject all of the claim and wants to counterclaim'
-}
+};
 
 module.exports = {
   fields: {
@@ -26,7 +26,7 @@ module.exports = {
   async selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
     // eslint-disable-next-line no-prototype-builtins
     await this.checkResponseValidity(this.fields.respondent1ClaimResponseType, defendant1Response);
-    await this.inputResponse(this.fields.respondent1ClaimResponseType, defendant1Response)
+    await this.inputResponse(this.fields.respondent1ClaimResponseType, defendant1Response);
 
     if(defendant2Response) {
       await this.checkResponseValidity(this.fields.respondent2ClaimResponseType, defendant2Response);
@@ -49,7 +49,7 @@ module.exports = {
   },
 
   async checkResponseValidity(responseField, responseType) {
-    if (!responseField.options.hasOwnProperty(responseType)) {
+    if (!Object.prototype.hasOwnProperty.call(responseField.options, responseType)) {
       throw new Error(`Response type: ${responseType} does not exist`);
     }
   }

@@ -118,7 +118,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const confirmationMessage = {
   online: 'Your claim has been received\nClaim number: ',
   offline: 'Your claim has been received and will progress offline'
-}
+};
 
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
@@ -139,10 +139,10 @@ const secondClaimantSteps = (claimant2) => [
     () => party.enterParty('applicant2', address),
     () => claimantLitigationDetails.enterLitigantFriend('2', claimant2.litigantInPerson ? 'yes' : 'no'),]
   )
-]
+];
 const firstDefendantSteps = (respondent1) => [
   () => party.enterParty('respondent1', address),
-  () => respondentRepresentedPage.enterRespondentRepresented('respondent1', !!respondent1.represented ? 'yes' : 'no'),
+  () => respondentRepresentedPage.enterRespondentRepresented('respondent1', respondent1.represented ? 'yes' : 'no'),
   ...conditionalSteps(respondent1.represented, [
     () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
     ...conditionalSteps(!respondent1.representativeRegistered, [
@@ -176,7 +176,7 @@ const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenar
       ])
     ])
   ])
-]
+];
 
 module.exports = function () {
   return actor({

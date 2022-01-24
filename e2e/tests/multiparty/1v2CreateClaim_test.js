@@ -2,16 +2,16 @@ const config = require('../../config.js');
 
 const claimant1 = {
   litigantInPerson: false
-}
+};
 const respondent1 = {
   represented: false
-}
+};
 const respondent2 = {
   sameLegalRepresentativeAsRespondent1: false,
   represented: true,
   representativeRegistered: true,
   representativeOrgNumber: 2
-}
+};
 
 let caseNumber;
 

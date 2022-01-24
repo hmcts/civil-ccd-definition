@@ -1,4 +1,4 @@
-const postcodeLookup = require("./../../fragments/addressPostcodeLookup.js");
+const postcodeLookup = require('./../../fragments/addressPostcodeLookup.js');
 const address = require('./../../fixtures/address.js');
 const { I } = inject();
 

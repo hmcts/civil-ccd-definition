@@ -6,15 +6,15 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const claimant1 = {
   litigantInPerson: false
-}
+};
 const claimant2 = {
   litigantInPerson: false
-}
+};
 const respondent1 = {
   represented: true,
   representativeRegistered: true,
   representativeOrgNumber: 2
-}
+};
 
 let caseNumber;
 

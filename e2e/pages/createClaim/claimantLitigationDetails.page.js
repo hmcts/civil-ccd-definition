@@ -12,7 +12,7 @@ module.exports = {
           no: 'No'
         }
       },
-    }
+    };
   },
 
   async enterLitigantFriend(applicantNumber = '1', response = 'no', address, file) {

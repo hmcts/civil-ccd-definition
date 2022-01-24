@@ -15,7 +15,7 @@ module.exports = {
   async selectSolicitorToNotify(solicitorToNotify = 'both') {
     // eslint-disable-next-line no-prototype-builtins
     await this.checkOptionValidity(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify);
-    await this.inputResponse(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify)
+    await this.inputResponse(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify);
     await I.clickContinue();
   },
 
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   async checkOptionValidity(responseField, responseType) {
-    if (!responseField.options.hasOwnProperty(responseType)) {
+    if (!Object.prototype.hasOwnProperty.call(responseField.options, responseType)) {
       throw new Error(`Option: ${responseType} does not exist`);
     }
   }

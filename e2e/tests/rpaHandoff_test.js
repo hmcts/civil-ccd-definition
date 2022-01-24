@@ -68,12 +68,12 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
 const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) => {
   const claimant1 = {
     litigantInPerson: false
-  }
+  };
   const respondent1 = {
     represented: true,
     representativeRegistered: true,
     representativeOrgNumber: 2
-  }
+  };
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
