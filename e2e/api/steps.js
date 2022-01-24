@@ -267,13 +267,17 @@ module.exports = {
 
     eventName = 'ACKNOWLEDGE_CLAIM';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
+
     deleteCaseFields('systemGeneratedCaseDocuments');
+    deleteCaseFields('solicitorReferences');
+    deleteCaseFields('solicitorReferencesCopy');
 
     await validateEventPages(data.ACKNOWLEDGE_CLAIM);
 
-    await assertError('ConfirmDetails', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
+    await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -285,6 +289,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+
     deleteCaseFields('respondent1Copy');
   },
 
@@ -324,6 +329,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
     deleteCaseFields('respondent1', 'solicitorReferences');
+    deleteCaseFields('systemGeneratedCaseDocuments');
 
     await validateEventPages(data.DEFENDANT_RESPONSE);
 
@@ -463,11 +469,12 @@ const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
   const validDataForPage = data.valid[pageId];
+
   caseData = {...caseData, ...validDataForPage};
 
   const response = await apiRequest.validatePage(eventName, pageId, caseData);
-  const responseBody = await response.json();
 
+  const responseBody = await response.json();
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -503,6 +510,7 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
+
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
