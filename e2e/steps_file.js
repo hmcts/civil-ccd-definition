@@ -108,6 +108,7 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
+const {multipartyTestsEnabled} = require("./config");
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -300,7 +301,9 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
         () => confirmDetailsPage.confirmReference(),
-        () => responseIntentionPage.selectResponseIntention(responseIntention),
+        ...conditionalSteps(multipartyTestsEnabled, [
+          () => responseIntentionPage.selectResponseIntention(responseIntention),
+        ]),
         // temporarily commenting out whilst change is made to service repo
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
