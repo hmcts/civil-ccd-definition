@@ -39,7 +39,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Yes"
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -50,7 +50,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Yes"
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
