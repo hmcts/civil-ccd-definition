@@ -43,6 +43,6 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || './output',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-  multipartyTestsEnabled: process.env.MULTIPARTY_TESTS_ENABLED === 'true',
+  multipartyTestsEnabled: true,
   runningEnv: process.env.ENVIRONMENT
 };
