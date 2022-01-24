@@ -300,11 +300,9 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
+        () => responseIntentionPage.selectResponseIntention(responseIntention),
         () => confirmDetailsPage.confirmReference(),
-        ...conditionalSteps(multipartyTestsEnabled, [
-          () => responseIntentionPage.selectResponseIntention(responseIntention),
-        ]),
-        // temporarily commenting out whilst change is made to service repo
+        // temporarily commenting out whilst change is Fmade to service repo
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
       ]);
