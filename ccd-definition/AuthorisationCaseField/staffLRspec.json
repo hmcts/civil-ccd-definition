@@ -148,5 +148,11 @@
     "CaseFieldID": "specDefendant1Debts",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceFullAdmittedRequired",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
