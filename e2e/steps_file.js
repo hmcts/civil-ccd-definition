@@ -330,7 +330,7 @@ module.exports = function () {
     },
 
     defenceSteps(responseType) {
-      return [() => responseTypePage.selectResponseType(responseType),
+      return [() => responseTypePage.selectResponseType({defendant1Response: responseType}),
         ...conditionalSteps(responseType === 'fullDefence', [
           () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
           () => respondentDetails.verifyDetails(),
