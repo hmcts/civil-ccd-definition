@@ -1,11 +1,12 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "DirectionOrderClaimTrackRequired",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "drawDirectionsOrder",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageID": "ClaimsTrack",
+    "PageID": "DirectionsOrderJudgementSum",
+    "PageLabel": "Draw directions order - Judge",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
