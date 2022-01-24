@@ -73,7 +73,6 @@ const requestedCourtPage = require('./fragments/dq/requestedCourt.page');
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
 const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
-
 const address = require('./fixtures/address.js');
 const specCreateCasePage = require('./pages/createClaim/createCaseLRspec.page');
 const specPartyDetails = require('./fragments/claimantDetailsLRspec');
