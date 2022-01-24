@@ -3,6 +3,19 @@ const { date, buildAddress } = require('../../api/dataHelper');
 module.exports = {
   valid: {
     ConfirmNameAddress: {},
+    ResponseIntention: {
+      respondent1ClaimResponseIntentionType: 'FULL_DEFENCE'
+    },
+    SolicitorReferences: {
+      solicitorReferences:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      },
+      solicitorReferencesCopy:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      }
+    },
     ConfirmDetails: {
       respondent1: {
         type: 'INDIVIDUAL',
@@ -11,14 +24,7 @@ module.exports = {
         individualTitle: 'Sir',
         individualDateOfBirth: date(-1),
         primaryAddress: buildAddress('respondent')
-      },
-      solicitorReferences: {
-        applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference'
       }
-    },
-    ResponseIntention: {
-      respondent1ClaimResponseIntentionType: 'FULL_DEFENCE'
     }
   },
   invalid: {
