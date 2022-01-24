@@ -241,9 +241,13 @@ module.exports = function () {
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
         ...firstClaimantSteps(claimant1),
-        ...secondClaimantSteps(claimant2),
+        ...conditionalSteps(config.multipartyTestsEnabled, () => [
+          ...secondClaimantSteps(claimant2)
+        ]),
         ...firstDefendantSteps(respondent1),
-        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        ...conditionalSteps(config.multipartyTestsEnabled, () => [
+          ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        ]),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
