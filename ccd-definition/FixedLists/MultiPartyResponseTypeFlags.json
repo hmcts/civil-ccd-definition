@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "MultiPartyResponseTypeFlags",
+    "ListElementCode": "FULL_DEFENCE",
+    "ListElement": "Reject all of the claim",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MultiPartyResponseTypeFlags",
+    "ListElementCode": "NOT_FULL_DEFENCE",
+    "ListElement": "Not Reject all of the claim",
+    "DisplayOrder": 2
+  }
+]
