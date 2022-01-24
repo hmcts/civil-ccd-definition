@@ -108,7 +108,7 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
-const {multipartyTestsEnabled} = require("./config");
+const {multipartyTestsEnabled} = require('./config');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -242,11 +242,11 @@ module.exports = function () {
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
         ...firstClaimantSteps(claimant1),
-        ...conditionalSteps(config.multipartyTestsEnabled, () => [
+        ...conditionalSteps(multipartyTestsEnabled, () => [
           ...secondClaimantSteps(claimant2)
         ]),
         ...firstDefendantSteps(respondent1),
-        ...conditionalSteps(config.multipartyTestsEnabled, () => [
+        ...conditionalSteps(multipartyTestsEnabled, () => [
           ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
         ]),
         () => claimTypePage.selectClaimType(),
