@@ -177,6 +177,24 @@ const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenar
     ])
   ])
 ];
+const defenceSteps = (responseType) => [() => responseTypePage.selectResponseType({defendant1Response: responseType}),
+  ...conditionalSteps(responseType === 'fullDefence', [
+    () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
+    () => respondentDetails.verifyDetails(),
+    () => confirmDetailsPage.confirmReference(),
+  ])];
+
+const multiPartyDefenceSteps = ({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) =>
+  [() => respondentDetails.verifyDetails(),
+    ...conditionalSteps(twoDefendants, [
+      () => singleResponse.defendantsHaveSameResponse(sameResponse),
+    ]),
+    () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
+    () => confirmDetailsPage.confirmReference(),
+    ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+      () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH)
+    ])
+  ];
 
 module.exports = function () {
   return actor({
@@ -289,13 +307,13 @@ module.exports = function () {
       ]);
     },
 
-    async acknowledgeClaim(responseIntention) {
+    async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2) {
       eventName = 'Acknowledge claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
-        () => responseIntentionPage.selectResponseIntention(responseIntention),
+        () => responseIntentionPage.selectResponseIntention(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2),
         () => confirmDetailsPage.confirmReference(),
         // temporarily commenting out whilst change is Fmade to service repo
         () => event.submit('Acknowledge claim', ''),
@@ -328,35 +346,14 @@ module.exports = function () {
       ]);
     },
 
-    defenceSteps(responseType) {
-      return [() => responseTypePage.selectResponseType({defendant1Response: responseType}),
-        ...conditionalSteps(responseType === 'fullDefence', [
-          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
-          () => respondentDetails.verifyDetails(),
-          () => confirmDetailsPage.confirmReference(),
-        ])];
-    },
-
-    multiPartyDefenceSteps({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
-      return [() => respondentDetails.verifyDetails(),
-        ...conditionalSteps(twoDefendants, [
-          () => singleResponse.defendantsHaveSameResponse(sameResponse),
-        ]),
-        () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
-        () => confirmDetailsPage.confirmReference(),
-        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
-          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH)
-        ])];
-    },
-
     async respondToClaim({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
       eventName = 'Respond to claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        ... conditionalSteps(multipartyTestsEnabled, this.multiPartyDefenceSteps({twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2})),
-        ... conditionalSteps(!multipartyTestsEnabled, this.defenceSteps(defendant1Response)),
-        ... conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+        ...conditionalSteps(multipartyTestsEnabled, multiPartyDefenceSteps({twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2})),
+        ...conditionalSteps(!multipartyTestsEnabled, defenceSteps(defendant1Response)),
+        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
           () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.RESPONDENT_SOLICITOR_1),
           () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.RESPONDENT_SOLICITOR_1),

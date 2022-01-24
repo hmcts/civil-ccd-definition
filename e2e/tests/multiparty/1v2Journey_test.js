@@ -43,7 +43,7 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.acknowledgeClaim('fullDefence');
+  await I.acknowledgeClaim('fullDefence', 'fullDefence');
   await I.see(caseEventMessage('Acknowledge claim'));
   await I.click('Sign out');
 }).retry(3);
