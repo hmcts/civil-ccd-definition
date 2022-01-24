@@ -243,7 +243,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetails",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartEmploymentTypeRequired=\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"EMPLOYED\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired=\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"EMPLOYED\"",
     "ShowSummaryChangeOption": "N"
   },
   {
