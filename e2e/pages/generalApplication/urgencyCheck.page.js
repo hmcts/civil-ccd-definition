@@ -21,18 +21,14 @@ module.exports = {
     I.waitForElement(this.fields.generalAppUrgencyRequirement.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAUrgencyRecordPage');
     if ('yes' === urgencyCheck) {
-      await within(this.fields.generalAppUrgencyRequirement.id, () => {
-        I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
-      });
+      I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
       await I.fillField(this.fields.considerationDay, 1);
       await I.fillField(this.fields.considerationMonth, 10);
       await I.fillField(this.fields.considerationYear, 2022);
       await I.fillField(this.fields.reasonsForUrgency, 'Test Reason for Urgency');
       await I.click(this.fields.consentAgreementCheckBox);
     } else {
-      await within(this.fields.generalAppUrgencyRequirement.id, () => {
-        I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
-      });
+      I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);
     }
     await I.clickContinue();
   }

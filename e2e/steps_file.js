@@ -259,7 +259,7 @@ module.exports = function () {
         () => hearingAndTrialPage.isUnavailableTrailRequired('no'),
         () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
         () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
-        () => answersPage.verifyCheckAnswerForm(caseId),
+        () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
         () => event.submit('Submit', 'You have made an application')
       ]);
     },

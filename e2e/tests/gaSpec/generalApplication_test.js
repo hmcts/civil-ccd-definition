@@ -16,22 +16,22 @@ Scenario('Applicant solicitor creates Strike out general application @ga', async
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
   await I.makeAnApplication('single', caseNumber, 'no');
-  console.log('General Application created: ' + caseNumber);
-  await I.see(caseId);
-  await waitForFinishedBusinessProcess(caseNumber);
-  I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATION/confirm');
-  await I.click('Close and Return to case details');
-  await I.see(caseEventMessage('Make an application'));
-}).retry(3);
+  await verifyCaseEventMessage(I, caseId);
+}).retry(2);
 
 Scenario('Applicant solicitor creates Multiple general applications @ga', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   caseId = await I.grabCaseNumber();
   await I.makeAnApplication('multiple', caseNumber, 'yes');
+ await verifyCaseEventMessage(I, caseId);
+}).retry(2);
+
+const verifyCaseEventMessage = async (I, caseId) => {
   console.log('General Application created: ' + caseNumber);
   await I.see(caseId);
   await waitForFinishedBusinessProcess(caseNumber);
+  I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATION/confirm');
   await I.click('Close and Return to case details');
   await I.see(caseEventMessage('Make an application'));
-}).retry(3);
+};

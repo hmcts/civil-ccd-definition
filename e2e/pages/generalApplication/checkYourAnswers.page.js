@@ -8,12 +8,16 @@ module.exports = {
     }
   },
 
-  async verifyCheckAnswerForm(caseId) {
+  async verifyCheckAnswerForm(caseId, consentCheck) {
     I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATION/submit');
     I.see('Check your answers');
     I.seeInCurrentUrl(caseId);
     I.seeNumberOfVisibleElements('.button', 2);
-    I.seeNumberOfVisibleElements('.case-field-change a', 9);
+    if ('yes' === consentCheck) {
+      I.seeNumberOfVisibleElements('.case-field-change a', 8);
+    } else {
+      I.seeNumberOfVisibleElements('.case-field-change a', 9);
+    }
     I.seeTextEquals('examplePDF.pdf', '.collection-field-table a');
   }
 };
