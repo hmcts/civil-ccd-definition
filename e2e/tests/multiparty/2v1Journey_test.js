@@ -28,7 +28,7 @@ Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant'
   await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
+Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
   await I.notifyClaim();
   await I.see(caseEventMessage('Notify claim'));
   await assignCaseToDefendant(caseId());
@@ -62,7 +62,7 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
   await I.see(caseEventMessage('Add litigation friend'));
 });
 
-Scenario('(Defendants solicitor reject claim for both defendants', async ({I}) => {
+Scenario('(Defendants solicitor reject claim of both claimants', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails('1642700629930139');
   await I.respondToClaim({
