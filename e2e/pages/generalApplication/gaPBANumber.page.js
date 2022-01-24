@@ -16,6 +16,7 @@ module.exports = {
 
   async selectPbaNumber(pbaNumber) {
     I.waitForElement(this.fields.pbaNumber.id);
+    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAPBADetailsGAspec');
     I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options[pbaNumber]);
     await I.fillField(this.fields.pbaReference, 'Test PBA reference number');
     await I.clickContinue();

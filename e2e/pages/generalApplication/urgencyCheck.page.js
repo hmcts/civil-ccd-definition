@@ -19,6 +19,7 @@ module.exports = {
 
   async selectUrgencyRequirement(urgencyCheck) {
     I.waitForElement(this.fields.generalAppUrgencyRequirement.id);
+    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGAUrgencyRecordPage');
     if ('yes' === urgencyCheck) {
       await within(this.fields.generalAppUrgencyRequirement.id, () => {
         I.click(this.fields.generalAppUrgencyRequirement.options[urgencyCheck]);

@@ -20,6 +20,7 @@ module.exports = {
 
   async enterApplicationDetails(file) {
     I.waitForElement(this.fields.generalAppDetailsOfOrder);
+    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONStatementOfTruth');
     await I.fillField(this.fields.generalAppDetailsOfOrder, 'Test Details');
     await I.fillField(this.fields.generalAppReasonsOfOrder, 'Test reasons for orders');
     await I.click(this.fields.consentAgreementCheckBox);

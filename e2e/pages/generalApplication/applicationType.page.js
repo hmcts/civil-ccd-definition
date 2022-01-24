@@ -15,15 +15,18 @@ module.exports = {
   },
 
   async selectApplicationType(applicationType) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (!this.fields.applicationType.options.hasOwnProperty(applicationType)) {
-      throw new Error(`Application type: ${applicationType} does not exist`);
-    }
-
     I.waitForElement(this.fields.applicationType.id);
-    await within(this.fields.applicationType.id, () => {
-      I.click(this.fields.applicationType.options[applicationType]);
-    });
+    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGATypePage');
+    switch (applicationType) {
+      case 'single':
+        I.click(this.fields.applicationType.options.strikeOut);
+        break;
+      case 'multiple':
+        I.click(this.fields.applicationType.options.strikeOut);
+        I.click(this.fields.applicationType.options.stayTheClaim);
+        I.click(this.fields.applicationType.options.extendTime);
+        break;
+    }
     await I.clickContinue();
   }
 };

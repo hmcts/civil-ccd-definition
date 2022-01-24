@@ -62,6 +62,7 @@ const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page
 const enterApplicationDetailsPage = require('./pages/generalApplication/applicationDetails.page');
 const hearingAndTrialPage = require('./pages/generalApplication/hearingDetails.page');
 const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
+const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -75,6 +76,7 @@ const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportReq
 const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 
+const events = require('./fixtures/ccd/events.js');
 const address = require('./fixtures/address.js');
 const specCreateCasePage = require('./pages/createClaim/createCaseLRspec.page');
 const specPartyDetails = require('./fragments/claimantDetailsLRspec');
@@ -140,7 +142,7 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
     },
 
-    grabCaseNumber: async function () {
+     grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
 
       return await this.grabTextFrom(CASE_HEADER);
@@ -237,15 +239,17 @@ module.exports = function () {
       ]);
     },
 
-    async makeAnApplication(applicationType, caseId) {
-      eventName = 'Make an application';
+    async makeAnApplication(applicationType, caseId, consentCheck) {
+      eventName = events.INITIATE_GENERAL_APPLICATION.name;
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => applicationTypePage.selectApplicationType(applicationType),
-        () => consentCheckPage.selectConsentCheck('no'),
+        () => consentCheckPage.selectConsentCheck(consentCheck),
         () => urgencyCheckPage.selectUrgencyRequirement('yes'),
-        () => withOutNoticePage.selectNotice('no'),
+        ... conditionalSteps(consentCheck === 'no', [
+          () => withOutNoticePage.selectNotice('no'),
+        ]),
         () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
         () => hearingAndTrialPage.isHearingScheduled('no'),
         () => hearingAndTrialPage.isJudgeRequired('no'),
@@ -255,6 +259,7 @@ module.exports = function () {
         () => hearingAndTrialPage.isUnavailableTrailRequired('no'),
         () => hearingAndTrialPage.selectSupportRequirement('disabledAccess'),
         () => gaPBANumberPage.selectPbaNumber('activeAccount1'),
+        () => answersPage.verifyCheckAnswerForm(caseId),
         () => event.submit('Submit', 'You have made an application')
       ]);
     },

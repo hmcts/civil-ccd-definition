@@ -76,6 +76,7 @@ module.exports = {
 
   async isHearingScheduled(hearingScheduledCheck) {
     I.waitForElement(this.fields.hearingScheduled.id);
+    I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONHearingDetails');
     if ('yes' === hearingScheduledCheck) {
       await within(this.fields.hearingScheduled.id, () => {
         I.click(this.fields.hearingScheduled.options[hearingScheduledCheck]);

@@ -82,5 +82,11 @@ module.exports = {
     id: 'ADD_CASE_NOTE',
     name: 'Add a case note',
     order: 16
-  }
+  },
+  INITIATE_GENERAL_APPLICATION: {
+    description: 'Application created, post actions triggered',
+    id: 'INITIATE_GENERAL_APPLICATION',
+    name: 'Make an application',
+    order: 17
+  },
 };
