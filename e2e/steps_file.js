@@ -242,13 +242,9 @@ module.exports = function () {
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
         ...firstClaimantSteps(claimant1),
-        ...conditionalSteps(multipartyTestsEnabled, () => [
-          ...secondClaimantSteps(claimant2)
-        ]),
+        ...conditionalSteps(multipartyTestsEnabled, secondClaimantSteps(claimant2)),
         ...firstDefendantSteps(respondent1),
-        ...conditionalSteps(multipartyTestsEnabled, () => [
-          ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
-        ]),
+        ...conditionalSteps(multipartyTestsEnabled, secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario)),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -260,7 +256,7 @@ module.exports = function () {
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
           shouldStayOnline ? confirmationMessage.online : confirmationMessage.offline),
-        () => event.returnToCaseDetails()
+        () => event.returnToCaseDetails(),
       ]);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
@@ -333,19 +329,35 @@ module.exports = function () {
       ]);
     },
 
+    defenceSteps(responseType) {
+      return [() => responseTypePage.selectResponseType(responseType),
+        ...conditionalSteps(responseType === 'fullDefence', [
+          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
+          () => respondentDetails.verifyDetails(),
+          () => confirmDetailsPage.confirmReference(),
+        ])];
+    },
+
+    multiPartyDefenceSteps({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
+      return [() => respondentDetails.verifyDetails(),
+        ...conditionalSteps(twoDefendants, [
+          () => singleResponse.defendantsHaveSameResponse(sameResponse),
+        ]),
+        () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
+        () => confirmDetailsPage.confirmReference(),
+        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH)
+        ])];
+    },
+
     async respondToClaim({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
       eventName = 'Respond to claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => respondentDetails.verifyDetails(),
-        ... conditionalSteps(twoDefendants, [
-          () => singleResponse.defendantsHaveSameResponse(sameResponse),
-        ]),
-        () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
-        () => confirmDetailsPage.confirmReference(),
+        ... conditionalSteps(multipartyTestsEnabled, this.multiPartyDefenceSteps({twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2})),
+        ... conditionalSteps(!multipartyTestsEnabled, this.defenceSteps(defendant1Response)),
         ... conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
-          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
           () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.RESPONDENT_SOLICITOR_1),
           () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.RESPONDENT_SOLICITOR_1),
