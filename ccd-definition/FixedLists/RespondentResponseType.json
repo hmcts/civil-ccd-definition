@@ -2,19 +2,19 @@
   {
     "ID": "RespondentResponseType",
     "ListElementCode": "FULL_DEFENCE",
-    "ListElement": "Rejects all of the claim",
+    "ListElement": "Reject all of the claim",
     "DisplayOrder": 1
   },
   {
     "ID": "RespondentResponseType",
     "ListElementCode": "FULL_ADMISSION",
-    "ListElement": "Admits all of the claim",
+    "ListElement": "Admit all of the claim",
     "DisplayOrder": 2
   },
   {
     "ID": "RespondentResponseType",
     "ListElementCode": "PART_ADMISSION",
-    "ListElement": "Admits part of the claim",
+    "ListElement": "Admit part of the claim",
     "DisplayOrder": 3
   },
   {
