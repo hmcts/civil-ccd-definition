@@ -4,6 +4,7 @@ const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
 
+
 Feature('RPA handoff points tests @rpa-handoff-tests');
 
 Scenario('Take claim offline', async ({I}) => {
@@ -64,9 +65,17 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await I.signOut();
 }).retry(3);
 
-const createCaseUpUntilNotifyClaimDetails = async (I) => {
+const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) => {
+  const claimant1 = {
+    litigantInPerson: false
+  }
+  const respondent1 = {
+    represented: true,
+    representativeRegistered: true,
+    representativeOrgNumber: 2
+  }
   await I.login(config.applicantSolicitorUser);
-  await I.createCase();
+  await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
   await I.notifyClaim();
   await assignCaseToDefendant(caseId());
@@ -78,5 +87,5 @@ const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim(acknowledgeClaimResponse);
   await I.informAgreedExtensionDate();
-  await I.respondToClaim(respondToClaimResponse);
+  await I.respondToClaim(I.respondToClaim({defendant1Response: respondToClaimResponse}));
 };

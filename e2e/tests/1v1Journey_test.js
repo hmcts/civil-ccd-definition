@@ -4,63 +4,67 @@ const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
+const claimant1 = {
+  litigantInPerson: true
+}
+
+const respondent1 = {
+  represented: true,
+  representativeRegistered: true,
+  representativeOrgNumber: 2
+}
+
 let caseNumber;
-let attempt = 1;
 
-Feature('End-to-end journey @cross-browser-tests');
+Feature('1v1 - Claim Journey @e2e-tests');
 
-Scenario('Full end-to-end journey', async ({I}) => {
-  const claimant1 = {
-    litigantInPerson: false
-  }
-  const respondent1 = {
-    represented: true,
-    representativeRegistered: true,
-    representativeOrgNumber: 2
-  }
-  console.log(`Test run attempt: #${attempt++}`);
+Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
-  console.log('Applicant solicitor created claim');
-
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
+}).retry(3);
 
+Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
   await I.notifyClaim();
-  console.log('Applicant solicitor notified defendant solicitor of claim');
   await I.see(caseEventMessage('Notify claim'));
   await assignCaseToDefendant(caseId());
+}).retry(3);
 
+Scenario('Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
   await I.notifyClaimDetails();
-  console.log('Applicant solicitor notified defendant solicitor of claim details');
   await I.see(caseEventMessage('Notify claim details'));
+  await I.click('Sign out');
+}).retry(3);
 
+Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim('fullDefence');
-  console.log('Defendant solicitor acknowledged claim');
   await I.see(caseEventMessage('Acknowledge claim'));
+  await I.click('Sign out');
+}).retry(3);
 
-  await I.informAgreedExtensionDate();
-  console.log('Defendant solicitor requested deadline extension');
+Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.informAgreedExtensionDate(1);
   await I.see(caseEventMessage('Inform agreed extension date'));
+}).retry(3);
 
+Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.addDefendantLitigationFriend();
-  console.log('Defendant solicitor added defendant litigation friend');
   await I.see(caseEventMessage('Add litigation friend'));
+});
 
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
+Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.respondToClaim({defendant1Response: 'fullDefence'});
-  console.log('Defendant solicitor responded to claim');
   await I.see(caseEventMessage('Respond to claim'));
+  await I.click('Sign out');
+}).retry(3);
 
+Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefence();
-  console.log('Applicant solicitor responded to defence');
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
-}).retry(2);
+}).retry(3);

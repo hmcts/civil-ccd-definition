@@ -12,11 +12,11 @@ module.exports = {
     },
   },
 
-  async enterAddAnotherClaimant() {
+  async enterAddAnotherClaimant(response = 'no') {
     I.waitForElement(this.fields.addApplicant2.id);
     await I.runAccessibilityTest();
     await within(this.fields.addApplicant2.id, () => {
-      I.click(this.fields.addApplicant2.options.no);
+      I.click(this.fields.addApplicant2.options[response]);
     });
 
     await I.clickContinue();
