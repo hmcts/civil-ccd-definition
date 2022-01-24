@@ -2,7 +2,7 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "generalAppFeeToPayLabel108",
-    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> £108 without notice <p class=\"govuk-body\">   </p>",
+    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> £108 <p class=\"govuk-body\">   </p>",
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -10,7 +10,7 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "generalAppFeeToPayLabel275",
-    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> £275 with notice <p class=\"govuk-body\">   </p>",
+    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> £275 <p class=\"govuk-body\">   </p>",
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
