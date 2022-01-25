@@ -235,7 +235,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           SecondDefendantSolicitorEmail: {
             respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
           }
-        }
+        };
     }
     case 'ONE_V_ONE':
     default: {
@@ -245,43 +245,43 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 };
 
 // TODO: Check if this is still needed for 1v2 cases.
-const midEventsForSameLegalRep = (mpScenario) => {
-  const midEvent = {
-    ...config.multipartyTestsEnabled ? {
-      // SecondDefendant: {
-      //   respondent2SameLegalRepresentative: 'No'
-      // },
-      // SecondDefendantLegalRepresentation: {
-      //   respondent2SameLegalRepresentative: 'No'
-      // },
-    } : {
-      SecondDefendantLegalRepresentation: {
-        respondent2SameLegalRepresentative: [undefined]
-      },
-    },
-  }
-  switch (mpScenario){
-    case 'ONE_V_TWO_ONE_LEGAL_REP':
-    case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      return {
-        // SecondDefendant: {
-        //   respondent2SameLegalRepresentative: [undefined]
-        // },
-        SecondDefendantLegalRepresentation: {
-          respondent2SameLegalRepresentative: 'No'
-        },
-      }
-    }
-    default: {
-      return midEvent;
-    }
-  }
-};
+// const midEventsForSameLegalRep = (mpScenario) => {
+//   const midEvent = {
+//     ...config.multipartyTestsEnabled ? {
+//       // SecondDefendant: {
+//       //   respondent2SameLegalRepresentative: 'No'
+//       // },
+//       // SecondDefendantLegalRepresentation: {
+//       //   respondent2SameLegalRepresentative: 'No'
+//       // },
+//     } : {
+//       SecondDefendantLegalRepresentation: {
+//         respondent2SameLegalRepresentative: [undefined]
+//       },
+//     },
+//   };
+//   switch (mpScenario){
+//     case 'ONE_V_TWO_ONE_LEGAL_REP':
+//     case 'ONE_V_TWO_TWO_LEGAL_REP': {
+//       return {
+//         // SecondDefendant: {
+//         //   respondent2SameLegalRepresentative: [undefined]
+//         // },
+//         SecondDefendantLegalRepresentation: {
+//           respondent2SameLegalRepresentative: 'No'
+//         },
+//       };
+//     }
+//     default: {
+//       return midEvent;
+//     }
+//   }
+// };
 
 const hasRespondent2 = (mpScenario) => {
   return config.multipartyTestsEnabled
     && (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP')
+      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP');
 };
 
 module.exports = {
@@ -437,7 +437,7 @@ module.exports = {
           }
         }
       }
-    }
+    };
   },
 
   createClaimLitigantInPerson: {

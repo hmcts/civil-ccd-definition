@@ -1,7 +1,7 @@
 const uuid = require('uuid');
-const {listElement} = require("../../api/dataHelper");
+const {listElement} = require('../../api/dataHelper');
 const docUuid = uuid.v1();
-const selectedNotifyOption = listElement('Both')
+const selectedNotifyOption = listElement('Both');
 
 module.exports = {
   valid: {

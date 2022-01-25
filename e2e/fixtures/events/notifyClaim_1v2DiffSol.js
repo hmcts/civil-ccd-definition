@@ -1,6 +1,6 @@
 const { listElement } = require('../../api/dataHelper');
 
-const selectedNotifyOption = listElement('Both')
+const selectedNotifyOption = listElement('Both');
 
 module.exports = {
   valid: {

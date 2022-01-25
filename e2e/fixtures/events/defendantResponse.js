@@ -1,5 +1,4 @@
 const { date, element, buildAddress } = require('../../api/dataHelper');
-const config = require("../../config.js");
 
 const createDefendantResponseData = (mpScenario) => {
   const defendantResponseData = {
@@ -122,13 +121,9 @@ const createDefendantResponseData = (mpScenario) => {
         role: 'Tester'
       }
     }
-  }
+  };
+
   switch (mpScenario){
-    case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      return {
-        ...defendantResponseData
-      };
-    }
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       return {
         ...defendantResponseData,
@@ -149,7 +144,7 @@ const createDefendantResponseData = (mpScenario) => {
           respondent1ClaimResponseType: 'FULL_DEFENCE',
           multiPartyResponseTypeFlags: 'FULL_DEFENCE'
         },
-      }
+      };
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP':
     case 'ONE_V_ONE':
@@ -157,7 +152,7 @@ const createDefendantResponseData = (mpScenario) => {
       return defendantResponseData;
     }
   }
-}
+};
 
 module.exports = {
   defendantResponse: (mpScenario = 'ONE_V_ONE') => {
@@ -223,6 +218,6 @@ module.exports = {
           }
         },
       }
-    }
+    };
   }
 };

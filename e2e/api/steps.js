@@ -62,7 +62,7 @@ const midEventFieldForPage = {
 
 let caseId, eventName;
 let caseData = {};
-let mpScenario = 'ONE_V_ONE'
+let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
@@ -94,7 +94,7 @@ module.exports = {
     await assignCaseToDefendant(caseId);
 
     if(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser)
+      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -693,7 +693,7 @@ function addMidEventFields(pageId, responseBody) {
   let midEventData;
 
   if(eventName === 'CREATE_CLAIM' || eventName === 'DEFENDANT_RESPONSE'){
-    midEventData = data[eventName](mpScenario).midEventData[pageId]
+    midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];
   }
