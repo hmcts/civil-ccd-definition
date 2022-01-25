@@ -7,17 +7,20 @@ module.exports = {
     respondent2Details: '#respondent2Details',
   },
 
-  async verifyDetails(twoDefendants) {
+  async verifyDetails() {
     I.waitForElement(this.fields.respondent1Details);
-    if (twoDefendants) {
-      I.waitForElement(this.fields.respondent2Details);
-    }
+
+    //ToDo: Uncomment when respondent2Details field has been implemented
+    // if (twoDefendants) {
+    //   I.waitForElement(this.fields.respondent2Details);
+    // }
     await I.runAccessibilityTest();
     await I.see('Example respondent1 company');
 
-    if (twoDefendants) {
-      await I.see('Example respondent2 company');
-    }
+    //ToDo: Uncomment when respondent2Details field has been implemented
+    // if (twoDefendants) {
+    //   await I.see('Example respondent2 company');
+    // }
 
     await I.clickContinue();
   }

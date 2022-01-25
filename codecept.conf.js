@@ -1,9 +1,7 @@
-const {multipartyTestsEnabled} = require("./e2e/config");
-
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
-    ...(multipartyTestsEnabled ? ['./e2e/tests/multiparty/*_test.js'] : [])
+    './e2e/tests/multiparty/*_test.js'
   ],
   output: './output',
   helpers: {

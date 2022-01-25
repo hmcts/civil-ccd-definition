@@ -107,7 +107,6 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
-const {multipartyTestsEnabled} = require('./config');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -177,15 +176,9 @@ const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenar
     ])
   ])
 ];
-const defenceSteps = (responseType) => [() => responseTypePage.selectResponseType({defendant1Response: responseType}),
-  ...conditionalSteps(responseType === 'fullDefence', [
-    () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
-    () => respondentDetails.verifyDetails(),
-    () => confirmDetailsPage.confirmReference(),
-  ])];
 
-const multiPartyDefenceSteps = ({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) =>
-  [() => respondentDetails.verifyDetails('1'),
+const defenceSteps = ({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) =>
+  [() => respondentDetails.verifyDetails(),
     ...conditionalSteps(twoDefendants, [
       () => singleResponse.defendantsHaveSameResponse(sameResponse),
     ]),
@@ -252,16 +245,15 @@ module.exports = function () {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
-
       await createCasePage.createCase(config.definition.jurisdiction);
       await this.triggerStepsWithScreenshot([
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
         ...firstClaimantSteps(claimant1),
-        ...conditionalSteps(multipartyTestsEnabled, secondClaimantSteps(claimant2)),
+        ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
-        ...conditionalSteps(multipartyTestsEnabled, secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario)),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -351,8 +343,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        ...conditionalSteps(multipartyTestsEnabled, multiPartyDefenceSteps({twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2})),
-        ...conditionalSteps(!multipartyTestsEnabled, defenceSteps(defendant1Response)),
+        ...defenceSteps({twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
           () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.RESPONDENT_SOLICITOR_1),
