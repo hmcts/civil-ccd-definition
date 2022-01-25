@@ -520,7 +520,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1> \n <div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
+    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1>\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel4",
+    "Label": "<div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -534,7 +541,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentHelpLabel",
-    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2>",
+    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2>\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentHelpLabel3",
+    "Label": "<p class=\"govuk-inset-text\">If you've referred to evidence in the above box, please upload them here.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -555,7 +569,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specClaimResponseTimelineList",
-    "Label": " ",
+    "Label": "How do you want to add the claim timeline?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimTimelineList",
     "SecurityClassification": "Public"
