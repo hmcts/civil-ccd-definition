@@ -100,5 +100,33 @@
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicantSolicitor1UserDetails",
+    "ElementLabel": " ",
+    "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicant1OrganisationPolicy",
+    "ElementLabel": " ",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "respondent1OrganisationPolicy",
+    "ElementLabel": " ",
+    "FieldType": "OrganisationPolicy",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "respondentSolicitor1EmailAddress",
+    "ElementLabel": " ",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
   }
 ]
