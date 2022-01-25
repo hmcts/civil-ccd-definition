@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-const config = require('../config.js');
+const config = require('../../config.js');
 
-Feature('CCD API tests @api-tests');
+// add @api-tests to run
+Feature('CCD 1v2 Same Solicitor API test');
 
 Scenario('Create claim', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
 });
 
 Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {
@@ -42,23 +43,4 @@ Scenario('Defendant response', async ({I, api}) => {
 
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser);
-});
-
-Scenario('Create claim where respondent is litigant in person', async ({I, api}) => {
-  await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser);
-});
-
-Scenario('Create claim where respondent solicitor is not registered in my hmcts', async ({I, api}) => {
-  await api.createClaimWithRespondentSolicitorFirmNotInMyHmcts(config.applicantSolicitorUser);
-});
-
-Scenario('Create claim and move it to caseman', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  await api.moveCaseToCaseman(config.adminUser);
-});
-
-// This will be enabled when PAY-3817 issue of two minutes is fixed
-Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({I, api}) => {
-  await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
-  await api.resubmitClaim(config.applicantSolicitorUser);
 });

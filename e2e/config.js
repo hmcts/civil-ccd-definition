@@ -29,7 +29,7 @@ module.exports = {
   },
   secondDefendantSolicitorUser: {
     password: defaultPassword,
-    email: 'hmcts.civil+organisation.2.solicitor.2@gmail.com',
+    email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
     type: 'defendant_solicitor'
   },
   adminUser: {
