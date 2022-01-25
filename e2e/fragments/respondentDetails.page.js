@@ -2,12 +2,14 @@ const {I} = inject();
 
 module.exports = {
 
-  fields: {
-      respondentDetails: '#respondentDetails',
+  fields: (respondentNumber = '') => {
+    return {
+      respondentDetails: `#respondent${respondentNumber}Details`
+    }
   },
 
-  async verifyDetails() {
-    I.waitForElement(this.fields.respondentDetails);
+  async verifyDetails(respondentNumber) {
+    I.waitForElement(this.fields(respondentNumber).respondentDetails);
     await I.runAccessibilityTest();
     await I.see('Example respondent1 company');
 

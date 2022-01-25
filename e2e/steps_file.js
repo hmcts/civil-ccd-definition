@@ -185,7 +185,7 @@ const defenceSteps = (responseType) => [() => responseTypePage.selectResponseTyp
   ])];
 
 const multiPartyDefenceSteps = ({twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) =>
-  [() => respondentDetails.verifyDetails(),
+  [() => respondentDetails.verifyDetails('1'),
     ...conditionalSteps(twoDefendants, [
       () => singleResponse.defendantsHaveSameResponse(sameResponse),
     ]),
