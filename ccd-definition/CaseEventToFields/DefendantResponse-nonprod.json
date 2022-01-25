@@ -1201,16 +1201,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondentDetails",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "READONLY",
-    "PageID": "ConfirmDetails",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2SameLegalRepresentative",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,
