@@ -5,7 +5,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "HearingType",
     "ListElementCode": "HearingType",
-    "ElementLabel": "Choose your preferred type of hearing",
+    "ElementLabel": "Choose your preferred type of hearing ",
     "HintText": "A judge will still need to approve the hearing",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingType",
@@ -16,7 +16,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "HearingTypeTelephoneHearing",
     "ListElementCode": "HearingTypeTelephoneHearing",
-    "ElementLabel": "Who will set up the telephone meeting?",
+    "ElementLabel": "Who will set up the telephone hearing ?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "FieldShowCondition": "HearingType = \"TELEPHONE_HEARING\""

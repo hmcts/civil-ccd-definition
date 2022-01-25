@@ -80,7 +80,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfDirection",
-    "Label": "Your directions",
+    "Label": "Draft order",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
