@@ -63,6 +63,7 @@ const enterApplicationDetailsPage = require('./pages/generalApplication/applicat
 const hearingAndTrialPage = require('./pages/generalApplication/hearingDetails.page');
 const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
 const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
+const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
@@ -263,6 +264,14 @@ module.exports = function () {
         () => event.submit('Submit', 'You have made an application')
       ]);
     },
+
+    async verifyGAConfirmationPage(appType) {
+      await this.triggerStepsWithScreenshot([
+        () => confirmationPage.verifyConfirmationPage(),
+        () => confirmationPage.verifyApplicationType(appType)
+      ]);
+    },
+
 
     async notifyClaimDetails() {
       eventName = 'Notify claim details';

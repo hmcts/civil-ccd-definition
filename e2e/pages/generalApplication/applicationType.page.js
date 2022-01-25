@@ -17,16 +17,9 @@ module.exports = {
   async selectApplicationType(applicationType) {
     I.waitForElement(this.fields.applicationType.id);
     I.seeInCurrentUrl('INITIATE_GENERAL_APPLICATIONGATypePage');
-    switch (applicationType) {
-      case 'single':
-        I.click(this.fields.applicationType.options.strikeOut);
-        break;
-      case 'multiple':
-        I.click(this.fields.applicationType.options.strikeOut);
-        I.click(this.fields.applicationType.options.stayTheClaim);
-        I.click(this.fields.applicationType.options.extendTime);
-        break;
-    }
+    applicationType.forEach(type => {
+      return I.click(type);
+    });
     await I.clickContinue();
   }
 };
