@@ -143,5 +143,15 @@
     "Label": "Supporting evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "GeneralApplicationCRGAspec",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationCRGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of general application case references",
+    "_Category":  "COMMON"
   }
 ]

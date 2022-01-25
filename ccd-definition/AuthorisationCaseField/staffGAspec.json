@@ -88,5 +88,11 @@
     "CaseFieldID": "generalAppHearingDetails",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "GeneralApplicationCRGAspec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
