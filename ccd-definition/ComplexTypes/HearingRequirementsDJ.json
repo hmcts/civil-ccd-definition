@@ -152,8 +152,7 @@
     "CaseFieldID": "HearingSupportRequirementLanguageDropdown",
     "ListElementCode": "HearingSupportRequirementLanguageDropdown",
     "ElementLabel": "Language",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "Language",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "FieldShowCondition": "HearingSupportRequirementLanguage=\"LANGUAGE_INTERPRETER\""
   },
