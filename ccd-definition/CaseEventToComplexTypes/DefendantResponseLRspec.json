@@ -419,7 +419,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "ListElementCode": "SmallClaimUnavailableDate.who",
+    "ListElementCode": "smallClaimUnavailableDate.who",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -427,7 +427,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "ListElementCode": "SmallClaimUnavailableDate.SmallClaimUnavailableDateType",
+    "ListElementCode": "smallClaimUnavailableDate.unavailableDateType",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -435,7 +435,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "ListElementCode": "SmallClaimUnavailableDate.date",
+    "ListElementCode": "smallClaimUnavailableDate.date",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -443,7 +443,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "ListElementCode": "SmallClaimUnavailableDate.fromDate",
+    "ListElementCode": "smallClaimUnavailableDate.fromDate",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -451,7 +451,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "ListElementCode": "SmallClaimUnavailableDate.toDate",
+    "ListElementCode": "smallClaimUnavailableDate.toDate",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
