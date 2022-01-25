@@ -12,7 +12,7 @@ module.exports = {
           contestJurisdiction: 'Contest jurisdiction'
         }
       },
-    }
+    };
   },
 
   async selectResponseIntention(respondent1Intention, respondent2Intention, respondent1Applicant2ClaimIntention) {
