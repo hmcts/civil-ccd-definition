@@ -514,7 +514,14 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaimOwingAmount",
     "Label": "How much money does your client admit to owing?",
-    "FieldType": "Number",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaimOwingAmountPounds",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
@@ -661,6 +668,7 @@
     "ID": "responseClaimWitnesses",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
+    "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
   },
   {
@@ -729,7 +737,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h1>",
+    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h1>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -934,6 +942,20 @@
     "ID": "respondent1RepaymentPlan",
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceFullAdmittedRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h1>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
