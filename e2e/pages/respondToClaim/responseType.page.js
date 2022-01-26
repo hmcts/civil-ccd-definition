@@ -8,39 +8,35 @@ const options = {
 };
 
 module.exports = {
-  fields: {
-    respondent1ClaimResponseType: {
-      id: '#respondent1ClaimResponseType',
+  fields: (party) => ({
+    respondentClaimResponseType: {
+      id: `#${party}ClaimResponseType`,
       options
     },
-    respondent2ClaimResponseType: {
-      id: '#respondent2ClaimResponseType',
+    respondentClaimResponseTypeToApplicant2: {
+      id: `#${party}ClaimResponseTypeToApplicant2`,
       options
     },
-    respondent1ClaimResponseTypeToApplicant2: {
-      id: '#respondent1ClaimResponseTypeToApplicant2',
-      options
-    },
-  },
+  }),
 
   async selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
     // eslint-disable-next-line no-prototype-builtins
-    await this.checkResponseValidity(this.fields.respondent1ClaimResponseType, defendant1Response);
-    await this.inputResponse(this.fields.respondent1ClaimResponseType, defendant1Response);
+    if(defendant1Response) {
+      await this.inputResponse(this.fields('respondent1').respondentClaimResponseType, defendant1Response);
+    }
 
     if(defendant2Response) {
-      await this.checkResponseValidity(this.fields.respondent2ClaimResponseType, defendant2Response);
-      await this.inputResponse(this.fields.respondent2ClaimResponseType, defendant2Response);
+      await this.inputResponse(this.fields('respondent2').respondentClaimResponseType, defendant2Response);
     }
 
     if(defendant1ResponseToApplicant2) {
-      await this.checkResponseValidity(this.fields.respondent1ClaimResponseTypeToApplicant2, defendant1ResponseToApplicant2);
-      await this.inputResponse(this.fields.respondent1ClaimResponseTypeToApplicant2, defendant1ResponseToApplicant2);
+      await this.inputResponse(this.fields('respondent1').respondentClaimResponseTypeToApplicant2, defendant1ResponseToApplicant2);
     }
     await I.clickContinue();
   },
 
   async inputResponse(responseField, responseType) {
+    await this.checkResponseValidity(responseField, responseType);
     I.waitForElement(responseField.id);
     await I.runAccessibilityTest();
     await within(responseField.id, () => {

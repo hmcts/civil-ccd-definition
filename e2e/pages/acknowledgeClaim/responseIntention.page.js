@@ -15,9 +15,11 @@ module.exports = {
     };
   },
 
-  async selectResponseIntention(respondent1Intention, respondent2Intention, respondent1Applicant2ClaimIntention) {
+  async selectResponseIntention(respondent1Intention = 'fullDefence', respondent2Intention, respondent1Applicant2ClaimIntention) {
     // eslint-disable-next-line no-prototype-builtins
-    await this.selectResponse('1', respondent1Intention);
+    if(respondent1Intention) {
+      await this.selectResponse('1', respondent1Intention);
+    }
     if(respondent2Intention) {
       await this.selectResponse('2', respondent2Intention);
     }

@@ -13,10 +13,10 @@ module.exports = {
   },
 
   async enterRespondent2SameLegalRepresentative(sameLegalRepresentative = false) {
-    const { yes, no } = this.fields.respondent2SameLegalRepresentative.options;
     I.waitForElement(this.fields.respondent2SameLegalRepresentative.id);
     await I.runAccessibilityTest();
     await within(this.fields.respondent2SameLegalRepresentative.id, () => {
+      const { yes, no } = this.fields.respondent2SameLegalRepresentative.options;
       I.click(sameLegalRepresentative ? yes : no);
     });
 
