@@ -5,5 +5,19 @@
     "Label": "Defendant Details",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CPRCertifySpec",
+    "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CPRConfirmationSpec",
+    "Label": "I certify that all of these statements are correct and apply to the defendant",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
