@@ -11,7 +11,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimTrack",
+    "CaseFieldID": "smallClaimsTrack",
     "ListElementCode": "smallClaimCreditHire",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -19,7 +19,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimTrack",
+    "CaseFieldID": "smallClaimsTrack",
     "ListElementCode": "smallClaimRoadTrafficAccident",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -27,7 +27,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimBuildingDispute",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -35,7 +35,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimClinicalNegligence",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -43,7 +43,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimCreditHire",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
@@ -51,7 +51,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimEmployersLiability",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
@@ -59,7 +59,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimHousingDisrepair",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
@@ -67,7 +67,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimPersonalInjury",
     "FieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL"
@@ -75,7 +75,7 @@
   {
     "ID": "ClaimsTrack",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastClaimTrack",
+    "CaseFieldID": "fastTrack",
     "ListElementCode": "fastClaimRoadTrafficAccident",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
