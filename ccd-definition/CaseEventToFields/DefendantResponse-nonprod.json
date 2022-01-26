@@ -1109,13 +1109,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DetailsDiffLR",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmDetails",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2Details",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "ConfirmDetails",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "addRespondent2 = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1186,6 +1197,16 @@
     "PageID": "ConfirmDetails",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
     "RetriesTimeoutURLMidEvent": 0,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "confirmRespondentDetailsAdvice",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmDetails",
     "ShowSummaryChangeOption": "N"
   },
   {
