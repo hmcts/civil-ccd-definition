@@ -342,7 +342,6 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     //removed because it's not needed for the further tests
-    //might fail if 1v1, need to check
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
     deleteCaseFields('solicitorReferencesCopy');
