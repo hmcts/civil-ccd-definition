@@ -1,7 +1,20 @@
 const { date, element, buildAddress } = require('../../api/dataHelper');
 
-const createDefendantResponseData = (mpScenario) => {
-  const defendantResponseData = {
+module.exports = {
+  valid: {
+    RespondentResponseType: {
+      respondent1ClaimResponseType: 'FULL_DEFENCE'
+    },
+    Upload: {
+      respondent1ClaimResponseDocument: {
+        file: {
+          document_url: '${TEST_DOCUMENT_URL}',
+          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+          document_filename: '${TEST_DOCUMENT_FILENAME}'
+        }
+      }
+    },
+    ConfirmNameAddress: {},
     ConfirmDetails: {
       respondent1: {
         type: 'INDIVIDUAL',
@@ -12,19 +25,10 @@ const createDefendantResponseData = (mpScenario) => {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-      }
-    },
-    RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE',
-      multiPartyResponseTypeFlags: 'FULL_DEFENCE'
-    },
-    Upload: {
-      respondent1ClaimResponseDocument: {
-        file: {
-          document_url: '${TEST_DOCUMENT_URL}',
-          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-          document_filename: '${TEST_DOCUMENT_FILENAME}'
-        }
+      },
+      solicitorReferences: {
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
       }
     },
     FileDirectionsQuestionnaire: {
@@ -121,103 +125,63 @@ const createDefendantResponseData = (mpScenario) => {
         role: 'Tester'
       }
     }
-  };
-
-  switch (mpScenario){
-    case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      return {
-        ...defendantResponseData,
-        ConfirmDetails: {
-          ...defendantResponseData.ConfirmDetails,
-          respondent2: {
-            type: 'INDIVIDUAL',
-            individualFirstName: 'Foo',
-            individualLastName: 'Bar',
-            individualTitle: 'Dr',
-            primaryAddress: buildAddress('second respondent'),
-            individualDateOfBirth: date(-1),
-            partyName: 'Dr Foo Bar',
-            partyTypeDisplayValue: 'Individual',
-          }
-        },
-        RespondentResponseType: {
-          respondent1ClaimResponseType: 'FULL_DEFENCE',
-          multiPartyResponseTypeFlags: 'FULL_DEFENCE'
-        },
-      };
-    }
-    case 'ONE_V_TWO_ONE_LEGAL_REP':
-    case 'ONE_V_ONE':
-    default: {
-      return defendantResponseData;
-    }
-  }
-};
-
-module.exports = {
-  defendantResponse: (mpScenario = 'ONE_V_ONE') => {
-    return {
-      valid: {
-        ...createDefendantResponseData(mpScenario)
-      },
-      midEventData: {
-        // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
-        StatementOfTruth: {
-          applicantSolicitor1ClaimStatementOfTruth: {}
-        },
-      },
-      invalid: {
-        ConfirmDetails: {
-          futureDateOfBirth: {
-            respondent1: {
-              type: 'INDIVIDUAL',
-              individualFirstName: 'John',
-              individualLastName: 'Doe',
-              individualTitle: 'Sir',
-              individualDateOfBirth: date(1),
-              primaryAddress: buildAddress('respondent')
-            }
-          }
-        },
-        Experts: {
-          emptyDetails: {
-            respondent1DQExperts: {
-              details: [],
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes'
-            }
-          }
-        },
-        Hearing: {
-          past: {
-            respondent1DQHearing: {
-              hearingLength: 'MORE_THAN_DAY',
-              hearingLengthDays: 5,
-              unavailableDatesRequired: 'Yes',
-              unavailableDates: [
-                element({
-                  date: date(-1),
-                  who: 'Foo Bar'
-                })
-              ]
-            }
-          },
-          moreThanYear: {
-            respondent1DQHearing: {
-              hearingLength: 'MORE_THAN_DAY',
-              hearingLengthDays: 5,
-              unavailableDatesRequired: 'Yes',
-              unavailableDates: [
-                element({
-                  date: date(367),
-                  who: 'Foo Bar'
-                })
-              ]
-            }
-          }
-        },
+  },
+  midEventData: {
+    // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
+    StatementOfTruth: {
+      applicantSolicitor1ClaimStatementOfTruth: {}
+    },
+  },
+  invalid: {
+    ConfirmDetails: {
+      futureDateOfBirth: {
+        respondent1: {
+          type: 'INDIVIDUAL',
+          individualFirstName: 'John',
+          individualLastName: 'Doe',
+          individualTitle: 'Sir',
+          individualDateOfBirth: date(1),
+          primaryAddress: buildAddress('respondent')
+        }
       }
-    };
+    },
+    Experts: {
+      emptyDetails: {
+        respondent1DQExperts: {
+          details: [],
+          expertRequired: 'Yes',
+          expertReportsSent: 'NOT_OBTAINED',
+          jointExpertSuitable: 'Yes'
+        }
+      }
+    },
+    Hearing: {
+      past: {
+        respondent1DQHearing: {
+          hearingLength: 'MORE_THAN_DAY',
+          hearingLengthDays: 5,
+          unavailableDatesRequired: 'Yes',
+          unavailableDates: [
+            element({
+              date: date(-1),
+              who: 'Foo Bar'
+            })
+          ]
+        }
+      },
+      moreThanYear: {
+        respondent1DQHearing: {
+          hearingLength: 'MORE_THAN_DAY',
+          hearingLengthDays: 5,
+          unavailableDatesRequired: 'Yes',
+          unavailableDates: [
+            element({
+              date: date(367),
+              who: 'Foo Bar'
+            })
+          ]
+        }
+      }
+    },
   }
 };
