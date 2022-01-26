@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1DetailsForClaimDetailsTab",
+    "TabFieldDisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2DetailsForClaimDetailsTab",
+    "TabFieldDisplayOrder": 8
+  }
+]
