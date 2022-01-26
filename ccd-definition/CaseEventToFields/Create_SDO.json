@@ -4,35 +4,35 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "drawDirectionsOrder",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DirectionsOrderJudgementSum",
-    "PageLabel": "Draw directions order - Judge",
+    "DisplayContext": "COMPLEX",
+    "PageID": "ClaimsTrack",
+    "PageLabel": "Claims Track",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "SmallClaimsTrack",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsTrack",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "ClaimsTrack",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "DirectionOrderClaimTrackRequired = \"SMALL_CLAIMS_TRACK\""
+    "FieldShowCondition": "drawDirectionsOrder = \"smallClaimsTrack\""
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "Draw_Directions_Order_Judge",
-    "CaseFieldID": "FastTrack",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrack",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "PageID": "ClaimsTrack",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "DirectionOrderClaimTrackRequired = \"FAST_TRACK\""
+    "FieldShowCondition": "drawDirectionsOrder = \"fastTrack\""
   }
 ]

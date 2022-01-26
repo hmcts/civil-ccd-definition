@@ -1,0 +1,24 @@
+[
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrder",
+    "Label": "What track are you allocating the claim to?",
+    "FieldType": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsTrack",
+    "Label": "Select additional directions, if any (Optional)",
+    "FieldType": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrack",
+    "Label": "Select additional directions, if any (Optional)",
+    "FieldType": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  }
+]
