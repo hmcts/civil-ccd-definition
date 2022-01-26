@@ -79,7 +79,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "detailsOfDirection",
+    "ID": "detailsOfDirectionDefault",
+    "Label": "Draft order",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "detailsOfDirectionDisposal",
+    "Label": "Draft order",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "detailsOfDirectionTrial",
     "Label": "Draft order",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
