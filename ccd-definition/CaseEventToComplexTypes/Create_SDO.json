@@ -5,8 +5,8 @@
     "CaseFieldID": "drawDirectionsOrder",
     "ListElementCode": "trackType",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "EventElementLabel": "TrackType"
+    "DisplayContext": "MANDATORY"
+
   },
   {
     "ID": "ClaimsTrack",
