@@ -27,7 +27,7 @@
     "html_codesniffer": "^2.5.1",
     "husky": "^7.0.2",
     "lodash": "^4.17.21",
-    "mocha": "^9.1.3",
+    "mocha": "^9.2.0",
     "mocha-junit-reporter": "^2.0.2",
     "mocha-multi": "^1.1.5",
     "mochawesome": "^7.0.1",
