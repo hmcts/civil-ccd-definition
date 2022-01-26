@@ -1163,5 +1163,19 @@
     "Label": "Who requires a litigation friend?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrder",
+    "Label": "Do you wish to enter judgement for a sum of damages to be decided ?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrderRequired",
+    "Label": "Not sure ...",
+    "FieldType": "JudgementSum",
+    "SecurityClassification": "Public"
   }
 ]
