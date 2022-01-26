@@ -729,19 +729,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DetailsDiffLR",
-    "AccessControl": [
-      {
-        "UserRoles": [
           "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "R"
