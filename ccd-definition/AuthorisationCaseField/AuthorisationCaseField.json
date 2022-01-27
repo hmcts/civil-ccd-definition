@@ -3679,8 +3679,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "caseworker-civil-judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
@@ -3693,8 +3692,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "caseworker-civil-judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
