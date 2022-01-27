@@ -25,14 +25,14 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "pbaReferenceLabel",
-    "ElementLabel": "<h4 class=\"govuk-fieldset__heading\">Enter a reference for your PBA account statements (optional)</h4>\n <p> <span class=\"form-label ng-star-inserted\"> This should be your own unique reference to identify the case. It will appear on your statements. </span></p>",
+    "ElementLabel": "<h4 class=\"govuk-fieldset__heading\">Enter a reference for your PBA account statements (optional)</h4>\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "pbaReference",
-    "ElementLabel": " ",
+    "ElementLabel": "This should be your own unique reference to identify the case. it will appear on your statements.\n",
     "FieldType": "TextArea",
     "Max": 400,
     "SecurityClassification": "Public"
