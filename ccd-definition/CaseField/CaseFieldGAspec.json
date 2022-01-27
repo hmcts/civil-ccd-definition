@@ -146,12 +146,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GeneralApplicationCRGAspec",
+    "ID": "generalAppCaseReference",
     "Label": " ",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "GeneralApplicationCRGAspec",
-    "SecurityClassification": "Public",
-    "_Definition":  "The details of general application case references",
-    "_Category":  "COMMON"
+    "FieldType": "CaseLink",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppState",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

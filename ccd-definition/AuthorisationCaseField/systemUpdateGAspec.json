@@ -43,7 +43,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "GeneralApplicationCRGAspec",
+    "CaseFieldID": "generalAppCaseReference",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppState",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }

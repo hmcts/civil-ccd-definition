@@ -100,5 +100,19 @@
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppCaseReference",
+    "FieldType": "CaseLink",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppState",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]

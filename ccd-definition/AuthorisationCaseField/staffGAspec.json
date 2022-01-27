@@ -91,7 +91,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "GeneralApplicationCRGAspec",
+    "CaseFieldID": "generalAppCaseReference",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppState",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

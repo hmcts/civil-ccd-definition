@@ -213,14 +213,37 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "GeneralApplicationCRGAspec",
+    "CaseFieldID": "generalAppCaseReference",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppState",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   }
