@@ -1685,5 +1685,20 @@
     "Label": "Who requires a litigation friend?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrderRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrder",
+    "Label": " ",
+    "HintText": " ",
+    "FieldType": "JudgementSum",
+    "SecurityClassification": "Public"
   }
 ]
