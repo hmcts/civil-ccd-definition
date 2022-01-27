@@ -9,7 +9,7 @@
   {
     "ID": "RespondToClaim",
     "ListElementCode": "howMuchWasPaid",
-    "FieldType": "Number",
+    "FieldType": "MoneyGBP",
     "ElementLabel": "How much was paid?",
     "SecurityClassification": "Public",
     "Label": "How much was paid?"
