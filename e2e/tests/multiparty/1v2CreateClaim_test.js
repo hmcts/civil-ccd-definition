@@ -16,7 +16,7 @@ const respondent2 = {
 let caseNumber;
 
 
-Feature('1v2 Create claim @e2e-tests');
+Feature('1v2 Create claim @e2e-multiparty');
 
 Scenario('Claimant solicitor raise a claim against 2 defendants, one of who is without a solicitor (LiP) should progress case offline', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

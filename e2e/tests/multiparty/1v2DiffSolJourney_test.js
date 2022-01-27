@@ -21,7 +21,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('1v2 Different Solicitors Claim Journey @e2e-tests');
+Feature('1v2 Different Solicitors Claim Journey @e2e-nightly');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
