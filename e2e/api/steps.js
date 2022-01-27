@@ -425,6 +425,9 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
+    //workaround
+    deleteCaseFields('isRespondent1');
+
     deleteCaseFields('respondent1', 'solicitorReferences');
     deleteCaseFields('systemGeneratedCaseDocuments');
 
