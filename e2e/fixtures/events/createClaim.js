@@ -1,5 +1,4 @@
 const {listElement, buildAddress } = require('../../api/dataHelper');
-const config = require('../../config.js');
 const uuid = require('uuid');
 
 const docUuid = uuid.v1();
