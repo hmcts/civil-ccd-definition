@@ -7,16 +7,19 @@ module.exports = {
       id: '#solicitorReferences_respondentSolicitor1Reference'
     },
     solicitor2Reference: {
+      id: '#solicitorReferences_respondentSolicitor2Reference'
+    },
+    ackClaim2SolicitorReference: {
       id: '#respondentSolicitor2Reference'
     }
   },
 
-  async confirmReferences(respondent1, respondent2, respondingToClaim) {
+  async confirmReferences(respondent1, respondent2, ackClaim = false) {
     if(respondent1) {
       await this.confirmRespondentReference(this.fields.solicitor1Reference.id);
     }
-    if(respondent2 && !respondent1) {
-      await this.confirmRespondentReference(respondingToClaim ? this.fields.solicitor1Reference.id : this.fields.solicitor2Reference.id);
+    if(respondent2) {
+      await this.confirmRespondentReference(ackClaim ? this.fields.ackClaim2SolicitorReference.id : this.fields.solicitor2Reference.id);
     }
     await I.clickContinue();
   },
