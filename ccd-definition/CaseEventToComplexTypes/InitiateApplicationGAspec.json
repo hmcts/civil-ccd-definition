@@ -102,7 +102,7 @@
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "hearingDate",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "HearingDetails",
@@ -118,7 +118,7 @@
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "judgeName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "HearingDetails",
@@ -150,7 +150,7 @@
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "trialDateTo",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "HearingDetails",
@@ -246,7 +246,7 @@
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "UnavailableTrailDateTo",
     "FieldDisplayOrder": 20,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "HearingDetails",
@@ -276,7 +276,7 @@
     "ID": "HearingDetails",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "ListElementCode": "SupportReqLanguageInterpreter",
     "FieldDisplayOrder": 24,
     "DisplayContext": "MANDATORY"
   },
@@ -304,7 +304,8 @@
     "ListElementCode": "generalAppFeeToPayLabel275",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "generalAppInformOtherParty.isWithNotice = \"Yes\""
+    "FieldShowCondition": "generalAppInformOtherParty.isWithNotice = \"Yes\"",
+    "ShowSummaryContentOption": "Y"
   },
   {
     "ID": "GAPBADetailsGAspec",

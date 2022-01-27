@@ -26,6 +26,7 @@
     "ListElementCode": "judgeName",
     "ElementLabel": "Judge name",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public",
     "FieldShowCondition": "judgeRequiredYesOrNo = \"Yes\""
   },
@@ -81,6 +82,7 @@
     "ListElementCode": "TelephoneHearingPreferredType",
     "ElementLabel": "Who will set up the telephone hearing?",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public",
     "FieldShowCondition": "HearingPreferencesPreferredType = \"TELEPHONE\""
   },
@@ -89,6 +91,7 @@
     "ListElementCode": "ReasonForPreferredHearingType",
     "ElementLabel": "Why would you prefer this type of hearing?",
     "FieldType": "TextArea",
+    "Max": 400,
     "SecurityClassification": "Public"
   },
   {
@@ -110,6 +113,7 @@
     "ListElementCode": "HearingDetailsTelephoneNumber",
     "ElementLabel": "Preferred telephone number",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public"
   },
   {
@@ -117,6 +121,7 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public"
   },
   {
@@ -170,14 +175,16 @@
     "ListElementCode": "SupportRequirementSignLanguage",
     "ElementLabel": "Sign language",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "ListElementCode": "SupportReqLanguageInterpreter",
     "ElementLabel": "Language",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
   },
@@ -186,6 +193,7 @@
     "ListElementCode": "SupportRequirementOther",
     "ElementLabel": "Support needed",
     "FieldType": "TextArea",
+    "Max": 400,
     "SecurityClassification": "Public",
     "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\""
   }

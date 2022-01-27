@@ -297,7 +297,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.SupportRequirementLanguageInterpreter",
+    "ListElementCode": "generalAppHearingDetails.SupportReqLanguageInterpreter",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
