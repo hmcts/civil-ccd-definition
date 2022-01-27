@@ -185,7 +185,7 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
       () => singleResponse.defendantsHaveSameResponse(sameResponse),
     ]),
     () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
-    () => confirmDetailsPage.confirmReferences(defendant1Response, defendant2Response),
+    () => confirmDetailsPage.confirmReferences(defendant1Response, defendant2Response, sameResponse),
     ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
       () => uploadResponsePage.uploadResponseDocuments(party, TEST_FILE_PATH)
     ])
@@ -301,14 +301,14 @@ module.exports = function () {
       ]);
     },
 
-    async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2) {
+    async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
         () => responseIntentionPage.selectResponseIntention(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2),
-        () => confirmDetailsPage.confirmReferences(!!respondent1Intention, !!respondent2Intention, true),
+        () => confirmDetailsPage.confirmReferences(!!respondent1Intention, !!respondent2Intention, sameSolicitor),
         // temporarily commenting out whilst change is Fmade to service repo
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()

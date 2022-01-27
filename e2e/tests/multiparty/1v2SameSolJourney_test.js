@@ -47,7 +47,7 @@ Scenario('Claimant solicitor notifies defendant solicitor of claim details', asy
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.acknowledgeClaim('fullDefence', 'fullDefence');
+  await I.acknowledgeClaim('fullDefence', 'fullDefence', null, true);
   await I.see(caseEventMessage('Acknowledge claim'));
   await I.click('Sign out');
 }).retry(3);
@@ -65,7 +65,7 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
   await I.see(caseEventMessage('Add litigation friend'));
 }).retry(3);
 
-Scenario('(Defendants solicitor rejects claim for both defendants', async ({I}) => {
+Scenario('Defendants solicitor rejects claim for both defendants', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_1,
