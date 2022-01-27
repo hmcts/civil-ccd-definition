@@ -990,13 +990,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "isRespondent1",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SolicitorReferences",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "solicitorReferences",
     "PageLabel": "Solicitor References",
     "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "SolicitorReferences",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondentSolicitor2Reference",
+    "PageLabel": "Solicitor References",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SolicitorReferences",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent1 != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
