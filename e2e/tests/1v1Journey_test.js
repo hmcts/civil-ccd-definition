@@ -32,16 +32,20 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
+  console.log('STARTED NOTIFY CLAIM DETAILS SCENARIO');
   await I.notifyClaimDetails();
   await I.see(caseEventMessage('Notify claim details'));
   await I.click('Sign out');
+  console.log('ENDED NOTIFY CLAIM DETAILS SCENARIO');
 }).retry(3);
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
+  console.log('STARTED ACK CLAIM SCENARIO');
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
   await I.see(caseEventMessage('Acknowledge claim'));
   await I.click('Sign out');
+  console.log('ENDED ACK CLAIM SCENARIO');
 }).retry(3);
 
 Scenario('Defendant solicitor requests deadline extension', async ({I}) => {

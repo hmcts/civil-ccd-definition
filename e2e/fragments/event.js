@@ -5,7 +5,9 @@ const CONFIRMATION_HEADER = '#confirmation-header';
 
 module.exports = {
 
-  async submit(buttonText, expectedMessage) {
+  async submit(buttonText, expectedMessage, context = '') {
+    console.log(context);
+    console.log('SUBMITTING and waiting for: ' + expectedMessage);
     I.waitForText(buttonText);
     await I.runAccessibilityTest();
     await I.retryUntilExists(() => I.click(buttonText), CONFIRMATION_HEADER);
