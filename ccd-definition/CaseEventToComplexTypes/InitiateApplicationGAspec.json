@@ -295,7 +295,8 @@
     "ListElementCode": "generalAppFeeToPayLabel108",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"Yes\" OR generalAppInformOtherParty.isWithNotice = \"No\""
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"Yes\" OR generalAppInformOtherParty.isWithNotice = \"No\"",
+    "ShowSummaryContentOption": "Y"
   },
   {
     "ID": "GAPBADetailsGAspec",
@@ -304,7 +305,8 @@
     "ListElementCode": "generalAppFeeToPayLabel275",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "generalAppInformOtherParty.isWithNotice = \"Yes\""
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"No\" AND generalAppInformOtherParty.isWithNotice = \"Yes\"",
+    "ShowSummaryContentOption": "Y"
   },
   {
     "ID": "GAPBADetailsGAspec",
