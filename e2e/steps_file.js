@@ -296,7 +296,7 @@ module.exports = function () {
           () => selectDefendantSolicitorPage.selectSolicitorToNotify(solicitorToNotify),
         ]),
         () => continuePage.continue(),
-        () => event.submit('Submit', 'Defendant notified', 'notify claim details'),
+        () => event.submit('Submit', 'Defendant notified'),
         () => event.returnToCaseDetails()
       ]);
     },
@@ -310,7 +310,7 @@ module.exports = function () {
         () => responseIntentionPage.selectResponseIntention(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2),
         () => confirmDetailsPage.confirmReferences(!!respondent1Intention, !!respondent2Intention, sameSolicitor),
         // temporarily commenting out whilst change is Fmade to service repo
-        () => event.submit('Acknowledge claim', 'You have acknowledged the claim', 'Acknowledge claim'),
+        () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
       ]);
     },
