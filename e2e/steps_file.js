@@ -310,7 +310,7 @@ module.exports = function () {
         () => responseIntentionPage.selectResponseIntention(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2),
         () => confirmDetailsPage.confirmReferences(!!respondent1Intention, !!respondent2Intention, sameSolicitor),
         // temporarily commenting out whilst change is Fmade to service repo
-        () => event.submit('Acknowledge claim', '', 'Acknowledge claim'),
+        () => event.submit('Acknowledge claim', 'You have acknowledged the claim', 'Acknowledge claim'),
         () => event.returnToCaseDetails()
       ]);
     },
