@@ -19,6 +19,7 @@ let caseNumber;
 Feature('1v1 - Claim Journey @e2e-multiparty');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
+  console.log(config.url)
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
   caseNumber = await I.grabCaseNumber();
