@@ -691,7 +691,6 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Applications",
     "PageShowCondition": "responseClaimTrack=\"FAST_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
-    "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y"
   },
   {
