@@ -2,16 +2,26 @@ const {I} = inject();
 
 module.exports = {
 
-  fields: {
-      respondentDetails: '#respondentDetails',
-  },
+  fields: (party) =>  ({
+    respondentDetails: `#${party}Details`,
+  }),
 
-  async verifyDetails() {
-    I.waitForElement(this.fields.respondentDetails);
-    await I.runAccessibilityTest();
-    await I.see('Example respondent1 company');
+  async verifyDetails(respondent1Party, respondent2Party) {
+    if (respondent1Party) {
+      await this.verifyDetailsForParty(respondent1Party);
+    }
+
+    if (respondent2Party) {
+      await this.verifyDetailsForParty(respondent2Party);
+    }
 
     await I.clickContinue();
+  },
+
+  async verifyDetailsForParty(party) {
+    I.waitForElement(this.fields(party).respondentDetails);
+    await I.runAccessibilityTest();
+    await I.see(`Example ${party} company`);
   }
 };
 
