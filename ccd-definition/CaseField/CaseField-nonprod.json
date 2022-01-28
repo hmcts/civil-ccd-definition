@@ -101,5 +101,12 @@
     "Label": "Do you want to proceed with the claim against ${respondent2.partyName} (need to figure out how to display partyName value of respondent2 1v2)",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DefenceResponseDocument",
+    "Label": "Respond to the defence",
+    "FieldType": "ResponseDocument",
+    "SecurityClassification": "Public"
   }
 ]

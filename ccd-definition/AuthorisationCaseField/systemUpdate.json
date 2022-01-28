@@ -181,6 +181,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2DefenceResponseDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "legacyCaseReference",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
