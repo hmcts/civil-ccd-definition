@@ -157,6 +157,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimResponseDocumentCopy",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1ProceedWithClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

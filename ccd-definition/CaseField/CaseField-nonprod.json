@@ -23,5 +23,83 @@
     "SecurityClassification": "Public",
     "_Definition":  "The details of the second respondent on the case",
     "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2ProceedWithClaim",
+    "Label": "Do you want to proceed with the claim",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantsProceedIntention",
+    "Label": "Not shown in UI",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseScenarioFlag",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimantResponseScenarioFlag",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseDocumentCopy",
+    "Label": "Upload defence",
+    "FieldType": "ResponseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseToDefendantLabel",
+    "Label": "<br/>**Claimant's response to defendant**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1ResponseToDefendantLabel",
+    "Label": "<br/>**Defendant: ${respondent1.partyName} Here goes the 1st defendant's name**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2ResponseToDefendantLabel",
+    "Label": "<br/>**Defendant: ${respondent2.partyName} Here goes the 2nd defendant's name**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimMultiParty2v1",
+    "Label": "Do you want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent1 2v1)",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2ProceedWithClaimMultiParty2v1",
+    "Label": "Do you want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent2 2v1)",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimMultiParty1v2",
+    "Label": "Do you want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent1 1v2)",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2ProceedWithClaimMultiParty1v2",
+    "Label": "Do you want to proceed with the claim against ${respondent2.partyName} (need to figure out how to display partyName value of respondent2 1v2)",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]

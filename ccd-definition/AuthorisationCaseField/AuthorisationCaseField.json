@@ -1175,25 +1175,7 @@
         "CRUD": "R"
       }
     ]
-  },{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "applicant2ProceedWithClaim",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[APPLICANTSOLICITORONE]"
-      ],
-      "CRUD": "CRU"
-    },
-    {
-      "UserRoles": [
-        "caseworker-civil-admin",
-        "[RESPONDENTSOLICITORONE]"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DefenceResponseDocument",
