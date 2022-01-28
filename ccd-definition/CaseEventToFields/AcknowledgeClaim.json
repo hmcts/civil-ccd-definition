@@ -261,6 +261,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGE_CLAIM",
+    "CaseFieldID": "respondent2ClaimResponseType",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ResponseIntention",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGE_CLAIM",
     "CaseFieldID": "applicant1PartyNameLabel2",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 6,
