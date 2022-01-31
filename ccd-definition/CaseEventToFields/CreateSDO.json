@@ -23,5 +23,42 @@
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " ",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "claimsTrack",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "What track are you allocating the claim to?"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaims",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastClaims",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimsTrack = \"fastTrack\""
   }
+
 ]
