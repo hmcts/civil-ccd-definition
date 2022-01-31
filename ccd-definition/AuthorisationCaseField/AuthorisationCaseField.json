@@ -1113,6 +1113,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
@@ -1132,6 +1133,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
@@ -1546,6 +1548,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
@@ -1565,6 +1568,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
