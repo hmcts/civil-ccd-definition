@@ -120,7 +120,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/rep2OrgPolicy",
-    "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",

@@ -700,6 +700,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "confirmRespondentDetailsAdvice",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1Details",
     "AccessControl": [
       {
@@ -713,6 +726,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2Details",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2DetailsDiffLR",
     "AccessControl": [
       {
         "UserRoles": [
