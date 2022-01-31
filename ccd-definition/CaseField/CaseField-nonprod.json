@@ -77,14 +77,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaimMultiParty2v1",
-    "Label": "Do you want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent1 2v1)",
+    "Label": "Does Claimant 1 want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent1 2v1)",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2ProceedWithClaimMultiParty2v1",
-    "Label": "Do you want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent2 2v1)",
+    "Label": "Does Claimant 2 want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent2 2v1)",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },

@@ -103,7 +103,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
