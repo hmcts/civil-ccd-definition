@@ -143,5 +143,59 @@
     "Label": "Supporting evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUnavailableYesOrNo",
+    "FieldType": "YesOrNo",
+    "Label": "Are there any dates when you cannot attend a hearing within the next 3 months?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUnavailableDates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GA1UnavailableDatesGAspec",
+    "Label": "  ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "HearingSupportRequirementsLabel",
+    "Label": "#### Support requirements(optional)\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppSupportRequirement",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
+    "Label": "Select any support you, your client and any experts or witness you would require for a court hearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppSignLanguage",
+    "Label": "Sign language",
+    "FieldType": "Text",
+    "Max": 40,
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppLangInterpreter",
+    "Label": "Language",
+    "FieldType": "Text",
+    "Max": 40,
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppOtherSupport",
+    "Label": "Support needed",
+    "FieldType": "TextArea",
+    "Max": 400,
+    "SecurityClassification": "Public"
   }
 ]
