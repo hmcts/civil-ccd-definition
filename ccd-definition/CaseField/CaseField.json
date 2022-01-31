@@ -1725,5 +1725,30 @@
     "HintText": " ",
     "FieldType": "JudgementSum",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimsTrack",
+    "Label": "What track are you allocating the claim to?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaims",
+    "Label": "Select additional directions, if any (Optional)",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "SmallTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastClaims",
+    "Label": "Select additional directions, if any (Optional)",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrack",
+    "SecurityClassification": "Public"
   }
+
 ]
