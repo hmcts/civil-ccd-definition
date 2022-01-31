@@ -75,7 +75,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTimelineListLabel",
-    "Label": "## How do you want to add your claim timeline?",
+    "Label": "<h2 class=\"govuk-heading-m\"> How do you want to add your claim timeline?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -569,7 +569,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specClaimResponseTimelineList",
-    "Label": "How do you want to add the claim timeline?",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimTimelineList",
     "SecurityClassification": "Public"
