@@ -142,43 +142,35 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails",
+    "ListElementCode": "generalAppAllHearingDetails",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.hearingYesorNo",
+    "ListElementCode": "generalAppAllHearingDetails.hearingYesorNo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.hearingDate",
+    "ListElementCode": "generalAppAllHearingDetails.hearingDate",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.judgeRequiredYesOrNo",
+    "ListElementCode": "generalAppAllHearingDetails.judgeRequiredYesOrNo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.judgeName",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.trialRequiredYesOrNo",
+    "ListElementCode": "generalAppAllHearingDetails.judgeName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
@@ -186,7 +178,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.trialDateFrom",
+    "ListElementCode": "generalAppAllHearingDetails.trialRequiredYesOrNo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
@@ -194,14 +186,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.trialDateTo",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.HearingPreferencesPreferredType",
+    "ListElementCode": "generalAppAllHearingDetails.trialDateFrom",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
@@ -209,7 +194,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.TelephoneHearingPreferredType",
+    "ListElementCode": "generalAppAllHearingDetails.trialDateTo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.HearingPreferencesPreferredType",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
@@ -217,7 +209,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.ReasonForPreferredHearingType",
+    "ListElementCode": "generalAppAllHearingDetails.TelephoneHearingPreferredType",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
@@ -225,31 +217,112 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.HearingPreferredLocation",
+    "ListElementCode": "generalAppAllHearingDetails.ReasonForPreferredHearingType",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.HearingDetailsTelephoneNumber",
+    "ListElementCode": "generalAppAllHearingDetails.HearingPreferredLocation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.HearingDetailsEmailID",
+    "ListElementCode": "generalAppAllHearingDetails.HearingDetailsTelephoneNumber",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.HearingDuration",
+    "ListElementCode": "generalAppAllHearingDetails.HearingDetailsEmailID",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.HearingDuration",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.generalAppHearingDays",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.generalAppHearingHours",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.generalAppHearingMinutes",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.UnavailableTrailRequiredYesOrNo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.generalAppUnavailableDates",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.generalAppUnavailableDates.unavailableTrialDateFrom",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.generalAppUnavailableDates.unavailableTrialDateTo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.SupportRequirement",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.SupportRequirementSignLanguage",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.SupportRequirementLanguageInterpreter",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppAllHearingDetails.SupportRequirementOther",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },

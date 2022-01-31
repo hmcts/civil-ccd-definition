@@ -37,6 +37,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDuration",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDays",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingHours",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingMinutes",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppUnavailableYesOrNo",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

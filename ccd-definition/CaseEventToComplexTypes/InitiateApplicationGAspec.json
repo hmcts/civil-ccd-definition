@@ -217,14 +217,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingDetails",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppHearingDetails",
-    "ListElementCode": "HearingDuration",
-    "FieldDisplayOrder": 17,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "GAPBADetailsGAspec",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppPBADetails",

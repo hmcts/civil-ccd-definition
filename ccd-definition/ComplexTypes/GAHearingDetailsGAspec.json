@@ -41,7 +41,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "trialRequiredLabel",
-    "ElementLabel": "Enter the trial date or trial window",
+    "ElementLabel": "<span class=\"form-label ng-star-inserted\">Enter the trial date or trial window</span>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
@@ -122,14 +122,6 @@
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
     "Max": 40,
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "HearingDuration",
-    "ElementLabel": "How long would you like the hearing to take?",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "GAHearingDurationGAspec",
     "SecurityClassification": "Public"
   }
 ]
