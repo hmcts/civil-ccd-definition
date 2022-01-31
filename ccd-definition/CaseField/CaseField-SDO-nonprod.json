@@ -1,24 +1,26 @@
 [
-
   {
     "CaseTypeID": "CIVIL",
-    "ID": "drawDirectionsOrder",
+    "ID": "claimsTrack",
     "Label": "What track are you allocating the claim to?",
-    "FieldType": "ClaimsTrack",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimsTrack",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsTrack",
-    "Label": "Select additional directions, if any (Optional)",
-    "FieldType": "ClaimsTrack",
+    "ID": "smallClaims",
+    "Label": "Select additional directions, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "SmallTrack",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "fastTrack",
-    "Label": "Select additional directions, if any (Optional)",
-    "FieldType": "ClaimsTrack",
+    "ID": "fastClaims",
+    "Label": "Select additional directions, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrack",
     "SecurityClassification": "Public"
   }
 ]

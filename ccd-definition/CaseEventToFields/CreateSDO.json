@@ -2,37 +2,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "drawDirectionsOrder",
+    "CaseFieldID": "claimsTrack",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "ClaimsTrack",
-    "PageLabel": "Claims Track",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "What track are you allocating the claim to?"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsTrack",
+    "CaseFieldID": "smallClaims",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "ClaimsTrack",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "drawDirectionsOrder = \"smallClaimsTrack\""
+    "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrack",
+    "CaseFieldID": "fastClaims",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "PageID": "ClaimsTrack",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "drawDirectionsOrder = \"fastTrack\""
+    "FieldShowCondition": "claimsTrack = \"fastTrack\""
   }
 ]

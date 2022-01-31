@@ -1,11 +1,10 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "drawDirectionsOrder",
+    "CaseFieldID": "claimsTrack",
     "AccessControl": [
       {
         "UserRoles": [
-
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
         ],
@@ -15,13 +14,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "smallClaimsTrack",
+    "CaseFieldID": "smallClaims",
     "AccessControl": [
       {
         "UserRoles": [
-
           "caseworker-civil-admin",
-        "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
@@ -29,13 +27,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "fastTrack",
+    "CaseFieldID": "fastClaims",
     "AccessControl": [
       {
         "UserRoles": [
-
           "caseworker-civil-admin",
-        "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }

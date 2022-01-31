@@ -1,12 +1,12 @@
 [
   {
-    "ID": "TrackType",
+    "ID": "ClaimsTrack",
     "ListElementCode": "smallClaimsTrack",
     "ListElement": "Small Claims Track",
     "DisplayOrder": 1
   },
   {
-    "ID": "TrackType",
+    "ID": "ClaimsTrack",
     "ListElementCode": "fastTrack",
     "ListElement": "Fast Track",
     "DisplayOrder": 2
