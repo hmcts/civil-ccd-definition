@@ -108,7 +108,7 @@ const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 
-const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_IN_SELECTOR = 'exui-case-home';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
