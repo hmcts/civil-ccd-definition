@@ -158,5 +158,59 @@
     "Max": 99,
     "SecurityClassification": "Public",
     "FieldShowCondition": "HearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "UnavailableTrailRequiredYesOrNo",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "generalAppUnavailableDates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GAUnavailabilityDates",
+    "ElementLabel": "  ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "HearingSupportRequirementsLabel",
+    "ElementLabel": "#### Support requirements(optional)\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "SupportRequirement",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
+    "ElementLabel": "Select any support you, your client and any experts or witness you would require for a court hearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "SupportRequirementSignLanguage",
+    "ElementLabel": "Sign language",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "SupportRequirementLanguageInterpreter",
+    "ElementLabel": "Language",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "SupportRequirementOther",
+    "ElementLabel": "Support needed",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\""
   }
 ]

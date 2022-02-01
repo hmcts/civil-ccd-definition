@@ -66,9 +66,9 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppAllHearingDetails",
+    "ListElementCode": "generalAppHearingDetails",
     "ElementLabel": " ",
-    "FieldType": "GAHearingDetailsCompleteGAspec",
+    "FieldType": "GAHearingDetailsGAspec",
     "SecurityClassification": "Public"
   },
   {
