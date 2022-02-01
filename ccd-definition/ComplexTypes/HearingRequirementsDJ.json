@@ -1,0 +1,177 @@
+[
+
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingType",
+    "ListElementCode": "HearingType",
+    "ElementLabel": "Choose your preferred type of hearing ",
+    "HintText": "A judge will still need to approve the hearing",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingTypeTelephoneHearing",
+    "ListElementCode": "HearingTypeTelephoneHearing",
+    "ElementLabel": "Who will set up the telephone hearing ?",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingType = \"TELEPHONE_HEARING\""
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingPreferredLocation",
+    "ListElementCode": "HearingPreferredLocation",
+    "ElementLabel": "Preferred location",
+    "HintText": "This is needed if the judge decides to hold the hearing in person",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CourtCode",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingPreferredTelephoneNumber1",
+    "ListElementCode": "HearingPreferredTelephoneNumber1",
+    "ElementLabel": "Preferred telephone number",
+    "FieldType": "PhoneUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingPreferredEmail",
+    "ListElementCode": "HearingPreferredEmail",
+    "ElementLabel": "Preferred email",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingLengthEstimate",
+    "ListElementCode": "HearingLengthEstimate",
+    "ElementLabel": "How long do you estimate the hearing will take?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingLengthEstimate",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HoursEstimateOther",
+    "ListElementCode": "HoursEstimateOther",
+    "ElementLabel": "Hours",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingLengthEstimate = \"OTHER\""
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingUnavailableDates",
+    "ListElementCode": "HearingUnavailableDates",
+    "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingDates",
+    "ListElementCode": "HearingDates",
+    "ElementLabel": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "HearingDatesParam",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingUnavailableDates = \"Yes\""
+  },
+  {
+
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingSupportRequirementsDisabledAccess",
+    "ListElementCode": "HearingSupportRequirementsDisabledAccess",
+    "ElementLabel": "Hearing support requirements",
+    "HintText": "Select any support that you, your client or any experts or witnesses you would require for a court hearing",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "HearingSupportRequirementsDisabledAccess",
+    "SecurityClassification": "Public",
+    "Label": "Hearing support requirements (optional)"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingSupportRequirementHearingLoop",
+    "ListElementCode": "HearingSupportRequirementHearingLoop",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "HearingSupportRequirementHearingLoop",
+    "SecurityClassification": "Public",
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingSupportRequirementInterpreter",
+    "ListElementCode": "HearingSupportRequirementInterpreter",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "HearingSupportRequirementInterpreter",
+    "SecurityClassification": "Public",
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingSupportRequirementSignLanguageDropdown",
+    "ListElementCode": "HearingSupportRequirementSignLanguageDropdown",
+    "ElementLabel": "Sign language",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingSupportRequirementInterpreter=\"SIGN_INTERPRETER\""
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingSupportRequirementLanguage",
+    "ListElementCode": "HearingSupportRequirementLanguage",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "HearingSupportRequirementLanguage",
+    "SecurityClassification": "Public",
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "HearingSupportRequirementLanguageDropdown",
+    "ListElementCode": "HearingSupportRequirementLanguageDropdown",
+    "ElementLabel": "Language",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingSupportRequirementLanguage=\"LANGUAGE_INTERPRETER\""
+  },
+
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "ListElementCode": "HearingSupportRequirementOther",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "HearingSupportRequirementOther",
+    "SecurityClassification": "Public",
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingSupportRequirementsDJ",
+    "ListElementCode": "HearingSupportRequirementOtherDropdown",
+    "ElementLabel": "Support needed",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingSupportRequirementOther=\"OTHER_SUPPORT\""
+  }
+]

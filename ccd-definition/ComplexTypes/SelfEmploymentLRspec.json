@@ -1,0 +1,46 @@
+[
+  {
+    "ID": "SelfEmployment",
+    "ListElementCode": "selfEmploymentLabel",
+    "ElementLabel": "## If self-employed:\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SelfEmployment",
+    "ListElementCode": "jobTitle",
+    "ElementLabel": "Job title",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SelfEmployment",
+    "ListElementCode": "annualTurnover",
+    "ElementLabel": "Annual turnover",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SelfEmployment",
+    "ListElementCode": "isBehindOnTaxPayment",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Is your client behind on tax payments?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SelfEmployment",
+    "ListElementCode": "amountOwed",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Amount owed",
+    "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SelfEmployment",
+    "ListElementCode": "reason",
+    "FieldType": "TextArea",
+    "ElementLabel": "Reason",
+    "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
+    "SecurityClassification": "Public"
+  }
+]
