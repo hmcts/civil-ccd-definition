@@ -68,3 +68,4 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
+
