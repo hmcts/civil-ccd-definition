@@ -34,47 +34,5 @@
     "CaseFieldID": "generalAppInformOtherParty",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUnavailableYesOrNo",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUnavailableDates",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "HearingSupportRequirementsLabel",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppSupportRequirement",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppSignLanguage",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppLangInterpreter",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppOtherSupport",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
   }
 ]

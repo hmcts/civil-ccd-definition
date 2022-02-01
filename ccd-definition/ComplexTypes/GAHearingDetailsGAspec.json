@@ -161,7 +161,7 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "UnavailableTrailRequiredYesOrNo",
+    "ListElementCode": "unavailableTrialRequiredYesOrNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
     "SecurityClassification": "Public"
@@ -172,7 +172,8 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GAUnavailabilityDates",
     "ElementLabel": "  ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "unavailableTrialRequiredYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",

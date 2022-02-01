@@ -273,7 +273,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "generalAppHearingDetails.UnavailableTrailRequiredYesOrNo",
+    "ListElementCode": "generalAppHearingDetails.unavailableTrialRequiredYesOrNo",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
