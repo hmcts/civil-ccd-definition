@@ -165,14 +165,14 @@
           {
             "UserRoles": [
               "[CREATOR]",
-              "[APPLICANTSOLICITORONE]",
               "[RESPONDENTSOLICITORONE]"
             ],
             "CRUD": "CRU"
           },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }

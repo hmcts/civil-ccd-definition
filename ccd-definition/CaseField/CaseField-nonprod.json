@@ -26,13 +26,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2ProceedWithClaim",
-    "Label": "Do you want to proceed with the claim",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicantsProceedIntention",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
