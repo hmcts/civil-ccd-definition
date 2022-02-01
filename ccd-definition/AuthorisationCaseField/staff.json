@@ -235,6 +235,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2DefenceResponseDocument",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "legacyCaseReference",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
