@@ -215,6 +215,37 @@
     "ListElementCode": "HearingDetailsEmailID",
     "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
+  },  {
+    "ID": "HearingDetails",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "HearingDuration",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "generalAppHearingDays",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "generalAppHearingHours",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingDetails",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDetails",
+    "ListElementCode": "generalAppHearingMinutes",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "GAPBADetailsGAspec",

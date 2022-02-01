@@ -146,38 +146,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppHearingDuration",
-    "Label": "How long would you like the hearing to take?",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "GAHearingDurationGAspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "generalAppHearingDays",
-    "Label": "Day(s)",
-    "FieldType": "Number",
-    "Max": 9,
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "generalAppHearingHours",
-    "Label": "Hours(s)",
-    "FieldType": "Number",
-    "Max": 99,
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "generalAppHearingMinutes",
-    "Label": "Minutes(s)",
-    "FieldType": "Number",
-    "Max": 99,
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "generalAppUnavailableYesOrNo",
     "FieldType": "YesOrNo",
     "Label": "Are there any dates when you cannot attend a hearing within the next 3 months?",
