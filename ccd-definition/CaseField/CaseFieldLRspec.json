@@ -616,7 +616,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h1>\n",
+    "Label": "## Has ${respondent1.partyName} agreed to free mediation?\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
