@@ -520,7 +520,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1>\n",
+    "Label": "## Why does ${respondent1.partyName} dispute the claim?\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
