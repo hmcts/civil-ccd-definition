@@ -77,7 +77,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FurtherInformation",
     "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -150,7 +150,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -221,7 +221,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "RequestedCourt",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -314,7 +314,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "DraftDirections",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "N"
   },
@@ -389,7 +389,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Hearing",
     "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
@@ -462,7 +462,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "Language",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -537,7 +537,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": "Witnesses",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
     "RetriesTimeoutURLMidEvent": 0,
@@ -614,7 +614,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND respondent2SameLegalRepresentative=\"YES\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "RetriesTimeoutURLMidEvent": 0,
@@ -687,7 +687,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -758,7 +758,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -829,7 +829,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\" AND allocatedTrack=\"MULTI_CLAIM\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -841,7 +841,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -912,7 +912,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND isRespondent1=\"YES\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -948,6 +948,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
