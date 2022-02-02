@@ -2,10 +2,10 @@
 
 const config = require('../config.js');
 
-Feature('CCD API tests @api-tests');
+Feature('CCD 1v1 API test @api-multiparty');
 
 Scenario('Create claim', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
 });
 
 Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {

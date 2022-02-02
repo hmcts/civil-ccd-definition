@@ -23,7 +23,7 @@ module.exports =  {
           let businessProcess = response.businessProcess;
           if (response.incidentMessage) {
             incidentMessage = response.incidentMessage;
-          } else if (businessProcess.status !== 'FINISHED') {
+          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
           }
