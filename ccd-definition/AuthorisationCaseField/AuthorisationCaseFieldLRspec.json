@@ -1358,6 +1358,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefendant1DebtsFullAdmission",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1CourtOrderPayment",
     "AccessControl": [
       {

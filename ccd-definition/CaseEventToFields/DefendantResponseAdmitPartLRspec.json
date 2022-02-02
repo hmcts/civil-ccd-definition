@@ -302,8 +302,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDebtPageLabelFullAdmission",
+    "PageID": "DefendantDebtsFullAdmission",
+    "PageDisplayOrder": 19,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired = \"No\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1Debts",
     "PageID": "DefendantDebts",
+    "PageDisplayOrder": 19,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefendant1DebtsFullAdmission",
+    "PageID": "DefendantDebtsFullAdmission",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",

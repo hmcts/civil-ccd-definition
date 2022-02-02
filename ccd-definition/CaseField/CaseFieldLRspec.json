@@ -838,7 +838,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDebtPageLabelFullAdmission",
+    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h1> \n</div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefendant1Debts",
+    "Label": " ",
+    "FieldType": "Debts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefendant1DebtsFullAdmission",
     "Label": " ",
     "FieldType": "Debts",
     "SecurityClassification": "Public"
