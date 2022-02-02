@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppCaseReference",
+    "CaseFieldID": "caseLink",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },

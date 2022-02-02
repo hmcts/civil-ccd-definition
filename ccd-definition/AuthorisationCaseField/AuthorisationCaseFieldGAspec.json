@@ -213,7 +213,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppCaseReference",
+    "CaseFieldID": "caseLink",
     "AccessControl": [
       {
         "UserRoles": [

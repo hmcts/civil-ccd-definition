@@ -146,7 +146,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppCaseReference",
+    "ID": "caseLink",
     "Label": " ",
     "FieldType": "CaseLink",
     "SecurityClassification": "Public"

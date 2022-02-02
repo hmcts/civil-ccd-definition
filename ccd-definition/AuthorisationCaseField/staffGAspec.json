@@ -91,7 +91,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppCaseReference",
+    "CaseFieldID": "caseLink",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },

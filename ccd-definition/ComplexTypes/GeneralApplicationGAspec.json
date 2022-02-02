@@ -103,15 +103,8 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppCaseReference",
+    "ListElementCode": "caseLink",
     "FieldType": "CaseLink",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppState",
-    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }

@@ -43,7 +43,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppCaseReference",
+    "CaseFieldID": "caseLink",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
