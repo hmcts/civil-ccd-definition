@@ -23,7 +23,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "PartialPaymentLabel",
-    "Label": "### Has ${respondent1.firstName} paid some of the amount owed?",
+    "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -32,6 +32,13 @@
     "ID": "PartialPayment",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPaymentAmount",
+    "Label": "Amount already paid",
+    "FieldType": "MoneyGBP",
     "SecurityClassification": "Public"
   }
 ]

@@ -5,7 +5,7 @@
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
     "DisplayOrder": 10,
-    "PreConditionState(s)": "PENDING_CASE_ISSUED;AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "EventEnablingCondition": "superClaimType=\"SPEC_CLAIM\"",
@@ -16,7 +16,6 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "_comment": "remove PENDING_CASE_ISSUED"
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
