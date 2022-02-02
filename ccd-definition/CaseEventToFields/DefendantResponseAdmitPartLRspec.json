@@ -264,7 +264,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND specDefenceFullAdmittedRequired = \"No\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
-    "PageID": "DetailsOfPayingMoneyRepaymentPlanFullAdmission",
+    "PageID": "PayingMoneyRepaymentPlanFullAdmission",
     "ShowSummaryChangeOption": "Y"
   },
   {
