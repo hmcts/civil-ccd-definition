@@ -197,7 +197,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDeadline",
-    "Label": "Respondent solicitor deadline",
+    "Label": "Defendant solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "_Definition":  "The date time by which the first respondent solicitor has to submit the response to the claim.",
@@ -206,7 +206,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2ResponseDeadline",
-    "Label": "Respondent solicitor deadline",
+    "Label": "Defendant solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "_Definition":  "The date time by which the second respondent solicitor has to submit the response to the claim.",
@@ -982,4 +982,5 @@
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   }
-]
+  ]
+

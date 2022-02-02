@@ -2,7 +2,7 @@
   {
     "ID": "RespondToClaimAdmitPartLRspec",
     "ListElementCode": "whenWillThisAmountBePaidLabel",
-    "ElementLabel": "The claimant can request a County Court Judgement (CCJ) against your client if the amount is not paid immediately. \n",
+    "ElementLabel": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately. \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

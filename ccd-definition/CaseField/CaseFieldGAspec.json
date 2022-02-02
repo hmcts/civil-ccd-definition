@@ -1,0 +1,137 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalApplications",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppTypeLabel",
+    "Label": "<p class=\"govuk-inset-text\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
+    "HintText": "  ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppType",
+    "Label": "What type of application do you want to make?",
+    "HintText": "  ",
+    "FieldType": "GATypeGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppRespondentAgreement",
+    "Label": "Has the respondent agreed to the order that you want the judge to make?",
+    "FieldType": "GARespondentAgreementGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case related to respondent agreement",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppStatementOfTruthLabel",
+    "Label": "## Statement of truth\nI understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.\n\n",    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUIStatementOfTruth",
+    "Label": " ",
+    "FieldType": "StatementOfTruthGAspec",
+    "SecurityClassification": "Public",
+    "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppStatementOfTruthConsent",
+    "Label": " ",
+    "ListElementCode": "ConsentAgreementCheckBox",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "StatementOfTruthConsentGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUrgencyRequirement",
+    "Label": " ",
+    "FieldType": "GAUrgencyRecordGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isApplicationUrgentLabel",
+    "Label": "<h1 class=\"govuk-heading-m\">Is this an urgent application?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isApplicationUrgent",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAIsUrgentGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUrgent",
+    "Label": "Is this an urgent application?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppDetailsOfOrderLabel",
+    "Label": "What order do you want the court to make?",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppDetailsOfOrder",
+    "Label": " ",
+    "HintText": "This is the draft order that you are requesting from the court",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppReasonsOfOrderLabel",
+    "Label": "Reasons for requesting this order",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppReasonsOfOrder",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUploadEvidenceLabel",
+    "Label": "## Upload any evidence that supports your application (optional) \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppUploadEvidences",
+    "Label": " ",
+    "FieldType": "StatementOfTruthGAspec",
+    "SecurityClassification": "Public"
+  }
+]
