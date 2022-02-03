@@ -40,5 +40,19 @@
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentConfirmationTitleSpec",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentConfirmationDecisionSpec",
+    "Label": "This will include fixed costs for judgment and commencement.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
