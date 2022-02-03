@@ -19,5 +19,26 @@
     "Label": "I certify that all of these statements are correct and apply to the defendant",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPaymentLabel",
+    "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPayment",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPaymentAmount",
+    "Label": "Amount already paid",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
   }
 ]
