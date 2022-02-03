@@ -43,7 +43,8 @@
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
