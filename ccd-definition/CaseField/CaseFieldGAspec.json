@@ -92,6 +92,7 @@
     "Label": "What order do you want the court to make?",
     "HintText": "This is the draft order that you are requesting from the court",
     "FieldType": "TextArea",
+    "Max": 4000,
     "SecurityClassification": "Public"
   },
   {
@@ -99,6 +100,7 @@
     "ID": "generalAppReasonsOfOrder",
     "Label": "Reasons for requesting this order",
     "FieldType": "TextArea",
+    "Max": 4000,
     "SecurityClassification": "Public"
   },
   {
