@@ -921,9 +921,25 @@
     "FieldTypeParameter": "RecurringIncome",
     "SecurityClassification": "Public"
   },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRecurringIncomeFA",
+    "Label": "Add details of any regular income your client receives:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringIncome",
+    "SecurityClassification": "Public"
+  },
  {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringExpenses",
+    "Label": "Add details of any regular expenses your client has:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringExpense",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRecurringExpensesFA",
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",

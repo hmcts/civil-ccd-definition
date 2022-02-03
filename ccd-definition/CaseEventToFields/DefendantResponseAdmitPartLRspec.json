@@ -364,8 +364,28 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQRecurringExpenses",
     "PageID": "DefendantIncomeExpenses",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringExpensesFA",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
