@@ -894,7 +894,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
+    "Label": "## ${respondent1.partyName}'s income and expenses\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQCarerAllowanceCredit",
+    "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQCarerAllowanceCreditFullAdmission",
     "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
@@ -907,7 +921,7 @@
     "FieldTypeParameter": "RecurringIncome",
     "SecurityClassification": "Public"
   },
-  {
+ {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringExpenses",
     "Label": "Add details of any regular expenses your client has:",

@@ -323,8 +323,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQCarerAllowanceCredit",
     "PageID": "DefendantIncomeExpenses",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQCarerAllowanceCreditFullAdmission",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
