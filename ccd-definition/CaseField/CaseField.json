@@ -245,6 +245,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "defendantResponseDocuments",
+    "Label": "Defendant response Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
