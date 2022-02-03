@@ -1,4 +1,5 @@
-const { date, element, buildAddress } = require('../../api/dataHelper');
+const {date, element, buildAddress} = require('../../../api/dataHelper');
+
 module.exports = {
   valid: {
     ConfirmDetails: {
@@ -11,12 +12,21 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-      }
+      },
     },
-    SingleResponse: {},
     RespondentResponseType: {
       respondent1ClaimResponseType: 'FULL_DEFENCE',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE'
+    },
+    SolicitorReferences: {
+      solicitorReferences:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      },
+      solicitorReferencesCopy:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      }
     },
     Upload: {
       respondent1ClaimResponseDocument: {
@@ -73,6 +83,13 @@ module.exports = {
         ]
       }
     },
+    Language: {
+      respondent1DQLanguage: {
+        evidence: 'WELSH',
+        court: 'WELSH',
+        documents: 'WELSH'
+      }
+    },
     Hearing: {
       respondent1DQHearing: {
         hearingLength: 'MORE_THAN_DAY',
@@ -106,13 +123,6 @@ module.exports = {
         futureApplications: 'Yes',
         otherInformationForJudge: 'Nope',
         reasonForFutureApplications: 'Nothing'
-      }
-    },
-    Language: {
-      respondent1DQLanguage: {
-        evidence: 'WELSH',
-        court: 'WELSH',
-        documents: 'WELSH'
       }
     },
     StatementOfTruth: {

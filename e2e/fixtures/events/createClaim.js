@@ -209,10 +209,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           },
           SecondDefendant: {
             respondent2: respondent2WithPartyName,
-            respondent2SameLegalRepresentative: [undefined]
           },
           SecondDefendantLegalRepresentation: {
             respondent2Represented: 'Yes'
+          },
+          SameLegalRepresentative: {
+            respondent2SameLegalRepresentative: 'No'
           },
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
@@ -288,11 +290,6 @@ module.exports = {
       },
       valid: {
         ...createClaimData('Yes', true, mpScenario),
-        PaymentReference: {
-          claimIssuedPaymentDetails: {
-            customerReference: 'Applicant reference'
-          }
-        }
       },
       invalid: {
         Upload: {

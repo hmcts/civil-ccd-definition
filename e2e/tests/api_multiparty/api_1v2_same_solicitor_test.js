@@ -2,8 +2,7 @@
 
 const config = require('../../config.js');
 
-// add @api-tests to run
-Feature('CCD 1v2 Same Solicitor API test');
+Feature('CCD 1v2 Same Solicitor API test @api-multiparty @api-tests-1v2SS');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
@@ -30,7 +29,7 @@ Scenario('Amend party details', async ({I, api}) => {
 });
 
 Scenario('Acknowledge claim', async ({I, api}) => {
-  await api.acknowledgeClaim(config.defendantSolicitorUser);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
 });
 
 Scenario('Inform agreed extension date', async ({I, api}) => {
@@ -38,7 +37,7 @@ Scenario('Inform agreed extension date', async ({I, api}) => {
 });
 
 Scenario('Defendant response', async ({I, api}) => {
-  await api.defendantResponse(config.defendantSolicitorUser);
+  await api.defendantResponse(config.defendantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
 });
 
 Scenario('Claimant response', async ({I, api}) => {
