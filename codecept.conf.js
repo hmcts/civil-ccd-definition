@@ -25,7 +25,8 @@ exports.config = {
   },
   include: {
     I: './e2e/steps_file.js',
-    api: './e2e/api/steps.js'
+    api: './e2e/api/steps.js',
+    apiMultiparty: './e2e/api/api_multiparty/steps_1v2DifferentSolicitor.js'
   },
   plugins: {
     autoDelay: {
