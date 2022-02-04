@@ -67,7 +67,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant1ProceedWithClaimMultiParty1v2",
+    "CaseFieldID": "applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
@@ -145,7 +145,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant2ProceedWithClaimMultiParty1v2",
+    "CaseFieldID": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",

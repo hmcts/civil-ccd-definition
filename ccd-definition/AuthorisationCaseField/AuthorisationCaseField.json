@@ -889,10 +889,15 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate",
-          "[APPLICANTSOLICITORONE]"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1131,10 +1136,15 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },

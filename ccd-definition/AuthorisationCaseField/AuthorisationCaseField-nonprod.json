@@ -55,7 +55,7 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -71,10 +71,15 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -154,7 +159,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1ProceedWithClaimMultiParty1v2",
+    "CaseFieldID": "applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -173,7 +178,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant2ProceedWithClaimMultiParty1v2",
+    "CaseFieldID": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2",
     "AccessControl": [
       {
         "UserRoles": [

@@ -83,14 +83,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1ProceedWithClaimMultiParty1v2",
+    "ID": "applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2",
     "Label": "Do you want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent1 1v2)",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2ProceedWithClaimMultiParty1v2",
+    "ID": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2",
     "Label": "Do you want to proceed with the claim against ${respondent2.partyName} (need to figure out how to display partyName value of respondent2 1v2)",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
