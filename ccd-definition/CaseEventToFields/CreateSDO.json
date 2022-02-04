@@ -33,7 +33,7 @@
     "PageID": "ClaimsTrack",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Do you want to allocate this claim to the small claims track?",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
   },
@@ -46,7 +46,7 @@
     "PageID": "ClaimsTrack",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "What track are you allocating the claim to?",
     "FieldShowCondition": "drawDirectionsOrderRequired = \"No\""
   },
@@ -59,7 +59,7 @@
     "PageID": "ClaimsTrack",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\" AND drawDirectionsOrderRequired = \"No\""
   },
   {
@@ -71,8 +71,18 @@
     "PageID": "ClaimsTrack",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "claimsTrack = \"fastTrack\" AND drawDirectionsOrderRequired = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "orderType",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "OrderType",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
   }
-
 ]

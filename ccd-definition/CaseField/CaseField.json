@@ -1756,6 +1756,13 @@
     "Label": "Do you want to allocate this claim to the small claims track?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderType",
+    "Label": "What order would you like to make?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderType",
+    "SecurityClassification": "Public"
   }
-
 ]
