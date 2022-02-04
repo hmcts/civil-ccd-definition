@@ -1749,6 +1749,13 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FastTrack",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderType",
+    "Label": "What order would you like to make?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderType",
+    "SecurityClassification": "Public"
   }
-
 ]
