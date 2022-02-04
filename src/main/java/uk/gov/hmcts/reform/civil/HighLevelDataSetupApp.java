@@ -52,7 +52,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
                 logger.info("\n\nAdded CCD Role {}.", roleConfig);
             } catch (Exception e) {
                 logger.error("\n\nCouldn't add CCD Role {} - Exception: {}.\n\n", roleConfig, e);
-                throw e;
             }
         }
     }
