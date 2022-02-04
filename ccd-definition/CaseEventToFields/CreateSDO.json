@@ -27,6 +27,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "drawDirectionsOrderSmallClaims",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "CaseEventFieldLabel": "Do you want to allocate this claim to the small claims track?",
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "claimsTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -34,7 +47,8 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": "What track are you allocating the claim to?"
+    "CaseEventFieldLabel": "What track are you allocating the claim to?",
+    "FieldShowCondition": "drawDirectionsOrderRequired = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -46,7 +60,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\""
+    "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\" AND drawDirectionsOrderRequired = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -58,7 +72,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimsTrack = \"fastTrack\""
+    "FieldShowCondition": "claimsTrack = \"fastTrack\" AND drawDirectionsOrderRequired = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -67,7 +81,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "OrderType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }
