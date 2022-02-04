@@ -37,8 +37,9 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        return true;
+    public void createRoleAssignments() {
+        // Do not create role assignments.
+        BeftaUtils.defaultLog("Will NOT create role assignments!");
     }
 
     @Override
@@ -50,9 +51,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
                 logger.info("\n\nAdded CCD Role {}.", roleConfig);
             } catch (Exception e) {
                 logger.error("\n\nCouldn't add CCD Role {} - Exception: {}.\n\n", roleConfig, e);
-                if (!shouldTolerateDataSetupFailure()) {
-                    throw e;
-                }
+                throw e;
             }
         }
     }
