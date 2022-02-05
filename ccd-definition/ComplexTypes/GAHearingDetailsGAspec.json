@@ -26,6 +26,7 @@
     "ListElementCode": "judgeName",
     "ElementLabel": "Judge name",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public",
     "FieldShowCondition": "judgeRequiredYesOrNo = \"Yes\""
   },
@@ -40,7 +41,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "trialRequiredLabel",
-    "ElementLabel": "Enter the trial date or trial window",
+    "ElementLabel": "<span class=\"form-label ng-star-inserted\">Enter the trial date or trial window</span>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
@@ -81,6 +82,7 @@
     "ListElementCode": "TelephoneHearingPreferredType",
     "ElementLabel": "Who will set up the telephone hearing?",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public",
     "FieldShowCondition": "HearingPreferencesPreferredType = \"TELEPHONE\""
   },
@@ -89,6 +91,7 @@
     "ListElementCode": "ReasonForPreferredHearingType",
     "ElementLabel": "Why would you prefer this type of hearing?",
     "FieldType": "TextArea",
+    "Max": 400,
     "SecurityClassification": "Public"
   },
   {
@@ -110,6 +113,7 @@
     "ListElementCode": "HearingDetailsTelephoneNumber",
     "ElementLabel": "Preferred telephone number",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public"
   },
   {
@@ -117,6 +121,7 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
+    "Max": 40,
     "SecurityClassification": "Public"
   },
   {
@@ -129,26 +134,46 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "UnavailableTrailRequiredYesOrNo",
+    "ListElementCode": "generalAppHearingDays",
+    "ElementLabel": "Day(s)",
+    "FieldType": "Number",
+    "Max": 9,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "generalAppHearingHours",
+    "ElementLabel": "Hours(s)",
+    "FieldType": "Number",
+    "Max": 99,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "generalAppHearingMinutes",
+    "ElementLabel": "Minute(s)",
+    "FieldType": "Number",
+    "Max": 99,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "HearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "GAHearingDetailsGAspec",
+    "ListElementCode": "unavailableTrialRequiredYesOrNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "UnavailableTrailDateFrom",
-    "ElementLabel": "Date from",
-    "FieldType": "Date",
+    "ListElementCode": "generalAppUnavailableDates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GAUnavailabilityDates",
+    "ElementLabel": "  ",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "UnavailableTrailRequiredYesOrNo = \"Yes\""
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "UnavailableTrailDateTo",
-    "ElementLabel": "Date to",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "UnavailableTrailRequiredYesOrNo = \"Yes\""
+    "FieldShowCondition": "unavailableTrialRequiredYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
