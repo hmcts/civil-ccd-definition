@@ -304,6 +304,11 @@ module.exports = {
     eventName = 'ACKNOWLEDGE_CLAIM';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
+    solicitorSetup(solicitor);
+
+    assertContainsPopulatedFields(returnedCaseData);
+    caseData = returnedCaseData;
+
     prepareForAcknowledgeClaim(solicitor, returnedCaseData);
 
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -363,22 +368,32 @@ module.exports = {
     deleteCaseFields('isRespondent1');
   },
 
-  defendantResponse: async (user, multipartyScenario = 'ONE_V_ONE') => {
+  defendantResponse: async (user, multipartyScenario = 'ONE_V_ONE', solicitor) => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
-
     eventName = 'DEFENDANT_RESPONSE';
-    const defendantResponseData = eventData['defendantResponse'][mpScenario];
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+    solicitorSetup(solicitor);
+
+    let defendantResponseData;
+    if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+      defendantResponseData = eventData["defendantResponse"][mpScenario];
+    } else {
+      defendantResponseData = eventData["defendantResponse"][mpScenario][solicitor];
+    }
+
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
     deleteCaseFields('isRespondent1');
     deleteCaseFields('respondent1', 'solicitorReferences');
     deleteCaseFields('systemGeneratedCaseDocuments');
+    //this is for 1v2 diff sol 1
+    deleteCaseFields('respondentSolicitor2Reference');
 
-    await validateEventPages(defendantResponseData);
+    await validateEventPages(defendantResponseData, solicitor);
 
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
@@ -388,16 +403,30 @@ module.exports = {
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    //TODO: update when service repo has new content (CMC-1265)
-    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
-      header: 'You have submitted the Defendant\'s defence',
-      body: 'The Claimant legal representative will get a notification'
-    });
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
+    if(solicitor === 'solicitorOne'){
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: 'You have submitted the Defendant\'s defence',
+        body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
+          + 'claimant\'s legal representative a notification.'
+      });
+
+      await waitForFinishedBusinessProcess(caseId);
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    } else {
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
+        header: 'You have submitted the Defendant\'s defence',
+        body: 'The Claimant legal representative will get a notification'
+      });
+
+      await waitForFinishedBusinessProcess(caseId);
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
+    }
+
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
   },
@@ -596,12 +625,6 @@ module.exports = {
   }
 
   prepareForAcknowledgeClaim = (solicitor, returnedCaseData) => {
-
-    solicitorSetup(solicitor);
-
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-
     deleteCaseFields('systemGeneratedCaseDocuments');
     deleteCaseFields('solicitorReferences');
     deleteCaseFields('solicitorReferencesCopy');
