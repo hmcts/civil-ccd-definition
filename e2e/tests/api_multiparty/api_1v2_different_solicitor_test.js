@@ -48,11 +48,11 @@ Scenario.skip('Inform agreed extension date Solicitor 2', async ({I, api}) => {
 });
 
 Scenario('Defendant response Solicitor 1', async ({I, api}) => {
-  await api.defendantResponseSolicitorOne(config.defendantSolicitorUser);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
 Scenario('Defendant response Solicitor 2', async ({I, api}) => {
-  await api.defendantResponseSolicitorTwo(config.secondDefendantSolicitorUser);
+  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
 Scenario('Claimant response', async ({I, api}) => {

@@ -309,7 +309,14 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    prepareForAcknowledgeClaim(solicitor, returnedCaseData);
+    deleteCaseFields('systemGeneratedCaseDocuments');
+    deleteCaseFields('solicitorReferences');
+    deleteCaseFields('solicitorReferencesCopy');
+    deleteCaseFields('respondentSolicitor2Reference');
+
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1ClaimResponseIntentionType');
+    }
 
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
       await validateEventPages(eventData["acknowledgeClaim"][mpScenario]);
@@ -368,10 +375,14 @@ module.exports = {
     deleteCaseFields('isRespondent1');
   },
 
-  defendantResponse: async (user, multipartyScenario = 'ONE_V_ONE', solicitor) => {
+  defendantResponse: async (user, multipartyScenario, solicitor) => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
+
+    if(solicitor === 'solicitorTwo'){
+      caseData = {};
+    }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
@@ -427,92 +438,6 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
     }
 
-    deleteCaseFields('respondent1Copy');
-    deleteCaseFields('respondent2Copy');
-  },
-
-  defendantResponseSolicitorOne: async (user, solicitor = 'solicitorOne') => {
-    await apiRequest.setupTokens(user);
-    mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP'
-
-    eventName = 'DEFENDANT_RESPONSE';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    deleteCaseFields('respondent2');
-
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-
-    deleteCaseFields('isRespondent1');
-    //won't be able to see this
-    deleteCaseFields('respondentSolicitor2Reference');
-    deleteCaseFields('solicitorReferences');
-    deleteCaseFields('systemGeneratedCaseDocuments');
-
-    let defendantResponseData = data['DEFENDANT_RESPONSE_SOLICITOR_ONE'];
-
-    await validateEventPages(defendantResponseData, solicitor);
-
-    await assertError('ConfirmDetails',defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
-      'The date entered cannot be in the future');
-    await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'You have submitted the Defendant\'s defence',
-      body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
-        + 'claimant\'s legal representative a notification.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    deleteCaseFields('respondent1Copy');
-    deleteCaseFields('respondent2Copy');
-  },
-
-  defendantResponseSolicitorTwo: async (user, solicitor = 'solicitorTwo') => {
-    await apiRequest.setupTokens(user);
-    mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP'
-
-    eventName = 'DEFENDANT_RESPONSE';
-    caseData = {};
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-
-    deleteCaseFields('isRespondent1');
-    deleteCaseFields('respondent2Copy');
-    //won't be able to see this
-    deleteCaseFields('respondentSolicitor2Reference');
-    deleteCaseFields('solicitorReferences');
-    deleteCaseFields('systemGeneratedCaseDocuments');
-
-    let defendantResponseData = data['DEFENDANT_RESPONSE_SOLICITOR_TWO'];
-
-    await validateEventPages(defendantResponseData, solicitor);
-
-    await assertError('ConfirmDetails',defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
-      'The date entered cannot be in the future');
-    await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
-
-    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
-      header: 'You have submitted the Defendant\'s defence',
-      body: 'The Claimant legal representative will get a notification'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
   },
@@ -616,6 +541,26 @@ module.exports = {
   }
 };
 
+
+
+// Functions
+  assignCase = async () => {
+    await assignCaseToDefendant(caseId);
+    switch(mpScenario){
+      case 'ONE_V_TWO_TWO_LEGAL_REP': {
+        await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+        break;
+      }
+      case 'ONE_V_TWO_ONE_LEGAL_REP': {
+        await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+        break;
+      }
+      default: {}
+    }
+  };
+
+  // solicitor 1 should not see details for respondent 2
+  // solicitor 2 should not see details for respondent 1
   solicitorSetup = (solicitor) => {
     if(solicitor === 'solicitorOne'){
       deleteCaseFields('respondent2');
@@ -624,55 +569,28 @@ module.exports = {
     }
   }
 
-  prepareForAcknowledgeClaim = (solicitor, returnedCaseData) => {
-    deleteCaseFields('systemGeneratedCaseDocuments');
-    deleteCaseFields('solicitorReferences');
-    deleteCaseFields('solicitorReferencesCopy');
-    deleteCaseFields('respondentSolicitor2Reference');
-
-    if (solicitor === 'solicitorTwo'){
-      deleteCaseFields('respondent1ClaimResponseIntentionType');
-    }
-  }
-
-// Functions
-  assignCase = async () => {
-    await assignCaseToDefendant(caseId);
-
-    if(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-    } else if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+  validateEventPages = async (data, solicitor) => {
+    //transform the data
+    console.log('validateEventPages');
+    for (let pageId of Object.keys(data.valid)) {
+      if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+        const document = await testingSupport.uploadDocument();
+        data = await updateCaseDataWithPlaceholders(data, document);
+      }
+     // data = await updateCaseDataWithPlaceholders(data);
+      await assertValidData(data, pageId, solicitor);
     }
   };
 
- validateEventPages = async (data, solicitor) => {
-  //transform the data
-  console.log('validateEventPages');
-  for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
-      const document = await testingSupport.uploadDocument();
-      data = await updateCaseDataWithPlaceholders(data, document);
-    }
-   // data = await updateCaseDataWithPlaceholders(data);
-    await assertValidData(data, pageId, solicitor);
-  }
-};
+  assertValidData = async (data, pageId, solicitor) => {
+    console.log(`asserting page: ${pageId} has valid data`);
 
- assertValidData = async (data, pageId, solicitor) => {
-  console.log(`asserting page: ${pageId} has valid data`);
+    const validDataForPage = data.valid[pageId];
 
-  const validDataForPage = data.valid[pageId];
+    caseData = {...caseData, ...validDataForPage};
 
-  caseData = {...caseData, ...validDataForPage};
-
-  let response;
-  let responseBody;
-
-
-   if(pageId === 'Experts'){
-     console.log(caseId, 'pageId', pageId)
-   }
+    let response;
+    let responseBody;
 
   //EXTENSIONDATE
   if(eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP'){
@@ -685,7 +603,7 @@ module.exports = {
 
     // To do: need to split this out
     //this needs to flip depending on which user signs in
-    if(solicitor=== 'solicitorTwo'){
+    if(solicitor === 'solicitorTwo'){
       delete responseBody.data['respondent1'];
     } else {
       delete responseBody.data['respondent2'];
@@ -735,42 +653,38 @@ module.exports = {
     caseData = removeUiFields(pageId, caseData);
   }
 
-  if(pageId === 'SecondClaimantLitigationFriend'){
-    console.log(responseBody.data, caseData);
-  }
-
   assert.deepEqual(responseBody.data, caseData);
-};
+  };
 
-function removeUiFields(pageId, caseData) {
-  console.log(`Removing ui fields for pageId: ${pageId}`);
-  const midEventField = midEventFieldForPage[pageId];
+  function removeUiFields(pageId, caseData) {
+    console.log(`Removing ui fields for pageId: ${pageId}`);
+    const midEventField = midEventFieldForPage[pageId];
 
-  if (midEventField.uiField.remove === true) {
-    const fieldToRemove = midEventField.uiField.field;
-    delete caseData[fieldToRemove];
-  }
-  return caseData;
-}
-
-assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
-  let response
-  if(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE')){
-    response = await apiRequest.validatePage(eventName, pageId, {...caseData, ...eventData}, caseId, 422);
-  } else {
-    response = await apiRequest.validatePage(eventName, pageId, {...caseData, ...eventData}, null, 422);
+    if (midEventField.uiField.remove === true) {
+      const fieldToRemove = midEventField.uiField.field;
+      delete caseData[fieldToRemove];
+    }
+    return caseData;
   }
 
-  const responseBody = await response.json();
+  assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+    let response
+    if(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE')){
+      response = await apiRequest.validatePage(eventName, pageId, {...caseData, ...eventData}, caseId, 422);
+    } else {
+      response = await apiRequest.validatePage(eventName, pageId, {...caseData, ...eventData}, null, 422);
+    }
 
-  assert.equal(response.status, 422);
-  assert.equal(responseBody.message, responseBodyMessage);
-  if (responseBody.callbackErrors != null) {
+    const responseBody = await response.json();
+
+    assert.equal(response.status, 422);
+    assert.equal(responseBody.message, responseBodyMessage);
+    if (responseBody.callbackErrors != null) {
     assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
   }
-};
+  };
 
-assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+  assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -787,22 +701,22 @@ assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, 
     caseId = responseBody.id;
     console.log('Case created: ' + caseId);
   }
-};
+  };
 
-assertContainsPopulatedFields = returnedCaseData => {
+  assertContainsPopulatedFields = returnedCaseData => {
   for (let populatedCaseField of Object.keys(caseData)) {
     assert.property(returnedCaseData,  populatedCaseField);
   }
-};
+  };
 
-// Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
-// This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
-// Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
-deleteCaseFields = (...caseFields) => {
+  // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
+  // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
+  // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
+  deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
-};
+  };
 
-assertCorrectEventsAreAvailableToUser = async (user, state) => {
+  assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (config.runningEnv == 'preview') {
@@ -810,15 +724,15 @@ assertCorrectEventsAreAvailableToUser = async (user, state) => {
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
-};
+  };
 
-// const assertCaseNotAvailableToUser = async (user) => {
-//   console.log(`Asserting user ${user.type} does not have permission to case`);
-//   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId, 404);
-//   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
-// };
+  // const assertCaseNotAvailableToUser = async (user) => {
+  //   console.log(`Asserting user ${user.type} does not have permission to case`);
+  //   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId, 404);
+  //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
+  // };
 
-function addMidEventFields(pageId, responseBody) {
+  function addMidEventFields(pageId, responseBody) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
@@ -835,22 +749,22 @@ function addMidEventFields(pageId, responseBody) {
 
   caseData = {...caseData, ...midEventData};
   responseBody.data[midEventField.id] = caseData[midEventField.id];
-}
+  }
 
-function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
+  function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
   const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
-}
+  }
 
-function removeUuidsFromDynamicList(data, dynamicListField) {
+  function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
   // eslint-disable-next-line no-unused-vars
   return dynamicElements.map(({code, ...item}) => item);
-}
+  }
 
-async function updateCaseDataWithPlaceholders(data, document) {
+  async function updateCaseDataWithPlaceholders(data, document) {
   const placeholders = {
     TEST_DOCUMENT_URL: document.document_url,
     TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
@@ -861,4 +775,4 @@ async function updateCaseDataWithPlaceholders(data, document) {
 
   return JSON.parse(data);
 
-}
+  }
