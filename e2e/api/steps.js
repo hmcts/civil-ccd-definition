@@ -332,8 +332,11 @@ module.exports = {
     deleteCaseFields('solicitorReferencesCopy');
   },
 
-  informAgreedExtension: async (user) => {
+  informAgreedExtension: async (user, multipartyScenario, solicitor) => {
+    mpScenario = multipartyScenario;
     await apiRequest.setupTokens(user);
+
+    solicitorSetup(solicitor);
 
     eventName = 'INFORM_AGREED_EXTENSION_DATE';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -341,74 +344,11 @@ module.exports = {
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], solicitor);
 
     await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.past,
       'The agreed extension date must be a date in the future');
     await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.beforeCurrentDeadline,
-      'The agreed extension date must be after the current deadline');
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Extension deadline submitted',
-      body: 'You must respond to the claimant by'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    deleteCaseFields('isRespondent1');
-  },
-
-  informAgreedExtensionSolicitorOne: async (user, multipartyScenario) => {
-    await apiRequest.setupTokens(user);
-    mpScenario = multipartyScenario;
-
-    deleteCaseFields('respondent2');
-
-    eventName = 'INFORM_AGREED_EXTENSION_DATE';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-    deleteCaseFields('systemGeneratedCaseDocuments');
-
-    await validateEventPages(data[eventName], 'one');
-
-    await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.past,
-      'The agreed extension date must be a date in the future');
-    await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.beforeCurrentDeadline,
-      'The agreed extension date must be after the current deadline');
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Extension deadline submitted',
-      body: 'You must respond to the claimant by'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    deleteCaseFields('isRespondent1');
-  },
-
-  informAgreedExtensionSolicitorTwo: async (user, multipartyScenario) => {
-    await apiRequest.setupTokens(user);
-    mpScenario = multipartyScenario;
-
-    deleteCaseFields('respondent1');
-
-    eventName = 'INFORM_AGREED_EXTENSION_DATE';
-    const informDateData = data['INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO'];
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-    deleteCaseFields('systemGeneratedCaseDocuments');
-
-    await validateEventPages(informDateData, 'two');
-
-    await assertError('ExtensionDate', informDateData.invalid.ExtensionDate.past,
-      'The agreed extension date must be a date in the future');
-    await assertError('ExtensionDate', informDateData.invalid.ExtensionDate.beforeCurrentDeadline,
       'The agreed extension date must be after the current deadline');
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -462,7 +402,7 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  defendantResponseSolicitorOne: async (user) => {
+  defendantResponseSolicitorOne: async (user, solicitor = 'solicitorOne') => {
     await apiRequest.setupTokens(user);
     mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP'
 
@@ -481,7 +421,7 @@ module.exports = {
 
     let defendantResponseData = data['DEFENDANT_RESPONSE_SOLICITOR_ONE'];
 
-    await validateEventPages(defendantResponseData, 'one');
+    await validateEventPages(defendantResponseData, solicitor);
 
     await assertError('ConfirmDetails',defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
@@ -505,7 +445,7 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  defendantResponseSolicitorTwo: async (user) => {
+  defendantResponseSolicitorTwo: async (user, solicitor = 'solicitorTwo') => {
     await apiRequest.setupTokens(user);
     mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP'
 
@@ -525,7 +465,7 @@ module.exports = {
 
     let defendantResponseData = data['DEFENDANT_RESPONSE_SOLICITOR_TWO'];
 
-    await validateEventPages(defendantResponseData, 'two');
+    await validateEventPages(defendantResponseData, solicitor);
 
     await assertError('ConfirmDetails',defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
@@ -722,7 +662,7 @@ module.exports = {
 
     // To do: need to split this out
     //this needs to flip depending on which user signs in
-    if(solicitor=== 'two'){
+    if(solicitor=== 'solicitorTwo'){
       delete responseBody.data['respondent1'];
     } else {
       delete responseBody.data['respondent2'];
@@ -740,7 +680,7 @@ module.exports = {
 
     // To do: need to split this out
      //this needs to flip depending on which user signs in
-     if(solicitor=== 'two'){
+     if(solicitor=== 'solicitorTwo'){
        delete responseBody.data['respondent1'];
        delete responseBody.data['respondent1ClaimResponseType'];
        delete responseBody.data['respondent1ClaimResponseDocument'];

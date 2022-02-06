@@ -33,7 +33,7 @@ Scenario('Acknowledge claim', async ({I, api}) => {
 });
 
 Scenario('Inform agreed extension date', async ({I, api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser);
+  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario);
 });
 
 Scenario('Defendant response', async ({I, api}) => {
