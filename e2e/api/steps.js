@@ -32,12 +32,34 @@ const data = {
   DEFENDANT_RESPONSE_SAME_SOLICITOR:  require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
   DEFENDANT_RESPONSE_SOLICITOR_ONE:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
   DEFENDANT_RESPONSE_SOLICITOR_TWO:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
+  DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: require('../fixtures/events/claimantResponse.js'),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
 };
+
+const eventData = {
+  acknowledgeClaim: {
+    ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
+    ONE_V_TWO_ONE_LEGAL_REP: data.ACKNOWLEDGE_CLAIM_SAME_SOLICITOR,
+    ONE_V_TWO_TWO_LEGAL_REP: {
+      solicitorOne: data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE,
+      solicitorTwo: data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO
+    },
+    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
+  },
+  defendantResponse:{
+    ONE_V_ONE: data.DEFENDANT_RESPONSE,
+    ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
+    ONE_V_TWO_TWO_LEGAL_REP: {
+      solicitorOne: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
+      solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
+    },
+    TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
+  }
+}
 
 const midEventFieldForPage = {
   ClaimValue: {
@@ -95,14 +117,7 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed.'
     });
 
-    await assignCaseToDefendant(caseId);
-
-    if(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-    }
-    if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
-    }
+    await assignCase();
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -282,109 +297,27 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  acknowledgeClaim: async (user, multipartyScenario = 'ONE_V_ONE') => {
-    await apiRequest.setupTokens(user);
+  acknowledgeClaim: async (user, multipartyScenario, solicitor) => {
     mpScenario = multipartyScenario;
+    await apiRequest.setupTokens(user);
 
     eventName = 'ACKNOWLEDGE_CLAIM';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
+    prepareForAcknowledgeClaim(solicitor, returnedCaseData);
 
-    deleteCaseFields('systemGeneratedCaseDocuments');
-    deleteCaseFields('solicitorReferences');
-    deleteCaseFields('solicitorReferencesCopy');
-
-    if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPages(data.ACKNOWLEDGE_CLAIM_SAME_SOLICITOR);
+    if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+      await validateEventPages(eventData["acknowledgeClaim"][mpScenario]);
     } else {
-      await validateEventPages(data.ACKNOWLEDGE_CLAIM);
+      await validateEventPages(eventData["acknowledgeClaim"][mpScenario][solicitor]);
     }
 
     await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: '',
-      body: ''
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-
-    //removed because it's not needed for the further tests
-    deleteCaseFields('respondent1Copy');
-    deleteCaseFields('respondent2Copy');
-    deleteCaseFields('solicitorReferencesCopy');
-  },
-
-  acknowledgeClaimSolicitorOne: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    eventName = 'ACKNOWLEDGE_CLAIM';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    //because sol one cannot see respondent 2 details
-    deleteCaseFields('respondent2');
-
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-
-    deleteCaseFields('systemGeneratedCaseDocuments');
-    deleteCaseFields('solicitorReferences');
-    deleteCaseFields('solicitorReferencesCopy');
-    deleteCaseFields('respondentSolicitor2Reference');
-
-    await validateEventPages(data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE);
-
-    await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
-      'The date entered cannot be in the future');
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: '',
-      body: ''
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-
-    //removed because it's not needed for the further tests
-    deleteCaseFields('respondent1Copy');
-    deleteCaseFields('respondent2Copy');
-    deleteCaseFields('solicitorReferencesCopy');
-  },
-
-  acknowledgeClaimSolicitorTwo: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    eventName = 'ACKNOWLEDGE_CLAIM';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    //because sol one cannot see respondent 1 details
-    deleteCaseFields('respondent1');
-
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
-
-    deleteCaseFields('systemGeneratedCaseDocuments');
-
-    deleteCaseFields('solicitorReferences');
-    deleteCaseFields('solicitorReferencesCopy');
-    deleteCaseFields('respondentSolicitor2Reference');
-    deleteCaseFields('respondent1ClaimResponseIntentionType');
-
-    await validateEventPages(data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO);
-
-    await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
-      'The date entered cannot be in the future');
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: '',
+      header:
+        '',
       body: ''
     });
 
@@ -427,7 +360,7 @@ module.exports = {
     deleteCaseFields('isRespondent1');
   },
 
-  informAgreedExtensionSolicitor1: async (user, multipartyScenario) => {
+  informAgreedExtensionSolicitorOne: async (user, multipartyScenario) => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
 
@@ -458,7 +391,7 @@ module.exports = {
     deleteCaseFields('isRespondent1');
   },
 
-  informAgreedExtensionSolicitor2: async (user, multipartyScenario) => {
+  informAgreedExtensionSolicitorTwo: async (user, multipartyScenario) => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
 
@@ -495,12 +428,7 @@ module.exports = {
     mpScenario = multipartyScenario;
 
     eventName = 'DEFENDANT_RESPONSE';
-    let defendantResponseData;
-    if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      defendantResponseData = data.DEFENDANT_RESPONSE_SAME_SOLICITOR;
-    } else {
-      defendantResponseData = data.DEFENDANT_RESPONSE;
-    }
+    const defendantResponseData = eventData['defendantResponse'][mpScenario];
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
@@ -584,21 +512,6 @@ module.exports = {
     eventName = 'DEFENDANT_RESPONSE';
     caseData = {};
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    //because it returns with all of respondent1 details. should they be deleted or
-    // placed in the response file?
-    // deleteCaseFields('respondent1');
-    // deleteCaseFields('respondent1ClaimResponseType');
-    // deleteCaseFields('respondent1ClaimResponseDocument');
-    // deleteCaseFields('respondent1DQFileDirectionsQuestionnaire');
-    // deleteCaseFields('respondent1DQDisclosureOfElectronicDocuments');
-    // deleteCaseFields('respondent1DQExperts');
-    // deleteCaseFields('respondent1DQWitnesses');
-    // deleteCaseFields('respondent1DQLanguage');
-    // deleteCaseFields('respondent1DQHearing');
-    // deleteCaseFields('respondent1DQDraftDirections');
-    // deleteCaseFields('respondent1DQRequestedCourt');
-    // deleteCaseFields('respondent1DQFurtherInformation');
 
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
@@ -734,7 +647,41 @@ module.exports = {
   }
 };
 
+  solicitorSetup = (solicitor) => {
+    if(solicitor === 'solicitorOne'){
+      deleteCaseFields('respondent2');
+    } else if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1');
+    }
+  }
+
+  prepareForAcknowledgeClaim = (solicitor, returnedCaseData) => {
+
+    solicitorSetup(solicitor);
+
+    assertContainsPopulatedFields(returnedCaseData);
+    caseData = returnedCaseData;
+
+    deleteCaseFields('systemGeneratedCaseDocuments');
+    deleteCaseFields('solicitorReferences');
+    deleteCaseFields('solicitorReferencesCopy');
+    deleteCaseFields('respondentSolicitor2Reference');
+
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1ClaimResponseIntentionType');
+    }
+  }
+
 // Functions
+  assignCase = async () => {
+    await assignCaseToDefendant(caseId);
+
+    if(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    } else if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+    }
+  };
 
  validateEventPages = async (data, solicitor) => {
   //transform the data
@@ -825,6 +772,10 @@ module.exports = {
     caseData = removeUiFields(pageId, caseData);
   }
 
+  if(pageId === 'SecondClaimantLitigationFriend'){
+    console.log(responseBody.data, caseData);
+  }
+
   assert.deepEqual(responseBody.data, caseData);
 };
 
@@ -848,7 +799,7 @@ assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessag
   }
 
   const responseBody = await response.json();
-2
+
   assert.equal(response.status, 422);
   assert.equal(responseBody.message, responseBodyMessage);
   if (responseBody.callbackErrors != null) {

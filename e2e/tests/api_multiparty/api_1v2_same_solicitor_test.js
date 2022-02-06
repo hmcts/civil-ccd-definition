@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../config.js');
+const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP'
+
 
 Feature('CCD 1v2 Same Solicitor API test @api-multiparty @api-tests-1v2SS');
 
 Scenario('Create claim', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
 
 Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {
@@ -29,7 +31,7 @@ Scenario('Amend party details', async ({I, api}) => {
 });
 
 Scenario('Acknowledge claim', async ({I, api}) => {
-  await api.acknowledgeClaim(config.defendantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
+  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario);
 });
 
 Scenario('Inform agreed extension date', async ({I, api}) => {
@@ -37,7 +39,7 @@ Scenario('Inform agreed extension date', async ({I, api}) => {
 });
 
 Scenario('Defendant response', async ({I, api}) => {
-  await api.defendantResponse(config.defendantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
 });
 
 Scenario('Claimant response', async ({I, api}) => {

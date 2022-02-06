@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../config.js');
+const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP'
 
 // add @api-tests to run
 Feature('CCD 1v2 Different Solicitor API test @api-multiparty @api-tests-1v2DS');
 
 Scenario('Create claim', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
 
 Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {
@@ -18,7 +19,7 @@ Scenario('Amend claim documents', async ({I, api}) => {
 });
 
 Scenario('Notify claim', async ({I, api}) => {
-  await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
 });
 
 Scenario('Notify claim details', async ({I, api}) => {
@@ -30,20 +31,20 @@ Scenario('Amend party details', async ({I, api}) => {
 });
 
 Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
-  await api.acknowledgeClaimSolicitorOne(config.defendantSolicitorUser);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
 Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
-  await api.acknowledgeClaimSolicitorTwo(config.secondDefendantSolicitorUser);
+  await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
 Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
-  await api.informAgreedExtensionSolicitor1(config.defendantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  await api.informAgreedExtensionSolicitorOne(config.defendantSolicitorUser, mpScenario);
 });
 
 // TODO: Skipping this until CMC-1939 is fixed
 Scenario.skip('Inform agreed extension date Solicitor 2', async ({I, api}) => {
-  await api.informAgreedExtensionSolicitor2(config.secondDefendantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  await api.informAgreedExtensionSolicitorTwo(config.secondDefendantSolicitorUser, mpScenario);
 });
 
 Scenario('Defendant response Solicitor 1', async ({I, api}) => {
