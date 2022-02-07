@@ -207,7 +207,7 @@ jacocoTestReport.dependsOn {
 
 def versions = [
   junit              : '5.7.0',
-  junitPlatform      : '1.7.1',
+  junitPlatform      : '1.8.2',
   reformLogging      : '5.1.5'
 ]
 
