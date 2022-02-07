@@ -143,5 +143,12 @@
     "Label": "Supporting evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseLink",
+    "Label": " ",
+    "FieldType": "CaseLink",
+    "SecurityClassification": "Public"
   }
 ]
