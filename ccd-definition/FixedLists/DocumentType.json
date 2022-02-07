@@ -16,5 +16,17 @@
     "ListElementCode": "DIRECTIONS_QUESTIONNAIRE",
     "ListElement": "Directions questionnaire form",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFENDANT_DEFENCE",
+    "ListElement": "Defendant defence",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFENDANT_DRAFT_DIRECTIONS",
+    "ListElement": "Defendant Draft Directions",
+    "DisplayOrder": 5
   }
 ]
