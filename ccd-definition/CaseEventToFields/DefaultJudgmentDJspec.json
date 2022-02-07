@@ -80,7 +80,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "PartialPayment = \"Yes\""
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
