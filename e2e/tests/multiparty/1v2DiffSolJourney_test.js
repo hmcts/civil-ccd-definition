@@ -72,12 +72,6 @@ Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) =
   await I.see(caseEventMessage('Add litigation friend'));
 }).retry(3);
 
-Scenario('Defendant 2 solicitor adds defendant litigation friend', async ({I}) => {
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.addDefendantLitigationFriend('respondent2', false);
-  await I.see(caseEventMessage('Add litigation friend'));
-}).retry(3);
-
 Scenario('(Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
