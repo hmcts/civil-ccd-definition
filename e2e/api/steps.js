@@ -314,6 +314,7 @@ module.exports = {
     deleteCaseFields('solicitorReferencesCopy');
     deleteCaseFields('respondentSolicitor2Reference');
 
+    // solicitor 2 should not be able to see respondent 1 details
     if (solicitor === 'solicitorTwo'){
       deleteCaseFields('respondent1ClaimResponseIntentionType');
     }
@@ -328,8 +329,7 @@ module.exports = {
       'The date entered cannot be in the future');
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header:
-        '',
+      header: '',
       body: ''
     });
 
@@ -380,6 +380,9 @@ module.exports = {
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
 
+    // solicitor 2 should not see respondent 1 data but because respondent 1 has replied before this, we need
+    // to clear a big chunk of defendant response (respondent 1) data hence its cleaner to have a clean slate
+    // and start off from there.
     if(solicitor === 'solicitorTwo'){
       caseData = {};
     }
@@ -414,8 +417,10 @@ module.exports = {
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-
+    // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
+    // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
     if(solicitor === 'solicitorOne'){
+      // when only one solicitor has responded in a 1v2 different solicitor case
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: 'You have submitted the Defendant\'s defence',
         body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
@@ -427,6 +432,7 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     } else {
+      // when all solicitors responded
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
         header: 'You have submitted the Defendant\'s defence',
         body: 'The Claimant legal representative will get a notification'
