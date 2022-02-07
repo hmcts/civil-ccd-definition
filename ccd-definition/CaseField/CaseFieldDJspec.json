@@ -44,7 +44,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "paymentConfirmationTitleSpec",
-    "Label": " ",
+    "Label": "## Would you like to claim for fixed costs?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -53,6 +53,21 @@
     "ID": "paymentConfirmationDecisionSpec",
     "Label": "This will include fixed costs for judgment and commencement.",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypeLabel",
+    "Label": "## How do you want ${respondent1.partyName} to pay?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypeSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "PaymentTypeList",
     "SecurityClassification": "Public"
   }
 ]
