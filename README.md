@@ -56,8 +56,3 @@ To run API tests enter `yarn test:api`.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-
-## endpoint
-
-    "CallBackURLSubmittedEvent": "http://172.17.0.1:4550/cases/callbacks/submitted",
