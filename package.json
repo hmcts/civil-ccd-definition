@@ -12,7 +12,7 @@
     "test:api-1v2SS": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-1v2SS --reporter mocha-multi --verbose",
     "test:api-1v2DS": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-1v2DS --reporter mocha-multi --verbose",
     "test:api-2v1": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-2v1 --reporter mocha-multi --verbose",
-    "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-tests --reporter mocha-multi --verbose",
+    "test:e2e": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-multiparty --reporter mocha-multi --verbose",
     "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @e2e-tests-spec --reporter mocha-multi --verbose",
     "test:functional": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@api-multiparty|@e2e-multiparty' --reporter mocha-multi --verbose",
     "test:nightly-multiparty": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep '@e2e-nightly' --reporter mocha-multi --verbose",

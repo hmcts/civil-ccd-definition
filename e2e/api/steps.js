@@ -59,7 +59,7 @@ const eventData = {
     },
     TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
   }
-}
+};
 
 const midEventFieldForPage = {
   ClaimValue: {
@@ -319,9 +319,9 @@ module.exports = {
     }
 
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await validateEventPages(eventData["acknowledgeClaim"][mpScenario]);
+      await validateEventPages(eventData['acknowledgeClaim'][mpScenario]);
     } else {
-      await validateEventPages(eventData["acknowledgeClaim"][mpScenario][solicitor]);
+      await validateEventPages(eventData['acknowledgeClaim'][mpScenario][solicitor]);
     }
 
     await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
@@ -390,9 +390,9 @@ module.exports = {
 
     let defendantResponseData;
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      defendantResponseData = eventData["defendantResponse"][mpScenario];
+      defendantResponseData = eventData['defendantResponse'][mpScenario];
     } else {
-      defendantResponseData = eventData["defendantResponse"][mpScenario][solicitor];
+      defendantResponseData = eventData['defendantResponse'][mpScenario][solicitor];
     }
 
     assertContainsPopulatedFields(returnedCaseData);
@@ -541,12 +541,8 @@ module.exports = {
   }
 };
 
-
-
 // Functions
-
-
-validateEventPages = async (data, solicitor) => {
+const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.valid)) {
@@ -559,7 +555,7 @@ validateEventPages = async (data, solicitor) => {
   }
 };
 
-assertValidData = async (data, pageId, solicitor) => {
+const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
   const validDataForPage = data.valid[pageId];
@@ -602,7 +598,7 @@ function removeUiFields(pageId, caseData) {
   return caseData;
 }
 
-assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -620,7 +616,7 @@ assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessag
   }
 };
 
-assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -639,7 +635,7 @@ assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, 
   }
 };
 
-assertContainsPopulatedFields = returnedCaseData => {
+const assertContainsPopulatedFields = returnedCaseData => {
   for (let populatedCaseField of Object.keys(caseData)) {
     assert.property(returnedCaseData,  populatedCaseField);
   }
@@ -648,11 +644,11 @@ assertContainsPopulatedFields = returnedCaseData => {
   // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
   // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
   // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
-  deleteCaseFields = (...caseFields) => {
+const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
-assertCorrectEventsAreAvailableToUser = async (user, state) => {
+const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (config.runningEnv == 'preview') {
@@ -712,7 +708,7 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
-assignCase = async () => {
+const assignCase = async () => {
   await assignCaseToDefendant(caseId);
   switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
@@ -723,21 +719,20 @@ assignCase = async () => {
       await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
       break;
     }
-    default: {}
   }
 };
 
 // solicitor 1 should not see details for respondent 2
 // solicitor 2 should not see details for respondent 1
-solicitorSetup = (solicitor) => {
+const solicitorSetup = (solicitor) => {
   if(solicitor === 'solicitorOne'){
     deleteCaseFields('respondent2');
   } else if (solicitor === 'solicitorTwo'){
     deleteCaseFields('respondent1');
   }
-}
+};
 
-clearDataForExtensionDate = (responseBody, solicitor) => {
+const clearDataForExtensionDate = (responseBody, solicitor) => {
   delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
@@ -749,9 +744,9 @@ clearDataForExtensionDate = (responseBody, solicitor) => {
     delete responseBody.data['respondent2'];
   }
   return responseBody;
-}
+};
 
-clearDataForDefendantResponse = (responseBody, solicitor) => {
+const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
@@ -776,8 +771,8 @@ clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent2'];
   }
   return responseBody;
-}
+};
 
-isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
+const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
-}
+};

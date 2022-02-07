@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../config.js');
-const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP'
+const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
 
 Feature('CCD 1v2 Same Solicitor API test @api-multiparty @api-tests-1v2SS');

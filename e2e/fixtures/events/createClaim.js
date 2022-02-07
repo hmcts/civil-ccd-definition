@@ -269,7 +269,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         AddAnotherClaimant: {
           addApplicant2: 'Yes'
         }
-      }
+      };
     }
     case 'ONE_V_ONE':
     default: {

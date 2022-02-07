@@ -73,6 +73,13 @@ module.exports = {
         ]
       }
     },
+    Language: {
+      respondent1DQLanguage: {
+        evidence: 'WELSH',
+        court: 'WELSH',
+        documents: 'WELSH'
+      }
+    },
     Hearing: {
       respondent1DQHearing: {
         hearingLength: 'MORE_THAN_DAY',
@@ -106,13 +113,6 @@ module.exports = {
         futureApplications: 'Yes',
         otherInformationForJudge: 'Nope',
         reasonForFutureApplications: 'Nothing'
-      }
-    },
-    Language: {
-      respondent1DQLanguage: {
-        evidence: 'WELSH',
-        court: 'WELSH',
-        documents: 'WELSH'
       }
     },
     StatementOfTruth: {
