@@ -83,6 +83,7 @@
     "PageID": "OrderType",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "drawDirectionsOrderSmallClaims = \"No\""
   }
 ]
