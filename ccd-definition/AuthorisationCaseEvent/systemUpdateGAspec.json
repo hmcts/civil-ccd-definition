@@ -28,11 +28,5 @@
     "CaseEventID": "UPDATE_GA_CASE_DATA",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "ASSIGN_GA_ROLES",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]
