@@ -295,7 +295,7 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired = \"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
