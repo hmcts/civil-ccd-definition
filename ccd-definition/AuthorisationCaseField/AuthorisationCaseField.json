@@ -2023,6 +2023,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
