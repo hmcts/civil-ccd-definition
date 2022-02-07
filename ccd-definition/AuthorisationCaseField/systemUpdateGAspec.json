@@ -40,5 +40,11 @@
     "CaseFieldID": "generalAppInformOtherParty",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseLink",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
