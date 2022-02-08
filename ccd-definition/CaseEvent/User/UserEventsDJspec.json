@@ -5,7 +5,7 @@
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
     "DisplayOrder": 10,
-    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PreConditionState(s)": "PENDING_CASE_ISSUED;AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "EventEnablingCondition": "superClaimType=\"SPEC_CLAIM\"",
