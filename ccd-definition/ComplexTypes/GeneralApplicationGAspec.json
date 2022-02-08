@@ -1,21 +1,5 @@
 [
   {
-    "ID": "generalApplicationCaseList",
-    "ListElementCode": "generalApplicationCaseListLabel",
-    "FieldType": "Text",
-    "Label": "Application Type",
-    "ElementLabel": "Application Type",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "generalApplicationCaseList",
-    "ListElementCode": "generalApplicationCaseLinkList",
-    "FieldType": "CaseLink",
-    "Label": "Application ID",
-    "ElementLabel": "Application ID",
-    "SecurityClassification": "Public"
-  },
-  {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppType",
     "FieldType": "GATypeGAspec",
@@ -105,7 +89,7 @@
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseLink",
     "FieldType": "CaseLink",
-    "ElementLabel": " ",
+    "ElementLabel": "Application ID",
     "SecurityClassification": "Public"
   }
 ]

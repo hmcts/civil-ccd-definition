@@ -110,11 +110,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GeneralApplicationTabList",
+    "ID": "generalApplicationTabList",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
-    "FieldTypeParameter": "generalApplicationCaseList",
+    "FieldTypeParameter": "GeneralApplicationCaseList",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the child application on the case",
     "_Category":  "COMMON"
@@ -156,6 +156,20 @@
     "ID": "generalAppState",
     "Label": " ",
     "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppStatus",
+    "Label": "Status",
+    "FieldType": "GAStatusGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaSubmittedDate",
+    "Label": "General Application Submitted on ",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]

@@ -195,7 +195,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "GeneralApplicationTabList",
+    "CaseFieldID": "generalApplicationTabList",
     "AccessControl": [
       {
         "UserRoles": [
@@ -214,6 +214,42 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseLink",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatus",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaSubmittedDate",
     "AccessControl": [
       {
         "UserRoles": [
