@@ -71,15 +71,10 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "R"
       }
     ]
   },
