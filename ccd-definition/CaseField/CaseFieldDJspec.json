@@ -69,5 +69,12 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",
     "SecurityClassification": "Public"
+  }  ,
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentSetDate",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
   }
 ]
