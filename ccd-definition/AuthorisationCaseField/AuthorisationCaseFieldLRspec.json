@@ -489,7 +489,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specAoSRespondentDetails",
+    "CaseFieldID": "specAoSRespondentInformation",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1540,6 +1540,24 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceFullAdmittedRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
