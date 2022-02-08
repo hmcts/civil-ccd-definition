@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../config.js');
+const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
-Feature('CCD 1v2 Different Solicitor API test');
+Feature('CCD 1v2 Different Solicitor API test @api-multiparty @api-tests-1v2DS');
 
 Scenario('Create claim', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
 
 Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {
@@ -18,7 +19,7 @@ Scenario('Amend claim documents', async ({I, api}) => {
 });
 
 Scenario('Notify claim', async ({I, api}) => {
-  await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
 });
 
 Scenario('Notify claim details', async ({I, api}) => {
@@ -30,23 +31,30 @@ Scenario('Amend party details', async ({I, api}) => {
 });
 
 Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
-  await api.acknowledgeClaimSolicitorOne(config.defendantSolicitorUser);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
 Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
-  await api.acknowledgeClaimSolicitorTwo(config.secondDefendantSolicitorUser);
+  await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-// skipped because unable to get getCcdCaseReference in InformAgreedExtensionDateCallbackHandler under
-// solicitorRepresentsOnlyRespondent2
-Scenario.skip('Inform agreed extension date', async ({I, api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser);
+Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
+  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-Scenario.skip('Defendant response', async ({I, api}) => {
-  await api.defendantResponseSolicitorOne(config.defendantSolicitorUser);
+// TODO: Skipping this until CMC-1939 is fixed
+Scenario.skip('Inform agreed extension date Solicitor 2', async ({I, api}) => {
+  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-Scenario.skip('Claimant response', async ({I, api}) => {
+Scenario('Defendant response Solicitor 1', async ({I, api}) => {
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+});
+
+Scenario('Defendant response Solicitor 2', async ({I, api}) => {
+  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+});
+
+Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser);
 });
