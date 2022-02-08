@@ -715,7 +715,7 @@ async function updateCaseDataWithPlaceholders(data, document) {
 }
 
 const assignCase = async () => {
-  await assignCaseToDefendant(caseId);
+  await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       await assignCaseToDefendant(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
