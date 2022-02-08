@@ -23,7 +23,9 @@ module.exports = {
         individualLastName: 'Doe',
         individualTitle: 'Sir',
         individualDateOfBirth: date(-1),
-        primaryAddress: buildAddress('respondent')
+        primaryAddress: buildAddress('respondent'),
+        partyName: 'Sir John Doe',
+        partyTypeDisplayValue: 'Individual'
       }
     }
   },
