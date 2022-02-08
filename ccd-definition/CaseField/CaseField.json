@@ -468,7 +468,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2ClaimResponseType",
-    "Label": "The defendant:",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
     "SecurityClassification": "Public"
