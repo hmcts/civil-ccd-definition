@@ -70,7 +70,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -245,6 +244,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "defendantResponseDocuments",
+    "Label": "Defendant response Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
@@ -270,8 +277,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "confirmRespondentDetailsAdvice",
+    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentDetails",
-    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1244,7 +1258,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1352,6 +1365,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2Details",
+    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DetailsDiffLR",
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1671,5 +1691,30 @@
     "Label": "Who requires a litigation friend?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "eligibilityQuestions",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA)\n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DetailsForClaimDetailsTab",
+    "Label": "Defendant details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the first respondent on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DetailsForClaimDetailsTab",
+    "Label": "Second Defendant's details",
+    "FieldType": "Party",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the second respondent on the case",
+    "_Category":  "COMMON"
   }
 ]
