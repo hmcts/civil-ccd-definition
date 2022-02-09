@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
+import uk.gov.hmcts.befta.util.BeftaUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -37,11 +38,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        return true;
-    }
-
-    @Override
     public void addCcdRoles() {
         for (CcdRoleConfig roleConfig : CCD_ROLES_NEEDED_FOR_NFD) {
             try {
@@ -61,5 +57,11 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     protected List<String> getAllDefinitionFilesToLoadAt(String definitionsPath) {
         String environmentName = environment.name().toLowerCase(Locale.UK);
         return List.of(String.format("build/ccd-release-config/civil-ccd-%s.xlsx", environmentName));
+    }
+
+    @Override
+    public void createRoleAssignments() {
+        // Do not create role assignments.
+        BeftaUtils.defaultLog("Will NOT create role assignments!");
     }
 }
