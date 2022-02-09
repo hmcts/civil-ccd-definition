@@ -489,7 +489,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specAoSRespondentDetails",
+    "CaseFieldID": "specAoSRespondentInformation",
     "AccessControl": [
       {
         "UserRoles": [
