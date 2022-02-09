@@ -480,7 +480,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimExperts",
-    "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
+    "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -541,7 +541,7 @@
   "PageFieldDisplayOrder": 1,
   "DisplayContext": "MANDATORY",
   "PageID": "SmallClaimWitnesses",
-  "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
+  "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
   "ShowSummaryChangeOption": "Y"
   },
   {
