@@ -75,7 +75,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specClaimTimelineListLabel",
-    "Label": "## How do you want to add your claim timeline?",
+    "Label": "<h2 class=\"govuk-heading-m\"> How do you want to add your claim timeline?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -541,7 +541,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1> \n <div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
+    "Label": "## Why does ${respondent1.partyName} dispute the claim?\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel4",
+    "Label": "<div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -556,6 +563,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentHelpLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentHelpLabel3",
+    "Label": "<p class=\"govuk-inset-text\">If you've referred to evidence in the above box, please upload them here.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -637,7 +651,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
+    "Label": "## Has ${respondent1.partyName} agreed to free mediation?\n ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
