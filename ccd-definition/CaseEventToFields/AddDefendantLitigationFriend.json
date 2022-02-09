@@ -8,7 +8,8 @@
     "PageID": "LitigationFriend",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1LitigationFriend=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1LitigationFriend=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
