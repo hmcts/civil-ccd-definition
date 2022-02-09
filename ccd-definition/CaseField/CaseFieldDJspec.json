@@ -57,6 +57,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "RepaymentSummaryLabel",
+    "Label": "${repaymentSummaryObject}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "repaymentSummaryObject",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "paymentTypeLabel",
     "Label": "## How do you want ${respondent1.partyName} to pay?",
     "FieldType": "Label",
