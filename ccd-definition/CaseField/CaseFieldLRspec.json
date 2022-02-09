@@ -786,7 +786,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
