@@ -1,4 +1,5 @@
-const { date, element, buildAddress } = require('../../api/dataHelper');
+const {date, element, buildAddress} = require('../../../api/dataHelper');
+
 module.exports = {
   valid: {
     ConfirmDetails: {
@@ -11,11 +12,11 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-      }
+      },
     },
-    SingleResponse: {},
     RespondentResponseType: {
       respondent1ClaimResponseType: 'FULL_DEFENCE',
+      respondent1ClaimResponseTypeToApplicant2: 'FULL_DEFENCE',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE'
     },
     Upload: {
