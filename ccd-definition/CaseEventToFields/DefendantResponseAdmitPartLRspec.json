@@ -418,7 +418,7 @@
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 21,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
