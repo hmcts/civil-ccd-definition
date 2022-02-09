@@ -280,13 +280,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1CourtOrderPayment",
+    "CaseFieldID": "respondent1CourtOrderPaymentLabel",
     "PageDisplayOrder": 18,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageShowCondition": "specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired=\"*\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+  "CaseFieldID": "respondent1CourtOrderPayment",
+  "PageDisplayOrder": 18,
+  "PageFieldDisplayOrder": 2,
+  "DisplayContext": "MANDATORY",
+  "PageShowCondition": "",
+  "PageID": "DetailsOfPayingMoneyRepaymentPlan",
+  "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
