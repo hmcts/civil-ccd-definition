@@ -167,7 +167,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaSubmittedDate",
+    "ID": "generalAppSubmittedDate",
     "Label": "General Application Submitted on ",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"

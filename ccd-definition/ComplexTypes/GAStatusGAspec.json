@@ -1,7 +1,7 @@
 [
   {
     "ID": "GAStatusGAspec",
-    "ListElementCode": "role",
+    "ListElementCode": "status",
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"

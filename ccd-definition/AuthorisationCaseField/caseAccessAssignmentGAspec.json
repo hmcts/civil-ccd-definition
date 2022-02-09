@@ -43,12 +43,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppState",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplicationTabList",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
@@ -61,7 +55,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaSubmittedDate",
+    "CaseFieldID": "generalAppSubmittedDate",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   }

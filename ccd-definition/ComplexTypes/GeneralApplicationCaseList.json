@@ -25,7 +25,7 @@
   },
   {
     "ID": "GeneralApplicationCaseList",
-    "ListElementCode": "gaSubmittedDate",
+    "ListElementCode": "generalAppSubmittedDate",
     "FieldType": "DateTime",
     "Label": "Submitted on",
     "ElementLabel": "Submitted on",

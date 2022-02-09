@@ -249,7 +249,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaSubmittedDate",
+    "CaseFieldID": "generalAppSubmittedDate",
     "AccessControl": [
       {
         "UserRoles": [
@@ -262,24 +262,6 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppState",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
       }
     ]
   }

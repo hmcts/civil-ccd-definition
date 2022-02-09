@@ -67,7 +67,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaSubmittedDate",
+    "CaseFieldID": "generalAppSubmittedDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }
