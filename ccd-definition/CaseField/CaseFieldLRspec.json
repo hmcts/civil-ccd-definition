@@ -569,7 +569,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel2",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName} has paid less than the total claim amount</h1> \n <div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "Label": "## ${respondent1.partyName} has paid less than the total claim amount\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel3",
+    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
