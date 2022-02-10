@@ -13,9 +13,18 @@
     "ID": "GARespondentAgreementPage",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppRespondentAgreement",
-    "ListElementCode": "hasAgreed",
+    "ListElementCode": "hasAgreedLabel",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "GARespondentAgreementPage",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppRespondentAgreement",
+    "ListElementCode": "hasAgreed",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
