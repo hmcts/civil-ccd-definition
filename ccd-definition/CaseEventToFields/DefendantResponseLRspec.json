@@ -731,13 +731,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondStatementOfTruthLabel",
+    "CaseFieldID": "respondStatementOfTruthHeaderLabel",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageLabel": "Statement of truth",
+    "PageLabel": "",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondStatementOfTruthLabel",
+    "PageDisplayOrder": 34,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageLabel": "",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -745,7 +757,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "uiStatementOfTruth",
     "PageDisplayOrder": 34,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
     "ShowSummaryChangeOption": "Y",
@@ -756,11 +768,11 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondStatementOfTruthSubmitLabel",
     "PageDisplayOrder": 34,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageLabel": "Statement of truth",
+    "PageLabel": "",
     "ShowSummaryChangeOption": "N"
   }
 ]
