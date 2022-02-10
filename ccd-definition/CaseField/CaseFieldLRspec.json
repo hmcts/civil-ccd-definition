@@ -853,7 +853,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPaymentLabel",
-    "Label": "## Is ${respondent1.partyName} paying money as a result of any court order? \n",
+    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} paying money as a result of any court order?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -966,7 +966,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQCarerAllowanceCredit",
-    "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
+    "Label": "Does your client claim Carer's Allowance or Carer's Credit?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
