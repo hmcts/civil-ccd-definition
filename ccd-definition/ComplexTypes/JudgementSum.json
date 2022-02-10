@@ -10,8 +10,8 @@
     "ID": "JudgementSum",
     "ListElementCode": "judgementSum",
     "FieldType": "Number",
-    "ElementLabel": "Judgment for the Claimant is made for 100% of their claim for a sum to be decided by the court.",
-    "HintText": "Enter a different percentage for judgment (optional)",
+    "ElementLabel": "Judgment will be made for all of the claim amount, unless you enter a different percentage",
+    "HintText": "Judgment amount",
     "SecurityClassification": "Public",
     "Min": 1,
     "Max": 100
