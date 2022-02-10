@@ -1737,7 +1737,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaims",
-    "Label": "Select additional directions, if any ",
+    "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "SmallTrack",
     "SecurityClassification": "Public"
@@ -1745,7 +1745,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastClaims",
-    "Label": "Select additional directions, if any ",
+    "Label": "Select additional directions for Fast Track, if any ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FastTrack",
     "SecurityClassification": "Public"
