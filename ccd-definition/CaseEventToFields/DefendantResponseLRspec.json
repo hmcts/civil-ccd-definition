@@ -266,6 +266,17 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Upload",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabel3",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Upload",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
@@ -274,7 +285,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel2",
     "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y",
@@ -285,7 +296,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim",
     "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y"
@@ -295,7 +306,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteUploadDocumentHelpLabel",
     "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y"
@@ -305,7 +316,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteUploadDocumentHelpLabel2",
     "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "N"
@@ -315,7 +326,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
     "PageShowCondition": "respondent1ClaimResponsePaymentAdmissionForSpec=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" OR defenceRouteRequired = \"DISPUTES_THE_CLAIM\" OR respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
