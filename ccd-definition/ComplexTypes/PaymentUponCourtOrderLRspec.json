@@ -1,5 +1,5 @@
 [
- {
+  {
     "ID": "PaymentUponCourtOrderLRspec",
     "ListElementCode": "payingDetailsRequired",
     "FieldType": "YesOrNo",
