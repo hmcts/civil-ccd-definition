@@ -10,9 +10,9 @@
     "ID": "ExpertDetails",
     "ListElementCode": "expertName",
     "FieldType": "Text",
-    "ElementLabel": "Expert name (optional)",
+    "ElementLabel": "Expert name",
     "SecurityClassification": "Public",
-    "Label": "Expert name (optional)"
+    "Label": "Expert name"
   },
   {
     "ID": "ExpertDetails",
