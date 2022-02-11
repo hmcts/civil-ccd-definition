@@ -41,7 +41,7 @@ const data = {
 };
 
 const eventData = {
-  acknowledgeClaim: {
+  acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
     ONE_V_TWO_ONE_LEGAL_REP: data.ACKNOWLEDGE_CLAIM_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
@@ -50,7 +50,7 @@ const eventData = {
     },
     TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
   },
-  informAgreedExtensionDate: {
+  informAgreedExtensionDates: {
     ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
     ONE_V_TWO_ONE_LEGAL_REP: data.INFORM_AGREED_EXTENSION_DATE,
     ONE_V_TWO_TWO_LEGAL_REP: {
@@ -59,7 +59,7 @@ const eventData = {
     },
     TWO_V_ONE: data.INFORM_AGREED_EXTENSION_DATE
   },
-  defendantResponse:{
+  defendantResponses:{
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
     ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
@@ -329,9 +329,9 @@ module.exports = {
     }
 
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await validateEventPages(eventData['acknowledgeClaim'][mpScenario]);
+      await validateEventPages(eventData['acknowledgeClaims'][mpScenario]);
     } else {
-      await validateEventPages(eventData['acknowledgeClaim'][mpScenario][solicitor]);
+      await validateEventPages(eventData['acknowledgeClaims'][mpScenario][solicitor]);
     }
 
     await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
@@ -367,9 +367,9 @@ module.exports = {
 
     let informAgreedExtensionData;
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      informAgreedExtensionData = eventData['informAgreedExtensionDate'][mpScenario];
+      informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario];
     } else {
-      informAgreedExtensionData = eventData['informAgreedExtensionDate'][mpScenario][solicitor];
+      informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario][solicitor];
     }
 
     await validateEventPages(informAgreedExtensionData, solicitor);
@@ -409,9 +409,9 @@ module.exports = {
 
     let defendantResponseData;
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      defendantResponseData = eventData['defendantResponse'][mpScenario];
+      defendantResponseData = eventData['defendantResponses'][mpScenario];
     } else {
-      defendantResponseData = eventData['defendantResponse'][mpScenario][solicitor];
+      defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
 
     assertContainsPopulatedFields(returnedCaseData);
