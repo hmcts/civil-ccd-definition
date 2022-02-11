@@ -1,4 +1,4 @@
-const MAX_RETRY_TIMEOUT = 30000;
+const MAX_RETRY_TIMEOUT = 40000;
 
 const retry = (fn, remainingRetries = 3, retryTimeout = 5000, err = null) => {
   if (!remainingRetries) {
