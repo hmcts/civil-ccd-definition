@@ -81,7 +81,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "OrderType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderSmallClaims = \"No\""
