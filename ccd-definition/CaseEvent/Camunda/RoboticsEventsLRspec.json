@@ -1,0 +1,28 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_RPA_ON_CASE_HANDED_OFFLINE_SPEC",
+    "Name": "Notify RPA on case offline",
+    "Description": "Notify by email with attached RPA JSON to robotics on case handed offline",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_RPA_ON_CONTINUOUS_FEED_SPEC",
+    "Name": "Notify RPA on continuous feed",
+    "Description": "Notify by email with attached RPA JSON to robotics on continuous feed",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]

@@ -28,5 +28,17 @@
     "CaseEventID": "VALIDATE_FEE_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RPA_ON_CONTINUOUS_FEED_SPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RPA_ON_CASE_HANDED_OFFLINE_SPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
