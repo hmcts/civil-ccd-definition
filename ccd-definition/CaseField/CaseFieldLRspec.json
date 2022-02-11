@@ -576,7 +576,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel3",
-    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p> <p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
