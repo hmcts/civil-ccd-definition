@@ -50,6 +50,15 @@ const eventData = {
     },
     TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
   },
+  informAgreedExtensionDate: {
+    ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
+    ONE_V_TWO_ONE_LEGAL_REP: data.INFORM_AGREED_EXTENSION_DATE,
+    ONE_V_TWO_TWO_LEGAL_REP: {
+      solicitorOne: data.INFORM_AGREED_EXTENSION_DATE,
+      solicitorTwo: data.INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO
+    },
+    TWO_V_ONE: data.INFORM_AGREED_EXTENSION_DATE
+  },
   defendantResponse:{
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
     ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
@@ -356,11 +365,18 @@ module.exports = {
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
 
-    await validateEventPages(data[eventName], solicitor);
+    let informAgreedExtensionData;
+    if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+      informAgreedExtensionData = eventData['informAgreedExtensionDate'][mpScenario];
+    } else {
+      informAgreedExtensionData = eventData['informAgreedExtensionDate'][mpScenario][solicitor];
+    }
 
-    await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.past,
+    await validateEventPages(informAgreedExtensionData, solicitor);
+
+    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.past,
       'The agreed extension date must be a date in the future');
-    await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.beforeCurrentDeadline,
+    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.beforeCurrentDeadline,
       'The agreed extension date must be after the current deadline');
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
