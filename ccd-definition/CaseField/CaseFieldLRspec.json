@@ -576,7 +576,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel3",
-    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p> <p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -860,7 +860,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPaymentLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} paying money as a result of any court order?</h2>",
+    "Label": "## Is ${respondent1.partyName} paying money as a result of any court order? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -966,7 +966,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQCarerAllowanceCredit",
-    "Label": "Does your client claim Carer's Allowance or Carer's Credit?",
+    "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
