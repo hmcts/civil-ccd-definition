@@ -50,5 +50,12 @@
     "ElementLabel": "Details of PBA payment",
     "FieldType": "GAPaymentDetails",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "paymentSuccessfulDate",
+    "ElementLabel": "Payment successful date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
