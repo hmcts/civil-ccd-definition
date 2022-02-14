@@ -92,7 +92,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\""
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceRouteRequired!=\"DISPUTES_THE_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -156,7 +156,7 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND specDefenceAdmittedRequired!=\"Yes\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
