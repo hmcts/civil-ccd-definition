@@ -1,21 +1,5 @@
 [
   {
-    "ID": "generalApplicationCaseList",
-    "ListElementCode": "generalApplicationCaseListLabel",
-    "FieldType": "Text",
-    "Label": "Application Type",
-    "ElementLabel": "Application Type",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "generalApplicationCaseList",
-    "ListElementCode": "generalApplicationCaseLinkList",
-    "FieldType": "CaseLink",
-    "Label": "Application ID",
-    "ElementLabel": "Application ID",
-    "SecurityClassification": "Public"
-  },
-  {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppType",
     "FieldType": "GATypeGAspec",
@@ -134,6 +118,13 @@
     "ListElementCode": "respondentSolicitor1EmailAddress",
     "ElementLabel": " ",
     "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppSubmittedDateGAspec",
+    "ElementLabel": " ",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]

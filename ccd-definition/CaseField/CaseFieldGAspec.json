@@ -29,6 +29,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "generalAppType1",
+    "Label": "What type of applications do you want to make?",
+    "HintText": "  ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Definition":  "Type of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "generalAppRespondentAgreement",
     "Label": "Has the respondent agreed to the order that you want the judge to make?",
     "FieldType": "GARespondentAgreementGAspec",
@@ -112,11 +122,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GeneralApplicationTabList",
+    "ID": "generalApplicationsDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
-    "FieldTypeParameter": "generalApplicationCaseList",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "The details of the child application on the case",
     "_Category":  "COMMON"
@@ -151,6 +161,27 @@
     "ID": "caseLink",
     "Label": " ",
     "FieldType": "CaseLink",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseState",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppStatusGAspec",
+    "Label": "Status",
+    "FieldType": "GAStatusGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppSubmittedDateGAspec",
+    "Label": "General Application Submitted on",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]
