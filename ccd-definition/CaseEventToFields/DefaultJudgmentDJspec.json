@@ -126,7 +126,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\""
+    "_PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -137,7 +137,8 @@
     "PageID": "paymentType",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repaymentTotal"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -152,5 +153,19 @@
     "PageShowCondition": "paymentTypeSelection = \"SET_DATE\"",
     "PageLabel": "When do you want the Defendant to pay?",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/claimPaymentDate"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "RepaymentDetails",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RepaymentInformation",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "paymentTypeSelection = \"REPAYMENT_PLAN\""
   }
 ]
+
+

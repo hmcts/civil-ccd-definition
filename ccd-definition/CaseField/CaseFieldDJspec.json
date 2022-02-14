@@ -90,5 +90,12 @@
     "Label": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentDetails",
+    "Label": " ",
+    "FieldType": "RepaymentPlanDJ",
+    "SecurityClassification": "Public"
   }
 ]

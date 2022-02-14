@@ -1,0 +1,53 @@
+
+[
+{
+  "ID": "RepaymentPlanDJ",
+  "CaseFieldID": "RepaymentDetails",
+  "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+  "ListElementCode": "OverallClaimAmountLabel",
+  "SecurityClassification": "Public",
+  "FieldDisplayOrder": 1,
+  "DisplayContext": "READONLY"
+},
+{
+  "ID": "RepaymentPlanDJ",
+  "CaseFieldID": "RepaymentDetails",
+  "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+  "ListElementCode": "RepaymentTotal",
+  "FieldDisplayOrder": 2,
+  "DisplayContext": "READONLY",
+  "_FieldShowCondition": "OverallClaimAmountLabel = \"DO_NOT_SHOW_IN_UI\""
+},
+{
+  "ID": "RepaymentPlanDJ",
+  "CaseFieldID": "RepaymentDetails",
+  "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+  "ListElementCode": "AmountRepayment",
+  "FieldDisplayOrder": 3,
+  "DisplayContext": "MANDATORY"
+},
+{
+  "ID": "RepaymentPlanDJ",
+  "CaseFieldID": "RepaymentDetails",
+  "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+  "ListElementCode": "RepaymentFrequency",
+  "FieldDisplayOrder": 4,
+  "DisplayContext": "MANDATORY"
+},
+{
+  "ID": "RepaymentPlanDJ",
+  "CaseFieldID": "RepaymentDetails",
+  "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+  "ListElementCode": "RepaymentDateLabel",
+  "FieldDisplayOrder": 5,
+  "DisplayContext": "MANDATORY"
+},
+{
+  "ID": "RepaymentPlanDJ",
+  "CaseFieldID": "RepaymentDetails",
+  "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+  "ListElementCode": "RepaymentDate",
+  "FieldDisplayOrder": 6,
+  "DisplayContext": "MANDATORY"
+}
+]
