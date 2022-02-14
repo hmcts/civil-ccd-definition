@@ -16,7 +16,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RPA_ON_CONTINUOUS_FEED_SPEC",
     "Name": "Notify RPA on continuous feed",
-    "Description": "Notify by email with attached RPA JSON to robotics on continuous Indu feed",
+    "Description": "Notify by email with attached RPA JSON to robotics on continuous feed",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
