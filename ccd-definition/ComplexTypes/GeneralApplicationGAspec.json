@@ -9,7 +9,7 @@
   },
   {
     "ID": "generalApplicationCaseList",
-    "ListElementCode": "generalApplicationCaseLinkList",
+    "ListElementCode": "caseLink",
     "FieldType": "CaseLink",
     "Label": "Application ID",
     "ElementLabel": "Application ID",

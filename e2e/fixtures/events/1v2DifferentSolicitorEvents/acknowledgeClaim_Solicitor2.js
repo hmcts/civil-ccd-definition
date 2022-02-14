@@ -1,4 +1,4 @@
-const { date, buildAddress } = require('../../api/dataHelper');
+const { date, buildAddress } = require('../../../api/dataHelper');
 
 module.exports = {
   midEventData:{
