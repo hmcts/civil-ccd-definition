@@ -79,12 +79,4 @@
     <cve>CVE-2021-22060</cve>
     <cve>CVE-2021-42550</cve>
    </suppress>
-   <suppress>
-   <notes><![CDATA[
-   file name: follow-redirects:1.14.7
-   ]]></notes>
-   <packageUrl regex="true">^pkg:npm/follow\-redirects@.*$</packageUrl>
-   <vulnerabilityName>1007023</vulnerabilityName>
-</suppress>
-  </suppress>
 </suppressions>
