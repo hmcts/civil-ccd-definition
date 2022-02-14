@@ -273,8 +273,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_SDO",
-    "Name": "Draw directions order - Judge",
-    "Description": "Draw directions order - Judge",
+    "Name": "Standard Direction Order",
+    "Description": "Standard Direction Order",
     "DisplayOrder": 17,
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
