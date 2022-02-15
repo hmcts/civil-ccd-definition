@@ -104,7 +104,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "RepaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\"",
-    "PageLabel": "Judgment Amount"
+    "PageLabel": "Judgment amount"
   },
   {
     "CaseTypeID": "CIVIL",
