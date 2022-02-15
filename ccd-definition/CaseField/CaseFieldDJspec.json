@@ -91,14 +91,6 @@
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "RepaymentDetails",
-    "Label": " ",
-    "FieldType": "RepaymentPlanDJ",
-    "SecurityClassification": "Public"
-  },
-
 
   {
     "CaseTypeID": "CIVIL",
@@ -109,9 +101,41 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "repaymentPlanLabel",
-    "Label": "## Suggest instalments for the defendant \n Total claim amount is £ ${repaymentDue}",
+    "ID": "repaymentDetailsLabel",
+    "Label": "## Suggest instalments for the defendant \n Total claim amount is £${repaymentDue}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentSuggestion",
+    "Label": "Regular payments of",
+    "HintText": "For example, £10",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentFrequency",
+    "Label": "How often do you want to receive payments?",
+    "FieldTypeParameter": "RepaymentFrequencyDJ",
+    "FieldType": "FixedRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentDateLabel",
+    "Label": "date interpolation",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentDetailsDate",
+    "Label": "Date for first instalment",
+    "HintText": "This must be after ${totalClaimAmount}",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
   }
+
 ]

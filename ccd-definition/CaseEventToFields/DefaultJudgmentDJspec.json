@@ -157,45 +157,73 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "RepaymentDetails",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RepaymentInformation",
-    "PageDisplayOrder": 9,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "paymentTypeSelection = \"REPAYMENT_PLAN\""
-  },
-
-
-
-
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentDue",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "RepaymentInformation2",
+    "PageID": "RepaymentInformation",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "paymentTypeSelection = \"SET_DATE\"",
-    "_PageLabel": "When do you want the Defendant to pay?",
-    "_CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/claimPaymentDate"
+    "PageShowCondition": "paymentTypeSelection = \"REPAYMENT_PLAN\"",
+    "FieldShowCondition": "repaymentDetailsLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "repaymentPlanLabel",
+    "CaseFieldID": "repaymentDetailsLabel",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "PageID": "RepaymentInformation2",
+    "PageID": "RepaymentInformation",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "RepaymentSuggestion",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RepaymentInformation",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "RepaymentFrequency",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RepaymentInformation",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "RepaymentDateLabel",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RepaymentInformation",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "RepaymentDetailsDate",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RepaymentInformation",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "paymentTypeSelection = \"REPAYMENT_PLAN\""
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repaymentValidate"
   }
+
 
 ]
 
