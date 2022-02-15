@@ -404,8 +404,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentDetailLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Confirm name and address</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentDetails",
-    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.\n\n**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentInformation",
+    "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -541,7 +555,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentHelpLabel",
-    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n <p class=\"govuk-inset-text\">If you've referred to evidence in the above box, please upload them here.</p>",
+    "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentHelpLabel2",
+    "Label": "<p class=\"govuk-inset-text\">If you've referred to evidence in the above box, please upload them here.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -557,6 +578,13 @@
     "ID": "respondent1SpecDefenceResponseDocument",
     "Label": " ",
     "FieldType": "ResponseSpecDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimResponseTimelineLabel",
+    "Label": "## How do you want to add the claim timeline? ",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -609,7 +637,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h1>\n <p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
+    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimMediationSpecLabel2",
+    "Label": "<p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -668,6 +703,7 @@
     "ID": "responseClaimWitnesses",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
+    "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
   },
   {
@@ -675,6 +711,13 @@
     "ID": "respondent1DQHearingSmallClaim",
     "Label": "Respondent 1 Hearing",
     "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQHearingFastClaimLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Hearing</h2>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -721,6 +764,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFutureApplicationsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Application</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",
@@ -736,7 +786,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -773,7 +823,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -802,6 +852,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1CourtOrderPaymentLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} paying money as a result of any court order?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPayment",
     "Label": " ",
     "FieldType": "PaymentUponCourtOrderLRspec",
@@ -810,7 +867,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "minusBeforeOverdrawnAmount",
-    "Label": "<h1 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h1> \n<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
+    "Label": "<h2 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h2> \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "minusBeforeOverdrawnAmount2",
+    "Label": "<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -832,7 +896,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDebtPageLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h1> \n</div>",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h2> \n</div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -874,7 +938,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "homeOptionsTitleLRspec",
-    "Label": "<h1 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -895,7 +959,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQCarerAllowanceCredit",
-    "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
+    "Label": "Does your client claim Carer's Allowance or Carer's Credit?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -918,7 +982,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -932,7 +996,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RepaymentPlanLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -941,6 +1005,13 @@
     "ID": "respondent1RepaymentPlan",
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
