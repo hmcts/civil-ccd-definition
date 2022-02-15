@@ -124,18 +124,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RepaymentDateLabel",
-    "Label": "date interpolation",
+    "ID": "currentDatebox",
+    "Label": "date2",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RepaymentDetailsDate",
+    "ID": "RepaymentDate",
     "Label": "Date for first instalment",
-    "HintText": "This must be after ${totalClaimAmount}",
+    "HintText": "This must be after ${currentDatebox}",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   }
-
 ]
