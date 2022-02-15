@@ -225,7 +225,9 @@ dependencies {
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.0'
   constraints {
     implementation('org.apache.commons:commons-compress:1.21') {
-      because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090, CVE-2021-44832'
+      because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090, CVE-2021-44832, ' +
+        '1007017, CVE-2020-15366, 1004946, CVE-2020-15522, 1007026, CVE-2021-42550, 1006899, ' +
+        'CVE-2020-5412, CVE-2019-3795, CVE-2020-5408'
     }
   }
 
