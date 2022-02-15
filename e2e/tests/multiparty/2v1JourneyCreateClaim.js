@@ -1,4 +1,8 @@
 const config = require('../../config.js');
+const {assignCaseToDefendant} = require('../../api/testingSupport');
+
+const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
+const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const claimant1 = {
   litigantInPerson: false
@@ -27,3 +31,17 @@ Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant'
   await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
+Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.notifyClaim();
+  await I.see(caseEventMessage('Notify claim'));
+  await assignCaseToDefendant(caseId());
+  await assignCaseToDefendant(caseId(), 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+}).retry(3);
+
+Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.notifyClaimDetails();
+  await I.see(caseEventMessage('Notify claim details'));
+  await I.click('Sign out');
+}).retry(3);
