@@ -97,5 +97,21 @@
     "Label": " ",
     "FieldType": "RepaymentPlanDJ",
     "SecurityClassification": "Public"
+  },
+
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "repaymentDue",
+    "Label": "Total",
+    "FieldType": "Number",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "repaymentPlanLabel",
+    "Label": "## Suggest instalments for the defendant \n Total claim amount is £ ${repaymentDue}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]

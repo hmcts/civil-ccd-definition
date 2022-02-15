@@ -2,58 +2,53 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "RepaymentPlanDJ",
+    "ListElementCode": "RepaymentTotal",
+    "ElementLabel": "repayment totals2 (complex)",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "_FieldShowCondition": "OverallClaimAmountLabel = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentPlanDJ",
     "ListElementCode": "OverallClaimAmountLabel",
-    "ElementLabel": "total claim amount £${RepaymentTotal}",
+    "ElementLabel": "total claim amount £${totalClaimAmount} (complex)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "RepaymentPlanDJ",
-    "ListElementCode": "RepaymentTotal",
-    "ElementLabel": "repayment total",
-    "FieldType": "Number",
-    "SecurityClassification": "Public",
-    "_FieldShowCondition": "OverallClaimAmountLabel = \"DO_NOT_SHOW_IN_UI\""
-},
-
-{
-    "CaseTypeID": "CIVIL",
-    "ID": "RepaymentPlanDJ",
     "ListElementCode": "AmountRepayment",
-    "ElementLabel": "Last name",
-    "Label": "Regular payments of",
+    "ElementLabel": "Regular payments of",
     "HintText": "For example, £10",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public"
-},
-{
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "RepaymentPlanDJ",
     "ListElementCode": "RepaymentFrequency",
-    "ElementLabel": "Last name",
-    "Label": "How often do you want to receive payments",
+    "ElementLabel": "How often do you want to receive payments",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RepaymentFrequencyDJ",
     "SecurityClassification": "Public"
-},
-{
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "RepaymentPlanDJ",
-    "ListElementCode": "RepaymentDateLabel",
-    "ElementLabel": "Last name",
-    "Label": "date2",
+    "ListElementCode": "RepaymentDateInterpolation",
+    "ElementLabel": "date interpolation",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-},
-{
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "RepaymentPlanDJ",
     "ListElementCode": "RepaymentDate",
-    "ElementLabel": "Last name",
-    "Label": "Date for first instalment",
-    "_HintText": "This must be after ${currentDatebox}",
+    "ElementLabel": "Date for first instalment",
+    "HintText": "This must be after ${totalClaimAmount}",
     "FieldType": "Date",
     "SecurityClassification": "Public"
-}
+  }
 ]
