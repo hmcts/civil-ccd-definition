@@ -153,5 +153,12 @@
     "Label": " ",
     "FieldType": "CaseLink",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppDeadlineNotification",
+    "Label": " ",
+    "FieldType": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public"
   }
 ]
