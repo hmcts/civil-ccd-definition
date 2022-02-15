@@ -21,7 +21,7 @@ const respondent1 = {
 let caseNumber;
 
 
-Feature('2v1 Claimant Journey @e2e-nightly @api-multiparty');
+Feature('2v1 Claimant Journey @e2e-nightly');
 
 
 Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
