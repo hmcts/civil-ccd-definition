@@ -583,10 +583,17 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel2",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName} has paid less than the total claim amount</h1> \n <div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "Label": "## ${respondent1.partyName} has paid less than the total claim amount \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "specDefenceRouteUploadDocumentLabel3",
+  "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+  "FieldType": "Label",
+  "SecurityClassification": "Public"
+},
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1SpecDefenceResponseDocument",
@@ -972,8 +979,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
+    "Label": "## ${respondent1.partyName}'s income and expenses\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQCarerAllowanceCredit",
     "Label": "Does your client claim Carer's Allowance or Carer's Credit?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQCarerAllowanceCreditFullAdmission",
+    "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -987,7 +1008,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRecurringIncomeFA",
+    "Label": "Add details of any regular income your client receives:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringIncome",
+    "SecurityClassification": "Public"
+  },
+ {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringExpenses",
+    "Label": "Add details of any regular expenses your client has:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringExpense",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRecurringExpensesFA",
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
