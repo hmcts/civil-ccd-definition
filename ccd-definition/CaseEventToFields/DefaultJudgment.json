@@ -57,7 +57,8 @@
     "PageID": "showcertifystatement1",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/hearingTypeSelection"
   },
   {
     "CaseTypeID": "CIVIL",
