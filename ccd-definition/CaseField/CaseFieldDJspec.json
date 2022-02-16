@@ -19,5 +19,76 @@
     "Label": "I certify that all of these statements are correct and apply to the defendant",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPaymentLabel",
+    "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPayment",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PartialPaymentAmount",
+    "Label": "Amount already paid",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentConfirmationTitleSpec",
+    "Label": "## Would you like to claim for fixed costs?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentConfirmationDecisionSpec",
+    "Label": "This will include fixed costs for judgment and commencement.",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RepaymentSummaryLabel",
+    "Label": "${repaymentSummaryObject}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "repaymentSummaryObject",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypeLabel",
+    "Label": "## How do you want ${respondent1.partyName} to pay?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypeSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "PaymentTypeList",
+    "SecurityClassification": "Public"
+  }  ,
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentSetDate",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
   }
 ]
