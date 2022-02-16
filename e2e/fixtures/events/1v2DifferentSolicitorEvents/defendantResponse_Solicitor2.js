@@ -1,25 +1,35 @@
-const { date, element, buildAddress } = require('../../api/dataHelper');
+const {date, element, buildAddress} = require('../../../api/dataHelper');
+
 module.exports = {
   valid: {
     ConfirmDetails: {
-      respondent1: {
+      respondent2: {
         type: 'INDIVIDUAL',
-        individualFirstName: 'John',
-        individualLastName: 'Doe',
-        individualTitle: 'Sir',
+        individualFirstName: 'Foo',
+        individualLastName: 'Bar',
+        individualTitle: 'Dr',
+        primaryAddress: buildAddress('second respondent'),
         individualDateOfBirth: date(-1),
-        primaryAddress: buildAddress('respondent'),
-        partyName: 'Sir John Doe',
+        partyName: 'Dr Foo Bar',
         partyTypeDisplayValue: 'Individual',
       }
     },
-    SingleResponse: {},
     RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE',
+      respondent2ClaimResponseType: 'FULL_DEFENCE',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE'
     },
+    SolicitorReferences: {
+      solicitorReferences:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      },
+      solicitorReferencesCopy:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference'
+      }
+    },
     Upload: {
-      respondent1ClaimResponseDocument: {
+      respondent2ClaimResponseDocument: {
         file: {
           document_url: '${TEST_DOCUMENT_URL}',
           document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -28,27 +38,27 @@ module.exports = {
       }
     },
     FileDirectionsQuestionnaire: {
-      respondent1DQFileDirectionsQuestionnaire: {
+      respondent2DQFileDirectionsQuestionnaire: {
         explainedToClient: ['CONFIRM'],
         oneMonthStayRequested: 'Yes',
         reactionProtocolCompliedWith: 'Yes'
       }
     },
     DisclosureOfElectronicDocuments: {
-      respondent1DQDisclosureOfElectronicDocuments: {
+      respondent2DQDisclosureOfElectronicDocuments: {
         reachedAgreement: 'No',
         agreementLikely: 'Yes'
       }
     },
     DisclosureOfNonElectronicDocuments: {
-      respondent1DQDisclosureOfNonElectronicDocuments: {
+      respondent2DQDisclosureOfNonElectronicDocuments: {
         directionsForDisclosureProposed: 'Yes',
         standardDirectionsRequired: 'Yes',
         bespokeDirections: 'directions'
       }
     },
     Experts: {
-      respondent1DQExperts: {
+      respondent2DQExperts: {
         expertRequired: 'Yes',
         expertReportsSent: 'NOT_OBTAINED',
         jointExpertSuitable: 'Yes',
@@ -63,7 +73,7 @@ module.exports = {
       }
     },
     Witnesses: {
-      respondent1DQWitnesses: {
+      respondent2DQWitnesses: {
         witnessesToAppear: 'Yes',
         details: [
           element({
@@ -74,34 +84,34 @@ module.exports = {
       }
     },
     Language: {
-      respondent1DQLanguage: {
+      respondent2DQLanguage: {
         evidence: 'WELSH',
         court: 'WELSH',
         documents: 'WELSH'
       }
     },
     Hearing: {
-      respondent1DQHearing: {
+      respondent2DQHearing: {
         hearingLength: 'MORE_THAN_DAY',
         hearingLengthDays: '5',
         unavailableDatesRequired: 'Yes',
         unavailableDates: [
           element({
             date: date(10),
-            who: 'Foo Bar'
+            who: 'James Foo'
           })
         ]
       }
     },
     DraftDirections: {
-      respondent1DQDraftDirections: {
+      respondent2DQDraftDirections: {
         document_url: '${TEST_DOCUMENT_URL}',
         document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
         document_filename: '${TEST_DOCUMENT_FILENAME}'
       }
     },
     RequestedCourt: {
-      respondent1DQRequestedCourt: {
+      respondent2DQRequestedCourt: {
         responseCourtCode: '343',
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
@@ -109,7 +119,7 @@ module.exports = {
     },
     HearingSupport: {},
     FurtherInformation: {
-      respondent1DQFurtherInformation: {
+      respondent2DQFurtherInformation: {
         futureApplications: 'Yes',
         otherInformationForJudge: 'Nope',
         reasonForFutureApplications: 'Nothing'
@@ -125,13 +135,13 @@ module.exports = {
   midEventData: {
     // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
     StatementOfTruth: {
-      applicantSolicitor1ClaimStatementOfTruth: {}
+      applicantSolicitor2ClaimStatementOfTruth: {}
     },
   },
   invalid: {
     ConfirmDetails: {
       futureDateOfBirth: {
-        respondent1: {
+        respondent2: {
           type: 'INDIVIDUAL',
           individualFirstName: 'John',
           individualLastName: 'Doe',
@@ -143,7 +153,7 @@ module.exports = {
     },
     Experts: {
       emptyDetails: {
-        respondent1DQExperts: {
+        respondent2DQExperts: {
           details: [],
           expertRequired: 'Yes',
           expertReportsSent: 'NOT_OBTAINED',
@@ -153,7 +163,7 @@ module.exports = {
     },
     Hearing: {
       past: {
-        respondent1DQHearing: {
+        respondent2DQHearing: {
           hearingLength: 'MORE_THAN_DAY',
           hearingLengthDays: 5,
           unavailableDatesRequired: 'Yes',
@@ -166,7 +176,7 @@ module.exports = {
         }
       },
       moreThanYear: {
-        respondent1DQHearing: {
+        respondent2DQHearing: {
           hearingLength: 'MORE_THAN_DAY',
           hearingLengthDays: 5,
           unavailableDatesRequired: 'Yes',
