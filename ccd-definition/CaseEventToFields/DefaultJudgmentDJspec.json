@@ -176,7 +176,7 @@
     "PageID": "RepaymentInformation",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -209,7 +209,8 @@
     "PageID": "RepaymentInformation",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "repaymentDetailsLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -220,7 +221,20 @@
     "PageID": "RepaymentInformation",
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repaymentValidate"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "RepaymentBottomLabel",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "RepaymentInformation",
+    "PageDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "RepaymentFrequency = \"ONCE_ONE_MONTH\" OR RepaymentFrequency = \"ONCE_TWO_WEEKS\" OR RepaymentFrequency = \"ONCE_ONE_WEEK\""
   }
 
 ]
