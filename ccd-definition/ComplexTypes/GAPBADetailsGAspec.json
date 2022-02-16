@@ -32,7 +32,7 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "pbaReference",
-    "ElementLabel": "PBA ref number",
+    "ElementLabel": " ",
     "FieldType": "TextArea",
     "Max": 400,
     "SecurityClassification": "Public"

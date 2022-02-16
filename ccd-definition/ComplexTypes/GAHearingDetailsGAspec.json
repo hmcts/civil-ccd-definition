@@ -65,7 +65,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesDetailLabel",
-    "ElementLabel": "## Your hearing preferences\n <span class=\"form-label ng-star-inserted\"> A judge will still need to approve the hearing. </span>\n",
+    "ElementLabel": "## Your hearing preferences\n #### A judge will still need to approve the hearing.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -97,7 +97,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferredLocationLabel",
-    "ElementLabel": "<span class=\"form-label ng-star-inserted\">Preferred location</span>",
+    "ElementLabel": "#### Preferred location",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -178,7 +178,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
-    "ElementLabel": "#### Support requirements\n",
+    "ElementLabel": "#### Support requirements(optional)\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

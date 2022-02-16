@@ -94,7 +94,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppEvidenceDocument",
     "PageFieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
