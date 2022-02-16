@@ -103,6 +103,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\"",
     "FieldShowCondition": "RepaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -126,7 +127,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "_PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\""
+    "PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\" OR paymentConfirmationDecisionSpec = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
