@@ -996,7 +996,8 @@
     "PageID": "SolicitorReferences",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
