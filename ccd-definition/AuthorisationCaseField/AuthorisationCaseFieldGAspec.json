@@ -40,7 +40,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppType1",
+    "CaseFieldID": "generalApplicationType",
     "AccessControl": [
       {
         "UserRoles": [

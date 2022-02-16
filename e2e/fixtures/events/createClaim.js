@@ -37,6 +37,21 @@ const applicant1WithPartyName = {
   partyName: 'Test Inc',
   partyTypeDisplayValue: 'Company',
 };
+
+const applicant2 = {
+  type: 'INDIVIDUAL',
+  individualFirstName: 'Jane',
+  individualLastName: 'Doe',
+  individualTitle: 'Dr',
+  primaryAddress: buildAddress('second applicant')
+};
+
+const applicant2WithPartyName = {
+  ...applicant2,
+  partyName: 'Dr Jane Doe',
+  partyTypeDisplayValue: 'Individual',
+};
+
 const applicant1LitigationFriend = {
   fullName: 'Bob the litigant friend',
   hasSameAddressAsLitigant: 'No',
@@ -92,7 +107,17 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     ClaimantSolicitorServiceAddress: {
       applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
-    AddAnotherClaimant: {},
+    AddAnotherClaimant: {
+      addApplicant2: 'No'
+    },
+    ...(mpScenario === 'TWO_V_ONE') ? {
+      SecondClaimant: {
+        applicant2: applicant2WithPartyName
+      },
+      SecondClaimantLitigationFriendRequired: {
+        applicant2LitigationFriendRequired: 'No'
+      },
+    }: {},
     Defendant: {
       respondent1: respondent1WithPartyName
     },
@@ -179,62 +204,72 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
   };
   switch (mpScenario){
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
-        return {
-          ...claimData,
-          AddAnotherClaimant: {
-            addApplicant2: 'No'
-          },
-          AddAnotherDefendant: {
-            addRespondent2: 'Yes'
-          },
-          SecondDefendant: {
-            respondent2: respondent2WithPartyName
-          },
-          SecondDefendantLegalRepresentation: {
-            respondent2Represented: 'Yes'
-          },
-          SameLegalRepresentative: {
-            respondent2SameLegalRepresentative: 'Yes'
-          },
-        };
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'Yes'
+        },
+      };
     }
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
-        return {
-          ...claimData,
-          AddAnotherClaimant: {
-            addApplicant2: 'No'
-          },
-          AddAnotherDefendant: {
-            addRespondent2: 'Yes'
-          },
-          SecondDefendant: {
-            respondent2: respondent2WithPartyName,
-            respondent2SameLegalRepresentative: [undefined]
-          },
-          SecondDefendantLegalRepresentation: {
-            respondent2Represented: 'Yes'
-          },
-          SecondDefendantSolicitorOrganisation: {
-            respondent2OrgRegistered: 'Yes',
-            respondent2OrganisationPolicy: {
-              OrgPolicyReference: 'Defendant policy reference 2',
-              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-              Organisation:
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'No'
+        },
+        SecondDefendantSolicitorOrganisation: {
+          respondent2OrgRegistered: 'Yes',
+          respondent2OrganisationPolicy: {
+            OrgPolicyReference: 'Defendant policy reference 2',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+            Organisation:
 
-                {OrganisationID: 'H2156A0'}
-              ,
-            },
+              {OrganisationID: 'H2156A0'}
+            ,
           },
-          SecondDefendantSolicitorServiceAddress: {
-            respondentSolicitor2ServiceAddress: buildAddress('service')
-          },
-          SecondDefendantSolicitorReference: {
-            respondentSolicitor2Reference: 'sol2reference'
-          },
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
-          }
-        };
+        },
+        SecondDefendantSolicitorServiceAddress: {
+          respondentSolicitor2ServiceAddress: buildAddress('service')
+        },
+        SecondDefendantSolicitorReference: {
+          respondentSolicitor2Reference: 'sol2reference'
+        },
+        SecondDefendantSolicitorEmail: {
+          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+        }
+      };
+    }
+    case 'TWO_V_ONE': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'Yes'
+        }
+      };
     }
     case 'ONE_V_ONE':
     default: {
@@ -288,11 +323,6 @@ module.exports = {
       },
       valid: {
         ...createClaimData('Yes', true, mpScenario),
-        PaymentReference: {
-          claimIssuedPaymentDetails: {
-            customerReference: 'Applicant reference'
-          }
-        }
       },
       invalid: {
         Upload: {

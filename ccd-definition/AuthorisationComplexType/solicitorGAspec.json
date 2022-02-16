@@ -371,7 +371,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "generalAppType1",
+    "ListElementCode": "generalApplicationType",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }

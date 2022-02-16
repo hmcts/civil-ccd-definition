@@ -29,7 +29,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppType1",
+    "ID": "generalApplicationType",
     "Label": "What type of applications do you want to make?",
     "HintText": "  ",
     "FieldType": "Text",

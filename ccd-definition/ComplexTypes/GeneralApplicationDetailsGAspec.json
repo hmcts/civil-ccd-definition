@@ -1,7 +1,7 @@
 [
   {
     "ID": "GeneralApplicationDetailsGAspec",
-    "ListElementCode": "generalAppType1",
+    "ListElementCode": "generalApplicationType",
     "FieldType": "Text",
     "ElementLabel": "Application type",
     "SecurityClassification": "Public"
@@ -16,18 +16,18 @@
   },
   {
     "ID": "GeneralApplicationDetailsGAspec",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "FieldType": "DateTime",
-    "Label": "Submitted on",
-    "ElementLabel": "Submitted on",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GeneralApplicationDetailsGAspec",
     "ListElementCode": "caseState",
     "FieldType": "Text",
     "Label": "Status",
     "ElementLabel": "Status",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationDetailsGAspec",
+    "ListElementCode": "generalAppSubmittedDateGAspec",
+    "FieldType": "DateTime",
+    "Label": "Submitted on",
+    "ElementLabel": "Submitted on",
     "SecurityClassification": "Public"
   }
 ]

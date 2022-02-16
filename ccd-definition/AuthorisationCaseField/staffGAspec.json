@@ -19,7 +19,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppType1",
+    "CaseFieldID": "generalApplicationType",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
