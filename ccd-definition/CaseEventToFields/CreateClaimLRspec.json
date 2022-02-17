@@ -334,6 +334,32 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "specRespondent2OrgRegistered",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "specSecondDefendantSolicitorOrganisation",
+    "PageLabel": "Search for the second defendant's legal representative",
+    "PageDisplayOrder": 20,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/rep2OrgPolicy",
+    "PageShowCondition": "specRespondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "specRespondent2OrganisationPolicy",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "specSecondDefendantSolicitorOrganisation",
+    "PageDisplayOrder": 20,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "respondent2OrgRegistered=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specDetailsOfClaimLabel",
     "PageFieldDisplayOrder": 1,
