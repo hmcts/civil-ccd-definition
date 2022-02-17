@@ -7,15 +7,5 @@
     "EventElementLabel": "Claimant's legal representative's email address",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "ChangeSolicitorEmail",
-    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
-    "CaseFieldID": "respondentSolicitor2EmailAddress",
-    "CaseEventLabel": "Second Defendant's legal representative's email address",
-    "HintText": " ",
-    "EventHintText": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
   }
 ]
