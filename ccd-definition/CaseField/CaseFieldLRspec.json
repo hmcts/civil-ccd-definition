@@ -355,7 +355,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2Represented",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondent1RepresentedLabel",
+    "Label": "## Does the defendant have a legal representative?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2RepresentedLabel",
     "Label": "## Does the defendant have a legal representative?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
