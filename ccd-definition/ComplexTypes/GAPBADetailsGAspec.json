@@ -32,9 +32,30 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "pbaReference",
-    "ElementLabel": " ",
+    "ElementLabel": "PBA ref number",
     "FieldType": "TextArea",
     "Max": 400,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "fee",
+    "ElementLabel": "General Application fee",
+    "FieldType": "Fee",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "paymentDetails",
+    "ElementLabel": "Details of PBA payment",
+    "FieldType": "GAPaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "paymentSuccessfulDate",
+    "ElementLabel": "Payment successful date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]
