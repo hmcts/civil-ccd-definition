@@ -361,6 +361,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent2SameLegalRepresentative",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SameLegalRepresentative",
+    "PageDisplayOrder": 19,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "specRespondent2Represented=\"Yes\" AND specRespondent1Represented=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "specDetailsOfClaimLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
