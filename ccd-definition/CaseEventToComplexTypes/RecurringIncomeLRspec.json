@@ -30,5 +30,37 @@
     "ListElementCode": "frequency",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RecurringExpense",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RecurringExpense",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "ListElementCode": "typeOtherDetails",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RecurringExpense",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "ListElementCode": "amount",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RecurringExpense",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "ListElementCode": "frequency",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
   }
 ]

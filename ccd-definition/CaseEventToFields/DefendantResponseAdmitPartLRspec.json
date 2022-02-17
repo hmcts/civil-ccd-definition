@@ -80,7 +80,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "specDefenceFullAdmittedRequired =\"No\" OR specDefenceAdmittedRequired = \"No\"",
+    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired != \"Yes\"",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\""
   },
   {
@@ -156,7 +156,7 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartPaymentTimeRouteRequired=\"BY_SET_DATE\"",
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -167,7 +167,6 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 2,
-    "PageShowCondition": "",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
   },
@@ -190,7 +189,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR defenceAdmitPartPaymentTimeRouteRequired=\"BY_SET_DATE\""
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -295,20 +294,20 @@
     "PageDisplayOrder": 18,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "specDefenceAdmittedRequired = \"No\" AND defenceAdmitPartPaymentTimeRouteRequired=\"*\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
+    "PageShowCondition": "specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired=\"*\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1CourtOrderPayment",
-    "PageDisplayOrder": 18,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageShowCondition": "",
-    "PageID": "DetailsOfPayingMoneyRepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+  "CaseFieldID": "respondent1CourtOrderPayment",
+  "PageDisplayOrder": 18,
+  "PageFieldDisplayOrder": 2,
+  "DisplayContext": "MANDATORY",
+  "PageShowCondition": "",
+  "PageID": "DetailsOfPayingMoneyRepaymentPlan",
+  "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -317,7 +316,7 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 19,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired = \"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -338,7 +337,18 @@
     "PageID": "DefendantIncomeExpenses",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired = \"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -347,6 +357,16 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQCarerAllowanceCredit",
     "PageID": "DefendantIncomeExpenses",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQCarerAllowanceCreditFullAdmission",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -365,8 +385,28 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQRecurringExpenses",
     "PageID": "DefendantIncomeExpenses",
+    "PageDisplayOrder": 20,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRecurringExpensesFA",
+    "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
@@ -379,7 +419,7 @@
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 21,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceAdmittedRequired = \"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -400,7 +440,7 @@
     "PageDisplayOrder": 22,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },

@@ -1,6 +1,15 @@
-const { date, buildAddress } = require('../../api/dataHelper');
+const { date, buildAddress } = require('../../../api/dataHelper');
 
 module.exports = {
+  midEventData:{
+    SolicitorReferences:{
+      solicitorReferences:{
+        applicantSolicitor1Reference: 'Applicant reference',
+        respondentSolicitor1Reference: 'Respondent reference',
+        respondentSolicitor2Reference: 'sol2reference',
+      },
+    }
+  },
   valid: {
     ConfirmNameAddress: {
       respondent1: {
@@ -12,7 +21,7 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual'
-      }
+      },
     },
     ResponseIntention: {
       respondent1ClaimResponseIntentionType: 'FULL_DEFENCE'
@@ -29,7 +38,7 @@ module.exports = {
     }
   },
   invalid: {
-    ConfirmDetails: {
+    ConfirmNameAddress: {
       futureDateOfBirth: {
         respondent1: {
           type: 'INDIVIDUAL',
