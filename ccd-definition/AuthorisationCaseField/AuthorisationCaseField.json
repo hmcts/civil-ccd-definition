@@ -3022,12 +3022,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isApplicant2",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isRespondent1",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"

@@ -1305,15 +1305,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "userRoles",
-    "Label": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "_Comments": "Temporary workaround - used to show hide fields depending on user roles",
-    "_Category": "WORKAROUND"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
@@ -1333,15 +1324,6 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "_Comments": "Temporary workaround - flag used to indicate applicant 1 for whom an event should apply.",
-    "_Category": "WORKAROUND"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "isApplicant2",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "_Comments": "Temporary workaround - flag used to indicate applicant 2 for whom an event should apply.",
     "_Category": "WORKAROUND"
   },
   {
