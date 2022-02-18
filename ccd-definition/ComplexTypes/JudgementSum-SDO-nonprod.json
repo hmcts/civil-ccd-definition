@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "JudgementSum",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "JudgementSum",
+    "ListElementCode": "judgementSum",
+    "FieldType": "Number",
+    "ElementLabel": "Judgment will be made for all of the claim amount, unless you enter a different percentage",
+    "HintText": "Judgment amount",
+    "SecurityClassification": "Public",
+    "Min": 1,
+    "Max": 100
+  }
+]
