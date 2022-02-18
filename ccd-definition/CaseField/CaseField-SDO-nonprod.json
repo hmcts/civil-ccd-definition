@@ -1,0 +1,56 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrderRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrder",
+    "Label": " ",
+    "HintText": " ",
+    "FieldType": "JudgementSum",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimsTrack",
+    "Label": "What track are you allocating the claim to?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaims",
+    "Label": "Select additional directions for Small Claims Track, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "SmallTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastClaims",
+    "Label": "Select additional directions for Fast Track, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrderSmallClaims",
+    "Label": "Do you want to allocate this claim to the small claims track?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderType",
+    "Label": "What order would you like to make?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderType",
+    "SecurityClassification": "Public"
+  }
+]
