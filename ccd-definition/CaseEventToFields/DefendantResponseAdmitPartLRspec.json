@@ -254,7 +254,7 @@
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetails",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired=\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"EMPLOYED\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -275,7 +275,7 @@
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired=\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"SELF\"",
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
