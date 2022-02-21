@@ -94,6 +94,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isPCClaimantMakingApplication",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "applicantSolicitor1UserDetails",
     "ElementLabel": " ",
     "FieldType": "GAUserDetailsGAspec",
