@@ -34,32 +34,32 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "[APPLICANTSOLICITORONESPEC]",
-    "Name": "Applicant Solicitor 1",
-    "Description": "Applicant Solicitor 1 role",
+    "Name": "Applicant Solicitor 1 spec",
+    "Description": "Applicant Solicitor 1 role spec",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "[APPLICANTSOLICITORTWOSPEC]",
-    "Name": "Applicant Solicitor 2",
-    "Description": "Applicant Solicitor 2 role",
+    "Name": "Applicant Solicitor 2 spec",
+    "Description": "Applicant Solicitor 2 role spec",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "[RESPONDENTSOLICITORONESPEC]",
-    "Name": "Respondent Solicitor 1",
-    "Description": "Respondent Solicitor 1 role",
+    "Name": "Respondent Solicitor 1 spec",
+    "Description": "Respondent Solicitor 1 role spec",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "[RESPONDENTSOLICITORTWOSPEC]",
-    "Name": "Respondent Solicitor 2",
-    "Description": "Respondent Solicitor 2 role",
+    "Name": "Respondent Solicitor 2 spec",
+    "Description": "Respondent Solicitor 2 role spec",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
   },
