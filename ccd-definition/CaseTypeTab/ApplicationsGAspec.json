@@ -4,7 +4,7 @@
         "TabID": "Applications",
         "TabLabel": "Applications",
         "TabDisplayOrder": 8,
-        "CaseFieldID": "generalApplications",
+        "CaseFieldID": "generalApplicationsDetails",
         "TabFieldDisplayOrder": 1
       }
 ]
