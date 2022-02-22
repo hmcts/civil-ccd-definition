@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationType",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
@@ -44,6 +50,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseLink",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseState",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationsDetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }

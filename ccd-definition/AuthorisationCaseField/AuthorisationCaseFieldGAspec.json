@@ -40,6 +40,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationType",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
     "AccessControl": [
       {
@@ -195,7 +208,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "GeneralApplicationTabList",
+    "CaseFieldID": "generalApplicationsDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseState",
     "AccessControl": [
       {
         "UserRoles": [
@@ -207,13 +234,13 @@
         "UserRoles": [
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseLink",
+    "CaseFieldID": "generalAppSubmittedDateGAspec",
     "AccessControl": [
       {
         "UserRoles": [
