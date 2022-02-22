@@ -65,14 +65,15 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesDetailLabel",
-    "ElementLabel": "## Your hearing preferences\n #### A judge will still need to approve the hearing.\n",
+    "ElementLabel": "Choose your preferred type of hearingA judge will still need to approve the hearing",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesPreferredType",
-    "ElementLabel": "Choose your preferred type of hearing.",
+    "ElementLabel": "Choose your preferred type of hearing",
+    "HintText": "A judge will still need to approve the hearing",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingTypeGAspec",
     "SecurityClassification": "Public"
@@ -96,15 +97,9 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "HearingPreferredLocationLabel",
-    "ElementLabel": "#### Preferred location",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferredLocation",
-    "ElementLabel": "This is needed if the judge decides to hold the hearing in person.",
+    "ElementLabel": "Preferred location",
+    "HintText": "This is needed if the judge decides to hold the hearing in person.",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
@@ -114,6 +109,7 @@
     "ElementLabel": "Preferred telephone number",
     "FieldType": "Text",
     "Max": 40,
+    "RegularExpression": "^([0-9\\:\\@\\+\\-\\.\\,\\(\\) ]+)",
     "SecurityClassification": "Public"
   },
   {
@@ -122,6 +118,7 @@
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
     "Max": 40,
+    "RegularExpression": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
     "SecurityClassification": "Public"
   },
   {
@@ -178,16 +175,16 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
-    "ElementLabel": "#### Support requirements(optional)\n",
+    "ElementLabel": "Support requirements",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "SupportRequirement",
+    "ElementLabel": "Select any support you, your client and any experts or witness you would require for a court hearing",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
-    "ElementLabel": "Select any support you, your client and any experts or witness you would require for a court hearing",
     "SecurityClassification": "Public"
   },
   {

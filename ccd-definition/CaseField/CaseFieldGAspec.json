@@ -12,7 +12,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppTypeLabel",
-    "Label": "<p class=\"govuk-inset-text\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
+    "Label": "<p class=\"govuk-body\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -116,7 +116,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application (optional) \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
+    "Label": "## Upload any evidence that supports your application \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -141,7 +141,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppPBADetails",
-    "Label": "Pay for application with PBA\n",
+    "Label": "Pay for application with PBA",
     "FieldType": "GAPBADetailsGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds applicant's PBA details.",

@@ -22,5 +22,17 @@
     "ListElementCode": "EXTEND_TIME",
     "ListElement": "Extend time",
     "DisplayOrder": 4
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "AMEND_THE_STATEMENT_OF_CASE",
+    "ListElement": "Amend the statement of case",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "RELIEF_FROM_SANCTIONS",
+    "ListElement": "Relief from sanctions",
+    "DisplayOrder": 6
   }
 ]
