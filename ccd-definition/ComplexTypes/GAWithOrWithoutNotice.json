@@ -3,7 +3,7 @@
     "ID": "GAWithOrWithoutNotice",
     "ListElementCode": "isWithNoticeLabel",
     "FieldType": "Label",
-    "ElementLabel": "<p class=\"govuk-inset-text\">If you select 'No', this is known as making an application without notice – you can only do this if it's permitted by a rule practice direction or court order</p>\n",
+    "ElementLabel": "<p class=\"govuk-body\">If you select 'No', this is known as making an application without notice – you can only do this if it's permitted by a rule practice direction or court order</p>\n",
     "SecurityClassification": "Public"
   },
   {

@@ -2,7 +2,7 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "generalAppFeeToPayLabel108",
-    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> £108 <p class=\"govuk-body\">   </p>",
+    "ElementLabel": "<p class=\"govuk-body\">Application fee to pay<br>£108</p>",
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -10,7 +10,7 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "generalAppFeeToPayLabel275",
-    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Application fee to pay </p> £275 <p class=\"govuk-body\">   </p>",
+    "ElementLabel": "<p class=\"govuk-body\">Application fee to pay<br>£275</p>",
     "HintText": "  ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -18,21 +18,15 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "applicantsPbaAccounts",
-    "ElementLabel": "\n\n\nSelect your payment by account number (PBA)\n",
+    "ElementLabel": "Select your payment by account number (PBA)\n",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "pbaReferenceLabel",
-    "ElementLabel": "<h4 class=\"govuk-fieldset__heading\">Enter a reference for your PBA account statements (optional)</h4>\n <p> <span class=\"form-label ng-star-inserted\"> This should be your own unique reference to identify the case. It will appear on your statements. </span></p>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
     "ListElementCode": "pbaReference",
-    "ElementLabel": " ",
+    "ElementLabel": "Enter a reference for your PBA account statements",
+    "HintText": "This should be your own unique reference to identify the case. It will appear on your statements.",
     "FieldType": "TextArea",
     "Max": 400,
     "SecurityClassification": "Public"
