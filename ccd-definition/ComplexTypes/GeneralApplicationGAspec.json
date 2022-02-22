@@ -133,5 +133,12 @@
     "ElementLabel": " ",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppDeadlineNotification",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]

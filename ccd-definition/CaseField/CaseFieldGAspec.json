@@ -183,5 +183,12 @@
     "Label": "General Application Submitted on",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppDeadlineNotification",
+    "Label": " ",
+    "FieldType": "GeneralApplicationGAspec",
+    "SecurityClassification": "Public"
   }
 ]
