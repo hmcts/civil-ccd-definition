@@ -6,7 +6,7 @@ import uk.gov.hmcts.contino.AppPipelineConfig
 def type = "java"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "master"
+def camundaBranch = "feat/CMC-1893-respondent-2-notifications"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
