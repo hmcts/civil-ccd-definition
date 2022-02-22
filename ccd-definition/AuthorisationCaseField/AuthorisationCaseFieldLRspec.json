@@ -417,6 +417,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentSolicitor2OrgLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondent1RepresentedLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
