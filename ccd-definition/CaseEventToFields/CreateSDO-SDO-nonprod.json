@@ -81,9 +81,32 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "OrderType",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderSmallClaims = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "pageFourPlaceholder",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "PageFour",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "pageFivePlaceholder",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "PageFive",
+    "PageLabel": "Submit Directions Order",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
   }
 ]

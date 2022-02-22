@@ -52,5 +52,19 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "OrderType",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "pageFourPlaceholder",
+    "Label": "Page Four Placeholder",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "pageFivePlaceholder",
+    "Label": "Page Five Placeholder (Submit Page) test 8",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
