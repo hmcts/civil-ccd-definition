@@ -19,12 +19,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationType",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -116,6 +110,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
