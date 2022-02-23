@@ -13,12 +13,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_GENERAL_APPLICATION_CASE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
