@@ -116,7 +116,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application (optional) \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
+    "Label": "## Upload any evidence that supports your application \n* files must be no more than 100MB in size \n* you can upload jpg.png.svg.gif.doc and PDF files \n* before uploading a file, give it a meaningful name. For example claimnumber.document-type.doc\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
