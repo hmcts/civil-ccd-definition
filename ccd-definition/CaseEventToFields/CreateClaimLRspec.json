@@ -318,6 +318,7 @@
     "PageDisplayOrder": 17,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent2",
     "PageShowCondition": "addRespondent2=\"Yes\""
   },
   {
