@@ -19,6 +19,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "PROCESS_FULL_DEFENCE_SPEC",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN_SPEC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
