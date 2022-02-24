@@ -39,11 +39,19 @@ Scenario('Change respondent 1 solicitor email', async ({I, api}) => {
 });
 
 Scenario('Change respondent 2 solicitor email', async ({I, api}) => {
-  await api.changeSolicitorEmail(config.secondDefendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
+  await api.changeSolicitorEmail(config.defendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
 });
 
 Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'Respondent1Solicitor');
+});
+
+Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
+  await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
+});
+
+Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
+  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'Respondent1Solicitor');
 });
 
 // TODO: Skipping this until CMC-1939 is fixed

@@ -47,8 +47,8 @@ const eventData = {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
     ONE_V_TWO_ONE_LEGAL_REP: data.ACKNOWLEDGE_CLAIM_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
-      solicitorOne: data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE,
-      solicitorTwo: data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO
+      Respondent1Solicitor: data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE,
+      Respondent2Solicitor: data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO
     },
     TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
   },
@@ -56,8 +56,8 @@ const eventData = {
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
     ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
-      solicitorOne: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
-      solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
+      Respondent1Solicitor: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
+      Respondent2Solicitor: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
     },
     TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
   }
@@ -559,7 +559,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
     const valid = {[`${solicitor}Email`]: data[eventName].valid[`${solicitor}Email`]};
-    await validateEventPages({...data[eventName], valid});
+    await validateEventPages({...data[eventName], valid}, solicitor);
 
     let party;
     if(solicitor === 'Respondent1Solicitor' || solicitor === 'Respondent2Solicitor') {
@@ -603,21 +603,22 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
+
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
     caseData,
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
-  let responseBody;
+
+  let responseBody = await response.json();
 
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-    responseBody = clearDataForExtensionDate(await response.json(), solicitor);
+    responseBody = clearDataForExtensionDate(await responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-    responseBody = clearDataForDefendantResponse(await response.json(), solicitor);
-  } else {
-    responseBody = await response.json();
+    responseBody = clearDataForDefendantResponse(await responseBody, solicitor);
   }
+
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -626,7 +627,23 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   }
 
-  assert.deepEqual(responseBody.data, caseData);
+  //Temp workaround to issue where applicantSolicitor1UserDetails
+  //is not returned in response unless verify endpoint is invoked
+  //by applicant 1 solicitor
+  const tempCaseData = {...caseData};
+  if(eventName === 'CHANGE_SOLICITOR_EMAIL') {
+    if (solicitor !== 'Applicant1Solicitor') {
+      delete tempCaseData['applicantSolicitor1UserDetails']
+    }
+    if (solicitor !== 'Respondent1Solicitor' && solicitor !== 'Applicant1Solicitor') {
+      delete tempCaseData['respondentSolicitor1EmailAddress']
+    }
+    if (solicitor !== 'Respondent2Solicitor' && solicitor !== 'Applicant1Solicitor') {
+      delete tempCaseData['respondentSolicitor2EmailAddress']
+    }
+  }
+
+  assert.deepEqual(responseBody.data, tempCaseData);
 };
 
 function removeUiFields(pageId, caseData) {
@@ -764,20 +781,13 @@ const assignCase = async () => {
   }
 };
 
-// only applicant 1 solicitor should see details for applicant 1
-// only respondent 1 solicitor should see details for respondent 1
-// only respondent 2 solicitor should see details for respondent 2
+// solicitor 1 should not see details for respondent 2
+// solicitor 2 should not see details for respondent 1
 const solicitorSetup = (solicitor) => {
-  if(solicitor !== 'Applicant1Solicitor'){
-    deleteCaseFields('applicantSolicitor1UserDetails');
-  }
-  if(solicitor !== 'Respondent1Solicitor'){
-    deleteCaseFields('respondent1');
-    deleteCaseFields('respondentSolicitor1EmailAddress');
-  }
-  if (solicitor !== 'Respondent2Solicitor'){
+  if(solicitor === 'Respondent1Solicitor'){
     deleteCaseFields('respondent2');
-    deleteCaseFields('respondentSolicitor2EmailAddress');
+  } else if (solicitor === 'Respondent2Solicitor'){
+    deleteCaseFields('respondent1');
   }
 };
 

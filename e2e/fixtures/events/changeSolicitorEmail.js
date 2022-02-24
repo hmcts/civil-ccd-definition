@@ -18,7 +18,7 @@ module.exports = {
       isApplicant1: 'No',
       isRespondent1: 'No',
       isRespondent2: 'Yes',
-      respondentSolicitor1EmailAddress: 'mock-respondent-2-solicitor-email@gmail.com'
+      respondentSolicitor2EmailAddress: 'mock-respondent-2-solicitor-email@gmail.com',
     }
   }
 };
