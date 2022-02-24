@@ -55,7 +55,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "PartialPaymentLabel",
+    "CaseFieldID": "partialPaymentLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -73,7 +73,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "PartialPayment",
+    "CaseFieldID": "partialPayment",
     "AccessControl": [
       {
         "UserRoles": [
@@ -91,7 +91,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "PartialPaymentAmount",
+    "CaseFieldID": "partialPaymentAmount",
     "AccessControl": [
       {
         "UserRoles": [
@@ -145,7 +145,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "RepaymentSummaryLabel",
+    "CaseFieldID": "repaymentSummaryLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -271,7 +271,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "RepaymentSuggestion",
+    "CaseFieldID": "repaymentSuggestion",
     "AccessControl": [
       {
         "UserRoles": [
@@ -289,7 +289,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "RepaymentFrequency",
+    "CaseFieldID": "repaymentFrequency",
     "AccessControl": [
       {
         "UserRoles": [
@@ -307,7 +307,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "RepaymentDate",
+    "CaseFieldID": "repaymentDate",
     "AccessControl": [
       {
         "UserRoles": [

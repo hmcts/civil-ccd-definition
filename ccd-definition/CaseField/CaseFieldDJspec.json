@@ -22,21 +22,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "PartialPaymentLabel",
+    "ID": "partialPaymentLabel",
     "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "PartialPayment",
+    "ID": "partialPayment",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "PartialPaymentAmount",
+    "ID": "partialPaymentAmount",
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public"
@@ -57,7 +57,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RepaymentSummaryLabel",
+    "ID": "repaymentSummaryLabel",
     "Label": "${repaymentSummaryObject}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -108,7 +108,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RepaymentSuggestion",
+    "ID": "repaymentSuggestion",
     "Label": "Regular payments of",
     "HintText": "For example, £10",
     "FieldType": "MoneyGBP",
@@ -116,7 +116,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RepaymentFrequency",
+    "ID": "repaymentFrequency",
     "Label": "How often do you want to receive payments?",
     "FieldTypeParameter": "RepaymentFrequencyDJ",
     "FieldType": "FixedRadioList",
@@ -131,7 +131,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RepaymentDate",
+    "ID": "repaymentDate",
     "Label": "Date for first instalment",
     "HintText": "This must be after ${currentDatebox}",
     "FieldType": "Date",
