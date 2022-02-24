@@ -107,6 +107,7 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
+const changeSolicitorEmailPage = require('./pages/changeSolicitorEmail/changesolicitorEmailPage');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -297,6 +298,19 @@ module.exports = function () {
         ]),
         () => continuePage.continue(),
         () => event.submit('Submit', 'Defendant notified'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async changeSolicitorEmail(party) {
+      eventName = 'Change solicitor email';
+      const partyText = party.startsWith('respondent') ? 'defendant' : 'claimant';
+      const confirmationMessage = `You have updated a ${partyText}\'s legal representative\'s email address`
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => changeSolicitorEmailPage.changeSolicitorEmail(party),
+        () => event.submit('Submit', confirmationMessage),
         () => event.returnToCaseDetails()
       ]);
     },

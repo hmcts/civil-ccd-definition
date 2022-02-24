@@ -30,29 +30,33 @@ Scenario('Amend party details', async ({I, api}) => {
   await api.amendPartyDetails(config.adminUser);
 });
 
+Scenario('Change applicant 1 solicitor email', async ({I, api}) => {
+  await api.changeSolicitorEmail(config.applicantSolicitorUser, mpScenario, 'Applicant1Solicitor');
+});
+
+Scenario('Change respondent 1 solicitor email', async ({I, api}) => {
+  await api.changeSolicitorEmail(config.defendantSolicitorUser, mpScenario, 'Respondent1Solicitor');
+});
+
+Scenario('Change respondent 2 solicitor email', async ({I, api}) => {
+  await api.changeSolicitorEmail(config.secondDefendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
+});
+
 Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
-  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-});
-
-Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
-  await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-});
-
-Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'Respondent1Solicitor');
 });
 
 // TODO: Skipping this until CMC-1939 is fixed
 Scenario.skip('Inform agreed extension date Solicitor 2', async ({I, api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
 });
 
 Scenario('Defendant response Solicitor 1', async ({I, api}) => {
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'Respondent1Solicitor');
 });
 
 Scenario('Defendant response Solicitor 2', async ({I, api}) => {
-  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
 });
 
 Scenario('Claimant response', async ({I, api}) => {

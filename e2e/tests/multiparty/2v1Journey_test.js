@@ -43,6 +43,13 @@ Scenario('Claimant solicitor notifies defendant solicitor of claim details', asy
   await I.click('Sign out');
 }).retry(3);
 
+Scenario('Applicant solicitor changes applicants solicitor email', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.changeSolicitorEmail('applicant1');
+  await I.see(caseEventMessage('Change solicitor email'));
+  await I.click('Sign out');
+}).retry(3);
+
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence', null, 'fullDefence');

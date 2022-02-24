@@ -12,6 +12,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {stringify} = require("mocha/lib/utils");
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -21,6 +22,7 @@ const data = {
   RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
   NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
   NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
+  CHANGE_SOLICITOR_EMAIL: require('../fixtures/events/changeSolicitorEmail'),
   ADD_OR_AMEND_CLAIM_DOCUMENTS: require('../fixtures/events/addOrAmendClaimDocuments.js'),
   ACKNOWLEDGE_CLAIM: require('../fixtures/events/acknowledgeClaim.js'),
   ACKNOWLEDGE_CLAIM_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/acknowledgeClaim_sameSolicitor.js'),
@@ -83,7 +85,7 @@ const midEventFieldForPage = {
       remove: true,
       field: 'uiStatementOfTruth'
     },
-  }
+  },
 };
 
 let caseId, eventName;
@@ -315,7 +317,7 @@ module.exports = {
     deleteCaseFields('respondentSolicitor2Reference');
 
     // solicitor 2 should not be able to see respondent 1 details
-    if (solicitor === 'solicitorTwo'){
+    if (solicitor === 'Respondent2Solicitor'){
       deleteCaseFields('respondent1ClaimResponseIntentionType');
     }
 
@@ -383,7 +385,7 @@ module.exports = {
     // solicitor 2 should not see respondent 1 data but because respondent 1 has replied before this, we need
     // to clear a big chunk of defendant response (respondent 1) data hence its cleaner to have a clean slate
     // and start off from there.
-    if(solicitor === 'solicitorTwo'){
+    if(solicitor === 'Respondent2Solicitor'){
       caseData = {};
     }
 
@@ -419,7 +421,7 @@ module.exports = {
 
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
-    if(solicitor === 'solicitorOne'){
+    if(solicitor === 'Respondent1Solicitor'){
       // when only one solicitor has responded in a 1v2 different solicitor case
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: 'You have submitted the Defendant\'s defence',
@@ -544,6 +546,41 @@ module.exports = {
 
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
+  },
+
+  changeSolicitorEmail: async (user, multipartyScenario, solicitor) => {
+    mpScenario = multipartyScenario;
+    await apiRequest.setupTokens(user);
+    eventName = 'CHANGE_SOLICITOR_EMAIL';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    solicitorSetup(solicitor);
+
+    assertContainsPopulatedFields(returnedCaseData);
+    caseData = returnedCaseData;
+    const valid = {[`${solicitor}Email`]: data[eventName].valid[`${solicitor}Email`]};
+    await validateEventPages({...data[eventName], valid});
+
+    let party;
+    if(solicitor === 'Respondent1Solicitor' || solicitor === 'Respondent2Solicitor') {
+      party = 'defendant'
+    } else if(solicitor === 'Applicant1Solicitor') {
+      party = 'claimant'
+    }
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: `You have updated a ${party}\'s legal representative\'s email address`,
+      body: ' '
+    });
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+
+    //delete ui flags
+    delete caseData['isApplicant1'];
+    delete caseData['isRespondent1'];
+    delete caseData['isRespondent2'];
   }
 };
 
@@ -574,14 +611,13 @@ const assertValidData = async (data, pageId, solicitor) => {
   );
   let responseBody;
 
-  if(eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP'){
+  if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(await response.json(), solicitor);
-  } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP'){
-     responseBody = clearDataForDefendantResponse(await response.json(), solicitor);
-   } else {
+  } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    responseBody = clearDataForDefendantResponse(await response.json(), solicitor);
+  } else {
     responseBody = await response.json();
   }
-
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -728,13 +764,20 @@ const assignCase = async () => {
   }
 };
 
-// solicitor 1 should not see details for respondent 2
-// solicitor 2 should not see details for respondent 1
+// only applicant 1 solicitor should see details for applicant 1
+// only respondent 1 solicitor should see details for respondent 1
+// only respondent 2 solicitor should see details for respondent 2
 const solicitorSetup = (solicitor) => {
-  if(solicitor === 'solicitorOne'){
-    deleteCaseFields('respondent2');
-  } else if (solicitor === 'solicitorTwo'){
+  if(solicitor !== 'Applicant1Solicitor'){
+    deleteCaseFields('applicantSolicitor1UserDetails');
+  }
+  if(solicitor !== 'Respondent1Solicitor'){
     deleteCaseFields('respondent1');
+    deleteCaseFields('respondentSolicitor1EmailAddress');
+  }
+  if (solicitor !== 'Respondent2Solicitor'){
+    deleteCaseFields('respondent2');
+    deleteCaseFields('respondentSolicitor2EmailAddress');
   }
 };
 
@@ -744,7 +787,7 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
   delete responseBody.data['systemGeneratedCaseDocuments'];
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorTwo'){
+  if(solicitor === 'Respondent2Solicitor'){
     delete responseBody.data['respondent1'];
   } else {
     delete responseBody.data['respondent2'];
@@ -759,7 +802,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['respondentSolicitor2Reference'];
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorTwo'){
+  if(solicitor === 'Respondent2Solicitor'){
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ClaimResponseType'];
     delete responseBody.data['respondent1ClaimResponseDocument'];

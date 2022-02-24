@@ -28,6 +28,14 @@ Scenario('Amend party details', async ({I, api}) => {
   await api.amendPartyDetails(config.adminUser);
 });
 
+Scenario('Change applicant 1 solicitor email', async ({I, api}) => {
+  await api.changeSolicitorEmail(config.applicantSolicitorUser, mpScenario, 'Applicant1Solicitor');
+});
+
+Scenario('Change respondent 1 solicitor email', async ({I, api}) => {
+  await api.changeSolicitorEmail(config.defendantSolicitorUser, mpScenario, 'Respondent1Solicitor');
+});
+
 Scenario('Acknowledge claim', async ({I, api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario);
 });
