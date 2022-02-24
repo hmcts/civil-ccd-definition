@@ -6,7 +6,7 @@
       {
       "UserRoles": [
         "caseworker-civil-admin",
-        "caseworker-civil-solicitor"
+        "caseworker-civil-judge"
       ],
       "CRUD": "CRU"
       }
@@ -26,7 +26,8 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }
@@ -46,7 +47,8 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "R"
       }

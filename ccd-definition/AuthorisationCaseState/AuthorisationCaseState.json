@@ -7,7 +7,8 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "[CREATOR]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRUD"
       },
@@ -24,7 +25,8 @@
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRUD"
   },
@@ -33,7 +35,8 @@
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
       ],
     "CRUD": "CRUD"
   },
@@ -42,7 +45,8 @@
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRUD"
   },
@@ -51,7 +55,8 @@
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil-judge"
     ],
     "CRUD": "CRUD"
   },
@@ -62,7 +67,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRUD"
       },
@@ -81,7 +87,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       },
