@@ -363,7 +363,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent2Represented",
-    "Label": " ",
+    "Label": "Does the second defendant have a legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -377,7 +377,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent2RepresentedLabel",
-    "Label": "## Does the second defendant have a legal representative?",
+    "Label": "Does the second defendant have a legal representative?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
