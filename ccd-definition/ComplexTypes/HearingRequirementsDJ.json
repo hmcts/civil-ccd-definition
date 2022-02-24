@@ -82,8 +82,8 @@
   {
     "ID": "HearingSupportRequirementsDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "HearingDates",
-    "ListElementCode": "HearingDates",
+    "CaseFieldID": "hearingDates",
+    "ListElementCode": "hearingDates",
     "ElementLabel": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "HearingDatesParam",

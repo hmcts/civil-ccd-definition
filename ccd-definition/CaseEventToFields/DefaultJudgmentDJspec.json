@@ -42,8 +42,8 @@
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\""
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -115,7 +115,7 @@
     "PageID": "paymentBreakdown",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -126,8 +126,8 @@
     "PageID": "paymentType",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\" OR paymentConfirmationDecisionSpec = \"No\""
+    "PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\" OR paymentConfirmationDecisionSpec = \"No\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

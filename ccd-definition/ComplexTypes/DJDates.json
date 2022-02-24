@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "HearingDatesParam",
-    "ListElementCode": "HearingUnavailableFrom",
+    "ListElementCode": "hearingUnavailableFrom",
     "ElementLabel": "Date from",
     "FieldType": "Date",
     "SecurityClassification": "Public"
@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "HearingDatesParam",
-    "ListElementCode": "HearingUnavailableUntil",
+    "ListElementCode": "hearingUnavailableUntil",
     "ElementLabel": "Date to",
     "FieldType": "Date",
     "SecurityClassification": "Public"
