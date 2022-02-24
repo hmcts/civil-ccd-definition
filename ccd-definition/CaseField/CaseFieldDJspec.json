@@ -136,12 +136,5 @@
     "HintText": "This must be after ${currentDatebox}",
     "FieldType": "Date",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "RepaymentBottomLabel",
-    "Label": "The length of the payment plan will be displayed on the next screen",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
   }
 ]

@@ -5,7 +5,7 @@
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
     "DisplayOrder": 17,
-    "PreConditionState(s)": "PENDING_CASE_ISSUED;AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
     "EventEnablingCondition": "applicantSolicitor1ServiceAddressRequired = \"No\" OR applicantSolicitor1ServiceAddressRequired =  \"Yes\"",
     "_comment": "above shows the DF event when claim type is damages",
