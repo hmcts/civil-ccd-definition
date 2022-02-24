@@ -335,12 +335,12 @@ module.exports = function () {
       ]);
     },
 
-    async addDefendantLitigationFriend(partyType) {
+    async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        ...conditionalSteps(partyType, [
+        ...conditionalSteps(selectPartyType && partyType, [
             () => selectLitigationFriendPage.selectDefendant(partyType)
           ]),
           () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(partyType, address, TEST_FILE_PATH),
