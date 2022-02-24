@@ -49,7 +49,7 @@ const journeys = {
   },
 };
 
-Feature('Claim creation @lr-e2e-tests-spec');
+Feature('Claim creation @e2e-tests-spec');
 
 Scenario.skip('Applicant solicitor creates specified claim individual-to-individual @create-claim-spec', async ({I}) => {
   console.log('Applicant solicitor creates specified claim individual-to-individual @create-claim-spec');
@@ -141,7 +141,7 @@ Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   await I.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
-Scenario.skip('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
+Scenario('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaimSpec('fullDefence','hasPaid',1000);
   await I.see(caseEventMessage('Respond to claim'));
