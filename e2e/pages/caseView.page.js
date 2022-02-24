@@ -24,7 +24,7 @@ module.exports = {
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       this.start(event);
-    }, locate('h1.govuk-heading-l'));
+    }, locate('.govuk-heading-l'));
   },
 
   async assertNoEventsAvailable() {
