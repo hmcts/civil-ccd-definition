@@ -55,7 +55,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "PartialPaymentLabel",
+    "CaseFieldID": "partialPaymentLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -73,7 +73,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "PartialPayment",
+    "CaseFieldID": "partialPayment",
     "AccessControl": [
       {
         "UserRoles": [
@@ -91,7 +91,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "PartialPaymentAmount",
+    "CaseFieldID": "partialPaymentAmount",
     "AccessControl": [
       {
         "UserRoles": [
@@ -145,7 +145,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "RepaymentSummaryLabel",
+    "CaseFieldID": "repaymentSummaryLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -218,6 +218,114 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "paymentSetDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "repaymentDue",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "repaymentDetailsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "repaymentSuggestion",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "repaymentFrequency",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "repaymentDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "currentDatebox",
     "AccessControl": [
       {
         "UserRoles": [
