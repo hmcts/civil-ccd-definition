@@ -376,13 +376,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specRespondent2RepresentedLabel",
-    "Label": "Does the second defendant have a legal representative?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specCorrespondenceAddressSubHeadingLabel",
     "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
     "FieldType": "Label",
