@@ -2,6 +2,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "defendant1ResponseToDefendantLabel",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,

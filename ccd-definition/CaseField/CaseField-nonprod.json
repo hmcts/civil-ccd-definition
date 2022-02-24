@@ -31,28 +31,28 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant1ResponseToDefendantLabel",
-    "Label": "<br/>**Defendant: ${respondent1.partyName} Here goes the 1st defendant's name**",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant2ResponseToDefendantLabel",
-    "Label": "<br/>**Defendant: ${respondent2.partyName} Here goes the 2nd defendant's name**",
+    "Label": "<br/>**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaimMultiParty2v1",
-    "Label": "Does Claimant 1 want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent1 2v1)",
+    "Label": "Does Claimant 1 want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2ProceedWithClaimMultiParty2v1",
-    "Label": "Does Claimant 2 want to proceed with the claim against ${respondent1.partyName} (need to figure out how to display partyName value of respondent2 2v1)",
+    "Label": "Does Claimant 2 want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
