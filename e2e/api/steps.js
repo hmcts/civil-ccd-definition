@@ -13,6 +13,7 @@ const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {stringify} = require("mocha/lib/utils");
+const {CHANGE_SOLICITOR_EMAIL} = require("../fixtures/ccd/events");
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -610,13 +611,18 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
-
-  let responseBody = await response.json();
+  let responseBody;
 
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-    responseBody = clearDataForExtensionDate(await responseBody, solicitor);
+    responseBody = clearDataForExtensionDate(await response.json(), solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-    responseBody = clearDataForDefendantResponse(await responseBody, solicitor);
+     responseBody = clearDataForDefendantResponse(await response.json(), solicitor);
+   } else if(eventName === 'CHANGE_SOLICITOR_EMAIL') {
+    responseBody = clearDataForChangeSolicitorEmail(await response.json(), solicitor)
+  }
+
+  else {
+    responseBody = await response.json();
   }
 
   assert.equal(response.status, 200);
@@ -828,6 +834,14 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQFurtherInformation'];
   } else {
     delete responseBody.data['respondent2'];
+  }
+  return responseBody;
+};
+
+const clearDataForChangeSolicitorEmail = (responseBody, solicitor) => {
+  // solicitor cannot see email address data from respondent they do not represent
+  if(solicitor === 'Respondent2Solicitor'){
+    delete responseBody.data['respondentSolicitor1EmailAddress']
   }
   return responseBody;
 };

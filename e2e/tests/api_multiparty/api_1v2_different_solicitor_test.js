@@ -39,7 +39,7 @@ Scenario('Change respondent 1 solicitor email', async ({I, api}) => {
 });
 
 Scenario('Change respondent 2 solicitor email', async ({I, api}) => {
-  await api.changeSolicitorEmail(config.defendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
+  await api.changeSolicitorEmail(config.secondDefendantSolicitorUser, mpScenario, 'Respondent2Solicitor');
 });
 
 Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {

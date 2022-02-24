@@ -52,6 +52,20 @@ Scenario('Applicant solicitor changes applicants solicitor email', async ({I}) =
   await I.click('Sign out');
 }).retry(3);
 
+Scenario('Defendant solicitor changes defendants solicitor email', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.changeSolicitorEmail('respondent1');
+  await I.see(caseEventMessage('Change solicitor email'));
+  await I.click('Sign out');
+}).retry(3);
+
+Scenario('Second defendant solicitor changes defendants solicitor email', async ({I}) => {
+  await I.login(config.secondDefendantSolicitorUser);
+  await I.changeSolicitorEmail('respondent2');
+  await I.see(caseEventMessage('Change solicitor email'));
+  await I.click('Sign out');
+}).retry(3);
+
 Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');

@@ -45,7 +45,14 @@ Scenario('Claimant solicitor notifies defendant solicitor of claim details', asy
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Respondent solicitor changes respondent solicitor email', async ({I}) => {
+Scenario('Applicant solicitor changes applicants solicitor email', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.changeSolicitorEmail('applicant1');
+  await I.see(caseEventMessage('Change solicitor email'));
+  await I.click('Sign out');
+}).retry(3);
+
+Scenario('Defendant solicitor changes defendants solicitor email', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.changeSolicitorEmail('respondent1');
   await I.see(caseEventMessage('Change solicitor email'));
