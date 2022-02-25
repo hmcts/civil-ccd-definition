@@ -2119,7 +2119,8 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "caseworker-civil-judge",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "R"
       },
@@ -2139,13 +2140,14 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "caseworker-civil-admin",
-          "caseworker-civil-judge"
+          "caseworker-civil-judge",
+          "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRUD"
       }
