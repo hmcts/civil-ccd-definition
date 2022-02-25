@@ -34,6 +34,9 @@ const claimValuePage = require('./pages/createClaim/claimValue.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
 
+const selectDefendantSolicitorToNotifyPage = require('./pages/notifyClaim/selectDefendantSolicitorToNotify.page');
+const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
+
 const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntention.page');
 
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
@@ -54,6 +57,9 @@ const party = require('./fragments/party');
 const event = require('./fragments/event');
 const respondentDetails = require('./fragments/respondentDetails.page');
 const confirmDetailsPage = require('./fragments/confirmDetails.page');
+const singleResponse = require('./fragments/singleResponse.page');
+
+const unRegisteredDefendantSolicitorOrganisationPage = require('./pages/createClaim/unRegisteredDefendantSolicitorOrganisation.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -67,7 +73,6 @@ const requestedCourtPage = require('./fragments/dq/requestedCourt.page');
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
 const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
-
 const address = require('./fixtures/address.js');
 const specCreateCasePage = require('./pages/createClaim/createCaseLRspec.page');
 const specPartyDetails = require('./fragments/claimantDetailsLRspec');
@@ -101,6 +106,7 @@ const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.pa
 const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
+const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -108,11 +114,82 @@ const CASE_HEADER = 'ccd-case-header > h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
+const CONFIRMATION_MESSAGE = {
+  online: 'Your claim has been received\nClaim number: ',
+  offline: 'Your claim has been received and will progress offline'
+};
+
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
+
+const firstClaimantSteps = () => [
+  () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
+  () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_1, address, TEST_FILE_PATH),
+  () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
+  () => claimantSolicitorOrganisation.enterOrganisationDetails(),
+  () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress()
+];
+const secondClaimantSteps = (claimant2) => [
+  () => addAnotherClaimant.enterAddAnotherClaimant(claimant2),
+  ...conditionalSteps(claimant2, [
+    () => party.enterParty(parties.APPLICANT_SOLICITOR_2, address),
+    () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_2, address, TEST_FILE_PATH),]
+  )
+];
+const firstDefendantSteps = (respondent1) => [
+  () => party.enterParty(parties.RESPONDENT_SOLICITOR_1, address),
+  () => respondentRepresentedPage.enterRespondentRepresented(parties.RESPONDENT_SOLICITOR_1, respondent1.represented),
+  ...conditionalSteps(respondent1.represented, [
+    () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+    ...conditionalSteps(!respondent1.representativeRegistered, [
+      () => unRegisteredDefendantSolicitorOrganisationPage.enterDefendantSolicitorDetails('1')
+    ]),
+    ...conditionalSteps(respondent1.representativeRegistered, [
+      () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+      () => defendantSolicitorEmail.enterSolicitorEmail('1')
+    ]),
+  ]),
+];
+const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenario = false) => [
+  ...conditionalSteps(!twoVOneScenario, [
+    () => addAnotherDefendant.enterAddAnotherDefendant(!!respondent2)
+  ]),
+  ...conditionalSteps(respondent2, [
+    () => party.enterParty('respondent2', address),
+    () => respondentRepresentedPage.enterRespondentRepresented(parties.RESPONDENT_SOLICITOR_2, respondent2.represented),
+    ...conditionalSteps(respondent2 && respondent2.represented, [
+      ...conditionalSteps(respondent1Represented, [
+        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
+      ]),
+      ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
+        () => defendantSolicitorOrganisation.enterOrganisationDetails(
+          respondent2.representativeRegistered,
+          '2',
+          respondent2.representativeOrgNumber),
+        () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
+        () => secondDefendantSolicitorReference.enterReference(),
+        () => defendantSolicitorEmail.enterSolicitorEmail('2')
+      ])
+    ])
+  ])
+];
+
+const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) =>
+  [() => respondentDetails.verifyDetails(
+    defendant1Response ? parties.RESPONDENT_SOLICITOR_1 : null,
+    defendant2Response ? parties.RESPONDENT_SOLICITOR_2 : null),
+    ...conditionalSteps(twoDefendants, [
+      () => singleResponse.defendantsHaveSameResponse(sameResponse),
+    ]),
+    () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
+    () => confirmDetailsPage.confirmReferences(defendant1Response, defendant2Response, sameResponse),
+    ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+      () => uploadResponsePage.uploadResponseDocuments(party, TEST_FILE_PATH)
+    ])
+  ];
 
 module.exports = function () {
   return actor({
@@ -124,7 +201,7 @@ module.exports = function () {
       }
 
       await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase);
+        this.amOnPage(config.url.manageCase, 60);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
@@ -166,42 +243,19 @@ module.exports = function () {
       }
     },
 
-    async createCase(litigantInPerson = false) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true) {
       eventName = 'Create case';
 
+      const twoVOneScenario = claimant1 && claimant2;
       await createCasePage.createCase(config.definition.jurisdiction);
       await this.triggerStepsWithScreenshot([
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.enterCourt(),
-        () => party.enterParty('applicant1', address),
-        () => claimantLitigationDetails.enterLitigantFriendWithDifferentAddressToApplicant(address, TEST_FILE_PATH),
-        () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
-        () => claimantSolicitorOrganisation.enterOrganisationDetails(),
-        () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherClaimant.enterAddAnotherClaimant()
-        ]),
-        () => party.enterParty('respondent1', address),
-        ... conditionalSteps(litigantInPerson, [
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'no')
-        ]),
-        ... conditionalSteps(!litigantInPerson, [
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent1', 'yes'),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('1'),
-          () => defendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => defendantSolicitorEmail.enterSolicitorEmail('1')
-        ]),
-        ... conditionalSteps(config.multipartyTestsEnabled, [
-          () => addAnotherDefendant.enterAddAnotherDefendant(),
-          () => party.enterParty('respondent2', address),
-          () => respondentRepresentedPage.enterRespondentRepresented('respondent2', 'yes'),
-          () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(),
-          () => defendantSolicitorOrganisation.enterOrganisationDetails('2'),
-          () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
-          () => secondDefendantSolicitorReference.enterReference(),
-          () => defendantSolicitorEmail.enterSolicitorEmail('2')
-        ]),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
         () => claimTypePage.selectClaimType(),
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
@@ -211,45 +265,51 @@ module.exports = function () {
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        () => event.submit('Submit', litigantInPerson ?
-          'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: '),
-        () => event.returnToCaseDetails()
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
       ]);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
 
-    async notifyClaim() {
+    async notifyClaim(solicitorToNotify) {
       eventName = 'Notify claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
+        ...conditionalSteps(!!solicitorToNotify, [
+          () => selectDefendantSolicitorToNotifyPage.selectSolicitorToNotify(solicitorToNotify),
+        ]),
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
       ]);
     },
 
-    async notifyClaimDetails() {
+    async notifyClaimDetails(solicitorToNotify) {
       eventName = 'Notify claim details';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
+        ...conditionalSteps(!!solicitorToNotify, [
+          () => selectDefendantSolicitorPage.selectSolicitorToNotify(solicitorToNotify),
+        ]),
         () => continuePage.continue(),
         () => event.submit('Submit', 'Defendant notified'),
         () => event.returnToCaseDetails()
       ]);
     },
 
-    async acknowledgeClaim(responseIntention) {
+    async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
-        () => confirmDetailsPage.confirmReference(),
-        () => responseIntentionPage.selectResponseIntention(responseIntention),
-        // temporarily commenting out whilst change is made to service repo
+        () => responseIntentionPage.selectResponseIntention(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2),
+        () => confirmDetailsPage.confirmReferences(!!respondent1Intention, !!respondent2Intention, sameSolicitor),
+        // temporarily commenting out whilst change is Fmade to service repo
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails()
       ]);
@@ -266,39 +326,39 @@ module.exports = function () {
       ]);
     },
 
-    async addDefendantLitigationFriend() {
+    async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(address, TEST_FILE_PATH),
-        () => event.submit('Submit', 'You have added litigation friend details'),
-        () => event.returnToCaseDetails()
+        ...conditionalSteps(selectPartyType && partyType, [
+            () => selectLitigationFriendPage.selectDefendant(partyType)
+          ]),
+          () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(partyType, address, TEST_FILE_PATH),
+          () => event.submit('Submit', 'You have added litigation friend details'),
+          () => event.returnToCaseDetails()
       ]);
     },
 
-    async respondToClaim(responseType) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
       eventName = 'Respond to claim';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => responseTypePage.selectResponseType(responseType),
-        ... conditionalSteps(responseType === 'fullDefence', [
-          () => uploadResponsePage.uploadResponseDocuments(TEST_FILE_PATH),
-          () => respondentDetails.verifyDetails(),
-          () => confirmDetailsPage.confirmReference(),
-          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.RESPONDENT_SOLICITOR_1),
-          () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.RESPONDENT_SOLICITOR_1),
-          () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-          () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-          () => hearingPage.enterHearingInformation(parties.RESPONDENT_SOLICITOR_1),
-          () => draftDirectionsPage.upload(parties.RESPONDENT_SOLICITOR_1, TEST_FILE_PATH),
-          () => requestedCourtPage.selectSpecificCourtForHearing(parties.RESPONDENT_SOLICITOR_1),
-          () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
-          () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-          () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+        ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
+        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party),
+          () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
+          () => expertsPage.enterExpertInformation(party),
+          () => witnessPage.enterWitnessInformation(party),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(party),
+          () => hearingPage.enterHearingInformation(party),
+          () => draftDirectionsPage.upload(party, TEST_FILE_PATH),
+          () => requestedCourtPage.selectSpecificCourtForHearing(party),
+          () => hearingSupportRequirementsPage.selectRequirements(party),
+          () => furtherInformationPage.enterFurtherInformation(party),
+          () => statementOfTruth.enterNameAndRole(party + 'DQ'),
         ]),
         () => event.submit('Submit', ''),
         () => event.returnToCaseDetails()
@@ -517,72 +577,72 @@ module.exports = function () {
     },
 
     async respondToClaimSpec(responseType,defenceType,paidAmount) {
-          eventName = 'Respond to claim';
-          await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
-            () => respondentCheckListPage.claimTimelineTemplate(),
-            () => specConfirmDefendantsDetails.confirmDetails(),
-            () => specConfirmLegalRepDetails.confirmDetails(),
-            () => responseTypeSpecPage.selectResponseType(responseType),
-             ... conditionalSteps(responseType === 'fullDefence', [
-                () => defenceTypePage.selectDefenceType(defenceType,paidAmount)
-              ]),
-             ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 1000, [
-               () => freeMediationPage.selectMediation('yes'),
-               () => useExpertPage.claimExpert('no'),
-               () => enterWitnessesPage.howManyWitnesses(),
-               () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-               () => smallClaimsHearingPage.selectHearing('no'),
-               () => chooseCourtSpecPage.chooseCourt('yes'),
-             ]),
-             ... conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
-               () => disputeClaimDetailsPage.enterReasons(),
-               () => claimResponseTimelineLRspecPage.addManually(),
-               () => this.clickContinue(),
-                    () => freeMediationPage.selectMediation('yes'),
-                    () => useExpertPage.claimExpert('no'),
-                    () => enterWitnessesPage.howManyWitnesses(),
-                    () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                    () => smallClaimsHearingPage.selectHearing('no'),
-                    () => chooseCourtSpecPage.chooseCourt('yes'),
-                ]),
-               ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
-                  () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-                  () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
-                  () => this.clickContinue(),
-                  () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-                  () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                  () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
-                  () => chooseCourtSpecPage.chooseCourt('yes'),
-                  ]),
-               ... conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
-                  () => disputeClaimDetailsPage.enterReasons(),
-                  () => claimResponseTimelineLRspecPage.addManually(),
-                  () => this.clickContinue(),
-                  () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-                  () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
-                  () => this.clickContinue(),
-                  () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-                  () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                  () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
-                  () => chooseCourtSpecPage.chooseCourt('yes'),
-                ]),
-              () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
-              ... conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
-                    () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-               ]),
-                ... conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
-                   () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-               ]),
-              () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-              () => event.submit('Submit', ''),
-              () => event.returnToCaseDetails()
-          ]);
-        },
+      eventName = 'Respond to claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => respondentCheckListPage.claimTimelineTemplate(),
+        () => specConfirmDefendantsDetails.confirmDetails(),
+        () => specConfirmLegalRepDetails.confirmDetails(),
+        () => responseTypeSpecPage.selectResponseType(responseType),
+        ... conditionalSteps(responseType === 'fullDefence', [
+          () => defenceTypePage.selectDefenceType(defenceType,paidAmount)
+        ]),
+        ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 1000, [
+          () => freeMediationPage.selectMediation('yes'),
+          () => useExpertPage.claimExpert('no'),
+          () => enterWitnessesPage.howManyWitnesses(),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+          () => smallClaimsHearingPage.selectHearing('no'),
+          () => chooseCourtSpecPage.chooseCourt('yes'),
+        ]),
+        ... conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
+          () => disputeClaimDetailsPage.enterReasons(),
+          () => claimResponseTimelineLRspecPage.addManually(),
+          () => this.clickContinue(),
+          () => freeMediationPage.selectMediation('yes'),
+          () => useExpertPage.claimExpert('no'),
+          () => enterWitnessesPage.howManyWitnesses(),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+          () => smallClaimsHearingPage.selectHearing('no'),
+          () => chooseCourtSpecPage.chooseCourt('yes'),
+        ]),
+        ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+          () => this.clickContinue(),
+          () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+          () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+          () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+          () => chooseCourtSpecPage.chooseCourt('yes'),
+        ]),
+        ... conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+          () => disputeClaimDetailsPage.enterReasons(),
+          () => claimResponseTimelineLRspecPage.addManually(),
+          () => this.clickContinue(),
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+          () => this.clickContinue(),
+          () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+          () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+          () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+          () => chooseCourtSpecPage.chooseCourt('yes'),
+        ]),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+        ... conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+          () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+        ]),
+        ... conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+          () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+        ]),
+        () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
 
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {

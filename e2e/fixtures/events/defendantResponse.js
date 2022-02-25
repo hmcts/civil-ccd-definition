@@ -1,20 +1,6 @@
 const { date, element, buildAddress } = require('../../api/dataHelper');
-
 module.exports = {
   valid: {
-    RespondentResponseType: {
-      respondent1ClaimResponseType: 'FULL_DEFENCE'
-    },
-    Upload: {
-      respondent1ClaimResponseDocument: {
-        file: {
-          document_url: '${TEST_DOCUMENT_URL}',
-          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-          document_filename: '${TEST_DOCUMENT_FILENAME}'
-        }
-      }
-    },
-    ConfirmNameAddress: {},
     ConfirmDetails: {
       respondent1: {
         type: 'INDIVIDUAL',
@@ -25,10 +11,20 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-      },
-      solicitorReferences: {
-        applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference'
+      }
+    },
+    SingleResponse: {},
+    RespondentResponseType: {
+      respondent1ClaimResponseType: 'FULL_DEFENCE',
+      multiPartyResponseTypeFlags: 'FULL_DEFENCE'
+    },
+    Upload: {
+      respondent1ClaimResponseDocument: {
+        file: {
+          document_url: '${TEST_DOCUMENT_URL}',
+          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+          document_filename: '${TEST_DOCUMENT_FILENAME}'
+        }
       }
     },
     FileDirectionsQuestionnaire: {
@@ -77,6 +73,13 @@ module.exports = {
         ]
       }
     },
+    Language: {
+      respondent1DQLanguage: {
+        evidence: 'WELSH',
+        court: 'WELSH',
+        documents: 'WELSH'
+      }
+    },
     Hearing: {
       respondent1DQHearing: {
         hearingLength: 'MORE_THAN_DAY',
@@ -110,13 +113,6 @@ module.exports = {
         futureApplications: 'Yes',
         otherInformationForJudge: 'Nope',
         reasonForFutureApplications: 'Nothing'
-      }
-    },
-    Language: {
-      respondent1DQLanguage: {
-        evidence: 'WELSH',
-        court: 'WELSH',
-        documents: 'WELSH'
       }
     },
     StatementOfTruth: {
