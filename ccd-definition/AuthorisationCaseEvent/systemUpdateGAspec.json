@@ -19,6 +19,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CASE_WITH_GA_STATE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_GA_CASE_DATA",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
