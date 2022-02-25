@@ -55,12 +55,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "civilServiceUserRoles",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseState",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
