@@ -42,9 +42,8 @@ Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-// TODO: Skipping this until CMC-1939 is fixed
-Scenario.skip('Inform agreed extension date Solicitor 2', async ({I, api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorTwo');
+Scenario('Inform agreed extension date Solicitor 2', async ({I, api}) => {
+  await api.informAgreedExtension(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
 Scenario('Defendant response Solicitor 1', async ({I, api}) => {
