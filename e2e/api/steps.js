@@ -12,8 +12,6 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {stringify} = require("mocha/lib/utils");
-const {CHANGE_SOLICITOR_EMAIL} = require("../fixtures/ccd/events");
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -580,12 +578,12 @@ module.exports = {
 
     let party;
     if(solicitor === 'Respondent1Solicitor' || solicitor === 'Respondent2Solicitor') {
-      party = 'defendant'
+      party = 'defendant';
     } else if(solicitor === 'Applicant1Solicitor') {
-      party = 'claimant'
+      party = 'claimant';
     }
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: `You have updated a ${party}\'s legal representative\'s email address`,
+      header: `You have updated a ${party}'s legal representative's email address`,
       body: ' '
     });
 
@@ -634,7 +632,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
      responseBody = clearDataForDefendantResponse(await response.json(), solicitor);
    } else if(eventName === 'CHANGE_SOLICITOR_EMAIL') {
-    responseBody = clearDataForChangeSolicitorEmail(await response.json(), solicitor)
+    responseBody = clearDataForChangeSolicitorEmail(await response.json(), solicitor);
   }
 
   else {
@@ -655,13 +653,13 @@ const assertValidData = async (data, pageId, solicitor) => {
   const tempCaseData = {...caseData};
   if(eventName === 'CHANGE_SOLICITOR_EMAIL') {
     if (solicitor !== 'Applicant1Solicitor') {
-      delete tempCaseData['applicantSolicitor1UserDetails']
+      delete tempCaseData['applicantSolicitor1UserDetails'];
     }
     if (solicitor !== 'Respondent1Solicitor' && solicitor !== 'Applicant1Solicitor') {
-      delete tempCaseData['respondentSolicitor1EmailAddress']
+      delete tempCaseData['respondentSolicitor1EmailAddress'];
     }
     if (solicitor !== 'Respondent2Solicitor' && solicitor !== 'Applicant1Solicitor') {
-      delete tempCaseData['respondentSolicitor2EmailAddress']
+      delete tempCaseData['respondentSolicitor2EmailAddress'];
     }
   }
 
@@ -857,7 +855,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const clearDataForChangeSolicitorEmail = (responseBody, solicitor) => {
   // solicitor cannot see email address data from respondent they do not represent
   if(solicitor === 'Respondent2Solicitor'){
-    delete responseBody.data['respondentSolicitor1EmailAddress']
+    delete responseBody.data['respondentSolicitor1EmailAddress'];
   }
   return responseBody;
 };

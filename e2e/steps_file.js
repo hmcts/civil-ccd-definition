@@ -305,7 +305,7 @@ module.exports = function () {
     async changeSolicitorEmail(party) {
       eventName = 'Change solicitor email';
       const partyText = party.startsWith('respondent') ? 'defendant' : 'claimant';
-      const confirmationMessage = `You have updated a ${partyText}\'s legal representative\'s email address`
+      const confirmationMessage = `You have updated a ${partyText}'s legal representative's email address`;
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
