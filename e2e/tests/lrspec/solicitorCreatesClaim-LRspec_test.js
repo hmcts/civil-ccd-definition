@@ -141,7 +141,7 @@ Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   await I.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
-Scenario('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
+Scenario.skip('Small Track Claim -> Defendant solicitor responds to claim (£ 1000) -> Defends all of the claim -> has paid amount equal to claim amount ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaimSpec('fullDefence','hasPaid',1000);
   await I.see(caseEventMessage('Respond to claim'));
@@ -185,5 +185,35 @@ Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount 
 Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid  10000 less than claimed amount ', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaimSpec('fullDefence','hasPaid',10000);
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Part Admit -> want to pay Immediately', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpecPartAdmit('fast','partAdmission','no','immediately');
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Part Admit -> want to pay by setDate ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpecPartAdmit('small','partAdmission','no','setDate');
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid  10000 less than claimed amount ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpecFullAdmit('fast','fullAdmission','yes','repaymentPlan');
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid  10000 less than claimed amount ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpecFullAdmit('fast','fullAdmission','yes','repaymentPlan');
+  await I.see(caseEventMessage('Respond to claim'));
+}).retry(3);
+
+Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid  10000 less than claimed amount ', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaimSpecFullAdmit('fast','fullAdmission','yes','repaymentPlan');
   await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);

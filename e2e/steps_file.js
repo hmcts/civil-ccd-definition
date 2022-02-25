@@ -712,17 +712,14 @@ module.exports = function () {
   async respondToClaimSpecFullAdmit(claimType,responseType,hasPaid,paymentType) {
              eventName = 'Respond to claim';
              await this.triggerStepsWithScreenshot([
-               () => caseViewPage.startEvent(eventName, 1642444958064059),
+               () => caseViewPage.startEvent(eventName, caseId),
                () => respondentCheckListPage.claimTimelineTemplate(),
                () => specConfirmDefendantsDetails.confirmDetails(),
                () => specConfirmLegalRepDetails.confirmDetails(),
                () => responseTypeSpecPage.selectResponseType(responseType),
                ... conditionalSteps(responseType === 'fullAdmission', [
                     () => fullAdmittedAmountPage.selectAdmitType(hasPaid),
-                    () => disputeClaimDetailsPage.enterReasons(),
-                    () => claimResponseTimelineLRspecPage.addManually(),
-                    () => this.clickContinue(),
-                     ... conditionalSteps(hasPaid === 'no', [
+                    ... conditionalSteps(hasPaid === 'no', [
                          () => admitPartPaymentRoutePage.selectPaymentRoute(paymentType),
                          () => this.clickContinue(),
                          () => this.clickContinue(),
@@ -732,35 +729,12 @@ module.exports = function () {
                          () => debtsDetailsPage.selectDebtsDetails(),
                          () => incomeExpensesDetailsPage.selectIncomeExpenses(),
                          () => admitPartWhyNotPayPage.enterReasons(),
-                     ]),
+                    ]),
                   ]),
                    ... conditionalSteps(paymentType === 'repaymentPlan' && hasPaid === 'no', [
                           () => respondentRepaymentPlanPage.selectRepaymentPlan(),
                     ]),
-                    ... conditionalSteps(claimType === 'small', [
-                       () => freeMediationPage.selectMediation('yes'),
-                       () => useExpertPage.claimExpert('no'),
-                       () => enterWitnessesPage.howManyWitnesses(),
-                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                       () => smallClaimsHearingPage.selectHearing('no'),
-
-                     ]),
-                   ... conditionalSteps(claimType === 'fast', [
-                       () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-                       () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
-                       () => this.clickContinue(),
-                       () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-                       () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-                       () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                       () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
-
-                  ]),
-                      () => chooseCourtSpecPage.chooseCourt('yes'),
-                      () => this.clickContinue(),
-                      () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-                      () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ')
-
+                  () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ')
              ]);
   },
     async navigateToCaseDetails(caseNumber) {
