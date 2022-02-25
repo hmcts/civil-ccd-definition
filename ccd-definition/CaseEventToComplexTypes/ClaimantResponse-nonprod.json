@@ -1,5 +1,14 @@
 [
   {
+    "ID": "ResponseDocument",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent2ClaimResponseDocument",
+    "ListElementCode": "file",
+    "EventElementLabel": "Document url",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DefenceResponseDocument",

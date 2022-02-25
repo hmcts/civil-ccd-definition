@@ -13,6 +13,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "defendant1ResponseToDefendantLabel",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
@@ -49,7 +60,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\" OR claimantResponseScenarioFlag=\"ONE_V_ONE\"",
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_ONE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Response document"
   },
@@ -84,7 +95,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_SAME_SOLICITOR\""
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_ONE_LEGAL_REP\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -94,8 +105,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -117,7 +127,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_SAME_SOLICITOR\""
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_ONE_LEGAL_REP\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -128,7 +138,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_SAME_SOLICITOR\""
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_ONE_LEGAL_REP\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -136,11 +146,11 @@
     "CaseFieldID": "respondent2ClaimResponseDocument",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Response document",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\""
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -162,19 +172,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_SAME_SOLICITOR\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "respondent1ClaimResponseDocumentCopy",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 12,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"TWO_V_ONE\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_SAME_SOLICITOR\"",
-    "CaseEventFieldLabel": "Response document"
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_ONE_LEGAL_REP\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -242,7 +240,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_DIFFERENT_SOLICITOR\""
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\""
   },
   {
     "CaseTypeID": "CIVIL",

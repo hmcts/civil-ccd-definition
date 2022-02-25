@@ -7,14 +7,14 @@
   },
   {
     "ID": "ClaimantResponseScenarioFlag",
-    "ListElementCode": "ONE_V_TWO_SAME_SOLICITOR",
-    "ListElement": "ONE_V_TWO_SAME_SOLICITOR",
+    "ListElementCode": "ONE_V_TWO_ONE_LEGAL_REP",
+    "ListElement": "ONE_V_TWO_ONE_LEGAL_REP",
     "DisplayOrder": 2
   },
   {
     "ID": "ClaimantResponseScenarioFlag",
-    "ListElementCode": "ONE_V_TWO_DIFFERENT_SOLICITOR",
-    "ListElement": "ONE_V_TWO_DIFFERENT_SOLICITOR",
+    "ListElementCode": "ONE_V_TWO_TWO_LEGAL_REP",
+    "ListElement": "ONE_V_TWO_TWO_LEGAL_REP",
     "DisplayOrder": 3
   },
   {
