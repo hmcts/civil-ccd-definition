@@ -1624,13 +1624,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
   }
 ]
