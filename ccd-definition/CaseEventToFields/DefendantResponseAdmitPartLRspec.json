@@ -254,7 +254,7 @@
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetails",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired=\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"EMPLOYED\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -337,7 +337,7 @@
     "PageID": "DefendantIncomeExpenses",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec !=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec !=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND respondent1ClaimResponseTypeForSpec !=\"FULL_ADMISSION\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -348,7 +348,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
