@@ -190,5 +190,12 @@
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "civilServiceUserRoles",
+    "Label": " ",
+    "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public"
   }
 ]
