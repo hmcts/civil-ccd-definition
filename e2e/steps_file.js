@@ -201,7 +201,7 @@ module.exports = function () {
       }
 
       await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase);
+        this.amOnPage(config.url.manageCase, 90);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
@@ -326,12 +326,12 @@ module.exports = function () {
       ]);
     },
 
-    async addDefendantLitigationFriend(partyType) {
+    async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        ...conditionalSteps(partyType, [
+        ...conditionalSteps(selectPartyType && partyType, [
             () => selectLitigationFriendPage.selectDefendant(partyType)
           ]),
           () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(partyType, address, TEST_FILE_PATH),

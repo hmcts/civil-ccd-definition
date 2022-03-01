@@ -41,7 +41,7 @@ const data = {
 };
 
 const eventData = {
-  acknowledgeClaim: {
+  acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
     ONE_V_TWO_ONE_LEGAL_REP: data.ACKNOWLEDGE_CLAIM_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
@@ -50,7 +50,16 @@ const eventData = {
     },
     TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
   },
-  defendantResponse:{
+  informAgreedExtensionDates: {
+    ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
+    ONE_V_TWO_ONE_LEGAL_REP: data.INFORM_AGREED_EXTENSION_DATE,
+    ONE_V_TWO_TWO_LEGAL_REP: {
+      solicitorOne: data.INFORM_AGREED_EXTENSION_DATE,
+      solicitorTwo: data.INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO
+    },
+    TWO_V_ONE: data.INFORM_AGREED_EXTENSION_DATE
+  },
+  defendantResponses:{
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
     ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
@@ -320,9 +329,9 @@ module.exports = {
     }
 
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await validateEventPages(eventData['acknowledgeClaim'][mpScenario]);
+      await validateEventPages(eventData['acknowledgeClaims'][mpScenario]);
     } else {
-      await validateEventPages(eventData['acknowledgeClaim'][mpScenario][solicitor]);
+      await validateEventPages(eventData['acknowledgeClaims'][mpScenario][solicitor]);
     }
 
     await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
@@ -356,11 +365,18 @@ module.exports = {
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
 
-    await validateEventPages(data[eventName], solicitor);
+    let informAgreedExtensionData;
+    if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+      informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario];
+    } else {
+      informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario][solicitor];
+    }
 
-    await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.past,
+    await validateEventPages(informAgreedExtensionData, solicitor);
+
+    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.past,
       'The agreed extension date must be a date in the future');
-    await assertError('ExtensionDate', data[eventName].invalid.ExtensionDate.beforeCurrentDeadline,
+    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.beforeCurrentDeadline,
       'The agreed extension date must be after the current deadline');
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -393,9 +409,9 @@ module.exports = {
 
     let defendantResponseData;
     if(mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      defendantResponseData = eventData['defendantResponse'][mpScenario];
+      defendantResponseData = eventData['defendantResponses'][mpScenario];
     } else {
-      defendantResponseData = eventData['defendantResponse'][mpScenario][solicitor];
+      defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
 
     assertContainsPopulatedFields(returnedCaseData);
