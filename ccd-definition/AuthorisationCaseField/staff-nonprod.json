@@ -53,5 +53,11 @@
     "CaseFieldID": "claimantDefenceResDocToDefendant2",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2DQDisclosureOfElectronicDocuments",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

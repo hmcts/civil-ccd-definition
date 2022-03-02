@@ -299,7 +299,19 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND applicantsProceedIntention = \"Yes\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQDisclosureOfElectronicDocuments",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisclosureOfElectronicDocuments",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimant2ResponseFlag=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
