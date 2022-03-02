@@ -775,13 +775,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQDisclosureOfNonElectronicDocumentsLabel",
-    "Label": "## Disclosure of non-electronic documents",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
