@@ -4,7 +4,7 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
-Feature('CCD 1v2 Different Solicitor API test @api-multiparty @api-tests-1v2DS');
+Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -42,9 +42,8 @@ Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-// TODO: Skipping this until CMC-1939 is fixed
-Scenario.skip('Inform agreed extension date Solicitor 2', async ({I, api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorTwo');
+Scenario('Inform agreed extension date Solicitor 2', async ({I, api}) => {
+  await api.informAgreedExtension(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
 Scenario('Defendant response Solicitor 1', async ({I, api}) => {
