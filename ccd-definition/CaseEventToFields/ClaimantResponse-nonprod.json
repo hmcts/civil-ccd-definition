@@ -223,6 +223,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "claimantResponseDocumentToDefendant2Flag",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 19,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "claimant2ResponseFlag",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantDefenceResDocToDefendant1",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
@@ -241,7 +265,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2=\"Yes\" AND claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\""
+    "FieldShowCondition": "claimantResponseDocumentToDefendant2Flag=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -252,6 +276,18 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\" AND allocatedTrack!=\"SMALL_CLAIM\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFileDirectionsQuestionnaire",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FileDirectionsQuestionnaire",
+    "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

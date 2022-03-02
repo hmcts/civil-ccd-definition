@@ -8,6 +8,28 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocumentToDefendant2Flag",
+    "Label": "Not shown in UI",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant2ResponseFlag",
+    "Label": "Not shown in UI",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQFileDirectionsQuestionnaire",
+    "Label": "File directions questionnaire",
+    "FieldType": "FileDirectionsQuestionnaire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimantResponseScenarioFlag",
     "Label": " ",
     "FieldType": "FixedRadioList",

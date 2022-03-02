@@ -31,6 +31,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseDocumentToDefendant2Flag",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimant2ResponseFlag",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2DQFileDirectionsQuestionnaire",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantDefenceResDocToDefendant2",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
