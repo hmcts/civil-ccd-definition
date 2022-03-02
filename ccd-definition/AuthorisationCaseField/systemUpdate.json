@@ -169,7 +169,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DefenceResponseDocument",
+    "CaseFieldID": "claimantDefenceResDocToDefendant1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },

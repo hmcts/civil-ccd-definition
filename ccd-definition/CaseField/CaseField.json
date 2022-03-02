@@ -253,6 +253,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocuments",
+    "Label": "Claimant response Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
@@ -518,7 +526,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1DefenceResponseDocument",
+    "ID": "claimantDefenceResDocToDefendant1",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
     "SecurityClassification": "Public"

@@ -11,7 +11,7 @@
   {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant2DefenceResponseDocument",
+    "CaseFieldID": "claimantDefenceResDocToDefendant2",
     "ListElementCode": "file",
     "EventElementLabel": "Upload file",
     "EventHintText": "We accept documents sized 10MB or smaller, in these formats: pdf, doc, docx, jpg, jpeg, xls, xlsx, png.",

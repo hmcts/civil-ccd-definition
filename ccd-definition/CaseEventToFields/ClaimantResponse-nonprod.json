@@ -223,7 +223,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant1DefenceResponseDocument",
+    "CaseFieldID": "claimantDefenceResDocToDefendant1",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
@@ -234,7 +234,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant2DefenceResponseDocument",
+    "CaseFieldID": "claimantDefenceResDocToDefendant2",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",

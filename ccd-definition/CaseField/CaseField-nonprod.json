@@ -72,7 +72,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2DefenceResponseDocument",
+    "ID": "claimantDefenceResDocToDefendant2",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
     "SecurityClassification": "Public"
