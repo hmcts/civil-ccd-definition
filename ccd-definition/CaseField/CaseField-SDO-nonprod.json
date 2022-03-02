@@ -55,8 +55,29 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "orderDetailsPlaceholder",
-    "Label": "Page Four Placeholder - Order Details",
+    "ID": "orderDetailsSmallClaimsPlaceholder",
+    "Label": "Page Four Placeholder - Order Details: Small Claims test 16",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderDetailsFastTrackPlaceholder",
+    "Label": "Page Five Placeholder - Order Details: Fast Track test 16",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderDetailsDisposalHearingPlaceholder",
+    "Label": "Page Six Placeholder - Order Details: Disposal Hearing test 16",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "previewOrderPage",
+    "Label": "Page Seven Placeholder - Preview Order Page (document link) test 16",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }

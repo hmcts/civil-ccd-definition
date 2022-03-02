@@ -92,7 +92,46 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "orderDetailsPlaceholder",
+    "CaseFieldID": "orderDetailsSmallClaimsPlaceholder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderDetailsFastTrackPlaceholder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderDetailsDisposalHearingPlaceholder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "previewOrderPage",
     "AccessControl": [
       {
         "UserRoles": [
