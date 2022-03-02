@@ -48,7 +48,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "What track are you allocating the claim to?",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\""
+    "FieldShowCondition": "drawDirectionsOrderRequired = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -60,7 +60,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimsTrack=\"smallClaimsTrack\" AND drawDirectionsOrderRequired=\"No\""
+    "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\" AND drawDirectionsOrderRequired = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -72,7 +72,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND drawDirectionsOrderRequired=\"No\""
+    "FieldShowCondition": "claimsTrack = \"fastTrack\" AND drawDirectionsOrderRequired = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -84,76 +84,16 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\""
+    "PageShowCondition": "drawDirectionsOrderSmallClaims = \"No\" AND drawDirectionsOrderRequired=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderDetailsSmallClaimsPlaceholder",
+    "CaseFieldID": "orderDetailsPlaceholder",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "OrderDetailsSmallClaims",
+    "PageID": "OrderDetails",
     "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "(drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\") OR (drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\")"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "claimsTrack",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "OrderDetailsFastTrack",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "eligibilityQuestions=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderType",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "OrderDetailsFastTrack",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "eligibilityQuestions=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderDetailsFastTrackPlaceholder",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "OrderDetailsFastTrack",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "(drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\") OR (drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DECIDE_DAMAGES\")"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderDetailsDisposalHearingPlaceholder",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "OrderDetailsDisposalHearing",
-    "PageDisplayOrder": 6,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DISPOSAL\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "previewOrderPage",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "PreviewOrderPage",
-    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }
