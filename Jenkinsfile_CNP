@@ -2,6 +2,7 @@
 
 @Library("Infrastructure")
 import uk.gov.hmcts.contino.AppPipelineConfig
+import uk.gov.hmcts.contino.GithubAPI
 
 def type = "java"
 def product = "civil"
@@ -103,6 +104,10 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def checkForEnableHelmLabel(branch_name) {
+    return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
+}
+
 withPipeline(type, product, component) {
   pipelineConf = config
   disableLegacyDeployment()
@@ -115,6 +120,9 @@ withPipeline(type, product, component) {
   onPR {
     env.ENVIRONMENT = "preview"
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
+      enableCleanupOfHelmReleaseOnSuccess();
+    }
   }
   onMaster {
     env.ENVIRONMENT="aat"
