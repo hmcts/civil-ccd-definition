@@ -126,5 +126,70 @@
     "Label": "Applicant 2 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQWitnesses",
+    "Label": "Applicant 2 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQHearing",
+    "Label": "Applicant 2 Hearing",
+    "FieldType": "Hearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDraftDirectionsLabel",
+    "Label": "## Upload draft directions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDraftDirections",
+    "Label": "Upload file",
+    "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQHearingSupport",
+    "Label": "Applicant 2 Hearing support requirements",
+    "FieldType": "HearingSupportRequirements",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQFurtherInformation",
+    "Label": "Applicant 2 Further information",
+    "FieldType": "FurtherInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQStatementOfTruth",
+    "Label": "Statement of truth",
+    "FieldType": "StatementOfTruth",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2ResponseDate",
+    "Label": "Date applicant 1 responded to defence",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
