@@ -945,7 +945,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -959,7 +959,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specSelfEmployedPageLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h1> \n</div>",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h2> \n</div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1089,7 +1089,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
