@@ -284,6 +284,7 @@ module.exports = function () {
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
+
       ]);
     },
 
