@@ -531,6 +531,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondent2Information",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
     "AccessControl": [
       {
@@ -567,7 +585,43 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondent2HomeAddressRequired",
     "AccessControl": [
       {
         "UserRoles": [
