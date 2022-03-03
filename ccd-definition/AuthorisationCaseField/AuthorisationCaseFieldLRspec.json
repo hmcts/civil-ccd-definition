@@ -19,6 +19,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent2Represented",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondStatementOfTruthLabel",
     "AccessControl": [
       {
@@ -394,6 +412,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1OrgLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentSolicitor2OrgLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
