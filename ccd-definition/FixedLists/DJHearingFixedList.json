@@ -1,49 +1,49 @@
 [
   {
-    "ID": "HearingType",
+    "ID": "hearingType",
     "ListElementCode": "IN_PERSON",
     "ListElement": "In person",
     "DisplayOrder": 1
   },
   {
-    "ID": "HearingType",
+    "ID": "hearingType",
     "ListElementCode": "VIDEO_CONF",
     "ListElement": "Video conference hearing",
     "DisplayOrder": 2
   },
   {
-    "ID": "HearingType",
+    "ID": "hearingType",
     "ListElementCode": "TELEPHONE_HEARING",
     "ListElement": "Telephone hearing",
     "DisplayOrder": 3
   },
   {
-    "ID": "HearingSupportRequirementsDisabledAccess",
+    "ID": "hearingSupportRequirementsDisabledAccess",
     "ListElementCode": "DISABLED_ACCESS",
     "ListElement": "Disabled access",
     "DisplayOrder": 1,
     "_comment": "file is a  workaround to enable dropdowns showing directly under each element, rather than field"
   },
   {
-    "ID": "HearingSupportRequirementHearingLoop",
+    "ID": "hearingSupportRequirementHearingLoop",
     "ListElementCode": "HEARING_LOOPS",
     "ListElement": "Hearing loop",
     "DisplayOrder": 2
   },
   {
-    "ID": "HearingSupportRequirementInterpreter",
+    "ID": "hearingSupportRequirementInterpreter",
     "ListElementCode": "SIGN_INTERPRETER",
     "ListElement": "Sign language interpreter",
     "DisplayOrder": 3
   },
   {
-    "ID": "HearingSupportRequirementLanguage",
+    "ID": "hearingSupportRequirementLanguage",
     "ListElementCode": "LANGUAGE_INTERPRETER",
     "ListElement": "Language interpreter",
     "DisplayOrder": 4
   },
   {
-    "ID": "HearingSupportRequirementOther",
+    "ID": "hearingSupportRequirementOther",
     "ListElementCode": "OTHER_SUPPORT",
     "ListElement": "Other support",
     "DisplayOrder": 5
