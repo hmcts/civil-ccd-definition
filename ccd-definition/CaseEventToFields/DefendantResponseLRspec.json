@@ -845,6 +845,7 @@
     "CaseFieldID": "uiStatementOfTruth",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
     "ShowSummaryChangeOption": "Y",
