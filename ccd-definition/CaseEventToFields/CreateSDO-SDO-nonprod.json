@@ -89,26 +89,50 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderDetailsSmallClaimsPlaceholder",
+    "CaseFieldID": "orderDetailsSmallClaimsPlaceholder1",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "OrderDetailsSmallClaims",
+    "PageID": "OrderDetailsSmallClaims1",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "(drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\") OR (drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\")"
+    "PageShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderDetailsFastTrackPlaceholder",
-    "PageFieldDisplayOrder": 3,
+    "CaseFieldID": "orderDetailsSmallClaimsPlaceholder2",
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "OrderDetailsFastTrack",
+    "PageID": "OrderDetailsSmallClaims2",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "(drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\") OR (drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DECIDE_DAMAGES\")"
+    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "orderDetailsFastTrackPlaceholder1",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "OrderDetailsFastTrack1",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "orderDetailsFastTrackPlaceholder2",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "OrderDetailsFastTrack2",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DECIDE_DAMAGES\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -117,7 +141,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "OrderDetailsDisposalHearing",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DISPOSAL\""
@@ -129,7 +153,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "PreviewOrderPage",
-    "PageDisplayOrder": 7,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }
