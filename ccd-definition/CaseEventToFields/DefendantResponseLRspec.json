@@ -88,6 +88,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2SameLegalRepresentative",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseConfirmNameAddress",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "solicitorReferences",
     "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 1,
@@ -144,6 +156,17 @@
     "PageLabel": "Confirm your details",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentResponseIsSame",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SingleResponse",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
