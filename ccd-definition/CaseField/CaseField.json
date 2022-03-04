@@ -1315,7 +1315,8 @@
     "ID": "respondentSolicitor2Reference",
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": "24"
   },
   {
     "CaseTypeID": "CIVIL",

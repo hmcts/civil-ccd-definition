@@ -1,6 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondStatementOfTruthHeaderLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Statement of truth</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondStatementOfTruthLabel",
     "Label": "The defendant believes that the facts stated in the response are true.\n\nI am duly authorised by the defendant to sign this statement.\n\nThe defendant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
@@ -38,6 +45,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentSolicitor1OrgLabel",
     "Label": "## Email for defendant’s legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondentSolicitor2OrgLabel",
+    "Label": "## Email for second defendant's legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -355,6 +369,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2Represented",
+    "Label": "Does the second defendant have a legal representative?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondent1RepresentedLabel",
     "Label": "## Does the defendant have a legal representative?",
     "FieldType": "Label",
@@ -541,7 +562,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">Why does ${respondent1.partyName} dispute the claim?</h1> \n <div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
+    "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent1.partyName} dispute the claim?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel4",
+    "Label": "<div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -793,7 +821,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmount}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -917,7 +945,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -931,7 +959,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specSelfEmployedPageLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h1> \n</div>",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h2> \n</div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1061,7 +1089,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
-    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h1>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }

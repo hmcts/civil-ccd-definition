@@ -19,6 +19,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent2Represented",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondStatementOfTruthLabel",
     "AccessControl": [
       {
@@ -399,6 +417,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondentSolicitor2OrgLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondent1RepresentedLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
@@ -695,6 +719,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaimOwingAmount",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],
