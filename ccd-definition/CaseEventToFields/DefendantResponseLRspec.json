@@ -153,6 +153,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2Copy",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\" OR respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ResponseConfirmNameAddress",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "solicitorReferences",
     "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 1,
