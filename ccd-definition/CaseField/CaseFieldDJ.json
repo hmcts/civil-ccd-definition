@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendantDetails",
-    "Label": "PBA Number",
+    "Label": "Against which Defendant are you requesting default judgment?",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public"
   },
@@ -50,7 +50,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "HearingSelection",
+    "ID": "hearingSelection",
     "Label": "Hearing type",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingSelection",

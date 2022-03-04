@@ -127,7 +127,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "HearingSelection",
+    "CaseFieldID": "hearingSelection",
     "AccessControl": [
       {
         "UserRoles": [
