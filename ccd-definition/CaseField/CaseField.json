@@ -1320,11 +1320,29 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "isApplicant1",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "_Comments": "Temporary workaround - flag used to indicate applicant 1 for whom an event should apply.",
+    "_Category": "WORKAROUND"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "isRespondent1",
     "Label": "Is respondent1?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "_Comments": "Temporary workaround - flag used to indicate respondent for whom an event should apply.",
+    "_Comments": "Temporary workaround - flag used to indicate respondent 1 for whom an event should apply.",
+    "_Category": "WORKAROUND"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isRespondent2",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "_Comments": "Temporary workaround - flag used to indicate respondent 2 for whom an event should apply.",
     "_Category": "WORKAROUND"
   },
   {
@@ -1719,5 +1737,33 @@
     "SecurityClassification": "Public",
     "_Definition":  "The details of the second respondent on the case",
     "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "amendRespondent1SolicitorEmailLabel",
+    "Label": "Update the defendant's legal representative's email address by replacing the existing email.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "amendRespondent2SolicitorEmailLabel",
+    "Label": "Update the second defendant's legal representative's email address by replacing the existing email.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "amendApplicant1SolicitorEmailLabel",
+    "Label": "Update the claimant's legal representative's email address by replacing the existing email.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "amendApplicant2SolicitorEmailLabel",
+    "Label": "Update the second claimant's legal representative's email address by replacing the existing email.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
