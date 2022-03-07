@@ -343,5 +343,24 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
