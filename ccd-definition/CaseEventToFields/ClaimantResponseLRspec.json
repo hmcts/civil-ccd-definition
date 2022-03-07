@@ -2,23 +2,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1ClaimResponseType",
+    "CaseFieldID": "respondent1",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1ClaimResponseDocument",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "N",
+    "CaseEventFieldLabel": "Defendant: ${respondent1.partyName}"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": "Response document"
+    "CaseEventFieldLabel": " "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -28,7 +42,8 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -38,7 +53,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
   },
   {
@@ -49,179 +64,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DefenceResponseDocument",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "DisplayContext": "COMPLEX",
-    "PageID": "ApplicantDefenceResponseDocument",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFileDirectionsQuestionnaire",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\" AND allocatedTrack!=\"SMALL_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDisclosureOfElectronicDocuments",
-    "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDisclosureOfNonElectronicDocuments",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\" AND allocatedTrack !=\"SMALL_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDisclosureReport",
-    "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "DisclosureReport",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "PageDisplayOrder": 7,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Experts",
-    "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "PageDisplayOrder": 8,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Witnesses",
-    "CaseEventFieldLabel": "Witnesses",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQLanguage",
-    "PageDisplayOrder": 9,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Language",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
-    "PageDisplayOrder": 10,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Hearing",
-    "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
-    "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDraftDirectionsLabel",
-    "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "DraftDirections",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDraftDirections",
-    "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DraftDirections",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearingSupport",
-    "PageDisplayOrder": 12,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "HearingSupport",
-    "CaseEventFieldLabel": "Hearing support requirements",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFurtherInformation",
-    "PageDisplayOrder": 13,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FurtherInformation",
-    "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "uiStatementOfTruth",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "StatementOfTruth",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "statementOfTruthSubmitLabel",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "StatementOfTruth"
   }
 ]

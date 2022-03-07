@@ -2,16 +2,16 @@
   {
     "ID": "ResponseDocument",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1ClaimResponseDocument",
+    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "ListElementCode": "file",
-    "EventElementLabel": "Document url",
+    "EventElementLabel": "Defendant response form",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
   {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DefenceResponseDocument",
+    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "ListElementCode": "file",
     "EventElementLabel": "Upload file",
     "EventHintText": "We accept documents sized 10MB or smaller, in these formats: pdf, doc, docx, jpg, jpeg, xls, xlsx, png.",
