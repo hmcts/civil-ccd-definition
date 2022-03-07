@@ -19,6 +19,16 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "DefenceDocument",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DefenceResponseDocument",
+    "ListElementCode": "file",
+    "EventElementLabel": "Upload file",
+    "EventHintText": "We accept documents sized 10MB or smaller, in these formats: pdf, doc, docx, jpg, jpeg, xls, xlsx, png.",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQExperts",
