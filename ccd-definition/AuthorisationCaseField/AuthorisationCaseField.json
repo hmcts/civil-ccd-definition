@@ -1214,7 +1214,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantDefenceResDocToDefendant1",
+    "CaseFieldID": "applicant1DefenceResponseDocument",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2041,6 +2041,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -2060,13 +2061,14 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRUD"
       }
@@ -3034,7 +3036,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isApplicant1",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isRespondent1",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isRespondent2",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"
   },

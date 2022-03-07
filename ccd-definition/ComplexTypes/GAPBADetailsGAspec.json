@@ -1,0 +1,55 @@
+[
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "generalAppFeeToPayLabel108",
+    "ElementLabel": "<p class=\"govuk-body\">Application fee to pay<br>£108</p>",
+    "HintText": "  ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "generalAppFeeToPayLabel275",
+    "ElementLabel": "<p class=\"govuk-body\">Application fee to pay<br>£275</p>",
+    "HintText": "  ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "applicantsPbaAccounts",
+    "ElementLabel": "Select your payment by account number (PBA)\n",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "pbaReference",
+    "ElementLabel": "Enter a reference for your PBA account statements",
+    "HintText": "This should be your own unique reference to identify the case. It will appear on your statements.",
+    "FieldType": "TextArea",
+    "Max": 400,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "fee",
+    "ElementLabel": "General Application fee",
+    "FieldType": "Fee",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "paymentDetails",
+    "ElementLabel": "Details of PBA payment",
+    "FieldType": "GAPaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "paymentSuccessfulDate",
+    "ElementLabel": "Payment successful date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  }
+]
