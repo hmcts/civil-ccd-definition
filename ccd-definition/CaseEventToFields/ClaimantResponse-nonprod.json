@@ -246,7 +246,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "claimantDefenceResDocToDefendant1",
+    "CaseFieldID": "applicant1DefenceResponseDocument",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "applicantsProceedIntention = \"Yes\"",

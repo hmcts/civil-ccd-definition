@@ -86,7 +86,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId = 1646387012907308, eventName;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -623,6 +623,7 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 };
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+  console.log('assertSubmittedEvent')
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);

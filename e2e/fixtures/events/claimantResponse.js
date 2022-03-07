@@ -4,10 +4,6 @@ module.exports = {
   valid: {
     RespondentResponse: {
       applicant1ProceedWithClaim: 'Yes',
-      claimant2ResponseFlag: 'No',
-      applicantsProceedIntention: 'Yes',
-      claimantResponseDocumentToDefendant2Flag: 'No'
-
     },
     ApplicantDefenceResponseDocument: {
       applicant1DefenceResponseDocument: {
@@ -110,7 +106,7 @@ module.exports = {
     // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
     StatementOfTruth: {
       applicantSolicitor1ClaimStatementOfTruth: {}
-    }
+    },
   },
   invalid: {
     Experts: {

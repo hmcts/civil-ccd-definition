@@ -229,7 +229,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantDefenceResDocToDefendant1",
+    "CaseFieldID": "applicant1DefenceResponseDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
