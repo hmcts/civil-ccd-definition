@@ -84,6 +84,14 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
+    "CaseFieldID": "applicant2DQExperts",
+    "TabFieldDisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
     "CaseFieldID": "respondent1DQExperts",
     "TabFieldDisplayOrder": 12
   },
@@ -94,6 +102,14 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "applicant1DQWitnesses",
     "TabFieldDisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "applicant2DQWitnesses",
+    "TabFieldDisplayOrder": 14
   },
   {
     "CaseTypeID": "CIVIL",
