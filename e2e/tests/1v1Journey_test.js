@@ -16,7 +16,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey @e2e-multiparty');
+Feature('1v1 - Claim Journey @e2e-unspec @e2e-multiparty');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
