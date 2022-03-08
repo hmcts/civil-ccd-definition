@@ -81,31 +81,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearingSupport",
+    "CaseFieldID": "applicant1DQHearingSupport",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFutureApplicationsLabel",
+    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
     "PageLabel": "",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "responseClaimTrack=\"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFutureApplications",
+    "CaseFieldID": "applicant1DQFutureApplications",
     "PageLabel": "",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 2,
@@ -117,7 +117,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "additionalInformationForJudge",
+    "CaseFieldID": "applicantAdditionalInformationForJudge",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 3,
     "CaseEventFieldLabel": "Provide any other information the judge may need",
@@ -128,7 +128,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondStatementOfTruthHeaderLabel",
+    "CaseFieldID": "applicantStatementOfTruthHeaderLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -136,12 +136,12 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "applicant1ProceedWithClaim = \"Yes\""
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND applicant1ProceedWithClaim = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondStatementOfTruthLabel",
+    "CaseFieldID": "applicantStatementOfTruthLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -165,7 +165,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondStatementOfTruthSubmitLabel",
+    "CaseFieldID": "applicantStatementOfTruthSubmitLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
