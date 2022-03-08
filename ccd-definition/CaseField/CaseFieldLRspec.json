@@ -1099,5 +1099,12 @@
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRequestedCourt",
+    "Label": " ",
+    "FieldType": "RequestedCourt",
+    "SecurityClassification": "Public"
   }
 ]
