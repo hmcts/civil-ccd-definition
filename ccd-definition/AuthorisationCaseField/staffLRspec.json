@@ -166,5 +166,11 @@
     "CaseFieldID": "applicant1DQHearingLRspec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQSmallClaimHearing",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
