@@ -89,51 +89,76 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Hearing",
+    "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
+    "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "hearingLength",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "allocatedTrack !=\"SMALL_CLAIM\""
   },
   {
-    "ID": "Hearing",
+    "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
+    "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "hearingLengthHours",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Hearing",
+    "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
+    "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "hearingLengthDays",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Hearing",
+    "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
+    "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Hearing",
+    "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
-    "ListElementCode": "unavailableDates.who",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "unavailableDatesLRspec.who",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Hearing",
+    "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearing",
-    "ListElementCode": "unavailableDates.date",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "unavailableDatesLRspec.unavailableDateType",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "unavailableDatesLRspec.date",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "unavailableDatesLRspec.fromDate",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "unavailableDatesLRspec.toDate",
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {

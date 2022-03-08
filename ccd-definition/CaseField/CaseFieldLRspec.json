@@ -1106,5 +1106,12 @@
     "Label": " ",
     "FieldType": "RequestedCourt",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQHearingLRspec",
+    "Label": "Hearing",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
   }
 ]
