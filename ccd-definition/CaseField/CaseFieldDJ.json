@@ -97,5 +97,13 @@
     "Label": "Hearing requirements",
     "FieldType": "HearingSupportRequirementsDJ",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defaultJudgmentDocuments",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
   }
 ]

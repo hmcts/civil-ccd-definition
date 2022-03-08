@@ -28,5 +28,11 @@
     "ListElementCode": "DEFENDANT_DRAFT_DIRECTIONS",
     "ListElement": "Defendant Draft Directions",
     "DisplayOrder": 5
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_FORM",
+    "ListElement": "Default Judgment",
+    "DisplayOrder": 6
   }
 ]
