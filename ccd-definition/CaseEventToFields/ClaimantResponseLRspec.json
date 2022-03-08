@@ -86,7 +86,29 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\" AND responseClaimTrack= \"FAST_CLAIM\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQDisclosureOfElectronicDocuments",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisclosureOfElectronicDocuments",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQDisclosureOfNonElectronicDocuments",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisclosureOfNonElectronicDocuments",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   }
 ]
