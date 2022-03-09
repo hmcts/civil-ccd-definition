@@ -31,7 +31,7 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "DEFAULT_JUDGMENT_FORM",
+    "ListElementCode": "DEFAULT_JUDGMENT",
     "ListElement": "Default Judgment",
     "DisplayOrder": 6
   }
