@@ -93,7 +93,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
+    "CaseFieldID": "respondent1DQFutureApplicationsLabel",
     "PageLabel": "",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 1,
@@ -140,7 +140,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicantStatementOfTruthHeaderLabel",
+    "CaseFieldID": "respondStatementOfTruthHeaderLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -153,7 +153,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicantStatementOfTruthLabel",
+    "CaseFieldID": "respondStatementOfTruthLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -177,7 +177,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicantStatementOfTruthSubmitLabel",
+    "CaseFieldID": "respondStatementOfTruthSubmitLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
