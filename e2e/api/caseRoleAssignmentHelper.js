@@ -1,9 +1,10 @@
-const {assignCaseToDefendant, unAssignUserFromCase} = require('./testingSupport');
+const {assignCaseToDefendant, unAssignUserFromCases} = require('./testingSupport');
 
 let userCaseMappings = {};
 
 const addUserCaseMapping = (caseId, user) => {
-  userCaseMappings = {...userCaseMappings, [`${caseId}${user.email}`]: {caseId, user}};
+  const userCase = userCaseMappings[`${user.email}`];
+  userCaseMappings = {...userCaseMappings, [`${user.email}`]: [...(userCase ? userCase : []), {caseId, user}]};
 };
 
 const assignCaseRoleToUser = async (caseId, role, user) => {
@@ -12,9 +13,9 @@ const assignCaseRoleToUser = async (caseId, role, user) => {
 };
 
 const unAssignAllUsers = async () => {
-  console.log('Removing users role allocations from test cases...');
-  for (const {caseId, user} of Object.values(userCaseMappings).sort()) {
-    await unAssignUserFromCase(caseId, user);
+  console.log('Removing case role allocations...');
+  for (const userRole of Object.values(userCaseMappings)) {
+    await unAssignUserFromCases(userRole.map(({caseId}) => caseId), userRole[0].user);
   }
   userCaseMappings = {};
 };

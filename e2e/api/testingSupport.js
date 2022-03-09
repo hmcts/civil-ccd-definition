@@ -56,20 +56,23 @@ module.exports =  {
     });
   },
 
-  unAssignUserFromCase: async (caseId, user) => {
+  unAssignUserFromCases: async (caseIds, user) => {
     const authToken = await idamHelper.accessToken(user);
 
     await retry(() => {
       return restHelper.request(
-        `${config.url.civilService}/testing-support/unassign-case/${caseId}`,
+        `${config.url.civilService}/testing-support/unassign-user`,
         {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}` },
-        {},
+          'Authorization': `Bearer ${authToken}`
+        },
+        {
+          caseIds
+        },
         'POST')
         .then(response => {
           if (response.status === 200) {
-            console.log( `User unassigned from case [${caseId}] successfully`);
+            caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
           }
           else  {
             throw new Error(`Error occurred with status : ${response.status}`);
