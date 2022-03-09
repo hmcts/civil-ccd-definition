@@ -1,9 +1,10 @@
-const {date, element} = require('../../api/dataHelper');
+const {date, element} = require('../../../api/dataHelper');
 
 module.exports = {
   valid: {
     RespondentResponse: {
-      applicant1ProceedWithClaim: 'Yes',
+      applicant1ProceedWithClaimMultiParty2v1: 'Yes',
+      applicant2ProceedWithClaimMultiParty2v1: 'Yes',
       claimant2ResponseFlag: 'No',
       applicantsProceedIntention: 'Yes',
       claimantResponseDocumentToDefendant2Flag: 'No'

@@ -34,6 +34,9 @@ const data = {
   DEFENDANT_RESPONSE_SOLICITOR_TWO:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
   DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: require('../fixtures/events/claimantResponse.js'),
+  CLAIMANT_RESPONSE_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/claimantResponse_sameSolicitor.js'),
+  CLAIMANT_RESPONSE_DIFFERENT_SOLICITOR: require('../fixtures/events/1v2DifferentSolicitorEvents/claimantResponse_differentSolicitor'),
+  CLAIMANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/claimantResponse_2v1'),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
@@ -67,6 +70,12 @@ const eventData = {
       solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
     },
     TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
+  },
+  claimantResponses:{
+    ONE_V_ONE: data.CLAIMANT_RESPONSE,
+    ONE_V_TWO_ONE_LEGAL_REP: data.CLAIMANT_RESPONSE_SAME_SOLICITOR,
+    ONE_V_TWO_TWO_LEGAL_REP: data.CLAIMANT_RESPONSE_DIFFERENT_SOLICITOR,
+    TWO_V_ONE: data.CLAIMANT_RESPONSE_TWO_APPLICANTS
   }
 };
 
@@ -464,7 +473,7 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  claimantResponse: async (user) => {
+  claimantResponse: async (user, multipartyScenario) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -472,16 +481,19 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     eventName = 'CLAIMANT_RESPONSE';
+    mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    await validateEventPages(data.CLAIMANT_RESPONSE);
+    const claimantResponseData = eventData['claimantResponses'][mpScenario];
 
-    await assertError('Experts', data[eventName].invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', data[eventName].invalid.Hearing.past,
+    await validateEventPages(claimantResponseData);
+
+    await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
+    await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
       'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', data[eventName].invalid.Hearing.moreThanYear,
+    await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {

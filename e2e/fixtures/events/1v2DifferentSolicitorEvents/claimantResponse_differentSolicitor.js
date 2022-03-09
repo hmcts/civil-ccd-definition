@@ -1,16 +1,23 @@
-const {date, element} = require('../../api/dataHelper');
+const {date, element} = require('../../../api/dataHelper');
 
 module.exports = {
   valid: {
     RespondentResponse: {
-      applicant1ProceedWithClaim: 'Yes',
+      applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2: 'Yes',
+      applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2: 'Yes',
       claimant2ResponseFlag: 'No',
       applicantsProceedIntention: 'Yes',
-      claimantResponseDocumentToDefendant2Flag: 'No'
-
+      claimantResponseDocumentToDefendant2Flag: 'Yes'
     },
     ApplicantDefenceResponseDocument: {
       applicant1DefenceResponseDocument: {
+        file: {
+          document_url: '${TEST_DOCUMENT_URL}',
+          document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+          document_filename: '${TEST_DOCUMENT_FILENAME}'
+        }
+      },
+      claimantDefenceResDocToDefendant2: {
         file: {
           document_url: '${TEST_DOCUMENT_URL}',
           document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',

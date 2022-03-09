@@ -1806,13 +1806,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1ClaimResponseDocumentCopy",
-    "Label": "Upload defence",
-    "FieldType": "ResponseDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimantResponseToDefendantLabel",
     "Label": "<br/>**Claimant's response to defendant**",
     "FieldType": "Label",
