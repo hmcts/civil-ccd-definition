@@ -33,10 +33,7 @@ const data = {
   DEFENDANT_RESPONSE_SOLICITOR_ONE:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
   DEFENDANT_RESPONSE_SOLICITOR_TWO:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
   DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
-  CLAIMANT_RESPONSE: require('../fixtures/events/claimantResponse.js'),
-  CLAIMANT_RESPONSE_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/claimantResponse_sameSolicitor.js'),
-  CLAIMANT_RESPONSE_DIFFERENT_SOLICITOR: require('../fixtures/events/1v2DifferentSolicitorEvents/claimantResponse_differentSolicitor'),
-  CLAIMANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/claimantResponse_2v1'),
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
@@ -70,12 +67,6 @@ const eventData = {
       solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
     },
     TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
-  },
-  claimantResponses:{
-    ONE_V_ONE: data.CLAIMANT_RESPONSE,
-    ONE_V_TWO_ONE_LEGAL_REP: data.CLAIMANT_RESPONSE_SAME_SOLICITOR,
-    ONE_V_TWO_TWO_LEGAL_REP: data.CLAIMANT_RESPONSE_DIFFERENT_SOLICITOR,
-    TWO_V_ONE: data.CLAIMANT_RESPONSE_TWO_APPLICANTS
   }
 };
 
@@ -486,7 +477,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = eventData['claimantResponses'][mpScenario];
+    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
 
     await validateEventPages(claimantResponseData);
 
@@ -703,7 +694,7 @@ function addMidEventFields(pageId, responseBody) {
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
 
-  if(eventName === 'CREATE_CLAIM'){
+  if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];
