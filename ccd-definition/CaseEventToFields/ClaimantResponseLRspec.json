@@ -128,6 +128,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFurtherInformation",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FurtherInformation",
+    "CaseEventFieldLabel": "Further information",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW\" AND responseClaimTrack!=\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantStatementOfTruthHeaderLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 1,
