@@ -365,13 +365,13 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence() {
+    async respondToDefence(mpScenario) {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => proceedPage.proceedWithClaim(),
-        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
@@ -451,8 +451,13 @@ module.exports = function () {
     },
 
     async addAnotherElementToCollection() {
-      const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title');
-      this.click('Add new');
+      const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title')
+
+      const addNewButton = locate('button').inside(locate('ccd-write-collection-field'));
+      this.click(addNewButton);
+
+      // This line of code works intermittently
+      // this.click('Add new');
       this.waitNumberOfVisibleElements('.collection-title', numberOfElements + 1);
     },
 
