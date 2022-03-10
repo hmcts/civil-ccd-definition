@@ -1092,5 +1092,19 @@
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQFutureApplications",
+    "Label": " ",
+    "FieldType": "FutureApplications",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AdditionalInformationForJudge",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]

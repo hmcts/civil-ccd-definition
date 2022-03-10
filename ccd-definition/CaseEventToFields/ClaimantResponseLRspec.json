@@ -81,6 +81,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceRouteRequired",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQHearingSupport",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 1,
@@ -117,7 +128,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicantAdditionalInformationForJudge",
+    "CaseFieldID": "applicant1AdditionalInformationForJudge",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 3,
     "CaseEventFieldLabel": "Provide any other information the judge may need",
