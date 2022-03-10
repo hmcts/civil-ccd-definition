@@ -22,11 +22,10 @@
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Defendant: ${respondent1.partyName}"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
+    "CaseFieldID": "respondent1GeneratedResponseDocument",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
