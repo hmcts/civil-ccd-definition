@@ -350,14 +350,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONESPEC]"
+          "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
