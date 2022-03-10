@@ -202,7 +202,7 @@ module.exports = function () {
       }
 
       await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 60);
+        this.amOnPage(config.url.manageCase, 90);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
