@@ -218,5 +218,11 @@
     "CaseFieldID": "responseClaimAdmitPartEmployer",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
