@@ -54,7 +54,7 @@
     "ID": "HearingSupportRequirementsDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingLengthEstimate",
-    "ListElementCode": "HearingLengthEstimate",
+    "ListElementCode": "hearingLengthEstimate",
     "ElementLabel": "How long do you estimate the hearing will take?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingLengthEstimate",
@@ -68,7 +68,7 @@
     "ElementLabel": "Hours",
     "FieldType": "Number",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "HearingLengthEstimate = \"OTHER\""
+    "FieldShowCondition": "hearingLengthEstimate = \"OTHER\""
   },
   {
     "ID": "HearingSupportRequirementsDJ",
