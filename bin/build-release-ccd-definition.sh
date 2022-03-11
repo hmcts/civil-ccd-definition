@@ -7,6 +7,8 @@ excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
   excludedFilenamePatterns="-e *-nonprod.json,*LRspec.json"
+elif [ ${environment} == demo ]; then
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*LRspec.json,*GAspec.json"
 else
