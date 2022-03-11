@@ -451,7 +451,7 @@ module.exports = function () {
     },
 
     async addAnotherElementToCollection() {
-      const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title')
+      const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title');
 
       const addNewButton = locate('button').inside(locate('ccd-write-collection-field'));
       this.click(addNewButton);

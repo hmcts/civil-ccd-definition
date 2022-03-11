@@ -21,7 +21,7 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
             }
           }
         }
-      }
+      };
     }
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       return {
@@ -41,7 +41,7 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
             }
           }
         }
-      }
+      };
     }
     case 'TWO_V_ONE': {
       return {
@@ -62,7 +62,7 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
             }
           }
         }
-      }
+      };
     }
     case 'ONE_V_ONE':
     default: {
@@ -83,11 +83,11 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
             }
           }
         }
-      }
+      };
     }
 
   }
-}
+};
 
 module.exports = {
   claimantResponse: (mpScenario = 'ONE_V_ONE') => {
@@ -229,6 +229,6 @@ module.exports = {
           }
         }
       }
-    }
+    };
   }
 };
