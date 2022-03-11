@@ -7,7 +7,6 @@
     "PageID": "defendantDetails",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "CaseEventFieldLabel": "Against which Defendant are you requesting default judgment ?",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/showcertifystatement"
   },
@@ -89,7 +88,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "HearingSelection",
+    "CaseFieldID": "hearingSelection",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingType",
@@ -107,7 +106,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "HearingSelection=\"DISPOSAL_HEARING\""
+    "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -119,7 +118,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "HearingSelection=\"TRIAL_HEARING\""
+    "FieldShowCondition": "hearingSelection=\"TRIAL_HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -130,7 +129,7 @@
     "PageID": "HearingType",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "HearingSelection=\"DISPOSAL_HEARING\" OR HearingSelection=\"TRIAL_HEARING\"",
+    "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\" OR hearingSelection=\"TRIAL_HEARING\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -143,7 +142,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "HearingSelection=\"DISPOSAL_HEARING\"",
+    "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\"",
     "RetainHiddenValue": "Y"
   },
   {
@@ -156,7 +155,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "HearingSelection=\"TRIAL_HEARING\"",
+    "FieldShowCondition": "hearingSelection=\"TRIAL_HEARING\"",
     "RetainHiddenValue": "Y"
   },
   {
