@@ -1,0 +1,11 @@
+[
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1UserDetails",
+    "ListElementCode": "email",
+    "EventElementLabel": "Claimant's legal representative's email address",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+]

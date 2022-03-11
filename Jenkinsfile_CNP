@@ -56,7 +56,7 @@ def archiveCoreCaseDataDefinitions() {
   if ( env.ENVIRONMENT == 'aat') {
     echo "current environment is ${env.ENVIRONMENT}"
     for(PROD_ENV in ["aat","prod"]){
-      echo "environnt is ${PROD_ENV}"
+      echo "environment is ${PROD_ENV}"
       dir("${WORKSPACE}/bin") {
         sh """
           eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
@@ -69,16 +69,16 @@ def archiveCoreCaseDataDefinitions() {
       }
     }
 
-  } else if ( env.ENVIRONMENT == 'preview') {
+  } else if ( env.ENVIRONMENT in ['preview', 'demo']) {
     dir("${WORKSPACE}/bin") {
       sh """
-          eval \$(./variables/load-preview-environment-variables.sh ${CHANGE_ID})
-          ./build-release-ccd-definition.sh preview
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
     }
 
     dir("${WORKSPACE}/build") {
-      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-preview.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
     }
   } else {
     dir("${WORKSPACE}/bin") {
