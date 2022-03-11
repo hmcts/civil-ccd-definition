@@ -13,7 +13,7 @@ module.exports = {
             id: '#claimantDefenceResDocToDefendant2_file'
           }
         } : {}
-    }
+    };
   },
 
   async uploadResponseDocuments (file, mpScenario) {

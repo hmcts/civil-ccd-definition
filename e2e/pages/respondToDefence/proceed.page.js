@@ -20,7 +20,7 @@ module.exports = {
               no: 'No'
             }
           }
-        }
+        };
       }
       case 'TWO_V_ONE': {
         return {
@@ -38,7 +38,7 @@ module.exports = {
               no: 'No'
             }
           }
-        }
+        };
       }
       case 'ONE_V_ONE':
       default: {
@@ -50,7 +50,7 @@ module.exports = {
               no: 'No'
             }
           }
-        }
+        };
       }
     }
   },
