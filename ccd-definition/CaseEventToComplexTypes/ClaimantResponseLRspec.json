@@ -1,9 +1,9 @@
 [
   {
-    "ID": "ResponseDocument",
+    "ID": "CaseDocument",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1SpecDefenceResponseDocument",
-    "ListElementCode": "file",
+    "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "ListElementCode": "documentLink",
     "EventElementLabel": "Defendant response form",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
