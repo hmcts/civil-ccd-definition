@@ -452,12 +452,7 @@ module.exports = function () {
 
     async addAnotherElementToCollection() {
       const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title');
-
-      const addNewButton = locate('button').inside(locate('ccd-write-collection-field'));
-      this.click(addNewButton);
-
-      // This line of code works intermittently
-      // this.click('Add new');
+      this.click('Add new');
       this.waitNumberOfVisibleElements('.collection-title', numberOfElements + 1);
     },
 
