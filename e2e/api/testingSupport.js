@@ -1,8 +1,8 @@
 const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
-
 const {retry} = require('./retryHelper');
+
 let incidentMessage;
 
 const MAX_RETRIES = 300;
@@ -50,6 +50,31 @@ module.exports =  {
           } else if (response.status === 409) {
             console.log('Role already exists!');
           } else  {
+            throw new Error(`Error occurred with status : ${response.status}`);
+          }
+        });
+    });
+  },
+
+  unAssignUserFromCases: async (caseIds, user) => {
+    const authToken = await idamHelper.accessToken(user);
+
+    await retry(() => {
+      return restHelper.request(
+        `${config.url.civilService}/testing-support/unassign-user`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+        {
+          caseIds
+        },
+        'POST')
+        .then(response => {
+          if (response.status === 200) {
+            caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
+          }
+          else  {
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
