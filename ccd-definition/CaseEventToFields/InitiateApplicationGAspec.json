@@ -87,7 +87,8 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -98,7 +99,8 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -109,7 +111,8 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -120,7 +123,8 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -131,7 +135,8 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
