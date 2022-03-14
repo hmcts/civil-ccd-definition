@@ -45,3 +45,7 @@ Scenario('Defendant response', async ({I, api}) => {
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser);
 });
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});
