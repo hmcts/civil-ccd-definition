@@ -1113,5 +1113,34 @@
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimMediationSpecRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimExpertSpecRequired",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RespondToClaim_experts",
+    "Label": " ",
+    "FieldType": "ExpertDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimWitnesses",
+    "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
+    "FieldType": "Text",
+    "RegularExpression": "\\d+",
+    "SecurityClassification": "Public"
   }
 ]

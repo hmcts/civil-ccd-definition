@@ -172,5 +172,11 @@
     "CaseFieldID": "applicant1AdditionalInformationForJudge",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ClaimWitnesses",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
