@@ -1,5 +1,6 @@
 const config = require('../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('../api/caseRoleAssignmentHelper');
+const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -23,12 +24,13 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.createCase(claimant1, null, respondent1, null);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
+  await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
   await I.notifyClaim();
   await I.see(caseEventMessage('Notify claim'));
-  await assignCaseToDefendant(caseId());
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
@@ -68,3 +70,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

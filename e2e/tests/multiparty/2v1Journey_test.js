@@ -1,5 +1,6 @@
 const config = require('../../config.js');
-const {assignCaseToDefendant, waitForFinishedBusinessProcess} = require('../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
+const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../api/caseRoleAssignmentHelper');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -26,14 +27,15 @@ Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant'
   await I.createCase(claimant1, claimant2, respondent1, null);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
+  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim();
   await I.see(caseEventMessage('Notify claim'));
-  await assignCaseToDefendant(caseId());
-  await assignCaseToDefendant(caseId(), 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'APPLICANTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
@@ -63,7 +65,7 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
   await I.see(caseEventMessage('Add litigation friend'));
 }).retry(3);
 
-Scenario('(Defendants solicitor reject claim of both claimants', async ({I}) => {
+Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails('1642700629930139');
   await I.respondToClaim({
@@ -81,3 +83,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
