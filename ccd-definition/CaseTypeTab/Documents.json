@@ -21,8 +21,17 @@
     "CaseTypeID": "CIVIL",
     "TabID": "Documents",
     "TabLabel": "Claim documents",
+    "TabDisplayOrder": 10,
+    "CaseFieldID": "defaultJudgmentDocuments",
+    "TabFieldDisplayOrder": 3,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
     "TabDisplayOrder": 4,
     "CaseFieldID": "servedDocumentFiles",
-    "TabFieldDisplayOrder": 3
+    "TabFieldDisplayOrder": 4
   }
 ]
