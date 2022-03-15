@@ -158,10 +158,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDisclosureOfNonElectronicDocuments",
+    "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocuments",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"

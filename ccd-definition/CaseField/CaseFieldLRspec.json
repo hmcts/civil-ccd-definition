@@ -1102,6 +1102,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
+    "Label": "Disclosure of non-electronic documents",
+    "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",

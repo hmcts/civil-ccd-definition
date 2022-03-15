@@ -1688,6 +1688,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFutureApplications",
     "AccessControl": [
       {

@@ -1843,16 +1843,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONESPEC]"
+          "[RESPONDENTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
