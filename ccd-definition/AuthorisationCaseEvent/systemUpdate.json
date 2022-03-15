@@ -79,6 +79,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CASE_HANDED_OFFLINE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "START_BUSINESS_PROCESS",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

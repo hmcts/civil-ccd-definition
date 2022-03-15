@@ -2,7 +2,8 @@ exports.config = {
   tests: [
     './e2e/tests/*_test.js',
     './e2e/tests/api_multiparty/*_test.js',
-    './e2e/tests/multiparty/*_test.js'
+    './e2e/tests/multiparty/*_test.js',
+    './e2e/tests/sdo/*_test.js'
   ],
   output: './output',
   helpers: {

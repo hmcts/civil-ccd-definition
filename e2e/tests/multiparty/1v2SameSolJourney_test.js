@@ -1,7 +1,7 @@
 const config = require('../../config.js');
 const parties = require('../../helpers/party');
-
-const {assignCaseToDefendant, waitForFinishedBusinessProcess} = require('../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
+const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../api/caseRoleAssignmentHelper');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -21,21 +21,22 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('1v2 Same Solicitor Claim Journey @e2e-multiparty');
+Feature('1v2 Same Solicitor Claim Journey @e2e-unspec @e2e-multiparty');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have the same solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, respondent2);
   caseNumber = await I.grabCaseNumber();
   await I.see(`Case ${caseNumber} has been created.`);
+  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim();
   await I.see(caseEventMessage('Notify claim'));
-  await assignCaseToDefendant(caseId());
-  await assignCaseToDefendant(caseId(), 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
@@ -82,3 +83,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
