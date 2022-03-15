@@ -4,7 +4,7 @@ const config = require('../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
 
-Feature('CCD 1v2 Same Solicitor API test @api-multiparty @api-tests-1v2SS');
+Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -44,4 +44,8 @@ Scenario('Defendant response', async ({I, api}) => {
 
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser);
+});
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
 });

@@ -118,5 +118,11 @@
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "civilServiceUserRoles",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

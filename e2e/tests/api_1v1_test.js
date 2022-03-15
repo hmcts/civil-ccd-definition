@@ -3,7 +3,7 @@
 const config = require('../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD 1v1 API test @api-multiparty @api-tests-1v1');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -62,4 +62,8 @@ Scenario('Create claim and move it to caseman', async ({I, api}) => {
 Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({I, api}) => {
   await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
   await api.resubmitClaim(config.applicantSolicitorUser);
+});
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
 });
