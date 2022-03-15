@@ -22,9 +22,20 @@ Scenario('Take claim offline', async ({I}) => {
   await I.signOut();
 }).retry(3);
 
-Scenario('Defendant - Litigant In Person', async ({I}) => {
+Scenario('Defendant representativeRegistered false - Claimant Litigant In Person', async ({I}) => {
+  const claimant1 = {
+    litigantInPerson: true
+  };
+  const respondent1 = {
+    represented: true,
+    representativeRegistered: false,
+    representativeOrgNumber: 2
+  };
+
+  const shouldStayOnline = false;
+
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(true);
+  await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
 
   await waitForFinishedBusinessProcess(caseId());
