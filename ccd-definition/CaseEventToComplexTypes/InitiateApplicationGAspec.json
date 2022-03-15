@@ -348,6 +348,6 @@
     "ListElementCode": "pbaReference",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   }
 ]
