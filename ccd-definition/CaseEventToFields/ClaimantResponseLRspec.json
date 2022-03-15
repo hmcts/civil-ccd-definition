@@ -102,17 +102,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimTrack",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "Mediation",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpecLabel",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
