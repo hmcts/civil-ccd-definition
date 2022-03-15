@@ -93,7 +93,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
