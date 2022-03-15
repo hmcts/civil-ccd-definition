@@ -60,6 +60,10 @@ const confirmDetailsPage = require('./fragments/confirmDetails.page');
 const singleResponse = require('./fragments/singleResponse.page');
 
 const unRegisteredDefendantSolicitorOrganisationPage = require('./pages/createClaim/unRegisteredDefendantSolicitorOrganisation.page');
+const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeDecided.page');
+const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
+const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
+const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -410,6 +414,24 @@ module.exports = function () {
         () => takeCaseOffline.takeCaseOffline()
       ]);
       await this.takeScreenshot();
+    },
+
+    async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = 'Standard Direction Order';
+      await caseViewPage.startEvent(eventName, caseId);
+
+      await this.triggerStepsWithScreenshot([
+        () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+
+        ...conditionalSteps(damages, [
+          () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+          ...conditionalSteps(!allocateSmallClaims,[
+            () => sdoOrderTypePage.decideOrderType(orderType)])
+        ]),
+
+        ...conditionalSteps(trackType, [
+        () => allocateClaimPage.selectTrackType(trackType)])
+      ]);
     },
 
     async assertNoEventsAvailable() {

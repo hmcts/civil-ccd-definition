@@ -63,3 +63,7 @@ Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({I,
   await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
   await api.resubmitClaim(config.applicantSolicitorUser);
 });
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});

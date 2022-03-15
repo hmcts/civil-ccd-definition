@@ -8,6 +8,7 @@ Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-multiparty @api-tests-
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
+
 Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {
   await api.addCaseNote(config.adminUser);
 });
@@ -42,4 +43,8 @@ Scenario('Defendant response', async ({I, api}) => {
 
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario);
+});
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
 });

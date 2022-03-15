@@ -25,6 +25,7 @@
     "test:rpa": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
+    "test:sdo": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @sdo --reporter mocha-multi --verbose",
     "prepare": "husky install"
   },
   "license": "MIT",
