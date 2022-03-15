@@ -260,7 +260,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "courtFinderLabel",
-    "EventElementLabel": "<a target=\"_blank\" href=\"https://courttribunalfinder.service.gov.uk/search/address\">Find a hearing center (opens in new tab)</a>",
+    "EventElementLabel": "<a target=\"_blank\" href=\"https://courttribunalfinder.service.gov.uk/search/address\">Court and tribunals finder (opens in new tab)</a> Use the 3 digit court location code, not the court name",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -269,7 +269,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "responseCourtCode",
-    "EventElementLabel": "Court name",
+    "EventElementLabel": "Court location code",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
