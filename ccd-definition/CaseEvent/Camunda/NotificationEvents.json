@@ -91,10 +91,10 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_AGREED_EXTENSION_DATE_CC",
+    "CaseTypeID": "CIVIL",1v
+    "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_AGREED_EXTENSION_DATE_CC",
     "Name": "Email: Notify of extension",
-    "Description": "Notify applicant solicitor 1 for agreed extension date CC to respondent 1",
+    "Description": "Notify applicant solicitor 1 for agreed extension date CC to respondent",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
