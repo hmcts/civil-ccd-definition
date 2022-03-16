@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",1v
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_AGREED_EXTENSION_DATE_CC",
     "Name": "Email: Notify of extension",
     "Description": "Notify applicant solicitor 1 for agreed extension date CC to respondent",
