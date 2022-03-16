@@ -71,31 +71,26 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         respondentSolicitor1Reference: 'Respondent reference'
       }
     },
-    Court: {
-      courtLocation: {
-        applicantPreferredCourt: '344'
-      }
-    },
+
     Claimant: {
       applicant1: applicant1WithPartyName
     },
-    ClaimantLitigationFriendRequired: {
-      applicant1LitigationFriendRequired: 'Yes',
+
+    AddAnotherClaimant: {
+      addApplicant2: 'No'
     },
-    ClaimantLitigationFriend: {
-      applicant1LitigationFriend: applicant1LitigationFriend
-    },
+
     Notifications: {
       applicantSolicitor1CheckEmail: {
         email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
-        correct: 'No'
-      },
+      }
+    },
+
+    ClaimantSolicitorOrganisation: {
       applicantSolicitor1UserDetails: {
         email: 'civilunspecified@gmail.com',
         id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b'
-      }
-    },
-    ClaimantSolicitorOrganisation: {
+      },
       applicant1OrganisationPolicy: {
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
@@ -104,26 +99,15 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         }
       }
     },
-    ClaimantSolicitorServiceAddress: {
-      applicantSolicitor1ServiceAddress:  buildAddress('service')
-    },
-    AddAnotherClaimant: {
-      addApplicant2: 'No'
-    },
-    ...(mpScenario === 'TWO_V_ONE') ? {
-      SecondClaimant: {
-        applicant2: applicant2WithPartyName
-      },
-      SecondClaimantLitigationFriendRequired: {
-        applicant2LitigationFriendRequired: 'No'
-      },
-    }: {},
+
     Defendant: {
       respondent1: respondent1WithPartyName
     },
+
     LegalRepresentation: {
       respondent1Represented: `${legalRepresentation}`
     },
+
     DefendantSolicitorOrganisation: {
       respondent1OrgRegistered: 'Yes',
       respondent1OrganisationPolicy: {
@@ -134,12 +118,90 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         },
       },
     },
-    DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: buildAddress('service')
-    },
+
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
     },
+
+    Details: {
+      detailsOfClaim: 'Test details of claim'
+    },
+
+    Upload: {
+      servedDocumentFiles: {
+        particularsOfClaimDocument: [
+          {
+            id: docUuid,
+            value: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          }
+        ]
+      }
+    },
+
+    // ClaimTimeline in here should be place
+    // evidence is missing as well
+    // claimAmount missing including total
+    // ClaimInterest missing
+    // InterestSummary
+
+    PbaNumber: {
+      applicantSolicitor1PbaAccounts: {
+        list_items: [
+          validPba,
+          invalidPba
+        ],
+        value: selectedPba
+
+      }
+    },
+
+    PaymentReference: {
+      claimIssuedPaymentDetails:  {
+        customerReference: 'Applicant reference'
+      }
+    },
+
+    StatementOfTruth: {
+      uiStatementOfTruth: {
+        name: 'John Doe',
+        role: 'Test Solicitor'
+      }
+    },
+
+
+
+
+
+
+
+    // this field refere to the under 18 age page, so I think it is not needed since this is not showing up SPEC
+    // ClaimantLitigationFriendRequired: {
+    //   applicant1LitigationFriendRequired: 'Yes',
+    // },
+    // ClaimantLitigationFriend: {
+    //   applicant1LitigationFriend: applicant1LitigationFriend,
+    // },
+    ClaimantSolicitorServiceAddress: {
+      applicantSolicitor1ServiceAddress:  buildAddress('service')
+    },
+
+    DefendantSolicitorServiceAddress: {
+      respondentSolicitor1ServiceAddress: buildAddress('service')
+    },
+
+    ...(mpScenario === 'TWO_V_ONE') ? {
+      SecondClaimant: {
+        applicant2: applicant2WithPartyName
+      },
+      SecondClaimantLitigationFriendRequired: {
+        applicant2LitigationFriendRequired: 'No'
+      },
+    }: {},
+
     AddAnotherDefendant: {
       addRespondent2: 'No'
     },
@@ -158,47 +220,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     PersonalInjuryType: {
       personalInjuryType: 'ROAD_ACCIDENT'
     },
-    Details: {
-      detailsOfClaim: 'Test details of claim'
-    },
-    Upload: {
-      servedDocumentFiles: {
-        particularsOfClaimDocument: [
-          {
-            id: docUuid,
-            value: {
-              document_url: '${TEST_DOCUMENT_URL}',
-              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-              document_filename: '${TEST_DOCUMENT_FILENAME}'
-            }
-          }
-        ]
-      }
-    },
     ClaimValue: {
       claimValue: {
         statementOfValueInPennies: '3000000'
-      }
-    },
-    PbaNumber: {
-      applicantSolicitor1PbaAccounts: {
-        list_items: [
-          validPba,
-          invalidPba
-        ],
-        value: selectedPba
-
-      }
-    },
-    PaymentReference: {
-      claimIssuedPaymentDetails:  {
-        customerReference: 'Applicant reference'
-      }
-    },
-    StatementOfTruth: {
-      uiStatementOfTruth: {
-        name: 'John Doe',
-        role: 'Test Solicitor'
       }
     },
   };
@@ -294,12 +318,12 @@ module.exports = {
               invalidPba
             ]
           },
-          applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
+          // applicantSolicitor1PbaAccountsIsEmpty: 'No',
+          // claimFee: {
+          //   calculatedAmountInPence: '150000',
+          //   code: 'FEE0209',
+          //   version: '3'
+          // },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -309,13 +333,13 @@ module.exports = {
             respondent2: respondent2WithPartyName
           } : {}
         },
-        ClaimantLitigationFriend: {
-          applicant1: applicant1WithPartyName,
-          applicant1LitigationFriend: applicant1LitigationFriend,
-          applicantSolicitor1CheckEmail: {
-            email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
-          },
-        },
+        // ClaimantLitigationFriend: {
+        //   applicant1: applicant1WithPartyName,
+        //   applicant1LitigationFriend: applicant1LitigationFriend,
+        //   applicantSolicitor1CheckEmail: {
+        //     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
+        //   },
+        // },
         // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
         StatementOfTruth: {
           applicantSolicitor1ClaimStatementOfTruth: {}
