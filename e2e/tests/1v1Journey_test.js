@@ -17,7 +17,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey @e2e-unspec @e2e-multiparty');
+Feature('1v1 - Claim Journey @e2e-unspec @e2e-multiparty @e2e-1v1');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -59,6 +59,7 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
 });
 
 Scenario('Defendant solicitor responds to claim', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({defendant1Response: 'fullDefence'});
   await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -66,7 +67,7 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence();
+  await I.respondToDefence('ONE_V_ONE');
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);

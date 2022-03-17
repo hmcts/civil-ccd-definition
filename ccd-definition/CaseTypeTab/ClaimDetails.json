@@ -84,7 +84,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1DQExperts",
+    "CaseFieldID": "applicant2DQExperts",
     "TabFieldDisplayOrder": 11
   },
   {
@@ -92,7 +92,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1DQWitnesses",
+    "CaseFieldID": "respondent1DQExperts",
     "TabFieldDisplayOrder": 12
   },
   {
@@ -100,7 +100,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1DQWitnesses",
+    "CaseFieldID": "applicant1DQWitnesses",
     "TabFieldDisplayOrder": 13
   },
   {
@@ -108,23 +108,23 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "courtLocation",
+    "CaseFieldID": "applicant2DQWitnesses",
     "TabFieldDisplayOrder": 14
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim Details",
+    "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1OrganisationPolicy",
+    "CaseFieldID": "respondent1DQWitnesses",
     "TabFieldDisplayOrder": 15
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim Details",
+    "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent1OrganisationPolicy",
+    "CaseFieldID": "courtLocation",
     "TabFieldDisplayOrder": 16
   },
   {
@@ -132,15 +132,23 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "TabFieldDisplayOrder": 15
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "TabFieldDisplayOrder": 17
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
+    "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent2DQExperts",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "TabFieldDisplayOrder": 18
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2OrganisationPolicy",
     "TabFieldDisplayOrder": 19
   },
   {
@@ -148,8 +156,16 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "respondent2DQWitnesses",
+    "CaseFieldID": "respondent2DQExperts",
     "TabFieldDisplayOrder": 20
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2DQWitnesses",
+    "TabFieldDisplayOrder": 21
   },
   {
     "CaseTypeID": "CIVIL",
