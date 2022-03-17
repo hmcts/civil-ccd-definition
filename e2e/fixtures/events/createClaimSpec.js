@@ -52,12 +52,6 @@ const applicant2WithPartyName = {
   partyTypeDisplayValue: 'Individual',
 };
 
-const applicant1LitigationFriend = {
-  fullName: 'Bob the litigant friend',
-  hasSameAddressAsLitigant: 'No',
-  primaryAddress: buildAddress('litigant friend')
-};
-
 let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
@@ -148,15 +142,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     // ClaimInterest missing
     // InterestSummary
 
-    PbaNumber: {
-      applicantSolicitor1PbaAccounts: {
-        list_items: [
-          validPba,
-          invalidPba
-        ],
-        value: selectedPba
-
-      }
+    ClaimDetails: {
+      totalClaimAmount: 300000
     },
 
     PaymentReference: {
@@ -172,19 +159,24 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       }
     },
 
+    ClaimValue: {
+      applicantSolicitor1PbaAccounts: {
+        list_items: [
+          validPba,
+          invalidPba
+        ],
+        value: selectedPba
+      },
+      claimValue: {
+        statementOfValueInPennies: '3000000'
+      },
+      claimFee: {
+        calculatedAmountInPence: '150000',
+        code: 'FEE0209',
+        version: '3'
+      },
+    },
 
-
-
-
-
-
-    // this field refere to the under 18 age page, so I think it is not needed since this is not showing up SPEC
-    // ClaimantLitigationFriendRequired: {
-    //   applicant1LitigationFriendRequired: 'Yes',
-    // },
-    // ClaimantLitigationFriend: {
-    //   applicant1LitigationFriend: applicant1LitigationFriend,
-    // },
     ClaimantSolicitorServiceAddress: {
       applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
@@ -219,11 +211,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     PersonalInjuryType: {
       personalInjuryType: 'ROAD_ACCIDENT'
-    },
-    ClaimValue: {
-      claimValue: {
-        statementOfValueInPennies: '3000000'
-      }
     },
   };
   switch (mpScenario){
@@ -316,31 +303,30 @@ module.exports = {
             list_items: [
               validPba,
               invalidPba
-            ]
+            ],
+            value: selectedPba
           },
-          // applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          // claimFee: {
-          //   calculatedAmountInPence: '150000',
-          //   code: 'FEE0209',
-          //   version: '3'
-          // },
-          claimIssuedPaymentDetails: {
-            customerReference: 'Applicant reference'
+          claimValue: {
+            statementOfValueInPennies: '3000000'
           },
-          applicant1: applicant1WithPartyName,
-          respondent1: respondent1WithPartyName,
-          ...hasRespondent2(mpScenario) ? {
-            respondent2: respondent2WithPartyName
-          } : {}
+          claimFee: {
+            calculatedAmountInPence: '150000',
+            code: 'FEE0209',
+            version: '3'
+          },
         },
-        // ClaimantLitigationFriend: {
-        //   applicant1: applicant1WithPartyName,
-        //   applicant1LitigationFriend: applicant1LitigationFriend,
-        //   applicantSolicitor1CheckEmail: {
-        //     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
-        //   },
-        // },
-        // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
+
+
+        PbaNumber: {
+          applicantSolicitor1PbaAccounts: {
+            list_items: [
+              validPba,
+              invalidPba
+            ],
+            value: selectedPba
+          }
+        },
+
         StatementOfTruth: {
           applicantSolicitor1ClaimStatementOfTruth: {}
         },
@@ -380,28 +366,28 @@ module.exports = {
     };
   },
 
-  createClaimLitigantInPerson: {
-    valid: createClaimData('No', true)
-  },
-  createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData('Yes', false)
-  },
-  createClaimRespondentSolFirmNotInMyHmcts: {
-    valid: {
-      ...createClaimData('Yes', true),
-      DefendantSolicitorOrganisation: {
-        respondent1OrgRegistered: 'No'
-      },
-      UnRegisteredDefendantSolicitorOrganisation: {
-        respondentSolicitor1OrganisationDetails: {
-          organisationName: 'Test org',
-          phoneNumber: '0123456789',
-          email: 'test@example.com',
-          dx: 'test dx',
-          fax: '123123123',
-          address: buildAddress('org')
-        }
-      },
-    }
-  }
+  // createClaimLitigantInPerson: {
+  //   valid: createClaimData('No', true)
+  // },
+  // createClaimWithTerminatedPBAAccount: {
+  //   valid: createClaimData('Yes', false)
+  // },
+  // createClaimRespondentSolFirmNotInMyHmcts: {
+  //   valid: {
+  //     ...createClaimData('Yes', true),
+  //     DefendantSolicitorOrganisation: {
+  //       respondent1OrgRegistered: 'No'
+  //     },
+  //     UnRegisteredDefendantSolicitorOrganisation: {
+  //       respondentSolicitor1OrganisationDetails: {
+  //         organisationName: 'Test org',
+  //         phoneNumber: '0123456789',
+  //         email: 'test@example.com',
+  //         dx: 'test dx',
+  //         fax: '123123123',
+  //         address: buildAddress('org')
+  //       }
+  //     },
+  //   }
+  // }
 };
