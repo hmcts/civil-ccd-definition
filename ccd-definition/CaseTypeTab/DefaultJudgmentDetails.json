@@ -2,14 +2,14 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "DefaultJudgment",
-    "TabLabel": "Default Judgment",
+    "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "defendantDetails",
     "TabFieldDisplayOrder": 1
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "Default Judgment",
+    "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "hearingSelection",
@@ -18,7 +18,7 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "DefaultJudgment",
-    "TabLabel": "Default Judgment",
+    "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "detailsOfDirectionDisposal",
     "TabFieldDisplayOrder": 3,
@@ -26,7 +26,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "Default Judgment",
+    "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "detailsOfDirectionTrial",
@@ -35,7 +35,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "Default Judgment",
+    "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "hearingSupportRequirementsDJ",
