@@ -28,5 +28,17 @@
     "ListElementCode": "DEFENDANT_DRAFT_DIRECTIONS",
     "ListElement": "Defendant Draft Directions",
     "DisplayOrder": 5
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CLAIMANT_DEFENCE",
+    "ListElement": "Claimant defence",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CLAIMANT_DRAFT_DIRECTIONS",
+    "ListElement": "Claimant Draft Directions",
+    "DisplayOrder": 7
   }
 ]
