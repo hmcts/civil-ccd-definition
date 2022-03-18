@@ -1170,5 +1170,26 @@
     "Label": "Hearing",
     "FieldType": "SmallClaimHearing",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DefenceResponseDocumentSpec",
+    "Label": " ",
+    "FieldType": "ResponseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DefenceResponseDocumentSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Respond to the defence</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRequestedCourtSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Claimant's requested court</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
