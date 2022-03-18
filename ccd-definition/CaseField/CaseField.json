@@ -253,6 +253,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocuments",
+    "Label": "Claimant response Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
@@ -445,7 +453,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseType",
-    "Label": "The defendant:",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
     "SecurityClassification": "Public"
@@ -763,13 +771,6 @@
     "ID": "applicant1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQDisclosureOfNonElectronicDocumentsLabel",
-    "Label": "## Disclosure of non-electronic documents",
-    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -1764,6 +1765,192 @@
     "ID": "amendApplicant2SolicitorEmailLabel",
     "Label": "Update the second claimant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantsProceedIntention",
+    "Label": "Not shown in UI",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocumentToDefendant2Flag",
+    "Label": "Not shown in UI",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant2ResponseFlag",
+    "Label": "Not shown in UI",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQFileDirectionsQuestionnaire",
+    "Label": "File directions questionnaire",
+    "FieldType": "FileDirectionsQuestionnaire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseScenarioFlag",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimantResponseScenarioFlag",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseToDefendantLabel",
+    "Label": "<br/>**Claimant's response to defendant**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1ResponseToDefendantLabel",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2ResponseToDefendantLabel",
+    "Label": "<br/>**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimMultiParty2v1",
+    "Label": "Does Claimant 1 want to proceed with the claim against ${respondent1.partyName}",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2ProceedWithClaimMultiParty2v1",
+    "Label": "Does Claimant 2 want to proceed with the claim against ${respondent1.partyName}",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2",
+    "Label": "Do you want to proceed with the claim against ${respondent1.partyName}",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2",
+    "Label": "Do you want to proceed with the claim against ${respondent2.partyName}",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantDefenceResDocToDefendant2",
+    "Label": "Respond to the defence",
+    "FieldType": "ResponseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDisclosureOfElectronicDocuments",
+    "Label": "Disclosure of electronic documents",
+    "FieldType": "DisclosureOfElectronicDocuments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDisclosureOfNonElectronicDocuments",
+    "Label": "Disclosure of non-electronic documents",
+    "FieldType": "DisclosureOfNonElectronicDocuments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDisclosureReport",
+    "Label": "Disclosure report",
+    "FieldType": "DisclosureReport",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQExperts",
+    "Label": "Applicant 2 experts",
+    "FieldType": "Experts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQWitnesses",
+    "Label": "Applicant 2 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQHearing",
+    "Label": "Applicant 2 Hearing",
+    "FieldType": "Hearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDraftDirectionsLabel",
+    "Label": "## Upload draft directions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQDraftDirections",
+    "Label": "Upload file",
+    "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQHearingSupport",
+    "Label": "Applicant 2 Hearing support requirements",
+    "FieldType": "HearingSupportRequirements",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQFurtherInformation",
+    "Label": "Applicant 2 Further information",
+    "FieldType": "FurtherInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQStatementOfTruth",
+    "Label": "Statement of truth",
+    "FieldType": "StatementOfTruth",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2ResponseDate",
+    "Label": "Date applicant 1 responded to defence",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]
