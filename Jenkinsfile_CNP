@@ -69,7 +69,7 @@ def archiveCoreCaseDataDefinitions() {
       }
     }
 
-  } else if ( env.ENVIRONMENT in ['preview', 'demo']) {
+  } else if ( env.ENVIRONMENT == 'preview') {
     dir("${WORKSPACE}/bin") {
       sh """
           eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
@@ -80,6 +80,19 @@ def archiveCoreCaseDataDefinitions() {
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
     }
+
+  } else if ( env.ENVIRONMENT == 'demo') {
+    dir("${WORKSPACE}/bin") {
+      sh """
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh)
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
+      """
+    }
+
+    dir("${WORKSPACE}/build") {
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+    }
+
   } else {
     dir("${WORKSPACE}/bin") {
       sh """
