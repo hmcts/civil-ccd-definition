@@ -4204,5 +4204,11 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimStarted",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
   }
 ]
