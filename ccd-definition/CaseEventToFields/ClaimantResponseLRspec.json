@@ -101,35 +101,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimMediationSpecLabel",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "Mediation",
-    "PageShowCondition": "responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
-    "ShowSummaryChangeOption": "Y",
-    "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimMediationSpecLabel2",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "Mediation",
-    "PageShowCondition": "",
-    "ShowSummaryChangeOption": "N",
-    "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
+    "PageShowCondition": "responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -198,7 +175,7 @@
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimExperts",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "RetriesTimeoutURLMidEvent": 0
   },
   {

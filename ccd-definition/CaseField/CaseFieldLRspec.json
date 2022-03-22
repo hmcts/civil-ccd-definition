@@ -1123,13 +1123,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1ClaimMediationSpecRequired",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
@@ -1145,7 +1138,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimWitnesses",
-    "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
+    "Label": "How many witnesses, including the claimant, will give evidence at the hearing?",
     "FieldType": "Text",
     "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
@@ -1190,6 +1183,13 @@
     "ID": "applicant1DQRequestedCourtSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Claimant's requested court</h2>\n ",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimMediationSpecRequired",
+    "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
+    "FieldType": "SmallClaimMedication",
     "SecurityClassification": "Public"
   }
 ]
