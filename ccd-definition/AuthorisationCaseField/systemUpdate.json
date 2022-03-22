@@ -400,11 +400,5 @@
     "CaseFieldID": "claimantDefenceResDocToDefendant2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
   }
 ]
