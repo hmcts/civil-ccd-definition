@@ -55,8 +55,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "setSmallClaimsFlag",
+    "Label": "small claims flag",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsPlaceholder",
+    "Label": "Small Claims Placeholder",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "orderDetailsPlaceholder",
-    "Label": "Page Four Placeholder - Order Details",
+    "Label": "Page Four Placeholder - Order Details test 4",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
