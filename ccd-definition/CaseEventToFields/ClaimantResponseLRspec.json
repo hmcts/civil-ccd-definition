@@ -47,7 +47,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimTrack",
+    "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
@@ -124,6 +124,61 @@
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
     "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimTrack",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceRouteRequired",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFileDirectionsQuestionnaire",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FileDirectionsQuestionnaire",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQDisclosureOfElectronicDocuments",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisclosureOfElectronicDocuments",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQDisclosureOfNonElectronicDocuments",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisclosureOfNonElectronicDocuments",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   }
 ]
