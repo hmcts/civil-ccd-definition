@@ -37,18 +37,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2SameLegalRepresentative",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmNameAddress",
-    "FieldShowCondition": "specAoSRespondentDetails=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondentDetails",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
