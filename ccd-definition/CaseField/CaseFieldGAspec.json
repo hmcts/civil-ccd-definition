@@ -152,7 +152,7 @@
     "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
-    "Label": "Supporting evidence",
+    "Label": "Upload evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
   },
