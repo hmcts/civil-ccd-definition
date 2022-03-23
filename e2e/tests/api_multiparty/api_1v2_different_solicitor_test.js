@@ -55,7 +55,7 @@ Scenario('Defendant response Solicitor 2', async ({I, api}) => {
 });
 
 Scenario('Claimant response', async ({I, api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser);
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario);
 });
 
 AfterSuite(async  ({api}) => {

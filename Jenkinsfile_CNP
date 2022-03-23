@@ -69,7 +69,7 @@ def archiveCoreCaseDataDefinitions() {
       }
     }
 
-  } else if ( env.ENVIRONMENT in ['preview', 'demo']) {
+  } else if ( env.ENVIRONMENT == 'preview') {
     dir("${WORKSPACE}/bin") {
       sh """
           eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
