@@ -4,45 +4,5 @@
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR_DJ_RECEIVED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR_DJ_RECEIVED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
