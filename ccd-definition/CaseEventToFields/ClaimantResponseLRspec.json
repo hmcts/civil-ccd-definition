@@ -196,7 +196,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "applicant1ClaimExpertSpecRequired =\"Yes\""
   },
   {
