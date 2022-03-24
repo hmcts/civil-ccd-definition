@@ -5,7 +5,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "defendantDetailsSpec",
-    "TabFieldDisplayOrder": 1
+    "TabFieldDisplayOrder": 1,
+    "TabShowCondition": "paymentTypeSelection = \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
