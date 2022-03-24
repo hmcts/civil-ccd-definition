@@ -87,5 +87,5 @@ const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim(acknowledgeClaimResponse);
   await I.informAgreedExtensionDate();
-  await I.respondToClaim(I.respondToClaim({defendant1Response: respondToClaimResponse}));
+  await I.respondToClaim({defendant1Response: respondToClaimResponse});
 };
