@@ -793,6 +793,7 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]",
           "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "CRU"
