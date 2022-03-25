@@ -148,6 +148,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "addRespondent2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseConfirmDetails",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseConfirmDetails",
+    "PageLabel": "Confirm your details",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
@@ -195,6 +220,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentResponseIsSame",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SingleResponse",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "claimant1ClaimResponseTypeForSpecLabel",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 1,
@@ -238,14 +274,27 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentResponseIsSame",
-    "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "SingleResponse",
+    "CaseFieldID": "respondent2ClaimResponseTypeForSpecLabel",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleResponseType",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame != \"Yes\""
   },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponseTypeSpec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame != \"Yes\""
+  },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
