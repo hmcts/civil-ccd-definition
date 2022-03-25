@@ -124,7 +124,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingDuration",
-    "ElementLabel": "How long would you like the hearing to take?",
+    "ElementLabel": "How long do you think the hearing will last?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingDurationGAspec",
     "SecurityClassification": "Public"
