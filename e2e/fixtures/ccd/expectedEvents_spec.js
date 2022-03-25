@@ -1,0 +1,83 @@
+const events = require('./events_spec.js');
+
+module.exports = {
+  applicant_solicitor: {
+    CASE_ISSUED: [
+      events.CREATE_SDO,
+      // events.NOTIFY_DEFENDANT_OF_CLAIM,
+      // events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
+      events.INITIATE_GENERAL_APPLICATION,
+      events.CHANGE_SOLICITOR_EMAIL
+    ],
+    AWAITING_CASE_DETAILS_NOTIFICATION: [
+      // events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+      // events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
+      events.CHANGE_SOLICITOR_EMAIL
+    ],
+    AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
+      events.CHANGE_SOLICITOR_EMAIL
+    ],
+    PROCEEDS_IN_HERITAGE_SYSTEM: [],
+    AWAITING_APPLICANT_INTENTION: [
+      events.CLAIMANT_RESPONSE,
+      events.CHANGE_SOLICITOR_EMAIL
+    ],
+    PENDING_CASE_ISSUED: [
+      events.RESUBMIT_CLAIM,
+      // events.NOTIFY_DEFENDANT_OF_CLAIM,
+      events.CREATE_SDO,
+      events.CHANGE_SOLICITOR_EMAIL
+    ]
+  },
+  defendant_solicitor: {
+    AWAITING_CASE_DETAILS_NOTIFICATION: [],
+    AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
+      events.ACKNOWLEDGE_CLAIM,
+      events.DEFENDANT_RESPONSE,
+      events.INFORM_AGREED_EXTENSION_DATE,
+      events.ADD_DEFENDANT_LITIGATION_FRIEND,
+      events.CHANGE_SOLICITOR_EMAIL
+    ],
+    PROCEEDS_IN_HERITAGE_SYSTEM: [],
+    AWAITING_APPLICANT_INTENTION: [
+      events.ADD_DEFENDANT_LITIGATION_FRIEND,
+      events.CHANGE_SOLICITOR_EMAIL
+    ],
+  },
+  admin: {
+    CASE_ISSUED: [
+      // events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE,
+      events.AMEND_PARTY_DETAILS,
+      events.ADD_CASE_NOTE
+    ],
+    AWAITING_CASE_DETAILS_NOTIFICATION: [
+      // events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE,
+      events.AMEND_PARTY_DETAILS,
+      events.ADD_CASE_NOTE
+    ],
+    AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
+      // events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE,
+      events.AMEND_PARTY_DETAILS,
+      events.ADD_CASE_NOTE
+    ],
+    PROCEEDS_IN_HERITAGE_SYSTEM: [
+      events.AMEND_PARTY_DETAILS
+    ],
+    AWAITING_APPLICANT_INTENTION: [
+      // events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE,
+      events.AMEND_PARTY_DETAILS,
+      events.ADD_CASE_NOTE
+    ],
+    PENDING_CASE_ISSUED: [
+      events.AMEND_PARTY_DETAILS
+    ]
+  },
+};

@@ -94,5 +94,17 @@ module.exports = {
     id: 'INITIATE_GENERAL_APPLICATION',
     name: 'Make an application',
     order: 17
+  },
+  CREATE_SDO: {
+    description: 'Standard Direction Order',
+    id: 'CREATE_SDO',
+    name: 'Standard Direction Order',
+    order: 17
+  },
+  CREATE_GENERAL_APPLICATION_CASE: {
+    description: 'Create general application',
+    id: 'CREATE_GENERAL_APPLICATION_CASE',
+    name: 'Create general application',
+    order: null
   }
 };

@@ -21,6 +21,7 @@ module.exports =  {
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;
+
           if (response.incidentMessage) {
             incidentMessage = response.incidentMessage;
           } else if (businessProcess && businessProcess.status !== 'FINISHED') {
