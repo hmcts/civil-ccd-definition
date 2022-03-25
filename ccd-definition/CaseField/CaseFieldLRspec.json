@@ -496,6 +496,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimant1ClaimResponseTypeForSpecLabel",
+    "Label": "## Claimant: ${applicant1.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant2ClaimResponseTypeForSpecLabel",
+    "Label": "## Claimant: ${applicant2.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant1ClaimResponseTypeForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimant2ClaimResponseTypeForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponsePaymentAdmissionForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
