@@ -931,7 +931,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND responseClaimTrack=\"FAST_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND responseClaimTrack=\"FAST_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags!=\"FULL_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
