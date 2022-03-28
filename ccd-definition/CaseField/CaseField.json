@@ -352,6 +352,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelVulnerabilityQuestions",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelFileDirectionsQuestionnaire",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -404,6 +411,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelVulnerabilityQuestions1",
+    "Label": "**${applicant1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -582,10 +596,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQVulnerabilityQuestions",
+    "Label": "Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2DQVulnerabilityQuestions",
+  "Label": "Vulnerability Questions",
+  "FieldType": "VulnerabilityQuestions",
+  "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -764,6 +792,13 @@
     "ID": "applicant1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQVulnerabilityQuestions",
+    "Label": "Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
     "SecurityClassification": "Public"
   },
   {
@@ -1478,6 +1513,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelVulnerabilityQuestions",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1493,6 +1535,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelVulnerabilityQuestions2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1794,6 +1843,13 @@
     "ID": "applicant2DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQVulnerabilityQuestions",
+    "Label": "Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
     "SecurityClassification": "Public"
   },
   {

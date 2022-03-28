@@ -265,6 +265,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -422,6 +434,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFileDirectionsQuestionnaire",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
@@ -885,6 +903,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant2DQFileDirectionsQuestionnaire",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2DQVulnerabilityQuestions",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
