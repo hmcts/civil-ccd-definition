@@ -22,7 +22,7 @@ let caseNumber;
 
 Feature('Multi Party Claim creation 2v1 @e2e-tests-spec');
 
-Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({I}) => {
+Scenario.skip('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({I}) => {
   console.log('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims');
   await I.login(config.applicantSolicitorUser);
   await I.createCaseSpec2v1('organisation', 'organisation', 'company', null, false, 18000);
@@ -31,7 +31,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
 
 }).retry(3);
 
-Scenario('Defendant solicitor acknowledges claim-spec', async ({I}) => {
+Scenario.skip('Defendant solicitor acknowledges claim-spec', async ({I}) => {
   console.log(' Defendant solicitor acknowledges claim-spec: ' + caseId());
   await assignCaseToDefendant(caseId());
   await I.login(config.defendantSolicitorUser);
