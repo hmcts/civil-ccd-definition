@@ -3061,13 +3061,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1PickByTimeExtensionScheduler",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2PickByTimeExtensionScheduler",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
