@@ -119,9 +119,42 @@ const CONFIRMATION_MESSAGE = {
 
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
-
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
+const firstClaimantSteps = (claimant1) => [
+  () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
+];
+const secondClaimantSteps = (claimant2) => [
+  () => addAnotherClaimant.enterAddAnotherClaimant(claimant2),
+
+  ...conditionalSteps(claimant2, [
+    () => party.enterParty(parties.APPLICANT_SOLICITOR_2, address),
+    ]),
+
+  () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
+  () => claimantSolicitorOrganisationLRspec.enterOrganisationDetails(),
+  () => specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress),
+  () => party.enterParty('respondent1', address),
+];
+
+
+const firstDefendantSteps = (respondent1) => [
+  () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
+  () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
+  () => specDefendantSolicitorEmailPage.enterSolicitorEmail(),
+  () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
+
+
+];
+const secondDefendantSteps = (respondent2, respondent1Represented, sameLegalRepresentative) => [
+
+  ...conditionalSteps(respondent2, [
+        () =>  party.enterParty('respondent2', address),
+        () =>  respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
+        () =>  respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
+
+   ]),
+];
 
 module.exports = function () {
   return actor({
@@ -286,149 +319,45 @@ module.exports = function () {
       }
     },
 
-    async createCaseSpec2v1(claimant1, claimant2,  respondent1, respondent2, litigantInPerson = false, claimAmount) {
-      this.click('Create case');
-      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-      await this.clickContinue();
-      await this.clickContinue();
-      await solicitorReferencesPage.enterReferences();
-      await specPartyDetails.enterDetails('applicant1', address, claimant1);
-      await addAnotherClaimant.enterAddAnotherClaimant(claimant2);
-      await party.enterParty(parties.APPLICANT_SOLICITOR_2, address),
-      await claimantSolicitorIdamDetailsPage.enterUserEmail();
-      await claimantSolicitorOrganisationLRspec.enterOrganisationDetails();
-      await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
-      await party.enterParty('respondent1', address);
+     async createCaseSpecified(claimant1, claimant2,  respondent1, respondent2, shouldStayOnline = true , claimAmount) {
+         eventName = 'Create claim - Specified';
 
-      if (litigantInPerson) {
-         await specRespondentRepresentedPage.enterRespondentRepresented('no');
-      } else {
-        await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1');
-        await specDefendantSolicitorEmailPage.enterSolicitorEmail();
+         const twoVOneScenario = claimant1 && claimant2;
+         await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
+         await this.triggerStepsWithScreenshot([
+            () => this.clickContinue(),
+            () => this.clickContinue(),
+            () => solicitorReferencesPage.enterReferences(),
+            ...firstClaimantSteps(),
+            ...secondClaimantSteps(claimant2),
+            ...firstDefendantSteps(respondent1),
+            ...conditionalSteps(claimant2 == null, [
+             () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+              ]),
+              ...secondDefendantSteps(respondent2, respondent1.represented, true),
 
-      }
+                 () => detailsOfClaimPage.enterDetailsOfClaim(),
+                 () => specTimelinePage.addManually(),
+                 () => specAddTimelinePage.addTimeline(),
+                 () => specListEvidencePage.addEvidence(),
+                 () => specClaimAmountPage.addClaimItem(claimAmount),
+                 () => this.clickContinue(),
+                 () => specInterestPage.addInterest(),
+                 () => specInterestValuePage.selectInterest(),
+                 () => specInterestRatePage.selectInterestRate(),
+                 () => specInterestDateStartPage.selectInterestDateStart(),
+                 () => specInterestDateEndPage.selectInterestDateEnd(),
+                 () => this.clickContinue(),
+                 () => pbaNumberPage.selectPbaNumber(),
+                 () => paymentReferencePage.updatePaymentReference(),
+                 () => statementOfTruth.enterNameAndRole('claim'),
+                 () => event.submit('Submit',
+                 shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+                 () => event.returnToCaseDetails(),
+           ]);
 
-      await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
-      await detailsOfClaimPage.enterDetailsOfClaim();
-      await specTimelinePage.addManually();
-      await specAddTimelinePage.addTimeline();
-      await specListEvidencePage.addEvidence();
-      await specClaimAmountPage.addClaimItem(claimAmount);
-      await this.clickContinue();
-      await specInterestPage.addInterest();
-      await specInterestValuePage.selectInterest();
-      await specInterestRatePage.selectInterestRate();
-      await specInterestDateStartPage.selectInterestDateStart();
-      await specInterestDateEndPage.selectInterestDateEnd();
-      await this.clickContinue();
-      await pbaNumberPage.selectPbaNumber();
-      await paymentReferencePage.updatePaymentReference();
-      await statementOfTruth.enterNameAndRole('claim');
-      let expectedMessage = litigantInPerson ?
-        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-      await event.submit('Submit', expectedMessage);
-      await event.returnToCaseDetails();
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-    },
-
-   async createCaseSpec1v2(claimant1, claimant2,  respondent1, respondent2, litigantInPerson = false, sameLegalRepresentative, claimAmount) {
-      this.click('Create case');
-      this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-      await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-      await this.clickContinue();
-      await this.clickContinue();
-      await solicitorReferencesPage.enterReferences();
-      await specPartyDetails.enterDetails('applicant1', address, claimant1);
-      await addAnotherClaimant.enterAddAnotherClaimant(claimant2);
-      await claimantSolicitorIdamDetailsPage.enterUserEmail();
-      await claimantSolicitorOrganisationLRspec.enterOrganisationDetails();
-      await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
-      await specPartyDetails.enterDetails('respondent1', address, respondent1);
-
-      if (litigantInPerson) {
-         await specRespondentRepresentedPage.enterRespondentRepresented('no');
-      } else {
-        await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-        await defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1');
-        await specDefendantSolicitorEmailPage.enterSolicitorEmail();
-      }
-
-      await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
-      await addAnotherDefendant.enterAddAnotherDefendant(respondent2);
-      await party.enterParty('respondent2', address);
-      await respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(sameLegalRepresentative);
-      await respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(sameLegalRepresentative);
-
-      await detailsOfClaimPage.enterDetailsOfClaim();
-      await specTimelinePage.addManually();
-      await specAddTimelinePage.addTimeline();
-      await specListEvidencePage.addEvidence();
-      await specClaimAmountPage.addClaimItem(claimAmount);
-      await this.clickContinue();
-      await specInterestPage.addInterest();
-      await specInterestValuePage.selectInterest();
-      await specInterestRatePage.selectInterestRate();
-      await specInterestDateStartPage.selectInterestDateStart();
-      await specInterestDateEndPage.selectInterestDateEnd();
-      await this.clickContinue();
-      await pbaNumberPage.selectPbaNumber();
-      await paymentReferencePage.updatePaymentReference();
-      await statementOfTruth.enterNameAndRole('claim');
-      let expectedMessage = litigantInPerson ?
-        'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-      await event.submit('Submit', expectedMessage);
-      await event.returnToCaseDetails();
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-    },
-
-     async createCaseSpec1v1(claimant1, claimant2,  respondent1, respondent2, litigantInPerson = false, sameLegalRepresentative, claimAmount) {
-              this.click('Create case');
-              this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
-              await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-              await this.clickContinue();
-              await this.clickContinue();
-              await solicitorReferencesPage.enterReferences();
-              await specPartyDetails.enterDetails('applicant1', address, claimant1);
-              await addAnotherClaimant.enterAddAnotherClaimant(claimant2);
-              await claimantSolicitorIdamDetailsPage.enterUserEmail();
-              await claimantSolicitorOrganisationLRspec.enterOrganisationDetails();
-              await specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress);
-              await specPartyDetails.enterDetails('respondent1', address, respondent1);
-
-              if (litigantInPerson) {
-                 await specRespondentRepresentedPage.enterRespondentRepresented('no');
-              } else {
-                await specRespondentRepresentedPage.enterRespondentRepresented('yes');
-                await defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1');
-                await specDefendantSolicitorEmailPage.enterSolicitorEmail();
-              }
-
-              await specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress);
-              await addAnotherDefendant.enterAddAnotherDefendant(respondent2);
-
-              await detailsOfClaimPage.enterDetailsOfClaim();
-              await specTimelinePage.addManually();
-              await specAddTimelinePage.addTimeline();
-              await specListEvidencePage.addEvidence();
-              await specClaimAmountPage.addClaimItem(claimAmount);
-              await this.clickContinue();
-              await specInterestPage.addInterest();
-              await specInterestValuePage.selectInterest();
-              await specInterestRatePage.selectInterestRate();
-              await specInterestDateStartPage.selectInterestDateStart();
-              await specInterestDateEndPage.selectInterestDateEnd();
-              await this.clickContinue();
-              await pbaNumberPage.selectPbaNumber();
-              await paymentReferencePage.updatePaymentReference();
-              await statementOfTruth.enterNameAndRole('claim');
-              let expectedMessage = litigantInPerson ?
-                'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
-              await event.submit('Submit', expectedMessage);
-              await event.returnToCaseDetails();
-              caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-        },
+         caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+  },
 
     async respondToClaimSpecPartAdmit1(claimType,responseType,hasPaid,paymentType) {
                  eventName = 'Respond to claim';
@@ -485,6 +414,74 @@ module.exports = function () {
 
                  ]);
       },
+
+     async respondToClaimSpec(responseType,defenceType,paidAmount) {
+          eventName = 'Respond to claim';
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => respondentCheckListPage.claimTimelineTemplate(),
+            () => specConfirmDefendantsDetails.confirmDetails(),
+            () => specConfirmLegalRepDetails.confirmDetails(),
+            () => responseTypeSpecPage.selectResponseType(responseType),
+            ... conditionalSteps(responseType === 'fullDefence', [
+              () => defenceTypePage.selectDefenceType(defenceType,paidAmount)
+            ]),
+            ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 1000, [
+              () => freeMediationPage.selectMediation('yes'),
+              () => useExpertPage.claimExpert('no'),
+              () => enterWitnessesPage.howManyWitnesses(),
+              () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+              () => smallClaimsHearingPage.selectHearing('no'),
+              () => chooseCourtSpecPage.chooseCourt('yes'),
+            ]),
+            ... conditionalSteps(paidAmount < 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'), [
+              () => disputeClaimDetailsPage.enterReasons(),
+              () => claimResponseTimelineLRspecPage.addManually(),
+              () => this.clickContinue(),
+              () => freeMediationPage.selectMediation('yes'),
+              () => useExpertPage.claimExpert('no'),
+              () => enterWitnessesPage.howManyWitnesses(),
+              () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+              () => smallClaimsHearingPage.selectHearing('no'),
+              () => chooseCourtSpecPage.chooseCourt('yes'),
+            ]),
+            ... conditionalSteps(defenceType === 'hasPaid' && paidAmount === 15000, [
+              () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+              () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+              () => this.clickContinue(),
+              () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+              () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+              () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+              () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+              () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+              () => chooseCourtSpecPage.chooseCourt('yes'),
+            ]),
+            ... conditionalSteps(paidAmount === 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+              () => disputeClaimDetailsPage.enterReasons(),
+              () => claimResponseTimelineLRspecPage.addManually(),
+              () => this.clickContinue(),
+              () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+              () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+              () => this.clickContinue(),
+              () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+              () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+              () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+              () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+              () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+              () => chooseCourtSpecPage.chooseCourt('yes'),
+            ]),
+            () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+            ... conditionalSteps(paidAmount <= 1000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+              () => furtherInformationPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+            ]),
+            ... conditionalSteps(paidAmount >= 10000 && (defenceType === 'dispute' || defenceType === 'hasPaid'),  [
+              () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+            ]),
+            () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails()
+          ]);
+        },
 
      async respondToClaimSpecFullAdmit1(claimType,responseType,hasPaid,paymentType) {
               eventName = 'Respond to claim';

@@ -19,11 +19,16 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('Multi Party Claim creation 1v2 @e2e-tests-spec');
+Feature('Claim creation 1v1 @e2e-tests-spec');
 
-Scenario.skip('Fast Track claim -> Defendant solicitor responds to claim amount £ 15000) -> Defends all of the claim -> hasPaid  10000 less than claimed amount ', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.respondToClaimSpecPartAdmit1('fast','partAdmission','no','immediately');
-  await I.see(caseEventMessage('Respond to claim'));
+Scenario('Applicant solicitor creates 1v1 specified claim both defendants same LR for small claims @create-claim-spec', async ({I}) => {
+  console.log('Applicant solicitor creates 1v1 specified claim both defendants Same LR for small claims @create-claim-spec');
+  await I.login(config.applicantSolicitorUser);
+  await I.createCaseSpecified('organisation', null , 'company', null  ,false, 1500);
+  caseNumber = await I.grabCaseNumber();
+  await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
+
+
+
 
