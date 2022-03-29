@@ -812,4 +812,4 @@ const clearSystemUpdateFields = (responseBody) => {
   //Clear data only available to systemupdate user
   delete responseBody.data['respondent1PickByTimeExtensionScheduler'];
   delete responseBody.data['respondent2PickByTimeExtensionScheduler'];
-}
+};
