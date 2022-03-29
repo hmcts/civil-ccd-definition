@@ -28,7 +28,6 @@ const data = {
   ACKNOWLEDGE_CLAIM_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor1.js'),
   ACKNOWLEDGE_CLAIM_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor2.js'),
   INFORM_AGREED_EXTENSION_DATE: require('../fixtures/events/informAgreeExtensionDate.js'),
-  INFORM_AGREED_EXTENSION_DATE_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor1.js'),
   INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
   DEFENDANT_RESPONSE_SAME_SOLICITOR:  require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
@@ -56,7 +55,7 @@ const eventData = {
     ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
     ONE_V_TWO_ONE_LEGAL_REP: data.INFORM_AGREED_EXTENSION_DATE,
     ONE_V_TWO_TWO_LEGAL_REP: {
-      solicitorOne: data.INFORM_AGREED_EXTENSION_DATE_SOLICITOR_ONE,
+      solicitorOne: data.INFORM_AGREED_EXTENSION_DATE,
       solicitorTwo: data.INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO
     },
     TWO_V_ONE: data.INFORM_AGREED_EXTENSION_DATE
