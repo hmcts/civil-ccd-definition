@@ -526,6 +526,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1PickByTimeExtensionScheduler",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PickByTimeExtensionScheduler",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocument",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",

@@ -3060,6 +3060,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1PickByTimeExtensionScheduler",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2PickByTimeExtensionScheduler",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isRespondent2",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"
