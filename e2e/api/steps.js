@@ -597,6 +597,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
   let responseBody = await response.json();
+  clearSystemUpdateFields(responseBody);
 
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
@@ -805,3 +806,11 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
+
+const clearSystemUpdateFields = (responseBody) => {
+  //Clear data only available to systemupdate user
+  delete responseBody.data['respondent1PickByTimeExtensionScheduler'];
+  delete responseBody.data['respondent2PickByTimeExtensionScheduler'];
+  delete responseBody.data['respondent1AcknowledgeClaimPickByScheduler'];
+  delete responseBody.data['respondent2AcknowledgeClaimPickByScheduler'];
+}

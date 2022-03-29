@@ -881,7 +881,6 @@
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant2DQFileDirectionsQuestionnaire",
@@ -969,6 +968,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant2ResponseDate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1AcknowledgeClaimPickByScheduler",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2AcknowledgeClaimPickByScheduler",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

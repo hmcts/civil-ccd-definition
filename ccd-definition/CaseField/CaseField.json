@@ -1952,5 +1952,21 @@
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1AcknowledgeClaimPickByScheduler",
+    "FieldType": "YesOrNo",
+    "Label": "Respondent 1 Acknowledge Claim Pick By Scheduler",
+    "_Comments": "Flag for acknowledge claim scheduler",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2AcknowledgeClaimPickByScheduler",
+    "FieldType": "YesOrNo",
+    "Label": "Respondent 2 Acknowledge Claim Pick By Scheduler",
+    "_Comments": "Flag for acknowledge claim scheduler",
+    "SecurityClassification": "Public"
   }
 ]
