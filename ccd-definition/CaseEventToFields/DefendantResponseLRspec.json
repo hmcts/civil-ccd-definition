@@ -205,9 +205,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseHandOffLabel",
+    "CaseFieldID": "responseCounterClaimLabel",
     "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\"",
@@ -218,7 +218,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
     "PageID": "RespondentResponseTypeSpec",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
@@ -229,7 +229,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "claimType",
     "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "RespondentResponseTypeSpec",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
@@ -241,7 +241,7 @@
     "CaseFieldID": "responseClaimTrack",
     "PageLabel": "Confirm defendant details",
     "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\" OR respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
     "PageID": "RespondentResponseTypeSpec",
@@ -447,7 +447,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND responseClaimTrack= \"SMALL_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND responseClaimTrack= \"SMALL_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -481,7 +481,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -492,7 +492,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocumentsLRspec",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -503,7 +503,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -514,7 +514,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -526,7 +526,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y"
   },
@@ -538,7 +538,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimExperts",
-    "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -573,7 +573,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": "",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "CallBackURLMidEvent": "",
     "ShowSummaryChangeOption": "Y"
   },
@@ -599,7 +599,7 @@
   "PageFieldDisplayOrder": 1,
   "DisplayContext": "MANDATORY",
   "PageID": "SmallClaimWitnesses",
-  "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+  "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
   "ShowSummaryChangeOption": "Y"
   },
   {
@@ -610,7 +610,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Language",
-    "PageShowCondition": "responseClaimTrack!= \"MULTI_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack!= \"MULTI_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "_Comments": "Mixing AND and OR conditions still doesn't work as it should, that's why track is != MULTI instead of (t = FAST OR t = SMALL)"
   },
@@ -623,7 +623,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
@@ -663,7 +663,7 @@
     "DisplayContext": "READONLY",
     "PageID": "HearingLRspec",
     "CaseEventFieldLabel": " ",
-    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack= \"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "",
     "RetriesTimeoutURLMidEvent": 0
@@ -686,7 +686,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimCourtLocationLabel",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -736,7 +736,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "responseClaimTrack=\"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack=\"FAST_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -784,6 +784,7 @@
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
