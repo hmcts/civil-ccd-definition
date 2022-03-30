@@ -92,6 +92,7 @@
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
