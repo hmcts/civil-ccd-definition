@@ -20,18 +20,8 @@
     "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
-    "CaseFieldID": "detailsOfDirectionDisposal",
-    "TabFieldDisplayOrder": 3,
-    "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgment",
-    "TabLabel": "Judgment",
-    "TabDisplayOrder": 9,
-    "CaseFieldID": "detailsOfDirectionTrial",
-    "TabFieldDisplayOrder": 3,
-    "FieldShowCondition": "hearingSelection=\"TRIAL_HEARING\""
+    "CaseFieldID": "detailsOfDirection",
+    "TabFieldDisplayOrder": 3
   },
   {
     "CaseTypeID": "CIVIL",
