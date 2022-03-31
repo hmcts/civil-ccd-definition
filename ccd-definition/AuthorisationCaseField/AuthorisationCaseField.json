@@ -3840,7 +3840,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "CRUD"
       }

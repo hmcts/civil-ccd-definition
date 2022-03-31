@@ -556,7 +556,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAmountClaimedLabel2v1",
+    "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
+    "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimedLabel2V1",
     "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1192,6 +1206,13 @@
     "ID": "respondent1GeneratedResponseDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimSpec2v1",
+    "Label": "Do the claimants want to proceed with the claim?",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
 ]
