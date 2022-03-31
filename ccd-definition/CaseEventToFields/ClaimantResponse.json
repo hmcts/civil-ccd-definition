@@ -562,6 +562,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "VulnerabilityQuestions",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQFurtherInformation",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 1,

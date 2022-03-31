@@ -124,6 +124,7 @@
     "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Vulnerability Questions",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "PageID": "VulnerabilityQuestions",
     "ShowSummaryChangeOption": "Y"
@@ -148,6 +149,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "VulnerabilityQuestions",
+    "CaseEventFieldLabel": "Vulnerability Questions",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
@@ -163,6 +165,16 @@
     "PageID": "VulnerabilityQuestions",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "VulnerabilityQuestions",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "solicitorReferences",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
