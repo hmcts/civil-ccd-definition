@@ -47,7 +47,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "allocatedTrack",
+    "CaseFieldID": "responseClaimTrack",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
