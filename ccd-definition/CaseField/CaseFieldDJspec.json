@@ -79,7 +79,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "paymentTypeSelection",
-    "Label": " ",
+    "Label": "Payment type",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",
     "SecurityClassification": "Public"
