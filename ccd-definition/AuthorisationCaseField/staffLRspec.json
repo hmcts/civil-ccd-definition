@@ -154,5 +154,11 @@
     "CaseFieldID": "specDefenceFullAdmittedRequired",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -632,12 +632,12 @@
     "SecurityClassification": "Public"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "specDefenceRouteUploadDocumentLabel3",
-  "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
-  "FieldType": "Label",
-  "SecurityClassification": "Public"
-},
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel3",
+    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1SpecDefenceResponseDocument",
@@ -903,7 +903,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
     "Label": "Employed or self-employed?",
-    "HintText":"Select both if your client is employed and self-employed",
+    "HintText": "Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
     "SecurityClassification": "Public"
@@ -1185,6 +1185,13 @@
     "ID": "specDisputesOrPartAdmission",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1GeneratedResponseDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]
