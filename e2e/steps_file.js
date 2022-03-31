@@ -369,13 +369,13 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence() {
+    async respondToDefence(mpScenario) {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => proceedPage.proceedWithClaim(),
-        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),

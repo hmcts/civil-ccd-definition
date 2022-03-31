@@ -10,6 +10,7 @@
     "CaseEventID": "GENERATE_DJ_FORM_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+
   },
   {
     "CaseTypeID": "CIVIL",
