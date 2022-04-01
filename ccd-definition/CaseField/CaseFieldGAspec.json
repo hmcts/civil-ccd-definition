@@ -149,6 +149,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "generalAppApplnSolictor",
+    "Label": "Applicant Solicitor Details",
+    "FieldType": "GAApplnSolGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds applicant's Solicitor details.",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",

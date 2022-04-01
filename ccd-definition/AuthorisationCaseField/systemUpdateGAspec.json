@@ -25,6 +25,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplnSolictor",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
