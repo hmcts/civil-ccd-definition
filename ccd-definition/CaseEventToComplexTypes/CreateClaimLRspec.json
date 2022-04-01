@@ -906,7 +906,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
-    "DefaultValue": "[RESPONDENTSOLICITORTWO]",
+    "DefaultValue": "[RESPONDENTSOLICITORTWOSPEC]",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",

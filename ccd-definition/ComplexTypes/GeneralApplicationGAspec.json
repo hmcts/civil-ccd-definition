@@ -67,7 +67,7 @@
     "ListElementCode": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
-    "ElementLabel": " ",
+    "ElementLabel": "Upload evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public"
   },
