@@ -2857,7 +2857,9 @@
         "UserRoles": [
           "[CREATOR]",
           "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
