@@ -3,7 +3,7 @@ const {I} = inject();
 module.exports = {
   fields: {
     selectIncomeExpensesType: {
-      id: '#respondent1DQCarerAllowanceCreditFullAdmission_radio',
+      id: '#respondent1DQCarerAllowanceCredit_radio',
       options: {
         yes: 'Yes',
         no: 'No'

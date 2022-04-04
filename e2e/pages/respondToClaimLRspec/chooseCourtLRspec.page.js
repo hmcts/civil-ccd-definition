@@ -11,6 +11,7 @@ module.exports = {
           }
     },
     courtCode: '#respondToCourtLocation_responseCourtCode',
+    reason: '#respondToCourtLocation_responseCourtCode',
   },
 
   async chooseCourt(responseType) {
@@ -23,6 +24,8 @@ module.exports = {
     I.waitForElement(this.fields.courtCode);
     await I.runAccessibilityTest();
     I.fillField(this.fields.courtCode, '344');
+    I.fillField(this.fields.reason, 'nearest court');
+
     await I.clickContinue();
   }
 };

@@ -11,19 +11,23 @@ module.exports = {
 
       },
     },
+    dayOfPayment: '#whenWillThisAmountBePaid-day',
+    monthOfPayment: '#whenWillThisAmountBePaid-month',
+    yearOfPayment: '#whenWillThisAmountBePaid-year',
   },
 
-  async selectPaymentRoute(paymentType) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (!this.fields.partAdmitType.options.hasOwnProperty('paymentType')) {
-      throw new Error(`Response type: ${paymentType} does not exist`);
+ async selectPaymentRoute(partAdmitType) {
+   I.waitForElement(this.fields.partAdmitType.id);
+   await I.runAccessibilityTest();
+   await within(this.fields.partAdmitType.id, () => {
+   I.click(this.fields.partAdmitType.options[partAdmitType]);
+   });
+   if ('setDate' === partAdmitType) {
+         await I.fillField(this.fields.dayOfPayment, 1);
+         await I.fillField(this.fields.monthOfPayment, 3);
+         await I.fillField(this.fields.yearOfPayment, 2023);
     }
-    I.waitForElement(this.fields.partAdmitType.id);
-    await I.runAccessibilityTest();
-    await within(this.fields.partAdmitType.id, () => {
-    I.click(this.fields.partAdmitType.options[hasPaid]);
-    });
 
-    await I.clickContinue();
+   await I.clickContinue();
   }
 };

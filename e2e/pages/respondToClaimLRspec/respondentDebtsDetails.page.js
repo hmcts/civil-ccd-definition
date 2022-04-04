@@ -3,7 +3,7 @@ const {I} = inject();
 module.exports = {
   fields: {
     debtsType: {
-      id: '#respondent1CourtOrderPayment_payingDetailsRequired_radio',
+      id: '#specDefendant1Debts_hasLoanCardDebt_radio',
       options: {
         yes: 'Yes',
         no: 'No'
