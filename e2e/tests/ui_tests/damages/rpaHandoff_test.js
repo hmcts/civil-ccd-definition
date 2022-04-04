@@ -1,5 +1,5 @@
-const config = require('../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const config = require('../../../config.js');
+const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../../api/testingSupport');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
