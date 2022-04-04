@@ -79,6 +79,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppRespondentSolictor",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppEvidenceDocument",
     "AccessControl": [
       {
