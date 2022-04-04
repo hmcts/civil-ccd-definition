@@ -21,7 +21,7 @@ let caseNumber;
 
 Feature('Claim creation 1v1 @e2e-tests-spec');
 
-Scenario('1v1 Applicant solicitor creates specified claim for small claims @create-claim-spec', async ({I}) => {
+Scenario.skip('1v1 Applicant solicitor creates specified claim for small claims @create-claim-spec', async ({I}) => {
   console.log('1v1 Applicant solicitor creates specified claim for small claims  @create-claim-spec');
   await I.login(config.applicantSolicitorUser);
   await I.createCaseSpecified('organisation', null , 'company', null  ,false, 19000);
