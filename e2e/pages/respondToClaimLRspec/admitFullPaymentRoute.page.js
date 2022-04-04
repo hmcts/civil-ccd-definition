@@ -15,13 +15,13 @@ module.exports = {
 
   async selectPaymentRoute(paymentType) {
     // eslint-disable-next-line no-prototype-builtins
-    if (!this.fields.partAdmitType.options.hasOwnProperty('paymentType')) {
+    if (!this.fields.fullAdmitType.options.hasOwnProperty('paymentType')) {
       throw new Error(`Response type: ${paymentType} does not exist`);
     }
-    I.waitForElement(this.fields.partAdmitType.id);
+    I.waitForElement(this.fields.fullAdmitType.id);
     await I.runAccessibilityTest();
-    await within(this.fields.partAdmitType.id, () => {
-    I.click(this.fields.partAdmitType.options[hasPaid]);
+    await within(this.fields.fullAdmitType.id, () => {
+    I.click(this.fields.fullAdmitType.options[hasPaid]);
     });
 
     await I.clickContinue();

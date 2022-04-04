@@ -363,17 +363,16 @@ module.exports = function () {
      },
 
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'dispute'}) {
+    async respondToClaimFullDefence({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'fullDefence', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'dispute'}) {
          eventName = 'Respond to claim';
-
-          console.log(defenceType);
           await this.triggerStepsWithScreenshot([
-           () => caseViewPage.startEvent(eventName, 1648830849541582),
-           ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+           () => caseViewPage.startEvent(eventName, caseId),
                     () => respondentCheckListPage.claimTimelineTemplate(),
                     () => specConfirmDefendantsDetails.confirmDetails(),
                     () => specConfirmLegalRepDetails.confirmDetails(),
-                    () => this.clickContinue(),
+                    ... conditionalSteps(twoDefendants, [
+                        () => this.clickContinue(),
+                    ]),
                     () => responseTypeSpecPage.selectResponseType(defendant1Response),
                     () => defenceTypePage.selectDefenceType(defenceType,150),
                     () => disputeClaimDetailsPage.enterReasons(),
@@ -390,10 +389,9 @@ module.exports = function () {
                     () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
 
                     () => chooseCourtSpecPage.chooseCourt('yes'),
-                    () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
-                    () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-                    () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-           ]),
+            () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+            () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+            () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
            //() => event.submit('Submit', ''),
            () => event.returnToCaseDetails()
          ]);
@@ -401,18 +399,15 @@ module.exports = function () {
     },
 
 
-    async respondToClaimPartAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'repaymentPlan'}) {
-             eventName = 'Respond to claim';
-
-              console.log(defenceType);
-              console.log(defendant1Response);
+    async respondToClaimPartAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'partAdmission', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'repaymentPlan'}) {
+             eventName = 'Respond to claim'
               await this.triggerStepsWithScreenshot([
-               () => caseViewPage.startEvent(eventName, 1648830849541582),
+               () => caseViewPage.startEvent(eventName, caseId),
                () => respondentCheckListPage.claimTimelineTemplate(),
                () => specConfirmDefendantsDetails.confirmDetails(),
                () => specConfirmLegalRepDetails.confirmDetails(),
                () => this.clickContinue(),
-               () => responseTypeSpecPage.selectResponseType('partAdmission'),
+               () => responseTypeSpecPage.selectResponseType(defendant1Response),
                () => partAdmittedAmountPage.selectFullAdmitType('no'),
                () => disputeClaimDetailsPage.enterReasons(),
                () => claimResponseTimelineLRspecPage.addManually(),
@@ -457,30 +452,29 @@ module.exports = function () {
 
      },
 
-     async respondToClaimFullAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'setDate'}) {
-             eventName = 'Respond to claim';
-
-              console.log(defenceType);
-              console.log(defendant1Response);
+     async respondToClaimFullAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'fullAdmission', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'setDate'}) {
+              eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
-               () => caseViewPage.startEvent(eventName, 1648830849541582),
-                         () => respondentCheckListPage.claimTimelineTemplate(),
-                         () => specConfirmDefendantsDetails.confirmDetails(),
-                         () => specConfirmLegalRepDetails.confirmDetails(),
-                         () => this.clickContinue(),
-                         () => responseTypeSpecPage.selectResponseType('fullAdmission'),
-                         () => fullAdmitTypeLRspecPage.selectFullAdmitType('no'),
-                         () => admitPartPaymentRoutePage.selectPaymentRoute('setDate'),
-                         () => this.clickContinue(),
-                         () => this.clickContinue(),
-                         () => respondentHomeDetailsLRspecPage.selectRespondentHomeType(),
-                         () => respondentEmploymentTypePage.selectRespondentEmploymentType(),
-                         () => respondentCourtOrderTypePage.selectRespondentCourtOrderType(),
-                         () => respondentDebtsDetailsPage.selectDebtsDetails(),
-                         () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
-                         () => respondentPage.enterReasons(),
-                         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-                         //() => event.submit('Submit', ''),
+               () => caseViewPage.startEvent(eventName, caseId),
+               () => respondentCheckListPage.claimTimelineTemplate(),
+               () => specConfirmDefendantsDetails.confirmDetails(),
+               () => specConfirmLegalRepDetails.confirmDetails(),
+               ... conditionalSteps(twoDefendants, [
+                 () => this.clickContinue(),
+               ]),
+               () => responseTypeSpecPage.selectResponseType(defendant1Response),
+               () => fullAdmitTypeLRspecPage.selectFullAdmitType('no'),
+               () => admitPartPaymentRoutePage.selectPaymentRoute('setDate'),
+               () => this.clickContinue(),
+               () => this.clickContinue(),
+               () => respondentHomeDetailsLRspecPage.selectRespondentHomeType(),
+               () => respondentEmploymentTypePage.selectRespondentEmploymentType(),
+               () => respondentCourtOrderTypePage.selectRespondentCourtOrderType(),
+               () => respondentDebtsDetailsPage.selectDebtsDetails(),
+               () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
+               () => respondentPage.enterReasons(),
+               () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+                //() => event.submit('Submit', ''),
 
              ]);
 

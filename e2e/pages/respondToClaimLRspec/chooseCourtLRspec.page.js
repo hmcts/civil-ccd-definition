@@ -11,7 +11,7 @@ module.exports = {
           }
     },
     courtCode: '#respondToCourtLocation_responseCourtCode',
-    reason: '#respondToCourtLocation_responseCourtCode',
+    reason: '#respondToCourtLocation_reasonForHearingAtSpecificCourt',
   },
 
   async chooseCourt(responseType) {
