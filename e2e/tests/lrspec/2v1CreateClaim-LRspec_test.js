@@ -1,5 +1,4 @@
 const config = require('../../config.js');
-const {assignCaseToDefendantLRspec} = require('../../api/testingSupport');
 
 const claimant1 = {
   litigantInPerson: false

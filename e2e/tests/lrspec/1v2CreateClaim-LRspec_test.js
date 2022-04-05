@@ -1,5 +1,5 @@
 const config = require('../../config.js');
-const {assignCaseToDefendantLRspec} = require('../../api/testingSupport');
+const {assignCaseToLRSpecDefendant} = require('../../api/testingSupport');
 const claimant1 = {
   litigantInPerson: false
 };
@@ -31,7 +31,7 @@ Scenario('Applicant solicitor creates 1v2 specified claim both defendants same L
 
 Scenario('1v2 Defendant solicitor acknowledges claim-spec', async ({I}) => {
   console.log('1v2 Defendant solicitor acknowledges claim-spec: ' + caseId());
-  await assignCaseToDefendantLRspec(caseId());
+  await assignCaseToLRSpecDefendant(caseId());
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaimSpec();
   await I.see(caseEventMessage('Acknowledgement of Service'));

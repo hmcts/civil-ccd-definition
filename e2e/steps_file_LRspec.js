@@ -14,6 +14,7 @@ const defendantSolicitorOrganisationLRspec = require('./pages/createClaim/defend
 
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
+const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
 const detailsOfClaimPage = require('./pages/createClaim/detailsOfClaim.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
@@ -25,12 +26,10 @@ const respondentDetails = require('./fragments/respondentDetails.page');
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
-const disclosureOfNonElectronicDocumentsPage = require('./fragments/dq/disclosureOfNonElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
 const witnessPage = require('./fragments/dq/witnesses.page');
 
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
-const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 const address = require('./fixtures/address.js');
 const specCreateCasePage = require('./pages/createClaim/createCaseLRspec.page');
@@ -74,7 +73,6 @@ const respondentIncomeExpensesDetailsPage = require('./pages/respondToClaimLRspe
 const respondentCarerAllowanceDetailsPage = require('./pages/respondToClaimLRspec/respondentCarerAllowanceDetails.page');
 const respondentRepaymentPlanPage = require('./pages/respondToClaimLRspec/respondentRepaymentPlan.page');
 const respondentPage = require('./pages/respondToClaimLRspec/respondentWhyNotPay.page');
-const respondentWhyNotPayPage = require('./pages/respondToClaimLRspec/respondentWhyNotPay.page');
 const respondent2SameLegalRepresentativeLRspec = require('./pages/createClaim/respondent2SameLegalRepresentativeLRspec.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -91,7 +89,7 @@ let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
-const firstClaimantSteps = (claimant1) => [
+const firstClaimantSteps = () => [
   () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
 ];
 
@@ -109,7 +107,7 @@ const secondClaimantSteps = (claimant2) => [
 ];
 
 
-const firstDefendantSteps = (respondent1) => [
+const firstDefendantSteps = () => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
   () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail(),
@@ -125,27 +123,6 @@ const secondDefendantSteps = (respondent2, respondent1Represented, sameLegalRepr
         () =>  respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
 
    ]),
-];
-
-const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) =>
-  [() => respondentDetails.verifyDetails(
-    defendant1Response ? parties.RESPONDENT_SOLICITOR_1 : null,
-    defendant2Response ? parties.RESPONDENT_SOLICITOR_2 : null),
-    ...conditionalSteps(twoDefendants, [
-      //() => singleResponse.defendantsHaveSameResponse(sameResponse),
-    ]),
-   // () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
-   // () => confirmDetailsPage.confirmReferences(defendant1Response, defendant2Response, sameResponse),
-
-  ];
-
-
-const smallClaimSteps = () => [
-     () => freeMediationPage.selectMediation('yes'),
-     () => useExpertPage.claimExpert('no'),
-     () => enterWitnessesPage.howManyWitnesses(),
-     () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-     () => smallClaimsHearingPage.selectHearing('no'),
 ];
 
 module.exports = function () {
@@ -323,7 +300,7 @@ module.exports = function () {
             () => solicitorReferencesPage.enterReferences(),
             ...firstClaimantSteps(),
             ...secondClaimantSteps(claimant2),
-            ...firstDefendantSteps(respondent1),
+            ...firstDefendantSteps(),
             ...conditionalSteps(claimant2 == null, [
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
@@ -362,7 +339,7 @@ module.exports = function () {
        ]);
      },
 
-    async respondToClaimFullDefence({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'fullDefence', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'dispute'}) {
+    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', claimType = 'fast', defenceType = 'dispute'}) {
          eventName = 'Respond to claim';
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
@@ -377,7 +354,7 @@ module.exports = function () {
             () => disputeClaimDetailsPage.enterReasons(),
             () => claimResponseTimelineLRspecPage.addManually(),
             () => this.clickContinue(),
-
+         ... conditionalSteps(claimType === 'fast', [
             () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
             () => this.clickContinue(),
@@ -386,6 +363,7 @@ module.exports = function () {
             () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
             () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+           ]),
             () => chooseCourtSpecPage.chooseCourt('yes'),
             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
@@ -396,8 +374,8 @@ module.exports = function () {
 
     },
 
-    async respondToClaimPartAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'partAdmission', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'repaymentPlan'}) {
-             eventName = 'Respond to claim'
+    async respondToClaimPartAdmit({defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan'}) {
+              eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                () => caseViewPage.startEvent(eventName, caseId),
                () => respondentCheckListPage.claimTimelineTemplate(),
@@ -449,7 +427,7 @@ module.exports = function () {
 
      },
 
-     async respondToClaimFullAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'fullAdmission', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'setDate'}) {
+     async respondToClaimFullAdmit({twoDefendants = false,defendant1Response = 'fullAdmission', claimType = 'fast', defenceType = 'setDate'}) {
               eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                () => caseViewPage.startEvent(eventName, caseId),

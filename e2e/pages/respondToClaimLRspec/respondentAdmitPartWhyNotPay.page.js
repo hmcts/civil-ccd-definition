@@ -8,7 +8,7 @@ module.exports = {
   },
 
   async enterReasons() {
-    await I.fillField(this.fields.enterReasons,'low income);
+    await I.fillField(this.fields.enterReasons,'low income');
     await I.clickContinue();
   }
 };
