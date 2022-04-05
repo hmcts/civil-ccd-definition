@@ -77,6 +77,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseCheckList",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
