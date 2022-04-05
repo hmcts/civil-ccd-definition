@@ -358,10 +358,9 @@ module.exports = function () {
          () => caseViewPage.startEvent(eventName, caseId),
          () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
          () => event.submit('Submit', 'Extension deadline submitted'),
-         () => event.returnToCaseDetails()
+         () => event.returnToCaseDetails(),
        ]);
      },
-
 
     async respondToClaimFullDefence({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'fullDefence', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'dispute'}) {
          eventName = 'Respond to claim';
@@ -392,12 +391,11 @@ module.exports = function () {
             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
             () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-           //() => event.submit('Submit', ''),
-           () => event.returnToCaseDetails()
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails(),
          ]);
 
     },
-
 
     async respondToClaimPartAdmit({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response = 'partAdmission', defendant2Response, defendant1ResponseToApplicant2, claimType = 'fast', defenceType = 'repaymentPlan'}) {
              eventName = 'Respond to claim'
@@ -446,8 +444,8 @@ module.exports = function () {
                  () => this.clickContinue(),
                  () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
                  () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-
-
+                 () => event.submit('Submit', ''),
+                 () => event.returnToCaseDetails(),
              ]);
 
      },
@@ -474,8 +472,8 @@ module.exports = function () {
                () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
                () => respondentPage.enterReasons(),
                () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-                //() => event.submit('Submit', ''),
-
+               () => event.submit('Submit', ''),
+               () => event.returnToCaseDetails(),
              ]);
 
      },
@@ -487,7 +485,7 @@ module.exports = function () {
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
-        () => event.returnToCaseDetails()
+        () => event.returnToCaseDetails(),
       ]);
     },
 
