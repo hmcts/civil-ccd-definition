@@ -27,9 +27,6 @@ module.exports = {
 
   async selectAdmitType(hasPaid) {
     // eslint-disable-next-line no-prototype-builtins
-    if (!this.fields.partAdmitType.options.hasOwnProperty('specDefenceAdmittedRequired_radio')) {
-      throw new Error(`Response type: ${specDefenceAdmittedRequired_radio} does not exist`);
-    }
     I.waitForElement(this.fields.partAdmitType.id);
     await I.runAccessibilityTest();
     await within(this.fields.partAdmitType.id, () => {

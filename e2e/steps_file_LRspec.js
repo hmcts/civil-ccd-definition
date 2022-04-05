@@ -21,7 +21,6 @@ const paymentReferencePage = require('./pages/createClaim/paymentReference.page'
 const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const event = require('./fragments/event');
-const respondentDetails = require('./fragments/respondentDetails.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
