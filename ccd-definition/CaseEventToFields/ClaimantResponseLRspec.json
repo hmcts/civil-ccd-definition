@@ -83,7 +83,7 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "applicant1ProceedWithClaim = \"Yes\"",
     "DisplayContext": "READONLY",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
@@ -117,7 +117,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -128,7 +128,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -139,7 +139,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -150,7 +150,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -162,7 +162,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y"
   },
@@ -174,7 +174,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimExperts",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "N",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -208,7 +208,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": "Witnesses",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
     "ShowSummaryChangeOption": "Y"
   },
@@ -220,7 +220,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "SmallClaimWitnesses",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"SMALL_CLAIM\", AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack= \"SMALL_CLAIM\", AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -231,7 +231,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Language",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "applicant1ProceedWithClaim = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -243,7 +243,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Hearing",
     "PageLabel": "Hearing",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "applicant1ProceedWithClaim = \"Yes\"",
     "FieldShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
@@ -266,7 +266,7 @@
     "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
+    "PageShowCondition": "applicant1ProceedWithClaim = \"Yes\"",
     "DisplayContext": "READONLY",
     "PageID": "ApplicantCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
@@ -290,7 +290,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -302,7 +302,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -351,7 +351,7 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND applicant1ProceedWithClaim = \"Yes\""
+    "PageShowCondition": "defenceRouteRequired =\"DISPUTES_THE_CLAIM\" AND applicant1ProceedWithClaim = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
