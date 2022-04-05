@@ -21,7 +21,7 @@ module.exports = {
     I.waitForElement(this.fields.fullAdmitType.id);
     await I.runAccessibilityTest();
     await within(this.fields.fullAdmitType.id, () => {
-    I.click(this.fields.fullAdmitType.options[hasPaid]);
+    I.click(this.fields.fullAdmitType.options[paymentType]);
     });
 
     await I.clickContinue();

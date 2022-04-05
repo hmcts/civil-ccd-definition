@@ -34,7 +34,7 @@ module.exports = {
     await I.runAccessibilityTest();
     await within(this.fields.partAdmitType.id, () => {
     I.click(this.fields.partAdmitType.options[hasPaid]);
-    await I.fillField(this.fields.claimOwingAmount,100);
+    //await I.fillField(this.fields.claimOwingAmount, 100);
     });
     if ('yes' === hasPaid) {
       await I.fillField(this.fields.howMuchWasPaid,10);

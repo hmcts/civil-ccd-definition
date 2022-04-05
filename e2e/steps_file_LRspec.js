@@ -427,7 +427,7 @@ module.exports = function () {
 
      },
 
-     async respondToClaimFullAdmit({twoDefendants = false, defendant1Response = 'fullAdmission', claimType = 'fast', defenceType = 'setDate'}) {
+     async respondToClaimFullAdmit({twoDefendants = false, defendant1Response = 'fullAdmission'}) {
               eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                () => caseViewPage.startEvent(eventName, caseId),
