@@ -6,7 +6,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -19,7 +20,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -32,7 +34,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -45,7 +48,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -58,7 +62,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -71,7 +76,22 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -84,7 +104,22 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderTypeTrialAdditionalDirections",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
@@ -97,7 +132,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-judge"
         ],
         "CRUD": "CRU"
       }
