@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "bothDefendantsSpec",
-    "Label": "Both Defendants",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
@@ -43,8 +43,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "currentDefendant",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "Used to populate title for partial payment, depending on whether both defendants were selected"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "partialPaymentLabel",
-    "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
+    "Label": "## ${currentDefendant}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

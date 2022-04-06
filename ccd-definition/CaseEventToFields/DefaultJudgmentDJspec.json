@@ -85,25 +85,36 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
-
-
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "currentDefendant",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "claimPartialPayment",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "defendantDetailsSpec=\"DO_NOT_SHOW_IN_UI\""
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "partialPaymentLabel",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\"",
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\" OR CPRConfirmationSpecTwoDefendant = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "partialPayment",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
@@ -114,7 +125,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "partialPaymentAmount",
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
@@ -133,7 +144,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\""
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\" OR CPRConfirmationSpecTwoDefendant = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -157,7 +168,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\"",
+    "PageShowCondition": "CPRConfirmationSpec = \"Yes\" OR CPRConfirmationSpecTwoDefendant = \"Yes\"",
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
