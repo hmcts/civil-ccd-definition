@@ -25,13 +25,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppApplnSolictor",
+    "CaseFieldID": "generalAppApplnSolicitor",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppRespondentSolictor",
+    "CaseFieldID": "generalAppRespondentSolicitors",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },

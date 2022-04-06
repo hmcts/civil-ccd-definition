@@ -71,70 +71,70 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppApplnSolictor",
+    "CaseFieldID": "generalAppApplnSolicitor",
     "ListElementCode": "id",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppApplnSolictor",
+    "CaseFieldID": "generalAppApplnSolicitor",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppApplnSolictor",
+    "CaseFieldID": "generalAppApplnSolicitor",
     "ListElementCode": "forename",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppApplnSolictor",
+    "CaseFieldID": "generalAppApplnSolicitor",
     "ListElementCode": "surname",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppApplnSolictor",
+    "CaseFieldID": "generalAppApplnSolicitor",
     "ListElementCode": "organisationIdentifier",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppRespondentSolictor",
+    "CaseFieldID": "generalAppRespondentSolicitors",
     "ListElementCode": "id",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppRespondentSolictor",
+    "CaseFieldID": "generalAppRespondentSolicitors",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppRespondentSolictor",
+    "CaseFieldID": "generalAppRespondentSolicitors",
     "ListElementCode": "forename",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppRespondentSolictor",
+    "CaseFieldID": "generalAppRespondentSolicitors",
     "ListElementCode": "surname",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppRespondentSolictor",
+    "CaseFieldID": "generalAppRespondentSolicitors",
     "ListElementCode": "organisationIdentifier",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"

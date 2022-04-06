@@ -64,16 +64,17 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppApplnSolictor",
+    "ListElementCode": "generalAppApplnSolicitor",
     "ElementLabel": " ",
     "FieldType": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppRespondentSolictor",
+    "ListElementCode": "generalAppRespondentSolicitors",
     "ElementLabel": " ",
-    "FieldType": "GASolicitorDetailsGAspec",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public"
   },
   {

@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_SDO_TRIGGERED",
     "Name": "Email: Notify SDO Triggered",
-    "Description": "Notify applicant solictor one that a sdo has been triggered",
+    "Description": "Notify applicant solicitor one that a sdo has been triggered",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

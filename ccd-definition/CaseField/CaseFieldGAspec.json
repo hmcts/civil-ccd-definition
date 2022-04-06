@@ -149,7 +149,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppApplnSolictor",
+    "ID": "generalAppApplnSolicitor",
     "Label": "Applicant Solicitor Details",
     "FieldType": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public",
@@ -158,7 +158,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppRespondentSolictor",
+    "ID": "generalAppRespondentSolicitors",
     "Label": "Respondent Solicitor Details",
     "FieldType": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public",
