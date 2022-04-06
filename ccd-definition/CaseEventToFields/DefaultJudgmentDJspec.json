@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "specRespondent1Represented",
+    "CaseFieldID": "respondent1",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "PageLabel": "",
