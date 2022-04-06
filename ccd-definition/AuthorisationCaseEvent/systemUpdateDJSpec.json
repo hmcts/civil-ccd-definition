@@ -1,20 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_DJ_FORM",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_DJ_FORM_SPEC",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR_DJ_RECEIVED",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR_DJ_RECEIVED",
     "AccessControl": [
       {
         "UserRoles": [
