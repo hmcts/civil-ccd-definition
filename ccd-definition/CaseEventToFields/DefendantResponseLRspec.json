@@ -610,7 +610,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Language",
-    "PageShowCondition": "responseClaimTrack!= \"MULTI_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack!= \"MULTI_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
     "_Comments": "Mixing AND and OR conditions still doesn't work as it should, that's why track is != MULTI instead of (t = FAST OR t = SMALL)"
   },
@@ -686,7 +686,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimCourtLocationLabel",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\"",
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -784,7 +784,8 @@
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
