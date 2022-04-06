@@ -15,19 +15,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "respondent1",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "PageLabel": "",
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "CPRCertifySpec = \"DO_NOT_SHOW_IN_UI\"",
-    "PageID": "defendantDetailsSpec",
-    "ShowSummaryChangeOption": "N",
-    "_comment": "this is a workaround to have field interpolation to work correctly for respondent1.partyname"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "defendantDetailsSpec",
     "DisplayContext": "MANDATORY",
     "PageID": "defendantDetailsSpec",
