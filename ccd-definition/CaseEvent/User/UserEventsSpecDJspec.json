@@ -4,7 +4,7 @@
     "ID": "DEFAULT_JUDGEMENT_SPEC",
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
-    "DisplayOrder": 10,
+    "DisplayOrder": 18,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
     "EventEnablingCondition": "specRespondent1Represented = \"No\" OR specRespondent1Represented =  \"Yes\"",
