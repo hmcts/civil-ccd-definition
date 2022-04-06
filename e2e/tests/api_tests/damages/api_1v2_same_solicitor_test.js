@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-const config = require('../../config.js');
+const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
 

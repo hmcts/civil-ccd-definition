@@ -1,7 +1,7 @@
-const config = require('../../config.js');
-const parties = require('../../helpers/party');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess} = require('../../api/testingSupport');
+const config = require('../../../config.js');
+const parties = require('../../../helpers/party');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -16,15 +16,14 @@ const respondent1 = {
 };
 const respondent2 = {
   represented: true,
-  sameLegalRepresentativeAsRespondent1: false,
-  representativeOrgNumber: 2
+  sameLegalRepresentativeAsRespondent1: true
 };
 
 let caseNumber;
 
-Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-1v2DS');
+Feature('1v2 Same Solicitor Claim Journey @e2e-unspec @e2e-multiparty @e2e-1v2SS');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
+Scenario('Claimant solicitor raises a claim against 2 defendants who have the same solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, respondent2);
   caseNumber = await I.grabCaseNumber();
@@ -34,66 +33,53 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.notifyClaim('both');
+  await I.notifyClaim();
   await I.see(caseEventMessage('Notify claim'));
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
-Scenario('Claimant solicitor notifies defendant solicitors of claim details', async ({I}) => {
+Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.notifyClaimDetails('both');
+  await I.notifyClaimDetails();
   await I.see(caseEventMessage('Notify claim details'));
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
+Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.acknowledgeClaim('fullDefence');
+  await I.acknowledgeClaim('fullDefence', 'fullDefence', null, true);
   await I.see(caseEventMessage('Acknowledge claim'));
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.acknowledgeClaim(null, 'fullDefence');
-  await I.see(caseEventMessage('Acknowledge claim'));
-  await I.click('Sign out');
-}).retry(3);
-
-Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
+Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseId());
   await I.informAgreedExtensionDate();
   await I.see(caseEventMessage('Inform agreed extension date'));
 }).retry(3);
 
-Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
+Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.addDefendantLitigationFriend();
+  await I.addDefendantLitigationFriend('both');
   await I.see(caseEventMessage('Add litigation friend'));
 }).retry(3);
 
-Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
+Scenario('Defendants solicitor rejects claim for both defendants', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
+    party: parties.RESPONDENT_SOLICITOR_1,
+    twoDefendants: true,
+    sameResponse: true,
     defendant1Response: 'fullDefence'});
-  await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
-}).retry(3);
-
-Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.respondToClaim({
-    party: parties.RESPONDENT_SOLICITOR_2,
-    defendant2Response: 'fullDefence'});
   await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
 }).retry(3);
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP');
+  await I.respondToDefence('ONE_V_TWO_ONE_LEGAL_REP');
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
