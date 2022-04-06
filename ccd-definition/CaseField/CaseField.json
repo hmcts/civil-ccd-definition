@@ -1773,7 +1773,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "vulnerabilityQuestionsInfoLabel",
-    "Label": "Your answers to the questions above will enable the court and the judge, to consider what steps, adjustments or support can be arranged.\nYou are reminded that a copy of this directions questionnaire will be shared with all other parties.",
+    "Label": "Your answers to the questions above will enable the court and the judge, to consider what steps, adjustments or support can be arranged.\n\nYou are reminded that a copy of this directions questionnaire will be shared with all other parties.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
