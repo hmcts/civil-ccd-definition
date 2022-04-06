@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_DJ_FORM",
+    "ID": "GENERATE_DJ_FORM_SPEC",
     "Name": "Generate aoc",
     "Description": "Generates acknowledgement of claim",
     "PreConditionState(s)": "*",
