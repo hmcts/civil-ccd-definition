@@ -90,12 +90,12 @@
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "currentDefendant",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
+    "RetainHiddenValue": "N",
     "FieldShowCondition": "defendantDetailsSpec=\"DO_NOT_SHOW_IN_UI\""
   },
   {
