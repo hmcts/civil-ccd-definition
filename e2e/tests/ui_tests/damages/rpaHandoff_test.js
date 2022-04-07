@@ -1,5 +1,5 @@
-const config = require('../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../api/testingSupport');
+const config = require('../../../config.js');
+const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../../api/testingSupport');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
@@ -87,5 +87,5 @@ const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim(acknowledgeClaimResponse);
   await I.informAgreedExtensionDate();
-  await I.respondToClaim(I.respondToClaim({defendant1Response: respondToClaimResponse}));
+  await I.respondToClaim({defendant1Response: respondToClaimResponse});
 };

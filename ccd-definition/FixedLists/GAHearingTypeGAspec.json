@@ -7,20 +7,20 @@
   },
   {
     "ID": "GAHearingTypeGAspec",
+    "ListElementCode": "WITHOUT_HEARING",
+    "ListElement": "Without a hearing",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "GAHearingTypeGAspec",
     "ListElementCode": "VIDEO",
     "ListElement": "Video conference hearing",
-    "DisplayOrder": 2
+    "DisplayOrder": 3
   },
   {
     "ID": "GAHearingTypeGAspec",
     "ListElementCode": "TELEPHONE",
     "ListElement": "Telephone hearing",
-    "DisplayOrder": 3
-  },
-  {
-    "ID": "GAHearingTypeGAspec",
-    "ListElementCode": "WITHOUT_HEARING",
-    "ListElement": "Without a hearing",
     "DisplayOrder": 4
   }
 ]
