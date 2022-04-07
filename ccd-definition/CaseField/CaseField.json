@@ -525,6 +525,13 @@
     "SecurityClassification": "Public"
   },
   {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondentSharedClaimResponseDocument",
+  "Label": "Upload defence",
+  "FieldType": "ResponseDocument",
+  "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",

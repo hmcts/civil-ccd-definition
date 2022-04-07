@@ -14,7 +14,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_SDO_TRIGGERED",
+    "CaseEventID": "NOTIFY_APPLICANTS_SOLICITOR_SDO_TRIGGERED",
     "AccessControl": [
       {
         "UserRoles": [
@@ -25,7 +25,9 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
           "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -45,7 +47,31 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
           "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_SDO_TRIGGERED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
