@@ -4,7 +4,6 @@ const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../.
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
 
-
 Feature('RPA handoff points tests @rpa-handoff-tests');
 
 Scenario('Take claim offline', async ({I}) => {
@@ -18,20 +17,9 @@ Scenario('Take claim offline', async ({I}) => {
   await I.login(config.adminUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.caseProceedsInCaseman();
-  await I.assertNoEventsAvailable();
+  await I.assertHasEvents(['Amend party details']);
   await I.signOut();
-}).retry(3);
-
-Scenario('Defendant - Litigant In Person', async ({I}) => {
-  await I.login(config.applicantSolicitorUser);
-  await I.createCase(true);
-  caseNumber = await I.grabCaseNumber();
-
-  await waitForFinishedBusinessProcess(caseId());
-  await I.navigateToCaseDetails(caseNumber);
-  await I.assertNoEventsAvailable();
-  await I.signOut();
-}).retry(3);
+}).retry(3)
 
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -41,7 +29,7 @@ Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await I.navigateToCaseDetails(caseNumber);
   await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3);
+}).retry(3)
 
 Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -52,7 +40,7 @@ Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => 
   await I.respondToDefenceDropClaim();
   await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3);
+}).retry(3)
 
 Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);

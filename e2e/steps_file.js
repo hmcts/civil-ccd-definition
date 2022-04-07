@@ -369,7 +369,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence(mpScenario) {
+    async respondToDefence(mpScenario = 'ONE_V_ONE') {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
@@ -393,12 +393,12 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
-    async respondToDefenceDropClaim() {
+    async respondToDefenceDropClaim(mpScenario = 'ONE_V_ONE') {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => proceedPage.dropClaim(),
+        () => proceedPage.dropClaim(mpScenario),
         () => event.submit('Submit your response', 'You have chosen not to proceed with the claim'),
         () => this.click('Close and Return to case details')
       ]);
@@ -436,6 +436,10 @@ module.exports = function () {
 
     async assertNoEventsAvailable() {
       await caseViewPage.assertNoEventsAvailable();
+    },
+
+    async assertHasEvents(events) {
+      await caseViewPage.assertEventsAvailable(events);
     },
 
     async clickContinue() {
@@ -669,6 +673,7 @@ module.exports = function () {
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        //const normalizedCaseId = caseNumber;
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
       }, SIGNED_IN_SELECTOR);
