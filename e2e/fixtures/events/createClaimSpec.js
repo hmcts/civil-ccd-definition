@@ -81,8 +81,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
         Organisation: {
           OrganisationID: '79ZRSOU',
           OrganisationName: 'Civil - Organisation 2'
-        },
-      },
+        }
+      }
     },
 
     DefendantSolicitorEmail: {
@@ -159,7 +159,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
         name: 'John Doe',
         role: 'Test Solicitor'
       }
-    },
+    }
   };
   switch(mpScenario){
     case 'ONE_V_ONE':
@@ -190,7 +190,6 @@ module.exports = {
           },
         },
 
-
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
             list_items: [
@@ -203,7 +202,7 @@ module.exports = {
 
         StatementOfTruth: {
           applicantSolicitor1ClaimStatementOfTruth: {}
-        },
+        }
       },
       valid: {
         ...createClaimData('Yes', true, mpScenario),
