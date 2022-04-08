@@ -29,7 +29,7 @@ properties([
 
 def type = "java"
 def product = "civil"
-def component = "service"
+def component = "ccd"
 
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
