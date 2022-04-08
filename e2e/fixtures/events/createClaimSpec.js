@@ -10,23 +10,6 @@ const respondent1 = {
   individualTitle: 'Sir',
   primaryAddress: buildAddress('respondent')
 };
-const respondent2 = {
-  type: 'INDIVIDUAL',
-  individualFirstName: 'Foo',
-  individualLastName: 'Bar',
-  individualTitle: 'Dr',
-  primaryAddress: buildAddress('second respondent')
-};
-const respondent1WithPartyName = {
-  ...respondent1,
-  partyName: 'Sir John Doe',
-  partyTypeDisplayValue: 'Individual',
-};
-const respondent2WithPartyName = {
-  ...respondent2,
-  partyName: 'Dr Foo Bar',
-  partyTypeDisplayValue: 'Individual',
-};
 const applicant1 = {
   type: 'COMPANY',
   companyName: 'Test Inc',
@@ -38,25 +21,11 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
-const applicant2 = {
-  type: 'INDIVIDUAL',
-  individualFirstName: 'Jane',
-  individualLastName: 'Doe',
-  individualTitle: 'Dr',
-  primaryAddress: buildAddress('second applicant')
-};
-
-const applicant2WithPartyName = {
-  ...applicant2,
-  partyName: 'Dr Jane Doe',
-  partyTypeDisplayValue: 'Individual',
-};
-
 let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_ONE') => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -206,158 +175,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         role: 'Test Solicitor'
       }
     },
-
-  //   Upload: {
-  //     servedDocumentFiles: {
-  //       particularsOfClaimDocument: [
-  //         {
-  //           id: docUuid,
-  //           value: {
-  //             document_url: '${TEST_DOCUMENT_URL}',
-  //             document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-  //             document_filename: '${TEST_DOCUMENT_FILENAME}'
-  //           }
-  //         }
-  //       ]
-  //     }
-  //   },
-  //
-  //   ClaimDetails: {
-  //     totalClaimAmount: 300000
-  //   },
-  //
-  //
-  //
-  //   ClaimValue: {
-  //     applicantSolicitor1PbaAccounts: {
-  //       list_items: [
-  //         validPba,
-  //         invalidPba
-  //       ],
-  //       value: selectedPba
-  //     },
-  //     claimValue: {
-  //       statementOfValueInPennies: '3000000'
-  //     },
-  //     claimFee: {
-  //       calculatedAmountInPence: '150000',
-  //       code: 'FEE0209',
-  //       version: '3'
-  //     },
-  //   },
-  //
-  //   ClaimantSolicitorServiceAddress: {
-  //     applicantSolicitor1ServiceAddress:  buildAddress('service')
-  //   },
-  //
-  //   DefendantSolicitorServiceAddress: {
-  //     respondentSolicitor1ServiceAddress: buildAddress('service')
-  //   },
-  //
-  //   ...(mpScenario === 'TWO_V_ONE') ? {
-  //     SecondClaimant: {
-  //       applicant2: applicant2WithPartyName
-  //     },
-  //     SecondClaimantLitigationFriendRequired: {
-  //       applicant2LitigationFriendRequired: 'No'
-  //     },
-  //   }: {},
-  //
-  //   ...hasRespondent2(mpScenario) ? {
-  //       SecondDefendant: {},
-  //       SecondDefendantLegalRepresentation: {},
-  //       SecondDefendantSolicitorOrganisation: {},
-  //       SecondDefendantSolicitorServiceAddress: {},
-  //       SecondDefendantSolicitorReference: {},
-  //       SecondDefendantSolicitorEmail: {},
-  //       SameLegalRepresentative: {},
-  //     } : {},
-  //   ClaimType: {
-  //     claimType: 'PERSONAL_INJURY'
-  //   },
-  //   PersonalInjuryType: {
-  //     personalInjuryType: 'ROAD_ACCIDENT'
-  //   },
   };
-  // switch (mpScenario){
-  //   case 'ONE_V_TWO_ONE_LEGAL_REP': {
-  //     return {
-  //       ...claimData,
-  //       AddAnotherClaimant: {
-  //         addApplicant2: 'No'
-  //       },
-  //       AddAnotherDefendant: {
-  //         addRespondent2: 'Yes'
-  //       },
-  //       SecondDefendant: {
-  //         respondent2: respondent2WithPartyName
-  //       },
-  //       SecondDefendantLegalRepresentation: {
-  //         respondent2Represented: 'Yes'
-  //       },
-  //       SameLegalRepresentative: {
-  //         respondent2SameLegalRepresentative: 'Yes'
-  //       },
-  //     };
-  //   }
-  //   case 'ONE_V_TWO_TWO_LEGAL_REP': {
-  //     return {
-  //       ...claimData,
-  //       AddAnotherClaimant: {
-  //         addApplicant2: 'No'
-  //       },
-  //       AddAnotherDefendant: {
-  //         addRespondent2: 'Yes'
-  //       },
-  //       SecondDefendant: {
-  //         respondent2: respondent2WithPartyName,
-  //       },
-  //       SecondDefendantLegalRepresentation: {
-  //         respondent2Represented: 'Yes'
-  //       },
-  //       SameLegalRepresentative: {
-  //         respondent2SameLegalRepresentative: 'No'
-  //       },
-  //       SecondDefendantSolicitorOrganisation: {
-  //         respondent2OrgRegistered: 'Yes',
-  //         respondent2OrganisationPolicy: {
-  //           OrgPolicyReference: 'Defendant policy reference 2',
-  //           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-  //           Organisation:
-  //
-  //             {OrganisationID: 'H2156A0'}
-  //           ,
-  //         },
-  //       },
-  //       SecondDefendantSolicitorServiceAddress: {
-  //         respondentSolicitor2ServiceAddress: buildAddress('service')
-  //       },
-  //       SecondDefendantSolicitorReference: {
-  //         respondentSolicitor2Reference: 'sol2reference'
-  //       },
-  //       SecondDefendantSolicitorEmail: {
-  //         respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
-  //       }
-  //     };
-  //   }
-  //   case 'TWO_V_ONE': {
-  //     return {
-  //       ...claimData,
-  //       AddAnotherClaimant: {
-  //         addApplicant2: 'Yes'
-  //       }
-  //     };
-  //   }
-  //   case 'ONE_V_ONE':
-  //   default: {
-  //     return claimData;
-  //   }
-  // }
-};
-
-const hasRespondent2 = (mpScenario) => {
-  return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+  switch(mpScenario){
+    case 'ONE_V_ONE':
+    default:
+      return claimData;
+  }
 };
 
 module.exports = {
