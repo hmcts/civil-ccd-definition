@@ -76,79 +76,127 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
     Notifications: {
       applicantSolicitor1CheckEmail: {
+        correct: 'No',
+      },
+      applicantSolicitor1UserDetails: {
         email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
       }
     },
 
     ClaimantSolicitorOrganisation: {
-      applicantSolicitor1UserDetails: {
-        email: 'civilunspecified@gmail.com',
-        id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b'
-      },
       applicant1OrganisationPolicy: {
         OrgPolicyReference: 'Claimant policy reference',
-        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
         Organisation: {
-          OrganisationID: 'Q1KOKP2'
+          OrganisationID: 'Q1KOKP2',
+          OrganisationName: 'Civil - Organisation 1'
         }
       }
     },
 
+    specCorrespondenceAddress: {
+      specApplicantCorrespondenceAddressRequired: 'No'
+    },
+
+
     Defendant: {
-      respondent1: respondent1WithPartyName
+      respondent1: respondent1
     },
 
     LegalRepresentation: {
-      respondent1Represented: `${legalRepresentation}`
+      specRespondent1Represented: `${legalRepresentation}`
     },
 
     DefendantSolicitorOrganisation: {
       respondent1OrgRegistered: 'Yes',
       respondent1OrganisationPolicy: {
         OrgPolicyReference: 'Defendant policy reference',
-        OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+        OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
         Organisation: {
-          OrganisationID: '79ZRSOU'
+          OrganisationID: '79ZRSOU',
+          OrganisationName: 'Civil - Organisation 2'
         },
       },
     },
 
-    DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+    specRespondentCorrespondenceAddress: {
+      specRespondentCorrespondenceAddressRequired: 'No'
+    },
+
+    AddAnotherDefendant: {
+      addRespondent2: 'No'
     },
 
     Details: {
       detailsOfClaim: 'Test details of claim'
     },
 
-    Upload: {
-      servedDocumentFiles: {
-        particularsOfClaimDocument: [
-          {
-            id: docUuid,
-            value: {
-              document_url: '${TEST_DOCUMENT_URL}',
-              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-              document_filename: '${TEST_DOCUMENT_FILENAME}'
-            }
+    DefendantSolicitorEmail: {
+      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+    },
+
+    UploadClaimDocument: {
+      specClaimTimelineList: 'MANUAL'
+    },
+
+    ClaimTimeline: {
+      timelineOfEvents: [
+        {
+          value: {
+            timelineDate: '2021-11-11',
+            timelineDescription: 'Test timeline description'
           }
-        ]
+        }
+      ]
+    },
+
+    EvidenceList: {
+      speclistYourEvidenceList: [
+        {
+          value: {
+            contractAndAgreementsEvidence: 'Test description of evidence and agreements',
+            evidenceType: 'CONTRACT_AND_AGREEMENTS'
+          }
+        }
+      ]
+    },
+
+    ClaimAmount: {
+      claimAmountBreakup: [
+        {
+          value: {
+            claimReason: 'Test reason',
+            claimAmount: '11222'
+          }
+        }
+      ]
+    },
+
+    ClaimAmountDetails: {
+      superClaimType: 'SPEC_CLAIM',
+      totalClaimAmount: 11222
+    },
+
+    ClaimInterest: {
+      claimInterests: 'No'
+    },
+
+    PbaNumber: {
+      applicantSolicitor1PbaAccounts:{
+        value: {
+          code: '4fe1e47c-d40c-4c3c-bd71-60eab54418cd',
+          label: 'PBA0088192'
+        }
+      },
+      claimFee: {
+        calculatedAmountInPence: '150000',
+        code: 'FEE0209',
       }
     },
 
-    // ClaimTimeline in here should be place
-    // evidence is missing as well
-    // claimAmount missing including total
-    // ClaimInterest missing
-    // InterestSummary
-
-    ClaimDetails: {
-      totalClaimAmount: 300000
-    },
-
     PaymentReference: {
-      claimIssuedPaymentDetails:  {
-        customerReference: 'Applicant reference'
+      claimIssuedPaymentDetails: {
+        customerReference: 'Applicant references'
       }
     },
 
@@ -159,134 +207,152 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       }
     },
 
-    ClaimValue: {
-      applicantSolicitor1PbaAccounts: {
-        list_items: [
-          validPba,
-          invalidPba
-        ],
-        value: selectedPba
-      },
-      claimValue: {
-        statementOfValueInPennies: '3000000'
-      },
-      claimFee: {
-        calculatedAmountInPence: '150000',
-        code: 'FEE0209',
-        version: '3'
-      },
-    },
-
-    ClaimantSolicitorServiceAddress: {
-      applicantSolicitor1ServiceAddress:  buildAddress('service')
-    },
-
-    DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: buildAddress('service')
-    },
-
-    ...(mpScenario === 'TWO_V_ONE') ? {
-      SecondClaimant: {
-        applicant2: applicant2WithPartyName
-      },
-      SecondClaimantLitigationFriendRequired: {
-        applicant2LitigationFriendRequired: 'No'
-      },
-    }: {},
-
-    AddAnotherDefendant: {
-      addRespondent2: 'No'
-    },
-    ...hasRespondent2(mpScenario) ? {
-        SecondDefendant: {},
-        SecondDefendantLegalRepresentation: {},
-        SecondDefendantSolicitorOrganisation: {},
-        SecondDefendantSolicitorServiceAddress: {},
-        SecondDefendantSolicitorReference: {},
-        SecondDefendantSolicitorEmail: {},
-        SameLegalRepresentative: {},
-      } : {},
-    ClaimType: {
-      claimType: 'PERSONAL_INJURY'
-    },
-    PersonalInjuryType: {
-      personalInjuryType: 'ROAD_ACCIDENT'
-    },
+  //   Upload: {
+  //     servedDocumentFiles: {
+  //       particularsOfClaimDocument: [
+  //         {
+  //           id: docUuid,
+  //           value: {
+  //             document_url: '${TEST_DOCUMENT_URL}',
+  //             document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+  //             document_filename: '${TEST_DOCUMENT_FILENAME}'
+  //           }
+  //         }
+  //       ]
+  //     }
+  //   },
+  //
+  //   ClaimDetails: {
+  //     totalClaimAmount: 300000
+  //   },
+  //
+  //
+  //
+  //   ClaimValue: {
+  //     applicantSolicitor1PbaAccounts: {
+  //       list_items: [
+  //         validPba,
+  //         invalidPba
+  //       ],
+  //       value: selectedPba
+  //     },
+  //     claimValue: {
+  //       statementOfValueInPennies: '3000000'
+  //     },
+  //     claimFee: {
+  //       calculatedAmountInPence: '150000',
+  //       code: 'FEE0209',
+  //       version: '3'
+  //     },
+  //   },
+  //
+  //   ClaimantSolicitorServiceAddress: {
+  //     applicantSolicitor1ServiceAddress:  buildAddress('service')
+  //   },
+  //
+  //   DefendantSolicitorServiceAddress: {
+  //     respondentSolicitor1ServiceAddress: buildAddress('service')
+  //   },
+  //
+  //   ...(mpScenario === 'TWO_V_ONE') ? {
+  //     SecondClaimant: {
+  //       applicant2: applicant2WithPartyName
+  //     },
+  //     SecondClaimantLitigationFriendRequired: {
+  //       applicant2LitigationFriendRequired: 'No'
+  //     },
+  //   }: {},
+  //
+  //   ...hasRespondent2(mpScenario) ? {
+  //       SecondDefendant: {},
+  //       SecondDefendantLegalRepresentation: {},
+  //       SecondDefendantSolicitorOrganisation: {},
+  //       SecondDefendantSolicitorServiceAddress: {},
+  //       SecondDefendantSolicitorReference: {},
+  //       SecondDefendantSolicitorEmail: {},
+  //       SameLegalRepresentative: {},
+  //     } : {},
+  //   ClaimType: {
+  //     claimType: 'PERSONAL_INJURY'
+  //   },
+  //   PersonalInjuryType: {
+  //     personalInjuryType: 'ROAD_ACCIDENT'
+  //   },
   };
-  switch (mpScenario){
-    case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      return {
-        ...claimData,
-        AddAnotherClaimant: {
-          addApplicant2: 'No'
-        },
-        AddAnotherDefendant: {
-          addRespondent2: 'Yes'
-        },
-        SecondDefendant: {
-          respondent2: respondent2WithPartyName
-        },
-        SecondDefendantLegalRepresentation: {
-          respondent2Represented: 'Yes'
-        },
-        SameLegalRepresentative: {
-          respondent2SameLegalRepresentative: 'Yes'
-        },
-      };
-    }
-    case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      return {
-        ...claimData,
-        AddAnotherClaimant: {
-          addApplicant2: 'No'
-        },
-        AddAnotherDefendant: {
-          addRespondent2: 'Yes'
-        },
-        SecondDefendant: {
-          respondent2: respondent2WithPartyName,
-        },
-        SecondDefendantLegalRepresentation: {
-          respondent2Represented: 'Yes'
-        },
-        SameLegalRepresentative: {
-          respondent2SameLegalRepresentative: 'No'
-        },
-        SecondDefendantSolicitorOrganisation: {
-          respondent2OrgRegistered: 'Yes',
-          respondent2OrganisationPolicy: {
-            OrgPolicyReference: 'Defendant policy reference 2',
-            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-            Organisation:
-
-              {OrganisationID: 'H2156A0'}
-            ,
-          },
-        },
-        SecondDefendantSolicitorServiceAddress: {
-          respondentSolicitor2ServiceAddress: buildAddress('service')
-        },
-        SecondDefendantSolicitorReference: {
-          respondentSolicitor2Reference: 'sol2reference'
-        },
-        SecondDefendantSolicitorEmail: {
-          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
-        }
-      };
-    }
-    case 'TWO_V_ONE': {
-      return {
-        ...claimData,
-        AddAnotherClaimant: {
-          addApplicant2: 'Yes'
-        }
-      };
-    }
-    case 'ONE_V_ONE':
-    default: {
-      return claimData;
-    }
-  }
+  // switch (mpScenario){
+  //   case 'ONE_V_TWO_ONE_LEGAL_REP': {
+  //     return {
+  //       ...claimData,
+  //       AddAnotherClaimant: {
+  //         addApplicant2: 'No'
+  //       },
+  //       AddAnotherDefendant: {
+  //         addRespondent2: 'Yes'
+  //       },
+  //       SecondDefendant: {
+  //         respondent2: respondent2WithPartyName
+  //       },
+  //       SecondDefendantLegalRepresentation: {
+  //         respondent2Represented: 'Yes'
+  //       },
+  //       SameLegalRepresentative: {
+  //         respondent2SameLegalRepresentative: 'Yes'
+  //       },
+  //     };
+  //   }
+  //   case 'ONE_V_TWO_TWO_LEGAL_REP': {
+  //     return {
+  //       ...claimData,
+  //       AddAnotherClaimant: {
+  //         addApplicant2: 'No'
+  //       },
+  //       AddAnotherDefendant: {
+  //         addRespondent2: 'Yes'
+  //       },
+  //       SecondDefendant: {
+  //         respondent2: respondent2WithPartyName,
+  //       },
+  //       SecondDefendantLegalRepresentation: {
+  //         respondent2Represented: 'Yes'
+  //       },
+  //       SameLegalRepresentative: {
+  //         respondent2SameLegalRepresentative: 'No'
+  //       },
+  //       SecondDefendantSolicitorOrganisation: {
+  //         respondent2OrgRegistered: 'Yes',
+  //         respondent2OrganisationPolicy: {
+  //           OrgPolicyReference: 'Defendant policy reference 2',
+  //           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+  //           Organisation:
+  //
+  //             {OrganisationID: 'H2156A0'}
+  //           ,
+  //         },
+  //       },
+  //       SecondDefendantSolicitorServiceAddress: {
+  //         respondentSolicitor2ServiceAddress: buildAddress('service')
+  //       },
+  //       SecondDefendantSolicitorReference: {
+  //         respondentSolicitor2Reference: 'sol2reference'
+  //       },
+  //       SecondDefendantSolicitorEmail: {
+  //         respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+  //       }
+  //     };
+  //   }
+  //   case 'TWO_V_ONE': {
+  //     return {
+  //       ...claimData,
+  //       AddAnotherClaimant: {
+  //         addApplicant2: 'Yes'
+  //       }
+  //     };
+  //   }
+  //   case 'ONE_V_ONE':
+  //   default: {
+  //     return claimData;
+  //   }
+  // }
 };
 
 const hasRespondent2 = (mpScenario) => {
@@ -364,30 +430,5 @@ module.exports = {
         }
       }
     };
-  },
-
-  // createClaimLitigantInPerson: {
-  //   valid: createClaimData('No', true)
-  // },
-  // createClaimWithTerminatedPBAAccount: {
-  //   valid: createClaimData('Yes', false)
-  // },
-  // createClaimRespondentSolFirmNotInMyHmcts: {
-  //   valid: {
-  //     ...createClaimData('Yes', true),
-  //     DefendantSolicitorOrganisation: {
-  //       respondent1OrgRegistered: 'No'
-  //     },
-  //     UnRegisteredDefendantSolicitorOrganisation: {
-  //       respondentSolicitor1OrganisationDetails: {
-  //         organisationName: 'Test org',
-  //         phoneNumber: '0123456789',
-  //         email: 'test@example.com',
-  //         dx: 'test dx',
-  //         fax: '123123123',
-  //         address: buildAddress('org')
-  //       }
-  //     },
-  //   }
-  // }
+  }
 };
