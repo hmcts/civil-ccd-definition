@@ -46,6 +46,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     Notifications: {
       applicantSolicitor1CheckEmail: {
         correct: 'No',
+        email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
       },
       applicantSolicitor1UserDetails: {
         email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
