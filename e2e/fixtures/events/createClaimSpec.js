@@ -104,17 +104,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
       ]
     },
 
-    EvidenceList: {
-      speclistYourEvidenceList: [
-        {
-          value: {
-            contractAndAgreementsEvidence: 'Test description of evidence and agreements',
-            evidenceType: 'CONTRACT_AND_AGREEMENTS'
-          }
-        }
-      ]
-    },
-
     ClaimAmount: {
       claimAmountBreakup: [
         {
