@@ -85,18 +85,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
       },
     },
 
-    specRespondentCorrespondenceAddress: {
-      specRespondentCorrespondenceAddressRequired: 'No'
-    },
-
-    AddAnotherDefendant: {
-      addRespondent2: 'No'
-    },
-
-    Details: {
-      detailsOfClaim: 'Test details of claim'
-    },
-
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
     },
