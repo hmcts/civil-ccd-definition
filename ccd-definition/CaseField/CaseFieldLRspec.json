@@ -481,13 +481,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specAoSRespondent2HomeAddressRequired",
-    "Label": "Is this address correct?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentCorrespondenceAddressRequired",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",

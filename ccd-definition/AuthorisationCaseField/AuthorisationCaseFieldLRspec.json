@@ -603,43 +603,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specAoSRespondent2HomeAddressRequired",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2062,25 +2026,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specFullDefenceOrPartAdmission1V1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specFullDefenceOrPartAdmission",
     "AccessControl": [
       {
         "UserRoles": [
