@@ -55,7 +55,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
         Organisation: {
           OrganisationID: 'Q1KOKP2',
-          OrganisationName: 'Civil - Organisation 1'
         }
       }
     },
@@ -69,39 +68,19 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
       respondent1: respondent1
     },
 
-    LegalRepresentation: {
-      specRespondent1Represented: `${legalRepresentation}`
-    },
-
     DefendantSolicitorOrganisation: {
       respondent1OrgRegistered: 'Yes',
       respondent1OrganisationPolicy: {
         OrgPolicyReference: 'Defendant policy reference',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
         Organisation: {
-          OrganisationID: '79ZRSOU',
-          OrganisationName: 'Civil - Organisation 2'
+          OrganisationID: '79ZRSOU'
         }
       }
     },
 
     DefendantSolicitorEmail: {
       respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
-    },
-
-    UploadClaimDocument: {
-      specClaimTimelineList: 'MANUAL'
-    },
-
-    ClaimTimeline: {
-      timelineOfEvents: [
-        {
-          value: {
-            timelineDate: '2021-11-11',
-            timelineDescription: 'Test timeline description'
-          }
-        }
-      ]
     },
 
     ClaimAmount: {
@@ -161,6 +140,26 @@ module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
       midEventData: {
+        ClaimAmount: {
+          claimAmountBreakup: [
+            {
+              value: {
+                claimReason: 'Test reason',
+                claimAmount: '11222'
+              }
+            }
+          ]
+        },
+
+        ClaimAmountDetails: {
+          claimAmountBreakupSummaryObject: ''
+        },
+
+        Defendant: {
+          partyName: 'Sir John Doe',
+          partyTypeDisplayValue: 'INDIVIDUAL'
+        },
+
         ClaimValue: {
           applicantSolicitor1PbaAccounts: {
             list_items: [
