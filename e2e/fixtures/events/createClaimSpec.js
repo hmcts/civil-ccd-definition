@@ -1,7 +1,4 @@
-const {listElement, buildAddress } = require('../../api/dataHelper');
-const uuid = require('uuid');
-
-const docUuid = uuid.v1();
+const { buildAddress } = require('../../api/dataHelper');
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -28,12 +25,7 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
-let selectedPba = listElement('PBA0088192');
-const validPba = listElement('PBA0088192');
-const invalidPba = listElement('PBA0078095');
-
 const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_ONE') => {
-  selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
       solicitorReferences: {
