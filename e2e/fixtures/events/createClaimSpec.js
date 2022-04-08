@@ -88,7 +88,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     ClaimAmount: {
       claimAmountBreakup: [
         {
-          id: '************************************',
+          id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b',
           value: {
             claimReason: 'Test reason',
             claimAmount: '112.22'
