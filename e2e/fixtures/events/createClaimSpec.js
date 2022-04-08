@@ -100,7 +100,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     ClaimAmountDetails: {
       claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 112.22 |\n  | **Total** | £ 112.22 | ',
       superClaimType: 'SPEC_CLAIM',
-      totalClaimAmount: '112.22'
+      totalClaimAmount: '11222'
     },
 
     ClaimInterest: {
