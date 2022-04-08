@@ -195,12 +195,6 @@ withPipeline(type, product, component) {
     env.CIVIL_SERVICE_URL="http://civil-ccd-staging.service.core-compute-aat.internal"
   }
 
-  after('functionalTest:preview') {
-    //Testing purpose
-    createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
-  }
-
   after('functionalTest:aat') {
     createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
