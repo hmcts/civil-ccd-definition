@@ -73,7 +73,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingDirectionsLabel",
-    "Label": "## What directions would you like the court to give? \n You can use the court's standard directions as out here or you may set out your preferred directions",
+    "Label": "## What directions would you like the court to give?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
