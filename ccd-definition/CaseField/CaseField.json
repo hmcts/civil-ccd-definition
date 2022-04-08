@@ -2022,5 +2022,14 @@
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimStarted",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop users being able to jump onto any page during create claim",
+    "_Category": "WORKAROUND"
   }
 ]
