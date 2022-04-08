@@ -144,20 +144,6 @@ module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
       midEventData: {
-        ClaimAmount: {
-          claimAmountBreakup: [
-            {
-              value: {
-                claimReason: 'Test reason',
-                claimAmount: '11222'
-              }
-            }
-          ]
-        },
-
-        ClaimAmountDetails: {
-        },
-
         ClaimValue: {
           applicantSolicitor1PbaAccounts: {
             list_items: [
