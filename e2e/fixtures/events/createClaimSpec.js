@@ -10,6 +10,13 @@ const respondent1 = {
   individualTitle: 'Sir',
   primaryAddress: buildAddress('respondent')
 };
+
+const respondent1WithPartyName = {
+  ...respondent1,
+  partyName: 'Sir John Doe',
+  partyTypeDisplayValue: 'Individual'
+};
+
 const applicant1 = {
   type: 'COMPANY',
   companyName: 'Test Inc',
@@ -59,13 +66,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
       }
     },
 
-    specCorrespondenceAddress: {
-      specApplicantCorrespondenceAddressRequired: 'No'
-    },
-
-
     Defendant: {
-      respondent1: respondent1
+      respondent1: respondent1WithPartyName
     },
 
     DefendantSolicitorOrganisation: {
@@ -86,6 +88,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     ClaimAmount: {
       claimAmountBreakup: [
         {
+          id: '************************************',
           value: {
             claimReason: 'Test reason',
             claimAmount: '11222'
@@ -95,6 +98,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     },
 
     ClaimAmountDetails: {
+      claimAmountBreakupSummaryObject: '| Description | Amount | \n |---|---| \n | Test reason | £ 112.22 |\n  | **Total** | £ 112.22 |',
       superClaimType: 'SPEC_CLAIM',
       totalClaimAmount: 11222
     },
@@ -152,12 +156,6 @@ module.exports = {
         },
 
         ClaimAmountDetails: {
-          claimAmountBreakupSummaryObject: ''
-        },
-
-        Defendant: {
-          partyName: 'Sir John Doe',
-          partyTypeDisplayValue: 'INDIVIDUAL'
         },
 
         ClaimValue: {
