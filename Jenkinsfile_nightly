@@ -40,13 +40,12 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 }
 
 def secrets = [
-  'civil-${env.ENVIRONMENT}': [
+  'civil-${env}': [
     secret('microservicekey-civil-service', 'S2S_SECRET')
   ]
 ]
 
 withNightlyPipeline(type, product, component) {
-  env.ENVIRONMENT=params.ENVIRONMENT
   env.URL = params.FRONTEND_URL
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_API_URL=params.IDAM_API_URL
@@ -56,6 +55,9 @@ withNightlyPipeline(type, product, component) {
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.TESTS_FOR_ACCESSIBILITY = false
+  overrideVaultEnvironments([
+    'aat': params.ENVIRONMENT
+  ])
   loadVaultSecrets(secrets)
 
   enableFullFunctionalTest(200)
