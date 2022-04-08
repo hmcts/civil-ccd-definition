@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {assignCaseToDefendant} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../../api/testingSupport');
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -57,12 +57,10 @@ Scenario('Full end-to-end journey', async ({I}) => {
   console.log('Defendant solicitor responded to claim');
   await I.see(caseEventMessage('Respond to claim'));
 
-  /* Testing cross browser tests
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefence();
   console.log('Applicant solicitor responded to defence');
   await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
-  */
 }).retry(2);
