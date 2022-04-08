@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../../api/testingSupport');
+const {unAssignAllUsers, assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
@@ -19,7 +20,7 @@ Scenario('Take claim offline', async ({I}) => {
   await I.caseProceedsInCaseman();
   await I.assertHasEvents(['Amend party details']);
   await I.signOut();
-}).retry(3)
+}).retry(3);
 
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -29,7 +30,7 @@ Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await I.navigateToCaseDetails(caseNumber);
   await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3)
+}).retry(3);
 
 Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -40,7 +41,7 @@ Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => 
   await I.respondToDefenceDropClaim();
   await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3)
+}).retry(3);
 
 Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -66,7 +67,8 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
   await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
   await I.notifyClaim();
-  await assignCaseToDefendant(caseId());
+  await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await I.notifyClaimDetails();
 };
 
@@ -77,3 +79,7 @@ const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse
   await I.informAgreedExtensionDate();
   await I.respondToClaim({defendant1Response: respondToClaimResponse});
 };
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
