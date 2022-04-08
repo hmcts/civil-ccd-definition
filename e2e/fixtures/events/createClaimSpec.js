@@ -98,7 +98,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     },
 
     ClaimAmountDetails: {
-      claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 112.22 |\n  | **Total** | £ 112.22 | ',
+      claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 11222 |\n  | **Total** | £ 11222 | ',
       superClaimType: 'SPEC_CLAIM',
       totalClaimAmount: '11222'
     },
@@ -141,73 +141,16 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE') => {
+  createClaim: () => {
     return {
       midEventData: {
-        ClaimValue: {
-          applicantSolicitor1PbaAccounts: {
-            list_items: [
-              validPba,
-              invalidPba
-            ],
-            value: selectedPba
-          },
-          claimValue: {
-            statementOfValueInPennies: '3000000'
-          },
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
+        ...createClaimData('Yes', true),
+        ClaimAmountDetails: {
+          claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 11222 |\n  | **Total** | £ 11222 | ',
+          superClaimType: 'SPEC_CLAIM',
+          totalClaimAmount: '11222'
         },
-
-        PbaNumber: {
-          applicantSolicitor1PbaAccounts: {
-            list_items: [
-              validPba,
-              invalidPba
-            ],
-            value: selectedPba
-          }
-        },
-
-        StatementOfTruth: {
-          applicantSolicitor1ClaimStatementOfTruth: {}
-        }
       },
-      valid: {
-        ...createClaimData('Yes', true, mpScenario),
-      },
-      invalid: {
-        Upload: {
-          servedDocumentFiles: {
-            particularsOfClaimDocument: [
-              {
-                id: docUuid,
-                value: {
-                  document_url: '${TEST_DOCUMENT_URL}',
-                  document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-                  document_filename: '${TEST_DOCUMENT_FILENAME}'
-                }
-              },
-              {
-                id: docUuid,
-                value: {
-                  document_url: '${TEST_DOCUMENT_URL}',
-                  document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-                  document_filename: '${TEST_DOCUMENT_FILENAME}'
-                }
-              }
-            ]
-          }
-        },
-        Court: {
-          courtLocation: {
-            applicantPreferredCourt: ['3a3', '21', '3333']
-          }
-        }
-      }
     };
   }
 };
