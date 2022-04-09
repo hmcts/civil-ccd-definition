@@ -1,4 +1,4 @@
-const { buildAddress } = require('../../api/dataHelper');
+const {listElement, buildAddress } = require('../../api/dataHelper');
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -25,7 +25,12 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
+let selectedPba = listElement('PBA0088192');
+const validPba = listElement('PBA0088192');
+const invalidPba = listElement('PBA0078095');
+
 const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_ONE') => {
+  selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
       solicitorReferences: {
@@ -103,7 +108,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
       applicantSolicitor1PbaAccounts:{
         value: {
           code: '4fe1e47c-d40c-4c3c-bd71-60eab54418cd',
-          label: 'PBA0088192'
+          label: selectedPba
         }
       },
       claimFee: {
