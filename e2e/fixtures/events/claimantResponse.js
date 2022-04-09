@@ -168,6 +168,12 @@ module.exports = {
           }
         },
         HearingSupport: {},
+        VulnerabilityQuestions: {
+          applicant1DQVulnerabilityQuestions: {
+            vulnerabilityAdjustmentsRequired: 'Yes',
+            vulnerabilityAdjustments: 'claimant reasons'
+          }
+        },
         FurtherInformation: {
           applicant1DQFurtherInformation: {
             futureApplications: 'Yes',
