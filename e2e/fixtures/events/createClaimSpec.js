@@ -58,7 +58,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
         Organisation: {
-          OrganisationID: 'Q1KOKP2',
+          OrganisationID: 'Q1KOKP2'
         }
       }
     },
@@ -113,7 +113,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
       },
       claimFee: {
         calculatedAmountInPence: '150000',
-        code: 'FEE0209',
+        code: 'FEE0209'
       }
     },
 
