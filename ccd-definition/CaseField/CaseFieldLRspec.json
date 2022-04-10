@@ -578,7 +578,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedLabel2v1",
-    "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "Label": "## Why does ${respondent1.partyName} not owe money to the claimants? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -592,7 +592,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel2V1",
-    "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
+    "Label": "## Has ${respondent1.partyName} paid the claimants the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
