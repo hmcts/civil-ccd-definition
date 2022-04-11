@@ -1705,6 +1705,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1GeneratedResponseDocument",
     "AccessControl": [
       {
@@ -1722,6 +1740,7 @@
       }
     ]
   },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
@@ -2026,6 +2045,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specFullDefenceOrPartAdmission1V1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specFullDefenceOrPartAdmission",
     "AccessControl": [
       {
         "UserRoles": [
