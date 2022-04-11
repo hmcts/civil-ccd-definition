@@ -75,6 +75,7 @@ const hearingPage = require('./fragments/dq/hearing.page');
 const draftDirectionsPage = require('./fragments/dq/draftDirections.page');
 const requestedCourtPage = require('./fragments/dq/requestedCourt.page');
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
+const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
 const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 const address = require('./fixtures/address.js');
@@ -361,6 +362,7 @@ module.exports = function () {
           () => draftDirectionsPage.upload(party, TEST_FILE_PATH),
           () => requestedCourtPage.selectSpecificCourtForHearing(party),
           () => hearingSupportRequirementsPage.selectRequirements(party),
+          () => vulnerabilityQuestionsPage.vulnerabilityQuestions(party),
           () => furtherInformationPage.enterFurtherInformation(party),
           () => statementOfTruth.enterNameAndRole(party + 'DQ'),
         ]),
@@ -369,13 +371,13 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence() {
+    async respondToDefence(mpScenario) {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => proceedPage.proceedWithClaim(),
-        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
@@ -385,6 +387,7 @@ module.exports = function () {
         () => hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1),
         () => draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH),
         () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
         () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),

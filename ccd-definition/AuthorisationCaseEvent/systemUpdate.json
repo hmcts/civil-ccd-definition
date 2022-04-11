@@ -127,6 +127,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIM_DISMISSED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -194,6 +200,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "TAKE_CASE_OFFLINE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIMANT_CONFIRMS_TO_PROCEED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIMANT_CONFIRMS_NOT_TO_PROCEED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
