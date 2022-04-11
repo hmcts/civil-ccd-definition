@@ -13,6 +13,7 @@
     "test:e2e-sdo": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @e2e-sdo --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-multiparty --reporter mocha-multi --verbose",
     "test:api-1v1": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-1v1 --reporter mocha-multi --verbose",
+    "test:api-spec-1v1": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-spec-1v1 --reporter mocha-multi --verbose",
     "test:api-1v2SS": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-1v2SS --reporter mocha-multi --verbose",
     "test:api-1v2DS": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-1v2DS --reporter mocha-multi --verbose",
     "test:api-2v1": "MOCHAWESOME_REPORTFILENAME=api npx codeceptjs run --grep @api-tests-2v1 --reporter mocha-multi --verbose",
