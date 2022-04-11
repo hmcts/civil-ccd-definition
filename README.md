@@ -52,7 +52,5 @@ To run smoke tests enter `yarn test:smoke`.
 Before running API tests, you will need the `SENDGRID_API_KEY` environment variable setup and to be running the service locally along with all containers.
 
 To run API tests enter `yarn test:api`.
-
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
