@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "MAKE_PBA_PAYMENT",
-    "Name": "Make PBA payment",
-    "Description": "Make PBA payment for issued claim",
+    "ID": "GENERATE_DJ_FORM_SPEC",
+    "Name": "Generate aoc",
+    "Description": "Generates acknowledgement of claim",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
