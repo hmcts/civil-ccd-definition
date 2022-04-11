@@ -115,7 +115,7 @@ module.exports = {
         respondent1: respondent1WithPartyName
       },
       LegalRepresentation: {
-        specRespondent1Represented: `Yes`
+        specRespondent1Represented: 'Yes'
       },
       DefendantSolicitorOrganisation: {
         respondent1OrgRegistered: 'Yes',
@@ -253,6 +253,6 @@ module.exports = {
       userInput: sentData,
       midEventData: midEventData,
       midEventGeneratedData: midEventGeneratedData
-    }
+    };
   }
 };
