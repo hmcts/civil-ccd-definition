@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
- echo "Run Functional tests with prod ccd def file"
+echo "Run Functional tests with prod ccd def file"
 
-./run-unspec-functional-tests.sh
+dir=$(dirname ${0})
+
+${dir}/run-unspec-functional-tests.sh

@@ -229,6 +229,15 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "ResponseDocument",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondentSharedClaimResponseDocument",
+    "ListElementCode": "file",
+    "EventElementLabel": "Document url",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantDefenceResDocToDefendant2",
