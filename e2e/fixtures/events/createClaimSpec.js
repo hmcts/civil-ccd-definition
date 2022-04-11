@@ -50,6 +50,11 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
     Notifications: {
       applicantSolicitor1CheckEmail: {
         email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
+      },
+
+      applicantSolicitor1UserDetails: {
+        email: 'civilunspecified@gmail.com',
+        id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b'
       }
     },
 
@@ -88,28 +93,27 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
           id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b',
           value: {
             claimReason: 'Test reason',
-            claimAmount: '11222'
+            claimAmount: '11234'
           }
         }
-      ]
+      ],
+      claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 112.34 |\n  | **Total** | £ 112.34 | ',
+      totalClaimAmount: 112.34
     },
 
-    ClaimAmountDetails: {
-      claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 11222 |\n  | **Total** | £ 11222 | ',
-      superClaimType: 'SPEC_CLAIM',
-      totalClaimAmount: '11222'
-    },
 
     ClaimInterest: {
-      claimInterests: 'No'
+      claimInterest: 'No',
+      calculatedInterest: ' | Description | Amount | \n |---|---| \n | Claim amount | £ 112.34 | \n | Interest amount | £ 0 | \n | Total amount | £ 112.34 |'
     },
+
+    // why this is not need
+    // InterestSummary: {
+    // },
 
     PbaNumber: {
       applicantSolicitor1PbaAccounts:{
-        value: {
-          code: '4fe1e47c-d40c-4c3c-bd71-60eab54418cd',
-          label: selectedPba
-        }
+        value: selectedPba
       },
       claimFee: {
         calculatedAmountInPence: '150000',
@@ -138,16 +142,16 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario = 'ONE_V_O
 };
 
 module.exports = {
-  createClaim: () => {
+  createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
       midEventData: {
-        ...createClaimData('Yes', true),
-        ClaimAmountDetails: {
-          claimAmountBreakupSummaryObject: ' | Description | Amount | \n |---|---| \n | Test reason | £ 11222 |\n  | **Total** | £ 11222 | ',
-          superClaimType: 'SPEC_CLAIM',
-          totalClaimAmount: '11222'
+        StatementOfTruth: {
+          applicantSolicitor1ClaimStatementOfTruth: {}
         },
       },
+      valid: {
+        ...createClaimData('Yes', true, mpScenario),
+      }
     };
   }
 };
