@@ -102,7 +102,7 @@ module.exports = {
       ClaimantSolicitorOrganisation: {
         applicant1OrganisationPolicy: {
           OrgPolicyReference: 'Claimant policy reference',
-          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
           Organisation: {
             OrganisationID: 'Q1KOKP2'
           }
@@ -121,7 +121,7 @@ module.exports = {
         respondent1OrgRegistered: 'Yes',
         respondent1OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference',
-          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
           Organisation: {
             OrganisationID: '79ZRSOU'
           },
