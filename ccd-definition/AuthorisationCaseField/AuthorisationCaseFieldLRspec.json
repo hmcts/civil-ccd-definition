@@ -1718,7 +1718,7 @@
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONESPEC]"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       }
     ]
   },
