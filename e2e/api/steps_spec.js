@@ -57,181 +57,6 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondentNoChecks: async (user) => {
-    eventName = 'CREATE_CLAIM_SPEC';
-    caseId = null;
-    caseData = {
-      "addApplicant2": "No",
-      "addRespondent2": "No",
-      "applicant1": {
-        "companyName": "company 1",
-        "individualDateOfBirth": null,
-        "individualFirstName": null,
-        "individualLastName": null,
-        "individualTitle": null,
-        "organisationName": null,
-        "partyName": "company 1",
-        "partyTypeDisplayValue": "Company",
-        "primaryAddress": {
-          "AddressLine1": "Markson 34",
-          "AddressLine2": "",
-          "AddressLine3": "",
-          "Country": "",
-          "County": "",
-          "PostCode": "SW1W 0NY",
-          "PostTown": ""
-        },
-        "soleTraderDateOfBirth": null,
-        "soleTraderFirstName": null,
-        "soleTraderLastName": null,
-        "soleTraderTitle": null,
-        "soleTraderTradingAs": null,
-        "type": "COMPANY"
-      },
-      "applicant1OrganisationPolicy": {
-        "Organisation": {
-          "OrganisationID": "Q1KOKP2",
-          "OrganisationName": "Civil - Organisation 1"
-        },
-        "OrgPolicyCaseAssignedRole": "[APPLICANTSOLICITORONESPEC]",
-        "OrgPolicyReference": null,
-        "PrepopulateToUsersOrganisation": null
-      },
-      "applicantSolicitor1CheckEmail": {
-        "correct": "No",
-        "email": "hmcts.civil+organisation.1.solicitor.1@gmail.com"
-      },
-      "applicantSolicitor1PbaAccounts": {
-        "list_items": [
-          {
-            "code": "b2490b90-9f3a-48e6-9b6b-daec5bc3947b",
-            "label": "PBA0088192"
-          },
-          {
-            "code": "fc922469-ad34-4376-9bda-a182025a0925",
-            "label": "PBA0078095"
-          }
-        ],
-        "value": {
-          "code": "b2490b90-9f3a-48e6-9b6b-daec5bc3947b",
-          "label": "PBA0088192"
-        }
-      },
-      "applicantSolicitor1PbaAccountsIsEmpty": null,
-      "applicantSolicitor1UserDetails": {
-        "email": "civilmoneyclaimsdemo@gmail.com",
-        "id": null
-      },
-      "calculatedInterest": "| Description | Amount | \n |---|---| \n | Claim amount | £ 15000 | \n | Interest amount | £ 0 | \n | Total amount | £ 15000 |",
-      "claimAmountBreakup": [
-        {
-          "id": "e630b8b5-2675-4f2f-b19c-99150982e11a",
-          "value": {
-            "claimAmount": "1500000",
-            "claimReason": "Rent"
-          }
-        }
-      ],
-      "claimAmountBreakupSummaryObject": "| Description | Amount | \n |---|---| \n | Rent | £ 15000.00 |\n  | **Total** | £ 15000.00 |",
-      "claimFee": {
-        "calculatedAmountInPence": "150000",
-        "code": "FEE0209",
-        "version": "3"
-      },
-      "claimInterest": "No",
-      "claimIssuedPaymentDetails": {
-        "customerReference": "Case 001",
-        "errorCode": null,
-        "errorMessage": null,
-        "reference": null,
-        "status": null
-      },
-      "detailsOfClaim": "sdfg",
-      "respondent1": {
-        "companyName": "company 2",
-        "individualDateOfBirth": null,
-        "individualFirstName": null,
-        "individualLastName": null,
-        "individualTitle": null,
-        "organisationName": null,
-        "partyName": "company 2",
-        "partyTypeDisplayValue": "Company",
-        "primaryAddress": {
-          "AddressLine1": "Markson 35",
-          "AddressLine2": "",
-          "AddressLine3": "",
-          "Country": "",
-          "County": "",
-          "PostCode": "SW1W 0NY",
-          "PostTown": ""
-        },
-        "soleTraderDateOfBirth": null,
-        "soleTraderFirstName": null,
-        "soleTraderLastName": null,
-        "soleTraderTitle": null,
-        "soleTraderTradingAs": null,
-        "type": "COMPANY"
-      },
-      "respondent1OrganisationPolicy": {
-        "Organisation": {
-          "OrganisationID": "Q1KOKP2",
-          "OrganisationName": "Civil - Organisation 1"
-        },
-        "OrgPolicyCaseAssignedRole": "[RESPONDENTSOLICITORONESPEC]",
-        "OrgPolicyReference": null
-      },
-      "respondent1OrgRegistered": "Yes",
-      "respondentSolicitor1EmailAddress": "civilmoneyclaimsdemo@gmail.com",
-      "solicitorReferences": null,
-      "specApplicantCorrespondenceAddressdetails": null,
-      "specApplicantCorrespondenceAddressRequired": "No",
-      "specClaimTimelineList": "MANUAL",
-      "speclistYourEvidenceList": [
-        {
-          "id": "b88543d3-4a43-4613-b982-25d53ac52afd",
-          "value": {
-            "contractAndAgreementsEvidence": "sdfg",
-            "evidenceType": "CONTRACTS_AND_AGREEMENTS",
-            "expertWitnessEvidence": null,
-            "lettersEmailsAndOtherCorrespondenceEvidence": null,
-            "otherEvidence": null,
-            "photoEvidence": null,
-            "receiptsEvidence": null,
-            "statementOfTruthEvidence": null
-          }
-        }
-      ],
-      "specRespondent1Represented": "Yes",
-      "specRespondentCorrespondenceAddressdetails": null,
-      "specRespondentCorrespondenceAddressRequired": "No",
-      "superClaimType": "SPEC_CLAIM",
-      "timelineOfEvents": [
-        {
-          "id": "e591459e-5402-4dd0-a35f-a7f14fcf8c4b",
-          "value": {
-            "timelineDate": "2020-02-01",
-            "timelineDescription": "sdfg"
-          }
-        }
-      ],
-      "totalClaimAmount": "15000",
-      "totalInterest": "0",
-      "uiStatementOfTruth": {
-        "name": "SoT Name",
-        "role": "Solicitor"
-      }
-    };
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment is confirmed.'
-    });
-    await assignCase();
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
   defendantResponseNoChecks: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
@@ -1010,14 +835,13 @@ const assertContainsPopulatedFields = returnedCaseData => {
   }
 };
 
-// TODO remove
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
-// TODO remove
+
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
