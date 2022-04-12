@@ -118,6 +118,12 @@ module.exports = {
       }
     },
     HearingSupport: {},
+    VulnerabilityQuestions: {
+      respondent1DQVulnerabilityQuestions: {
+        vulnerabilityAdjustmentsRequired: 'Yes',
+        vulnerabilityAdjustments: 'Defendant 1 reasons'
+      }
+    },
     FurtherInformation: {
       respondent1DQFurtherInformation: {
         futureApplications: 'Yes',
