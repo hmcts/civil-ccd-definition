@@ -12,6 +12,6 @@ Scenario('Defendant response', async ({I, api_spec}) => {
   await api_spec.defendantResponse(config.defendantSolicitorUser);
 });
 
-// Scenario('Claimant response', async ({I, api_spec}) => {
-//   await api_spec.claimantResponseNoChecks(config.applicantSolicitorUser);
-// });
+Scenario('Claimant response', async ({I, api_spec}) => {
+  await api_spec.claimantResponse(config.applicantSolicitorUser);
+});

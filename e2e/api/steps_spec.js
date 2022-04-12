@@ -17,7 +17,7 @@ const testingSupport = require('./testingSupport');
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponseSpec.js'),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario)
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse()
 };
 
 const eventData = {
@@ -106,124 +106,28 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponseNoChecks: async (user) => {
-
-    await apiRequest.setupTokens(user);
-
-    eventName = 'CLAIMANT_RESPONSE_SPEC';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    const claimantResponseData = {
-      "applicant1AdditionalInformationForJudge": null,
-      "applicant1DefenceResponseDocumentSpec": null,
-      "applicant1DQDisclosureOfElectronicDocuments": {
-        "agreementLikely": null,
-        "reachedAgreement": "Yes",
-        "reasonForNoAgreement": null
-      },
-      "applicant1DQDisclosureReport": null,
-      "applicant1DQExperts": {
-        "details": [],
-        "expertReportsSent": null,
-        "expertRequired": "No",
-        "jointExpertSuitable": null
-      },
-      "applicant1DQFileDirectionsQuestionnaire": {
-        "explainedToClient": [
-          "CONFIRM"
-        ],
-        "oneMonthStayRequested": "No",
-        "reactionProtocolCompliedWith": "Yes",
-        "reactionProtocolNotCompliedWithReason": null
-      },
-      "applicant1DQFutureApplications": {
-        "intentionToMakeFutureApplications": "No",
-        "whatWillFutureApplicationsBeMadeFor": null
-      },
-      "applicant1DQHearingLRspec": {
-        "hearingLength": "ONE_DAY",
-        "hearingLengthDays": null,
-        "hearingLengthHours": null,
-        "unavailableDatesLRspec": [],
-        "unavailableDatesRequired": "No"
-      },
-      "applicant1DQHearingSupport": null,
-      "applicant1DQLanguage": {
-        "court": "ENGLISH",
-        "documents": "ENGLISH",
-        "evidence": "ENGLISH"
-      },
-      "applicant1DQRequestedCourt": {
-        "reasonForHearingAtSpecificCourt": null,
-        "requestHearingAtSpecificCourt": "No",
-        "responseCourtCode": null
-      },
-      "applicant1DQSmallClaimHearing": null,
-      "applicant1DQWitnesses": {
-        "details": [],
-        "witnessesToAppear": "No"
-      },
-      "applicant1ProceedWithClaim": "Yes",
-      "claimType": null,
-      "defenceRouteRequired": "DISPUTES_THE_CLAIM",
-      "respondent1": {
-        "companyName": "company 2",
-        "partyName": "company 2",
-        "partyTypeDisplayValue": "Company",
-        "primaryAddress": {
-          "AddressLine1": "Markson 35",
-          "PostCode": "SW1W 0NY"
-        },
-        "type": "COMPANY"
-      },
-      "respondent1ClaimResponseTypeForSpec": "FULL_DEFENCE",
-      "respondent1GeneratedResponseDocument": null,
-      "responseClaimTrack": "FAST_CLAIM",
-      "specApplicant1DQDisclosureOfNonElectronicDocuments": null,
-      "uiStatementOfTruth": {
-        "name": "SoT Name",
-        "role": "Solicitor"
-      }
-    };
-
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  // TODO remove
-  claimantResponse: async (user, multipartyScenario) => {
+  claimantResponse: async (user) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
 
     await apiRequest.setupTokens(user);
 
-    eventName = 'CLAIMANT_RESPONSE';
-    mpScenario = multipartyScenario;
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
+
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    const claimantResponseData = data.CLAIMANT_RESPONSE();
 
-    await validateEventPages(claimantResponseData);
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
 
-    await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
-      header: 'You have chosen to proceed with the claim',
-      body: '>We will review the case and contact you to tell you what to do next.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    // TODO can't be finished until we complete Camunda I2P
+    // await waitForFinishedBusinessProcess(caseId);
   },
 
   cleanUp: async () => {
