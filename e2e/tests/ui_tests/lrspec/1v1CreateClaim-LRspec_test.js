@@ -11,7 +11,7 @@ Scenario('1v1 Applicant solicitor creates specified claim for small claims @crea
   console.log('1v1 Applicant solicitor creates specified claim for small claims  @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('organisation', null , 'company', null  ,false, 19000);
-  caseNumber = await I.grabCaseNumber();
+  caseNumber = await LRspec.grabCaseNumber();
   await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
