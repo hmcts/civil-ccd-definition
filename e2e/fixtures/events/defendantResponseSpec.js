@@ -49,7 +49,7 @@ module.exports = {
       }
     },
     HearingLRspec: {
-      respondent1DQHearingFastClaim: {
+      respondent1DQHearing: {
         hearingLength: 'ONE_DAY',
         unavailableDatesRequired: 'No'
       },
@@ -69,6 +69,18 @@ module.exports = {
       }
     }
   },
-  midEventData: {},
+  midEventData: {
+    RespondentResponseTypeSpec: {
+      specFullDefenceOrPartAdmission: 'Yes',
+      multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+      specFullDefenceOrPartAdmission1V1: 'Yes',
+      specDefenceFullAdmittedRequired: 'No'
+    },
+    defenceRoute: {
+      specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
+      responseClaimTrack: 'FAST_CLAIM',
+      specDisputesOrPartAdmission: 'Yes'
+    }
+  },
   midEventGeneratedData: {}
 };

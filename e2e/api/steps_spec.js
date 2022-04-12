@@ -95,20 +95,13 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    for (let pageId of Object.keys(defendantResponseData.valid)) {
+    for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'You have submitted the Defendant\'s defence',
-      body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
-        + 'claimant\'s legal representative a notification.'
-    });
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     deleteCaseFields('respondent1Copy');
   },
