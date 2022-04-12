@@ -10,8 +10,8 @@
     "ID": "JudgementSum",
     "ListElementCode": "judgementSum",
     "FieldType": "Number",
-    "ElementLabel": "Judgment will be made for all of the claim amount, unless you enter a different percentage",
-    "HintText": "Judgment amount",
+    "ElementLabel": "Judgment for the claimant for a sum to be decided by the court",
+    "HintText": "Subject to a deduction of",
     "SecurityClassification": "Public",
     "Min": 1,
     "Max": 100
