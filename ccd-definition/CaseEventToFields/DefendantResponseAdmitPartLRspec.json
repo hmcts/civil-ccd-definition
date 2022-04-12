@@ -183,6 +183,60 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specPartAdmitPaid",
+    "PageID": "DefendantBankAccounts",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specFullAdmitPaid",
+    "PageID": "DefendantBankAccounts",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "disabilityPremiumPaymentsLabel",
+    "PageID": "DisabilityPremiumPayments",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "specPartAdmitPaid=\"No\" OR specFullAdmitPaid=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "disabilityPremiumPayments",
+    "PageID": "DisabilityPremiumPayments",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "severeDisabilityPremiumPayments",
+    "PageID": "DisabilityPremiumPayments",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "disabilityPremiumPayments=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "homeOptionsTitleLRspec",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 1,
