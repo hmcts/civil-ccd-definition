@@ -8,7 +8,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "bothDefendantsSpec",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "CPRCertifySpec",
+    "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CPRCertifySpecTwoDefendant",
     "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -22,8 +36,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "CPRConfirmationSpecTwoDefendant",
+    "Label": "I certify that all of these statements are correct and apply to the defendants",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "currentDefendant",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "Used to populate title for partial payment, depending on whether both defendants were selected"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "partialPaymentLabel",
-    "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
+    "Label": "## ${currentDefendant}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
