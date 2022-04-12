@@ -227,8 +227,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "CaseFieldID": "applicant1DQRequestedCourt",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CR"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1RespondToClaim_experts",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ClaimWitnesses",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
