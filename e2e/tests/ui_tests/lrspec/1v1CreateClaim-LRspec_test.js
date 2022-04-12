@@ -7,40 +7,40 @@ let caseNumber;
 
 Feature('Claim creation 1v1 @e2e-tests-spec');
 
-Scenario('1v1 Applicant solicitor creates specified claim for small claims @create-claim-spec', async ({I}) => {
+Scenario('1v1 Applicant solicitor creates specified claim for small claims @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for small claims  @create-claim-spec');
-  await I.login(config.applicantSolicitorUser);
-  await I.createCaseSpecified('organisation', null , 'company', null  ,false, 19000);
+  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.createCaseSpecified('organisation', null , 'company', null  ,false, 19000);
   caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`);
+  await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario('1v1 Defendant solicitor acknowledges claim-spec', async ({I}) => {
+Scenario('1v1 Defendant solicitor acknowledges claim-spec', async ({LRspec}) => {
   console.log('1v1 Defendant solicitor acknowledges claim-spec: ' + caseId());
   await assignCaseToLRSpecDefendant(caseId());
-  await I.login(config.defendantSolicitorUser);
-  await I.acknowledgeClaimSpec();
-  await I.see(caseEventMessage('Acknowledgement of Service'));
+  await LRspec.login(config.defendantSolicitorUser);
+  await LRspec.acknowledgeClaimSpec();
+  await LRspec.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
-Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.respondToClaimFullDefence({defendant1Response: 'fullDefence',claimType: 'fast', defenceType: 'dispute'});
-  await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
+Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+  await LRspec.login(config.defendantSolicitorUser);
+  await LRspec.respondToClaimFullDefence({defendant1Response: 'fullDefence',claimType: 'fast', defenceType: 'dispute'});
+  await LRspec.see(caseEventMessage('Respond to claim'));
+  await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.respondToClaimPartAdmit({defendant1Response: 'partAdmission', claimType: 'fast', defenceType: 'repaymentPlan'});
-  await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
+Scenario.skip('1v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async (LRspec) => {
+  await LRspec.login(config.defendantSolicitorUser);
+  await LRspec.respondToClaimPartAdmit({defendant1Response: 'partAdmission', claimType: 'fast', defenceType: 'repaymentPlan'});
+  await LRspec.see(caseEventMessage('Respond to claim'));
+  await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.respondToClaimFullAdmit({defendant1Response: 'fullAdmission', claimType: 'fast', defenceType: 'setDate'});
-  await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
+Scenario.skip('1v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
+  await LRspec.login(config.defendantSolicitorUser);
+  await LRspec.respondToClaimFullAdmit({defendant1Response: 'fullAdmission', claimType: 'fast', defenceType: 'setDate'});
+  await LRspec.see(caseEventMessage('Respond to claim'));
+  await LRspec.click('Sign out');
 }).retry(3);
 
