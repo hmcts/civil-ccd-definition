@@ -4400,7 +4400,9 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONESPEC]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -4408,7 +4410,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONESPEC]",
+          "[APPLICANTSOLICITORTWO]",
+          "[APPLICANTSOLICITORTWOSPEC]"
         ],
         "CRUD": "RU"
       }
