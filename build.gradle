@@ -150,7 +150,7 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
 }
 
 task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+  commandLine '/usr/bin/yarn', '--silent', 'test:rpa'
 }
 
 task runRpaHandOffTests(type: Exec, description: 'Runs functional tests.') {
