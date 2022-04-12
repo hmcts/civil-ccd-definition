@@ -4392,5 +4392,26 @@
     "CaseFieldID": "claimStarted",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "RU"
+      }
+    ]
   }
 ]
