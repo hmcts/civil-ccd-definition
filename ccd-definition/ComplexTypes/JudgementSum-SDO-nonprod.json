@@ -13,7 +13,7 @@
     "ElementLabel": "Judgment for the claimant for a sum to be decided by the court",
     "HintText": "Subject to a deduction of",
     "SecurityClassification": "Public",
-    "Min": 1,
+    "Min": 0,
     "Max": 100
   }
 ]
