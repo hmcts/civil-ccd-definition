@@ -28,7 +28,6 @@ exports.config = {
   },
   include: {
     I: './e2e/steps_file.js',
-    I: './e2e/steps_file_LRspec.js',
     api: './e2e/api/steps.js'
   },
   plugins: {
