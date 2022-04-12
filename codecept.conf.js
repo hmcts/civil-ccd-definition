@@ -70,7 +70,8 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: './output',
-          inlineAssets: true,
+          reportFilename: process.env.REPORT_FILE_NAME || 'functional-tests',
+          inlineAssets: false,
           json: false,
         },
       },
