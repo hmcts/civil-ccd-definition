@@ -227,12 +227,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1GeneratedResponseDocument",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CR"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

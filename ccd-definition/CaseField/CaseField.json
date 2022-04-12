@@ -2031,5 +2031,12 @@
     "SecurityClassification": "Public",
     "_Comments": "A workaround to stop users being able to jump onto any page during create claim",
     "_Category": "WORKAROUND"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1GeneratedResponseDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
   }
 ]
