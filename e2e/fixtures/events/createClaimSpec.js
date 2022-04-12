@@ -77,7 +77,7 @@ module.exports = {
      *
      * although fields can be nested as they are in the screens.
      */
-    const sentData = {
+    const userInput = {
       References: {
         superClaimType: 'SPEC_CLAIM',
         solicitorReferences: {
@@ -199,11 +199,11 @@ module.exports = {
     const midEventData = {
       Notifications: {
         applicantSolicitor1CheckEmail: {
-          email: sentData.Notifications.applicantSolicitor1UserDetails.email
+          email: userInput.Notifications.applicantSolicitor1UserDetails.email
         }
       },
       ClaimAmount: {
-        totalClaimAmount: (+sentData.ClaimAmount.claimAmountBreakup[0].value.claimAmount)/100
+        totalClaimAmount: (+userInput.ClaimAmount.claimAmountBreakup[0].value.claimAmount)/100
       },
       ClaimAmountDetails: {
         superClaimType: 'SPEC_CLAIM'
@@ -250,7 +250,7 @@ module.exports = {
     };
 
     return {
-      userInput: sentData,
+      userInput: userInput,
       midEventData: midEventData,
       midEventGeneratedData: midEventGeneratedData
     }

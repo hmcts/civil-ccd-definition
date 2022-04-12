@@ -8,10 +8,10 @@ Scenario('Create claim spec', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
 });
 
-// Scenario('Defendant response', async ({I, api_spec}) => {
-//   await api_spec.defendantResponseNoChecks(config.defendantSolicitorUser);
-// });
-//
+Scenario('Defendant response', async ({I, api_spec}) => {
+  await api_spec.defendantResponse(config.defendantSolicitorUser);
+});
+
 // Scenario('Claimant response', async ({I, api_spec}) => {
 //   await api_spec.claimantResponseNoChecks(config.applicantSolicitorUser);
 // });
