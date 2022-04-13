@@ -204,7 +204,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "defendantPartnerAndDependentLabel",
+    "CaseFieldID": "respondent1PartnerAndDependentLabel",
     "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -215,7 +215,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "defendantPartnerAndDependentSpecRequired",
+    "CaseFieldID": "respondent1PartnerAndDependent",
     "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
