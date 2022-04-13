@@ -307,6 +307,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "paymentSetDateLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "paymentSetDate",
     "AccessControl": [
       {
