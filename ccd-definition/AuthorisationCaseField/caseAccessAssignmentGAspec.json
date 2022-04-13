@@ -25,6 +25,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplnSolicitor",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppRespondentSolicitors",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppRespondentAgreement",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

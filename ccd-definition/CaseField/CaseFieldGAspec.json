@@ -149,6 +149,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "generalAppApplnSolicitor",
+    "Label": "Applicant Solicitor Details",
+    "FieldType": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds applicant's Solicitor details.",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppRespondentSolicitors",
+    "Label": "Respondent Solicitor Details",
+    "FieldType": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "This fields holds Respondent's Solicitor details.",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
