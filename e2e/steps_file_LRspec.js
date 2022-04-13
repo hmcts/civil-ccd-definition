@@ -320,8 +320,7 @@ module.exports = function () {
                  () => pbaNumberPage.selectPbaNumber(),
                  () => paymentReferencePage.updatePaymentReference(),
                  () => statementOfTruth.enterNameAndRole('claim'),
-                 () => event.submit('Submit',
-                 shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+                 () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
                  () => event.returnToCaseDetails(),
            ]);
 

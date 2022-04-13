@@ -7,8 +7,8 @@ let caseNumber;
 
 Feature('Claim creation 1v1 @e2e-tests-spec');
 
-Scenario('1v1 Applicant solicitor creates specified claim for small claims @create-claim-spec', async ({LRspec}) => {
-  console.log('1v1 Applicant solicitor creates specified claim for small claims  @create-claim-spec');
+Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
+  console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('organisation', null , 'company', null  ,false, 19000);
   caseNumber = await LRspec.grabCaseNumber();
