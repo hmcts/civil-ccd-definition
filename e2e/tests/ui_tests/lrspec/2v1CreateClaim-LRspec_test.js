@@ -18,7 +18,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
 
 }).retry(3);
 
-Scenario('2v1 Defendant solicitor acknowledges claim-spec', async ({LRspec}) => {
+Scenario.skip('2v1 Defendant solicitor acknowledges claim-spec', async ({LRspec}) => {
   console.log('2v1 Defendant solicitor acknowledges claim-spec: ' + caseId());
   await assignCaseToDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
