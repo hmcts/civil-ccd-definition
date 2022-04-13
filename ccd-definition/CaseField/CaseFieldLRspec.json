@@ -1207,5 +1207,97 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
+    "Label": "Disclosure of non-electronic documents",
+    "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQFutureApplications",
+    "Label": " ",
+    "FieldType": "FutureApplications",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AdditionalInformationForJudge",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimExpertSpecRequired",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RespondToClaim_experts",
+    "Label": " ",
+    "FieldType": "ExpertDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimWitnesses",
+    "Label": "How many witnesses, including the claimant, will give evidence at the hearing?",
+    "FieldType": "Text",
+    "RegularExpression": "\\d+",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRequestedCourt",
+    "Label": " ",
+    "FieldType": "RequestedCourt",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQHearingLRspec",
+    "Label": "Hearing",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQSmallClaimHearing",
+    "Label": "Hearing",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DefenceResponseDocumentSpec",
+    "Label": " ",
+    "FieldType": "ResponseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DefenceResponseDocumentSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Respond to the defence</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRequestedCourtSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Claimant's requested court</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimMediationSpecRequired",
+    "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
+    "FieldType": "SmallClaimMedication",
+    "SecurityClassification": "Public"
   }
 ]
