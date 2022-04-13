@@ -114,9 +114,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
-    caseData = returnedCaseData;
+    caseData = await apiRequest.startEvent(eventName, caseId);
 
     const claimantResponseData = data.CLAIMANT_RESPONSE();
 
@@ -145,7 +143,7 @@ const assertValidData = async (data, pageId) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    null
   );
   let responseBody = await response.json();
 
@@ -255,37 +253,6 @@ function updateWithGenerated(currentObject, responseBodyData, expectedModificati
   return modified;
 }
 
-// TODO remove
-function removeUiFields(pageId, caseData) {
-  console.log(`Removing ui fields for pageId: ${pageId}`);
-  const midEventField = midEventFieldForPage[pageId];
-
-  if (midEventField.uiField.remove === true) {
-    const fieldToRemove = midEventField.uiField.field;
-    delete caseData[fieldToRemove];
-  }
-  return caseData;
-}
-
-// TODO remove
-const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    {...caseData, ...eventData},
-    isDifferentSolicitorForDefendantResponseOrExtensionDate ? caseId : null,
-    422
-  );
-
-  const responseBody = await response.json();
-
-  assert.equal(response.status, 422);
-  assert.equal(responseBody.message, responseBodyMessage);
-  if (responseBody.callbackErrors != null) {
-    assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
-  }
-};
-
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
@@ -305,144 +272,10 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     console.log('Case created: ' + caseId);
   }
 };
-// TODO remove
-const assertContainsPopulatedFields = returnedCaseData => {
-  for (let populatedCaseField of Object.keys(caseData)) {
-    assert.property(returnedCaseData, populatedCaseField);
-  }
-};
 
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
-};
-
-const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  if (config.runningEnv == 'preview') {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
-  } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
-  }
-};
-
-// TODO remove
-function addMidEventFields(pageId, responseBody) {
-  console.log(`Adding mid event fields for pageId: ${pageId}`);
-  const midEventField = midEventFieldForPage[pageId];
-  let midEventData;
-
-  if (eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE') {
-    midEventData = data[eventName](mpScenario).midEventData[pageId];
-  } else {
-    midEventData = data[eventName].midEventData[pageId];
-  }
-
-  if (midEventField.dynamicList === true) {
-    assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
-  }
-
-  caseData = {...caseData, ...midEventData};
-  responseBody.data[midEventField.id] = caseData[midEventField.id];
-}
-
-// TODO remove
-function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
-  const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
-  const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
-
-  expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
-}
-
-// TODO remove
-function removeUuidsFromDynamicList(data, dynamicListField) {
-  const dynamicElements = data[dynamicListField].list_items;
-  // eslint-disable-next-line no-unused-vars
-  return dynamicElements.map(({code, ...item}) => item);
-}
-
-// TODO remove
-async function updateCaseDataWithPlaceholders(data, document) {
-  const placeholders = {
-    TEST_DOCUMENT_URL: document.document_url,
-    TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
-    TEST_DOCUMENT_FILENAME: document.document_filename
-  };
-
-  data = lodash.template(JSON.stringify(data))(placeholders);
-
-  return JSON.parse(data);
-}
-
-// TODO remove
-const assignCase = async () => {
-  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-  switch (mpScenario) {
-    case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
-      break;
-    }
-    case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.defendantSolicitorUser);
-      break;
-    }
-  }
-};
-// TODO remove
-// solicitor 1 should not see details for respondent 2
-// solicitor 2 should not see details for respondent 1
-const solicitorSetup = (solicitor) => {
-  if (solicitor === 'solicitorOne') {
-    deleteCaseFields('respondent2');
-  } else if (solicitor === 'solicitorTwo') {
-    deleteCaseFields('respondent1');
-  }
-};
-// TODO remove
-const clearDataForExtensionDate = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
-  delete responseBody.data['caseNotes'];
-  delete responseBody.data['systemGeneratedCaseDocuments'];
-
-  // solicitor cannot see data from respondent they do not represent
-  if (solicitor === 'solicitorTwo') {
-    delete responseBody.data['respondent1'];
-  } else {
-    delete responseBody.data['respondent2'];
-  }
-  return responseBody;
-};
-// TODO remove
-const clearDataForDefendantResponse = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
-  delete responseBody.data['caseNotes'];
-  delete responseBody.data['systemGeneratedCaseDocuments'];
-  delete responseBody.data['respondentSolicitor2Reference'];
-
-  // solicitor cannot see data from respondent they do not represent
-  if (solicitor === 'solicitorTwo') {
-    delete responseBody.data['respondent1'];
-    delete responseBody.data['respondent1ClaimResponseType'];
-    delete responseBody.data['respondent1ClaimResponseDocument'];
-    delete responseBody.data['respondent1DQFileDirectionsQuestionnaire'];
-    delete responseBody.data['respondent1DQDisclosureOfElectronicDocuments'];
-    delete responseBody.data['respondent1DQDisclosureOfNonElectronicDocuments'];
-    delete responseBody.data['respondent1DQExperts'];
-    delete responseBody.data['respondent1DQWitnesses'];
-    delete responseBody.data['respondent1DQLanguage'];
-    delete responseBody.data['respondent1DQHearing'];
-    delete responseBody.data['respondent1DQDraftDirections'];
-    delete responseBody.data['respondent1DQRequestedCourt'];
-    delete responseBody.data['respondent1DQFurtherInformation'];
-  } else {
-    delete responseBody.data['respondent2'];
-  }
-  return responseBody;
-};
-// TODO remove
-const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
