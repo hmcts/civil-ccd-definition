@@ -1,9 +1,11 @@
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
-    './e2e/tests/api_multiparty/*_test.js',
-    './e2e/tests/multiparty/*_test.js',
-    './e2e/tests/sdo/*_test.js'
+    './e2e/tests/api_tests/damages/*_test.js',
+    './e2e/tests/ui_tests/damages/*_test.js',
+    './e2e/tests/ui_tests/damages/nightly/*_test.js',
+    './e2e/tests/ui_tests/lrspec/*_test.js',
+    './e2e/tests/ui_tests/sdo/*_test.js'
   ],
   output: './output',
   helpers: {
@@ -66,7 +68,8 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: './output',
-          inlineAssets: true,
+          reportFilename: process.env.REPORT_FILE_NAME || 'functional-tests',
+          inlineAssets: false,
           json: false,
         },
       },
