@@ -185,20 +185,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "paymentTypeLabel",
+    "CaseFieldID": "currentDefendantName",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "paymentType",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\" OR paymentConfirmationDecisionSpec = \"No\"",
+    "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "paymentTypeLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "paymentType",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentTypeSelection",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "paymentType",
     "PageDisplayOrder": 6,
