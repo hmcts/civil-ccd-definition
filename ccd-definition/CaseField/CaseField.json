@@ -352,6 +352,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameLabelVulnerabilityQuestions",
+    "Label": "<br/>**Defendant: ${respondent1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelFileDirectionsQuestionnaire",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -404,6 +411,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelVulnerabilityQuestions1",
+    "Label": "**${applicant1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -511,6 +525,13 @@
     "SecurityClassification": "Public"
   },
   {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondentSharedClaimResponseDocument",
+  "Label": "Upload defence",
+  "FieldType": "ResponseDocument",
+  "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
@@ -582,10 +603,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQVulnerabilityQuestions",
+    "Label": "Defendant 1 Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2DQVulnerabilityQuestions",
+  "Label": "Defendant 2 Vulnerability Questions",
+  "FieldType": "VulnerabilityQuestions",
+  "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -764,6 +799,13 @@
     "ID": "applicant1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQVulnerabilityQuestions",
+    "Label": "Claimant 1 Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
     "SecurityClassification": "Public"
   },
   {
@@ -1478,6 +1520,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameLabelVulnerabilityQuestions",
+    "Label": "**Defendant: ${respondent2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1493,6 +1542,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
+    "Label": "**against Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameLabelVulnerabilityQuestions2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1723,6 +1779,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "vulnerabilityQuestionsInfoLabel",
+    "Label": "Your answers to the questions above will enable the court and the judge, to consider what steps, adjustments or support can be arranged.\n\nYou are reminded that a copy of this directions questionnaire will be shared with all other parties.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DetailsForClaimDetailsTab",
     "Label": "Defendant details",
     "FieldType": "Party",
@@ -1794,6 +1857,13 @@
     "ID": "applicant2DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQVulnerabilityQuestions",
+    "Label": "Claimant 2 Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
     "SecurityClassification": "Public"
   },
   {
@@ -1951,6 +2021,22 @@
     "ID": "applicant2ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimStarted",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop users being able to jump onto any page during create claim",
+    "_Category": "WORKAROUND"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1GeneratedResponseDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]
