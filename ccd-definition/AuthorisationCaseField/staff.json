@@ -283,6 +283,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent1DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

@@ -836,6 +836,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent1DQVulnerabilityQuestions",
+    "Label": "Respondent 1 Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondent1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
