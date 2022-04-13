@@ -288,7 +288,7 @@ module.exports = function () {
       }
     },
 
-     async createCaseSpecified(claimant1, claimant2,  respondent1, respondent2, shouldStayOnline = true , claimAmount) {
+     async createCaseSpecified(claimant1, claimant2,  respondent1, respondent2, claimAmount) {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
