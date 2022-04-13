@@ -271,6 +271,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "currentDefendantName",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "paymentTypeSelection",
     "AccessControl": [
       {

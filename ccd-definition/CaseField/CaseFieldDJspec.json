@@ -100,8 +100,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "currentDefendantName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "paymentTypeLabel",
-    "Label": "## How do you want ${respondent1.partyName} to pay?",
+    "Label": "## How do you want ${currentDefendantName} to pay?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
