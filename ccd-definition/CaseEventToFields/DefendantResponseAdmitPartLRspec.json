@@ -220,6 +220,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DefendantPartnersAndDependents",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-partner-dependents",
     "ShowSummaryChangeOption": "Y"
   },
   {

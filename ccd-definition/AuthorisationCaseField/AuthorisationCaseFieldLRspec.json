@@ -2176,7 +2176,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendantPartnerAndDependentSpecRequired",
+    "CaseFieldID": "respondent1PartnerAndDependent",
     "AccessControl": [
       {
         "UserRoles": [

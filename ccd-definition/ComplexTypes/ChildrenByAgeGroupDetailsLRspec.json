@@ -8,21 +8,21 @@
   },
   {
     "ID": "ChildrenByAgeGroupDetails",
-    "ListElementCode": "under11",
+    "ListElementCode": "numberOfUnderEleven",
     "FieldType": "Number",
     "ElementLabel": "Under 11",
     "SecurityClassification": "Public"
   },
   {
     "ID": "ChildrenByAgeGroupDetails",
-    "ListElementCode": "11to15",
+    "ListElementCode": "numberOfElevenToFifteen",
     "FieldType": "Number",
     "ElementLabel": "11 to 15",
     "SecurityClassification": "Public"
   },
   {
     "ID": "ChildrenByAgeGroupDetails",
-    "ListElementCode": "16to19",
+    "ListElementCode": "numberOfSixteenToNineteen",
     "FieldType": "Number",
     "ElementLabel": "16 to 19",
     "SecurityClassification": "Public"
