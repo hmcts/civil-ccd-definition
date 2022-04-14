@@ -150,7 +150,10 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
 }
 
 task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
+  if (System.env.ENVIRONMENT == 'preview') {
+    commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
+  }
 }
 
 task runRpaHandOffTests(type: Exec, description: 'Runs functional tests.') {
