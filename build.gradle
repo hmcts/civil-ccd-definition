@@ -149,11 +149,11 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
-task runSpecFunctionalTests(description: 'Runs Spec functional tests.') {
+task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
   if (System.env.ENVIRONMENT == 'preview') {
-    exec {
       commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
-    }
+  } else {
+      commandLine '/usr/bin/echo', '--silent', 'Skip specified functional tests'
   }
 }
 
