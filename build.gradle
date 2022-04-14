@@ -149,8 +149,15 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
-task runFunctionalTests(type: Exec, description: 'Runs functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional'
+task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
+  if (System.env.ENVIRONMENT == 'preview') {
+    commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
+  }
+}
+
+task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
+
 }
 
 task runRpaHandOffTests(type: Exec, description: 'Runs functional tests.') {
@@ -173,7 +180,7 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSpecFunctionalTests, runUnspecFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
@@ -222,6 +229,8 @@ ext.libraries = [
 ]
 
 dependencies {
+  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.18'
+  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.18'
   implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
   implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.0'
