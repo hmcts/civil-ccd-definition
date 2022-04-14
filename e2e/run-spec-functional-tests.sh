@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 
-export REPORT_FILE_NAME='api-spec'
+echo "Run Api Functional tests for api-spec"
 yarn test:api-spec
 
-export REPORT_FILE_NAME='e2e-spec'
+echo "Run Api Functional tests for e2e-spec"
 yarn test:e2e-spec
