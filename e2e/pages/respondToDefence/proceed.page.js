@@ -70,11 +70,11 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async dropClaim() {
-    I.waitForElement(this.fields.proceed.id);
+  async dropClaim(mpScenario) {
+    I.waitForElement(this.fields(mpScenario).proceed.id);
     await I.runAccessibilityTest();
-    await within(this.fields.proceed.id, () => {
-      I.click(this.fields.proceed.options.no);
+    await within(this.fields(mpScenario).proceed.id, () => {
+      I.click(this.fields(mpScenario).proceed.options.no);
     });
     await I.clickContinue();
   }
