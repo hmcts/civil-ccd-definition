@@ -28,6 +28,7 @@ exports.config = {
   },
   include: {
     I: './e2e/steps_file.js',
+    LRspec: './e2e/steps_file_LRspec.js',
     api: './e2e/api/steps.js'
   },
   plugins: {
@@ -68,7 +69,7 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: './output',
-          reportFilename: process.env.REPORT_FILE_NAME || 'functional-tests',
+          reportFilename: process.env.MOCHAWESOME_REPORTFILENAME || 'functional-tests',
           inlineAssets: false,
           json: false,
         },
