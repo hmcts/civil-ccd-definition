@@ -144,7 +144,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "repaymentDetailsLabel",
-    "Label": "## Suggest instalments for the defendant \n Total claim amount is £${repaymentDue}",
+    "Label": "## Suggest instalments for ${currentDefendantName} \n Total claim amount is £${repaymentDue}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
