@@ -978,12 +978,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondent1DQVulnerabilityQuestions",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "PageDisplayOrder": 36,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
+    "PageShowCondition": "multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND specFullDefenceOrPartAdmission = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
