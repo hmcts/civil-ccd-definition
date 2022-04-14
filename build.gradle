@@ -150,11 +150,10 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
 }
 
 task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
-  if (System.env.ENVIRONMENT == 'preview') {
-      commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
-  } else {
-      commandLine '/usr/bin/echo', '--silent', 'Skip specified functional tests'
+  onlyIf {
+    return System.env.ENVIRONMENT != 'preview'
   }
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
 }
 
 task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
