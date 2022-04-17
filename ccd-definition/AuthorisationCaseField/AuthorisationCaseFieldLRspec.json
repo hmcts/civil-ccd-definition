@@ -1426,6 +1426,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDebtPageLabel2",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefendant1Debts",
     "AccessControl": [
       {
@@ -1521,6 +1527,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specSelfEmployedPageLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specSelfEmployedPageLabel2",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
   },
@@ -1690,6 +1702,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "AccessControl": [
       {
         "UserRoles": [
