@@ -285,7 +285,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddEmploymentDetails",
-    "PageShowCondition": "addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -328,7 +327,6 @@
     "PageDisplayOrder": 22,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -372,7 +370,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
-    "PageShowCondition": "addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -415,7 +412,6 @@
     "PageDisplayOrder": 26,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
-    "PageShowCondition": "addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -562,7 +558,6 @@
     "PageDisplayOrder": 29,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -606,7 +601,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "RepaymentPlan",
-    "PageShowCondition": "addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
   }
