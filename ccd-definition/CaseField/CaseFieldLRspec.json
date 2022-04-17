@@ -1313,5 +1313,19 @@
     "Label": " ",
     "FieldType": "PartnerAndDependentsLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartnerAndDependentLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent2.partyName} partner and dependents</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartnerAndDependent",
+    "Label": " ",
+    "FieldType": "PartnerAndDependentsLRspec",
+    "SecurityClassification": "Public"
   }
 ]

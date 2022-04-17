@@ -48,10 +48,11 @@
   {
     "ID": "PartnerAndDependentsLRspec",
     "ListElementCode": "supportPeopleNumber",
-    "FieldType": "Number",
+    "FieldType": "Text",
     "ElementLabel": "Number of people",
     "FieldShowCondition": "supportedAnyoneFinancialRequired = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RegularExpression": "\\d+"
   },
   {
     "ID": "PartnerAndDependentsLRspec",

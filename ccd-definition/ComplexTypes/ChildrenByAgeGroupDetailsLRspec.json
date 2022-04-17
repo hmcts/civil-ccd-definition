@@ -9,22 +9,25 @@
   {
     "ID": "ChildrenByAgeGroupDetails",
     "ListElementCode": "numberOfUnderEleven",
-    "FieldType": "Number",
+    "FieldType": "Text",
     "ElementLabel": "Under 11",
+    "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
   },
   {
     "ID": "ChildrenByAgeGroupDetails",
     "ListElementCode": "numberOfElevenToFifteen",
-    "FieldType": "Number",
+    "FieldType": "Text",
     "ElementLabel": "11 to 15",
+    "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
   },
   {
     "ID": "ChildrenByAgeGroupDetails",
     "ListElementCode": "numberOfSixteenToNineteen",
-    "FieldType": "Number",
+    "FieldType": "Text",
     "ElementLabel": "16 to 19",
+    "RegularExpression": "\\d+",
     "SecurityClassification": "Public"
   }
 ]
