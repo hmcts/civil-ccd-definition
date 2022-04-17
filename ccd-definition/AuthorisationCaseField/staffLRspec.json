@@ -202,5 +202,11 @@
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantMPClaimMediationSpecRequired",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

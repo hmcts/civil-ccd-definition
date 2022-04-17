@@ -1238,6 +1238,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimExpertSpecRequired",
+    "Label": "Have the claimants asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1RespondToClaim_experts",
     "Label": " ",
     "FieldType": "ExpertDetails",
@@ -1297,7 +1304,14 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimMediationSpecRequired",
     "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
-    "FieldType": "SmallClaimMedication",
+    "FieldType": "SmallClaimMediation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimMediationSpecRequired",
+    "Label": "Have the claimants agreed to free mediation?",
+    "FieldType": "SmallClaimMediation",
     "SecurityClassification": "Public"
   }
 ]
