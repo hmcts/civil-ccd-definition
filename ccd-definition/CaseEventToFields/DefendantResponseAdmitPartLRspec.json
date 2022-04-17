@@ -543,7 +543,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel2",
-    "PageID": "WhyDoesNotPayImmediately",
+    "PageID": "WhyDoesNotPayImmediatelyRespondent2",
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "addRespondent2 = \"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND specDefenceAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\"",
@@ -554,7 +554,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec2",
-    "PageID": "WhyDoesNotPayImmediately",
+    "PageID": "WhyDoesNotPayImmediatelyRespondent2",
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -590,7 +590,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageShowCondition": "addRespondent2 = \"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
-    "PageID": "RepaymentPlan",
+    "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -600,7 +600,7 @@
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageID": "RepaymentPlan",
+    "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
   }
