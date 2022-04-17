@@ -1044,6 +1044,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartEmployerRespondent2",
+    "Label": " ",
+    "FieldType": "AdmitPartEmployer",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specSelfEmployedPageLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h2> \n</div>",
     "FieldType": "Label",

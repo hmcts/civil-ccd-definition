@@ -1526,6 +1526,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimAdmitPartEmployerRespondent2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specSelfEmployedPageLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"

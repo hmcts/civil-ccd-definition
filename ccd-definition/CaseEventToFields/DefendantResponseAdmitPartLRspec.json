@@ -280,7 +280,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimAdmitPartEmployer",
+    "CaseFieldID": "responseClaimAdmitPartEmployerRespondent2",
     "PageDisplayOrder": 20,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",

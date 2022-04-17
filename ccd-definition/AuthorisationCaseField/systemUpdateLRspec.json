@@ -227,6 +227,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimAdmitPartEmployerRespondent2",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
