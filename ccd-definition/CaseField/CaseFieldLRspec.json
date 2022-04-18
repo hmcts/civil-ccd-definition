@@ -509,6 +509,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentMPClaimResponseTypeForSpecLabel",
+    "Label": "## Defendant: ${respondent1.partyName} and ${respondent2.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -572,6 +579,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedLabel",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specMPDefenceRouteAmountClaimedLabel",
+    "Label": "## Why do ${respondent1.partyName} and ${respondent2.partyName} not owe money to the claimant? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -724,6 +738,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseMPClaimMediationSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Have ${respondent1.partyName} and ${respondent2.partyName} agreed to free mediation?</h2>\n ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

@@ -95,6 +95,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -114,6 +120,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteAmountClaimedLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specMPDefenceRouteAmountClaimedLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
@@ -168,6 +180,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimMediationSpecLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseMPClaimMediationSpecLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },

@@ -756,6 +756,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -789,6 +808,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteAmountClaimedLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specMPDefenceRouteAmountClaimedLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -998,6 +1036,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimMediationSpecLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseMPClaimMediationSpecLabel",
     "AccessControl": [
       {
         "UserRoles": [
