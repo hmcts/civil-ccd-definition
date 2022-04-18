@@ -690,7 +690,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpecLabel",
-    "PageDisplayOrder": 37,
+    "PageDisplayOrder": 38,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
