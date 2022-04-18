@@ -1793,6 +1793,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2DQRecurringExpenses",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2DQRecurringExpensesFA",
     "AccessControl": [
       {
