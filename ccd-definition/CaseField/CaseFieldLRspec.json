@@ -1306,5 +1306,12 @@
     "FieldType": "BreathingSpaceStartInfo",
     "SecurityClassification": "Public",
     "Label": " "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "liftBreathing",
+    "FieldType": "BreathingSpaceLiftInfo",
+    "SecurityClassification": "Public",
+    "Label": " "
   }
 ]

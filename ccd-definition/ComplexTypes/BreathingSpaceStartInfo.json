@@ -34,7 +34,7 @@
   {
     "ID": "BreathingSpaceStartInfo",
     "ListElementCode": "event",
-    "ElementLabel": "Event Summary",
+    "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
     "SecurityClassification": "Public"
