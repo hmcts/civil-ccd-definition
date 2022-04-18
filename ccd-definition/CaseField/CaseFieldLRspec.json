@@ -1299,5 +1299,12 @@
     "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
     "FieldType": "SmallClaimMedication",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "enterBreathing",
+    "FieldType": "BreathingSpaceStartInfo",
+    "SecurityClassification": "Public",
+    "Label": " "
   }
 ]
