@@ -356,7 +356,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondStatementOfTruthLabel",
+    "CaseFieldID": "claimStatementOfTruthLabel",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
