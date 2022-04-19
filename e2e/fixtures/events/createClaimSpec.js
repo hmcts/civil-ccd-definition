@@ -1,7 +1,4 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
-const uuid = require('uuid');
-
-const docUuid = uuid.v1();
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -10,21 +7,9 @@ const respondent1 = {
   individualTitle: 'Sir',
   primaryAddress: buildAddress('respondent')
 };
-const respondent2 = {
-  type: 'INDIVIDUAL',
-  individualFirstName: 'Foo',
-  individualLastName: 'Bar',
-  individualTitle: 'Dr',
-  primaryAddress: buildAddress('second respondent')
-};
 const respondent1WithPartyName = {
   ...respondent1,
   partyName: 'Sir John Doe',
-  partyTypeDisplayValue: 'Individual',
-};
-const respondent2WithPartyName = {
-  ...respondent2,
-  partyName: 'Dr Foo Bar',
   partyTypeDisplayValue: 'Individual',
 };
 const applicant1 = {
@@ -38,33 +23,8 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
-const applicant2 = {
-  type: 'INDIVIDUAL',
-  individualFirstName: 'Jane',
-  individualLastName: 'Doe',
-  individualTitle: 'Dr',
-  primaryAddress: buildAddress('second applicant')
-};
-
-const applicant2WithPartyName = {
-  ...applicant2,
-  partyName: 'Dr Jane Doe',
-  partyTypeDisplayValue: 'Individual',
-};
-
-const applicant1LitigationFriend = {
-  fullName: 'Bob the litigant friend',
-  hasSameAddressAsLitigant: 'No',
-  primaryAddress: buildAddress('litigant friend')
-};
-
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
-
-const hasRespondent2 = (mpScenario) => {
-  return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-    || mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP';
-};
 
 module.exports = {
   createClaim: () => {
