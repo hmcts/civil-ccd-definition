@@ -30,7 +30,7 @@ exports.config = {
   include: {
     I: './e2e/steps_file.js',
     api: './e2e/api/steps.js',
-    api_spec: './e2e/api/steps_spec.js'
+    LRspec: './e2e/api/steps_spec.js'
   },
   plugins: {
     autoDelay: {
