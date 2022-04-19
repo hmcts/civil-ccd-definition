@@ -551,7 +551,18 @@
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "specDisputesOrPartAdmission= \"Yes\" AND respondent1ClaimResponsePaymentAdmissionForSpec !=\"PAID_LESS_THAN_CLAIMED_AMOUNT\""
+    "FieldShowCondition": "specDisputesOrPartAdmission= \"Yes\" AND respondent1ClaimResponsePaymentAdmissionForSpec !=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" AND respondentResponseIsSame !=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefenceRouteUploadDocumentMPLabel",
+    "PageDisplayOrder": 9,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Upload",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "specDisputesOrPartAdmission= \"Yes\" AND respondent1ClaimResponsePaymentAdmissionForSpec !=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" AND respondentResponseIsSame =\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",

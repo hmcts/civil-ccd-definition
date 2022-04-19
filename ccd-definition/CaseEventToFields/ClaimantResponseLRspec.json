@@ -124,6 +124,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defendantSingleResponseToBothClaimants",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
@@ -151,7 +162,19 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "PageShowCondition": "responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim =\"Yes\"",
+    "FieldShowCondition": "defendantSingleResponseToBothClaimants !=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicantMPClaimMediationSpecRequired",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Mediation",
+    "FieldShowCondition": "defendantSingleResponseToBothClaimants =\"Yes\"",
+    "ShowSummaryChangeOption" : "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -230,7 +253,19 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "SmallClaimExperts",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defendantSingleResponseToBothClaimants !=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicantMPClaimExpertSpecRequired",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimExperts",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defendantSingleResponseToBothClaimants =\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -241,7 +276,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicant1ClaimExpertSpecRequired =\"Yes\""
+    "FieldShowCondition": "applicant1ClaimExpertSpecRequired =\"Yes\" OR applicantMPClaimExpertSpecRequired =\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
