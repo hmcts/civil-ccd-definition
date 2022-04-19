@@ -40,6 +40,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "ClaimsTrack",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "claimsTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -48,7 +60,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "What track are you allocating the claim to?",
-    "FieldShowCondition": "drawDirectionsOrderRequired = \"No\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -60,7 +72,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimsTrack = \"smallClaimsTrack\" AND drawDirectionsOrderRequired = \"No\""
+    "FieldShowCondition": "claimsTrack=\"smallClaimsTrack\" AND drawDirectionsOrderRequired=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -72,7 +84,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimsTrack = \"fastTrack\" AND drawDirectionsOrderRequired = \"No\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND drawDirectionsOrderRequired=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -84,7 +96,19 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "drawDirectionsOrderSmallClaims = \"No\" AND drawDirectionsOrderRequired=\"Yes\""
+    "PageShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "  orderTypeTrialAdditionalDirections",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "OrderType",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\" AND orderType=\"DECIDE_DAMAGES\""
   },
   {
     "CaseTypeID": "CIVIL",
