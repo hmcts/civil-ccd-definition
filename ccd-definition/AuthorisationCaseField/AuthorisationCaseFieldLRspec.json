@@ -1723,6 +1723,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "RU"
+      }
+    ]
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "AccessControl": [
       {
