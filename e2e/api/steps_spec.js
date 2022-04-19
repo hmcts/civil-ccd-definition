@@ -1,5 +1,4 @@
 const config = require('../config.js');
-const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
 
@@ -12,43 +11,11 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
-const testingSupport = require('./testingSupport');
 
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario)
-};
-
-const eventData = {
-  defendantResponses: {
-    ONE_V_ONE: data.DEFENDANT_RESPONSE
-  }
-};
-
-const midEventFieldForPage = {
-  ClaimValue: {
-    id: 'applicantSolicitor1PbaAccounts',
-    dynamicList: true,
-    uiField: {
-      remove: false,
-    },
-  },
-  ClaimantLitigationFriend: {
-    id: 'applicantSolicitor1CheckEmail',
-    dynamicList: false,
-    uiField: {
-      remove: false,
-    },
-  },
-  StatementOfTruth: {
-    id: 'applicantSolicitor1ClaimStatementOfTruth',
-    dynamicList: false,
-    uiField: {
-      remove: true,
-      field: 'uiStatementOfTruth'
-    },
-  }
 };
 
 let caseId, eventName;
