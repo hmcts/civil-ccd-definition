@@ -153,7 +153,7 @@ task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests
   onlyIf {
     return System.env.ENVIRONMENT == 'preview'
   }
-  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional-spec'
 }
 
 task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
