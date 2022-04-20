@@ -6,7 +6,7 @@ echo "Run Api Functional tests enabling all feature flags"
 echo "Run Api Functional tests for api-unspec"
 yarn test:api-unspec
 
-echo "Run Api Functional tests for api-unspec"
+echo "Run Api Functional tests for api-spec"
 yarn test:api-spec
 
 echo "Run Api Functional tests for api-sdo"
