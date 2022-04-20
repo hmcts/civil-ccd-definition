@@ -37,6 +37,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteAmountClaimedLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
