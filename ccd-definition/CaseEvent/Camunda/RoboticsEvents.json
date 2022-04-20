@@ -56,7 +56,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RPA_ON_BREATHING_SPACE_ENTERED",
-    "Name": "Notify RPA on breathing space entered",
+    "Name": "Notify RPA breath space enter",
     "Description": "Notify by email with attached RPA JSON to robotics on case entering breathing space",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
