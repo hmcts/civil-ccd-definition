@@ -1,4 +1,5 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
+const config = require('../../config.js');
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -64,7 +65,7 @@ module.exports = {
           OrgPolicyReference: 'Claimant policy reference',
           OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: 'Q1KOKP2'
+            OrganisationID: config.runningEnv === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
           }
         }
       },
@@ -83,7 +84,7 @@ module.exports = {
           OrgPolicyReference: 'Defendant policy reference',
           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: '79ZRSOU'
+            OrganisationID: config.runningEnv === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
           },
         },
       },

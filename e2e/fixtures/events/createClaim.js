@@ -1,5 +1,6 @@
 const {listElement, buildAddress } = require('../../api/dataHelper');
 const uuid = require('uuid');
+const config = require('../../config.js');
 
 const docUuid = uuid.v1();
 
@@ -100,7 +101,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: 'Q1KOKP2'
+          OrganisationID: config.runningEnv === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
         }
       }
     },
@@ -130,7 +131,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         OrgPolicyReference: 'Defendant policy reference',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
         Organisation: {
-          OrganisationID: '79ZRSOU'
+          OrganisationID: config.runningEnv === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
         },
       },
     },
@@ -248,7 +249,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
             Organisation:
 
-              {OrganisationID: 'H2156A0'}
+              {OrganisationID: config.runningEnv === 'demo' ? 'LCVTI1I' : 'H2156A0'}
             ,
           },
         },
