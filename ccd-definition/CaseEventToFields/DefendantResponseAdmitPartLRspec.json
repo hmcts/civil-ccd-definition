@@ -81,7 +81,7 @@
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired != \"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\""
+    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired != \"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -156,7 +156,7 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 14,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -189,7 +189,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\""
   },
   {
     "CaseTypeID": "CIVIL",
