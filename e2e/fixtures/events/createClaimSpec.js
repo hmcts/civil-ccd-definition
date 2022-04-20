@@ -65,7 +65,7 @@ module.exports = {
           OrgPolicyReference: 'Claimant policy reference',
           OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: config.runningEnv === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+            OrganisationID: config.claimantSolicitorOrgId
           }
         }
       },
@@ -84,7 +84,7 @@ module.exports = {
           OrgPolicyReference: 'Defendant policy reference',
           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: config.runningEnv === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
+            OrganisationID: config.defendant1SolicitorOrgId
           },
         },
       },

@@ -101,7 +101,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.runningEnv === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+          OrganisationID: config.claimantSolicitorOrgId,
         }
       }
     },
@@ -131,7 +131,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         OrgPolicyReference: 'Defendant policy reference',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.runningEnv === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
+          OrganisationID: config.defendant1SolicitorOrgId
         },
       },
     },
@@ -249,7 +249,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
             Organisation:
 
-              {OrganisationID: config.runningEnv === 'demo' ? 'LCVTI1I' : 'H2156A0'}
+              {OrganisationID: config.defendant2SolicitorOrgId}
             ,
           },
         },
