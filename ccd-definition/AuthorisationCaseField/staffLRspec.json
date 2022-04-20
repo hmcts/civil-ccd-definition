@@ -214,17 +214,5 @@
     "CaseFieldID": "breathing",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "enterBreathing",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "liftBreathing",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]
