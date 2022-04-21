@@ -1743,25 +1743,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFutureApplications",
     "AccessControl": [
       {
@@ -1859,14 +1840,6 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "applicant1RespondToClaim_experts",
-  "UserRoles": [
-    "caseworker-civil-solicitor"
-  ],
-  "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
