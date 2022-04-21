@@ -45,5 +45,42 @@
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BreathingSpaceLiftInfo",
+    "ListElementCode": "expectedEnd",
+    "ElementLabel": "When is the breathing space expected to end?",
+    "HintText": "This is the date that you have been instructed it will finish",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BreathingSpaceLiftInfo",
+    "ListElementCode": "event",
+    "ElementLabel": "Event summary",
+    "HintText": "A few words describing the purpose of the event",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BreathingSpaceLiftInfo",
+    "ListElementCode": "eventDescription",
+    "ElementLabel": "Event Description",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BreathingSpaceInfo",
+    "ListElementCode": "enter",
+    "ElementLabel": " ",
+    "FieldType": "BreathingSpaceStartInfo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BreathingSpaceInfo",
+    "ListElementCode": "lift",
+    "ElementLabel": " ",
+    "FieldType": "BreathingSpaceLiftInfo",
+    "SecurityClassification": "Public"
   }
 ]

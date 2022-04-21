@@ -7,6 +7,19 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\"",
+    "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants != \"Yes\"",
+    "PageID": "defenceAdmittedPartRoute",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefenceRouteAdmittedAmountClaimedLabel2V1",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND defendantSingleResponseToBothClaimants = \"Yes\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
