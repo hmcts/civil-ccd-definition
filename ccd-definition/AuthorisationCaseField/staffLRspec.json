@@ -163,12 +163,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1GeneratedResponseDocument",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
