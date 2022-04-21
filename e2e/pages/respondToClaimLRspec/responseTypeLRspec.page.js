@@ -24,7 +24,6 @@ module.exports = {
     await within(this.fields.respondent1ClaimResponseType.id, () => {
     I.click(this.fields.respondent1ClaimResponseType.options[responseType]);
     });
-
    await I.clickContinue();
   }
 };
