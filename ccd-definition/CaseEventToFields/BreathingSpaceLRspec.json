@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
+    "CaseFieldID": "enterBreathing",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
@@ -14,7 +14,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
+    "CaseFieldID": "liftBreathing",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",

@@ -2,128 +2,73 @@
   {
     "ID": "BreathingSpaceStartInfo",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.reference",
+    "CaseFieldID": "enterBreathing",
+    "ListElementCode": "reference",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceStartInfo",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.start",
+    "CaseFieldID": "enterBreathing",
+    "ListElementCode": "start",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceStartInfo",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.type",
+    "CaseFieldID": "enterBreathing",
+    "ListElementCode": "type",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "BreathingSpaceStartInfo",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.expectedEnd",
+    "CaseFieldID": "enterBreathing",
+    "ListElementCode": "expectedEnd",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceStartInfo",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.event",
+    "CaseFieldID": "enterBreathing",
+    "ListElementCode": "event",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceStartInfo",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.eventDescription",
+    "CaseFieldID": "enterBreathing",
+    "ListElementCode": "eventDescription",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "lift.expectedEnd",
+    "CaseFieldID": "liftBreathing",
+    "ListElementCode": "expectedEnd",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "lift.event",
+    "CaseFieldID": "liftBreathing",
+    "ListElementCode": "event",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "lift.eventDescription",
+    "CaseFieldID": "liftBreathing",
+    "ListElementCode": "eventDescription",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
-  },
-
-  {
-    "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.reference",
-    "FieldShowCondition": "enter = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.start",
-    "FieldShowCondition": "enter = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.type",
-    "FieldShowCondition": "enter = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y",
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.expectedEnd",
-    "FieldShowCondition": "enter = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.event",
-    "FieldShowCondition": "enter = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
-    "CaseFieldID": "breathing",
-    "ListElementCode": "enter.eventDescription",
-    "FieldShowCondition": "enter = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y",
     "DisplayContext": "OPTIONAL"
   }
 ]
