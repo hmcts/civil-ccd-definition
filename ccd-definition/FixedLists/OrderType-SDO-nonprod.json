@@ -2,7 +2,7 @@
   {
     "ID": "OrderType",
     "ListElementCode": "DISPOSAL",
-    "ListElement": "Disposal/Final hearing",
+    "ListElement": "Disposal hearing",
     "DisplayOrder": 1
   },
   {
