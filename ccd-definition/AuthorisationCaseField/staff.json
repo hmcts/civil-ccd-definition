@@ -1007,5 +1007,17 @@
     "CaseFieldID": "respondent1GeneratedResponseDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "allPartyNames",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "nextDeadline",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

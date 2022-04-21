@@ -22,5 +22,24 @@
     "CaseFieldID": "issueDate",
     "Label": "Date claim issued",
     "DisplayOrder": 4
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "Label": "Solicitor Reference",
+    "ListElementCode": "OrgPolicyReference",
+    "DisplayOrder": 5
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "allPartyNames",
+    "Label": "Defendant Name(s)",
+    "DisplayOrder": 6
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "nextDeadline",
+    "Label": "Next Deadline",
+    "DisplayOrder": 7
   }
 ]

@@ -2038,5 +2038,21 @@
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "allPartyNames",
+    "Label": "All party names",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextDeadline",
+    "Label": "Next Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "Next deadline on a case",
+    "_Category":  "CIVIL"
   }
 ]
