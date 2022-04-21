@@ -17,7 +17,7 @@
     "ID": "PROCESS_FULL_DEFENCE_SPEC",
     "Name": "Full defence",
     "Description": "Full defence",
-    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PreConditionState(s)": "AWAITING_APPLICANT_INTENTION",
     "PostConditionState": "AWAITING_APPLICANT_INTENTION",
     "SecurityClassification": "Public",
     "ShowSummary": "N",

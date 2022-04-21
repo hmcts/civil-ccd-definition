@@ -577,8 +577,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAmountClaimedLabel2v1",
+    "Label": "## Why does ${respondent1.partyName} not owe money to the claimants? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
     "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimedLabel2V1",
+    "Label": "## Has ${respondent1.partyName} paid the claimants the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -653,12 +667,12 @@
     "SecurityClassification": "Public"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "specDefenceRouteUploadDocumentLabel3",
-  "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
-  "FieldType": "Label",
-  "SecurityClassification": "Public"
-},
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel3",
+    "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1SpecDefenceResponseDocument",
@@ -924,7 +938,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
     "Label": "Employed or self-employed?",
-    "HintText":"Select both if your client is employed and self-employed",
+    "HintText": "Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
     "SecurityClassification": "Public"
@@ -1305,6 +1319,13 @@
     "ID": "applicant1ClaimMediationSpecRequired",
     "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
     "FieldType": "SmallClaimMedication",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ProceedWithClaimSpec2v1",
+    "Label": "Do the claimants want to proceed with the claim?",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
 ]
