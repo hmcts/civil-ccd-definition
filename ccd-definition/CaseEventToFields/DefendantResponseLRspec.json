@@ -191,17 +191,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmDetails",
-    "PageLabel": "Confirm defendant's name and address",
-    "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
