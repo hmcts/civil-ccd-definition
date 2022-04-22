@@ -49,7 +49,7 @@
   {
     "ID": "BreathingSpaceLiftInfo",
     "ListElementCode": "expectedEnd",
-    "ElementLabel": "When is the breathing space expected to end?",
+    "ElementLabel": "When is the Breathing Space expected to end?",
     "HintText": "This is the date that you have been instructed it will finish",
     "FieldType": "Date",
     "SecurityClassification": "Public"

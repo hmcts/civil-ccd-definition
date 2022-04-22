@@ -115,8 +115,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ENTER_BREATHING_SPACE_SPEC",
-    "Name": "Enter breathing space",
-    "Description": "Enter breathing space",
+    "Name": "Enter Breathing Space",
+    "Description": "Enter Breathing Space",
     "DisplayOrder": 7,
     "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
     "PostConditionState": "*",
@@ -134,8 +134,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "LIFT_BREATHING_SPACE_SPEC",
-    "Name": "Lift breathing space",
-    "Description": "Lift breathing space",
+    "Name": "Lift Breathing Space",
+    "Description": "Lift Breathing Space",
     "DisplayOrder": 8,
     "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
     "PostConditionState": "*",
