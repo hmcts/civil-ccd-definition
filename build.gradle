@@ -157,7 +157,7 @@ task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests
 }
 
 task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
+  commandLine '/usr/bin/yarn', '--silent', 'test:api-spec'
 
 }
 
