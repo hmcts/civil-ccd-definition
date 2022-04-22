@@ -54,11 +54,6 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  defendantResponse: async (user) => {
-    eventName = 'DEFENDANT_RESPONSE_SPEC';
-
-  },
-
   cleanUp: async () => {
     await unAssignAllUsers();
   }
