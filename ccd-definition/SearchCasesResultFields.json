@@ -40,5 +40,21 @@
     "Label": "State",
     "DisplayOrder": 5,
     "UseCase": "orgcases"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRole": "caseworker-caa",
+    "CaseFieldID": "allPartyNames",
+    "Label": "Defendant Name(s)",
+    "DisplayOrder": 7,
+    "UseCase": "orgcases"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRole": "caseworker-caa",
+    "CaseFieldID": "nextDeadline",
+    "Label": "Next Deadline",
+    "DisplayOrder": 8,
+    "UseCase": "orgcases"
   }
 ]
