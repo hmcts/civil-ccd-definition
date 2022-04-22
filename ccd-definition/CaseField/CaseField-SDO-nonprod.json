@@ -55,6 +55,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingOrderDetails",
+    "Label": " ",
+    "FieldType": "DisposalHearingOrderDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "orderDetailsPlaceholder",
     "Label": "Page Four Placeholder - Order Details",
     "FieldType": "Label",

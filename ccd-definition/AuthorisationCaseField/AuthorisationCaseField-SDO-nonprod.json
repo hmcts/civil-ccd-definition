@@ -92,6 +92,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingOrderDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderDetailsPlaceholder",
     "AccessControl": [
       {

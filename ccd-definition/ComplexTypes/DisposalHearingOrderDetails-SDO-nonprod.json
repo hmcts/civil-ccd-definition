@@ -1,0 +1,59 @@
+[
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "orderAndHearingDetails",
+    "FieldType": "Label",
+    "ElementLabel": "## Order And Hearing Details \nWarning: you must comply with the terms imposed upon you by this order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply you are expected to make formal application to the court before any deadline imposed upon you expires.",
+    "DisplayOrder": 1,
+    "SecurityClassification": "Public"
+
+  },
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "judgmentSum",
+    "FieldType": "Label",
+    "ElementLabel": "### Judgment for the claimant for a sum to be decided by the court \n Subject to a deduction of:",
+    "DisplayOrder": 2,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "preferredTelephoneNumber",
+    "FieldType": "Label",
+    "ElementLabel": "### Preferred telephone number",
+    "DisplayOrder": 3,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "preferredEmail",
+    "FieldType": "Label",
+    "ElementLabel": "### Preferred email",
+    "DisplayOrder": 4,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "claimSettling",
+    "FieldType": "Label",
+    "ElementLabel": "### Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement",
+    "DisplayOrder": 5,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "costs",
+    "FieldType": "Label",
+    "ElementLabel": "### Costs \nCosts in the case",
+    "DisplayOrder": 6,
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingOrderDetails",
+    "ListElementCode": "applications",
+    "FieldType": "Label",
+    "ElementLabel": "### Applications to set aside, vary or stay this order \nBecause this order has been made without a hearing, the parties have the right to apply to have the order set aside, varied or stayed. A party making such an application must send or deliver the application to the court (together with any appropriate fee) to arrive within seven days of service of this order.",
+    "DisplayOrder": 7,
+    "SecurityClassification": "Public"
+  }
+]

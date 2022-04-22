@@ -89,12 +89,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingOrderDetails",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "OrderDetails",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "orderType = \"DISPOSAL\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "orderDetailsPlaceholder",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "OrderDetails",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "orderType = \"DECIDE_DAMAGES\""
   }
 ]
