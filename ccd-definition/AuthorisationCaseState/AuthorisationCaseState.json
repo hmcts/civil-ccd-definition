@@ -6,6 +6,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "[CREATOR]",
           "caseworker-civil-admin"
         ],
@@ -62,6 +63,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
@@ -81,6 +83,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
@@ -88,6 +91,8 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"

@@ -47,10 +47,33 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
+    "Label": "Select additional directions for Small Claims Track, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DrawDirectionsOrderSmallClaimsAdditionalDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "orderType",
     "Label": "What order would you like to make?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "OrderType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderTypeTrialAdditionalDirections",
+    "Label": "Select additional directions, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderTypeTrialAdditionalDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderDetailsPlaceholder",
+    "Label": "Page Four Placeholder - Order Details",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]

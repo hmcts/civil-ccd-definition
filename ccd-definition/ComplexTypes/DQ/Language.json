@@ -4,7 +4,7 @@
     "ListElementCode": "evidence",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
-    "ElementLabel": "What language have you been advised of your right to give evidence in?",
+    "ElementLabel": "Which language have you been advised of your right to give evidence in?",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +12,7 @@
     "ListElementCode": "court",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
-    "ElementLabel": "Will you and your witness(es) wish to speak Welsh or English at court or will both languages be used?",
+    "ElementLabel": "Do you want to speak Welsh or English in court, or will both languages be used?",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +20,7 @@
     "ListElementCode": "documents",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
-    "ElementLabel": "Will documents produced to the court during the case be in Welsh, English or both?",
+    "ElementLabel": "Will documents produced to court during the case be in Welsh, English or both?",
     "SecurityClassification": "Public"
   }
 ]

@@ -11,5 +11,17 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PROCESS_FULL_DEFENCE_SPEC",
+    "Name": "Full defence",
+    "Description": "Full defence",
+    "PreConditionState(s)": "AWAITING_APPLICANT_INTENTION",
+    "PostConditionState": "AWAITING_APPLICANT_INTENTION",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]

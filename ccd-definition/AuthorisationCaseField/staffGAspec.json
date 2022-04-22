@@ -7,7 +7,43 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppTypeLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppType",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationType",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppPBADetails",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplnSolicitor",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppRespondentSolicitors",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
@@ -25,7 +61,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUIStatementOfTruth",
+    "CaseFieldID": "generalAppStatementOfTruth",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
@@ -43,13 +79,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppDetailsOfOrderLabel",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppReasonsOfOrderLabel",
+    "CaseFieldID": "generalAppInformOtherParty",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
@@ -67,13 +97,43 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUploadEvidences",
+    "CaseFieldID": "generalAppUploadEvidenceLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppUploadEvidenceLabel",
+    "CaseFieldID": "generalAppHearingDetails",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseLink",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseState",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplicationsDetails",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppSubmittedDateGAspec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

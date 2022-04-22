@@ -17,7 +17,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -36,7 +36,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -55,7 +55,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -74,7 +74,26 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -93,9 +112,10 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
       }
@@ -113,9 +133,10 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
       }
@@ -133,9 +154,10 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
       }
@@ -153,9 +175,10 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
       }
@@ -173,9 +196,10 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
       }
@@ -187,14 +211,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }
@@ -230,7 +255,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -249,7 +274,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -262,14 +287,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }
@@ -281,14 +307,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }
@@ -314,6 +341,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "PROCESS_FULL_DEFENCE_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON_SPEC",
     "AccessControl": [
       {
@@ -324,9 +363,29 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
           "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }

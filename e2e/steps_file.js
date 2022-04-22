@@ -60,6 +60,10 @@ const confirmDetailsPage = require('./fragments/confirmDetails.page');
 const singleResponse = require('./fragments/singleResponse.page');
 
 const unRegisteredDefendantSolicitorOrganisationPage = require('./pages/createClaim/unRegisteredDefendantSolicitorOrganisation.page');
+const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeDecided.page');
+const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
+const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
+const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -71,6 +75,7 @@ const hearingPage = require('./fragments/dq/hearing.page');
 const draftDirectionsPage = require('./fragments/dq/draftDirections.page');
 const requestedCourtPage = require('./fragments/dq/requestedCourt.page');
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
+const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
 const furtherInformationPage = require('./fragments/dq/furtherInformation.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 const address = require('./fixtures/address.js');
@@ -201,7 +206,7 @@ module.exports = function () {
       }
 
       await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 60);
+        this.amOnPage(config.url.manageCase, 90);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
           output.log(`Signing in user: ${user.type}`);
@@ -326,12 +331,12 @@ module.exports = function () {
       ]);
     },
 
-    async addDefendantLitigationFriend(partyType) {
+    async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        ...conditionalSteps(partyType, [
+        ...conditionalSteps(selectPartyType && partyType, [
             () => selectLitigationFriendPage.selectDefendant(partyType)
           ]),
           () => defendantLitigationFriendPage.enterLitigantFriendWithDifferentAddressToDefendant(partyType, address, TEST_FILE_PATH),
@@ -357,6 +362,7 @@ module.exports = function () {
           () => draftDirectionsPage.upload(party, TEST_FILE_PATH),
           () => requestedCourtPage.selectSpecificCourtForHearing(party),
           () => hearingSupportRequirementsPage.selectRequirements(party),
+          () => vulnerabilityQuestionsPage.vulnerabilityQuestions(party),
           () => furtherInformationPage.enterFurtherInformation(party),
           () => statementOfTruth.enterNameAndRole(party + 'DQ'),
         ]),
@@ -365,13 +371,13 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence() {
+    async respondToDefence(mpScenario = 'ONE_V_ONE') {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => proceedPage.proceedWithClaim(),
-        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
         () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
@@ -381,6 +387,7 @@ module.exports = function () {
         () => hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1),
         () => draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH),
         () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
         () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
@@ -389,12 +396,12 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
-    async respondToDefenceDropClaim() {
+    async respondToDefenceDropClaim(mpScenario = 'ONE_V_ONE') {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => proceedPage.dropClaim(),
+        () => proceedPage.dropClaim(mpScenario),
         () => event.submit('Submit your response', 'You have chosen not to proceed with the claim'),
         () => this.click('Close and Return to case details')
       ]);
@@ -412,8 +419,30 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
+    async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = 'Standard Direction Order';
+      await caseViewPage.startEvent(eventName, caseId);
+
+      await this.triggerStepsWithScreenshot([
+        () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+
+        ...conditionalSteps(damages, [
+          () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+          ...conditionalSteps(!allocateSmallClaims,[
+            () => sdoOrderTypePage.decideOrderType(orderType)])
+        ]),
+
+        ...conditionalSteps(trackType, [
+        () => allocateClaimPage.selectTrackType(trackType)])
+      ]);
+    },
+
     async assertNoEventsAvailable() {
       await caseViewPage.assertNoEventsAvailable();
+    },
+
+    async assertHasEvents(events) {
+      await caseViewPage.assertEventsAvailable(events);
     },
 
     async clickContinue() {

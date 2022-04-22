@@ -13,5 +13,21 @@
     "ElementLabel": "Unavailable date",
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UnavailableDate",
+    "ListElementCode": "fromDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "date = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "UnavailableDate",
+    "ListElementCode": "toDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date to",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "date = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

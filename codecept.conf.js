@@ -1,8 +1,12 @@
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
-    './e2e/tests/api_multiparty/*_test.js',
-    './e2e/tests/multiparty/*_test.js'
+    './e2e/tests/api_tests/damages/*_test.js',
+    './e2e/tests/api_tests/lrspec/*_test.js',
+    './e2e/tests/ui_tests/damages/*_test.js',
+    './e2e/tests/ui_tests/damages/nightly/*_test.js',
+    './e2e/tests/ui_tests/lrspec/*_test.js',
+    './e2e/tests/ui_tests/sdo/*_test.js'
   ],
   output: './output',
   helpers: {
@@ -25,7 +29,9 @@ exports.config = {
   },
   include: {
     I: './e2e/steps_file.js',
-    api: './e2e/api/steps.js'
+    LRspec: './e2e/steps_file_LRspec.js',
+    api: './e2e/api/steps.js',
+    api_spec: './e2e/api/steps_LRspec.js'
   },
   plugins: {
     autoDelay: {
