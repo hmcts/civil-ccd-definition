@@ -892,6 +892,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabelBothDefendants",
+    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defenceAdmitPartPaymentTimeRouteRequired",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -952,6 +959,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabelRespondent2",
+    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent2.partyName} in employment?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartEmploymentTypeRequiredRespondent2",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartEmploymentTypeLRspecRespondent2",
+    "Label": "Employed or self-employed?",
+    "HintText": "Select both if your client is employed and self-employed",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartUnemployedLRspecRespondent2",
+    "Label": " ",
+    "FieldType": "UnemployedComplexTypeLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPaymentLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} paying money as a result of any court order?</h2>",
     "FieldType": "Label",
@@ -994,7 +1031,29 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "minusBeforeOverdrawnAmountRespondent2",
+    "Label": "<h2 class=\"govuk-heading-l\">List ${respondent2Copy.partyName}'s bank and savings accounts</h2> \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "minusBeforeOverdrawnAmount2Respondent2",
+    "Label": "<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1BankAccountList",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "BankAccount",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2BankAccountList",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "BankAccount",
@@ -1004,6 +1063,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specFinancialDetailsPurpose",
     "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent1.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specFinancialDetailsPurposeRespondent2",
+    "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent2.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1101,6 +1167,20 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHomeDetails",
+    "Label": " ",
+    "FieldType": "HomeDetailsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "homeOptionsTitleLRspecRespondent2",
+    "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent2.partyName} live?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQHomeDetails",
     "Label": " ",
     "FieldType": "HomeDetailsLRspec",
     "SecurityClassification": "Public"
@@ -1299,6 +1379,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
+    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
