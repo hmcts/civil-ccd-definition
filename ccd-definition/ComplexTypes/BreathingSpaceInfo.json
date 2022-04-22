@@ -19,7 +19,7 @@
     "ID": "BreathingSpaceStartInfo",
     "ListElementCode": "start",
     "ElementLabel": "When did it start?",
-    "HintText": "This is the date it started, not the date you received notification of it (optional). For e.g. 15 11 2020",
+    "HintText": "This is the date Breathing Space started, not the date you received notification of it, for example, 15 01 2022",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
@@ -27,7 +27,7 @@
     "ID": "BreathingSpaceStartInfo",
     "ListElementCode": "expectedEnd",
     "ElementLabel": "Expected end date",
-    "HintText": "This is the end date that it is due to finish (optional). For example, 17 11 2020",
+    "HintText": "This is the date Breathing Space is due to finish, for example, 17 03 2022",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
@@ -49,7 +49,7 @@
   {
     "ID": "BreathingSpaceLiftInfo",
     "ListElementCode": "expectedEnd",
-    "ElementLabel": "When is the breathing space expected to end?",
+    "ElementLabel": "When is the Breathing Space expected to end?",
     "HintText": "This is the date that you have been instructed it will finish",
     "FieldType": "Date",
     "SecurityClassification": "Public"
