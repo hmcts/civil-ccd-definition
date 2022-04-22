@@ -1209,6 +1209,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseCounterClaimLabel",
+    "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defendantSingleResponseToBothClaimants",
     "Label": " ",
     "FieldType": "YesOrNo",
