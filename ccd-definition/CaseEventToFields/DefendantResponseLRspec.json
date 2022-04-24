@@ -279,7 +279,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SingleResponse",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
+    "PageShowCondition": "respondent2SameLegalRepresentative = \"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -333,7 +334,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND sameSolicitorSameResponse = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -344,7 +345,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame != \"Yes\"",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND sameSolicitorSameResponse = \"No\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag"
   },
   {

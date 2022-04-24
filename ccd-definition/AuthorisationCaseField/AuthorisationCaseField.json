@@ -802,7 +802,8 @@
           "[RESPONDENTSOLICITORONE]",
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -952,7 +953,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }
@@ -3023,8 +3025,7 @@
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORTWO]",
           "[APPLICANTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]",
-          "[RESPONDENTSOLICITORONESPEC]"
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
