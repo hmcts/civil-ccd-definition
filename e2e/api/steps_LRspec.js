@@ -56,7 +56,50 @@ module.exports = {
 
   cleanUp: async () => {
     await unAssignAllUsers();
-  }
+  },
+
+  defendantResponse: async (user) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+    let defendantResponseData = eventData['defendantResponses'][mpScenario];
+
+    caseData = returnedCaseData;
+
+    for (let pageId of Object.keys(defendantResponseData.userInput)) {
+      await assertValidData(defendantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    deleteCaseFields('respondent1Copy');
+  },
+
+  claimantResponse: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    const claimantResponseData = data.CLAIMANT_RESPONSE();
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    // TODO can't be finished until we complete Camunda I2P
+    // await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
