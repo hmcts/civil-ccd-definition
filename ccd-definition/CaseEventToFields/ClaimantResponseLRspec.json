@@ -19,7 +19,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Defendant: ${respondent1.partyName}"
   },
   {
@@ -36,13 +36,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1ProceedWithClaim",
+    "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1ProceedWithClaim",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1ProceedWithClaimSpec2v1",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"TWO_V_ONE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -58,7 +82,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "claimType",
+    "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
@@ -69,9 +93,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "defenceRouteRequired",
+    "CaseFieldID": "claimType",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceRouteRequired",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
