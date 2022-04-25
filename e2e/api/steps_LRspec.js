@@ -18,6 +18,12 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario)
 };
 
+const eventData = {
+  defendantResponses: {
+    ONE_V_ONE: data.DEFENDANT_RESPONSE
+  }
+};
+
 let caseId, eventName;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
@@ -47,8 +53,8 @@ module.exports = {
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    // await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -123,7 +129,7 @@ const assertValidData = async (data, pageId) => {
     caseData = update(caseData, expectedMidEvent);
   }
 
-  if (data.midEventGeneratedData[pageId]) {
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
