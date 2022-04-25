@@ -517,13 +517,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }
@@ -535,13 +536,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }

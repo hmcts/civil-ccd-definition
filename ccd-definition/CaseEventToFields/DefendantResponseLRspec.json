@@ -25,6 +25,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "addRespondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondentDetailLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -33,18 +45,6 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "addRespondent2",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmNameAddress",
-    "FieldShowCondition": "specAoSRespondentDetails=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -120,7 +120,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -133,7 +133,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
