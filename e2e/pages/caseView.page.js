@@ -31,5 +31,10 @@ module.exports = {
     if (await I.hasSelector(this.fields.eventDropdown)) {
       throw new Error('Expected to have no events available');
     }
+  },
+
+  async assertEventsAvailable(events) {
+    await I.waitForElement(this.fields.eventDropdown);
+    events.forEach(event => I.see(event, this.fields.eventDropdown));
   }
 };

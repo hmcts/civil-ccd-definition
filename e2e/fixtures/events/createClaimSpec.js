@@ -1,4 +1,5 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
+const config = require('../../config.js');
 const uuid = require('uuid');
 
 const docUuid = uuid.v1();
@@ -38,6 +39,9 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
+const validPba = listElement('PBA0088192');
+const invalidPba = listElement('PBA0078095');
+
 const applicant2 = {
   type: 'INDIVIDUAL',
   individualFirstName: 'Jane',
@@ -58,9 +62,6 @@ const applicant1LitigationFriend = {
   primaryAddress: buildAddress('litigant friend')
 };
 
-const validPba = listElement('PBA0088192');
-const invalidPba = listElement('PBA0078095');
-
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
     || mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP';
@@ -77,7 +78,7 @@ module.exports = {
      *
      * although fields can be nested as they are in the screens.
      */
-    const userInput = {
+    const sentData = {
       References: {
         superClaimType: 'SPEC_CLAIM',
         solicitorReferences: {
@@ -102,9 +103,9 @@ module.exports = {
       ClaimantSolicitorOrganisation: {
         applicant1OrganisationPolicy: {
           OrgPolicyReference: 'Claimant policy reference',
-          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: 'Q1KOKP2'
+            OrganisationID: config.claimantSolicitorOrgId
           }
         }
       },
@@ -115,15 +116,15 @@ module.exports = {
         respondent1: respondent1WithPartyName
       },
       LegalRepresentation: {
-        specRespondent1Represented: `Yes`
+        specRespondent1Represented: 'Yes'
       },
       DefendantSolicitorOrganisation: {
         respondent1OrgRegistered: 'Yes',
         respondent1OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference',
-          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: '79ZRSOU'
+            OrganisationID: config.defendant1SolicitorOrgId
           },
         },
       },
@@ -199,11 +200,11 @@ module.exports = {
     const midEventData = {
       Notifications: {
         applicantSolicitor1CheckEmail: {
-          email: userInput.Notifications.applicantSolicitor1UserDetails.email
+          email: sentData.Notifications.applicantSolicitor1UserDetails.email
         }
       },
       ClaimAmount: {
-        totalClaimAmount: (+userInput.ClaimAmount.claimAmountBreakup[0].value.claimAmount)/100
+        totalClaimAmount: (+sentData.ClaimAmount.claimAmountBreakup[0].value.claimAmount)/100
       },
       ClaimAmountDetails: {
         superClaimType: 'SPEC_CLAIM'
@@ -212,7 +213,7 @@ module.exports = {
         totalInterest: 0,
         applicantSolicitor1PbaAccountsIsEmpty: 'No',
         claimFee: {
-          calculatedAmountInPence: '150000',
+          calculatedAmountInPence: '75000',
           code: 'FEE0209',
           version: '3'
         }
@@ -250,9 +251,9 @@ module.exports = {
     };
 
     return {
-      userInput: userInput,
+      userInput: sentData,
       midEventData: midEventData,
       midEventGeneratedData: midEventGeneratedData
-    }
+    };
   }
 };

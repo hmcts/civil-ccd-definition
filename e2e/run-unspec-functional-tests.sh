@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 
-export REPORT_FILE_NAME='api-unspec'
+echo "Run Api Functional tests for api-unspec"
 yarn test:api-unspec
 
-export REPORT_FILE_NAME='e2e-unspec'
+echo "Run Api Functional tests for e2e-unspec"
 yarn test:e2e-unspec
