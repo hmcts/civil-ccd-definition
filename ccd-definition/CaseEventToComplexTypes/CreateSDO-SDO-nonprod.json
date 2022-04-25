@@ -99,7 +99,7 @@
     "ListElementCode": "input4",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
-    "DefaultValue": "this field is too long to do in ccd,populate using civil-service instead"
+    "DefaultValue": "and must be accompanied by proposed directions for allocation and \nlisting for trial on quantum as cross-examination will result in the hearing \nexceeding the 30 minute maximum time estimate for a disposal hearing"
   },
   {
     "ID": "DisposalHearingMedicalEvidence",
@@ -355,7 +355,7 @@
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "DefaultValue": "this field is too long to do in ccd,populate using civil-service instead"
+    "DefaultValue": "This Order has been made without a hearing. Each party has the right to \napply to have this Order set aside or varied. Any such application must be \nreceived by the Court (together with the appropriate fee) by 4pm on"
   },
   {
     "ID": "DisposalHearingNotes",
