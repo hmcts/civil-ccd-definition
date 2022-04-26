@@ -15,5 +15,5 @@ Scenario('Create claim spec', async ({I, api_spec}) => {
 Scenario('Create, respond and applicant respond 1v1 full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
-  // await api_spec.claimantResponse(config.applicantSolicitorUser);
+  await api_spec.claimantResponse(config.applicantSolicitorUser);
 });

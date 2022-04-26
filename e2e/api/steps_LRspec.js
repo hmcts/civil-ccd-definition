@@ -15,7 +15,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponseSpec.js'),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario)
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario)
 };
 
 const eventData = {
