@@ -1,6 +1,6 @@
 const { date, element, buildAddress } = require('../../api/dataHelper');
 module.exports = {
-  userInput: {
+  valid: {
     ConfirmDetails: {
       respondent1: {
         type: 'INDIVIDUAL',
