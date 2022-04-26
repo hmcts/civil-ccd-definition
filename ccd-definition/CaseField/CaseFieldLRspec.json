@@ -1327,5 +1327,19 @@
     "Label": "Do the claimants want to proceed with the claim?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "enterBreathing",
+    "FieldType": "BreathingSpaceStartInfo",
+    "SecurityClassification": "Public",
+    "Label": " "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "liftBreathing",
+    "FieldType": "BreathingSpaceLiftInfo",
+    "SecurityClassification": "Public",
+    "Label": " "
   }
 ]
