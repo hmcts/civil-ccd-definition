@@ -8,6 +8,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentCheckList",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/determineLoggedInSolicitor",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -28,6 +29,42 @@
     "CaseFieldID": "addRespondent2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "isRespondent1",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "isRespondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "lrCaseDataExtension",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentCheckList",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
@@ -196,6 +233,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ResponseConfirmDetails",
     "PageLabel": "Confirm defendant's name and address",
+    "FieldShowCondition": "isRespondent1=\"Yes\"",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
   },
@@ -207,6 +245,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ResponseConfirmDetails",
     "PageLabel": "Confirm defendant's name and address",
+    "FieldShowCondition": "isRespondent2=\"Yes\"",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
   },
@@ -217,6 +256,19 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseConfirmDetails",
+    "FieldShowCondition": "isRespondent1=\"Yes\"",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ResponseConfirmDetails",
+    "FieldShowCondition": "isRespondent2=\"Yes\"",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -244,6 +296,18 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "FieldShowCondition": "specAoSRespondentCorrespondenceAddressRequired=\"No\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ResponseConfirmDetails",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "lrCaseDataExtension.specAoSRespondent2CorrespondenceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "N"
   },
   {

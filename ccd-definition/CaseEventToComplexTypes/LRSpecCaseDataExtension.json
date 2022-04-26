@@ -1,0 +1,22 @@
+[
+  {
+    "ID": "SpecAoSRespondent2OrgAddressRequired",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
+    "ListElementCode": "test456",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSRespondent2OrgAddressDetails",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "test123",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 2,
+    "FieldShowCondition": "specAoSRespondent2CorrespondenceAddressRequired.test456 = \"No\"",
+    "DisplayContext": "MANDATORY"
+  }
+]

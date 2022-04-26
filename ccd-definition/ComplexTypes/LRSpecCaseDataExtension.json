@@ -1,0 +1,37 @@
+[
+  {
+    "ID": "LRSpecCaseDataExtension",
+    "ListElementCode": "specAoSRespondent2CorrespondenceAddressdetails",
+    "FieldType": "AddressUK",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "LRSpecCaseDataExtension",
+    "ListElementCode": "specAoSRespondent2CorrespondenceAddressRequired",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "LRSpecCaseDataExtension",
+    "ListElementCode": "generalAppDeadlineNotification",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SpecAoSRespondent2OrgAddressDetails",
+    "ListElementCode": "test123",
+    "ElementLabel": " ",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SpecAoSRespondent2OrgAddressRequired",
+    "ListElementCode": "test456",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]
