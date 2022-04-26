@@ -78,7 +78,7 @@ module.exports = {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
     await waitForFinishedBusinessProcess(caseId);
 

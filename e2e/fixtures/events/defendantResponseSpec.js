@@ -74,7 +74,8 @@ module.exports = {
       specFullDefenceOrPartAdmission: 'Yes',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE',
       specFullDefenceOrPartAdmission1V1: 'Yes',
-      specDefenceFullAdmittedRequired: 'No'
+      specDefenceFullAdmittedRequired: 'No',
+      specFullAdmissionOrPartAdmission: 'No'
     },
     defenceRoute: {
       specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
