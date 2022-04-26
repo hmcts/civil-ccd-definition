@@ -2050,7 +2050,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "nextDeadline",
     "Label": "Next Deadline",
-    "FieldType": "DateTime",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "_Definition":  "Next deadline on a case",
     "_Category":  "CIVIL"
