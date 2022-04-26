@@ -1342,14 +1342,14 @@
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondent2CorrespondenceAddressdetails",
     "Label": " ",
-    "FieldType": "SpecAoSRespondent2OrgAddressDetails",
+    "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondent2CorrespondenceAddressRequired",
     "Label": " ",
-    "FieldType": "SpecAoSRespondent2OrgAddressRequired",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
 ]

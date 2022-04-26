@@ -19,19 +19,5 @@
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SpecAoSRespondent2OrgAddressDetails",
-    "ListElementCode": "test123",
-    "ElementLabel": " ",
-    "FieldType": "AddressUK",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SpecAoSRespondent2OrgAddressRequired",
-    "ListElementCode": "test456",
-    "ElementLabel": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
   }
 ]

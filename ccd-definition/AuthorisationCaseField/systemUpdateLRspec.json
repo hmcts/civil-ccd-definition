@@ -101,6 +101,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpecLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

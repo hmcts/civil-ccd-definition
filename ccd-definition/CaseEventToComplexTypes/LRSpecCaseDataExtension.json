@@ -1,22 +1,26 @@
 [
   {
-    "ID": "SpecAoSRespondent2OrgAddressRequired",
+    "ID": "LRSpecCaseDataExtension",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
-    "ListElementCode": "test456",
-    "EventElementLabel": " ",
+    "ListElementCode": "test123",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SpecAoSRespondent2OrgAddressDetails",
+    "ID": "LRSpecCaseDataExtension",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
-    "ListElementCode": "test123",
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
+    "ListElementCode": "test456",
     "FieldDisplayOrder": 2,
-    "FieldShowCondition": "specAoSRespondent2CorrespondenceAddressRequired.test456 = \"No\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRSpecCaseDataExtension",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "generalAppDeadlineNotification",
+    "ListElementCode": "test789",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]
