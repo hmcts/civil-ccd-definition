@@ -375,17 +375,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "specRespondentSolicitor2OrgLabel",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "SecondDefendantSolicitorEmail",
-    "PageDisplayOrder": 21,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",

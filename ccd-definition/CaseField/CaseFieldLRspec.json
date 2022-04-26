@@ -50,13 +50,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specRespondentSolicitor2OrgLabel",
-    "Label": "## Email for second defendant's legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specDetailsOfClaimLabel",
     "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.",
     "FieldType": "Label",
