@@ -7,7 +7,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
 let attempt = 1;
 
-Feature('End-to-end journey @cross-browser-tests');
+Feature('End-to-end journey @cross-browser-tests-skip');
 
 Scenario('Full end-to-end journey', async ({I}) => {
   const claimant1 = {
