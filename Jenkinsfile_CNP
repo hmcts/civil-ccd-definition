@@ -119,7 +119,6 @@ withPipeline(type, product, component) {
 
   onPR {
     env.ENVIRONMENT = "preview"
-  }
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
       enableCleanupOfHelmReleaseOnSuccess();
