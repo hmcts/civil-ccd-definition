@@ -170,7 +170,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalClaimSettling",
-    "Label": "## Claim settling \nEach party must inform the court immediately if the case is seetled, whether or not it is then possible to file a draft consent order to give effect to their agreement",
+    "Label": "## Claim settling \nEach party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
