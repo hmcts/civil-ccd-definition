@@ -10,7 +10,7 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
-const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
