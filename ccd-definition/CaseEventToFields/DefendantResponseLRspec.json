@@ -268,6 +268,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseConfirmDetails",
+    "FieldShowCondition": "isRespondent2=\"Yes\"",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -578,6 +579,19 @@
     "DisplayContext": "MANDATORY",
     "PageID": "defenceRoute",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR respondent2ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant2ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant1ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceRouteRequired2",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "defenceRoute",
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant2ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
   },
@@ -657,6 +671,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "Upload",
+    "FieldShowCondition": "isRespondent1 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

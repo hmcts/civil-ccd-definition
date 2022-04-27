@@ -577,6 +577,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "defenceRouteRequired2",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseAdmissionType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceAdmittedRequired",
     "Label": " ",
     "FieldType": "YesOrNo",

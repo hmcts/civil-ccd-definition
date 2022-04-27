@@ -778,6 +778,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defenceRouteRequired2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceAdmittedRequired",
     "AccessControl": [
       {
