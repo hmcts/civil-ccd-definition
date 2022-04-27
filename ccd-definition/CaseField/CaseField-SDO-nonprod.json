@@ -78,9 +78,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalOrderAndHearingDetails",
+    "Label": "# Order and hearing details \nWarning: you must comply with the terms imposed upon you by this order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply you are expected to make formal application to the court before any deadline imposed upon you expires.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "DisposalHearingJudgesRecital",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalJudgment",
+    "Label": "## There is judgment for the claimant for an amount to be decided by the court \nSubject to a deduction of: ",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -151,6 +165,27 @@
     "ID": "disposalHearingPreferredEmail",
     "Label": "Preferred email",
     "FieldType": "DisposalHearingPreferredEmail",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalClaimSettling",
+    "Label": "## Claim settling \nEach party must inform the court immediately if the case is seetled, whether or not it is then possible to file a draft consent order to give effect to their agreement",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalCosts",
+    "Label": "## Costs \nCosts in the case",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalApplicationsOrder",
+    "Label": "## Applications to set aside, vary or stay this order \nBecause this order has been made without a hearing, the parties have the right to apply to have the order set aside, varied or stayed. A party making such an application must send or deliver the application to the court (together with any appropraite fee) to arrive within seven days of service of this order.",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
