@@ -147,6 +147,7 @@ ccd:
       keyVaults: []
   ccd-data-store-api:
     java:
+      replicas: 1
       imagePullPolicy: Always
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false

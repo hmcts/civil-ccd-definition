@@ -253,7 +253,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIM",
-    "Name": "Create claim",
+    "Name": "Create claim - Unspecified",
     "Description": "Case created, post actions triggered",
     "DisplayOrder": 1,
     "PostConditionState": "PENDING_CASE_ISSUED",
