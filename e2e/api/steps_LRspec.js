@@ -4,13 +4,12 @@ const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
-const {expect, assert} = chai;
+const { assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
-const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
@@ -254,16 +253,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
-};
-
-const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
-  } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
-  }
 };
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {

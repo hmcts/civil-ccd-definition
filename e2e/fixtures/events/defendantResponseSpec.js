@@ -1,4 +1,4 @@
-const {date, element, buildAddress} = require('../../api/dataHelper');
+
 module.exports = {
   userInput: {
     ResponseConfirmNameAddress: {
