@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 
 let caseNumber;
 
-Feature('Claim spec creation  1v1 @cross-browser-tests');
+Feature('Claim spec creation  1v1 @cross-browser-tests-skip');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
