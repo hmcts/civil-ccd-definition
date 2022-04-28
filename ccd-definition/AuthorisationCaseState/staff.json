@@ -40,5 +40,11 @@
     "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDICIAL_REFERRAL",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

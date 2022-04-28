@@ -17,5 +17,24 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
