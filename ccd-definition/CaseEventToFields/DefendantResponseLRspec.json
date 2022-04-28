@@ -1286,7 +1286,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "SmallClaimHearingInterpreterDescription2",
+    "CaseFieldID": "smallClaimHearingInterpreterDescription2",
     "PageDisplayOrder": 33,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",

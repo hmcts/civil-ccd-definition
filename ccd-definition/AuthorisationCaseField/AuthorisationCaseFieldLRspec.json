@@ -1646,7 +1646,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "SmallClaimHearingInterpreterDescription2",
+    "CaseFieldID": "smallClaimHearingInterpreterDescription2",
     "AccessControl": [
       {
         "UserRoles": [

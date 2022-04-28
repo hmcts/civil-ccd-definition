@@ -1018,7 +1018,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SmallClaimHearingInterpreterDescription2",
+    "ID": "smallClaimHearingInterpreterDescription2",
     "FieldType": "TextArea",
     "Label": "Type of interpreter",
     "SecurityClassification": "Public"
