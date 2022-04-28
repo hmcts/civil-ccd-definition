@@ -852,15 +852,25 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-  "CaseFieldID": "responseClaimWitnesses",
-  "PageDisplayOrder": 31,
-  "PageFieldDisplayOrder": 1,
-  "DisplayContext": "MANDATORY",
-  "PageID": "SmallClaimWitnesses",
-  "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND multiPartyResponseTypeFlags!=\"FULL_ADMISSION\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\"",
-  "ShowSummaryChangeOption": "Y"
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1SmallClaimWitnessesLabel",
+    "PageDisplayOrder": 31,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaimWitnesses",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimWitnesses",
+    "PageDisplayOrder": 31,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaimWitnesses",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND responseClaimTrack= \"SMALL_CLAIM\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" AND multiPartyResponseTypeFlags!=\"FULL_ADMISSION\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
