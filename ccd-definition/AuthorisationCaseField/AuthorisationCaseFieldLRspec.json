@@ -834,6 +834,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaim2",
+    "UserRoles": [
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -1753,6 +1761,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "partAdmittedByEitherRespondents",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspecGeneric",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"
   },

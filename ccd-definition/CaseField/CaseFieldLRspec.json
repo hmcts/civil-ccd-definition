@@ -649,6 +649,13 @@
   {
     "Label": " ",
     "CaseTypeID": "CIVIL",
+    "ID": "respondToClaim2",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaim",
     "FieldType": "RespondToClaim",
     "SecurityClassification": "Public"
@@ -1826,6 +1833,15 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartEmploymentTypeLRspecGeneric",
+    "Label": "Employed or self-employed?",
+    "HintText":"Select both if your client is employed and self-employed",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
     "SecurityClassification": "Public"
   }
 ]
