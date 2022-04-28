@@ -823,7 +823,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaim",
-    "Label": "Respondent 1 Hearing",
+    "Label": "Hearing",
     "FieldType": "HearingLRspec",
     "SecurityClassification": "Public"
   },
