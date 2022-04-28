@@ -18,7 +18,7 @@ Scenario('Take claim offline', async ({I}) => {
   await I.login(config.adminUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.caseProceedsInCaseman();
-  await I.assertHasEvents(['Amend party details']);
+  await I.assertHasEvents(['Amend party details', 'Add a case note']);
   await I.signOut();
 }).retry(3);
 
