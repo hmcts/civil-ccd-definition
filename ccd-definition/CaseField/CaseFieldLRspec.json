@@ -1812,5 +1812,20 @@
     "Label": "partAdmittedByEitherRespondents",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "neitherCompanyNorOrganisation",
+    "Label": "neitherCompanyNorOrganisation",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartPaymentTimeRouteGeneric",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "SecurityClassification": "Public"
   }
 ]

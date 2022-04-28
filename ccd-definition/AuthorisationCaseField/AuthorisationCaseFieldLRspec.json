@@ -1758,6 +1758,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "neitherCompanyNorOrganisation",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defenceAdmitPartPaymentTimeRouteGeneric",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQFutureApplications",
     "AccessControl": [
       {
