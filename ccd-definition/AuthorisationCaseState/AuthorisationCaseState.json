@@ -93,7 +93,8 @@
           "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil"
         ],
         "CRUD": "R"
       }
@@ -105,18 +106,17 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]",
-          "caseworker-civil-admin"
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
         ],
         "CRUD": "R"
       }

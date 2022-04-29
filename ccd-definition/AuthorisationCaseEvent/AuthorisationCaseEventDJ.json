@@ -24,14 +24,17 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-solicitor"
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
         ],
         "CRUD": "R"
       }
