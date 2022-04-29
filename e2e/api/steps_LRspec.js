@@ -4,12 +4,13 @@ const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
-const { assert} = chai;
+const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
+const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
@@ -52,8 +53,8 @@ module.exports = {
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
     await waitForFinishedBusinessProcess(caseId);
-    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    // await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -253,6 +254,18 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
+};
+
+const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
+  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  } else {
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  }
 };
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
