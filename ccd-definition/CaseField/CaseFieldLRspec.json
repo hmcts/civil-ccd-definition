@@ -523,6 +523,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentMPClaimResponseTypeForSpecLabel",
+    "Label": "## Defendant: ${respondent1.partyName} and ${respondent2.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -606,6 +613,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specMPDefenceRouteAmountClaimedLabel",
+    "Label": "## Why do ${respondent1.partyName} and ${respondent2.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimed2Label",
     "Label": "## Why does ${respondent2.partyName} not owe money to the claimant? \n",
     "FieldType": "Label",
@@ -629,6 +643,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimed2Label",
     "Label": "## Has ${respondent2.partyName} paid the claimant the admitted amount? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimedMPLabel",
+    "Label": "## Have ${respondent1.partyName} and ${respondent2.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -692,6 +713,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent1.partyName} dispute the claim?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentMPLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Why do ${respondent1.partyName} and ${respondent2.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -848,6 +876,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseMPClaimMediationSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Have ${respondent1.partyName} and ${respondent2.partyName} agreed to free mediation?</h2>\n ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1730,6 +1765,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimExpertSpecRequired",
+    "Label": "Have the claimants asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1RespondToClaim_experts",
     "Label": " ",
     "FieldType": "ExpertDetails",
@@ -1789,7 +1831,42 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimMediationSpecRequired",
     "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
-    "FieldType": "SmallClaimMedication",
+    "FieldType": "SmallClaimMediation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimMediationSpecRequired",
+    "Label": "Have the claimants agreed to free mediation?",
+    "FieldType": "SmallClaimMediation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartnerAndDependentLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1.partyName} partner and dependents</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartnerAndDependent",
+    "Label": " ",
+    "FieldType": "PartnerAndDependentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartnerAndDependentLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent2.partyName} partner and dependents</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartnerAndDependent",
+    "Label": " ",
+    "FieldType": "PartnerAndDependentsLRspec",
     "SecurityClassification": "Public"
   },
   {
