@@ -8,6 +8,6 @@ Scenario.skip('Create claim spec', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
 });
 
-Scenario('Inform agreed extension date', async ({I, api_spec}) => {
+Scenario.skip('Inform agreed extension date spec', async ({I, api_spec}) => {
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
 });
