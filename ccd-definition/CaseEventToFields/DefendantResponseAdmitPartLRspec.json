@@ -923,16 +923,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanLabel",
-    "PageDisplayOrder": 36,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1RepaymentPlan",
     "PageDisplayOrder": 36,
     "PageFieldDisplayOrder": 2,
@@ -940,39 +930,6 @@
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlan",
-    "PageDisplayOrder": 36,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlan",
-    "PageDisplayOrder": 37,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Defendant2RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan-2"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanLabel",
-    "PageDisplayOrder": 37,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" AND respondentResponseIsSame =\"Yes\"",
-    "PageID": "Defendant2RepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

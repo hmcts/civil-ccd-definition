@@ -2700,44 +2700,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2RepaymentPlanLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2RepaymentPlan",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceFullAdmittedRequired",
     "AccessControl": [
       {
