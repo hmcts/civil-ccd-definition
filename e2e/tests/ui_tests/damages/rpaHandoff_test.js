@@ -1,9 +1,9 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../../api/testingSupport');
+const {unAssignAllUsers, assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
-
 
 Feature('RPA handoff points tests @rpa-handoff-tests');
 
@@ -18,18 +18,7 @@ Scenario('Take claim offline', async ({I}) => {
   await I.login(config.adminUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.caseProceedsInCaseman();
-  await I.assertNoEventsAvailable();
-  await I.signOut();
-}).retry(3);
-
-Scenario('Defendant - Litigant In Person', async ({I}) => {
-  await I.login(config.applicantSolicitorUser);
-  await I.createCase(true);
-  caseNumber = await I.grabCaseNumber();
-
-  await waitForFinishedBusinessProcess(caseId());
-  await I.navigateToCaseDetails(caseNumber);
-  await I.assertNoEventsAvailable();
+  await I.assertHasEvents(['Amend party details', 'Add a case note']);
   await I.signOut();
 }).retry(3);
 
@@ -78,7 +67,8 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
   await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
   await I.notifyClaim();
-  await assignCaseToDefendant(caseId());
+  await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await I.notifyClaimDetails();
 };
 
@@ -87,5 +77,9 @@ const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim(acknowledgeClaimResponse);
   await I.informAgreedExtensionDate();
-  await I.respondToClaim(I.respondToClaim({defendant1Response: respondToClaimResponse}));
+  await I.respondToClaim({defendant1Response: respondToClaimResponse});
 };
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

@@ -40,5 +40,11 @@
     "ListElementCode": "CLAIMANT_DRAFT_DIRECTIONS",
     "ListElement": "Claimant Draft Directions",
     "DisplayOrder": 7
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT",
+    "ListElement": "Default Judgment",
+    "DisplayOrder": 8
   }
 ]

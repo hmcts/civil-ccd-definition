@@ -175,7 +175,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestionsLabel",
-    "ElementLabel": "Vulnerability questions",
+    "ElementLabel": "**Vulnerability questions**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -198,7 +198,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingSupportRequirementsLabel",
-    "ElementLabel": "Support requirements",
+    "ElementLabel": "**Support requirements**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
