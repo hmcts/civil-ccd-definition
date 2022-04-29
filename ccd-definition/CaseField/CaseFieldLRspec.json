@@ -1309,7 +1309,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQRequestedCourtSpecLabel",
+    "ID": "applicant1RequestedCourtSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Claimant's requested court</h2>\n ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -1341,5 +1341,20 @@
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
     "Label": " "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimCourtLocationRequired",
+    "Label": "Do you want hearing to be held at a specific court ? \n",
+    "HintText": "If not, it will be held at the defendant's preferred court. ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ToCourtLocation",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
+    "SecurityClassification": "Public"
   }
 ]

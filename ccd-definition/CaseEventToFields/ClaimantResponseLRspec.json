@@ -298,23 +298,35 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
+    "CaseFieldID": "applicant1RequestedCourtSpecLabel",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim = \"Yes\"",
     "DisplayContext": "READONLY",
+    "PageID": "ApplicantCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1ClaimCourtLocationRequired",
+    "PageDisplayOrder": 11,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
     "PageID": "ApplicantCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQRequestedCourt",
+    "CaseFieldID": "applicant1ToCourtLocation",
     "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
     "PageID": "ApplicantCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "applicant1ClaimCourtLocationRequired = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",

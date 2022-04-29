@@ -260,5 +260,11 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ToCourtLocation",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
