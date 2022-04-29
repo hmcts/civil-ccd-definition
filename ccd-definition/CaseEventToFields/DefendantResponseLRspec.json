@@ -492,7 +492,6 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND sameSolicitorSameResponse = \"No\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag"
   },
   {
