@@ -6,7 +6,7 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\"",
+    "PageShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND multiPartyResponseTypeFlags = \"PART_ADMISSION\"",
     "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants != \"Yes\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
