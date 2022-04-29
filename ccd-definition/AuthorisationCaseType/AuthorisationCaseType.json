@@ -3,7 +3,11 @@
     "CaseTypeID": "CIVIL",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "fee-paid-judge",
+      "leadership-judge",
+      "circuit-judge",
+      "judge"
     ],
     "CRUD": "CRU"
   }
