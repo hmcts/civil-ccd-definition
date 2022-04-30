@@ -834,6 +834,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabelMP2",
+    "PageDisplayOrder": 9,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "Upload",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defenceRouteRequired = \"HAS_PAID_THE_AMOUNT_CLAIMED\" AND respondentResponseIsSame =\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel3",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 4,
@@ -1029,7 +1040,8 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "ShowSummaryChangeOption": "Y",
-    "RetriesTimeoutURLMidEvent": 0
+    "RetriesTimeoutURLMidEvent": 0,
+    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",

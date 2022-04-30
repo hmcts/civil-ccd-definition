@@ -1186,6 +1186,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabelMP2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "AccessControl": [
       {

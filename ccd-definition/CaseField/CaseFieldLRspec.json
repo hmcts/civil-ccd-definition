@@ -774,6 +774,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabelMP2",
+    "Label": "## ${respondent1.partyName} and ${respondent2.partyName} has paid less than the total claim amount \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel3",
     "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
     "FieldType": "Label",
