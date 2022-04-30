@@ -1885,6 +1885,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "showStatementOfTruth",
+    "Label": "showHowToAddTimeLinePage",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "fullAdmissionAndFullAmountPaid",
     "Label": "fullAdmissionAndFullAmountPaid",
     "FieldType": "YesOrNo",
