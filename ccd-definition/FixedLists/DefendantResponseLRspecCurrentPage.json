@@ -1,283 +1,283 @@
 [
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PRespondentCheckList",
+    "ListElementCode":"RespondentCheckList",
     "ListElement":"PAGE_ID",
     "DisplayOrder":1
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PResponseConfirmNameAddress",
+    "ListElementCode":"ResponseConfirmNameAddress",
     "ListElement":"PAGE_ID",
     "DisplayOrder":2
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PResponseConfirmDetails",
+    "ListElementCode":"ResponseConfirmDetails",
     "ListElement":"PAGE_ID",
     "DisplayOrder":3
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PSingleResponse2v1",
+    "ListElementCode":"SingleResponse2v1",
     "ListElement":"PAGE_ID",
     "DisplayOrder":4
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PSingleResponse",
+    "ListElementCode":"SingleResponse",
     "ListElement":"PAGE_ID",
     "DisplayOrder":5
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PRespondentResponseTypeSpec2v1",
+    "ListElementCode":"RespondentResponseTypeSpec2v1",
     "ListElement":"PAGE_ID",
     "DisplayOrder":6
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PRespondentResponseTypeSpec",
+    "ListElementCode":"RespondentResponseTypeSpec",
     "ListElement":"PAGE_ID",
     "DisplayOrder":7
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PdefenceRoute",
+    "ListElementCode":"defenceRoute",
     "ListElement":"PAGE_ID",
     "DisplayOrder":8
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PUpload",
+    "ListElementCode":"Upload",
     "ListElement":"PAGE_ID",
     "DisplayOrder":9
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PHowToAddTimeline",
+    "ListElementCode":"HowToAddTimeline",
     "ListElement":"PAGE_ID",
     "DisplayOrder":10
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PHowToAddTimelineUpload",
+    "ListElementCode":"HowToAddTimelineUpload",
     "ListElement":"PAGE_ID",
     "DisplayOrder":11
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PHowToAddTimelineManual",
+    "ListElementCode":"HowToAddTimelineManual",
     "ListElement":"PAGE_ID",
     "DisplayOrder":12
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PMediation",
+    "ListElementCode":"Mediation",
     "ListElement":"PAGE_ID",
     "DisplayOrder":13
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PFileDirectionsQuestionnaire",
+    "ListElementCode":"FileDirectionsQuestionnaire",
     "ListElement":"PAGE_ID",
     "DisplayOrder":14
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDisclosureOfElectronicDocumentsLRspec",
+    "ListElementCode":"DisclosureOfElectronicDocumentsLRspec",
     "ListElement":"PAGE_ID",
     "DisplayOrder":15
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDisclosureOfNonElectronicDocumentsLRspec",
+    "ListElementCode":"DisclosureOfNonElectronicDocumentsLRspec",
     "ListElement":"PAGE_ID",
     "DisplayOrder":16
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDisclosureReport",
+    "ListElementCode":"DisclosureReport",
     "ListElement":"PAGE_ID",
     "DisplayOrder":17
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PExperts",
+    "ListElementCode":"Experts",
     "ListElement":"PAGE_ID",
     "DisplayOrder":18
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PSmallClaimExperts",
+    "ListElementCode":"SmallClaimExperts",
     "ListElement":"PAGE_ID",
     "DisplayOrder":19
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PWitnesses",
+    "ListElementCode":"Witnesses",
     "ListElement":"PAGE_ID",
     "DisplayOrder":20
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PSmallClaimWitnesses",
+    "ListElementCode":"SmallClaimWitnesses",
     "ListElement":"PAGE_ID",
     "DisplayOrder":21
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PLanguage",
+    "ListElementCode":"Language",
     "ListElement":"PAGE_ID",
     "DisplayOrder":22
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PSmaillClaimHearing",
+    "ListElementCode":"SmaillClaimHearing",
     "ListElement":"PAGE_ID",
     "DisplayOrder":23
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PHearingLRspec",
+    "ListElementCode":"HearingLRspec",
     "ListElement":"PAGE_ID",
     "DisplayOrder":24
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PRequestedCourtLocationLRspec",
+    "ListElementCode":"RequestedCourtLocationLRspec",
     "ListElement":"PAGE_ID",
     "DisplayOrder":25
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PHearingSupport",
+    "ListElementCode":"HearingSupport",
     "ListElement":"PAGE_ID",
     "DisplayOrder":26
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PVulnerabilityQuestions",
+    "ListElementCode":"VulnerabilityQuestions",
     "ListElement":"PAGE_ID",
     "DisplayOrder":27
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PApplications",
+    "ListElementCode":"Applications",
     "ListElement":"PAGE_ID",
     "DisplayOrder":28
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PFurtherInformation",
+    "ListElementCode":"FurtherInformation",
     "ListElement":"PAGE_ID",
     "DisplayOrder":29
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PStatementOfTruth",
+    "ListElementCode":"StatementOfTruth",
     "ListElement":"PAGE_ID",
     "DisplayOrder":30
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PdefenceAdmittedPartRoute",
+    "ListElementCode":"defenceAdmittedPartRoute",
     "ListElement":"PAGE_ID",
     "DisplayOrder":31
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PWhenWillClaimBePaid",
+    "ListElementCode":"WhenWillClaimBePaid",
     "ListElement":"PAGE_ID",
     "DisplayOrder":32
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PFinancialDetailsPurpose",
+    "ListElementCode":"FinancialDetailsPurpose",
     "ListElement":"PAGE_ID",
     "DisplayOrder":33
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendantBankAccounts",
+    "ListElementCode":"DefendantBankAccounts",
     "ListElement":"PAGE_ID",
     "DisplayOrder":34
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PdefendantHomeOptions",
+    "ListElementCode":"defendantHomeOptions",
     "ListElement":"PAGE_ID",
     "DisplayOrder":35
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendantPartnersAndDependents",
+    "ListElementCode":"DefendantPartnersAndDependents",
     "ListElement":"PAGE_ID",
     "DisplayOrder":36
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendant2PartnersAndDependents",
+    "ListElementCode":"Defendant2PartnersAndDependents",
     "ListElement":"PAGE_ID",
     "DisplayOrder":37
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PEmploymentDeclaration",
+    "ListElementCode":"EmploymentDeclaration",
     "ListElement":"PAGE_ID",
     "DisplayOrder":38
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PHowToAddEmploymentDetails",
+    "ListElementCode":"HowToAddEmploymentDetails",
     "ListElement":"PAGE_ID",
     "DisplayOrder":39
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendantSelfEmployment",
+    "ListElementCode":"DefendantSelfEmployment",
     "ListElement":"PAGE_ID",
     "DisplayOrder":40
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDetailsOfPayingMoneyRepaymentPlan",
+    "ListElementCode":"DetailsOfPayingMoneyRepaymentPlan",
     "ListElement":"PAGE_ID",
     "DisplayOrder":41
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendantDebts",
+    "ListElementCode":"DefendantDebts",
     "ListElement":"PAGE_ID",
     "DisplayOrder":42
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendantIncomeExpenses",
+    "ListElementCode":"DefendantIncomeExpenses",
     "ListElement":"PAGE_ID",
     "DisplayOrder":43
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendantIncomeExpensesFullAdmission",
+    "ListElementCode":"DefendantIncomeExpensesFullAdmission",
     "ListElement":"PAGE_ID",
     "DisplayOrder":44
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PWhyDoesNotPayImmediately",
+    "ListElementCode":"WhyDoesNotPayImmediately",
     "ListElement":"PAGE_ID",
     "DisplayOrder":45
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PRepaymentPlan",
+    "ListElementCode":"RepaymentPlan",
     "ListElement":"PAGE_ID",
     "DisplayOrder":46
   },
   {
     "ID":"DefendantResponseLRspecCurrentPage",
-    "ListElementCode":"PDefendant2RepaymentPlan",
+    "ListElementCode":"Defendant2RepaymentPlan",
     "ListElement":"PAGE_ID",
     "DisplayOrder":47
   }

@@ -3393,15 +3393,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "defendantResponseLRspecCurrentPage",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
   }
 ]
