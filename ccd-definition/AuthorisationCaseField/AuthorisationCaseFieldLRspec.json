@@ -536,7 +536,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -628,7 +628,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -3000,7 +3000,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },

@@ -166,7 +166,7 @@
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND isRespondent1 = \"Yes\"",
-    "PageShowCondition": "fullAdmissionAndFullAmountPaid =\"No\" AND partAdmittedByEitherRespondents = \"No\" AND specFullAdmissionOrPartAdmission=\"Yes\""
+    "PageShowCondition": "specFullDefenceOrPartAdmission != \"Yes\" AND fullAdmissionAndFullAmountPaid =\"No\" AND partAdmittedByEitherRespondents = \"No\" AND specFullAdmissionOrPartAdmission=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
