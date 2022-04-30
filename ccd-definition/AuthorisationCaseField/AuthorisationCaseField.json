@@ -1635,7 +1635,8 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -1811,7 +1812,8 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -1893,7 +1895,8 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },

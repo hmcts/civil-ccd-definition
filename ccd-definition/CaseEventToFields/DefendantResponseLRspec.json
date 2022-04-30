@@ -879,6 +879,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
+    "FieldShowCondition": "isRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
