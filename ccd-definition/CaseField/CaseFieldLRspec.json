@@ -1949,5 +1949,13 @@
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
     "Label": " "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantResponseLRspecCurrentPage",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DefendantResponseLRspecCurrentPage",
+    "SecurityClassification": "Public"
   }
 ]
