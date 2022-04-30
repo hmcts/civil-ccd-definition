@@ -698,7 +698,7 @@
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "multiPartyResponseTypeFlags = \"FULL_DEFENCE\" AND addRespondent2 != \"Yes\"",
+    "FieldShowCondition": "multiPartyResponseTypeFlags = \"FULL_DEFENCE\" AND addRespondent2 = \"Yes\"",
     "PageID": "defenceRoute",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
@@ -796,7 +796,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Upload",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "specDisputesOrPartAdmission= \"Yes\" AND respondent1ClaimResponsePaymentAdmissionForSpec !=\"PAID_LESS_THAN_CLAIMED_AMOUNT\""
+    "FieldShowCondition": "specDisputesOrPartAdmission= \"Yes\" AND respondent1ClaimResponsePaymentAdmissionForSpec !=\"PAID_LESS_THAN_CLAIMED_AMOUNT\" AND addRespondent2 = \"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL",
