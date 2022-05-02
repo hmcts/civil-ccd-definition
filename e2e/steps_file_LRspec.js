@@ -73,6 +73,7 @@ const respondentCarerAllowanceDetailsPage = require('./pages/respondToClaimLRspe
 const respondentRepaymentPlanPage = require('./pages/respondToClaimLRspec/respondentRepaymentPlan.page');
 const respondentPage = require('./pages/respondToClaimLRspec/respondentWhyNotPay.page');
 const respondent2SameLegalRepresentativeLRspec = require('./pages/createClaim/respondent2SameLegalRepresentativeLRspec.page');
+const vulnerabilityPage = require('./pages/respondToClaimLRspec/vulnerabilityLRspec.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -364,6 +365,7 @@ module.exports = function () {
            ]),
             () => chooseCourtSpecPage.chooseCourt('yes'),
             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+            () => vulnerabilityPage.selectVulnerability('no'),
             () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
             () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
             () => event.submit('Submit', ''),
@@ -416,6 +418,7 @@ module.exports = function () {
 
               ]),
                  () => chooseCourtSpecPage.chooseCourt('yes'),
+                 () => vulnerabilityPage.selectVulnerability('no'),
                  () => this.clickContinue(),
                  () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
                  () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
@@ -446,6 +449,7 @@ module.exports = function () {
                () => respondentDebtsDetailsPage.selectDebtsDetails(),
                () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
                () => respondentPage.enterReasons(),
+               () => vulnerabilityPage.selectVulnerability('no'),
                () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
                () => event.submit('Submit', ''),
                () => event.returnToCaseDetails(),
