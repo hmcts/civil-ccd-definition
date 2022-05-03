@@ -33,7 +33,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "allPartyNames",
-    "Label": "Defendant Name(s)",
+    "Label": "Party Names",
     "DisplayOrder": 6
   },
   {

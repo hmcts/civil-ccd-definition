@@ -45,7 +45,7 @@
     "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "allPartyNames",
-    "Label": "Defendant Name(s)",
+    "Label": "Party Names",
     "DisplayOrder": 7,
     "UseCase": "orgcases"
   },
