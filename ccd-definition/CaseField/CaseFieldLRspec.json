@@ -1511,6 +1511,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disabilityPremiumPaymentsRespondent2Label",
+    "Label": "<h2 class=\"govuk-heading-l\">Does ${respondent2.partyName} receive any disability premium payments?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disabilityPremiumPaymentsRespondent2",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "severeDisabilityPremiumPaymentsRespondent2",
+    "Label": "Does ${respondent2.partyName} receive severe disability premium payments?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specPartAdmitPaid",
     "Label": " ",
     "FieldType": "YesOrNo",
