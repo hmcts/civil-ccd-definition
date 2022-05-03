@@ -24,7 +24,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRAcceptanceLabel",
+    "CaseFieldID": "CPRConfirmation1",
     "AccessControl": [
       {
         "UserRoles": [
@@ -42,43 +42,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRAcceptance",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRAcceptance2DefLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRAcceptance2Def",
+    "CaseFieldID": "CPRConfirmation2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -172,13 +136,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
         ],
         "CRUD": "R"
       }
@@ -240,17 +209,45 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "detailsOfDirection",
+    "CaseFieldID": "detailsOfDirectionDisposal",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
         ],
         "CRUD": "CRUD"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "detailsOfDirectionTrial",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
         ],
         "CRUD": "R"
       }
@@ -262,13 +259,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
         ],
         "CRUD": "R"
       }
@@ -292,4 +294,6 @@
       }
     ]
   }
+
+
 ]

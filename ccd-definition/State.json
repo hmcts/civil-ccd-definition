@@ -51,7 +51,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "JUDICIAL_REFERRAL",
-    "Name": "referred to judges",
+    "Name": "Judgment Referral",
     "Description": "Claim is moved onto judges",
     "DisplayOrder": 8
   }
