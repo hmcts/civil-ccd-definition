@@ -119,7 +119,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_LR_SPEC",
-    "Name": "Email: Claim issue Claimant LR",
+    "Name": "Email: Claim issue claimant LR",
     "Description": "Notify claimant solicitor 1 of claim details",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -133,7 +133,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_LR_SPEC",
     "Name": "Email: Claim issue to Defn. LR",
-    "Description": "Notify Defendant solicitor 1 of claim details",
+    "Description": "Notify defendant solicitor 1 of claim details",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
