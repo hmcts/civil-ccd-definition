@@ -14,13 +14,17 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
-  DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponseSpec.js'),
+  DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario)
 };
 
 const eventData = {
   defendantResponses: {
-    ONE_V_ONE: data.DEFENDANT_RESPONSE
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION')
+    }
   }
 };
 
@@ -64,13 +68,13 @@ module.exports = {
     await unAssignAllUsers();
   },
 
-  defendantResponse: async (user) => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
-    let defendantResponseData = eventData['defendantResponses'][mpScenario];
+    let defendantResponseData = eventData['defendantResponses'][mpScenario][response];
 
     caseData = returnedCaseData;
 
