@@ -1,4 +1,5 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
+const config = require('../../config.js');
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -64,7 +65,7 @@ module.exports = {
           OrgPolicyReference: 'Claimant policy reference',
           OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: 'Q1KOKP2'
+            OrganisationID: config.claimantSolicitorOrgId
           }
         }
       },
@@ -83,7 +84,7 @@ module.exports = {
           OrgPolicyReference: 'Defendant policy reference',
           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
           Organisation: {
-            OrganisationID: '79ZRSOU'
+            OrganisationID: config.defendant1SolicitorOrgId
           },
         },
       },
@@ -172,7 +173,7 @@ module.exports = {
         totalInterest: 0,
         applicantSolicitor1PbaAccountsIsEmpty: 'No',
         claimFee: {
-          calculatedAmountInPence: '150000',
+          calculatedAmountInPence: '75000',
           code: 'FEE0209',
           version: '3'
         }

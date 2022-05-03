@@ -3,13 +3,10 @@ const events = require('./events.js');
 module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
-      events.NOTIFY_DEFENDANT_OF_CLAIM,
-      events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
       events.CHANGE_SOLICITOR_EMAIL
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-      events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
       events.CHANGE_SOLICITOR_EMAIL
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
@@ -22,7 +19,6 @@ module.exports = {
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
-      events.NOTIFY_DEFENDANT_OF_CLAIM,
       events.CHANGE_SOLICITOR_EMAIL
     ]
   },
@@ -44,25 +40,28 @@ module.exports = {
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
-      events.ADD_CASE_NOTE,
       events.AMEND_PARTY_DETAILS
     ],
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],

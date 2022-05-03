@@ -509,6 +509,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentMPClaimResponseTypeForSpecLabel",
+    "Label": "## Defendant: ${respondent1.partyName} and ${respondent2.partyName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -577,6 +584,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specMPDefenceRouteAmountClaimedLabel",
+    "Label": "## Why do ${respondent1.partyName} and ${respondent2.partyName} not owe money to the claimant? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedLabel2v1",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimants? \n",
     "FieldType": "Label",
@@ -586,6 +600,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
     "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimedMPLabel",
+    "Label": "## Have ${respondent1.partyName} and ${respondent2.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -628,6 +649,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent1.partyName} dispute the claim?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentMPLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Why do ${respondent1.partyName} and ${respondent2.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -743,6 +771,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseMPClaimMediationSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Have ${respondent1.partyName} and ${respondent2.partyName} agreed to free mediation?</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel2",
     "Label": "<p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
@@ -780,7 +815,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
     "Label": "Do you want hearing to be held at specific court ? \n",
-    "HintText": "If the defendant is individual the case will be held at defendant's preferred court ",
+    "HintText": "If the defendant is an individual the case will be held at defendant's preferred court ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1455,6 +1490,48 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disabilityPremiumPaymentsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Does ${respondent1.partyName} receive any disability premium payments?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disabilityPremiumPayments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "severeDisabilityPremiumPayments",
+    "Label": "Does ${respondent1.partyName} receive severe disability premium payments?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specPartAdmitPaid",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specFullAdmitPaid",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseCounterClaimLabel",
+    "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
@@ -1478,6 +1555,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimExpertSpecRequired",
+    "Label": "Have the claimants asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1542,7 +1626,42 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimMediationSpecRequired",
     "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
-    "FieldType": "SmallClaimMedication",
+    "FieldType": "SmallClaimMediation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimMediationSpecRequired",
+    "Label": "Have the claimants agreed to free mediation?",
+    "FieldType": "SmallClaimMediation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartnerAndDependentLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent1.partyName} partner and dependents</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartnerAndDependent",
+    "Label": " ",
+    "FieldType": "PartnerAndDependentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartnerAndDependentLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">${respondent2.partyName} partner and dependents</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartnerAndDependent",
+    "Label": " ",
+    "FieldType": "PartnerAndDependentsLRspec",
     "SecurityClassification": "Public"
   },
   {
@@ -1550,6 +1669,27 @@
     "ID": "applicant1ProceedWithClaimSpec2v1",
     "Label": "Do the claimants want to proceed with the claim?",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "enterBreathing",
+    "FieldType": "BreathingSpaceStartInfo",
+    "SecurityClassification": "Public",
+    "Label": " "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "liftBreathing",
+    "FieldType": "BreathingSpaceLiftInfo",
+    "SecurityClassification": "Public",
+    "Label": " "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "breathingSpaceLabel",
+    "Label": "<strong class=\"text-16\">This claim is in Breathing Space</strong>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
