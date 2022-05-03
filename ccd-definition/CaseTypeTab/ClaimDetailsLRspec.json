@@ -6,5 +6,26 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "totalClaimAmount",
     "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "enterBreathing",
+    "FieldShowCondition": "totalClaimAmount=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "liftBreathing",
+    "FieldShowCondition": "totalClaimAmount=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "breathingSpaceLabel",
+    "FieldShowCondition": "enterBreathing.type=\"*\" AND liftBreathing.expectedEnd!=\"*\"",
+    "TabFieldDisplayOrder": 0
   }
 ]
