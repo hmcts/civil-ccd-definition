@@ -524,6 +524,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentClaimResponseTypeForSpecGeneric",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimant1ClaimResponseTypeForSpecLabel",
     "Label": "## Claimant: ${applicant1.partyName}\n",
     "FieldType": "Label",

@@ -2563,6 +2563,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentClaimResponseTypeForSpecGeneric",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDisputesOrPartAdmission",
     "AccessControl": [
       {
