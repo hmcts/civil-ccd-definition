@@ -282,7 +282,77 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementOrderSelection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementOrderAdditional",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "fee-paid-judge",
+          "leadership-judge",
+          "circuit-judge",
+          "judge"
         ],
         "CRUD": "CRU"
       },
@@ -294,6 +364,5 @@
       }
     ]
   }
-
 
 ]

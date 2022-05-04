@@ -112,5 +112,28 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrder",
+    "Label": "# ${applicant1.partyName} v ${respondent1.partyName} ${respondent2.partyName} \n What order would you like to make",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderAdditional",
+    "Label": "Select additional directions, if any",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "CaseManagementOrderAdditional",
+    "SecurityClassification": "Public"
   }
 ]
