@@ -1481,6 +1481,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specFinancialDetailsPurpose",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "defenceAdmitPartEmploymentTypeRequired",
     "AccessControl": [
       {
