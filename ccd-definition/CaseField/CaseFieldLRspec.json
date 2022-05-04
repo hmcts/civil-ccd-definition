@@ -599,7 +599,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedRespondent2Label",
-    "Label": "## Why does ${respondent2.partyName} not owe money to the claimants? \n",
+    "Label": "## Why does ${respondent2.partyName} not owe money to the claimant? \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
