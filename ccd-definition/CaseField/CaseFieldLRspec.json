@@ -598,6 +598,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAmountClaimedRespondent2Label",
+    "Label": "## Why does ${respondent2.partyName} not owe money to the claimants? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
     "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
@@ -654,6 +661,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabelRespondent2",
+    "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent2.partyName} dispute the claim?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentMPLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Why do ${respondent1.partyName} and ${respondent2.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
@@ -691,6 +705,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel2",
     "Label": "## ${respondent1.partyName} has paid less than the total claim amount \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteUploadDocumentLabel2Respondent2",
+    "Label": "## ${respondent2.partyName} has paid less than the total claim amount \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
