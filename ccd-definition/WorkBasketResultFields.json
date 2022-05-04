@@ -29,17 +29,5 @@
     "Label": "Solicitor Reference",
     "ListElementCode": "OrgPolicyReference",
     "DisplayOrder": 5
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "allPartyNames",
-    "Label": "Party Names",
-    "DisplayOrder": 6
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "nextDeadline",
-    "Label": "Next Deadline",
-    "DisplayOrder": 7
   }
 ]
