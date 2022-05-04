@@ -126,8 +126,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "speclistYourEvidenceList",
     "Label": " ",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "EvidenceList",
+    "FieldType": "EvidenceList",
     "SecurityClassification": "Public"
   },
   {
