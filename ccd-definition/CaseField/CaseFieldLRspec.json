@@ -850,13 +850,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1DQHearingFastClaimLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Hearing</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaim",
     "Label": "Hearing",
     "FieldType": "HearingLRspec",
