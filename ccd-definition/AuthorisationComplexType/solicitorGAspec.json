@@ -142,14 +142,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel108",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel275",
+    "ListElementCode": "generalAppFeeToPayInText",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
   },
