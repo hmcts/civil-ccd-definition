@@ -63,14 +63,9 @@ module.exports = {
 
     let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE();
 
-    for (let pageId of Object.keys(informAgreedExtensionData.valid)) {
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
     }
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Extension deadline submitted',
-      body: 'You must respond to the claimant by'
-    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -93,7 +88,7 @@ const assertValidData = async (data, pageId) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    caseId
   );
   let responseBody = await response.json();
 
