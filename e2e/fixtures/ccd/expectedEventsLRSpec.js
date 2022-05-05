@@ -5,6 +5,8 @@ module.exports = {
     CASE_ISSUED: [
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
+      events.DEFAULT_JUDGEMENT_SPEC,
+      events.CREATE_SDO,
       events.CHANGE_SOLICITOR_EMAIL
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
@@ -42,7 +44,9 @@ module.exports = {
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
+      events.CREATE_GENERAL_APPLICATION_CASE,
       events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
+      events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],

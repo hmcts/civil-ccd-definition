@@ -130,6 +130,7 @@ module.exports = {
             multiPartyResponseTypeFlags: 'FULL_ADMISSION',
             specFullDefenceOrPartAdmission1V1: 'No',
             specDefenceFullAdmittedRequired: 'No',
+            specFullAdmitPaid: 'No',
             specFullAdmissionOrPartAdmission: 'Yes'
           },
           defenceAdmittedPartRoute: {
@@ -203,6 +204,7 @@ module.exports = {
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
+            specPartAdmitPaid: 'No',
             specFullAdmissionOrPartAdmission: 'Yes'
           },
           defenceAdmittedPartRoute: {

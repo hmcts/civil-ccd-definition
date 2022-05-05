@@ -106,5 +106,23 @@ module.exports = {
     name: 'Lift Breathing Space',
     description: 'Lift Breathing Space',
     order: 8
+  },
+  DEFAULT_JUDGEMENT_SPEC: {
+    description: 'Request Default Judgment',
+    id: 'DEFAULT_JUDGEMENT_SPEC',
+    name: 'Request Default Judgment',
+    order: 18
+  },
+  CREATE_SDO: {
+    description: 'Standard Direction Order',
+    id: 'CREATE_SDO',
+    name: 'Standard Direction Order',
+    order: 17
+  },
+  CREATE_GENERAL_APPLICATION_CASE: {
+    description: 'Create general application',
+    id: 'CREATE_GENERAL_APPLICATION_CASE',
+    name: 'Create general application',
+    order: null
   }
 };
