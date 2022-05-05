@@ -116,7 +116,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseManagementOrder",
-    "Label": "# ${applicant1.partyName} v ${respondent1.partyName} ${respondent2.partyName} \n What order would you like to make",
+    "Label": "# ${applicant1.partyName} v ${respondent1.partyName} \n What order would you like to make",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -126,6 +126,20 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDisposalText2",
+    "Label": "This is a hearing that lasts no longer than 30 minutes, with only paper-based evidence presented",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTrialText2",
+    "Label": "This is a hearing which lasts longer than 30 minutes, with spoken and paper-based evidence presented",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
