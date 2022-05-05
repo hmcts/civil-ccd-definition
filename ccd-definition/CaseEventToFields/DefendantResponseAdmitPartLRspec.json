@@ -105,7 +105,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\"AND sameSolicitorSameResponse!=\"Yes\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\"",
     "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired != \"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\""
   },
   {
@@ -704,17 +704,6 @@
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_ADMISSION\"  AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
-    "PageID": "DefendantIncomeExpensesFullAdmission",
-    "PageDisplayOrder": 33,
-    "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric =\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\" AND sameSolicitorSameResponse !=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\" AND defendantSingleResponseToBothClaimants !=\"No\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
