@@ -107,8 +107,7 @@ module.exports = {
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
 
-    // TODO can't be finished until we complete Camunda I2P
-    // await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId);
   },
 };
 
