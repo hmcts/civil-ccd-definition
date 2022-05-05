@@ -5,11 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -136,11 +132,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -213,11 +205,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRUD"
       },
@@ -236,11 +224,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRUD"
       },
@@ -259,11 +243,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -282,17 +262,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hmcts-judiciary"
         ],
         "CRUD": "R"
       }
