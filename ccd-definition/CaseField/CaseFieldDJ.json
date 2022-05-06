@@ -115,8 +115,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantVRespondentText",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "caseManagementOrder",
-    "Label": "# ${applicant1.partyName} v ${respondent1.partyName} \n What order would you like to make",
+    "Label": "# ${applicantVRespondentText} \n What order would you like to make",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
