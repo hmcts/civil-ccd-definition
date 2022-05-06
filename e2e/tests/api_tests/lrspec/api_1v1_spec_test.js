@@ -33,3 +33,7 @@ Scenario('1v1 full defence', async ({I, api_spec}) => {
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
 });
+
+Scenario.skip('Inform agreed extension date spec', async ({I, api_spec}) => {
+  await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
+});
