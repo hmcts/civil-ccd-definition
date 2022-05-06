@@ -215,6 +215,29 @@ module.exports = {
           }
         };
         break;
+      case 'COUNTER_CLAIM':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
+          },
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
+            specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            specFullAdmissionOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission1V1: null,
+            specPaidLessAmountOrDisputesOrPartAdmission: null,
+            specDefenceFullAdmittedRequired: 'No',
+            specApplicantCorrespondenceAddressRequired: 'No',
+            specRespondent1Represented: 'Yes'
+          }
+        };
+        break;
     }
 
     return responseData;
