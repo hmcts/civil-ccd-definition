@@ -21,7 +21,6 @@ const data = {
 
 let caseId, eventName;
 let caseData = {};
-let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
