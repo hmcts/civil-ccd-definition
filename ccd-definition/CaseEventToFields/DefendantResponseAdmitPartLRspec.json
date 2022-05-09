@@ -625,7 +625,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1CourtOrderPaymentTest",
+    "CaseFieldID": "respondent1CourtOrderPaymentOption",
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -640,6 +640,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "respondent1CourtOrderPaymentOption =\"Yes\"",
     "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
@@ -658,10 +659,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2CourtOrderPayment",
+    "CaseFieldID": "respondent2CourtOrderPaymentOption",
     "PageDisplayOrder": 31,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2CourtOrderDetails",
+    "PageDisplayOrder": 31,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "respondent2CourtOrderPaymentOption =\"Yes\"",
+    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },

@@ -1,7 +1,7 @@
 [
   {
     "ID": "PaymentOrder",
-    "ListElementCode": "claimNumberText1",
+    "ListElementCode": "claimNumberText",
     "FieldType": "Text",
     "ElementLabel": "Claim number",
     "SecurityClassification": "Public",
@@ -9,14 +9,14 @@
   },
   {
     "ID": "PaymentOrder",
-    "ListElementCode": "amountOwed1",
+    "ListElementCode": "amountOwed",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount owed",
     "SecurityClassification": "Public"
   },
   {
     "ID": "PaymentOrder",
-    "ListElementCode": "monthlyInstalmentAmount1",
+    "ListElementCode": "monthlyInstalmentAmount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Monthly instalment amount",
     "SecurityClassification": "Public"

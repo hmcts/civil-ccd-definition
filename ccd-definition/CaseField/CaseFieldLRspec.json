@@ -1074,7 +1074,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1CourtOrderPaymentTest",
+    "ID": "respondent1CourtOrderPaymentOption",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
@@ -1087,7 +1087,21 @@
     "FieldTypeParameter": "PaymentOrder",
     "SecurityClassification": "Public"
   },
-
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2CourtOrderPaymentOption",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2CourtOrderDetails",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PaymentOrder",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2CourtOrderPayment",
