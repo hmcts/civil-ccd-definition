@@ -113,9 +113,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderDetailsPlaceholder",
+    "CaseFieldID": "addNewDirections",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "OrderDetails",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,

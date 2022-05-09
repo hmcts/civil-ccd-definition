@@ -75,5 +75,13 @@
     "Label": "Page Four Placeholder - Order Details",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "AddNewDirections",
+    "SecurityClassification": "Public"
   }
 ]
