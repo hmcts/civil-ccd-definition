@@ -3,6 +3,8 @@ const events = require('./events.js');
 module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
+      events.ENTER_BREATHING_SPACE_SPEC,
+      events.LIFT_BREATHING_SPACE_SPEC,
       events.CHANGE_SOLICITOR_EMAIL
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
