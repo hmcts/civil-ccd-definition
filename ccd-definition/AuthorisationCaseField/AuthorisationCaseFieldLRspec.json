@@ -2656,6 +2656,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantSingleResponseToBothClaimantsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "defendantSingleResponseToBothClaimants",
     "AccessControl": [
       {

@@ -1515,6 +1515,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "defendantSingleResponseToBothClaimantsLabel",
+    "Label": "## Does the defendant intend to file a single response to both claimants?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defendantSingleResponseToBothClaimants",
     "Label": " ",
     "FieldType": "YesOrNo",
