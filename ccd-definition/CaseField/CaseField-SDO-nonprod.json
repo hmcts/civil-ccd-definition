@@ -78,6 +78,90 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingJudgesRecital",
+    "Label": "Judge's recital",
+    "FieldType": "DisposalHearingJudgesRecital",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingDisclosureOfDocuments",
+    "Label": "Disclosure of documents",
+    "FieldType": "DisposalHearingDisclosureOfDocuments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingWitnessOfFact",
+    "Label": "Witness of Fact",
+    "FieldType": "DisposalHearingWitnessOfFact",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMedicalEvidence",
+    "Label": "Medical evidence",
+    "FieldType": "DisposalHearingMedicalEvidence",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingQuestionsToExperts",
+    "Label": "Questions to experts",
+    "FieldType": "DisposalHearingQuestionsToExperts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingSchedulesOfLoss",
+    "Label": "Schedules or counter-schedules of loss",
+    "FieldType": "DisposalHearingSchedulesOfLoss",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingStandardDisposalOrder",
+    "Label": "Standard disposal order",
+    "FieldType": "DisposalHearingStandardDisposalOrder",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingFinalDisposalHearing",
+    "Label": "Final disposal hearing",
+    "FieldType": "DisposalHearingFinalDisposalHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingBundle",
+    "Label": "Disposal hearing bundle",
+    "FieldType": "DisposalHearingBundle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingPreferredTelephone",
+    "Label": "Preferred telephone number",
+    "FieldType": "DisposalHearingPreferredTelephone",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingPreferredEmail",
+    "Label": "Preferred email",
+    "FieldType": "DisposalHearingPreferredEmail",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingNotes",
+    "Label": "Notes",
+    "FieldType": "DisposalHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "addNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",

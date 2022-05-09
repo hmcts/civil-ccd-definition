@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "DisposalHearingPreferredEmail",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingPreferredEmail",
+    "ListElementCode": "email",
+    "FieldType": "Label",
+    "ElementLabel": "to be prepopulated by civil-service",
+    "SecurityClassification": "Public"
+  }
+]
