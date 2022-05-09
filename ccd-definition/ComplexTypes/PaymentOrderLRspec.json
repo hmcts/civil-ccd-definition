@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "PaymentOrder",
+    "ListElementCode": "claimNumberText1",
+    "FieldType": "Text",
+    "ElementLabel": "Claim number",
+    "SecurityClassification": "Public",
+    "RegularExpression": "[0-9A-Za-z]*"
+  },
+  {
+    "ID": "PaymentOrder",
+    "ListElementCode": "amountOwed1",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Amount owed",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PaymentOrder",
+    "ListElementCode": "monthlyInstalmentAmount1",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Monthly instalment amount",
+    "SecurityClassification": "Public"
+  }
+]

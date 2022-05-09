@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "PaymentOrder",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1CourtOrderDetails",
+    "ListElementCode": "claimNumberText1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PaymentOrder",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1CourtOrderDetails",
+    "ListElementCode": "amountOwed1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PaymentOrder",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1CourtOrderDetails",
+    "ListElementCode": "monthlyInstalmentAmount1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]
