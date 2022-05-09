@@ -60,7 +60,7 @@ module.exports = {
     order: 9
   },
   CASE_PROCEEDS_IN_CASEMAN_SPEC: {
-  description: 'Specified case will proceed offline in Caseman system',
+    description: 'Specified case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN_SPEC',
     name: 'Case proceeds in Caseman',
     order: 9
@@ -94,5 +94,35 @@ module.exports = {
     id: 'CHANGE_SOLICITOR_EMAIL',
     name: 'Change solicitor email',
     order: 17
+  },
+  ENTER_BREATHING_SPACE_SPEC: {
+    id: 'ENTER_BREATHING_SPACE_SPEC',
+    name: 'Enter Breathing Space',
+    description: 'Enter Breathing Space',
+    order: 7
+  },
+  LIFT_BREATHING_SPACE_SPEC: {
+    id: 'LIFT_BREATHING_SPACE_SPEC',
+    name: 'Lift Breathing Space',
+    description: 'Lift Breathing Space',
+    order: 8
+  },
+  DEFAULT_JUDGEMENT_SPEC: {
+    description: 'Request Default Judgment',
+    id: 'DEFAULT_JUDGEMENT_SPEC',
+    name: 'Request Default Judgment',
+    order: 18
+  },
+  CREATE_SDO: {
+    description: 'Standard Direction Order',
+    id: 'CREATE_SDO',
+    name: 'Standard Direction Order',
+    order: 17
+  },
+  CREATE_GENERAL_APPLICATION_CASE: {
+    description: 'Create general application',
+    id: 'CREATE_GENERAL_APPLICATION_CASE',
+    name: 'Create general application',
+    order: null
   }
 };
