@@ -261,14 +261,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "defendantSingleResponseToBothClaimants",
+    "CaseFieldID": "defendantSingleResponseToBothClaimantsLabel",
     "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "SingleResponse2v1",
-    "PageLabel": "Does the defendant intend to file a single response to both claimants?",
+    "PageLabel": " ",
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "addApplicant2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "defendantSingleResponseToBothClaimants",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SingleResponse2v1",
+    "PageLabel": " ",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
