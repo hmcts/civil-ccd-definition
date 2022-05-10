@@ -2,7 +2,7 @@
 module.exports = {
   userInput: {
     ResponseConfirmNameAddress: {
-      specAoSApplicantCorrespondenceAddressRequired: 'Yes'
+      specAoSApplicantCorrespondenceAddressRequired: 'Yes',
     },
     ResponseConfirmDetails: {
       specAoSRespondentCorrespondenceAddressRequired: 'Yes'
@@ -34,7 +34,7 @@ module.exports = {
     Experts: {
       respondent1DQExperts: {
         expertRequired: 'No'
-      }
+      },
     },
     Witnesses: {
       respondent1DQWitnesses: {
@@ -75,13 +75,24 @@ module.exports = {
       multiPartyResponseTypeFlags: 'FULL_DEFENCE',
       specFullDefenceOrPartAdmission1V1: 'Yes',
       specDefenceFullAdmittedRequired: 'No',
-      specFullAdmissionOrPartAdmission: 'No'
+      specFullAdmissionOrPartAdmission: 'No',
+      respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
     },
+
     defenceRoute: {
       specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
       responseClaimTrack: 'FAST_CLAIM',
-      specDisputesOrPartAdmission: 'Yes'
+      specDisputesOrPartAdmission: 'Yes',
+      respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+    },
+
+    ResponseConfirmNameAddress: {
+      businessProcess: {
+        status: 'FINISHED',
+        camundaEvent: 'CREATE_CLAIM_SPEC'
+      },
     }
   },
-  midEventGeneratedData: {}
+  midEventGeneratedData: {
+  }
 };

@@ -27,6 +27,7 @@ const eventData = {
 
 let caseId, eventName;
 let caseData = {};
+let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
@@ -121,8 +122,7 @@ module.exports = {
 
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
 
-    // TODO can't be finished until we complete Camunda I2P
-    // await waitForFinishedBusinessProcess(caseId);
+    await waitForFinishedBusinessProcess(caseId);
   },
 };
 

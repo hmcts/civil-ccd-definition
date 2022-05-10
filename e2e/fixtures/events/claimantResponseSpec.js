@@ -57,7 +57,33 @@ module.exports = {
           }
         }
       },
-      midEventData: {},
+      midEventData: {
+        Experts: {
+          respondent1DQHearing: {
+            hearingLength: 'ONE_DAY',
+            unavailableDatesRequired: 'No'
+          },
+          respondent1DQFileDirectionsQuestionnaire: {
+            explainedToClient: ['CONFIRM'],
+            oneMonthStayRequested: 'Yes',
+            reactionProtocolCompliedWith: 'Yes'
+          },
+          respondent1DQStatementOfTruth: {
+            name: 'name',
+            role: 'role'
+          },
+          businessProcess: {
+            status: 'FINISHED',
+            camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
+          },
+          respondent1DQExperts: {
+            expertRequired: 'No'
+          },
+          respondent1DQWitnesses: {
+            witnessesToAppear: 'No'
+          }
+        }
+      },
       midEventGeneratedData: {}
     };
   }
