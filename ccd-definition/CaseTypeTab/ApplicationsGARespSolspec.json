@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Applications",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "CaseFieldID": "generalApplicationsDetails",
+    "UserRole": "[RESPONDENTSOLICITORONE]",
+    "TabFieldDisplayOrder": 1
+  }
+]
