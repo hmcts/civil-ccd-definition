@@ -1755,5 +1755,12 @@
     "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantStatementOfTruthLabel",
+    "Label": "The claimant believes that the facts stated in the response are true.\n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
