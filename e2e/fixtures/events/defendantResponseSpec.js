@@ -54,6 +54,12 @@ module.exports = {
             hearingLength: 'ONE_DAY',
             unavailableDatesRequired: 'No'
           }
+        },
+        StatementOfTruth: {
+          uiStatementOfTruth: {
+            name: 'name',
+            role: 'role'
+          }
         }
       },
     };
@@ -99,7 +105,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION'
+            respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION'
           },
           defenceAdmittedPartRoute: {
             specDefenceFullAdmittedRequired: 'No'
@@ -113,6 +120,15 @@ module.exports = {
           HowToAddTimeline: {
             specClaimResponseTimelineList: 'MANUAL'
           },
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          },
+          defenceRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -126,6 +142,11 @@ module.exports = {
           },
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+            responseClaimTrack: 'FAST_CLAIM',
+            specDisputesOrPartAdmission: 'No'
+          },
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'No'
           }
@@ -196,13 +217,29 @@ module.exports = {
             specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
             specPartAdmitPaid: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes'
+            specFullAdmissionOrPartAdmission: 'Yes',
+            respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
+
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            }
+          },
+
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            responseClaimTrack: 'FAST_CLAIM',
+            specDisputesOrPartAdmission: 'Yes',
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
         };
         break;
@@ -225,7 +262,22 @@ module.exports = {
             specPaidLessAmountOrDisputesOrPartAdmission: null,
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
-            specRespondent1Represented: 'Yes'
+            specRespondent1Represented: 'Yes',
+            respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            }
+          },
+
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            responseClaimTrack: 'FAST_CLAIM',
+            specDisputesOrPartAdmission: 'Yes',
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
         };
         break;
