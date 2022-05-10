@@ -705,7 +705,7 @@
     "CaseFieldID": "respondent1LoanCreditOption",
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 32,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -715,7 +715,7 @@
     "CaseFieldID": "respondent1LoanCreditDetails",
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 32,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1LoanCreditOption =\"Yes\""
