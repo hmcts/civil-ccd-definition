@@ -21,7 +21,6 @@ const data = {
 
 let caseId, eventName;
 let caseData = {};
-let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
@@ -63,14 +62,9 @@ module.exports = {
 
     let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE();
 
-    for (let pageId of Object.keys(informAgreedExtensionData.valid)) {
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
     }
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Extension deadline submitted',
-      body: 'You must respond to the claimant by'
-    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -93,7 +87,7 @@ const assertValidData = async (data, pageId) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    caseId
   );
   let responseBody = await response.json();
 
@@ -239,8 +233,4 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
-};
-
-const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
