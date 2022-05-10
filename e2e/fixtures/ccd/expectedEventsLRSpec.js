@@ -8,7 +8,6 @@ module.exports = {
       events.LIFT_BREATHING_SPACE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
       events.CREATE_SDO
-
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,

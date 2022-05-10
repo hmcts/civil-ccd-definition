@@ -12,3 +12,13 @@ Scenario('Inform agreed extension date', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
 });
+
+/**
+ * creates a claim with LR, responds as the defendant with full defence, and last the applicant responds
+ * to defence.
+ */
+Scenario('Create, respond and applicant respond 1v1 full defence', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec.defendantResponse(config.defendantSolicitorUser);
+  await api_spec.claimantResponse(config.applicantSolicitorUser);
+});
