@@ -24,10 +24,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },

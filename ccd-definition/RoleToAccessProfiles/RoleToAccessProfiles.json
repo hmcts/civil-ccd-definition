@@ -1,0 +1,182 @@
+[
+  {
+    "RoleName" : "idam:caseworker-civil-solicitor",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-civil-solicitor",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "idam:caseworker-civil-admin",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-civil-admin",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "idam:caseworker-approver",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-approver",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "idam:caseworker-civil",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-civil",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "idam:caseworker-civil-systemupdate",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-civil-systemupdate",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "idam:caseworker",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORTWO]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[APPLICANTSOLICITORTWO]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORONE]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[APPLICANTSOLICITORONE]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORONE]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[RESPONDENTSOLICITORONE]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORTWO]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[RESPONDENTSOLICITORTWO]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORONESPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[APPLICANTSOLICITORONESPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[APPLICANTSOLICITORTWOSPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[APPLICANTSOLICITORTWOSPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORONESPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[RESPONDENTSOLICITORONESPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORTWOSPEC]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[RESPONDENTSOLICITORTWOSPEC]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "[CREATOR]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "[CREATOR]",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "circuit-judge-am",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "leadership-judge-am",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "fee-paid-judge-am",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "judge-am",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "hmcts-judiciary-am",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "hmcts-judiciary",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  }
+]

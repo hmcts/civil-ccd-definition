@@ -6,7 +6,6 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "hmcts-judiciary"
-
     ],
     "CRUD": "CRU"
   },
@@ -3060,10 +3059,7 @@
           "[RESPONDENTSOLICITORTWO]",
           "[APPLICANTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },

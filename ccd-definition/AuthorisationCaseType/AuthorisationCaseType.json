@@ -4,10 +4,8 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
-      "fee-paid-judge",
-      "leadership-judge",
-      "circuit-judge",
-      "judge"
+      "judge-profile",
+      "hmcts-judiciary"
     ],
     "CRUD": "CRU"
   }
