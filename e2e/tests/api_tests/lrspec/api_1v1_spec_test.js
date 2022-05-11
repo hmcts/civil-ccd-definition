@@ -12,13 +12,23 @@ Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
 });
 
-Scenario.only('Create claim spec 2v1', async ({I, api_spec}) => {
+Scenario('Create claim spec 2v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
 });
 
 Scenario('1v1 full admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION');
+});
+
+Scenario.only('1v2 full admit', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO');
+});
+
+Scenario('2v1 full admit', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE');
 });
 
 Scenario('1v1 part admit', async ({I, api_spec}) => {
