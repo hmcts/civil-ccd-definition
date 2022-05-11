@@ -456,6 +456,31 @@ module.exports = function () {
              ]);
 
      },
+   async respondToDefence(mpScenario = 'ONE_V_ONE') {
+           eventName = 'View and respond to defence';
+           await this.triggerStepsWithScreenshot([
+                 () => caseViewPage.startEvent(eventName, caseId),
+                 () => proceedPage.proceedWithClaim(mpScenario),
+                 () => this.clickContinue(),
+                 () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+                 () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
+                 () => this.clickContinue(),
+                 () => this.clickContinue(),
+                 () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+                 () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+                 () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                 () => hearingLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
+                 () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+                 () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                 () => hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1),
+                 () => chooseCourtSpecPage.chooseCourt('yes'),
+                 () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+                 () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
+                 () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+                  //() => this.click('Close and Return to case details')
+              ]);
+              await this.takeScreenshot();
+    },
 
     async acknowledgeClaimSpec() {
       eventName = 'Acknowledgement of Service';
