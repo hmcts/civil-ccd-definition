@@ -93,8 +93,7 @@
           "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]",
-          "caseworker-civil-solicitor",
-          "caseworker-civil"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -106,10 +105,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "fee-paid-judge",
-          "leadership-judge",
-          "circuit-judge",
-          "judge"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
