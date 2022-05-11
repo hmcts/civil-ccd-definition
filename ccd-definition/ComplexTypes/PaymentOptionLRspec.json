@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "PaymentOption",
+    "ListElementCode": "loanCardDebtDetail",
+    "FieldType": "Text",
+    "ElementLabel": "Detail of each loan or credit card debt",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PaymentOption",
+    "ListElementCode": "totalOwed",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Total amount owed",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "PaymentOption",
+    "ListElementCode": "monthlyPayment",
+    "FieldType": "MoneyGBP",
+    "ElementLabel": "Monthly payments",
+    "SecurityClassification": "Public"
+  }
+]
