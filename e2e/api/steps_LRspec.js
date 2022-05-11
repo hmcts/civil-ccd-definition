@@ -33,7 +33,8 @@ const eventData = {
     },
     ONE_V_TWO: {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
-      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION')
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
     }
   }
 };
@@ -165,8 +166,8 @@ const assertValidData = async (data, pageId) => {
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
 
-  if(pageId === 'defenceRoute')
-    console.log(`${JSON.stringify(responseBody.data['responseClaimTrack'])} == ${JSON.stringify(caseData['responseClaimTrack'])}`);
+  if(pageId === 'RespondentResponseTypeSpec')
+    console.log(`${JSON.stringify(responseBody.data['multiPartyResponseTypeFlags'])} == ${JSON.stringify(caseData['multiPartyResponseTypeFlags'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId

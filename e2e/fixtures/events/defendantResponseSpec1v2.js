@@ -255,11 +255,14 @@ module.exports = {
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
           },
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
-            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
+            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specAoSApplicantCorrespondenceAddressRequired: 'Yes',
             specAoSRespondentCorrespondenceAddressRequired: 'Yes',
             specFullAdmissionOrPartAdmission: 'No',
@@ -281,7 +284,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'FAST_CLAIM',
+            responseClaimTrack: 'SMALL_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
