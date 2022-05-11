@@ -239,6 +239,28 @@ module.exports = {
           }
         };
         break;
+      case 'TWO_V_ONE':
+        userData.userInput = {
+          ...userData.userInput,
+          AddAnotherClaimant: {
+            addApplicant2: 'Yes'
+          },
+
+          SecondClaimant: {
+            applicant2: {
+              type: 'ORGANISATION',
+              organisationName: 'Claim 2',
+              partyName: 'Claim 2',
+              partyTypeDisplayValue: 'Organisation',
+              primaryAddress: {
+                AddressLine1: '43 Montgomery Close',
+                PostTown: 'Norwich',
+                PostCode: 'NR5 9LL'
+              }
+            }
+          }
+        };
+        break;
     }
 
     return userData;

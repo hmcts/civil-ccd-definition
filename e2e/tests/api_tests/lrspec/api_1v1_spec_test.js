@@ -12,7 +12,7 @@ Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
 });
 
-Scenario('Create claim spec 2v1', async ({I, api_spec}) => {
+Scenario.only('Create claim spec 2v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
 });
 
