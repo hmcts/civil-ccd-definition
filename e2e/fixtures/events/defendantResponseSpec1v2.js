@@ -210,6 +210,9 @@ module.exports = {
             respondent1DQFutureApplications: {
               intentionToMakeFutureApplications: 'No'
             }
+          },
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
           }
         };
         responseData.midEventData = {
@@ -226,7 +229,7 @@ module.exports = {
 
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            responseClaimTrack: 'FAST_CLAIM',
+            responseClaimTrack: 'SMALL_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
@@ -240,7 +243,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'FAST_CLAIM',
+            responseClaimTrack: 'SMALL_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
