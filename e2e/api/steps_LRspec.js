@@ -12,8 +12,12 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
+let caseId, eventName;
+let caseData = {};
+let mpScenario = 'ONE_V_ONE';
+
 const data = {
-  CREATE_CLAIM: () => claimData.createClaim(),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
@@ -30,9 +34,6 @@ const eventData = {
   }
 };
 
-let caseId, eventName;
-let caseData = {};
-let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
@@ -42,12 +43,12 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user) => {
+  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM();
+    const createClaimData = data.CREATE_CLAIM(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -156,6 +157,9 @@ const assertValidData = async (data, pageId) => {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
+
+  if(pageId === 'InterestSummary')
+    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId

@@ -24,196 +24,223 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
+const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
+const claimAmount = '150000';
+
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
-  createClaim: () => {
-    /**
-     * information input by the user.
-     * each element within "valid" is in the form
-     * pageId: {
-     *   fieldId: fieldValue
-     * }
-     *
-     * although fields can be nested as they are in the screens.
-     */
-    const sentData = {
-      References: {
-        superClaimType: 'SPEC_CLAIM',
-        solicitorReferences: {
-          applicantSolicitor1Reference: 'Applicant reference',
-          respondentSolicitor1Reference: 'Respondent reference'
-        }
-      },
-      Claimant: {
-        applicant1: applicant1WithPartyName
-      },
-      AddAnotherClaimant: {
-        addApplicant2: 'No'
-      },
-      Notifications: {
-        applicantSolicitor1CheckEmail: {
-          correct: 'No',
-        },
-        applicantSolicitor1UserDetails: {
-          email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com'
-        }
-      },
-      ClaimantSolicitorOrganisation: {
-        applicant1OrganisationPolicy: {
-          OrgPolicyReference: 'Claimant policy reference',
-          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
-          Organisation: {
-            OrganisationID: config.claimantSolicitorOrgId
+  createClaim: (mpScenario) => {
+    const userData = {
+      userInput: {
+        References: {
+          superClaimType: 'SPEC_CLAIM',
+          solicitorReferences: {
+            applicantSolicitor1Reference: 'Applicant reference',
+            respondentSolicitor1Reference: 'Respondent reference'
           }
-        }
-      },
-      specCorrespondenceAddress: {
-        specApplicantCorrespondenceAddressRequired: 'No'
-      },
-      Defendant: {
-        respondent1: respondent1WithPartyName
-      },
-      LegalRepresentation: {
-        specRespondent1Represented: 'Yes'
-      },
-      DefendantSolicitorOrganisation: {
-        respondent1OrgRegistered: 'Yes',
-        respondent1OrganisationPolicy: {
-          OrgPolicyReference: 'Defendant policy reference',
-          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
-          Organisation: {
-            OrganisationID: config.defendant1SolicitorOrgId
+        },
+        Claimant: {
+          applicant1: applicant1WithPartyName
+        },
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        Notifications: {
+          applicantSolicitor1CheckEmail: {
+            correct: 'No',
+          },
+          applicantSolicitor1UserDetails: {
+            email: solicitor1Email
+          }
+        },
+        ClaimantSolicitorOrganisation: {
+          applicant1OrganisationPolicy: {
+            OrgPolicyReference: 'Claimant policy reference',
+            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
+            Organisation: {
+              OrganisationID: config.claimantSolicitorOrgId
+            }
+          }
+        },
+        specCorrespondenceAddress: {
+          specApplicantCorrespondenceAddressRequired: 'No'
+        },
+        Defendant: {
+          respondent1: respondent1WithPartyName
+        },
+        LegalRepresentation: {
+          specRespondent1Represented: 'Yes'
+        },
+        DefendantSolicitorOrganisation: {
+          respondent1OrgRegistered: 'Yes',
+          respondent1OrganisationPolicy: {
+            OrgPolicyReference: 'Defendant policy reference',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
+            Organisation: {
+              OrganisationID: config.defendant1SolicitorOrgId
+            },
           },
         },
-      },
-      DefendantSolicitorEmail: {
-        respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
-      },
-      specRespondentCorrespondenceAddress: {
-        specRespondentCorrespondenceAddressRequired: 'No'
-      },
-      AddAnotherDefendant: {
-        addRespondent2: 'No'
-      },
-      Details: {
-        detailsOfClaim: 'Test details of claim'
-      },
-      ClaimTimeline: {
-        timelineOfEvents: [{
-          value: {
-            timelineDate: '2021-02-01',
-            timelineDescription: 'event 1'
+        DefendantSolicitorEmail: {
+          respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+        },
+        specRespondentCorrespondenceAddress: {
+          specRespondentCorrespondenceAddressRequired: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'No'
+        },
+        Details: {
+          detailsOfClaim: 'Test details of claim'
+        },
+        ClaimTimeline: {
+          timelineOfEvents: [{
+            value: {
+              timelineDate: '2021-02-01',
+              timelineDescription: 'event 1'
+            }
+          }]
+        },
+        EvidenceList: {
+          speclistYourEvidenceList: [{
+            value: {
+              evidenceType: 'CONTRACTS_AND_AGREEMENTS',
+              contractAndAgreementsEvidence: 'evidence details'
+            }
+          }]
+        },
+        ClaimAmount: {
+          claimAmountBreakup: [{
+            value: {
+              claimReason: 'amount reason',
+              claimAmount: claimAmount
+            }
+          }]
+        },
+        ClaimInterest: {
+          claimInterest: 'No'
+        },
+        InterestSummary: {
+          claimIssuedPaymentDetails: {
+            customerReference: 'Applicant reference'
+          },
+          claimFee: {
+            calculatedAmountInPence: '8000',
+            code: 'FEE0205',
+            version: '4'
           }
-        }]
-      },
-      EvidenceList: {
-        speclistYourEvidenceList: [{
-          value: {
-            evidenceType: 'CONTRACTS_AND_AGREEMENTS',
-            contractAndAgreementsEvidence: 'evidence details'
+        },
+        PbaNumber: {
+          applicantSolicitor1PbaAccounts: {
+            list_items: [
+              validPba,
+              invalidPba
+            ],
+            value: validPba
           }
-        }]
-      },
-      ClaimAmount: {
-        claimAmountBreakup: [{
-          value: {
-            claimReason: 'amount reason',
-            claimAmount: '1500000'
+        },
+        StatementOfTruth: {
+          uiStatementOfTruth: {
+            name: 'John Doe',
+            role: 'Test Solicitor'
           }
-        }]
+        },
       },
-      ClaimInterest: {
-        claimInterest: 'No'
-      },
-      InterestSummary: {
-        // no user input, placeholder bc calculated fields
-        claimIssuedPaymentDetails: {
-          customerReference: 'Applicant reference'
-        }
-      },
-      PbaNumber: {
-        applicantSolicitor1PbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: validPba
-        }
-      },
-      StatementOfTruth: {
-        uiStatementOfTruth: {
-          name: 'John Doe',
-          role: 'Test Solicitor'
-        }
-      },
-    };
 
-    /**
-     * Each time we press the continue button caseData is sent to backend and it comes back possibly modified.
-     * Each key in this object describes the foreseeable modifications on caseData that backend does, like:
-     * pageId: {
-     *   fieldId: valueId // may be nested
-     * }
-     */
-    const midEventData = {
-      Notifications: {
-        applicantSolicitor1CheckEmail: {
-          email: sentData.Notifications.applicantSolicitor1UserDetails.email
+      midEventData: {
+        Notifications: {
+          applicantSolicitor1CheckEmail: {
+            email: solicitor1Email
+          }
+        },
+        ClaimAmount: {
+          totalClaimAmount: claimAmount / 100
+        },
+        ClaimAmountDetails: {
+          superClaimType: 'SPEC_CLAIM'
+        },
+        InterestSummary: {
+          totalInterest: 0,
+          applicantSolicitor1PbaAccountsIsEmpty: 'No',
         }
       },
-      ClaimAmount: {
-        totalClaimAmount: (+sentData.ClaimAmount.claimAmountBreakup[0].value.claimAmount)/100
-      },
-      ClaimAmountDetails: {
-        superClaimType: 'SPEC_CLAIM'
-      },
-      InterestSummary: {
-        totalInterest: 0,
-        applicantSolicitor1PbaAccountsIsEmpty: 'No',
-        claimFee: {
-          calculatedAmountInPence: '150000',
-          code: 'FEE0209',
-          version: '3'
+
+      midEventGeneratedData: {
+        ClaimAmount: {
+          speclistYourEvidenceList: {
+            id: 'string'
+          },
+          claimAmountBreakupSummaryObject: 'string',
+          timelineOfEvents: {
+            id: 'string'
+          },
+          claimAmountBreakup: {
+            id: 'string'
+          }
+        },
+        ClaimInterest: {
+          calculatedInterest: 'string'
+        },
+        InterestSummary: {
+          applicantSolicitor1PbaAccounts: {
+            list_items: 'object'
+          }
         }
       }
     };
 
-    /**
-     * Some modifications by backend are not foreseeable. For instance, lists of elements may come with an
-     * assigned, generated id. Each key in this object describes the generated modifications on caseData like:
-     * pageId: {
-     *   fieldId: null  // may be nested
-     * }
-     */
-    const midEventGeneratedData = {
-      ClaimAmount: {
-        speclistYourEvidenceList: {
-          id: 'string'
-        },
-        claimAmountBreakupSummaryObject: 'string',
-        timelineOfEvents: {
-          id: 'string'
-        },
-        claimAmountBreakup: {
-          id: 'string'
-        }
-      },
-      ClaimInterest: {
-        calculatedInterest: 'string'
-      },
-      InterestSummary: {
-        applicantSolicitor1PbaAccounts: {
-          list_items: 'object'
-        }
-      }
-    };
+    switch (mpScenario) {
+      case 'ONE_V_ONE':
+        userData.userInput = {
+          ...userData.userInput
+        };
+        break;
+      case 'ONE_V_TWO':
+        userData.userInput = {
+          ...userData.userInput,
+          AddAnotherDefendant: {
+            addRespondent2: 'Yes'
+          },
 
-    return {
-      userInput: sentData,
-      midEventData: midEventData,
-      midEventGeneratedData: midEventGeneratedData
-    };
+          SecondDefendant: {
+            respondent2: {
+              type: 'ORGANISATION',
+              organisationName: 'Second Defendant',
+              primaryAddress: {
+                AddressLine1: '123 Second Close',
+                PostTown: 'Second Town',
+                PostCode: 'ST1 2QQ'
+              }
+            }
+          },
+          LegalRepresentationRespondent2: {
+            specRespondent2Represented: 'Yes'
+          },
+
+          SameLegalRepresentative: {
+            respondent2SameLegalRepresentative: 'No'
+          },
+
+          SecondDefendantSolicitorOrganisation: {
+            respondent2OrgRegistered: 'Yes',
+            respondent2OrganisationPolicy: {
+              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWOSPEC]',
+              Organisation: {
+                OrganisationID: '79ZRSOU',
+                OrganisationName: 'Civil - Organisation 2'
+              }
+            }
+          },
+
+          SecondDefendantSolicitorEmail: {
+            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+          }
+        };
+        break;
+    }
+
+    return userData;
   }
 };

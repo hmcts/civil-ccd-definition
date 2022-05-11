@@ -4,8 +4,16 @@ const config = require('../../../config.js');
 
 Feature('CCD 1v1 API test @api-spec @api-spec-1v1');
 
-Scenario('Create claim spec', async ({I, api_spec}) => {
+Scenario('Create claim spec 1v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+});
+
+Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+});
+
+Scenario('Create claim spec 2v1', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
 });
 
 Scenario('1v1 full admit', async ({I, api_spec}) => {
