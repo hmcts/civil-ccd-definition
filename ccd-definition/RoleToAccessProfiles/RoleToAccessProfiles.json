@@ -6,7 +6,7 @@
     "AccessProfiles": "caseworker-civil-solicitor",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "idam:caseworker-civil-admin",
@@ -15,7 +15,7 @@
     "AccessProfiles": "caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "idam:caseworker-approver",
@@ -24,7 +24,7 @@
     "AccessProfiles": "caseworker-approver",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "idam:caseworker-civil",
@@ -33,7 +33,7 @@
     "AccessProfiles": "caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "idam:caseworker-civil-systemupdate",
@@ -42,7 +42,7 @@
     "AccessProfiles": "caseworker-civil-systemupdate",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "idam:caseworker",
@@ -51,7 +51,7 @@
     "AccessProfiles": "caseworker",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[APPLICANTSOLICITORTWO]",
@@ -60,7 +60,7 @@
     "AccessProfiles": "[APPLICANTSOLICITORTWO]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[APPLICANTSOLICITORONE]",
@@ -69,7 +69,7 @@
     "AccessProfiles": "[APPLICANTSOLICITORONE]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORONE]",
@@ -78,7 +78,7 @@
     "AccessProfiles": "[RESPONDENTSOLICITORONE]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORTWO]",
@@ -87,7 +87,7 @@
     "AccessProfiles": "[RESPONDENTSOLICITORTWO]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[APPLICANTSOLICITORONESPEC]",
@@ -96,7 +96,7 @@
     "AccessProfiles": "[APPLICANTSOLICITORONESPEC]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[APPLICANTSOLICITORTWOSPEC]",
@@ -105,7 +105,7 @@
     "AccessProfiles": "[APPLICANTSOLICITORTWOSPEC]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORONESPEC]",
@@ -114,7 +114,7 @@
     "AccessProfiles": "[RESPONDENTSOLICITORONESPEC]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORTWOSPEC]",
@@ -123,7 +123,7 @@
     "AccessProfiles": "[RESPONDENTSOLICITORTWOSPEC]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "[CREATOR]",
@@ -132,7 +132,7 @@
     "AccessProfiles": "[CREATOR]",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "circuit-judge",
@@ -141,7 +141,7 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "leadership-judge",
@@ -150,7 +150,7 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "fee-paid-judge",
@@ -159,7 +159,7 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "judge",
@@ -168,7 +168,7 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "hmcts-judiciary",
@@ -177,7 +177,7 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "Y",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "case-allocator",
@@ -186,7 +186,7 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "Y",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   },
   {
     "RoleName" : "task-supervisor",
@@ -195,6 +195,6 @@
     "AccessProfiles": "judge-profile",
     "ReadOnly": "Y",
     "Disabled": "F",
-    "CaseAccessCategories": "CIVIL"
+    "CaseAccessCategories": ""
   }
 ]
