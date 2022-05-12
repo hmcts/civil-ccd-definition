@@ -1381,13 +1381,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2CourtOrderPayment",
-    "Label": " ",
-    "FieldType": "PaymentUponCourtOrderLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "minusBeforeOverdrawnAmount",
     "Label": "<h2 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h2> \n",
     "FieldType": "Label",
@@ -1462,13 +1455,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "specDebtPageLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h2> \n</div>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "specDebtPageLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">${respondent2Copy.partyName}'s debts</h2> \n</div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
