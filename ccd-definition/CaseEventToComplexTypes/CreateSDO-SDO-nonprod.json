@@ -1,5 +1,45 @@
 [
   {
+    "ID": "JudgementSum",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "drawDirectionsOrder",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "JudgementSum",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "drawDirectionsOrder",
+    "ListElementCode": "judgementSum",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingOrderAndHearingDetails",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingOrderAndHearingDetails",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingOrderAndHearingDetails",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingJudgesRecital",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingJudgesRecital",
@@ -16,10 +56,50 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingJudgementDeductionStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgementDeductionStatement",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingJudgementDeductionStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgementDeductionStatement",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingJudgementDeductionValue",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgementDeductionValue",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingJudgementDeductionValue",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgementDeductionValue",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingJudgementDeductionValue",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgementDeductionValue",
+    "ListElementCode": "value",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "label",
+    "ListElementCode": "line1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -27,8 +107,16 @@
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "input",
+    "ListElementCode": "label",
     "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -36,8 +124,16 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "date",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "line2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
@@ -96,6 +192,14 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingMedicalEvidence",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingMedicalEvidence",
@@ -136,6 +240,14 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingMedicalEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMedicalEvidence",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingQuestionsToExperts",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingQuestionsToExperts",
@@ -165,6 +277,14 @@
     "CaseFieldID": "disposalHearingQuestionsToExperts",
     "ListElementCode": "text2",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingQuestionsToExperts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingQuestionsToExperts",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
@@ -216,6 +336,14 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingStandardDisposalOrder",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingStandardDisposalOrder",
@@ -230,6 +358,14 @@
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingStandardDisposalOrder",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingStandardDisposalOrder",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "DisposalHearingFinalDisposalHearing",
@@ -264,6 +400,14 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingFinalDisposalHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingPreferredTelephone",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingPreferredTelephone",
@@ -293,6 +437,86 @@
     "CaseFieldID": "disposalHearingPreferredEmail",
     "ListElementCode": "email",
     "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingPreferredEmail",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingPreferredEmail",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingClaimSettling",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingClaimSettling",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingClaimSettling",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingClaimSettling",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingClaimSettling",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingClaimSettling",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingCosts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingCosts",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingCosts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingCosts",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingCosts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingCosts",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingApplicationsOrder",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingApplicationsOrder",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingApplicationsOrder",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingApplicationsOrder",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingApplicationsOrder",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingApplicationsOrder",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
@@ -328,6 +552,14 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DisposalHearingNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingNotes",
@@ -350,5 +582,13 @@
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingNotes",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "READONLY"
   }
 ]
