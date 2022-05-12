@@ -25,12 +25,13 @@ Scenario.skip('1v2 Defendant solicitor acknowledges claim-spec', async (LRspec) 
 }).retry(3);
 
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+  console.log('1v2 Defendant solicitor reject the specified claim');
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
-    twoDefendants,
+    twoDefendants: true,
     defendant1Response: 'fullDefence',
-    claimType: 'fast',
+    claimType: 'small',
     defenceType: 'dispute'
   });
   await LRspec.see(caseEventMessage('Respond to claim'));
