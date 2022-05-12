@@ -332,7 +332,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "addRespondent2 = \"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -625,10 +625,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1CourtOrderPayment",
+    "CaseFieldID": "respondent1CourtOrderPaymentOption",
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "PageShowCondition": "",
+    "PageID": "DetailsOfPayingMoneyRepaymentPlan",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1CourtOrderDetails",
+    "PageDisplayOrder": 30,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "respondent1CourtOrderPaymentOption =\"Yes\"",
     "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
@@ -647,10 +659,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2CourtOrderPayment",
+    "CaseFieldID": "respondent2CourtOrderPaymentOption",
     "PageDisplayOrder": 31,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2CourtOrderDetails",
+    "PageDisplayOrder": 31,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "respondent2CourtOrderPaymentOption =\"Yes\"",
+    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
@@ -678,6 +702,27 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1LoanCreditOption",
+    "PageID": "DefendantDebts",
+    "PageDisplayOrder": 32,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1LoanCreditDetails",
+    "PageID": "DefendantDebts",
+    "PageDisplayOrder": 32,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1LoanCreditOption =\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDebtPageLabel2",
     "PageID": "DefendantDebtsRespondent2",
     "PageDisplayOrder": 33,
@@ -695,6 +740,27 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2LoanCreditOption",
+    "PageID": "DefendantDebtsRespondent2",
+    "PageDisplayOrder": 33,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2LoanCreditDetails",
+    "PageID": "DefendantDebtsRespondent2",
+    "PageDisplayOrder": 33,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent2LoanCreditOption =\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
