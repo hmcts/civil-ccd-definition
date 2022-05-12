@@ -14,8 +14,20 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 const data = {
   CREATE_CLAIM: () => claimData.createClaim(),
-  DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario)
+  DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+};
+
+const eventData = {
+  defendantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+    }
+  }
 };
 
 let caseId, eventName;
@@ -54,9 +66,69 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
+  informAgreedExtensionDate: async (user) => {
+    eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE();
+
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
+      await assertValidData(informAgreedExtensionData, pageId);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
   cleanUp: async () => {
     await unAssignAllUsers();
-  }
+  },
+
+  defendantResponse: async (user, response = 'FULL_DEFENCE') => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+    let defendantResponseData = eventData['defendantResponses'][mpScenario][response];
+
+    caseData = returnedCaseData;
+
+    for (let pageId of Object.keys(defendantResponseData.userInput)) {
+      await assertValidData(defendantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    deleteCaseFields('respondent1Copy');
+  },
+
+  claimantResponse: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    const claimantResponseData = data.CLAIMANT_RESPONSE();
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
@@ -69,7 +141,7 @@ const assertValidData = async (data, pageId) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    caseId
   );
   let responseBody = await response.json();
 
@@ -80,7 +152,7 @@ const assertValidData = async (data, pageId) => {
     caseData = update(caseData, expectedMidEvent);
   }
 
-  if (data.midEventGeneratedData[pageId]) {
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
@@ -211,12 +283,10 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
