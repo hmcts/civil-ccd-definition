@@ -30,8 +30,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "hmcts-judiciary"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

@@ -135,47 +135,65 @@
     "CaseAccessCategories": "CIVIL"
   },
   {
-    "RoleName" : "circuit-judge-am",
+    "RoleName" : "circuit-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "CIVIL"
   },
   {
-    "RoleName" : "leadership-judge-am",
+    "RoleName" : "leadership-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "CIVIL"
   },
   {
-    "RoleName" : "fee-paid-judge-am",
+    "RoleName" : "fee-paid-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "CIVIL"
   },
   {
-    "RoleName" : "judge-am",
+    "RoleName" : "judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,hmcts-judiciary",
+    "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "CIVIL"
   },
   {
-    "RoleName" : "hmcts-judiciary-am",
+    "RoleName" : "hmcts-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "hmcts-judiciary",
-    "ReadOnly": "N",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "case-allocator",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": "CIVIL"
+  },
+  {
+    "RoleName" : "task-supervisor",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": "CIVIL"
   }
