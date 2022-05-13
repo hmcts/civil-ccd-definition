@@ -39,7 +39,6 @@ const eventData = {
   }
 };
 
-
 module.exports = {
 
   /**
@@ -99,6 +98,7 @@ module.exports = {
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
