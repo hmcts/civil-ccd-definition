@@ -38,6 +38,7 @@ const eventData = {
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
     },
     TWO_V_ONE:{
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_2v1('COUNTER_CLAIM'),
@@ -103,7 +104,6 @@ module.exports = {
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     await apiRequest.setupTokens(user);
 
-    console.log(scenario + " " + response);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -120,7 +120,7 @@ module.exports = {
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT')
-    else if (response === 'COUNTER_CLAIM')
+    else if (scenario === 'TWO_V_ONE')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
     await waitForFinishedBusinessProcess(caseId);
@@ -277,9 +277,6 @@ function updateWithGenerated(currentObject, responseBodyData, expectedModificati
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
-  console.log(eventName)
-  console.log(caseData)
-  console.log(caseId)
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
