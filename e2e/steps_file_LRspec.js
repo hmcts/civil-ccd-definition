@@ -21,6 +21,7 @@ const paymentReferencePage = require('./pages/createClaim/paymentReference.page'
 const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const event = require('./fragments/event');
+const proceedPage = require('./pages/respondToDefence/proceed.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -333,7 +334,7 @@ module.exports = function () {
        await this.triggerStepsWithScreenshot([
          () => caseViewPage.startEvent(eventName, caseId),
          () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
-         () => event.submit('Submit', 'Extension deadline submitted'),
+         () => event.submit('Submit', ''),
          () => event.returnToCaseDetails(),
        ]);
      },
@@ -357,23 +358,23 @@ module.exports = function () {
             () => claimResponseTimelineLRspecPage.addManually(),
             () => this.clickContinue(),
          ... conditionalSteps(claimType === 'fast', [
-            () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-            () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
-            () => this.clickContinue(),
-            () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-            () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-            () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-            () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-            () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+                () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
+                () => this.clickContinue(),
+                () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+                () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+                () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
            ]),
-            ... conditionalSteps(claimType === 'small', [
-              () => freeMediationPage.selectMediation('yes'),
-              () => useExpertPage.claimExpert('no'),
-              () => enterWitnessesPage.howManyWitnesses(),
-              () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-              () => smallClaimsHearingPage.selectHearing('no'),
+           ... conditionalSteps(claimType === 'small', [
+                      () => freeMediationPage.selectMediation('DefendantResponse'),
+                      () => useExpertPage.claimExpert('DefendantResponse'),
+                      () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
+                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                      () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
             ]),
-            () => chooseCourtSpecPage.chooseCourt('yes'),
+            () => chooseCourtSpecPage.chooseCourt('DefendantResponse'),
             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => vulnerabilityPage.selectVulnerability('no'),
             ... conditionalSteps(claimType === 'fast', [
@@ -412,11 +413,11 @@ module.exports = function () {
                  () => respondentRepaymentPlanPage.selectRepaymentPlan(),
                ]),
                ... conditionalSteps(claimType === 'small', [
-                  () => freeMediationPage.selectMediation('yes'),
-                  () => useExpertPage.claimExpert('no'),
-                  () => enterWitnessesPage.howManyWitnesses(),
-                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                  () => smallClaimsHearingPage.selectHearing('no'),
+                      () => freeMediationPage.selectMediation('DefendantResponse'),
+                      () => useExpertPage.claimExpert('DefendantResponse'),
+                      () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
+                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                      () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
                ]),
                ... conditionalSteps(claimType === 'fast', [
                   () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
@@ -429,7 +430,7 @@ module.exports = function () {
                   () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
 
               ]),
-                 () => chooseCourtSpecPage.chooseCourt('yes'),
+                 () => chooseCourtSpecPage.chooseCourt('DefendantResponse'),
                  () => vulnerabilityPage.selectVulnerability('no'),
                  () => this.clickContinue(),
                  () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
@@ -468,6 +469,40 @@ module.exports = function () {
              ]);
 
      },
+
+     async respondToDefence({mpScenario = 'ONE_V_ONE', claimType = 'fast'}) {
+                eventName = 'View and respond to defence';
+                await this.triggerStepsWithScreenshot([
+                      () => caseViewPage.startEvent(eventName, caseId),
+                      () => proceedPage.proceedWithClaim(mpScenario),
+                      () => this.clickContinue(),
+                      ... conditionalSteps(claimType === 'small', [
+                      () => freeMediationPage.selectMediation('ClaimantResponse'),
+                      () => useExpertPage.claimExpert('ClaimantResponse'),
+                      () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
+                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                      () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),
+                      ]),
+                      ... conditionalSteps(claimType === 'fast', [
+                       () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+                       () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
+                       () => this.clickContinue(),
+                       () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+                       () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+                       () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                       () => hearingLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
+                       ]),
+                      () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
+                      () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+                      () => vulnerabilityPage.selectVulnerability('no'),
+                      () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
+                      () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+                      () => event.submit('Submit your response', ''),
+                      () => this.click('Close and Return to case details')
+                   ]);
+                   await this.takeScreenshot();
+      },
 
     async acknowledgeClaimSpec() {
       eventName = 'Acknowledgement of Service';
