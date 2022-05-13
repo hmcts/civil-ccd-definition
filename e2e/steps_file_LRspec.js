@@ -492,7 +492,7 @@ module.exports = function () {
                        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
                        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
                        () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
-                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1)
+                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
                        () => hearingClaimantLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
                        ]),
                       () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
