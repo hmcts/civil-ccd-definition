@@ -473,7 +473,6 @@ module.exports = function () {
                  () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
                  () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),
-
                  ]),
                  ... conditionalSteps(claimType === 'fast', [
                   () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
