@@ -338,7 +338,7 @@ module.exports = function () {
        ]);
      },
 
-    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', claimType = 'fast', defenceType = 'dispute'}) {
+    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
       eventName = 'Respond to claim';
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
@@ -347,6 +347,9 @@ module.exports = function () {
             () => specConfirmLegalRepDetails.confirmDetails(),
             ... conditionalSteps(twoDefendants, [
               () => singleResponse.defendantsHaveSameResponse(true),
+            ]),
+            ... conditionalSteps(twoClaimants, [
+              () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
             ]),
             () => responseTypeSpecPage.selectResponseType(defendant1Response),
             () => defenceTypePage.selectDefenceType(defenceType,150),
@@ -373,10 +376,12 @@ module.exports = function () {
             () => chooseCourtSpecPage.chooseCourt('yes'),
             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => vulnerabilityPage.selectVulnerability('no'),
-            () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+            ... conditionalSteps(claimType === 'fast', [
+              () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+            ]),
             () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
             () => event.submit('Submit', ''),
-            () => event.returnToCaseDetails(),
+            () => event.returnToCaseDetails()
          ]);
 
     },

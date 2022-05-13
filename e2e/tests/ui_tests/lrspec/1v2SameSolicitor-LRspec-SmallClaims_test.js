@@ -6,7 +6,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec1');
+Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec');
 
 Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec}) => {
   console.log('Applicant solicitor creates 1v2 specified claim both defendants Same LR for small claims @create-claim-spec');
@@ -14,14 +14,6 @@ Scenario('Applicant solicitor creates 1v2 specified claim both defendants same L
   await LRspec.createCaseSpecified('organisation', null, 'company', 'company', 1000);
   caseNumber = await LRspec.grabCaseNumber();
   await LRspec.see(`Case ${caseNumber} has been created.`);
-}).retry(3);
-
-Scenario.skip('1v2 Defendant solicitor acknowledges claim-spec', async (LRspec) => {
-  console.log('1v2 Defendant solicitor acknowledges claim-spec: ' + caseId());
-  await assignCaseToLRSpecDefendant(caseId());
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.acknowledgeClaimSpec();
-  await LRspec.see(caseEventMessage('Acknowledgement of Service'));
 }).retry(3);
 
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
