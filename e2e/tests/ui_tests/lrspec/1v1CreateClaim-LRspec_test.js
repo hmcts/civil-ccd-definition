@@ -15,7 +15,7 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario('1v1 Defendant solicitor acknowledges claim-spec', async ({LRspec}) => {
+Scenario.skip('1v1 Defendant solicitor acknowledges claim-spec', async ({LRspec}) => {
   console.log('1v1 Defendant solicitor acknowledges claim-spec: ' + caseId());
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
@@ -25,6 +25,7 @@ Scenario('1v1 Defendant solicitor acknowledges claim-spec', async ({LRspec}) => 
 
 Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
+  await assignCaseToLRSpecDefendant(caseId());
   await LRspec.respondToClaimFullDefence({defendant1Response: 'fullDefence',claimType: 'fast', defenceType: 'dispute'});
   await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
