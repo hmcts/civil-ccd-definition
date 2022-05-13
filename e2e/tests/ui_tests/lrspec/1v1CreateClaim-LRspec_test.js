@@ -8,7 +8,7 @@ let caseNumber;
 
 Feature('Claim creation 1v1 @e2e-tests-spec');
 
-Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
+Scenario.skip('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('organisation', null , 'company', null , 19000);
@@ -21,17 +21,17 @@ Scenario('1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRsp
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.informAgreedExtensionDateSpec();
-  await LRspec.see(caseEventMessage('Inform Agreed Extension'));
+  await LRspec.see(caseEventMessage('Inform agreed extension date'));
 }).retry(3);
 
-Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario.skip('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({defendant1Response: 'fullDefence',claimType: 'fast', defenceType: 'dispute'});
   await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+Scenario.skip('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'small'});
   await LRspec.see(caseEventMessage('View and respond to defence'));
