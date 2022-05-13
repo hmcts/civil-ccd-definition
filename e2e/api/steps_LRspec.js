@@ -12,9 +12,13 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
+let caseId, eventName;
+let caseData = {};
+
 const data = {
-  CREATE_CLAIM: () => claimData.createClaim(),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
@@ -26,13 +30,14 @@ const eventData = {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
     }
   }
 };
-
-let caseId, eventName;
-let caseData = {};
-let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
@@ -42,12 +47,12 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user) => {
+  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM();
+    const createClaimData = data.CREATE_CLAIM(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -88,13 +93,14 @@ module.exports = {
     await unAssignAllUsers();
   },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE') => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
-    let defendantResponseData = eventData['defendantResponses'][mpScenario][response];
+
+    let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
     caseData = returnedCaseData;
 
@@ -102,7 +108,10 @@ module.exports = {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    if(scenario === 'ONE_V_ONE')
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -156,6 +165,9 @@ const assertValidData = async (data, pageId) => {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
+
+  if(pageId === 'RespondentResponseTypeSpec')
+    console.log(`${JSON.stringify(responseBody.data['multiPartyResponseTypeFlags'])} == ${JSON.stringify(caseData['multiPartyResponseTypeFlags'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
