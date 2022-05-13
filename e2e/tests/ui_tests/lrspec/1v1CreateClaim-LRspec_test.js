@@ -33,7 +33,7 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
 
 Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'small'});
+  await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
