@@ -39,7 +39,6 @@ const eventData = {
   }
 };
 
-
 module.exports = {
 
   /**
