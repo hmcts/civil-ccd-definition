@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "DisposalHearingMethod",
+    "ListElementCode": "inPerson",
+    "ListElement": "In Person",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "DisposalHearingMethod",
+    "ListElementCode": "videoConferenceHearing",
+    "ListElement": "Video Conference Hearing",
+    "DisplayOrder": 2
+   },
+  {
+    "ID": "DisposalHearingMethod",
+    "ListElementCode": "telephoneHearing",
+    "ListElement": "Telephone Hearing",
+    "DisplayOrder": 3
+  }
+]
