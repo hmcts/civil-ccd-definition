@@ -8,59 +8,59 @@ module.exports = {
         ResponseConfirmDetails: {
           specAoSRespondentCorrespondenceAddressRequired: 'Yes'
         },
-        RespondentResponseTypeSpec: {
-          respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-        },
-        defenceRoute: {
-          defenceRouteRequired: 'DISPUTES_THE_CLAIM'
-        },
-        Upload: {
-          detailsOfWhyDoesYouDisputeTheClaim: 'details'
-        },
-        HowToAddTimeline: {
-          specClaimResponseTimelineList: 'MANUAL'
-        },
-        FileDirectionsQuestionnaire: {
-          respondent1DQFileDirectionsQuestionnaire: {
-            explainedToClient: ['CONFIRM'],
-            oneMonthStayRequested: 'Yes',
-            reactionProtocolCompliedWith: 'Yes'
-          }
-        },
-        DisclosureOfElectronicDocumentsLRspec: {
-          specRespondent1DQDisclosureOfElectronicDocuments: {
-            reachedAgreement: 'Yes'
-          }
-        },
-        Experts: {
-          respondent1DQExperts: {
-            expertRequired: 'No'
-          },
-        },
-        Witnesses: {
-          respondent1DQWitnesses: {
-            witnessesToAppear: 'No'
-          }
-        },
-        Language: {
-          respondent1DQLanguage: {
-            evidence: 'ENGLISH',
-            court: 'ENGLISH',
-            documents: 'ENGLISH'
-          }
-        },
-        HearingLRspec: {
-          respondent1DQHearing: {
-            hearingLength: 'ONE_DAY',
-            unavailableDatesRequired: 'No'
-          }
-        },
-        StatementOfTruth: {
-          uiStatementOfTruth: {
-            name: 'name',
-            role: 'role'
-          }
-        }
+      //   RespondentResponseTypeSpec: {
+      //     respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+      //   },
+      //   defenceRoute: {
+      //     defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+      //   },
+      //   Upload: {
+      //     detailsOfWhyDoesYouDisputeTheClaim: 'details'
+      //   },
+      //   HowToAddTimeline: {
+      //     specClaimResponseTimelineList: 'MANUAL'
+      //   },
+      //   FileDirectionsQuestionnaire: {
+      //     respondent1DQFileDirectionsQuestionnaire: {
+      //       explainedToClient: ['CONFIRM'],
+      //       oneMonthStayRequested: 'Yes',
+      //       reactionProtocolCompliedWith: 'Yes'
+      //     }
+      //   },
+      //   DisclosureOfElectronicDocumentsLRspec: {
+      //     specRespondent1DQDisclosureOfElectronicDocuments: {
+      //       reachedAgreement: 'Yes'
+      //     }
+      //   },
+      //   Experts: {
+      //     respondent1DQExperts: {
+      //       expertRequired: 'No'
+      //     },
+      //   },
+      //   Witnesses: {
+      //     respondent1DQWitnesses: {
+      //       witnessesToAppear: 'No'
+      //     }
+      //   },
+      //   Language: {
+      //     respondent1DQLanguage: {
+      //       evidence: 'ENGLISH',
+      //       court: 'ENGLISH',
+      //       documents: 'ENGLISH'
+      //     }
+      //   },
+      //   HearingLRspec: {
+      //     respondent1DQHearing: {
+      //       hearingLength: 'ONE_DAY',
+      //       unavailableDatesRequired: 'No'
+      //     }
+      //   },
+      //   StatementOfTruth: {
+      //     uiStatementOfTruth: {
+      //       name: 'name',
+      //       role: 'role'
+      //     }
+      //   }
       },
     };
 
@@ -252,42 +252,15 @@ module.exports = {
       case 'COUNTER_CLAIM':
         responseData.userInput = {
           ...responseData.userInput,
-          ResponseConfirmNameAddress: {
-            specAoSApplicantCorrespondenceAddressRequired: 'Yes'
-          },
-
-          ResponseConfirmDetails: {
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'Yes'
           },
 
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'COUNTER_CLAIM',
+            claimant1ClaimResponseTypeForSpec: 'COUNTER_CLAIM',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
           },
-
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
-            specDisputesOrPartAdmission: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'No'
-          },
-
-          HearingLRspec: {
-            respondent1DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No'
-            }
-          },
-
-          StatementOfTruth: {
-            respondent1DQHearing: {
-              hearingLength: 'ONE_DAY'
-            },
-
-            uiStatementOfTruth: {
-              name: 'Test 2',
-              role: 'Worker 2'
-            }
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -298,8 +271,8 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission1V1: null,
             specPaidLessAmountOrDisputesOrPartAdmission: null,
-            specDefenceFullAdmittedRequired: 'No',
-            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE'
+            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           ResponseConfirmNameAddress: {
@@ -310,7 +283,6 @@ module.exports = {
           }
         };
         break;
-
     }
 
     return responseData;

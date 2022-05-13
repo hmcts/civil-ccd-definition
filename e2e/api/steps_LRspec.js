@@ -119,7 +119,9 @@ module.exports = {
     if(scenario === 'ONE_V_ONE')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
-      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT')
+    else if (response === 'COUNTER_CLAIM')
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -275,6 +277,9 @@ function updateWithGenerated(currentObject, responseBodyData, expectedModificati
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
+  console.log(eventName)
+  console.log(caseData)
+  console.log(caseId)
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
