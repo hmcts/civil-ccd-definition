@@ -6,7 +6,7 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants != \"Yes\" AND respondentResponseIsSame !=\"Yes\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
@@ -166,7 +166,7 @@
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\"",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired != \"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -299,7 +299,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinancialDetailsPurpose",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -321,7 +321,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinancialDetailsPurposeRespondent2",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND sameSolicitorSameResponse=\"Yes\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -331,7 +331,7 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\" AND defendantSingleResponseToBothClaimants !=\"No\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -372,7 +372,7 @@
     "PageID": "DefendantBankAccountsRespondent2",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -427,7 +427,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -459,7 +459,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -491,7 +491,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"  AND defendantSingleResponseToBothClaimants !=\"No\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -523,7 +523,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptionsRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -544,7 +544,7 @@
     "DisplayContext": "READONLY",
     "PageID": "DefendantPartnersAndDependents",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -565,7 +565,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Defendant2PartnersAndDependents",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -586,7 +586,7 @@
     "DisplayContext": "READONLY",
     "PageID": "EmploymentDeclaration",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -677,7 +677,7 @@
     "DisplayContext": "READONLY",
     "PageID": "EmploymentDeclarationRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND sameSolicitorSameResponse=\"Yes\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\" "
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -720,7 +720,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetails",
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired =\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"EMPLOYED\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -752,7 +752,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetailsRespondent2",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequiredRespondent2 =\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspecRespondent2 CONTAINS \"EMPLOYED\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -772,7 +772,7 @@
     "PageID": "DefendantSelfEmployment",
     "PageDisplayOrder": 28,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired =\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspec CONTAINS \"SELF\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -793,7 +793,7 @@
     "PageID": "DefendantSelfEmploymentRespondent2",
     "PageDisplayOrder": 29,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired =\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspecRespondent2 CONTAINS \"SELF\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -814,7 +814,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -825,7 +825,6 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -836,7 +835,6 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -847,7 +845,6 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -859,7 +856,6 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "FieldShowCondition": "respondent1CourtOrderPaymentOption =\"Yes\"",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -870,7 +866,7 @@
     "PageDisplayOrder": 31,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
@@ -892,7 +888,6 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "FieldShowCondition": "respondent2CourtOrderPaymentOption =\"Yes\"",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
@@ -903,7 +898,7 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\" AND defendantSingleResponseToBothClaimants !=\"No\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent2 = \"Yes\""
@@ -946,7 +941,7 @@
     "PageID": "DefendantDebtsRespondent2",
     "PageDisplayOrder": 33,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -988,7 +983,7 @@
     "PageID": "DefendantIncomeExpenses",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_ADMISSION\"  AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
@@ -1030,7 +1025,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\" AND sameSolicitorSameResponse !=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1071,7 +1066,7 @@
     "PageID": "DefendantIncomeExpensesRespondent2",
     "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_ADMISSION\"  AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1112,7 +1107,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
     "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric =\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1153,7 +1148,7 @@
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 36,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND specDefenceAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants !=\"No\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1174,7 +1169,7 @@
     "PageID": "WhyDoesNotPayImmediatelyRespondent2",
     "PageDisplayOrder": 37,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND specDefenceAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1195,7 +1190,7 @@
     "PageDisplayOrder": 38,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1217,7 +1212,7 @@
     "PageDisplayOrder": 39,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },

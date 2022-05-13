@@ -4568,5 +4568,11 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantResponseLRspecCurrentPage",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
   }
 ]
