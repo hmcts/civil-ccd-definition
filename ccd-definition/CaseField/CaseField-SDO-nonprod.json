@@ -148,6 +148,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethod",
+    "Label": "Hearing Method",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethod",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "inPerson",
+    "Label": "Select hearing location ",
+    "FieldType": "Text",
+    "FieldTypeParameter": "InPerson",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "videoConferenceHearing",
+    "Label": "Who will arrange the video conference? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "VideoConferenceHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "telephoneHearing",
+    "Label": "Who will arrange the call? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TelephoneHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundle",
     "Label": "Disposal hearing bundle",
     "FieldType": "DisposalHearingBundle",
