@@ -1,6 +1,5 @@
 const config = require('../../../config.js');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
-const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
