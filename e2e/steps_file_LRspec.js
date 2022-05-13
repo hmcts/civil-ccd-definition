@@ -22,11 +22,12 @@ const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const event = require('./fragments/event');
 const proceedPage = require('./pages/respondToDefence/proceed.page');
-const uploadResponseDocumentPage = require('./pages/respondToDefence/uploadResponseDocument.page');
+
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
+const disclosureOfNonElectronicDocumentsPage = require('./fragments/dq/disclosureOfNonElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
 const witnessPage = require('./fragments/dq/witnesses.page');
 
@@ -480,7 +481,7 @@ module.exports = function () {
                   () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
                   () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
                   () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
-                  () => hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1),
+                  () => hearingLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
                   ]),
                  () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
                  () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),

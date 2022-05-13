@@ -2,7 +2,6 @@ const {I} = inject();
 module.exports = {
   fields: function(mpScenario) {
     switch (mpScenario) {
-      case 'ClaimantResponse':
       case 'ClaimantResponse': {
         return {
           mediationType: {
