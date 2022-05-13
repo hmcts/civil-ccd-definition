@@ -27,7 +27,7 @@ const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQu
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
 const witnessPage = require('./fragments/dq/witnesses.page');
-
+const singleResponse = require('./pages/respondToClaimLRspec/singleResponseLRSpec.page.js');
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
 const address = require('./fixtures/address.js');
@@ -338,16 +338,19 @@ module.exports = function () {
        ]);
      },
 
-    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', claimType = 'fast', defenceType = 'dispute'}) {
-         eventName = 'Respond to claim';
+    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
+      eventName = 'Respond to claim';
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
             () => respondentCheckListPage.claimTimelineTemplate(),
-            () => specConfirmDefendantsDetails.confirmDetails(),
+            () => specConfirmDefendantsDetails.confirmDetails(twoDefendants),
             () => specConfirmLegalRepDetails.confirmDetails(),
-          ... conditionalSteps(twoDefendants, [
-            () => this.clickContinue(),
-           ]),
+            ... conditionalSteps(twoDefendants, [
+              () => singleResponse.defendantsHaveSameResponse(true),
+            ]),
+            ... conditionalSteps(twoClaimants, [
+              () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
+            ]),
             () => responseTypeSpecPage.selectResponseType(defendant1Response),
             () => defenceTypePage.selectDefenceType(defenceType,150),
             () => disputeClaimDetailsPage.enterReasons(),
@@ -363,13 +366,22 @@ module.exports = function () {
             () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
            ]),
+            ... conditionalSteps(claimType === 'small', [
+              () => freeMediationPage.selectMediation('yes'),
+              () => useExpertPage.claimExpert('no'),
+              () => enterWitnessesPage.howManyWitnesses(),
+              () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+              () => smallClaimsHearingPage.selectHearing('no'),
+            ]),
             () => chooseCourtSpecPage.chooseCourt('yes'),
             () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
             () => vulnerabilityPage.selectVulnerability('no'),
-            () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-            () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+            ... conditionalSteps(claimType === 'fast', [
+              () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+            ]),
+            () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
             () => event.submit('Submit', ''),
-            () => event.returnToCaseDetails(),
+            () => event.returnToCaseDetails()
          ]);
 
     },
