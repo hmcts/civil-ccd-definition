@@ -438,7 +438,7 @@
     "PageID": "SingleResponse2v1",
     "PageLabel": " ",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"SingleResponse2v1\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -460,7 +460,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SingleResponse",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"SingleResponse\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details"
   },
   {
@@ -483,7 +483,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseTypeSpec2v1",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"RespondentResponseTypeSpec2v1\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -572,7 +572,7 @@
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondentResponseIsSame = \"Yes\"",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"RespondentResponseTypeSpec\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -732,7 +732,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "defenceRoute",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"defenceRoute\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
   },
@@ -922,7 +922,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Upload\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -957,7 +957,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HowToAddTimeline\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -991,7 +991,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimelineUpload",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HowToAddTimelineUpload\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1026,7 +1026,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "HowToAddTimelineManual",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HowToAddTimelineManual\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1049,7 +1049,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Mediation\"",
     "FieldShowCondition": "respondentResponseIsSame !=\"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
@@ -1117,7 +1117,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"FileDirectionsQuestionnaire\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1138,7 +1138,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocumentsLRspec",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DisclosureOfElectronicDocumentsLRspec\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1159,7 +1159,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DisclosureOfNonElectronicDocumentsLRspec\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1180,7 +1180,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DisclosureReport\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1202,7 +1202,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Experts\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1226,7 +1226,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimExperts",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"SmallClaimExperts\"",
 
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
@@ -1284,7 +1284,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": "",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Witnesses\"",
     "CallBackURLMidEvent": "",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1322,7 +1322,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimWitnesses",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"SmallClaimWitnesses\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1354,7 +1354,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Language",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Language\"",
     "ShowSummaryChangeOption": "Y",
     "_Comments": "Mixing AND and OR conditions still doesn't work as it should, that's why track is != MULTI instead of (t = FAST OR t = SMALL)"
   },
@@ -1377,7 +1377,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"SmaillClaimHearing\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
@@ -1455,7 +1455,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HearingLRspec",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HearingLRspec\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "",
     "RetriesTimeoutURLMidEvent": 0
@@ -1490,7 +1490,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimCourtLocationLabel",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"RequestedCourtLocationLRspec\"",
     "PageDisplayOrder": 48,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -1551,7 +1551,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HearingSupport\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1574,7 +1574,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"VulnerabilityQuestions\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1586,7 +1586,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Applications\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1642,7 +1642,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FurtherInformation",
     "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"FurtherInformation\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1656,7 +1656,7 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"StatementOfTruth\""
   },
   {
     "CaseTypeID": "CIVIL",

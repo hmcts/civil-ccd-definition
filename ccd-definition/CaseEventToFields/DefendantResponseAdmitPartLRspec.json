@@ -6,7 +6,7 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"defenceAdmittedPartRoute\"",
     "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants != \"Yes\" AND respondentResponseIsSame !=\"Yes\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
@@ -166,7 +166,7 @@
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\"",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"WhenWillClaimBePaid\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -299,7 +299,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinancialDetailsPurpose",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"FinancialDetailsPurpose\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -321,7 +321,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinancialDetailsPurposeRespondent2",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"FinancialDetailsPurposeRespondent2\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -331,7 +331,7 @@
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantBankAccounts\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -372,7 +372,7 @@
     "PageID": "DefendantBankAccountsRespondent2",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantBankAccountsRespondent2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -427,7 +427,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DisabilityPremiumPayments\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -459,7 +459,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DisabilityPremiumPaymentsRespondent2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -491,7 +491,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptions",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"defendantHomeOptions\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -523,7 +523,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptionsRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"defendantHomeOptionsRespondent2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -544,7 +544,7 @@
     "DisplayContext": "READONLY",
     "PageID": "DefendantPartnersAndDependents",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantPartnersAndDependents\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -565,7 +565,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Defendant2PartnersAndDependents",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"Defendant2PartnersAndDependents\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -586,7 +586,7 @@
     "DisplayContext": "READONLY",
     "PageID": "EmploymentDeclaration",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"EmploymentDeclaration\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -677,7 +677,7 @@
     "DisplayContext": "READONLY",
     "PageID": "EmploymentDeclarationRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\""
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"EmploymentDeclarationRespondent2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -720,7 +720,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetails",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HowToAddEmploymentDetails\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -752,7 +752,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetailsRespondent2",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"HowToAddEmploymentDetailsRespondent2\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -772,7 +772,7 @@
     "PageID": "DefendantSelfEmployment",
     "PageDisplayOrder": 28,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantSelfEmployment\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -793,7 +793,7 @@
     "PageID": "DefendantSelfEmploymentRespondent2",
     "PageDisplayOrder": 29,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantSelfEmploymentRespondent2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -814,7 +814,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DetailsOfPayingMoneyRepaymentPlan\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -866,7 +866,7 @@
     "PageDisplayOrder": 31,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DetailsOfPayingMoneyRepaymentPlanRespondent2\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
@@ -898,7 +898,7 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantDebts\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent2 = \"Yes\""
@@ -941,7 +941,7 @@
     "PageID": "DefendantDebtsRespondent2",
     "PageDisplayOrder": 33,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantDebtsRespondent2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -983,7 +983,7 @@
     "PageID": "DefendantIncomeExpenses",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantIncomeExpenses\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
@@ -1025,7 +1025,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantIncomeExpensesFullAdmission\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1066,7 +1066,7 @@
     "PageID": "DefendantIncomeExpensesRespondent2",
     "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantIncomeExpensesRespondent2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1107,7 +1107,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
     "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"DefendantIncomeExpensesFullAdmissionRespondent2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1148,7 +1148,7 @@
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 36,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"WhyDoesNotPayImmediately\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1169,7 +1169,7 @@
     "PageID": "WhyDoesNotPayImmediatelyRespondent2",
     "PageDisplayOrder": 37,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"WhyDoesNotPayImmediatelyRespondent2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1190,7 +1190,7 @@
     "PageDisplayOrder": 38,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"RepaymentPlan\"",
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1212,7 +1212,7 @@
     "PageDisplayOrder": 39,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"PageNamePlaceHolder\"",
+    "PageShowCondition": "defendantResponseLRspecCurrentPage = \"RepaymentPlanRespondent2\"",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
