@@ -408,19 +408,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2",
-    "CaseEventFieldLabel": " ",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmDetails",
-    "PageLabel": "Confirm your details",
-    "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "addApplicant2",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 5,
@@ -558,17 +545,6 @@
     "CaseFieldID": "specFullDefenceOrPartAdmission",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 7,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponseTypeSpec",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentClaimResponseTypeForSpecGeneric",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "N",
