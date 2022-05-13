@@ -1609,13 +1609,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQHomeDetails",
-    "Label": " ",
-    "FieldType": "HomeDetailsLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQIncomeAndExpenseLabel",
     "Label": "## ${respondent1.partyName}'s income and expenses\n",
     "FieldType": "Label",
@@ -1632,20 +1625,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
     "Label": "## ${respondent1.partyName}'s income and expenses\n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQIncomeAndExpenseLabel",
-    "Label": "## ${respondent2.partyName}'s income and expenses\n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQIncomeAndExpenseLabelFullAdmission",
-    "Label": "## ${respondent2.partyName}'s income and expenses\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1694,14 +1673,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQRecurringIncome",
-    "Label": "Add details of any regular income your client receives:",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "RecurringIncome",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringIncomeFA",
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
@@ -1726,14 +1697,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQRecurringExpenses",
-    "Label": "Add details of any regular expenses your client has:",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "RecurringExpense",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringExpensesFA",
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
@@ -1743,14 +1706,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQRecurringIncome",
-    "Label": "Add details of any regular income your client receives:",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "RecurringIncome",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQRecurringIncomeFA",
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
@@ -1788,21 +1743,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">Tell us why ${respondent2.partyName} cannot pay immediately</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
-    "Label": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -1818,13 +1759,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2RepaymentPlanLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2216,14 +2150,6 @@
     "HintText":"Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondentClaimResponseTypeForSpecGeneric",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponseTypeSpec",
     "SecurityClassification": "Public"
   },
   {
