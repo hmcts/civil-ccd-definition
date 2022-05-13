@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 
 Feature('CCD 1v1 API test @api-spec @api-spec-1v1');
 
-Scenario('Create claim spec', async ({I, api_spec}) => {
+Scenario('Create claim spec 1v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
 });
 
@@ -28,9 +28,8 @@ Scenario('Inform agreed extension date', async ({I, api_spec}) => {
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
 });
 
-Scenario('1v1 full defence', async ({I, api_spec}) => {
+Scenario('1v1 full defence claimant and defendant response', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
 });
-
