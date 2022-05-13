@@ -336,7 +336,7 @@ module.exports = function () {
        await this.triggerStepsWithScreenshot([
          () => caseViewPage.startEvent(eventName, caseId),
          () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
-         () => event.submit('Submit', 'Extension deadline submitted'),
+         () => event.submit('Submit', ''),
          () => event.returnToCaseDetails(),
        ]);
      },
