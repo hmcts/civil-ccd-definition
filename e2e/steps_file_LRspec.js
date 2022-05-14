@@ -500,8 +500,8 @@ module.exports = function () {
                       () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
                       () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
                       () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-                     // () => event.submit('Submit your response', ''),
-                     // () => this.click('Close and Return to case details')
+                      () => event.submit('Submit your response', 'You have decided to proceed with the claim\nClaim number: '),
+                      () => this.click('Close and Return to case details')
                    ]);
                    await this.takeScreenshot();
       },
