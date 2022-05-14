@@ -15,7 +15,7 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario.skip('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
