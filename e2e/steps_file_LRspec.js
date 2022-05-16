@@ -344,20 +344,21 @@ module.exports = function () {
        ]);
      },
 
-   async enterBreathingSpace(respondentSolicitorNumber = '1') {
+   async enterBreathingSpace() {
        eventName = 'Enter Breathing Space';
         await this.triggerStepsWithScreenshot([
-                 () => caseViewPage.startEvent(eventName, caseId),
+                 () => caseViewPage.startEvent(eventName, 1652299732767956
+                 ),
                  () => enterBreathingSpacePage.selectBSType(),
                  () => event.submit('Submit', ''),
                  () => event.returnToCaseDetails()
                ]);
     },
 
-   async liftBreathingSpace(respondentSolicitorNumber = '1') {
+   async liftBreathingSpace() {
            eventName = 'Lift Breathing Space';
             await this.triggerStepsWithScreenshot([
-                     () => caseViewPage.startEvent(eventName, caseId),
+                     () => caseViewPage.startEvent(eventName, 1652299732767956),
                      () => liftBreathingSpacePage.liftBS(),
                      () => event.submit('Submit', ''),
                      () => event.returnToCaseDetails()
