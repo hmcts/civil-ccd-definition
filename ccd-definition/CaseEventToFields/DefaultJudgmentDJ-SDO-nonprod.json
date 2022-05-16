@@ -1,0 +1,72 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "applicantVRespondentText",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CaseManagementOrder",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "caseManagementOrder=\"DO_NOT_SHOW_UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "caseManagementOrder",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "CaseManagementOrder",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "caseManagementOrderSelection",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CaseManagementOrder",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "hearingDisposalText2",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "CaseManagementOrder",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseManagementOrderSelection = \"DISPOSAL_HEARING\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "hearingTrialText2",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "CaseManagementOrder",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "caseManagementOrderAdditional",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "CaseManagementOrder",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
+  }
+]
