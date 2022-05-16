@@ -65,7 +65,8 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-fees-and-pba"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -159,7 +160,6 @@
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-set-application-fees",
     "ShowSummaryChangeOption": "Y"
   }
 ]
