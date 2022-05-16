@@ -173,9 +173,9 @@ module.exports = {
           ...responseData.midEventData,
         };
         break;
-    };
+    }
     return responseData;
   }
-}
+};
 
 

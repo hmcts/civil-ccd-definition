@@ -69,7 +69,6 @@ module.exports = {
               languageToBeInterpreted: null,
               otherSupport: null,
               requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS'],
-              signLanguageRequired: null
             }
           },
           VulnerabilityQuestions: {
@@ -224,7 +223,6 @@ module.exports = {
               languageToBeInterpreted: null,
               otherSupport: null,
               requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS'],
-              signLanguageRequired: null
             }
           },
           VulnerabilityQuestions: {

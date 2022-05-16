@@ -132,7 +132,7 @@ module.exports = {
     if(scenario === 'ONE_V_ONE')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
-      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT')
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     else if (scenario === 'TWO_V_ONE')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
