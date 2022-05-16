@@ -111,6 +111,18 @@ module.exports = {
           ...responseData.midEventData,
         };
         break;
+
+      case 'NOT_PROCEED':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponse: {
+            applicant1ProceedWithClaimSpec2v1: 'No',
+          },
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+        };
+        break;
     };
     return responseData;
   }

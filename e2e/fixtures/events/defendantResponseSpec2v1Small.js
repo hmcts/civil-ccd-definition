@@ -8,12 +8,6 @@ module.exports = {
         ResponseConfirmDetails: {
           specAoSRespondentCorrespondenceAddressRequired: 'Yes'
         },
-        SingleResponse2v1: {
-          defendantSingleResponseToBothClaimants: 'Yes'
-        },
-        RespondentResponseTypeSpec: {
-          respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-        }
       },
     };
 
@@ -21,6 +15,9 @@ module.exports = {
       case 'FULL_DEFENCE':
         responseData.userInput = {
           ...responseData.userInput,
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'Yes'
+          },
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
@@ -122,9 +119,13 @@ module.exports = {
           }
         };
         break;
+
       case 'FULL_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'Yes'
+          },
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
             claimant1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
@@ -160,9 +161,13 @@ module.exports = {
           },
         };
         break;
+
       case 'PART_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'Yes'
+          },
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'PART_ADMISSION',
             claimant1ClaimResponseTypeForSpec: 'PART_ADMISSION',
@@ -272,9 +277,13 @@ module.exports = {
           }
         };
         break;
+
       case 'COUNTER_CLAIM':
         responseData.userInput = {
           ...responseData.userInput,
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'Yes'
+          },
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'COUNTER_CLAIM',
             claimant1ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
