@@ -1494,6 +1494,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesRequiredSpec",
+    "Label": "Are there any witnesses who should attend the hearing?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesDetailsSpec",
+    "Label": "Witnesses details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Witness",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceFullAdmittedRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
