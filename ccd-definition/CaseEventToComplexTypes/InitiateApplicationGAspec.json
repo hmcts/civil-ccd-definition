@@ -340,20 +340,9 @@
     "ID": "GAPBADetailsGAspec",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel108",
+    "ListElementCode": "generalAppFeeToPayInText",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"Yes\" OR generalAppInformOtherParty.isWithNotice = \"No\"",
-    "ShowSummaryContentOption": "Y"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "generalAppFeeToPayLabel275",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed = \"No\" AND generalAppInformOtherParty.isWithNotice = \"Yes\"",
     "ShowSummaryContentOption": "Y"
   },
   {
@@ -361,7 +350,6 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "applicantsPbaAccounts",
-    "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -370,8 +358,7 @@
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "pbaReference",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]
