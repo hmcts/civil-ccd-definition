@@ -21,6 +21,7 @@ const data = {
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
   DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE_2v1: (mpScenario) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
@@ -127,7 +128,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user) => {
+  claimantResponse: async (user, scenario = 'ONE_V_ONE') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -136,8 +137,13 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
+    let claimantResponseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE();
+    if (scenario === 'TWO_V_ONE') {
+      claimantResponseData = data.CLAIMANT_RESPONSE_2v1();
+    } else {
+      claimantResponseData = data.CLAIMANT_RESPONSE();
+    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -275,6 +281,9 @@ function updateWithGenerated(currentObject, responseBodyData, expectedModificati
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
+
+  console.log(caseId)
+  console.log(eventName)
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
