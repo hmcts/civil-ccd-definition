@@ -15,7 +15,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario.skip('2v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('2v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   console.log('2v1 Defendant solicitor reject the specified claim');
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
