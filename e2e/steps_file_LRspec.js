@@ -77,6 +77,9 @@ const respondentPage = require('./pages/respondToClaimLRspec/respondentWhyNotPay
 const respondent2SameLegalRepresentativeLRspec = require('./pages/createClaim/respondent2SameLegalRepresentativeLRspec.page');
 const vulnerabilityPage = require('./pages/respondToClaimLRspec/vulnerabilityLRspec.page');
 const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
+const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
+const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
+
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -341,6 +344,26 @@ module.exports = function () {
        ]);
      },
 
+   async enterBreathingSpace(respondentSolicitorNumber = '1') {
+       eventName = 'Enter Breathing Space';
+        await this.triggerStepsWithScreenshot([
+                 () => caseViewPage.startEvent(eventName, caseId),
+                 () => enterBreathingSpacePage.selectBSType(),
+                 () => event.submit('Submit', ''),
+                 () => event.returnToCaseDetails()
+               ]);
+    },
+
+   async liftBreathingSpace(respondentSolicitorNumber = '1') {
+           eventName = 'Lift Breathing Space';
+            await this.triggerStepsWithScreenshot([
+                     () => caseViewPage.startEvent(eventName, caseId),
+                     () => liftBreathingSpacePage.liftBS(),
+                     () => event.submit('Submit', ''),
+                     () => event.returnToCaseDetails()
+                   ]);
+        },
+
     async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
       eventName = 'Respond to claim';
           await this.triggerStepsWithScreenshot([
@@ -467,7 +490,7 @@ module.exports = function () {
                () => vulnerabilityPage.selectVulnerability('no'),
                () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
                () => event.submit('Submit', ''),
-               () => event.returnToCaseDetails(),
+               () => event.returnToCaseDetails()
              ]);
 
      },
@@ -500,8 +523,8 @@ module.exports = function () {
                       () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
                       () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
                       () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-                      () => event.submit('Submit your response', 'You have decided to proceed with the claim\nClaim number: '),
-                      () => this.click('Close and Return to case details')
+                      () => event.submit('Submit your response', ''),
+                      () => event.returnToCaseDetails()
                    ]);
                    await this.takeScreenshot();
       },
