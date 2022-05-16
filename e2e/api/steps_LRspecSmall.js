@@ -19,9 +19,9 @@ const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
-  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1Small.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
-  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
+  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1Small.js').claimantResponse(response),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
@@ -55,8 +55,7 @@ const eventData = {
     TWO_V_ONE:{
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
-      PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
-      COUNTER_CLAIM: data.CLAIMANT_RESPONSE_2v1('COUNTER_CLAIM'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION')
     }
   }
 };
