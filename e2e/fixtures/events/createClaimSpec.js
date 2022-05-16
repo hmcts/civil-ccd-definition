@@ -25,7 +25,7 @@ const applicant1WithPartyName = {
 };
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
-const claimAmount = '150000';
+const claimAmount = '1500000';
 
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
@@ -129,7 +129,7 @@ module.exports = {
             customerReference: 'Applicant reference'
           },
           claimFee: {
-            calculatedAmountInPence: '75000',
+            calculatedAmountInPence: '150000',
             code: 'FEE0209',
             version: '3'
           }
