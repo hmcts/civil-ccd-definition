@@ -46,7 +46,6 @@ const eventData = {
   }
 };
 
-
 module.exports = {
 
   /**
@@ -103,10 +102,10 @@ module.exports = {
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     await apiRequest.setupTokens(user);
-
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
