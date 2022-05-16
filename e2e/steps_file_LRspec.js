@@ -347,7 +347,7 @@ module.exports = function () {
    async enterBreathingSpace() {
        eventName = 'Enter Breathing Space';
         await this.triggerStepsWithScreenshot([
-                 () => caseViewPage.startEvent(eventName, 1652299732767956
+                 () => caseViewPage.startEvent(eventName, caseId
                  ),
                  () => enterBreathingSpacePage.selectBSType(),
                  () => event.submit('Submit', ''),
@@ -358,7 +358,7 @@ module.exports = function () {
    async liftBreathingSpace() {
            eventName = 'Lift Breathing Space';
             await this.triggerStepsWithScreenshot([
-                     () => caseViewPage.startEvent(eventName, 1652299732767956),
+                     () => caseViewPage.startEvent(eventName, caseId),
                      () => liftBreathingSpacePage.liftBS(),
                      () => event.submit('Submit', ''),
                      () => event.returnToCaseDetails()
