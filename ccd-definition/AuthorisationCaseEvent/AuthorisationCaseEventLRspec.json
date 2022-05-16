@@ -290,7 +290,7 @@
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
