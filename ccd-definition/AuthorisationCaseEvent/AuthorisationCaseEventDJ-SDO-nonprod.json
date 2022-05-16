@@ -1,12 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-solicitor"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },

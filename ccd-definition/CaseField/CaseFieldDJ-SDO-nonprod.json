@@ -1,0 +1,46 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantVRespondentText",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrder",
+    "Label": "# ${applicantVRespondentText} \n What order would you like to make",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDisposalText2",
+    "Label": "This is a hearing that lasts no longer than 30 minutes, with only paper-based evidence presented",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTrialText2",
+    "Label": "This is a hearing which lasts longer than 30 minutes, with spoken and paper-based evidence presented",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderAdditional",
+    "Label": "Select additional directions, if any",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "CaseManagementOrderAdditional",
+    "SecurityClassification": "Public"
+  }
+]
