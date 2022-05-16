@@ -43,6 +43,8 @@ const eventData = {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_2v1('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_NOT_FULL_DEFENCE')
     }
   },
   claimantResponses: {
@@ -134,7 +136,10 @@ module.exports = {
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT')
     else if (scenario === 'TWO_V_ONE')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+      if (response === 'DIFF_FULL_DEFENCE')
+        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+      else
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
     await waitForFinishedBusinessProcess(caseId);
 
