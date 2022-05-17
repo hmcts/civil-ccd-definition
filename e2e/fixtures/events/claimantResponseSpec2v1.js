@@ -9,42 +9,16 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
-          FileDirectionsQuestionnaire: {
-            applicant1DQFileDirectionsQuestionnaire: {
-              explainedToClient: ['CONFIRM'],
-              oneMonthStayRequested: 'No',
-              reactionProtocolCompliedWith: 'No',
-              reactionProtocolNotCompliedWithReason: 'test'
+          Mediation: {
+            applicantMPClaimMediationSpecRequired: {
+              hasAgreedFreeMediation: 'Yes'
             }
           },
-          DisclosureOfElectronicDocuments: {
-            applicant1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'No',
-              agreementLikely: 'No',
-              reasonForNoAgreement: 'issues'
-            }
+          SmallClaimExperts: {
+            applicant1ClaimExpertSpecRequired: 'No'
           },
-          DisclosureOfNonElectronicDocuments: {
-            specApplicant1DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
-            }
-          },
-          DisclosureReport: {
-            applicant1DQDisclosureReport: {
-              disclosureFormFiledAndServed: 'Yes',
-              disclosureProposalAgreed: 'Yes',
-              draftOrderNumber: '123'
-            }
-          },
-          Experts: {
-            applicant1DQExperts: {
-              expertRequired: 'No'
-            }
-          },
-          Witnesses: {
-            applicant1DQWitnesses: {
-              witnessesToAppear: 'No'
-            }
+          SmallClaimWitnesses: {
+            applicant1ClaimWitnesses: '10'
           },
           Language: {
             applicant1DQLanguage: {
@@ -54,9 +28,8 @@ module.exports = {
             }
           },
           Hearing: {
-            applicant1DQHearingLRspec: {
-              hearingLength: 'ONE_DAY',
-              unavailableDatesRequired: 'No',
+            applicant1DQSmallClaimHearing: {
+              unavailableDatesRequired: 'No'
             }
           },
           ApplicantCourtLocationLRspec: {
@@ -69,35 +42,21 @@ module.exports = {
               vulnerabilityAdjustmentsRequired: 'No'
             }
           },
-          Applications: {
-            applicant1DQFutureApplications: {
-              intentionToMakeFutureApplications: 'No'
-            }
-          },
           StatementOfTruth: {
             uiStatementOfTruth: {
               name: 'Solicitor name',
               role: 'Solicitor role'
-            },
-            applicant1DQHearing: {
-              hearingLength: 'ONE_DAY'
             }
           }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-          Experts: {
-            respondent1DQDisclosureReport:{
-              draftOrderNumber: '123',
-              disclosureFormFiledAndServed: 'Yes',
-              disclosureProposalAgreed: 'Yes',
-            },
+          Hearing: {
             claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             defendantSingleResponseToBothClaimants: 'Yes',
             respondent1DQHearing: {
-              hearingLength: 'ONE_DAY',
-              unavailableDatesRequired: 'No',
+              unavailableDatesRequired: 'No'
             },
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
@@ -106,15 +65,6 @@ module.exports = {
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
-            },
-            respondent1DQFileDirectionsQuestionnaire: {
-              explainedToClient: ['CONFIRM'],
-              oneMonthStayRequested: 'No',
-              reactionProtocolCompliedWith: 'No',
-              reactionProtocolNotCompliedWithReason: 'reason'
-            },
-            respondent1DQExperts: {
-              expertRequired: 'No'
             },
             businessProcess: {
               status: 'FINISHED',

@@ -204,60 +204,62 @@ module.exports = {
           }
         };
         break;
-      // case 'FULL_ADMISSION':
-      //   responseData.userInput = {
-      //     ...responseData.userInput,
-      //     RespondentResponseTypeSpec: {
-      //       respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
-      //       respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
-      //     },
-      //     defenceAdmittedPartRoute: {
-      //       specDefenceFullAdmittedRequired: 'No'
-      //     },
-      //     WhenWillClaimBePaid: {
-      //       defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
-      //     },
-      //     Upload: {
-      //       detailsOfWhyDoesYouDisputeTheClaim: 'details'
-      //     },
-      //     HowToAddTimeline: {
-      //       specClaimResponseTimelineList: 'MANUAL'
-      //     },
-      //     ResponseConfirmNameAddress: {
-      //       businessProcess: {
-      //         status: 'FINISHED',
-      //         camundaEvent: 'CREATE_CLAIM_SPEC'
-      //       },
-      //     },
-      //     defenceRoute: {
-      //       specPaidLessAmountOrDisputesOrPartAdmission: 'No',
-      //     },
-      //     ResponseConfirmDetails: {
-      //       sameSolicitorSameResponse: 'Yes'
-      //     }
-      //   };
-      //   responseData.midEventData = {
-      //     ...responseData.midEventData,
-      //     RespondentResponseTypeSpec: {
-      //       specFullDefenceOrPartAdmission: 'No',
-      //       multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
-      //       specFullDefenceOrPartAdmission1V1: 'No',
-      //       specDefenceFullAdmittedRequired: 'No',
-      //       specFullAdmitPaid: 'No',
-      //       specFullAdmissionOrPartAdmission: 'Yes'
-      //     },
-      //     defenceAdmittedPartRoute: {
-      //       specPaidLessAmountOrDisputesOrPartAdmission: 'No',
-      //       responseClaimTrack: 'SMALL_CLAIM',
-      //       specDisputesOrPartAdmission: 'No'
-      //     },
-      //     defenceRoute: {
-      //       respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-      //       responseClaimTrack: 'SMALL_CLAIM',
-      //       specDisputesOrPartAdmission: 'No'
-      //     }
-      //   };
-      //   break;
+      case 'FULL_ADMISSION':
+        responseData.userInput = {
+          ...responseData.userInput,
+          SingleResponse: {
+            respondentResponseIsSame: 'Yes'
+          },
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION'
+          },
+          defenceAdmittedPartRoute: {
+            specDefenceFullAdmittedRequired: 'No'
+          },
+          WhenWillClaimBePaid: {
+            defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          },
+          defenceRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+          },
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullDefenceOrPartAdmission: 'No',
+            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
+            specFullDefenceOrPartAdmission1V1: 'No',
+            specDefenceFullAdmittedRequired: 'No',
+            specFullAdmitPaid: 'No',
+            specFullAdmissionOrPartAdmission: 'Yes'
+          },
+          defenceAdmittedPartRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+            responseClaimTrack: 'SMALL_CLAIM',
+            specDisputesOrPartAdmission: 'No'
+          },
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            responseClaimTrack: 'SMALL_CLAIM',
+            specDisputesOrPartAdmission: 'No'
+          }
+        };
+        break;
       // case 'PART_ADMISSION':
       //   responseData.userInput = {
       //     ...responseData.userInput,
