@@ -71,6 +71,115 @@ module.exports = {
       case 'FULL_DEFENCE':
         responseData.userInput = {
           ...responseData.userInput,
+          SingleResponse: {
+            respondentResponseIsSame: 'Yes'
+          },
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+          },
+          defenceRoute: {
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          Mediation: {
+            responseClaimMediationSpecRequired: 'No'
+          },
+          SmallClaimExperts: {
+            respondToClaim_experts: {
+              estimatedCost: '100',
+              expertName: 'expert',
+              fieldofExpertise: 'field'
+            },
+            responseClaimExpertSpecRequired: 'Yes'
+          },
+          SmallClaimWitnesses: {
+            responseClaimWitnesses: '10'
+          },
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'ENGLISH',
+              court: 'ENGLISH',
+              documents: 'ENGLISH'
+            }
+          },
+          SmaillClaimHearing: {
+            SmallClaimHearingInterpreterDescription: 'test',
+            SmallClaimHearingInterpreterRequired: 'Yes',
+            respondent1DQHearingSmallClaim: {
+              unavailableDatesRequired: 'No',
+            },
+          },
+          RequestedCourtLocationLRspec: {
+            responseClaimCourtLocationRequired: 'No'
+          },
+          HearingSupport: {
+            respondent1DQHearingSupport: {
+              signLanguageRequired: null,
+              languageToBeInterpreted: null,
+              otherSupport: null,
+              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+            }
+          },
+          VulnerabilityQuestions: {
+            respondent1DQVulnerabilityQuestions: {
+              vulnerabilityAdjustmentsRequired: 'Yes',
+              vulnerabilityAdjustments: 'test'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
+            respondent1DQHearing: {
+              unavailableDatesRequired: 'No'
+            }
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullDefenceOrPartAdmission: 'Yes',
+            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+            specFullDefenceOrPartAdmission1V1: 'Yes',
+            specDefenceFullAdmittedRequired: 'No',
+            specFullAdmissionOrPartAdmission: 'No',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            specRespondent1Represented: 'Yes',
+            specRespondent2Represented: 'Yes',
+            respondent2SameLegalRepresentative: 'Yes',
+            respondentResponseIsSame: 'Yes'
+          },
+
+          defenceRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
+            responseClaimTrack: 'SMALL_CLAIM',
+            specDisputesOrPartAdmission: 'Yes',
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+          },
+
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          },
+
+          Upload: {
+            specDisputesOrPartAdmission: 'Yes'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          },
+        };
+        responseData.userInput = {
+          ...responseData.userInput,
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
           },
