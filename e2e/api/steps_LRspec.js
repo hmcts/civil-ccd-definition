@@ -22,6 +22,7 @@ const data = {
   DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
+  CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
@@ -60,6 +61,12 @@ const eventData = {
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
+    },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
+      COUNTER_CLAIM: data.CLAIMANT_RESPONSE_1v2('COUNTER_CLAIM')
     }
   }
 };
@@ -89,7 +96,7 @@ module.exports = {
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
@@ -127,8 +134,6 @@ module.exports = {
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
     caseData = returnedCaseData;
-
-    console.log(`${response} ${scenario}`);
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
@@ -189,6 +194,9 @@ const assertValidData = async (data, pageId) => {
 
   assert.equal(response.status, 200);
 
+  if(pageId === 'StatementOfTruth')
+    console.log(`${JSON.stringify(responseBody.data['respondent1DQDisclosureReport'])}`);
+
   if (data.midEventData[pageId]) {
     const expectedMidEvent = data.midEventData[pageId];
     caseData = update(caseData, expectedMidEvent);
@@ -198,9 +206,6 @@ const assertValidData = async (data, pageId) => {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
-
-  if(pageId === 'InterestSummary')
-    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
@@ -220,6 +225,7 @@ const assertValidData = async (data, pageId) => {
 function responseMatchesExpectations(responseBodyData, caseData) {
   for (const key in responseBodyData) {
     // eslint-disable-next-line no-prototype-builtins
+    console.log('KEY: ' + responseBodyData);
     if (responseBodyData.hasOwnProperty(key)) {
       if (typeof responseBodyData[key] === 'object') {
         const failure = responseMatchesExpectations(responseBodyData[key], caseData[key]);

@@ -21,12 +21,15 @@ module.exports =  {
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;
-          if (response.incidentMessage) {
-            incidentMessage = response.incidentMessage;
-          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
-            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
-              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
-          }
+          if(businessProcess.activityId !== 'ValidateClaimFeeForSpec'){
+            if (response.incidentMessage) {
+              incidentMessage = response.incidentMessage;
+            } else if (businessProcess && businessProcess.status !== 'FINISHED') {
+              throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+                + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+            }
+          } else
+            console.error('REMOVE THIS IF');
       });
     }, MAX_RETRIES, RETRY_TIMEOUT_MS);
     if (incidentMessage)

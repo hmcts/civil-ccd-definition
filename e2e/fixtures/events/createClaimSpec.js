@@ -257,11 +257,16 @@ module.exports = {
               customerReference: 'Applicant reference'
             },
             claimFee: {
+<<<<<<< Updated upstream
               calculatedAmountInPence: '75000',
+=======
+              calculatedAmountInPence: '150000',
+>>>>>>> Stashed changes
               code: 'FEE0209',
               version: '3'
             }
           },
+
         };
 
         userData.midEventData = {

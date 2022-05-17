@@ -33,7 +33,7 @@ Scenario('1v2 full defence, defendant response', async ({I, api_spec}) => {
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
 });
 
-Scenario.skip('1v2 full defence, claimant response', async ({I, api_spec}) => {
+Scenario.only('1v2 full defence, claimant response', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');

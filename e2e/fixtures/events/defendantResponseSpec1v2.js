@@ -102,7 +102,7 @@ module.exports = {
               status: 'FINISHED',
               camundaEvent: 'CREATE_CLAIM_SPEC'
             },
-          }
+          },
         };
         break;
       case 'FULL_ADMISSION':
