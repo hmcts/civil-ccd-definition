@@ -79,6 +79,7 @@ const vulnerabilityPage = require('./pages/respondToClaimLRspec/vulnerabilityLRs
 const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
 const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
 const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
+const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
 
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -389,7 +390,7 @@ module.exports = function () {
                 () => this.clickContinue(),
                 () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
                 () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-                () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
                 () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
                 () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
            ]),
@@ -451,7 +452,7 @@ module.exports = function () {
                   () => this.clickContinue(),
                   () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
                   () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-                  () => witnessPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+                  () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
                   () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
                   () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
 
