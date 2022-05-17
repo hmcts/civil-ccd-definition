@@ -148,8 +148,6 @@ module.exports = {
     else if(scenario === 'ONE_V_TWO')
       if (response === 'FULL_ADMISSION')
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-      else
-        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if (scenario === 'TWO_V_ONE')
       if (response === 'DIFF_FULL_DEFENCE')
         await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
