@@ -142,5 +142,11 @@ module.exports = {
     name: 'Create general application',
     description: 'Create general application',
     order: null
+  },
+  CLAIMANT_RESPONSE_SPEC: {
+    description: 'View and respond to defendant (Specified)',
+    id: 'CLAIMANT_RESPONSE_SPEC',
+    name: 'View and respond to defence',
+    order: 7
   }
 };
