@@ -121,8 +121,77 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No'
           },
           WhenWillClaimBePaid: {
-            defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
+            defenceAdmitPartPaymentTimeRouteRequired: 'SUGGESTION_OF_REPAYMENT_PLAN'
           },
+          DisabilityPremiumPayments: {
+            disabilityPremiumPayments: 'Yes',
+            severeDisabilityPremiumPayments: 'Yes',
+          },
+          defendantHomeOptions: {
+            respondent1DQHomeDetails: {
+              type: 'PRIVATE_RENTAL'
+            }
+          },
+          DefendantPartnersAndDependents: {
+            respondent1PartnerAndDependent: {
+              haveAnyChildrenRequired: 'Yes',
+              howManyChildrenByAgeGroup: {
+                numberOfUnderEleven: '1',
+                numberOfElevenToFifteen: '1',
+                numberOfSixteenToNineteen: '0'
+              },
+              liveWithPartnerRequired: 'Yes',
+              partnerAgedOver: 'Yes',
+              receiveDisabilityPayments: 'Yes',
+              supportPeopleDetails: 'details',
+              supportPeopleNumber: '2',
+              supportedAnyoneFinancialRequired: 'Yes'
+            }
+          },
+          EmploymentDeclaration:{
+            defenceAdmitPartEmploymentTypeRequired: 'No',
+            respondToClaimAdmitPartUnemployedLRspec: {
+              unemployedComplexTypeRequired: 'RETIRED'
+            }
+          },
+          DetailsOfPayingMoneyRepaymentPlan: {
+            respondent1CourtOrderPaymentOption: 'No'
+          },
+          DefendantDebts: {
+            respondent1LoanCreditOption: 'No'
+          },
+          DefendantIncomeExpensesFullAdmission: {
+            respondent1DQCarerAllowanceCreditFullAdmission: 'No',
+            respondent1DQRecurringExpensesFA: [],
+            respondent1DQRecurringIncomeFA: []
+          },
+          WhyDoesNotPayImmediately: {
+            responseToClaimAdmitPartWhyNotPayLRspec: 'reasons'
+          },
+          WhyDoesNotPayImmediatelyRespondent2: {
+            responseToClaimAdmitPartWhyNotPayLRspec2: 'reasons 2'
+          },
+          RepaymentPlan: {
+            respondent1RepaymentPlan: {
+              firstRepaymentDate: '2022-11-11',
+              paymentAmount: '100',
+              repaymentFrequency: 'ONCE_ONE_MONTH'
+            }
+          },
+          RepaymentPlanRespondent2: {
+            respondent2RepaymentPlan: {
+              firstRepaymentDate: '2022-11-11',
+              paymentAmount: '200',
+              repaymentFrequency: 'ONCE_TWO_WEEKS'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'name',
+              role: 'role'
+            }
+          },
+
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
@@ -146,6 +215,9 @@ module.exports = {
             specFullAdmitPaid: 'No',
             specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
+            respondentResponseIsSame: 'Yes',
+            specRespondent1Represented: 'Yes',
+            specRespondent2Represented: 'Yes',
           },
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
@@ -159,15 +231,25 @@ module.exports = {
           }
         };
         break;
+
       case 'PART_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,
+          SingleResponse: {
+            respondentResponseIsSame: 'Yes'
+          },
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'PART_ADMISSION'
           },
           defenceAdmittedPartRoute: {
             specDefenceAdmittedRequired: 'No',
-            respondToAdmittedClaimOwingAmount: '200000'
+            respondToAdmittedClaimOwingAmount: '1000'
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
           },
           WhenWillClaimBePaid: {
             defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
@@ -233,7 +315,7 @@ module.exports = {
 
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
@@ -247,7 +329,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
