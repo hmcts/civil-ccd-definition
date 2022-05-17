@@ -9,7 +9,8 @@ Scenario('1v1 full defence claimant and defendant response small claim', async (
   for (let i = 0; i < defenceRoutes.length; i++) {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
     await api_spec_small.defendantResponse(config.defendantSolicitorUser, defenceRoutes[i]);
-    if ('FULL_DEFENCE' === defenceRoutes[i]) {
+    if ('COUNTER_CLAIM' !== defenceRoutes[i]) {
+      // counter claim defense brings the case offline
       await api_spec_small.claimantResponse(config.applicantSolicitorUser);
     }
   }
