@@ -9,6 +9,14 @@ const request = (url, headers, body, method = 'POST') => fetch(url, {
 });
 
 const retriedRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
+  console.log(`${url}\n${JSON.stringify(headers)}\n${JSON.stringify(body)}`);
+
+  if(
+    url.includes('HearingLRspec') ||
+    url.includes('Hearing')
+  )
+    url += '%20';
+
   return retry(() => {
     return request(url, headers, body, method).then(response => {
       if (response.status !== expectedStatus) {

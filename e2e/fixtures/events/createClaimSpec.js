@@ -124,6 +124,7 @@ module.exports = {
         ClaimInterest: {
           claimInterest: 'No'
         },
+
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
@@ -252,6 +253,16 @@ module.exports = {
             }
           },
 
+          InterestSummary: {
+            claimIssuedPaymentDetails: {
+              customerReference: 'Applicant reference'
+            },
+            claimFee: {
+              calculatedAmountInPence: '8000',
+              code: 'FEE0205',
+              version: '4'
+            }
+          },
         };
 
         userData.midEventData = {

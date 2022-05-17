@@ -72,8 +72,12 @@ module.exports = {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
           },
           defenceRoute: {
-            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM',
           },
+
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -88,7 +92,7 @@ module.exports = {
 
           defenceRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            responseClaimTrack: 'FAST_CLAIM',
+            responseClaimTrack: 'SMALL_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },

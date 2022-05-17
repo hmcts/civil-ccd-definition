@@ -128,6 +128,8 @@ module.exports = {
 
     caseData = returnedCaseData;
 
+    console.log(`${response} ${scenario}`);
+
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
     }
@@ -197,8 +199,8 @@ const assertValidData = async (data, pageId) => {
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
 
-  if(pageId === 'RespondentResponseTypeSpec')
-    console.log(`${JSON.stringify(responseBody.data['multiPartyResponseTypeFlags'])} == ${JSON.stringify(caseData['multiPartyResponseTypeFlags'])}`);
+  if(pageId === 'InterestSummary')
+    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
