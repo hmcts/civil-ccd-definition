@@ -10,17 +10,34 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
-const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
-
-const data = {
-  CREATE_CLAIM: () => claimData.createClaim(),
-  DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario)
-};
+const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 let caseId, eventName;
 let caseData = {};
-let mpScenario = 'ONE_V_ONE';
+
+const data = {
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+};
+
+const eventData = {
+  defendantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
+    }
+  }
+};
 
 module.exports = {
 
@@ -30,12 +47,12 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user) => {
+  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM();
+    const createClaimData = data.CREATE_CLAIM(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -54,9 +71,73 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
+  informAgreedExtensionDate: async (user) => {
+    eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE();
+
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
+      await assertValidData(informAgreedExtensionData, pageId);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
   cleanUp: async () => {
     await unAssignAllUsers();
-  }
+  },
+
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    let defendantResponseData = eventData['defendantResponses'][scenario][response];
+
+    caseData = returnedCaseData;
+
+    for (let pageId of Object.keys(defendantResponseData.userInput)) {
+      await assertValidData(defendantResponseData, pageId);
+    }
+
+    if(scenario === 'ONE_V_ONE')
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    deleteCaseFields('respondent1Copy');
+  },
+
+  claimantResponse: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    const claimantResponseData = data.CLAIMANT_RESPONSE();
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
@@ -69,7 +150,7 @@ const assertValidData = async (data, pageId) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    caseId
   );
   let responseBody = await response.json();
 
@@ -80,10 +161,13 @@ const assertValidData = async (data, pageId) => {
     caseData = update(caseData, expectedMidEvent);
   }
 
-  if (data.midEventGeneratedData[pageId]) {
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
+
+  if(pageId === 'RespondentResponseTypeSpec')
+    console.log(`${JSON.stringify(responseBody.data['multiPartyResponseTypeFlags'])} == ${JSON.stringify(caseData['multiPartyResponseTypeFlags'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
@@ -211,12 +295,10 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
