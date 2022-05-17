@@ -27,7 +27,6 @@ const proceedPage = require('./pages/respondToDefence/proceed.page');
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
-const witnessPage = require('./fragments/dq/witnesses.page');
 const singleResponse = require('./pages/respondToClaimLRspec/singleResponseLRSpec.page.js');
 const hearingSupportRequirementsPage = require('./fragments/dq/hearingSupportRequirements.page');
 const welshLanguageRequirementsPage = require('./fragments/dq/language.page');
