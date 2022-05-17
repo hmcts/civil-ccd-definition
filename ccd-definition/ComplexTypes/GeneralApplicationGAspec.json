@@ -116,6 +116,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicantPartyName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "claimant1PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",

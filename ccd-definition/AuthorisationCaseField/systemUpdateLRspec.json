@@ -119,6 +119,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ProceedWithClaimSpec2v1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -191,7 +197,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentHelpLabel2",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel2",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabel3",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specDefenceRouteUploadDocumentLabel4",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
@@ -222,6 +246,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimMediationSpecLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimMediationSpecLabel2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },

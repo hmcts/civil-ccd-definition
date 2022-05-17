@@ -887,7 +887,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaim",
-    "Label": "Respondent 1 Hearing",
+    "Label": " ",
     "FieldType": "HearingLRspec",
     "SecurityClassification": "Public"
   },
@@ -1074,6 +1074,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1CourtOrderPaymentOption",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1CourtOrderDetails",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PaymentOrder",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2CourtOrderPaymentOption",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2CourtOrderDetails",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PaymentOrder",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2CourtOrderPayment",
     "Label": " ",
     "FieldType": "PaymentUponCourtOrderLRspec",
@@ -1163,6 +1193,36 @@
     "ID": "specDefendant2Debts",
     "Label": " ",
     "FieldType": "Debts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1LoanCreditOption",
+    "Label": "Does your client have any loans, or credit card debts?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1LoanCreditDetails",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PaymentOption",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LoanCreditOption",
+    "Label": "Does your client have any loans, or credit card debts?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2LoanCreditDetails",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PaymentOption",
     "SecurityClassification": "Public"
   },
   {
@@ -1434,6 +1494,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesRequiredSpec",
+    "Label": "Are there any witnesses who should attend the hearing?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesDetailsSpec",
+    "Label": "Witnesses details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Witness",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceFullAdmittedRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -1450,6 +1525,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
     "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantSingleResponseToBothClaimantsLabel",
+    "Label": "## Does the defendant intend to file a single response to both claimants?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1739,6 +1821,20 @@
     "CaseTypeID": "CIVIL",
     "ID": "breathingSpaceLabel",
     "Label": "<strong class=\"text-16\">This claim is in Breathing Space</strong>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1SmallClaimWitnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantStatementOfTruthLabel",
+    "Label": "The claimant believes that the facts stated in the response are true.\n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
