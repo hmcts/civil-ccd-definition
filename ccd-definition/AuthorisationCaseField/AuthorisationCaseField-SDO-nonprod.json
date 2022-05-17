@@ -274,7 +274,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "inPerson",
+    "CaseFieldID": "disposalHearingMethodInPerson",
     "AccessControl": [
       {
         "UserRoles": [
@@ -287,7 +287,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "videoConferenceHearing",
+    "CaseFieldID": "disposalHearingMethodVideoConferenceHearing",
     "AccessControl": [
       {
         "UserRoles": [
@@ -300,7 +300,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "telephoneHearing",
+    "CaseFieldID": "disposalHearingMethodTelephoneHearing",
     "AccessControl": [
       {
         "UserRoles": [

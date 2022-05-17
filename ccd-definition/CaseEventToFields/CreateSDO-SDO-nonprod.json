@@ -245,38 +245,38 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "inPerson",
+    "CaseFieldID": "disposalHearingMethodInPerson",
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"inPerson\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodInPerson\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "videoConferenceHearing",
+    "CaseFieldID": "disposalHearingMethodVideoConferenceHearing",
     "PageFieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"videoConferenceHearing\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "telephoneHearing",
+    "CaseFieldID": "disposalHearingMethodTelephoneHearing",
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"telephoneHearing\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\""
   },
   {
     "CaseTypeID": "CIVIL",
