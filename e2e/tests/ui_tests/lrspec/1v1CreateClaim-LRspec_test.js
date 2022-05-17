@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
@@ -45,6 +46,7 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
     defenceType: 'dispute'
   });
   await LRspec.see(caseEventMessage('Respond to claim'));
+  await waitForFinishedBusinessProcess(caseId());
   await LRspec.click('Sign out');
 }).retry(3);
 

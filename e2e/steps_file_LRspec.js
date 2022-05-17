@@ -516,7 +516,7 @@ module.exports = function () {
                        () => this.clickContinue(),
                        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
                        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
-                       () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+                       () => witnessesLRspecPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
                        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
                        () => hearingClaimantLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
                        ]),
