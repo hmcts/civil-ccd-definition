@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
-const claimData = require('../fixtures/events/createClaimSpec.js');
+const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
 let caseId, eventName;
@@ -18,10 +18,10 @@ let caseData = {};
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
-  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
-  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2Fast.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1Fast.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
-  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
+  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1Fast.js').claimantResponse(response),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
