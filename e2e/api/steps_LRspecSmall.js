@@ -19,7 +19,9 @@ const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1Small.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1Small.js').claimantResponse(response),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
@@ -35,6 +37,28 @@ const eventData = {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
+    },
+    TWO_V_ONE:{
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_2v1('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_NOT_FULL_DEFENCE')
+    }
+  },
+  claimantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM')
+    },
+    TWO_V_ONE:{
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
+      NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
     }
   }
 };
@@ -111,13 +135,18 @@ module.exports = {
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    else if (scenario === 'TWO_V_ONE')
+      if (response === 'DIFF_FULL_DEFENCE')
+        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+      else
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
     await waitForFinishedBusinessProcess(caseId);
 
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user) => {
+  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -127,7 +156,7 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE();
+    let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
