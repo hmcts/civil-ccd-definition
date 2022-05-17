@@ -20,27 +20,14 @@ module.exports = {
         HowToAddTimeline: {
           specClaimResponseTimelineList: 'MANUAL'
         },
-        FileDirectionsQuestionnaire: {
-          respondent1DQFileDirectionsQuestionnaire: {
-            explainedToClient: ['CONFIRM'],
-            oneMonthStayRequested: 'Yes',
-            reactionProtocolCompliedWith: 'Yes'
-          }
+        Mediation: {
+          responseClaimMediationSpecRequired: 'Yes'
         },
-        DisclosureOfElectronicDocumentsLRspec: {
-          specRespondent1DQDisclosureOfElectronicDocuments: {
-            reachedAgreement: 'Yes'
-          }
+        SmallClaimExperts: {
+          responseClaimExpertSpecRequired: 'No'
         },
-        Experts: {
-          respondent1DQExperts: {
-            expertRequired: 'No'
-          },
-        },
-        Witnesses: {
-          respondent1DQWitnesses: {
-            witnessesToAppear: 'No'
-          }
+        SmallClaimWitnesses: {
+          responseClaimWitnesses: '1'
         },
         Language: {
           respondent1DQLanguage: {
@@ -49,10 +36,18 @@ module.exports = {
             documents: 'ENGLISH'
           }
         },
-        HearingLRspec: {
-          respondent1DQHearing: {
-            hearingLength: 'ONE_DAY',
+        SmallClaimHearing: {
+          respondent1DQHearingSmallClaim: {
             unavailableDatesRequired: 'No'
+          },
+          SmallClaimHearingInterpreterRequired: 'No'
+        },
+        RequestedCourtLocationLRspec: {
+          responseClaimCourtLocationRequired: 'No'
+        },
+        VulnerabilityQuestions: {
+          respondent1DQVulnerabilityQuestions: {
+            vulnerabilityAdjustmentsRequired: 'No'
           }
         },
         StatementOfTruth: {
@@ -62,6 +57,13 @@ module.exports = {
           }
         }
       },
+      midEventData: {
+        StatementOfTruth: {
+          respondent1DQHearing: {
+            unavailableDatesRequired: 'No'
+          }
+        }
+      }
     };
 
     switch (response) {
@@ -72,12 +74,8 @@ module.exports = {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
           },
           defenceRoute: {
-            defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
-
-          ResponseConfirmDetails: {
-            sameSolicitorSameResponse: 'Yes'
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -110,7 +108,7 @@ module.exports = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION'
           },
           defenceAdmittedPartRoute: {
             specDefenceFullAdmittedRequired: 'No'
@@ -132,16 +130,13 @@ module.exports = {
           },
           defenceRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
-          },
-          ResponseConfirmDetails: {
-            sameSolicitorSameResponse: 'Yes'
           }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'No',
-            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
+            multiPartyResponseTypeFlags: 'FULL_ADMISSION',
             specFullDefenceOrPartAdmission1V1: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specFullAdmitPaid: 'No',
@@ -172,52 +167,6 @@ module.exports = {
           WhenWillClaimBePaid: {
             defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
           },
-          FileDirectionsQuestionnaire: {
-            respondent1DQFileDirectionsQuestionnaire: {
-              explainedToClient: ['CONFIRM'],
-              oneMonthStayRequested: 'Yes',
-              reactionProtocolCompliedWith: 'Yes'
-            }
-          },
-          DisclosureOfElectronicDocumentsLRspec: {
-            specRespondent1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
-            }
-          },
-          Experts: {
-            respondent1DQExperts: {
-              expertRequired: 'No'
-            }
-          },
-          Witnesses: {
-            respondent1DQWitnesses: {
-              witnessesToAppear: 'No'
-            }
-          },
-          Language: {
-            respondent1DQLanguage: {
-              evidence: 'ENGLISH',
-              court: 'ENGLISH',
-              documents: 'ENGLISH'
-            }
-          },
-          HearingLRspec: {
-            respondent1DQHearing: {
-              hearingLength: 'ONE_DAY',
-              unavailableDatesRequired: 'No'
-            },
-          },
-          RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
-          },
-          Applications: {
-            respondent1DQFutureApplications: {
-              intentionToMakeFutureApplications: 'No'
-            }
-          },
-          ResponseConfirmDetails: {
-            sameSolicitorSameResponse: 'Yes'
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -259,14 +208,11 @@ module.exports = {
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
           },
-          ResponseConfirmDetails: {
-            sameSolicitorSameResponse: 'Yes'
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
-            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
+            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specAoSApplicantCorrespondenceAddressRequired: 'Yes',
             specAoSRespondentCorrespondenceAddressRequired: 'Yes',
             specFullAdmissionOrPartAdmission: 'No',
