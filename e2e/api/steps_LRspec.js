@@ -96,7 +96,7 @@ module.exports = {
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
     await waitForFinishedBusinessProcess(caseId);
-    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
@@ -142,7 +142,7 @@ module.exports = {
     if(scenario === 'ONE_V_ONE')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(scenario === 'ONE_V_TWO')
-      if (response === 'FULL_ADMISSION')
+      if (response === 'FULL_ADMISSION' || response === 'FULL_DEFENCE')
         await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
       else
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
@@ -194,9 +194,6 @@ const assertValidData = async (data, pageId) => {
 
   assert.equal(response.status, 200);
 
-  if(pageId === 'StatementOfTruth')
-    console.log(`${JSON.stringify(responseBody.data['respondent1DQDisclosureReport'])}`);
-
   if (data.midEventData[pageId]) {
     const expectedMidEvent = data.midEventData[pageId];
     caseData = update(caseData, expectedMidEvent);
@@ -225,7 +222,6 @@ const assertValidData = async (data, pageId) => {
 function responseMatchesExpectations(responseBodyData, caseData) {
   for (const key in responseBodyData) {
     // eslint-disable-next-line no-prototype-builtins
-    console.log('KEY: ' + responseBodyData);
     if (responseBodyData.hasOwnProperty(key)) {
       if (typeof responseBodyData[key] === 'object') {
         const failure = responseMatchesExpectations(responseBodyData[key], caseData[key]);

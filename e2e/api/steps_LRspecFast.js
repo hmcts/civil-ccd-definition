@@ -137,8 +137,6 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    console.log(`${response} ${scenario}`);
-
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
     }
