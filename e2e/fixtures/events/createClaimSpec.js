@@ -130,9 +130,9 @@ module.exports = {
             customerReference: 'Applicant reference'
           },
           claimFee: {
-            calculatedAmountInPence: '8000',
-            code: 'FEE0205',
-            version: '4'
+            calculatedAmountInPence: '75000',
+            code: 'FEE0209',
+            version: '3'
           }
         },
         PbaNumber: {

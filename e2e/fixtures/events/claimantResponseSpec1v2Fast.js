@@ -7,7 +7,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaimSpec2v1: 'Yes',
+            applicant1ProceedWithClaim: 'Yes',
           },
           FileDirectionsQuestionnaire: {
             applicant1DQFileDirectionsQuestionnaire: {
@@ -92,9 +92,6 @@ module.exports = {
               disclosureFormFiledAndServed: 'Yes',
               disclosureProposalAgreed: 'Yes',
             },
-            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            defendantSingleResponseToBothClaimants: 'Yes',
             respondent1DQHearing: {
               hearingLength: 'ONE_DAY',
               unavailableDatesRequired: 'No',
@@ -132,8 +129,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaimSpec2v1: 'Yes',
-          }
+            applicant1ProceedWithClaim: 'Yes',
+          },
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -144,8 +141,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaimSpec2v1: 'Yes',
-          }
+            applicant1ProceedWithClaim: 'Yes',
+          },
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -156,7 +153,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaimSpec2v1: 'No',
+            applicant1ProceedWithClaim: 'No',
           },
         };
         responseData.midEventData = {
@@ -167,5 +164,4 @@ module.exports = {
     return responseData;
   }
 };
-
 
