@@ -9,59 +9,6 @@ module.exports = {
         ResponseConfirmDetails: {
           specAoSRespondentCorrespondenceAddressRequired: 'Yes'
         },
-        // RespondentResponseTypeSpec: {
-        //   respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-        // },
-        // defenceRoute: {
-        //   defenceRouteRequired: 'DISPUTES_THE_CLAIM'
-        // },
-        // Upload: {
-        //   detailsOfWhyDoesYouDisputeTheClaim: 'details'
-        // },
-        // HowToAddTimeline: {
-        //   specClaimResponseTimelineList: 'MANUAL'
-        // },
-        // FileDirectionsQuestionnaire: {
-        //   respondent1DQFileDirectionsQuestionnaire: {
-        //     explainedToClient: ['CONFIRM'],
-        //     oneMonthStayRequested: 'Yes',
-        //     reactionProtocolCompliedWith: 'Yes'
-        //   }
-        // },
-        // DisclosureOfElectronicDocumentsLRspec: {
-        //   specRespondent1DQDisclosureOfElectronicDocuments: {
-        //     reachedAgreement: 'Yes'
-        //   }
-        // },
-        // Experts: {
-        //   respondent1DQExperts: {
-        //     expertRequired: 'No'
-        //   },
-        // },
-        // Witnesses: {
-        //   respondent1DQWitnesses: {
-        //     witnessesToAppear: 'No'
-        //   }
-        // },
-        // Language: {
-        //   respondent1DQLanguage: {
-        //     evidence: 'ENGLISH',
-        //     court: 'ENGLISH',
-        //     documents: 'ENGLISH'
-        //   }
-        // },
-        // HearingLRspec: {
-        //   respondent1DQHearing: {
-        //     hearingLength: 'ONE_DAY',
-        //     unavailableDatesRequired: 'No'
-        //   }
-        // },
-        // StatementOfTruth: {
-        //   uiStatementOfTruth: {
-        //     name: 'name',
-        //     role: 'role'
-        //   }
-        // }
       },
     };
 
@@ -385,6 +332,188 @@ module.exports = {
             respondent2SameLegalRepresentative: 'Yes',
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            }
+          }
+        };
+        break;
+
+      case 'DIFF_FULL_DEFENCE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          SingleResponse: {
+            respondentResponseIsSame: 'No'
+          },
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            respondent2ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
+          },
+          defenceRoute: {
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          FileDirectionsQuestionnaire: {
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'No',
+              reactionProtocolCompliedWith: 'No',
+              reactionProtocolNotCompliedWithReason: 'reason'
+            }
+          },
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              agreementLikely: 'No',
+              reachedAgreement: 'No',
+              reasonForNoAgreement: 'issue'
+            }
+          },
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
+            }
+          },
+          Experts: {
+            respondent1DQExperts: {
+              expertRequired: 'No'
+            },
+          },
+          Witnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'No'
+            }
+          },
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'ENGLISH',
+              court: 'ENGLISH',
+              documents: 'ENGLISH'
+            }
+          },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            }
+          },
+          RequestedCourtLocationLRspec: {
+            responseClaimCourtLocationRequired: 'No'
+          },
+          HearingSupport: {
+            respondent1DQHearingSupport: {
+              signLanguageRequired: null,
+              languageToBeInterpreted: null,
+              otherSupport: null,
+              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+            }
+          },
+          VulnerabilityQuestions: {
+            respondent1DQVulnerabilityQuestions: {
+              vulnerabilityAdjustmentsRequired: 'Yes',
+              vulnerabilityAdjustments: 'test'
+            }
+          },
+          Applications:{
+            additionalInformationForJudge: 'information',
+            respondent1DQFutureApplications: {
+              intentionToMakeFutureApplications: 'No'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
+            respondent1DQHearing: {
+              unavailableDatesRequired: 'No'
+            }
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          },
+
+          RespondentResponseTypeSpec: {
+            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+            respondentClaimResponseTypeForSpecGeneric: "FULL_DEFENCE",
+            sameSolicitorSameResponse: 'No',
+            specDefenceFullAdmittedRequired: 'No',
+            specFullAdmissionOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission1V1: 'Yes',
+            specFullDefenceOrPartAdmission: 'Yes',
+            specRespondent1Represented: 'Yes',
+            specRespondent2Represented: 'Yes',
+            respondent2SameLegalRepresentative: 'Yes'
+          },
+
+          defenceRoute: {
+            responseClaimTrack: 'FAST_CLAIM',
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            specDisputesOrPartAdmission: 'Yes'
+          },
+
+          Upload: {
+            specDisputesOrPartAdmission: 'Yes'
+          },
+
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          }
+        };
+        break;
+
+      case 'DIFF_NOT_FULL_DEFENCE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          SingleResponse: {
+            respondentResponseIsSame: 'No'
+          },
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
+            respondent2ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          },
+
+          RespondentResponseTypeSpec: {
+            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
+            sameSolicitorSameResponse: 'No',
+            specDefenceFullAdmittedRequired: 'No',
+            specFullAdmissionOrPartAdmission: 'Yes',
+            specFullDefenceOrPartAdmission: 'No',
+            specRespondent1Represented: 'Yes',
+            specRespondent2Represented: 'Yes',
+            respondent2SameLegalRepresentative: 'Yes'
           },
 
           ResponseConfirmNameAddress: {
