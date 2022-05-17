@@ -378,7 +378,7 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'No',
             respondent2SameLegalRepresentative: 'Yes',
             specRespondent1Represented: 'Yes',
-            specRespondent2Represented: "Yes"
+            specRespondent2Represented: 'Yes'
           },
 
           ResponseConfirmNameAddress: {
