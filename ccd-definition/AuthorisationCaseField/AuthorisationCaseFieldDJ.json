@@ -201,26 +201,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "detailsOfDirectionDisposal",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "detailsOfDirectionTrial",
+    "CaseFieldID": "detailsOfDirection",
     "AccessControl": [
       {
         "UserRoles": [
