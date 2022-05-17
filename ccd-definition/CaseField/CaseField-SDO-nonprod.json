@@ -70,13 +70,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "orderDetailsPlaceholder",
-    "Label": "Page Four Placeholder - Order Details",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingOrderAndHearingDetails",
     "Label": "Order and hearing details",
     "FieldType": "DisposalHearingOrderAndHearingDetails",
@@ -199,6 +192,34 @@
     "ID": "disposalHearingNotes",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "setSmallClaimsFlag",
+    "Label": "small claims flag",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsPlaceholder",
+    "Label": "Small Claims Placeholder",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "setFastTrackFlag",
+    "Label": "fast track flag",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackPlaceholder",
+    "Label": "Fast Track Placeholder",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
