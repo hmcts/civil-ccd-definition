@@ -132,7 +132,7 @@ module.exports = {
           claimFee: {
             calculatedAmountInPence: '7000',
             code: 'FEE0204',
-            version: '4'
+            version: '6'
           }
         },
         PbaNumber: {
