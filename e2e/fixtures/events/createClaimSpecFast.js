@@ -201,7 +201,6 @@ module.exports = {
         };
         break;
       case 'ONE_V_TWO':
-        console.log('I AM HERE');
         userData.userInput = {
           ...userData.userInput,
           AddAnotherDefendant: {
@@ -286,7 +285,6 @@ module.exports = {
         break;
 
       case 'ONE_V_TWO_SAME_SOL':
-        console.log('I AM HERE');
         userData.userInput = {
           ...userData.userInput,
           AddAnotherDefendant: {

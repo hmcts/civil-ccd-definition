@@ -219,12 +219,6 @@ module.exports = {
           WhenWillClaimBePaid: {
             defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
           },
-          Upload: {
-            detailsOfWhyDoesYouDisputeTheClaim: 'details'
-          },
-          HowToAddTimeline: {
-            specClaimResponseTimelineList: 'MANUAL'
-          },
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
@@ -246,114 +240,124 @@ module.exports = {
             specFullDefenceOrPartAdmission1V1: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specFullAdmitPaid: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes'
+            specFullAdmissionOrPartAdmission: 'Yes',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
           },
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'No'
           },
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'No'
           }
         };
         break;
-      // case 'PART_ADMISSION':
-      //   responseData.userInput = {
-      //     ...responseData.userInput,
-      //     RespondentResponseTypeSpec: {
-      //       respondent1ClaimResponseTypeForSpec: 'PART_ADMISSION'
-      //     },
-      //     defenceAdmittedPartRoute: {
-      //       specDefenceAdmittedRequired: 'No',
-      //       respondToAdmittedClaimOwingAmount: '200000'
-      //     },
-      //     WhenWillClaimBePaid: {
-      //       defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
-      //     },
-      //     FileDirectionsQuestionnaire: {
-      //       respondent1DQFileDirectionsQuestionnaire: {
-      //         explainedToClient: ['CONFIRM'],
-      //         oneMonthStayRequested: 'Yes',
-      //         reactionProtocolCompliedWith: 'Yes'
-      //       }
-      //     },
-      //     DisclosureOfElectronicDocumentsLRspec: {
-      //       specRespondent1DQDisclosureOfElectronicDocuments: {
-      //         reachedAgreement: 'Yes'
-      //       }
-      //     },
-      //     Experts: {
-      //       respondent1DQExperts: {
-      //         expertRequired: 'No'
-      //       }
-      //     },
-      //     Witnesses: {
-      //       respondent1DQWitnesses: {
-      //         witnessesToAppear: 'No'
-      //       }
-      //     },
-      //     Language: {
-      //       respondent1DQLanguage: {
-      //         evidence: 'ENGLISH',
-      //         court: 'ENGLISH',
-      //         documents: 'ENGLISH'
-      //       }
-      //     },
-      //     HearingLRspec: {
-      //       respondent1DQHearing: {
-      //         hearingLength: 'ONE_DAY',
-      //         unavailableDatesRequired: 'No'
-      //       },
-      //     },
-      //     RequestedCourtLocationLRspec: {
-      //       responseClaimCourtLocationRequired: 'No'
-      //     },
-      //     Applications: {
-      //       respondent1DQFutureApplications: {
-      //         intentionToMakeFutureApplications: 'No'
-      //       }
-      //     },
-      //     ResponseConfirmDetails: {
-      //       sameSolicitorSameResponse: 'Yes'
-      //     }
-      //   };
-      //   responseData.midEventData = {
-      //     ...responseData.midEventData,
-      //     RespondentResponseTypeSpec: {
-      //       specFullDefenceOrPartAdmission: 'Yes',
-      //       multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
-      //       specFullDefenceOrPartAdmission1V1: 'Yes',
-      //       specDefenceFullAdmittedRequired: 'No',
-      //       specPartAdmitPaid: 'No',
-      //       specFullAdmissionOrPartAdmission: 'Yes',
-      //       respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
-      //     },
-      //
-      //     defenceAdmittedPartRoute: {
-      //       specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-      //       responseClaimTrack: 'SMALL_CLAIM',
-      //       specDisputesOrPartAdmission: 'Yes',
-      //       respondToAdmittedClaimOwingAmountPounds: '2000.00'
-      //     },
-      //
-      //     ResponseConfirmNameAddress: {
-      //       businessProcess: {
-      //         status: 'FINISHED',
-      //         camundaEvent: 'CREATE_CLAIM_SPEC'
-      //       }
-      //     },
-      //
-      //     defenceRoute: {
-      //       respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-      //       responseClaimTrack: 'SMALL_CLAIM',
-      //       specDisputesOrPartAdmission: 'Yes',
-      //       specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
-      //     }
-      //   };
-      //   break;
+      case 'PART_ADMISSION':
+        responseData.userInput = {
+          ...responseData.userInput,
+          SingleResponse: {
+            respondentResponseIsSame: 'Yes'
+          },
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'PART_ADMISSION'
+          },
+          defenceAdmittedPartRoute: {
+            specDefenceAdmittedRequired: 'No',
+            respondToAdmittedClaimOwingAmount: '200000'
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          WhenWillClaimBePaid: {
+            defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
+          },
+          FileDirectionsQuestionnaire: {
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'Yes',
+              reactionProtocolCompliedWith: 'Yes'
+            }
+          },
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'Yes'
+            }
+          },
+          Experts: {
+            respondent1DQExperts: {
+              expertRequired: 'No'
+            }
+          },
+          Witnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'No'
+            }
+          },
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'ENGLISH',
+              court: 'ENGLISH',
+              documents: 'ENGLISH'
+            }
+          },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
+          RequestedCourtLocationLRspec: {
+            responseClaimCourtLocationRequired: 'No'
+          },
+          Applications: {
+            respondent1DQFutureApplications: {
+              intentionToMakeFutureApplications: 'No'
+            }
+          },
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullDefenceOrPartAdmission: 'Yes',
+            multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
+            specFullDefenceOrPartAdmission1V1: 'Yes',
+            specDefenceFullAdmittedRequired: 'No',
+            specPartAdmitPaid: 'No',
+            specFullAdmissionOrPartAdmission: 'Yes',
+            respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
+          },
+
+          defenceAdmittedPartRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
+            responseClaimTrack: 'FAST_CLAIM',
+            specDisputesOrPartAdmission: 'Yes',
+            respondToAdmittedClaimOwingAmountPounds: '2000.00'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            }
+          },
+
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            responseClaimTrack: 'FAST_CLAIM',
+            specDisputesOrPartAdmission: 'Yes',
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+          }
+        };
+        break;
       case 'COUNTER_CLAIM':
         responseData.userInput = {
           ...responseData.userInput,
