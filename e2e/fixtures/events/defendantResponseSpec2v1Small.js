@@ -68,7 +68,7 @@ module.exports = {
               signLanguageRequired: null,
               languageToBeInterpreted: null,
               otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS'],
+              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
             }
           },
           VulnerabilityQuestions: {
@@ -222,7 +222,7 @@ module.exports = {
               signLanguageRequired: null,
               languageToBeInterpreted: null,
               otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS'],
+              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
             }
           },
           VulnerabilityQuestions: {
@@ -299,6 +299,140 @@ module.exports = {
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            }
+          }
+        };
+        break;
+
+      case 'DIFF_FULL_DEFENCE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'No'
+          },
+          RespondentResponseTypeSpec: {
+            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            claimant2ClaimResponseTypeForSpec: 'PART_ADMISSION'
+          },
+          defenceRoute: {
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          Mediation: {
+            responseClaimMediationSpecRequired: 'No'
+          },
+          SmallClaimExperts: {
+            respondToClaim_experts: {
+              estimatedCost: '100',
+              expertName: 'expert',
+              fieldofExpertise: 'field'
+            },
+            responseClaimExpertSpecRequired: 'Yes'
+          },
+          SmallClaimWitnesses: {
+            responseClaimWitnesses: '10'
+          },
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'ENGLISH',
+              court: 'ENGLISH',
+              documents: 'ENGLISH'
+            }
+          },
+          SmaillClaimHearing: {
+            SmallClaimHearingInterpreterDescription: 'test',
+            SmallClaimHearingInterpreterRequired: 'Yes',
+            respondent1DQHearingSmallClaim: {
+              unavailableDatesRequired: 'No',
+            },
+          },
+          RequestedCourtLocationLRspec: {
+            responseClaimCourtLocationRequired: 'No'
+          },
+          HearingSupport: {
+            respondent1DQHearingSupport: {
+              signLanguageRequired: null,
+              languageToBeInterpreted: null,
+              otherSupport: null,
+              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+            }
+          },
+          VulnerabilityQuestions: {
+            respondent1DQVulnerabilityQuestions: {
+              vulnerabilityAdjustmentsRequired: 'Yes',
+              vulnerabilityAdjustments: 'test'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
+            respondent1DQHearing: {
+              unavailableDatesRequired: 'No'
+            }
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: null,
+            specFullAdmissionOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission: 'No',
+            specDefenceFullAdmittedRequired: 'No',
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
+            specDisputesOrPartAdmission: 'Yes'
+          },
+
+          defenceRoute: {
+            responseClaimTrack: 'SMALL_CLAIM',
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            specDisputesOrPartAdmission: 'Yes'
+          },
+
+          Upload: {
+            specDisputesOrPartAdmission: 'Yes'
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          }
+        };
+        break;
+
+      case 'DIFF_NOT_FULL_DEFENCE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          SingleResponse2v1: {
+            defendantSingleResponseToBothClaimants: 'No'
+          },
+          RespondentResponseTypeSpec: {
+            claimant1ClaimResponseTypeForSpec: 'COUNTER_CLAIM',
+            claimant2ClaimResponseTypeForSpec: 'PART_ADMISSION'
+          },
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullAdmissionOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission: 'No',
+            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           ResponseConfirmNameAddress: {
