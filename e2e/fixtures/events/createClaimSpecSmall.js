@@ -128,11 +128,6 @@ module.exports = {
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          },
-          claimFee: {
-            calculatedAmountInPence: '7000',
-            code: 'FEE0204',
-            version: '6'
           }
         },
         PbaNumber: {
@@ -189,6 +184,11 @@ module.exports = {
         InterestSummary: {
           applicantSolicitor1PbaAccounts: {
             list_items: 'object'
+          },
+          claimFee: {
+            calculatedAmountInPence: 'string',
+            code: 'string',
+            version: 'string'
           }
         }
       }
