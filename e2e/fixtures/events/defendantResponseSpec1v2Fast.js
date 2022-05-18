@@ -472,10 +472,6 @@ module.exports = {
             specDisputesOrPartAdmission: 'Yes'
           },
 
-          ResponseConfirmDetails: {
-            sameSolicitorSameResponse: 'Yes'
-          },
-
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
