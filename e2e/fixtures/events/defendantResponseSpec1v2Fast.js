@@ -447,7 +447,9 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-
+          ResponseConfirmDetails: {
+            sameSolicitorSameResponse: 'Yes'
+          },
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
