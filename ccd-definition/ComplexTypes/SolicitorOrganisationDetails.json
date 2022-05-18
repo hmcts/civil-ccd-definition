@@ -4,7 +4,9 @@
     "ListElementCode": "email",
     "FieldType": "Text",
     "ElementLabel": "Email",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": 80,
+    "RegularExpression": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$|^$"
   },
   {
     "ID": "SolicitorOrganisationDetails",
@@ -18,21 +20,24 @@
     "ListElementCode": "fax",
     "FieldType": "Text",
     "ElementLabel": "Fax",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": 24
   },
   {
     "ID": "SolicitorOrganisationDetails",
     "ListElementCode": "dx",
     "FieldType": "Text",
     "ElementLabel": "DX",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": 35
   },
   {
     "ID": "SolicitorOrganisationDetails",
     "ListElementCode": "phoneNumber",
     "FieldType": "Text",
     "ElementLabel": "Phone number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": 24
   },
   {
     "ID": "SolicitorOrganisationDetails",
