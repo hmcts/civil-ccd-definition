@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 
 Feature('CCD 1v2 API test @api-spec @api-spec-1v2');
 
-Scenario.skip('Create claim spec 1v2', async ({I, api_spec}) => {
+Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
 });
 
@@ -27,6 +27,17 @@ Scenario('1v2 small claim counter claim', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
 });
+
+Scenario('1v2 small claim different response full defence', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'ONE_V_TWO');
+});
+
+Scenario('1v2 small claim different response no full defence', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'ONE_V_TWO');
+});
+
 
 Scenario.skip('Inform agreed extension date', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
