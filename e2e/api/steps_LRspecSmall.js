@@ -35,14 +35,6 @@ const eventData = {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
-    },
-  },
-  claimantResponses: {
-    ONE_V_ONE: {
-      FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
-      FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
-      PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
-      COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM')
     }
   }
 };
@@ -119,18 +111,13 @@ module.exports = {
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    else if (scenario === 'TWO_V_ONE')
-      if (response === 'DIFF_FULL_DEFENCE')
-        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
-      else
-        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
 
     await waitForFinishedBusinessProcess(caseId);
 
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  claimantResponse: async (user) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -140,7 +127,7 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
-    let claimantResponseData = eventData['claimantResponses'][scenario][response];
+    const claimantResponseData = data.CLAIMANT_RESPONSE();
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
