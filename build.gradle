@@ -168,9 +168,6 @@ task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional t
 }
 
 task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
-  onlyIf {
-    return System.env.ENVIRONMENT == 'preview'
-  }
   commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
 }
 
