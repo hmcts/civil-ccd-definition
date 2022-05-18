@@ -114,10 +114,10 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "addNewDirections",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL",
     "PageID": "OrderDetails",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
