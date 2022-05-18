@@ -8,7 +8,12 @@ Scenario.skip('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
 });
 
-Scenario('1v2 full admit', async ({I, api_spec}) => {
+Scenario.skip('1v2 full defence, defendant response', async ({I, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
+});
+
+Scenario.skip('1v2 full admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO');
 });
@@ -26,11 +31,6 @@ Scenario.skip('1v2 counter claim', async ({I, api_spec}) => {
 Scenario.skip('Inform agreed extension date', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
-});
-
-Scenario.skip('1v2 full defence, defendant response', async ({I, api_spec}) => {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
 });
 
 Scenario.skip('1v2 full defence, claimant response', async ({I, api_spec}) => {
