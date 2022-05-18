@@ -450,6 +450,7 @@ module.exports = {
           ResponseConfirmDetails: {
             sameSolicitorSameResponse: 'Yes'
           },
+
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
