@@ -114,9 +114,9 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "addNewDirections",
-    "PageFieldDisplayOrder": 19,
+    "PageFieldDisplayOrder": 22,
     "DisplayContext": "OPTIONAL",
-    "PageID": "OrderDetails",
+    "PageID": "DisposalHearing",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
