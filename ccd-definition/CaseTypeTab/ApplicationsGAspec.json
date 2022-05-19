@@ -4,6 +4,7 @@
         "TabID": "Applications",
         "TabLabel": "Applications",
         "TabDisplayOrder": 8,
+        "UserRole": "[APPLICANTSOLICITORONE]",
         "CaseFieldID": "generalApplicationsDetails",
         "TabFieldDisplayOrder": 1
       }
