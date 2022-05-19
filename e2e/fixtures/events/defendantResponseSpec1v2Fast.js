@@ -23,7 +23,7 @@ module.exports = {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
           },
           defenceRoute: {
-            defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
           Upload: {
             detailsOfWhyDoesYouDisputeTheClaim: 'details'
@@ -31,14 +31,42 @@ module.exports = {
           HowToAddTimeline: {
             specClaimResponseTimelineList: 'MANUAL'
           },
-          Mediation: {
-            responseClaimMediationSpecRequired: 'No'
+          FileDirectionsQuestionnaire: {
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'No',
+              reactionProtocolCompliedWith: 'No',
+              reactionProtocolNotCompliedWithReason: 'reason'
+            }
           },
-          SmallClaimExperts: {
-            responseClaimExpertSpecRequired: 'No'
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              agreementLikely: 'No',
+              reachedAgreement: 'No',
+              reasonForNoAgreement: 'issue'
+            }
           },
-          SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
+            }
+          },
+          Experts: {
+            respondent1DQExperts: {
+              expertRequired: 'No'
+            },
+          },
+          Witnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'No'
+            }
           },
           Language: {
             respondent1DQLanguage: {
@@ -47,12 +75,11 @@ module.exports = {
               documents: 'ENGLISH'
             }
           },
-          SmaillClaimHearing: {
-            SmallClaimHearingInterpreterDescription: 'test',
-            SmallClaimHearingInterpreterRequired: 'Yes',
-            respondent1DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No',
-            },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            }
           },
           RequestedCourtLocationLRspec: {
             responseClaimCourtLocationRequired: 'No'
@@ -69,6 +96,12 @@ module.exports = {
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
               vulnerabilityAdjustments: 'test'
+            }
+          },
+          Applications:{
+            additionalInformationForJudge: 'information',
+            respondent1DQFutureApplications: {
+              intentionToMakeFutureApplications: 'No'
             }
           },
           StatementOfTruth: {
@@ -90,63 +123,24 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             specFullAdmissionOrPartAdmission: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            respondent2SameLegalRepresentative: 'Yes',
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',
-            respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes'
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           },
 
           defenceRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            responseClaimTrack: 'SMALL_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-          },
-
-          ResponseConfirmDetails: {
-            sameSolicitorSameResponse: 'Yes'
+            responseClaimTrack: 'FAST_CLAIM',
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            specDisputesOrPartAdmission: 'Yes'
           },
 
           Upload: {
             specDisputesOrPartAdmission: 'Yes'
           },
 
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            },
-          },
-        };
-        responseData.userInput = {
-          ...responseData.userInput,
-          RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-          },
-          defenceRoute: {
-            defenceRouteRequired: 'DISPUTES_THE_CLAIM',
-          },
-
           ResponseConfirmDetails: {
             sameSolicitorSameResponse: 'Yes'
-          }
-        };
-        responseData.midEventData = {
-          ...responseData.midEventData,
-          RespondentResponseTypeSpec: {
-            specFullDefenceOrPartAdmission: 'Yes',
-            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
-            specFullDefenceOrPartAdmission1V1: 'Yes',
-            specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
-          },
-
-          defenceRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            responseClaimTrack: 'SMALL_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmNameAddress: {
@@ -170,77 +164,8 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No'
           },
           WhenWillClaimBePaid: {
-            defenceAdmitPartPaymentTimeRouteRequired: 'SUGGESTION_OF_REPAYMENT_PLAN'
+            defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
           },
-          DisabilityPremiumPayments: {
-            disabilityPremiumPayments: 'Yes',
-            severeDisabilityPremiumPayments: 'Yes',
-          },
-          defendantHomeOptions: {
-            respondent1DQHomeDetails: {
-              type: 'PRIVATE_RENTAL'
-            }
-          },
-          DefendantPartnersAndDependents: {
-            respondent1PartnerAndDependent: {
-              haveAnyChildrenRequired: 'Yes',
-              howManyChildrenByAgeGroup: {
-                numberOfUnderEleven: '1',
-                numberOfElevenToFifteen: '1',
-                numberOfSixteenToNineteen: '0'
-              },
-              liveWithPartnerRequired: 'Yes',
-              partnerAgedOver: 'Yes',
-              receiveDisabilityPayments: 'Yes',
-              supportPeopleDetails: 'details',
-              supportPeopleNumber: '2',
-              supportedAnyoneFinancialRequired: 'Yes'
-            }
-          },
-          EmploymentDeclaration:{
-            defenceAdmitPartEmploymentTypeRequired: 'No',
-            respondToClaimAdmitPartUnemployedLRspec: {
-              unemployedComplexTypeRequired: 'RETIRED'
-            }
-          },
-          DetailsOfPayingMoneyRepaymentPlan: {
-            respondent1CourtOrderPaymentOption: 'No'
-          },
-          DefendantDebts: {
-            respondent1LoanCreditOption: 'No'
-          },
-          DefendantIncomeExpensesFullAdmission: {
-            respondent1DQCarerAllowanceCreditFullAdmission: 'No',
-            respondent1DQRecurringExpensesFA: [],
-            respondent1DQRecurringIncomeFA: []
-          },
-          WhyDoesNotPayImmediately: {
-            responseToClaimAdmitPartWhyNotPayLRspec: 'reasons'
-          },
-          WhyDoesNotPayImmediatelyRespondent2: {
-            responseToClaimAdmitPartWhyNotPayLRspec2: 'reasons 2'
-          },
-          RepaymentPlan: {
-            respondent1RepaymentPlan: {
-              firstRepaymentDate: '2022-11-11',
-              paymentAmount: '100',
-              repaymentFrequency: 'ONCE_ONE_MONTH'
-            }
-          },
-          RepaymentPlanRespondent2: {
-            respondent2RepaymentPlan: {
-              firstRepaymentDate: '2022-11-11',
-              paymentAmount: '200',
-              repaymentFrequency: 'ONCE_TWO_WEEKS'
-            }
-          },
-          StatementOfTruth: {
-            uiStatementOfTruth: {
-              name: 'name',
-              role: 'role'
-            }
-          },
-
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
@@ -264,23 +189,19 @@ module.exports = {
             specFullAdmitPaid: 'No',
             specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
-            respondentResponseIsSame: 'Yes',
-            specRespondent1Represented: 'Yes',
-            specRespondent2Represented: 'Yes',
           },
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'No'
           },
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'No'
           }
         };
         break;
-
       case 'PART_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,
@@ -292,7 +213,7 @@ module.exports = {
           },
           defenceAdmittedPartRoute: {
             specDefenceAdmittedRequired: 'No',
-            respondToAdmittedClaimOwingAmount: '1000'
+            respondToAdmittedClaimOwingAmount: '200000'
           },
           Upload: {
             detailsOfWhyDoesYouDisputeTheClaim: 'details'
@@ -303,14 +224,27 @@ module.exports = {
           WhenWillClaimBePaid: {
             defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY'
           },
-          Mediation: {
-            responseClaimMediationSpecRequired: 'No'
+          FileDirectionsQuestionnaire: {
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'Yes',
+              reactionProtocolCompliedWith: 'Yes'
+            }
           },
-          SmallClaimExperts: {
-            responseClaimExpertSpecRequired: 'No'
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'Yes'
+            }
           },
-          SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
+          Experts: {
+            respondent1DQExperts: {
+              expertRequired: 'No'
+            }
+          },
+          Witnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'No'
+            }
           },
           Language: {
             respondent1DQLanguage: {
@@ -319,37 +253,18 @@ module.exports = {
               documents: 'ENGLISH'
             }
           },
-          SmaillClaimHearing: {
-            SmallClaimHearingInterpreterDescription: 'test',
-            SmallClaimHearingInterpreterRequired: 'Yes',
-            respondent1DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No',
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
             },
           },
           RequestedCourtLocationLRspec: {
             responseClaimCourtLocationRequired: 'No'
           },
-          HearingSupport: {
-            respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
-            }
-          },
-          VulnerabilityQuestions: {
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            }
-          },
-          StatementOfTruth: {
-            uiStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            },
-            respondent1DQHearing: {
-              unavailableDatesRequired: 'No'
+          Applications: {
+            respondent1DQFutureApplications: {
+              intentionToMakeFutureApplications: 'No'
             }
           },
           ResponseConfirmDetails: {
@@ -370,9 +285,9 @@ module.exports = {
 
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
-            respondToAdmittedClaimOwingAmountPounds: '10.00'
+            respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
 
           ResponseConfirmNameAddress: {
@@ -384,13 +299,12 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
         };
         break;
-
       case 'COUNTER_CLAIM':
         responseData.userInput = {
           ...responseData.userInput,
@@ -440,7 +354,7 @@ module.exports = {
             respondent2ClaimResponseTypeForSpec: 'COUNTER_CLAIM'
           },
           defenceRoute: {
-            defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
           Upload: {
             detailsOfWhyDoesYouDisputeTheClaim: 'details'
@@ -448,14 +362,42 @@ module.exports = {
           HowToAddTimeline: {
             specClaimResponseTimelineList: 'MANUAL'
           },
-          Mediation: {
-            responseClaimMediationSpecRequired: 'No'
+          FileDirectionsQuestionnaire: {
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'No',
+              reactionProtocolCompliedWith: 'No',
+              reactionProtocolNotCompliedWithReason: 'reason'
+            }
           },
-          SmallClaimExperts: {
-            responseClaimExpertSpecRequired: 'No'
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              agreementLikely: 'No',
+              reachedAgreement: 'No',
+              reasonForNoAgreement: 'issue'
+            }
           },
-          SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
+            }
+          },
+          Experts: {
+            respondent1DQExperts: {
+              expertRequired: 'No'
+            },
+          },
+          Witnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'No'
+            }
           },
           Language: {
             respondent1DQLanguage: {
@@ -464,12 +406,11 @@ module.exports = {
               documents: 'ENGLISH'
             }
           },
-          SmaillClaimHearing: {
-            SmallClaimHearingInterpreterDescription: 'test',
-            SmallClaimHearingInterpreterRequired: 'Yes',
-            respondent1DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No',
-            },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            }
           },
           RequestedCourtLocationLRspec: {
             responseClaimCourtLocationRequired: 'No'
@@ -486,6 +427,12 @@ module.exports = {
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
               vulnerabilityAdjustments: 'test'
+            }
+          },
+          Applications:{
+            additionalInformationForJudge: 'information',
+            respondent1DQFutureApplications: {
+              intentionToMakeFutureApplications: 'No'
             }
           },
           StatementOfTruth: {
@@ -505,20 +452,20 @@ module.exports = {
           },
 
           RespondentResponseTypeSpec: {
-            specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
-            specFullDefenceOrPartAdmission1V1: 'Yes',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specFullAdmissionOrPartAdmission: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            specFullDefenceOrPartAdmission1V1: 'Yes',
+            specFullDefenceOrPartAdmission: 'Yes',
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',
-            respondent2SameLegalRepresentative: 'Yes',
-            sameSolicitorSameResponse: 'No'
+            respondent2SameLegalRepresentative: 'Yes'
           },
 
           defenceRoute: {
-            responseClaimTrack: 'SMALL_CLAIM',
+            responseClaimTrack: 'FAST_CLAIM',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             specDisputesOrPartAdmission: 'Yes'
@@ -573,6 +520,7 @@ module.exports = {
           }
         };
         break;
+
     }
 
     return responseData;

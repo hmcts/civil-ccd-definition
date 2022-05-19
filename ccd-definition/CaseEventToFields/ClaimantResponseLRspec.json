@@ -306,7 +306,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1RespondToClaim_experts",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",

@@ -7,10 +7,10 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
+            applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
           Mediation: {
-            applicant1ClaimMediationSpecRequired: {
+            applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
             }
           },
@@ -52,6 +52,9 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
+            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            defendantSingleResponseToBothClaimants: 'Yes',
             respondent1DQHearing: {
               unavailableDatesRequired: 'No'
             },
@@ -79,7 +82,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
+            applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
@@ -96,7 +99,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
+            applicant1ProceedWithClaimSpec2v1: 'Yes',
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
@@ -113,7 +116,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'No',
+            applicant1ProceedWithClaimSpec2v1: 'No',
           },
         };
         responseData.midEventData = {
@@ -124,3 +127,5 @@ module.exports = {
     return responseData;
   }
 };
+
+

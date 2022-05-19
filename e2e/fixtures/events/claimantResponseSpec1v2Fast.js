@@ -9,16 +9,42 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
-          Mediation: {
-            applicant1ClaimMediationSpecRequired: {
-              hasAgreedFreeMediation: 'Yes'
+          FileDirectionsQuestionnaire: {
+            applicant1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'No',
+              reactionProtocolCompliedWith: 'No',
+              reactionProtocolNotCompliedWithReason: 'test'
             }
           },
-          SmallClaimExperts: {
-            applicant1ClaimExpertSpecRequired: 'No'
+          DisclosureOfElectronicDocuments: {
+            applicant1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'issues'
+            }
           },
-          SmallClaimWitnesses: {
-            applicant1ClaimWitnesses: '10'
+          DisclosureOfNonElectronicDocuments: {
+            specApplicant1DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            applicant1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
+            }
+          },
+          Experts: {
+            applicant1DQExperts: {
+              expertRequired: 'No'
+            }
+          },
+          Witnesses: {
+            applicant1DQWitnesses: {
+              witnessesToAppear: 'No'
+            }
           },
           Language: {
             applicant1DQLanguage: {
@@ -28,8 +54,9 @@ module.exports = {
             }
           },
           Hearing: {
-            applicant1DQSmallClaimHearing: {
-              unavailableDatesRequired: 'No'
+            applicant1DQHearingLRspec: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No',
             }
           },
           ApplicantCourtLocationLRspec: {
@@ -42,18 +69,32 @@ module.exports = {
               vulnerabilityAdjustmentsRequired: 'No'
             }
           },
+          Applications: {
+            applicant1DQFutureApplications: {
+              intentionToMakeFutureApplications: 'No'
+            }
+          },
           StatementOfTruth: {
             uiStatementOfTruth: {
               name: 'Solicitor name',
               role: 'Solicitor role'
+            },
+            applicant1DQHearing: {
+              hearingLength: 'ONE_DAY'
             }
           }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-          Hearing: {
+          Experts: {
+            respondent1DQDisclosureReport:{
+              draftOrderNumber: '123',
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+            },
             respondent1DQHearing: {
-              unavailableDatesRequired: 'No'
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No',
             },
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
@@ -62,6 +103,15 @@ module.exports = {
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
+            },
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'No',
+              reactionProtocolCompliedWith: 'No',
+              reactionProtocolNotCompliedWithReason: 'reason'
+            },
+            respondent1DQExperts: {
+              expertRequired: 'No'
             },
             businessProcess: {
               status: 'FINISHED',
@@ -81,11 +131,6 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
-          Mediation: {
-            applicantMPClaimMediationSpecRequired: {
-              hasAgreedFreeMediation: 'Yes'
-            }
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -98,11 +143,6 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
-          Mediation: {
-            applicantMPClaimMediationSpecRequired: {
-              hasAgreedFreeMediation: 'Yes'
-            }
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -124,3 +164,4 @@ module.exports = {
     return responseData;
   }
 };
+

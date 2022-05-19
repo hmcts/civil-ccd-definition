@@ -25,12 +25,13 @@ const applicant1WithPartyName = {
 };
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
-const claimAmount = '150000';
+const claimAmount = '85000';
 
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
+
   createClaim: (mpScenario) => {
     const userData = {
       userInput: {
@@ -124,7 +125,6 @@ module.exports = {
         ClaimInterest: {
           claimInterest: 'No'
         },
-
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
@@ -252,11 +252,6 @@ module.exports = {
             }
           },
 
-          InterestSummary: {
-            claimIssuedPaymentDetails: {
-              customerReference: 'Applicant reference'
-            }
-          },
         };
 
         userData.midEventData = {
@@ -278,69 +273,6 @@ module.exports = {
           },
         };
         break;
-
-      case 'ONE_V_TWO_SAME_SOL':
-        userData.userInput = {
-          ...userData.userInput,
-          AddAnotherDefendant: {
-            addRespondent2: 'Yes'
-          },
-
-          SecondDefendant: {
-            respondent2: {
-              type: 'ORGANISATION',
-              organisationName: 'Second Defendant',
-              primaryAddress: {
-                AddressLine1: '123 Second Close',
-                PostTown: 'Second Town',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-
-          LegalRepresentationRespondent2: {
-            specRespondent2Represented: 'Yes',
-            respondent2: {
-              type: 'ORGANISATION',
-              organisationName: 'Second Defendant',
-              partyName: 'Second Defendant',
-              primaryAddress: {
-                AddressLine1: '123 Second Close',
-                PostTown: 'Second Town',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
-          },
-
-          SameLegalRepresentative: {
-            respondent2SameLegalRepresentative: 'Yes'
-          },
-        };
-
-        userData.midEventData = {
-          ...userData.midEventData,
-
-          LegalRepresentationRespondent2: {
-            specRespondent2Represented: 'Yes',
-            respondent2: {
-              type: 'ORGANISATION',
-              organisationName: 'Second Defendant',
-              partyName: 'Second Defendant',
-              partyTypeDisplayValue: 'Organisation',
-              primaryAddress: {
-                AddressLine1: '123 Second Close',
-                PostTown: 'Second Town',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-        };
-        break;
-
       case 'TWO_V_ONE':
         userData.userInput = {
           ...userData.userInput,
