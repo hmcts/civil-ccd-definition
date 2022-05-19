@@ -36,12 +36,7 @@ module.exports = {
             responseClaimMediationSpecRequired: 'No'
           },
           SmallClaimExperts: {
-            respondToClaim_experts: {
-              estimatedCost: '100',
-              expertName: 'expert',
-              fieldofExpertise: 'field'
-            },
-            responseClaimExpertSpecRequired: 'Yes'
+            responseClaimExpertSpecRequired: 'No'
           },
           SmallClaimWitnesses: {
             responseClaimWitnesses: '10'
@@ -190,12 +185,7 @@ module.exports = {
             responseClaimMediationSpecRequired: 'No'
           },
           SmallClaimExperts: {
-            respondToClaim_experts: {
-              estimatedCost: '100',
-              expertName: 'expert',
-              fieldofExpertise: 'field'
-            },
-            responseClaimExpertSpecRequired: 'Yes'
+            responseClaimExpertSpecRequired: 'No'
           },
           SmallClaimWitnesses: {
             responseClaimWitnesses: '10'
@@ -333,12 +323,7 @@ module.exports = {
             responseClaimMediationSpecRequired: 'No'
           },
           SmallClaimExperts: {
-            respondToClaim_experts: {
-              estimatedCost: '100',
-              expertName: 'expert',
-              fieldofExpertise: 'field'
-            },
-            responseClaimExpertSpecRequired: 'Yes'
+            responseClaimExpertSpecRequired: 'No'
           },
           SmallClaimWitnesses: {
             responseClaimWitnesses: '10'
