@@ -8,59 +8,6 @@ module.exports = {
         ResponseConfirmDetails: {
           specAoSRespondentCorrespondenceAddressRequired: 'Yes'
         },
-      //   RespondentResponseTypeSpec: {
-      //     respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-      //   },
-      //   defenceRoute: {
-      //     defenceRouteRequired: 'DISPUTES_THE_CLAIM'
-      //   },
-      //   Upload: {
-      //     detailsOfWhyDoesYouDisputeTheClaim: 'details'
-      //   },
-      //   HowToAddTimeline: {
-      //     specClaimResponseTimelineList: 'MANUAL'
-      //   },
-      //   FileDirectionsQuestionnaire: {
-      //     respondent1DQFileDirectionsQuestionnaire: {
-      //       explainedToClient: ['CONFIRM'],
-      //       oneMonthStayRequested: 'Yes',
-      //       reactionProtocolCompliedWith: 'Yes'
-      //     }
-      //   },
-      //   DisclosureOfElectronicDocumentsLRspec: {
-      //     specRespondent1DQDisclosureOfElectronicDocuments: {
-      //       reachedAgreement: 'Yes'
-      //     }
-      //   },
-      //   Experts: {
-      //     respondent1DQExperts: {
-      //       expertRequired: 'No'
-      //     },
-      //   },
-      //   Witnesses: {
-      //     respondent1DQWitnesses: {
-      //       witnessesToAppear: 'No'
-      //     }
-      //   },
-      //   Language: {
-      //     respondent1DQLanguage: {
-      //       evidence: 'ENGLISH',
-      //       court: 'ENGLISH',
-      //       documents: 'ENGLISH'
-      //     }
-      //   },
-      //   HearingLRspec: {
-      //     respondent1DQHearing: {
-      //       hearingLength: 'ONE_DAY',
-      //       unavailableDatesRequired: 'No'
-      //     }
-      //   },
-      //   StatementOfTruth: {
-      //     uiStatementOfTruth: {
-      //       name: 'name',
-      //       role: 'role'
-      //     }
-      //   }
       },
     };
 
@@ -74,6 +21,55 @@ module.exports = {
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
+          Mediation: {
+            responseClaimMediationSpecRequired: 'No'
+          },
+          SmallClaimExperts: {
+            responseClaimExpertSpecRequired: 'No'
+          },
+          SmallClaimWitnesses: {
+            responseClaimWitnesses: '10'
+          },
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'ENGLISH',
+              court: 'ENGLISH',
+              documents: 'ENGLISH'
+            }
+          },
+          SmaillClaimHearing: {
+            SmallClaimHearingInterpreterDescription: 'test',
+            SmallClaimHearingInterpreterRequired: 'Yes',
+            respondent1DQHearingSmallClaim: {
+              unavailableDatesRequired: 'No',
+            },
+          },
+          RequestedCourtLocationLRspec: {
+            responseClaimCourtLocationRequired: 'No'
+          },
+          HearingSupport: {
+            respondent1DQHearingSupport: {
+              signLanguageRequired: null,
+              languageToBeInterpreted: null,
+              otherSupport: null,
+              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+            }
+          },
+          VulnerabilityQuestions: {
+            respondent1DQVulnerabilityQuestions: {
+              vulnerabilityAdjustmentsRequired: 'Yes',
+              vulnerabilityAdjustments: 'test'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
+            respondent1DQHearing: {
+              unavailableDatesRequired: 'No'
+            }
+          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -99,12 +95,6 @@ module.exports = {
               camundaEvent: 'CREATE_CLAIM_SPEC'
             },
           },
-
-          StatementOfTruth: {
-            applicant1DQHearing: {
-              unavailableDatesRequired: 'No'
-            }
-          }
         };
         break;
       case 'FULL_ADMISSION':
@@ -200,12 +190,6 @@ module.exports = {
               documents: 'ENGLISH'
             }
           },
-          // HearingLRspec: {
-          //   respondent1DQHearing: {
-          //     hearingLength: 'ONE_DAY',
-          //     unavailableDatesRequired: 'No'
-          //   },
-          // },
           RequestedCourtLocationLRspec: {
             responseClaimCourtLocationRequired: 'No'
           },

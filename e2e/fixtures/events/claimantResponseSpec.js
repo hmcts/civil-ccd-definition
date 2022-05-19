@@ -10,7 +10,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
             }
           },
@@ -52,9 +52,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
-            sameSolicitorSameResponse: 'Yes',
-            respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes',
             respondent1DQHearing: {
               unavailableDatesRequired: 'No'
             },
