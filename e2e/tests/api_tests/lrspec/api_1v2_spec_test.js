@@ -39,7 +39,7 @@ Scenario('1v2 small claim different response no full defence', async ({I, api_sp
 });
 
 
-Scenario.skip('Inform agreed extension date', async ({I, api_spec}) => {
+Scenario('Inform agreed extension date', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
 });
