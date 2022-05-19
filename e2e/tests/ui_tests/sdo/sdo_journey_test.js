@@ -37,6 +37,6 @@ Scenario.skip('Judge initiate SDO without entering damages and allocate small cl
   await I.initiateSDO(null, null, 'smallClaims', null);
 }).retry(3);
 
-Scenario('Judge initiate SDO without entering damages and allocate fast track', async ({I}) => {
+Scenario.skip('Judge initiate SDO without entering damages and allocate fast track', async ({I}) => {
   await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
