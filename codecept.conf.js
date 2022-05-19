@@ -32,6 +32,7 @@ exports.config = {
     LRspec: './e2e/steps_file_LRspec.js',
     api: './e2e/api/steps.js',
     api_spec: './e2e/api/steps_LRspec.js',
+    api_spec_fast: './e2e/api/steps_LRspecFast.js',
     api_spec_small: './e2e/api/steps_LRspecSmall.js'
   },
   plugins: {
