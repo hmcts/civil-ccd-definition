@@ -893,14 +893,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteAmountClaimedLabel2v1",
     "AccessControl": [
       {
@@ -1986,12 +1978,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentClaimResponseTypeForSpecGeneric",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "neitherCompanyNorOrganisation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRUD"
@@ -2374,25 +2360,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2BankAccountList",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRUD"
       },
@@ -2423,24 +2392,6 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specDefendant2Debts",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRUD"
       },
@@ -2566,25 +2517,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2CourtOrderPayment",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1CourtOrderPaymentOption",
     "AccessControl": [
       {
@@ -2644,26 +2576,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2CourtOrderDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2CourtOrderPayment",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2771,24 +2683,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specDefendant2SelfEmploymentDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
@@ -2826,24 +2720,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQHomeDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
@@ -2880,24 +2757,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQCarerAllowanceCredit",
-    "AccessControl": [
-      {
-        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
@@ -2917,24 +2777,6 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQCarerAllowanceCreditFullAdmission",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -2989,24 +2831,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRecurringIncome",
-    "AccessControl": [
-      {
-        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
@@ -3058,47 +2883,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRecurringIncomeFA",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQRecurringExpenses",
     "AccessControl": [
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRecurringExpenses",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -3130,10 +2919,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRecurringExpensesFA",
+    "CaseFieldID": "respondent2DQRecurringExpenses",
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
@@ -3148,29 +2938,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRecurringExpenses",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2DQRecurringExpensesFA",
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -3185,24 +2958,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -3257,25 +3012,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2RepaymentPlanLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1RepaymentPlan",
     "AccessControl": [
       {
@@ -3299,6 +3035,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
@@ -3320,25 +3057,6 @@
         "UserRoles": [
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2RepaymentPlan",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -3393,7 +3111,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -3804,8 +3522,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -4540,26 +4257,6 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2CourtOrderPaymentLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },

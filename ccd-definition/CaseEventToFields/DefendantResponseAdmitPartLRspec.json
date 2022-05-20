@@ -371,16 +371,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2BankAccountList",
-    "PageID": "DefendantBankAccounts",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "minusBeforeOverdrawnAmountRespondent2",
     "PageID": "DefendantBankAccountsRespondent2",
     "PageDisplayOrder": 16,
@@ -522,16 +512,6 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHomeDetails",
     "PageDisplayOrder": 20,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "defendantHomeOptions",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQHomeDetails",
-    "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "defendantHomeOptions",
@@ -739,17 +719,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel2",
-    "PageDisplayOrder": 19,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "HowToAddEmploymentDetails",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
     "PageDisplayOrder": 26,
     "PageFieldDisplayOrder": 1,
@@ -816,16 +785,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specSelfEmployedPageLabel2",
-    "PageID": "DefendantSelfEmployment",
-    "PageDisplayOrder": 20,
-    "PageFieldDisplayOrder": 1,"DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDefendant1SelfEmploymentDetails",
     "PageID": "DefendantSelfEmployment",
     "PageDisplayOrder": 28,
@@ -857,16 +816,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specDefendant2SelfEmploymentDetails",
-    "PageID": "DefendantSelfEmployment",
-    "PageDisplayOrder": 20,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1CourtOrderPaymentLabel",
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 1,
@@ -875,17 +824,6 @@
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2CourtOrderPaymentLabel",
-    "PageDisplayOrder": 21,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "DetailsOfPayingMoneyRepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
   "CaseTypeID": "CIVIL",
@@ -968,17 +906,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specDebtPageLabel2",
-    "PageID": "DefendantDebts",
-    "PageDisplayOrder": 22,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specDebtPageLabel",
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 32,
@@ -994,16 +921,6 @@
     "CaseFieldID": "specDefendant1Debts",
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 22,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specDefendant2Debts",
-    "PageID": "DefendantDebts",
-    "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
@@ -1040,17 +957,6 @@
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQIncomeAndExpenseLabel",
-    "PageID": "DefendantIncomeExpenses",
-    "PageDisplayOrder": 23,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1098,30 +1004,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQIncomeAndExpenseLabelFullAdmission",
-    "PageID": "DefendantIncomeExpensesFullAdmission",
-    "PageDisplayOrder": 23,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQCarerAllowanceCredit",
     "PageID": "DefendantIncomeExpenses",
     "PageDisplayOrder": 23,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQCarerAllowanceCredit",
-    "PageID": "DefendantIncomeExpenses",
-    "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
@@ -1170,29 +1055,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQCarerAllowanceCreditFullAdmission",
-    "PageID": "DefendantIncomeExpensesFullAdmission",
-    "PageDisplayOrder": 23,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQRecurringIncomeFA",
     "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 34,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRecurringIncome",
-    "PageID": "DefendantIncomeExpenses",
-    "PageDisplayOrder": 23,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
@@ -1241,29 +1106,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRecurringIncomeFA",
-    "PageID": "DefendantIncomeExpensesFullAdmission",
-    "PageDisplayOrder": 23,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQRecurringExpenses",
     "PageID": "DefendantIncomeExpensesRespondent2",
     "PageDisplayOrder": 35,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRecurringExpenses",
-    "PageID": "DefendantIncomeExpenses",
-    "PageDisplayOrder": 23,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
@@ -1312,16 +1157,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRecurringExpensesFA",
-    "PageID": "DefendantIncomeExpensesFullAdmission",
-    "PageDisplayOrder": 23,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 36,
@@ -1330,17 +1165,6 @@
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel2",
-    "PageID": "WhyDoesNotPayImmediately",
-    "PageDisplayOrder": 24,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1377,17 +1201,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec2",
-    "PageID": "WhyDoesNotPayImmediately",
-    "PageDisplayOrder": 24,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1RepaymentPlanLabel",
     "PageDisplayOrder": 38,
     "PageFieldDisplayOrder": 1,
@@ -1399,29 +1212,8 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanLabel",
-    "PageDisplayOrder": 25,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1RepaymentPlan",
     "PageDisplayOrder": 38,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlan",
-    "PageDisplayOrder": 25,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "RepaymentPlan",

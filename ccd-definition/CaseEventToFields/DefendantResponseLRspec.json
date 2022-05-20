@@ -362,18 +362,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "COMPLEX",
-    "PageID": "ResponseConfirmDetails",
-    "PageDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "specAoSRespondentCorrespondenceAddressRequired=\"No\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
@@ -417,19 +405,6 @@
     "PageColumnNumber": 1,
     "FieldShowCondition": "specAoSRespondentCorrespondenceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2",
-    "CaseEventFieldLabel": " ",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmDetails",
-    "PageLabel": "Confirm your details",
-    "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -570,17 +545,6 @@
     "CaseFieldID": "specFullDefenceOrPartAdmission",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 7,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponseTypeSpec",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentClaimResponseTypeForSpecGeneric",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "N",
@@ -1374,7 +1338,6 @@
   "PageFieldDisplayOrder": 2,
   "DisplayContext": "MANDATORY",
   "PageID": "SmallClaimWitnesses",
-  "PageShowCondition": "responseClaimTrack= \"SMALL_CLAIM\" AND multiPartyResponseTypeFlags!=\"FULL_ADMISSION\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\"",
   "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
