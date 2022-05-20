@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "DisposalHearingBundleType",
+    "ListElementCode": "DOCUMENTS",
+    "ListElement": "an indexed bundle of documents (contained in a suitable binder), with each page clearly numbered",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "DisposalHearingBundleType",
+    "ListElementCode": "ELECTRONIC",
+    "ListElement": "An electronic bundle, pdf....",
+    "DisplayOrder": 2
+  }
+]

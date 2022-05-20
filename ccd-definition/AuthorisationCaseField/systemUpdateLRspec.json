@@ -119,6 +119,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ProceedWithClaimSpec2v1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -269,7 +275,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToClaim_experts",
+    "CaseFieldID": "respondToClaimExperts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
@@ -323,7 +329,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RespondToClaim_experts",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },

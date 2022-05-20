@@ -73,6 +73,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsRespondentSol",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
