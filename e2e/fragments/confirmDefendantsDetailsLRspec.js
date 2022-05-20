@@ -2,13 +2,38 @@ const { I } = inject();
 
 module.exports = {
   fields: {
-    id: '#specAoSApplicantCorrespondenceAddressRequired_Yes',
+    solicitor1Reference: {
+      id: '#specAoSApplicantCorrespondenceAddressRequired_radio',
+      options: {
+        yes: 'Yes',
+        no: 'No'
+      }
+    },
+    solicitor2Reference: {
+      id: '#specAoSRespondent2HomeAddressRequired_radio',
+      options: {
+        yes: 'Yes',
+        no: 'No'
+      }
+    }
   },
 
-  async confirmDetails() {
-    I.waitForElement(this.fields.id);
+  async confirmDetails(twoDefendants) {
+    I.waitForElement(this.fields.solicitor1Reference.id);
     await I.runAccessibilityTest();
-    await I.click('Yes');
+    const options = this.fields.solicitor1Reference.options;
+    await within(this.fields.solicitor1Reference.id, () => {
+      I.click(options.yes);
+    });
+
+    if(twoDefendants){
+      I.waitForElement(this.fields.solicitor2Reference.id);
+      await I.runAccessibilityTest();
+      const options2 = this.fields.solicitor2Reference.options;
+      await within(this.fields.solicitor2Reference.id, () => {
+        I.click(options2.yes);
+      });
+    }
     await I.clickContinue();
-  },
+  }
 };
