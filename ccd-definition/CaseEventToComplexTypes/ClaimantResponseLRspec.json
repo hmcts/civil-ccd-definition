@@ -271,7 +271,7 @@
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "requestHearingAtSpecificCourt",
     "EventElementLabel": "Do you want the hearing to be held at a specific court?",
-    "EventHintText": "If not, it'll be held at the defendant's preferred court.",
+    "EventHintText": "If not, it will be held at the defendant's preferred court.",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
