@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "DisposalHearingPreferredTelephone",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingPreferredTelephone",
+    "ListElementCode": "telephone",
+    "FieldType": "Label",
+    "ElementLabel": "to be prepopulated by civil-service",
+    "SecurityClassification": "Public"
+  }
+]

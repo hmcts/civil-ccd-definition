@@ -1,0 +1,368 @@
+[
+  {
+    "ID": "DisposalHearingJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgesRecital",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingJudgesRecital",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "Upon considering the claim Form and Particulars of Claim/statements of \ncase [and the directions questionnaires] \n\nIT IS ORDERED that:-"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "The parties shall serve on each other copies of the documents upon \nwhich reliance is to be placed at the disposal hearing by 4pm on"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "The claimant shall serve on every other party the witness statements of \nall witnesses of fact on whose evidence reliance is to be placed by 4pm \non"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "date1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "The provisions of CPR 32.6 apply to such evidence."
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "input3",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "Any application by the defendant/s pursuant to CPR 32.7 must be made by 4pm on"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "date2",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "this field is too long to do in ccd,populate using civil-service instead"
+  },
+  {
+    "ID": "DisposalHearingMedicalEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMedicalEvidence",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingMedicalEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMedicalEvidence",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "The claimant has permission to rely upon the written expert evidence \nserved with the Particulars of Claim to be disclosed by 4pm"
+  },
+  {
+    "ID": "DisposalHearingMedicalEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMedicalEvidence",
+    "ListElementCode": "date1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingMedicalEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMedicalEvidence",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "and any associated correspondence and/or updating report disclosed \n not later than 4pm on the"
+  },
+  {
+    "ID": "DisposalHearingMedicalEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMedicalEvidence",
+    "ListElementCode": "date2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingQuestionsToExperts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingQuestionsToExperts",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingQuestionsToExperts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingQuestionsToExperts",
+    "ListElementCode": "text1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingQuestionsToExperts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingQuestionsToExperts",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingQuestionsToExperts",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingQuestionsToExperts",
+    "ListElementCode": "text2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "If there is a claim for ongoing/future loss in the original schedule of \nlosses then the claimant must send an up to date schedule of loss to the \ndefendant by 4pm on the"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "date1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "The defendant, in the event of challenge, must send an up to date \ncounter-schedule of loss to the claimant by 4pm on the"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "date2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingStandardDisposalOrder",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingStandardDisposalOrder",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingStandardDisposalOrder",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingStandardDisposalOrder",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "input"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "This claim be listed for final disposal before a Judge on the first available date after."
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingPreferredTelephone",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingPreferredTelephone",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingPreferredTelephone",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingPreferredTelephone",
+    "ListElementCode": "telephone",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingPreferredEmail",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingPreferredEmail",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingPreferredEmail",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingPreferredEmail",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "The claimant must lodge at court at least 7 days before the disposal "
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingNotes",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingNotes",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "DefaultValue": "this field is too long to do in ccd,populate using civil-service instead"
+  },
+  {
+    "ID": "DisposalHearingNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingNotes",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]
