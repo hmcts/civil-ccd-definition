@@ -187,6 +187,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseListDisplayDefendantSolicitorReferences",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "nextDeadline",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

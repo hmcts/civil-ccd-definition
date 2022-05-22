@@ -1016,6 +1016,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseListDisplayDefendantSolicitorReferences",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "nextDeadline",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

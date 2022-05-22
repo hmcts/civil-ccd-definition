@@ -2048,6 +2048,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "unassignedCaseListDisplayOrganisationReferences",
+    "Label": "Unassigned Case List Solicitor References",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseListDisplayDefendantSolicitorReferences",
+    "Label": "Case List Display Defendant Solicitor Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "nextDeadline",
     "Label": "Next Deadline",
     "FieldType": "Date",

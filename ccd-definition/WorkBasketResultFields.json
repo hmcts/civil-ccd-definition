@@ -25,21 +25,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "Label": "Solicitor Reference",
-    "ListElementCode": "OrgPolicyReference",
+    "CaseFieldID": "solicitorReferences",
+    "Label": "Claimant Reference",
+    "ListElementCode": "applicantSolicitor1Reference",
     "DisplayOrder": 5
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "allPartyNames",
     "Label": "Party Names",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "nextDeadline",
     "Label": "Next Deadline",
-    "DisplayOrder": 7
+    "DisplayOrder": 8
   }
 ]

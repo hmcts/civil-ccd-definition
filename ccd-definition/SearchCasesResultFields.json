@@ -11,9 +11,8 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "OrgPolicyReference",
-    "Label": "Solicitor Reference",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "Label": "Solicitor Reference(s)",
     "DisplayOrder": 2,
     "UseCase": "orgcases"
   },
