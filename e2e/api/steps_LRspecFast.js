@@ -137,8 +137,6 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    console.log(`${response} ${scenario}`);
-
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
     }
@@ -204,9 +202,6 @@ const assertValidData = async (data, pageId) => {
     const expected = data.midEventGeneratedData[pageId];
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
-
-  if(pageId === 'InterestSummary')
-    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
 
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
@@ -333,7 +328,7 @@ const deleteCaseFields = (...caseFields) => {
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  if (['preview', 'demo'].includes(config.runningEnv)) {
+  if (['preview', 'demo', 'local'].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {

@@ -4,8 +4,6 @@ module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
       events.CHANGE_SOLICITOR_EMAIL,
-      events.ENTER_BREATHING_SPACE_SPEC,
-      events.LIFT_BREATHING_SPACE_SPEC,
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
@@ -62,8 +60,6 @@ module.exports = {
   },
   admin: {
     CASE_ISSUED: [
-      events.CASE_PROCEEDS_IN_CASEMAN,
-      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
