@@ -45,15 +45,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "idam:caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "caseworker",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "[APPLICANTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
