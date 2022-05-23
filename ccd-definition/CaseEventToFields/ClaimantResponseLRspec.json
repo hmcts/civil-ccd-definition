@@ -306,12 +306,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1RespondToClaim_experts",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "applicant1ClaimExpertSpecRequired =\"Yes\" OR applicantMPClaimExpertSpecRequired =\"Yes\""
   },
   {

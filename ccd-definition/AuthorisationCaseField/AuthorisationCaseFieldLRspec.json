@@ -1360,7 +1360,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToClaim_experts",
+    "CaseFieldID": "respondToClaimExperts",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],
@@ -2943,7 +2943,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RespondToClaim_experts",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
     "UserRoles": [
       "caseworker-civil-solicitor"
     ],

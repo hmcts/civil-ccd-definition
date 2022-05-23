@@ -850,7 +850,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondToClaim_experts",
+    "ID": "respondToClaimExperts",
     "Label": " ",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public"
@@ -1699,7 +1699,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1RespondToClaim_experts",
+    "ID": "applicant1RespondToClaimExperts",
     "Label": " ",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public"

@@ -71,8 +71,9 @@ module.exports = {
           respondent1: respondent1WithPartyName
         },
         LegalRepresentation: {
-          specRespondent1Represented: 'Yes'
+          specRespondent1Represented: 'Yes',
         },
+
         DefendantSolicitorOrganisation: {
           respondent1OrgRegistered: 'Yes',
           respondent1OrganisationPolicy: {
@@ -86,6 +87,7 @@ module.exports = {
         DefendantSolicitorEmail: {
           respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
         },
+
         specRespondentCorrespondenceAddress: {
           specRespondentCorrespondenceAddressRequired: 'No'
         },
@@ -122,14 +124,10 @@ module.exports = {
         ClaimInterest: {
           claimInterest: 'No'
         },
+
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          },
-          claimFee: {
-            calculatedAmountInPence: '8000',
-            code: 'FEE0205',
-            version: '4'
           }
         },
         PbaNumber: {
@@ -186,6 +184,11 @@ module.exports = {
         InterestSummary: {
           applicantSolicitor1PbaAccounts: {
             list_items: 'object'
+          },
+          claimFee: {
+            calculatedAmountInPence: 'string',
+            code: 'string',
+            version: 'string'
           }
         }
       }
@@ -211,12 +214,27 @@ module.exports = {
               primaryAddress: {
                 AddressLine1: '123 Second Close',
                 PostTown: 'Second Town',
-                PostCode: 'ST1 2QQ'
+                PostCode: 'NR5 9LL'
               }
             }
           },
+
           LegalRepresentationRespondent2: {
-            specRespondent2Represented: 'Yes'
+            specRespondent2Represented: 'Yes',
+            respondent2: {
+              type: 'ORGANISATION',
+              organisationName: 'Second Defendant',
+              partyName: 'Second Defendant',
+              primaryAddress: {
+                AddressLine1: '123 Second Close',
+                PostTown: 'Second Town',
+                PostCode: 'NR5 9LL'
+              }
+            }
+          },
+
+          SecondDefendantSolicitorEmail: {
+            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           },
 
           SameLegalRepresentative: {
@@ -234,11 +252,95 @@ module.exports = {
             }
           },
 
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
-          }
+          InterestSummary: {
+            claimIssuedPaymentDetails: {
+              customerReference: 'Applicant reference'
+            }
+          },
+        };
+
+        userData.midEventData = {
+          ...userData.midEventData,
+
+          LegalRepresentationRespondent2: {
+            specRespondent2Represented: 'Yes',
+            respondent2: {
+              type: 'ORGANISATION',
+              organisationName: 'Second Defendant',
+              partyName: 'Second Defendant',
+              partyTypeDisplayValue: 'Organisation',
+              primaryAddress: {
+                AddressLine1: '123 Second Close',
+                PostTown: 'Second Town',
+                PostCode: 'NR5 9LL'
+              }
+            }
+          },
         };
         break;
+
+      case 'ONE_V_TWO_SAME_SOL':
+        userData.userInput = {
+          ...userData.userInput,
+          AddAnotherDefendant: {
+            addRespondent2: 'Yes'
+          },
+
+          SecondDefendant: {
+            respondent2: {
+              type: 'ORGANISATION',
+              organisationName: 'Second Defendant',
+              primaryAddress: {
+                AddressLine1: '123 Second Close',
+                PostTown: 'Second Town',
+                PostCode: 'NR5 9LL'
+              }
+            }
+          },
+
+          LegalRepresentationRespondent2: {
+            specRespondent2Represented: 'Yes',
+            respondent2: {
+              type: 'ORGANISATION',
+              organisationName: 'Second Defendant',
+              partyName: 'Second Defendant',
+              primaryAddress: {
+                AddressLine1: '123 Second Close',
+                PostTown: 'Second Town',
+                PostCode: 'NR5 9LL'
+              }
+            }
+          },
+
+          SecondDefendantSolicitorEmail: {
+            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+          },
+
+          SameLegalRepresentative: {
+            respondent2SameLegalRepresentative: 'Yes'
+          },
+        };
+
+        userData.midEventData = {
+          ...userData.midEventData,
+
+          LegalRepresentationRespondent2: {
+            specRespondent2Represented: 'Yes',
+            respondent2: {
+              type: 'ORGANISATION',
+              organisationName: 'Second Defendant',
+              partyName: 'Second Defendant',
+              partyTypeDisplayValue: 'Organisation',
+              primaryAddress: {
+                AddressLine1: '123 Second Close',
+                PostTown: 'Second Town',
+                PostCode: 'NR5 9LL'
+              }
+            }
+          },
+        };
+        break;
+
       case 'TWO_V_ONE':
         userData.userInput = {
           ...userData.userInput,
@@ -258,6 +360,9 @@ module.exports = {
                 PostCode: 'NR5 9LL'
               }
             }
+          },
+          SecondDefendantSolicitorEmail: {
+            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           }
         };
         break;

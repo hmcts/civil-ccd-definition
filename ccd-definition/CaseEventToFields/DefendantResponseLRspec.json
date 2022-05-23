@@ -907,12 +907,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts",
+    "CaseFieldID": "respondToClaimExperts",
     "PageDisplayOrder": 44,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "responseClaimExpertSpecRequired = \"Yes\""
   },
   {
