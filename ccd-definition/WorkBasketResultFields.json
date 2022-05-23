@@ -32,6 +32,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseListDisplayDefendantSolicitorReferences",
+    "Label": "Defendant Reference(s)",
+    "DisplayOrder": 6
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "allPartyNames",
     "Label": "Party Names",
     "DisplayOrder": 7
