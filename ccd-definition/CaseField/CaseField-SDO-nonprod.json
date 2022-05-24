@@ -226,5 +226,96 @@
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackOrderDetails",
+    "Label": "# Order and hearing details \nWarning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply you must make an application to the court before any deadline expires.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackJudgesRecital",
+    "Label": "Judge's recital",
+    "FieldType": "FastTrackJudgesRecital",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackJudgment",
+    "Label": "## Judgment for the claimant for a sum to be decided by the court \nSubject to a deduction of: ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAllocation",
+    "Label": "## Allocation \nThe claim is allocated to the Fast track. ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAltDisputeResolution",
+    "Label": "## Alternative dispute resolution \nAt all stages the parties must consider settling this claim by any means of Alternative Dispute Resolution (including round table conferences, early neutral evaluation, mediation and arbitration); any party not engaging in any such means proposed by another must serve a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise).",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackVariationOfDirections",
+    "Label": "## Variation of directions \nVariation of directions The parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4). Otherwise, the time for compliance with a direction may only be extended by making an application. ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackSettlement",
+    "Label": "## Settlement \nEach party must inform the Court immediately if the case is settled whether or not it is then possible to file a draft consent order to give effect to their agreement.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackDisclosureOfDocuments",
+    "Label": "Disclosure of documents",
+    "FieldType": "FastTrackDisclosureOfDocuments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackWitnessOfFact",
+    "Label": "Witness of Fact",
+    "FieldType": "FastTrackWitnessOfFact",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackSchedulesOfLoss",
+    "Label": "Schedules of loss",
+    "FieldType": "FastTrackSchedulesOfLoss",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackCosts",
+    "Label": "## Costs \nCosts in the case",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackTrial",
+    "Label": "Trial",
+    "FieldType": "FastTrackTrial",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackNotes",
+    "Label": "Notes",
+    "FieldType": "FastTrackNotes",
+    "SecurityClassification": "Public"
   }
 ]
