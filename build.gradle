@@ -253,10 +253,6 @@ dependencies {
 
 
   testImplementation libraries.junit5
-
-  functionalTestImplementation sourceSets.main.runtimeClasspath
-
-  smokeTestImplementation sourceSets.main.runtimeClasspath
 }
 
 wrapper {
