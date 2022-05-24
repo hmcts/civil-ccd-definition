@@ -45,6 +45,8 @@
     <cve>CVE-2021-22053</cve>
     <cve>CVE-2021-22044</cve>
     <cve>CVE-2021-22119</cve>
+    <cve>CVE-2022-22971</cve>
+    <cve>CVE-2022-22970</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
