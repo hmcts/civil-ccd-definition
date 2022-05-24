@@ -25,7 +25,7 @@ const applicant1WithPartyName = {
 };
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
-const claimAmount = '1500000';
+const claimAmount = '150000';
 
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
@@ -128,11 +128,6 @@ module.exports = {
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          },
-          claimFee: {
-            calculatedAmountInPence: '75000',
-            code: 'FEE0209',
-            version: '3'
           }
         },
         PbaNumber: {
@@ -189,6 +184,11 @@ module.exports = {
         InterestSummary: {
           applicantSolicitor1PbaAccounts: {
             list_items: 'object'
+          },
+          claimFee: {
+            calculatedAmountInPence: 'string',
+            code: 'string',
+            version: 'string'
           }
         }
       }
@@ -201,7 +201,6 @@ module.exports = {
         };
         break;
       case 'ONE_V_TWO':
-        console.log('I AM HERE');
         userData.userInput = {
           ...userData.userInput,
           AddAnotherDefendant: {
@@ -256,11 +255,6 @@ module.exports = {
           InterestSummary: {
             claimIssuedPaymentDetails: {
               customerReference: 'Applicant reference'
-            },
-            claimFee: {
-              calculatedAmountInPence: '8000',
-              code: 'FEE0205',
-              version: '4'
             }
           },
         };
@@ -286,7 +280,6 @@ module.exports = {
         break;
 
       case 'ONE_V_TWO_SAME_SOL':
-        console.log('I AM HERE');
         userData.userInput = {
           ...userData.userInput,
           AddAnotherDefendant: {
