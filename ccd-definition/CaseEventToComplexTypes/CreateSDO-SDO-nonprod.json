@@ -379,8 +379,7 @@
     "CaseFieldID": "fastTrackJudgesRecital",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "Upon considering the claim Form and Particulars of Claim/statements of \ncase [and the directions questionnaires] \n\nIT IS ORDERED that:-"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -396,8 +395,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "By serving a list with a disclosure statement by 4pm on"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -413,8 +411,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "input1",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "Any request to inspect or for a copy of a document shall be made by 4pm on"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -430,8 +427,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "and complied with within 7 days of receipt of the request."
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -439,8 +435,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "Each party must serve and file with the court a list of issues relevant to "
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -473,8 +468,7 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "Each party shall serve on every other party the witness statements of all \nwitnesses of fact on whom he intends to rely"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -482,8 +476,7 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "All statements to be no more than"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -508,8 +501,7 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "pages long, A4, double spaced and in font size 12."
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -517,8 +509,7 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input4",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "There shall be simultaneous exchange of such statements by 4pm on"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -534,8 +525,7 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input5",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "Oral evidence will not be permitted at trail from a witness whose \nstatement has not been served in accordance with this order or has been \nserved late, except with permission from the Court."
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -551,8 +541,7 @@
     "CaseFieldID": "fastTrackSchedulesOfLoss",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "The claimant shall serve an updated schedule of loss on the defendant(s) \nby 4pm on"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -568,8 +557,7 @@
     "CaseFieldID": "fastTrackSchedulesOfLoss",
     "ListElementCode": "input1",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "The defendant(s) shall serve a counter schedule on the Claimant by 4pm \non"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -585,8 +573,7 @@
     "CaseFieldID": "fastTrackSchedulesOfLoss",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "If there is a claim for future pecuniary loss and the parties have not \nalready set out their case on periodical payments, then they must do so \nin the respective schedule and counter-schedule."
+    "DisplayContext": "MANDATORY"
   },
   {
   "ID": "FastTrackSchedulesOfLoss",
@@ -594,8 +581,7 @@
   "CaseFieldID": "fastTrackSchedulesOfLoss",
   "ListElementCode": "input3",
   "FieldDisplayOrder": 7,
-  "DisplayContext": "MANDATORY",
-  "DefaultValue": "Upon it being noted that the schedule of loss contains no claim for \ncontinuing loss and is therefore final, no further schedule of loss shall be "
+  "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -619,8 +605,7 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "The time provisionally allowed for the trial is"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackTrial",
@@ -660,8 +645,7 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "If either party considers that the time estimate is insufficient, they must \ninform the court within 7 days of the date of this Order."
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackTrial",
@@ -669,8 +653,7 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "Not more than seven nor less than three clear days before the trial, "
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackNotes",
@@ -686,8 +669,7 @@
     "CaseFieldID": "fastTrackNotes",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "DefaultValue": "This Order has been made without a hearing. Each party has the right to apply to have this Order set aside or varied. Any such application must be received by the Court "
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackNotes",
