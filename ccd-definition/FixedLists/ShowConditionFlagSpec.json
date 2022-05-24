@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "CAN_ANSWER_RESPONDENT_1",
+    "ListElement": "CAN_ANSWER_RESPONDENT_1",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "CAN_ANSWER_RESPONDENT_2",
+    "ListElement": "CAN_ANSWER_RESPONDENT_2",
+    "DisplayOrder": 2
+  }
+]

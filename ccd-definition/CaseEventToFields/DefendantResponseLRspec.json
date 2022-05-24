@@ -26,6 +26,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "showConditionFlags",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "addRespondent2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
@@ -201,6 +213,7 @@
     "PageLabel": "",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -213,6 +226,7 @@
     "PageLabel": "",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -241,7 +255,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -254,7 +268,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
   },
   {
     "CaseTypeID": "CIVIL",

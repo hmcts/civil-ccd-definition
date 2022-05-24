@@ -368,5 +368,11 @@
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "showConditionFlags",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
