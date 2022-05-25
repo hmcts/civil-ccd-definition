@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "FastTrackJudgment",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackJudgment",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "## There is judgment for the claimant for an amount to be decided by the court \nSubject to a deduction of:",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackJudgment",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  }
+]

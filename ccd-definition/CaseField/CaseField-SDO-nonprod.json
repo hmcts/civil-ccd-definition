@@ -159,5 +159,103 @@
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackOrderAndHearingDetails",
+    "Label": " ",
+    "FieldType": "FastTrackOrderAndHearingDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackJudgment",
+    "Label": " ",
+    "FieldType": "FastTrackJudgment",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAllocation",
+    "Label": " ",
+    "FieldType": "FastTrackAllocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAltDisputeResolution",
+    "Label": " ",
+    "FieldType": "FastTrackAltDisputeResolution",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackVariationOfDirections",
+    "Label": " ",
+    "FieldType": "FastTrackVariationOfDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackSettlement",
+    "Label": " ",
+    "FieldType": "FastTrackSettlement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackCosts",
+    "Label": " ",
+    "FieldType": "FastTrackCosts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackBuildingDispute",
+    "Label": "Building dispute",
+    "FieldType": "FastTrackBuildingDispute",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackClinicalNegligence",
+    "Label": "Clinical negligence",
+    "FieldType": "FastTrackClinicalNegligence",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "FastTrackCreditHire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackEmployersLiability",
+    "Label": "Employer's libility",
+    "FieldType": "FastTrackEmployersLiability",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "FastTrackHousingDisrepair",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackPersonalInjury",
+    "Label": "Personal injury",
+    "FieldType": "FastTrackPersonalInjury",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackRoadTrafficAccident",
+    "Label": "Road traffic accident",
+    "FieldType": "FastTrackRoadTrafficAccident",
+    "SecurityClassification": "Public"
   }
 ]
