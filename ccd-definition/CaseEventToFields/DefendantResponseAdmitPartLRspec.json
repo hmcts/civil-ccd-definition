@@ -19,7 +19,7 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants != \"Yes\"",
+    "FieldShowCondition": "specFullAdmissionOrPartAdmission=\"Yes\" AND sameSolicitorSameResponse!=\"No\" AND defendantSingleResponseToBothClaimants != \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"

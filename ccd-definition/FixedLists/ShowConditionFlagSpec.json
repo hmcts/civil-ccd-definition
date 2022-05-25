@@ -10,5 +10,35 @@
     "ListElementCode": "CAN_ANSWER_RESPONDENT_2",
     "ListElement": "CAN_ANSWER_RESPONDENT_2",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "ONLY_RESPONDENT_1_DISPUTES",
+    "ListElement": "ONLY_RESPONDENT_1_DISPUTES",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "ONLY_RESPONDENT_2_DISPUTES",
+    "ListElement": "ONLY_RESPONDENT_2_DISPUTES",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "BOTH_RESPONDENTS_DISPUTE",
+    "ListElement": "BOTH_RESPONDENTS_DISPUTE",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "RESPONDENT_1_PAID_LESS",
+    "ListElement": "RESPONDENT_1_PAID_LESS",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "RESPONDENT_2_PAID_LESS",
+    "ListElement": "RESPONDENT_2_PAID_LESS",
+    "DisplayOrder": 7
   }
 ]
