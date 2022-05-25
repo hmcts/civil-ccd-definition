@@ -950,7 +950,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "showHowToAddTimeLinePage = \"Yes\"",
+    "PageShowCondition": "showHowToAddTimeLinePage = \"Yes\" AND fullAdmissionAndFullAmountPaid != \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -962,7 +962,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -974,7 +973,6 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y"
   },
   {
