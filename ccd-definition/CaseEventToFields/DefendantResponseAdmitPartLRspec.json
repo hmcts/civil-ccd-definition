@@ -166,7 +166,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -177,8 +177,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\"",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired != \"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\""
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -195,18 +194,18 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
-    "PageDisplayOrder": 12,
+    "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND isRespondent2 = \"Yes\""
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
-    "PageDisplayOrder": 12,
+    "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
@@ -217,7 +216,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
-    "PageDisplayOrder": 12,
+    "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
