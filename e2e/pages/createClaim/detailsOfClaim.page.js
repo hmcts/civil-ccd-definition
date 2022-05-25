@@ -6,10 +6,10 @@ module.exports = {
     detailsOfClaim: '#detailsOfClaim'
   },
 
-  async enterDetailsOfClaim() {
+  async enterDetailsOfClaim(mpScenario) {
     I.waitForElement(this.fields.detailsOfClaim);
     await I.runAccessibilityTest();
-    I.fillField(this.fields.detailsOfClaim, 'Test details of claim');
+    I.fillField(this.fields.detailsOfClaim, mpScenario);
     await I.clickContinue();
   }
 };

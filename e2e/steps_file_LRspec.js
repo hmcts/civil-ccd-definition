@@ -295,10 +295,9 @@ module.exports = function () {
       }
     },
 
-     async createCaseSpecified(claimant1, claimant2,  respondent1, respondent2, claimAmount) {
+     async createCaseSpecified(mpScenario, claimant1, claimant2,  respondent1, respondent2, claimAmount) {
          eventName = 'Create claim - Specified';
 
-         //const twoVOneScenario = claimant1 && claimant2;
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
          await this.triggerStepsWithScreenshot([
             () => this.clickContinue(),
@@ -312,7 +311,7 @@ module.exports = function () {
               ]),
               ...secondDefendantSteps(respondent2, respondent1.represented, true),
 
-                 () => detailsOfClaimPage.enterDetailsOfClaim(),
+                 () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
                  () => specAddTimelinePage.addTimeline(),
                  () => specListEvidencePage.addEvidence(),
