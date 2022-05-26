@@ -148,6 +148,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethod",
+    "Label": "Hearing Method",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethod",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodInPerson",
+    "Label": "Select hearing location ",
+    "FieldType": "DynamicList",
+    "FieldTypeParameter": "DisposalHearingMethodInPerson",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodVideoConferenceHearing",
+    "Label": "Who will arrange the video conference? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodVideoConferenceHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodTelephoneHearing",
+    "Label": "Who will arrange the call? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodTelephoneHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundle",
     "Label": "Disposal hearing bundle",
     "FieldType": "DisposalHearingBundle",
@@ -193,6 +225,14 @@
     "ID": "disposalHearingNotes",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "AddNewDirections",
     "SecurityClassification": "Public"
   }
 ]
