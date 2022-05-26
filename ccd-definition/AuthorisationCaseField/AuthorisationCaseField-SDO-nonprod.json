@@ -131,7 +131,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalOrderAndHearingDetails",
+    "CaseFieldID": "disposalHearingOrderAndHearingDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -157,7 +157,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalJudgment",
+    "CaseFieldID": "disposalHearingJudgementDeductionStatement",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingJudgementDeductionValue",
     "AccessControl": [
       {
         "UserRoles": [
@@ -352,7 +365,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalClaimSettling",
+    "CaseFieldID": "disposalHearingClaimSettling",
     "AccessControl": [
       {
         "UserRoles": [
@@ -365,7 +378,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalCosts",
+    "CaseFieldID": "disposalHearingCosts",
     "AccessControl": [
       {
         "UserRoles": [
@@ -378,7 +391,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalApplicationsOrder",
+    "CaseFieldID": "disposalHearingApplicationsOrder",
     "AccessControl": [
       {
         "UserRoles": [
