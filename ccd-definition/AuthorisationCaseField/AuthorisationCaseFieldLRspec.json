@@ -931,25 +931,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specDefenceRouteAmountClaimed2Label",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteAmountClaimedRespondent2Label",
     "AccessControl": [
       {

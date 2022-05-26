@@ -628,13 +628,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specDefenceRouteAmountClaimed2Label",
-    "Label": "## Why does ${respondent2.partyName} not owe money to the claimant? \n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAmountClaimedLabel2v1",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimants? \n",
     "FieldType": "Label",
