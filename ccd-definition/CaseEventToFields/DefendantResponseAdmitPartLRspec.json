@@ -178,7 +178,7 @@
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\"",
-    "PageShowCondition": "fullAdmissionAndFullAmountPaid != \"Yes\""
+    "PageShowCondition": "showConditionFlags CONTAINS \"WHEN_WILL_CLAIM_BE_PAID\""
   },
   {
     "CaseTypeID": "CIVIL",
