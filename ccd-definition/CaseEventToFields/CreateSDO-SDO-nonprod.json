@@ -141,7 +141,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details"
   },
   {
     "CaseTypeID": "CIVIL",
