@@ -158,7 +158,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodInPerson",
     "Label": "Select hearing location ",
-    "FieldType": "Text",
+    "FieldType": "DynamicList",
     "FieldTypeParameter": "DisposalHearingMethodInPerson",
     "SecurityClassification": "Public"
   },
