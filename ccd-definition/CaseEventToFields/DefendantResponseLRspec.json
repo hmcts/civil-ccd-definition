@@ -1034,7 +1034,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "RetriesTimeoutURLMidEvent": 0
   },
   {
@@ -1046,7 +1046,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_ADMISSION\" AND responseClaimTrack= \"SMALL_CLAIM\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags != \"COUNTER_ADMIT_OR_ADMIT_PART\" AND multiPartyResponseTypeFlags!=\"FULL_ADMISSION\"",
-    "FieldShowCondition": "respondentResponseIsSame !=\"Yes\"",
+    "FieldShowCondition": "respondentResponseIsSame !=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
