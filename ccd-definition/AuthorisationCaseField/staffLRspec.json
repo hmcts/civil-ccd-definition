@@ -310,5 +310,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel4",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
