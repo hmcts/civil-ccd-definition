@@ -40,5 +40,11 @@
     "ListElementCode": "RESPONDENT_2_PAID_LESS",
     "ListElement": "RESPONDENT_2_PAID_LESS",
     "DisplayOrder": 7
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "WHEN_WILL_CLAIM_BE_PAID",
+    "ListElement": "WHEN_WILL_CLAIM_BE_PAID",
+    "DisplayOrder": 8
   }
 ]
