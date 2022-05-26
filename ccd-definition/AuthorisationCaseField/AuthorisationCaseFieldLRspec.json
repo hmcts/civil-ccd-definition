@@ -3353,6 +3353,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
