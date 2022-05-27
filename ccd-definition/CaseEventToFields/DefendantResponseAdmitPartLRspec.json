@@ -901,10 +901,10 @@
     "PageID": "DefendantDebts",
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\" AND defendantSingleResponseToBothClaimants !=\"No\"",
+    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND sameSolicitorSameResponse!=\"No\" AND respondent1Copy.partyTypeDisplayValue !=\"Company\" AND respondent1Copy.partyTypeDisplayValue !=\"Organisation\" AND defendantSingleResponseToBothClaimants !=\"No\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
