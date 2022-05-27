@@ -1584,7 +1584,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "VulnerabilityQuestions",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative != \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
