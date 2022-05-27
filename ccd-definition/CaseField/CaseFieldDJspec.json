@@ -29,20 +29,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CPRConfirmationSpec",
-    "Label": "I certify that all of these statements are correct and apply to the defendant",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "CPRConfirmationSpecTwoDefendant",
-    "Label": "I certify that all of these statements are correct and apply to the defendants",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "currentDefendant",
     "Label": " ",
     "FieldType": "Text",

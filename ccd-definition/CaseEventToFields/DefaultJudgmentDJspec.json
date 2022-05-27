@@ -53,17 +53,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "CPRConfirmationSpec",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "showCertifyStatementSpec",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRCertifySpecTwoDefendant",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -77,13 +66,48 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "CPRConfirmationSpecTwoDefendant",
+    "CaseFieldID": "CPRAcceptanceLabel",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "showCertifyStatementSpecMultipleDefendant",
+    "DisplayContext": "READONLY",
+    "PageID": "showCertifyStatementSpec",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "CPRAcceptance",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "showCertifyStatementSpec",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/acceptCPRSpec"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "CPRAcceptance2DefLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "showCertifyStatementSpecMultipleDefendant",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "CPRAcceptance2Def",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "showCertifyStatementSpecMultipleDefendant",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/acceptCPRSpec"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -107,7 +131,6 @@
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\" OR CPRConfirmationSpecTwoDefendant = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -143,8 +166,7 @@
     "PageID": "paymentConfirmationSpec",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\" OR CPRConfirmationSpecTwoDefendant = \"Yes\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -168,7 +190,6 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "CPRConfirmationSpec = \"Yes\" OR CPRConfirmationSpecTwoDefendant = \"Yes\"",
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
