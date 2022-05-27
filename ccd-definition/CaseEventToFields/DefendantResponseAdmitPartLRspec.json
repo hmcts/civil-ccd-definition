@@ -331,17 +331,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "minusBeforeOverdrawnAmountRes2",
-    "PageID": "DefendantBankAccounts",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "minusBeforeOverdrawnAmount",
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 15,
