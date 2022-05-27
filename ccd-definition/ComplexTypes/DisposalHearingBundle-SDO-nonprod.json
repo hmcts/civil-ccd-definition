@@ -1,9 +1,16 @@
 [
   {
     "ID": "DisposalHearingBundle",
+    "ListElementCode": "line1",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "## Disposal hearing bundle ##",
     "SecurityClassification": "Public"
   },
   {
@@ -30,7 +37,7 @@
   },
   {
     "ID": "DisposalHearingBundle",
-    "ListElementCode": "line",
+    "ListElementCode": "line2",
     "FieldType": "Label",
     "ElementLabel": "****",
     "SecurityClassification": "Public"

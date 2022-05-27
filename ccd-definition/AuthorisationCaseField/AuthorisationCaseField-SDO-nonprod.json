@@ -118,19 +118,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "orderDetailsPlaceholder",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingOrderAndHearingDetails",
     "AccessControl": [
       {
@@ -274,6 +261,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingMethodTitle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethod",
     "AccessControl": [
       {
@@ -314,6 +314,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodTelephoneHearing",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "AccessControl": [
       {
         "UserRoles": [
@@ -417,7 +430,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "addNewDirections",
+    "CaseFieldID": "disposalHearingAddNewDirections",
     "AccessControl": [
       {
         "UserRoles": [

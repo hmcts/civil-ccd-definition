@@ -12,12 +12,5 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingPreferredEmail",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
   }
 ]

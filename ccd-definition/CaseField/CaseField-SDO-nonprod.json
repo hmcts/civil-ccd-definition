@@ -70,13 +70,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "orderDetailsPlaceholder",
-    "Label": "Page Four Placeholder - Order Details",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingOrderAndHearingDetails",
     "Label": "Order and hearing details",
     "FieldType": "DisposalHearingOrderAndHearingDetails",
@@ -154,8 +147,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodTitle",
+    "Label": "## Hearing Method",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethod",
-    "Label": "Hearing Method",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethod",
     "SecurityClassification": "Public"
@@ -186,9 +186,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundle",
-    "Label": "Disposal hearing bundle",
-    "FieldType": "DisposalHearingBundle",
+    "ID": "disposalHearingMethodTelephoneHearingCourtStatement",
+    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -203,6 +203,13 @@
     "ID": "disposalHearingPreferredEmail",
     "Label": "Preferred email",
     "FieldType": "DisposalHearingPreferredEmail",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingBundle",
+    "Label": " ",
+    "FieldType": "DisposalHearingBundle",
     "SecurityClassification": "Public"
   },
   {
@@ -235,10 +242,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "addNewDirections",
+    "ID": "disposalHearingAddNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",
-    "FieldTypeParameter": "AddNewDirections",
+    "FieldTypeParameter": "DisposalHearingAddNewDirections",
     "SecurityClassification": "Public"
   }
 ]
