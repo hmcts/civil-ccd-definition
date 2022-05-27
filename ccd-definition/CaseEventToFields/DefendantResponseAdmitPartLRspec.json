@@ -811,7 +811,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND partAdmittedByEitherRespondents !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteGeneric =\"*\" AND defenceAdmitPartPaymentTimeRouteGeneric !=\"IMMEDIATELY\" AND neitherCompanyNorOrganisation =\"Yes\"",
+    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND partAdmittedByEitherRespondents !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteGeneric =\"*\" AND defenceAdmitPartPaymentTimeRouteGeneric =\"SUGGESTION_OF_REPAYMENT_PLAN\" AND neitherCompanyNorOrganisation =\"Yes\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
