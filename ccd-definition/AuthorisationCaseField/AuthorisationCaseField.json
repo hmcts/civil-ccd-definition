@@ -3047,7 +3047,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }

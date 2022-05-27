@@ -2158,6 +2158,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "defenceAdmitPartEmploymentTypeRequired",
     "AccessControl": [
       {
