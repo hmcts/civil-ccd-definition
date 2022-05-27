@@ -1667,8 +1667,7 @@
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "",
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
