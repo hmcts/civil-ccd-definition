@@ -79,6 +79,7 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
