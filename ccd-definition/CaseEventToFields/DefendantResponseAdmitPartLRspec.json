@@ -211,7 +211,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\""
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND isRespondent1 = \"Yes\" AND respondentResponseIsSame != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -222,7 +222,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND sameSolicitorSameResponse=\"Yes\""
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND respondentResponseIsSame=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
