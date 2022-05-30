@@ -47,7 +47,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -108,7 +108,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\" AND orderType=\"DECIDE_DAMAGES\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
