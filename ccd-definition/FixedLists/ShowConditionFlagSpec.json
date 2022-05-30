@@ -46,5 +46,17 @@
     "ListElementCode": "WHEN_WILL_CLAIM_BE_PAID",
     "ListElement": "WHEN_WILL_CLAIM_BE_PAID",
     "DisplayOrder": 8
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "RESPONDENT_1_ADMITS_PART_OR_FULL",
+    "ListElement": "RESPONDENT_1_ADMITS_PART_OR_FULL",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "RESPONDENT_2_ADMITS_PART_OR_FULL",
+    "ListElement": "RESPONDENT_2_ADMITS_PART_OR_FULL",
+    "DisplayOrder": 10
   }
 ]
