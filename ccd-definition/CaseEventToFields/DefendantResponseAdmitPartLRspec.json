@@ -366,7 +366,7 @@
     "PageID": "DefendantBankAccountsRespondent2",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND respondentResponseIsSame=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -453,7 +453,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -517,7 +517,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defendantHomeOptionsRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceAdmittedRequired!=\"Yes\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_DEFENCE\" AND respondent1ClaimResponseTypeForSpec!=\"COUNTER_CLAIM\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND respondentResponseIsSame=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -559,7 +559,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Defendant2PartnersAndDependents",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\""
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -672,7 +672,7 @@
     "DisplayContext": "READONLY",
     "PageID": "EmploymentDeclarationRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND respondentResponseIsSame=\"Yes\" AND multiPartyResponseTypeFlags!=\"FULL_DEFENCE\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -748,7 +748,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddEmploymentDetailsRespondent2",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequiredRespondent2 =\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspecRespondent2 CONTAINS \"EMPLOYED\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\" AND respondToClaimAdmitPartEmploymentTypeLRspecRespondent2 CONTAINS \"EMPLOYED\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -790,7 +790,7 @@
     "PageID": "DefendantSelfEmploymentRespondent2",
     "PageDisplayOrder": 29,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric !=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric !=\"COUNTER_CLAIM\" AND defenceAdmitPartEmploymentTypeRequired =\"Yes\" AND respondToClaimAdmitPartEmploymentTypeLRspecRespondent2 CONTAINS \"SELF\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\" AND respondToClaimAdmitPartEmploymentTypeLRspecRespondent2 CONTAINS \"SELF\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -868,7 +868,7 @@
     "PageDisplayOrder": 31,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND specDefenceAdmittedRequired !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
@@ -944,7 +944,7 @@
     "PageID": "DefendantDebtsRespondent2",
     "PageDisplayOrder": 33,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired!=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!= \"Yes\" AND specDefenceAdmittedRequired!= \"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
@@ -1111,7 +1111,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
     "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric =\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired =\"No\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },

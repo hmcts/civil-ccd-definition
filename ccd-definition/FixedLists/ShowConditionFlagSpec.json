@@ -58,5 +58,23 @@
     "ListElementCode": "RESPONDENT_2_ADMITS_PART_OR_FULL",
     "ListElement": "RESPONDENT_2_ADMITS_PART_OR_FULL",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "NEED_FINANCIAL_DETAILS_1",
+    "ListElement": "NEED_FINANCIAL_DETAILS_1",
+    "DisplayOrder": 11
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "NEED_FINANCIAL_DETAILS_2",
+    "ListElement": "NEED_FINANCIAL_DETAILS_2",
+    "DisplayOrder": 12
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "WHY_2_DOES_NOT_PAY_IMMEDIATELY",
+    "ListElement": "WHY_2_DOES_NOT_PAY_IMMEDIATELY",
+    "DisplayOrder": 13
   }
 ]
