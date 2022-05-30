@@ -1174,7 +1174,7 @@
     "PageID": "WhyDoesNotPayImmediatelyRespondent2",
     "PageDisplayOrder": 37,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND specDefenceAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"WHY_2_DOES_NOT_PAY_IMMEDIATELY\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1186,8 +1186,7 @@
     "PageDisplayOrder": 37,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
