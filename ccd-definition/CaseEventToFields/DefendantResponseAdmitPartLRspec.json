@@ -1082,47 +1082,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQIncomeAndExpenseLabelFullAdmission",
-    "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
-    "PageDisplayOrder": 35,
-    "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQCarerAllowanceCreditFullAdmission",
-    "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
-    "PageDisplayOrder": 35,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRecurringIncomeFA",
-    "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
-    "PageDisplayOrder": 35,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRecurringExpensesFA",
-    "PageID": "DefendantIncomeExpensesFullAdmissionRespondent2",
-    "PageDisplayOrder": 35,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 36,

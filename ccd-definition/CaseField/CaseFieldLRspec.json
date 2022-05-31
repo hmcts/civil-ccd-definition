@@ -1619,7 +1619,8 @@
     "ID": "respondent2DQIncomeAndExpenseLabelFullAdmission",
     "Label": "## ${respondent2.partyName}'s income and expenses\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1647,7 +1648,8 @@
     "ID": "respondent2DQCarerAllowanceCreditFullAdmission",
     "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1679,7 +1681,8 @@
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1711,7 +1714,8 @@
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
