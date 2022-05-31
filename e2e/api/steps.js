@@ -131,7 +131,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -191,7 +190,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
   resubmitClaim: async (user) => {
@@ -207,7 +205,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
   amendClaimDocuments: async (user) => {
@@ -243,7 +240,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
   notifyClaim: async (user, multipartyScenario) => {
