@@ -82,5 +82,11 @@
     "ListElementCode": "REPAYMENT_PLAN_2",
     "ListElement": "REPAYMENT_PLAN_2",
     "DisplayOrder": 14
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "SOMEONE_DISPUTES",
+    "ListElement": "SOMEONE_DISPUTES",
+    "DisplayOrder": 15
   }
 ]
