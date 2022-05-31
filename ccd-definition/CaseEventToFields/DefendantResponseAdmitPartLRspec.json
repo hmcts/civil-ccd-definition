@@ -823,7 +823,6 @@
   "PageDisplayOrder": 21,
   "PageFieldDisplayOrder": 2,
   "DisplayContext": "MANDATORY",
-  "PageShowCondition": "",
   "PageID": "DetailsOfPayingMoneyRepaymentPlan",
   "ShowSummaryChangeOption": "Y"
   },
@@ -834,7 +833,6 @@
     "PageDisplayOrder": 21,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -845,7 +843,6 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "PageShowCondition": "",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -856,8 +853,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "FieldShowCondition": "respondent1CourtOrderPaymentOption =\"Yes\"",
-    "PageShowCondition": "",
+    "_Comment": "respondent1CourtOrderPaymentOption =\"Yes\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
