@@ -2038,5 +2038,14 @@
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addLegalRepDeadline",
+    "Label": "Add Legal Rep Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "Add legal rep to case deadline",
+    "_Category":  "CIVIL"
   }
 ]
