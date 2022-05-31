@@ -76,5 +76,11 @@
     "ListElementCode": "WHY_2_DOES_NOT_PAY_IMMEDIATELY",
     "ListElement": "WHY_2_DOES_NOT_PAY_IMMEDIATELY",
     "DisplayOrder": 13
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "REPAYMENT_PLAN_2",
+    "ListElement": "REPAYMENT_PLAN_2",
+    "DisplayOrder": 14
   }
 ]

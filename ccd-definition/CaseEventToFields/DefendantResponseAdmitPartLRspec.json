@@ -811,28 +811,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "specDefenceFullAdmittedRequired !=\"Yes\" AND partAdmittedByEitherRespondents !=\"Yes\" AND defenceAdmitPartPaymentTimeRouteGeneric =\"*\" AND defenceAdmitPartPaymentTimeRouteGeneric =\"SUGGESTION_OF_REPAYMENT_PLAN\" AND neitherCompanyNorOrganisation =\"Yes\"",
-    "PageID": "DetailsOfPayingMoneyRepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\""
-  },
-  {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-  "CaseFieldID": "respondent1CourtOrderPayment",
-  "PageDisplayOrder": 21,
-  "PageFieldDisplayOrder": 2,
-  "DisplayContext": "MANDATORY",
-  "PageID": "DetailsOfPayingMoneyRepaymentPlan",
-  "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2CourtOrderPayment",
-    "PageDisplayOrder": 21,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -853,7 +832,7 @@
     "PageDisplayOrder": 30,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "_Comment": "respondent1CourtOrderPaymentOption =\"Yes\"",
+    "FieldShowCondition": "respondent1CourtOrderPaymentOption =\"Yes\"",
     "PageID": "DetailsOfPayingMoneyRepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1213,7 +1192,7 @@
     "PageDisplayOrder": 39,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame =\"Yes\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"REPAYMENT_PLAN_2\"",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
