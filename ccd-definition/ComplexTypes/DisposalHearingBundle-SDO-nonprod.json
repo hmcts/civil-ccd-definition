@@ -8,7 +8,7 @@
   },
   {
     "ID": "DisposalHearingBundle",
-    "ListElementCode": "label",
+    "ListElementCode": "label1",
     "FieldType": "Label",
     "ElementLabel": "## Disposal hearing bundle ##",
     "SecurityClassification": "Public"
@@ -22,10 +22,17 @@
   },
   {
     "ID": "DisposalHearingBundle",
+    "ListElementCode": "label2",
+    "FieldType": "Label",
+    "ElementLabel": "#### Select bundle type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
     "ListElementCode": "type",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingBundleType",
-    "ElementLabel": "Select bundle type",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {

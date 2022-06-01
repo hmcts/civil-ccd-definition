@@ -178,6 +178,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodVideoConferenceHearingCourtStatement",
+    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodTelephoneHearing",
     "Label": "Who will arrange the call? ",
     "FieldType": "FixedRadioList",
