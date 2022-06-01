@@ -1381,6 +1381,7 @@
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
@@ -1395,6 +1396,7 @@
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing",
     "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -1555,6 +1557,7 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1566,6 +1569,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
