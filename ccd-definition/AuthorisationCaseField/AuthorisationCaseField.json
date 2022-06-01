@@ -2501,7 +2501,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "basic-access"
         ],
         "CRUD": "R"
       }
