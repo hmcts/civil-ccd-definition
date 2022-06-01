@@ -36,7 +36,8 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Do you want to allocate this claim to the small claims track?",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details-navigation"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -61,7 +62,8 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "What track are you allocating the claim to?",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details-navigation"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -97,7 +99,8 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\""
+    "PageShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details-navigation"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -120,7 +123,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DISPOSAL\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -394,5 +398,53 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "setFastTrackFlag",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPlaceholder",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "setFastTrackFlag=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "setSmallClaimsFlag",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPlaceholder",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "setSmallClaimsFlag=\"Yes\""
   }
 ]
