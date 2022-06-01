@@ -112,7 +112,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
+          "[APPLICANTSOLICITORONE]",
+          "basic-access"
         ],
         "CRUD": "R"
       }

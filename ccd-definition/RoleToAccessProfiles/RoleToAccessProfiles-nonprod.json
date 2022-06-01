@@ -144,15 +144,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "fee-paid-judge",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
@@ -165,8 +156,8 @@
     "RoleName" : "hmcts-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
-    "ReadOnly": "Y",
+    "AccessProfiles": "basic-access",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -174,7 +165,7 @@
     "RoleName" : "case-allocator",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -183,7 +174,7 @@
     "RoleName" : "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "basic-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
