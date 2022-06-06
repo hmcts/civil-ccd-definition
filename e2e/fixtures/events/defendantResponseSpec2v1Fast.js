@@ -9,6 +9,23 @@ module.exports = {
           specAoSRespondentCorrespondenceAddressRequired: 'Yes'
         }
       },
+      midEventGeneratedData: {
+        RespondentResponseTypeSpec: {
+          showConditionFlags: 'object'
+        },
+        defenceAdmittedPartRoute: {
+          showConditionFlags: 'object'
+        },
+        WhenWillClaimBePaid: {
+          showConditionFlags: 'object'
+        },
+        ResponseConfirmDetails: {
+          showConditionFlags: 'object'
+        },
+        defenceRoute: {
+          showConditionFlags: 'object'
+        }
+      }
     };
 
     switch (response) {
@@ -21,7 +38,10 @@ module.exports = {
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
@@ -125,7 +145,10 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
 
           defenceRoute: {
@@ -168,7 +191,10 @@ module.exports = {
             specPaidLessAmountOrDisputesOrPartAdmission: null,
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
+            respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
 
           ResponseConfirmNameAddress: {
@@ -291,7 +317,10 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            specDisputesOrPartAdmission: 'Yes'
+            specDisputesOrPartAdmission: 'Yes',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
 
           defenceRoute: {
@@ -330,7 +359,10 @@ module.exports = {
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specDefenceFullAdmittedRequired: 'No'
+            specDefenceFullAdmittedRequired: 'No',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
 
           ResponseConfirmNameAddress: {
@@ -371,9 +403,11 @@ module.exports = {
             specFullDefenceOrPartAdmission1V1: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specFullAdmitPaid: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'No'
-
+            specFullAdmissionOrPartAdmission: 'No',
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
           ResponseConfirmNameAddress: {
             businessProcess: {
@@ -467,8 +501,11 @@ module.exports = {
             specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
             specPartAdmitPaid: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
-            respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
+            specFullAdmissionOrPartAdmission: 'No',
+            respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION',
+            fullAdmissionAndFullAmountPaid: 'No',
+            partAdmittedByEitherRespondents: 'No',
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY'
           },
 
           defenceAdmittedPartRoute: {
