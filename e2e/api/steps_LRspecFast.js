@@ -205,9 +205,6 @@ const assertValidData = async (data, pageId) => {
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
 
-  if(pageId === 'InterestSummary')
-    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
-
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
     + '. Offending field ' + matchFailure);
@@ -282,14 +279,8 @@ function updateWithGenerated(currentObject, responseBodyData, expectedModificati
     if (typeof expectedModifications[key] === 'object') {
       assert.property(responseBodyData, key);
       if (Array.isArray(responseBodyData[key])) {
-        if (modified[key]) {
-          for (let i = 0; i < responseBodyData[key].length; i++) {
-            modified[key][i] = updateWithGenerated(currentObject[key][i],
-              responseBodyData[key][i], expectedModifications[key]);
-          }
-        } else {
-          modified[key] = responseBodyData[key];
-        }
+        // replace bc order is not important
+        modified[key] = responseBodyData[key];
       } else if (modified[key]) {
         modified[key] = updateWithGenerated(currentObject[key], responseBodyData[key], expectedModifications[key]);
       } else {

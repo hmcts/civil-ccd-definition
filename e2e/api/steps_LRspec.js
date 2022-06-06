@@ -205,9 +205,6 @@ const assertValidData = async (data, pageId) => {
     caseData = updateWithGenerated(caseData, responseBody.data, expected);
   }
 
-  if(pageId === 'InterestSummary')
-    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
-
   const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
   assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
     + '. Offending field ' + matchFailure);
