@@ -82,14 +82,14 @@
     <notes><![CDATA[
     file name: spring-security-crypto-5.3.3.RELEASE.jar
     ]]></notes>
-    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security@.*$</packageUrl>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-crypto@.*$</packageUrl>
     <cve>CVE-2022-22976</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
     file name: spring-security-rsa-1.0.9.RELEASE.jar
     ]]></notes>
-    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security@.*$</packageUrl>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring\-security\-rsa@.*$</packageUrl>
     <cve>CVE-2022-22976</cve>
   </suppress>
  </suppressions>
