@@ -67,7 +67,8 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
+    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/disposal-screen"
   },
 
   {
