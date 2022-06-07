@@ -70,11 +70,6 @@
     "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/disposal-screen"
   },
-
-  {
-    "_COMMENT": "DISPOSAL STARTS HERE"
-  },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
@@ -318,7 +313,7 @@
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingClaimSettlingDJ",
     "PageFieldDisplayOrder": 20,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "READONLY",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
