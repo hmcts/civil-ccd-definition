@@ -181,6 +181,23 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
+  defendClaim: async (user, defendantResponseData, statusAfterResponse) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE_SPEC';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    for (let pageId of Object.keys(defendantResponseData)) {
+      await updateAndCheckData(defendantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent(statusAfterResponse);
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    deleteCaseFields('respondent1Copy');
+  },
+
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
