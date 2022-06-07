@@ -1,9 +1,9 @@
-const {date} = require('../../api/dataHelper');
+const {dateNoWeekends} = require('../../api/dataHelper');
 
 module.exports = {
   userInput: {
     ExtensionDate: {
-      respondentSolicitor1AgreedDeadlineExtension: date(41) // date generate invalid date, like weekend date
+      respondentSolicitor1AgreedDeadlineExtension: dateNoWeekends(40)
     }
   },
   midEventData: {
