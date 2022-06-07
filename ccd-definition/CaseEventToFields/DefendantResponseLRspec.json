@@ -965,7 +965,8 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
