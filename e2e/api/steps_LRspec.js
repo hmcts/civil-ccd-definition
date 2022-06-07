@@ -105,7 +105,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaim: async (user, createClaimData) => {
+  createClaim: async (user, createClaimData, roleToAssign='RESPONDENTSOLICITORONESPEC') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -119,7 +119,7 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseId, roleToAssign, config.defendantSolicitorUser);
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
