@@ -43,13 +43,6 @@
     "FieldTypeParameter": "CaseManagementOrderAdditional",
     "SecurityClassification": "Public"
   },
-
-  {
-    "_comment": " disposal starts here"
-  },
-
-
-
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseManagementOrderDisposal",
@@ -204,8 +197,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingClaimSettlingDJ",
-    "Label": "Claim settling",
-    "FieldType": "DisposalHearingClaimSettlingDJ",
+    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement. \n **** ",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
