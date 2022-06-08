@@ -42,7 +42,7 @@ const eventData = {
       DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_FULL_DEFENCE'),
       DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_NOT_FULL_DEFENCE')
     },
-    TWO_V_ONE:{
+    TWO_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
@@ -64,7 +64,7 @@ const eventData = {
       PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2('NOT_PROCEED'),
     },
-    TWO_V_ONE:{
+    TWO_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
@@ -81,7 +81,7 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE') => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -143,9 +143,9 @@ module.exports = {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    if(scenario === 'ONE_V_ONE')
+    if (scenario === 'ONE_V_ONE')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if(scenario === 'ONE_V_TWO')
+    else if (scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if (scenario === 'TWO_V_ONE')
       if (response === 'DIFF_FULL_DEFENCE')
@@ -195,23 +195,107 @@ const assertValidData = async (data, pageId) => {
 
   assert.equal(response.status, 200);
 
-  if (data.midEventData[pageId]) {
-    const expectedMidEvent = data.midEventData[pageId];
-    caseData = update(caseData, expectedMidEvent);
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  // if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+  //   const expected = data.midEventGeneratedData[pageId];
+  //   caseData = updateWithGenerated(caseData, responseBody.data, expected);
+  // }
+  //
+  // const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
+  // assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
+  //   + '. Offending field ' + matchFailure);
+
+  caseData = update(caseData, responseBody.data);
+};
+
+const updateAndCheckData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  caseData = update(caseData, data.userInput[pageId]);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
   }
 
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
-    const expected = data.midEventGeneratedData[pageId];
-    caseData = updateWithGenerated(caseData, responseBody.data, expected);
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
 
-  if(pageId === 'InterestSummary')
-    console.log(`${JSON.stringify(responseBody.data['claimFee'])} == ${JSON.stringify(caseData['claimFee'])}`);
-
-  const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
-  assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
-    + '. Offending field ' + matchFailure);
+  caseData = update(caseData, responseBody.data);
 };
+
+function checkExpected(responseBodyData, expected, prefix = '') {
+  if (!(responseBodyData) && expected) {
+    if (expected) {
+      assert.fail('Response' + prefix ? '[' + prefix + ']' : '' + ' is empty but it was expected to be ' + expected);
+    } else {
+      // null and undefined may reach this point bc typeof null is object
+      return;
+    }
+  }
+  for (const key in expected) {
+    if (Object.prototype.hasOwnProperty.call(expected, key)) {
+      if (typeof expected[key] === 'object') {
+        checkExpected(responseBodyData[key], expected[key], key + '.');
+      } else {
+        assert.equal(responseBodyData[key], expected[key], prefix + key + ': expected ' + expected[key]
+          + ' but actual ' + responseBodyData[key]);
+      }
+    }
+  }
+}
+
+function checkGenerated(responseBodyData, generated, prefix = '') {
+  if (!(responseBodyData)) {
+    assert.fail('Response' + prefix ? '[' + prefix + ']' : '' + ' is empty but it was not expected to be');
+  }
+  for (const key in generated) {
+    if (Object.prototype.hasOwnProperty.call(generated, key)) {
+      const checkType = function (type) {
+        if (type === 'array') {
+          assert.isTrue(Array.isArray(responseBodyData[key]),
+            'responseBody[' + prefix + key + '] was expected to be an array');
+        } else {
+          assert.equal(typeof responseBodyData[key], type,
+            'responseBody[' + prefix + key + '] was expected to be of type ' + type);
+        }
+      };
+      const checkFunction = function (theFunction) {
+        assert.isTrue(theFunction.call(responseBodyData[key], responseBodyData[key]),
+          'responseBody[' + prefix + key + '] does not satisfy the condition it should');
+      };
+      if (typeof generated[key] === 'string') {
+        checkType(generated[key]);
+      } else if (typeof generated[key] === 'function') {
+        checkFunction(generated[key]);
+      } else if (typeof generated[key] === 'object') {
+        if (generated[key]['type']) {
+          checkType(generated[key]['type']);
+        }
+        if (generated[key]['condition']) {
+          checkType(generated[key]['condition']);
+        }
+        for (const key2 in generated[key]) {
+          if (Object.prototype.hasOwnProperty.call(generated, key2) && 'condition' !== key2 && 'type' !== key2) {
+            checkGenerated(responseBodyData[key2], generated[key2], key2 + '.');
+          }
+        }
+      }
+    }
+  }
+}
 
 /**
  * ResponseData is expected to modify caseData as described in "update" method. We cannot use deepEquals because some
@@ -257,7 +341,9 @@ function update(currentObject, modifications) {
   const modified = {...currentObject};
   for (const key in modifications) {
     if (currentObject[key] && typeof currentObject[key] === 'object') {
-      if (!Array.isArray(currentObject[key])) {
+      if (Array.isArray(currentObject[key])) {
+        modified[key] = modifications[key];
+      } else {
         modified[key] = update(currentObject[key], modifications[key]);
       }
     } else {

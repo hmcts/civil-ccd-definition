@@ -90,7 +90,6 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'Yes',
-            specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           },
@@ -140,9 +139,7 @@ module.exports = {
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specFullDefenceOrPartAdmission1V1: 'No',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmitPaid: 'No',
             specFullAdmissionOrPartAdmission: 'Yes',
             specPaidLessAmountOrDisputesOrPartAdmission: 'No'
 
@@ -236,9 +233,7 @@ module.exports = {
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
-            specPartAdmitPaid: 'No',
             specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
@@ -284,7 +279,6 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specFullDefenceOrPartAdmission1V1: null,
             specPaidLessAmountOrDisputesOrPartAdmission: null,
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
