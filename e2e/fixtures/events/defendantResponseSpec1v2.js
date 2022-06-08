@@ -25,6 +25,9 @@ module.exports = {
         },
         defenceRoute: {
           showConditionFlags: 'object'
+        },
+        EmploymentDeclaration: {
+          showConditionFlags: 'object'
         }
       }
     };

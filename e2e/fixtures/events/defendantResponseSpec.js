@@ -420,9 +420,7 @@ module.exports = {
             expected: {
               specFullDefenceOrPartAdmission: 'No',
               multiPartyResponseTypeFlags: 'FULL_ADMISSION',
-              specFullDefenceOrPartAdmission1V1: 'No',
               specDefenceFullAdmittedRequired: 'No',
-              specFullAdmitPaid: 'No',
               specFullAdmissionOrPartAdmission: 'No',
               fullAdmissionAndFullAmountPaid: 'No',
               partAdmittedByEitherRespondents: 'No',
@@ -577,8 +575,6 @@ module.exports = {
               specAoSRespondentCorrespondenceAddressRequired: 'Yes',
               specFullAdmissionOrPartAdmission: 'No',
               specFullDefenceOrPartAdmission: 'No',
-              specFullDefenceOrPartAdmission1V1: null,
-              specPaidLessAmountOrDisputesOrPartAdmission: null,
               specDefenceFullAdmittedRequired: 'No',
               specApplicantCorrespondenceAddressRequired: 'No',
               specRespondent1Represented: 'Yes',
