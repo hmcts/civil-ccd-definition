@@ -1,0 +1,58 @@
+[
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "input",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "Claimant",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "date",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "text1",
+    "FieldType": "Label",
+    "ElementLabel": "Defendant(s)",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "input1",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+ ]

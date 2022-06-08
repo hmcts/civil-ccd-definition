@@ -1,0 +1,21 @@
+[
+  {
+    "ID": "DisposalHearingMethodVideoConferenceHearing",
+    "ListElementCode": "videoTheClaimant",
+    "ListElement": "The claimant",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "DisposalHearingMethodVideoConferenceHearing",
+    "ListElementCode": "videoTheDefendant",
+    "ListElement": "The defendant",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "DisposalHearingMethodVideoConferenceHearing",
+    "ListElementCode": "videoTheCourt",
+    "ListElement": "The court",
+    "HintText": "Parties must file at court details of their respective relevant telephone numbers by 4.00 pm 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "DisplayOrder": 3
+  }
+]
