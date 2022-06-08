@@ -51,10 +51,11 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            respondent2SameLegalRepresentative: 'No',
+            respondent2SameLegalRepresentative: 'No'
+          },
           Hearing: {
-            sameSolicitorSameResponse: 'Yes',
-            respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes',
             respondent1DQHearing: {
               unavailableDatesRequired: 'No'
             },
