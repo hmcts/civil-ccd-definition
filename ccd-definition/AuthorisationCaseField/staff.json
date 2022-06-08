@@ -1007,5 +1007,11 @@
     "CaseFieldID": "respondent1GeneratedResponseDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadline",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

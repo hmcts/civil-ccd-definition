@@ -46,7 +46,6 @@ module.exports = {
       events.DEFENDANT_RESPONSE_SPEC,
       events.INFORM_AGREED_EXTENSION_DATE_SPEC,
       events.CHANGE_SOLICITOR_EMAIL,
-      events.ACKNOWLEDGEMENT_OF_SERVICE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -64,21 +63,18 @@ module.exports = {
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
@@ -88,7 +84,6 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
@@ -100,7 +95,6 @@ module.exports = {
     AWAITING_DEFENDANT_RESPONSE: [
       events.ADD_CASE_NOTE,
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.CASE_PROCEEDS_IN_CASEMAN_SPEC,
       events.AMEND_PARTY_DETAILS
     ]
   }
