@@ -489,5 +489,13 @@
     "Label": "Road traffic accident",
     "FieldType": "FastTrackRoadTrafficAccident",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAddNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "FastTrackAddNewDirections",
+    "SecurityClassification": "Public"
   }
 ]

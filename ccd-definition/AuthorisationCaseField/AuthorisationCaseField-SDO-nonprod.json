@@ -454,7 +454,7 @@
       }
     ]
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "setSmallClaimsFlag",
     "AccessControl": [
@@ -874,6 +874,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackRoadTrafficAccident",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackAddNewDirections",
     "AccessControl": [
       {
         "UserRoles": [
