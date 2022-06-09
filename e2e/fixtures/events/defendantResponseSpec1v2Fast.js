@@ -430,7 +430,7 @@ module.exports = {
           },
 
           RespondentResponseTypeSpec: {
-            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             sameSolicitorSameResponse: 'No',
             specDefenceFullAdmittedRequired: 'No',
