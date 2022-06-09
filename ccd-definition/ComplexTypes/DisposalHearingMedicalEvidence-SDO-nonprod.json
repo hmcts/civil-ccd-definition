@@ -33,5 +33,12 @@
       "FieldType": "Date",
       "ElementLabel": " ",
       "SecurityClassification": "Public"
+    },
+    {
+      "ID": "DisposalHearingMedicalEvidence",
+      "ListElementCode": "line",
+      "FieldType": "Label",
+      "ElementLabel": "****",
+      "SecurityClassification": "Public"
     }
   ]
