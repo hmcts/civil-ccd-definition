@@ -26,12 +26,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1ClaimResponseTypeForSpecLabel",
+    "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpecLabel",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND claimantResponseScenarioFlag!=\"ONE_V_TWO_TWO_LEGAL_REP\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -39,10 +51,10 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondentResponseIsSame = \"Yes\"",
+    "FieldShowCondition": "respondentResponseIsSame = \"Yes\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -50,7 +62,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "Y"
@@ -60,23 +72,11 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1GeneratedResponseDocument",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "claimantResponseScenarioFlag",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
