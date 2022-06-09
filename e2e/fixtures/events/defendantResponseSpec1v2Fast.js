@@ -182,7 +182,6 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
           },
           defenceAdmittedPartRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
             responseClaimTrack: 'FAST_CLAIM'
           },
           defenceRoute: {
@@ -271,7 +270,6 @@ module.exports = {
           },
 
           defenceAdmittedPartRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'FAST_CLAIM',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
@@ -285,8 +283,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'FAST_CLAIM',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            responseClaimTrack: 'FAST_CLAIM'
           }
         };
         break;
@@ -450,7 +447,6 @@ module.exports = {
 
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 

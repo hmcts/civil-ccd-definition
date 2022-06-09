@@ -88,7 +88,6 @@ module.exports = {
           },
 
           defenceRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'SMALL_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
@@ -172,7 +171,6 @@ module.exports = {
           },
 
           defenceAdmittedPartRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'SMALL_CLAIM',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
@@ -186,8 +184,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            responseClaimTrack: 'SMALL_CLAIM'
           }
         };
         break;
@@ -206,7 +203,6 @@ module.exports = {
             specAoSRespondentCorrespondenceAddressRequired: 'Yes',
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: null,
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
             specRespondent1Represented: 'Yes',

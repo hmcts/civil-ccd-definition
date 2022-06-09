@@ -90,8 +90,7 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'Yes',
-            specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
@@ -135,9 +134,7 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'No'
-
+            specFullAdmissionOrPartAdmission: 'Yes'
           },
           ResponseConfirmNameAddress: {
             businessProcess: {
@@ -234,7 +231,6 @@ module.exports = {
           },
 
           defenceAdmittedPartRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'SMALL_CLAIM',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
@@ -248,8 +244,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            responseClaimTrack: 'SMALL_CLAIM'
           }
         };
         break;
@@ -272,7 +267,6 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: null,
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
@@ -363,8 +357,7 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
