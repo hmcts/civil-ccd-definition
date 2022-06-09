@@ -87,7 +87,6 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',
@@ -130,7 +129,6 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
 
@@ -250,7 +248,6 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
             respondentResponseIsSame: 'Yes',
             specRespondent1Represented: 'Yes',
@@ -347,7 +344,6 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
 
@@ -392,7 +388,6 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM',
             sameSolicitorSameResponse: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             respondent2SameLegalRepresentative: 'Yes',
             specRespondent1Represented: 'Yes',
@@ -487,7 +482,6 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',
@@ -530,7 +524,6 @@ module.exports = {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             sameSolicitorSameResponse: 'No',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',

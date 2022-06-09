@@ -88,7 +88,6 @@ module.exports = {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             sameSolicitorSameResponse: null,
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'Yes',
             specDefenceFullAdmittedRequired: 'No'
           },
@@ -133,8 +132,7 @@ module.exports = {
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
           ResponseConfirmNameAddress: {
             businessProcess: {
@@ -226,7 +224,6 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
 
@@ -263,9 +260,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
-            responseClaimTrack: null,
-            sameSolicitorSameResponse: null,
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
@@ -354,8 +348,6 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
-            sameSolicitorSameResponse: null,
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No'
           },
@@ -388,7 +380,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specDefenceFullAdmittedRequired: 'No'
