@@ -128,12 +128,7 @@ module.exports = {
 
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            specDisputesOrPartAdmission: 'Yes'
-          },
-
-          Upload: {
-            specDisputesOrPartAdmission: 'Yes'
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmNameAddress: {
@@ -285,18 +280,12 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specDefenceFullAdmittedRequired: 'No',
-            specDisputesOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            specDisputesOrPartAdmission: 'Yes'
-          },
-
-          Upload: {
-            specDisputesOrPartAdmission: 'Yes'
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmNameAddress: {
@@ -463,7 +452,6 @@ module.exports = {
 
           defenceAdmittedPartRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
 
@@ -476,8 +464,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes'
+            responseClaimTrack: 'FAST_CLAIM'
           }
         };
         break;

@@ -129,12 +129,7 @@ module.exports = {
 
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            specDisputesOrPartAdmission: 'Yes'
-          },
-
-          Upload: {
-            specDisputesOrPartAdmission: 'Yes'
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmDetails: {
@@ -188,13 +183,11 @@ module.exports = {
           },
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
-            responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'No'
+            responseClaimTrack: 'FAST_CLAIM'
           },
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'No'
+            responseClaimTrack: 'FAST_CLAIM'
           }
         };
         break;
@@ -280,7 +273,6 @@ module.exports = {
           defenceAdmittedPartRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
 
@@ -294,7 +286,6 @@ module.exports = {
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
           }
         };
@@ -460,12 +451,7 @@ module.exports = {
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
             specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            specDisputesOrPartAdmission: 'Yes'
-          },
-
-          Upload: {
-            specDisputesOrPartAdmission: 'Yes'
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmNameAddress: {
