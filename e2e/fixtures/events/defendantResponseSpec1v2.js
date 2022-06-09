@@ -480,7 +480,8 @@ module.exports = {
 
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'Yes',
-            multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
+            // this value changed on 2015
+            // multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             specRespondent1Represented: 'Yes',
