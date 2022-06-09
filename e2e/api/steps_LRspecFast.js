@@ -292,42 +292,6 @@ function update(currentObject, modifications) {
   return modified;
 }
 
-/**
- * Some fields returned by backend are generated and we can't foresee their values. They are going
- * to update our userData though, and this method is how we are going to do so.
- *
- * @param currentObject current caseData
- * @param responseBodyData data field of the response body
- * @param expectedModifications description of the modifications expected to be in responseBodyData
- * @return a case data with the new values
- */
-function updateWithGenerated(currentObject, responseBodyData, expectedModifications) {
-  const modified = {...currentObject};
-  for (const key in expectedModifications) {
-    if (typeof expectedModifications[key] === 'object') {
-      assert.property(responseBodyData, key);
-      if (Array.isArray(responseBodyData[key])) {
-        if (modified[key]) {
-          for (let i = 0; i < responseBodyData[key].length; i++) {
-            modified[key][i] = updateWithGenerated(currentObject[key][i],
-              responseBodyData[key][i], expectedModifications[key]);
-          }
-        } else {
-          modified[key] = responseBodyData[key];
-        }
-      } else if (modified[key]) {
-        modified[key] = updateWithGenerated(currentObject[key], responseBodyData[key], expectedModifications[key]);
-      } else {
-        modified[key] = responseBodyData[key];
-      }
-    } else {
-      assert.isTrue(typeof responseBodyData[key] === expectedModifications[key]);
-      modified[key] = responseBodyData[key];
-    }
-  }
-  return modified;
-}
-
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
