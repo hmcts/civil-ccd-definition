@@ -105,29 +105,6 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaim: async (user, createClaimData, roleToAssign='RESPONDENTSOLICITORONESPEC') => {
-
-    eventName = 'CREATE_CLAIM_SPEC';
-    caseId = null;
-    caseData = {};
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    for (let pageId of Object.keys(createClaimData)) {
-      await updateAndCheckData(createClaimData, pageId);
-    }
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED');
-
-    await assignCaseRoleToUser(caseId, roleToAssign, config.defendantSolicitorUser);
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
-  },
-
   informAgreedExtensionDate: async (user) => {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
@@ -181,23 +158,6 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  defendClaim: async (user, defendantResponseData, statusAfterResponse) => {
-    await apiRequest.setupTokens(user);
-    eventName = 'DEFENDANT_RESPONSE_SPEC';
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-
-    for (let pageId of Object.keys(defendantResponseData)) {
-      await updateAndCheckData(defendantResponseData, pageId);
-    }
-
-    await assertSubmittedEvent(statusAfterResponse);
-
-    await waitForFinishedBusinessProcess(caseId);
-
-    deleteCaseFields('respondent1Copy');
-  },
-
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
@@ -235,101 +195,33 @@ const assertValidData = async (data, pageId) => {
 
   assert.equal(response.status, 200);
 
-  if (data.midEventData[pageId]) {
-    const expectedMidEvent = data.midEventData[pageId];
-    caseData = update(caseData, expectedMidEvent);
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
   }
 
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
-    const expected = data.midEventGeneratedData[pageId];
-    caseData = updateWithGenerated(caseData, responseBody.data, expected);
-  }
-
-  const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
-  assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
-    + '. Offending field ' + matchFailure);
-};
-
-/**
- * <p>
- * This method uses the information in data to update caseData, then sends caseData to the validation page,
- * which depends on pageId.
- * </p>
- * <p>
- * The response is then checked so it answers to the information in data, throwing an assertion error otherwise.
- * caseData is updated with the response as well.
- * </p>
- * <p>
- * The most important piece is data, which should have the following shape:
- * <ul>
- *   <li>data.userInput is the input of the user, meaning that each key has to be the id of a field and each
- *   value is the value the user inputs to that field. Sometimes fields can be nested, so
- *   {group1 : {field1: 'value'}} is allowed</li>
- *   <li>data.expected contains field:value pairs that we expect the api to return with a particular value.
- *   For instance, if we know that the api has to calculate fieldT and we know that it should return 'ASDF',
- *   data.expected would contain {... fieldT : 'ASDF',...}. We can also have nested objects to account
- *   for complex types and so on.</li>
- *   <li>data.generated is for information that we know the api should include in the response, but that has a more
- *   complicated check than just equality. In particular
- *   <ul>
- *     <li>
- *       If we have { fieldT: { type: 'typeName' }} then we will check typeof response.data.fieldT === 'typeName'
- *       except if typeName is 'array' in which case we will check with isArray method.
- *       </li>
- *     <li>
- *       If we have { fieldT: { condition: aFunction }} we will check
- *       aFunction.call(response.data.fieldT, response.data.fieldT) for a true-ish value
- *       </li>
- *       <li>
- *         We also understand { fieldT: 'typeName' } to be checking the type and { fieldT: aFunction } to be
- *         checking with a function.
- *       </li>
- *       <li>
- *         Last, we also accept nesting.
- *       </li>
- *     </ul>
- *   </li>
- * </ul>
- * </p>
- * @param data data that should be use for the current operation
- * @param pageId id of the page we want to try
- * @return {Promise<void>} doesn't return anything
- */
-const updateAndCheckData = async (data, pageId) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
-  caseData = update(caseData, data[pageId].userInput);
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    caseData,
-    caseId
-  );
-  let responseBody = await response.json();
-
-  assert.equal(response.status, 200);
-
-  if (data[pageId].expected) {
-    checkExpected(responseBody.data, data[pageId].expected);
-  }
-
-  if (data[pageId].generated) {
-    checkGenerated(responseBody.data, data[pageId].generated);
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
 
   caseData = update(caseData, responseBody.data);
 };
 
 function checkExpected(responseBodyData, expected, prefix = '') {
-  if (!(responseBodyData)) {
-    assert.fail('Response' + prefix ? '[' + prefix + ']' : '' + ' is empty but it was expected to be ' + expected);
+  if (!(responseBodyData) && expected) {
+    if (expected) {
+      assert.fail('Response' + prefix ? '[' + prefix + ']' : '' + ' is empty but it was expected to be ' + expected);
+    } else {
+      // null and undefined may reach this point bc typeof null is object
+      return;
+    }
   }
   for (const key in expected) {
     if (Object.prototype.hasOwnProperty.call(expected, key)) {
       if (typeof expected[key] === 'object') {
         checkExpected(responseBodyData[key], expected[key], key + '.');
       } else {
-        assert.equal(expected[key], responseBodyData[key], prefix + key + ' has different value');
+        assert.equal(responseBodyData[key], expected[key], prefix + key + ': expected ' + expected[key]
+          + ' but actual ' + responseBodyData[key]);
       }
     }
   }
@@ -376,37 +268,6 @@ function checkGenerated(responseBodyData, generated, prefix = '') {
 }
 
 /**
- * ResponseData is expected to modify caseData as described in "update" method. We cannot use deepEquals because some
- * fields are not returned by backend while they're still in the browser's memory. For instance, when creating a claim,
- * the solicitor's email correct field is not returned, but it is still there, because it's sent on submit.
- *
- * @param responseBodyData the information in the response
- * @param caseData expected contents
- * @return null if all elements in responseBodyData are deeply included in caseData,
- * the name of the first field for which that isn't true otherwise
- */
-function responseMatchesExpectations(responseBodyData, caseData) {
-  for (const key in responseBodyData) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (responseBodyData.hasOwnProperty(key)) {
-      if (typeof responseBodyData[key] === 'object') {
-        const failure = responseMatchesExpectations(responseBodyData[key], caseData[key]);
-        if (failure) {
-          return key + '.' + failure;
-        }
-      } else if (caseData) {
-        if (responseBodyData[key] !== caseData[key]) {
-          return key;
-        }
-      } else {
-        return key + ' is not in caseData';
-      }
-    }
-  }
-  return null;
-}
-
-/**
  * {...obj1, ...obj2} replaces elements. For instance, if obj1 = { check : { correct : false }}
  * and obj2 = { check: { newValue : 'ASDF' }} the result will be { check : {newValue : 'ASDF} }.
  *
@@ -418,46 +279,14 @@ function responseMatchesExpectations(responseBodyData, caseData) {
 function update(currentObject, modifications) {
   const modified = {...currentObject};
   for (const key in modifications) {
-    if (currentObject[key] && typeof currentObject[key] === 'object' && !Array.isArray(currentObject[key])) {
-      modified[key] = update(currentObject[key], modifications[key]);
-    } else {
-      modified[key] = modifications[key];
-    }
-  }
-  return modified;
-}
-
-/**
- * Some fields returned by backend are generated and we can't foresee their values. They are going
- * to update our userData though, and this method is how we are going to do so.
- *
- * @param currentObject current caseData
- * @param responseBodyData data field of the response body
- * @param expectedModifications description of the modifications expected to be in responseBodyData
- * @return a case data with the new values
- */
-function updateWithGenerated(currentObject, responseBodyData, expectedModifications) {
-  const modified = {...currentObject};
-  for (const key in expectedModifications) {
-    if (typeof expectedModifications[key] === 'object') {
-      assert.property(responseBodyData, key);
-      if (Array.isArray(responseBodyData[key])) {
-        if (modified[key]) {
-          for (let i = 0; i < responseBodyData[key].length; i++) {
-            modified[key][i] = updateWithGenerated(currentObject[key][i],
-              responseBodyData[key][i], expectedModifications[key]);
-          }
-        } else {
-          modified[key] = responseBodyData[key];
-        }
-      } else if (modified[key]) {
-        modified[key] = updateWithGenerated(currentObject[key], responseBodyData[key], expectedModifications[key]);
+    if (currentObject[key] && typeof currentObject[key] === 'object') {
+      if (Array.isArray(currentObject[key])) {
+        modified[key] = modifications[key];
       } else {
-        modified[key] = responseBodyData[key];
+        modified[key] = update(currentObject[key], modifications[key]);
       }
     } else {
-      assert.isTrue(typeof responseBodyData[key] === expectedModifications[key]);
-      modified[key] = responseBodyData[key];
+      modified[key] = modifications[key];
     }
   }
   return modified;

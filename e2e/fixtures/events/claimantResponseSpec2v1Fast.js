@@ -96,8 +96,7 @@ module.exports = {
             claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             defendantSingleResponseToBothClaimants: 'Yes',
             respondent1DQHearing: {
-              hearingLength: 'ONE_DAY',
-              unavailableDatesRequired: 'No',
+              hearingLength: 'ONE_DAY'
             },
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
@@ -119,11 +118,6 @@ module.exports = {
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
-            }
-          },
-          StatementOfTruth: {
-            applicant1DQHearing: {
-              unavailableDatesRequired: 'No'
             }
           }
         };
