@@ -93,8 +93,7 @@ module.exports = {
               disclosureProposalAgreed: 'Yes',
             },
             respondent1DQHearing: {
-              hearingLength: 'ONE_DAY',
-              unavailableDatesRequired: 'No',
+              hearingLength: 'ONE_DAY'
             },
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
