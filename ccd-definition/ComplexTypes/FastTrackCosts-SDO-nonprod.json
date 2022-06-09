@@ -1,0 +1,24 @@
+
+[
+  {
+    "ID": "FastTrackCosts",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCosts",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "## Costs \nCosts in the case",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCosts",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  }
+]
