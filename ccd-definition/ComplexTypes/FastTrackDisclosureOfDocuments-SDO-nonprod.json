@@ -8,20 +8,6 @@
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "input",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "date",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input1",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -43,21 +29,35 @@
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "input3",
-    "FieldType": "TextArea",
+    "ListElementCode": "date2",
+    "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "input4",
+    "ListElementCode": "input3",
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "date2",
+    "ListElementCode": "input4",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackDisclosureOfDocuments",
+    "ListElementCode": "input5",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackDisclosureOfDocuments",
+    "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
