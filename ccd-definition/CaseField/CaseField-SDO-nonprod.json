@@ -250,7 +250,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingAddNewDirections",
-    "Label": "Add a new direction",
+    "Label": "Add a new direction ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DisposalHearingAddNewDirections",
     "SecurityClassification": "Public"
