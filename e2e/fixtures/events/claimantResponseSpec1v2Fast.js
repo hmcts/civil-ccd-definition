@@ -117,11 +117,6 @@ module.exports = {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
             }
-          },
-          StatementOfTruth: {
-            applicant1DQHearing: {
-              unavailableDatesRequired: 'No'
-            }
           }
         };
         break;

@@ -124,8 +124,7 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             respondent2SameLegalRepresentative: 'Yes',
             specRespondent1Represented: 'Yes',
-            specRespondent2Represented: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specRespondent2Represented: 'Yes'
           },
 
           defenceRoute: {

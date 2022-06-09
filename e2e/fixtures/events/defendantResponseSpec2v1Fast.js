@@ -123,8 +123,7 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'Yes',
-            specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
@@ -163,7 +162,6 @@ module.exports = {
             sameSolicitorSameResponse: null,
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: null,
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
@@ -288,7 +286,6 @@ module.exports = {
             specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             specDisputesOrPartAdmission: 'Yes'
           },
 
@@ -367,8 +364,7 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specDefenceFullAdmittedRequired: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'No'
+            specFullAdmissionOrPartAdmission: 'Yes'
 
           },
           ResponseConfirmNameAddress: {
@@ -466,7 +462,6 @@ module.exports = {
           },
 
           defenceAdmittedPartRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'FAST_CLAIM',
             specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
@@ -482,8 +477,7 @@ module.exports = {
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specDisputesOrPartAdmission: 'Yes'
           }
         };
         break;

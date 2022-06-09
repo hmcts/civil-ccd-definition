@@ -199,36 +199,6 @@ const assertValidData = async (data, pageId) => {
     checkExpected(responseBody.data, data.midEventData[pageId]);
   }
 
-  // if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
-  //   const expected = data.midEventGeneratedData[pageId];
-  //   caseData = updateWithGenerated(caseData, responseBody.data, expected);
-  // }
-  //
-  // const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
-  // assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
-  //   + '. Offending field ' + matchFailure);
-
-  caseData = update(caseData, responseBody.data);
-};
-
-const updateAndCheckData = async (data, pageId) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
-  caseData = update(caseData, data.userInput[pageId]);
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    caseData,
-    caseId
-  );
-  let responseBody = await response.json();
-
-  assert.equal(response.status, 200);
-
-  if (data.midEventData && data.midEventData[pageId]) {
-    checkExpected(responseBody.data, data.midEventData[pageId]);
-  }
-
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
@@ -295,37 +265,6 @@ function checkGenerated(responseBodyData, generated, prefix = '') {
       }
     }
   }
-}
-
-/**
- * ResponseData is expected to modify caseData as described in "update" method. We cannot use deepEquals because some
- * fields are not returned by backend while they're still in the browser's memory. For instance, when creating a claim,
- * the solicitor's email correct field is not returned, but it is still there, because it's sent on submit.
- *
- * @param responseBodyData the information in the response
- * @param caseData expected contents
- * @return null if all elements in responseBodyData are deeply included in caseData,
- * the name of the first field for which that isn't true otherwise
- */
-function responseMatchesExpectations(responseBodyData, caseData) {
-  for (const key in responseBodyData) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (responseBodyData.hasOwnProperty(key)) {
-      if (typeof responseBodyData[key] === 'object') {
-        const failure = responseMatchesExpectations(responseBodyData[key], caseData[key]);
-        if (failure) {
-          return key + '.' + failure;
-        }
-      } else if (caseData) {
-        if (responseBodyData[key] !== caseData[key]) {
-          return key;
-        }
-      } else {
-        return key + ' is not in caseData';
-      }
-    }
-  }
-  return null;
 }
 
 /**
