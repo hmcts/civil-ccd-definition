@@ -42,6 +42,12 @@ const eventData = {
       DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_FULL_DEFENCE'),
       DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_NOT_FULL_DEFENCE')
     },
+    ONE_V_ONE_DIF_SOL: {
+      FULL_DEFENCE1: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION1: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION1: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM1: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+    },
     TWO_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
@@ -143,15 +149,28 @@ module.exports = {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    if (scenario === 'ONE_V_ONE')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if (scenario === 'ONE_V_TWO')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if (scenario === 'TWO_V_ONE')
-      if (response === 'DIFF_FULL_DEFENCE')
-        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
-      else
+    switch (scenario) {
+      case 'ONE_V_ONE_DIF_SOL':
+        /* when camunda process is done, when both respondents have answered
+        this should be AWAITING_APPLICANT_INTENTION; while only one has answered
+        this will be AWAITING_RESPONDENT_ACKNOWLEDGEMENT
+         */
+        await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+        break;
+      case 'ONE_V_ONE':
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'ONE_V_TWO':
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'TWO_V_ONE':
+        if (response === 'DIFF_FULL_DEFENCE') {
+          await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+        } else {
+          await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        }
+        break;
+    }
 
     await waitForFinishedBusinessProcess(caseId);
 
