@@ -1560,9 +1560,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -1602,9 +1600,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -1644,9 +1640,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -1824,17 +1818,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
@@ -1865,17 +1856,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
@@ -1909,17 +1897,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
