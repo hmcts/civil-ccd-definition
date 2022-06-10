@@ -83,14 +83,7 @@ module.exports = {
           defenceRoute: {
             responseClaimTrack: 'SMALL_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-          },
-
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            },
-          },
+          }
         };
         break;
       case 'FULL_ADMISSION':
@@ -202,14 +195,6 @@ module.exports = {
             responseClaimTrack: 'SMALL_CLAIM',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
-
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            }
-          },
-
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'SMALL_CLAIM'
@@ -235,14 +220,6 @@ module.exports = {
             specRespondent1Represented: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
           },
-
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            }
-          },
-
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'SMALL_CLAIM'
@@ -345,14 +322,7 @@ module.exports = {
           defenceRoute: {
             responseClaimTrack: 'SMALL_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-          },
-
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            },
-          },
+          }
         };
         break;
       case 'FULL_ADMISSION':
@@ -464,14 +434,6 @@ module.exports = {
             responseClaimTrack: 'SMALL_CLAIM',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
-
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            }
-          },
-
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'SMALL_CLAIM'
@@ -497,14 +459,6 @@ module.exports = {
             specRespondent1Represented: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
           },
-
-          ResponseConfirmNameAddress: {
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
-            }
-          },
-
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
             responseClaimTrack: 'SMALL_CLAIM'
