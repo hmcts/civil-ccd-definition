@@ -52,9 +52,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
-            respondent1DQHearing: {
-              unavailableDatesRequired: 'No'
-            },
             respondent1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'Yes',
               vulnerabilityAdjustments: 'test'
@@ -66,11 +63,6 @@ module.exports = {
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
-            }
-          },
-          StatementOfTruth: {
-            applicant1DQHearing: {
-              unavailableDatesRequired: 'No'
             }
           }
         };
