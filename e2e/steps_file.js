@@ -112,6 +112,7 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
+const defaultjudmentpage = require('./pages/defaultJudgment/selectDefaultJudgmentfor');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -305,6 +306,20 @@ module.exports = function () {
         () => event.returnToCaseDetails()
       ]);
     },
+
+    async initiateDJ(caseId) {
+      eventName = 'Request Default Judgment';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => defaultjudmentpage.againstWhichDefendant(),
+        () => defaultjudmentpage.statementToCertify(),
+        () => defaultjudmentpage.hearingSelection(),
+        () => defaultjudmentpage.hearingRequirements(),
+        () => event.submit('Submit', 'Judgment for damages to be decided Granted'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
 
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
