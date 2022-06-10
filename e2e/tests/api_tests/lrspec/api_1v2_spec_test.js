@@ -6,6 +6,7 @@ Feature('CCD 1v2 API test @api-spec @api-spec-1v2');
 
 Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL');
 });
 
 Scenario('1v2 small claim full defence, defendant response', async ({I, api_spec}) => {
