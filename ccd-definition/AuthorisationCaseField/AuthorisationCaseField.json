@@ -603,7 +603,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
-          "judge-profile"
+          "judge-profile",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -1679,7 +1679,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]",
-          "judge-profile"
+          "judge-profile",
           "[APPLICANTSOLICITORONESPEC]"
 
         ],
@@ -2111,7 +2111,7 @@
           "caseworker-civil-admin",
           "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "judge-profile"
+          "judge-profile",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
@@ -2134,7 +2134,7 @@
           "caseworker-civil-admin",
           "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "judge-profile"
+          "judge-profile",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
@@ -3106,7 +3106,7 @@
           "[RESPONDENTSOLICITORTWO]",
           "[APPLICANTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "judge-profile"
+          "judge-profile",
           "[RESPONDENTSOLICITORTWOSPEC]",
           "[RESPONDENTSOLICITORONESPEC]"
         ],
@@ -3369,7 +3369,7 @@
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORTWO]",
-          "judge-profile"
+          "judge-profile",
           "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "R"
