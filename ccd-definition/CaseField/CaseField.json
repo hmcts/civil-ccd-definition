@@ -2041,6 +2041,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrganisationIDCopy",
+    "Label": "Respondent 1 Organisation ID Copy",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop caa users from seeing case before claim notify"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationIDCopy",
+    "Label": "Respondent 2 Organisation ID Copy",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop caa users from seeing case before claim notify"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addLegalRepDeadline",
+    "Label": "Add Legal Rep Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "Add legal rep to case deadline",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "allPartyNames",
     "Label": "All party names",
     "FieldType": "Text",
