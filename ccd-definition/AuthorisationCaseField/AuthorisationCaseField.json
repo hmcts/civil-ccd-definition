@@ -3305,39 +3305,40 @@
     ]
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "applicantSolicitor1UserDetails",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[APPLICANTSOLICITORONE]",
-        "caseworker-civil-admin",
-        "caseworker-civil-solicitor"
-      ],
-      "CRUD": "CRUD"
-    },
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]",
-        "[RESPONDENTSOLICITORTWO]",
-        "judge-profile"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "claimant1Name",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "[RESPONDENTSOLICITORONE]",
-        "[RESPONDENTSOLICITORTWO]"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantSolicitor1UserDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimant1Name",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimant2Name",
