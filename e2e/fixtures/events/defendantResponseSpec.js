@@ -242,10 +242,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+          specAoSRespondent2HomeAddressRequired: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          specAoSRespondent2CorrespondenceAddressRequired: 'Yes'
         },
       },
     };
@@ -277,7 +277,7 @@ module.exports = {
             }
           },
           SmaillClaimHearing: {
-            SmallClaimHearingInterpreterDescription2: 'test',
+            smallClaimHearingInterpreterDescription2: 'test',
             SmallClaimHearingInterpreter2Required: 'Yes',
             respondent2DQHearingSmallClaim: {
               unavailableDatesRequired: 'No',
@@ -305,7 +305,7 @@ module.exports = {
               name: 'Test',
               role: 'Worker'
             },
-            respondent1DQHearing: {
+            respondent2DQHearing: {
               unavailableDatesRequired: 'No'
             }
           }

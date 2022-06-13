@@ -144,7 +144,8 @@ module.exports = {
     await unAssignAllUsers();
   },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -166,7 +167,7 @@ module.exports = {
         this should be AWAITING_APPLICANT_INTENTION; while only one has answered
         this will be AWAITING_RESPONDENT_ACKNOWLEDGEMENT
          */
-        await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+        await assertSubmittedEvent(expectedEvent);
         break;
       case 'ONE_V_ONE':
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
