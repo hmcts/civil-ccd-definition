@@ -82,4 +82,8 @@
     <packageUrl regex="true">^pkg:maven/org\.apache\.poi/poi\-ooxml\-schemas@.*$</packageUrl>
     <cve>CVE-2022-26336</cve>
   </suppress>
+  <suppress>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
+    <cve>CVE-2022-22978</cve>
+  </suppress>
  </suppressions>
