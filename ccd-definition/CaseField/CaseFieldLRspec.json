@@ -538,6 +538,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTestForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ClaimResponseTestForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentClaimResponseTypeForSpecGeneric",
     "Label": " ",
     "FieldType": "FixedRadioList",

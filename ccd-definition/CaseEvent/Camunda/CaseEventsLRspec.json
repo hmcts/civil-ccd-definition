@@ -23,5 +23,17 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PROCESS_PART_ADMISSION_DEFENCE_SPEC",
+    "Name": "Part Admission",
+    "Description": "Part Admission",
+    "PreConditionState(s)": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "PostConditionState": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
