@@ -694,5 +694,41 @@
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "allPartyNames",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 33,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 33,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "caseListDisplayDefendantSolicitorReferences",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 33,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   }
 ]

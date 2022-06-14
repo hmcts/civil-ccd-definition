@@ -11,9 +11,8 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-caa",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "OrgPolicyReference",
-    "Label": "Solicitor Reference",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "Label": "Solicitor Reference(s)",
     "DisplayOrder": 2,
     "UseCase": "orgcases"
   },
@@ -39,6 +38,22 @@
     "CaseFieldID": "[STATE]",
     "Label": "State",
     "DisplayOrder": 5,
+    "UseCase": "orgcases"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRole": "caseworker-caa",
+    "CaseFieldID": "allPartyNames",
+    "Label": "Party Names",
+    "DisplayOrder": 7,
+    "UseCase": "orgcases"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRole": "caseworker-caa",
+    "CaseFieldID": "nextDeadline",
+    "Label": "Next Deadline",
+    "DisplayOrder": 8,
     "UseCase": "orgcases"
   }
 ]
