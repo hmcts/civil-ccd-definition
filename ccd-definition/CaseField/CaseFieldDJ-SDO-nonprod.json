@@ -132,7 +132,7 @@
     "ID": "disposalHearingMethodDJ",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "DisposalHearingMethod",
+    "FieldTypeParameter": "DisposalHearingMethodDJ",
     "SecurityClassification": "Public"
   },
   {
@@ -330,7 +330,7 @@
     "ID": "trialHearingMethodDJ",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "DisposalHearingMethod",
+    "FieldTypeParameter": "DisposalHearingMethodDJ",
     "SecurityClassification": "Public"
   },
   {

@@ -20,7 +20,8 @@
     "PageID": "CaseManagementOrder",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/trial-disposal-screen"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -55,8 +56,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/trial-screen"
+    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -68,8 +68,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/disposal-screen"
+    "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
