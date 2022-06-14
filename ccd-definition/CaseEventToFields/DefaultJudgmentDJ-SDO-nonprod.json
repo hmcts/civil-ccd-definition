@@ -32,7 +32,7 @@
     "PageID": "CaseManagementOrder",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -67,7 +67,7 @@
     "PageID": "CaseManagementOrder",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
   },
   {
@@ -79,7 +79,7 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageLabel": "Make a case management order",
     "PageShowCondition": "caseManagementOrderSelection = \"DISPOSAL_HEARING\""
   },
@@ -372,7 +372,7 @@
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageLabel": "Make a case management order",
     "PageShowCondition": "caseManagementOrderSelection = \"TRIAL_HEARING\""
   },
