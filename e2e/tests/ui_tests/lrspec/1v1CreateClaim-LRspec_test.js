@@ -10,7 +10,7 @@ Feature('Claim creation 1v1 @e2e-tests-spec');
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('organisation', null, 'company', null, 19000);
+  await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
   await LRspec.see(`Case ${caseNumber} has been created.`);
   await LRspec.click('Sign out');
@@ -50,7 +50,7 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
 }).retry(3);
 
 
-Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+Scenario.skip('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');

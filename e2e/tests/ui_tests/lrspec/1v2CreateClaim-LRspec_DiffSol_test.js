@@ -17,18 +17,18 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec');
+Feature('Claim creation 1v2 Diff Solicitor with Small claims @e2e-tests-spec');
 
-Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec}) => {
-  console.log('Applicant solicitor creates 1v2 specified claim both defendants Same LR for small claims @create-claim-spec');
+Scenario('Applicant solicitor creates 1v2 specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
+  console.log('AApplicant solicitor creates 1v2 specified claim defendant Different LRs for fast claims @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('1v2 specified claim both defendants same', 'organisation', null, respondent1, respondent2, 1000);
+  await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
   await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
 Scenario.skip('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
-  console.log('1v2 Defendant solicitor reject the specified claim');
+  console.log('1v2  Different LRs reject the specified claim');
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
