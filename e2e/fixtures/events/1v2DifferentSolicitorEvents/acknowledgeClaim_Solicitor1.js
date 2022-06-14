@@ -20,7 +20,9 @@ module.exports = {
         individualDateOfBirth: date(-1),
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual'
+        partyTypeDisplayValue: 'Individual',
+        partyFirstAndLastName: 'John Doe',
+        partyPostcode: 'RG4 7AA'
       },
     },
     ResponseIntention: {
