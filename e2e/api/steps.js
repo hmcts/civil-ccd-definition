@@ -285,6 +285,7 @@ module.exports = {
 
   amendPartyDetails: async (user) => {
     await apiRequest.setupTokens(user);
+    caseData = {};
 
     eventName = 'AMEND_PARTY_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
