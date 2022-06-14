@@ -53,6 +53,10 @@
     <notes>latest spring security core 5.6.5 still has internal dependencies which are cauing the Vulnerability</notes>
     <cve>CVE-2022-22976</cve>
   </suppress>
+  <suppress until="2022-07-01">
+    <notes>latest spring security core 5.6.5 still has internal dependencies which are cauing the Vulnerability</notes>
+    <cve>CVE-2022-22976</cve>
+  </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
     <cve>CVE-2020-11022</cve>
@@ -82,5 +86,9 @@
     ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.apache\.poi/poi\-ooxml\-schemas@.*$</packageUrl>
     <cve>CVE-2022-26336</cve>
+  </suppress>
+  <suppress>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
+    <cve>CVE-2022-22978</cve>
   </suppress>
  </suppressions>

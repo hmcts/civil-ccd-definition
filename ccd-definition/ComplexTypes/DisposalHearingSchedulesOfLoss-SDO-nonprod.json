@@ -40,5 +40,12 @@
     "FieldType": "Label",
     "ElementLabel": "If there is a claim for future pecuniary loss and the parties have not already set out their case on periodical payments, then they must do so in the respective schedule and counter-schedule.",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]
