@@ -258,7 +258,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "setSmallClaimsFlag",
-    "Label": "small claims flag",
+    "Label": "small claims flag ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
