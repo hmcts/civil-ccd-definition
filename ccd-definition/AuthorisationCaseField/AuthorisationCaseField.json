@@ -802,8 +802,7 @@
           "[RESPONDENTSOLICITORONE]",
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "[APPLICANTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[APPLICANTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -1692,7 +1691,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
