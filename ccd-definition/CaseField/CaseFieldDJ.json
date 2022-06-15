@@ -88,7 +88,21 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingSupportRequirementsDJ",
     "Label": "Hearing requirements",
-    "FieldType": "HearingSupportRequirementsDJ",
+    "FieldType": "HearingSupportRequirementsListDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingPreferredRegionId",
+    "Label": "Hearing requirements",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingPreferredCourtVenueId",
+    "Label": "Hearing requirements",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
