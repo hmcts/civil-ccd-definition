@@ -21,8 +21,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "bothDefendants=\"One\"",
-    "PageLabel": "Do all of these statements apply to the Defendant?-",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/checkPreferredLocations"
+    "PageLabel": "Do all of these statements apply to the Defendant?-"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -35,8 +34,7 @@
     "PageID": "showcertifystatement1",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/checkPreferredLocations"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -117,7 +115,8 @@
     "PageID": "HearingType",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/checkPreferredLocations"
   },
   {
     "CaseTypeID": "CIVIL",
