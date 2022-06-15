@@ -16,14 +16,5 @@
     "AnswerFieldType": "Text",
     "Answer": "${applicant1.partyFirstAndLastName}|${applicant2.partyFirstAndLastName}:[APPLICANTSOLICITORONE],${respondent1.partyFirstAndLastName}:[RESPONDENTSOLICITORONE]",
     "QuestionId": "clientName"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NoCChallenge",
-    "DisplayOrder": "3",
-    "QuestionText": "Client postcode",
-    "AnswerFieldType": "Text",
-    "Answer": "${applicant1.partyPostcode}|${applicant2.partyPostcode}:[APPLICANTSOLICITORONE],${respondent1.partyPostcode}:[RESPONDENTSOLICITORONE]",
-    "QuestionId": "clientPostcode"
   }
 ]

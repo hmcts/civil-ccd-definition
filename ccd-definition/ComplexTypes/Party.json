@@ -126,14 +126,5 @@
     "SecurityClassification": "Public",
     "_Comments": "Workaround combined name field stored for NOC.",
     "_Category": "WORKAROUND"
-  },
-  {
-    "ID": "Party",
-    "ListElementCode": "partyPostcode",
-    "FieldType": "Text",
-    "ElementLabel": "Postcode",
-    "SecurityClassification": "Public",
-    "_Comments": "Workaround to get the postcode for NOC.",
-    "_Category": "WORKAROUND"
   }
 ]

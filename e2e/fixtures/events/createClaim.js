@@ -22,15 +22,13 @@ const respondent1WithPartyName = {
   ...respondent1,
   partyName: 'Sir John Doe',
   partyTypeDisplayValue: 'Individual',
-  partyFirstAndLastName: "John Doe",
-  partyPostcode: "RG4 7AA"
+  partyFirstAndLastName: "John Doe"
 };
 const respondent2WithPartyName = {
   ...respondent2,
   partyName: 'Dr Foo Bar',
   partyTypeDisplayValue: 'Individual',
-  partyFirstAndLastName: "Foo Bar",
-  partyPostcode: "RG4 7AA"
+  partyFirstAndLastName: "Foo Bar"
 };
 const applicant1 = {
   type: 'COMPANY',
@@ -41,8 +39,7 @@ const applicant1WithPartyName = {
   ...applicant1,
   partyName: 'Test Inc',
   partyTypeDisplayValue: 'Company',
-  partyFirstAndLastName: "Test Inc",
-  partyPostcode: "RG4 7AA"
+  partyFirstAndLastName: "Test Inc"
 };
 
 const applicant2 = {
@@ -57,8 +54,7 @@ const applicant2WithPartyName = {
   ...applicant2,
   partyName: 'Dr Jane Doe',
   partyTypeDisplayValue: 'Individual',
-  partyFirstAndLastName: "Jane Doe",
-  partyPostcode: "RG4 7AA"
+  partyFirstAndLastName: "Jane Doe"
 };
 
 const applicant1LitigationFriend = {

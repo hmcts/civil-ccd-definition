@@ -12,8 +12,7 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-        partyFirstAndLastName: 'John Doe',
-        partyPostcode: 'RG4 7AA'
+        partyFirstAndLastName: 'John Doe'
       },
       respondent2: {
         type: 'INDIVIDUAL',
@@ -24,8 +23,7 @@ module.exports = {
         individualDateOfBirth: date(-1),
         partyName: 'Dr Foo Bar',
         partyTypeDisplayValue: 'Individual',
-        partyFirstAndLastName: 'Foo Bar',
-        partyPostcode: 'RG4 7AA'
+        partyFirstAndLastName: 'Foo Bar'
       }
     },
     ResponseIntention: {

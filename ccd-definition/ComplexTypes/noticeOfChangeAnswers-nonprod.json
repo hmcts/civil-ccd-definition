@@ -14,13 +14,5 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "Y"
-  },
-  {
-    "ID": "NoticeOfChangeAnswers",
-    "ListElementCode": "clientPostcode",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "Y"
   }
 ]
