@@ -1885,7 +1885,8 @@
     "ID": "specFullDefenceOrPartAdmission1V1",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "This field is readonly, not shown anywhere, not used in conditions either, should remove"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1948,14 +1949,16 @@
     "ID": "specPartAdmitPaid",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "readonly, not used in conditions"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "specFullAdmitPaid",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "readonly, but not used in any condition, can remove"
   },
   {
     "CaseTypeID": "CIVIL",
