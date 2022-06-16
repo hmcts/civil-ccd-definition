@@ -26,6 +26,42 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ResponseDate",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponseTestForSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2ClaimResponseTestForSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "showConditionFlags",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
