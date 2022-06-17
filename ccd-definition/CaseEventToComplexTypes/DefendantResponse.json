@@ -1,13 +1,5 @@
 [
   {
-    "ID": "ResponseDocument",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1ClaimResponseDocument",
-    "ListElementCode": "file",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "solicitorReferences",

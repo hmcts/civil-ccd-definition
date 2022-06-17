@@ -9,6 +9,35 @@
   },
   {
     "ID": "HearingSupportRequirements",
+    "ListElementCode": "expertRequired",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Telephone or Video",
+    "FieldShowCondition": "requirements CONTAINS \"DISABLED_ACCESS\"",
+    "SecurityClassification": "Public",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirements",
+    "ListElementCode": "disabledAccessRequired2",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Who will attend via Telephone",
+    "FieldTypeParameter": "HearingSupportRequirements",
+    "FieldShowCondition": "expertRequired = \"Yes\" AND requirements CONTAINS \"DISABLED_ACCESS\"",
+    "SecurityClassification": "Public",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirements",
+    "ListElementCode": "disabledAccessRequired3",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": "Who will attend via Video",
+    "FieldTypeParameter": "HearingSupportRequirements",
+    "FieldShowCondition": "expertRequired = \"No\" AND requirements CONTAINS \"DISABLED_ACCESS\"",
+    "SecurityClassification": "Public",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirements",
     "ListElementCode": "signLanguageRequired",
     "FieldType": "Text",
     "ElementLabel": "Enter the sign language you need",

@@ -381,29 +381,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQDraftDirections",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "PageID": "DraftDirections",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQDraftDirectionsLabel",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "DraftDirections",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelDraftDirections",
     "PageLabel": "Respond to claim",
     "PageDisplayOrder": 14,
@@ -986,18 +963,6 @@
     "PageID": "DisclosureOfElectronicDocuments",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1ClaimResponseDocument",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Upload",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
