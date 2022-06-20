@@ -1596,5 +1596,317 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgesRecital",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgesRecital",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgementDeductionStatement",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgementDeductionStatement",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionValue",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgementDeductionValue",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionValue",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgementDeductionValue",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionValue",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsJudgementDeductionValue",
+    "ListElementCode": "value",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsAllocation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsAllocation",
+    "ListElementCode": "line1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsAllocation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsAllocation",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsAllocation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsAllocation",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsAllocation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsAllocation",
+    "ListElementCode": "line2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsDocuments",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsDocuments",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsDocuments",
+    "ListElementCode": "date1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsDocuments",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "input3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsPreferredTelephone",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPreferredTelephone",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsPreferredTelephone",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPreferredTelephone",
+    "ListElementCode": "telephone",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsPreferredEmail",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPreferredEmail",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsPreferredEmail",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPreferredEmail",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsNotes",
+    "ListElementCode": "line1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsNotes",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsNotes",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsNotes",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsNotes",
+    "ListElementCode": "line2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
   }
 ]
