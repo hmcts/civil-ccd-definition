@@ -1,6 +1,26 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "ManageTTL",
+    "CaseFieldID": "TTL",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "TEST1",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DUMMY_ONE",
+    "CaseFieldID": "DUMMYTEST",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "TEST2",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStarted",
     "PageFieldDisplayOrder": 1,

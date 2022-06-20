@@ -4527,5 +4527,29 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "TTL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "TTL_profile"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "DUMMYTEST",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "TTL_profile"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   }
 ]

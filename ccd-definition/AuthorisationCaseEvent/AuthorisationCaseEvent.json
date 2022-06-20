@@ -1,6 +1,30 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "ManageTTL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "TTL_profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DUMMY_ONE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "TTL_profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "AccessControl": [
       {

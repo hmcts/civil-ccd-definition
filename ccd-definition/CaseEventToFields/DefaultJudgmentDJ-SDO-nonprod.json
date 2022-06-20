@@ -9,7 +9,8 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "FieldShowCondition": "caseManagementOrder=\"DO_NOT_SHOW_UI\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageLabel": "Make a case management order"
   },
   {
     "CaseTypeID": "CIVIL",

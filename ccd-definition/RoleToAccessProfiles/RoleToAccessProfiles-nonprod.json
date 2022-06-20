@@ -45,6 +45,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "idam:cft-ttl-manager",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "TTL_profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "[APPLICANTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",

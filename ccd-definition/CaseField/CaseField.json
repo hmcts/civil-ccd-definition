@@ -2063,5 +2063,19 @@
     "SecurityClassification": "Public",
     "_Definition":  "Add legal rep to case deadline",
     "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DUMMYTEST",
+    "Label": "TESTTEST",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "TTL",
+    "Label": "Set up TTL",
+    "FieldType": "TTL",
+    "SecurityClassification": "Public"
   }
 ]
