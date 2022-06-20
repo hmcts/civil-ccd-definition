@@ -11,7 +11,7 @@ const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claiman
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisationLRspec = require('./pages/createClaim/defendantSolicitorOrganisationLRspec.page');
-
+const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
@@ -112,14 +112,15 @@ const secondClaimantSteps = (claimant2) => [
   () => party.enterParty('respondent1', address),
 ];
 
-
-const firstDefendantSteps = () => [
+const firstDefendantSteps = (respondent1) => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
-  () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
-  () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
-  () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
+  ...conditionalSteps(respondent1.represented, [
 
+    () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
 
+    () => unRegisteredDefendantSolicitorOrganisationPage.enterDefendantSolicitorDetails('1')
+
+  ]),
 ];
 
 const secondDefendantSteps = (respondent2, respondent1Represented) => [
@@ -312,7 +313,7 @@ module.exports = function () {
             () => solicitorReferencesPage.enterReferences(),
             ...firstClaimantSteps(),
             ...secondClaimantSteps(claimant2),
-            ...firstDefendantSteps(),
+            ...firstDefendantSteps(respondent1),
             ...conditionalSteps(claimant2 == null, [
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
