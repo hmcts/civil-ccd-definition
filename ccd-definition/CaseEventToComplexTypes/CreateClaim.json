@@ -1195,7 +1195,7 @@
     "FieldDisplayOrder": 19,
     "DisplayContext": "MANDATORY"
   },
-  {"ID":"TTL", "CaseEventID":"ManageTTL", "CaseFieldID":"TTL", "ListElementCode":"SystemTTL", "FieldDisplayOrder":1, "DisplayContext":"READONLY"},
+  {"ID":"TTL", "CaseEventID":"ManageTTL", "CaseFieldID":"TTL", "ListElementCode":"SystemTTL", "FieldDisplayOrder":1, "DisplayContext":"OPTIONAL"},
   {"ID":"TTL", "CaseEventID":"ManageTTL", "CaseFieldID":"TTL", "ListElementCode":"OverrideTTL", "FieldDisplayOrder":2, "DisplayContext":"OPTIONAL"},
   {"ID":"TTL", "CaseEventID":"ManageTTL", "CaseFieldID":"TTL", "ListElementCode":"Suspended", "FieldDisplayOrder":3, "DisplayContext":"OPTIONAL"}
 ]
