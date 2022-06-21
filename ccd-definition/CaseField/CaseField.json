@@ -1392,7 +1392,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "defendantSolicitorNotifyClaimOptions",
     "Label": "Which defendant legal representative do you want to notify?",
-    "FieldType": "DynamicList",
+    "FieldType": "AccessSupportNeeds",
     "SecurityClassification": "Public",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   },

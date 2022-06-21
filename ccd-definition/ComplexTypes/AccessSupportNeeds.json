@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "AccessSupportNeeds",
+    "ListElementCode": "needSupport",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you need support",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AccessSupportNeeds",
+    "ListElementCode": "details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "AccessSupportNeed",
+    "ElementLabel": "Support details",
+    "FieldShowCondition": "needSupport = \"Yes\"",
+    "SecurityClassification": "Public"
+  }
+]
