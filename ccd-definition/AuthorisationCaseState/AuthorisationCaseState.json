@@ -86,5 +86,43 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDICIAL_REFERRAL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "legal-advisor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDICIAL_REFERRAL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

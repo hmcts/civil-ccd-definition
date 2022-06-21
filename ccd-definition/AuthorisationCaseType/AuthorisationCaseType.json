@@ -6,5 +6,23 @@
       "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "legal-advisor"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "hearing-admin"
+    ],
+    "CRUD": "CRU"
   }
 ]

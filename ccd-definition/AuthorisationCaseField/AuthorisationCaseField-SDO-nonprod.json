@@ -896,5 +896,29 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackAllocation",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "legal-advisor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackAllocation",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
