@@ -12,7 +12,6 @@ module.exports = {
         individualDateOfBirth: date(-1),
         partyName: 'Dr Foo Bar',
         partyTypeDisplayValue: 'Individual',
-        partyFirstAndLastName: 'Foo Bar'
       }
     },
     RespondentResponseType: {

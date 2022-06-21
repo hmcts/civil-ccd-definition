@@ -12,7 +12,6 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-        partyFirstAndLastName: 'John Doe'
       },
       respondent2: {
         type: 'INDIVIDUAL',
@@ -23,7 +22,6 @@ module.exports = {
         individualDateOfBirth: date(-1),
         partyName: 'Dr Foo Bar',
         partyTypeDisplayValue: 'Individual',
-        partyFirstAndLastName: 'Foo Bar'
       }
     },
     SingleResponse: {

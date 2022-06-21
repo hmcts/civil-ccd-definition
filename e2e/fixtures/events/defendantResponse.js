@@ -11,7 +11,6 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
-        partyFirstAndLastName: 'John Doe'
       }
     },
     SingleResponse: {},

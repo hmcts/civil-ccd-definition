@@ -117,14 +117,5 @@
     "SecurityClassification": "Public",
     "_Comments": "Field interpolation used on fixed list field will display its code instead of text, hence the workaround field populated on claim creation.",
     "_Category": "WORKAROUND"
-  },
-  {
-    "ID": "Party",
-    "ListElementCode": "partyFirstAndLastName",
-    "FieldType": "Text",
-    "ElementLabel": "First and last name of individual or sole trader or company or organisation name",
-    "SecurityClassification": "Public",
-    "_Comments": "Workaround combined name field stored for NOC.",
-    "_Category": "WORKAROUND"
   }
 ]
