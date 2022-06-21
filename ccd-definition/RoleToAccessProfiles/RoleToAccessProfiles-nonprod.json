@@ -187,5 +187,23 @@
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "legal-advisor",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hearing-admin",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
   }
 ]
