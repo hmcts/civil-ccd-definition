@@ -735,6 +735,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaimOwingAmountPounds2",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteUploadDocumentLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent1.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
@@ -1176,7 +1183,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds2}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
