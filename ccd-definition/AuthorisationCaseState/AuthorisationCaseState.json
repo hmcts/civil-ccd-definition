@@ -8,7 +8,8 @@
           "[APPLICANTSOLICITORONE]",
           "[APPLICANTSOLICITORONESPEC]",
           "[CREATOR]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-caa"
         ],
         "CRUD": "CRUD"
       }

@@ -4,5 +4,17 @@
     "CaseEventID": "nocRequest",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "applyNocDecision",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-approver"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   }
 ]
