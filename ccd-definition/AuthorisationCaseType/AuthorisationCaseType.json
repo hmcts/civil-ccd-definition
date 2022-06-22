@@ -10,17 +10,7 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin",
-      "legal-advisor"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin",
+      "legal-advisor",
       "hearing-admin"
     ],
     "CRUD": "CRU"

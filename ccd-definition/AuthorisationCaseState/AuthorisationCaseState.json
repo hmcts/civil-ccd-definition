@@ -93,25 +93,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "legal-advisor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "JUDICIAL_REFERRAL",
-    "AccessControl": [
-      {
-        "UserRoles": [
+          "legal-advisor",
           "hearing-admin"
         ],
         "CRUD": "CRU"
