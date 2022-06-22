@@ -85,6 +85,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "allPartyNames",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "nextDeadline",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "changeOrganisationRequestField",
     "UserRoles": [
       "caseworker-caa",
