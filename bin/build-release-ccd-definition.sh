@@ -9,6 +9,8 @@ if [ ${environment} == preview ]; then
   excludedFilenamePatterns="-e *DJspec.json,*DJ.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
+elif [ ${environment} == local ]; then
+  excludedFilenamePatterns="-e *-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json"
 else
