@@ -4,7 +4,7 @@
     "ID": "DEFAULT_JUDGEMENT",
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
-    "DisplayOrder": 17,
+    "DisplayOrder": 30,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
     "EventEnablingCondition": "applicantSolicitor1ServiceAddressRequired = \"No\" OR applicantSolicitor1ServiceAddressRequired =  \"Yes\"",
