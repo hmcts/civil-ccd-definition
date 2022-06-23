@@ -16,7 +16,7 @@ module.exports = {
     };
   },
 
-  async enterOrganisationDetails (organisationRegistered = true, respondentNumber, organisationNumber = 1) {
+  async enterOrganisationDetails (respondentNumber, organisationNumber = 1) {
     await I.runAccessibilityTest();
     I.waitForElement(this.fields(respondentNumber).orgPolicyReference);
     I.fillField(this.fields(respondentNumber).orgPolicyReference, 'Defendant policy reference');

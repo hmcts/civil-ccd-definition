@@ -148,7 +148,7 @@ const firstDefendantSteps = (respondent1) => [
   () => party.enterParty(parties.RESPONDENT_SOLICITOR_1, address),
   () => respondentRepresentedPage.enterRespondentRepresented(parties.RESPONDENT_SOLICITOR_1, respondent1.represented),
   ...conditionalSteps(respondent1.represented, [
-    () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+    () => defendantSolicitorOrganisation.enterOrganisationDetails('1', respondent1.representativeOrgNumber),
     ...conditionalSteps(!respondent1.representativeRegistered, [
       () => unRegisteredDefendantSolicitorOrganisationPage.enterDefendantSolicitorDetails('1')
     ]),
@@ -171,7 +171,6 @@ const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenar
       ]),
       ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
         () => defendantSolicitorOrganisation.enterOrganisationDetails(
-          respondent2.representativeRegistered,
           '2',
           respondent2.representativeOrgNumber),
         () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
