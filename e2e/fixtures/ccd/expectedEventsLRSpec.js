@@ -6,6 +6,7 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
+      events.CREATE_SDO
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
@@ -64,7 +65,8 @@ module.exports = {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_SDO
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
