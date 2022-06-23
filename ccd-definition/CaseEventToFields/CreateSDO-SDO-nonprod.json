@@ -417,7 +417,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "SmallClaims",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
@@ -429,7 +429,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaims",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "setSmallClaimsFlag=\"Yes\""
@@ -465,7 +465,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "FastTrack",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
