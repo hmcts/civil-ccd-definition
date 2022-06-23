@@ -104,13 +104,6 @@
   },
   {
     "ID": "Party",
-    "ListElementCode": "partyFirstAndLastName",
-    "FieldType": "Text",
-    "ElementLabel": "Party First and Last Name",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "Party",
     "ListElementCode": "partyName",
     "FieldType": "Text",
     "ElementLabel": "Party name",

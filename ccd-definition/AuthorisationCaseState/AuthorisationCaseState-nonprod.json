@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[CREATOR]",
+          "caseworker-civil-admin",
+          "caseworker-caa"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
+]

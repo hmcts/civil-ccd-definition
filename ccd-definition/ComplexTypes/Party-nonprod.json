@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "Party",
+    "ListElementCode": "partyFirstAndLastName",
+    "FieldType": "Text",
+    "ElementLabel": "Party First and Last Name",
+    "SecurityClassification": "Public"
+  }
+]

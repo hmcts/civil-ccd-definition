@@ -1,0 +1,17 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "changeOrganisationRequestField",
+    "UserRoles": [
+      "caseworker-caa",
+      "caseworker-approver"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "changeOfRepresentatives",
+    "UserRole": "caseworker-approver",
+    "CRUD": "CRU"
+  }
+]
