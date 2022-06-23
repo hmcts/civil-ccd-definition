@@ -2063,5 +2063,35 @@
     "SecurityClassification": "Public",
     "_Definition":  "Add legal rep to case deadline",
     "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "allPartyNames",
+    "Label": "All party names",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unassignedCaseListDisplayOrganisationReferences",
+    "Label": "Unassigned Case List Solicitor References",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseListDisplayDefendantSolicitorReferences",
+    "Label": "Case List Display Defendant Solicitor Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextDeadline",
+    "Label": "Next Deadline",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "_Definition":  "Next deadline on a case",
+    "_Category":  "CIVIL"
   }
 ]
