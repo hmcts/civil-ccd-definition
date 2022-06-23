@@ -30,7 +30,7 @@
   {
     "ID": "FastTrackWitnessOfFact",
     "ListElementCode": "input3",
-    "FieldType": "Text",
+    "FieldType": "Number",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
