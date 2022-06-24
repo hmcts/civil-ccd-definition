@@ -1298,7 +1298,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimExpertSpecRequired = \"Yes\""
+    "FieldShowCondition": "responseClaimExpertSpecRequired = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1584,7 +1584,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\""
+    "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
   },
   {
     "CaseTypeID": "CIVIL",
