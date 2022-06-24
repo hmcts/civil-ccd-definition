@@ -47,7 +47,6 @@
     <cve>CVE-2021-22119</cve>
     <cve>CVE-2022-22970</cve>
     <cve>CVE-2022-22971</cve>
-    <cve>1075647</cve>
   </suppress>
   <suppress until="2022-07-01">
     <notes>latest spring security core 5.6.5 still has internal dependencies which are cauing the Vulnerability</notes>
