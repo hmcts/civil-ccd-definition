@@ -8,15 +8,8 @@
   },
   {
     "ID": "SmallClaimsHearing",
-    "ListElementCode": "input",
+    "ListElementCode": "input1",
     "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsHearing",
-    "ListElementCode": "date",
-    "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -24,8 +17,15 @@
     "ID": "SmallClaimsHearing",
     "ListElementCode": "time",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
-    "ElementLabel": "The time estimate is",
+    "FieldTypeParameter": "SmallClaimsTimeEstimate",
+    "ElementLabel": "Select time estimate",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {

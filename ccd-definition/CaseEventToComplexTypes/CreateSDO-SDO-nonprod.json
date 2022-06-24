@@ -1721,7 +1721,7 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "input",
+    "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -1729,7 +1729,7 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "date",
+    "ListElementCode": "time",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -1737,8 +1737,8 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "time",
-    "FieldDisplayOrder": 4,
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1769,16 +1769,8 @@
     "ID": "SmallClaimsDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsDocuments",
-    "ListElementCode": "date1",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsDocuments",
     "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {

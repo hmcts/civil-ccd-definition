@@ -10,7 +10,7 @@
     "ID": "SmallClaimsJudgementDeductionStatement",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": "## There is a judgment for the claimant for an amount to be decided by the court ##",
+    "ElementLabel": "## Judgment for the claimant for an sum to be decided by the court ##",
     "SecurityClassification": "Public"
   }
 ]

@@ -257,20 +257,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "setSmallClaimsFlag",
-    "Label": "small claims flag",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsPlaceholder",
-    "Label": "Small Claims Placeholder",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "setFastTrackFlag",
     "Label": "fast track flag",
     "FieldType": "YesOrNo",
@@ -500,6 +486,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "setSmallClaimsFlag",
+    "Label": "small claims flag",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsOrderAndHearingDetails",
     "Label": " ",
     "FieldType": "SmallClaimsOrderAndHearingDetails",
@@ -536,7 +529,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsHearing",
-    "Label": " ",
+    "Label": "Hearing",
     "FieldType": "SmallClaimsHearing",
     "SecurityClassification": "Public"
   },

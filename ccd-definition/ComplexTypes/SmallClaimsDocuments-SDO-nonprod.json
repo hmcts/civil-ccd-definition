@@ -10,20 +10,13 @@
     "ID": "SmallClaimsDocuments",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": "## Disclosure of documents ##",
+    "ElementLabel": "## Documents ##",
     "SecurityClassification": "Public"
   },
   {
     "ID": "SmallClaimsDocuments",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsDocuments",
-    "ListElementCode": "date1",
-    "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
