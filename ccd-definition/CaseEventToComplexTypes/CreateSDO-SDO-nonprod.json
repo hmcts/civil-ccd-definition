@@ -1611,7 +1611,7 @@
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
     "ListElementCode": "text",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsOrderAndHearingDetails",
@@ -1819,7 +1819,7 @@
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "text",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
