@@ -16,7 +16,7 @@
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "time",
-    "FieldType": "FixedRadioList",
+    "FieldType": "FixedList",
     "FieldTypeParameter": "SmallClaimsTimeEstimate",
     "ElementLabel": "Select time estimate",
     "SecurityClassification": "Public"

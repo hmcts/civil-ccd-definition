@@ -558,7 +558,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsMethod",
     "Label": " ",
-    "FieldType": "FixedList",
+    "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsMethod",
     "SecurityClassification": "Public"
   },
