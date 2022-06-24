@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "GAPartiesGAspec",
+    "ListElementCode": "litigiousPartyID",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPartiesGAspec",
+    "ListElementCode": "applicantPartyName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

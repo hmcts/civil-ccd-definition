@@ -176,5 +176,12 @@
     "ElementLabel": " ",
     "FieldType": "GAUserDetailsGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalApplicationParties",
+    "ElementLabel": " ",
+    "FieldType": "GAPartiesGAspec",
+    "SecurityClassification": "Public"
   }
 ]
