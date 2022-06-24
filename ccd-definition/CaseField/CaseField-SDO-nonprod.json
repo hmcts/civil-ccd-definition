@@ -334,9 +334,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "fastTrackDisclosureOfDocumentsTitle",
+    "Label": "## Disclosure of documents ##",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackDisclosureOfDocumentsToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrackDisclosureOfDocumentsToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "fastTrackDisclosureOfDocuments",
-    "Label": "Disclosure of documents",
+    "Label": " ",
     "FieldType": "FastTrackDisclosureOfDocuments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackDisclosureOfDocumentsEndLine",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {

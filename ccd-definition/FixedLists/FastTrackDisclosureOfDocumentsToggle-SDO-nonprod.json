@@ -1,6 +1,6 @@
 [
   {
-    "ID": "FastTrackDisclosureOfDocumentsShow",
+    "ID": "FastTrackDisclosureOfDocumentsToggle",
     "ListElementCode": "SHOW",
     "ListElement": "Show/Hide",
     "DisplayOrder": 1

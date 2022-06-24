@@ -8,81 +8,58 @@
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "show",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "FastTrackDisclosureOfDocumentsShow",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input1",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input2",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "date2",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input3",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input5",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "show=\"SHOW\""
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]

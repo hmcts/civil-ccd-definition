@@ -600,7 +600,46 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackDisclosureOfDocumentsTitle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackDisclosureOfDocumentsToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackDisclosureOfDocumentsEndLine",
     "AccessControl": [
       {
         "UserRoles": [
