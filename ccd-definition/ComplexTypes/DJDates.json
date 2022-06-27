@@ -14,5 +14,13 @@
     "ElementLabel": "Date to",
     "FieldType": "Date",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/06/2020",
+    "ID": "FR_ct_refusedOrderCollection",
+    "ListElementCode": "orderDoc",
+    "FieldType": "Document",
+    "ElementLabel": "Document",
+    "SecurityClassification": "Public"
   }
 ]
