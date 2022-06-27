@@ -36,8 +36,9 @@ Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => 
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim('both');
   await I.see(caseEventMessage('Notify claim'));
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+
+
+
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitors of claim details', async ({I}) => {

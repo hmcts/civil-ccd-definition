@@ -1,19 +1,19 @@
 exports.config = {
   tests: [
-    './e2e/tests/*_test.js',
+   /* './e2e/tests/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
     './e2e/tests/ui_tests/damages/*_test.js',
-    './e2e/tests/ui_tests/damages/nightly/*_test.js',
-    './e2e/tests/ui_tests/lrspec/*_test.js',
-    './e2e/tests/ui_tests/sdo/*_test.js'
+    './e2e/tests/ui_tests/damages/nightly/*_test.js',*/
+    './e2e/tests/ui_tests/lrspec/*_DiffSol_test.js'
+   // './e2e/tests/ui_tests/sdo/*_test.js'
   ],
   output: './output',
   helpers: {
     Puppeteer: {
       restart: false,
       keepCookies: true,
-      show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
+      show: process.env.SHOW_BROWSER_WINDOW === 'true' || true,
       windowSize: '1200x900',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 50000),
       chrome: {
