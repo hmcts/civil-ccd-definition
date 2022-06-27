@@ -4483,6 +4483,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[APPLICANTSOLICITORTWO]",
+          "[APPLICANTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "RU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addLegalRepDeadline",
     "AccessControl": [
       {

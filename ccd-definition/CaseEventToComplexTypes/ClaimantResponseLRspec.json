@@ -9,6 +9,15 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "CaseDocument",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
+    "ListElementCode": "documentLink",
+    "EventElementLabel": "Defendant response form",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1SpecDefenceResponseDocument",
