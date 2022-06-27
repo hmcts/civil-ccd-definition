@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "SmallClaimsMethod",
+    "ListElementCode": "smallClaimsMethodInPerson",
+    "ListElement": "In Person",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "SmallClaimsMethod",
+    "ListElementCode": "smallClaimsMethodVideoConferenceHearing",
+    "ListElement": "Video Conference Hearing",
+    "DisplayOrder": 2
+   },
+  {
+    "ID": "SmallClaimsMethod",
+    "ListElementCode": "smallClaimsMethodTelephoneHearing",
+    "ListElement": "Telephone Hearing",
+    "DisplayOrder": 3
+  }
+]

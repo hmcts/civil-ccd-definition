@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "SmallClaimsPreferredTelephone",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsPreferredTelephone",
+    "ListElementCode": "telephone",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

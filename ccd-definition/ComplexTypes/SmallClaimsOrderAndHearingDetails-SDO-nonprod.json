@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "ListElementCode": "text",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  }
+]
