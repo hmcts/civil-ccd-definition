@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 
 
@@ -13,7 +14,7 @@ const respondent1 = {
 const respondent2 = {
   represented: true,
   sameLegalRepresentativeAsRespondent1: false,
-  representativeOrgNumber: 2
+  representativeOrgNumber: 3
 };
 
 let caseNumber;
@@ -26,10 +27,14 @@ Scenario('Applicant solicitor creates 1v2 specified claim defendant Different LR
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
   await LRspec.see(`Case ${caseNumber} has been created.`);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+
 }).retry(3);
 
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -52,3 +57,4 @@ Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendan
   await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
+
