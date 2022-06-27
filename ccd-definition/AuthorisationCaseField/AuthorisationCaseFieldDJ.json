@@ -289,7 +289,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingPreferredCourtVenueId",
+    "CaseFieldID": "hearingBaseLocation",
     "AccessControl": [
       {
         "UserRoles": [

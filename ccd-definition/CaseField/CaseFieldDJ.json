@@ -114,7 +114,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingPreferredCourtVenueId",
+    "ID": "hearingBaseLocation",
     "Label": "Hearing requirements",
     "FieldType": "Text",
     "SecurityClassification": "Public"
