@@ -1,7 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
-const parties = require('../../../helpers/party');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+
 
 const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
