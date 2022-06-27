@@ -19,6 +19,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "bothDefendantsSpec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "CPRCertifySpec",
     "AccessControl": [
       {
@@ -37,7 +55,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRConfirmationSpec",
+    "CaseFieldID": "CPRCertifySpecTwoDefendant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "currentDefendant",
     "AccessControl": [
       {
         "UserRoles": [
@@ -199,7 +235,43 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "currentDefendantName",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "paymentTypeSelection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "paymentSetDateLabel",
     "AccessControl": [
       {
         "UserRoles": [
