@@ -117,7 +117,6 @@ const firstDefendantSteps = (respondent1) => [
   () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
   () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
-  ]),
 
 ];
 
