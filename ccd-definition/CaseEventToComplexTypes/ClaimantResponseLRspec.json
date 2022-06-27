@@ -13,7 +13,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2GeneratedResponseDocument",
     "ListElementCode": "documentLink",
-    "EventElementLabel": "Defendant response form",
+    "EventElementLabel": "Defendant two response form",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
