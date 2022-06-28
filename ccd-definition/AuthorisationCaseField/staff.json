@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentUploadWarning",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
