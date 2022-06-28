@@ -6,7 +6,7 @@ environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
-  excludedFilenamePatterns="-e *DJspec.json,*DJ.json,*-nonprod,json"
+  excludedFilenamePatterns="-e *DJspec.json,*DJ.json,*-nonprod.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then
