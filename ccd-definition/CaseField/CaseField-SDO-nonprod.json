@@ -271,6 +271,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsAddNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "SmallClaimsAddNewDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "setFastTrackFlag",
     "Label": "fast track flag",
     "FieldType": "YesOrNo",

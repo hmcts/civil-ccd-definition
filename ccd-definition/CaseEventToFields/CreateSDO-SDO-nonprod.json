@@ -437,6 +437,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsAddNewDirections",
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "setFastTrackFlag",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
