@@ -279,7 +279,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsRoadTrafficAccident",
-    "Label": "Road traffic accident",
+    "Label": "Road traffic accident ",
     "FieldType": "SmallClaimsRoadTrafficAccident",
     "SecurityClassification": "Public"
   },
