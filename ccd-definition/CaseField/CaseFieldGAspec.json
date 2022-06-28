@@ -237,5 +237,12 @@
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppSuperClaimType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

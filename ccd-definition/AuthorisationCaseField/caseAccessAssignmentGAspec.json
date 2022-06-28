@@ -88,5 +88,11 @@
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppSuperClaimType",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]
