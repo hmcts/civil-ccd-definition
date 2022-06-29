@@ -12,7 +12,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "NoCChallenge",
     "DisplayOrder": "2",
-    "QuestionText": "Client first name and last name/Company name",
+    "QuestionText": "Clients title (if applicable), First and Last Name/Organisation Name",
     "AnswerFieldType": "Text",
     "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${respondent1.partyName}:[RESPONDENTSOLICITORONE]",
     "QuestionId": "clientName"
