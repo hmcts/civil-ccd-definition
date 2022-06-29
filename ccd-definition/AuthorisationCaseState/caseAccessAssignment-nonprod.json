@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_ISSUED",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRUD"
+  }
+]
