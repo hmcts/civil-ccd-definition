@@ -440,7 +440,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "orderDoc",
+    "ID": "orderSDODocumentDJ",
     "Label": "View directions order",
     "FieldType": "Document",
     "SecurityClassification": "Public"

@@ -833,7 +833,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "orderDoc",
+    "CaseFieldID": "orderSDODocumentDJ",
     "AccessControl": [
       {
         "UserRoles": [

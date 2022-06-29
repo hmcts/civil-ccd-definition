@@ -700,7 +700,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "orderDoc",
+    "CaseFieldID": "orderSDODocumentDJ",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "OrderPreview",
