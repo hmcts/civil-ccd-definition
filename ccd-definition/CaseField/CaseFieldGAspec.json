@@ -226,7 +226,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppDeadlineNotification",
+    "ID": "generalAppDateDeadline",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
     "SecurityClassification": "Public"
