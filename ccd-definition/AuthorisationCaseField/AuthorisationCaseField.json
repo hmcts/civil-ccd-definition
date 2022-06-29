@@ -16,6 +16,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentUploadWarning",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"
