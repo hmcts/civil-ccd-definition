@@ -8,6 +8,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "bothDefendantsSpec",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "CPRCertifySpec",
     "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
     "FieldType": "Label",
@@ -15,15 +22,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CPRConfirmationSpec",
-    "Label": "I certify that all of these statements are correct and apply to the defendant",
-    "FieldType": "YesOrNo",
+    "ID": "CPRCertifySpecTwoDefendant",
+    "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "currentDefendant",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "Used to populate title for partial payment, depending on whether both defendants were selected"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "partialPaymentLabel",
-    "Label": "## Has ${respondent1.partyName} paid some of the amount owed?",
+    "Label": "## ${currentDefendant}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -71,8 +86,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "currentDefendantName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "paymentTypeLabel",
-    "Label": "## How do you want ${respondent1.partyName} to pay?",
+    "Label": "## How do you want ${currentDefendantName} to pay?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -83,7 +105,14 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",
     "SecurityClassification": "Public"
-  }  ,
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentSetDateLabel",
+    "Label": "## When do you want ${currentDefendantName} to pay?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "paymentSetDate",
@@ -91,7 +120,6 @@
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
-
   {
     "CaseTypeID": "CIVIL",
     "ID": "repaymentDue",
@@ -102,7 +130,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "repaymentDetailsLabel",
-    "Label": "## Suggest instalments for the defendant \n Total claim amount is £${repaymentDue}",
+    "Label": "## Suggest instalments for ${currentDefendantName} \n Total claim amount is £${repaymentDue}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

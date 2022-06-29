@@ -1,18 +1,10 @@
 [
   {
     "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "generalAppFeeToPayLabel108",
-    "ElementLabel": "<p class=\"govuk-body\">Application fee to pay<br>£108</p>",
+    "ListElementCode": "generalAppFeeToPayInText",
+    "ElementLabel": "Application fee to pay",
     "HintText": "  ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "generalAppFeeToPayLabel275",
-    "ElementLabel": "<p class=\"govuk-body\">Application fee to pay<br>£275</p>",
-    "HintText": "  ",
-    "FieldType": "Label",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
@@ -34,7 +26,7 @@
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "fee",
-    "ElementLabel": "General Application fee",
+    "ElementLabel": " ",
     "FieldType": "Fee",
     "SecurityClassification": "Public"
   },

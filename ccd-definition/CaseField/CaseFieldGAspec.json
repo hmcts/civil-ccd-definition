@@ -116,13 +116,35 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application \n Before uploading a file, make sure it: \n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, GIF, DOC or PDF \n* has an accurate file name - for example: \n WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc",
+    "Label": "## Upload any evidence that supports your application \n Before uploading a file, make sure it: \n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* has an accurate file name - for example: \n WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalApplicationsDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDetailsRespondentSol",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDetailsRespondentSolTwo",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
@@ -204,7 +226,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppDeadlineNotification",
+    "ID": "generalAppDateDeadline",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
     "SecurityClassification": "Public"

@@ -32,6 +32,25 @@
     <cve>CVE-2021-45105</cve>
     <cve>CVE-2022-22965</cve>
     <cve>CVE-2022-22968</cve>
+    <cve>CVE-2020-15522</cve>
+    <cve>CVE-2016-1000027</cve>
+    <cve>CVE-2022-27772</cve>
+    <cve>CVE-2020-5412</cve>
+    <cve>CVE-2019-3795</cve>
+    <cve>CVE-2020-5408</cve>
+    <cve>CVE-2021-22060</cve>
+    <cve>CVE-2021-22096</cve>
+    <cve>CVE-2022-22950</cve>
+    <cve>CVE-2021-22118</cve>
+    <cve>CVE-2021-22053</cve>
+    <cve>CVE-2021-22044</cve>
+    <cve>CVE-2021-22119</cve>
+    <cve>CVE-2022-22970</cve>
+    <cve>CVE-2022-22971</cve>
+  </suppress>
+  <suppress until="2022-07-01">
+    <notes>latest spring security core 5.6.5 still has internal dependencies which are cauing the Vulnerability</notes>
+    <cve>CVE-2022-22976</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
@@ -62,5 +81,16 @@
     ]]></notes>
     <packageUrl regex="true">^pkg:maven/org\.apache\.poi/poi\-ooxml\-schemas@.*$</packageUrl>
     <cve>CVE-2022-26336</cve>
+  </suppress>
+  <suppress>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
+    <cve>CVE-2022-22978</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: got:11.8.3
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/got@.*$</packageUrl>
+    <vulnerabilityName>1075647</vulnerabilityName>
   </suppress>
  </suppressions>

@@ -116,6 +116,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicantPartyName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "claimant1PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -158,9 +165,9 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppDeadlineNotification",
+    "ListElementCode": "generalAppDateDeadline",
     "ElementLabel": " ",
-    "FieldType": "TextArea",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {

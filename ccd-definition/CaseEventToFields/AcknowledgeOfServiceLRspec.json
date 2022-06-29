@@ -32,7 +32,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },  
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
@@ -46,6 +46,30 @@
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress",
     "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "addRespondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "FieldShowCondition": "specAoSRespondentDetails=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2SameLegalRepresentative",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "ConfirmNameAddress",
+    "FieldShowCondition": "specAoSRespondentDetails=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -75,36 +99,49 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
+    "CaseFieldID": "respondent1",
+    "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmDetails",
+    "PageLabel": "Confirm your details",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmDetails",
+    "PageLabel": "Confirm your details",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "ConfirmDetails",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },  
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "ConfirmDetails",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "FieldShowCondition": "specAoSRespondentCorrespondenceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
-    "CaseFieldID": "respondent1",
-    "CaseEventFieldLabel": " ",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "ConfirmDetails",
-    "PageLabel": "Confirm your details",
-    "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "N"
   }
 ]
