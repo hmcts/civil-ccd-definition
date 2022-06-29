@@ -1408,7 +1408,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -1449,7 +1451,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -1693,7 +1697,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -4453,6 +4459,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[APPLICANTSOLICITORTWO]",
+          "[APPLICANTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "RU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
     "AccessControl": [
       {
         "UserRoles": [
