@@ -12,16 +12,66 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 
+let caseId, eventName;
+let caseData = {};
+
 const data = {
-  CREATE_CLAIM: () => claimData.createClaim(),
-  DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
+  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
-let caseId, eventName;
-let caseData = {};
-let mpScenario = 'ONE_V_ONE';
+const eventData = {
+  defendantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_NOT_FULL_DEFENCE')
+    },
+    TWO_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_2v1('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_NOT_FULL_DEFENCE')
+    }
+  },
+  claimantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
+      NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2('NOT_PROCEED'),
+    },
+    TWO_V_ONE: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
+      NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
+    }
+  }
+};
 
 module.exports = {
 
@@ -31,12 +81,12 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user) => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM();
+    const createClaimData = data.CREATE_CLAIM(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -63,14 +113,9 @@ module.exports = {
 
     let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE();
 
-    for (let pageId of Object.keys(informAgreedExtensionData.valid)) {
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
     }
-
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Extension deadline submitted',
-      body: 'You must respond to the claimant by'
-    });
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -80,7 +125,58 @@ module.exports = {
 
   cleanUp: async () => {
     await unAssignAllUsers();
-  }
+  },
+
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFENDANT_RESPONSE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+    let defendantResponseData = eventData['defendantResponses'][scenario][response];
+
+    caseData = returnedCaseData;
+
+    console.log(`${response} ${scenario}`);
+
+    for (let pageId of Object.keys(defendantResponseData.userInput)) {
+      await assertValidData(defendantResponseData, pageId);
+    }
+
+    if (scenario === 'ONE_V_ONE')
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    else if (scenario === 'ONE_V_TWO')
+      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    else if (scenario === 'TWO_V_ONE')
+      if (response === 'DIFF_FULL_DEFENCE')
+        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+      else
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    deleteCaseFields('respondent1Copy');
+  },
+
+  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let claimantResponseData = eventData['claimantResponses'][scenario][response];
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
+
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
@@ -93,56 +189,82 @@ const assertValidData = async (data, pageId) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    caseId
   );
   let responseBody = await response.json();
 
   assert.equal(response.status, 200);
 
-  if (data.midEventData[pageId]) {
-    const expectedMidEvent = data.midEventData[pageId];
-    caseData = update(caseData, expectedMidEvent);
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
   }
 
-  if (data.midEventGeneratedData[pageId]) {
-    const expected = data.midEventGeneratedData[pageId];
-    caseData = updateWithGenerated(caseData, responseBody.data, expected);
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
 
-  const matchFailure = responseMatchesExpectations(responseBody.data, caseData);
-  assert.isTrue(!matchFailure, 'Response data did not match in page id ' + pageId
-    + '. Offending field ' + matchFailure);
+  caseData = update(caseData, responseBody.data);
 };
 
-/**
- * ResponseData is expected to modify caseData as described in "update" method. We cannot use deepEquals because some
- * fields are not returned by backend while they're still in the browser's memory. For instance, when creating a claim,
- * the solicitor's email correct field is not returned, but it is still there, because it's sent on submit.
- *
- * @param responseBodyData the information in the response
- * @param caseData expected contents
- * @return null if all elements in responseBodyData are deeply included in caseData,
- * the name of the first field for which that isn't true otherwise
- */
-function responseMatchesExpectations(responseBodyData, caseData) {
-  for (const key in responseBodyData) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (responseBodyData.hasOwnProperty(key)) {
-      if (typeof responseBodyData[key] === 'object') {
-        const failure = responseMatchesExpectations(responseBodyData[key], caseData[key]);
-        if (failure) {
-          return key + '.' + failure;
-        }
-      } else if (caseData) {
-        if (responseBodyData[key] !== caseData[key]) {
-          return key;
-        }
+function checkExpected(responseBodyData, expected, prefix = '') {
+  if (!(responseBodyData) && expected) {
+    if (expected) {
+      assert.fail('Response' + prefix ? '[' + prefix + ']' : '' + ' is empty but it was expected to be ' + expected);
+    } else {
+      // null and undefined may reach this point bc typeof null is object
+      return;
+    }
+  }
+  for (const key in expected) {
+    if (Object.prototype.hasOwnProperty.call(expected, key)) {
+      if (typeof expected[key] === 'object') {
+        checkExpected(responseBodyData[key], expected[key], key + '.');
       } else {
-        return key + ' is not in caseData';
+        assert.equal(responseBodyData[key], expected[key], prefix + key + ': expected ' + expected[key]
+          + ' but actual ' + responseBodyData[key]);
       }
     }
   }
-  return null;
+}
+
+function checkGenerated(responseBodyData, generated, prefix = '') {
+  if (!(responseBodyData)) {
+    assert.fail('Response' + prefix ? '[' + prefix + ']' : '' + ' is empty but it was not expected to be');
+  }
+  for (const key in generated) {
+    if (Object.prototype.hasOwnProperty.call(generated, key)) {
+      const checkType = function (type) {
+        if (type === 'array') {
+          assert.isTrue(Array.isArray(responseBodyData[key]),
+            'responseBody[' + prefix + key + '] was expected to be an array');
+        } else {
+          assert.equal(typeof responseBodyData[key], type,
+            'responseBody[' + prefix + key + '] was expected to be of type ' + type);
+        }
+      };
+      const checkFunction = function (theFunction) {
+        assert.isTrue(theFunction.call(responseBodyData[key], responseBodyData[key]),
+          'responseBody[' + prefix + key + '] does not satisfy the condition it should');
+      };
+      if (typeof generated[key] === 'string') {
+        checkType(generated[key]);
+      } else if (typeof generated[key] === 'function') {
+        checkFunction(generated[key]);
+      } else if (typeof generated[key] === 'object') {
+        if (generated[key]['type']) {
+          checkType(generated[key]['type']);
+        }
+        if (generated[key]['condition']) {
+          checkType(generated[key]['condition']);
+        }
+        for (const key2 in generated[key]) {
+          if (Object.prototype.hasOwnProperty.call(generated, key2) && 'condition' !== key2 && 'type' !== key2) {
+            checkGenerated(responseBodyData[key2], generated[key2], key2 + '.');
+          }
+        }
+      }
+    }
+  }
 }
 
 /**
@@ -158,47 +280,13 @@ function update(currentObject, modifications) {
   const modified = {...currentObject};
   for (const key in modifications) {
     if (currentObject[key] && typeof currentObject[key] === 'object') {
-      if (!Array.isArray(currentObject[key])) {
+      if (Array.isArray(currentObject[key])) {
+        modified[key] = modifications[key];
+      } else {
         modified[key] = update(currentObject[key], modifications[key]);
       }
     } else {
       modified[key] = modifications[key];
-    }
-  }
-  return modified;
-}
-
-/**
- * Some fields returned by backend are generated and we can't foresee their values. They are going
- * to update our userData though, and this method is how we are going to do so.
- *
- * @param currentObject current caseData
- * @param responseBodyData data field of the response body
- * @param expectedModifications description of the modifications expected to be in responseBodyData
- * @return a case data with the new values
- */
-function updateWithGenerated(currentObject, responseBodyData, expectedModifications) {
-  const modified = {...currentObject};
-  for (const key in expectedModifications) {
-    if (typeof expectedModifications[key] === 'object') {
-      assert.property(responseBodyData, key);
-      if (Array.isArray(responseBodyData[key])) {
-        if (modified[key]) {
-          for (let i = 0; i < responseBodyData[key].length; i++) {
-            modified[key][i] = updateWithGenerated(currentObject[key][i],
-              responseBodyData[key][i], expectedModifications[key]);
-          }
-        } else {
-          modified[key] = responseBodyData[key];
-        }
-      } else if (modified[key]) {
-        modified[key] = updateWithGenerated(currentObject[key], responseBodyData[key], expectedModifications[key]);
-      } else {
-        modified[key] = responseBodyData[key];
-      }
-    } else {
-      assert.isTrue(typeof responseBodyData[key] === expectedModifications[key]);
-      modified[key] = responseBodyData[key];
     }
   }
   return modified;
@@ -235,12 +323,10 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };

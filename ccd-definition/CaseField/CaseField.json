@@ -1779,6 +1779,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "documentUploadWarning",
+    "Label": "### Documents uploaded to the Damages Claims Portal prior to the 'notify claim details' next step (refer to PD51ZB section 4), will be visible to the defendant solicitor once the claim has been issued. \n### If you do not want to provide access to these documents prior to completing the 'notify claim details' next step, please do not upload them now.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "vulnerabilityQuestionsInfoLabel",
     "Label": "Your answers to the questions above will enable the court and the judge, to consider what steps, adjustments or support can be arranged.\n\nYou are reminded that a copy of this directions questionnaire will be shared with all other parties.",
     "FieldType": "Label",
@@ -2038,5 +2045,60 @@
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrganisationIDCopy",
+    "Label": "Respondent 1 Organisation ID Copy",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop caa users from seeing case before claim notify"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationIDCopy",
+    "Label": "Respondent 2 Organisation ID Copy",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop caa users from seeing case before claim notify"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addLegalRepDeadline",
+    "Label": "Add Legal Rep Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "Add legal rep to case deadline",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "allPartyNames",
+    "Label": "All party names",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unassignedCaseListDisplayOrganisationReferences",
+    "Label": "Unassigned Case List Solicitor References",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseListDisplayDefendantSolicitorReferences",
+    "Label": "Case List Display Defendant Solicitor Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextDeadline",
+    "Label": "Next Deadline",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "_Definition":  "Next deadline on a case",
+    "_Category":  "CIVIL"
   }
 ]

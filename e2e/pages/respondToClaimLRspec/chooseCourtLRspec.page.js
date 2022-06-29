@@ -1,32 +1,43 @@
 const {I} = inject();
 
 module.exports = {
+  fields: function(mpScenario) {
+    switch (mpScenario) {
+      case 'ClaimantResponse': {
+        return {
+          chooseCourtLocation: {
+            id: '#applicant1DQRequestedCourt_requestHearingAtSpecificCourt_radio',
+            options: {
+              yes: 'Yes',
+              no: 'No'
+            }
+          },
+        };
+      }
 
-  fields: {
-     chooseCourtLocation: {
-          id: '#responseClaimCourtLocationRequired_radio',
-          options: {
-            yes: 'Yes',
-            no: 'No',
+      case 'DefendantResponse':
+      default: {
+        return {
+          chooseCourtLocation: {
+            id: '#responseClaimCourtLocationRequired_radio',
+            options: {
+              yes: 'Yes',
+              no: 'No'
+            }
           }
-    },
-    courtCode: '#respondToCourtLocation_responseCourtCode',
-    reason: '#respondToCourtLocation_reasonForHearingAtSpecificCourt',
+        };
+      }
+    }
   },
 
-  async chooseCourt(responseType) {
-    I.waitForElement(this.fields.chooseCourtLocation.id);
-    await I.runAccessibilityTest();
-    await within(this.fields.chooseCourtLocation.id, () => {
-    I.click(this.fields.chooseCourtLocation.options[responseType]);
-    });
+  async chooseCourt(mpScenario) {
 
-    I.waitForElement(this.fields.courtCode);
-    await I.runAccessibilityTest();
-    I.fillField(this.fields.courtCode, '344');
-    I.fillField(this.fields.reason, 'nearest court');
+      I.waitForElement(this.fields(mpScenario).chooseCourtLocation.id);
+      await I.runAccessibilityTest();
+      await within(this.fields(mpScenario).chooseCourtLocation.id, () => {
+      I.click(this.fields(mpScenario).chooseCourtLocation.options.no);
+      });
 
-    await I.clickContinue();
-  }
-};
-
+      await I.clickContinue();
+    }
+  };

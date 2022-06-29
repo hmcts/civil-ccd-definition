@@ -48,6 +48,37 @@
     "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
   },
   {
+    "ID": "Party",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "individualDateOfBirth",
+    "EventElementLabel": "Second defendant's date of birth",
+    "EventHintText": "You must enter this if you know it.",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2.type=\"INDIVIDUAL\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "soleTraderDateOfBirth",
+    "EventElementLabel": "Second defendant's date of birth",
+    "EventHintText": "You must enter this if you know it.",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2.type=\"SOLE_TRADER\""
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQExperts",
