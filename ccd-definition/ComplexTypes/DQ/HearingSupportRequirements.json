@@ -28,7 +28,7 @@
     "ID": "HearingSupportRequirements",
     "ListElementCode": "otherSupport",
     "FieldType": "TextArea",
-    "ElementLabel": "Tell us the other support that's needed - the court can't guarantee it, but will consider physical or mental health impairments",
+    "ElementLabel": "Tell us the other support that's needed - the court cannot guarantee it, but will consider physical or mental health impairments",
     "FieldShowCondition": "requirements CONTAINS \"OTHER_SUPPORT\"",
     "SecurityClassification": "Public"
   }

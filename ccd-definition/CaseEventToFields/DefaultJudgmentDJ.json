@@ -21,7 +21,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "bothDefendants=\"One\"",
-    "PageLabel": "Do all of these statements apply to the Defendant?"
+    "PageLabel": "Do all of these statements apply to the Defendant?-"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -39,9 +39,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "CPRConfirmation1",
+    "CaseFieldID": "CPRAcceptanceLabel",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "showcertifystatement",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -50,14 +50,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "CPRConfirmation2",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "showcertifystatement1",
-    "PageDisplayOrder": 3,
+    "CaseFieldID": "CPRAcceptance",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "showcertifystatement",
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/hearingTypeSelection"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/acceptCPR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "CPRAcceptance2DefLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "showcertifystatement1",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "CPRAcceptance2Def",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "showcertifystatement1",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/acceptCPR"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -69,8 +92,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "defendantDetails=\"Both\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/hearingTypeSelection"
+    "FieldShowCondition": "defendantDetails=\"Both\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -82,8 +104,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageLabel": "Make a request for judgment",
-    "PageShowCondition": "CPRConfirmation1=\"Yes\" OR CPRConfirmation2=\"Yes\""
+    "PageLabel": "Make a request for judgment"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -135,27 +156,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "detailsOfDirectionDisposal",
+    "CaseFieldID": "detailsOfDirection",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingType",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "detailsOfDirectionTrial",
-    "PageFieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "PageID": "HearingType",
-    "PageDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hearingSelection=\"TRIAL_HEARING\"",
+    "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\" OR hearingSelection=\"TRIAL_HEARING\"",
     "RetainHiddenValue": "Y"
   },
   {
@@ -168,7 +176,6 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "CPRConfirmation1=\"Yes\" OR CPRConfirmation2=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/HearingSupportRequirementsDJ",
     "PageLabel": "Enter hearing details"
   }

@@ -1,0 +1,28 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_INTERIM_JUDGMENT_CLAIMANT",
+    "Name": "Notify IJ Claimant",
+    "Description": "Notify interim judgment to claimant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "Name": "Notify IJ Def",
+    "Description": "Notify interim judgment to defendant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]

@@ -24,7 +24,7 @@
     "EventElementLabel": "Defendant's date of birth",
     "EventHintText": "You must enter this if you know it.",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "Party",
@@ -32,6 +32,26 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderDateOfBirth",
     "EventElementLabel": "Defendant's date of birth",
+    "EventHintText": "You must enter this if you know it.",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "individualDateOfBirth",
+    "EventElementLabel": "Second defendant's date of birth",
+    "EventHintText": "You must enter this if you know it.",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "soleTraderDateOfBirth",
+    "EventElementLabel": "Second defendant's date of birth",
     "EventHintText": "You must enter this if you know it.",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"

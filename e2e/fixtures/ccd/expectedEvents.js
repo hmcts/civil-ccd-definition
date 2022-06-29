@@ -58,6 +58,7 @@ module.exports = {
       events.ADD_CASE_NOTE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
+      events.ADD_CASE_NOTE,
       events.AMEND_PARTY_DETAILS
     ],
     AWAITING_APPLICANT_INTENTION: [
