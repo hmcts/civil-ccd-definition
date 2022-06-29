@@ -11,12 +11,6 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -67,12 +61,6 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -91,9 +79,9 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]",
-          "caseworker-civil-solicitor"
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "R"
       }

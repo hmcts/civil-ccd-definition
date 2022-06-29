@@ -8,9 +8,25 @@ const getDateTimeISOString = days => {
   return date.toISOString();
 };
 
+const getDate = days => {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return date;
+};
+
 module.exports = {
   date: (days = 0) => {
     return getDateTimeISOString(days).slice(0, 10);
+  },
+
+  dateNoWeekends: function dateNoWeekends(days = 0) {
+    let date = getDate(days);
+
+    if(date.getDay() !== 6 && date.getDay() !== 0) {
+      return date.toISOString().slice(0, 10);
+    } else {
+      return dateNoWeekends(days - 1);
+    }
   },
 
   dateTime: (days = 0) => {
