@@ -9,6 +9,15 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "CaseDocument",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
+    "ListElementCode": "documentLink",
+    "EventElementLabel": "Defendant two response form",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1SpecDefenceResponseDocument",
@@ -271,7 +280,7 @@
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "requestHearingAtSpecificCourt",
     "EventElementLabel": "Do you want the hearing to be held at a specific court?",
-    "EventHintText": "If not, it'll be held at the defendant's preferred court.",
+    "EventHintText": "If not, it will be held at the defendant's preferred court.",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
