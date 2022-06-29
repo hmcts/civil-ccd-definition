@@ -271,6 +271,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "SmallClaimsCreditHire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsRoadTrafficAccident",
+    "Label": "Road traffic accident ",
+    "FieldType": "SmallClaimsRoadTrafficAccident",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "setFastTrackFlag",
     "Label": "fast track flag",
     "FieldType": "YesOrNo",
