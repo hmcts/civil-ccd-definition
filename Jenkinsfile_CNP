@@ -163,7 +163,6 @@ withPipeline(type, product, component) {
   }
 
   after('functionalTest:preview') {
-    createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
