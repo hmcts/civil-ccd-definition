@@ -126,15 +126,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "caseworker-wa-task-configuration",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "caseworker-wa-task-configuration",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "circuit-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
