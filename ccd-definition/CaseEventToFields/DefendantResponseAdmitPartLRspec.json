@@ -867,7 +867,7 @@
     "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\""
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -910,7 +910,7 @@
     "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\""
+    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
