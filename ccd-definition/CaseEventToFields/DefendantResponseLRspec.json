@@ -977,7 +977,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "showHowToAddTimeLinePage = \"Yes\" AND fullAdmissionAndFullAmountPaid != \"Yes\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\" OR showConditionFlags CONTAINS \"ONLY_RESPONDENT_2_DISPUTES\"  OR showConditionFlags CONTAINS \"BOTH_RESPONDENTS_DISPUTE\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
