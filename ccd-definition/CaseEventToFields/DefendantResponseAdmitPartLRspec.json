@@ -960,7 +960,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQCarerAllowanceCredit",
     "PageID": "DefendantIncomeExpenses",
-    "PageDisplayOrder": 24,
+    "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"

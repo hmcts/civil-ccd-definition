@@ -1688,6 +1688,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQFutureApplications",
+    "PageLabel": "",
+    "PageDisplayOrder": 52,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Applications",
+    "PageShowCondition": "",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "additionalInformationForJudge",
     "PageDisplayOrder": 52,
     "PageFieldDisplayOrder": 3,
