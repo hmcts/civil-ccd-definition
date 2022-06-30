@@ -12,8 +12,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-wa-task-configuration"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

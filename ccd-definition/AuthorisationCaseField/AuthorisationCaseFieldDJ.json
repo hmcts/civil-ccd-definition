@@ -250,7 +250,6 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-wa-task-configuration",
           "judge-profile"
         ],
         "CRUD": "R"
