@@ -992,7 +992,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 35,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\" AND respondentClaimResponseTypeForSpecGeneric =\"FULL_ADMISSION\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
