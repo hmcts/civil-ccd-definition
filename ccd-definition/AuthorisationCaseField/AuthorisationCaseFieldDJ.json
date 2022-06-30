@@ -38,24 +38,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRConfirmation2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "CPRcertify",
     "AccessControl": [
       {
