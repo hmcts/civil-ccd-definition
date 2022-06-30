@@ -120,22 +120,13 @@ module.exports = {
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
-            sameSolicitorSameResponse: null,
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'Yes',
-            specFullDefenceOrPartAdmission1V1: 'Yes',
-            specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            specDisputesOrPartAdmission: 'Yes'
-          },
-
-          Upload: {
-            specDisputesOrPartAdmission: 'Yes'
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmNameAddress: {
@@ -160,12 +151,7 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
-            responseClaimTrack: null,
-            sameSolicitorSameResponse: null,
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specFullDefenceOrPartAdmission1V1: null,
-            specPaidLessAmountOrDisputesOrPartAdmission: null,
             multiPartyResponseTypeFlags: 'NOT_FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
@@ -286,22 +272,13 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
-            sameSolicitorSameResponse: null,
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
-            specDefenceFullAdmittedRequired: 'No',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
-            specDisputesOrPartAdmission: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
             responseClaimTrack: 'FAST_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            specDisputesOrPartAdmission: 'Yes'
-          },
-
-          Upload: {
-            specDisputesOrPartAdmission: 'Yes'
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
 
           ResponseConfirmNameAddress: {
@@ -327,7 +304,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
-            specFullAdmissionOrPartAdmission: 'No',
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specDefenceFullAdmittedRequired: 'No'
@@ -368,12 +344,7 @@ module.exports = {
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'No',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specFullDefenceOrPartAdmission1V1: 'No',
-            specDefenceFullAdmittedRequired: 'No',
-            specFullAdmitPaid: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'No'
-
+            specDefenceFullAdmittedRequired: 'No'
           },
           ResponseConfirmNameAddress: {
             businessProcess: {
@@ -464,17 +435,12 @@ module.exports = {
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specFullDefenceOrPartAdmission1V1: 'Yes',
             specDefenceFullAdmittedRequired: 'No',
-            specPartAdmitPaid: 'No',
-            specFullAdmissionOrPartAdmission: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
 
           defenceAdmittedPartRoute: {
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes',
             responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
 
@@ -487,9 +453,7 @@ module.exports = {
 
           defenceRoute: {
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'FAST_CLAIM',
-            specDisputesOrPartAdmission: 'Yes',
-            specPaidLessAmountOrDisputesOrPartAdmission: 'Yes'
+            responseClaimTrack: 'FAST_CLAIM'
           }
         };
         break;

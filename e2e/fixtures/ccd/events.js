@@ -71,12 +71,6 @@ module.exports = {
     name: 'Case proceeds in Caseman',
     order: 9
   },
-  CASE_PROCEEDS_IN_CASEMAN_SPEC: {
-    description: 'Specified case will proceed offline in Caseman system',
-    id: 'CASE_PROCEEDS_IN_CASEMAN_SPEC',
-    name: 'Case proceeds in Caseman',
-    order: 9
-  },
   RESUBMIT_CLAIM: {
     id: 'RESUBMIT_CLAIM',
     name: 'Resubmit claim',

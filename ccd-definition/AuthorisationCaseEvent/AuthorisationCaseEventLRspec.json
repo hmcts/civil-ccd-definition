@@ -323,24 +323,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN_SPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "PROCESS_FULL_DEFENCE_SPEC",
     "AccessControl": [
       {

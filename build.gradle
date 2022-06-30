@@ -187,11 +187,11 @@ def inStrictOrder(Task... tasks) {
 }
 
 task smoke(description: 'Runs the smoke tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
@@ -257,6 +257,11 @@ dependencies {
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
   smokeTestImplementation sourceSets.main.runtimeClasspath
+
+  // prevent CVE-2020-0187
+  implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.67'
+  // prevent CVE-2022-22978
+  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.6.4'
 }
 
 wrapper {

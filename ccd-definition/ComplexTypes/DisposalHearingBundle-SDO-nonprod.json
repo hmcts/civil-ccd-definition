@@ -1,9 +1,16 @@
 [
   {
     "ID": "DisposalHearingBundle",
-    "ListElementCode": "label",
+    "ListElementCode": "line1",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "ListElementCode": "label1",
+    "FieldType": "Label",
+    "ElementLabel": "## Disposal hearing bundle ##",
     "SecurityClassification": "Public"
   },
   {
@@ -15,10 +22,17 @@
   },
   {
     "ID": "DisposalHearingBundle",
+    "ListElementCode": "label2",
+    "FieldType": "Label",
+    "ElementLabel": "#### Select bundle type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
     "ListElementCode": "type",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingBundleType",
-    "ElementLabel": "Select bundle type",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
@@ -26,6 +40,13 @@
     "ListElementCode": "text",
     "FieldType": "Label",
     "ElementLabel": "a case summary should not exceed 500 words",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "ListElementCode": "line2",
+    "FieldType": "Label",
+    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]
