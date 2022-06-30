@@ -151,7 +151,7 @@ withPipeline(type, product, component) {
   }
 
   after('smoketest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
   before('functionalTest:preview') {
@@ -164,7 +164,7 @@ withPipeline(type, product, component) {
 
   after('functionalTest:preview') {
     createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   before('smoketest:aat') {
@@ -185,7 +185,7 @@ withPipeline(type, product, component) {
   }
 
   after('smoketest:aat') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
   before('functionalTest:aat') {
@@ -198,6 +198,6 @@ withPipeline(type, product, component) {
 
   after('functionalTest:aat') {
     createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }
