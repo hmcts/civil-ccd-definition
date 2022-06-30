@@ -140,7 +140,7 @@
     "ID": "disposalHearingMethodInPersonDJ",
     "Label": "Select hearing location ",
     "FieldType": "Label",
-    "_SecurityClassification": "Public",
+    "SecurityClassification": "Public",
     "_comment": "placeholder for court locations"
   },
   {
@@ -334,7 +334,7 @@
     "ID": "trialHearingMethodInPersonDJ",
     "Label": "Select hearing location ",
     "FieldType": "Label",
-    "_SecurityClassification": "Public",
+    "SecurityClassification": "Public",
     "_comment": "placeholder for court locations"
   },
   {
