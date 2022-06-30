@@ -22,5 +22,11 @@
     "ListElementCode": "FULL_ADMISSION",
     "ListElement": "Admits all of the claim",
     "DisplayOrder": 4
+  },
+  {
+    "ID": "MultiPartyResponseTypeFlags",
+    "ListElementCode": "PART_ADMISSION",
+    "ListElement": "Admits part of the claim",
+    "DisplayOrder": 5
   }
 ]
