@@ -1226,6 +1226,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "partAdmissionWhenWillDefendantPayImmediately2Label",
+    "Label": "You must contact the claimant to arrange payment of the full amount within 5 days. Any cheques or transfers must be clear in their account.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
+    "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartLRspec",
     "Label": " ",
     "HintText": "For example 9 December 2020",
