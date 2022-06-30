@@ -1,5 +1,4 @@
 const config = require('../../../config.js');
-const {assignCaseRoleToUser} = require('../../../api/caseRoleAssignmentHelper');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 
 
