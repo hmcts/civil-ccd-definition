@@ -36,7 +36,7 @@ Scenario.skip('1v1 Defendant solicitor perform Inform Agreed Extension', async (
   await LRspec.see(caseEventMessage('Inform agreed extension date'));
 }).retry(3);
 
-Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario.skip('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
