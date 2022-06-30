@@ -2,7 +2,7 @@
   {
     "ID": "DisposalAndTrialHearingDJToggle",
     "ListElementCode": "SHOW",
-    "ListElement": "Show/Hide",
+    "ListElement": "Add / Remove",
     "DisplayOrder": 1
   }
 ]
