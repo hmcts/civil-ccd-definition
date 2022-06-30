@@ -47,7 +47,7 @@ module.exports = {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
   },
-  TestOutputDir: process.env.E2E_OUTPUT_DIR || './output',
+  TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
