@@ -488,26 +488,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "disposalHearingNotesDJToggle",
-    "PageFieldDisplayOrder": 34,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingNotesDJ",
     "PageFieldDisplayOrder": 35,
     "DisplayContext": "COMPLEX",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingNotesDJToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -559,26 +546,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialHearingAllocationDJToggle",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialHearingAllocation",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingAllocationDJToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -868,39 +842,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialHearingNotesDJToggle",
-    "PageFieldDisplayOrder": 28,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialHearingNotesDJ",
     "PageFieldDisplayOrder": 29,
     "DisplayContext": "MANDATORY",
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingNotesDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialBuildingDisputeDJToggle",
-    "PageFieldDisplayOrder": 30,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsBuildingDispute\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -912,20 +860,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsBuildingDispute\" AND trialBuildingDisputeDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialClinicalNegligenceDJToggle",
-    "PageFieldDisplayOrder": 32,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsClinicalNegligence\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsBuildingDispute\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -937,20 +872,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsClinicalNegligence\" AND trialClinicalNegligenceDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialCreditHireDJToggle",
-    "PageFieldDisplayOrder": 34,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsCreditHire\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsClinicalNegligence\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -962,20 +884,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsCreditHire\" AND trialCreditHireDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialEmployerDJToggle",
-    "PageFieldDisplayOrder": 36,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsEmployersLiability\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsCreditHire\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -987,20 +896,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsEmployersLiability\" AND trialEmployerDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialPersonalInjuryDJToggle",
-    "PageFieldDisplayOrder": 38,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsPersonalInjury\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsEmployersLiability\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1012,20 +908,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsPersonalInjury\" AND trialPersonalInjuryDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialRoadTrafficAccidentDJToggle",
-    "PageFieldDisplayOrder": 40,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsRoadTrafficAccident\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsPersonalInjury\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1037,7 +920,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsRoadTrafficAccident\" AND trialRoadTrafficAccidentDJToggle=\"SHOW\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsRoadTrafficAccident\""
   },
   {
     "CaseTypeID": "CIVIL",

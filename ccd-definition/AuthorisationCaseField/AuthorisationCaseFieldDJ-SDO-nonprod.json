@@ -567,20 +567,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingNotesDJToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingNotesDJ",
     "AccessControl": [
       {
@@ -638,20 +624,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingJudgesRecitalDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialHearingAllocationDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1015,35 +987,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialHearingNotesDJToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingNotesDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialBuildingDisputeDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1071,35 +1015,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialClinicalNegligenceDJToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialClinicalNegligence",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialCreditHireDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1127,20 +1043,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialEmployerDJToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialEmployersLiability",
     "AccessControl": [
       {
@@ -1155,35 +1057,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialPersonalInjuryDJToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialPersonalInjury",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialRoadTrafficAccidentDJToggle",
     "AccessControl": [
       {
         "UserRoles": [

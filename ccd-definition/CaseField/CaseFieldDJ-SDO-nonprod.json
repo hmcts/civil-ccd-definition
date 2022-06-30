@@ -535,22 +535,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingNotesDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialHearingAllocationDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "trialHearingAlternativeDisputeDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -608,62 +592,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingTrialDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialHearingNotesDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialBuildingDisputeDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialClinicalNegligenceDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialCreditHireDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialEmployerDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialPersonalInjuryDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialRoadTrafficAccidentDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
