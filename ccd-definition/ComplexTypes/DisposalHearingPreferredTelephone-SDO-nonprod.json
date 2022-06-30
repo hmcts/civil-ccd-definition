@@ -9,8 +9,8 @@
   {
     "ID": "DisposalHearingPreferredTelephone",
     "ListElementCode": "telephone",
-    "FieldType": "Label",
-    "ElementLabel": "to be prepopulated by civil-service",
+    "FieldType": "Text",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]

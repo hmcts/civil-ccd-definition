@@ -131,7 +131,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -151,8 +150,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
   },
 
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
@@ -191,7 +190,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
   resubmitClaim: async (user) => {
@@ -207,7 +205,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
   amendClaimDocuments: async (user) => {
@@ -243,7 +240,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-    // await assertCaseNotAvailableToUser(config.defendantSolicitorUser);
   },
 
   notifyClaim: async (user, multipartyScenario) => {
@@ -289,6 +285,7 @@ module.exports = {
 
   amendPartyDetails: async (user) => {
     await apiRequest.setupTokens(user);
+    caseData = {};
 
     eventName = 'AMEND_PARTY_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -765,6 +762,8 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
   delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
   if(solicitor === 'solicitorTwo'){
@@ -780,6 +779,8 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondentSolicitor2Reference'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
   if(solicitor === 'solicitorTwo'){

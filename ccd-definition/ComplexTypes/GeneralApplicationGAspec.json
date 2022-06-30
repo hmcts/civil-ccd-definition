@@ -165,9 +165,9 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppDeadlineNotification",
+    "ListElementCode": "generalAppDateDeadline",
     "ElementLabel": " ",
-    "FieldType": "TextArea",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {

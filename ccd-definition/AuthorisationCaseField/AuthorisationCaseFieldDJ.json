@@ -11,7 +11,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -137,7 +138,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -199,7 +201,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "detailsOfDirection",
+    "CaseFieldID": "detailsOfDirectionDisposal",
     "AccessControl": [
       {
         "UserRoles": [
@@ -209,7 +211,27 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "detailsOfDirectionTrial",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -228,7 +250,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-wa-task-configuration"
+          "caseworker-wa-task-configuration",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -246,7 +269,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }

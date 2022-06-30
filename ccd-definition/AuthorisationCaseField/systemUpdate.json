@@ -181,6 +181,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "allPartyNames",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseListDisplayDefendantSolicitorReferences",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "nextDeadline",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "withdrawClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -406,5 +430,11 @@
     "CaseFieldID": "respondent1GeneratedResponseDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadline",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
