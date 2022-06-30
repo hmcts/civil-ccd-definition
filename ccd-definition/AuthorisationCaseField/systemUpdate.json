@@ -433,6 +433,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "addLegalRepDeadline",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
