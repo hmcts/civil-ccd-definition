@@ -1157,7 +1157,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1180,7 +1180,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocumentsLRspec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1203,7 +1203,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1226,7 +1226,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1253,7 +1253,7 @@
     "CaseEventFieldLabel": "Experts",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1358,7 +1358,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": " ",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1415,7 +1415,7 @@
     "PageDisplayOrder": 32,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "PageID": "Language",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1444,7 +1444,7 @@
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -1537,7 +1537,7 @@
     "PageID": "HearingLRspec",
     "CaseEventFieldLabel": " ",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -1619,7 +1619,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Hearing support requirements",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1683,7 +1683,7 @@
     "PageID": "Applications",
     "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame!=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1706,7 +1706,7 @@
     "CaseEventFieldLabel": "Provide any other information the judge may need",
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
