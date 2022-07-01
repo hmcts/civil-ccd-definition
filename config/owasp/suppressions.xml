@@ -90,6 +90,7 @@
   <suppress>
     <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
     <cve>CVE-2022-22978</cve>
+    <cve>CVE-2022-22976</cve>
   </suppress>
   <suppress>
     <notes><![CDATA[
@@ -97,5 +98,9 @@
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/got@.*$</packageUrl>
     <vulnerabilityName>1075647</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <packageUrl regex="true">^pkg:maven/org\.apache\.logging\.log4j/log4j-api@2\.17\.2$</packageUrl>
+    <cve>CVE-2022-33915</cve>
   </suppress>
  </suppressions>
