@@ -711,7 +711,7 @@
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"FULL_DEFENCE\" AND multiPartyResponseTypeFlags = \"FULL_DEFENCE\" AND addApplicant2 != \"Yes\" AND respondentResponseIsSame !=\"Yes\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"FULL_DEFENCE\" AND addApplicant2 != \"Yes\" AND respondentResponseIsSame !=\"Yes\"",
     "PageID": "defenceRoute",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
@@ -940,7 +940,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "PageShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\" OR showConditionFlags CONTAINS \"ONLY_RESPONDENT_2_DISPUTES\"  OR showConditionFlags CONTAINS \"BOTH_RESPONDENTS_DISPUTE\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
@@ -953,7 +953,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL",
     "PageID": "Upload",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -977,7 +977,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "showHowToAddTimeLinePage = \"Yes\" AND fullAdmissionAndFullAmountPaid != \"Yes\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1002,7 +1002,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimeline",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame!=\"Yes\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",

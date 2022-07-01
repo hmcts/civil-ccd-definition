@@ -6,7 +6,7 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec = \"FULL_ADMISSION\" OR respondent2ClaimResponseTypeForSpec = \"FULL_ADMISSION\" OR respondent1ClaimResponseTypeForSpec = \"PART_ADMISSION\" OR respondent2ClaimResponseTypeForSpec = \"PART_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CURRENT_ADMITS_PART_OR_FULL\" AND respondentResponseIsSame != \"No\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"RESPONDENT_1_ADMITS_PART_OR_FULL\" AND defendantSingleResponseToBothClaimants != \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND respondentResponseIsSame != \"Yes\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
@@ -846,7 +846,7 @@
     "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\""
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -889,7 +889,7 @@
     "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\""
+    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -971,7 +971,7 @@
     "PageID": "DefendantIncomeExpensesFullAdmission",
     "PageDisplayOrder": 34,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_1\" AND respondentClaimResponseTypeForSpecGeneric =\"FULL_ADMISSION\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1053,7 +1053,7 @@
     "PageID": "WhyDoesNotPayImmediately",
     "PageDisplayOrder": 36,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric!=\"FULL_DEFENCE\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired!=\"Yes\" AND specDefenceAdmittedRequired!=\"Yes\" AND multiPartyResponseTypeFlags!=\"COUNTER_ADMIT_OR_ADMIT_PART\" AND defendantSingleResponseToBothClaimants !=\"No\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"WHY_1_DOES_NOT_PAY_IMMEDIATELY\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""

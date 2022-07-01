@@ -88,5 +88,17 @@
     "ListElementCode": "SOMEONE_DISPUTES",
     "ListElement": "SOMEONE_DISPUTES",
     "DisplayOrder": 15
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "CURRENT_ADMITS_PART_OR_FULL",
+    "ListElement": "CURRENT_ADMITS_PART_OR_FULL",
+    "DisplayOrder": 16
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "WHY_1_DOES_NOT_PAY_IMMEDIATELY",
+    "ListElement": "WHY_1_DOES_NOT_PAY_IMMEDIATELY",
+    "DisplayOrder": 17
   }
 ]
