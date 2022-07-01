@@ -873,14 +873,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackAltDisputeResolution",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackAltDisputeResolution",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "FastTrackVariationOfDirections",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackVariationOfDirections",
@@ -897,14 +889,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackVariationOfDirections",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackVariationOfDirections",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "FastTrackSettlement",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackSettlement",
@@ -919,14 +903,6 @@
     "ListElementCode": "text",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackSettlement",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackSettlement",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -999,14 +975,6 @@
     "ListElementCode": "date3",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackDisclosureOfDocuments",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 10,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1081,14 +1049,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 10,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "FastTrackSchedulesOfLoss",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackSchedulesOfLoss",
@@ -1155,14 +1115,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackSchedulesOfLoss",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "FastTrackCosts",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCosts",
@@ -1177,14 +1129,6 @@
     "ListElementCode": "text",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackCosts",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCosts",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackTrial",
@@ -1249,14 +1193,6 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackTrial",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackTrial",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackPreferredTelephone",
@@ -1465,7 +1401,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "text",
-    "EventElementLabel": "*2. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "EventElementLabel": "2.. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
