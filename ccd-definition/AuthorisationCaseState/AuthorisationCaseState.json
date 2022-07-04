@@ -118,25 +118,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "JUDICIAL_REFERRAL",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
-          "basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
