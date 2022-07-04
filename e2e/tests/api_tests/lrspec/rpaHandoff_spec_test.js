@@ -45,14 +45,14 @@ Scenario('Defendant response- Counter claim', async ({I, api_spec}) => {
 
 Scenario('Take claim offline', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.informAgreedExtensionDate();
+  await api_spec.login(config.defendantSolicitorUser);
+  await api_spec.navigateToCaseDetails(caseNumber);
+  await api_spec.informAgreedExtensionDate();
 
-  await I.login(config.adminUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.caseProceedsInCaseman();
-  await I.signOut();
+  await api_spec.login(config.adminUser);
+  await api_spec.navigateToCaseDetails(caseNumber);
+  await api_spec.caseProceedsInCaseman();
+  await api_spec.signOut();
 }).retry(3);
 
 AfterSuite(async  () => {
