@@ -495,6 +495,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondent2CorrespondenceAddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specResponseCheckList",
     "Label": "<p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n <p>Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. </p>\n\n <a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template.",
     "FieldType": "Label",
@@ -517,6 +531,22 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTestForSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ClaimResponseTestForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
@@ -578,7 +608,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "defenceRouteRequired2",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponseAdmissionType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceAdmittedRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceAdmitted2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
@@ -620,6 +665,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceRouteAdmittedAmountClaimed2Label",
+    "Label": "## Has ${respondent2.partyName} paid the claimant the admitted amount? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specDefenceRouteAdmittedAmountClaimedMPLabel",
     "Label": "## Have ${respondent1.partyName} and ${respondent2.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
@@ -642,7 +694,21 @@
   {
     "Label": " ",
     "CaseTypeID": "CIVIL",
+    "ID": "respondToClaim2",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaim",
+    "FieldType": "RespondToClaim",
+    "SecurityClassification": "Public"
+  },
+  {
+    "Label": " ",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaim2",
     "FieldType": "RespondToClaim",
     "SecurityClassification": "Public"
   },
@@ -655,7 +721,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaimOwingAmount2",
+    "Label": "How much money does your client admit to owing?",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaimOwingAmountPounds",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToAdmittedClaimOwingAmountPounds2",
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
@@ -691,6 +771,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfWhyDoesYouDisputeTheClaim",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "detailsOfWhyDoesYouDisputeTheClaim2",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -739,6 +826,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2SpecDefenceResponseDocument",
+    "Label": " ",
+    "FieldType": "ResponseSpecDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specClaimResponseTimelineLabel",
     "Label": "## How do you want to add the claim timeline? ",
     "FieldType": "Label",
@@ -747,6 +841,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specClaimResponseTimelineList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimTimelineList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specClaimResponseTimelineList2",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimTimelineList",
@@ -763,7 +865,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specResponsTimelineDocumentFiles2",
+    "Label": "Upload files",
+    "FieldType": "Document",
+    "HintText": "We only accept documents in pdf format.",
+    "RegularExpression": ".pdf",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specResponseTimelineOfEvents",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TimelineOfEvents",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specResponseTimelineOfEvents2",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "TimelineOfEvents",
@@ -807,6 +926,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimMediationSpecLabelRes2",
+    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent2.partyName} agreed to free mediation?</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel2",
     "Label": "<p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
@@ -815,6 +941,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimMediationSpec2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
@@ -842,9 +975,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired2",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
     "Label": "Do you want hearing to be held at specific court ? \n",
     "HintText": "If the defendant is an individual the case will be held at defendant's preferred court ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimCourtLocation2Required",
+    "Label": "Do you want hearing to be held at specific court ? \n",
+    "HintText": "If the defendant is individual the case will be held at defendant's preferred court ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -857,7 +1005,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondToClaim_experts2",
+    "Label": " ",
+    "FieldType": "ExpertDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToCourtLocation2",
     "Label": " ",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
@@ -872,7 +1034,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimWitnesses2",
+    "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
+    "FieldType": "Text",
+    "RegularExpression": "\\d+",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingSmallClaim",
+    "Label": "Respondent 1 Hearing",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQHearingSmallClaim",
     "Label": "Respondent 1 Hearing",
     "FieldType": "SmallClaimHearing",
     "SecurityClassification": "Public"
@@ -893,6 +1070,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQHearingFastClaim",
+    "Label": "Respondent 1 Hearing",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "SmallClaimHearingInterpreterRequired",
     "FieldType": "YesOrNo",
     "Label": " ",
@@ -900,7 +1084,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "SmallClaimHearingInterpreter2Required",
+    "FieldType": "YesOrNo",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "SmallClaimHearingInterpreterDescription",
+    "FieldType": "TextArea",
+    "Label": "Type of interpreter",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimHearingInterpreterDescription2",
     "FieldType": "TextArea",
     "Label": "Type of interpreter",
     "SecurityClassification": "Public"
@@ -921,7 +1119,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2DQDisclosureOfNonElectronicDocuments",
+    "Label": "Disclosure of non-electronic documents",
+    "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondent1DQDisclosureOfElectronicDocuments",
+    "Label": "Disclosure of electronic documents",
+    "FieldType": "DisclosureOfElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
     "SecurityClassification": "Public"
@@ -942,7 +1154,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFutureApplications",
+    "Label": " ",
+    "FieldType": "FutureApplications",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "additionalInformationForJudge",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalInformationForJudge2",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -956,6 +1182,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel2",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds2}?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabelBothDefendants",
     "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
     "FieldType": "Label",
@@ -964,6 +1197,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "defenceAdmitPartPaymentTimeRouteRequired",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartPaymentTimeRouteRequired2",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
@@ -993,8 +1234,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartLRspec2",
+    "Label": " ",
+    "HintText": "For example 9 December 2020",
+    "FieldType": "RespondToClaimAdmitPartLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel2",
+    "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent2.partyName} in employment?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1007,9 +1263,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartEmploymentType2Required",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartEmploymentTypeLRspec",
     "Label": "Employed or self-employed?",
-    "HintText": "Select both if your client is employed and self-employed",
+    "HintText":"Select both if your client is employed and self-employed",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartEmploymentTypeLRspec2",
+    "Label": "Employed or self-employed?",
+    "HintText":"Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
     "SecurityClassification": "Public"
@@ -1017,6 +1289,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartUnemployedLRspec",
+    "Label": " ",
+    "FieldType": "UnemployedComplexTypeLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartUnemployedLRspec2",
     "Label": " ",
     "FieldType": "UnemployedComplexTypeLRspec",
     "SecurityClassification": "Public"
@@ -1074,6 +1353,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2CourtOrderPayment",
+    "Label": " ",
+    "FieldType": "PaymentUponCourtOrderLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1CourtOrderPaymentOption",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -1104,15 +1390,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2CourtOrderPayment",
-    "Label": " ",
-    "FieldType": "PaymentUponCourtOrderLRspec",
+    "ID": "minusBeforeOverdrawnAmount",
+    "Label": "<h2 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h2> \n",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "minusBeforeOverdrawnAmount",
-    "Label": "<h2 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h2> \n",
+    "ID": "minusBeforeOverdrawnAmountRes2",
+    "Label": "<h2 class=\"govuk-heading-l\">List ${respondent2Copy.partyName}'s bank and savings accounts</h2> \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1157,6 +1443,13 @@
     "CaseTypeID": "CIVIL",
     "ID": "specFinancialDetailsPurpose",
     "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent1.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specFinancialDetailsPurpose2",
+    "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent2.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1255,6 +1548,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitPartEmployer2",
+    "Label": " ",
+    "FieldType": "AdmitPartEmployer",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specSelfEmployedPageLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h2> \n</div>",
     "FieldType": "Label",
@@ -1290,6 +1590,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "homeOptionsTitleLRspec2",
+    "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent2.partyName} live?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHomeDetails",
     "Label": " ",
     "FieldType": "HomeDetailsLRspec",
@@ -1318,15 +1625,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
-    "Label": "## ${respondent1.partyName}'s income and expenses\n",
+    "ID": "respondent2DQIncomeAndExpenseLabel",
+    "Label": "## ${respondent2.partyName}'s income and expenses\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQIncomeAndExpenseLabel",
-    "Label": "## ${respondent2.partyName}'s income and expenses\n",
+    "ID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
+    "Label": "## ${respondent1.partyName}'s income and expenses\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1335,7 +1642,8 @@
     "ID": "respondent2DQIncomeAndExpenseLabelFullAdmission",
     "Label": "## ${respondent2.partyName}'s income and expenses\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1363,11 +1671,20 @@
     "ID": "respondent2DQCarerAllowanceCreditFullAdmission",
     "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringIncome",
+    "Label": "Add details of any regular income your client receives:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringIncome",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRecurringIncome",
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
@@ -1383,7 +1700,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRecurringIncomeFA",
+    "Label": "Add details of any regular income your client receives:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringIncome",
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRecurringExpenses",
+    "Label": "Add details of any regular expenses your client has:",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RecurringExpense",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRecurringExpenses",
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
@@ -1399,35 +1733,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQRecurringIncome",
-    "Label": "Add details of any regular income your client receives:",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "RecurringIncome",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQRecurringIncomeFA",
-    "Label": "Add details of any regular income your client receives:",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "RecurringIncome",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQRecurringExpenses",
-    "Label": "Add details of any regular expenses your client has:",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "RecurringExpense",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQRecurringExpensesFA",
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1466,16 +1777,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1RepaymentPlan",
-    "Label": " ",
-    "FieldType": "RepaymentPlanLRspec",
+    "ID": "respondent2RepaymentPlanLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2RepaymentPlanLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
-    "FieldType": "Label",
+    "ID": "respondent1RepaymentPlan",
+    "Label": " ",
+    "FieldType": "RepaymentPlanLRspec",
     "SecurityClassification": "Public"
   },
   {
@@ -1516,8 +1827,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specDefenceFullAdmitted2Required",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1583,7 +1908,8 @@
     "ID": "specFullDefenceOrPartAdmission1V1",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "This field is readonly, not shown anywhere, not used in conditions either, should remove"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1646,14 +1972,16 @@
     "ID": "specPartAdmitPaid",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "readonly, not used in conditions"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "specFullAdmitPaid",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Comment": "readonly, but not used in any condition, can remove"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1665,6 +1993,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
+    "Label": "Disclosure of non-electronic documents",
+    "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicant2DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
     "SecurityClassification": "Public"
@@ -1805,6 +2140,51 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "showHowToAddTimeLinePage",
+    "Label": "showHowToAddTimeLinePage",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fullAdmissionAndFullAmountPaid",
+    "Label": "fullAdmissionAndFullAmountPaid",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmittedByEitherRespondents",
+    "Label": "partAdmittedByEitherRespondents",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "neitherCompanyNorOrganisation",
+    "Label": "neitherCompanyNorOrganisation",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defenceAdmitPartPaymentTimeRouteGeneric",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondToClaimAdmitPartEmploymentTypeLRspecGeneric",
+    "Label": "Employed or self-employed?",
+    "HintText":"Select both if your client is employed and self-employed",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "enterBreathing",
     "FieldType": "BreathingSpaceStartInfo",
     "SecurityClassification": "Public",
@@ -1836,6 +2216,14 @@
     "ID": "applicantStatementOfTruthLabel",
     "Label": "The claimant believes that the facts stated in the response are true.\n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "showConditionFlags",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ShowConditionFlags",
     "SecurityClassification": "Public"
   }
 ]

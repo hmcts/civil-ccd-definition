@@ -150,8 +150,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
   },
 
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
@@ -285,6 +285,7 @@ module.exports = {
 
   amendPartyDetails: async (user) => {
     await apiRequest.setupTokens(user);
+    caseData = {};
 
     eventName = 'AMEND_PARTY_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);

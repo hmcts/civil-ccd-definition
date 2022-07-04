@@ -11,6 +11,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -61,6 +67,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -79,9 +91,29 @@
       {
         "UserRoles": [
           "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]",
           "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDICIAL_REFERRAL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "basic-access"
         ],
         "CRUD": "R"
       }
