@@ -353,17 +353,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specFinancialDetailsPurposeRespondent2",
-    "PageDisplayOrder": 15,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "FinancialDetailsPurposeRespondent2",
-    "PageShowCondition": "defenceAdmitPartPaymentTimeRouteRequired =\"*\" AND defenceAdmitPartPaymentTimeRouteRequired !=\"IMMEDIATELY\" AND specDefenceFullAdmittedRequired !=\"Yes\" AND respondent2Copy.partyTypeDisplayValue !=\"Company\" AND respondent2Copy.partyTypeDisplayValue !=\"Organisation\" AND respondentResponseIsSame=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "minusBeforeOverdrawnAmount",
     "PageID": "DefendantBankAccounts",
     "PageDisplayOrder": 16,

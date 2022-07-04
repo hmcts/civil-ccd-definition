@@ -100,5 +100,17 @@
     "ListElementCode": "WHY_1_DOES_NOT_PAY_IMMEDIATELY",
     "ListElement": "WHY_1_DOES_NOT_PAY_IMMEDIATELY",
     "DisplayOrder": 17
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "TIMELINE_UPLOAD",
+    "ListElement": "TIMELINE_UPLOAD",
+    "DisplayOrder": 18
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "TIMELINE_MANUALLY",
+    "ListElement": "TIMELINE_MANUALLY",
+    "DisplayOrder": 19
   }
 ]
