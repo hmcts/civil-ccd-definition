@@ -549,6 +549,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimantCounterClaimLabel_2v1",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponseTypeSpec2v1",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimant1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\" OR claimant2ClaimResponseTypeForSpec=\"COUNTER_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpecLabel",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 3,
