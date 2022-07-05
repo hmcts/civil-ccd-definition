@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "judge-profile",
+      "basic-access"
     ],
     "CRUD": "CRU"
   }
