@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "changeOrganisationRequestField",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
   }
 ]

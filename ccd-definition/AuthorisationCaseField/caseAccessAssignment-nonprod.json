@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "changeOrganisationRequestField",
-    "UserRole": "caseworker-approver",
-    "CRUD": "CRUD"
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

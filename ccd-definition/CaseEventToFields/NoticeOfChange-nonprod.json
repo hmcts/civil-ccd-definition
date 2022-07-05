@@ -5,9 +5,10 @@
     "CaseFieldID": "changeOrganisationRequestField",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
-    "PageID": "SingleFormPageWithComplex",
+    "PageID": 1,
     "PageLabel": "Change Organisation Request",
     "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }
 ]

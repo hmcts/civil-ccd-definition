@@ -5,14 +5,5 @@
     "Label": "Change Organisation Request",
     "FieldType": "ChangeOrganisationRequest",
     "SecurityClassification": "PUBLIC"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "changeOfRepresentatives",
-    "Label": "Change of representative",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "ChangeOfRepresentation",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
