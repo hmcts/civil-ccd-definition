@@ -20,7 +20,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRConfirmation1",
+    "CaseFieldID": "CPRAcceptanceLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -38,7 +38,43 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CPRConfirmation2",
+    "CaseFieldID": "CPRAcceptance",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "CPRAcceptance2DefLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "CPRAcceptance2Def",
     "AccessControl": [
       {
         "UserRoles": [
@@ -221,6 +257,43 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingSupportRequirementsDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingPreferredRegionId",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingBaseLocation",
     "AccessControl": [
       {
         "UserRoles": [
