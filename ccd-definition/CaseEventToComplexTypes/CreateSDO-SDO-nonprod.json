@@ -1465,7 +1465,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "text",
-    "EventElementLabel": "*2. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "EventElementLabel": "2.. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },

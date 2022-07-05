@@ -479,7 +479,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackEmployersLiability",
-    "Label": "Employer's libility",
+    "Label": "Employer's liability",
     "FieldType": "FastTrackEmployersLiability",
     "SecurityClassification": "Public"
   },
