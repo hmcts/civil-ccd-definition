@@ -38,6 +38,3 @@ Scenario('Defendant response- Counter claim', async  ({api_spec}) => {
   await api_spec.signOut();*/
 }).retry(3);
 
-AfterSuite(async  () => {
-  await unAssignAllUsers();
-});

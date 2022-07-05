@@ -79,8 +79,8 @@ const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestion
 const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
 const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
-const caseProceedsInCasemanPage = require("./pages/caseProceedsInCaseman/caseProceedsInCaseman.page");
-const {takeCaseOffline} = require("./pages/caseProceedsInCaseman/takeCaseOffline.page");
+const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
+const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
 
 const SIGNED_IN_SELECTOR = 'exui-header';
