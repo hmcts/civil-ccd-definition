@@ -1,7 +1,7 @@
 [
 
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingType",
     "ListElementCode": "hearingType",
@@ -12,7 +12,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingTypeTelephoneHearing",
     "ListElementCode": "hearingTypeTelephoneHearing",
@@ -22,18 +22,23 @@
     "FieldShowCondition": "hearingType = \"TELEPHONE_HEARING\""
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingPreferredLocation",
-    "ListElementCode": "hearingPreferredLocation",
+    "ID": "HearingSupportRequirementsListDJ",
+    "ListElementCode": "hearingTemporaryLocation",
     "ElementLabel": "Preferred location",
     "HintText": "This is needed if the judge decides to hold the hearing in person",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "CourtCode",
+    "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
+    "ListElementCode": "hearingPreferredLocation",
+    "ElementLabel": "Preferred Location",
+    "FieldType": "Text",
+    "DefaultHidden": "No",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingPreferredTelephoneNumber1",
     "ListElementCode": "hearingPreferredTelephoneNumber1",
@@ -42,7 +47,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingPreferredEmail",
     "ListElementCode": "hearingPreferredEmail",
@@ -51,7 +56,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingLengthEstimate",
     "ListElementCode": "hearingLengthEstimate",
@@ -61,7 +66,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hoursEstimateOther",
     "ListElementCode": "hoursEstimateOther",
@@ -71,7 +76,7 @@
     "FieldShowCondition": "hearingLengthEstimate = \"OTHER\""
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingUnavailableDates",
     "ListElementCode": "hearingUnavailableDates",
@@ -80,7 +85,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingDates",
     "ListElementCode": "hearingDates",
@@ -92,7 +97,7 @@
   },
   {
 
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDisabledAccess",
     "ListElementCode": "hearingSupportRequirementsDisabledAccess",
@@ -104,7 +109,7 @@
     "Label": "Hearing support requirements (optional)"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementHearingLoop",
     "ListElementCode": "hearingSupportRequirementHearingLoop",
@@ -115,7 +120,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementInterpreter",
     "ListElementCode": "hearingSupportRequirementInterpreter",
@@ -126,7 +131,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementSignLanguageDropdown",
     "ListElementCode": "hearingSupportRequirementSignLanguageDropdown",
@@ -136,7 +141,7 @@
     "FieldShowCondition": "hearingSupportRequirementInterpreter=\"SIGN_INTERPRETER\""
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementLanguage",
     "ListElementCode": "hearingSupportRequirementLanguage",
@@ -147,7 +152,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementLanguageDropdown",
     "ListElementCode": "hearingSupportRequirementLanguageDropdown",
@@ -158,7 +163,7 @@
   },
 
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "ListElementCode": "hearingSupportRequirementOther",
     "ElementLabel": " ",
     "FieldType": "MultiSelectList",
@@ -167,7 +172,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsListDJ",
     "ListElementCode": "hearingSupportRequirementOtherDropdown",
     "ElementLabel": "Support needed",
     "FieldType": "TextArea",
