@@ -190,7 +190,7 @@
     "CaseFieldID": "generalAppHearingDetails",
     "ListElementCode": "HearingPreferredLocation",
     "FieldDisplayOrder": 13,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingDetails",
