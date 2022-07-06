@@ -13,6 +13,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {updateCaseData} = require("./testingSupport");
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -38,7 +39,8 @@ const data = {
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
-  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
+  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js')
 };
 
 const eventData = {
@@ -561,6 +563,25 @@ module.exports = {
 
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
+  },
+
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1deadline = {};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-12T15:59:50'};
+    await testingSupport.updateCaseData(caseId, respondent1deadline);
+  },
+
+  defaultJudgment: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'DEFAULT_JUDGMENT';
+    console.log(eventName)
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   cleanUp: async () => {
