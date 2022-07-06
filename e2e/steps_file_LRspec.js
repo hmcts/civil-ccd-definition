@@ -371,7 +371,7 @@ module.exports = function () {
       eventName = 'Respond to claim';
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
-            () => this.clickContinue(),
+            () => respondentCheckListPage.claimTimelineTemplate(),
             () => specConfirmDefendantsDetails.confirmDetails(twoDefendants),
             () => specConfirmLegalRepDetails.confirmDetails(),
             ... conditionalSteps(twoDefendants, [
