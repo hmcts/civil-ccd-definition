@@ -307,7 +307,7 @@ module.exports = function () {
       ]);
     },
 
-    async initiateDJ(caseId) {
+    async initiateDJUnspec(caseId) {
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -319,6 +319,23 @@ module.exports = function () {
         () => event.returnToCaseDetails()
       ]);
     },
+
+    async initiateDJSpec(caseId) {
+      eventName = 'Request Default Judgment';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => defaultjudmentpage.againstBothDefendants(),
+        () => defaultjudmentpage.statementToCertify(),
+        () => defaultjudmentpage.hasDefendantMadePartialPayment(),
+        () => defaultjudmentpage.claimForFixedCosts(),
+        () => defaultjudmentpage.repaymentSummary(),
+        () => defaultjudmentpage.paymentTypeSelection(),
+        () => event.submit('Submit', 'Default Judgment Granted'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+
 
 
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {

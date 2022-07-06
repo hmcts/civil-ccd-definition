@@ -4,18 +4,48 @@ module.exports = {
 
   fields: {
     defendantDefaultJudgmentOptions: {
-      id: '#defendantDetails',
+      //id: '#defendantDetails',
+      id: '#defendantDetailsSpec',
       options: {
-        defendantname: '#defendantDetails > fieldset > div',
+        //defendantname: '#defendantDetails > fieldset > div',
+        defendantname: '#defendantDetailsSpec > fieldset > div',
+        //both: '#defendantDetails > fieldset > div::nth-of-type(3)',
+        both: '#defendantDetailsSpec > fieldset > div:nth-of-type(3)'
       }
     },
     statementsApplyForDJ:{
-      id: '#CPRConfirmation1_radio',
-      options: {
+      id: '#CPRAcceptance_acceptance-CERTIFIED',
+      /*options: {
         yes: '#CPRConfirmation1_Yes',
         no: '#CPRConfirmation1_No'
+      }*/
+    },
+
+    defendantPartialPayment:{
+      id: '#paymentConfirmationDecisionSpec_radio',
+      options: {
+        yes: '#partialPayment_Yes',
+        no: '#partialPayment_No'
       }
     },
+
+    claimForFixedCosts:{
+      id: '#partialPayment',
+      options: {
+        yes: '#paymentConfirmationDecisionSpec_Yes',
+        no: '#paymentConfirmationDecisionSpec_No'
+      }
+    },
+
+    paymentTypeSelection:{
+      id: '#paymentTypeSelection',
+      options: {
+        immediately: '#paymentTypeSelection-IMMEDIATELY',
+        setDate: '#paymentTypeSelection-SET_DATE',
+        repaymentPlan: '#paymentTypeSelection-REPAYMENT_PLAN',
+      }
+    },
+
     hearingSelectionForDJ:{
       id: '#hearingSelection',
       options: {
@@ -46,12 +76,39 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async statementToCertify() {
-    await within(this.fields.statementsApplyForDJ.id, () => {
-      I.click(this.fields.statementsApplyForDJ.options.yes);
+  async againstBothDefendants() {
+    await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
+      I.click(this.fields.defendantDefaultJudgmentOptions.options.both);
     });
     await I.clickContinue();
   },
+
+  async hasDefendantMadePartialPayment(){
+    await I.click(this.fields.defendantPartialPayment.options.no);
+    await I.clickContinue();
+  },
+
+  async claimForFixedCosts(){
+    await I.click(this.fields.claimForFixedCosts.options.no);
+    await I.clickContinue();
+  },
+
+  async repaymentSummary(){
+    await I.clickContinue();
+  },
+
+  async paymentTypeSelection(){
+    await I.click(this.fields.paymentTypeSelection.options.immediately);
+    await I.clickContinue();
+  },
+
+  async statementToCertify() {
+    //await within(this.fields.statementsApplyForDJ.id, () => {
+    await I.click(this.fields.statementsApplyForDJ.id);
+    // });
+    await I.clickContinue();
+  },
+
 
   async hearingSelection(){
     await within(this.fields.hearingSelectionForDJ.id, () => {

@@ -246,7 +246,7 @@ module.exports = {
             respondent2OrganisationPolicy: {
               OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWOSPEC]',
               Organisation: {
-                OrganisationID: '79ZRSOU',
+                OrganisationID: 'config.defendant2SolicitorOrgId',
                 OrganisationName: 'Civil - Organisation 2'
               }
             }

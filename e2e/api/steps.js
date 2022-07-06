@@ -570,7 +570,14 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent1deadline);
    },
 
-   getCaseId: async () => {
+  amendRespondent2ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent2deadline);
+  },
+
+  getCaseId: async () => {
      console.log (`case created: ${caseId}`);
      return caseId;
    },
