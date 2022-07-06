@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "judge-profile",
+      "basic-access"
+    ],
+    "CRUD": "CRU"
+  }
+]
