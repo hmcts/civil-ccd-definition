@@ -112,7 +112,8 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
-const defaultjudmentpage = require('./pages/defaultJudgment/selectDefaultJudgmentfor');
+const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
+const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -307,36 +308,33 @@ module.exports = function () {
       ]);
     },
 
-    async initiateDJUnspec(caseId) {
+    async initiateDJUnspec(caseId, scenario) {
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => defaultjudmentpage.againstWhichDefendant(),
-        () => defaultjudmentpage.statementToCertify(),
-        () => defaultjudmentpage.hearingSelection(),
-        () => defaultjudmentpage.hearingRequirements(),
+        () => unspecifiedDefaultJudmentPage.againstWhichDefendant(scenario),
+        () => unspecifiedDefaultJudmentPage.statementToCertify(),
+        () => unspecifiedDefaultJudmentPage.hearingSelection(),
+        () => unspecifiedDefaultJudmentPage.hearingRequirements(),
         () => event.submit('Submit', 'Judgment for damages to be decided Granted'),
         () => event.returnToCaseDetails()
       ]);
     },
 
-    async initiateDJSpec(caseId) {
+    async initiateDJSpec(caseId, scenario) {
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => defaultjudmentpage.againstBothDefendants(),
-        () => defaultjudmentpage.statementToCertify(),
-        () => defaultjudmentpage.hasDefendantMadePartialPayment(),
-        () => defaultjudmentpage.claimForFixedCosts(),
-        () => defaultjudmentpage.repaymentSummary(),
-        () => defaultjudmentpage.paymentTypeSelection(),
+        () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
+        () => specifiedDefaultJudmentPage.statementToCertify(),
+        () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
+        () => specifiedDefaultJudmentPage.claimForFixedCosts(),
+        () => specifiedDefaultJudmentPage.repaymentSummary(),
+        () => specifiedDefaultJudmentPage.paymentTypeSelection(),
         () => event.submit('Submit', 'Default Judgment Granted'),
         () => event.returnToCaseDetails()
       ]);
     },
-
-
-
 
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';

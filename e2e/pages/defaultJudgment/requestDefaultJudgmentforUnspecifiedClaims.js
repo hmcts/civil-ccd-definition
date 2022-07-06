@@ -4,29 +4,14 @@ module.exports = {
 
   fields: {
     defendantDefaultJudgmentOptions: {
-      //id: '#defendantDetails',
-      id: '#defendantDetailsSpec',
+      id: '#defendantDetails',
       options: {
-        //defendantname: '#defendantDetails > fieldset > div',
-        defendantname: '#defendantDetailsSpec > fieldset > div',
-        //both: '#defendantDetails > fieldset > div::nth-of-type(3)',
-        both: '#defendantDetailsSpec > fieldset > div:nth-of-type(3)'
+        defendantname: '#defendantDetails > fieldset > div',
+        both: '#defendantDetails > fieldset > div:nth-of-type(3)'
       }
     },
     statementsApplyForDJ:{
-      id: '#CPRAcceptance_acceptance-CERTIFIED',
-      /*options: {
-        yes: '#CPRConfirmation1_Yes',
-        no: '#CPRConfirmation1_No'
-      }*/
-    },
-
-    defendantPartialPayment:{
-      id: '#paymentConfirmationDecisionSpec_radio',
-      options: {
-        yes: '#partialPayment_Yes',
-        no: '#partialPayment_No'
-      }
+      id: '#CPRAcceptance_acceptance-CERTIFIED'
     },
 
     claimForFixedCosts:{
@@ -42,7 +27,7 @@ module.exports = {
       options: {
         immediately: '#paymentTypeSelection-IMMEDIATELY',
         setDate: '#paymentTypeSelection-SET_DATE',
-        repaymentPlan: '#paymentTypeSelection-REPAYMENT_PLAN',
+        repaymentPlan: '#paymentTypeSelection-REPAYMENT_PLAN'
       }
     },
 
@@ -61,15 +46,15 @@ module.exports = {
         videoconf: '#hearingSupportRequirementsDJ_hearingType-VIDEO_CONF',
         telephone: '#hearingSupportRequirementsDJ_hearingType-TELEPHONE_HEARING'
       },
-      preferredLocation: '#hearingSupportRequirementsDJ_hearingPreferredLocation',
+      preferredLocation: '#hearingSupportRequirementsDJ_hearingTemporaryLocation',
       preferredPhone: '#hearingSupportRequirementsDJ_hearingPreferredTelephoneNumber1',
       preferredEmail: '#hearingSupportRequirementsDJ_hearingPreferredEmail',
       estimatedTime: '#hearingSupportRequirementsDJ_hearingLengthEstimate-15_MINUTES',
-      attendHearing: '#hearingSupportRequirementsDJ_hearingUnavailableDates_No',
+      attendHearing: '#hearingSupportRequirementsDJ_hearingUnavailableDates_No'
     }
   },
 
-  async againstWhichDefendant() {
+/*  async againstOneDefendant() {
     await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
       I.click(this.fields.defendantDefaultJudgmentOptions.options.defendantname);
     });
@@ -81,34 +66,25 @@ module.exports = {
       I.click(this.fields.defendantDefaultJudgmentOptions.options.both);
     });
     await I.clickContinue();
-  },
+  },*/
 
-  async hasDefendantMadePartialPayment(){
-    await I.click(this.fields.defendantPartialPayment.options.no);
-    await I.clickContinue();
-  },
-
-  async claimForFixedCosts(){
-    await I.click(this.fields.claimForFixedCosts.options.no);
-    await I.clickContinue();
-  },
-
-  async repaymentSummary(){
-    await I.clickContinue();
-  },
-
-  async paymentTypeSelection(){
-    await I.click(this.fields.paymentTypeSelection.options.immediately);
+  async againstWhichDefendant(scenario) {
+    if(scenario==='ONE_V_ONE'){
+      await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
+        I.click(this.fields.defendantDefaultJudgmentOptions.options.defendantname);
+      });
+    }else if (scenario==='ONE_V_TWO'){
+      await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
+        I.click(this.fields.defendantDefaultJudgmentOptions.options.both);
+      });
+    }
     await I.clickContinue();
   },
 
   async statementToCertify() {
-    //await within(this.fields.statementsApplyForDJ.id, () => {
     await I.click(this.fields.statementsApplyForDJ.id);
-    // });
     await I.clickContinue();
   },
-
 
   async hearingSelection(){
     await within(this.fields.hearingSelectionForDJ.id, () => {
@@ -122,14 +98,12 @@ module.exports = {
     await within(this.fields.hearingRequirements.id, () => {
       I.click(this.fields.hearingRequirements.options.inPerson);
     });
-    I.fillField(this.fields.hearingRequirements.preferredLocation, 'Aberystwyth County Court');
+    I.fillField(this.fields.hearingRequirements.preferredLocation, 'Aberystwyth Justice Centre - Y LANFA, TREFECHAN - SY23 1AS');
     I.fillField(this.fields.hearingRequirements.preferredPhone, '02087666666');
     I.fillField(this.fields.hearingRequirements.preferredEmail, 'test@test.com');
     I.click(this.fields.hearingRequirements.estimatedTime);
     I.click(this.fields.hearingRequirements.attendHearing);
     await I.clickContinue();
   }
-
-
 };
 

@@ -1,4 +1,4 @@
-/*/!* eslint-disable no-unused-vars *!/
+/* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
 const testingSupport = require('../../../api/testingSupport.js');
@@ -15,6 +15,6 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   let caseid = await api.getCaseId();
   await I.login(config.applicantSolicitorUser);
-  await I.initiateDJ(caseid);
-});*/
+  await I.initiateDJUnspec(caseid, 'ONE_V_ONE');
+});
 
