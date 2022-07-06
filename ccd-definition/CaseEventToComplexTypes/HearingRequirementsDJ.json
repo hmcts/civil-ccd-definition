@@ -1,6 +1,6 @@
 [
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingType",
@@ -9,7 +9,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingTypeTelephoneHearing",
@@ -18,19 +18,22 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingPreferredLocation",
-    "ElementLabel": "Preferred location",
-    "HintText": "This is needed if the judge decides to hold the hearing in person",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "CourtCode",
-    "SecurityClassification": "Public",
+    "ListElementCode": "hearingTemporaryLocation",
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+  "ID": "HearingSupportRequirementsFieldDJ",
+  "CaseEventID": "DEFAULT_JUDGEMENT",
+  "CaseFieldID": "hearingSupportRequirementsDJ",
+  "ListElementCode": "hearingPreferredLocation",
+  "FieldShowCondition": "hearingSupportRequirementsDJ=\"DO NOT SHOW IN UI\"",
+  "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingPreferredTelephoneNumber1",
@@ -40,7 +43,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingPreferredEmail",
@@ -50,7 +53,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingLengthEstimate",
@@ -61,7 +64,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hoursEstimateOther",
@@ -70,7 +73,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingUnavailableDates",
@@ -78,7 +81,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingDates",
@@ -86,21 +89,21 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingDates.hearingUnavailableFrom",
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingDates.hearingUnavailableUntil",
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementsDisabledAccess",
@@ -113,7 +116,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementHearingLoop",
@@ -124,7 +127,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementInterpreter",
@@ -135,7 +138,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementSignLanguageDropdown",
@@ -144,7 +147,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementLanguage",
@@ -155,7 +158,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementLanguageDropdown",
@@ -164,7 +167,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementOther",
@@ -175,7 +178,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "HearingSupportRequirementsDJ",
+    "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportRequirementOtherDropdown",
