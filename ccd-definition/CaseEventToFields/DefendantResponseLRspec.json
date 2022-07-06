@@ -1314,17 +1314,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
-    "PageDisplayOrder": 30,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX",
-    "PageID": "SmallClaimExperts",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "responseClaimExpertSpecRequired2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesLabel",
     "PageLabel": "",
     "PageDisplayOrder": 45,
@@ -1596,17 +1585,6 @@
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation2",
-    "PageDisplayOrder": 34,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimCourtLocation2Required = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
