@@ -1121,7 +1121,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "FieldShowCondition": "respondentResponseIsSame =\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"BOTH_RESPONDENTS_DISPUTE\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
