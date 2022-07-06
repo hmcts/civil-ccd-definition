@@ -2048,6 +2048,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2GeneratedResponseDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1OrganisationIDCopy",
     "Label": "Respondent 1 Organisation ID Copy",
     "FieldType": "Text",
