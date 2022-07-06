@@ -1097,7 +1097,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_2_DISPUTES\"",
     "RetriesTimeoutURLMidEvent": 0
   },
   {
@@ -1109,7 +1109,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
-    "FieldShowCondition": "respondentResponseIsSame !=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
