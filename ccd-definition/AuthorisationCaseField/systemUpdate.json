@@ -459,7 +459,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocument",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -4641,15 +4641,10 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-judge"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-judge",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
