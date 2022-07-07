@@ -18,7 +18,7 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
   caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`);
+  // await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
 Scenario('Judge initiate SDO with sum of damages and allocate small claims track', async ({I}) => {
