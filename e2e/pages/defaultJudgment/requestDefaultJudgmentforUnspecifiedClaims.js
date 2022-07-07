@@ -10,9 +10,6 @@ module.exports = {
         both: '#defendantDetails > fieldset > div:nth-of-type(3)'
       }
     },
-   /* statementsApplyForDJ:{
-      id: '#CPRAcceptance_acceptance-CERTIFIED'
-    },*/
 
     statementsApplyForDJ:{
       options: {
@@ -61,20 +58,6 @@ module.exports = {
     }
   },
 
-/*  async againstOneDefendant() {
-    await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
-      I.click(this.fields.defendantDefaultJudgmentOptions.options.defendantname);
-    });
-    await I.clickContinue();
-  },
-
-  async againstBothDefendants() {
-    await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
-      I.click(this.fields.defendantDefaultJudgmentOptions.options.both);
-    });
-    await I.clickContinue();
-  },*/
-
   async againstWhichDefendant(scenario) {
     if(scenario==='ONE_V_ONE'){
       await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
@@ -89,9 +72,6 @@ module.exports = {
   },
 
   async statementToCertify(scenario) {
-    //await within(this.fields.statementsApplyForDJ.id, () => {
-    //await I.click(this.fields.statementsApplyForDJ.id);
-    // });
     if(scenario==='ONE_V_ONE'){
       await I.click(this.fields.statementsApplyForDJ.options.ONE_V_ONE);
     }else if (scenario==='ONE_V_TWO'){
@@ -120,4 +100,3 @@ module.exports = {
     await I.clickContinue();
   }
 };
-
