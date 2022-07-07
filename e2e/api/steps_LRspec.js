@@ -19,6 +19,7 @@ let caseData = {};
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  DEFENDANT_RESPONSE2: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
   DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
@@ -42,6 +43,17 @@ const eventData = {
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
       DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_FULL_DEFENCE'),
       DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_NOT_FULL_DEFENCE')
+    },
+    ONE_V_ONE_DIF_SOL: {
+      FULL_DEFENCE1: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION1: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION1: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM1: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
+
+      FULL_DEFENCE2: data.DEFENDANT_RESPONSE2('FULL_DEFENCE'),
+      FULL_ADMISSION2: data.DEFENDANT_RESPONSE2('FULL_ADMISSION'),
+      PART_ADMISSION2: data.DEFENDANT_RESPONSE2('PART_ADMISSION'),
+      COUNTER_CLAIM2: data.DEFENDANT_RESPONSE2('COUNTER_CLAIM')
     },
     TWO_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
@@ -98,6 +110,11 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    if (scenario === 'ONE_V_TWO'
+      && createClaimData.userInput.SameLegalRepresentative
+      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
+    }
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -128,7 +145,8 @@ module.exports = {
     await unAssignAllUsers();
   },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -144,15 +162,28 @@ module.exports = {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    if (scenario === 'ONE_V_ONE')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if (scenario === 'ONE_V_TWO')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if (scenario === 'TWO_V_ONE')
-      if (response === 'DIFF_FULL_DEFENCE')
-        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
-      else
+    switch (scenario) {
+      case 'ONE_V_ONE_DIF_SOL':
+        /* when camunda process is done, when both respondents have answered
+        this should be AWAITING_APPLICANT_INTENTION; while only one has answered
+        this will be AWAITING_RESPONDENT_ACKNOWLEDGEMENT
+         */
+        await assertSubmittedEvent(expectedEvent);
+        break;
+      case 'ONE_V_ONE':
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'ONE_V_TWO':
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'TWO_V_ONE':
+        if (response === 'DIFF_FULL_DEFENCE') {
+          await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+        } else {
+          await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        }
+        break;
+    }
 
     await waitForFinishedBusinessProcess(caseId);
 
