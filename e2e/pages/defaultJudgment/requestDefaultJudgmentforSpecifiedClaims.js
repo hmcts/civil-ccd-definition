@@ -10,8 +10,15 @@ module.exports = {
         both: '#defendantDetailsSpec > fieldset > div:nth-of-type(3)'
       }
     },
-    statementsApplyForDJ:{
+   /* statementsApplyForDJ:{
       id: '#CPRAcceptance_acceptance-CERTIFIED',
+    },*/
+
+    statementsApplyForDJ:{
+      options: {
+        ONE_V_ONE: '#CPRAcceptance_acceptance-CERTIFIED',
+        ONE_V_TWO: '#CPRAcceptance2Def_acceptance-CERTIFIED'
+      }
     },
 
     defendantPartialPayment:{
@@ -86,11 +93,16 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async statementToCertify() {
+  async statementToCertify(scenario) {
     //await within(this.fields.statementsApplyForDJ.id, () => {
-    await I.click(this.fields.statementsApplyForDJ.id);
+    //await I.click(this.fields.statementsApplyForDJ.id);
     // });
+    if(scenario==='ONE_V_ONE'){
+      await I.click(this.fields.statementsApplyForDJ.options.ONE_V_ONE);
+    }else if (scenario==='ONE_V_TWO'){
+      await I.click(this.fields.statementsApplyForDJ.options.ONE_V_TWO);
+    }
     await I.clickContinue();
-  },
+  }
 };
 

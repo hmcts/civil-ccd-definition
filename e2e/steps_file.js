@@ -313,7 +313,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => unspecifiedDefaultJudmentPage.againstWhichDefendant(scenario),
-        () => unspecifiedDefaultJudmentPage.statementToCertify(),
+        () => unspecifiedDefaultJudmentPage.statementToCertify(scenario),
         () => unspecifiedDefaultJudmentPage.hearingSelection(),
         () => unspecifiedDefaultJudmentPage.hearingRequirements(),
         () => event.submit('Submit', 'Judgment for damages to be decided Granted'),
@@ -326,7 +326,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
-        () => specifiedDefaultJudmentPage.statementToCertify(),
+        () => specifiedDefaultJudmentPage.statementToCertify(scenario),
         () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
         () => specifiedDefaultJudmentPage.claimForFixedCosts(),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
