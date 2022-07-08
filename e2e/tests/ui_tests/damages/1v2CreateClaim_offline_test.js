@@ -13,7 +13,8 @@ const respondent2 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber;
+// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//let caseNumber;
 
 
 Feature('1v2 Create claim @e2e-unspec @e2e-multiparty');

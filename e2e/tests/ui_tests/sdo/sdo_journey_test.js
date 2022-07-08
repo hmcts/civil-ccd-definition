@@ -10,7 +10,8 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber;
+// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//let caseNumber;
 
 Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo');
 
