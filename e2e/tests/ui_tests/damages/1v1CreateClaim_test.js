@@ -23,7 +23,8 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
   caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`);
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(`Case ${caseNumber} has been created.`);
   await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
 }).retry(3);
 

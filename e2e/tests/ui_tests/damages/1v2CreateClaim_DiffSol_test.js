@@ -28,7 +28,8 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, respondent2);
   caseNumber = await I.grabCaseNumber();
-  await I.see(`Case ${caseNumber} has been created.`);
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 

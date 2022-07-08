@@ -12,7 +12,8 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('organisation', 'organisation', 'company', null, 18000);
   caseNumber = await LRspec.grabCaseNumber();
-  await LRspec.see(`Case ${caseNumber} has been created.`);
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
 Scenario.skip('2v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
