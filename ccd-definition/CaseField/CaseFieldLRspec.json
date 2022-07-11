@@ -2225,12 +2225,5 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ShowConditionFlags",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2GeneratedResponseDocument",
-    "Label": " ",
-    "FieldType": "CaseDocument",
-    "SecurityClassification": "Public"
   }
 ]
