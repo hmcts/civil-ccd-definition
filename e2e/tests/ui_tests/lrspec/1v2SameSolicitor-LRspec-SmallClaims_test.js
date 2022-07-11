@@ -27,7 +27,8 @@ Scenario.skip('1v2 Respond To Claim - Defendants solicitor rejects claim for def
     claimType: 'small',
     defenceType: 'dispute'
   });
-  await LRspec.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
 
@@ -38,7 +39,8 @@ Scenario.skip('1v2 Respond To Claim - Defendants solicitor Part Admit the claim 
     claimType: 'fast',
     defenceType: 'repaymentPlan'
   });
-  await LRspec.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
 
@@ -50,6 +52,7 @@ Scenario.skip('1v2 Respond To Claim - Defendants solicitor Admits the claim and 
     claimType: 'fast',
     defenceType: 'setDate'
   });
-  await LRspec.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);

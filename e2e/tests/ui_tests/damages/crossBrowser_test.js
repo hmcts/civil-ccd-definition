@@ -29,39 +29,46 @@ Scenario('Full end-to-end journey', async ({I}) => {
 
   await I.notifyClaim();
   console.log('Applicant solicitor notified defendant solicitor of claim');
-  await I.see(caseEventMessage('Notify claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Notify claim'));
   await assignCaseToDefendant(caseId());
 
   await I.notifyClaimDetails();
   console.log('Applicant solicitor notified defendant solicitor of claim details');
-  await I.see(caseEventMessage('Notify claim details'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Notify claim details'));
 
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim('fullDefence');
   console.log('Defendant solicitor acknowledged claim');
-  await I.see(caseEventMessage('Acknowledge claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Acknowledge claim'));
 
   await I.informAgreedExtensionDate();
   console.log('Defendant solicitor requested deadline extension');
-  await I.see(caseEventMessage('Inform agreed extension date'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Inform agreed extension date'));
 
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.addDefendantLitigationFriend();
   console.log('Defendant solicitor added defendant litigation friend');
-  await I.see(caseEventMessage('Add litigation friend'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Add litigation friend'));
 
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.respondToClaim({defendant1Response: 'fullDefence'});
   console.log('Defendant solicitor responded to claim');
-  await I.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Respond to claim'));
 
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefence();
   console.log('Applicant solicitor responded to defence');
-  await I.see(caseEventMessage('View and respond to defence'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(2);
