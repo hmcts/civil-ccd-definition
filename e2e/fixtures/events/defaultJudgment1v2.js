@@ -8,16 +8,24 @@ module.exports = {
       defendantDetails: {
         value: {
           code: '62ff8ded-ab50-47a6-894e-c101fb56a89f',
-          label: 'Sir John Doe'
+          label: 'Both defendants'
         },
         list_items: [
           {
             code: '62ff8ded-ab50-47a6-894e-c101fb56a89f',
             label: 'Sir John Doe'
+          },
+          {
+            code: '62ff8ded-ab50-47a6-894e-c101fb56a89f',
+            label: 'Dr Foo Bar'
+          },
+          {
+            code: '62ff8ded-ab50-47a6-894e-c101fb56a89f',
+            label: 'Both defendants'
           }
         ]
       },
-      bothDefendants: 'One'
+      bothDefendants: 'Both defendants'
     },
     HearingSupportRequirementsFieldDJ: {
       hearingSupportRequirementsDJ: {
