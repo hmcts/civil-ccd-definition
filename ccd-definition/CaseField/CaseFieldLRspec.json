@@ -2249,6 +2249,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1SmallClaimWitnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "showConditionFlags",
     "Label": " ",
     "FieldType": "MultiSelectList",
