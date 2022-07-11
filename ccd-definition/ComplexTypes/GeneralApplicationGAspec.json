@@ -151,15 +151,15 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "workAllocationLocation",
-    "FieldType": "Text",
+    "ListElementCode": "caseManagementLocation",
+    "FieldType": "GACaseLocationGAspec",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "workAllocationLocationNames",
-    "FieldType": "Text",
+    "ListElementCode": "isCcmccLocation",
+    "FieldType": "YesOrNo",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
