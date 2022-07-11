@@ -2,7 +2,8 @@ const config = require('../../../config.js');
 const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
-const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
+// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const claimant1 = {
