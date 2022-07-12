@@ -1,0 +1,24 @@
+
+[
+  {
+    "ID": "FastTrackOrderAndHearingDetails",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackOrderAndHearingDetails",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "# Order details \nWarning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply you must make an application to the court before any deadline expires.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackOrderAndHearingDetails",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  }
+]
