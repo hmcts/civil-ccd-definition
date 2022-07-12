@@ -430,6 +430,20 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "TrialHearingAddNewDirectionsDJ",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderApplicantVRespondent",
+    "Label": "### ${applicantVRespondentText}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderSDODocumentDJ",
+    "Label": "View directions order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]
 
