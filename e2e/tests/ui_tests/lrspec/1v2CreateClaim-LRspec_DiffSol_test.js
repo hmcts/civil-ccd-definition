@@ -30,7 +30,6 @@ Scenario('Applicant solicitor creates 1v2 specified claim defendant Different LR
 }).retry(3);
 
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
-
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
