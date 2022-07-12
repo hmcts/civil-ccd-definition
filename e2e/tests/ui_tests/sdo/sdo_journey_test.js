@@ -15,7 +15,7 @@ const respondent1 = {
 
 Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo');
 
-Scenario.skip('Applicant solicitor creates claim @create-claim', async ({I}) => {
+Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
   // Reinstate the lines below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
@@ -23,22 +23,22 @@ Scenario.skip('Applicant solicitor creates claim @create-claim', async ({I}) => 
   //await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
-Scenario.skip('Judge initiate SDO with sum of damages and allocate small claims track', async ({I}) => {
+Scenario('Judge initiate SDO with sum of damages and allocate small claims track', async ({I}) => {
   await I.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-Scenario.skip('Judge initiate SDO with sum of damages and not allocate small claims track and orderType as disposal', async ({I}) => {
+Scenario('Judge initiate SDO with sum of damages and not allocate small claims track and orderType as disposal', async ({I}) => {
   await I.initiateSDO('yes', null, null, 'disposal');
 }).retry(3);
 
-Scenario(.skip'Judge initiate SDO with sum of damages and not allocate small claims track and orderType as decideDamages', async ({I}) => {
+Scenario('Judge initiate SDO with sum of damages and not allocate small claims track and orderType as decideDamages', async ({I}) => {
   await I.initiateSDO('yes', null, null, 'decideDamages');
 }).retry(3);
 
-Scenario.skip('Judge initiate SDO without entering damages and allocate small claims track', async ({I}) => {
+Scenario('Judge initiate SDO without entering damages and allocate small claims track', async ({I}) => {
   await I.initiateSDO(null, null, 'smallClaims', null);
 }).retry(3);
 
-Scenario.skip('Judge initiate SDO without entering damages and allocate fast track', async ({I}) => {
+Scenario('Judge initiate SDO without entering damages and allocate fast track', async ({I}) => {
   await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
