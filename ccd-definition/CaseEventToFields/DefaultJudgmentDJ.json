@@ -183,21 +183,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingPreferredRegionId",
+    "CaseFieldID": "caseManagementLocation",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "HearingSupportRequirementsFieldDJ",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hearingDirectionsLabel = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingBaseLocation",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "HearingSupportRequirementsFieldDJ",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
