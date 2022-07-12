@@ -549,6 +549,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimantCounterClaimLabel_2v1",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponseTypeSpec2v1",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimant1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\" OR claimant2ClaimResponseTypeForSpec=\"COUNTER_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpecLabel",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 3,
@@ -568,6 +579,17 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame != \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseCounterClaimLabel2",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponseTypeSpec",
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"COUNTER_CLAIM\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\"",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -645,7 +667,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseTypeSpec",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\" OR respondent2ClaimResponseTypeForSpec=\"COUNTER_CLAIM\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"COUNTER_CLAIM\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -1075,7 +1097,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_2_DISPUTES\"",
     "RetriesTimeoutURLMidEvent": 0
   },
   {
@@ -1087,7 +1109,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
-    "FieldShowCondition": "respondentResponseIsSame !=\"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -1099,7 +1121,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "FieldShowCondition": "respondentResponseIsSame =\"Yes\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"BOTH_RESPONDENTS_DISPUTE\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },

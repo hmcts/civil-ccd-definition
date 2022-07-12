@@ -898,8 +898,7 @@
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "showConditionFlags CONTAINS \"NEED_FINANCIAL_DETAILS_2\"",
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
