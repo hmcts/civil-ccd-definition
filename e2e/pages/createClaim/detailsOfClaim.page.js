@@ -6,11 +6,11 @@ module.exports = {
     detailsOfClaim: '#detailsOfClaim'
   },
 
-  async enterDetailsOfClaim() {
-    I.waitForElement(this.fields.detailsOfClaim);
-    await I.runAccessibilityTest();
-    I.fillField(this.fields.detailsOfClaim, 'Test details of claim');
-    await I.clickContinue();
+  async enterDetailsOfClaim(details) {
+      I.waitForElement(this.fields.detailsOfClaim);
+      await I.runAccessibilityTest();
+      I.fillField(this.fields.detailsOfClaim, details);
+      await I.clickContinue();
   }
 };
 
