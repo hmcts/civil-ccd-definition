@@ -344,22 +344,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1SmallClaimWitnessesLabel",
-    "PageDisplayOrder": 8,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "SmallClaimWitnesses",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND responseClaimTrack= \"SMALL_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimWitnesses",
     "PageDisplayOrder": 8,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "SmallClaimWitnesses",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND responseClaimTrack= \"SMALL_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

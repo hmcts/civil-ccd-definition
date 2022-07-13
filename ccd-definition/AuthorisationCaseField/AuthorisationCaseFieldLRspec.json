@@ -4053,47 +4053,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partAdmissionWhenWillDefendantPayImmediately2Label",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
     "AccessControl": [
       {
         "UserRoles": [
@@ -4683,44 +4643,6 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1SmallClaimWitnessesLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "R"
       }
