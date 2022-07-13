@@ -1,6 +1,6 @@
 [
   {
-    "RoleName" : "legal-advisor",
+    "RoleName" : "tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile",
@@ -9,7 +9,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "hearing-admin",
+    "RoleName" : "hearing-center-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile",

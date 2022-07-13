@@ -93,8 +93,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "legal-advisor",
-          "hearing-admin"
+          "tribunal-caseworker",
+          "hearing-center-admin"
         ],
         "CRUD": "CRU"
       },
