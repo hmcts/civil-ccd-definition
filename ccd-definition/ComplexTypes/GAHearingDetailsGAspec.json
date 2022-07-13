@@ -101,8 +101,7 @@
     "ElementLabel": "Preferred location",
     "HintText": "This is needed if the judge decides to hold the hearing in person.",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "HearingPreferencesPreferredType = \"IN_PERSON\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "GAHearingDetailsGAspec",
