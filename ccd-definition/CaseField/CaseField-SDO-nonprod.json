@@ -264,9 +264,132 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsPlaceholder",
-    "Label": "Small Claims Placeholder",
+    "ID": "smallClaimsOrderAndHearingDetails",
+    "Label": " ",
+    "FieldType": "SmallClaimsOrderAndHearingDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsJudgesRecital",
+    "Label": "Judge's recital",
+    "FieldType": "SmallClaimsJudgesRecital",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsJudgementDeductionStatement",
+    "Label": " ",
+    "FieldType": "SmallClaimsJudgementDeductionStatement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsJudgementDeductionValue",
+    "Label": " ",
+    "FieldType": "SmallClaimsJudgementDeductionValue",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsAllocation",
+    "Label": " ",
+    "FieldType": "SmallClaimsAllocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsHearing",
+    "Label": "Hearing",
+    "FieldType": "SmallClaimsHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsDocuments",
+    "Label": " ",
+    "FieldType": "SmallClaimsDocuments",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsWitnessStatement",
+    "Label": "Witness Statement",
+    "FieldType": "SmallClaimsWitnessStatement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodTitle",
+    "Label": "## Hearing Method",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethod",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SmallClaimsMethod",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodInPerson",
+    "Label": "Select hearing location ",
+    "FieldType": "DynamicList",
+    "FieldTypeParameter": "SmallClaimsMethodInPerson",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodVideoConferenceHearing",
+    "Label": "Who will arrange the video conference? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SmallClaimsMethodVideoConferenceHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodVideoConferenceHearingCourtStatement",
+    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodTelephoneHearing",
+    "Label": "Who will arrange the call? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SmallClaimsMethodTelephoneHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodTelephoneHearingCourtStatement",
+    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsPreferredTelephone",
+    "Label": "Preferred telephone number",
+    "FieldType": "SmallClaimsPreferredTelephone",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsPreferredEmail",
+    "Label": "Preferred email",
+    "FieldType": "SmallClaimsPreferredEmail",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsNotes",
+    "Label": "Notes",
+    "FieldType": "SmallClaimsNotes",
     "SecurityClassification": "Public"
   },
   {
@@ -281,6 +404,14 @@
     "ID": "smallClaimsRoadTrafficAccident",
     "Label": "Road traffic accident ",
     "FieldType": "SmallClaimsRoadTrafficAccident",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsAddNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "SmallClaimsAddNewDirections",
     "SecurityClassification": "Public"
   },
   {
@@ -479,7 +610,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackEmployersLiability",
-    "Label": "Employer's libility",
+    "Label": "Employer's liability",
     "FieldType": "FastTrackEmployersLiability",
     "SecurityClassification": "Public"
   },
