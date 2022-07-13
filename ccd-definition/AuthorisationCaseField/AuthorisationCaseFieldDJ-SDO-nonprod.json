@@ -830,5 +830,19 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderSDODocumentDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
