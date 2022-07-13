@@ -133,6 +133,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "generalApplicationsDocuments",
+    "Label": "General applications order documents",
+    "ElementLabel": "Application Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDocumentsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "PDF documents of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "gaDetailsRespondentSol",
     "Label": " ",
     "ElementLabel": "Application Type",
@@ -236,6 +247,62 @@
     "ID": "civilServiceUserRoles",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalOrderDocument",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dismissalOrderDocument",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionOrderDocument",
+    "Label": "Direction order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInformationDocument",
+    "Label": "Request for information document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingOrderDocument",
+    "Label": "Hearing order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSequentialDocument",
+    "Label": "Written representation sequential document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConcurrentDocument",
+    "Label": "Written representation concurrent document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]

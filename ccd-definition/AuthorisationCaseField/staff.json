@@ -1061,47 +1061,5 @@
     "CaseFieldID": "nextDeadline",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalOrderDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dismissalOrderDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "directionOrderDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "requestForInformationDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "writtenRepSequentialDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "writtenRepConcurrentDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
   }
 ]

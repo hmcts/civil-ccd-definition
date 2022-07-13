@@ -1,0 +1,65 @@
+[
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "generalOrderDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "General order document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "dismissalOrderDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "Dismissal order document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "directionOrderDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "Direction order document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "requestForInformationDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "Request for information document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "hearingOrderDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "Hearing order document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "writtenRepSequentialDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "Written Representation Sequential document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "ID": "GeneralApplicationDocumentsGAspec",
+    "ListElementCode": "writtenRepConcurrentDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "ElementLabel": "Written Representation Concurrent document",
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  }
+]
