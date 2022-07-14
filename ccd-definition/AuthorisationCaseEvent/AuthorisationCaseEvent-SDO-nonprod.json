@@ -7,7 +7,7 @@
       "UserRoles": [
         "caseworker-civil-admin",
         "caseworker-civil-solicitor",
-        "caseworker-civil-judge"
+        "judge-profile"
       ],
       "CRUD": "CRU"
       }
