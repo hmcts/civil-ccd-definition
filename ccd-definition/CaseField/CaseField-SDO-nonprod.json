@@ -607,7 +607,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsWitnessStatementTitle",
-    "Label": "## Witness Statement",
+    "Label": "## Witness Statement ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
