@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+const {assignCaseRoleToUser,addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
@@ -26,7 +26,7 @@ Scenario('Applicant solicitor creates 1v2 specified claim defendant Different LR
 }).retry(3);
 
 Scenario.skip('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
- // await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
