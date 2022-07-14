@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const testingSupport = require('../../../api/testingSupport.js');
 
-Feature('1v1 spec defaultJudgement @e2e-dj');
+Feature('1v1 spec defaultJudgement @e2e-1v1-dj');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
 
