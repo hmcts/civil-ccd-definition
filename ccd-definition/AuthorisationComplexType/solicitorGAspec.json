@@ -493,33 +493,5 @@
     "ListElementCode": "directionOrderDocument",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "requestForInformationDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "hearingOrderDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "writtenRepSequentialDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "writtenRepConcurrentDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
   }
 ]
