@@ -133,17 +133,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationsDocuments",
-    "Label": "General applications order documents",
-    "ElementLabel": "Application Documents",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "GeneralApplicationDocumentsGAspec",
-    "SecurityClassification": "Public",
-    "_Definition":  "PDF documents of the child application on the case",
-    "_Category":  "COMMON"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "gaDetailsRespondentSol",
     "Label": " ",
     "ElementLabel": "Application Type",

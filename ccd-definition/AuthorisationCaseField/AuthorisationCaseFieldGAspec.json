@@ -247,19 +247,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDetailsRespondentSol",
     "AccessControl": [
       {

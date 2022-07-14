@@ -64,29 +64,5 @@
     "ListElementCode": "DIRECTION_ORDER",
     "ListElement": "Direction order",
     "DisplayOrder": 11
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "REQUEST_FOR_INFORMATION",
-    "ListElement": "Request for information",
-    "DisplayOrder": 12
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "HEARING_ORDER",
-    "ListElement": "Hearing order",
-    "DisplayOrder": 13
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "WRITTEN_REPRESENTATION_SEQUENTIAL",
-    "ListElement": "Written representation sequential",
-    "DisplayOrder": 14
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "WRITTEN_REPRESENTATION_CONCURRENT",
-    "ListElement": "Written representation concurrent",
-    "DisplayOrder": 15
   }
 ]

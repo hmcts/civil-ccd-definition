@@ -472,26 +472,5 @@
     "ListElementCode": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "generalOrderDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "dismissalOrderDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDocuments",
-    "ListElementCode": "directionOrderDocument",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
   }
 ]
