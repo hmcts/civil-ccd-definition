@@ -1,7 +1,7 @@
 [
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "OrganisationToAdd.OrganisationID",
     "FieldDisplayOrder": "1",
@@ -9,7 +9,7 @@
   },
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "OrganisationToAdd.OrganisationName",
     "FieldDisplayOrder": "2",
@@ -17,7 +17,7 @@
   },
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "OrganisationToRemove.OrganisationID",
     "FieldDisplayOrder": "3",
@@ -25,7 +25,7 @@
   },
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "OrganisationToRemove.OrganisationName",
     "FieldDisplayOrder": "4",
@@ -33,7 +33,7 @@
   },
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "CaseRoleId",
     "FieldDisplayOrder": "5",
@@ -41,7 +41,7 @@
   },
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "RequestTimestamp",
     "FieldDisplayOrder": "6",
@@ -49,7 +49,7 @@
   },
   {
     "ID": "ChangeOrganisationRequest",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "ListElementCode": "ApprovalStatus",
     "DefaultValue": "1",

@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
