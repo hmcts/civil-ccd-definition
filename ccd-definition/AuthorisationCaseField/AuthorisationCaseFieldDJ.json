@@ -284,7 +284,9 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+
         ],
         "CRUD": "R"
       }
