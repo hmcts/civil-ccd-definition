@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+const {assignCaseRoleToUser,addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
