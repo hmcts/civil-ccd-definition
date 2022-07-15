@@ -113,9 +113,15 @@ module.exports =  {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
         }, null, 'GET')
-        .then(async response => await response.json()).then(response => {
-          return response.toggleEnabled;
-        });
+        .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+          }
+        );
   },
 
   checkNoCToggleEnabled: async () => {
@@ -127,9 +133,15 @@ module.exports =  {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
         }, null, 'GET')
-         .then(async response => await response.json()).then(response => {
-           return response.toggleEnabled;
-         });
+         .then(async response =>  {
+             if (response.status === 200) {
+               const json = await response.json();
+               return json.toggleEnabled;
+             } else {
+               throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+             }
+           }
+         );
   },
 
   updateCaseData: async (caseId, caseData) => {
