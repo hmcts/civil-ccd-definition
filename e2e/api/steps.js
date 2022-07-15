@@ -145,6 +145,8 @@ module.exports = {
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM_RESPONDENT_LIP);
 
+    let noCToggleEnabled = await checkNoCToggleEnabled();
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
