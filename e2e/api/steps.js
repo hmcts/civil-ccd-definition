@@ -13,6 +13,9 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {createClaimRpa} = require("./rpa/createClaimRpa");
+const {getRoboticsData} = require("./testingSupport");
+const {cloneDeep} = require("lodash");
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -101,7 +104,6 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-
   createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
 
     eventName = 'CREATE_CLAIM';
@@ -129,6 +131,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
+    await assertRPA(config.applicantSolicitorUser, normaliseRoboticsData(createClaimRpa));
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -807,3 +810,36 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
+
+const assertRPA = async (user, expectedRpa) => {
+  const roboticsData = await getRoboticsData(caseId, user);
+  const actual = normaliseRoboticsData(roboticsData);
+  await assert.deepEqual(actual, expectedRpa);
+};
+
+const normaliseRoboticsData = (data) => {
+  const dataClone = cloneDeep(data);
+  return {
+    ...dataClone,
+    header: {
+      ...dataClone.header,
+      caseNumber: 'mock-case-number',
+    },
+    claimDetails: {
+      ...dataClone.claimDetails,
+      caseRequestReceivedDate: '2022-01-01',
+      caseIssuedDate: '2022-01-01',
+    },
+    events: {
+      ...dataClone.events,
+      miscellaneous: normaliseEventArrayData(dataClone.events.miscellaneous)
+    }
+  }
+}
+
+const normaliseEventArrayData = (array) => array.map(
+    event => ({
+      ...event,
+      dateReceived: '2022-01-01'
+    })
+  );

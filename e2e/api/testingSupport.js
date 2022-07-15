@@ -33,6 +33,20 @@ module.exports =  {
       throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
   },
 
+  getRoboticsData: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+      const response = restHelper.request(
+        `${config.url.civilService}/testing-support/case/${caseId}/robotics`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+        .then(async response => await response.json()).then(response => {
+          return response;
+      });
+      return await response;
+  },
+
   assignCaseToDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
 
