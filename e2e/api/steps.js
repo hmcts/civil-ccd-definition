@@ -150,8 +150,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
   },
 
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
@@ -563,6 +563,25 @@ module.exports = {
     deleteCaseFields('caseNote');
   },
 
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent1deadline);
+   },
+
+  amendRespondent2ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent2deadline);
+  },
+
+  getCaseId: async () => {
+     console.log (`case created: ${caseId}`);
+     return caseId;
+   },
+
   cleanUp: async () => {
     await unAssignAllUsers();
   }
@@ -807,3 +826,4 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
+
