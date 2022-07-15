@@ -250,13 +250,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingStandardDisposalOrder",
-    "Label": "Standard disposal order",
-    "FieldType": "DisposalHearingStandardDisposalOrder",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
     "Label": "## Final disposal hearing",
     "FieldType": "Label",

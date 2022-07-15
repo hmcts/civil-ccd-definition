@@ -726,7 +726,7 @@
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (claimant)"
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -735,7 +735,7 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (defendant)"
+    "EventHintText": "Number of witnesses (defendant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -1224,21 +1224,23 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "text",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Number of witnesses (defendant), e.g. 4"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "input4",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -1246,7 +1248,7 @@
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "input4",
+    "ListElementCode": "input5",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -1254,7 +1256,7 @@
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "input5",
+    "ListElementCode": "input6",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -1262,16 +1264,41 @@
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "date",
+    "ListElementCode": "input7",
     "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Number of pages, e.g. 4"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "input8",
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "input6",
-    "FieldDisplayOrder": 9,
+    "ListElementCode": "input9",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "input10",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
