@@ -104,6 +104,34 @@ module.exports =  {
     });
   },
 
+  checkToggleEnabled: async (toggle) => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+        `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+        .then(async response => await response.json()).then(response => {
+          return response.toggleEnabled;
+        });
+  },
+
+  checkNoCToggleEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+       return await restHelper.request(
+        `${config.url.civilService}/testing-support/feature-toggle/noc`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+         .then(async response => await response.json()).then(response => {
+           return response.toggleEnabled;
+         });
+  },
+
   updateCaseData: async (caseId, caseData) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
