@@ -27,12 +27,5 @@
     "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
     "ElementLabel": "The time estimate is",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingFinalDisposalHearing",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
   }
 ]
