@@ -100,4 +100,7 @@
     <packageUrl regex="true">^pkg:npm/got@.*$</packageUrl>
     <vulnerabilityName>1075647</vulnerabilityName>
   </suppress>
+  <suppress>
+    <cve>CVE-2022-31569</cve>
+  </suppress> 
  </suppressions>
