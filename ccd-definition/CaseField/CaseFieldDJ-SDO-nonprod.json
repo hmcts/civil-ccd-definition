@@ -404,6 +404,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "trialHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "TrialHousingDisrepair",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "trialEmployersLiability",
     "Label": "Employer's liability",
     "FieldType": "TrialEmployersLiability",
