@@ -4,7 +4,7 @@ Civil CCD Definition and E2E tests
 
 ### Contents:
 
-- [Building and deploying application](#building-and-deploying-the-application)
+- [Building and deploying application](#buildin g-and-deploying-the-application)
 - [Testing](#testing)
 
 ## Building and deploying the application
