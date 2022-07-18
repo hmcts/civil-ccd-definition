@@ -165,6 +165,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementCategory",
+    "FieldType": "DynamicList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "respondentSolicitor1EmailAddress",
     "ElementLabel": " ",
     "FieldType": "Email",
