@@ -148,11 +148,5 @@
     "CaseFieldID": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppSuperClaimType",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]
