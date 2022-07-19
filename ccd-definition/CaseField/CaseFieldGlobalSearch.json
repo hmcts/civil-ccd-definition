@@ -1,0 +1,31 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "searchCriteria",
+    "Label": "Search Criteria",
+    "FieldType": "SearchCriteria",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNameHmctsInternal",
+    "Label": "case Name Hmcts Internal",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementLocation2",
+    "Label": "case Management Location",
+    "FieldType": "CaseLocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementCategory",
+    "Label": "case Management Category",
+    "FieldType": "DynamicList",
+    "_FieldTypeParameter": " configure list ",
+    "SecurityClassification": "Public"
+  }
+]
