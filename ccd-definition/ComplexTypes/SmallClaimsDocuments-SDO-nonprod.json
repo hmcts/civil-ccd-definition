@@ -1,16 +1,9 @@
 [
   {
     "ID": "SmallClaimsDocuments",
-    "ListElementCode": "line1",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsDocuments",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": "## Documents",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
@@ -25,13 +18,6 @@
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsDocuments",
-    "ListElementCode": "line2",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]
