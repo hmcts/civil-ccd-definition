@@ -550,7 +550,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "speclistYourEvidenceList",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "EvidenceList",
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,

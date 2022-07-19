@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "SmallClaimsJudgementDeductionValue",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionValue",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "Subject to a deduction of:",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsJudgementDeductionValue",
+    "ListElementCode": "value",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

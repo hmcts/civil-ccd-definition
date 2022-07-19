@@ -9,7 +9,7 @@
   {
     "ID": "CaseNote",
     "ListElementCode": "createdOn",
-    "FieldType": "Date",
+    "FieldType": "DateTime",
     "ElementLabel": "Created on",
     "SecurityClassification": "Public"
   },

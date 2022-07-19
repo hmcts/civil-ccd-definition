@@ -17,7 +17,7 @@ module.exports = {
     await I.retryUntilExists(() => {
       I.selectOption(this.fields.jurisdiction, 'Civil');
       I.selectOption(this.fields.caseType, 'Civil');
-      I.selectOption(this.fields.event, 'Create claim');
+      I.selectOption(this.fields.event, 'Create claim - Unspecified');
       I.click(this.startButton);
     }, 'ccd-markdown');
   }

@@ -70,7 +70,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
+    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -165,7 +165,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimStatementOfTruthLabel",
-    "Label": "The Claimant(s) believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the Claimant(s) to sign this statement.\n\nThe Claimant(s) understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
+    "Label": "The claimant(s) believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant(s) to sign this statement.\n\nThe claimant(s) understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -315,7 +315,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentResponseIsSame",
-    "Label": "Do the Defendants intend to file a single response to the claim?",
+    "Label": "Do the defendants intend to file a single response to the claim?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -332,7 +332,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentBothLabel",
-    "Label": "<br/>**Both Defendants intend to:**",
+    "Label": "<br/>**Both defendants intend to:**",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1244,14 +1244,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "addApplicant2",
-    "Label": "Do you want to add another Claimant now?",
+    "Label": "Do you want to add another claimant now?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2",
-    "Label": "Second Claimant's details",
+    "Label": "Second claimant's details",
     "FieldType": "Party",
     "SecurityClassification": "Public"
   },
@@ -1272,14 +1272,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "addRespondent2",
-    "Label": "Is there another Defendant?",
+    "Label": "Is there another defendant?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2",
-    "Label": "Second Defendant's details",
+    "Label": "Second defendant's details",
     "FieldType": "Party",
     "SecurityClassification": "Public"
   },
@@ -1294,7 +1294,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2SameLegalRepresentative",
-    "Label": "Does the second Defendant have the same legal representative?",
+    "Label": "Does the second defendant have the same legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1302,7 +1302,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the Defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
+    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1334,8 +1334,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2EmailAddress",
-    "Label": "Enter the second Defendant legal representatives email address to be used for notifications",
-    "HintText": "This should be the email address that the Defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
+    "Label": "Enter the second defendant legal representatives email address to be used for notifications",
+    "HintText": "This should be the email address that the defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
     "FieldType": "Email",
     "SecurityClassification": "Public"
   },
@@ -1773,7 +1773,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA)\n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA)\n\nIf the defendant has legal representation, you'll need:\n* name of the defendant's firm of solicitors \n* email address the firm uses for notifications from MyHMCTS \n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentUploadWarning",
+    "Label": "### Documents uploaded to the Damages Claims Portal prior to the 'notify claim details' next step (refer to PD51ZB section 4), will be visible to the defendant solicitor once the claim has been issued. \n### If you do not want to provide access to these documents prior to completing the 'notify claim details' next step, please do not upload them now.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2038,5 +2045,67 @@
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2GeneratedResponseDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrganisationIDCopy",
+    "Label": "Respondent 1 Organisation ID Copy",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop caa users from seeing case before claim notify"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationIDCopy",
+    "Label": "Respondent 2 Organisation ID Copy",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Comments": "A workaround to stop caa users from seeing case before claim notify"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addLegalRepDeadline",
+    "Label": "Add Legal Rep Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "_Definition":  "Add legal rep to case deadline",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "allPartyNames",
+    "Label": "All party names",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unassignedCaseListDisplayOrganisationReferences",
+    "Label": "Unassigned Case List Solicitor References",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseListDisplayDefendantSolicitorReferences",
+    "Label": "Case List Display Defendant Solicitor Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextDeadline",
+    "Label": "Next Deadline",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "_Definition":  "Next deadline on a case",
+    "_Category":  "CIVIL"
   }
 ]

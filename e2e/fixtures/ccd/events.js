@@ -17,6 +17,12 @@ module.exports = {
     description: 'Defendant solicitor is acknowledging claim',
     order: 4
   },
+  ACKNOWLEDGEMENT_OF_SERVICE: {
+    description: 'Acknowledgement of Service (AoS)',
+    id: 'ACKNOWLEDGEMENT_OF_SERVICE',
+    name: 'Acknowledgement of Service',
+    order: 4
+  },
   ADD_DEFENDANT_LITIGATION_FRIEND: {
     id: 'ADD_DEFENDANT_LITIGATION_FRIEND',
     name: 'Add litigation friend',
@@ -27,6 +33,12 @@ module.exports = {
     id: 'DEFENDANT_RESPONSE',
     name: 'Respond to claim',
     description: 'Defendant response to claim',
+    order: 6
+  },
+  DEFENDANT_RESPONSE_SPEC: {
+    id: 'DEFENDANT_RESPONSE_SPEC',
+    name: 'Respond to claim',
+    description: 'Defendant response to Specified claim',
     order: 6
   },
   CLAIMANT_RESPONSE: {
@@ -71,6 +83,12 @@ module.exports = {
     name: 'Inform agreed extension date',
     order: 12
   },
+  INFORM_AGREED_EXTENSION_DATE_SPEC: {
+    description: 'Specified Enter an extension date that has already been agreed with other parties',
+    id: 'INFORM_AGREED_EXTENSION_DATE_SPEC',
+    name: 'Inform agreed extension date',
+    order: 12
+  },
   AMEND_PARTY_DETAILS: {
     description: 'Update defendant and claimant solicitor email addresses',
     id: 'AMEND_PARTY_DETAILS',
@@ -88,5 +106,41 @@ module.exports = {
     id: 'CHANGE_SOLICITOR_EMAIL',
     name: 'Change solicitor email',
     order: 17
+  },
+  ENTER_BREATHING_SPACE_SPEC: {
+    description: 'Enter Breathing Space',
+    id: 'ENTER_BREATHING_SPACE_SPEC',
+    name: 'Enter Breathing Space',
+    order: 7
+  },
+  LIFT_BREATHING_SPACE_SPEC: {
+    description: 'Lift Breathing Space',
+    id: 'LIFT_BREATHING_SPACE_SPEC',
+    name: 'Lift Breathing Space',
+    order: 8
+  },
+  DEFAULT_JUDGEMENT_SPEC: {
+    id: 'DEFAULT_JUDGEMENT_SPEC',
+    name: 'Request Default Judgment',
+    description: 'Request Default Judgment',
+    order: 18
+  },
+  CREATE_SDO: {
+    id: 'CREATE_SDO',
+    name: 'Standard Direction Order',
+    description: 'Standard Direction Order',
+    order: 17
+  },
+  CREATE_GENERAL_APPLICATION_CASE: {
+    id: 'CREATE_GENERAL_APPLICATION_CASE',
+    name: 'Create general application',
+    description: 'Create general application',
+    order: null
+  },
+  CLAIMANT_RESPONSE_SPEC: {
+    description: 'View and respond to defendant (Specified)',
+    id: 'CLAIMANT_RESPONSE_SPEC',
+    name: 'View and respond to defence',
+    order: 7
   }
 };

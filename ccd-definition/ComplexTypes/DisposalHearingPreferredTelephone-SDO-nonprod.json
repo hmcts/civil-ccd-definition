@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "DisposalHearingPreferredTelephone",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingPreferredTelephone",
+    "ListElementCode": "telephone",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

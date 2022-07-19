@@ -3,7 +3,7 @@
     "ID": "RequestedCourt",
     "ListElementCode": "applicantRequestedCourt",
     "FieldType": "Label",
-    "ElementLabel": "The Claimant legal representative requested the following court location code. \n ## ${courtLocation.applicantPreferredCourt}",
+    "ElementLabel": "The claimant legal representative requested the following court location code. \n ## ${courtLocation.applicantPreferredCourt}",
     "SecurityClassification": "Public"
   },
   {

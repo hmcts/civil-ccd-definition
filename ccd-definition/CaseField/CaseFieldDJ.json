@@ -22,16 +22,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CPRConfirmation1",
-    "Label": "I certify that all of these statements are correct and apply to the defendant",
-    "FieldType": "YesOrNo",
+    "ID": "CPRAcceptanceLabel",
+    "Label": "Select if the statements all apply to the defendant",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CPRConfirmation2",
-    "Label": "I certify that all of these statements are correct and apply to the defendants",
-    "FieldType": "YesOrNo",
+    "ID": "CPRAcceptance",
+    "Label": " ",
+    "FieldType": "CPRCertifyAcceptanceDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CPRAcceptance2DefLabel",
+    "Label": "Select if the statements all apply to the defendants",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CPRAcceptance2Def",
+    "Label": " ",
+    "FieldType": "CPRCertifyAcceptanceDJ",
     "SecurityClassification": "Public"
   },
   {
@@ -73,20 +87,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingDirectionsLabel",
-    "Label": "## What directions would you like the court to give? \n You can use the court's standard directions as out here or you may set out your preferred directions",
+    "Label": "## What directions would you like the court to give?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "detailsOfDirectionDisposal",
-    "Label": "Draft order",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "detailsOfDirectionTrial",
+    "ID": "detailsOfDirection",
     "Label": "Draft order",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
@@ -95,7 +102,21 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingSupportRequirementsDJ",
     "Label": "Hearing requirements",
-    "FieldType": "HearingSupportRequirementsDJ",
+    "FieldType": "HearingSupportRequirementsListDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementLocation",
+    "Label": " ",
+    "FieldType": "CaseLocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "locationName",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {

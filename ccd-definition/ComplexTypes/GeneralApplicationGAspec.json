@@ -116,6 +116,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicantPartyName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "claimant1PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -158,9 +165,9 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppDeadlineNotification",
+    "ListElementCode": "generalAppDateDeadline",
     "ElementLabel": " ",
-    "FieldType": "TextArea",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
@@ -168,6 +175,13 @@
     "ListElementCode": "civilServiceUserRoles",
     "ElementLabel": " ",
     "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppSuperClaimType",
+    "ElementLabel": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
