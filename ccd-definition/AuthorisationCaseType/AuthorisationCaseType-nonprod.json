@@ -2,8 +2,14 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
-      "judge-profile",
-      "basic-access"
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "GS_profile"
     ],
     "CRUD": "CRU"
   }
