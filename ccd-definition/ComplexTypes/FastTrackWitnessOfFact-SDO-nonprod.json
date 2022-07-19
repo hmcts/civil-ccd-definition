@@ -24,13 +24,13 @@
     "ID": "FastTrackWitnessOfFact",
     "ListElementCode": "text",
     "FieldType": "Label",
-    "ElementLabel": "Number of witnesses (claimant)",
+    "ElementLabel": "Number of pages",
     "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackWitnessOfFact",
     "ListElementCode": "input3",
-    "FieldType": "Text",
+    "FieldType": "Number",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -60,13 +60,6 @@
     "ListElementCode": "input6",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackWitnessOfFact",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]
