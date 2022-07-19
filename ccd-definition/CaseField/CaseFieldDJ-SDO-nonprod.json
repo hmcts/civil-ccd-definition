@@ -138,10 +138,9 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodInPersonDJ",
-    "Label": "Select hearing location ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "_comment": "placeholder for court locations"
+    "Label": "Hearing location ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -332,10 +331,9 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingMethodInPersonDJ",
-    "Label": "Select hearing location ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "_comment": "placeholder for court locations"
+    "Label": "Hearing location",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
