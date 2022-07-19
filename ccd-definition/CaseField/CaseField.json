@@ -2107,5 +2107,54 @@
     "SecurityClassification": "Public",
     "_Definition":  "Next deadline on a case",
     "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingParticularsOfClaim",
+    "Label": "## Particulars of claim",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingClaimantDetails",
+    "Label": "## Claimant details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingDefendantDetails",
+    "Label": "## Defendant details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingClaimantDQ",
+    "Label": "## Claimant directions questionnaire",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingDefendantDQ",
+    "Label": "## Defendant directions questionnaire",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingSolicitorReferences",
+    "Label": "## Solicitor references",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingAmountClaiming",
+    "Label": "## Amount claiming",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
