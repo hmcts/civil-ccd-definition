@@ -103,4 +103,11 @@
   <suppress>
     <cve>CVE-2022-31569</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: glob-parent:5.1.2
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+    <vulnerabilityName>1081522</vulnerabilityName>
+  </suppress>
  </suppressions>
