@@ -375,8 +375,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "basic-access"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
