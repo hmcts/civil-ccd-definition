@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "CaseToPostLRspec",
+    "ListElementCode": "accessCode",
+    "FieldType": "Text",
+    "ElementLabel": "Access Code",
+    "SecurityClassification": "Public"
+  }
+]
