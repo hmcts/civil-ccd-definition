@@ -217,18 +217,6 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgeViewSDO",
-    "CaseFieldID": "respondent1DQDraftDirections",
-    "TabFieldDisplayOrder": 38
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
-    "CaseFieldID": "respondent2DQDraftDirections",
-    "TabFieldDisplayOrder": 39
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
     "CaseFieldID": "defendantResponseDocuments",
     "TabFieldDisplayOrder": 40
   },
@@ -309,18 +297,6 @@
     "TabID": "JudgeViewSDO",
     "CaseFieldID": "applicant2DQHearingSupport",
     "TabFieldDisplayOrder": 53
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
-    "CaseFieldID": "applicant1DQDraftDirections",
-    "TabFieldDisplayOrder": 54
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
-    "CaseFieldID": "applicant2DQDraftDirections",
-    "TabFieldDisplayOrder": 55
   },
   {
     "CaseTypeID": "CIVIL",

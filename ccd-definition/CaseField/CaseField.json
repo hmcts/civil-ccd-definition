@@ -832,21 +832,21 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQExperts",
-    "Label": "Applicant 1 experts",
+    "Label": "Claimant 1 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQWitnesses",
-    "Label": "Applicant 1 witnesses",
+    "Label": "Claimant 1 witnesses",
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearing",
-    "Label": "Applicant 1 Hearing",
+    "Label": "Claimant 1 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -869,7 +869,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingSupport",
-    "Label": "Applicant 1 Hearing support requirements",
+    "Label": "Claimant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
     "SecurityClassification": "Public"
   },
@@ -1961,21 +1961,21 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQExperts",
-    "Label": "Applicant 2 experts",
+    "Label": "Claimant 2 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQWitnesses",
-    "Label": "Applicant 2 witnesses",
+    "Label": "Claimant 2 witnesses",
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQHearing",
-    "Label": "Applicant 2 Hearing",
+    "Label": "Claimant 2 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -1998,7 +1998,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQHearingSupport",
-    "Label": "Applicant 2 Hearing support requirements",
+    "Label": "Claimant 2 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
     "SecurityClassification": "Public"
   },
