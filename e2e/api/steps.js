@@ -13,6 +13,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {checkNoCToggleEnabled} = require('./testingSupport');
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -144,14 +145,16 @@ module.exports = {
     await apiRequest.startEvent(eventName);
     await validateEventPages(data.CREATE_CLAIM_RESPONDENT_LIP);
 
+    let noCToggleEnabled = await checkNoCToggleEnabled();
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
       body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
@@ -563,6 +566,25 @@ module.exports = {
     deleteCaseFields('caseNote');
   },
 
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent1deadline);
+   },
+
+  amendRespondent2ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent2deadline);
+  },
+
+  getCaseId: async () => {
+     console.log (`case created: ${caseId}`);
+     return caseId;
+   },
+
   cleanUp: async () => {
     await unAssignAllUsers();
   }
@@ -807,3 +829,4 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
+
