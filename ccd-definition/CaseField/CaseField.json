@@ -254,7 +254,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimantResponseDocuments",
-    "Label": "Claimant response Case Documents",
+    "Label": "Claimant response to defence documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
