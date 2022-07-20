@@ -1,7 +1,8 @@
 const config = require('../../../config.js');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 
-const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
+// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
@@ -13,7 +14,8 @@ Scenario('Applicant solicitor creates 1v2 specified claim both defendants same L
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('organisation', null, 'company', 'company', 1000);
   caseNumber = await LRspec.grabCaseNumber();
-  await LRspec.see(`Case ${caseNumber} has been created.`);
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
 Scenario.skip('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
@@ -26,7 +28,8 @@ Scenario.skip('1v2 Respond To Claim - Defendants solicitor rejects claim for def
     claimType: 'small',
     defenceType: 'dispute'
   });
-  await LRspec.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
 
@@ -37,7 +40,8 @@ Scenario.skip('1v2 Respond To Claim - Defendants solicitor Part Admit the claim 
     claimType: 'fast',
     defenceType: 'repaymentPlan'
   });
-  await LRspec.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
 
@@ -49,6 +53,7 @@ Scenario.skip('1v2 Respond To Claim - Defendants solicitor Admits the claim and 
     claimType: 'fast',
     defenceType: 'setDate'
   });
-  await LRspec.see(caseEventMessage('Respond to claim'));
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
