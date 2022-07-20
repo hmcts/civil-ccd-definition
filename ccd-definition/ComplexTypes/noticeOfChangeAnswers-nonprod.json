@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "NoticeOfChangeAnswers",
+    "ListElementCode": "applicantName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "ID": "NoticeOfChangeAnswers",
+    "ListElementCode": "clientName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  }
+]
