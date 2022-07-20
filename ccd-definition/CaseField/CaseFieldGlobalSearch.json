@@ -15,13 +15,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseManagementLocation2",
-    "Label": "case Management Location",
-    "FieldType": "CaseLocation",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "caseManagementCategory",
     "Label": "case Management Category",
     "FieldType": "DynamicList",
