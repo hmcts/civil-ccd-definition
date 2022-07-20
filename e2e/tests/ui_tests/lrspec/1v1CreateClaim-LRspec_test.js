@@ -11,7 +11,7 @@ Feature('Claim creation 1v1 @e2e-tests-spec');
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('organisation', null, 'company', null, 19000);
+  await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
