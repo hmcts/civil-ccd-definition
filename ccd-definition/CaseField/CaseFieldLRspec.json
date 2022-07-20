@@ -2271,7 +2271,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseToPostLRspec",
+    "ID": "respondent1CaseToPostLRspec",
     "Label": " ",
     "FieldType": "CaseToPostLRspec",
     "SecurityClassification": "Public"
