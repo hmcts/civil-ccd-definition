@@ -13,7 +13,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]",
-          "basic-access"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
