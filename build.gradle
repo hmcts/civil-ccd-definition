@@ -167,6 +167,13 @@ task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional t
   commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
 }
 
+task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
+ onlyIf {
+    return System.env.ENVIRONMENT == 'preview'
+  }
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
+}
+
 task demoEnvNonProdFeaturesEnabledFunctionalTests(type: Exec, description: 'Runs Non prod functional tests in demo') {
   commandLine '/usr/bin/yarn', '--silent', 'test:DemoFunctional'
 }
@@ -191,7 +198,7 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport

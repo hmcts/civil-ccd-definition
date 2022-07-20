@@ -14,6 +14,7 @@ const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {updateCaseData} = require("./testingSupport");
+const {checkNoCToggleEnabled} = require('./testingSupport');
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -154,8 +155,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
@@ -569,9 +570,22 @@ module.exports = {
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline = {'respondent1ResponseDeadline':'2022-01-12T15:59:50'};
-    await testingSupport.updateCaseData(caseId, respondent1deadline);
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent1deadline);
+   },
+
+  amendRespondent2ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent2deadline);
   },
+
+  getCaseId: async () => {
+     console.log (`case created: ${caseId}`);
+     return caseId;
+   },
 
   defaultJudgment: async (user) => {
     await apiRequest.setupTokens(user);
@@ -735,8 +749,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
   } else {
-    console.log(`Asserting user ${user.type} in state ${state}`);
-    // expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
 };
 
@@ -863,3 +876,4 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
+

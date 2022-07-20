@@ -107,15 +107,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingPreferredRegionId",
-    "Label": "Hearing requirements",
-    "FieldType": "Text",
+    "ID": "caseManagementLocation",
+    "Label": " ",
+    "FieldType": "CaseLocation",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingBaseLocation",
-    "Label": "Hearing requirements",
+    "ID": "locationName",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },

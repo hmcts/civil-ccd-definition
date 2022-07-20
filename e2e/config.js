@@ -43,6 +43,11 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
+  systemupdate: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.superuser@gmail.com',
+    type: 'systemupdate'
+  },
   definition: {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
