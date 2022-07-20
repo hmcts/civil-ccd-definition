@@ -157,7 +157,7 @@
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile",
-    "ReadOnly": "N",
+    "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
   },
@@ -172,6 +172,33 @@
   },
   {
     "RoleName" : "task-supervisor",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hmcts-admin",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hmcts-legal-operations",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hmcts-ctsc",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile",
