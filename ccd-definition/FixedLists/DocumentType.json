@@ -32,7 +32,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "CLAIMANT_DEFENCE",
-    "ListElement": "Claimant defence",
+    "ListElement": "Claimant response",
     "DisplayOrder": 6
   },
   {
