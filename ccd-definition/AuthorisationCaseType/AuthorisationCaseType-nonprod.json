@@ -6,5 +6,13 @@
       "basic-access"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "tribunal-caseworker",
+      "hearing-center-admin"
+    ],
+    "CRUD": "CRU"
   }
 ]
