@@ -10,7 +10,9 @@ module.exports = {
   async addManually() {
     I.waitForElement(this.fields.claimTimelineOption.id);
     await I.runAccessibilityTest();
-    I.click('Add manually');
+    await within(this.fields.claimTimelineOption.id, () => {
+       I.click('Add manually');
+    });
     await I.clickContinue();
   },
 };
