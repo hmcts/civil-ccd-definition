@@ -1,6 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "testsearch",
+    "Label": "I should see this: ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicantVRespondentText",
     "Label": " ",
     "FieldType": "Text",
