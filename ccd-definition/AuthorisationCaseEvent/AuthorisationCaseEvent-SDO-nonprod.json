@@ -79,5 +79,20 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "tribunal-caseworker",
+          "hearing-center-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
