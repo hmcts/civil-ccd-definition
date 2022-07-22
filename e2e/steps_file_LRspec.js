@@ -80,6 +80,7 @@ const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestion
 const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
 const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
+const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDefendantDetailsLRspec.page');
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
@@ -379,7 +380,7 @@ module.exports = function () {
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
             () => respondentCheckListPage.claimTimelineTemplate(),
-            () => specConfirmDefendantsDetails.confirmDetails(false),
+            () => specConfirmDefendantsDetails.confirmDetails(twoDefendants),
             () => specConfirmLegalRepDetails.confirmDetails(false),
             ... conditionalSteps(twoDefendants, [
               () => singleResponse.defendantsHaveSameResponse(true),
@@ -406,7 +407,7 @@ module.exports = function () {
                       () => freeMediationPage.selectMediation('DefendantResponse'),
                       () => useExpertPage.claimExpert('DefendantResponse'),
                       () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
-                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
                       () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
             ]),
             () => chooseCourtSpecPage.chooseCourt('DefendantResponse'),
@@ -427,7 +428,7 @@ module.exports = function () {
               await this.triggerStepsWithScreenshot([
                 () => caseViewPage.startEvent(eventName, caseId),
                 () => respondentCheckListPage.claimTimelineTemplate(),
-                () => specConfirmDefendantsDetails.confirmDetails(secondDefendant),
+                () => confirm2ndDefLRspecPage.confirmDetails(),
                 () => specConfirmLegalRepDetails.confirmDetails(secondDefendant),
                 () => responseTypeSpecPage.selectResponseType(secondDefendant,defendant1Response),
                 () => defenceTypePage.selectDefenceType(secondDefendant,defenceType,150),

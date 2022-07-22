@@ -38,6 +38,7 @@ module.exports = {
     }
 
     if(twoDefendants){
+
              // eslint-disable-next-line no-prototype-builtins
              if (!this.fields.respondent2ClaimResponseType.options.hasOwnProperty(responseType)) {
                throw new Error(`Response type: ${responseType} does not exist`);

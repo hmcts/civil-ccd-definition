@@ -7,6 +7,7 @@ module.exports = {
       witnessesToAppear: {
         id: `#${party}DQWitnessesRequiredSpec_radio`,
         id2: `#${party}DQWitnesses_witnessesToAppear_radio`,
+        id3: `#${party}DQWitnesses_witnessesToAppear_radio`,
         options: {
           yes: 'Yes',
           no: 'No'
@@ -24,13 +25,23 @@ module.exports = {
 
   async enterWitnessInformation(party) {
 
-  if(party != 'respondent2'){
-    I.waitForElement(this.fields(party).witnessesToAppear.id);
+  if(party === 'applicant1'){
+    I.waitForElement(this.fields(party).witnessesToAppear.id3);
     await I.runAccessibilityTest();
-    await within(this.fields(party).witnessesToAppear.id, () => {
+    await within(this.fields(party).witnessesToAppear.id3, () => {
       I.click(this.fields(party).witnessesToAppear.options.no);
     });
+
   }
+
+   if(party === 'respondent1'){
+      I.waitForElement(this.fields(party).witnessesToAppear.id);
+      await I.runAccessibilityTest();
+      await within(this.fields(party).witnessesToAppear.id, () => {
+        I.click(this.fields(party).witnessesToAppear.options.no);
+      });
+
+    }
 
    if(party === 'respondent2'){
       I.waitForElement(this.fields(party).witnessesToAppear.id2);
@@ -38,7 +49,8 @@ module.exports = {
       await within(this.fields(party).witnessesToAppear.id2, () => {
         I.click(this.fields(party).witnessesToAppear.options.no);
       });
+
     }
-    await I.clickContinue();
+   await I.clickContinue();
   },
 };
