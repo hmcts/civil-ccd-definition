@@ -39,7 +39,8 @@ Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendan
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
   await LRspec.login(config.secondDefendantSolicitorUser);
-  await LRspec.respondToClaimFullDefence({
+  await LRspec.respond1v2DiffLR_FullDefence({
+    secondDefendant: true,
     defendant1Response: 'fullDefence',
     claimType: 'fast',
     defenceType: 'dispute'

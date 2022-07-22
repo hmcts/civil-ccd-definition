@@ -56,6 +56,7 @@ const freeMediationPage = require('./pages/respondToClaimLRspec/freeMediationLRs
 const chooseCourtSpecPage = require('./pages/respondToClaimLRspec/chooseCourtLRspec.page');
 const smallClaimsHearingPage = require('./pages/respondToClaimLRspec/hearingSmallClaimsLRspec.page');
 const useExpertPage = require('./pages/respondToClaimLRspec/useExpertLRspec.page');
+const useMPExpertsPage = require('./pages/respondToClaimLRspec/expertsMPLRspec.page');
 const respondentCheckListPage = require('./pages/respondToClaimLRspec/respondentCheckListLRspec.page');
 const enterWitnessesPage = require('./pages/respondToClaimLRspec/enterWitnessesLRspec.page');
 const disputeClaimDetailsPage = require('./pages/respondToClaimLRspec/disputeClaimDetailsLRspec.page');
@@ -378,25 +379,25 @@ module.exports = function () {
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
             () => respondentCheckListPage.claimTimelineTemplate(),
-            () => specConfirmDefendantsDetails.confirmDetails(twoDefendants),
-            () => specConfirmLegalRepDetails.confirmDetails(),
+            () => specConfirmDefendantsDetails.confirmDetails(false),
+            () => specConfirmLegalRepDetails.confirmDetails(false),
             ... conditionalSteps(twoDefendants, [
               () => singleResponse.defendantsHaveSameResponse(true),
             ]),
             ... conditionalSteps(twoClaimants, [
               () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
             ]),
-            () => responseTypeSpecPage.selectResponseType(defendant1Response),
-            () => defenceTypePage.selectDefenceType(defenceType,150),
-            () => disputeClaimDetailsPage.enterReasons(),
-            () => claimResponseTimelineLRspecPage.addManually(),
+            () => responseTypeSpecPage.selectResponseType(false,defendant1Response),
+            () => defenceTypePage.selectDefenceType(false,defenceType,150),
+            () => disputeClaimDetailsPage.enterReasons(false),
+            () => claimResponseTimelineLRspecPage.addManually(false),
             () => this.clickContinue(),
          ... conditionalSteps(claimType === 'fast', [
                 () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
                 () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                 () => this.clickContinue(),
                 () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-                () => expertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+                () => useMPExpertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
                 () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
                 () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
                 () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
@@ -420,6 +421,41 @@ module.exports = function () {
          ]);
 
     },
+
+    async respond1v2DiffLR_FullDefence({secondDefendant = true, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
+          eventName = 'Respond to claim';
+              await this.triggerStepsWithScreenshot([
+                () => caseViewPage.startEvent(eventName, caseId),
+                () => respondentCheckListPage.claimTimelineTemplate(),
+                () => specConfirmDefendantsDetails.confirmDetails(secondDefendant),
+                () => specConfirmLegalRepDetails.confirmDetails(secondDefendant),
+                () => responseTypeSpecPage.selectResponseType(secondDefendant,defendant1Response),
+                () => defenceTypePage.selectDefenceType(secondDefendant,defenceType,150),
+                () => disputeClaimDetailsPage.enterReasons(secondDefendant),
+                () => claimResponseTimelineLRspecPage.addManually(secondDefendant),
+                () => this.clickContinue(),
+             ... conditionalSteps(claimType === 'fast', [
+                    () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_2),
+                    () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent2'),
+                    () => this.clickContinue(),
+                    () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_2),
+                    () => useMPExpertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_2),
+                    () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_2),
+                    () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_2),
+                    () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_2),
+               ]),
+                () => chooseCourtSpecPage.chooseCourt('DefendantResponse2'),
+                () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_2),
+                () => vulnerabilityPage.selectVulnerability('no',true),
+                ... conditionalSteps(claimType === 'fast', [
+                  () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_2),
+                ]),
+                () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+                () => event.submit('Submit', ''),
+                () => event.returnToCaseDetails()
+             ]);
+
+        },
 
     async respondToClaimPartAdmit({defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan'}) {
               eventName = 'Respond to claim';
