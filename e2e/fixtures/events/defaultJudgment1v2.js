@@ -250,6 +250,7 @@ module.exports = {
         OrgPolicyReference: 'Defendant policy reference456',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]'
       },
+      locationName: 'site_name 0000'
     }
   }
 };
