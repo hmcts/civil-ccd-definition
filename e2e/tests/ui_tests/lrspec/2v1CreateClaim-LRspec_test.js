@@ -12,7 +12,7 @@ Feature('2v1 Multi Party Claim Creation 2v1 @e2e-tests-spec');
 Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
   console.log('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims');
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('organisation', 'organisation', 'company', null, 18000);
+  await LRspec.createCaseSpecified('2v1 specified claim - fast track', 'organisation', 'organisation', 'company', null, 18000);
   caseNumber = await LRspec.grabCaseNumber();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
