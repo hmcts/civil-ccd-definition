@@ -140,7 +140,26 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1Represented",
+    "FieldShowCondition": "respondent1OrganisationPolicy=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 18
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2Represented",
+    "FieldShowCondition": "respondent2OrganisationPolicy=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
     "CaseFieldID": "respondent1OrganisationPolicy",
+    "FieldShowCondition": "respondent1Represented=\"Yes\"",
     "TabFieldDisplayOrder": 18
   },
   {
@@ -149,6 +168,7 @@
     "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2OrganisationPolicy",
+    "FieldShowCondition": "respondent2Represented=\"Yes\"",
     "TabFieldDisplayOrder": 19
   },
   {
