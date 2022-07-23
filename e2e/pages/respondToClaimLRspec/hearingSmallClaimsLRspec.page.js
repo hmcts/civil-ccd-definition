@@ -5,7 +5,7 @@ module.exports = {
       case 'ClaimantResponse': {
         return {
           hearingType: {
-            id: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_radio',
+            id: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_radio',
             options: {
               yes: 'Yes',
               no: 'No'

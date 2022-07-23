@@ -567,7 +567,9 @@ module.exports = function () {
                       () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
                       () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
                       () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+                       ... conditionalSteps(claimType === 'fast', [
                       () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
+                       ]),
                       () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
                       () => event.submit('Submit your response', ''),
                       () => event.returnToCaseDetails()
