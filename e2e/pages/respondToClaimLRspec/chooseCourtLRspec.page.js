@@ -15,6 +15,18 @@ module.exports = {
         };
       }
 
+     case 'DefendantResponse2': {
+           return {
+                chooseCourtLocation: {
+                  id: '#responseClaimCourtLocation2Required_radio',
+                  options: {
+                    yes: 'Yes',
+                    no: 'No'
+                  }
+                },
+            };
+       }
+
       case 'DefendantResponse':
       default: {
         return {
