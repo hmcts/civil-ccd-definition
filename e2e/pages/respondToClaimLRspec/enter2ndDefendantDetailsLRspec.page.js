@@ -3,19 +3,13 @@ const { I } = inject();
 module.exports = {
   fields: {
     solicitor1Reference: {
-      id: '#specAoSApplicantCorrespondenceAddressRequired_radio',
-      options: {
-        yes: 'Yes',
-        no: 'No'
-      }
-    },
-    solicitor2Reference: {
       id: '#specAoSRespondent2HomeAddressRequired_radio',
       options: {
         yes: 'Yes',
         no: 'No'
       }
-    }
+    },
+
   },
 
  async confirmDetails(twoDefendants) {
@@ -27,14 +21,6 @@ module.exports = {
       I.click(options.yes);
     });
 
-    if(twoDefendants){
-      I.waitForElement(this.fields.solicitor2Reference.id);
-      await I.runAccessibilityTest();
-      const options2 = this.fields.solicitor2Reference.options;
-      await within(this.fields.solicitor2Reference.id, () => {
-        I.click(options2.yes);
-      });
-    }
     await I.clickContinue();
   }
 };
