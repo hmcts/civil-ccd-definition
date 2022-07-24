@@ -5,5 +5,19 @@
     "FieldType": "Text",
     "ElementLabel": "Access Code",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseToPostLRspec",
+    "ListElementCode": "respondentCaseRole",
+    "FieldType": "Text",
+    "ElementLabel": "Case Role",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseToPostLRspec",
+    "ListElementCode": "pinUsedFlg",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Is Pin Used Flag",
+    "SecurityClassification": "Public"
   }
 ]
