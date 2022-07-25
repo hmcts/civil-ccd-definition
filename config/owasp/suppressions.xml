@@ -91,7 +91,8 @@
     <cve>CVE-2022-26336</cve>
   </suppress>
   <suppress>
-    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$
+    </packageUrl>
     <cve>CVE-2022-22978</cve>
   </suppress>
   <suppress>
@@ -105,10 +106,19 @@
     <cve>CVE-2022-31569</cve>
   </suppress>
   <suppress until="2022-08-29">
-  <notes><![CDATA[
+    <notes><![CDATA[
  file name: glob-parent:5.1.2
  ]]></notes>
-  <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
-  <vulnerabilityName>1081522</vulnerabilityName>
-</suppress>
- </suppressions>
+    <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
+    <vulnerabilityName>1081522</vulnerabilityName>
+  </suppress>
+  <suppress until="2022-08-25">
+    <notes><![CDATA[
+   file name: file-type:7.7.1
+   ]]>
+      Dependency because of allure-js-commons 1.3.2, but next version (2) is still beta
+    </notes>
+    <packageUrl regex="true">^pkg:npm/file\-type@7.7.1$</packageUrl>
+    <vulnerabilityName>1081704</vulnerabilityName>
+  </suppress>
+</suppressions>
