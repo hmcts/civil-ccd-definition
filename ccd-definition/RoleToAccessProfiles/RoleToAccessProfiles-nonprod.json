@@ -187,5 +187,14 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "hearing-center-admin",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-civil-admin",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
   }
 ]
