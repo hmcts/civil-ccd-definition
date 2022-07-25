@@ -111,4 +111,9 @@
   <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
   <vulnerabilityName>1081522</vulnerabilityName>
 </suppress>
+  <suppress>
+    <packageUrl regex="true">^pkg:npm/file-type@7.7.1</packageUrl>
+    <cve>CVE-2022-36313</cve>
+    <vulnerabilityName>1081704</vulnerabilityName>
+  </suppress>
  </suppressions>
