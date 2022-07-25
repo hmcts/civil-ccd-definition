@@ -15,6 +15,20 @@
   },
   {
     "ID": "CaseToPostLRspec",
+    "ListElementCode": "expiryDate",
+    "FieldType": "Date",
+    "ElementLabel": "Expiry Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseToPostLRspec",
+    "ListElementCode": "citizenCaseRole",
+    "FieldType": "Text",
+    "ElementLabel": "Citizen Case Role",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseToPostLRspec",
     "ListElementCode": "pinUsedFlg",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is Pin Used Flag",
