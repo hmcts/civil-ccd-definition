@@ -12,7 +12,7 @@ module.exports = {
 
   },
 
- async confirmDetails(twoDefendants) {
+ async confirmDetails() {
 
     I.waitForElement(this.fields.solicitor1Reference.id);
     await I.runAccessibilityTest();
