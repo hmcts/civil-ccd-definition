@@ -423,13 +423,13 @@ module.exports = function () {
 
     },
 
-    async respond1v2DiffLR_FullDefence({secondDefendant = true, defendant1Response = 'fullDefence', claimType = 'fast', defenceType = 'dispute'}) {
+    async respond1v2DiffLR_FullDefence({secondDefendant = true, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
           eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                 () => caseViewPage.startEvent(eventName, caseId),
                 () => respondentCheckListPage.claimTimelineTemplate(),
                 () => confirm2ndDefLRspecPage.confirmDetails(),
-                () => specConfirmLegalRepDetails.confirmDetails(),
+                () => specConfirmLegalRepDetails.confirmDetails(secondDefendant),
                 () => responseTypeSpecPage.selectResponseType(secondDefendant,defendant1Response),
                 () => defenceTypePage.selectDefenceType(secondDefendant,defenceType,150),
                 () => disputeClaimDetailsPage.enterReasons(secondDefendant),
