@@ -18,5 +18,23 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_APPLICANT_INTENTION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "tribunal-caseworker"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "tribunal-caseworker"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

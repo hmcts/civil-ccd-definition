@@ -54,5 +54,12 @@
     "Name": "Judicial Referral",
     "Description": "Claim is moved onto judges",
     "DisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "AWAITING_APPLICANT_INTENTION",
+    "Name": "Awaiting Applicant Intention",
+    "Description": "Claimant Intention to proceed",
+    "DisplayOrder": 8
   }
 ]
