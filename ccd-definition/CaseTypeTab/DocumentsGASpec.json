@@ -4,8 +4,8 @@
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "systemGeneratedCaseDocuments",
-    "TabFieldDisplayOrder": 1,
+    "CaseFieldID": "generalOrderDocument",
+    "TabFieldDisplayOrder": 5,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   },
   {
@@ -13,8 +13,8 @@
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "defendantResponseDocuments",
-    "TabFieldDisplayOrder": 2,
+    "CaseFieldID": "dismissalOrderDocument",
+    "TabFieldDisplayOrder": 6,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   },
   {
@@ -22,16 +22,8 @@
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "claimantResponseDocuments",
-    "TabFieldDisplayOrder": 3,
+    "CaseFieldID": "directionOrderDocument",
+    "TabFieldDisplayOrder": 7,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Documents",
-    "TabLabel": "Claim documents",
-    "TabDisplayOrder": 4,
-    "CaseFieldID": "servedDocumentFiles",
-    "TabFieldDisplayOrder": 4
   }
 ]
