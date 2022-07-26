@@ -111,4 +111,11 @@
   <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
   <vulnerabilityName>1081522</vulnerabilityName>
 </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: file-type:7.7.1
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/file\-type@.*$</packageUrl>
+    <vulnerabilityName>1081704</vulnerabilityName>
+  </suppress>
  </suppressions>
