@@ -4790,7 +4790,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1CaseToPostLRspec",
+    "CaseFieldID": "respondent1PinToPostLRspec",
     "AccessControl": [
       {
         "UserRoles": [

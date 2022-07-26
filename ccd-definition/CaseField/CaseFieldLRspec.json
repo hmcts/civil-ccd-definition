@@ -2271,9 +2271,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1CaseToPostLRspec",
+    "ID": "respondent1PinToPostLRspec",
     "Label": " ",
-    "FieldType": "CaseToPostLRspec",
+    "FieldType": "DefendantPinToPostLRspec",
     "SecurityClassification": "Public"
   }
 ]

@@ -1,35 +1,35 @@
 [
   {
-    "ID": "CaseToPostLRspec",
+    "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "accessCode",
     "FieldType": "Text",
     "ElementLabel": "Access Code",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CaseToPostLRspec",
+    "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "respondentCaseRole",
     "FieldType": "Text",
     "ElementLabel": "Case Role",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CaseToPostLRspec",
+    "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "expiryDate",
     "FieldType": "Date",
     "ElementLabel": "Expiry Date",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CaseToPostLRspec",
+    "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "citizenCaseRole",
     "FieldType": "Text",
     "ElementLabel": "Citizen Case Role",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CaseToPostLRspec",
-    "ListElementCode": "pinUsedFlg",
+    "ID": "DefendantPinToPostLRspec",
+    "ListElementCode": "pinUsed",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is Pin Used Flag",
     "SecurityClassification": "Public"
