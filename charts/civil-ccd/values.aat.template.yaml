@@ -49,7 +49,7 @@ java:
         - sendgrid-api-key
         - robotics-notification-sender
         - robotics-notification-recipient
-        - robotics-notification-recipient-spec
+        - robotics-notification-specRecipient
         - launch-darkly-sdk-key
         - robotics-notification-multipartyrecipient
   environment:
