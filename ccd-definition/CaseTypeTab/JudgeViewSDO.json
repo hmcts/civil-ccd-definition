@@ -130,7 +130,7 @@
     "TabID": "JudgeViewSDO",
     "CaseFieldID": "headingDefendantDQ",
     "TabFieldDisplayOrder": 21,
-    "FieldShowCondition": "respondent1ClaimResponseType = \"*\""
+    "FieldShowCondition": "respondent1ClaimResponseType = \"*\" OR respondent1ClaimResponseTypeForSpec = \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -239,27 +239,36 @@
     "CaseTypeID": "CIVIL",
     "TabID": "JudgeViewSDO",
     "CaseFieldID": "respondent1DQHearing",
-    "TabFieldDisplayOrder": 38
+    "TabFieldDisplayOrder": 38,
+    "FieldShowCondition": "responseClaimTrack != \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgeViewSDO",
     "CaseFieldID": "respondent2DQHearing",
     "TabFieldDisplayOrder": 39,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2 =\"*\" AND responseClaimTrack != \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "responseClaimTrack",
+    "CaseFieldID": "responseClaimTrack",
+    "TabFieldDisplayOrder": 40,
+    "FieldShowCondition": "responseClaimTrack = \"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgeViewSDO",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "TabFieldDisplayOrder": 40
+    "TabFieldDisplayOrder": 40,
+    "FieldShowCondition": "responseClaimTrack = \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgeViewSDO",
     "CaseFieldID": "respondent2DQHearingSmallClaim",
     "TabFieldDisplayOrder": 41,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2 =\"*\" AND responseClaimTrack = \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
