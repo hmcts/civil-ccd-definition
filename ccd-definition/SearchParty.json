@@ -29,10 +29,22 @@
     "CaseTypeID": "CIVIL",
     "SearchPartyCollectionsFieldName": "",
     "SearchPartyName": "applicant1.partyName",
-    "SearchPartyEmailAddress": "respondentSolicitor2EmailAddress",
-    "SearchPartyAddressLine1": "respondent2.primaryAddress.AddressLine1",
-    "SearchPartyPostCode": "respondent2.primaryAddress.PostCode",
-    "SearchPartyDoB":"respondent2.individualDateOfBirth",
+    "SearchPartyEmailAddress": "applicantSolicitor1UserDetails.email",
+    "SearchPartyAddressLine1": "applicant1.primaryAddress.AddressLine1",
+    "SearchPartyPostCode": "applicant1.primaryAddress.PostCode",
+    "SearchPartyDoB":"applicant1.individualDateOfBirth",
+    "SearchPartyDoD": ""
+  },
+  {
+    "LiveFrom":"",
+    "LiveTo": "",
+    "CaseTypeID": "CIVIL",
+    "SearchPartyCollectionsFieldName": "",
+    "SearchPartyName": "applicant2.partyName",
+    "SearchPartyEmailAddress": "applicantSolicitor2UserDetails.email",
+    "SearchPartyAddressLine1": "applicant2.primaryAddress.AddressLine1",
+    "SearchPartyPostCode": "applicant2.primaryAddress.PostCode",
+    "SearchPartyDoB":"applicant2.individualDateOfBirth",
     "SearchPartyDoD": ""
   }
 ]

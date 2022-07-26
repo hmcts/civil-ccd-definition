@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "testsearch",
-    "Label": "I should see this: ${applicant1.partyName}",
+    "Label": "I should see this: ${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
