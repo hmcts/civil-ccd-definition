@@ -178,14 +178,5 @@
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "idam:caseworker-civil-judge",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "caseworker-civil-judge",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
   }
 ]
