@@ -62,7 +62,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "headingClaimantDetails",
     "TabFieldDisplayOrder": 10
   },
@@ -108,7 +108,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "headingDefendantDetails",
     "TabFieldDisplayOrder": 18
   },
@@ -174,7 +174,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "headingDefendantDQ",
     "TabFieldDisplayOrder": 27,
     "FieldShowCondition": "respondent1ClaimResponseType = \"*\" OR respondent1ClaimResponseTypeForSpec = \"*\""
@@ -402,7 +402,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudgeViewSDO",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "headingClaimantDQ",
     "TabFieldDisplayOrder": 61,
     "FieldShowCondition": "applicant1DQExperts = \"*\""
