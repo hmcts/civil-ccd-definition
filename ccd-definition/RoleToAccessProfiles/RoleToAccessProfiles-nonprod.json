@@ -51,7 +51,7 @@
     "AccessProfiles": "APP-SOL-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "UNSPEC"
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName" : "[APPLICANTSOLICITORONE]",
@@ -60,7 +60,7 @@
     "AccessProfiles": "APP-SOL-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "SPEC"
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORONE]",
@@ -69,7 +69,7 @@
     "AccessProfiles": "RES-SOL-ONE-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "UNSPEC"
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORONE]",
@@ -78,7 +78,7 @@
     "AccessProfiles": "RES-SOL-ONE-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "SPEC"
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORTWO]",
@@ -87,7 +87,7 @@
     "AccessProfiles": "RES-SOL-TWO-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "UNSPEC"
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORTWO]",
@@ -96,7 +96,7 @@
     "AccessProfiles": "RES-SOL-TWO-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": "SPEC"
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName" : "[CREATOR]",
