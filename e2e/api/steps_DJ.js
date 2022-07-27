@@ -592,7 +592,6 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
-    console.log(eventName)
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
@@ -730,16 +729,10 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
   } else {
-    console.log(`----Testing state ${state} to user ${user.type}`);
+    console.log(`Asserting state ${state} to user ${user.type}`);
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
 };
-
-// const assertCaseNotAvailableToUser = async (user) => {
-//   console.log(`Asserting user ${user.type} does not have permission to case`);
-//   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId, 404);
-//   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
-// };
 
 function addMidEventFields(pageId, responseBody) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);

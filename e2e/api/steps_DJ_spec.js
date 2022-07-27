@@ -35,7 +35,6 @@ module.exports = {
    */
   createClaimWithRepresentedRespondent: async (user, mpScenario) => {
 
-    console.log(`-------- ${mpScenario} --------------`);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
@@ -175,7 +174,6 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
 
   assert.equal(response.status, 200);
   if (pageId === 'paymentConfirmationSpec') {
-    console.log(`--------Status ${scenario}`)
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
       responseBody.data.currentDefendantName = 'Sir John Doe';
     } else {
