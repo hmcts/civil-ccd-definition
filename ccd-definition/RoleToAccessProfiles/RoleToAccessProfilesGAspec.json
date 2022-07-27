@@ -70,14 +70,5 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
-  },
-  {
-    "RoleName": "tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "civil-administrator-standard",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
   }
 ]
