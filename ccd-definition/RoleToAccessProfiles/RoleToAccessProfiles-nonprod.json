@@ -207,6 +207,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "hmcts-staff",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
