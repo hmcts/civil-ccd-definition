@@ -148,5 +148,11 @@ module.exports = {
     id: 'CLAIMANT_RESPONSE_SPEC',
     name: 'View and respond to defence',
     order: 7
+  },
+  INITIATE_GENERAL_APPLICATION: {
+    id: 'INITIATE_GENERAL_APPLICATION',
+    name: 'Make an application',
+    description: 'Application created, post actions triggered',
+    order: 17
   }
 };

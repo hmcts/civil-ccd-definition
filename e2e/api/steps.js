@@ -43,6 +43,7 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
   DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
+  DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
 
 };
 
@@ -597,30 +598,10 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
       await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
+    } else if (mpScenario === 'TWO_V_ONE') {
+      await validateEventPages(data.DEFAULT_JUDGEMENT_2V1);
     } else {
       await validateEventPages(data.DEFAULT_JUDGEMENT);
-    }
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-      header: '',
-      body: ''
-    }, true);
-
-
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  defaultJudgmentSpec: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    eventName = 'DEFAULT_JUDGEMENT_SPEC';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_SPEC_1V2);
-    } else {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_SPEC);
     }
     await assertSubmittedEvent('JUDICIAL_REFERRAL', {
       header: '',
@@ -749,7 +730,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
   } else {
-    console.log(`----Testing state ${state}`);
+    console.log(`----Testing state ${state} to user ${user.type}`);
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
 };

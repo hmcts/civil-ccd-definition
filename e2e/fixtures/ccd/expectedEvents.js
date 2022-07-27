@@ -3,6 +3,7 @@ const events = require('./events.js');
 module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
+      events.INITIATE_GENERAL_APPLICATION,
       events.NOTIFY_DEFENDANT_OF_CLAIM,
       events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
       events.CHANGE_SOLICITOR_EMAIL,
@@ -12,12 +13,14 @@ module.exports = {
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
       events.CHANGE_SOLICITOR_EMAIL,
-      events.CREATE_SDO
+      events.CREATE_SDO,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CHANGE_SOLICITOR_EMAIL,
       events.DEFAULT_JUDGEMENT,
-      events.CREATE_SDO
+      events.CREATE_SDO,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -39,7 +42,8 @@ module.exports = {
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
       events.CHANGE_SOLICITOR_EMAIL,
       events.DEFAULT_JUDGEMENT,
-      events.CREATE_SDO
+      events.CREATE_SDO,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -52,19 +56,22 @@ module.exports = {
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.CREATE_SDO
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.CREATE_SDO
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.CREATE_SDO
+      events.CREATE_SDO,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.ADD_CASE_NOTE,

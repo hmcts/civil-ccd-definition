@@ -10,18 +10,19 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
-const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const testingSupport = require("./testingSupport");
 
 let caseId, eventName;
 let caseData = {};
-let mpScenario = 'ONE_V_ONE';
+let mpScenario = 'ONE_V_TWO';
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
-  DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js')
+  DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
+  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js')
 };
 
 module.exports = {
@@ -86,19 +87,21 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, respondent1deadline);
   },
 
-  defaultJudgmentSpec: async (user) => {
+  defaultJudgmentSpec: async (user, scenario) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_SPEC_1V2);
+    if (scenario === 'ONE_V_TWO') {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
+    } else if (scenario === 'TWO_V_ONE') {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
     } else {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_SPEC);
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
     }
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
     }, true);
@@ -127,10 +130,17 @@ const validateEventPages = async (data, solicitor) => {
   }
 };
 
+const validateEventPagesDefaultJudgments = async (data, scenario) => {
+  //transform the data
+  console.log('validateEventPages');
+  for (let pageId of Object.keys(data.userInput)) {
+    await assertValidDataDefaultJudgments(data, pageId, scenario);
+  }
+};
+
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
@@ -142,17 +152,46 @@ const assertValidData = async (data, pageId) => {
   let responseBody = await response.json();
 
   assert.equal(response.status, 200);
-
   if (data.midEventData && data.midEventData[pageId]) {
     checkExpected(responseBody.data, data.midEventData[pageId]);
   }
-
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
-
   caseData = update(caseData, responseBody.data);
 };
+
+const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+  const userData = data.userInput[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+
+  assert.equal(response.status, 200);
+  if (pageId === 'paymentConfirmationSpec') {
+    console.log(`--------Status ${scenario}`)
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
+      responseBody.data.currentDefendantName = 'Sir John Doe';
+    } else {
+      responseBody.data.currentDefendantName = 'both defendants';
+    }
+
+  } else if (pageId === 'paymentSetDate') {
+    responseBody.data.repaymentDue= '1580.00';
+  }
+  if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
+    responseBody.data.currentDatebox = '25 August 2022';
+  }
+  assert.deepEqual(responseBody.data, caseData);
+};
+
+
 
 function checkExpected(responseBodyData, expected, prefix = '') {
   if (!(responseBodyData) && expected) {
