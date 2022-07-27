@@ -41,7 +41,7 @@
     "CaseTypeID": "CIVIL",
     "SearchPartyCollectionsFieldName": "",
     "SearchPartyName": "applicant2.partyName",
-    "SearchPartyEmailAddress": "applicantSolicitor2UserDetails.email",
+    "SearchPartyEmailAddress": "",
     "SearchPartyAddressLine1": "applicant2.primaryAddress.AddressLine1",
     "SearchPartyPostCode": "applicant2.primaryAddress.PostCode",
     "SearchPartyDoB":"applicant2.individualDateOfBirth",
