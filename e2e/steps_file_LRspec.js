@@ -11,7 +11,7 @@ const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claiman
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisationLRspec = require('./pages/createClaim/defendantSolicitorOrganisationLRspec.page');
-
+const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
@@ -115,22 +115,29 @@ const secondClaimantSteps = (claimant2) => [
 ];
 
 
-const firstDefendantSteps = () => [
+const firstDefendantSteps = (respondent1) => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
-  () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
-  () => specDefendantSolicitorEmailPage.enterSolicitorEmail(),
+  () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+  () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
   () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
 
-
 ];
-const secondDefendantSteps = (respondent2, respondent1Represented, sameLegalRepresentative) => [
 
+const secondDefendantSteps = (respondent2, respondent1Represented) => [
   ...conditionalSteps(respondent2, [
-        () =>  party.enterParty('respondent2', address),
-        () =>  respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
-        () =>  respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
+    () => party.enterParty('respondent2', address),
+    () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(parties.RESPONDENT_SOLICITOR_2, respondent2.represented),
+    ...conditionalSteps(respondent2 && respondent2.represented, [
+      ...conditionalSteps(respondent1Represented, [
+        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
+      ]),
+      ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
+        () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent2'),
+        () => specDefendantSolicitorEmailPage.enterSolicitorEmail('2'),
 
-   ]),
+      ])
+    ])
+  ])
 ];
 
 module.exports = function () {
@@ -297,7 +304,7 @@ module.exports = function () {
       }
     },
 
-     async createCaseSpecified(claimant1, claimant2,  respondent1, respondent2, claimAmount) {
+    async createCaseSpecified(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
@@ -308,13 +315,12 @@ module.exports = function () {
             () => solicitorReferencesPage.enterReferences(),
             ...firstClaimantSteps(),
             ...secondClaimantSteps(claimant2),
-            ...firstDefendantSteps(),
+            ...firstDefendantSteps(respondent1),
             ...conditionalSteps(claimant2 == null, [
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
-              ...secondDefendantSteps(respondent2, respondent1.represented, true),
-
-                 () => detailsOfClaimPage.enterDetailsOfClaim(),
+             ...secondDefendantSteps(respondent2, respondent1.represented),
+                 () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
                  () => specAddTimelinePage.addTimeline(),
                  () => specListEvidencePage.addEvidence(),
