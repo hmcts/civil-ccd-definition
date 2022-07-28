@@ -365,6 +365,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1');
+    }
 
     let informAgreedExtensionData;
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -423,6 +426,14 @@ module.exports = {
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1DQHearing');
+      deleteCaseFields('respondent1DQLanguage');
+      deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQExperts');
+      deleteCaseFields('respondent1DQWitnesses');
+    }
 
     await validateEventPages(defendantResponseData, solicitor);
 
