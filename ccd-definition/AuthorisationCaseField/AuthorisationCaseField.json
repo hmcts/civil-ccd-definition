@@ -3107,8 +3107,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

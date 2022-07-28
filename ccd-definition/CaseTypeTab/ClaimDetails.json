@@ -190,16 +190,9 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent2",
-    "TabFieldDisplayOrder": 29,
-    "FieldShowCondition": "respondent2 =\"DO NOT SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2ClaimResponseType",
     "TabFieldDisplayOrder": 30,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -218,7 +211,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "TabFieldDisplayOrder": 33,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -294,7 +287,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "responseClaimWitnesses2",
     "TabFieldDisplayOrder": 44,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -307,7 +300,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2DQLanguage",
     "TabFieldDisplayOrder": 46,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -321,7 +314,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2DQHearing",
     "TabFieldDisplayOrder": 48,
-    "FieldShowCondition": "respondent2 =\"*\" AND responseClaimTrack != \"SMALL_CLAIM\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\" AND responseClaimTrack != \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -342,7 +335,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2DQHearingSmallClaim",
     "TabFieldDisplayOrder": 51,
-    "FieldShowCondition": "respondent2 =\"*\" AND responseClaimTrack = \"SMALL_CLAIM\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\" AND responseClaimTrack = \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -391,7 +384,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2DQHearingFastClaim",
     "TabFieldDisplayOrder": 53,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -404,7 +397,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2DQRequestedCourt",
     "TabFieldDisplayOrder": 55,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -417,7 +410,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondToCourtLocation2",
     "TabFieldDisplayOrder": 57,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -430,7 +423,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2DQHearingSupport",
     "TabFieldDisplayOrder": 59,
-    "FieldShowCondition": "respondent2 =\"*\""
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
