@@ -406,7 +406,6 @@
       {
         "UserRoles": [
           "judge-profile",
-          "basic-access",
           "legal-adviser"
         ],
         "CRUD": "R"
