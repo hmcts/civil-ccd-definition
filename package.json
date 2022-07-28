@@ -28,7 +28,7 @@
     "test:api-spec-1v1": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-1v1 --reporter mocha-multi --verbose",
     "test:api-spec-small": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-small --reporter mocha-multi --verbose",
     "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-tests-spec --reporter mocha-multi --verbose",
-    "test:concept": "MOCHAWESOME_REPORTFILENAME=e2e-multiparty npx codeceptjs run-workers --suites 3 --grep '@api-multiparty|@e2e-multiparty|@e2e-tests-spec|@e2e-tests-spec|e2e-sdo|@e2e-1v1-dj|@e2e-nightly' --reporter mocha-multi --verbose",
+    "test:concept": "MOCHAWESOME_REPORTFILENAME=e2e-multiparty npx codeceptjs run-workers --suites 3 --grep '@api-multiparty|@e2e-multiparty|@e2e-nightly|@e2e-tests-spec|@e2e-tests-spec|@e2e-sdo|@e2e-1v1-dj' --reporter mocha-multi --verbose",
     "test:functional-unspec": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep '@api-multiparty|@e2e-multiparty|' --reporter mocha-multi --verbose",
     "test:functional-dj": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep @e2e-dj' --reporter mocha-multi --verbose",
     "test:nightly-multiparty": "MOCHAWESOME_REPORTFILENAME=nightly-multiparty npx codeceptjs run --grep '@e2e-nightly' --reporter mocha-multi --verbose",
