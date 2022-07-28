@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentUploadWarning",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -1017,6 +1023,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1GeneratedResponseDocument",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
