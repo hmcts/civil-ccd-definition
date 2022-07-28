@@ -14,7 +14,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "basic-access"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
