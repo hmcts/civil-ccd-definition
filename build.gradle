@@ -251,7 +251,7 @@ dependencies {
   implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.19'
   implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
   implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
-  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.1'
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.0.0-CCD-3068.3'
   constraints {
     implementation('org.apache.commons:commons-compress:1.21') {
       because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090'
