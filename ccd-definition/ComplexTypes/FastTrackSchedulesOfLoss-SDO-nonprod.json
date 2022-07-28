@@ -55,5 +55,12 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackSchedulesOfLoss",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]

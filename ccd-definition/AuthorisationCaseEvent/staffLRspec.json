@@ -25,12 +25,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "PROCESS_PART_ADMISSION_DEFENCE_SPEC",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON_SPEC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

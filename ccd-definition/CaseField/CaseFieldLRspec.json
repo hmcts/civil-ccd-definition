@@ -538,22 +538,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1ClaimResponseTestForSpec",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponseTypeSpec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2ClaimResponseTestForSpec",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponseTypeSpec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondentClaimResponseTypeForSpecGeneric",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -729,13 +713,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaimOwingAmountPounds",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondToAdmittedClaimOwingAmountPounds2",
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
@@ -1183,7 +1160,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds2}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1220,20 +1197,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
-    "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "partAdmissionWhenWillDefendantPayImmediately2Label",
-    "Label": "You must contact the claimant to arrange payment of the full amount within 5 days. Any cheques or transfers must be clear in their account.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
     "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -2006,21 +1969,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseCounterClaimLabel2",
-    "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "_Comment": "duplicated bc can't combine and and or in show conditions and can't have twice the same field in a screen even if it's a label"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "claimantCounterClaimLabel_2v1",
-    "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
@@ -2244,13 +2192,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicantStatementOfTruthLabel",
     "Label": "The claimant believes that the facts stated in the response are true.\n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1SmallClaimWitnessesLabel",
-    "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

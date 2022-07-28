@@ -176,12 +176,5 @@
     "ElementLabel": " ",
     "FieldType": "GAUserDetailsGAspec",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppSuperClaimType",
-    "ElementLabel": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
   }
 ]

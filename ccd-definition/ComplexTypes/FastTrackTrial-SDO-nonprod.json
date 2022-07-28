@@ -54,5 +54,12 @@
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]

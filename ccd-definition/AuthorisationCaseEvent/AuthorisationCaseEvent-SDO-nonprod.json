@@ -6,9 +6,7 @@
       {
       "UserRoles": [
         "caseworker-civil-admin",
-        "caseworker-civil-solicitor",
-        "judge-profile",
-        "legal-adviser"
+        "caseworker-civil-solicitor"
       ],
       "CRUD": "CRU"
       }

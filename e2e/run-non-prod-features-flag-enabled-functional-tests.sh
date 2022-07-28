@@ -7,4 +7,3 @@ dir=$(dirname ${0})
 
 ${dir}/run-spec-functional-tests.sh
 ${dir}/run-sdo-functional-tests.sh
-${dir}/run-dj-functional-tests.sh

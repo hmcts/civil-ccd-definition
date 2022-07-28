@@ -112,8 +112,6 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
-const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
-const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -304,34 +302,6 @@ module.exports = function () {
         ]),
         () => continuePage.continue(),
         () => event.submit('Submit', 'Defendant notified'),
-        () => event.returnToCaseDetails()
-      ]);
-    },
-
-    async initiateDJUnspec(caseId, scenario) {
-      eventName = 'Request Default Judgment';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
-        () => unspecifiedDefaultJudmentPage.againstWhichDefendant(scenario),
-        () => unspecifiedDefaultJudmentPage.statementToCertify(scenario),
-        () => unspecifiedDefaultJudmentPage.hearingSelection(),
-        () => unspecifiedDefaultJudmentPage.hearingRequirements(),
-        () => event.submit('Submit', 'Judgment for damages to be decided Granted'),
-        () => event.returnToCaseDetails()
-      ]);
-    },
-
-    async initiateDJSpec(caseId, scenario) {
-      eventName = 'Request Default Judgment';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
-        () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
-        () => specifiedDefaultJudmentPage.statementToCertify(scenario),
-        () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
-        () => specifiedDefaultJudmentPage.claimForFixedCosts(),
-        () => specifiedDefaultJudmentPage.repaymentSummary(),
-        () => specifiedDefaultJudmentPage.paymentTypeSelection(),
-        () => event.submit('Submit', 'Default Judgment Granted'),
         () => event.returnToCaseDetails()
       ]);
     },

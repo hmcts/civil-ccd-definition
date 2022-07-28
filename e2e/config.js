@@ -43,16 +43,11 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
-  systemupdate: {
-    password: defaultPassword,
-    email: 'hmcts.civil+organisation.1.superuser@gmail.com',
-    type: 'systemupdate'
-  },
   definition: {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
   },
-  TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
+  TestOutputDir: process.env.E2E_OUTPUT_DIR || './output',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
