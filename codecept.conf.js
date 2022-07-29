@@ -36,8 +36,6 @@ exports.config = {
     api_spec: './e2e/api/steps_LRspec.js',
     api_spec_fast: './e2e/api/steps_LRspecFast.js',
     api_spec_small: './e2e/api/steps_LRspecSmall.js',
-    api_dj: './e2e/api/steps_DJ.js',
-    api_dj_spec: './e2e/api/steps_DJ_spec.js',
   },
   plugins: {
     autoDelay: {
