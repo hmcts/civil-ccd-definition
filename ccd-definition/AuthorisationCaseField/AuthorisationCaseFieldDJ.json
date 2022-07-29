@@ -20,6 +20,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementCategory",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "CPRAcceptanceLabel",
     "AccessControl": [
       {
