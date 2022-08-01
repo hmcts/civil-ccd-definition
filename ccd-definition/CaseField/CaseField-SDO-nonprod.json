@@ -696,20 +696,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsPreferredTelephone",
-    "Label": "Preferred telephone number",
-    "FieldType": "SmallClaimsPreferredTelephone",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsPreferredEmail",
-    "Label": "Preferred email",
-    "FieldType": "SmallClaimsPreferredEmail",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
     "Label": "Notes",
     "FieldType": "SmallClaimsNotes",
