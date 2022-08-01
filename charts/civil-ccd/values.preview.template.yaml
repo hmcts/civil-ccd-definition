@@ -48,6 +48,7 @@ java:
         - sendgrid-api-key
         - robotics-notification-sender
         - robotics-notification-recipient
+        - robotics-notification-recipient-spec
         - launch-darkly-sdk-key
         - ordnance-survey-api-key
         - robotics-notification-multipartyrecipient
@@ -85,6 +86,8 @@ java:
     FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
     FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
     FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    STITCHING_API_ENABLED: false
+    DOCUMENT_MANAGEMENT_SECURED: true
 
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
