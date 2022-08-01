@@ -2,8 +2,8 @@
   {
     "ID": "GAUrgencyRecordGAspec",
     "ListElementCode": "generalAppUrgency",
+    "ElementLabel": "If you confirm that the application is urgent, the court will then decide if the application is urgent",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
