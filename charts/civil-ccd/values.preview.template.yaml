@@ -215,3 +215,28 @@ camunda-bpm:
       CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
       S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
       CAMUNDA_DB_CONN_OPTIONS: ""
+
+elasticsearch:
+  nameOverride: ${SERVICE_NAME}-es
+  clusterName: "es"
+  imageTag: "7.11.1"
+  replicas: 1
+  minimumMasterNodes: 1
+  antiAffinity: "soft"
+  esJavaOpts: "-Xmx512m -Xms512m"
+  extraEnvs:
+    - name: discovery.type
+      value: single-node
+    - name: cluster.initial_master_nodes
+      value: ""
+    - name: action.auto_create_index
+      value: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*
+  persistence:
+    enabled: false
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    path: /
+    hosts:
+      - es-${SERVICE_FQDN}
