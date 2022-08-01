@@ -277,14 +277,6 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "partyEmail",
-    "FieldDisplayOrder": 11,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Defendant",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine1",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
@@ -699,14 +691,6 @@
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderTradingAs",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Defendant",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "respondent1",
-    "ListElementCode": "partyEmail",
-    "FieldDisplayOrder": 11,
     "DisplayContext": "OPTIONAL"
   },
   {
