@@ -84,7 +84,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "tribunal-caseworker"
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
