@@ -10,7 +10,8 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
-      "GS_profile"
+      "GS_profile",
+      "caseworker-ras-validation"
     ],
     "CRUD": "R"
   }

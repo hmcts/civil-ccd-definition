@@ -223,5 +223,14 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-ras-validation",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-ras-validation",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
   }
 ]
