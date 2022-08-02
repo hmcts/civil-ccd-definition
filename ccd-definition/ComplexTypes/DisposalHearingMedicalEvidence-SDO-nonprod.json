@@ -8,28 +8,14 @@
     },
     {
       "ID": "DisposalHearingMedicalEvidence",
-      "ListElementCode": "input1",
+      "ListElementCode": "input",
       "FieldType": "TextArea",
       "ElementLabel": " ",
       "SecurityClassification": "Public"
     },
     {
       "ID": "DisposalHearingMedicalEvidence",
-      "ListElementCode": "date1",
-      "FieldType": "Date",
-      "ElementLabel": " ",
-      "SecurityClassification": "Public"
-    },
-    {
-      "ID": "DisposalHearingMedicalEvidence",
-      "ListElementCode": "input2",
-      "FieldType": "TextArea",
-      "ElementLabel": " ",
-      "SecurityClassification": "Public"
-    },
-    {
-      "ID": "DisposalHearingMedicalEvidence",
-      "ListElementCode": "date2",
+      "ListElementCode": "date",
       "FieldType": "Date",
       "ElementLabel": " ",
       "SecurityClassification": "Public"
