@@ -142,5 +142,11 @@ module.exports = {
     id: 'CLAIMANT_RESPONSE_SPEC',
     name: 'View and respond to defence',
     order: 7
+  },
+  REFER_TO_JUDGE: {
+    id: 'REFER_TO_JUDGE',
+    name: 'Refer to Judge',
+    description: 'Refer to Judge',
+    order: 19
   }
 };
