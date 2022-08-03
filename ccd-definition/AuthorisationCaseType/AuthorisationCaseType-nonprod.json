@@ -3,7 +3,9 @@
     "CaseTypeID": "CIVIL",
     "UserRoles": [
       "judge-profile",
-      "legal-adviser"
+      "legal-adviser",
+      "admin-access",
+      "full-access"
     ],
     "CRUD": "CRU"
   },
