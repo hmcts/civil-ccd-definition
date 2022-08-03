@@ -50,13 +50,6 @@
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
-    "ListElementCode": "input5",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
