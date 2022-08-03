@@ -794,7 +794,8 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1149,7 +1150,8 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
