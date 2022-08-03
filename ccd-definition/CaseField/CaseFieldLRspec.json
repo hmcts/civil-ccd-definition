@@ -1226,6 +1226,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "partAdmissionWhenWillDefendantPayImmediately2Label",
+    "Label": "You must contact the claimant to arrange payment of the full amount within 5 days. Any cheques or transfers must be clear in their account.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
+    "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondToClaimAdmitPartLRspec",
     "Label": " ",
     "HintText": "For example 9 December 2020",
@@ -1992,6 +2006,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseCounterClaimLabel2",
+    "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "duplicated bc can't combine and and or in show conditions and can't have twice the same field in a screen even if it's a label"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantCounterClaimLabel_2v1",
+    "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
@@ -2220,10 +2249,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1SmallClaimWitnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "showConditionFlags",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ShowConditionFlags",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1EmailAddress",
+    "Label": " ",
+    "FieldType": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PinToPostLRspec",
+    "Label": " ",
+    "FieldType": "DefendantPinToPostLRspec",
     "SecurityClassification": "Public"
   }
 ]
