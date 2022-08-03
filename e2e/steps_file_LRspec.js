@@ -79,6 +79,10 @@ const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestion
 const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
 const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
+const sumOfDamagesToBeDecidedPage = require("./pages/selectSDO/sumOfDamagesToBeDecided.page");
+const allocateSmallClaimsTrackPage = require("./pages/selectSDO/allocateSmallClaimsTrack.page");
+const sdoOrderTypePage = require("./pages/selectSDO/sdoOrderType.page");
+const allocateClaimPage = require("./pages/selectSDO/allocateClaimType.page");
 
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -540,7 +544,23 @@ module.exports = function () {
         () => event.returnToCaseDetails(),
       ]);
     },
+    async initiateSDOSpecified(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = 'Standard Direction Order';
+      await caseViewPage.startEvent(eventName, caseId);
 
+      await this.triggerStepsWithScreenshot([
+        () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+
+        ...conditionalSteps(damages, [
+          () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+          ...conditionalSteps(!allocateSmallClaims,[
+            () => sdoOrderTypePage.decideOrderType(orderType)])
+        ]),
+
+        ...conditionalSteps(trackType, [
+          () => allocateClaimPage.selectTrackType(trackType)])
+      ]);
+    },
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
