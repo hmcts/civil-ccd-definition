@@ -111,6 +111,13 @@
   },
   {
     "ID": "Party",
+    "ListElementCode": "partyEmail",
+    "FieldType": "Email",
+    "ElementLabel": "Email",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Party",
     "ListElementCode": "partyTypeDisplayValue",
     "FieldType": "Text",
     "ElementLabel": "Party type displayed value",
