@@ -11,7 +11,7 @@
     "ID": "FastTrackOrderAndHearingDetails",
     "ListElementCode": "text",
     "FieldType": "Label",
-    "ElementLabel": "# Order details \nWarning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply you must make an application to the court before any deadline expires.",
+    "ElementLabel": "# Order details \nWarning: You must comply with the terms imposed upon you by this order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply, you are expected to make formal application to the court before any deadline imposed upon you expires.",
     "SecurityClassification": "Public"
   },
   {
