@@ -83,7 +83,8 @@ const sumOfDamagesToBeDecidedPage = require("./pages/selectSDO/sumOfDamagesToBeD
 const allocateSmallClaimsTrackPage = require("./pages/selectSDO/allocateSmallClaimsTrack.page");
 const sdoOrderTypePage = require("./pages/selectSDO/sdoOrderType.page");
 const allocateClaimPage = require("./pages/selectSDO/allocateClaimType.page");
-
+const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
+const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
