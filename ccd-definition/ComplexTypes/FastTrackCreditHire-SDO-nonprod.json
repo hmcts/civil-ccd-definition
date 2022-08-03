@@ -1,4 +1,3 @@
-
 [
   {
     "ID": "FastTrackCreditHire",
@@ -26,6 +25,13 @@
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "ListElementCode": "dateText",
+    "FieldType": "Label",
+    "ElementLabel": "This statement must be uploaded to the Digital Portal by 4pm on",
     "SecurityClassification": "Public"
   },
   {
@@ -65,6 +71,13 @@
   },
   {
     "ID": "FastTrackCreditHire",
+    "ListElementCode": "input6",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
     "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -72,7 +85,7 @@
   },
   {
     "ID": "FastTrackCreditHire",
-    "ListElementCode": "input6",
+    "ListElementCode": "input7",
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
@@ -86,8 +99,43 @@
   },
   {
     "ID": "FastTrackCreditHire",
-    "ListElementCode": "input7",
+    "ListElementCode": "input8",
     "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "ListElementCode": "input9",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "ListElementCode": "date5",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "ListElementCode": "input10",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "ListElementCode": "date6",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "ListElementCode": "input11",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
