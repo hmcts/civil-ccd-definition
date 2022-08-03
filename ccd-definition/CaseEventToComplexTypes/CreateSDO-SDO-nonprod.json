@@ -624,14 +624,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsAllocation",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsAllocation",
-    "ListElementCode": "line2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
@@ -760,14 +752,6 @@
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsCreditHire",

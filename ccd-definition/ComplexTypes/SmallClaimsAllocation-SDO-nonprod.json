@@ -19,12 +19,5 @@
     "FieldType": "Label",
     "ElementLabel": "## Allocation \nThe claim is allocated to the Small Claims track.",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsAllocation",
-    "ListElementCode": "line2",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
   }
 ]
