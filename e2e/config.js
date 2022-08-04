@@ -52,6 +52,11 @@ module.exports = {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
   },
+  judgeUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
+    type: 'applicant_solicitor'
+  },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
