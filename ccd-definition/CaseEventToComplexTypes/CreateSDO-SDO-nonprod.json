@@ -1672,48 +1672,8 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "input9",
-    "FieldDisplayOrder": 16,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackCreditHire",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "date5",
-    "FieldDisplayOrder": 17,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackCreditHire",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "input10",
-    "FieldDisplayOrder": 18,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackCreditHire",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "date6",
-    "FieldDisplayOrder": 19,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackCreditHire",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "input11",
-    "FieldDisplayOrder": 20,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackCreditHire",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "line",
-    "FieldDisplayOrder": 21,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "READONLY"
   },
   {
