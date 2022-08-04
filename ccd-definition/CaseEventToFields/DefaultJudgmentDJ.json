@@ -15,7 +15,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "caseManagementCategory",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "MANDATORY",
     "PageID": "defendantDetails",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
