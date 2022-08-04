@@ -16,6 +16,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "SDO_TAKE_CASE_OFFLINE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANTS_SOLICITOR_SDO_TRIGGERED",
     "AccessControl": [
       {
