@@ -10,7 +10,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "caseManagementCategory",
     "Label": " ",
-    "FieldType": "DynamicRadioList",
+    "FieldType": "CaseManagementCategory",
     "SecurityClassification": "Public"
   },
   {
