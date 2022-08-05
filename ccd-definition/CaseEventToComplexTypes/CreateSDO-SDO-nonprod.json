@@ -523,7 +523,7 @@
     "ID": "SmallClaimsOrderAndHearingDetails",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
-    "ListElementCode": "text",
+    "ListElementCode": "text1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -531,8 +531,16 @@
     "ID": "SmallClaimsOrderAndHearingDetails",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
-    "ListElementCode": "line",
+    "ListElementCode": "text2",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
@@ -616,14 +624,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsAllocation",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsAllocation",
-    "ListElementCode": "line2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
@@ -702,7 +702,7 @@
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (claimant)"
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -711,7 +711,7 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (defendant)"
+    "EventHintText": "Number of witnesses (defendant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -727,38 +727,6 @@
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "text",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredTelephone",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredTelephone",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredTelephone",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredTelephone",
-    "ListElementCode": "telephone",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredEmail",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredEmail",
-    "ListElementCode": "email",
-    "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
@@ -786,14 +754,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
@@ -814,7 +774,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
     "ListElementCode": "text",
-    "EventElementLabel": "2.. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "EventElementLabel": "A failure to comply with the paragraph above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -830,15 +790,15 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date1",
+    "ListElementCode": "dateText",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "input3",
+    "ListElementCode": "date1",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -846,7 +806,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "input4",
+    "ListElementCode": "input3",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -854,7 +814,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date2",
+    "ListElementCode": "input4",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -862,7 +822,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "input5",
+    "ListElementCode": "date2",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
@@ -870,7 +830,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date3",
+    "ListElementCode": "input5",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -886,7 +846,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date4",
+    "ListElementCode": "date3",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
@@ -902,8 +862,64 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "line",
+    "ListElementCode": "date4",
     "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input8",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input9",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "date5",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input10",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "date6",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input11",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 21,
     "DisplayContext": "READONLY"
   },
   {
