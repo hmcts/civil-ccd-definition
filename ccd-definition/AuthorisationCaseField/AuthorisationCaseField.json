@@ -4602,6 +4602,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-solicitor",
           "caseworker-civil-admin",
           "caseworker-civil-staff"
