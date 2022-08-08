@@ -146,7 +146,6 @@ task awaitApplicationReadiness(type: Exec, description: 'Awaits until applicatio
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
-  commandLine '/usr/bin/yarn', 'config', 'set "strict-ssl" false -g'
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
