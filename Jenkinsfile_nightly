@@ -67,7 +67,7 @@ withNightlyPipeline(type, product, component) {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
   }
 
-  //enableCrossBrowserTest()
+  enableCrossBrowserTest()
 
   after('crossBrowserTest') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
