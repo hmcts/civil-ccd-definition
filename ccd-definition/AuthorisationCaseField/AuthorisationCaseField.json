@@ -589,7 +589,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -608,7 +612,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
