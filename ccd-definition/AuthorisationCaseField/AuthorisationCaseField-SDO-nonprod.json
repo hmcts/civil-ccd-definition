@@ -475,7 +475,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser"
-       ],
+        ],
         "CRUD": "CRU"
       }
     ]
@@ -488,7 +488,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser"
-       ],
+        ],
         "CRUD": "CRU"
       }
     ]
@@ -514,7 +514,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser"
-       ],
+        ],
         "CRUD": "CRU"
       }
     ]
@@ -553,7 +553,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser"
-       ],
+        ],
         "CRUD": "CRU"
       }
     ]
