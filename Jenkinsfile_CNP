@@ -119,7 +119,6 @@ withPipeline(type, product, component) {
 
   onPR {
     env.ENVIRONMENT = "preview"
-    env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
       enableCleanupOfHelmReleaseOnSuccess();
@@ -153,6 +152,7 @@ withPipeline(type, product, component) {
     """
     env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   }
 
   after('smoketest:preview') {
