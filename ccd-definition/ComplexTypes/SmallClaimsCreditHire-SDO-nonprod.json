@@ -29,6 +29,13 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "dateText",
+    "FieldType": "Label",
+    "ElementLabel": "This statement must be uploaded to the Digital Portal by 4pm on",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -64,6 +71,13 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "input6",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
     "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -71,7 +85,7 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input6",
+    "ListElementCode": "input7",
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
@@ -85,8 +99,43 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input7",
+    "ListElementCode": "input8",
     "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "input9",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "date5",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "input10",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "date6",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "input11",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },

@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "Defendant",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "OPTIONAL"
+  }
+]
