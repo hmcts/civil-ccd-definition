@@ -434,17 +434,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingNotes",
-    "Label": "Notes",
-    "FieldType": "DisposalHearingNotes",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingAddNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "DisposalHearingAddNewDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingAddNewDirectionsEndLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingNotes",
+    "Label": "Notes",
+    "FieldType": "DisposalHearingNotes",
     "SecurityClassification": "Public"
   },
   {
