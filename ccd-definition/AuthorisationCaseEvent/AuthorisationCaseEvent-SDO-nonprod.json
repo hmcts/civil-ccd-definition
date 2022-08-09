@@ -1,14 +1,16 @@
 [
   {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "CREATE_SDO",
-  "AccessControl": [
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "AccessControl": [
       {
-      "UserRoles": [
-        "caseworker-civil-admin",
-        "caseworker-civil-solicitor"
-      ],
-      "CRUD": "CRU"
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
@@ -75,6 +77,21 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "Unsuitable_SDO",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }
