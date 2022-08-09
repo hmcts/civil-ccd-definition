@@ -76,16 +76,16 @@ java:
     SPRING_CLOUD_BOOTSTRAP_ENABLED: true
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
-    CORE_CASE_DATA_API_URL: https://${SERVICE_NAME}-ccd-data-store-api
+    CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
     CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
     CMC_DB_HOST: ${SERVICE_NAME}-postgresql
     CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
     CMC_DB_USERNAME: hmcts
     CMC_DB_PASSWORD: hmcts
     REFERENCE_DATABASE_MIGRATION: true
-    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
     STITCHING_API_ENABLED: false
     DOCUMENT_MANAGEMENT_SECURED: true
 
