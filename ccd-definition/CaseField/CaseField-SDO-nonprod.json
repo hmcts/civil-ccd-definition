@@ -1135,5 +1135,12 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "FastTrackAddNewDirections",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonUnsuitableSDO",
+    "Label": "What is the reason for not drawing a Standard Directions Order?",
+    "FieldType": "ReasonUnsuitableSDO",
+    "SecurityClassification": "Public"
   }
 ]
