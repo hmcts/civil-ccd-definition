@@ -6,6 +6,7 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
+      events.CREATE_SDO
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
@@ -19,6 +20,7 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
+      events.CREATE_SDO
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -30,14 +32,16 @@ module.exports = {
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.CREATE_SDO
     ],
 
     AWAITING_DEFENDANT_RESPONSE: [
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
-      events.CLAIMANT_RESPONSE_SPEC
+      events.CLAIMANT_RESPONSE_SPEC,
+      events.CREATE_SDO
     ]
   },
   defendant_solicitor: {
@@ -46,6 +50,7 @@ module.exports = {
       events.DEFENDANT_RESPONSE_SPEC,
       events.INFORM_AGREED_EXTENSION_DATE_SPEC,
       events.CHANGE_SOLICITOR_EMAIL,
+      events.CREATE_SDO
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -57,14 +62,16 @@ module.exports = {
       events.CREATE_SDO
     ],
     AWAITING_DEFENDANT_RESPONSE: [
-      events.CHANGE_SOLICITOR_EMAIL,
+      events.CHANGE_SOLICITOR_EMAIL,,
+      events.CREATE_SDO
     ]
   },
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_SDO
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
@@ -76,7 +83,8 @@ module.exports = {
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_SDO
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.AMEND_PARTY_DETAILS
@@ -89,13 +97,15 @@ module.exports = {
       events.ADD_CASE_NOTE
     ],
     PENDING_CASE_ISSUED: [
-      events.AMEND_PARTY_DETAILS
+      events.AMEND_PARTY_DETAILS,
+      events.CREATE_SDO
     ],
 
     AWAITING_DEFENDANT_RESPONSE: [
       events.ADD_CASE_NOTE,
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.AMEND_PARTY_DETAILS
+      events.AMEND_PARTY_DETAILS,
+      events.CREATE_SDO
     ]
   }
 };
