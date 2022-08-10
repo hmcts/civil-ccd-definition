@@ -7,7 +7,7 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "java"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "feat/civ-1610"
+def camundaBranch = "master"
 AppPipelineConfig pipelineConf
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -105,7 +105,7 @@ def uploadCoreCaseDataDefinitions(env) {
 }
 
 def checkForEnableHelmLabel(branch_name) {
-    return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
 }
 
 withPipeline(type, product, component) {
@@ -140,6 +140,10 @@ withPipeline(type, product, component) {
   }
 
   before('smoketest:preview') {
+    env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
+    env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
     sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
@@ -148,11 +152,11 @@ withPipeline(type, product, component) {
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
     env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-    env.CIVIL_SERVICE_URL="http://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
   }
 
   after('smoketest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
   before('functionalTest:preview') {
@@ -164,10 +168,15 @@ withPipeline(type, product, component) {
   }
 
   after('functionalTest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   before('smoketest:aat') {
+    env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
+    env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    env.CCD_DATA_STORE_URL = "http://civil-ccd-data-store-staging-aat.service.core-compute-aat.internal"
+    env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
+    env.CIVIL_SERVICE_URL="http://civil-ccd-staging.service.core-compute-aat.internal"
     sh """
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
@@ -185,19 +194,19 @@ withPipeline(type, product, component) {
   }
 
   after('smoketest:aat') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
   before('functionalTest:aat') {
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-    env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.service.core-compute-aat.internal"
+    env.CCD_DATA_STORE_URL = "http://civil-ccd-data-store-staging-aat.service.core-compute-aat.internal"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.service.core-compute-aat.internal"
+    env.CIVIL_SERVICE_URL="http://civil-ccd-staging.service.core-compute-aat.internal"
   }
 
   after('functionalTest:aat') {
     createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }
