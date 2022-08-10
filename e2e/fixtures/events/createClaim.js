@@ -74,7 +74,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     Court: {
       courtLocation: {
-        applicantPreferredCourt: '344'
+        applicantPreferredCourtLocationList: {
+          list_items: [
+            listElement("site_name 0000 - court address 0000 - AA0 0BB")
+          ],
+          value: listElement("site_name 0000 - court address 0000 - AA0 0BB")
+        }
       }
     },
     Claimant: {

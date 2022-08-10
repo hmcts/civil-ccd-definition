@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "CaseLocation",
+    "ListElementCode": "region",
+    "FieldType": "Text",
+    "ElementLabel": "Region id",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseLocation",
+    "ListElementCode": "baseLocation",
+    "FieldType": "Text",
+    "ElementLabel": "Epimms Id",
+    "SecurityClassification": "Public"
+  }
+]
