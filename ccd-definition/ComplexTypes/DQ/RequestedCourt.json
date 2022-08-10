@@ -8,13 +8,6 @@
   },
   {
     "ID": "RequestedCourt",
-    "ListElementCode": "courtFinderDirectLinkToCodeLabel",
-    "FieldType": "Label",
-    "ElementLabel": "<a target=\"_blank\" href=https://courttribunalfinder.service.gov.uk/search/results?courtcode=${courtLocation.applicantPreferredCourt}>Use court finder</a>(opens in a new window) to see the court name.",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "RequestedCourt",
     "ListElementCode": "requestHearingAtSpecificCourt",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want to ask for the hearing to be held at a specific court?",
@@ -23,9 +16,9 @@
   },
   {
     "ID": "RequestedCourt",
-    "ListElementCode": "courtFinderLabel",
-    "FieldType": "Label",
-    "ElementLabel": "<a target=\"_blank\" href=\"https://courttribunalfinder.service.gov.uk/search/address\">Use court finder</a> (opens in a new window) to find the 3 digit court location code of your preferred court.",
+    "ListElementCode": "responseCourtLocations",
+    "FieldType": "DynamicList",
+    "ElementLabel": "Preferred County Court hearing centre",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
     "SecurityClassification": "Public"
   },
