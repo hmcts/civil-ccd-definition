@@ -96,7 +96,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId=1660080411682942, eventName;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -599,6 +599,9 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  } else if (eventName === 'DEFENDANT_RESPONSE') {
+    delete responseBody.data['respondent1DQRequestedCourt'];
+    delete responseBody.data['respondent2DQRequestedCourt'];
   }
 
   assert.equal(response.status, 200);
