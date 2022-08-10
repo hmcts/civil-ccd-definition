@@ -238,29 +238,5 @@
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "generalOrderDocument",
-    "Label": "General order document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "dismissalOrderDocument",
-    "Label": "Dismissal order document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "directionOrderDocument",
-    "Label": "Direction order document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
   }
 ]

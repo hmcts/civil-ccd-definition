@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "changeOrganisationRequestField",
+    "Label": "Change Organisation Request",
+    "FieldType": "ChangeOrganisationRequest",
+    "SecurityClassification": "PUBLIC"
+  }
+]

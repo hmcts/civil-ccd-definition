@@ -11,7 +11,14 @@
     "ID": "FastTrackCosts",
     "ListElementCode": "text",
     "FieldType": "Label",
-    "ElementLabel": "Costs in the case",
+    "ElementLabel": "## Costs \nCosts in the case",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackCosts",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]

@@ -106,7 +106,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       }
     },
     ClaimantSolicitorServiceAddress: {
-      applicantSolicitor1ServiceAddressRequired: 'Yes',
       applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
     AddAnotherClaimant: {
@@ -321,7 +320,7 @@ module.exports = {
         // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
         StatementOfTruth: {
           applicantSolicitor1ClaimStatementOfTruth: {}
-        }
+        },
       },
       valid: {
         ...createClaimData('Yes', true, mpScenario),

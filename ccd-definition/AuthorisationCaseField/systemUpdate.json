@@ -331,18 +331,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
@@ -440,12 +428,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1GeneratedResponseDocument",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CR"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2GeneratedResponseDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CR"
   },

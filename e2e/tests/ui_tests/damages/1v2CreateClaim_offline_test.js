@@ -13,8 +13,7 @@ const respondent2 = {
   representativeOrgNumber: 2
 };
 
-// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//let caseNumber;
+let caseNumber;
 
 
 Feature('1v2 Create claim @e2e-unspec @e2e-multiparty');
@@ -28,8 +27,7 @@ Scenario('Claimant solicitor raise a claim against 2 defendants, one of who is w
     respondent2,
     false
   );
-  // Reinstate the lines below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //caseNumber = await I.grabCaseNumber();
-  //await I.see(`Case ${caseNumber} has been created.`);
+  caseNumber = await I.grabCaseNumber();
+  await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 

@@ -1,9 +1,16 @@
 [
   {
     "ID": "DisposalHearingBundle",
+    "ListElementCode": "line1",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
     "ListElementCode": "label1",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "## Disposal hearing bundle ##",
     "SecurityClassification": "Public"
   },
   {
@@ -33,6 +40,13 @@
     "ListElementCode": "text",
     "FieldType": "Label",
     "ElementLabel": "a case summary should not exceed 500 words",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "ListElementCode": "line2",
+    "FieldType": "Label",
+    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]

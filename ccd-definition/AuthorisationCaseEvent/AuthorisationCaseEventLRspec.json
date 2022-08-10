@@ -335,19 +335,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "PROCESS_PART_ADMISSION_DEFENCE_SPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON_SPEC",
     "AccessControl": [
       {

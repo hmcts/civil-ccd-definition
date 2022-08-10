@@ -608,14 +608,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
       }
@@ -1408,9 +1408,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -1451,9 +1449,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -1697,9 +1693,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORTWOSPEC]",
-          "[RESPONDENTSOLICITORONESPEC]"
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -4474,31 +4468,6 @@
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]",
           "[APPLICANTSOLICITORONESPEC]",
-          "[APPLICANTSOLICITORTWO]",
-          "[APPLICANTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "RU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2GeneratedResponseDocument",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORTWOSPEC]",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
           "[APPLICANTSOLICITORTWO]",
           "[APPLICANTSOLICITORTWOSPEC]"
         ],

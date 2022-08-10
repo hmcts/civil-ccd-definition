@@ -28,4 +28,5 @@ package-lock.json
 node_modules/
 
 # test_output
+output/
 test-results/

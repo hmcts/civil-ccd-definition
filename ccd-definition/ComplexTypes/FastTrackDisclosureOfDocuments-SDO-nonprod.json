@@ -61,5 +61,12 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackDisclosureOfDocuments",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]

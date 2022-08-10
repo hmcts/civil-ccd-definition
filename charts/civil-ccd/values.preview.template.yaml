@@ -27,7 +27,7 @@ postgresql:
 
 java:
   applicationPort: 4000
-  image: 'hmctspublic.azurecr.io/civil/service:latest'
+  image: 'hmctspublic.azurecr.io/civil/service:pr-1300'
   imagePullPolicy: Always
   ingressHost: ${SERVICE_FQDN}
   keyVaults:
@@ -83,9 +83,9 @@ java:
     CMC_DB_USERNAME: hmcts
     CMC_DB_PASSWORD: hmcts
     REFERENCE_DATABASE_MIGRATION: true
-    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
     STITCHING_API_ENABLED: false
     DOCUMENT_MANAGEMENT_SECURED: true
 
