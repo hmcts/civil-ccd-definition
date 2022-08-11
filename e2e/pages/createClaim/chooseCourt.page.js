@@ -3,14 +3,18 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    courtLocation: '#courtLocation_applicantPreferredCourt'
+    courtLocation: {
+      id: 'select[id$="Location_applicantPreferredCourtLocationList"]',
+      options: {
+        courtA: 'site_name 0000 - court address 0000 - AA0 0BB'
+      }
+    }
   },
 
-  async enterCourt() {
-    I.waitForElement(this.fields.courtLocation);
+  async selectCourt() {
+    I.waitForElement(this.fields.courtLocation.id);
     await I.runAccessibilityTest();
-    I.fillField(this.fields.courtLocation, '344');
+    I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.courtA);
     await I.clickContinue();
   }
 };
-

@@ -96,7 +96,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId=1660080411682942, eventName;
+let caseId, eventName;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -420,6 +420,7 @@ module.exports = {
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
+    deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt')
 
     await validateEventPages(defendantResponseData, solicitor);
 
@@ -599,9 +600,6 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
-  } else if (eventName === 'DEFENDANT_RESPONSE') {
-    delete responseBody.data['respondent1DQRequestedCourt'];
-    delete responseBody.data['respondent2DQRequestedCourt'];
   }
 
   assert.equal(response.status, 200);
