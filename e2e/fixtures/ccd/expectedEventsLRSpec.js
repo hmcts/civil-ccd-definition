@@ -3,12 +3,16 @@ const events = require('./events.js');
 module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
+      events.INITIATE_GENERAL_APPLICATION,
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
+      events.DEFAULT_JUDGEMENT_SPEC,
+      events.CREATE_SDO
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+      events.NOTIFY_DEFENDANT_OF_CLAIM,
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
@@ -64,7 +68,9 @@ module.exports = {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_GENERAL_APPLICATION_CASE,
+      events.CREATE_SDO
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
