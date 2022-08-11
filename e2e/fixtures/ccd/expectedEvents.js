@@ -69,5 +69,14 @@ module.exports = {
     PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS
     ]
+  },
+  judge: {
+    JUDICIAL_REFERRAL: [
+      events.CREATE_SDO,
+      events.UNSUITABLE_FOR_SDO           // look up exact phrasing of event
+    ]
+    CASE_PROGRESSION: {
+
+    }
   }
 };

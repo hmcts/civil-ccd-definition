@@ -43,6 +43,11 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
+  judgeUser: {
+    password: defaultPassword,
+    email: 'judge-civil-01@example.com',
+    type: 'judge'
+  }
   systemupdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
