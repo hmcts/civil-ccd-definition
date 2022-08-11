@@ -44,6 +44,9 @@ const data = {
   DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
   DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
   DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
+  SDO_DEFAULT_JUDGEMENT: require('../fixtures/events/sdoDefaultJudgment.js'),
+  SDO_DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/sdoDefaultJudgment1v2.js'),
+  SDO_DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/sdoDefaultJudgment2v1.js'),
 };
 
 const eventData = {
@@ -598,6 +601,30 @@ module.exports = {
       await validateEventPages(data.DEFAULT_JUDGEMENT_2V1);
     } else {
       await validateEventPages(data.DEFAULT_JUDGEMENT);
+    }
+    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+      header: '',
+      body: ''
+    }, true);
+
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  sdoDefaultJudgment: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      await validateEventPages(data.SDO_DEFAULT_JUDGEMENT_1V2);
+    } else if (mpScenario === 'TWO_V_ONE') {
+      await validateEventPages(data.SDO_DEFAULT_JUDGEMENT_2V1);
+    } else {
+      await validateEventPages(data.SDO_DEFAULT_JUDGEMENT);
     }
     await assertSubmittedEvent('JUDICIAL_REFERRAL', {
       header: '',

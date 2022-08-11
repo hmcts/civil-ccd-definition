@@ -48,6 +48,11 @@ module.exports = {
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
     type: 'systemupdate'
   },
+  judgeUser: {
+    password: defaultPassword,
+    email: 'judge-civil-02@example.com',
+    type: 'judge'
+  },
   definition: {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
