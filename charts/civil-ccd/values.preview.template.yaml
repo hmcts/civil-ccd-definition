@@ -88,6 +88,7 @@ java:
     FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     STITCHING_API_ENABLED: false
     DOCUMENT_MANAGEMENT_SECURED: true
+    ACA_SERVICE_API_BASEURL: http://${SERVICE_NAME}-aac-manage-case-assignment
 
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
