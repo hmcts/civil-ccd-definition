@@ -204,7 +204,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDeadline",
-    "Label": "Defendant solicitor deadline",
+    "Label": "Defendant 1 solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "_Definition":  "The date time by which the first respondent solicitor has to submit the response to the claim.",
@@ -213,7 +213,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2ResponseDeadline",
-    "Label": "Defendant solicitor deadline",
+    "Label": "Defendant 2 solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "_Definition":  "The date time by which the second respondent solicitor has to submit the response to the claim.",
