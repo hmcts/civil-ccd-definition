@@ -246,7 +246,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-  }
+  },
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);

@@ -73,7 +73,16 @@ module.exports = {
   judge: {
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
-      events.UNSUITABLE_FOR_SDO           // look up exact phrasing of event
+      events.Unsuitable_SDO           //TODO: check whether this is still the name of event in CIV-3328
+    ]
+    CASE_PROGRESSION: {
+
+    }
+  },
+  legalAdvisor: {
+    JUDICIAL_REFERRAL: [
+      events.CREATE_SDO,
+      events.REFER_TO_JUDGE           //TODO: check name of event
     ]
     CASE_PROGRESSION: {
 
