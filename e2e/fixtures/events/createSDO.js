@@ -17,24 +17,24 @@ module.exports = {
       },
       DisposalHearing: {
         disposalHearingJudgesRecital: {
-         input: ""
+         input: "string"
         },
         disposalHearingDisclosureOfDocuments: {
-         input1: "",
+         input1: "string",
          date1: date(-1),
-         input2: "",
+         input2: "string",
          date2: date(-1)
         },
         disposalHearingWitnessOfFact: {
-         input1: "",
+         input1: "string",
          date1: date(1),
-         input2: "",
-         input3: "",
+         input2: "string",
+         input3: "string",
          date2: date(1),
-         input4: "",
+         input4: "string",
          date3: date(1),
-         input5: "",
-         input6: ""
+         input5: "string",
+         input6: "string"
         },
         disposalHearingMedicalEvidence: {
          input: "",
@@ -44,13 +44,13 @@ module.exports = {
          date: date(1)
         },
         disposalHearingSchedulesOfLoss: {
-         input1: "",
+         input1: "string",
          date1: date(1),
-         input2: "",
+         input2: "string",
          date2: date(1)
         },
         disposalHearingFinalDisposalHearing: {
-         input: "",
+         input: "string",
          date: date(1),
          time: "FIFTEEN_MINUTES"
         },
@@ -65,14 +65,14 @@ module.exports = {
         },
         disposalHearingAddNewDirections:[
          element({
-          directionComment: ""
+          directionComment: "string1"
          }),
          element({
-          directionComment: ""
+          directionComment: "string2"
          })
         ],
         disposalHearingNotes:{
-         input: "",
+         input: "string",
          date: date(1)
         }
       }
@@ -100,33 +100,33 @@ module.exports = {
        },
       SmallClaims: {
         smallClaimsJudgesRecital: {
-          input: ""
+          input: "string"
         },
         smallClaimsHearing: {
-          input1: "",
-          time: "",
-          input2: ""
+          input1: "string",
+          time: "THIRTY_MINUTES,
+          input2: "string"
         }
         smallClaimsDocuments: {
-          input1: "",
+          input1: "string",
           date1: date(-1),
-          input2: "",
+          input2: "string",
           date2: date(-1)
         },
         smallClaimsWitnessStatement: {
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: "",
+          input1: "string",
+          input2: "string",
+          input3: "string",
+          input4: "string",
         },
         disposalHearingSchedulesOfLoss: {
-          input1: "",
+          input1: "string",
           date1: date(1),
-          input2: "",
+          input2: "string",
           date2: date(1)
         },
         disposalHearingFinalDisposalHearing: {
-          input: "",
+          input: "string",
           date: date(1),
           time: "FIFTEEN_MINUTES"
         },
@@ -140,37 +140,37 @@ module.exports = {
           ]
         },
         smallClaimsCreditHire: {
-          input1: "",
-          input2: "",
+          input1: "string",
+          input2: "string",
           date1: date(1),
-          input3: "",
-          input4: "",
+          input3: "string",
+          input4: "string",
           date2: date(1),
-          input5: "",
-          input6: "",
+          input5: "string",
+          input6: "string",
           date3: date(1),
-          input7: "",
+          input7: "string",
           date4: date(1),
-          input8: "",
-          input9: "",
+          input8: "string",
+          input9: "string",
           date5: date(1),
-          input10: "",
+          input10: "string",
           date6: date(1),
-          input11: "",
+          input11: "string",
         },
         smallClaimsRoadTrafficAccident: {
-          input: ""
+          input: "string"
         },
         smallClaimsAddNewDirections:[
           element({
-            directionComment: ""
+            directionComment: "string"
           }),
           element({
-            directionComment: ""
+            directionComment: "string"
           })
         ],
         smallClaimsNotes:{
-          input: "",
+          input: "string",
           date: date(1)
         }
       }
@@ -206,104 +206,104 @@ module.exports = {
       },
       FastTrack: {
         fastTrackJudgesRecital: {
-          input: ""
+          input: "string"
         },
         fastTrackDisclosureOfDocuments: {
-          input1: "",
+          input1: "string",
           date1: date(-1),
-          input2: "",
+          input2: "string",
           date2: date(-1),
-          input3: "",
-          input4: "",
-          date3: ""
+          input3: "string",
+          input4: "string",
+          date3: "string"
         },
         fastTrackWitnessOfFact: {
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: "",
-          input5: "",
-          input6: "",
-          input7: "",
-          input8: "",
+          input1: "string",
+          input2: "string",
+          input3: "string",
+          input4: "string",
+          input5: "string",
+          input6: "string",
+          input7: "string",
+          input8: "string",
           date: date(1),
-          input9: ""
+          input9: "string"
         },
         fastTrackSchedulesOfLoss: {
-          input1: "",
+          input1: "string",
           date1: date(1),
-          input2: "",
+          input2: "string",
           date2: date(1),
-          input3: "",
-          input4: "",
+          input3: "string",
+          input4: "string",
           date3: date(1)
         },
         fastTrackTrial: {
-          input1: "",
+          input1: "string",
           date1: date(1),
           date2: date(1),
-          input2: "",
-          input3: ""
+          input2: "string",
+          input3: "string"
         },
         fastTrackMethod: "IN_PERSON",
         fastTrackMethodTelephoneHearing: "telephoneTheClaimant",
         fastTrackBuildingDispute:{
-          input1: "",
-          input2: "",
-          input3: "",
+          input1: "string",
+          input2: "string",
+          input3: "string",
           date1: date(1),
-          input4: "",
+          input4: "string",
           date2: date(1)
         },
         fastTrackClinicalNegligence: {
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: ""
+          input1: "string",
+          input2: "string",
+          input3: "string",
+          input4: "string"
         },
         fastTrackCreditHire: {
-          input1: "",
-          input2: "",
+          input1: "string",
+          input2: "string",
           date1: date(1),
-          input3: "",
-          input4: "",
+          input3: "string",
+          input4: "string",
           date2: date(1),
-          input5: "",
-          input6: "",
+          input5: "string",
+          input6: "string",
           date3: date(1),
-          input7: ""
+          input7: "string"
           date4: date(1),
-          input8: ""
+          input8: "string"
         },
         fastTrackHousingDisrepair: {
-           input1: "",
-           input2: "",
-           input3: "",
+           input1: "string",
+           input2: "string",
+           input3: "string",
            date1: date(1),
-           input4: "",
+           input4: "string",
            date2: date(1)
         },
         fastTrackPersonalInjury: {
-            input1: "",
-            date1: "",
-            input2: "",
-            date2: "",
-            input3: ""
+            input1: "string",
+            date1: date(1),
+            input2: "string",
+            date2: date(1),
+            input3: "string"
         },
         fastTrackRoadTrafficAccident: {
-            input: "",
+            input: "string",
             date: date(1)
         },
         fastTrackAddNewDirections:[
             element({
-             directionComment: ""
+             directionComment: "string"
             }),
             element({
-             directionComment: ""
+             directionComment: "string"
             })
         ],
         fastTrackNotes:{
-            input: "",
+            input: "string",
             date: date(1)
         }
       }
@@ -328,77 +328,77 @@ module.exports = {
        },
       SmallClaims: {
         smallClaimsJudgesRecital: {
-          input: ""
+          input: "string"
         },
         smallClaimsHearing: {
-          input1: "",
-          time: "",
-          input2: ""
+          input1: "string",
+          time: "string",
+          input2: "string"
         }
         smallClaimsDocuments: {
-          input1: "",
+          input1: "string",
           date1: date(-1),
-          input2: "",
+          input2: "string",
           date2: date(-1)
         },
         smallClaimsWitnessStatement: {
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: "",
+          input1: "string",
+          input2: "string",
+          input3: "string",
+          input4: "string",
         },
         disposalHearingSchedulesOfLoss: {
-          input1: "",
+          input1: "string",
           date1: date(1),
-          input2: "",
+          input2: "string",
           date2: date(1)
         },
         disposalHearingFinalDisposalHearing: {
-          input: "",
+          input: "string",
           date: date(1),
           time: "FIFTEEN_MINUTES"
         },
         disposalHearingMethod: "IN_PERSON",
         disposalHearingMethodTelephoneHearing: "telephoneTheClaimant",
         disposalHearingBundle: {
-          input: "",
+          input: "string",
           type: [
             "DOCUMENTS",
             "SUMMARY"
           ]
         },
         smallClaimsCreditHire: {
-          input1: "",
-          input2: "",
+          input1: "string",
+          input2: "string",
           date1: date(1),
-          input3: "",
-          input4: "",
+          input3: "string",
+          input4: "string",
           date2: date(1),
-          input5: "",
-          input6: "",
+          input5: "string",
+          input6: "string",
           date3: date(1),
-          input7: "",
+          input7: "string",
           date4: date(1),
-          input8: "",
-          input9: "",
+          input8: "string",
+          input9: "string",
           date5: date(1),
-          input10: "",
+          input10: "string",
           date6: date(1),
-          input11: "",
+          input11: "string",
         },
         smallClaimsRoadTrafficAccident: {
-          input: ""
+          input: "string"
         },
         smallClaimsAddNewDirections:[
           element({
-            directionComment: ""
+            directionComment: "string"
           }),
           element({
-            directionComment: ""
+            directionComment: "string"
           })
         ],
         smallClaimsNotes:{
-          input: "",
+          input: "string",
           date: date(1)
         }
       }
@@ -428,106 +428,118 @@ module.exports = {
       },
       FastTrack: {
         fastTrackJudgesRecital: {
-          input: ""
+          input: "string"
         },
         fastTrackDisclosureOfDocuments: {
-          input1: "",
-          date1: date(-1),
-          input2: "",
-          date2: date(-1),
-          input3: "",
-          input4: "",
-          date3: ""
+          input1: "string",
+          date1: date(1),
+          input2: "string",
+          date2: date(1),
+          input3: "string",
+          input4: "string",
+          date3: date(1)
         },
         fastTrackWitnessOfFact: {
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: "",
-          input5: "",
-          input6: "",
-          input7: "",
-          input8: "",
+          input1: "string",
+          input2: "string",
+          input3: "string",
+          input4: "string",
+          input5: "string",
+          input6: "string",
+          input7: "string",
+          input8: "string",
           date: date(1),
-          input9: ""
+          input9: "string"
         },
         fastTrackSchedulesOfLoss: {
-          input1: "",
+          input1: "string",
           date1: date(1),
-          input2: "",
+          input2: "string",
           date2: date(1),
-          input3: "",
-          input4: "",
+          input3: "string",
+          input4: "string",
           date3: date(1)
         },
         fastTrackTrial: {
-          input1: "",
+          input1: "string",
           date1: date(1),
           date2: date(1),
-          input2: "",
-          input3: ""
+          input2: "string",
+          input3: "string"
         },
         fastTrackMethod: "IN_PERSON",
         fastTrackMethodTelephoneHearing: "telephoneTheClaimant",
         fastTrackBuildingDispute:{
-          input1: "",
-          input2: "",
-          input3: "",
+          input1: "string",
+          input2: "string",
+          input3: "string",
           date1: date(1),
-          input4: "",
+          input4: "string",
           date2: date(1)
         },
         fastTrackClinicalNegligence: {
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: ""
+          input1: "string",
+          input2: "string",
+          input3: "string",
+          input4: "string"
         },
         fastTrackCreditHire: {
-          input1: "",
-          input2: "",
+          input1: "string",
+          input2: "string",
           date1: date(1),
-          input3: "",
-          input4: "",
+          input3: "string",
+          input4: "string",
           date2: date(1),
-          input5: "",
-          input6: "",
+          input5: "string",
+          input6: "string",
           date3: date(1),
-          input7: ""
+          input7: "string"
           date4: date(1),
-          input8: ""
+          input8: "string"
         },
         fastTrackHousingDisrepair: {
-           input1: "",
-           input2: "",
-           input3: "",
+           input1: "string",
+           input2: "string",
+           input3: "string",
            date1: date(1),
-           input4: "",
+           input4: "string",
            date2: date(1)
         },
         fastTrackPersonalInjury: {
-            input1: "",
-            date1: "",
-            input2: "",
-            date2: "",
-            input3: ""
+            input1: "string",
+            date1: "string",
+            input2: "string",
+            date2: "string",
+            input3: "string"
         },
         fastTrackRoadTrafficAccident: {
-            input: "",
+            input: "string",
             date: date(1)
         },
         fastTrackAddNewDirections:[
             element({
-             directionComment: ""
+             directionComment: "string"
             }),
             element({
-             directionComment: ""
+             directionComment: "string"
             })
         ],
         fastTrackNotes:{
-            input: "",
+            input: "string",
             date: date(1)
         }
+      }
+    }
+  }
+}
+
+//Unsuitable for SDO
+module.exports = {
+
+  createNotSuitableSDO: () => {
+    userInput = {
+      NotSuitableSDO: {
+        reasonNotSuitableSDO: "Too many problems.",
       }
     }
   }

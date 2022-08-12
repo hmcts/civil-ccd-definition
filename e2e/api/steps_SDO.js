@@ -26,10 +26,11 @@ const data = {
   CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
   CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
   CREATE_DISPOSAL: (response) => require('../fixtures/events/createSDO.js').createSDODisposal(),
-  CREATE_FAST: (response) => require('../fixtures/events/createSDO.js').createSDOFast(),
-  CREATE_SMALL: (response) => require('../fixtures/events/createSDO.js').createSDOSmall(),
-  CREATE_FAST_NO_SUM: (response) => require('../fixtures/events/createSDO.js').createSDOFastWODamageSum(),
-  CREATE_SMALL_NO_SUM: (response) => require('../fixtures/events/createSDO.js').createSDOSmallWODamageSum(),
+  CREATE_FAST: () => require('../fixtures/events/createSDO.js').createSDOFast(),
+  CREATE_SMALL: () => require('../fixtures/events/createSDO.js').createSDOSmall(),
+  CREATE_FAST_NO_SUM: () => require('../fixtures/events/createSDO.js').createSDOFastWODamageSum(),
+  CREATE_SMALL_NO_SUM: () => require('../fixtures/events/createSDO.js').createSDOSmallWODamageSum(),
+  NOT_SUITABLE_SDO: () => require('../fixtures/events/createSDO.js').createNotSuitableSDO(),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
@@ -212,14 +213,8 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    if (response = 'FULL_DEFENCE') {
-      await assertSubmittedEvent('JUDICIAL_REFERRAL'); //Not sure this is correct, but definitely should not be proceed to heritage system.
-      await assignCaseRoleToUser(caseId, 'judge-profile', config.judge);
-    } else {
-      await assertSubmittedEvent('PROCEED_IN_HERITAGE_SYSTEM');
-    }
-
-
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    await assignCaseRoleToUser(caseId, 'judge-profile', config.judge); //TODO: Differentiate between judge and legal-advisor?
     await waitForFinishedBusinessProcess(caseId);
   },
 

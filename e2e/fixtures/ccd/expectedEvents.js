@@ -79,7 +79,7 @@ module.exports = {
 
     }
   },
-  legalAdvisor: {
+  legal-advisor: {                    //TODO: check the right role for legal-advisor here
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
       events.REFER_TO_JUDGE           //TODO: check name of event
