@@ -82,7 +82,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UnHappy_SDO",
+    "CaseEventID": "NotSuitable_SDO",
     "AccessControl": [
       {
         "UserRoles": [
