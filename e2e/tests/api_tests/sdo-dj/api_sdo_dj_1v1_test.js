@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_ONE';
 
 Feature('CCD 1v1 API test @api-sdo-dj-1v1, @api-dj');
 
-Scenario('Default Judgment claim', async ({I, api}) => {
+Scenario('Standard Direction Order Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.amendClaimDocuments(config.applicantSolicitorUser);

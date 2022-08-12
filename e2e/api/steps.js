@@ -15,6 +15,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
+const {sdoDjDocument} = require('../api/dataHelper');
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -620,17 +621,12 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPages(data.SDO_DEFAULT_JUDGEMENT_1V2);
+      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT_1V2);
     } else if (mpScenario === 'TWO_V_ONE') {
-      await validateEventPages(data.SDO_DEFAULT_JUDGEMENT_2V1);
+      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT_2V1);
     } else {
-      await validateEventPages(data.SDO_DEFAULT_JUDGEMENT);
+      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT);
     }
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-      header: '',
-      body: ''
-    }, true);
-
 
 
     await waitForFinishedBusinessProcess(caseId);
@@ -660,6 +656,14 @@ const validateEventPages = async (data, solicitor) => {
   }
 };
 
+const validateEventPagesSdoDj = async (data, solicitor) => {
+
+  console.log('validateEventPages');
+  for (let pageId of Object.keys(data.valid)) {
+    await assertValidDataSdoDj(data, pageId, solicitor);
+  }
+};
+
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
@@ -683,6 +687,37 @@ const assertValidData = async (data, pageId, solicitor) => {
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
+  if (midEventFieldForPage.hasOwnProperty(pageId)) {
+    addMidEventFields(pageId, responseBody);
+    caseData = removeUiFields(pageId, caseData);
+  }
+
+  assert.deepEqual(responseBody.data, caseData);
+};
+
+const assertValidDataSdoDj = async (data, pageId, solicitor) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const validDataForPage = data.valid[pageId];
+  caseData = {...caseData, ...validDataForPage};
+  caseData = adjustDataForSolicitor(solicitor, caseData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+  );
+  let responseBody = await response.json();
+
+  assert.equal(response.status, 200);
+
+  responseBody.data.trialHearingMethodInPersonDJ = null;
+  responseBody.data.disposalHearingMethodInPersonDJ = null;
+  if ( pageId === 'TrialHearing') {
+    const documentName = responseBody.data.orderSDODocumentDJ.document_filename;
+    responseBody.data.orderSDODocumentDJ = sdoDjDocument(documentName);
+  }
+
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
