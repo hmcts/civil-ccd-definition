@@ -47,7 +47,12 @@ module.exports = {
     password: defaultPassword,
     email: 'judge-civil-01@example.com',
     type: 'judge'
-  }
+  },
+  legalAdvisor: {
+    password: defaultPassword,
+    email:
+    type: 
+  },
   systemupdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',

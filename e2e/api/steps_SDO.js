@@ -19,10 +19,76 @@ let caseData = {};
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  DEFENDANT_RESPONSE2: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response),
+  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
+  DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
+  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
   CREATE_DISPOSAL: (response) => require('../fixtures/events/createSDO.js').createSDODisposal(),
   CREATE_FAST: (response) => require('../fixtures/events/createSDO.js').createSDOFast(),
   CREATE_SMALL: (response) => require('../fixtures/events/createSDO.js').createSDOSmall(),
+  CREATE_FAST_NO_SUM: (response) => require('../fixtures/events/createSDO.js').createSDOFastWODamageSum(),
+  CREATE_SMALL_NO_SUM: (response) => require('../fixtures/events/createSDO.js').createSDOSmallWODamageSum(),
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+};
+
+const eventData = {
+  defendantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_NOT_FULL_DEFENCE')
+    },
+    ONE_V_ONE_DIF_SOL: {
+      FULL_DEFENCE1: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION1: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION1: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM1: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
+
+      FULL_DEFENCE2: data.DEFENDANT_RESPONSE2('FULL_DEFENCE'),
+      FULL_ADMISSION2: data.DEFENDANT_RESPONSE2('FULL_ADMISSION'),
+      PART_ADMISSION2: data.DEFENDANT_RESPONSE2('PART_ADMISSION'),
+      COUNTER_CLAIM2: data.DEFENDANT_RESPONSE2('COUNTER_CLAIM')
+    },
+    TWO_V_ONE: {
+      FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_ADMISSION: data.DEFENDANT_RESPONSE_2v1('FULL_ADMISSION'),
+      PART_ADMISSION: data.DEFENDANT_RESPONSE_2v1('PART_ADMISSION'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE_2v1('COUNTER_CLAIM'),
+      DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_FULL_DEFENCE'),
+      DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('DIFF_NOT_FULL_DEFENCE')
+    }
+  },
+  claimantResponses: {
+    ONE_V_ONE: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM')
+    },
+    ONE_V_TWO: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
+      NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2('NOT_PROCEED'),
+    },
+    TWO_V_ONE: {
+      FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
+      PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
+      NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
+    }
+  }
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,27 +212,37 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('JUDICIAL_REFERRAL'); //Not sure this is correct, but definitely should not be proceed to heritage system.
-    await assignCaseRoleToUser(caseId, 'judge-profile', config.judge);
+    if (response = 'FULL_DEFENCE') {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL'); //Not sure this is correct, but definitely should not be proceed to heritage system.
+      await assignCaseRoleToUser(caseId, 'judge-profile', config.judge);
+    } else {
+      await assertSubmittedEvent('PROCEED_IN_HERITAGE_SYSTEM');
+    }
+
 
     await waitForFinishedBusinessProcess(caseId);
   },
 
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  createSDO: async (user) => {
+  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
 
     await apiRequest.setupTokens(user);
 
     eventName = 'CREATE_SDO';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    let disposalData = data["CREATE_DISPOSAL"];
+    let disposalData = data[response];
 
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
 
-    await assertSubmittedEvent('CASE_PROGRESSION');
+    if (response = 'UNSUITABLE_FOR_SDO') {
+      await assertSubmittedEvent('PROCEED_IN_HERITAGE_SYSTEM');
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION');
+    }
+
 
     await waitForFinishedBusinessProcess(caseId);
 
