@@ -1,4 +1,4 @@
-# civil-ccd-definition 
+# civil-ccd-definition
 
 Civil CCD Definition and E2E tests
 
@@ -53,6 +53,7 @@ Before running API tests, you will need the `SENDGRID_API_KEY` environment varia
 
 To run API tests enter `yarn test:api`.
 
+## License
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
