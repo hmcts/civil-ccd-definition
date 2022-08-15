@@ -48,7 +48,7 @@ module.exports = {
     email: 'judge-civil-01@example.com',
     type: 'judge'
   },
-  legalAdvisor: {
+  legalAdvisorUser: {
     password: defaultPassword,
     email: 'tribunal-caseworker-01@example.com'
     type: 'tribunal-caseworker'
