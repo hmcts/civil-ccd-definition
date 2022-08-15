@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "searchCriteria",
+    "ID": "SearchCriteria",
     "Label": "Search Criteria",
     "FieldType": "SearchCriteria",
     "SecurityClassification": "Public"
