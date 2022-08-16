@@ -10,9 +10,9 @@ Scenario('1v1 full defence - judge draws disposal order', async ({I, api_sdo}) =
 });
 
 Scenario('1v1 full defence - legal advisor draws disposal order', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 950);
+  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, '950');
   await api_sdo.defendantResponse(config.defendantSolicitorUser);
-  await api_sdo.claimantResponse(config.applicantSolicitorUser, 950);
+  await api_sdo.claimantResponse(config.applicantSolicitorUser, '950');
   await api_sdo.createSDO(config.legalAdvisorUser);
 });
 
@@ -24,9 +24,9 @@ Scenario('1v1 full defence - judge draws small claims WITH sum of damages', asyn
 });
 
 Scenario('1v1 full defence - legal advisor draws small claims WITH sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 950);
+  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, '950');
   await api_sdo.defendantResponse(config.defendantSolicitorUser);
-  await api_sdo.claimantResponse(config.applicantSolicitorUser, 950);
+  await api_sdo.claimantResponse(config.applicantSolicitorUser, '950');
   await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_SMALL');
 });
 
@@ -38,9 +38,9 @@ Scenario('1v1 full defence - judge draws fast track WITH sum of damages', async 
 });
 
 Scenario('1v1 full defence - legal advisor draws fast track WITH sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 950);
+  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, '950');
   await api_sdo.defendantResponse(config.defendantSolicitorUser);
-  await api_sdo.claimantResponse(config.applicantSolicitorUser, 950);
+  await api_sdo.claimantResponse(config.applicantSolicitorUser, '950');
   await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_FAST');
 });
 
@@ -52,9 +52,9 @@ Scenario('1v1 full defence - judge draws small claims WITHOUT sum of damages', a
 });
 
 Scenario('1v1 full defence - legal advisor draws small claims WITHOUT sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 950);
+  await api_sdo.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, '950');
   await api_sdo.defendantResponse(config.defendantSolicitorUser);
-  await api_sdo.claimantResponse(config.applicantSolicitorUser, 950);
+  await api_sdo.claimantResponse(config.applicantSolicitorUser, '950');
   await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_SMALL_NO_SUM');
 });
 

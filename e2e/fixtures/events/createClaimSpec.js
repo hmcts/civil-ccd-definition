@@ -30,7 +30,7 @@ const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
-  createClaim: (mpScenario, claimAmount = 150000) => {
+  createClaim: (mpScenario, claimAmount = '150000') => {
     const userData = {
       userInput: {
         References: {

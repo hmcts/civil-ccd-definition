@@ -74,18 +74,15 @@ module.exports = {
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
       events.Unsuitable_SDO           //TODO: check whether this is still the name of event in CIV-3328
-    ]
-    CASE_PROGRESSION: {
-
-    }
+    ],
+    CASE_PROGRESSION: []
   },
-  legal-advisor: {                    //TODO: check the right role for legal-advisor here
+  legal_advisor: {                    //TODO: check the right role for legal-advisor here
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
+      events.NotSuitable_SDO,
       events.REFER_TO_JUDGE           //TODO: check name of event
-    ]
-    CASE_PROGRESSION: {
-
-    }
+    ],
+    CASE_PROGRESSION: []
   }
 };
