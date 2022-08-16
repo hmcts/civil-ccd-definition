@@ -1,4 +1,4 @@
-// in this file you can append custom step methods to 'I' object
+//  in this file you can append custom step methods to 'I' object
 
 const output = require('codeceptjs').output;
 
