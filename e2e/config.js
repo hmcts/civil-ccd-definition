@@ -18,6 +18,9 @@ module.exports = {
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
+    waTaskMgmtUrl: process.env.WA_TASK_MANAGEMENT_URL || 'http://localhost:8087',
+    waCaseEventHandlerUrl: process.env.WA_CASE_EVENT_HANDLER_URL || 'http://localhost:8088',
+    waTaskMonitorUrl: process.env.WA_TASK_MONITOR_URL || 'http://localhost:8077'
   },
   s2s: {
     microservice: 'civil_service',
@@ -51,6 +54,9 @@ module.exports = {
   definition: {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
+  },
+  wa: {
+    dlqProcessEnabled: process.env.WA_DLQ_PROCESS_ENABLED || false,
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
