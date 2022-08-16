@@ -62,5 +62,14 @@
       "GS_profile"
     ],
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_PROGRESSION",
+    "UserRoles": [
+      "GS_profile"
+    ],
+    "CRUD": "R"
+
   }
 ]
