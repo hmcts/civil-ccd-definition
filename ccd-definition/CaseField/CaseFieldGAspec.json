@@ -258,7 +258,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "directionOrderDocument",
-    "Label": "Direction order document",
+    "Label": "Directions order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
