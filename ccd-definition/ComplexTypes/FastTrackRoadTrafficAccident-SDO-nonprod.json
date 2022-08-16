@@ -15,6 +15,13 @@
   },
   {
     "ID": "FastTrackRoadTrafficAccident",
+    "ListElementCode": "date",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackRoadTrafficAccident",
     "ListElementCode": "line",
     "FieldType": "Label",
     "ElementLabel": "****",

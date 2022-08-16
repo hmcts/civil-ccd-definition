@@ -1565,6 +1565,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackAltDisputeResolutionStartLine",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAltDisputeResolutionTitle",
     "AccessControl": [
       {
@@ -2105,21 +2120,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "fastTrackMethodVideoConferenceHearingCourtStatement",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodTelephoneHearing",
     "AccessControl": [
       {
@@ -2135,37 +2135,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "fastTrackMethodTelephoneHearingCourtStatement",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "fastTrackPreferredTelephone",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "fastTrackPreferredEmail",
+    "CaseFieldID": "fastTrackMethodEndLine",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2301,6 +2271,21 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAddNewDirections",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackAddNewDirectionsEndLine",
     "AccessControl": [
       {
         "UserRoles": [
