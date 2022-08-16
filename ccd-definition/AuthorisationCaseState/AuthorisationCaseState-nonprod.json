@@ -13,8 +13,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
-          "GS_profile"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
@@ -34,8 +33,7 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "basic-access"
+          "[APPLICANTSOLICITORONE]"
         ],
         "CRUD": "R"
       }
