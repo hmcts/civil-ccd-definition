@@ -19,12 +19,5 @@
     "FieldType": "Label",
     "ElementLabel": "## Allocation \nThe claim is allocated to the Fast track.",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackAllocation",
-    "ListElementCode": "line2",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
   }
 ]
