@@ -286,7 +286,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "GS_profile"
 
         ],
         "CRUD": "R"

@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "SearchCriteria",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNameHmctsInternal",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementCategory",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
+  }
+]
