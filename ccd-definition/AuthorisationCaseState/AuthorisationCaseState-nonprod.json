@@ -1,6 +1,75 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-ras-validation"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "UserRoles": [
+      "caseworker-ras-validation"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_APPLICANT_INTENTION",
+    "UserRoles": [
+      "caseworker-ras-validation"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_DISMISSED",
+    "UserRoles": [
+      "caseworker-ras-validation"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "UserRoles": [
+      "caseworker-ras-validation"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-ras-validation"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-ras-validation"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "JUDICIAL_REFERRAL",
     "AccessControl": [
       {
@@ -14,7 +83,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "[APPLICANTSOLICITORONE]",
-          "GS_profile"
+          "GS_profile",
+          "caseworker-ras-validation"
         ],
         "CRUD": "R"
       }
@@ -35,7 +105,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "basic-access"
+          "basic-access",
+          "caseworker-ras-validation"
         ],
         "CRUD": "R"
       }
