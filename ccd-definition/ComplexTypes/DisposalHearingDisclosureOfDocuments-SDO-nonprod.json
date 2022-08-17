@@ -8,14 +8,28 @@
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
-    "ListElementCode": "input",
+    "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
-    "ListElementCode": "date",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "ListElementCode": "date2",
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
