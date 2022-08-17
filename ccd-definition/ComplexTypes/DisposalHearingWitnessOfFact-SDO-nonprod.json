@@ -23,14 +23,7 @@
   {
     "ID": "DisposalHearingWitnessOfFact",
     "ListElementCode": "input2",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "ListElementCode": "input3",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -43,7 +36,35 @@
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input3",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
     "ListElementCode": "input4",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input5",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input6",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
