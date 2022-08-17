@@ -34,5 +34,11 @@
     "CaseStateID": "JUDICIAL_REFERRAL",
     "UserRole": "caseworker-approver",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_PROGRESSION",
+    "UserRole": "caseworker-approver",
+    "CRUD": "CRUD"
   }
 ]

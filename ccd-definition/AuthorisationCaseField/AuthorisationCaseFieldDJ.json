@@ -247,7 +247,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -274,7 +275,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingPreferredRegionId",
+    "CaseFieldID": "caseManagementLocation",
     "AccessControl": [
       {
         "UserRoles": [
@@ -284,7 +285,9 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+
         ],
         "CRUD": "R"
       }
@@ -292,7 +295,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingBaseLocation",
+    "CaseFieldID": "locationName",
     "AccessControl": [
       {
         "UserRoles": [
@@ -302,7 +305,9 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+
         ],
         "CRUD": "R"
       }

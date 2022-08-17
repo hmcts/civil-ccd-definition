@@ -2,9 +2,9 @@ plugins {
   id 'application'
   id 'checkstyle'
   id 'jacoco'
-  id 'org.owasp.dependencycheck' version '7.1.0.1'
+  id 'org.owasp.dependencycheck' version '7.1.1'
   id 'com.github.ben-manes.versions' version '0.39.0'
-  id 'org.sonarqube' version '3.3'
+  id 'org.sonarqube' version '3.4.0.2513'
   id 'au.com.dius.pact' version '4.2.7'
   id 'net.ltgt.apt' version '0.21'
 }
@@ -142,7 +142,7 @@ task lintUserInterfaceTests(type: Exec, description: 'Runs linting of E2E tests.
 
 task awaitApplicationReadiness(type: Exec, description: 'Awaits until application is ready.') {
   commandLine './bin/wait-for.sh', System.env.URL
-  commandLine './bin/wait-for.sh', System.env.CIVIL_SERVICE_URL
+  commandLine './bin/wait-for.sh', System.env.TEST_URL
 }
 
 task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
@@ -165,6 +165,13 @@ task runSdoFunctionalTests(type: Exec, description: 'Runs Spec functional tests.
 
 task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
+}
+
+task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
+ onlyIf {
+    return System.env.ENVIRONMENT == 'preview'
+  }
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
 }
 
 task demoEnvNonProdFeaturesEnabledFunctionalTests(type: Exec, description: 'Runs Non prod functional tests in demo') {
@@ -191,7 +198,7 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
@@ -240,8 +247,8 @@ ext.libraries = [
 ]
 
 dependencies {
-  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.19'
-  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.19'
+  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.21'
+  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.21'
   implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
   implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.1'
@@ -259,9 +266,9 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
 
   // prevent CVE-2020-0187
-  implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.67'
+  implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
   // prevent CVE-2022-22978
-  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.6.4'
+  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.2'
 }
 
 wrapper {

@@ -1,15 +1,15 @@
 [
   {
-    "ID": "FastTrackPreferredTelephone",
+    "ID": "SmallClaimsJudgesRecital",
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FastTrackPreferredTelephone",
-    "ListElementCode": "telephone",
-    "FieldType": "Text",
+    "ID": "SmallClaimsJudgesRecital",
+    "ListElementCode": "input",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
