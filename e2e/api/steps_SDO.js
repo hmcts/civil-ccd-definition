@@ -12,13 +12,14 @@ const {assignCaseRoleToUser, addUserCaseMapping} = require('./caseRoleAssignment
 const apiRequest = require('./apiRequest.js');
 const claimDataSpec = require('../fixtures/events/createClaimSpec.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const sdoTracks = require('../fixtures/events/createSDO.js');
 const claimResponse = require('../fixtures/events/claimantResponse');
 //const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const lodash = require('lodash');
 
-let caseId, eventName, mpScenario;
+let caseId, eventName, responseData;
 let caseData = {};
 
 const data = {
@@ -45,12 +46,12 @@ const data = {
   DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: (mpScenario) => claimResponse.claimantResponse(mpScenario),
 
-  CREATE_DISPOSAL: () => require('../fixtures/events/createSDO.js').createSDODisposal(),
-  CREATE_FAST: () => require('../fixtures/events/createSDO.js').createSDOFast(),
-  CREATE_SMALL: () => require('../fixtures/events/createSDO.js').createSDOSmall(),
-  CREATE_FAST_NO_SUM: () => require('../fixtures/events/createSDO.js').createSDOFastWODamageSum(),
-  CREATE_SMALL_NO_SUM: () => require('../fixtures/events/createSDO.js').createSDOSmallWODamageSum(),
-  UNSUITABLE_FOR_SDO: () => require('../fixtures/events/createSDO.js').createNotSuitableSDO(),
+  CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
+  CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+  CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
+  CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
 
@@ -109,6 +110,14 @@ const eventData = {
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1_SPEC('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1_SPEC('NOT_PROCEED')
     }
+  },
+  sdoTracks: {
+    CREATE_DISPOSAL: data.CREATE_DISPOSAL(responseData),
+    CREATE_SMALL: data.CREATE_SMALL(responseData),
+    CREATE_FAST: data.CREATE_FAST(responseData),
+    CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(responseData),
+    CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(responseData),
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(responseData)
   }
 };
 
@@ -240,10 +249,10 @@ module.exports = {
 
     eventName = 'CREATE_SDO';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    let disposalData = data[response];
+    let disposalData = eventData['sdoTracks'][response];
     console.log(disposalData);
 
-    for (let pageId of Object.keys(disposalData)) {
+    for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
 

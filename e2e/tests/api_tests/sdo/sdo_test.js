@@ -7,6 +7,31 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({I,
   await api_sdo.createSDO(config.judgeUser);
 });
 
+Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({I, api_sdo}) => {
+  await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
+  await api_sdo.createSDO(config.judgeUser, 'CREATE_SMALL');
+});
+
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({I, api_sdo}) => {
+  await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
+  await api_sdo.createSDO(config.judgeUser, 'CREATE_FAST');
+});
+
+Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({I, api_sdo}) => {
+  await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
+  await api_sdo.createSDO(config.judgeUser, 'CREATE_SMALL_NO_SUM');
+});
+
+Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages', async ({I, api_sdo}) => {
+  await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
+  await api_sdo.createSDO(config.judgeUser, 'CREATE_FAST_NO_SUM');
+});
+
+Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({I, api_sdo}) => {
+  await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
+  await api_sdo.createSDO(config.judgeUser, 'UNSUITABLE_FOR_SDO');
+});
+
 Scenario('1v1 full defence - judge draws disposal order', async ({I, api_sdo}) => {
   await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
   await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
