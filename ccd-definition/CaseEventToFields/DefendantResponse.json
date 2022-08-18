@@ -995,8 +995,8 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" OR multiPartyResponseTypeFlags=\"PART_ADMISSION\"",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\" OR respondent1ClaimResponseType=\"PART_ADMISSION\" OR respondent1ClaimResponseTypeToApplicant2=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1031,7 +1031,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\" OR respondent2ClaimResponseType=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
