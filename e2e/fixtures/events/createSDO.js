@@ -4,8 +4,7 @@ const { date, element} = require('../../api/dataHelper');
 module.exports = {
 
   createSDODisposal: () => {
-    const responseData = {
-      userInput: {
+      const userInput = {
         SDO: {
           drawDirectionsOrderRequired: 'Yes',
           drawDirectionsOrder: {
@@ -79,9 +78,9 @@ module.exports = {
             date: date(1)
           }
         }
-      }
-    };
-  }
+      };
+    return userInput;
+    }
 };
 
 //Small Claims WITH Sum of Damages
