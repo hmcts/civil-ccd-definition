@@ -216,10 +216,10 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "hearing-center-admin",
+    "RoleName" : "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -273,7 +273,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

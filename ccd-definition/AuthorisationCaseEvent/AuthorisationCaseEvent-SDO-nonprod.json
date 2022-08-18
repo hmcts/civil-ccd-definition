@@ -79,5 +79,18 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
