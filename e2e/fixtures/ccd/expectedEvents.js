@@ -5,7 +5,7 @@ module.exports = {
     CASE_ISSUED: [
       events.NOTIFY_DEFENDANT_OF_CLAIM,
       events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
@@ -73,15 +73,19 @@ module.exports = {
   judge: {
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
-      events.Unsuitable_SDO           //TODO: check whether this is still the name of event in CIV-3328
+      events.Unsuitable_SDO,
+      events.ENTER_BREATHING_SPACE_SPEC,
+      events.LIFT_BREATHING_SPACE_SPEC
     ],
     CASE_PROGRESSION: []
   },
-  legal_advisor: {                    //TODO: check the right role for legal-advisor here
+  legal_advisor: {
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
-      events.NotSuitable_SDO,
-      events.REFER_TO_JUDGE           //TODO: check name of event
+      events.ENTER_BREATHING_SPACE_SPEC,
+      events.LIFT_BREATHING_SPACE_SPEC,
+      events.Unsuitable_SDO,
+      events.REFER_TO_JUDGE
     ],
     CASE_PROGRESSION: []
   }
