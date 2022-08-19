@@ -168,7 +168,7 @@ module.exports = {
     await notifyClaimDetails(user1);
     await acknowledgeClaim(user2, scenario);
     caseId = await defendantResponse(user2, scenario);
-    await claimantResponse(user1, scenario);
+    await claimantResponse(user1, scenario, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
@@ -247,7 +247,12 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-    eventName = 'CREATE_SDO';
+    if(response == 'UNSUITABLE_FOR_SDO'){
+      eventName = 'Unsuitable_SDO';
+    } else {
+      eventName = 'CREATE_SDO';
+    }
+
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = eventData['sdoTracks'][response];
     console.log(disposalData);
@@ -257,9 +262,9 @@ module.exports = {
     }
 
     if (response == 'UNSUITABLE_FOR_SDO' && user == config.judgeUser) {
-      await assertSubmittedEvent('PROCEED_IN_HERITAGE_SYSTEM');
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
     } else if (response == 'UNSUITABLE_FOR_SDO') {
-      await assignCaseRoleToUser(caseId, 'legal-advisor', config.legalAdvisorUser);
+      await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUser);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION'); //TODO: Uncomment once states are updated
     }
