@@ -9,8 +9,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": "Do you wish to enter judgment for a sum of damages to be decided ?",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details"
+    "CaseEventFieldLabel": "Do you wish to enter judgment for a sum of damages to be decided ?"
   },
   {
     "CaseTypeID": "CIVIL",
