@@ -1,21 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingNoticeList",
     "UserRoles": [
-      "judge-profile",
-      "legal-adviser",
-      "admin-access",
-      "full-access",
       "hearing-schedule-access"
     ],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingNoticeListOther",
     "UserRoles": [
-      "GS_profile",
-      "caseworker-ras-validation"
+      "hearing-schedule-access"
     ],
-    "CRUD": "R"
+    "CRUD": "CRU"
   }
 ]
