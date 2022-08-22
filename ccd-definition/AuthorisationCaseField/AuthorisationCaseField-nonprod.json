@@ -480,7 +480,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseAccessCategory",
+    "CaseFieldID": "CaseAccessCategory",
     "AccessControl": [
       {
         "UserRoles": [

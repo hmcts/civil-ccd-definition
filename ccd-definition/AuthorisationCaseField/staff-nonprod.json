@@ -1,6 +1,6 @@
 {
   "CaseTypeID": "CIVIL",
-  "CaseFieldID": "caseAccessCategory",
+  "CaseFieldID": "CaseAccessCategory",
   "UserRole": "caseworker-civil-staff",
   "CRUD": "R"
 }

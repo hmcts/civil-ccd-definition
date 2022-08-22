@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseAccessCategory",
+    "ID": "CaseAccessCategory",
     "Label": "Case Access Category",
     "FieldType": "Text",
     "SecurityClassification": "Public",
