@@ -144,8 +144,43 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2ResponseDeadline",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -545,7 +580,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -668,6 +704,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "APP-SOL-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -711,6 +748,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor",
           "APP-SOL-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -723,6 +761,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE"
         ],
@@ -730,7 +769,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1311,7 +1351,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1332,7 +1373,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1353,7 +1395,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1375,7 +1418,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1396,7 +1440,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1417,7 +1462,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1476,7 +1522,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1488,6 +1535,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -1495,7 +1543,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1517,7 +1566,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1529,6 +1579,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
@@ -1539,7 +1590,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1602,7 +1654,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1614,6 +1667,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
@@ -1624,7 +1678,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1789,7 +1844,8 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1811,7 +1867,8 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1833,7 +1890,8 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1887,7 +1945,8 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -1931,7 +1990,8 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -3011,7 +3071,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -3030,7 +3091,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -3049,7 +3111,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -3096,7 +3159,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -3134,7 +3198,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
