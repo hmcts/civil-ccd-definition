@@ -30,7 +30,7 @@ Scenario('1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRspec}) => {
+Scenario('1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRspec}) => {
   console.log('1v1 Defendant solicitor Inform Agreed Extension claim-spec: ' + caseId());
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
@@ -39,7 +39,7 @@ Scenario.skip('1v1 Defendant solicitor perform Inform Agreed Extension', async (
   //await LRspec.see(caseEventMessage('Inform agreed extension date'));
 }).retry(3);
 
-Scenario.skip('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -54,7 +54,7 @@ Scenario.skip('1v1 Respond To Claim - Defendants solicitor rejects claim for def
 }).retry(3);
 
 
-Scenario.skip('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
