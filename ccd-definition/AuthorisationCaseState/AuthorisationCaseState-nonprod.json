@@ -83,7 +83,6 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "GS_profile",
           "[APPLICANTSOLICITORONE]",
           "GS_profile",
           "caseworker-ras-validation"
