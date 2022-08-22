@@ -250,13 +250,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingStandardDisposalOrder",
-    "Label": "Standard disposal order",
-    "FieldType": "DisposalHearingStandardDisposalOrder",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
     "Label": "## Final disposal hearing",
     "FieldType": "Label",
@@ -343,20 +336,6 @@
     "ID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredTelephone",
-    "Label": "Preferred telephone number",
-    "FieldType": "DisposalHearingPreferredTelephone",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredEmail",
-    "Label": "Preferred email",
-    "FieldType": "DisposalHearingPreferredEmail",
     "SecurityClassification": "Public"
   },
   {
@@ -455,29 +434,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderTitle",
-    "Label": "## Applications to set aside, vary or stay this order",
-    "FieldType": "Label",
+    "ID": "disposalHearingAddNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DisposalHearingAddNewDirections",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrder",
-    "Label": " ",
-    "FieldType": "DisposalHearingApplicationsOrder",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderEndLine",
+    "ID": "disposalHearingAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -487,14 +452,6 @@
     "ID": "disposalHearingNotes",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingAddNewDirections",
-    "Label": "Add a new direction",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "DisposalHearingAddNewDirections",
     "SecurityClassification": "Public"
   },
   {
@@ -763,6 +720,13 @@
     "ID": "fastTrackAllocation",
     "Label": " ",
     "FieldType": "FastTrackAllocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAltDisputeResolutionStartLine",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -1038,13 +1002,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "fastTrackMethodVideoConferenceHearingCourtStatement",
-    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "fastTrackMethodTelephoneHearing",
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
@@ -1053,23 +1010,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "fastTrackMethodTelephoneHearingCourtStatement",
-    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "ID": "fastTrackMethodEndLine",
+    "Label": "****",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "fastTrackPreferredTelephone",
-    "Label": "Preferred telephone number",
-    "FieldType": "FastTrackPreferredTelephone",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "fastTrackPreferredEmail",
-    "Label": "Preferred email",
-    "FieldType": "FastTrackPreferredEmail",
     "SecurityClassification": "Public"
   },
   {
