@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess} = require("../../../api/testingSupport");
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 const claimant1 = {
   litigantInPerson: true
