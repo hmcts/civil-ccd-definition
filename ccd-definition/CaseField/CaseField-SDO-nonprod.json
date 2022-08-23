@@ -1085,21 +1085,5 @@
     "Label": "****",
     "FieldType": "Label",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingNoticeList",
-    "Label": "What hearing notice do you want to create?",
-    "HintText": "Select one option.",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "HearingNoticeSelection",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingNoticeListOther",
-    "Label": "What hearing notice are you creating?",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
   }
 ]

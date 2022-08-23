@@ -21,6 +21,18 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingNoticeList = \"OTHER\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseFieldID": "listingOrRelisting",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ListingOrRelisting",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "hearingNoticeList = \"SMALL_CLAIMS\" OR hearingNoticeList = \"OTHER\" OR hearingNoticeList = \"FAST_TRACK_TRIAL\""
   }
 
 ]
