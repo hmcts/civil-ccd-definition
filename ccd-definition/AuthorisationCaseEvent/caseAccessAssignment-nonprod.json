@@ -1,14 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "UserRole": "caseworker-caa",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "applyNocDecision",
-    "UserRole": "caseworker-approver",
     "CRUD": "CRUD"
   }
 ]
