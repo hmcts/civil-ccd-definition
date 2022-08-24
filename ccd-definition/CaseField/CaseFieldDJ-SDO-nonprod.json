@@ -116,13 +116,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingStandardDisposalOrderDJ",
-    "Label": "Standard disposal order",
-    "FieldType": "DisposalHearingStandardDisposalOrderDJ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingDJ",
     "Label": "Final disposal hearing",
     "FieldType": "DisposalHearingFinalDisposalHearingDJ",
@@ -182,20 +175,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredTelephoneDJ",
-    "Label": "## Preferred telephone number \n ${hearingSupportRequirementsDJ.hearingPreferredTelephoneNumber1}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredEmailDJ",
-    "Label": "## Preferred email \n ${hearingSupportRequirementsDJ.hearingPreferredEmail}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleDJ",
     "Label": " ",
     "FieldType": "DisposalHearingBundleDJ",
@@ -204,21 +183,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingClaimSettlingDJ",
-    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement. \n **** ",
+    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "DisposalHearingCostsDJ",
-    "Label": "## Costs \n Costs in the case \n ****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderDJ",
-    "Label": "## Applications to set aside, vary or stay this order \n Because this order has been made without a hearing, the parties have the right to apply to have the order set aside, varied or stayed. A party making such an application must send or deliver the application to the court (together with any appropriate fee) to arrive within seven days of service of this order. \n ****",
+    "Label": "## Costs \n Costs in the case",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

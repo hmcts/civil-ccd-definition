@@ -1,8 +1,3 @@
 [
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "nocRequest",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  }
+
 ]
