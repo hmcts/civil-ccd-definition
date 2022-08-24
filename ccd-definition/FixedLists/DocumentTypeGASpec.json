@@ -14,7 +14,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "DIRECTION_ORDER",
-    "ListElement": "Direction order",
+    "ListElement": "Directions order",
     "DisplayOrder": 11
   }
 ]
