@@ -1538,6 +1538,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
@@ -1784,7 +1785,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
       },
@@ -1803,7 +1805,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORTWO]"
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },
