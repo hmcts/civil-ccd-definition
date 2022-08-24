@@ -2,8 +2,9 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "testsearch",
-    "Label": "I should see this: ${applicantSolicitor1UserDetails.email}",
+    "Label": "I should see thiss: ${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
+    "_comment": "testing global search mappings",
     "SecurityClassification": "Public"
   },
   {

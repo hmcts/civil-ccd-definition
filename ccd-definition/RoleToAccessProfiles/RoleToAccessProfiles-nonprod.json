@@ -216,7 +216,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "hearing-center-admin",
+    "RoleName" : "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile,caseworker-civil-admin",

@@ -12,13 +12,5 @@
     "Label": "case Name Hmcts Internal",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "caseManagementCategory",
-    "Label": "case Management Category",
-    "FieldType": "DynamicList",
-    "_FieldTypeParameter": " configure list ",
-    "SecurityClassification": "Public"
   }
 ]
