@@ -3,7 +3,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_FORMER_SOLICITOR",
-    "Name": "Email: Notify former Solicitor of NOC",
+    "Name": "Email: Notify former Sol of NOC",
     "Description": "Notify Former Solicitor",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
