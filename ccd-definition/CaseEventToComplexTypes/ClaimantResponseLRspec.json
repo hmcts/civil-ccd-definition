@@ -282,23 +282,13 @@
     "EventElementLabel": "Do you want the hearing to be held at a specific court?",
     "EventHintText": "If not, it will be held at the defendant's preferred court.",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "COMPLEX"
   },
   {
     "ID": "RequestedCourt",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
-    "ListElementCode": "courtFinderLabel",
-    "EventElementLabel": "<a target=\"_blank\" href=\"https://courttribunalfinder.service.gov.uk/search/address\">Court and tribunals finder (opens in new tab)</a> Use the 3 digit court location code, not the court name",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "RequestedCourt",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQRequestedCourt",
-    "ListElementCode": "responseCourtCode",
-    "EventElementLabel": "Court location code",
+    "ListElementCode": "responseCourtLocations",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
