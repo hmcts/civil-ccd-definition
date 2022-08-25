@@ -114,9 +114,9 @@ module.exports = {
       respondent1DQRequestedCourt: {
         responseCourtLocations: {
           list_items: [
-            listElement("site_name 0000 - court address 0000 - AA0 0BB")
+            listElement('site_name 0000 - court address 0000 - AA0 0BB')
           ],
-          value: listElement("site_name 0000 - court address 0000 - AA0 0BB")
+          value: listElement('site_name 0000 - court address 0000 - AA0 0BB')
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
