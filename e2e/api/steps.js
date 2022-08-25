@@ -429,7 +429,7 @@ module.exports = {
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
-    deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt')
+    deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
 
     if (solicitor === 'solicitorTwo'){
       deleteCaseFields('respondent1DQHearing');
