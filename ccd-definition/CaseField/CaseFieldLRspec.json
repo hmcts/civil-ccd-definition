@@ -2275,5 +2275,19 @@
     "Label": " ",
     "FieldType": "DefendantPinToPostLRspec",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specDefenceFullAdmittedRequired",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
+    "Label": "<h1 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h1>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
