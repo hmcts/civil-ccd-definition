@@ -264,28 +264,17 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "RequestedCourt",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQRequestedCourt",
-    "ListElementCode": "applicantRequestedCourt",
-    "EventElementLabel": " ",
-    "HintText": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "ID": "RequestedCourt",
+    "ID": "RespondToClaim",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "requestHearingAtSpecificCourt",
     "EventElementLabel": "Do you want the hearing to be held at a specific court?",
     "EventHintText": "If not, it will be held at the defendant's preferred court.",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "RequestedCourt",
+    "ID": "RespondToClaim",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "responseCourtLocations",
@@ -293,7 +282,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "RequestedCourt",
+    "ID": "RespondToClaim",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "reasonForHearingAtSpecificCourt",

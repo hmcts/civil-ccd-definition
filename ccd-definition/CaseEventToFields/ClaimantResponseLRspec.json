@@ -418,7 +418,7 @@
     "CaseFieldID": "applicant1DQRequestedCourt",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "ApplicantCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
   },
