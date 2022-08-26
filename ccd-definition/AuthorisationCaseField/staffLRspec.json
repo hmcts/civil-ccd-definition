@@ -313,7 +313,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "showConditionFlags",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1EmailAddress",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1PinToPostLRspec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "CRUD"
   }
