@@ -50,8 +50,8 @@ module.exports = {
   },
   legalAdvisorUser: {
     password: defaultPassword,
-    email: 'tribunal-caseworker-01@example.com',
-    type: 'tribunal-caseworker'
+    email: 'senior-tribunal-caseworker-01@example.com',
+    type: 'senior-tribunal-caseworker'
   },
   systemupdate: {
     password: defaultPassword,
