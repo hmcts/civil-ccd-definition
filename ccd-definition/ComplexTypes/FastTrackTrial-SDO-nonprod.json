@@ -17,7 +17,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "text1",
     "FieldType": "Label",
-    "ElementLabel": "Date from",
+    "ElementLabel": "Trial date from",
     "SecurityClassification": "Public"
   },
   {
@@ -31,7 +31,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "text2",
     "FieldType": "Label",
-    "ElementLabel": "Date to (Optional)",
+    "ElementLabel": "Trial date to",
     "SecurityClassification": "Public"
   },
   {
@@ -53,13 +53,6 @@
     "ListElementCode": "input3",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FastTrackTrial",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]
