@@ -13,7 +13,7 @@ Scenario('Standard Direction Order Default Judgment claim', async ({I, api}) => 
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await api.defaultJudgment(config.applicantSolicitorUser);
-  await api.sdoDefaultJudgment(config.judgeUser)
+  await api.sdoDefaultJudgment(config.judgeUser);
 });
 
 AfterSuite(async  ({api}) => {
