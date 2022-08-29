@@ -178,8 +178,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "totalClaimAmount",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -202,8 +208,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimInterest",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CR"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CR"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1650,34 +1662,50 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaimExperts",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim_experts2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToCourtLocation",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToCourtLocation2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -3620,10 +3648,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1RespondToClaimExperts",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -3646,10 +3678,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQRequestedCourt",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
