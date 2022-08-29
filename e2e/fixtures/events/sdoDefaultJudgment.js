@@ -37,19 +37,6 @@ module.exports = {
           }
           ]
       },
-      submittedDate: '2022-08-11T14:31:45.8915383',
-      servedDocumentFiles: {
-        particularsOfClaimDocument: [
-          {
-            value: {
-              document_url: 'http://dm-store:8080/documents/6e6efea0-7c5f-49b3-971a-0a715b734ae9',
-              document_binary_url: 'http://dm-store:8080/documents/6e6efea0-7c5f-49b3-971a-0a715b734ae9/binary',
-              document_filename: 'TestFile.pdf' }, id: 'efb18840-1979-11ed-9c61-eb0ab7d670fc'
-          }
-        ]
-      },
-      respondent1ResponseDeadline: '2022-01-10T15:59:50',
-      claimType: 'PERSONAL_INJURY',
       caseManagementOrderSelection: 'TRIAL_HEARING',
       disposalHearingStandardDisposalOrderDJ: {
         input: 'input'
@@ -64,26 +51,6 @@ module.exports = {
           'claimant\'s Mother are to be placed in a separate paginated bundle by the claimant\'s Solicitors ' +
           'and kept up to date. All references to medical notes are to be made by reference to the pages ' +
           'in that bundle.' },
-      solicitorReferences: {
-        applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference' },
-      applicantSolicitor1UserDetails: {
-        email: 'civilunspecified@gmail.com'
-      }, applicantSolicitor1PbaAccounts: {
-        value: {
-          code: 'efb0c4f2-1979-11ed-9c61-eb0ab7d670fc',
-          label: 'PBA0088192'
-        },
-        list_items: [
-          {
-            code: 'efb0c4f2-1979-11ed-9c61-eb0ab7d670fc',
-            label: 'PBA0088192'
-          }, {
-          code: 'efb0c4f3-1979-11ed-9c61-eb0ab7d670fc',
-            label: 'PBA0078095'
-        }
-        ]
-      },
       trialBuildingDispute: {
         input1: 'The claimant must prepare a Scott Schedule of the defects, items of damage or any ' +
           'other relevant matters',
@@ -96,11 +63,6 @@ module.exports = {
         date2: date(84) },
       trialHearingSchedulesOfLossDJToggle: [ 'SHOW' ],
       detailsOfClaim: 'Test details of claim',
-      claimFee: {
-        calculatedAmountInPence: '150000',
-        code: 'FEE0209',
-        version: '3'
-      },
       trialHearingSchedulesOfLossDJ: {
         input1: 'The claimant shall serve an updated schedule of loss on the defendant(s) by 4pm on',
         date1: date(70),
@@ -159,21 +121,6 @@ module.exports = {
           ' as cross-examination will result in the hearing exceeding the 30 minute maximum time estimate' +
           ' for a disposal hearing'
       },
-      respondent1DetailsForClaimDetailsTab: {
-        type: 'INDIVIDUAL',
-        individualTitle: 'Sir',
-        individualFirstName: 'John',
-        individualLastName: 'Doe',
-        primaryAddress: {
-          AddressLine1: 'Flat 2 - respondent',
-          AddressLine2: 'Caversham House 15-17',
-          AddressLine3: 'Church Road',
-          PostTown: 'Reading',
-          County: 'Kent',
-          Country: 'United Kingdom',
-          PostCode: 'RG4 7AA' },
-        partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual' },
       trialHearingDisclosureOfDocumentsDJToggle: [ 'SHOW' ],
       trialHearingWitnessOfFactDJToggle: [ 'SHOW' ],
       applicantVRespondentText: 'Test Inc v Sir John Doe',
@@ -184,82 +131,26 @@ module.exports = {
         input2: 'and any associated correspondence and/or updating report disclosed not later than 4pm on the',
         date2: date(28) },
       trialHearingAlternativeDisputeDJToggle: [ 'SHOW' ],
-      claimIssuedPaymentDetails: {
-        status: 'SUCCESS',
-        reference: 'RC-1234-1234-1234-1234',
-        customerReference: 'Applicant reference'
-      },
       trialHearingNotesDJ: {
         input: 'This order has been made without a hearing. Each party has the right to apply to have this' +
           ' order set aside or varied. Any such application must be received by the court (together with the' +
           ' appropriate fee) by 4pm on',
         date: date(7)
-      }, defaultJudgmentDocuments: [
-        {
-          value: {
-            documentLink: {
-              document_url: 'http://dm-store:8080/documents/cbcf9338-3464-4879-948e-59bc963842be',
-              document_binary_url: 'http://dm-store:8080/documents/cbcf9338-3464-4879-948e-59bc963842be/binary',
-              document_filename: 'default_judgment_form_000DC260.pdf' },
-            documentName: 'default_judgment_form_000DC260.pdf',
-            documentType: 'DEFAULT_JUDGMENT',
-            documentSize: 23924,
-            createdDatetime: '2022-08-11T15:32:08',
-            createdBy: 'Civil' },
-          id: 'f880a8b4-79a5-4b02-a7f7-6d3adec7a10f' } ],
+      },
       trialHearingTrialDJToggle: [ 'SHOW' ],
       hearingSupportRequirementsDJ: {
         hearingPreferredLocation: 'site_name 0000 - court address 0000 - AA0 0BB' },
-      allocatedTrack: 'MULTI_CLAIM',
-      applicant1LitigationFriend: {
-        fullName: 'Bob the litigant friend',
-        hasSameAddressAsLitigant: 'No',
-        primaryAddress: {
-          AddressLine1: 'Flat 2 - litigant friend',
-          AddressLine2: 'Caversham House 15-17',
-          AddressLine3: 'Church Road',
-          PostTown: 'Reading',
-          County: 'Kent',
-          Country: 'United Kingdom',
-          PostCode: 'RG4 7AA' } },
       disposalHearingDisclosureOfDocumentsDJ: {
         input: 'The parties shall serve on each other copies of the documents upon which reliance ' +
           'is to be placed at the disposal hearing by 4pm on',
         date: date(28) },
       trialHearingCostsToggle: [ 'SHOW' ],
-      applicant1: {
-        type: 'COMPANY',
-        companyName: 'Test Inc',
-        primaryAddress: {
-          AddressLine1: 'Flat 2 - applicant',
-          AddressLine2: 'Caversham House 15-17',
-          AddressLine3: 'Church Road',
-          PostTown: 'Reading',
-          County: 'Kent',
-          Country: 'United Kingdom',
-          PostCode: 'RG4 7AA' },
-        partyName: 'Test Inc',
-        partyTypeDisplayValue: 'Company' },
       trialHearingSettlementDJToggle: [ 'SHOW' ],
-      issueDate: '2022-08-11',
       disposalHearingNotesDJ: {
         input: 'This Order has been made without a hearing. Each party has the right to apply to have this Order' +
           ' set aside or varied. Any such application must be received by the Court (together with the appropriate' +
           ' fee) by 4pm on',
         date: date(7) },
-      systemGeneratedCaseDocuments: [
-        {
-          value: {
-            documentLink: {
-              document_url: 'http://dm-store:8080/documents/1b061b5a-ee58-440a-9572-a881d34f7f15',
-              document_binary_url: 'http://dm-store:8080/documents/1b061b5a-ee58-440a-9572-a881d34f7f15/binary',
-              document_filename: 'sealed_claim_form_000DC260.pdf' },
-            documentName: 'sealed_claim_form_000DC260.pdf',
-            documentType: 'SEALED_CLAIM',
-            documentSize: 55630,
-            createdDatetime: '2022-08-11T15:31:48',
-            createdBy: 'Civil' },
-          id: '9a0cabaf-1669-41a4-83a3-2f5709401af9' } ],
       trialHearingVariationsDirectionsDJToggle: [ 'SHOW' ],
       disposalHearingSchedulesOfLossDJ: {
         input1: 'If there is a claim for ongoing/future loss in the original schedule of losses then ' +
@@ -268,7 +159,6 @@ module.exports = {
         input2: 'The defendant, in the event of challenge, must send an up to date counter-schedule of loss' +
           ' to the claimant by 4pm on the',
         date2: date(84) },
-      claimNotificationDate: '2022-08-11T14:31:55.1667155',
       trialHearingDisclosureOfDocumentsDJ: {
         input1: 'By serving a list with a disclosure statement by 4pm on',
         date1: date(28),
@@ -311,32 +201,8 @@ module.exports = {
         date2: date(84) },
       disposalHearingBundleDJ: {
         input: 'The claimant must lodge at court at least 7 days before the disposal' },
-      respondent1: {
-        type: 'INDIVIDUAL',
-        individualTitle: 'Sir',
-        individualFirstName: 'John',
-        individualLastName: 'Doe',
-        primaryAddress: {
-          AddressLine1: 'Flat 2 - respondent',
-          AddressLine2: 'Caversham House 15-17',
-          AddressLine3: 'Church Road',
-          PostTown: 'Reading',
-          County: 'Kent',
-          Country: 'United Kingdom',
-          PostCode: 'RG4 7AA' },
-        partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual' },
-      courtLocation: {
-        applicantPreferredCourt: '344' },
-      claimValue: {
-        statementOfValueInPennies: '3000000' },
       disposalHearingMethodInPersonDJ: null,
       trialHearingMethodInPersonDJ: null,
-      applicant1OrganisationPolicy: {
-        Organisation: {
-          OrganisationID: 'Q1KOKP2' },
-        OrgPolicyReference: 'Claimant policy reference',
-        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]' },
       trialRoadTrafficAccident: {
         input: 'Photographs and/or a plan of the location of the accident shall be prepared and agreed by the parties.'
       },
