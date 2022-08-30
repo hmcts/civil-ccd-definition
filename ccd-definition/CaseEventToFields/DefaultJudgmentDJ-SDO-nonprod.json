@@ -121,6 +121,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingJudgesRecitalDJName",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingJudgesRecitalDJ",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
