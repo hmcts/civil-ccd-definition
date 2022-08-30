@@ -74,6 +74,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     Court: {
       courtLocation: {
+        // civ-3278/4203 needed still to pass the tests until both ccd and service are merged
+        applicantPreferredCourt: '343',
         applicantPreferredCourtLocationList: {
           list_items: [
             listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
