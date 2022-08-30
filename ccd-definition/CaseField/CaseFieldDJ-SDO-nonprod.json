@@ -59,6 +59,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingJudgesRecitalDJName",
+    "Label": "Enter your Title and Surname",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingJudgesRecitalDJ",
     "Label": "Judge's recital",
     "FieldType": "DisposalHearingJudgesRecitalDJ",
