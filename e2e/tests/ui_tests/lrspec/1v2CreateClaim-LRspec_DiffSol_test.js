@@ -36,7 +36,7 @@ Scenario('1v2 Diff LRs Respond To Claim fast track - Defendants solicitor reject
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('1v2 Diff LRs Respond To Claim fast track - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario.skip('1v2 Diff LRs Respond To Claim fast track - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
   await LRspec.login(config.secondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
@@ -48,7 +48,7 @@ Scenario('1v2 Diff LRs Respond To Claim fast track - Defendants solicitor reject
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('1v2 Diff LRs Claimant solicitor responds to defence fast track - claimant Intention to proceed', async ({LRspec}) => {
+Scenario.skip('1v2 Diff LRs Claimant solicitor responds to defence fast track - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
