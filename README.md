@@ -7,7 +7,7 @@ Civil CCD Definition and E2E tests
 - [Building and deploying application](#building-and-deploying-the-application)
 - [Testing](#testing)
 
-## Building and deploying the application
+## Building and deploying the application 
 
 ### Dependencies
 
