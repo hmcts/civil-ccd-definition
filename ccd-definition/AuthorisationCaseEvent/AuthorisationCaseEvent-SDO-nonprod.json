@@ -5,6 +5,8 @@
   "AccessControl": [
       {
       "UserRoles": [
+        "caseworker-civil-admin",
+        "caseworker-civil-solicitor",
         "judge-profile",
         "legal-adviser"
       ],
@@ -84,6 +86,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
         ],
