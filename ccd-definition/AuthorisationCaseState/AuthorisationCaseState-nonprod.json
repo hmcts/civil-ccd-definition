@@ -91,7 +91,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "[APPLICANTSOLICITORONE]",
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
