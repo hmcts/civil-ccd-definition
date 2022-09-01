@@ -10,17 +10,15 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
-// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//let caseNumber;
+let caseNumber;
 
 Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
-  // Reinstate the lines below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //caseNumber = await I.grabCaseNumber();
-  //await I.see(`Case ${caseNumber} has been created.`);
+  caseNumber = await I.grabCaseNumber();
+  await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
 Scenario('Judge initiate SDO with sum of damages and allocate small claims track', async ({I}) => {
