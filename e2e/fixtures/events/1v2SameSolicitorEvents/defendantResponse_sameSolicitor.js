@@ -117,9 +117,9 @@ module.exports = {
       respondent1DQRequestedCourt: {
         responseCourtLocations: {
           list_items: [
-            listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+            listElement('Liverpool Civil and Family Court - VERNON STREET, CITY SQUARE - L2 2BX')
           ],
-          value: listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+          value: listElement('Liverpool Civil and Family Court - VERNON STREET, CITY SQUARE - L2 2BX')
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
