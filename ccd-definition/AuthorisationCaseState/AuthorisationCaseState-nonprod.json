@@ -98,7 +98,8 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
