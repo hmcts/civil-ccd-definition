@@ -86,7 +86,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "hearing-schedule-access"
         ],
         "CRUD": "CRU"
