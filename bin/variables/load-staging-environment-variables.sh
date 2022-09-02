@@ -12,5 +12,5 @@ echo "export CCD_DEFINITION_STORE_API_BASE_URL=https://civil-ccd-definition-stor
 echo "export CAMUNDA_BASE_URL=https://civil-ccd-camunda-staging-aat.service.core-compute-aat.internal"
 
 # definition placeholders
-echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-service-staging-java"
+echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-staging-java"
 echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=http://civil-general-applications-staging-java"
