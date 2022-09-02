@@ -4,10 +4,7 @@ tags:
 postgresql:
   enabled: true
   image:
-    registry: hmctspublic.azurecr.io
-    repository: imported/bitnami/postgresql
-    tag: '11.3.0'
-    pullPolicy: Always
+    tag: '11.6.0'
     debug: true
   resources:
     requests:
@@ -131,7 +128,7 @@ ccd:
       enabled: true
 
   global:
-    ccdApiGatewayIngress: http://civil-ccd-gateway-staging-aat.service.core-compute-aat.internal
+    ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
     ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
