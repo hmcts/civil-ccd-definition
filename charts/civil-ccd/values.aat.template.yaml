@@ -128,7 +128,7 @@ ccd:
       enabled: true
 
   global:
-    ccdApiGatewayIngress: http://civil-ccd-gateway-staging-aat.service.core-compute-aat.internal
+    ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
     ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
