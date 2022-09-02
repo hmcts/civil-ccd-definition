@@ -60,8 +60,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingJudgesRecitalDJName",
-    "Label": "Judge's recital",
-    "HintText": "Enter your Title and Surname",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
