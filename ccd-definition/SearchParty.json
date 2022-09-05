@@ -8,8 +8,8 @@
     "SearchPartyEmailAddress": "respondentSolicitor1EmailAddress",
     "SearchPartyAddressLine1": "respondent1.primaryAddress.AddressLine1",
     "SearchPartyPostCode": "respondent1.primaryAddress.PostCode",
-    "SearchPartyDoB":"respondent1.individualDateOfBirth",
-    "SearchPartyDoD": ""
+    "SearchPartyDOB":"respondent1.individualDateOfBirth",
+    "SearchPartyDOD": ""
   },
   {
     "LiveFrom":"",
@@ -20,7 +20,7 @@
     "SearchPartyEmailAddress": "respondentSolicitor2EmailAddress",
     "SearchPartyAddressLine1": "respondent2.primaryAddress.AddressLine1",
     "SearchPartyPostCode": "respondent2.primaryAddress.PostCode",
-    "SearchPartyDoB":"respondent2.individualDateOfBirth",
+    "SearchPartyDOB":"respondent2.individualDateOfBirth",
     "SearchPartyDoD": ""
   },
   {
@@ -32,8 +32,8 @@
     "SearchPartyEmailAddress": "applicantSolicitor1UserDetails.email",
     "SearchPartyAddressLine1": "applicant1.primaryAddress.AddressLine1",
     "SearchPartyPostCode": "applicant1.primaryAddress.PostCode",
-    "SearchPartyDoB":"applicant1.individualDateOfBirth",
-    "SearchPartyDoD": ""
+    "SearchPartyDOB":"applicant1.individualDateOfBirth",
+    "SearchPartyDOD": ""
   },
   {
     "LiveFrom":"",
@@ -44,7 +44,7 @@
     "SearchPartyEmailAddress": "",
     "SearchPartyAddressLine1": "applicant2.primaryAddress.AddressLine1",
     "SearchPartyPostCode": "applicant2.primaryAddress.PostCode",
-    "SearchPartyDoB":"applicant2.individualDateOfBirth",
-    "SearchPartyDoD": ""
+    "SearchPartyDOB":"applicant2.individualDateOfBirth",
+    "SearchPartyDOD": ""
   }
 ]
