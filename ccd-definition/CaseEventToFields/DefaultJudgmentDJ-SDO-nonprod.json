@@ -103,7 +103,9 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "_FieldShowCondition": "caseManagementOrder=\"DO_NOT_SHOW_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "_RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
