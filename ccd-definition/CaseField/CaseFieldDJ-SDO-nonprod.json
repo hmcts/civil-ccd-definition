@@ -67,13 +67,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingJudgesRecitalDJName",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingJudgesRecitalDJ",
     "Label": " ",
     "FieldType": "DisposalHearingJudgesRecitalDJ",
