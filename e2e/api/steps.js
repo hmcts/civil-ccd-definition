@@ -135,7 +135,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
-    //field is deleted in about to submit callback
+    // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
