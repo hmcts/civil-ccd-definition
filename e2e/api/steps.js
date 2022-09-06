@@ -12,6 +12,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -58,7 +59,7 @@ const eventData = {
       solicitorOne: data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE,
       solicitorTwo: data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO
     },
-    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
+    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM_TWO_V_ONE
   },
   informAgreedExtensionDates: {
     ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
@@ -141,7 +142,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
-    //field is deleted in about to submit callback
+    // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
@@ -374,6 +375,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1');
+    }
 
     let informAgreedExtensionData;
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -432,6 +436,14 @@ module.exports = {
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1DQHearing');
+      deleteCaseFields('respondent1DQLanguage');
+      deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQExperts');
+      deleteCaseFields('respondent1DQWitnesses');
+    }
 
     await validateEventPages(defendantResponseData, solicitor);
 
@@ -793,7 +805,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }

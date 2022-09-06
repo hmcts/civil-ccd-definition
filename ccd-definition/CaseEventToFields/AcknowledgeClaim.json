@@ -267,7 +267,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
