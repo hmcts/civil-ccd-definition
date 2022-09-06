@@ -995,8 +995,8 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" OR multiPartyResponseTypeFlags=\"PART_ADMISSION\"",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\" OR respondent1ClaimResponseType=\"PART_ADMISSION\" OR respondent1ClaimResponseTypeToApplicant2=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1031,7 +1031,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "Upload",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\" OR respondent2ClaimResponseType=\"PART_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1157,7 +1157,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1169,7 +1169,7 @@
     "PageID": "RespondentResponseType",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1179,7 +1179,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\"",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1281,7 +1281,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponseType",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\""
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
