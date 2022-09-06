@@ -12,6 +12,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -41,7 +42,10 @@ const data = {
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
-  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
+  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
+  DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
+  DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
 };
 
 const eventData = {
@@ -594,6 +598,30 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
+  defaultJudgment: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'DEFAULT_JUDGEMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
+    } else if (mpScenario === 'TWO_V_ONE') {
+      await validateEventPages(data.DEFAULT_JUDGEMENT_2V1);
+    } else {
+      await validateEventPages(data.DEFAULT_JUDGEMENT);
+    }
+    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+      header: '',
+      body: ''
+    }, true);
+
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   getCaseId: async () => {
      console.log (`case created: ${caseId}`);
      return caseId;
@@ -716,7 +744,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
