@@ -17,5 +17,26 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CONTACT_DETAILS_CHANGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONESPEC]",
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
