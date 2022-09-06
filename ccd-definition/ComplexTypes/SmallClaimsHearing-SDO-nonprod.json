@@ -16,10 +16,27 @@
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "time",
-    "FieldType": "FixedList",
+    "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsTimeEstimate",
-    "ElementLabel": "Select time estimate",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "otherHours",
+    "ElementLabel": "Hour(s)",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "time = \"OTHER\""
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "otherMinutes",
+    "ElementLabel": "Minute(s)",
+    "FieldType": "Number",
+    "Max": 59,
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "time = \"OTHER\""
   },
   {
     "ID": "SmallClaimsHearing",

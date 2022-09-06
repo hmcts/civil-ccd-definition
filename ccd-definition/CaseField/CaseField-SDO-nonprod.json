@@ -506,7 +506,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsHearingTitle",
-    "Label": "## Hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
