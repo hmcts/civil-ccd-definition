@@ -347,13 +347,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "trialHearingMethodLineDJ",
-    "Label": "****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "trialHearingNotesDJ",
     "Label": "Notes",
     "FieldType": "TrialHearingNotesDJ",

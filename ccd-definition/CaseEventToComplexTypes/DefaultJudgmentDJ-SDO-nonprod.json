@@ -432,6 +432,14 @@
     "DisplayContext":"MANDATORY"
   },
   {
+    "ID":"TrialHearingTrialDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTrialDJ",
+    "ListElementCode":"type",
+    "FieldDisplayOrder":6,
+    "DisplayContext":"MANDATORY"
+  },
+  {
     "ID":"TrialHearingAddNewDirectionsDJ",
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingAddNewDirectionsDJ",
