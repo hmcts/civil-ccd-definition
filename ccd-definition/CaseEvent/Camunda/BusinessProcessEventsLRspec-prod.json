@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "VALIDATE_FEE_SPEC",
-    "Name": "Validate fee",
-    "Description": "Validate fee for Spec",
+    "ID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1_SPEC",
+    "Name": "Assign to applicantSolicitor1",
+    "Description": "Assign case to applicant solicitor 1 for Spec",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
