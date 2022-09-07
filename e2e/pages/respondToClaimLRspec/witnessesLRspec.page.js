@@ -32,18 +32,14 @@ module.exports = {
       I.click(this.fields(party).witnessesToAppear.options.no);
     });
 
-  }
-
-   if(party === 'respondent1'){
+   } else if (party === 'respondent1'){
       I.waitForElement(this.fields(party).witnessesToAppear.id);
       await I.runAccessibilityTest();
       await within(this.fields(party).witnessesToAppear.id, () => {
         I.click(this.fields(party).witnessesToAppear.options.no);
       });
 
-    }
-
-   if(party === 'respondent2'){
+    } else if(party === 'respondent2'){
       I.waitForElement(this.fields(party).witnessesToAppear.id2);
       await I.runAccessibilityTest();
       await within(this.fields(party).witnessesToAppear.id2, () => {

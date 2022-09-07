@@ -25,7 +25,7 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
-Scenario('1v2 Diff LRs Respond To fast track Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -36,7 +36,7 @@ Scenario('1v2 Diff LRs Respond To fast track Claim - Defendants solicitor reject
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v2 Diff LRs Respond To fast track Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
   await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
   await LRspec.login(config.secondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
@@ -48,7 +48,7 @@ Scenario.skip('1v2 Diff LRs Respond To fast track Claim - Defendants solicitor r
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v2 Diff LRs Claimant solicitor responds to defence fast track - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');

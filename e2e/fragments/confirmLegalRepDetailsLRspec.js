@@ -26,8 +26,7 @@ module.exports = {
     await within(this.fields.solicitor1Reference.id, () => {
       I.click(options.yes);
     });
-  }
-    if(twoDefendants){
+  }else{
       I.waitForElement(this.fields.solicitor2Reference.id);
       await I.runAccessibilityTest();
       const options2 = this.fields.solicitor2Reference.options;
@@ -36,5 +35,8 @@ module.exports = {
       });
     }
     await I.clickContinue();
+
   }
+
+
 };
