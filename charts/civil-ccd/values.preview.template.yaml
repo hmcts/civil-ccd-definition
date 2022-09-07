@@ -85,6 +85,7 @@ java:
     FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     STITCHING_API_ENABLED: false
     DOCUMENT_MANAGEMENT_SECURED: true
+    EM_CCD_ORCHESTRATOR_URL: http://em-ccd-orchestrator-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
