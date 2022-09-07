@@ -392,6 +392,22 @@
     "DisplayContext":"OPTIONAL"
   },
   {
+    "ID":"TrialHearingJudgesRecitalDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingJudgesRecitalDJ",
+    "ListElementCode":"label",
+    "FieldDisplayOrder":1,
+    "DisplayContext":"READONLY"
+  },
+  {
+    "ID": "TrialHearingJudgesRecitalDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingJudgesRecitalDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder":2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID":"TrialHearingTrialDJ",
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTrialDJ",
