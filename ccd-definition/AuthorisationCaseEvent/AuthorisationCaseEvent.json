@@ -687,13 +687,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "TAKE_CASE_OFFLINE",
+    "CaseEventID": "JUDICIAL_REFERRAL",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "R"
       }
     ]
   }
