@@ -10,6 +10,29 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicationDetails",
+    "Label": "Application details",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HearingAppFor",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "typeOfApplication",
+    "Label": "Type of application",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dateOfApplication",
+    "Label": "Date of application",
+    "HintText": "For example, 27 3 2022",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "hearingNoticeListOther",
     "Label": "What hearing notice are you creating?",
     "FieldType": "Text",
@@ -21,6 +44,43 @@
     "Label": "Is this a listing or a relisting?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ListingOrRelisting",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingLocation",
+    "Label": "Location",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "channel",
+    "Label": "Channel",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingChannel",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDateTime",
+    "Label": "Date and Time",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDuration",
+    "Label": "Duration",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HearingLengthCasePro",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "information",
+    "Label": "Is there more information you need to add to the Hearing Notification letter?",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]
