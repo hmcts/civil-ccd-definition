@@ -52,7 +52,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "JUDICIAL_REFERRAL",
+    "ID": "REFER_TO_JUDGE",
     "Name": "Claim is moved onto judges",
     "Description": "Claim is moved onto judges",
     "PreConditionState(s)": "*",

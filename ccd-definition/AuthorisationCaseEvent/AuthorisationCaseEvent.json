@@ -687,7 +687,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "JUDICIAL_REFERRAL",
+    "CaseEventID": "REFER_TO_JUDGE",
     "AccessControl": [
       {
         "UserRoles": [
