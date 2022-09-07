@@ -1061,8 +1061,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
+    "CaseFieldID": "sdoHearingNotes",
     "PageFieldDisplayOrder": 31,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsNotes",
+    "PageFieldDisplayOrder": 32,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,

@@ -646,6 +646,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "SDOHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
     "Label": "Notes",
     "FieldType": "SmallClaimsNotes",
