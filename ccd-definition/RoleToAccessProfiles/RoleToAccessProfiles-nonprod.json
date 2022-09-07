@@ -1,5 +1,14 @@
 [
   {
+    "RoleName" : "idam:caseworker-caa",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-caa",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "idam:caseworker-civil-solicitor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
@@ -333,10 +342,10 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "senior-tribunal-caseworker",
+    "RoleName" : "fee-paid-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser",
+    "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
