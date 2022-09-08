@@ -1,5 +1,14 @@
 [
   {
+    "RoleName" : "idam:caseworker-caa",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-caa",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "idam:caseworker-civil-solicitor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
@@ -129,7 +138,7 @@
     "RoleName" : "circuit-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,GS_profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -138,7 +147,7 @@
     "RoleName" : "leadership-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,GS_profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -147,7 +156,7 @@
     "RoleName" : "judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile",
+    "AccessProfiles": "judge-profile,GS_profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -207,6 +216,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "hmcts-staff",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
@@ -216,7 +234,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "hearing-center-admin",
+    "RoleName" : "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile,caseworker-civil-admin",
@@ -328,6 +346,24 @@
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "senior-tribunal-caseworker",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile,legal-adviser",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "fee-paid-judge",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

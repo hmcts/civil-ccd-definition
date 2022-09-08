@@ -11,6 +11,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 
 let caseId, eventName;
@@ -25,7 +26,10 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
   CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
-  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
+  DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
+  DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
+  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js')
 };
 
 const eventData = {
@@ -190,7 +194,8 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                           expectedEndState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -205,7 +210,7 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -222,6 +227,30 @@ module.exports = {
     let respondent2deadline ={};
     respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
+  },
+
+  defaultJudgmentSpec: async (user, scenario) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'DEFAULT_JUDGEMENT_SPEC';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (scenario === 'ONE_V_TWO') {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
+    } else if (scenario === 'TWO_V_ONE') {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
+    } else {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
+    }
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
+
+
+
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   getCaseId: async () => {
@@ -363,6 +392,43 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
+const validateEventPagesDefaultJudgments = async (data, scenario) => {
+  //transform the data
+  console.log('validateEventPages');
+  for (let pageId of Object.keys(data.userInput)) {
+    await assertValidDataDefaultJudgments(data, pageId, scenario);
+  }
+};
+
+const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+  const userData = data.userInput[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+
+  assert.equal(response.status, 200);
+  if (pageId === 'paymentConfirmationSpec') {
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
+      responseBody.data.currentDefendantName = 'Sir John Doe';
+    } else {
+      responseBody.data.currentDefendantName = 'both defendants';
+    }
+
+  } else if (pageId === 'paymentSetDate') {
+    responseBody.data.repaymentDue= '1580.00';
+  }
+  if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
+    responseBody.data.currentDatebox = '25 August 2022';
+  }
+  assert.deepEqual(responseBody.data, caseData);
+};
+
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
@@ -370,11 +436,17 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
+const assertContainsPopulatedFields = returnedCaseData => {
+  for (let populatedCaseField of Object.keys(caseData)) {
+    assert.property(returnedCaseData,  populatedCaseField);
+  }
+};
+
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
