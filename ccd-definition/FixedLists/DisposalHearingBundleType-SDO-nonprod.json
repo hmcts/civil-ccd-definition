@@ -2,13 +2,19 @@
   {
     "ID": "DisposalHearingBundleType",
     "ListElementCode": "DOCUMENTS",
-    "ListElement": "an indexed bundle of documents (contained in a suitable binder), with each page clearly numbered",
+    "ListElement": "an indexed bundle of documents, with each page clearly numbered",
     "DisplayOrder": 1
   },
   {
     "ID": "DisposalHearingBundleType",
     "ListElementCode": "ELECTRONIC",
-    "ListElement": "An electronic bundle, pdf....",
+    "ListElement": "an electronic bundle of digital documents",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "DisposalHearingBundleType",
+    "ListElementCode": "SUMMARY",
+    "ListElement": "a case summary containing no more than 500 words",
     "DisplayOrder": 2
   }
 ]
