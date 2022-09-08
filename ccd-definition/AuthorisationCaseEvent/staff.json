@@ -208,5 +208,11 @@
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDICIAL_REFERRAL",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
