@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "hearingFee",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "hearingDueDate",
+    "TabFieldDisplayOrder": 2
+  }
+]

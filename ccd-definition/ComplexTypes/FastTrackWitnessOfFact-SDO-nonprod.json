@@ -16,7 +16,7 @@
   {
     "ID": "FastTrackWitnessOfFact",
     "ListElementCode": "input2",
-    "FieldType": "Number",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -44,7 +44,7 @@
   {
     "ID": "FastTrackWitnessOfFact",
     "ListElementCode": "input6",
-    "FieldType": "Number",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
