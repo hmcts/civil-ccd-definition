@@ -20,6 +20,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementCategory",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "CPRAcceptanceLabel",
     "AccessControl": [
       {
@@ -286,8 +305,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-
+          "caseworker-civil-systemupdate",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -306,8 +325,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-
+          "caseworker-civil-systemupdate",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -331,5 +350,38 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNameHmctsInternal",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "GS_profile",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "SearchCriteria",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseManagementCategory",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   }
 ]
