@@ -661,7 +661,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -845,6 +845,11 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
   } else {
     delete responseBody.data['respondent2'];
   }
+  return responseBody;
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
   return responseBody;
 };
 
