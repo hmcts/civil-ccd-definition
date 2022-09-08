@@ -5,7 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -15,7 +16,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -23,7 +25,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -31,7 +34,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -39,7 +43,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -49,7 +54,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -61,7 +67,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -84,8 +91,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "[APPLICANTSOLICITORONE]",
-          "GS_profile",
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -106,8 +113,8 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "basic-access",
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
