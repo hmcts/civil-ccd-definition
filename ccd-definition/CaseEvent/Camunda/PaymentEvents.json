@@ -15,7 +15,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "SERVICE_REQUEST_UPDATE",
-    "Name": "Received service request status",
+    "Name": "Received request status",
     "Description": "Receive service request status for hearing fee",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
