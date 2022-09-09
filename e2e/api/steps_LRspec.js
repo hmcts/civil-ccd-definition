@@ -416,7 +416,8 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
     caseId
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  
   assert.equal(response.status, 200);
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
