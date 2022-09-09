@@ -26,12 +26,5 @@
     "FieldType": "Text",
     "ElementLabel": "Citizen Case Role",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DefendantPinToPostLRspec",
-    "ListElementCode": "pinUsed",
-    "FieldType": "YesOrNo",
-    "ElementLabel": "Is Pin Used Flag",
-    "SecurityClassification": "Public"
   }
 ]

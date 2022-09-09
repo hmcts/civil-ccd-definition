@@ -377,12 +377,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1EmailAddress",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1PinToPostLRspec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

@@ -2257,13 +2257,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1EmailAddress",
-    "Label": " ",
-    "FieldType": "Email",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1PinToPostLRspec",
     "Label": " ",
     "FieldType": "DefendantPinToPostLRspec",
