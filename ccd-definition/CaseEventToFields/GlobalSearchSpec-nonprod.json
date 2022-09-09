@@ -1,0 +1,12 @@
+{
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "CREATE_CLAIM_SPEC",
+  "CaseFieldID": "caseNameHmctsInternal",
+  "PageFieldDisplayOrder": 4,
+  "DisplayContext": "READONLY",
+  "PageID": "PbaNumber",
+  "PageDisplayOrder": 4,
+  "PageColumnNumber": 1,
+  "ShowSummaryChangeOption": "N",
+  "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"DO_NOT_SHOW_IN_UI\""
+}
