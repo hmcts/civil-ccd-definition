@@ -7,8 +7,7 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
-      events.DEFAULT_JUDGEMENT_SPEC,
-      events.CREATE_SDO
+      events.DEFAULT_JUDGEMENT_SPEC
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
@@ -16,7 +15,6 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
-      events.CREATE_SDO,
       events.LIFT_BREATHING_SPACE_SPEC
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
@@ -29,8 +27,7 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
-      events.DEFAULT_JUDGEMENT_SPEC,
-      events.CREATE_SDO
+      events.DEFAULT_JUDGEMENT_SPEC
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
@@ -57,8 +54,7 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.DEFENDANT_RESPONSE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
-      events.INFORM_AGREED_EXTENSION_DATE_SPEC,
-      events.CREATE_SDO
+      events.INFORM_AGREED_EXTENSION_DATE_SPEC
     ],
     AWAITING_DEFENDANT_RESPONSE: [
       events.CHANGE_SOLICITOR_EMAIL,
@@ -69,13 +65,11 @@ module.exports = {
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CREATE_SDO
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
@@ -90,7 +84,6 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
