@@ -56,7 +56,7 @@ module.exports =  {
     });
   },
 
-  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONESPEC', user = config.defendantSolicitorUser) => {
+  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
       const authToken = await idamHelper.accessToken(user);
 
       await retry(() => {

@@ -36,7 +36,7 @@ module.exports = {
     const userData = {
       userInput: {
         References: {
-          superClaimType: 'SPEC_CLAIM',
+          CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
@@ -59,7 +59,7 @@ module.exports = {
         ClaimantSolicitorOrganisation: {
           applicant1OrganisationPolicy: {
             OrgPolicyReference: 'Claimant policy reference',
-            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
+            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.claimantSolicitorOrgId
             }
@@ -79,7 +79,7 @@ module.exports = {
           respondent1OrgRegistered: 'Yes',
           respondent1OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference',
-            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.defendant1SolicitorOrgId
             },
@@ -157,7 +157,7 @@ module.exports = {
           totalClaimAmount: claimAmount / 100
         },
         ClaimAmountDetails: {
-          superClaimType: 'SPEC_CLAIM'
+          CaseAccessCategory: 'SPEC_CLAIM'
         },
         InterestSummary: {
           totalInterest: 0,
@@ -244,7 +244,7 @@ module.exports = {
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
             respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWOSPEC]',
+              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
               Organisation: {
                 OrganisationID: config.defendant2SolicitorOrgId,
                 OrganisationName: 'Civil - Organisation 2'

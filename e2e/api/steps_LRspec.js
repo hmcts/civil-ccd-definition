@@ -109,7 +109,7 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
