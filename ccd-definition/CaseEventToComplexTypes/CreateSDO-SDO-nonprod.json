@@ -746,14 +746,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "date",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
@@ -1228,7 +1220,7 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "EventHintText": "Number of pages, e.g. 4"
-    
+
   },
   {
     "ID": "FastTrackWitnessOfFact",

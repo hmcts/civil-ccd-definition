@@ -647,7 +647,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
-    "Label": "Notes",
+    "Label": "The order has been made without a hearing",
     "FieldType": "SmallClaimsNotes",
     "SecurityClassification": "Public"
   },
