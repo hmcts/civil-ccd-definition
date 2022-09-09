@@ -211,6 +211,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "SERVICE_REQUEST_UPDATE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_RESPONDENT_LITIGANT_IN_PERSON",
     "AccessControl": [
       {
