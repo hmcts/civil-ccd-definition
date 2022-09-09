@@ -203,6 +203,7 @@
     "Name": "Take case offline",
     "Description": "Take case offline",
     "DisplayOrder": 15,
+    "EventEnablingCondition": "respondentSolicitor2Reference = \"None\"",
     "PreConditionState(s)": "*",
     "PostConditionState": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "SecurityClassification": "Public",
