@@ -131,22 +131,24 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     LegalRepresentation: {
       respondent1Represented: `${legalRepresentation}`
     },
-    DefendantSolicitorOrganisation: {
-      respondent1OrgRegistered: 'Yes',
-      respondent1OrganisationPolicy: {
-        OrgPolicyReference: 'Defendant policy reference',
-        OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
-        Organisation: {
-          OrganisationID: config.defendant1SolicitorOrgId
+    ...(legalRepresentation === 'Yes') ? {
+      DefendantSolicitorOrganisation: {
+        respondent1OrgRegistered: 'Yes',
+        respondent1OrganisationPolicy: {
+          OrgPolicyReference: 'Defendant policy reference',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+          Organisation: {
+            OrganisationID: config.defendant1SolicitorOrgId
+          },
         },
       },
-    },
-    DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: buildAddress('service')
-    },
-    DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
-    },
+      DefendantSolicitorServiceAddress: {
+        respondentSolicitor1ServiceAddress: buildAddress('service')
+      },
+      DefendantSolicitorEmail: {
+        respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+      },
+    }: {},
     AddAnotherDefendant: {
       addRespondent2: 'No'
     },
