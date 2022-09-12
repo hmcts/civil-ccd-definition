@@ -34,5 +34,41 @@
     "ListElementCode": "RELIEF_FROM_SANCTIONS",
     "ListElement": "Relief from sanctions",
     "DisplayOrder": 6
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "UNLESS_ORDER",
+    "ListElement": "Unless order",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "SET_ASIDE_JUDGEMENT",
+    "ListElement": "Set aside judgement",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "VARY_ORDER",
+    "ListElement": "Vary order",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "VARY_JUDGEMENT",
+    "ListElement": "Vary Judgement",
+    "DisplayOrder": 10
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "ADJOURN_OR_VACATE_HEARING",
+    "ListElement": "Adjourn or vacate a hearing",
+    "DisplayOrder": 11
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "OTHER",
+    "ListElement": "Other",
+    "DisplayOrder": 12
   }
 ]
