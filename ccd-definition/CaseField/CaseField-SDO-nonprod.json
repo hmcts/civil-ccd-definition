@@ -1092,5 +1092,12 @@
     "Label": "## What is the reason for not drawing a Standard Directions Order? \n",
     "FieldType": "ReasonNotSuitableSDO",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoOrderDocument",
+    "Label": "View directions order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]
