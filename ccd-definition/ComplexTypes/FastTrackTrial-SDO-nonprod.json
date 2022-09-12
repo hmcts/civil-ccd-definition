@@ -51,7 +51,22 @@
   {
     "ID": "FastTrackTrial",
     "ListElementCode": "input3",
-    "FieldType": "TextArea",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldType": "Label",
+    "ElementLabel": "#### Select bundle type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "type",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrackTrialBundleType",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }

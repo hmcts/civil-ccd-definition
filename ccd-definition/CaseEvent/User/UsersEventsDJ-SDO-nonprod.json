@@ -4,6 +4,7 @@
   "Name": "Directions Order (Judgment)",
   "Description": "Standard Directions Order (Judgment)",
   "DisplayOrder": 18,
+  "EventEnablingCondition": "detailsOfDirection = \"None\"",
   "PreConditionState(s)": "JUDICIAL_REFERRAL",
   "PostConditionState": "*",
   "SecurityClassification": "Public",
@@ -14,5 +15,6 @@
   "ShowEventNotes": "N",
   "RetriesTimeoutAboutToStartEvent": 0,
   "RetriesTimeoutURLAboutToSubmitEvent": 0,
-  "RetriesTimeoutURLSubmittedEvent": 0
+  "RetriesTimeoutURLSubmittedEvent": 0,
+  "Publish": "Y"
 }

@@ -702,7 +702,7 @@
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (claimant), e.g. 4 "
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -711,7 +711,7 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (defendant), e.g. 4"
+    "EventHintText": "Number of witnesses (defendant), e.g. 4 "
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -1407,6 +1407,22 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
