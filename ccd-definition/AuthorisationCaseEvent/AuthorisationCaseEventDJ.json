@@ -6,7 +6,9 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-solicitor"
+          "[APPLICANTSOLICITORTWO]",
+          "[CREATOR]"
+
         ],
         "CRUD": "CRU"
       },

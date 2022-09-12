@@ -7,7 +7,7 @@
       {
         "UserRoles": [
           "[APPLICANTSOLICITORONESPEC]",
-          "caseworker-civil-solicitor",
+          "[APPLICANTSOLICITORTWOSPEC]",
           "[CREATOR]"
         ],
         "CRUD": "CRU"
