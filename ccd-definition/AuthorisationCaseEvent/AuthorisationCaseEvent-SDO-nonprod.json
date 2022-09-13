@@ -86,7 +86,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "legal-adviser"
+          "legal-adviser",
+          "tribunal-caseworker",
+          "caseworker",
+          "caseworker-civil",
+          "GLOBAL",
+          "caseworker-civil-staff",
+          "cwrd",
+          "cwd-user"
         ],
         "CRUD": "CRU"
       }
