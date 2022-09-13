@@ -5,6 +5,7 @@
     "Name": "Respond to claim",
     "Description": "Defendant response to Specified claim",
     "DisplayOrder": 6,
+    "EventEnablingCondition": "detailsOfDirection = \"None\"",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
