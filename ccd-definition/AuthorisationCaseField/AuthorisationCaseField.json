@@ -589,7 +589,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -608,14 +612,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -4598,14 +4606,121 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantCounterClaimLabel_2v1",
+    "CaseFieldID": "headingParticularsOfClaim",
     "AccessControl": [
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingClaimantDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingDefendantDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingClaimantDQ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingDefendantDQ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingSolicitorReferences",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingAmountClaiming",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "nextHearingDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

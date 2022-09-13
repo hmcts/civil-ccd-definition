@@ -39,7 +39,7 @@ function getBrowserConfig(browserGroup) {
 }
 
 const setupConfig = {
-  tests: './e2e/tests/*_test.js',
+  tests: './e2e/tests/**/*_test.js',
   output: `${process.cwd()}/${testConfig.TestOutputDir}`,
   helpers: {
     WebDriver: {

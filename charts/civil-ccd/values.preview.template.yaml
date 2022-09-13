@@ -5,10 +5,7 @@ postgresql:
   enabled: true
   releaseNameOverride: ${SERVICE_NAME}-postgresql
   image:
-    registry: hmctspublic.azurecr.io
-    repository: imported/bitnami/postgresql
-    tag: '11.3.0'
-    pullPolicy: Always
+    tag: '11.6.0'
   resources:
     requests:
       cpu: 25m
@@ -48,6 +45,7 @@ java:
         - sendgrid-api-key
         - robotics-notification-sender
         - robotics-notification-recipient
+        - robotics-notification-recipient-spec
         - launch-darkly-sdk-key
         - ordnance-survey-api-key
         - robotics-notification-multipartyrecipient
@@ -82,9 +80,9 @@ java:
     CMC_DB_USERNAME: hmcts
     CMC_DB_PASSWORD: hmcts
     REFERENCE_DATABASE_MIGRATION: true
-    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
-    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://camunda-${SERVICE_FQDN}/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
+    FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
     STITCHING_API_ENABLED: false
     DOCUMENT_MANAGEMENT_SECURED: true
 
@@ -126,7 +124,7 @@ ccd:
     postgresql:
       enabled: false
     ras:
-      enabled: true
+      enabled: false
 
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
@@ -170,14 +168,9 @@ ccd:
         CCD_MULTIPARTY_LOG_LEVEL: DEBUG
         CCD_MULTIPARTY_CASE_TYPES: CIVIL
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
+        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
       keyVaults: []
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
-  am-role-assignment-service:
-    java:
-      keyVaults:
-        am:
-          secrets:
-            - role-assignment-service-LD-SDK-KEY
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
