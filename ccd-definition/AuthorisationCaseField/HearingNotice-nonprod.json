@@ -65,7 +65,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDateTime",
+    "CaseFieldID": "hearingDate",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingTime",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingTimeHourMinute",
     "UserRoles": [
       "hearing-schedule-access"
     ],

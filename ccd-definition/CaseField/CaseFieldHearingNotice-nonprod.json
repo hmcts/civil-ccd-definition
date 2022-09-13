@@ -63,9 +63,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingDateTime",
-    "Label": "Date and Time",
-    "FieldType": "DateTime",
+    "ID": "hearingDate",
+    "Label": "Date",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTime",
+    "Label": "Time",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTimeHourMinute",
+    "Label": "Start time",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HearingTimeHourMinute",
     "SecurityClassification": "Public"
   },
   {
