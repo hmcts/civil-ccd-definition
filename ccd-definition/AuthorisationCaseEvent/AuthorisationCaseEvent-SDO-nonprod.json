@@ -87,13 +87,9 @@
       {
         "UserRoles": [
           "legal-adviser",
-          "tribunal-caseworker",
-          "caseworker",
           "caseworker-civil",
-          "GLOBAL",
           "caseworker-civil-staff",
-          "cwrd",
-          "cwd-user"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
