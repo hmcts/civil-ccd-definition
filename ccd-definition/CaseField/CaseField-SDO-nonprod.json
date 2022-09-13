@@ -622,6 +622,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "hearingMethod",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsMethodInPerson",
     "Label": "Select hearing location ",
     "FieldType": "DynamicList",

@@ -1114,6 +1114,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethod",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodInPerson",
     "AccessControl": [
       {
