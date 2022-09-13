@@ -244,23 +244,5 @@
     "ListElementCode": "1800",
     "ListElement": "18:00",
     "DisplayOrder": 41
-  },
-  {
-    "ID": "HearingTimeHourMinute",
-    "ListElementCode": "1815",
-    "ListElement": "18:15",
-    "DisplayOrder": 42
-  },
-  {
-    "ID": "HearingTimeHourMinute",
-    "ListElementCode": "1830",
-    "ListElement": "18:30",
-    "DisplayOrder": 43
-  },
-  {
-    "ID": "HearingTimeHourMinute",
-    "ListElementCode": "1845",
-    "ListElement": "18:45",
-    "DisplayOrder": 44
   }
 ]
