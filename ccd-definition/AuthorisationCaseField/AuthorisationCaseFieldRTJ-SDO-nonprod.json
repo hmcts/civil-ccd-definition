@@ -5,8 +5,15 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker",
+          "caseworker-civil",
+          "GLOBAL",
+          "caseworker-civil-staff",
+          "cwrd",
+          "cwd-user",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "tribunal-caseworker"
         ],
         "CRUD": "CRU"
       }
@@ -18,8 +25,15 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker",
+          "caseworker-civil",
+          "GLOBAL",
+          "caseworker-civil-staff",
+          "cwrd",
+          "cwd-user",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "tribunal-caseworker"
         ],
         "CRUD": "CRU"
       }
