@@ -272,7 +272,7 @@ const assertValidData = async (data, pageId) => {
     caseId
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {
@@ -284,6 +284,11 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
+  return responseBody;
 };
 
 function checkExpected(responseBodyData, expected, prefix = '') {
@@ -411,7 +416,8 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
     caseId
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  
   assert.equal(response.status, 200);
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
