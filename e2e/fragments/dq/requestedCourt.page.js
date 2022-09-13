@@ -16,7 +16,7 @@ module.exports = {
       courtLocation: {
         id: `#${party}DQRequestedCourt_responseCourtLocations`,
         options: {
-          defendantPreferredCourt: 'Liverpool Civil and Family Court - VERNON STREET, CITY SQUARE - L2 2BX'
+          defendantPreferredCourt: 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX'
         }
       }
     };
