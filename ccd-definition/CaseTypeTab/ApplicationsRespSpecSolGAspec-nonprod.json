@@ -6,7 +6,7 @@
     "TabDisplayOrder": 8,
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRoles": [
-      "[RESPONDENTSOLICITORONE]"
+      "RES-SOL-ONE-SPEC-PROFILE"
     ],
     "TabFieldDisplayOrder": 1
   }
