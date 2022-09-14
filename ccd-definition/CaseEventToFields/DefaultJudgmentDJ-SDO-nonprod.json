@@ -417,18 +417,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "disposalHearingApplicationsDJToggle",
-    "PageFieldDisplayOrder": 32,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/toggle"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingNotesDJ",
     "PageFieldDisplayOrder": 35,
     "DisplayContext": "COMPLEX",
