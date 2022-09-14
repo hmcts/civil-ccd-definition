@@ -848,10 +848,10 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(crea
           }
         }
       }
-    }
+    };
   }
   return createClaimData;
-};
+}
 
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
   defendantResponseData, solicitor) {
@@ -868,7 +868,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
             }
           }
         }
-      }
+      };
     } else {
       defendantResponseData = {
         ...defendantResponseData,
@@ -880,11 +880,11 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
             }
           }
         }
-      }
+      };
     }
   }
-  return defendantResponseData
-};
+  return defendantResponseData;
+}
 
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
