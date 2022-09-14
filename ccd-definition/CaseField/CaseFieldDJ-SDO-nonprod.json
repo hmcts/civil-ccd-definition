@@ -504,14 +504,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "trialHearingAlternativeDisputeDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
