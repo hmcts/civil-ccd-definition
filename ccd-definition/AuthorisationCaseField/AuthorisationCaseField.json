@@ -1784,6 +1784,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORONE]",
           "[RESPONDENTSOLICITORONESPEC]"
         ],
         "CRUD": "CRU"
@@ -1803,6 +1804,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "[RESPONDENTSOLICITORTWO]",
           "[RESPONDENTSOLICITORONESPEC]",
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],

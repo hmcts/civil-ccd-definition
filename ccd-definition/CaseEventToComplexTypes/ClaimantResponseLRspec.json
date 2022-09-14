@@ -264,7 +264,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "RespondToClaim",
+    "ID": "RequestedCourt",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "requestHearingAtSpecificCourt",
@@ -274,15 +274,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "RespondToClaim",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQRequestedCourt",
-    "ListElementCode": "responseCourtLocations",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "RespondToClaim",
+    "ID": "RequestedCourt",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "reasonForHearingAtSpecificCourt",

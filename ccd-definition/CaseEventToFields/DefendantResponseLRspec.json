@@ -1567,29 +1567,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQRequestedCourt",
-    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRequestedCourt",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageDisplayOrder": 50,
     "PageFieldDisplayOrder": 1,
