@@ -111,7 +111,7 @@
     "Name": "Hearing Scheduled",
     "Description": "Hearing Scheduled",
     "DisplayOrder": 18,
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "CASE_PROGRESSION",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
@@ -120,8 +120,6 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
   },
