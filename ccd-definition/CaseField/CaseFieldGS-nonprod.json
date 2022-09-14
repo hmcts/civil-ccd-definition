@@ -12,5 +12,12 @@
     "Label": "Search Criteria",
     "FieldType": "SearchCriteria",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementCategory",
+    "Label": " ",
+    "FieldType": "CaseManagementCategory",
+    "SecurityClassification": "Public"
   }
 ]
