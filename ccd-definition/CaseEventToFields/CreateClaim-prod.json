@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "eligibilityQuestions",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Eligibility",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/start-claim"
+  }
+]
