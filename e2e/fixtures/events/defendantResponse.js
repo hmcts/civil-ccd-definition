@@ -102,8 +102,6 @@ module.exports = {
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        // civ-3278/4203 needed still to pass the tests until both ccd and service are merged
-        responseCourtCode: '343',
         responseCourtLocations: {
           list_items: [
             listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
