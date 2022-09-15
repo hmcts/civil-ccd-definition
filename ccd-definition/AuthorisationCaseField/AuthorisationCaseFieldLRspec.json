@@ -1569,26 +1569,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "responseClaimCourtLocationLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONESPEC]"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimExpertSpecRequired",
     "AccessControl": [
       {

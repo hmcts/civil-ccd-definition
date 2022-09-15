@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimCourtLocationLabel",
+    "Label": "## Court Location",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]

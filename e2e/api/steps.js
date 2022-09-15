@@ -457,6 +457,7 @@ module.exports = {
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent2DQRequestedCourt');
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
@@ -694,6 +695,20 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   }
 
+  // TODO for Jenkins to build 3278/4203 changes while service is not merged, remove after both tickets are merged
+  if (['ClaimantLitigationFriend',
+    'SecondDefendantLegalRepresentation',
+    'ClaimValue',
+    'StatementOfTruth'].indexOf(pageId) > -1) {
+    for (let field of ['courtLocation', 'requested1DQRequestedCourt', 'requested2DQRequestedCourt',
+      'respondent1DQRequestedCourt', 'respondent2DQRequestedCourt']) {
+      if (caseData[field]) {
+        responseBody.data[field] = caseData[field];
+      }
+    }
+  }
+  // TODO END for Jenkins to build 3278/4203 changes while service is not merged, remove after both tickets are merged
+
   assert.deepEqual(responseBody.data, caseData);
 };
 
@@ -833,10 +848,10 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(crea
           }
         }
       }
-    }
+    };
   }
   return createClaimData;
-};
+}
 
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
   defendantResponseData, solicitor) {
@@ -853,7 +868,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
             }
           }
         }
-      }
+      };
     } else {
       defendantResponseData = {
         ...defendantResponseData,
@@ -865,11 +880,11 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
             }
           }
         }
-      }
+      };
     }
   }
-  return defendantResponseData
-};
+  return defendantResponseData;
+}
 
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

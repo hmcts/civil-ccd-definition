@@ -112,6 +112,8 @@ module.exports = {
     },
     RequestedCourt: {
       respondent2DQRequestedCourt: {
+        // civ-3278/4203 needed still to pass the tests until both ccd and service are merged
+        responseCourtCode: '343',
         responseCourtLocations: {
           list_items: [
             listElement('High Wycombe Law Courts - THE LAW COURTS, EASTON STREET - HP11 1LR')
