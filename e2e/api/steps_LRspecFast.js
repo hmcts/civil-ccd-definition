@@ -193,6 +193,7 @@ const assertValidData = async (data, pageId) => {
     caseId
   );
   let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
 
@@ -205,6 +206,11 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
+  return responseBody;
 };
 
 function checkExpected(responseBodyData, expected, prefix = '') {
