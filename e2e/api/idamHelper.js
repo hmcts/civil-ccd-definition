@@ -1,6 +1,7 @@
 const config = require('../config.js');
 const restHelper = require('./restHelper');
 const NodeCache = require('node-cache');
+const {idamTokenLoggingEnabled} = require('../config');
 //Idam access token expires for every 8 hrs
 const idamTokenCache = new NodeCache({ stdTTL: 25200, checkperiod: 1800 });
 
@@ -16,12 +17,16 @@ async function getAccessTokenFromIdam(user) {
 async function accessToken(user) {
     console.log('User logged in', user.email);
     if (idamTokenCache.get(user.email) != null) {
-        console.log('User access token coming from cache', user.email);
+        if(idamTokenLoggingEnabled) {
+          console.log('User access token coming from cache', user.email);
+        }
         return idamTokenCache.get(user.email);
     } else {
         const accessToken = await getAccessTokenFromIdam(user);
         idamTokenCache.set(user.email, accessToken);
-        console.log('user access token coming from idam', user.email);
+        if(idamTokenLoggingEnabled) {
+          console.log('user access token coming from idam', user.email);
+        }
         return accessToken;
     }
 }

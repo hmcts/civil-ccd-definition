@@ -13,6 +13,13 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {getNocQuestions} = require('./caseAssignment');
+const {validateNocAnswers, submitNocRequest} = require('./caseAssignment');
+const {createClaim1v2Res1Unrepresented} = require('../fixtures/events/1v2DifferentSolicitorEvents/createClaim_unrepresented_respondent1');
+const {createClaim1v2Res2Unrepresented} = require('../fixtures/events/1v2DifferentSolicitorEvents/createClaim_unrepresented_respondent2');
+const {fetchCaseDetails} = require('./apiRequest');
+const {updateActiveOrganisationUsersMocks} = require('../helpers/activeOrganisationUsers');
+const {nocEnabled} = require('../config');
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -101,9 +108,7 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-
   createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
-
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
@@ -134,26 +139,55 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {
-    eventName = 'CREATE_CLAIM';
-    caseId = null;
-    caseData = {};
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_RESPONDENT_LIP);
 
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await testCreateClaimEvent(
+      user,
+      data.CREATE_CLAIM_RESPONDENT_LIP,
+      'PENDING_CASE_ISSUED',
+      nocEnabled ? 'PENDING_CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM',
+      nocEnabled ? {
+          header: 'Your claim has been received',
+          body: 'Your claim will not be issued until payment is confirmed.'
+        } :
+        {
+          header: 'Your claim has been received and will progress offline',
+          body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+        });
   },
-
+  create1v2ClaimWithUnrepresentedRespondent2: async (user) => {
+    await testCreateClaimEvent(
+      user,
+      createClaim1v2Res2Unrepresented,
+      'PENDING_CASE_ISSUED',
+      nocEnabled ? 'PENDING_CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM',
+      nocEnabled ? {
+          header: 'Your claim has been received',
+          body: 'Your claim will not be issued until payment is confirmed.'
+        } :
+        {
+          header: 'Your claim has been received and will progress offline',
+          body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+        });
+  },
+  create1v2ClaimWithUnrepresentedRespondent1: async (user) => {
+    await testCreateClaimEvent(
+      user,
+      createClaim1v2Res1Unrepresented,
+      'PENDING_CASE_ISSUED',
+      nocEnabled ? 'PENDING_CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM',
+      nocEnabled ? {
+          header: 'Your claim has been received and will progress offline',
+          body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+        } :
+        {
+          header: 'Your claim has been received and will progress offline',
+          body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+        });
+  },
   createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -562,7 +596,30 @@ module.exports = {
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
   },
-
+  requestNoticeOfChangeForRespondent1Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'respondent1OrganisationPolicy',
+      buildNocAnswers('Test Inc', 'Sir John Doe'));
+  },
+  requestNoticeOfChangeForRespondent2Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'respondent2OrganisationPolicy',
+      buildNocAnswers('Test Inc', 'Dr Foo bar')
+    );
+  },
+  requestNoticeOfChangeForApplicant1Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'applicant1OrganisationPolicy',
+      buildNocAnswers('Test Inc', 'Test Inc')
+    );
+  },
+  requestNoticeOfChangeForApplicant2Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'applicant1OrganisationPolicy',
+      buildNocAnswers('Test Inc', 'Dr Jane Doe')
+    );
+  },
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
+  },
   cleanUp: async () => {
     await unAssignAllUsers();
   }
@@ -738,11 +795,11 @@ const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
     }
     case 'ONE_V_TWO_ONE_LEGAL_REP': {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
       break;
     }
   }
@@ -783,7 +840,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorTwo'){
+  if(solicitor === 'solicitorTwo') {
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ClaimResponseType'];
     delete responseBody.data['respondent1ClaimResponseDocument'];
@@ -806,4 +863,62 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
+};
+
+const buildNocAnswers = (applicantName, clientName) => ([
+  {question_id: 'applicantName', value: `${applicantName}`},
+  {question_id: 'clientName', value: `${clientName}`}
+]);
+
+const requestNoticeOfChange = async(newSolicitor, orgPolicyTag, answers) => {
+  if(config.runningEnv == 'local') {
+    await updateActiveOrganisationUsersMocks(newSolicitor);
+  }
+
+  console.log('Validating noc questions');
+  const getNotQuestionsResponse = await getNocQuestions(caseId, newSolicitor);
+  assert.equal(getNotQuestionsResponse.status, 200,
+    'Expected getNotQuestionsResponse api call to return successful status');
+
+  console.log('Validating noc answers');
+  const validateAnswersResponse = await validateNocAnswers(caseId, answers, newSolicitor);
+  assert.equal(validateAnswersResponse.status, 200,
+    'Expected validateNocAnswers api call to return successful status');
+
+  console.log(`Submitting notice of change request for case [${caseId}]`);
+  const submitNocRequestResponse = await submitNocRequest(caseId, answers, newSolicitor);
+  assert.equal(submitNocRequestResponse.status, 201,
+    'Expected submitNocRequestResponse api call to return created status');
+
+  await waitForFinishedBusinessProcess(caseId);
+
+  const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+  const actualOrgId = caseData.case_data[`${orgPolicyTag}`].Organisation.OrganisationID;
+
+  console.log(`Checking case data [${orgPolicyTag}] for new solicitors organisation Id [${newSolicitor.orgId}].`);
+  assert.equal(actualOrgId, newSolicitor.orgId, 'Should have the new solicitors organisation id.');
+};
+
+const eventRunner = async(user, event, eventData, expectedPostSubmittedState, expectedPostProcessState, expectedSubmittedResponse) => {
+  caseId = null;
+  caseData = {};
+  eventName = event;
+  await apiRequest.setupTokens(user);
+  await apiRequest.startEvent(eventName);
+  await validateEventPages(eventData);
+
+  await assertSubmittedEvent(expectedPostSubmittedState,expectedSubmittedResponse);
+
+  await waitForFinishedBusinessProcess(caseId);
+  await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, expectedPostSubmittedState);
+  await assertCorrectEventsAreAvailableToUser(config.adminUser, expectedPostProcessState);
+};
+
+const testCreateClaimEvent = async(user, eventData, expectedPostSubmittedState, expectedPostProcessState, expectedSubmittedResponse) => {
+  await eventRunner(user, 'CREATE_CLAIM', eventData, expectedPostSubmittedState, expectedPostProcessState, expectedSubmittedResponse);
+
+  //field is deleted in about to submit callback
+  deleteCaseFields('applicantSolicitor1CheckEmail');
+  deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+  deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 };
