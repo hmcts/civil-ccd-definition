@@ -48,24 +48,62 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "hearingLocationLabel",
+    "Label": "**Location**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "hearingLocation",
-    "Label": "Location",
+    "Label": " ",
+    "HintText": "Venue",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "channelLabel",
+    "Label": "**Channel**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "channel",
-    "Label": "Channel",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingChannel",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingDateTime",
-    "Label": "Date and Time",
-    "FieldType": "DateTime",
+    "ID": "hearingDateLabel",
+    "Label": "**Date**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDate",
+    "Label": " ",
+    "HintText": "For example, 27 3 2022",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTimeLabel",
+    "Label": "**Time**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTimeHourMinute",
+    "Label": "Start time",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HearingTimeHourMinute",
     "SecurityClassification": "Public"
   },
   {

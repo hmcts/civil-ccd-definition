@@ -49,7 +49,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingLocationLabel",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingLocation",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "channelLabel",
     "UserRoles": [
       "hearing-schedule-access"
     ],
@@ -65,7 +81,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDateTime",
+    "CaseFieldID": "hearingDateLabel",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingDate",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingTimeLabel",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingTimeHourMinute",
     "UserRoles": [
       "hearing-schedule-access"
     ],
