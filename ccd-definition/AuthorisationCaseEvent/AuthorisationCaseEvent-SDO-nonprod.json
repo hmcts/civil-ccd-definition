@@ -102,7 +102,7 @@
           "caseworker-civil-staff",
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
+         "CRUD": "CRU"
       }
     ]
   }
