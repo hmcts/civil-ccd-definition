@@ -25,7 +25,7 @@
   },
   {
     "ID": "SmallClaimsTimeEstimate",
-    "ListElementCode": "TWO_HALF_HOURS",
+    "ListElementCode": "TWO_AND_HALF_HOURS",
     "ListElement": "2.5 hours",
     "DisplayOrder": 5
   },
