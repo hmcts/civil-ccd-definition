@@ -257,7 +257,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
-        () => chooseCourtPage.enterCourt(),
+        () => chooseCourtPage.selectCourt(),
         ...firstClaimantSteps(),
         ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
