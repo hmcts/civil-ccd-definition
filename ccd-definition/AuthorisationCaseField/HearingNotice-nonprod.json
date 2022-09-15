@@ -145,23 +145,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partyApplicantPayment",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingReferenceNumber",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "casePaymentHistoryViewerHearing",
+    "CaseFieldID": "casePaymentWaysToPay",
     "UserRoles": [
       "hearing-schedule-access"
     ],
