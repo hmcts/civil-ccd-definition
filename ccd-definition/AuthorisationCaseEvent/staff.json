@@ -109,6 +109,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CC",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_DEFENDANT_RESPONSE_CC",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -200,6 +206,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDICIAL_REFERRAL",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

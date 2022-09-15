@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "code",
+    "ID": "CaseManagementCategoryElement",
+    "Label": "Civil",
+    "ElementLabel": "Civil",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "label",
+    "ID": "CaseManagementCategoryElement",
+    "Label": "Civil",
+    "ElementLabel": "Civil",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]

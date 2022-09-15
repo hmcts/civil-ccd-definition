@@ -178,8 +178,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "totalClaimAmount",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -202,8 +208,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimInterest",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CR"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CR"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1650,34 +1662,50 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaimExperts",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim_experts2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToCourtLocation",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToCourtLocation2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -3620,10 +3648,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1RespondToClaimExperts",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -3646,10 +3678,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQRequestedCourt",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -4053,7 +4089,47 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partAdmissionWhenWillDefendantPayImmediately2Label",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
     "AccessControl": [
       {
         "UserRoles": [
@@ -4650,6 +4726,44 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1SmallClaimWitnessesLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONESPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "[RESPONDENTSOLICITORONESPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "showConditionFlags",
     "AccessControl": [
       {
@@ -4687,6 +4801,39 @@
           "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantCounterClaimLabel_2v1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1PinToPostLRspec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   }

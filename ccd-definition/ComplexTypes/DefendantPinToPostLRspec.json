@@ -1,0 +1,30 @@
+[
+  {
+    "ID": "DefendantPinToPostLRspec",
+    "ListElementCode": "accessCode",
+    "FieldType": "Text",
+    "ElementLabel": "Access Code",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DefendantPinToPostLRspec",
+    "ListElementCode": "respondentCaseRole",
+    "FieldType": "Text",
+    "ElementLabel": "Case Role",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DefendantPinToPostLRspec",
+    "ListElementCode": "expiryDate",
+    "FieldType": "Date",
+    "ElementLabel": "Expiry Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DefendantPinToPostLRspec",
+    "ListElementCode": "citizenCaseRole",
+    "FieldType": "Text",
+    "ElementLabel": "Citizen Case Role",
+    "SecurityClassification": "Public"
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ADD_PDF_TO_MAIN_CASE",
+    "Name": "Update case data with GA PDF",
+    "Description": "Update parent case data ",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
+  }
+]

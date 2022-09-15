@@ -106,6 +106,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       }
     },
     ClaimantSolicitorServiceAddress: {
+      applicantSolicitor1ServiceAddressRequired: 'Yes',
       applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
     AddAnotherClaimant: {
@@ -125,22 +126,24 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     LegalRepresentation: {
       respondent1Represented: `${legalRepresentation}`
     },
-    DefendantSolicitorOrganisation: {
-      respondent1OrgRegistered: 'Yes',
-      respondent1OrganisationPolicy: {
-        OrgPolicyReference: 'Defendant policy reference',
-        OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
-        Organisation: {
-          OrganisationID: config.defendant1SolicitorOrgId
+    ...(legalRepresentation === 'Yes') ? {
+      DefendantSolicitorOrganisation: {
+        respondent1OrgRegistered: 'Yes',
+        respondent1OrganisationPolicy: {
+          OrgPolicyReference: 'Defendant policy reference',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+          Organisation: {
+            OrganisationID: config.defendant1SolicitorOrgId
+          },
         },
       },
-    },
-    DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: buildAddress('service')
-    },
-    DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
-    },
+      DefendantSolicitorServiceAddress: {
+        respondentSolicitor1ServiceAddress: buildAddress('service')
+      },
+      DefendantSolicitorEmail: {
+        respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+      },
+    }: {},
     AddAnotherDefendant: {
       addRespondent2: 'No'
     },
@@ -320,7 +323,7 @@ module.exports = {
         // otherwise applicantSolicitor1ClaimStatementOfTruth: [undefined]
         StatementOfTruth: {
           applicantSolicitor1ClaimStatementOfTruth: {}
-        },
+        }
       },
       valid: {
         ...createClaimData('Yes', true, mpScenario),
