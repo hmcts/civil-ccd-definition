@@ -1,7 +1,11 @@
 const {I} = inject();
 
 module.exports = {
-
+  oldFields: function (party) {
+    return {
+      responseCourtCode: `#${party}DQRequestedCourt_responseCourtCode`,
+    };
+  },
   fields: function (party) {
     return {
       requestHearingAtSpecificCourt: {
@@ -29,7 +33,12 @@ module.exports = {
       I.click(this.fields(party).requestHearingAtSpecificCourt.options.yes);
     });
 
-    I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);
+    if (!isCourtListEnabled || config.runningEnv === "aat") {
+      I.fillField(this.fields(party).responseCourtCode, '343');
+    } else {
+      I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);
+    }
+
     I.fillField(this.fields(party).reasonForHearingAtSpecificCourt, 'A reason for the court');
     await I.clickContinue();
   },
