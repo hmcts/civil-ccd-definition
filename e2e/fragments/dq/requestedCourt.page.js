@@ -1,4 +1,6 @@
 const {I} = inject();
+const {checkCourtLocationDynamicListIsEnabled} = require('./../../api/testingSupport');
+const config = require('./../../config');
 
 module.exports = {
   oldFields: function (party) {
@@ -33,6 +35,7 @@ module.exports = {
       I.click(this.fields(party).requestHearingAtSpecificCourt.options.yes);
     });
 
+    let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
     if (!isCourtListEnabled || config.runningEnv === "aat") {
       I.fillField(this.fields(party).responseCourtCode, '343');
     } else {
