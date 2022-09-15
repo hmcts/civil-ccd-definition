@@ -1228,7 +1228,7 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "EventHintText": "Number of pages, e.g. 4"
-    
+
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1356,15 +1356,6 @@
     "ID": "FastTrackTrial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "EventHintText": "e.g. The time provisionally allowed for the trial is 2 days."
-  },
-  {
-    "ID": "FastTrackTrial",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "text1",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
@@ -1391,13 +1382,13 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackTrial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
-    "ListElementCode": "input2",
+    "ListElementCode": "hearingDuration",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -1405,7 +1396,7 @@
     "ID": "FastTrackTrial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
-    "ListElementCode": "input3",
+    "ListElementCode": "otherHours",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -1413,8 +1404,32 @@
     "ID": "FastTrackTrial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
-    "ListElementCode": "label2",
+    "ListElementCode": "otherMinutes",
     "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "input3",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "READONLY"
   },
   {
@@ -1422,7 +1437,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "type",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
   },
   {

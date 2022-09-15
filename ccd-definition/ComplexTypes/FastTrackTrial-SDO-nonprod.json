@@ -17,7 +17,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "text1",
     "FieldType": "Label",
-    "ElementLabel": "Trial date from",
+    "ElementLabel": "Date from",
     "SecurityClassification": "Public"
   },
   {
@@ -31,7 +31,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "text2",
     "FieldType": "Label",
-    "ElementLabel": "Trial date to",
+    "ElementLabel": "Date to (optional)",
     "SecurityClassification": "Public"
   },
   {
@@ -51,7 +51,7 @@
   {
     "ID": "FastTrackTrial",
     "ListElementCode": "input3",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -69,5 +69,32 @@
     "FieldTypeParameter": "FastTrackTrialBundleType",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "hearingDuration",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FastTrackTimeEstimate",
+    "ElementLabel": "The time estimate is",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "otherHours",
+    "ElementLabel": "Hour(s)",
+    "FieldType": "Number",
+    "RegularExpression": "\\d",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "time = \"OTHER\""
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "otherMinutes",
+    "ElementLabel": "Minute(s)",
+    "FieldType": "Number",
+    "Max": 59,
+    "RegularExpression": "\\d",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "time = \"OTHER\""
   }
 ]

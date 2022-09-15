@@ -935,7 +935,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackTrialTitle",
-    "Label": "## Trial",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
