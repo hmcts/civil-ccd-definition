@@ -23,6 +23,10 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {getNocQuestions} = require('./caseAssignment');
+const {validateNocAnswers, submitNocRequest} = require('./caseAssignment');
+const {fetchCaseDetails} = require('./apiRequest');
+const {updateActiveOrganisationUsersMocks} = require('../helpers/activeOrganisationUsers');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -256,6 +260,10 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
     return caseId;
   },
 
@@ -349,6 +357,7 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
+    caseData = returnedCaseData;
 
     await validateEventPages(data[eventName]);
 
@@ -743,6 +752,31 @@ module.exports = {
     }
   },
 
+  requestNoticeOfChangeForRespondent1Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'respondent1OrganisationPolicy',
+      buildNocAnswers('Sir John Doe'));
+  },
+  requestNoticeOfChangeForRespondent2Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'respondent2OrganisationPolicy',
+      buildNocAnswers('Dr Foo bar')
+    );
+  },
+  requestNoticeOfChangeForApplicant1Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'applicant1OrganisationPolicy',
+      buildNocAnswers('Test Inc')
+    );
+  },
+  requestNoticeOfChangeForApplicant2Solicitor: async (newSolicitor) => {
+    await requestNoticeOfChange(newSolicitor, 'applicant1OrganisationPolicy',
+      buildNocAnswers('Dr Jane Doe')
+    );
+  },
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
+  },
+
   initiateGeneralApplication: async (caseNumber, user, expectedState) => {
     eventName = 'INITIATE_GENERAL_APPLICATION';
     caseId = caseId || caseNumber;
@@ -958,6 +992,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  responseBody = clearNoCData(responseBody);
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1016,6 +1051,39 @@ const assertValidData = async (data, pageId, solicitor) => {
     whatsTheDifference(caseData, responseBody.data);
     throw err;
   }
+};
+
+const buildNocAnswers = (clientName) => ([
+  {question_id: 'clientName', value: `${clientName}`}
+]);
+
+const requestNoticeOfChange = async(newSolicitor, orgPolicyTag, answers) => {
+  if(config.runningEnv == 'local') {
+    await updateActiveOrganisationUsersMocks(newSolicitor);
+  }
+
+  console.log('Validating noc questions');
+  const getNotQuestionsResponse = await getNocQuestions(caseId, newSolicitor);
+  assert.equal(getNotQuestionsResponse.status, 200,
+    'Expected getNotQuestionsResponse api call to return successful status');
+
+  console.log('Validating noc answers');
+  const validateAnswersResponse = await validateNocAnswers(caseId, answers, newSolicitor);
+  assert.equal(validateAnswersResponse.status, 200,
+    'Expected validateNocAnswers api call to return successful status');
+
+  console.log(`Submitting notice of change request for case [${caseId}]`);
+  const submitNocRequestResponse = await submitNocRequest(caseId, answers, newSolicitor);
+  assert.equal(submitNocRequestResponse.status, 201,
+    'Expected submitNocRequestResponse api call to return created status');
+
+  await waitForFinishedBusinessProcess(caseId);
+
+  const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+  const actualOrgId = caseData.case_data[`${orgPolicyTag}`].Organisation.OrganisationID;
+
+  console.log(`Checking case data [${orgPolicyTag}] for new solicitors organisation Id [${newSolicitor.orgId}].`);
+  assert.equal(actualOrgId, newSolicitor.orgId, 'Should have the new solicitors organisation id.');
 };
 
 /**
@@ -1380,6 +1448,11 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 const clearDataForSearchCriteria = (responseBody) => {
   delete responseBody.data['SearchCriteria'];
+  return responseBody;
+};
+
+const clearNoCData = (responseBody) => {
+  delete responseBody.data['changeOfRepresentation'];
   return responseBody;
 };
 

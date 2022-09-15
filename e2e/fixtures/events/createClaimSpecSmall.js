@@ -336,7 +336,7 @@ module.exports = {
             OrgPolicyReference: 'Claimant policy reference',
             OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
             Organisation: {
-              OrganisationID: config.claimantSolicitorOrgId
+              OrganisationID: config.applicantSolicitorUser.orgId
             }
           }
         },
@@ -356,7 +356,7 @@ module.exports = {
             OrgPolicyReference: 'Defendant policy reference',
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
             Organisation: {
-              OrganisationID: config.defendant1SolicitorOrgId
+              OrganisationID: config.defendantSolicitorUser.orgId
             },
           },
         },
