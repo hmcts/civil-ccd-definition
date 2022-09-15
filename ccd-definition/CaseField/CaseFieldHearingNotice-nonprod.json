@@ -96,5 +96,26 @@
     "Label": "Hearing Due Date",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyApplicantPayment",
+    "Label": "Party",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "hearingReferenceNumber",
+  "Label": "Request Reference",
+  "FieldType": "Text",
+  "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePaymentHistoryViewerHearing",
+    "Label": "Custom Payment History Viewer",
+    "FieldType": "CasePaymentHistoryViewer",
+    "SecurityClassification": "Public"
   }
 ]
