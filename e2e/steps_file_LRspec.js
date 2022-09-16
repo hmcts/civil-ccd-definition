@@ -94,7 +94,7 @@ const CONFIRMATION_MESSAGE = {
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
-const conditionalSteps = (condition, steps) => conditi/on ? steps : [];
+const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
   () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
