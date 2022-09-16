@@ -62,6 +62,8 @@ const applicant1LitigationFriend = {
 let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
+const otherPba = listElement('PBA0079005');
+const otherPba2 = listElement('PBA0085286');
 
 const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
   selectedPba = useValidPba ? validPba : invalidPba;
@@ -193,7 +195,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       applicantSolicitor1PbaAccounts: {
         list_items: [
           validPba,
-          invalidPba
+          invalidPba,
+          otherPba,
+          otherPba2
         ],
         value: selectedPba
 

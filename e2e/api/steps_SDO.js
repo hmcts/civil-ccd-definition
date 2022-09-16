@@ -16,8 +16,8 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const claimResponse = require('../fixtures/events/claimantResponse');
 //const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {cloneDeep} = require('lodash');
-const lodash = require('lodash');
+//const {cloneDeep} = require('lodash');
+//const lodash = require('lodash');
 
 let caseId, eventName, responseData;
 let caseData = {};
@@ -168,7 +168,7 @@ module.exports = {
     await notifyClaimDetails(user1);
     await acknowledgeClaim(user2, scenario);
     caseId = await defendantResponse(user2, scenario);
-    await claimantResponse(user1, scenario, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await claimantResponse(user1, scenario, 'JUDICIAL_REFERRAL');
   },
 
   defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
@@ -266,7 +266,7 @@ module.exports = {
     } else if (response == 'UNSUITABLE_FOR_SDO') {
       await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUser);
     } else {
-      await assertSubmittedEvent('CASE_PROGRESSION'); //TODO: Uncomment once states are updated
+      await assertSubmittedEvent('CASE_PROGRESSION');
     }
 
     await waitForFinishedBusinessProcess(caseId);

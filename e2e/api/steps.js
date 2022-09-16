@@ -138,8 +138,8 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -165,10 +165,33 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM'); TODO:uncomment once correct events are set
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
+  createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
+    eventName = 'CREATE_CLAIM';
+    caseId = null;
+    caseData = {};
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+
+    let createClaimData = data.CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS;
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    await validateEventPages(createClaimData);
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
+      header: 'Your claim has been received and will progress offline',
+      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+    });
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+  },
 
   createClaimWithFailingPBAAccount: async (user) => {
     eventName = 'CREATE_CLAIM';
@@ -189,8 +212,8 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED'); TODO:uncomment once correct events are set
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
   },
 
   resubmitClaim: async (user) => {
@@ -204,8 +227,8 @@ module.exports = {
       body: 'Your claim will be processed. Wait for us to contact you.'
     });
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED'); TODO:uncomment once correct events are set
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
   },
 
   amendClaimDocuments: async (user) => {
@@ -239,8 +262,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
   },
 
   notifyClaim: async (user, multipartyScenario) => {
@@ -259,9 +282,9 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
   notifyClaimDetails: async (user) => {
@@ -282,9 +305,9 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
   amendPartyDetails: async (user) => {
@@ -303,9 +326,9 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
   acknowledgeClaim: async (user, multipartyScenario, solicitor) => {
@@ -346,9 +369,9 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    //assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     //removed because it's not needed for the further tests
     deleteCaseFields('respondent1Copy');
@@ -391,9 +414,9 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     deleteCaseFields('isRespondent1');
   },
 
@@ -464,9 +487,9 @@ module.exports = {
       });
 
       await waitForFinishedBusinessProcess(caseId);
-      //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-      //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
-      //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); TODO:uncomment once correct events are set
+      //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     } else {
       // when all solicitors responded
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
@@ -475,9 +498,9 @@ module.exports = {
       });
 
       await waitForFinishedBusinessProcess(caseId);
-      //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION'); TODO:uncomment once correct events are set
-      //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION'); TODO:uncomment once correct events are set
-      //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION'); TODO:uncomment once correct events are set
+      //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
+      //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
+      //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_APPLICANT_INTENTION');
     }
 
     deleteCaseFields('respondent1Copy');
@@ -485,7 +508,7 @@ module.exports = {
     return caseId;
   },
 
-  claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState = 'PROCEEDS_IN_HERITAGE_SYSTEM') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -508,13 +531,15 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    await assertSubmittedEvent(expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM', {
+    //await apiRequest.submitEvent(eventName, caseData, caseId);
+
+    await assertSubmittedEvent(expectedCcdState, {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    if (!expectedCcdState) {
+    if (expectedCcdState == 'PROCEEDS_IN_HERITAGE_SYSTEM') {
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -558,9 +583,9 @@ module.exports = {
     }, false);
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM'); TODO:uncomment once correct events are set
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   addCaseNote: async (user) => {
@@ -581,8 +606,8 @@ module.exports = {
     }, false);
 
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
+    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
@@ -781,7 +806,7 @@ function addMidEventFields(pageId, responseBody) {
   const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
-  expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+  //expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
 }
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
