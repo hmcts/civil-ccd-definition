@@ -117,9 +117,9 @@ Scenario('1v1 full defence specified - judge draws fast track WITH sum of damage
 
 // eslint-disable-next-line no-unused-vars
 Scenario('1v1 full defence specified - legal advisor draws fast track WITH sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser, '950');
+  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
   await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, '950');
+  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
   await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_FAST');
 });
 
