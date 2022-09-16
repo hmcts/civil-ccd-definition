@@ -28,7 +28,7 @@ const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
-const claimAmountVar = 150000;
+const claimAmountVar = '150000';
 
 module.exports = {
   createClaim: (mpScenario) => {
