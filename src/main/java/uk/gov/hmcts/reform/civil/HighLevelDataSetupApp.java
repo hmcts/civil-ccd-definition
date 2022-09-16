@@ -33,7 +33,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("hearing-schedule-access", "PUBLIC"),
         new CcdRoleConfig("civil-administrator-standard", "PUBLIC"),
         new CcdRoleConfig("civil-administrator-basic", "PUBLIC")
->>>>>>>>> Temporary merge branch 2
     };
 
     private final CcdEnvironment environment;
