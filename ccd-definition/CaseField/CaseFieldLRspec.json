@@ -961,6 +961,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimCourtLocationLabel",
+    "Label": "## Court Location",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",

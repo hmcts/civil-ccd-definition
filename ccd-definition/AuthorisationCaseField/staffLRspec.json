@@ -163,6 +163,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimCourtLocationLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimWitnesses",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "responseClaimCourtLocationLabel",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  }
-]
