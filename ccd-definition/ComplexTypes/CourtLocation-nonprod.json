@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "CourtLocation",
+    "ListElementCode": "applicantPreferredCourtLocationList",
+    "DisplayContext": "MANDATORY",
+    "ElementLabel": "Court location code",
+    "HintText": "This should be your preferred County Court hearing centre.",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CourtLocation",
+    "ListElementCode": "caseLocation",
+    "ElementLabel": "Case Location",
+    "FieldType": "CaseLocation",
+    "SecurityClassification": "Public"
+  }
+]
