@@ -86,7 +86,7 @@
         "UserRoles": [
           "hearing-schedule-access"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
