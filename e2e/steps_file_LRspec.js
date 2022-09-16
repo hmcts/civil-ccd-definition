@@ -117,7 +117,7 @@ const secondClaimantSteps = (claimant2) => [
 
 const firstDefendantSteps = (respondent1) => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
-  () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+  () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
   () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
 
