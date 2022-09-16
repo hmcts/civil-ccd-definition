@@ -1712,8 +1712,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackNotes",
+    "CaseFieldID": "sdoHearingNotes",
     "PageFieldDisplayOrder": 56,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackNotes",
+    "PageFieldDisplayOrder": 57,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
     "PageDisplayOrder": 6,
