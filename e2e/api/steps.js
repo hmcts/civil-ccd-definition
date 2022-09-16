@@ -824,7 +824,7 @@ async function updateCaseDataWithPlaceholders(data, document) {
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
-  if (!isCourtListEnabled || config.runningEnv === 'aat') {
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     createClaimData = {
       ...createClaimData,
       valid: {
@@ -845,7 +845,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   defendantResponseData, solicitor) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
-  if (!isCourtListEnabled || config.runningEnv === 'aat') {
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
