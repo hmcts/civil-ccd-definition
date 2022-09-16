@@ -1118,8 +1118,19 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackHearingMethod",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "judge-profile",
           "legal-adviser"
         ],

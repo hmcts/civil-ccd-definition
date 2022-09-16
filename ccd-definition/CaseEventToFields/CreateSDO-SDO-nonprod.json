@@ -1500,7 +1500,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackMethod",
+    "CaseFieldID": "fastTrackHearingMethod",
     "PageFieldDisplayOrder": 42,
     "DisplayContext": "MANDATORY",
     "PageID": "FastTrack",
