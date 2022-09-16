@@ -28,10 +28,10 @@ const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
-const claimAmount = '150000';
+const claimAmountVar = 150000;
 
 module.exports = {
-  createClaim: (mpScenario, claimAmount) => {
+  createClaim: (mpScenario) => {
     const userData = {
       userInput: {
         References: {
@@ -117,7 +117,7 @@ module.exports = {
           claimAmountBreakup: [{
             value: {
               claimReason: 'amount reason',
-              claimAmount: claimAmount
+              claimAmount: claimAmountVar
             }
           }]
         },
@@ -154,7 +154,7 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          totalClaimAmount: claimAmount / 100
+          totalClaimAmount: claimAmountVar / 100
         },
         ClaimAmountDetails: {
           superClaimType: 'SPEC_CLAIM'
@@ -491,12 +491,12 @@ module.exports = {
           claimAmountBreakup: [{
             value: {
               claimReason: 'amount reason',
-              claimAmount: claimAmount
+              claimAmount: claimAmountVar
             }
           }]
         },
         expected: {
-          totalClaimAmount: claimAmount / 100
+          totalClaimAmount: claimAmountVar / 100
         },
         generated: {
           speclistYourEvidenceList: {
