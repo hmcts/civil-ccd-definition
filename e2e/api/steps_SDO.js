@@ -14,10 +14,9 @@ const claimDataSpec = require('../fixtures/events/createClaimSpec.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const claimResponse = require('../fixtures/events/claimantResponse');
-//const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
-//const {cloneDeep} = require('lodash');
-//const lodash = require('lodash');
+
+
 
 let caseId, eventName, responseData;
 let caseData = {};
@@ -131,12 +130,12 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondentSPEC: async (user, scenario = 'ONE_V_ONE', claimAmount = '15000') => {
+  createClaimWithRepresentedRespondentSPEC: async (user, scenario = 'ONE_V_ONE') => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM_SPEC(scenario, claimAmount);
+    const createClaimData = data.CREATE_CLAIM_SPEC(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -153,8 +152,6 @@ module.exports = {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
     }
     await waitForFinishedBusinessProcess(caseId);
-    //await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
-    //await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED'); TODO:uncomment once correct events are set
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
