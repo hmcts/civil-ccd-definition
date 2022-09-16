@@ -835,9 +835,11 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
+// CIV-4959: needs to be removed when court location goes live
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  if (!isCourtListEnabled) {
+  // work around for the api  tests
+  if (!isCourtListEnabled || config.runningEnv === 'aat') {
     createClaimData = {
       ...createClaimData,
       valid: {
@@ -853,10 +855,12 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(crea
   return createClaimData;
 }
 
+// CIV-4959: needs to be removed when court location goes live
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
   defendantResponseData, solicitor) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  if (!isCourtListEnabled) {
+  // work around for the api tests
+  if (!isCourtListEnabled || config.runningEnv === 'aat') {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
