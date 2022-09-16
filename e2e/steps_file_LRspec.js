@@ -11,7 +11,6 @@ const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claiman
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisationLRspec = require('./pages/createClaim/defendantSolicitorOrganisationLRspec.page');
-const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
@@ -95,7 +94,7 @@ const CONFIRMATION_MESSAGE = {
 let caseId, screenshotNumber, eventName, currentEventName;
 let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
-const conditionalSteps = (condition, steps) => condition ? steps : [];
+const conditionalSteps = (condition, steps) => conditi/on ? steps : [];
 
 const firstClaimantSteps = () => [
   () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
@@ -115,7 +114,7 @@ const secondClaimantSteps = (claimant2) => [
 ];
 
 
-const firstDefendantSteps = (respondent1) => [
+const firstDefendantSteps = () => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
   () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
