@@ -49,8 +49,10 @@ module.exports = {
     type: 'systemupdate'
   },
   judgeUser: {
-    password: defaultPassword,
-    email: 'judge-civil-02@example.com',
+    password: process.env.ENVIRONMENT === 'demo' || process.env.ENVIRONMENT ===  'preview'
+      ? defaultPassword : 'Hmcts1234',
+    email: process.env.ENVIRONMENT === 'demo' || process.env.ENVIRONMENT ===  'preview'
+      ? 'judge-civil-02@example.com' : '4924246EMP-@ejudiciary.net',
     type: 'judge'
   },
   definition: {
@@ -62,5 +64,5 @@ module.exports = {
   runningEnv: process.env.ENVIRONMENT,
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
-  defendant2SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'LCVTI1I' : 'H2156A0',
+  defendant2SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'LCVTI1I' : 'H2156A0'
 };
