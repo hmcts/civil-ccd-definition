@@ -1,6 +1,26 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "testsearch",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseManagementOrder",
     "AccessControl": [
       {
