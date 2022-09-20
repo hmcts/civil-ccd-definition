@@ -70,7 +70,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1172,6 +1171,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "unsuitableSDODate",
+    "Label": "SDO unsuitable date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
@@ -1302,7 +1308,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
