@@ -239,9 +239,17 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic"
+        ],
+        "CRUD": "R"
       }
     ]
   },
