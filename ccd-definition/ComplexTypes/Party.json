@@ -121,10 +121,9 @@
     "ID": "Party",
     "ListElementCode": "partyPhone",
     "FieldType": "Text",
-    "ElementLabel": "Phone",
+    "ElementLabel": "PhoneUK",
     "SecurityClassification": "Public",
-    "Max": "40",
-    "RegularExpression": "^([0-9\\:\\@\\+\\-\\.\\,\\(\\) ]+)"
+    "Max": "40"
   },
   {
     "ID": "Party",
