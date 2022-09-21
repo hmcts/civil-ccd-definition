@@ -4,7 +4,7 @@
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "eventDescription",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "RTJ",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -17,7 +17,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "RTJ",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }
