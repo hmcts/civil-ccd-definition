@@ -2,6 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const { listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -292,7 +293,10 @@ module.exports = {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
-
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+      value: listElement('Both')
+    }};
+    
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -824,7 +828,8 @@ async function updateCaseDataWithPlaceholders(data, document) {
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
-  if (!isCourtListEnabled || config.runningEnv === 'aat') {
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     createClaimData = {
       ...createClaimData,
       valid: {
@@ -845,7 +850,8 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   defendantResponseData, solicitor) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
-  if (!isCourtListEnabled || config.runningEnv === 'aat') {
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
