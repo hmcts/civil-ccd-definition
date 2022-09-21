@@ -1474,6 +1474,22 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "FastTrackNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",

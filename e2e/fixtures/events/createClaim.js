@@ -74,7 +74,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     Court: {
       courtLocation: {
-        applicantPreferredCourt: '344'
+        applicantPreferredCourtLocationList: {
+          list_items: [
+            listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+          ],
+          value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+        }
       }
     },
     Claimant: {
