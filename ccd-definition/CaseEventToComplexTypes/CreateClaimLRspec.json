@@ -169,24 +169,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Claimant",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "applicant1",
-    "ListElementCode": "partyEmail",
-    "FieldDisplayOrder": 20,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\""
-  },
-  {
-    "ID": "Claimant",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "applicant1",
-    "ListElementCode": "partyPhone",
-    "FieldDisplayOrder": 21,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\""
-  },
-  {
     "ID": "IdamEmail",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
@@ -1090,24 +1072,6 @@
     "ListElementCode": "primaryAddress.PostCode",
     "FieldDisplayOrder": 19,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Claimant",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "applicant2",
-    "ListElementCode": "partyEmail",
-    "FieldDisplayOrder": 20,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant2.type = \"SOLE_TRADER\""
-  },
-  {
-    "ID": "Claimant",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "applicant2",
-    "ListElementCode": "partyPhone",
-    "FieldDisplayOrder": 21,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant2.type = \"SOLE_TRADER\""
   },
   {
     "ID": "RespondentSolicitor2Organisation",
