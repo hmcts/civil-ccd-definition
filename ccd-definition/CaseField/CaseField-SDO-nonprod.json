@@ -251,7 +251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
-    "Label": "## Final disposal hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -270,6 +270,15 @@
     "FieldType": "DisposalHearingFinalDisposalHearing",
     "SecurityClassification": "Public"
   },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingTime",
+    "Label": " ",
+    "FieldType": "DisposalHearingHearingTime",
+    "SecurityClassification": "Public"
+  },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingEndLine",
@@ -338,6 +347,35 @@
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesTitle",
+    "Label": "## Hearing notes",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotes",
+    "Label": "This is only seen by the listing officer",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalOrderWithoutHearing",
+    "Label": " ",
+    "FieldType": "DisposalOrderWithoutHearing",
+    "SecurityClassification": "Public"
+  },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleStartLine",
