@@ -132,7 +132,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingDueDate",
     "Label": "Hearing Due Date",
-    "FieldType": "Text",
+    "FieldType": "Date",
     "SecurityClassification": "Public"
   },
   {
