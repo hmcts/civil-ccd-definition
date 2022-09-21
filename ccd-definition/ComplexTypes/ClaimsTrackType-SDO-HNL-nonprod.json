@@ -1,0 +1,73 @@
+[
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "trackType",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimsTrack",
+    "ElementLabel": "Claims Track",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "smallClaimCreditHire",
+    "FieldType": "Text",
+    "ElementLabel": "Credit Hire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "smallClaimRoadTrafficAccident",
+    "FieldType": "Text",
+    "ElementLabel": "Road Traffic Accident",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimBuildingDispute",
+    "FieldType": "Text",
+    "ElementLabel": "Building Dispute",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimClinicalNegligence",
+    "FieldType": "Text",
+    "ElementLabel": "Clinical Negligence",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimCreditHire",
+    "FieldType": "Text",
+    "ElementLabel": "Credit Hire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimEmployersLiability",
+    "FieldType": "Text",
+    "ElementLabel": "Employers Liability",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimHousingDisrepair",
+    "FieldType": "Text",
+    "ElementLabel": "Housing Disrepair",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimPersonalInjury",
+    "FieldType": "Text",
+    "ElementLabel": "Personal Injury",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimsTrackType",
+    "ListElementCode": "fastClaimRoadTrafficAccident",
+    "FieldType": "Text",
+    "ElementLabel": "Road Traffic Accident",
+    "SecurityClassification": "Public"
+  }
+]

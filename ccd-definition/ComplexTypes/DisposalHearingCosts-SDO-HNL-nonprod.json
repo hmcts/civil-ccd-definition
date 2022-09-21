@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "DisposalHearingCosts",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingCosts",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "Costs in the case",
+    "SecurityClassification": "Public"
+  }
+]
