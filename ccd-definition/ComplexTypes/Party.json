@@ -114,7 +114,17 @@
     "ListElementCode": "partyEmail",
     "FieldType": "Email",
     "ElementLabel": "Email",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Max": "40"
+  },
+  {
+    "ID": "Party",
+    "ListElementCode": "partyPhone",
+    "FieldType": "Text",
+    "ElementLabel": "Phone",
+    "SecurityClassification": "Public",
+    "Max": "40",
+    "RegularExpression": "^([0-9\\:\\@\\+\\-\\.\\,\\(\\) ]+)"
   },
   {
     "ID": "Party",
