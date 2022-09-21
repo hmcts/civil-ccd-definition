@@ -147,7 +147,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "casePaymentWaysToPay",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "caseworker-civil-solicitor"
     ],
     "CRUD": "CRU"
   }
