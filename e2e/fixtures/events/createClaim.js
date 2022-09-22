@@ -76,9 +76,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+            listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
           ],
-          value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+          value: listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
         }
       }
     },

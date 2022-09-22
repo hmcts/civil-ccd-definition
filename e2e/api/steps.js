@@ -561,6 +561,11 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
+  retrieveTaskList:  async(user, caseNumber) => {
+    const taskList = await apiRequest.fetchTaskList(user, caseNumber);
+    return taskList;
+  },
+
   addCaseNote: async (user) => {
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
