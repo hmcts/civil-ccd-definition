@@ -2,7 +2,7 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const {checkAccessProfilesIsEnabled} = require("./testingSupport");
+const {checkAccessProfilesIsEnabled} = require('./testingSupport');
 
 let incidentMessage;
 
