@@ -121,7 +121,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "information",
+    "CaseFieldID": "hearingAdditionalInformation",
     "UserRoles": [
       "hearing-schedule-access"
     ],
@@ -146,6 +146,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "casePaymentWaysToPay",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingDocuments",
     "UserRoles": [
       "hearing-schedule-access"
     ],
