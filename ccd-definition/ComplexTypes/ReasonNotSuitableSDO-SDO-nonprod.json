@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "ReasonNotSuitableSDO",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ReasonNotSuitableSDO",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "If you are a Judge submitting this information, the case will be sent to a listing officer. If a legal Adviser has submitted this information the case will be sent to a judge for review.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ReasonNotSuitableSDO",
+    "ListElementCode": "input",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
