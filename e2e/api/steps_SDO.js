@@ -228,13 +228,13 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('JUDICIAL_REFERRAL');
-    if (claimAmount == '950') {
-      await assignCaseRoleToUser(caseId, 'legal-advisor', config.legalAdvisorUser);
-    }
-    else {
-      await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUser);
-    }
+    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    await waitForFinishedBusinessProcess(caseId);
+
+    //Check camunda has brought it to Judicial Referral
+    const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+    assert.equal(caseForDisplay.state.id, 'JUDICIAL_REFERRAL');
+    await waitForFinishedBusinessProcess(caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
