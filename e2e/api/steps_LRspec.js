@@ -11,6 +11,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const {fetchCaseDetails} = require('./apiRequest');
 
 let caseId, eventName;
 let caseData = {};
@@ -177,6 +178,12 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
+  },
+  getCaseId: () => caseId
 };
 
 // Functions

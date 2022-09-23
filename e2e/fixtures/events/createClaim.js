@@ -59,6 +59,14 @@ const applicant1LitigationFriend = {
   primaryAddress: buildAddress('litigant friend')
 };
 
+const removeRespondent1RepresentedFields = (claimData) => {
+  const data = {...claimData};
+  delete data['DefendantSolicitorOrganisation'];
+  delete data['DefendantSolicitorEmail'];
+  delete data['DefendantSolicitorServiceAddress'];
+  return data;
+};
+
 let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
@@ -269,6 +277,16 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         ...claimData,
         AddAnotherClaimant: {
           addApplicant2: 'Yes'
+        }
+      };
+    }
+    case 'TWO_V_ONE_LIP': {
+      const claimData = removeRespondent1RepresentedFields(
+        createClaimData('No', validPba, 'TWO_V_ONE'));
+      return {
+        ...claimData,
+        LegalRepresentation: {
+          respondent1Represented: 'No'
         }
       };
     }

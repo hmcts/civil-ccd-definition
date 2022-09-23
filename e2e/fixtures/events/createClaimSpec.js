@@ -30,9 +30,25 @@ const claimAmount = '150000';
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
-module.exports = {
-  createClaim: (mpScenario) => {
-    const userData = {
+const removeRespondent1RepresentedFields = (claimData) => {
+  const data = {...claimData};
+  delete data['DefendantSolicitorOrganisation'];
+  delete data['DefendantSolicitorEmail'];
+  delete data['DefendantSolicitorServiceAddress'];
+  delete data['specRespondentCorrespondenceAddress'];
+  return data;
+};
+
+const removeRespondent2RepresentedFields = (claimData) => {
+  const data = {...claimData};
+  delete data['SecondDefendantSolicitorOrganisation'];
+  delete data['SecondDefendantSolicitorEmail'];
+  return data;
+};
+
+
+ const createClaim = (mpScenario) => {
+    let userData = {
       userInput: {
         References: {
           superClaimType: 'SPEC_CLAIM',
@@ -200,6 +216,17 @@ module.exports = {
           ...userData.userInput
         };
         break;
+      case 'ONE_V_ONE_LIP':
+      {
+        userData.userInput = {
+          ...removeRespondent1RepresentedFields(userData.userInput),
+          LegalRepresentation: {
+            specRespondent1Represented: 'No'
+          }
+        };
+
+        break;
+      }
       case 'ONE_V_TWO':
         userData.userInput = {
           ...userData.userInput,
@@ -277,6 +304,35 @@ module.exports = {
             }
           },
         };
+        break;
+
+      case 'ONE_V_TWO_LIP_REP': {
+        const oneVTwoData =  createClaim('ONE_V_TWO');
+        userData = {
+          ...oneVTwoData,
+          userInput: {
+            ...removeRespondent1RepresentedFields(oneVTwoData.userInput),
+            LegalRepresentation: {
+              specRespondent1Represented: 'No'
+            }
+          }
+        };
+      }
+        break;
+
+      case 'ONE_V_TWO_REP_LIP': {
+        const oneVTwoData =  createClaim('ONE_V_TWO');
+        userData = {
+          ...oneVTwoData,
+          userInput: {
+            ...removeRespondent2RepresentedFields(oneVTwoData.userInput),
+            LegalRepresentationRespondent2: {
+              specRespondent2Represented: 'No'
+            }
+          },
+          midEventData: {}
+        };
+      }
         break;
 
       case 'ONE_V_TWO_SAME_SOL':
@@ -360,14 +416,28 @@ module.exports = {
                 PostCode: 'NR5 9LL'
               }
             }
-          },
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           }
         };
         break;
-    }
+
+      case 'TWO_V_ONE_LIP': {
+        const twoVOneData =  createClaim('TWO_V_ONE');
+        userData = {
+          ...twoVOneData,
+          userInput: {
+            ...removeRespondent1RepresentedFields(twoVOneData.userInput),
+            LegalRepresentation: {
+              specRespondent1Represented: 'No'
+            }
+          }
+        };
+      }
+      break;
+ }
 
     return userData;
-  }
-};
+  };
+
+  module.exports = {
+    createClaim
+  };

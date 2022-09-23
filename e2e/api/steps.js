@@ -13,12 +13,9 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {getNocQuestions} = require('./caseAssignment');
-const {validateNocAnswers, submitNocRequest} = require('./caseAssignment');
 const {createClaim1v2Res1Unrepresented} = require('../fixtures/events/1v2DifferentSolicitorEvents/createClaim_unrepresented_respondent1');
 const {createClaim1v2Res2Unrepresented} = require('../fixtures/events/1v2DifferentSolicitorEvents/createClaim_unrepresented_respondent2');
 const {fetchCaseDetails} = require('./apiRequest');
-const {updateActiveOrganisationUsersMocks} = require('../helpers/activeOrganisationUsers');
 const {nocEnabled} = require('../config');
 
 const data = {
@@ -596,30 +593,12 @@ module.exports = {
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
   },
-  requestNoticeOfChangeForRespondent1Solicitor: async (newSolicitor) => {
-    await requestNoticeOfChange(newSolicitor, 'respondent1OrganisationPolicy',
-      buildNocAnswers('Test Inc', 'Sir John Doe'));
-  },
-  requestNoticeOfChangeForRespondent2Solicitor: async (newSolicitor) => {
-    await requestNoticeOfChange(newSolicitor, 'respondent2OrganisationPolicy',
-      buildNocAnswers('Test Inc', 'Dr Foo bar')
-    );
-  },
-  requestNoticeOfChangeForApplicant1Solicitor: async (newSolicitor) => {
-    await requestNoticeOfChange(newSolicitor, 'applicant1OrganisationPolicy',
-      buildNocAnswers('Test Inc', 'Test Inc')
-    );
-  },
-  requestNoticeOfChangeForApplicant2Solicitor: async (newSolicitor) => {
-    await requestNoticeOfChange(newSolicitor, 'applicant1OrganisationPolicy',
-      buildNocAnswers('Test Inc', 'Dr Jane Doe')
-    );
-  },
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
     console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
     const expectedStatus = shouldHaveAccess ? 200 : 404;
     return await fetchCaseDetails(user, caseId, expectedStatus);
   },
+  getCaseId: () => caseId,
   cleanUp: async () => {
     await unAssignAllUsers();
   }
@@ -865,39 +844,6 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
 };
 
-const buildNocAnswers = (applicantName, clientName) => ([
-  {question_id: 'applicantName', value: `${applicantName}`},
-  {question_id: 'clientName', value: `${clientName}`}
-]);
-
-const requestNoticeOfChange = async(newSolicitor, orgPolicyTag, answers) => {
-  if(config.runningEnv == 'local') {
-    await updateActiveOrganisationUsersMocks(newSolicitor);
-  }
-
-  console.log('Validating noc questions');
-  const getNotQuestionsResponse = await getNocQuestions(caseId, newSolicitor);
-  assert.equal(getNotQuestionsResponse.status, 200,
-    'Expected getNotQuestionsResponse api call to return successful status');
-
-  console.log('Validating noc answers');
-  const validateAnswersResponse = await validateNocAnswers(caseId, answers, newSolicitor);
-  assert.equal(validateAnswersResponse.status, 200,
-    'Expected validateNocAnswers api call to return successful status');
-
-  console.log(`Submitting notice of change request for case [${caseId}]`);
-  const submitNocRequestResponse = await submitNocRequest(caseId, answers, newSolicitor);
-  assert.equal(submitNocRequestResponse.status, 201,
-    'Expected submitNocRequestResponse api call to return created status');
-
-  await waitForFinishedBusinessProcess(caseId);
-
-  const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
-  const actualOrgId = caseData.case_data[`${orgPolicyTag}`].Organisation.OrganisationID;
-
-  console.log(`Checking case data [${orgPolicyTag}] for new solicitors organisation Id [${newSolicitor.orgId}].`);
-  assert.equal(actualOrgId, newSolicitor.orgId, 'Should have the new solicitors organisation id.');
-};
 
 const eventRunner = async(user, event, eventData, expectedPostSubmittedState, expectedPostProcessState, expectedSubmittedResponse) => {
   caseId = null;
