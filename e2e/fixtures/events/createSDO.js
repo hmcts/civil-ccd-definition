@@ -487,7 +487,9 @@ module.exports = {
     responseData = {
       userInput: {
         NotSuitableSDO: {
-          reasonNotSuitableSDO: 'Too many problems.',
+          reasonNotSuitableSDO: {
+              input: 'Too many problems.'
+          }
         }
       }
     };

@@ -245,21 +245,23 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     if(response == 'UNSUITABLE_FOR_SDO'){
-      eventName = 'Unsuitable_SDO';
+      eventName = 'NotSuitable_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = eventData['sdoTracks'][response];
-    console.log(disposalData);
 
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
 
     if (response == 'UNSUITABLE_FOR_SDO' && user == config.judgeUser) {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+      await waitForFinishedBusinessProcess(caseId);
+      const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+      assert.equal(caseForDisplay.state.id, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     } else if (response == 'UNSUITABLE_FOR_SDO') {
       await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUser);
     } else {

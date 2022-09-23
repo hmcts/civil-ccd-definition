@@ -117,7 +117,7 @@ module.exports = {
 
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    //createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
