@@ -76,9 +76,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+            listElement('Leeds Combined Court Center')
           ],
-          value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+          value: listElement('Leeds Combined Court Center')
         }
       }
     },

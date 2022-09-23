@@ -22,7 +22,7 @@ let caseId, eventName, responseData;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM_SPEC: (scenario, claimAmount) => claimDataSpec.createClaim(scenario, claimAmount),
+  CREATE_CLAIM_SPEC: (scenario) => claimDataSpec.createClaim(scenario),
   DEFENDANT_RESPONSE_SPEC: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
   DEFENDANT_RESPONSE2_SPEC: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response),
   DEFENDANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
@@ -213,7 +213,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', claimAmount = '150000') => {
+  claimantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
