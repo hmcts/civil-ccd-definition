@@ -22,7 +22,8 @@ module.exports = {
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
       events.CLAIMANT_RESPONSE,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
@@ -44,7 +45,8 @@ module.exports = {
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.INITIATE_GENERAL_APPLICATION
     ],
   },
   admin: {
@@ -73,10 +75,25 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS
     ]
+  },
+  judge: {
+    JUDICIAL_REFERRAL: [
+      events.CREATE_SDO,
+      events.Unsuitable_SDO
+    ],
+    CASE_PROGRESSION: []
+  },
+  legal_advisor: {
+    JUDICIAL_REFERRAL: [
+      events.CREATE_SDO,
+      events.Unsuitable_SDO
+    ],
+    CASE_PROGRESSION: []
   }
 };

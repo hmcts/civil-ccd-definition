@@ -133,14 +133,13 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ...(legalRepresentation === 'Yes') ? {
       DefendantSolicitorOrganisation: {
-        respondent1OrgRegistered: 'Yes',
         respondent1OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference',
           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
           Organisation: {
             OrganisationID: config.defendant1SolicitorOrgId
-          },
-        },
+          }
+        }
       },
       DefendantSolicitorServiceAddress: {
         respondentSolicitor1ServiceAddress: buildAddress('service')

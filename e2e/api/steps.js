@@ -117,8 +117,7 @@ module.exports = {
 
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-
+    //createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
@@ -130,17 +129,14 @@ module.exports = {
     }
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
-
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'Your claim will not be issued until payment is confirmed.'
     });
-
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
@@ -167,30 +163,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
-  },
-
-  createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
-    eventName = 'CREATE_CLAIM';
-    caseId = null;
-    caseData = {};
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-
-    let createClaimData = data.CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS;
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    await validateEventPages(createClaimData);
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
   createClaimWithFailingPBAAccount: async (user) => {
@@ -531,18 +503,23 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    //await apiRequest.submitEvent(eventName, caseData, caseId);
-
-    await assertSubmittedEvent(expectedCcdState, {
+    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
     });
-
     await waitForFinishedBusinessProcess(caseId);
+
+    //Check camunda has brought it to Judicial Referral
+    const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+    assert.equal(caseForDisplay.state.id, expectedCcdState);
+    await waitForFinishedBusinessProcess(caseId);
+
     if (expectedCcdState == 'PROCEEDS_IN_HERITAGE_SYSTEM') {
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    } else if (expectedCcdState == 'JUDICIAL_REFERRAL') {
+      //await assertCorrectEventsAreAvailableToUser(config.judgeUser, 'JUDICIAL_REFERRAL');
     }
   },
 

@@ -3,6 +3,7 @@ const events = require('./events.js');
 module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
+      events.INITIATE_GENERAL_APPLICATION,
       events.NOTIFY_DEFENDANT_OF_CLAIM,
       events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
       events.CHANGE_SOLICITOR_EMAIL,
@@ -10,15 +11,19 @@ module.exports = {
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.DEFAULT_JUDGEMENT,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
       events.CLAIMANT_RESPONSE,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
@@ -33,29 +38,35 @@ module.exports = {
       events.DEFENDANT_RESPONSE,
       events.INFORM_AGREED_EXTENSION_DATE,
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.DEFAULT_JUDGEMENT,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.INITIATE_GENERAL_APPLICATION
     ],
   },
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.ADD_CASE_NOTE,
@@ -64,7 +75,8 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.CREATE_GENERAL_APPLICATION_CASE
     ],
     PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS
@@ -73,19 +85,14 @@ module.exports = {
   judge: {
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
-      events.Unsuitable_SDO,
-      events.ENTER_BREATHING_SPACE_SPEC,
-      events.LIFT_BREATHING_SPACE_SPEC
+      events.Unsuitable_SDO
     ],
     CASE_PROGRESSION: []
   },
   legal_advisor: {
     JUDICIAL_REFERRAL: [
       events.CREATE_SDO,
-      events.ENTER_BREATHING_SPACE_SPEC,
-      events.LIFT_BREATHING_SPACE_SPEC,
-      events.Unsuitable_SDO,
-      events.REFER_TO_JUDGE
+      events.Unsuitable_SDO
     ],
     CASE_PROGRESSION: []
   }
