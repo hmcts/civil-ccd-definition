@@ -16,7 +16,6 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
-      events.CREATE_SDO,
       events.LIFT_BREATHING_SPACE_SPEC
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
@@ -30,7 +29,6 @@ module.exports = {
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
-      events.CREATE_SDO
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
@@ -58,7 +56,6 @@ module.exports = {
       events.DEFENDANT_RESPONSE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
       events.INFORM_AGREED_EXTENSION_DATE_SPEC,
-      events.CREATE_SDO
     ],
     AWAITING_DEFENDANT_RESPONSE: [
       events.CHANGE_SOLICITOR_EMAIL,
@@ -75,7 +72,6 @@ module.exports = {
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
@@ -90,7 +86,6 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.CREATE_GENERAL_APPLICATION_CASE,
-      events.CREATE_SDO,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],

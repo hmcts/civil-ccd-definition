@@ -1,0 +1,27 @@
+[
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "caseLocation",
+    "FieldType": "CaseLocation",
+    "ElementLabel": " ",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "responseCourtLocations",
+    "FieldType": "DynamicList",
+    "ElementLabel": "Preferred court hearing centre",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "responseCourtCode",
+    "FieldType": "Text",
+    "ElementLabel": "The code of your preferred County Court hearing centre",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public",
+    "RegularExpression": "[0-9]{3}"
+  }
+]
