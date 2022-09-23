@@ -213,7 +213,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', claimAmount = '150000') => {
+  claimantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
