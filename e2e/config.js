@@ -12,12 +12,12 @@ module.exports = {
     //dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     //idamApi: 'https://idam-api.aat.platform.hmcts.net',
     //civilService: 'https://civil-ccd-pr-1287.service.core-compute-preview.internal'
-    manageCase: 'https://xui-civil-ccd-pr-1287.service.core-compute-preview.internal',
+    manageCase: 'https://xui-civil-ccd-pr-1327.service.core-compute-preview.internal',
     authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-1287.service.core-compute-preview.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-1327.service.core-compute-preview.internal',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-1287.service.core-compute-preview.internal'
+    civilService: 'https://civil-ccd-pr-1327.service.core-compute-preview.internal'
   },
   s2s: {
     microservice: 'civil_service',
