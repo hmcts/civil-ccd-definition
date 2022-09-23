@@ -49,9 +49,9 @@ module.exports = {
     type: 'systemupdate'
   },
   judgeUser: {
-    password: process.env.ENVIRONMENT === 'demo' || process.env.ENVIRONMENT ===  'preview'
+    password: process.env.ENVIRONMENT === 'local' || process.env.ENVIRONMENT ===  undefined
       ? defaultPassword : 'Hmcts1234',
-    email: process.env.ENVIRONMENT === 'demo' || process.env.ENVIRONMENT ===  'preview'
+    email: process.env.ENVIRONMENT === 'local' || process.env.ENVIRONMENT ===  undefined
       ? 'judge-civil-02@example.com' : '4924246EMP-@ejudiciary.net',
     type: 'judge'
   },
