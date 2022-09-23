@@ -239,7 +239,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
