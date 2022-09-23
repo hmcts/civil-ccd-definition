@@ -104,16 +104,12 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin",
           "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
           "caseworker-ras-validation",
           "GS_profile"
         ],
