@@ -118,7 +118,7 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await addCaseAccessCategoryIfAccessProfilesEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -801,18 +801,17 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
-// CIV-3521: needs to be moved into create claim when access profiles goes live
-async function addCaseAccessCategoryIfAccessProfilesEnabled(createClaimData) {
+// CIV-3521: remove when access profiles is live
+async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
   let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
   // work around for the api  tests
   console.log(`Access Profiles Enabled in Env: ${config.runningEnv}`);
-  if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isAccessProfilesEnabled && !(['preview', 'demo'].includes(config.runningEnv))) {
     createClaimData = {
       ...createClaimData,
       valid: {
         ...createClaimData.valid,
         References: {
-          CaseAccessCategory: 'UNSPEC_CLAIM',
           solicitorReferences: {
            ...createClaimData.valid.References.solicitorReferences
           }

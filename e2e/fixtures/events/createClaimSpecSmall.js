@@ -36,12 +36,12 @@ module.exports = {
     const userData = {
       userInput: {
         References: {
+          CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
           }
         },
-        CaseAccessCategory: 'SPEC_CLAIM',
         Claimant: {
           applicant1: applicant1WithPartyName
         },
