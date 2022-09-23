@@ -104,7 +104,17 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[APPLICANTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       },

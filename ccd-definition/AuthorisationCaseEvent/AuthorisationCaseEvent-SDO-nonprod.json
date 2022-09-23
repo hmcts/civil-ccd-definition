@@ -109,8 +109,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[APPLICANTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
         ],
         "CRUD": "CRU"
       }

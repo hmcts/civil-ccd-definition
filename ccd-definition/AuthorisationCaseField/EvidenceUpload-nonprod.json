@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "placeholder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
+          "[APPLICANTSOLICITORONESPEC]",
+          "[APPLICANTSOLICITORTWOSPEC]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONESPEC]",
+          "[RESPONDENTSOLICITORTWOSPEC]"
+        ],
+        "CRUD": "CRU"
+      }]
+    }
+  ]
