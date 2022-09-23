@@ -45,7 +45,7 @@ module.exports = {
   },
   judgeUser: {
     password: 'Hmcts1234',
-    email: '4925343EMP-@ejudiciary.net',
+    email: '4924221EMP-@ejudiciary.net',
     type: 'judge'
   },
   legalAdvisorUser: {
