@@ -273,7 +273,7 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
       value: listElement('Both')
     }};
-    
+
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -811,7 +811,12 @@ async function addCaseAccessCategoryIfAccessProfilesEnabled(createClaimData) {
       ...createClaimData,
       valid: {
         ...createClaimData.valid,
-        CaseAccessCategory: 'UNSPEC_CLAIM',
+        References: {
+          CaseAccessCategory: 'UNSPEC_CLAIM',
+          solicitorReferences: {
+           ...createClaimData.valid.References.solicitorReferences
+          }
+        }
       }
     };
   }
