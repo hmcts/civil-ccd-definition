@@ -2,11 +2,11 @@ const config = require('../../../config.js');
 
 Feature('CCD 1v1 API test @api-sdo');
 
-// // eslint-disable-next-line no-unused-vars
-// Scenario('1v1 full defence unspecified - judge draws disposal order', async ({I, api_sdo}) => {
-//   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-//   await api_sdo.createSDO(config.judgeUser);
-// });
+// eslint-disable-next-line no-unused-vars
+Scenario('1v1 full defence unspecified - judge draws disposal order', async ({I, api_sdo}) => {
+  await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
+  await api_sdo.createSDO(config.judgeUser);
+});
 //
 // // eslint-disable-next-line no-unused-vars
 // Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({I, api_sdo}) => {
