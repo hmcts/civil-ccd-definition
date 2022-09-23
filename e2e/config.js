@@ -44,8 +44,8 @@ module.exports = {
     type: 'admin'
   },
   judgeUser: {
-    password: defaultPassword,
-    email: 'judge-civil-02@example.com',
+    password: 'Hmcts1234',
+    email: '4925343EMP-@ejudiciary.net',
     type: 'judge'
   },
   legalAdvisorUser: {
