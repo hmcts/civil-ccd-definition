@@ -7,9 +7,18 @@ Feature('1v1 Unspec defaultJudgement @e2e-dj-1v1');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
 
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  //below amend claim documents only needed as assertion was failing on notify claims
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.amendRespondent1ResponseDeadline(config.systemupdate);
+  let caseid = await api.getCaseId();
+  await I.login(config.applicantSolicitorUser);
+  await I.initiateDJUnspec(caseid, 'ONE_V_ONE');
+
   if (config.runWAApiTest) {
-    const data = await api.retrieveTaskList(config.judgeUser, '1663776399721639');
-    console.log('Task content ...', data['tasks'][0]);
+    const data = await api.retrieveTaskDetails(config.judgeUser, caseid);
   }
 });
 

@@ -2,7 +2,12 @@ const config = require('../config.js');
 
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
+const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
+
+
+const TASK_MAX_RETRIES = 60;
+const TASK_RETRY_TIMEOUT_MS = 5000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -77,11 +82,8 @@ module.exports = {
       }, 'POST', 201);
   },
 
-  fetchTaskList: async (user, caseNumber,  expectedStatus = 200) => {
+  fetchTaskDetails: async (user, caseNumber,  expectedStatus = 200) => {
     const userToken =  await idamHelper.accessToken(user);
-
-    console.log('config.s2sForXUI.microservice..', config.s2sForXUI.microservice);
-    console.log('config.s2sForXUI.secret..', config.s2sForXUI.secret);
     const s2sToken = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
       {'Content-Type': 'application/json'},
@@ -93,32 +95,29 @@ module.exports = {
 
     const inputData = {
       'search_parameters': [
-          {
-              'key': 'jurisdiction',
-              'operator': 'IN',
-              'values': ['CIVIL']
-          },
-          {
-            'key': 'caseId',
-            'operator': 'IN',
-            'values': [caseNumber]
-          },
-          {'key':'state','operator':'IN','values':['assigned','unassigned']}
+          {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
+          {'key': 'caseId','operator': 'IN','values': [caseNumber]},
+          {'key':'state','operator':'IN','values':['assigned','unassigned', 'unconfigured']}
       ],
-      'sorting_parameters': [
-          {
-              'sort_by': 'dueDate',
-              'sort_order': 'asc'
-          }
-      ]
+      'sorting_parameters': [{'sort_by': 'dueDate','sort_order': 'asc'}]
     };
 
-    return restHelper.retriedRequest(`${config.url.waTaskMgmtApi}/task`, 
+    return retry(() => {
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task`, 
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${userToken}`,
         'ServiceAuthorization': `Bearer ${s2sToken}`
-      }, inputData, 'POST', expectedStatus).then(response => response.json());
-    }
+      }, inputData, 'POST', expectedStatus)
+        .then(async response => await response.json())
+        .then(jsonResponse => {
+          let availableTaskDetails = jsonResponse['tasks'][0];
+          if (!availableTaskDetails) {
+            throw new Error(`Ongoing task retrieval process for case id: ${caseNumber}`);
+          }
+          return availableTaskDetails;
+      });
+    }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  }
 
 };

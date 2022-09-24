@@ -561,9 +561,8 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
-  retrieveTaskList:  async(user, caseNumber) => {
-    const taskList = await apiRequest.fetchTaskList(user, caseNumber);
-    return taskList;
+  retrieveTaskDetails:  async(user, caseNumber) => {
+     return apiRequest.fetchTaskDetails(user, caseNumber);
   },
 
   addCaseNote: async (user) => {
