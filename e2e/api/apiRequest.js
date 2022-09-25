@@ -7,7 +7,7 @@ const totp = require('totp-generator');
 
 
 const TASK_MAX_RETRIES = 60;
-const TASK_RETRY_TIMEOUT_MS = 5000;
+const TASK_RETRY_TIMEOUT_MS = 10000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -82,7 +82,7 @@ module.exports = {
       }, 'POST', 201);
   },
 
-  fetchTaskDetails: async (user, caseNumber,  expectedStatus = 200) => {
+  fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     const userToken =  await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
@@ -97,6 +97,7 @@ module.exports = {
       'search_parameters': [
           {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
           {'key': 'caseId','operator': 'IN','values': [caseNumber]},
+          {'key': 'taskType','operator': 'IN','values': [taskId]},
           {'key':'state','operator':'IN','values':['assigned','unassigned', 'unconfigured']}
       ],
       'sorting_parameters': [{'sort_by': 'dueDate','sort_order': 'asc'}]

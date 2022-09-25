@@ -334,6 +334,17 @@ module.exports = function () {
       ]);
     },
 
+    async judgePerformDJDirectionOrder(caseRefNum) {
+      eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.selectCaseManagementOrder('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.verifyOrderPreview(caseRefNum),
+        () => event.submit('Submit', 'Your order has been issued'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
 

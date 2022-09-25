@@ -35,6 +35,36 @@ module.exports = {
       }
     },
 
+    CaseManagementOrderSelectionForDJTask:{
+      text: 'What order would you like to make',
+      id: '#caseManagementOrderSelection',
+      options: {
+        disposalHearing: '#caseManagementOrderSelection-DISPOSAL_HEARING',
+        trialHearing: '#caseManagementOrderSelection-TRIAL_HEARING'
+      },
+      additionDirectionsBuildingDispute: '#caseManagementOrderAdditional-OrderTypeTrialAdditionalDirectionsBuildingDispute'
+    },
+
+    selectOrderAndHearingDetailsForDJTask:{
+      text: 'Order and hearing details',
+      disposalHearingTimeId: '#disposalHearingFinalDisposalHearingDJ_time',
+      disposalHearingTimeOptions: {
+        thirtyMinutes: '#disposalHearingFinalDisposalHearingDJ_time-THIRTY_MINUTES',
+        fifteenMinutes: '#disposalHearingFinalDisposalHearingDJ_time-FIFTEEN_MINUTES'
+      },
+      hearingMethodId: '#disposalHearingMethodDJ',
+      hearingMethodOptions: {
+        inPerson: '#disposalHearingMethodDJ-disposalHearingMethodInPerson',
+        video: '#disposalHearingMethodDJ-disposalHearingMethodVideoConferenceHearing',
+        telephone: '#disposalHearingMethodDJ-disposalHearingMethodTelephoneHearing'
+      },
+      hearingLocation: '#disposalHearingMethodInPersonDJ',
+      hearingBundleId: '#disposalHearingBundleDJ_type',
+      hearingBundleTypeDocs: '#disposalHearingBundleDJ_type-DOCUMENTS',
+      hearingBundleTypeSummary: '#ådisposalHearingBundleDJ_type-SUMMARY',
+      hearingBundleTypeElectronic: '#disposalHearingBundleDJ_type-ELECTRONIC'
+    },
+
     hearingSelectionForDJ:{
       id: '#hearingSelection',
       options: {
@@ -43,6 +73,7 @@ module.exports = {
       },
       details: '#detailsOfDirection'
     },
+
     hearingRequirements:{
       id: '#hearingSupportRequirementsDJ_hearingType',
       options: {
@@ -98,5 +129,37 @@ module.exports = {
     I.click(this.fields.hearingRequirements.estimatedTime);
     I.click(this.fields.hearingRequirements.attendHearing);
     await I.clickContinue();
+  },
+
+  async selectCaseManagementOrder(orderType = 'DisposalHearing') {
+    await I.waitForText(this.fields.CaseManagementOrderSelectionForDJTask.text);
+    await within(this.fields.CaseManagementOrderSelectionForDJTask.id, () => {
+      if (orderType == 'DisposalHearing') {
+        I.click(this.fields.CaseManagementOrderSelectionForDJTask.options.disposalHearing);
+      } else {
+        I.click(this.fields.CaseManagementOrderSelectionForDJTask.options.trialHearing);
+        I.waitForElement(this.fields.CaseManagementOrderSelectionForDJTask.additionDirectionsBuildingDispute);
+        I.click(this.fields.CaseManagementOrderSelectionForDJTask.additionDirectionsBuildingDispute);
+      }
+    });
+    await I.clickContinue();
+  },
+  
+  async selectOrderAndHearingDetailsForDJTask(orderType = 'DisposalHearing') {
+    await I.waitForText(this.fields.selectOrderAndHearingDetailsForDJTask.text);
+    if (orderType == 'DisposalHearing') {
+      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.disposalHearingTimeOptions.thirtyMinutes);
+      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingMethodOptions.inPerson);
+      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingLocation, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
+      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
+    }
+    await I.clickContinue();
+  },
+  
+  async verifyOrderPreview(claimNumber) {
+    const linkXPath = `//a[contains(text(), 'Order_disposal_pdf_${claimNumber}.pdf')]`;
+    await I.waitForClickable(linkXPath);
+    await I.clickContinue();
   }
+
 };

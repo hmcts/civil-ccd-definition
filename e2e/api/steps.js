@@ -104,7 +104,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -248,6 +248,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
 
     await validateEventPages(data[eventName]);
@@ -561,8 +562,8 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
-  retrieveTaskDetails:  async(user, caseNumber) => {
-     return apiRequest.fetchTaskDetails(user, caseNumber);
+  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
+     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
 
   addCaseNote: async (user) => {
@@ -630,6 +631,10 @@ module.exports = {
      console.log (`case created: ${caseId}`);
      return caseId;
    },
+
+  getLegacyCaseReference: async () => {
+    return legacyCaseReference;
+  },
 
   cleanUp: async () => {
     await unAssignAllUsers();
