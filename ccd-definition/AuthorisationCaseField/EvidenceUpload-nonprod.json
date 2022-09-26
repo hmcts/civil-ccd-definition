@@ -5,14 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORTWO]",
-          "[APPLICANTSOLICITORONESPEC]",
-          "[APPLICANTSOLICITORTWOSPEC]",
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }]
