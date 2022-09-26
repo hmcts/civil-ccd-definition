@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_CUI",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  }
+]
