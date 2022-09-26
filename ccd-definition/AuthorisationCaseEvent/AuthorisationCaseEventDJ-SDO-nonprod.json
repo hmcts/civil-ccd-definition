@@ -24,8 +24,7 @@
       {
         "UserRoles": [
 
-          "caseworker-civil-admin",
-          "GS_profile"
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
