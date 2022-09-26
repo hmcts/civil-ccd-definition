@@ -501,15 +501,18 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    await assertSubmittedEvent(expectedCcdState || 'AWAITING_APPLICANT_INTENTION', {
+    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
     });
     await waitForFinishedBusinessProcess(caseId);
 
-    //Check camunda has brought it to Judicial Referral
+    //Check camunda has brought it to expectedCcdState
     const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-    assert.equal(caseForDisplay.state.id, expectedCcdState);
+    let stateReached = assert.equal(caseForDisplay.state.id, expectedCcdState);
+    if (stateReached) {
+      console.log('State '+expectedCcdState+' reached.');
+    }
     await waitForFinishedBusinessProcess(caseId);
 
     if (expectedCcdState) {
