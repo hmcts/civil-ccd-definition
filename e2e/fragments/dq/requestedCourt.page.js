@@ -36,7 +36,7 @@ module.exports = {
     });
 
     let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled || config.runningEnv === 'aat') {
+    if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
       I.fillField(this.oldFields(party).responseCourtCode, '343');
     } else {
       I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);

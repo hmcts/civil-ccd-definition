@@ -2,6 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const { listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -168,30 +169,6 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
-  createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
-    eventName = 'CREATE_CLAIM';
-    caseId = null;
-    caseData = {};
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-
-    let createClaimData = data.CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS;
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    await validateEventPages(createClaimData);
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
-  },
-
   createClaimWithFailingPBAAccount: async (user) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -292,7 +269,10 @@ module.exports = {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
-
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+      value: listElement('Both')
+    }};
+    
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -824,7 +804,8 @@ async function updateCaseDataWithPlaceholders(data, document) {
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
-  if (!isCourtListEnabled || config.runningEnv === 'aat') {
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     createClaimData = {
       ...createClaimData,
       valid: {
@@ -845,7 +826,8 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   defendantResponseData, solicitor) {
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
-  if (!isCourtListEnabled || config.runningEnv === 'aat') {
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
