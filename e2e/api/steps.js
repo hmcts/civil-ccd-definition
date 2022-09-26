@@ -501,7 +501,7 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION', {
+    await assertSubmittedEvent(expectedCcdState || 'AWAITING_APPLICANT_INTENTION', {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
     });
@@ -512,14 +512,14 @@ module.exports = {
     assert.equal(caseForDisplay.state.id, expectedCcdState);
     await waitForFinishedBusinessProcess(caseId);
 
-    if (expectedCcdState == 'PROCEEDS_IN_HERITAGE_SYSTEM') {
-      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    } else if (expectedCcdState == 'JUDICIAL_REFERRAL') {
-      //await assertCorrectEventsAreAvailableToUser(config.judgeUser, 'JUDICIAL_REFERRAL');
+    if (expectedCcdState) {
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, expectedCcdState);
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, expectedCcdState);
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, expectedCcdState);
+      await assertCorrectEventsAreAvailableToUser(config.judgeUser, expectedCcdState);
     }
-  },
+
+    },
 
   //TODO this method is not used in api tests
   addDefendantLitigationFriend: async () => {
