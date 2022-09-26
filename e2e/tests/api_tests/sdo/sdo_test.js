@@ -7,6 +7,8 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({I,
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
   await api_sdo.createSDO(config.judgeUser);
 });
+//TODO: Uncomment tests once authorisation is shown to be working. Legal advisor not yet implemented on environment,
+//so legal advisor tests must be uncommented later
 //
 // // eslint-disable-next-line no-unused-vars
 // Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({I, api_sdo}) => {

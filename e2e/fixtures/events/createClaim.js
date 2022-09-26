@@ -76,9 +76,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement('Leeds Combined Court Center')
+            listElement('Leeds Combined Court Centre - THE COURT HOUSE, 1 OXFORD ROW - LS1 3BG')
           ],
-          value: listElement('Leeds Combined Court Center')
+          value: listElement('Leeds Combined Court Centre - THE COURT HOUSE, 1 OXFORD ROW - LS1 3BG')
         }
       }
     },
