@@ -413,7 +413,11 @@ module.exports = {
             }
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            responseClaimCourtLocationRequired: 'Yes',
+            respondtoCourtLocation: {
+              respondCourtCode: '243',
+              reasonForHearingAtSpecificCourt: 'Best one'
+            }
           },
           Applications: {
             respondent1DQFutureApplications: {
