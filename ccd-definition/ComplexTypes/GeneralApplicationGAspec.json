@@ -194,7 +194,7 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "applicationTakenOfflineDate",
-    "ElementLabel": "Application Closed date",
+    "ElementLabel": "Application Taken Offline date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
