@@ -333,7 +333,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "challenged-access-legal-operations",
+    "RoleName" : "challenged-access-legal-ops",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil",
