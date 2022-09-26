@@ -5,13 +5,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil",
-          "caseworker-civil-staff",
-          "caseworker-civil-solicitor"
+          "legal-adviser"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -21,13 +23,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil",
-          "caseworker-civil-staff",
-          "caseworker-civil-solicitor"
+          "legal-adviser"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
