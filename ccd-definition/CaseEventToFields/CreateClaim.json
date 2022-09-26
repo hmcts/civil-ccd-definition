@@ -14,18 +14,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "eligibilityQuestions",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "Eligibility",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/start-claim"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "solicitorReferences",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
@@ -178,9 +166,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1OrgRegistered",
+    "CaseFieldID": "respondent1OrganisationPolicy",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "DefendantSolicitorOrganisation",
     "PageLabel": "Search for the defendant's legal representative",
     "PageDisplayOrder": 14,
@@ -188,18 +176,6 @@
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repOrgPolicy",
     "PageShowCondition": "respondent1Represented=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "DefendantSolicitorOrganisation",
-    "PageDisplayOrder": 14,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "respondent1OrgRegistered=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -212,7 +188,7 @@
     "PageDisplayOrder": 15,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1OrgRegistered=\"Yes\""
+    "PageShowCondition": "respondent1Represented=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -237,32 +213,8 @@
     "PageDisplayOrder": 16,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1OrgRegistered=\"Yes\"",
+    "PageShowCondition": "respondent1Represented=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-defendant-legal-rep-email"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondentSolicitor1OrgLabel",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "UnRegisteredDefendantSolicitorOrganisation",
-    "PageLabel": "Defendant's legal representative’s details",
-    "PageDisplayOrder": 16,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "respondent1OrgRegistered=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondentSolicitor1OrganisationDetails",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "UnRegisteredDefendantSolicitorOrganisation",
-    "PageDisplayOrder": 16,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -608,9 +560,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent2OrgRegistered",
+    "CaseFieldID": "respondent2OrganisationPolicy",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "SecondDefendantSolicitorOrganisation",
     "PageLabel": "Search for the second defendant's legal representative",
     "PageDisplayOrder": 21,
@@ -618,18 +570,6 @@
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/rep2OrgPolicy",
     "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "SecondDefendantSolicitorOrganisation",
-    "PageDisplayOrder": 21,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "respondent2OrgRegistered=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -642,7 +582,7 @@
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
+    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -667,7 +607,7 @@
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
+    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -680,31 +620,7 @@
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2OrgRegistered=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondentSolicitor2OrgLabel",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "UnRegisteredSecondDefendantSolicitorOrganisation",
-    "PageLabel": "Defendant's legal representative’s details",
-    "PageDisplayOrder": 24,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "respondent2OrgRegistered=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondentSolicitor2OrganisationDetails",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "UnRegisteredSecondDefendantSolicitorOrganisation",
-    "PageDisplayOrder": 24,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
