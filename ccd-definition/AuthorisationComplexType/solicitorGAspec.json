@@ -440,34 +440,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "caseLink",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "caseState",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "generalApplicationType",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
     "ListElementCode": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-solicitor",
