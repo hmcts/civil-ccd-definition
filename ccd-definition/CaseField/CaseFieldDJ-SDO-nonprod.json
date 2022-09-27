@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "testsearch",
-    "Label": "I should see this : ${applicantSolicitor1UserDetails.email}",
+    "Label": "",
     "FieldType": "Label",
     "_comment": "testing global search mappings",
     "SecurityClassification": "Public"
