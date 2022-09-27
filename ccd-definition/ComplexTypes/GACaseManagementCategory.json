@@ -6,14 +6,5 @@
     "ElementLabel": " ",
     "FieldType": "CaseManagementCategoryElement",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "GACaseManagementCategory",
-    "ListElementCode": "list_items",
-    "ElementLabel": " ",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseManagementCategoryElement",
-    "SecurityClassification": "Public"
   }
 ]
