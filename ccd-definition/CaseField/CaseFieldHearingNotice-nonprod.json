@@ -125,7 +125,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingFee",
     "Label": "Hearing Fee",
-    "FieldType": "Text",
+    "FieldType": "Fee",
     "SecurityClassification": "Public"
   },
   {
