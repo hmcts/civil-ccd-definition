@@ -3,9 +3,6 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
     "CaseFieldID": "claimsTrack",
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
   }
