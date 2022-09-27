@@ -2163,20 +2163,5 @@
     "SecurityClassification": "Public",
     "_Definition":  "Details of the next hearing on a case",
     "_Category":  "CIVIL"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
-    "Label": "",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
-    "Label": "",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
   }
-
 ]
