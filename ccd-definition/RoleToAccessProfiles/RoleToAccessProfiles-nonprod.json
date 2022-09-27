@@ -210,7 +210,7 @@
     "RoleName" : "tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -237,7 +237,7 @@
     "RoleName" : "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -246,7 +246,7 @@
     "RoleName" : "ctsc",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -255,7 +255,7 @@
     "RoleName" : "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -264,7 +264,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -273,7 +273,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -336,7 +336,7 @@
     "RoleName" : "senior-tribunal-caseworker",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
