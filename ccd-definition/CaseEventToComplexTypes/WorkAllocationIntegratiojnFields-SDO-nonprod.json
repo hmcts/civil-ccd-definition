@@ -1,0 +1,68 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseFieldID": "totalClaimAmount",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseFieldID": "applicantsProceedIntention",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseFieldID": "claimantResponseScenarioFlag",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseFieldID": "responseClaimMediationSpecRequired",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseFieldID": "respondent1ClaimResponseIntentionType",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseFieldID": "respondent2ClaimResponseIntentionType",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  }
+]
+
+
+caseData.claim
+caseData.applicant1ClaimMediationSpecRequired.hasAgreedFreeMediation
+caseData.claimantResponseDocumentsContainsDefenceAndDirectionsDocuments
+caseData.defendantResponseDocumentsContainsDefenceAndDirectionsDocuments
