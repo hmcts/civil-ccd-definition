@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "GAApplicationsRespTwoSpec",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "UserRoles": [
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "TabFieldDisplayOrder": 1
+  }
+]
