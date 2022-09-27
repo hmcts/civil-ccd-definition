@@ -1026,6 +1026,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRequestedCourtSpec",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimWitnesses",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",

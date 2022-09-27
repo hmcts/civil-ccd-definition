@@ -55,7 +55,8 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            responseCourtCode: '123',
+            reasonForHearingAtSpecificCourt: "Closest court to work"
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -309,7 +310,8 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            responseCourtCode: '123',
+            reasonForHearingAtSpecificCourt: "Closest court to work"
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -446,7 +448,8 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            responseCourtCode: '123',
+            reasonForHearingAtSpecificCourt: "Closest court to work"
           },
           HearingSupport: {
             respondent1DQHearingSupport: {

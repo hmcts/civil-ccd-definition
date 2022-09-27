@@ -43,7 +43,8 @@ module.exports = {
           SmallClaimHearingInterpreterRequired: 'No'
         },
         RequestedCourtLocationLRspec: {
-          responseClaimCourtLocationRequired: 'No'
+          responseCourtCode: '123',
+          reasonForHearingAtSpecificCourt: "Closest court to work"
         },
         VulnerabilityQuestions: {
           respondent1DQVulnerabilityQuestions: {

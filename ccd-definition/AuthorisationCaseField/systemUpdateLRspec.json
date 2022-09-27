@@ -305,6 +305,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQRequestedCourtSpec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimWitnesses",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
