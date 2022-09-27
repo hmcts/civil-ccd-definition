@@ -806,7 +806,7 @@ async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
   let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
   // work around for the api  tests
   console.log(`Access Profiles Enabled in Env: ${config.runningEnv}`);
-  if (!isAccessProfilesEnabled && !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isAccessProfilesEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     createClaimData = {
       ...createClaimData,
       valid: {
