@@ -1,0 +1,61 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_GENERAL_APPLICATION_CASE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "RU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CASE_WITH_GA_STATE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
