@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_HEARING_FORM",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  }
+]

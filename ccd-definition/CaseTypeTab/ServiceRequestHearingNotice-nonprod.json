@@ -5,6 +5,16 @@
     "TabLabel": "Service Request",
     "TabDisplayOrder": 6,
     "CaseFieldID": "casePaymentWaysToPay",
-    "TabFieldDisplayOrder": 1
+    "TabFieldDisplayOrder": 1,
+    "TabShowCondition": "listingOrRelisting = \"LISTING\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "listingOrRelisting",
+    "TabFieldDisplayOrder": 1,
+    "FieldShowCondition": "casePaymentWaysToPay = \"NOT_SHOWN\""
   }
 ]
