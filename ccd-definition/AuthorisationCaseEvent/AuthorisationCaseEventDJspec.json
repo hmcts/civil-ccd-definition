@@ -1,1 +1,23 @@
-[]
+[
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor",
+          "[CREATOR]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
