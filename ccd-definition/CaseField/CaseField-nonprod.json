@@ -12,7 +12,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "changeOfRepresentation",
     "Label": "change of representation details",
-    "FieldType": "ChangeOfRepresentation",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
     "Comment": "Field storing noc update details"
   }
