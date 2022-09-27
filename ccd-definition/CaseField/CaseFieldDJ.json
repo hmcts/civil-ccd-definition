@@ -8,13 +8,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseManagementCategory",
-    "Label": " ",
-    "FieldType": "CaseManagementCategory",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "CPRcertify",
     "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
     "FieldType": "Label",
@@ -132,20 +125,6 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "SearchCriteria",
-    "Label": "Search Criteria",
-    "FieldType": "SearchCriteria",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "caseNameHmctsInternal",
-    "Label": "case Name Hmcts Internal",
-    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]

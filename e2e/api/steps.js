@@ -272,7 +272,7 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
       value: listElement('Both')
     }};
-
+    
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -618,7 +618,7 @@ module.exports = {
       header: '',
       body: ''
     }, true);
-    
+
     await waitForFinishedBusinessProcess(caseId);
   },
 
