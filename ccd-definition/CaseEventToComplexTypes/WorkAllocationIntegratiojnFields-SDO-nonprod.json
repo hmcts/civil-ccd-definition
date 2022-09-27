@@ -60,9 +60,3 @@
     "Publish": "Y"
   }
 ]
-
-
-caseData.claim
-caseData.applicant1ClaimMediationSpecRequired.hasAgreedFreeMediation
-caseData.claimantResponseDocumentsContainsDefenceAndDirectionsDocuments
-caseData.defendantResponseDocumentsContainsDefenceAndDirectionsDocuments
