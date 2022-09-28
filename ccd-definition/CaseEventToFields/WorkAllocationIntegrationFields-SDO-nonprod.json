@@ -55,17 +55,6 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "allocatedTrack",
-    "PageID": "WorkAllocationIntegrationFields",
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  },
-  {
   "CaseTypeID": "CIVIL",
   "CaseEventID": "CLAIMANT_RESPONSE",
   "CaseFieldID": "responseClaimMediationSpecRequired",
