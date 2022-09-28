@@ -65,8 +65,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "HEARING_READINESS",
-    "Name": "Hearing Readiness",
-    "Description": "placeholder",
+    "Name": "Hearing readiness",
+    "Description": "Claim is readied for hearing",
     "DisplayOrder": 10
   },
   {
