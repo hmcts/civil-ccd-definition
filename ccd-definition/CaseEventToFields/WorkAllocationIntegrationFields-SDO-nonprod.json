@@ -64,5 +64,16 @@
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "CLAIMANT_RESPONSE",
+  "CaseFieldID": "responseClaimMediationSpecRequired",
+  "PageID": "WorkAllocationIntegrationFields",
+  "EventElementLabel": "  ",
+  "EventHintText": "  ",
+  "FieldDisplayOrder": 7,
+  "DisplayContext": "MANDATORY",
+  "Publish": "Y"
   }
 ]
