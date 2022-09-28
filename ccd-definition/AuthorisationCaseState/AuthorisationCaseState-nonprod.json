@@ -133,53 +133,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-ras-validation",
-          "GS_profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "HEARING_READINESS",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-ras-validation",
-          "GS_profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
           "caseworker-ras-validation",
           "GS_profile"
         ],
