@@ -6,7 +6,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]",
+          "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-solicitor",
           "[CREATOR]"
         ],

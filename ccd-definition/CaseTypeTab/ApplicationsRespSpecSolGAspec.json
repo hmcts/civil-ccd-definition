@@ -1,13 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "ApplicationsSpec",
+    "TabID": "GAApplicationsRespOneSpec",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
+    "CaseFieldID": "gaDetailsRespondentSol",
     "UserRoles": [
-      "APP-SOL-SPEC-PROFILE"
+      "RES-SOL-ONE-SPEC-PROFILE"
     ],
-    "CaseFieldID": "generalApplicationsDetails",
     "TabFieldDisplayOrder": 1
   }
 ]
