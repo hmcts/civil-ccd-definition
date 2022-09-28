@@ -183,5 +183,12 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementCategory",
+    "ElementLabel": " ",
+    "FieldType": "GACaseManagementCategory",
+    "SecurityClassification": "Public"
   }
 ]
