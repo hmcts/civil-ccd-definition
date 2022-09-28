@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "totalClaimAmount",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -12,7 +12,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicantsProceedIntention",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -23,7 +23,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantResponseScenarioFlag",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -34,7 +34,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -45,7 +45,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -56,7 +56,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -67,7 +67,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -78,7 +78,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
@@ -89,7 +89,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
