@@ -1,6 +1,6 @@
 [
   {
-    "ID": "RequestedCourt",
+    "ID": "RequestedCourtLocationLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "ListElementCode": "responseCourtLocations",
