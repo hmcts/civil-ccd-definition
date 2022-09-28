@@ -197,5 +197,12 @@
     "ElementLabel": "Application Taken Offline date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementCategory",
+    "ElementLabel": " ",
+    "FieldType": "GACaseManagementCategory",
+    "SecurityClassification": "Public"
   }
 ]
