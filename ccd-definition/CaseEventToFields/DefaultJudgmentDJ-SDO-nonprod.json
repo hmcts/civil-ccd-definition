@@ -15,6 +15,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "testsearch",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "CaseManagementOrder1",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "applicantVRespondentText",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
