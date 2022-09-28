@@ -6,8 +6,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]",
-          "[APPLICANTSOLICITORTWOSPEC]",
+
+          "APP-SOL-SPEC-PROFILE",
+
           "[CREATOR]"
         ],
         "CRUD": "CRU"
