@@ -156,6 +156,8 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
@@ -180,6 +182,8 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+
     await validateEventPages(createClaimData);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
