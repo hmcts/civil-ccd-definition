@@ -269,7 +269,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -280,7 +281,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -292,7 +294,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodDJ=\"disposalHearingMethodInPerson\""
+    "FieldShowCondition": "disposalHearingMethodDJ=\"disposalHearingMethodInPerson\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -304,7 +306,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodDJ = \"disposalHearingMethodVideoConferenceHearing\""
+    "FieldShowCondition": "disposalHearingMethodDJ = \"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -316,7 +318,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodVideoConferenceHearingDJ = \"videoTheCourt\""
+    "FieldShowCondition": "disposalHearingMethodVideoConferenceHearingDJ = \"videoTheCourt\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -328,7 +330,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodDJ = \"disposalHearingMethodTelephoneHearing\""
+    "FieldShowCondition": "disposalHearingMethodDJ = \"disposalHearingMethodTelephoneHearing\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -340,7 +342,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodTelephoneHearingDJ = \"telephoneTheCourt\""
+    "FieldShowCondition": "disposalHearingMethodTelephoneHearingDJ = \"telephoneTheCourt\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
