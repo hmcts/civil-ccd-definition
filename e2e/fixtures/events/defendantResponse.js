@@ -104,9 +104,9 @@ module.exports = {
       respondent1DQRequestedCourt: {
         responseCourtLocations: {
           list_items: [
-            listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+            listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
           ],
-          value: listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+          value: listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
