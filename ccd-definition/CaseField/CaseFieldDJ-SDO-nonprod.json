@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "testsearch",
-    "Label": "",
+    "Label": "email",
     "FieldType": "Label",
     "_comment": "testing global search mappings",
     "SecurityClassification": "Public"
