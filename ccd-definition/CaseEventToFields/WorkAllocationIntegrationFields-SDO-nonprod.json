@@ -13,7 +13,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicantsProceedIntention",
+    "CaseFieldID": "respondent1ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
@@ -24,7 +24,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "claimantResponseScenarioFlag",
+    "CaseFieldID": "respondent2ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
@@ -35,7 +35,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "responseClaimMediationSpecRequired",
+    "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
@@ -46,7 +46,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "respondent1ClaimResponseIntentionType",
+    "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
@@ -57,44 +57,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "respondent2ClaimResponseIntentionType",
-    "PageID": "WorkAllocationIntegrationFields",
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
-    "PageID": "WorkAllocationIntegrationFields",
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
-    "PageID": "WorkAllocationIntegrationFields",
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
     "PageID": "WorkAllocationIntegrationFields",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
   }
