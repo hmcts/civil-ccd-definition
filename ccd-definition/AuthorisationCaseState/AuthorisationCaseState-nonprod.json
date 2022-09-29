@@ -82,7 +82,11 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
@@ -90,7 +94,6 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "[APPLICANTSOLICITORONE]",
           "caseworker-ras-validation",
           "GS_profile"
         ],
@@ -106,13 +109,16 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "[APPLICANTSOLICITORONE]",
+          "[APPLICANTSOLICITORTWO]",
+          "[RESPONDENTSOLICITORONE]",
+          "[RESPONDENTSOLICITORTWO]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
           "caseworker-ras-validation",
           "GS_profile"
         ],
