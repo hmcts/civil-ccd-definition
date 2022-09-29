@@ -7,7 +7,6 @@
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-solicitor",
           "[CREATOR]"
         ],
         "CRUD": "CRU"
