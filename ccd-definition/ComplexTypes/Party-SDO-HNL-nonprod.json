@@ -10,9 +10,8 @@
   {
     "ID": "Party",
     "ListElementCode": "partyPhone",
-    "FieldType": "Text",
-    "ElementLabel": "PhoneUK",
-    "SecurityClassification": "Public",
-    "Max": "40"
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone",
+    "SecurityClassification": "Public"
   }
 ]
