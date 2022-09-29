@@ -23,7 +23,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-centre-admin"
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
