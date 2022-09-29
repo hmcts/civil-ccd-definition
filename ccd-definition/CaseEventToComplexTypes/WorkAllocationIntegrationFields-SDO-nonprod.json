@@ -1,9 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "VIEW_AND_RESPOND_TO_DEFENCE",
-    "CaseFieldID": "claimsTrack",
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  }
-]
