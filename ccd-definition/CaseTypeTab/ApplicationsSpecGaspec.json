@@ -5,7 +5,7 @@
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
-      "[APPLICANTSOLICITORONESPEC]"
+      "APP-SOL-SPEC-PROFILE"
     ],
     "CaseFieldID": "generalApplicationsDetails",
     "TabFieldDisplayOrder": 1
