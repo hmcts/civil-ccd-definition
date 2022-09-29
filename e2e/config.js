@@ -23,7 +23,7 @@ module.exports = {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
-  applicantSolicitorUser: {
+    applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
     type: 'applicant_solicitor'
