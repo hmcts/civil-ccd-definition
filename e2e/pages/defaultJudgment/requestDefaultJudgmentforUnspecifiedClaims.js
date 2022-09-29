@@ -1,4 +1,5 @@
 const {I} = inject();
+const config = require('../../config.js');
 
 module.exports = {
 
@@ -123,7 +124,7 @@ module.exports = {
     await within(this.fields.hearingRequirements.id, () => {
       I.click(this.fields.hearingRequirements.options.inPerson);
     });
-    I.fillField(this.fields.hearingRequirements.preferredLocation, 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL');
+    I.fillField(this.fields.hearingRequirements.preferredLocation, config.djClaimantSelectedCourt);
     I.fillField(this.fields.hearingRequirements.preferredPhone, '02087666666');
     I.fillField(this.fields.hearingRequirements.preferredEmail, 'test@test.com');
     I.click(this.fields.hearingRequirements.estimatedTime);

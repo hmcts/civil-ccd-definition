@@ -1,4 +1,5 @@
 const { date, element, buildAddress, listElement} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   valid: {
     ConfirmDetails: {
@@ -104,9 +105,9 @@ module.exports = {
       respondent1DQRequestedCourt: {
         responseCourtLocations: {
           list_items: [
-            listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
+            listElement(config.defendantSelectedCourt)
           ],
-          value: listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
+          value: listElement(config.defendantSelectedCourt)
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'

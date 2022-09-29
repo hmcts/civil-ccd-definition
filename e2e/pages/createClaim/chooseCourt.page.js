@@ -10,7 +10,7 @@ module.exports = {
     courtLocation: {
       id: 'select[id$="Location_applicantPreferredCourtLocationList"]',
       options: {
-        claimantPreferredCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
+        claimantPreferredCourt: config.claimantSelectedCourt
       }
     }
   },

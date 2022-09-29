@@ -19,6 +19,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
 
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUser, caseId, config.waTaskIds.judgeUnspecDJTask);
+    console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
   }
   await I.login(config.judgeUser);
   await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
@@ -27,6 +28,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
   await I.judgePerformDJDirectionOrder(caseRefNum);
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.judgeUser, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+    console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
 });
 

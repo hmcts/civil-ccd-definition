@@ -77,9 +77,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
+            listElement(config.claimantSelectedCourt)
           ],
-          value: listElement('Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL')
+          value: listElement(config.claimantSelectedCourt)
         }
       }
     },

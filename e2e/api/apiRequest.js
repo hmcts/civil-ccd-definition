@@ -6,7 +6,7 @@ const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
 
 
-const TASK_MAX_RETRIES = 60;
+const TASK_MAX_RETRIES = 40;
 const TASK_RETRY_TIMEOUT_MS = 10000;
 
 const tokens = {};
