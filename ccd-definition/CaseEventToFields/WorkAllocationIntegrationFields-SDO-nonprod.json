@@ -5,6 +5,7 @@
     "CaseFieldID": "totalClaimAmount",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
+    "PageShowCondition": "totalClaimAmount=\"DO NOT SHOW IN UI\"",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "FieldDisplayOrder": 1,
