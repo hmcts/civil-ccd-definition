@@ -1,0 +1,35 @@
+[
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "ListElementCode": "OrgPolicyCaseAssignedRole",
+    "DefaultValue": "[APPLICANTSOLICITORONESPEC]",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "TRUE"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "ListElementCode": "OrgPolicyCaseAssignedRole",
+    "DefaultValue": "[RESPONDENTSOLICITORONESPEC]",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "TRUE"
+  },
+  {
+    "ID": "SecondSolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "ListElementCode": "OrgPolicyCaseAssignedRole",
+    "DefaultValue": "[RESPONDENTSOLICITORTWOSPEC]",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Y"
+  }
+]
