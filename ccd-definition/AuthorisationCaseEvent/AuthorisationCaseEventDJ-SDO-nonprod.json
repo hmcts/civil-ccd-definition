@@ -23,7 +23,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"

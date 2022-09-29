@@ -6,6 +6,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+
           "APP-SOL-SPEC-PROFILE",
           "[CREATOR]"
         ],
