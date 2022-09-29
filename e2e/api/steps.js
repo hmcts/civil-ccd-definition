@@ -619,7 +619,7 @@ module.exports = {
       header: '',
       body: ''
     }, true);
-
+    
     await waitForFinishedBusinessProcess(caseId);
   },
 
