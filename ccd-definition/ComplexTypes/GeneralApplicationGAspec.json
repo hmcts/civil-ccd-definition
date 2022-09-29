@@ -193,7 +193,7 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "RgeneralAppSuperClaimType",
+    "ListElementCode": "generalAppSuperClaimType",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
