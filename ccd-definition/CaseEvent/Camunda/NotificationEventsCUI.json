@@ -37,5 +37,18 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_LIP_DEFENDANT_RESPONSE_SUBMISSION",
+    "Name": "Email: Respond to claim",
+    "Description": "Notify lip defendant for defendant response",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
