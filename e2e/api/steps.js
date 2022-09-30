@@ -104,7 +104,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -156,6 +156,8 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
@@ -180,6 +182,8 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+
     await validateEventPages(createClaimData);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
@@ -249,6 +253,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
 
     await validateEventPages(data[eventName]);
@@ -562,6 +567,10 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
+  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
+     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
   addCaseNote: async (user) => {
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
@@ -627,6 +636,10 @@ module.exports = {
      console.log (`case created: ${caseId}`);
      return caseId;
    },
+
+  getLegacyCaseReference: async () => {
+    return legacyCaseReference;
+  },
 
   cleanUp: async () => {
     await unAssignAllUsers();
@@ -806,7 +819,7 @@ async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
   let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
   // work around for the api  tests
   console.log(`Access Profiles Enabled in Env: ${config.runningEnv}`);
-  if (!isAccessProfilesEnabled && !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isAccessProfilesEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
     createClaimData = {
       ...createClaimData,
       valid: {
