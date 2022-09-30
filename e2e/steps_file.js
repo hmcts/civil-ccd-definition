@@ -64,6 +64,7 @@ const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeD
 const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
+const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -334,6 +335,16 @@ module.exports = function () {
       ]);
     },
 
+    async judgePerformDJDirectionOrder() {
+      eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.selectCaseManagementOrder('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.verifyOrderPreview(),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
 
@@ -461,7 +472,11 @@ module.exports = function () {
         ]),
 
         ...conditionalSteps(trackType, [
-        () => allocateClaimPage.selectTrackType(trackType)])
+        () => allocateClaimPage.selectTrackType(trackType)]),
+
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+        //() => event.submit('Submit', '')
       ]);
     },
 
