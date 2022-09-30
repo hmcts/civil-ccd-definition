@@ -24,7 +24,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
   await I.login(config.judgeUser);
   await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
   await I.waitForText('Summary');
-  await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJ');
+  await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
   await I.judgePerformDJDirectionOrder(caseRefNum);
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.judgeUser, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
