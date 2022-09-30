@@ -32,11 +32,8 @@ Scenario('DefaultJudgement @create-claim @e2e-dj-1v1 @e2e-wa', async ({I, api}) 
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
   await I.login(config.hearingCenterAdminWithRegionId4);
-  await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
-  await I.waitForText('Summary');
-  await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/TAKE_CASE_OFFLINE/submit');
-  await I.click('Submit');
-  await I.see('Caselist');
+  await I.staffPerformDJCaseTransferCaseOffline(caseId);
+
 });
 
 Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
@@ -45,7 +42,7 @@ Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => 
 });
 
 Scenario('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
-  await I.login(config.hearingCenterAdminWithRegionId4);
+  await I.login(config.hearingCenterAdminWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 });
 
