@@ -151,7 +151,7 @@ module.exports = {
     if (orderType == 'DisposalHearing') {
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.disposalHearingTimeOptions.thirtyMinutes);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingMethodOptions.inPerson);
-      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingLocation, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
+      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingLocation, config.djJudgeClaimantSelectedCourt);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
     }
     await I.clickContinue();
