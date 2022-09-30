@@ -344,6 +344,30 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "DisposalHearingBundleDJ",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingBundleDJ",
@@ -429,6 +453,54 @@
     "CaseFieldID": "disposalHearingNotesDJ",
     "ListElementCode": "line",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingHearingNotesDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingHearingNotesDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingHearingNotesDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "ListElementCode": "title",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
