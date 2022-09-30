@@ -67,6 +67,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
+      CaseAccessCategory: 'UNSPEC_CLAIM',
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
         respondentSolicitor1Reference: 'Respondent reference'
@@ -76,9 +77,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+            listElement(config.claimantSelectedCourt)
           ],
-          value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+          value: listElement(config.claimantSelectedCourt)
         }
       }
     },

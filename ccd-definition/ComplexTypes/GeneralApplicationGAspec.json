@@ -151,6 +151,20 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementLocation",
+    "FieldType": "GACaseLocationGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isCcmccLocation",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "respondentSolicitor1EmailAddress",
     "ElementLabel": " ",
     "FieldType": "Email",
@@ -180,6 +194,20 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppSuperClaimType",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementCategory",
+    "ElementLabel": " ",
+    "FieldType": "GACaseManagementCategory",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "CaseAccessCategory",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
