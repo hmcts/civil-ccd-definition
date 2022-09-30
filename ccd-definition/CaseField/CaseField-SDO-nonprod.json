@@ -251,7 +251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
-    "Label": "## Hearing time",
+    "Label": "## Final disposal hearing",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -268,14 +268,6 @@
     "ID": "disposalHearingFinalDisposalHearing",
     "Label": " ",
     "FieldType": "DisposalHearingFinalDisposalHearing",
-    "SecurityClassification": "Public"
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingHearingTime",
-    "Label": " ",
-    "FieldType": "DisposalHearingHearingTime",
     "SecurityClassification": "Public"
   },
 
@@ -345,34 +337,6 @@
     "ID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingHearingNotesStartLine",
-    "Label": "****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingHearingNotesTitle",
-    "Label": "## Hearing notes",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingHearingNotes",
-    "Label": "This is only seen by the listing officer",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalOrderWithoutHearing",
-    "Label": " ",
-    "FieldType": "DisposalOrderWithoutHearing",
     "SecurityClassification": "Public"
   },
 
