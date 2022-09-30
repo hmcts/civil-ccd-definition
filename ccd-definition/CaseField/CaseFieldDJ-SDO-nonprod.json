@@ -1,14 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "testsearch",
-    "Label": "email",
-    "FieldType": "Label",
-    "_comment": "testing global search mappings",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicantVRespondentText",
     "Label": " ",
     "FieldType": "Text",
