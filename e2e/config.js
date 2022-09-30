@@ -1,5 +1,5 @@
 const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234!';
+const judgeDefaultPassword = 'Hmcts1234';
 
 module.exports = {
   idamStub: {
