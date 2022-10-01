@@ -345,6 +345,12 @@ module.exports = function () {
       ]);
     },
 
+    async staffPerformDJCaseTransferCaseOffline(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.performAndVerifyTransferCaseOffline(caseId)
+      ]);
+    },
+
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
 
