@@ -19,12 +19,5 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingNotesDJ",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
   }
 ]
