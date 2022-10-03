@@ -13,7 +13,7 @@ const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkCourtLocationDynamicListIsEnabled} = require("./testingSupport");
+const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};

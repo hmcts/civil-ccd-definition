@@ -11,7 +11,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkCourtLocationDynamicListIsEnabled} = require("./testingSupport");
+const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
