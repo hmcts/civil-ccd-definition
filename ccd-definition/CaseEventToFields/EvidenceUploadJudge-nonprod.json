@@ -8,7 +8,7 @@
     "PageID": "CaseNoteSelection",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageLabel": "How do you want to add a case note?"
   },
   {
