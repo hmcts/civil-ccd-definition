@@ -149,7 +149,7 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
-    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData)
+    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     caseData = returnedCaseData;
 
@@ -185,7 +185,7 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
-    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData)
+    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -374,8 +374,8 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
         ...responseData.userInput,
         ApplicantCourtLocationLRspec: {
           applicant1DQRequestedCourt: {
-            reasonForHearingAtSpecificCourt: "sdfd",
-            responseCourtCode: "123"
+            reasonForHearingAtSpecificCourt: 'Reasons',
+            responseCourtCode: '123'
           }
         }
       }
