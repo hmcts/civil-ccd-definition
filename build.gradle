@@ -2,8 +2,8 @@ plugins {
   id 'application'
   id 'checkstyle'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.12.RELEASE'
-  id 'org.owasp.dependencycheck' version '7.1.1'
+  id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+  id 'org.owasp.dependencycheck' version '7.2.1'
   id 'com.github.ben-manes.versions' version '0.39.0'
   id 'org.sonarqube' version '3.4.0.2513'
   id 'au.com.dius.pact' version '4.2.7'
@@ -15,9 +15,9 @@ version = '0.0.1'
 
 def versions = [
   junit              : '5.7.0',
-  junitPlatform      : '1.7.1',
+  junitPlatform      : '1.9.1',
   reformLogging      : '5.1.5',
-  jackson           : '2.13.3'
+  jackson            : '2.13.3'
 ]
 
 allprojects {
@@ -103,7 +103,7 @@ allprojects {
       // solves CVE-2022-25857
       dependencySet(
         group: 'org.yaml',
-        version: '1.32'
+        version: '1.33'
       ) {
         entry 'snakeyaml'
       }
@@ -290,10 +290,10 @@ ext.libraries = [
 ]
 
 dependencies {
-  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.21'
-  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.21'
+  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.23'
+  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.23'
   implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
-  implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
+  implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.1'
 
   constraints {
