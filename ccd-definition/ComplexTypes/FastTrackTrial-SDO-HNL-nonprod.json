@@ -1,0 +1,73 @@
+[
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "input1",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "text1",
+    "FieldType": "Label",
+    "ElementLabel": "Trial date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "text2",
+    "FieldType": "Label",
+    "ElementLabel": "Trial date to",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "date2",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "input3",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldType": "Label",
+    "ElementLabel": "#### Select bundle type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "type",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrackTrialBundleType",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
