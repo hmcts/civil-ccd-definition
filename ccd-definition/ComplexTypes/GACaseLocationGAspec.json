@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "GACaseLocationGAspec",
+    "ListElementCode": "region",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GACaseLocationGAspec",
+    "ListElementCode": "baseLocation",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
