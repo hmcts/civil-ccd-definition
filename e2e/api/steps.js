@@ -514,7 +514,7 @@ module.exports = {
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
-      validState = 'JUDICIAL_REFERRAL';
+      validState = validState || 'JUDICIAL_REFERRAL';
     }
 
     await assertSubmittedEvent(validState, {
