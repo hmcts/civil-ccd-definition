@@ -11,7 +11,6 @@ const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claiman
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisationLRspec = require('./pages/createClaim/defendantSolicitorOrganisationLRspec.page');
-const defendantSolicitorOrganisation = require('./pages/createClaim/defendantSolicitorOrganisation.page');
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
@@ -117,9 +116,9 @@ const secondClaimantSteps = (claimant2) => [
 ];
 
 
-const firstDefendantSteps = (respondent1) => [
+const firstDefendantSteps = () => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
-  () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+  () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
   () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
 

@@ -119,12 +119,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "superClaimType",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -384,6 +378,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1PinToPostLRspec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }
