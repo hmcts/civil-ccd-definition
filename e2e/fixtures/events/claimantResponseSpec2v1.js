@@ -1,4 +1,4 @@
-const {listElement} = require("../../api/dataHelper");
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
