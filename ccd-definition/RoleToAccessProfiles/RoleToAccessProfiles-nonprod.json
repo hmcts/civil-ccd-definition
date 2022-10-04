@@ -273,7 +273,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,full-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

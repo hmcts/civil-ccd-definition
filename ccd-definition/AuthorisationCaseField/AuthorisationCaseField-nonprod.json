@@ -4,7 +4,8 @@
     "CaseFieldID": "caseHistory",
     "UserRoles": [
       "judge-profile",
-      "legal-adviser"
+      "legal-adviser",
+      "full-access"
     ],
     "CRUD": "CRU"
   },
@@ -248,7 +249,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "full-access"
         ],
         "CRUD": "R"
       }
