@@ -12,7 +12,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "full-access"
         ],
         "CRUD": "R"
       }
