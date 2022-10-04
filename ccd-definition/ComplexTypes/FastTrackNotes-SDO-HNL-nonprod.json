@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "FastTrackNotes",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": "## Notes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackNotes",
+    "ListElementCode": "input",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackNotes",
+    "ListElementCode": "date",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
