@@ -1,0 +1,51 @@
+[
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "input1",
+    "FieldType": "TextArea",
+    "ElementLabel": "Claimant",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": "Defendant(s)",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "date2",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "input3",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "input4",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingSchedulesOfLossDJ",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

@@ -2,6 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const { listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -12,7 +13,10 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {cloneDeep} = require('lodash');
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -27,6 +31,7 @@ const data = {
   ACKNOWLEDGE_CLAIM_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/acknowledgeClaim_sameSolicitor.js'),
   ACKNOWLEDGE_CLAIM_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor1.js'),
   ACKNOWLEDGE_CLAIM_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor2.js'),
+  ACKNOWLEDGE_CLAIM_TWO_V_ONE: require('../fixtures/events/2v1Events/acknowledgeClaim_2v1.js'),
   INFORM_AGREED_EXTENSION_DATE: require('../fixtures/events/informAgreeExtensionDate.js'),
   INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
@@ -38,7 +43,10 @@ const data = {
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
-  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
+  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
+  DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
+  DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
 };
 
 const eventData = {
@@ -49,7 +57,7 @@ const eventData = {
       solicitorOne: data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE,
       solicitorTwo: data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO
     },
-    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
+    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM_TWO_V_ONE
   },
   informAgreedExtensionDates: {
     ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
@@ -96,19 +104,21 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-
   createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
-
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const createClaimData = data.CREATE_CLAIM(mpScenario);
+
+    let createClaimData = data.CREATE_CLAIM(mpScenario);
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -132,7 +142,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
-    //field is deleted in about to submit callback
+    // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
@@ -142,7 +152,15 @@ module.exports = {
     caseData = {};
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_RESPONDENT_LIP);
+
+    let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+
+    await validateEventPages(createClaimData);
+
+    let noCToggleEnabled = await checkNoCToggleEnabled();
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received and will progress offline',
@@ -150,28 +168,8 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-  },
-
-  createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
-    eventName = 'CREATE_CLAIM';
-    caseId = null;
-    caseData = {};
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS);
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   createClaimWithFailingPBAAccount: async (user) => {
@@ -180,7 +178,14 @@ module.exports = {
     caseData = {};
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_TERMINATED_PBA);
+
+    let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+
+    await validateEventPages(createClaimData);
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'You have until DATE to notify the defendant of the claim and claim details.'
@@ -248,6 +253,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
 
     await validateEventPages(data[eventName]);
@@ -269,6 +275,9 @@ module.exports = {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+      value: listElement('Both')
+    }};
 
     await validateEventPages(data[eventName]);
 
@@ -313,7 +322,7 @@ module.exports = {
 
     solicitorSetup(solicitor);
 
-    assertContainsPopulatedFields(returnedCaseData);
+    assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
     deleteCaseFields('systemGeneratedCaseDocuments');
@@ -324,6 +333,7 @@ module.exports = {
     // solicitor 2 should not be able to see respondent 1 details
     if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1ClaimResponseIntentionType');
+      deleteCaseFields('respondent1ResponseDeadline');
     }
 
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -359,9 +369,12 @@ module.exports = {
 
     eventName = 'INFORM_AGREED_EXTENSION_DATE';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
+    assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1');
+    }
 
     let informAgreedExtensionData;
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -412,7 +425,11 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
 
-    assertContainsPopulatedFields(returnedCaseData);
+    // Remove after court location toggle is removed
+    defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+      defendantResponseData, solicitor);
+
+    assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
     deleteCaseFields('isRespondent1');
@@ -420,6 +437,16 @@ module.exports = {
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
+    deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
+
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1DQHearing');
+      deleteCaseFields('respondent1DQLanguage');
+      deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQExperts');
+      deleteCaseFields('respondent1DQWitnesses');
+    }
 
     await validateEventPages(defendantResponseData, solicitor);
 
@@ -462,7 +489,7 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  claimantResponse: async (user, multipartyScenario) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -485,15 +512,22 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['demo'].includes(config.runningEnv)) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
+    await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    if (!expectedCcdState) {
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
   },
 
   //TODO this method is not used in api tests
@@ -538,6 +572,10 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
+  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
+     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
   addCaseNote: async (user) => {
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
@@ -561,6 +599,51 @@ module.exports = {
 
     // caseNote is set to null in service
     deleteCaseFields('caseNote');
+  },
+
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent1deadline);
+   },
+
+  amendRespondent2ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent2deadline);
+  },
+
+  defaultJudgment: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'DEFAULT_JUDGEMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+      await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
+    } else if (mpScenario === 'TWO_V_ONE') {
+      await validateEventPages(data.DEFAULT_JUDGEMENT_2V1);
+    } else {
+      await validateEventPages(data.DEFAULT_JUDGEMENT);
+    }
+    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  getCaseId: async () => {
+     console.log (`case created: ${caseId}`);
+     return caseId;
+   },
+
+  getLegacyCaseReference: async () => {
+    return legacyCaseReference;
   },
 
   cleanUp: async () => {
@@ -587,6 +670,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
+  caseData = adjustDataForSolicitor(solicitor, caseData);
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -594,7 +678,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -661,11 +745,12 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertContainsPopulatedFields = returnedCaseData => {
-  for (let populatedCaseField of Object.keys(caseData)) {
-    assert.property(returnedCaseData,  populatedCaseField);
+const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
+  const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  for (let populatedCaseField of Object.keys(fixture)) {
+    assert.property(returnedCaseData, populatedCaseField);
   }
-  };
+};
 
   // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
   // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
@@ -678,7 +763,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
@@ -734,6 +819,84 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
+// CIV-3521: remove when access profiles is live
+async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
+  let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
+  // work around for the api  tests
+  console.log(`Access Profiles Enabled in Env: ${config.runningEnv}`);
+  if (!isAccessProfilesEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    createClaimData = {
+      ...createClaimData,
+      valid: {
+        ...createClaimData.valid,
+        References: {
+          solicitorReferences: {
+           ...createClaimData.valid.References.solicitorReferences
+          }
+        }
+      }
+    };
+  }
+  return createClaimData;
+}
+
+// CIV-4959: needs to be removed when court location goes live
+async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api  tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    createClaimData = {
+      ...createClaimData,
+      valid: {
+        ...createClaimData.valid,
+        Court: {
+          courtLocation: {
+            applicantPreferredCourt: '344'
+          }
+        }
+      }
+    };
+  }
+  return createClaimData;
+}
+
+// CIV-4959: needs to be removed when court location goes live
+async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+  defendantResponseData, solicitor) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    if (solicitor === 'solicitorTwo') {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          RequestedCourt: {
+            respondent2DQRequestedCourt: {
+              responseCourtCode: '343'
+            }
+          }
+        }
+      };
+    } else {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          RequestedCourt: {
+            respondent1DQRequestedCourt: {
+              responseCourtCode: '343'
+            }
+          }
+        }
+      };
+    }
+  }
+  return defendantResponseData;
+}
+
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
@@ -765,12 +928,23 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
   delete responseBody.data['respondent1OrganisationIDCopy'];
   delete responseBody.data['respondent2OrganisationIDCopy'];
 
+
   // solicitor cannot see data from respondent they do not represent
+  if(solicitor === 'solicitorOne') {
+    delete responseBody.data['respondent2ResponseDeadline'];
+  }
+
   if(solicitor === 'solicitorTwo'){
     delete responseBody.data['respondent1'];
+    delete responseBody.data['respondent1ResponseDeadline'];
   } else {
     delete responseBody.data['respondent2'];
   }
+  return responseBody;
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
   return responseBody;
 };
 
@@ -783,6 +957,9 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
+  if(solicitor === 'solicitorOne') {
+    delete responseBody.data['respondent2ResponseDeadline'];
+  }
   if(solicitor === 'solicitorTwo'){
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ClaimResponseType'];
@@ -798,6 +975,8 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQDraftDirections'];
     delete responseBody.data['respondent1DQRequestedCourt'];
     delete responseBody.data['respondent1DQFurtherInformation'];
+    delete responseBody.data['respondent1DQFurtherInformation'];
+    delete responseBody.data['respondent1ResponseDeadline'];
   } else {
     delete responseBody.data['respondent2'];
   }
@@ -806,4 +985,15 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
   return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
+};
+
+const adjustDataForSolicitor = (user, data) => {
+  let fixtureClone = cloneDeep(data);
+  if(user === 'solicitorOne') {
+    delete fixtureClone['respondent2ResponseDeadline'];
+  }
+  else if (user === 'solicitorTwo') {
+    delete fixtureClone['respondent1ResponseDeadline'];
+  }
+  return fixtureClone;
 };

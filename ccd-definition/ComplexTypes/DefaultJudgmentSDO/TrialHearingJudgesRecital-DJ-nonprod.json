@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "TrialHearingJudgesRecitalDJ",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingJudgesRecitalDJ",
+    "ListElementCode": "judgeNameTitle",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingJudgesRecitalDJ",
+    "ListElementCode": "input",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

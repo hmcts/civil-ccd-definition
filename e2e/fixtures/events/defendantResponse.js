@@ -1,4 +1,5 @@
-const { date, element, buildAddress } = require('../../api/dataHelper');
+const { date, element, buildAddress, listElement} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   valid: {
     ConfirmDetails: {
@@ -102,7 +103,12 @@ module.exports = {
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        responseCourtCode: '343',
+        responseCourtLocations: {
+          list_items: [
+            listElement(config.defendantSelectedCourt)
+          ],
+          value: listElement(config.defendantSelectedCourt)
+        },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
       }

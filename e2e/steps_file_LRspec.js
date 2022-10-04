@@ -11,7 +11,6 @@ const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claiman
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
 const claimantSolicitorIdamDetailsPage = require('./pages/createClaim/idamEmail.page');
 const defendantSolicitorOrganisationLRspec = require('./pages/createClaim/defendantSolicitorOrganisationLRspec.page');
-
 const addAnotherDefendant = require('./pages/createClaim/addAnotherDefendant.page');
 const respondent2SameLegalRepresentative = require('./pages/createClaim/respondent2SameLegalRepresentative.page');
 const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
@@ -79,6 +78,8 @@ const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestion
 const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
 const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
+const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
+const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -116,19 +117,26 @@ const secondClaimantSteps = (claimant2) => [
 const firstDefendantSteps = () => [
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
   () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
-  () => specDefendantSolicitorEmailPage.enterSolicitorEmail(),
+  () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
   () => specParty.enterSpecParty('Respondent', specDefendantLRPostalAddress),
 
-
 ];
-const secondDefendantSteps = (respondent2, respondent1Represented, sameLegalRepresentative) => [
 
+const secondDefendantSteps = (respondent2, respondent1Represented) => [
   ...conditionalSteps(respondent2, [
-        () =>  party.enterParty('respondent2', address),
-        () =>  respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
-        () =>  respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(sameLegalRepresentative),
+    () => party.enterParty('respondent2', address),
+    () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(parties.RESPONDENT_SOLICITOR_2, respondent2.represented),
+    ...conditionalSteps(respondent2 && respondent2.represented, [
+      ...conditionalSteps(respondent1Represented, [
+        () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
+      ]),
+      ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
+        () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent2'),
+        () => specDefendantSolicitorEmailPage.enterSolicitorEmail('2'),
 
-   ]),
+      ])
+    ])
+  ])
 ];
 
 module.exports = function () {
@@ -295,7 +303,7 @@ module.exports = function () {
       }
     },
 
-     async createCaseSpecified(claimant1, claimant2,  respondent1, respondent2, claimAmount) {
+    async createCaseSpecified(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
@@ -306,13 +314,12 @@ module.exports = function () {
             () => solicitorReferencesPage.enterReferences(),
             ...firstClaimantSteps(),
             ...secondClaimantSteps(claimant2),
-            ...firstDefendantSteps(),
+            ...firstDefendantSteps(respondent1),
             ...conditionalSteps(claimant2 == null, [
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
-              ...secondDefendantSteps(respondent2, respondent1.represented, true),
-
-                 () => detailsOfClaimPage.enterDetailsOfClaim(),
+             ...secondDefendantSteps(respondent2, respondent1.represented),
+                 () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
                  () => specAddTimelinePage.addTimeline(),
                  () => specListEvidencePage.addEvidence(),
@@ -529,6 +536,17 @@ module.exports = function () {
                    ]);
                    await this.takeScreenshot();
       },
+
+    async caseProceedsInCaseman() {
+      eventName = 'Case proceeds in Caseman';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseProceedsInCasemanPage.enterTransferDate(),
+        () => takeCaseOffline.takeCaseOffline()
+      ]);
+      await this.takeScreenshot();
+    },
 
     async acknowledgeClaimSpec() {
       eventName = 'Acknowledgement of Service';

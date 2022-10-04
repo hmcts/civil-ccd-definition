@@ -1,4 +1,4 @@
-# civil-ccd-definition
+# civil-ccd-definition 
 
 Civil CCD Definition and E2E tests
 
@@ -47,12 +47,12 @@ To run tests with browser window open set `SHOW_BROWSER_WINDOW=true`. By default
 
 To run smoke tests enter `yarn test:smoke`.
 
-### API test
+### API test 
 
 Before running API tests, you will need the `SENDGRID_API_KEY` environment variable setup and to be running the service locally along with all containers.
 
 To run API tests enter `yarn test:api`.
 
-## License
+## License 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

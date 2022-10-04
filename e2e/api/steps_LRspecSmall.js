@@ -11,12 +11,14 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const {checkAccessProfilesIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
@@ -52,7 +54,15 @@ module.exports = {
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM(scenario);
+
+    let createClaimData  = {};
+
+    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
+    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+      createClaimData = data.CREATE_CLAIM_AP(scenario);
+    } else {
+      createClaimData = data.CREATE_CLAIM(scenario);
+    }
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -62,7 +72,11 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    } else {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    }
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -152,6 +166,7 @@ const assertValidData = async (data, pageId) => {
     caseId
   );
   let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
 
@@ -164,6 +179,11 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
+  return responseBody;
 };
 
 function checkExpected(responseBodyData, expected, prefix = '') {

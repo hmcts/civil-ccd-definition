@@ -35,7 +35,8 @@
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "ShowSummary": "N",
     "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -48,5 +49,19 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "JUDICIAL_REFERRAL",
+    "Name": "Claim is moved onto judges",
+    "Description": "Claim is moved onto judges",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "JUDICIAL_REFERRAL",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "publish": "Y"
   }
 ]

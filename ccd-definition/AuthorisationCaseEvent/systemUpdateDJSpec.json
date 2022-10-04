@@ -11,8 +11,8 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -31,8 +31,8 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -42,6 +42,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DJ_FORM_SPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RPA_DJ_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

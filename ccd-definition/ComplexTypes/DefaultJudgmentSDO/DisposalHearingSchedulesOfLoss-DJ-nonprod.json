@@ -1,0 +1,58 @@
+[
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "input1",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "date2",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "input3",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "If there is a claim for future pecuniary loss and the parties have not already set out their case on periodical payments, then they must do so in the respective schedule and counter-schedule.",
+    "SecurityClassification": "Public"
+  }
+]

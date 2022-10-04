@@ -47,5 +47,26 @@
     "Name": "Case Proceeds Offline",
     "Description": "Claim is not able to be progressed online in CCD and will be taken offline",
     "DisplayOrder": 7
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "JUDICIAL_REFERRAL",
+    "Name": "Judicial Referral",
+    "Description": "Claim is moved onto judges",
+    "DisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_PROGRESSION",
+    "Name": "Case Progression",
+    "Description": "Claim proceeds online",
+    "DisplayOrder": 9
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "HEARING_READINESS",
+    "Name": "Hearing readiness",
+    "Description": "Claim is readied for hearing",
+    "DisplayOrder": 9
   }
 ]

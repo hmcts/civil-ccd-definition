@@ -11,19 +11,27 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
+const testingSupport = require('./testingSupport');
+const {checkAccessProfilesIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
+  DEFENDANT_RESPONSE2: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
   DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
   CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
-  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
+  DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
+  DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
+  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js')
 };
 
 const eventData = {
@@ -41,6 +49,17 @@ const eventData = {
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
       DIFF_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_FULL_DEFENCE'),
       DIFF_NOT_FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('DIFF_NOT_FULL_DEFENCE')
+    },
+    ONE_V_ONE_DIF_SOL: {
+      FULL_DEFENCE1: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_ADMISSION1: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      PART_ADMISSION1: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
+      COUNTER_CLAIM1: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
+
+      FULL_DEFENCE2: data.DEFENDANT_RESPONSE2('FULL_DEFENCE'),
+      FULL_ADMISSION2: data.DEFENDANT_RESPONSE2('FULL_ADMISSION'),
+      PART_ADMISSION2: data.DEFENDANT_RESPONSE2('PART_ADMISSION'),
+      COUNTER_CLAIM2: data.DEFENDANT_RESPONSE2('COUNTER_CLAIM')
     },
     TWO_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_2v1('FULL_DEFENCE'),
@@ -86,7 +105,15 @@ module.exports = {
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
-    const createClaimData = data.CREATE_CLAIM(scenario);
+
+    let createClaimData  = {};
+
+    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
+    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+      createClaimData = data.CREATE_CLAIM_AP(scenario);
+    } else {
+      createClaimData = data.CREATE_CLAIM(scenario);
+    }
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -96,7 +123,21 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    } else {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    }
+
+    if (scenario === 'ONE_V_TWO'
+      && createClaimData.userInput.SameLegalRepresentative
+      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
+      if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+      } else {
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
+      }
+    }
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -127,7 +168,8 @@ module.exports = {
     await unAssignAllUsers();
   },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -143,22 +185,36 @@ module.exports = {
       await assertValidData(defendantResponseData, pageId);
     }
 
-    if (scenario === 'ONE_V_ONE')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if (scenario === 'ONE_V_TWO')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if (scenario === 'TWO_V_ONE')
-      if (response === 'DIFF_FULL_DEFENCE')
-        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
-      else
+    switch (scenario) {
+      case 'ONE_V_ONE_DIF_SOL':
+        /* when camunda process is done, when both respondents have answered
+        this should be AWAITING_APPLICANT_INTENTION; while only one has answered
+        this will be AWAITING_RESPONDENT_ACKNOWLEDGEMENT
+         */
+        await assertSubmittedEvent(expectedEvent);
+        break;
+      case 'ONE_V_ONE':
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'ONE_V_TWO':
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        break;
+      case 'TWO_V_ONE':
+        if (response === 'DIFF_FULL_DEFENCE') {
+          await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+        } else {
+          await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+        }
+        break;
+    }
 
     await waitForFinishedBusinessProcess(caseId);
 
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                           expectedEndState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -173,9 +229,52 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent1deadline);
+  },
+
+  amendRespondent2ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent2deadline);
+  },
+
+  defaultJudgmentSpec: async (user, scenario) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'DEFAULT_JUDGEMENT_SPEC';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (scenario === 'ONE_V_TWO') {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
+    } else if (scenario === 'TWO_V_ONE') {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
+    } else {
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
+    }
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
+
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  getCaseId: async () => {
+    console.log (`case created: ${caseId}`);
+    return caseId;
   },
 };
 
@@ -192,7 +291,7 @@ const assertValidData = async (data, pageId) => {
     caseId
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {
@@ -204,6 +303,11 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
+  return responseBody;
 };
 
 function checkExpected(responseBodyData, expected, prefix = '') {
@@ -312,6 +416,44 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
+const validateEventPagesDefaultJudgments = async (data, scenario) => {
+  //transform the data
+  console.log('validateEventPages');
+  for (let pageId of Object.keys(data.userInput)) {
+    await assertValidDataDefaultJudgments(data, pageId, scenario);
+  }
+};
+
+const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+  const userData = data.userInput[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  
+  assert.equal(response.status, 200);
+  if (pageId === 'paymentConfirmationSpec') {
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
+      responseBody.data.currentDefendantName = 'Sir John Doe';
+    } else {
+      responseBody.data.currentDefendantName = 'both defendants';
+    }
+
+  } else if (pageId === 'paymentSetDate') {
+    responseBody.data.repaymentDue= '1580.00';
+  }
+  if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
+    responseBody.data.currentDatebox = '25 August 2022';
+  }
+  assert.deepEqual(responseBody.data, caseData);
+};
+
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
@@ -319,11 +461,17 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
+const assertContainsPopulatedFields = returnedCaseData => {
+  for (let populatedCaseField of Object.keys(caseData)) {
+    assert.property(returnedCaseData,  populatedCaseField);
+  }
+};
+
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],

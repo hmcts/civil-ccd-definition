@@ -85,13 +85,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppSubmittedDateGAspec",
+    "CaseFieldID": "generalOrderDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "dismissalOrderDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "directionOrderDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }
