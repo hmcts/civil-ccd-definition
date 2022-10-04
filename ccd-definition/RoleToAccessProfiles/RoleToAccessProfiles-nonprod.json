@@ -54,76 +54,58 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "[APPLICANTSOLICITORTWO]",
+    "RoleName" : "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[APPLICANTSOLICITORTWO]",
+    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
     "RoleName" : "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[APPLICANTSOLICITORONE]",
+    "AccessProfiles": "APP-SOL-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[RESPONDENTSOLICITORONE]",
+    "AccessProfiles": "RES-SOL-ONE-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
+  },
+  {
+    "RoleName" : "[RESPONDENTSOLICITORONE]",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "RES-SOL-ONE-SPEC-PROFILE",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName" : "[RESPONDENTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[RESPONDENTSOLICITORTWO]",
+    "AccessProfiles": "RES-SOL-TWO-UNSPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "UNSPEC_CLAIM"
   },
   {
-    "RoleName" : "[APPLICANTSOLICITORONESPEC]",
+    "RoleName" : "[RESPONDENTSOLICITORTWO]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[APPLICANTSOLICITORONESPEC]",
+    "AccessProfiles": "RES-SOL-TWO-SPEC-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "[APPLICANTSOLICITORTWOSPEC]",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[APPLICANTSOLICITORTWOSPEC]",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "[RESPONDENTSOLICITORONESPEC]",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[RESPONDENTSOLICITORONESPEC]",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "[RESPONDENTSOLICITORTWOSPEC]",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "[RESPONDENTSOLICITORTWOSPEC]",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
     "RoleName" : "[CREATOR]",
@@ -333,7 +315,7 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "challenged-access-legal-operations",
+    "RoleName" : "challenged-access-legal-ops",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil",

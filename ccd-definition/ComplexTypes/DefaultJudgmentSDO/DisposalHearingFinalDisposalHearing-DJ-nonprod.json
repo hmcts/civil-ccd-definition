@@ -25,14 +25,7 @@
     "ListElementCode": "time",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
-    "ElementLabel": "The time estimate is",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingFinalDisposalHearingDJ",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
+    "ElementLabel": "The time estimate ",
     "SecurityClassification": "Public"
   }
 ]
