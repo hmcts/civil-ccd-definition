@@ -4,7 +4,8 @@
     "UserRoles": [
       "judge-profile",
       "legal-adviser",
-      "admin-access"
+      "admin-access",
+      "full-access"
     ],
     "CRUD": "CRU"
   },

@@ -1387,8 +1387,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "full-access"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

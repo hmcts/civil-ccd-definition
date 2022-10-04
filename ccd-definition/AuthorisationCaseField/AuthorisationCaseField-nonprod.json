@@ -197,8 +197,7 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser",
-          "full-access"
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
