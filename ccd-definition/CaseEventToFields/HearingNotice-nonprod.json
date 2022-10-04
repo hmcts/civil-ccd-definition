@@ -173,7 +173,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "HEARING_SCHEDULED",
-    "CaseFieldID": "hearingAdditionalInformation",
+    "CaseFieldID": "information",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingInformation",
