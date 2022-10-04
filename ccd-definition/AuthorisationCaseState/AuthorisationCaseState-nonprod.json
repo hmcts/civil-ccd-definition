@@ -118,7 +118,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "full-access"
         ],
         "CRUD": "CRU"
       },
@@ -142,7 +143,8 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "full-access"
         ],
         "CRUD": "CRU"
       },
@@ -163,7 +165,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "full-access"
         ],
         "CRUD": "CRUD"
       }
