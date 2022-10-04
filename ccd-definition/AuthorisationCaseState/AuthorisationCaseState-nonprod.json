@@ -15,7 +15,8 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "[CREATOR]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "full-access"
         ],
         "CRUD": "CRUD"
       }
@@ -26,7 +27,8 @@
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile"
+      "GS_profile",
+      "full-access"
     ],
     "CRUD": "R"
   },
@@ -35,7 +37,8 @@
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile"
+      "GS_profile",
+      "full-access"
     ],
     "CRUD": "R"
   },
@@ -44,7 +47,8 @@
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile"
+      "GS_profile",
+      "full-access"
     ],
     "CRUD": "R"
   },
@@ -53,7 +57,8 @@
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile"
+      "GS_profile",
+      "full-access"
     ],
     "CRUD": "R"
   },
@@ -72,7 +77,8 @@
       "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE",
       "APP-SOL-SPEC-PROFILE",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "full-access"
       ],
       "CRUD": "CRUD"
       }
@@ -86,7 +92,8 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "full-access"
         ],
         "CRUD": "CRU"
       },
