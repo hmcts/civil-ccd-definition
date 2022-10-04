@@ -749,11 +749,6 @@ const assertValidDataSdoDj = async (data, pageId, solicitor) => {
     responseBody.data.orderSDODocumentDJ = sdoDjDocument(documentName);
   }
 
-  if (midEventFieldForPage.hasOwnProperty(pageId)) {
-    addMidEventFields(pageId, responseBody);
-    caseData = removeUiFields(pageId, caseData);
-  }
-
   assert.deepEqual(responseBody.data, caseData);
 };
 
