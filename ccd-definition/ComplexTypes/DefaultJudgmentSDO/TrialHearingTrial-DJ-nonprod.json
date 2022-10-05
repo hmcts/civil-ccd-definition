@@ -36,10 +36,9 @@
   },
   {
     "ID": "TrialHearingTrialDJ",
-    "ListElementCode": "type",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "DisposalHearingBundleType",
-    "ElementLabel": " ",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]

@@ -61,12 +61,5 @@
     "Name": "Case Progression",
     "Description": "Claim proceeds online",
     "DisplayOrder": 9
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "HEARING_READINESS",
-    "Name": "Hearing readiness",
-    "Description": "Claim is readied for hearing",
-    "DisplayOrder": 9
   }
 ]

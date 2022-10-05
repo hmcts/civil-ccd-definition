@@ -54,5 +54,12 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingDisclosureOfDocumentsDJ",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]

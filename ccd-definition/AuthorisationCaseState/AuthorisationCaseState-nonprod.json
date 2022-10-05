@@ -119,18 +119,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "HEARING_READINESS",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
   }
 ]

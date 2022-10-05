@@ -115,12 +115,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SERVICE_REQUEST_UPDATE",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_CLAIM_FORM",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

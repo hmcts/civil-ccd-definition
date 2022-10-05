@@ -15,7 +15,7 @@ const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -104,7 +104,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName, legacyCaseReference;
+let caseId, eventName;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -118,7 +118,6 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -156,8 +155,6 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
-
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
@@ -182,8 +179,6 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
-
     await validateEventPages(createClaimData);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
@@ -253,7 +248,6 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
 
     await validateEventPages(data[eventName]);
@@ -278,7 +272,7 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
       value: listElement('Both')
     }};
-
+    
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -512,12 +506,7 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['demo'].includes(config.runningEnv)) {
-      validState = 'JUDICIAL_REFERRAL';
-    }
-
-    await assertSubmittedEvent(validState, {
+    await assertSubmittedEvent(expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
     });
@@ -570,10 +559,6 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-  },
-
-  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
-     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
 
   addCaseNote: async (user) => {
@@ -641,10 +626,6 @@ module.exports = {
      console.log (`case created: ${caseId}`);
      return caseId;
    },
-
-  getLegacyCaseReference: async () => {
-    return legacyCaseReference;
-  },
 
   cleanUp: async () => {
     await unAssignAllUsers();
@@ -817,27 +798,6 @@ async function updateCaseDataWithPlaceholders(data, document) {
   data = lodash.template(JSON.stringify(data))(placeholders);
 
   return JSON.parse(data);
-}
-
-// CIV-3521: remove when access profiles is live
-async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
-  let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-  // work around for the api  tests
-  console.log(`Access Profiles Enabled in Env: ${config.runningEnv}`);
-  if (!isAccessProfilesEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
-    createClaimData = {
-      ...createClaimData,
-      valid: {
-        ...createClaimData.valid,
-        References: {
-          solicitorReferences: {
-           ...createClaimData.valid.References.solicitorReferences
-          }
-        }
-      }
-    };
-  }
-  return createClaimData;
 }
 
 // CIV-4959: needs to be removed when court location goes live

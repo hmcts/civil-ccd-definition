@@ -11,8 +11,8 @@
       },
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -31,8 +31,8 @@
       },
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "[APPLICANTSOLICITORONE]",
+          "[RESPONDENTSOLICITORONE]",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"

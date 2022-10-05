@@ -47,5 +47,12 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHousingDisrepair",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]

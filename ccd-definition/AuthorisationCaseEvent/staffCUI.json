@@ -4,11 +4,5 @@
     "CaseEventID": "DEFENDANT_RESPONSE_CUI",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CUI",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]

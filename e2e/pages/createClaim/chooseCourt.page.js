@@ -10,7 +10,7 @@ module.exports = {
     courtLocation: {
       id: 'select[id$="Location_applicantPreferredCourtLocationList"]',
       options: {
-        claimantPreferredCourt: config.claimantSelectedCourt
+        claimantPreferredCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
       }
     }
   },
