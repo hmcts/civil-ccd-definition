@@ -2,7 +2,8 @@ plugins {
   id 'application'
   id 'checkstyle'
   id 'jacoco'
-  id 'org.owasp.dependencycheck' version '7.1.1'
+  id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+  id 'org.owasp.dependencycheck' version '7.2.1'
   id 'com.github.ben-manes.versions' version '0.39.0'
   id 'org.sonarqube' version '3.4.0.2513'
   id 'au.com.dius.pact' version '4.2.7'
@@ -11,6 +12,13 @@ plugins {
 
 group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
+
+def versions = [
+  junit              : '5.7.0',
+  junitPlatform      : '1.9.1',
+  reformLogging      : '5.1.5',
+  jackson            : '2.13.3'
+]
 
 allprojects {
 
@@ -59,7 +67,48 @@ allprojects {
       assemblyEnabled = false
     }
   }
-
+  dependencyManagement {
+    dependencies {
+      dependencySet(
+        group: 'com.fasterxml.jackson.core',
+        version: versions.jackson
+      ) {
+        entry 'jackson-core'
+      }
+      dependencySet(
+        group: 'com.fasterxml.jackson.core',
+        version: versions.jackson
+      ) {
+        entry 'jackson-databind'
+      }
+      dependencySet(
+        group: 'com.fasterxml.jackson.datatype',
+        version: versions.jackson
+      ) {
+        entry 'jackson-datatype-jdk8'
+        entry 'jackson-datatype-jsr310'
+      }
+      dependencySet(
+        group: 'com.fasterxml.jackson.module',
+        version: versions.jackson
+      ) {
+        entry 'jackson-module-parameter-names'
+      }
+      dependencySet(
+        group: 'com.fasterxml.jackson.core',
+        version: versions.jackson
+      ) {
+        entry 'jackson-annotations'
+      }
+      // solves CVE-2022-25857
+      dependencySet(
+        group: 'org.yaml',
+        version: '1.33'
+      ) {
+        entry 'snakeyaml'
+      }
+    }
+  }
   repositories {
     mavenLocal()
     jcenter()
@@ -230,12 +279,6 @@ jacocoTestReport.dependsOn {
   subprojects*.test
 }
 
-def versions = [
-  junit              : '5.7.0',
-  junitPlatform      : '1.7.1',
-  reformLogging      : '5.1.5'
-]
-
 ext.libraries = [
   junit5: [
     "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
@@ -247,13 +290,12 @@ ext.libraries = [
 ]
 
 dependencies {
-  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.21'
-  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.21'
+  implementation group: 'org.springframework', name: 'spring-core', version: '5.3.23'
+  implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.23'
   implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
-  implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
+  implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.1'
-  
-  implementation 'org.yaml:snakeyaml:1.31'
+
   constraints {
     implementation('org.apache.commons:commons-compress:1.21') {
       because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090'
