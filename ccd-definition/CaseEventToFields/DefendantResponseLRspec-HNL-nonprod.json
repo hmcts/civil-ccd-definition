@@ -1361,19 +1361,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "PageLabel": "",
-    "PageDisplayOrder": 46,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Witnesses",
-    "FieldShowCondition": "respondent1DQWitnessesRequiredSpec = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/witnesses",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnesses",
     "PageLabel": "",
     "PageDisplayOrder": 46,
@@ -1395,28 +1382,6 @@
     "PageID": "SmallClaimWitnesses",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimWitnesses",
-    "PageDisplayOrder": 46,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "SmallClaimWitnesses",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimWitnesses2",
-    "PageDisplayOrder": 46,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "SmallClaimWitnesses",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1791,5 +1756,42 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
+    "PageLabel": "",
+    "PageDisplayOrder": 46,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Witnesses",
+    "FieldShowCondition": "respondent1DQWitnessesRequiredSpec = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/witnesses",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQWitnessesSmallClaim",
+    "PageDisplayOrder": 46,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaimWitnesses",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/witnesses",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQWitnessesSmallClaim",
+    "PageDisplayOrder": 46,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaimWitnesses",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/witnesses",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent2 = \"Yes\""
   }
 ]
