@@ -106,11 +106,4 @@
     <cve>CVE-2022-36313</cve>
     <vulnerabilityName>1081704</vulnerabilityName>
   </suppress>
-  <suppress until="2022-11-29">
-    <notes>
-      FasterXML jackson-databind
-    </notes>
-    <cve>CVE-2022-42003</cve>
-    <cve>CVE-2022-42004</cve>
-  </suppress>
  </suppressions>
