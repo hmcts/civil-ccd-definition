@@ -106,4 +106,8 @@
     <cve>CVE-2022-36313</cve>
     <vulnerabilityName>1081704</vulnerabilityName>
   </suppress>
+  <suppress>
+    <cve>CVE-2022-42003</cve>
+    <cve>CVE-2022-42004</cve>
+  </suppress>
  </suppressions>
