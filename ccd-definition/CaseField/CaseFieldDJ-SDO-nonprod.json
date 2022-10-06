@@ -1,14 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "testsearch",
-    "Label": "I should see this : ${applicantSolicitor1UserDetails.email}",
-    "FieldType": "Label",
-    "_comment": "testing global search mappings",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicantVRespondentText",
     "Label": " ",
     "FieldType": "Text",
@@ -68,7 +60,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingJudgesRecitalDJ",
-    "Label": "Judge's recital",
+    "Label": " ",
     "FieldType": "DisposalHearingJudgesRecitalDJ",
     "SecurityClassification": "Public"
   },
@@ -112,13 +104,6 @@
     "ID": "disposalHearingSchedulesOfLossDJ",
     "Label": "Schedules or counter-schedules of loss",
     "FieldType": "DisposalHearingSchedulesOfLossDJ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingStandardDisposalOrderDJ",
-    "Label": "Standard disposal order",
-    "FieldType": "DisposalHearingStandardDisposalOrderDJ",
     "SecurityClassification": "Public"
   },
   {
@@ -182,20 +167,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredTelephoneDJ",
-    "Label": "## Preferred telephone number \n ${hearingSupportRequirementsDJ.hearingPreferredTelephoneNumber1}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredEmailDJ",
-    "Label": "## Preferred email \n ${hearingSupportRequirementsDJ.hearingPreferredEmail}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleDJ",
     "Label": " ",
     "FieldType": "DisposalHearingBundleDJ",
@@ -204,21 +175,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingClaimSettlingDJ",
-    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement. \n **** ",
+    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "DisposalHearingCostsDJ",
-    "Label": "## Costs \n Costs in the case \n ****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderDJ",
-    "Label": "## Applications to set aside, vary or stay this order \n Because this order has been made without a hearing, the parties have the right to apply to have the order set aside, varied or stayed. A party making such an application must send or deliver the application to the court (together with any appropriate fee) to arrive within seven days of service of this order. \n ****",
+    "Label": "## Costs \n Costs in the case",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -268,21 +232,21 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialFastTrackAltDisputeResolution",
-    "Label": "## Alternative dispute resolution \nAt all stages the parties must consider settling this claim by any means of Alternative Dispute Resolution (including round table conferences, early neutral evaluation, mediation and arbitration); any party not engaging in any such means proposed by another must serve a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise). \n ****",
+    "Label": "## Alternative dispute resolution \nAt all stages, the parties must consider settling this litigation by any means of Alternative Dispute Resolution. This includes round table conferences, early neutral evaluation, mediation and arbitration. Any party not engaging in any such means proposed by another must uploaded to the Digital Portal a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialFastTrackVariationOfDirections",
-    "Label": "## Variation of directions \nVariation of directions The parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4). Otherwise, the time for compliance with a direction may only be extended by making an application. \n **** ",
+    "Label": "## Variation of directions \nThe Parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4).  Otherwise, the time for compliance with a direction may only be extended by making an application",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialFastTrackSettlement",
-    "Label": "## Settlement \nEach party must inform the Court immediately if the case is settled whether or not it is then possible to file a draft consent order to give effect to their agreement. \n ****",
+    "Label": "## Settlement \nEach party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -370,13 +334,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingMethodTelephoneHearingCourtStatementDJ",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialHearingMethodLineDJ",
-    "Label": "****",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -533,14 +490,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingCostsDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",

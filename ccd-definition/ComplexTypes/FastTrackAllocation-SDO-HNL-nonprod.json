@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "FastTrackAllocation",
+    "ListElementCode": "line1",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackAllocation",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackAllocation",
+    "ListElementCode": "text",
+    "FieldType": "Label",
+    "ElementLabel": "## Allocation \nThe claim is allocated to the Fast track.",
+    "SecurityClassification": "Public"
+  }
+]
