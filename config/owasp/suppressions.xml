@@ -65,6 +65,8 @@
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
     <cve>CVE-2020-11022</cve>
     <cve>CVE-2020-11023</cve>
+    <cve>CVE-2022-42003</cve>
+    <cve>CVE-2022-42004</cve>
   </suppress>
   <suppress>
     <notes>HIGH-Spring security-suppressed at 21-02-2022</notes>
