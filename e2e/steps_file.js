@@ -341,8 +341,13 @@ module.exports = function () {
         () => unspecifiedDefaultJudmentPage.selectCaseManagementOrder('DisposalHearing'),
         () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
         () => unspecifiedDefaultJudmentPage.verifyOrderPreview(),
-        () => event.submit('Submit', 'Your order has been issued'),
-        () => event.returnToCaseDetails()
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async staffPerformDJCaseTransferCaseOffline(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.performAndVerifyTransferCaseOffline(caseId)
       ]);
     },
 
