@@ -1,0 +1,565 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantVRespondentText",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrder",
+    "Label": "# ${applicantVRespondentText} \n What order would you like to make",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderSelection",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingSelection",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDisposalText2",
+    "Label": "This is a hearing that lasts no longer than 30 minutes, with only paper-based evidence presented",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingTrialText2",
+    "Label": "This is a hearing which lasts longer than 30 minutes, with spoken and paper-based evidence presented",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderAdditional",
+    "Label": "Select additional directions, if any",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "CaseManagementOrderAdditional",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderDisposal",
+    "Label": "### ${applicantVRespondentText}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingOrderAndHearingDetailsDJ",
+    "Label": "Order and hearing details",
+    "FieldType": "DisposalHearingOrderAndHearingDetailsDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingJudgesRecitalDJ",
+    "Label": " ",
+    "FieldType": "DisposalHearingJudgesRecitalDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingJudgementStatementDJ",
+    "Label": "### There is judgment for the claimant for an amount to be decided by the court",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingDisclosureOfDocumentsDJ",
+    "Label": " ",
+    "FieldType": "DisposalHearingDisclosureOfDocumentsDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingWitnessOfFactDJ",
+    "Label": "Witness of Fact",
+    "FieldType": "DisposalHearingWitnessOfFactDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMedicalEvidenceDJ",
+    "Label": "Medical evidence",
+    "FieldType": "DisposalHearingMedicalEvidenceDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingQuestionsToExpertsDJ",
+    "Label": "Questions to experts",
+    "FieldType": "DisposalHearingQuestionsToExpertsDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingSchedulesOfLossDJ",
+    "Label": "Schedules or counter-schedules of loss",
+    "FieldType": "DisposalHearingSchedulesOfLossDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingFinalDisposalHearingDJ",
+    "Label": "Final disposal hearing",
+    "FieldType": "DisposalHearingFinalDisposalHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodTitleDJ",
+    "Label": "## Hearing Method",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodDJ",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodInPersonDJ",
+    "Label": "Hearing location ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodVideoConferenceHearingDJ",
+    "Label": "Who will arrange the video conference? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodVideoConferenceHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodVideoConferenceHearingCourtStatementDJ",
+    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodTelephoneHearingDJ",
+    "Label": "Who will arrange the call? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodTelephoneHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMethodTelephoneHearingCourtStatementDJ",
+    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingBundleDJ",
+    "Label": " ",
+    "FieldType": "DisposalHearingBundleDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingClaimSettlingDJ",
+    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DisposalHearingCostsDJ",
+    "Label": "## Costs \n Costs in the case",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingNotesDJ",
+    "Label": "Notes",
+    "FieldType": "DisposalHearingNotesDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingAddNewDirectionsDJ",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DisposalHearingAddNewDirectionsDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementOrderTrial",
+    "Label": "### ${applicantVRespondentText}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingOrderAndHearingDetailsDJ",
+    "Label": "# Order and hearing details \n Warning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply you must make an application to the court before any deadline expires. \n ****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingJudgesRecitalDJ",
+    "Label": "Judge's recital",
+    "FieldType": "TrialHearingJudgesRecitalDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingAllocation",
+    "Label": "### Judgment for the claimant for an sum to be decided by the court \n ### Allocation \n the claim is allocated to the fast track \n ****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialFastTrackAltDisputeResolution",
+    "Label": "## Alternative dispute resolution \nAt all stages, the parties must consider settling this litigation by any means of Alternative Dispute Resolution. This includes round table conferences, early neutral evaluation, mediation and arbitration. Any party not engaging in any such means proposed by another must uploaded to the Digital Portal a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialFastTrackVariationOfDirections",
+    "Label": "## Variation of directions \nThe Parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4). Otherwise, the time for compliance with a direction may only be extended by making an application",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialFastTrackSettlement",
+    "Label": "## Settlement \nEach party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingDisclosureOfDocumentsDJ",
+    "Label": "Disclosure of documents",
+    "FieldType": "TrialHearingDisclosureOfDocumentsDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingWitnessOfFactDJ",
+    "Label": "Witness of fact",
+    "FieldType": "TrialHearingWitnessOfFactDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingSchedulesOfLossDJ",
+    "Label": "Schedule of loss",
+    "FieldType": "TrialHearingSchedulesOfLossDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingCosts",
+    "Label": "## Costs \n Costs in the case \n ****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingTrialDJ",
+    "Label": "Trial",
+    "FieldType": "TrialHearingTrialDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodTitleDJ",
+    "Label": "## Hearing Method",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodDJ",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodInPersonDJ",
+    "Label": "Hearing location",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodVideoConferenceHearingDJ",
+    "Label": "Who will arrange the video conference? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodVideoConferenceHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodVideoConferenceHearingCourtStatementDJ",
+    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodTelephoneHearingDJ",
+    "Label": "Who will arrange the call? ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingMethodTelephoneHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingMethodTelephoneHearingCourtStatementDJ",
+    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingNotesDJ",
+    "Label": "Notes",
+    "FieldType": "TrialHearingNotesDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialBuildingDispute",
+    "Label": "Building dispute",
+    "FieldType": "TrialBuildingDispute",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialClinicalNegligence",
+    "Label": "Clinical negligence",
+    "FieldType": "TrialClinicalNegligence",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "TrialCreditHire",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "TrialHousingDisrepair",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialEmployersLiability",
+    "Label": "Employer's liability",
+    "FieldType": "TrialEmployersLiability",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialPersonalInjury",
+    "Label": "Personal injury",
+    "FieldType": "TrialPersonalInjury",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialRoadTrafficAccident",
+    "Label": "Road traffic accident",
+    "FieldType": "TrialRoadTrafficAccident",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingAddNewDirectionsDJ",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TrialHearingAddNewDirectionsDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderApplicantVRespondent",
+    "Label": "### ${applicantVRespondentText}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderSDODocumentDJ",
+    "Label": "View directions order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingDisclosureOfDocumentsDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingWitnessOfFactDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingMedicalEvidenceDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingQuestionsToExpertsDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingSchedulesOfLossDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingStandardDisposalOrderDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingFinalDisposalHearingDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingBundleDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingClaimSettlingDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingCostsDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingAlternativeDisputeDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingVariationsDirectionsDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingSettlementDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingDisclosureOfDocumentsDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingWitnessOfFactDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingSchedulesOfLossDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingCostsToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHearingTrialDJToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
+    "SecurityClassification": "Public"
+  }
+]
+
+
+
