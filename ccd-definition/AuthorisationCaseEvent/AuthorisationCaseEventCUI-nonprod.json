@@ -71,7 +71,6 @@
       },
       {
         "UserRoles": [
-<<<<<<< HEAD
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
@@ -97,12 +96,6 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
-=======
-          "[APPLICANTSOLICITORONESPEC]",
-          "caseworker-civil-admin",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
->>>>>>> 6fb15f3e91a598b9fd275e5305c1c7fd868ab24e
         ],
         "CRUD": "R"
       }

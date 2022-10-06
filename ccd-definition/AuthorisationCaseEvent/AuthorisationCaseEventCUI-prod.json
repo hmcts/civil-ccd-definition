@@ -79,7 +79,6 @@
         "CRUD": "R"
       }
     ]
-<<<<<<< HEAD
   },
   {
     "CaseTypeID": "CIVIL",
@@ -101,7 +100,5 @@
         "CRUD": "R"
       }
     ]
-=======
->>>>>>> 6fb15f3e91a598b9fd275e5305c1c7fd868ab24e
   }
 ]

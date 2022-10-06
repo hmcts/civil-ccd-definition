@@ -10,14 +10,11 @@
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CUI",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-<<<<<<< HEAD
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_LIP_DEFENDANT_RESPONSE_SUBMISSION",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-=======
->>>>>>> 6fb15f3e91a598b9fd275e5305c1c7fd868ab24e
   }
 ]

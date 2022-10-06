@@ -37,7 +37,6 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
-<<<<<<< HEAD
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,7 +50,5 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
-=======
->>>>>>> 6fb15f3e91a598b9fd275e5305c1c7fd868ab24e
   }
 ]
