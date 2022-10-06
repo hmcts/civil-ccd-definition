@@ -1,0 +1,52 @@
+[
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "date2",
+    "FieldType": "Date",
+    "ElementLabel": "Date to",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "hearingTimeEstimate",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrialHearingTimeEstimate",
+    "ElementLabel": "The time estimate is",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "otherHours",
+    "FieldType": "Number",
+    "ElementLabel": "Hours",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "otherMinutes",
+    "FieldType": "Number",
+    "ElementLabel": "Minutes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "helpText1",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "helpText2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
