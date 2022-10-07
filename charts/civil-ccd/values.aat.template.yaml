@@ -203,6 +203,7 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
+    imagePullPolicy: Always
     disableKeyVaults: true
     releaseNameOverride: ${SERVICE_NAME}-camunda
     ingressHost: civil-ccd-camunda-staging-aat.service.core-compute-aat.internal
