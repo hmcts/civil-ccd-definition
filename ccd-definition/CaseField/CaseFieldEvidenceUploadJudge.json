@@ -6,5 +6,19 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "CaseNoteType",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNoteTypeNoteLabel",
+    "Label": "## Write a Note \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNoteTypeNoteTA",
+    "Label": "Write a note about this case",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
   }
 ]
