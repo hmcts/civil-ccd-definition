@@ -181,30 +181,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "TRIGGER_APPLICATION_CLOSURE",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "TRIGGER_APPLICATION_PROCEEDS_IN_HERITAGE",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "APPLICATION_CLOSED_UPDATE_CLAIM",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "APPLICATION_OFFLINE_UPDATE_CLAIM",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
