@@ -32,6 +32,7 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "generalAppVaryJudgementType=\"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -43,7 +44,17 @@
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppVaryJudgementType=\"Yes\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppN245FormUpload",
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAUploadN245Form",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-validate-n245form-name",
     "ShowSummaryChangeOption": "Y"
   },

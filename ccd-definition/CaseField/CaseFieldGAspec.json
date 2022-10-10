@@ -265,5 +265,13 @@
     "Label": "Upload your completed N245 form",
     "FieldType": "GAN245FormUpload",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppN245FormUpload",
+    "Label": "N245 Form",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
+    "SecurityClassification": "Public"
   }
 ]

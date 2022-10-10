@@ -12,14 +12,5 @@
     "ElementLabel": "<br/>When you upload the form, include the case number in the file name.\n\nIf you have printed off the form and filled it in by hand, make sure the size of your saved file is no more than 100MB.\n\nSave your file as either: JPG, PNG, SVG, GIF, DOC, DOCX or PDF",
     "FieldType": "Label",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAN245FormUpload",
-    "ListElementCode": "generalAppN245FormUpload",
-    "ElementLabel": " ",
-    "HintText": "  ",
-    "FieldType": "Document",
-    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
-    "SecurityClassification": "Public"
   }
 ]

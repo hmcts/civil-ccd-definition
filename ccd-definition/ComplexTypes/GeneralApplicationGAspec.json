@@ -87,8 +87,15 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "gaUploadN245FormUpload",
-    "ElementLabel": "Upload your completed N245 form",
+    "ElementLabel": "Upload your completed N245 form Label",
     "FieldType": "GAN245FormUpload",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppN245FormUpload",
+    "ElementLabel": "Upload your completed N245 form",
+    "FieldType": "Document",
     "SecurityClassification": "Public"
   },
   {
