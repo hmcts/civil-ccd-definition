@@ -109,7 +109,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaUploadN245FormUpload",
+    "CaseFieldID": "gaUploadN245FormUploadLabel",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },

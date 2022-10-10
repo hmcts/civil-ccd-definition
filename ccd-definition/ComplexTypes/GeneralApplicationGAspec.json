@@ -86,7 +86,7 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "gaUploadN245FormUpload",
+    "ListElementCode": "gaUploadN245FormUploadLabel",
     "ElementLabel": "Upload your completed N245 form Label",
     "FieldType": "GAN245FormUpload",
     "SecurityClassification": "Public"
