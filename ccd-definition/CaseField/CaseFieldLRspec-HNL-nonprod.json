@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQWitnessesSmallClaim",
+    "Label": "Claimant 1 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  }
+]
