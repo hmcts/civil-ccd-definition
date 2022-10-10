@@ -211,5 +211,12 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "locationName",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
