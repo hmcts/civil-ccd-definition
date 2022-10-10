@@ -15,7 +15,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-tests-spec');
+Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-tests-spec @e2e-1v2DS');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
