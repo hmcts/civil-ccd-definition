@@ -160,5 +160,17 @@
     "CaseFieldID": "directionOrderDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaUploadN245FormUpload",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
