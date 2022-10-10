@@ -15,7 +15,7 @@ Scenario('Default Judgment claim', async ({I, api}) => {
 });
 
 Scenario('Default Judgment claim SDO', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUser);
+  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
 });
 
 AfterSuite(async  ({api}) => {
