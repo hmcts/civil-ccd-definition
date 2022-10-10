@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const {checkAccessProfilesIsEnabled} = require('../../../api/testingSupport');
 const {assignCaseRoleToUser,addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
@@ -22,11 +23,23 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
+  console.log('Create 1v2DS spec case ', caseNumber);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
+Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
+  let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
+  if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  } else {
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
+  }
+  console.log('Assigned roles for defendant 1 and 2', caseNumber);
+}).retry(3);
+
 Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
@@ -37,7 +50,6 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
-  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
   await LRspec.login(config.secondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
