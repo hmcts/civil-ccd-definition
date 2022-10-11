@@ -18,7 +18,7 @@
     "ListElementCode": "time",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsTimeEstimate",
-    "ElementLabel": " ",
+    "ElementLabel": "The time estimate is",
     "SecurityClassification": "Public"
   },
   {
@@ -43,6 +43,20 @@
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "dateTo",
+    "ElementLabel": "Date to",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "dateFrom",
+    "ElementLabel": "Date from",
+    "FieldType": "Date",
     "SecurityClassification": "Public"
   }
 ]
