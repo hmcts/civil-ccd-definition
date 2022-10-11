@@ -1101,5 +1101,20 @@
     "Label": "View directions order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]

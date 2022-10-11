@@ -35,7 +35,8 @@ module.exports = {
     },
     paymentType: {
       currentDatebox: '25 August 2022',
-      repaymentDue: '1580.00'
+      repaymentDue: '1580.00',
+      paymentTypeSelection : 'IMMEDIATELY'
     },
     paymentSetDate: {
     },
