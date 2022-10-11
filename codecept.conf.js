@@ -17,7 +17,7 @@ exports.config = {
       keepCookies: true,
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       windowSize: '1200x900',
-      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 50000),
+      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
       chrome: {
         ignoreHTTPSErrors: true
       },
