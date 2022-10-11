@@ -481,13 +481,33 @@
   },
   {
     "ID": "RequestedCourt",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQRequestedCourt",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
+    "_Comment": "Condition to true, must override default"
+  },
+  {
+    "ID": "RequestedCourt",
     "ListElementCode": "responseCourtLocations",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQRequestedCourt",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "EventElementLabel": "Please select your preferred hearing court centre",
     "EventHintText": "If the defendant is an individual the case will be held at the defendant's preferred court",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
+    "_Comment": "Condition to true, must override default"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQRequestedCourt",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
   }
