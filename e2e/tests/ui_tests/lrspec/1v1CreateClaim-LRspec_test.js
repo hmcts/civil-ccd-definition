@@ -15,7 +15,7 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   caseNumber = await LRspec.grabCaseNumber();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
-  await LRspec.click('Sign out');
+  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
@@ -60,5 +60,6 @@ Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to pro
   await LRspec.click('Sign out');
 }).retry(3);
 
-
-
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

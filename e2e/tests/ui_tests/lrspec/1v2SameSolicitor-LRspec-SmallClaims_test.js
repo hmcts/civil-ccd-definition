@@ -27,6 +27,7 @@ Scenario('Applicant solicitor creates 1v2 specified claim both defendants same L
   caseNumber = await LRspec.grabCaseNumber();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
+  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
@@ -50,3 +51,6 @@ Scenario('1v2 same solicitor responds to defence - claimant Intention to proceed
   await LRspec.click('Sign out');
 }).retry(3);
 
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
