@@ -506,7 +506,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsHearingTitle",
-    "Label": "## Hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -647,8 +647,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
-    "Label": "Notes",
+    "Label": "The Order has been made without a hearing",
     "FieldType": "SmallClaimsNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "SDOHearingNotes",
     "SecurityClassification": "Public"
   },
   {
