@@ -115,6 +115,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "Label": "Hearing time",
+    "FieldType": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodTitleDJ",
     "Label": "## Hearing Method",
     "FieldType": "Label",
@@ -191,6 +198,20 @@
     "ID": "disposalHearingNotesDJ",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotesDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesDJ",
+    "Label": "Hearing notes",
+    "FieldType": "DisposalHearingHearingNotesDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "Label": "This Order has been made without a hearing",
+    "FieldType": "DisposalHearingOrderMadeWithoutHearingDJ",
     "SecurityClassification": "Public"
   },
   {
