@@ -9,7 +9,8 @@
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input2",
-    "FieldType": "Text",
+    "FieldType": "Number",
+    "HintText":"Number of witnesses (claimant), e.g. 4",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -17,7 +18,8 @@
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input3",
     "FieldType": "Number",
-    "ElementLabel": "Number of witnesses (claimant)",
+    "HintText":"Number of witnesses (defendant), e.g. 4",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
@@ -36,6 +38,28 @@
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
+    "ListElementCode": "input6",
+    "FieldType": "Number",
+    "HintText":"Number of pages, e.g. 4",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingWitnessOfFactDJ",
+    "ListElementCode": "input7",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingWitnessOfFactDJ",
+    "ListElementCode": "input8",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -43,16 +67,9 @@
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
-    "ListElementCode": "input6",
+    "ListElementCode": "input9",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "TrialHearingWitnessOfFactDJ",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]
