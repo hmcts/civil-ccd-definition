@@ -623,6 +623,8 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
+    // workaround: caseManagementLocation shows in startevent api request but not in validate request
+    deleteCaseFields('caseManagementLocation');
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
       await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
     } else if (mpScenario === 'TWO_V_ONE') {
