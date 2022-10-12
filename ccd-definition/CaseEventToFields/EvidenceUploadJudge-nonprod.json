@@ -8,7 +8,20 @@
     "PageID": "CaseNoteSelection",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "PageLabel": "How do you want to add a case note?"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
+    "CaseFieldID": "documentOnly",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "UploadDocument",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageLabel": "Add a document",
+    "PageShowCondition": "caseNoteType = \"DOCUMENT_ONLY\""
   }
 ]
