@@ -443,6 +443,7 @@ module.exports = {
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent2DQRequestedCourt');
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
@@ -513,7 +514,7 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['demo'].includes(config.runningEnv)) {
+    if (['preview', 'demo'].includes(config.runningEnv)) {
       validState = 'JUDICIAL_REFERRAL';
     }
 
