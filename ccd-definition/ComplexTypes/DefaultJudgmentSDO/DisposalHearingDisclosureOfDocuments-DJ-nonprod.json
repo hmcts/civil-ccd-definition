@@ -1,13 +1,6 @@
 [
   {
     "ID": "DisposalHearingDisclosureOfDocumentsDJ",
-    "ListElementCode": "line1",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingDisclosureOfDocumentsDJ",
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "## Disclosure of documents ##",
@@ -25,13 +18,6 @@
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingDisclosureOfDocumentsDJ",
-    "ListElementCode": "line2",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]
