@@ -1,23 +1,23 @@
 [
   {
-    "ID": "DisposalHearingStandardDisposalOrderDJ",
+    "ID": "DisposalHearingNotesDJ",
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DisposalHearingStandardDisposalOrderDJ",
+    "ID": "DisposalHearingNotesDJ",
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DisposalHearingStandardDisposalOrderDJ",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
+    "ID": "DisposalHearingNotesDJ",
+    "ListElementCode": "date",
+    "FieldType": "Date",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]

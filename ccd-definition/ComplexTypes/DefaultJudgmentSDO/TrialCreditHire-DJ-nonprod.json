@@ -15,15 +15,15 @@
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "text",
-    "FieldType": "Label",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "input2",
-    "FieldType": "TextArea",
+    "ListElementCode": "input3",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -36,14 +36,14 @@
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "input3",
+    "ListElementCode": "input4",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "input4",
+    "ListElementCode": "input5",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
@@ -57,7 +57,7 @@
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "input5",
+    "ListElementCode": "input6",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
@@ -71,8 +71,8 @@
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "input6",
-    "FieldType": "Text",
+    "ListElementCode": "input7",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -85,16 +85,9 @@
   },
   {
     "ID": "TrialCreditHire",
-    "ListElementCode": "input7",
+    "ListElementCode": "input8",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "TrialCreditHire",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
     "SecurityClassification": "Public"
   }
 ]

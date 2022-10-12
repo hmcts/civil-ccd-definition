@@ -15,6 +15,6 @@
     "ID": "DisposalHearingBundleType",
     "ListElementCode": "SUMMARY",
     "ListElement": "a case summary containing no more than 500 words",
-    "DisplayOrder": 2
+    "DisplayOrder": 3
   }
 ]
