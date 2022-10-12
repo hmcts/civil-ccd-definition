@@ -80,21 +80,21 @@
     "CaseTypeID": "CIVIL",
     "ID": "IN_MEDIATION",
     "Name": "In Mediation",
-    "Description": "In Mediation",
+    "Description": "Placeholder",
     "DisplayOrder": 12
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "Name": "Prepare for hearing conduct hearing",
-    "Description": "Prepare for hearing conduct hearing",
+    "Description": "Placeholder",
     "DisplayOrder": 13
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "DECISION_OUTCOME",
     "Name": "Decision Outcome",
-    "Description": "Decision Outcome",
+    "Description": "Placeholder",
     "DisplayOrder": 14
   }
 ]
