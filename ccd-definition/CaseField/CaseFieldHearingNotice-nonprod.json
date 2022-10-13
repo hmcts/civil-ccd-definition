@@ -125,14 +125,14 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingFee",
     "Label": "Hearing Fee",
-    "FieldType": "Text",
+    "FieldType": "Fee",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingDueDate",
     "Label": "Hearing Due Date",
-    "FieldType": "Text",
+    "FieldType": "Date",
     "SecurityClassification": "Public"
   },
   {
