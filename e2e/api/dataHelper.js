@@ -42,14 +42,6 @@ module.exports = {
     };
   },
 
-  sdoDjDocument: (filename) => {
-    return {
-      document_url: `${config.url.dmStore}/documents/33f33bb0-1a39-11ed-95b5-45f7aa908cd8`,
-      document_filename: filename,
-      document_binary_url: `${config.url.dmStore}/documents/33f33bb0-1a39-11ed-95b5-45f7aa908cd8/binary`
-    };
-  },
-
   element: object => {
     return {
       id: uuid.v1(),

@@ -17,7 +17,6 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {sdoDjDocument} = require('../api/dataHelper');
 
 const data = {
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
@@ -48,9 +47,6 @@ const data = {
   DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
   DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
   DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
-  SDO_DEFAULT_JUDGEMENT: require('../fixtures/events/sdoDefaultJudgment.js'),
-  SDO_DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/sdoDefaultJudgment1v2.js'),
-  SDO_DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/sdoDefaultJudgment2v1.js'),
 };
 
 const eventData = {
@@ -644,25 +640,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  sdoDefaultJudgment: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    eventName = 'STANDARD_DIRECTION_ORDER_DJ';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT_1V2);
-    } else if (mpScenario === 'TWO_V_ONE') {
-      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT_2V1);
-    } else {
-      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT);
-    }
-
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
   getCaseId: async () => {
      console.log (`case created: ${caseId}`);
      return caseId;
@@ -688,14 +665,6 @@ const validateEventPages = async (data, solicitor) => {
     }
    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
-  }
-};
-
-const validateEventPagesSdoDj = async (data, solicitor) => {
-
-  console.log('validateEventPages');
-  for (let pageId of Object.keys(data.valid)) {
-    await assertValidDataSdoDj(data, pageId, solicitor);
   }
 };
 
@@ -725,32 +694,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
-  }
-
-  assert.deepEqual(responseBody.data, caseData);
-};
-
-const assertValidDataSdoDj = async (data, pageId, solicitor) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
-  const validDataForPage = data.valid[pageId];
-  caseData = {...caseData, ...validDataForPage};
-  caseData = adjustDataForSolicitor(solicitor, caseData);
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
-  );
-  let responseBody = await response.json();
-
-  assert.equal(response.status, 200);
-
-  responseBody.data.trialHearingMethodInPersonDJ = null;
-  responseBody.data.disposalHearingMethodInPersonDJ = null;
-  if ( pageId === 'TrialHearing') {
-    const documentName = responseBody.data.orderSDODocumentDJ.document_filename;
-    responseBody.data.orderSDODocumentDJ = sdoDjDocument(documentName);
   }
 
   assert.deepEqual(responseBody.data, caseData);
