@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "Party",
+    "ListElementCode": "partyPhone",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone",
+    "SecurityClassification": "Public"
+  }
+]
