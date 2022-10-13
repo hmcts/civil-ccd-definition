@@ -1,14 +1,14 @@
 [
   {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "CREATE_SDO",
-  "AccessControl": [
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "AccessControl": [
       {
-      "UserRoles": [
-        "judge-profile",
-        "legal-adviser"
-      ],
-      "CRUD": "CRU"
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
