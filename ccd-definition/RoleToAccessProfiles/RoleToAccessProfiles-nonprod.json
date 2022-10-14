@@ -309,7 +309,7 @@
     "RoleName" : "challenged-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -318,7 +318,7 @@
     "RoleName" : "challenged-access-legal-ops",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -327,7 +327,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
