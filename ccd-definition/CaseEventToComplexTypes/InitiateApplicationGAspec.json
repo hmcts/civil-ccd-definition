@@ -378,5 +378,41 @@
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryContentOption": "N"
+  },
+  {
+    "ID": "GAHearingDate",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDate",
+    "ListElementCode": "hearingScheduledPreferenceYesNoLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryContentOption": "Y"
+  },
+  {
+    "ID": "GAHearingDate",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDate",
+    "ListElementCode": "hearingScheduledPreferenceYesNo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryContentOption": "Y"
+  },
+  {
+    "ID": "GAHearingDate",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDate",
+    "ListElementCode": "hearingScheduledDateLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryContentOption": "Y"
+  },
+  {
+    "ID": "GAHearingDate",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppHearingDate",
+    "ListElementCode": "hearingScheduledDate",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryContentOption": "Y"
   }
 ]

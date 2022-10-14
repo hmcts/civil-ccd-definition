@@ -79,6 +79,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppHearingDate",
+    "ElementLabel": "Hearing date for all GA types",
+    "FieldType": "GAHearingDateGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppVaryJudgementType",
     "ElementLabel": "Vary Judgement GA Type",
     "FieldType": "YesOrNo",
