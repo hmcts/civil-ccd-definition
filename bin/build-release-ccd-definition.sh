@@ -7,7 +7,7 @@ excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
    #excludedFilenamePatterns="-e *-prod.json,*-SDO-HNL-nonprod.json"
-   #for testing HNL uplifting, comment the above line and uncomment below
+  #for testing HNL uplifting, comment the above line and uncomment below
    excludedFilenamePatterns="-e *-prod.json,*-SDO-nonprod.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-SDO-HNL-nonprod.json"
