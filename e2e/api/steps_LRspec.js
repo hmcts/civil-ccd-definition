@@ -8,7 +8,6 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
@@ -16,6 +15,7 @@ const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
+const {checkAccessProfilesIsEnabled, checkCourtLocationDynamicListIsEnabled, checkToggleEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
@@ -108,7 +108,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
-    let createClaimData = {};
+    let createClaimData  = {};
 
     let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
     if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
@@ -178,6 +178,7 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
+    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
 
@@ -233,6 +234,7 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
+    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -245,15 +247,15 @@ module.exports = {
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline = {};
-    respondent1deadline = {'respondent1ResponseDeadline': '2022-01-10T15:59:50'};
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1deadline);
   },
 
   amendRespondent2ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent2deadline = {};
-    respondent2deadline = {'respondent2ResponseDeadline': '2022-01-10T15:59:50'};
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
@@ -277,11 +279,12 @@ module.exports = {
     }, true);
 
 
+
     await waitForFinishedBusinessProcess(caseId);
   },
 
   getCaseId: async () => {
-    console.log(`case created: ${caseId}`);
+    console.log (`case created: ${caseId}`);
     return caseId;
   },
 };
@@ -454,7 +457,7 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
     }
 
   } else if (pageId === 'paymentSetDate') {
-    responseBody.data.repaymentDue = '1580.00';
+    responseBody.data.repaymentDue= '1580.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
@@ -471,9 +474,50 @@ const deleteCaseFields = (...caseFields) => {
 
 const assertContainsPopulatedFields = returnedCaseData => {
   for (let populatedCaseField of Object.keys(caseData)) {
-    assert.property(returnedCaseData, populatedCaseField);
+    assert.property(returnedCaseData,  populatedCaseField);
   }
 };
+
+// CIV-4203: needs to be removed when court location goes live
+async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api  tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    responseData = {
+      ...responseData,
+      userInput: {
+        ...responseData.userInput,
+        RequestedCourtLocationLRspec: {
+          responseClaimCourtLocationRequired: 'No'
+        }
+      }
+    };
+  }
+  return responseData;
+}
+
+// CIV-4203: needs to be removed when court location goes live
+async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api  tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    responseData = {
+      ...responseData,
+      userInput: {
+        ...responseData.userInput,
+        ApplicantCourtLocationLRspec: {
+          applicant1DQRequestedCourt: {
+            reasonForHearingAtSpecificCourt: 'reasons',
+            responseCourtCode: '123'
+          }
+        },
+      }
+    };
+  }
+  return responseData;
+}
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
