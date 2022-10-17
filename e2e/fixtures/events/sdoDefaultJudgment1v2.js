@@ -65,8 +65,8 @@ module.exports = {
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]'
       },
       disposalHearingJudgesRecitalDJ: {
-        input: '4917924EMP-@ejudiciary.net judge, Upon considering the claim form and Particulars of Claim/statements of case [and the directions questionnaires] \n\nIT IS ORDERED that:-',
-        judgeNameTitle: '4917924EMP-@ejudiciary.net judge'
+        input: 'Mr Leadership Judge, Upon considering the claim form and Particulars of Claim/statements of case [and the directions questionnaires] \n\nIT IS ORDERED that:-',
+        judgeNameTitle: 'Mr Leadership Judge'
       },
       trialHearingTrialDJ: {
         input1: 'The time provisionally allowed for the trial is',
@@ -181,8 +181,8 @@ module.exports = {
         date: date(112)
       },
       trialHearingJudgesRecitalDJ: {
-        input: '4917924EMP-@ejudiciary.net judge, has considered the statements of the case and the information provided by the parties, \n\n IT IS ORDERED THAT:',
-        judgeNameTitle: '4917924EMP-@ejudiciary.net judge'
+        input: 'Mr Leadership Judge, has considered the statements of the case and the information provided by the parties, \n\n IT IS ORDERED THAT:',
+        judgeNameTitle: 'Mr Leadership Judge'
       },
       trialPersonalInjury: {
         input1: 'The claimant has permission to rely upon the written expert evidence already uploaded to the Digital Portal with the particulars of claim and in addition has permission to rely upon any associated correspondence or updating report which is uploaded to the Digital Portal by 4pm on',
