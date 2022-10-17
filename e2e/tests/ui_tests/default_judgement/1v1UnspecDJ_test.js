@@ -49,3 +49,15 @@ Scenario('Verify Challenged access check for legalops @e2e-wa', async ({I, WA}) 
   await I.login(config.tribunalCaseworkerWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 });
+
+Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA}) => {
+  await I.login(config.judgeUserWithRegionId2);
+});
+
+Scenario('Verify Specific access check for admin @e2e-wa', async ({I, WA}) => {
+  await I.login(config.hearingCenterAdminWithRegionId12);
+});
+
+Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA}) => {
+  await I.login(config.tribunalCaseworkerWithRegionId12);
+});
