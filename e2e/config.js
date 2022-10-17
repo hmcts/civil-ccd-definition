@@ -1,4 +1,5 @@
 const defaultPassword = 'Password12!';
+const iacDefaultPassword = 'AldgateT0wer';
 const judgeDefaultPassword = 'Hmcts1234';
 
 module.exports = {
@@ -50,6 +51,24 @@ module.exports = {
     password: defaultPassword,
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
+  },
+  iacLeadershipJudge: {
+    password: judgeDefaultPassword,
+    email: '330127EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
+  },
+  iacLegalOpsUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_stcwuser1@justice.gov.uk',
+    type: 'legalOps',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  iacAdminUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_adm21@justice.gov.uk',
+    type: 'admin',
+    roleCategory: 'ADMIN'
   },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
