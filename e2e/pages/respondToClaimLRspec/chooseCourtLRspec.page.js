@@ -18,12 +18,12 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="Location_responseCourtLocations"]',
+              id: 'select[id$="applicant1DQRequestedCourt_responseCourtLocations"]',
               options: {
                 preferredCourt: config.claimantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
           }
         };
       }
