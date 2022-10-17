@@ -18,15 +18,38 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="Location_responseCourtLocations"]',
+              id: 'select[id$="applicant1DQRequestedCourt_responseCourtLocations"]',
               options: {
-                preferredCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
+                preferredCourt: config.claimantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
           }
         };
       }
+
+     case 'DefendantResponse2': {
+        return {
+          oldFields: {
+            chooseCourtLocation: {
+              id: '#responseClaimCourtLocation2Required_radio',
+              options: {
+                yes: 'Yes',
+                no: 'No'
+              }
+            },
+          },
+          fields: {
+            responseCourtLocations: {
+              id: 'select[id$="respondToCourtLocation2_responseCourtLocations"]',
+              options: {
+                preferredCourt: config.defendant2SelectedCourt
+              }
+            },
+            reasonForHearingAtSpecificCourt: '#respondToCourtLocation2_reasonForHearingAtSpecificCourt'
+          }
+        };
+       }
 
       case 'DefendantResponse':
       default: {
@@ -44,10 +67,10 @@ module.exports = {
             responseCourtLocations: {
               id: 'select[id$="Location_responseCourtLocations"]',
               options: {
-                preferredCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
+                preferredCourt: config.defendantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#respondToCourtLocation_reasonForHearingAtSpecificCourt'
           }
         };
       }
@@ -64,10 +87,10 @@ module.exports = {
       });
     }
     else {
-      I.waitForElement(this.fields(mpScenario).fields.courtLocation.id);
+      I.waitForElement(this.fields(mpScenario).fields.responseCourtLocations.id);
       await I.runAccessibilityTest();
-      I.selectOption(this.fields(mpScenario).fields.courtLocation.id,
-        this.fields.courtLocation.options.preferredCourt);
+      I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
+      this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
       I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
       await I.clickContinue();
     }
