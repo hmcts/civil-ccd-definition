@@ -75,5 +75,19 @@
     "Name": "Prepare For Hearing Conduct Hearing",
     "Description": "Placeholder",
     "DisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "IN_MEDIATION",
+    "Name": "In Mediation",
+    "Description": "Placeholder",
+    "DisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DECISION_OUTCOME",
+    "Name": "Decision Outcome",
+    "Description": "Placeholder",
+    "DisplayOrder": 13
   }
 ]
