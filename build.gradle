@@ -122,7 +122,7 @@ allprojects {
       //  resolve CVE-2021-22044
       dependencySet(
         group: 'org.springframework.cloud',
-        version: '2.2.10.RELEASE'
+        version: '2.2.11.RELEASE'
       ) {
         entry 'spring-cloud-starter-netflix-hystrix'
       }
