@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "SET_ASIDE_JUDGEMENT",
+    "ListElement": "Application to Set Aside Judgement",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "VARY_ORDER",
+    "ListElement": "Application to Vary Order",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "ADJOURN_VACATE_HEARING",
+    "ListElement": "Application to adjourn/vacate a hearing",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "UNLESS_ORDER",
+    "ListElement": "Application for Unless Order",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "OTHER",
+    "ListElement": "Other",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "VARY_JUDGEMENT",
+    "ListElement": "Application to Vary Judgement",
+    "DisplayOrder": 6
+  }
+]
