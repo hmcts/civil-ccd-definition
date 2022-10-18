@@ -4,7 +4,7 @@
   "Name": "Directions Order (Judgment)",
   "Description": "Standard Directions Order (Judgment)",
   "DisplayOrder": 18,
-  "EventEnablingCondition": "detailsOfDirection = \"None\"",
+  "_EventEnablingCondition": "detailsOfDirection = \"None\"",
   "PreConditionState(s)": "JUDICIAL_REFERRAL",
   "PostConditionState": "*",
   "SecurityClassification": "Public",
