@@ -109,6 +109,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDate",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaUploadN245FormUploadLabel",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
