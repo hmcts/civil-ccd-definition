@@ -273,5 +273,12 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppHearingDate",
+    "Label": " ",
+    "FieldType": "GAHearingDateGAspec",
+    "SecurityClassification": "Public"
   }
 ]
