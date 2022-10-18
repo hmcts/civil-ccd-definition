@@ -16,13 +16,14 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
+
+    manageCase:   'https://manage-case-wa-int.demo.platform.hmcts.net/',
+    authProviderApi:  'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    ccdDataStore: 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+    dmStore:'http://dm-store-demo.service.core-compute-demo.internal',
+    idamApi:  'https://idam-api.demo.platform.hmcts.net',
+    civilService: 'http://civil-service-demo.service.core-compute-demo.internal',
+    waTaskMgmtApi: 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
   },
   s2s: {
     microservice: 'civil_service',
@@ -91,6 +92,20 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '4'
   },
+  seniorTBCWWithRegionId4: {
+    email: 'seniorcivil_tbcw_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'senior-tribunal-caseworker',
+    roleCategory: 'LEGAL_OPS',
+    regionId: '4'
+  },
+  nbcTeamLeaderWithRegionId4: {
+    email: 'nbc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'nbc-team-leader',
+    roleCategory: 'NBC ADMIN',
+    regionId: '4'
+  },
   hearingCenterAdminWithRegionId12: {
     email: 'CIVIL_WA_func_test_demo_user9@justice.gov.uk',
     password: defaultPassword,
@@ -117,6 +132,9 @@ module.exports = {
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
+    reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
+    reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
+    reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
