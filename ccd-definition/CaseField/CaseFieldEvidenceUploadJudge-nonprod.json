@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseNoteType",
-    "Label": " ",
+    "Label": "This case note is only visible to you and other judges",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "CaseNoteType",
     "SecurityClassification": "Public"
