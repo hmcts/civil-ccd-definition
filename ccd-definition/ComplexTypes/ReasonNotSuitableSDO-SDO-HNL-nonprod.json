@@ -18,7 +18,6 @@
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "Max":  150,
     "SecurityClassification": "Public"
   }
 ]
