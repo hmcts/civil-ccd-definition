@@ -3257,5 +3257,15 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "casePaymentWaysToPay",
+    "UserRoles": [
+      "hearing-schedule-access",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
   }
 ]

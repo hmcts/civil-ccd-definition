@@ -7,5 +7,12 @@
     "SecurityClassification": "Public",
     "_Definition":  "Case Access Category",
     "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePaymentWaysToPay",
+    "Label": "Service Request",
+    "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
   }
 ]
