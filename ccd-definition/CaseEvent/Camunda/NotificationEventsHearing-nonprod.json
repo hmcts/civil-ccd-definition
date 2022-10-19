@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_TRIAL_READY",
-    "Name": "Notify Defendant 1 to check trial",
-    "Description": "Notify Defendant 1 to check trial",
+    "Name": "Notify Defendant 1 trial ready",
+    "Description": "Notify Defendant 1 to check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_TRIAL_READY",
-    "Name": "Notify Defendant 2 to check trial",
-    "Description": "Notify Defendant 2 to check trial",
+    "Name": "Notify Defendant 2 trial ready",
+    "Description": "Notify Defendant 2 to check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -28,8 +28,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_TRIAL_READY",
-    "Name": "Notify Claimant to check trial",
-    "Description": "Notify Claimant to check trial",
+    "Name": "Notify Claimant trial ready",
+    "Description": "Notify Claimant to check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
