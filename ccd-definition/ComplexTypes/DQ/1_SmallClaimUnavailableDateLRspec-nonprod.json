@@ -1,0 +1,41 @@
+[
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "unavailableDateType",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SmallClaimUnavailable",
+    "ElementLabel": "Add a single date or a date range",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "who",
+    "FieldType": "Text",
+    "ElementLabel": "Name of unavailable person",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "date",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\""
+  },
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "fromDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
+  },
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "toDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date to",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
+  }
+]
