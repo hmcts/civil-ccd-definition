@@ -3261,9 +3261,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "casePaymentWaysToPay",
-    "UserRoles": [
-      "payment-access"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "payment-access",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
