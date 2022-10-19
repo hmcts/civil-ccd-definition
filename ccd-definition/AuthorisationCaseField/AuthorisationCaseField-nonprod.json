@@ -3262,9 +3262,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "casePaymentWaysToPay",
     "UserRoles": [
-      "hearing-schedule-access",
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "payment-access"
     ],
     "CRUD": "CRU"
   }
