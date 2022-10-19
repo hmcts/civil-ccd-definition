@@ -50,7 +50,6 @@ java:
         - robotics-notification-recipient
         - robotics-notification-recipient-spec
         - launch-darkly-sdk-key
-        - ordnance-survey-api-key
         - robotics-notification-multipartyrecipient
   environment:
     IDAM_CLIENT_ID: civil-service

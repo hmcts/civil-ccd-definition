@@ -6,8 +6,8 @@ const {checkAccessProfilesIsEnabled} = require('./testingSupport');
 
 let incidentMessage;
 
-const MAX_RETRIES = 60;
-const RETRY_TIMEOUT_MS = 5000;
+const MAX_RETRIES = 300;
+const RETRY_TIMEOUT_MS = 1000;
 
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
@@ -51,7 +51,6 @@ module.exports =  {
           } else if (response.status === 409) {
             console.log('Role already exists!');
           } else  {
-            console.log('response..', response);
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });

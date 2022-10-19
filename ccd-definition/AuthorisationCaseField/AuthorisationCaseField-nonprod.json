@@ -1473,8 +1473,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1493,9 +1492,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },

@@ -1006,14 +1006,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
-    "Label": "Court Location",
+    "Label": " ",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation2",
-    "Label": "Court Location",
+    "Label": " ",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
@@ -2073,7 +2073,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQRequestedCourt",
     "Label": " ",
-    "FieldType": "RequestedCourtLocationLRspec",
+    "FieldType": "RequestedCourt",
     "SecurityClassification": "Public"
   },
   {

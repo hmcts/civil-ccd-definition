@@ -14,6 +14,7 @@ Scenario('DefaultJudgement @create-claim @e2e-dj-1v1 @e2e-wa', async ({I, api}) 
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   caseId = await api.getCaseId();
+  const caseRefNum = await api.getLegacyCaseReference();
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
 
@@ -25,7 +26,7 @@ Scenario('DefaultJudgement @create-claim @e2e-dj-1v1 @e2e-wa', async ({I, api}) 
   await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
-  await I.judgePerformDJDirectionOrder();
+  await I.judgePerformDJDirectionOrder(caseRefNum);
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);

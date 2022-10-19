@@ -1100,6 +1100,7 @@
     "FieldType": "Document",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
