@@ -27,7 +27,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "JUDICIAL_REFERRAL",
+    "CaseEventID": "HEARING_FEE_UNPAID",
     "AccessControl": [
       {
         "UserRoles": [
