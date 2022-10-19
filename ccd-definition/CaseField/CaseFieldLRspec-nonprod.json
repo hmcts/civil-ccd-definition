@@ -1,22 +1,15 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "superClaimType",
-    "Label": "Total Interest",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingLRspec",
-    "Label": "Hearing",
+    "Label": " ",
     "FieldType": "HearingLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQSmallClaimHearing",
-    "Label": "Hearing",
+    "Label": " ",
     "FieldType": "SmallClaimHearing",
     "SecurityClassification": "Public"
   }
