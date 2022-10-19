@@ -1,0 +1,41 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_TRIAL_READY",
+    "Name": "Notify Defendant 1 to check trial",
+    "Description": "Notify Defendant 1 to check trial",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_TRIAL_READY",
+    "Name": "Notify Defendant 2 to check trial",
+    "Description": "Notify Defendant 2 to check trial",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_TRIAL_READY",
+    "Name": "Notify Claimant to check trial",
+    "Description": "Notify Claimant to check trial",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
