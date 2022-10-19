@@ -151,6 +151,20 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementLocation",
+    "FieldType": "GACaseLocationGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isCcmccLocation",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "respondentSolicitor1EmailAddress",
     "ElementLabel": " ",
     "FieldType": "Email",
@@ -182,6 +196,41 @@
     "ListElementCode": "generalAppSuperClaimType",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseManagementCategory",
+    "ElementLabel": " ",
+    "FieldType": "GACaseManagementCategory",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "CaseAccessCategory",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "locationName",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicationClosedDate",
+    "ElementLabel": "Application Closed date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicationTakenOfflineDate",
+    "ElementLabel": "Application Closed date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]

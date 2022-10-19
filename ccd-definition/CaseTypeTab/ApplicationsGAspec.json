@@ -1,13 +1,35 @@
 [
-    {
-        "CaseTypeID": "CIVIL",
-        "TabID": "Applications",
-        "TabLabel": "Applications",
-        "TabDisplayOrder": 8,
-        "UserRoles": [
-          "[APPLICANTSOLICITORONE]"
-          ],
-        "CaseFieldID": "generalApplicationsDetails",
-        "TabFieldDisplayOrder": 1
-      }
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Applications",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "UserRoles": [
+      "APP-SOL-UNSPEC-PROFILE"
+    ],
+    "CaseFieldID": "generalApplicationsDetails",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ApplicationsJudge",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CaseFieldID": "generalApplicationsDetails",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ApplicationsLegalAdvisor",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "UserRoles": [
+      "legal-adviser"
+    ],
+    "CaseFieldID": "generalApplicationsDetails",
+    "TabFieldDisplayOrder": 1
+  }
 ]

@@ -58,5 +58,47 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CUI",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_LIP_DEFENDANT_RESPONSE_SUBMISSION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
