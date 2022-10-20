@@ -41,7 +41,6 @@
     <cve>CVE-2021-22096</cve>
     <cve>CVE-2022-22950</cve>
     <cve>CVE-2021-22118</cve>
-    <cve>CVE-2021-22053</cve>
     <cve>CVE-2021-22044</cve>
     <cve>CVE-2021-22119</cve>
     <cve>CVE-2022-22970</cve>
@@ -51,14 +50,6 @@
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
     <cve>CVE-2022-25857</cve>
-  </suppress>
-  <suppress until="2022-07-01">
-    <notes>latest spring security core 5.6.5 still has internal dependencies which are cauing the Vulnerability</notes>
-    <cve>CVE-2022-22976</cve>
-  </suppress>
-  <suppress until="2022-07-01">
-    <notes>latest spring security core 5.6.5 still has internal dependencies which are cauing the Vulnerability</notes>
-    <cve>CVE-2022-22976</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
@@ -90,13 +81,6 @@
   <suppress>
     <cve>CVE-2022-31569</cve>
   </suppress>
-  <suppress until="2022-08-29">
-  <notes><![CDATA[
- file name: glob-parent:5.1.2
- ]]></notes>
-  <packageUrl regex="true">^pkg:npm/glob\-parent@.*$</packageUrl>
-  <vulnerabilityName>1081522</vulnerabilityName>
-</suppress>
   <suppress>
   <notes><![CDATA[
    file name: file-type:7.7.1
