@@ -158,9 +158,9 @@ module.exports = {
   },
 
   unspecifiedProcess: async (user1 = config.applicantSolicitorUser, user2 = config.defendantSolicitorUser, scenario = 'ONE_V_ONE') => {
-    await createClaimWithRepresentedRespondent(user1, scenario);
-    //await addCaseNote(user1);
-    await amendClaimDocuments(user1);
+    const createData = claimData.createClaim(scenario);
+    delete createData.invalid;
+    await createClaimWithRepresentedRespondent(user1, scenario, createData);
     await notifyClaim(user1, scenario);
     await notifyClaimDetails(user1);
     await acknowledgeClaim(user2, scenario);
