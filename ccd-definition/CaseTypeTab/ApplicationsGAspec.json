@@ -20,16 +20,5 @@
     ],
     "CaseFieldID": "generalApplicationsDetails",
     "TabFieldDisplayOrder": 1
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ApplicationsLegalAdvisor",
-    "TabLabel": "Applications",
-    "TabDisplayOrder": 8,
-    "UserRoles": [
-      "legal-adviser"
-    ],
-    "CaseFieldID": "generalApplicationsDetails",
-    "TabFieldDisplayOrder": 1
   }
 ]
