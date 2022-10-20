@@ -70,6 +70,12 @@ allprojects {
   dependencyManagement {
     dependencies {
       dependencySet(
+        group: 'com.google.guava',
+        version: '31.1-jre'
+      ) {
+        entry 'guava'
+      }
+      dependencySet(
         group: 'com.fasterxml.jackson.core',
         version: versions.jackson
       ) {
