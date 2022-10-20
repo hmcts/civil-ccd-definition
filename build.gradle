@@ -70,6 +70,12 @@ allprojects {
   dependencyManagement {
     dependencies {
       dependencySet(
+        group: 'com.google.guava',
+        version: '31.1-jre'
+      ) {
+        entry 'guava'
+      }
+      dependencySet(
         group: 'com.fasterxml.jackson.core',
         version: versions.jackson
       ) {
@@ -220,9 +226,6 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
 }
 
 task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
-  onlyIf {
-    return System.env.ENVIRONMENT == 'preview'
-  }
   commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
 }
 
