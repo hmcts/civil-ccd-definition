@@ -6,7 +6,7 @@
     "Description": "Hearing Scheduled",
     "DisplayOrder": 18,
     "PreConditionState(s)": "CASE_PROGRESSION",
-    "PostConditionState": "HEARING_READINESS",
+    "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
