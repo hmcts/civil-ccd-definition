@@ -385,7 +385,7 @@
     "CaseFieldID": "generalAppHearingDate",
     "ListElementCode": "hearingScheduledPreferenceYesNoLabel",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "ShowSummaryContentOption": "Y"
   },
   {
@@ -394,7 +394,7 @@
     "CaseFieldID": "generalAppHearingDate",
     "ListElementCode": "hearingScheduledPreferenceYesNo",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "ShowSummaryContentOption": "Y"
   },
   {
@@ -403,7 +403,7 @@
     "CaseFieldID": "generalAppHearingDate",
     "ListElementCode": "hearingScheduledDateLabel",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "ShowSummaryContentOption": "Y"
   },
   {
@@ -412,7 +412,7 @@
     "CaseFieldID": "generalAppHearingDate",
     "ListElementCode": "hearingScheduledDate",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "ShowSummaryContentOption": "Y"
   }
 ]
