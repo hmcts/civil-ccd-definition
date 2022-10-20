@@ -1,8 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "nocRequest",
+    "CaseEventID": "NOC_REQUEST",
     "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   }
 ]

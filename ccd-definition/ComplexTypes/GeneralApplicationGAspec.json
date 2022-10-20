@@ -211,5 +211,26 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "locationName",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicationClosedDate",
+    "ElementLabel": "Application Closed date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "applicationTakenOfflineDate",
+    "ElementLabel": "Application Closed date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]

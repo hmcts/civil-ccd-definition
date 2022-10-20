@@ -151,15 +151,26 @@ module.exports = {
     if (orderType == 'DisposalHearing') {
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.disposalHearingTimeOptions.thirtyMinutes);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingMethodOptions.inPerson);
-      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingLocation, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
+      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingLocation, config.djJudgeClaimantSelectedCourt);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
     }
     await I.clickContinue();
   },
   
   async verifyOrderPreview() {
-    const linkXPath = '//a[contains(text(), \'Order_disposal_pdf_\')]';
+    const linkXPath = '//a[contains(text(), \'Order_disposal_\')]';
     await I.waitForClickable(linkXPath);
     await I.clickContinue();
+  },
+
+  async performAndVerifyTransferCaseOffline(caseId) {
+    await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
+    await I.waitForText('Summary');
+    await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/TAKE_CASE_OFFLINE/submit');
+    await I.waitForText('Take case offline');
+    await I.click('Submit');
+    await I.waitForText('Case list');
+    await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '#History');
+    await I.waitForText('Case Proceeds Offline');
   }
 };

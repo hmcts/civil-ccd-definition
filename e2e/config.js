@@ -14,6 +14,7 @@ module.exports = {
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
@@ -50,10 +51,40 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
-  judgeUser: {
+  judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
     email: '4917924EMP-@ejudiciary.net',
-    type: 'judge'
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '1'
+  },
+  judgeUserWithRegionId2: {
+    password: judgeDefaultPassword,
+    email: '4915631EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '2'
+  },
+  hearingCenterAdminWithRegionId4: {
+    email: 'CIVIL_WA_func_test_demo_user6@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '4'
+  },
+  hearingCenterAdminWithRegionId12: {
+    email: 'CIVIL_WA_func_test_demo_user9@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '12'
+  },
+  tribunalCaseworkerWithRegionId12: {
+    email: 'CIVIL_WA_func_test_demo_user7@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '12'
   },
   systemupdate: {
     password: defaultPassword,
@@ -77,7 +108,8 @@ module.exports = {
   defendant2SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'LCVTI1I' : 'H2156A0',
   claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
   djClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  djJudgeClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
   sdoJudgeSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
 };
