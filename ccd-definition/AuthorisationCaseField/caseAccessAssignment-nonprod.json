@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "changeOrganisationRequestField",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  }
-]
