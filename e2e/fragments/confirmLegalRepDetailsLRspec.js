@@ -10,7 +10,7 @@ module.exports = {
       }
     },
     solicitor2Reference: {
-      id: '#specAoSRespondentCorrespondenceAddressRequired_radio',
+      id: '#specAoSRespondent2CorrespondenceAddressRequired_radio',
       options: {
         yes: 'Yes',
         no: 'No'
@@ -19,14 +19,14 @@ module.exports = {
   },
 
   async confirmDetails(twoDefendants) {
+  if(!twoDefendants){
     I.waitForElement(this.fields.solicitor1Reference.id);
     await I.runAccessibilityTest();
     const options = this.fields.solicitor1Reference.options;
     await within(this.fields.solicitor1Reference.id, () => {
       I.click(options.yes);
     });
-
-    if(twoDefendants){
+  }else{
       I.waitForElement(this.fields.solicitor2Reference.id);
       await I.runAccessibilityTest();
       const options2 = this.fields.solicitor2Reference.options;
@@ -35,5 +35,8 @@ module.exports = {
       });
     }
     await I.clickContinue();
+
   }
+
+
 };

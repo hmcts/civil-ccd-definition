@@ -37,7 +37,6 @@ Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await assignCaseRoleToUser(caseId(), 'APPLICANTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
