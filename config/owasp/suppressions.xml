@@ -62,7 +62,8 @@
     <cve>CVE-2022-26336</cve>
   </suppress>
   <suppress>
-    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$
+    </packageUrl>
     <cve>CVE-2022-22978</cve>
   </suppress>
   <suppress>
@@ -76,11 +77,23 @@
     <cve>CVE-2022-31569</cve>
   </suppress>
   <suppress>
-  <notes><![CDATA[
+    <notes><![CDATA[
    file name: file-type:7.7.1
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/file-type@7.7.1</packageUrl>
     <cve>CVE-2022-36313</cve>
     <vulnerabilityName>1081704</vulnerabilityName>
   </suppress>
- </suppressions>
+  <suppress>
+    <notes><![CDATA[
+    Risk of DoS if used to parse user-inputted yml file
+    ]]></notes>
+    <cve>CVE-2022-38752</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+    Supposedly a false positive for 3.0.4
+    ]]></notes>
+    <cve>1084765</cve>
+  </suppress>
+</suppressions>
