@@ -443,6 +443,7 @@ module.exports = {
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent2DQRequestedCourt');
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
@@ -513,7 +514,7 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['demo'].includes(config.runningEnv)) {
+    if (['preview', 'demo'].includes(config.runningEnv)) {
       validState = 'JUDICIAL_REFERRAL';
     }
 
@@ -622,6 +623,8 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
+    // workaround: caseManagementLocation shows in startevent api request but not in validate request
+    deleteCaseFields('caseManagementLocation');
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
       await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
     } else if (mpScenario === 'TWO_V_ONE') {
@@ -629,7 +632,7 @@ module.exports = {
     } else {
       await validateEventPages(data.DEFAULT_JUDGEMENT);
     }
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
     }, true);
