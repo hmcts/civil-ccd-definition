@@ -137,12 +137,6 @@ module.exports = {
     description: 'Standard Direction Order',
     order: 17
   },
-  CREATE_GENERAL_APPLICATION_CASE: {
-    id: 'CREATE_GENERAL_APPLICATION_CASE',
-    name: 'Create general application',
-    description: 'Create general application',
-    order: null
-  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
