@@ -72,5 +72,18 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimMediationSpec2Required",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageShowCondition": "responseClaimMediationSpec2Required=\"DO NOT SHOW IN UI\"",
+    "PageDisplayOrder": 1,
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   }
 ]
