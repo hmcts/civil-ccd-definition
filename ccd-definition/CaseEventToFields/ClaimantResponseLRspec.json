@@ -173,29 +173,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1ClaimMediationSpecRequired",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Mediation",
-    "PageShowCondition": "responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
-    "FieldShowCondition": "defendantSingleResponseToBothClaimants !=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicantMPClaimMediationSpecRequired",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Mediation",
-    "FieldShowCondition": "defendantSingleResponseToBothClaimants =\"Yes\"",
-    "ShowSummaryChangeOption" : "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
