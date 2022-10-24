@@ -2,11 +2,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "placeholder",
+    "CaseFieldID": "evidenceUploadText",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "page",
+    "PageID": "EvidenceUpload",
     "PageDisplayOrder": 1,
+    "PageLabel": "Upload your documents",
     "ShowSummaryChangeOption": "N"
   }
 ]
