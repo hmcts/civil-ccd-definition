@@ -78,7 +78,6 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpec2Required",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageShowCondition": "responseClaimMediationSpec2Required=\"DO NOT SHOW IN UI\"",
     "PageDisplayOrder": 1,
     "EventElementLabel": "  ",
     "EventHintText": "  ",
