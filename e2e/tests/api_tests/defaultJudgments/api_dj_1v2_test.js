@@ -12,7 +12,7 @@ Scenario('Default Judgment claim 1v2', async ({I, api}) => {
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
- // await api.defaultJudgment(config.applicantSolicitorUser);
+  await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
 AfterSuite(async  ({api}) => {
