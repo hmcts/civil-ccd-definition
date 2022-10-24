@@ -19,7 +19,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_CUI_DLINE_EXT",
+    "CaseEventID": "DEFENDANT_RESPONSE_CUI_DL_EXT",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
