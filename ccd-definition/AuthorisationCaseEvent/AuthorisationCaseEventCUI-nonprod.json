@@ -103,7 +103,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_CUI_DEADLINE_EXTENSION",
+    "CaseEventID": "DEFENDANT_RESPONSE_CUI_DLINE_EXT",
     "AccessControl": [
       {
         "UserRoles": [

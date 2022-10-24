@@ -20,7 +20,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "DEFENDANT_RESPONSE_CUI_DEADLINE_EXTENSION",
+    "ID": "DEFENDANT_RESPONSE_CUI_DLINE_EXT",
     "Name": "Extend Defendant response deadline",
     "Description": "Defendant response deadline extension request",
     "DisplayOrder": 6,
