@@ -18,7 +18,8 @@ module.exports = {
     }
   },
 
-  async confirmDetails(twoDefendants) {
+ async confirmDetails(twoDefendants) {
+
     I.waitForElement(this.fields.solicitor1Reference.id);
     await I.runAccessibilityTest();
     const options = this.fields.solicitor1Reference.options;

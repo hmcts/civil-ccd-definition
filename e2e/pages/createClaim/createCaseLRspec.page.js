@@ -10,6 +10,7 @@ module.exports = {
   startButton: 'Start',
 
    async createCaseSpecified(jurisdiction) {
+        await I.waitForText('Create case');
         await I.retryUntilExists( () => {
           I.click('Create case');
         }, `#cc-jurisdiction > option[value="${jurisdiction}"]`);

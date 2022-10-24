@@ -9,7 +9,27 @@ module.exports = {
         return {
           oldFields: {
             chooseCourtLocation: {
-              id: '#applicant1DQRequestedCourt_requestHearingAtSpecificCourt_radio',
+              id: '#applicant1DQRequestedCourt_responseCourtCode'
+            },
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
+          },
+          fields: {
+            responseCourtLocations: {
+              id: 'select[id$="applicant1DQRequestedCourt_responseCourtLocations"]',
+              options: {
+                preferredCourt: config.claimantSelectedCourt
+              }
+            },
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
+          }
+        };
+      }
+
+     case 'DefendantResponse2': {
+        return {
+          oldFields: {
+            chooseCourtLocation: {
+              id: '#responseClaimCourtLocation2Required_radio',
               options: {
                 yes: 'Yes',
                 no: 'No'
@@ -18,15 +38,15 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="Location_responseCourtLocations"]',
+              id: 'select[id$="respondToCourtLocation2_responseCourtLocations"]',
               options: {
-                preferredCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
+                preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#respondToCourtLocation2_reasonForHearingAtSpecificCourt'
           }
         };
-      }
+       }
 
       case 'DefendantResponse':
       default: {
@@ -44,10 +64,10 @@ module.exports = {
             responseCourtLocations: {
               id: 'select[id$="Location_responseCourtLocations"]',
               options: {
-                preferredCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
+                preferredCourt: config.defendantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#respondToCourtLocation_reasonForHearingAtSpecificCourt'
           }
         };
       }
@@ -59,17 +79,23 @@ module.exports = {
     if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
       I.waitForElement(this.fields(mpScenario).oldFields.chooseCourtLocation.id);
       await I.runAccessibilityTest();
-      await within(this.fields(mpScenario).oldFields.chooseCourtLocation.id, () => {
-        I.click(this.fields(mpScenario).oldFields.chooseCourtLocation.options.no);
-      });
+      if (mpScenario == 'ClaimantResponse') {
+        I.fillField(this.fields(mpScenario).oldFields.chooseCourtLocation.id, '343');
+        I.fillField(this.fields(mpScenario).oldFields.reasonForHearingAtSpecificCourt, 'Some reason');
+
+      } else {
+        await within(this.fields(mpScenario).oldFields.chooseCourtLocation.id, () => {
+          I.click(this.fields(mpScenario).oldFields.chooseCourtLocation.options.no);
+        });
+      }
     }
     else {
-      I.waitForElement(this.fields(mpScenario).fields.courtLocation.id);
+      I.waitForElement(this.fields(mpScenario).fields.responseCourtLocations.id);
       await I.runAccessibilityTest();
-      I.selectOption(this.fields(mpScenario).fields.courtLocation.id,
-        this.fields.courtLocation.options.preferredCourt);
+      I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
+      this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
       I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
-      await I.clickContinue();
     }
+    await I.clickContinue();
   }
 };
