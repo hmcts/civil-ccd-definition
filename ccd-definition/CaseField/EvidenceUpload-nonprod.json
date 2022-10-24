@@ -1,8 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "placeholder",
-    "Label": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+    "ID": "evidenceUploadText",
+    "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\"",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
