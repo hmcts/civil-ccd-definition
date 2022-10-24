@@ -252,6 +252,18 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingFinalDisposalHearingDJ",
+    "PageFieldDisplayOrder": 37,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingDJToggle=\"DONOTSHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
     "PageFieldDisplayOrder": 19,
     "DisplayContext": "COMPLEX",
     "PageID": "DisposalHearing",
@@ -294,7 +306,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodDJ=\"disposalHearingMethodInPerson\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethodDJ=\"DONOTSHOW\" AND disposalHearingFinalDisposalHearingDJToggle=\"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -306,7 +318,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodDJ = \"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethodDJ = \"DONOTSHOW\" AND disposalHearingFinalDisposalHearingDJToggle=\"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -318,7 +330,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodVideoConferenceHearingDJ = \"videoTheCourt\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethodVideoConferenceHearingDJ = \"DONOTSHOW\" AND disposalHearingFinalDisposalHearingDJToggle=\"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -330,7 +342,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodDJ = \"disposalHearingMethodTelephoneHearing\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethodDJ = \"DONOTSHOW\" AND disposalHearingFinalDisposalHearingDJToggle=\"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -342,7 +354,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodTelephoneHearingDJ = \"telephoneTheCourt\" AND disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethodTelephoneHearingDJ = \"DONOTSHOW\" AND disposalHearingFinalDisposalHearingDJToggle=\"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -420,6 +432,29 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingNotesDJ",
+    "PageFieldDisplayOrder": 37,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingCostsDJToggle=\"DONOTSHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "PageFieldDisplayOrder": 34,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
     "PageFieldDisplayOrder": 35,
     "DisplayContext": "COMPLEX",
     "PageID": "DisposalHearing",
