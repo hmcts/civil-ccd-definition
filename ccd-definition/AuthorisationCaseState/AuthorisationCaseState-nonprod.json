@@ -133,6 +133,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access"
         ],
         "CRUD": "CRU"
@@ -153,6 +154,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
