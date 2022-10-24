@@ -51,6 +51,7 @@ module.exports =  {
           } else if (response.status === 409) {
             console.log('Role already exists!');
           } else  {
+            console.log('response..', response);
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });

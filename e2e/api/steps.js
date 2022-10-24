@@ -636,7 +636,7 @@ module.exports = {
     } else {
       await validateEventPages(data.DEFAULT_JUDGEMENT);
     }
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
     }, true);
