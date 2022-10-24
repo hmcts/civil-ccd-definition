@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNoteType",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "CaseNoteType",
+    "SecurityClassification": "Public"
+  }
+]
