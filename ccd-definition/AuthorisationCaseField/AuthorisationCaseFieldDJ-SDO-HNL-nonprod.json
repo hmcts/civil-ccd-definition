@@ -1,6 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseManagementOrder",
     "AccessControl": [
       {
@@ -489,6 +501,32 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
           "judge-profile"
         ],
         "CRUD": "CRU"
