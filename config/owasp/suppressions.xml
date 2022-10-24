@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
   <suppress>
-    <notes><![CDATA[file name: guava-28.2-jre.jar]]></notes>
-    <packageUrl regex="true">^pkg:maven/com\.google\.guava/guava@.*$</packageUrl>
-    <cve>CVE-2020-8908</cve>
-  </suppress>
-  <suppress>
     <cve>CVE-2019-12415</cve>
   </suppress>
   <suppress>
@@ -41,7 +36,6 @@
     <cve>CVE-2021-22096</cve>
     <cve>CVE-2022-22950</cve>
     <cve>CVE-2021-22118</cve>
-    <cve>CVE-2021-22044</cve>
     <cve>CVE-2021-22119</cve>
     <cve>CVE-2022-22970</cve>
     <cve>CVE-2022-22971</cve>
