@@ -11,7 +11,8 @@
     "ID": "RequestedCourtLocationLRspec",
     "ListElementCode": "responseCourtLocations",
     "FieldType": "DynamicList",
-    "ElementLabel": "Preferred court hearing centre",
+    "ElementLabel": "Please select your preferred hearing court centre",
+    "HintText": "If the defendant is an individual the case will be held at the defendant's preferred court.",
     "SecurityClassification": "Public"
   },
   {
