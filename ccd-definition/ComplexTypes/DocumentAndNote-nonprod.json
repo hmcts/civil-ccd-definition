@@ -1,21 +1,21 @@
 [
   {
     "ID": "DocumentAndNote",
-    "ListElementCode": "LABEL",
+    "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "Case note",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DocumentAndNote",
-    "ListElementCode": "DOCUMENT_NAME",
+    "ListElementCode": "documentName",
     "FieldType": "Text",
     "ElementLabel": "Name of document",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DocumentAndNote",
-    "ListElementCode": "DOCUMENT",
+    "ListElementCode": "document",
     "FieldType": "Document",
     "ElementLabel": "Document",
     "SecurityClassification": "Public",
@@ -23,7 +23,7 @@
   },
   {
     "ID": "DocumentAndNote",
-    "ListElementCode": "DOCUMENT_NOTE",
+    "ListElementCode": "documentNote",
     "FieldType": "TextArea",
     "ElementLabel": "Add a note about this document",
     "SecurityClassification": "Public"
