@@ -23,7 +23,7 @@
     "ID": "DEFENDANT_RESPONSE_CUI_DEADLINE_EXTENSION",
     "Name": "Extend response",
     "Description": "Defendant response deadline extension request",
-    "DisplayOrder": 6,
+    "DisplayOrder": 7,
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
