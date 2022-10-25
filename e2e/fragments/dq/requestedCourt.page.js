@@ -31,12 +31,12 @@ module.exports = {
   async selectSpecificCourtForHearing(party) {
     I.waitForElement(this.fields(party).requestHearingAtSpecificCourt.id);
     await I.runAccessibilityTest();
-    await within(this.fields(party).requestHearingAtSpecificCourt.id, () => {
-      I.click(this.fields(party).requestHearingAtSpecificCourt.options.yes);
-    });
 
     let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
     if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+      await within(this.fields(party).requestHearingAtSpecificCourt.id, () => {
+        I.click(this.fields(party).requestHearingAtSpecificCourt.options.yes);
+      });
       I.fillField(this.oldFields(party).responseCourtCode, '343');
     } else {
       I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);

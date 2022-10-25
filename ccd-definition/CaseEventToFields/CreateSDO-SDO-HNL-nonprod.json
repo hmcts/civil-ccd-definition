@@ -1541,6 +1541,18 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
+    "PageFieldDisplayOrder": 57,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "fastTrackTrialToggle=\"DONT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
     "PageFieldDisplayOrder": 38,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
@@ -1604,7 +1616,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethod=\"fastTrackMethodInPerson\" AND fastTrackMethodToggle=\"SHOW\""
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\" AND fastTrackMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1616,7 +1628,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethod=\"fastTrackMethodVideoConferenceHearing\" AND fastTrackMethodToggle=\"SHOW\""
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\" AND fastTrackMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1628,7 +1640,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethod=\"fastTrackMethodTelephoneHearing\" AND fastTrackMethodToggle=\"SHOW\""
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\" AND fastTrackMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1751,7 +1763,30 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
+    "PageFieldDisplayOrder": 58,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingNotes",
     "PageFieldDisplayOrder": 56,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "PageFieldDisplayOrder": 58,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
     "PageDisplayOrder": 6,

@@ -1749,6 +1749,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackHearingTime",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrialEndLine",
     "AccessControl": [
       {
@@ -1854,6 +1867,32 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackHearingNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
     "AccessControl": [
       {
         "UserRoles": [
