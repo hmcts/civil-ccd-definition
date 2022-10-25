@@ -81,7 +81,19 @@
     "PageDisplayOrder": 1,
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
   }
