@@ -1,4 +1,5 @@
 const {I} = inject();
+const {checkToggleEnabled} = require("../../api/testingSupport")
 
 module.exports = {
 
@@ -29,7 +30,11 @@ module.exports = {
     I.waitForElement(this.fields(party).evidence.id);
     await I.runAccessibilityTest();
 
-    I.click(this.fields(party).evidence.options.welsh);
+    let isHnlEnabled = await checkToggleEnabled("hearing-and-listing-sdo");
+
+    if (!isHnlEnabled) {
+      I.click(this.fields(party).evidence.options.welsh);
+    }
     I.click(this.fields(party).court.options.welsh);
     I.click(this.fields(party).documents.options.welsh);
 
