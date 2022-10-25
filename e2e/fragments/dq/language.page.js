@@ -27,7 +27,7 @@ module.exports = {
   },
 
   async enterWelshLanguageRequirements(party) {
-    I.waitForElement(this.fields(party).evidence.id);
+    I.waitForElement(this.fields(party).court.id);
     await I.runAccessibilityTest();
 
     let isHnlEnabled = await checkToggleEnabled("hearing-and-listing-sdo");
