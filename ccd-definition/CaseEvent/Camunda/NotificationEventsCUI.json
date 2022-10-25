@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
-    "Name": "Email: Extension date agreed for claim",
+    "Name": "Email: Extension agreed",
     "Description": "Notify claimant for defendant response deadline extension",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -67,7 +67,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_CUI_FOR_DEADLINE_EXTENSION",
-    "Name": "Email: Extension date agreed for claim",
+    "Name": "Email: Extension agreed",
     "Description": "Notify lip defendant for defendant response deadline extension",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
