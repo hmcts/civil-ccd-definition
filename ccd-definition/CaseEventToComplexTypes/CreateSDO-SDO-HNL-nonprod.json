@@ -1228,7 +1228,7 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "EventHintText": "Number of pages, e.g. 4"
-    
+
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1426,6 +1426,64 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "dateFrom",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "dateTo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "hearingDuration",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "helpText1",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "helpText2",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "FastTrackNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
@@ -1448,6 +1506,38 @@
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingNotes",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingNotes",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackOrderWithoutJudgement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackOrderWithoutJudgement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackBuildingDispute",
