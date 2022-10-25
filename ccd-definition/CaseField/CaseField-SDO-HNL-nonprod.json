@@ -355,7 +355,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingHearingNotesTitle",
-    "Label": "## Hearing notes (optional)",
+    "Label": "## Hearing notes",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
