@@ -2,8 +2,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "evidenceUploadText",
-    "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\"",
+    "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\". \n\n The other parties will be able to see the documents you have uploaded, and \n you will be able to see their documents \n # Deadlines for uploading documents \n Check the order he court sent you for the deadlines for uploading your documents. If you upload a document after the deadline, you will have to apply to the court to use it at the hearing and the judge will decide if it can be accepted \n\n You do not have to upload all your documents at once. You can return to upload them later. \n # How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files. \n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\". \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP. TIF, TIFF.",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentSelection1",
+    "Label": " ",
+    "FieldType": "DocumentSelectionEvidence",
     "SecurityClassification": "Public"
   }
 ]

@@ -9,6 +9,20 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
-      }]
-    }
-  ]
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentSelection1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
