@@ -52,11 +52,5 @@
     "CaseStateID": "CASE_PROGRESSION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "HEARING_READINESS",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
   }
 ]
