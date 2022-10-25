@@ -1,19 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "HEARING_SCHEDULED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
+    "CaseFieldID": "caseNoteType",
     "AccessControl": [
       {
         "UserRoles": [
@@ -23,7 +11,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -31,15 +20,39 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "caseNoteTypeNoteLabel",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
           "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNoteTypeNoteTA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }

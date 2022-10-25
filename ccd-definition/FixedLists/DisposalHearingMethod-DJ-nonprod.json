@@ -2,19 +2,19 @@
   {
     "ID": "DisposalHearingMethodDJ",
     "ListElementCode": "disposalHearingMethodInPerson",
-    "ListElement": "In Person",
+    "ListElement": "In person",
     "DisplayOrder": 1
   },
   {
     "ID": "DisposalHearingMethodDJ",
-    "ListElementCode": "disposalHearingMethodVideoConferenceHearing",
-    "ListElement": "Video Conference Hearing",
+    "ListElementCode": "disposalHearingMethodTelephoneHearing",
+    "ListElement": "Telephone",
     "DisplayOrder": 2
-   },
+  },
   {
     "ID": "DisposalHearingMethodDJ",
-    "ListElementCode": "disposalHearingMethodTelephoneHearing",
-    "ListElement": "Telephone Hearing",
+    "ListElementCode": "disposalHearingMethodVideoConferenceHearing",
+    "ListElement": "Video",
     "DisplayOrder": 3
-  }
+   }
 ]
