@@ -9,5 +9,16 @@
     "PageDisplayOrder": 1,
     "PageLabel": "Upload your documents",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelection",
+    "PageDisplayOrder": 2,
+    "PageLabel": "Select the type of document you would like to upload",
+    "ShowSummaryChangeOption": "N"
   }
 ]

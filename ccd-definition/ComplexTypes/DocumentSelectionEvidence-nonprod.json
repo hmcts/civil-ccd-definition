@@ -1,0 +1,114 @@
+[
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "disclosureToggle",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Disclosure",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "disclosureToggleText",
+    "FieldType": "Label",
+    "ElementLabel": "## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information tat you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "disclosureToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "disclosure",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadDisclosure",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "disclosureToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "witnessToggle",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Witness evidence",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "witnessToggleText",
+    "FieldType": "Label",
+    "ElementLabel": "## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "witnessToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "witnessToggleText2",
+    "FieldType": "Label",
+    "ElementLabel": "Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "witnessToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "witness",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadWitness",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "witnessToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "expertToggle",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Expert evidence",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "expertToggleText",
+    "FieldType": "Label",
+    "ElementLabel": "## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "expertToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "expert",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadExpert",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "expertToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "trialToggle",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Trial documents",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "trialToggleText",
+    "FieldType": "Label",
+    "ElementLabel": "## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "trialToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "trialToggleText2",
+    "FieldType": "Label",
+    "ElementLabel": "Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "trialToggle = \"Yes\""
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "ListElementCode": "trial",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadTrial",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "trialToggle = \"Yes\""
+  }
+]
