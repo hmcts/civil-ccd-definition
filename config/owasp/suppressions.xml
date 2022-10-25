@@ -62,8 +62,7 @@
     <cve>CVE-2022-26336</cve>
   </suppress>
   <suppress>
-    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$
-    </packageUrl>
+    <packageUrl regex="true">^pkg:maven/org\.springframework\.security/spring-security-rsa@1\.0\.9\.RELEASE.*$</packageUrl>
     <cve>CVE-2022-22978</cve>
   </suppress>
   <suppress>
@@ -77,7 +76,7 @@
     <cve>CVE-2022-31569</cve>
   </suppress>
   <suppress>
-    <notes><![CDATA[
+  <notes><![CDATA[
    file name: file-type:7.7.1
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/file-type@7.7.1</packageUrl>
@@ -96,4 +95,10 @@
     ]]></notes>
     <cve>1084765</cve>
   </suppress>
-</suppressions>
+  <suppress until="2022-10-10">
+    <cve>CVE-2022-42003</cve>
+  </suppress>
+  <suppress until="2022-10-10">
+    <cve>CVE-2022-42004</cve>
+  </suppress>
+ </suppressions>
