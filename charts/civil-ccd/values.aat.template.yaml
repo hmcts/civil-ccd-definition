@@ -173,7 +173,6 @@ ccd:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
-    ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
@@ -235,14 +234,6 @@ ccd:
         RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults: []
       ingressHost: civil-ccd-definition-store-staging-aat.service.core-compute-aat.internal
-  ccd-user-profile-api:
-    java:
-      imagePullPolicy: Always
-      enviroment:
-        USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
-        RELEASE_REVISION: "{{ .Release.Revision }}"
-      keyVaults: []
-      ingressHost: civil-ccd-xui-staging-aat.service.core-compute-aat.internal
 
   postgresql:
     persistence:
