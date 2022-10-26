@@ -1,125 +1,5 @@
 [
   {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "disclosureToggle",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "disclosureToggleText",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "disclosure",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "witnessToggle",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "witnessToggleText",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "witnessToggleText2",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "witness",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "expertToggle",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "expertToggleText",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "expert",
-    "FieldDisplayOrder": 10,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "trialToggle",
-    "FieldDisplayOrder": 11,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "trialToggle",
-    "FieldDisplayOrder": 12,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "trialToggleText",
-    "FieldDisplayOrder": 13,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "trialToggleText2",
-    "FieldDisplayOrder": 14,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DocumentSelectionEvidence",
-    "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentSelection1",
-    "ListElementCode": "trial",
-    "FieldDisplayOrder": 15,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "DocumentUploadEvidence",
     "CaseEventID": "EVIDENCE_UPLOAD",
     "CaseFieldID": "documentUpload",
@@ -133,17 +13,457 @@
     "CaseFieldID": "documentUpload",
     "ListElementCode": "disclosureLabel",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\" OR disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
   },
   {
     "ID": "DocumentUploadEvidence",
     "CaseEventID": "EVIDENCE_UPLOAD",
     "CaseFieldID": "documentUpload",
-    "ListElementCode": "disclosureUploadEvidence1",
+    "ListElementCode": "disclosureListLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
-    "_contains": " ",
-    "FieldShowCondition": "documentSelection1.disclosure CONTAINS \"DISCLOSURE_LIST\""
+    "FieldShowCondition": "disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "disclosureOption1",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "disclosureDocumentLabel",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "disclosureOption2",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\" OR witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessStatementLabel",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption1Name",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption1UploadDate",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption1",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessSummaryLabel",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption2Name",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption2",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessIntentionLabel",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption3Name",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption3UploadDate",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption3",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessDocumentLabel",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "witnessOption4",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertLabel",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\" OR expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertReportLabel",
+    "FieldDisplayOrder": 22,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption1Name",
+    "FieldDisplayOrder": 23,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption1Expertise",
+    "FieldDisplayOrder": 24,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption1UploadDate",
+    "FieldDisplayOrder": 25,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption1",
+    "FieldDisplayOrder": 26,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertJointLabel",
+    "FieldDisplayOrder": 27,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption2Name",
+    "FieldDisplayOrder": 28,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption2Expertise",
+    "FieldDisplayOrder": 29,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption2UploadDate",
+    "FieldDisplayOrder": 30,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption2",
+    "FieldDisplayOrder": 31,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertQuestionsLabel",
+    "FieldDisplayOrder": 32,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption3Name",
+    "FieldDisplayOrder": 33,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption3OtherName",
+    "FieldDisplayOrder": 34,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption3Document",
+    "FieldDisplayOrder": 35,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption3UploadDate",
+    "FieldDisplayOrder": 36,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption3",
+    "FieldDisplayOrder": 37,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertAnswersLabel",
+    "FieldDisplayOrder": 38,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption4Name",
+    "FieldDisplayOrder": 39,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption4OtherName",
+    "FieldDisplayOrder": 40,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption4Document",
+    "FieldDisplayOrder": 41,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption4UploadDate",
+    "FieldDisplayOrder": 42,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "expertOption4",
+    "FieldDisplayOrder": 43,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialLabel",
+    "FieldDisplayOrder": 44,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialCaseLabel",
+    "FieldDisplayOrder": 45,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialOption1",
+    "FieldDisplayOrder": 46,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialSkeleLabel",
+    "FieldDisplayOrder": 47,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialOption2",
+    "FieldDisplayOrder": 48,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialAuthorityLabel",
+    "FieldDisplayOrder": 49,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"AUTHORITIES\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialOption3",
+    "FieldDisplayOrder": 50,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"AUTHORITIES\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialDocumentLabel",
+    "FieldDisplayOrder": 51,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"DOCUMENTARY\""
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "trialOption4",
+    "FieldDisplayOrder": 52,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"DOCUMENTARY\""
   }
-
 ]
