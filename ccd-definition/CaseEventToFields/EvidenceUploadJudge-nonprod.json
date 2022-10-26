@@ -34,7 +34,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseNoteType=\"NOTE_ONLY\""
+    "PageShowCondition": "caseNoteType=\"NOTE_ONLY\""
   },
   {
     "CaseTypeID": "CIVIL",
