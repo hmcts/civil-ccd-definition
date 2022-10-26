@@ -1,0 +1,149 @@
+[
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "disclosureToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "disclosureToggleText",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "disclosure",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "witnessToggle",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "witnessToggleText",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "witnessToggleText2",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "witness",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "expertToggle",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "expertToggleText",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "expert",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "trialToggle",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "trialToggle",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "trialToggleText",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "trialToggleText2",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentSelectionEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentSelection1",
+    "ListElementCode": "trial",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "disclosureLabel",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DocumentUploadEvidence",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "ListElementCode": "disclosureUploadEvidence1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "_contains": " ",
+    "FieldShowCondition": "documentSelection1.disclosure CONTAINS \"DISCLOSURE_LIST\""
+  }
+
+]

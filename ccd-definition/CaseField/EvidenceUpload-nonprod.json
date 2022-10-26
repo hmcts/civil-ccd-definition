@@ -12,5 +12,12 @@
     "Label": " ",
     "FieldType": "DocumentSelectionEvidence",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentUpload",
+    "Label": " ",
+    "FieldType": "DocumentUploadEvidence",
+    "SecurityClassification": "Public"
   }
 ]

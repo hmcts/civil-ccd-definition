@@ -15,10 +15,21 @@
     "CaseEventID": "EVIDENCE_UPLOAD",
     "CaseFieldID": "documentSelection1",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "DocumentSelection",
     "PageDisplayOrder": 2,
     "PageLabel": "Select the type of document you would like to upload",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUpload",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "PageLabel": "Upload documents",
     "ShowSummaryChangeOption": "N"
   }
 ]
