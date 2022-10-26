@@ -234,7 +234,7 @@ module.exports = {
 
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv) && response == 'FULL_DEFENCE') {
+    if (['preview', 'demo'].includes(config.runningEnv) && response == 'FULL_DEFENCE' && scenario != 'NOT_PROCEED') {
       validState = 'JUDICIAL_REFERRAL';
     }
 
