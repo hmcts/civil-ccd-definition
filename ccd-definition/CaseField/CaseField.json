@@ -1171,13 +1171,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "unsuitableSDODate",
-    "Label": "SDO unsuitable date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
