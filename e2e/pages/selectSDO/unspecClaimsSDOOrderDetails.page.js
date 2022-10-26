@@ -68,7 +68,7 @@ module.exports = {
 
   async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {
     let linkXPath;
-    if (allocateSmallClaims == 'smallClaims' || trackType == 'smallClaims') {
+    if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
       linkXPath = '//a[contains(text(), \'small_claims_sdo_\')]';
     } else if (orderType == 'disposal') {
       linkXPath = '//a[contains(text(), \'disposal_hearing_sdo_\')]';
