@@ -935,7 +935,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackTrialTitle",
-    "Label": "## Trial",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -952,6 +952,13 @@
     "ID": "fastTrackTrial",
     "Label": " ",
     "FieldType": "FastTrackTrial",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHearingTime",
+    "Label": " ",
+    "FieldType": "FastTrackHearingTime",
     "SecurityClassification": "Public"
   },
   {
@@ -1024,6 +1031,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "FastTrackHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackOrderWithoutJudgement",
+    "Label": "This Order has been made without hearing",
+    "FieldType": "FastTrackOrderWithoutJudgement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "fastTrackBuildingDispute",
     "Label": "Building dispute",
     "FieldType": "FastTrackBuildingDispute",
@@ -1089,8 +1110,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "reasonNotSuitableSDO",
-    "Label": "## What is the reason for not drawing a Standard Directions Order? \n",
+    "Label": "What is the reason for not drawing a Standard Directions Order? \n",
     "FieldType": "ReasonNotSuitableSDO",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unsuitableSDODate",
+    "Label": "SDO unsuitable date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
