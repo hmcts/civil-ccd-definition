@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "superClaimType",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  }
-]
