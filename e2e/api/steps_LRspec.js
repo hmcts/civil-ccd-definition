@@ -232,6 +232,12 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
+
+    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['preview', 'demo'].includes(config.runningEnv) && response == 'FULL_DEFENCE') {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
     await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
