@@ -109,6 +109,14 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
+
+Scenario('Make a general application', async ({api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.initiateGeneralApplication(config.applicantSolicitorUser, 'JUDICIAL_REFERRAL');
+  }
+}).retry(3);
+
+
 Scenario('Judge triggers SDO', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.judgeUserWithRegionId1);
