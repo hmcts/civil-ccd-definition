@@ -482,7 +482,7 @@ module.exports = function () {
 
         () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
         () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
-        //() => event.submit('Submit', '')
+        () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
 
