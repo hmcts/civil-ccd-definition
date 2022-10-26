@@ -167,15 +167,12 @@ ccd:
       enabled: false
     ras:
       enabled: false
-    userProfileImporter:
-      enabled: false
-    userProfile:
-      enabled: false
 
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
+    ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
@@ -229,6 +226,13 @@ ccd:
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
       keyVaults: []
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
+  ccd-user-profile-api:
+    java:
+      imagePullPolicy: Always
+      enviroment:
+        USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
+      keyVaults: []
+      ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
 
   postgresql:
     persistence:
