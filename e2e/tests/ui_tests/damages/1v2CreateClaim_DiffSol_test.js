@@ -109,6 +109,13 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
+Scenario('Judge triggers SDO', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.judgeUserWithRegionId1);
+    await I.initiateSDO('yes', 'yes', null, null);
+  }
+}).retry(3);
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
