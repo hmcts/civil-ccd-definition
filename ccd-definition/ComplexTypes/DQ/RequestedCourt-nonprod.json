@@ -1,6 +1,13 @@
 [
   {
     "ID": "RequestedCourt",
+    "ListElementCode": "otherPartyPreferredSite",
+    "FieldType": "Text",
+    "ElementLabel": "The claimant legal representative requested the following court location code.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RequestedCourt",
     "ListElementCode": "caseLocation",
     "FieldType": "CaseLocation",
     "ElementLabel": " ",
