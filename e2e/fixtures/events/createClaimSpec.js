@@ -718,6 +718,9 @@ module.exports = {
   },
 
   createClaimForAccessProfiles: (mpScenario) => {
+    // pence
+    const claimAmount = 300000;
+
     const userData = {
       userInput: {
         References: {
@@ -803,7 +806,7 @@ module.exports = {
           claimAmountBreakup: [{
             value: {
               claimReason: 'amount reason',
-              claimAmount: claimAmount
+              claimAmount: '' +claimAmount
             }
           }]
         },
@@ -840,7 +843,7 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          totalClaimAmount: claimAmount / 100
+          totalClaimAmount: '' + claimAmount / 100
         },
         ClaimAmountDetails: {
           CaseAccessCategory: 'SPEC_CLAIM'

@@ -130,31 +130,11 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondentSPEC: async (user, scenario = 'ONE_V_ONE') => {
-
-    eventName = 'CREATE_CLAIM_SPEC';
-    caseId = null;
-    caseData = {};
-    const createClaimData = data.CREATE_CLAIM_SPEC(scenario);
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    for (let pageId of Object.keys(createClaimData.userInput)) {
-      await assertValidData(createClaimData, pageId);
-    }
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED');
-
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    if (scenario === 'ONE_V_TWO'
-      && createClaimData.userInput.SameLegalRepresentative
-      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
-    }
-    await waitForFinishedBusinessProcess(caseId);
-
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
+  specifiedProcess: async () => {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
   },
 
   unspecifiedProcess: async (user1 = config.applicantSolicitorUser, user2 = config.defendantSolicitorUser, scenario = 'ONE_V_ONE') => {
@@ -241,7 +221,11 @@ module.exports = {
   },
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+  createSDO: async (informedCaseId, user, response = 'CREATE_DISPOSAL') => {
+
+    if (informedCaseId) {
+      caseId = informedCaseId;
+    }
 
     await apiRequest.setupTokens(user);
 
