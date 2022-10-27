@@ -538,7 +538,6 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, caseId);
-    console.log('i am here')
 
     const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, caseId);
     const responseBody = await response.json();
