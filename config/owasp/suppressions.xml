@@ -15,7 +15,6 @@
     <cve>CVE-2017-18640</cve>
     <cve>CVE-2020-5398</cve>
     <cve>CVE-2018-15756</cve>
-
     <cve>CVE-2021-44228</cve>
     <cve>CVE-2021-44832</cve>
     <cve>CVE-2021-45046</cve>
@@ -35,7 +34,6 @@
     <cve>CVE-2021-22060</cve>
     <cve>CVE-2021-22096</cve>
     <cve>CVE-2022-22950</cve>
-
     <cve>CVE-2021-22119</cve>
     <cve>CVE-2022-22970</cve>
     <cve>CVE-2022-22971</cve>
