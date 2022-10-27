@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement} = require('./dataHelper');
+const { listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -15,11 +15,7 @@ const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {
-  checkNoCToggleEnabled,
-  checkCourtLocationDynamicListIsEnabled,
-  checkAccessProfilesIsEnabled
-} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -39,10 +35,10 @@ const data = {
   INFORM_AGREED_EXTENSION_DATE: require('../fixtures/events/informAgreeExtensionDate.js'),
   INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  DEFENDANT_RESPONSE_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
-  DEFENDANT_RESPONSE_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
-  DEFENDANT_RESPONSE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
-  DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/defendantResponse_2v1'),
+  DEFENDANT_RESPONSE_SAME_SOLICITOR:  require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
+  DEFENDANT_RESPONSE_SOLICITOR_ONE:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
+  DEFENDANT_RESPONSE_SOLICITOR_TWO:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
+  DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
@@ -72,7 +68,7 @@ const eventData = {
     },
     TWO_V_ONE: data.INFORM_AGREED_EXTENSION_DATE
   },
-  defendantResponses: {
+  defendantResponses:{
     ONE_V_ONE: data.DEFENDANT_RESPONSE,
     ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
     ONE_V_TWO_TWO_LEGAL_REP: {
@@ -380,7 +376,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
-    if (solicitor === 'solicitorTwo') {
+    if (solicitor === 'solicitorTwo'){
       deleteCaseFields('respondent1');
     }
 
@@ -447,7 +443,7 @@ module.exports = {
     deleteCaseFields('respondentSolicitor2Reference');
     deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
 
-    if (solicitor === 'solicitorTwo') {
+    if (solicitor === 'solicitorTwo'){
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
@@ -523,7 +519,8 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    // if (['preview', 'demo'].includes(config.runningEnv)) {
+    // if (['preview', 'demo'].includes(config.runningEnv)
+    //  && returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
     //   validState = 'JUDICIAL_REFERRAL';
     // }
 
@@ -533,24 +530,11 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-
-    //Check camunda has brought it to a state that was initially delayed
-    if (delayedCcdState) {
-      const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-      assert.equal(caseForDisplay.state.id, delayedCcdState);
-      console.log('State ' + delayedCcdState + ' reached.');
-      await waitForFinishedBusinessProcess(caseId);
+    if (!expectedCcdState) {
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
-
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, delayedCcdState
-      || expectedCcdState
-      || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, delayedCcdState
-      || expectedCcdState
-      || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, delayedCcdState
-      || expectedCcdState
-      || 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   //TODO this method is not used in api tests
@@ -626,15 +610,15 @@ module.exports = {
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline = {};
-    respondent1deadline = {'respondent1ResponseDeadline': '2022-01-10T15:59:50'};
+    let respondent1deadline ={};
+    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1deadline);
-  },
+   },
 
   amendRespondent2ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent2deadline = {};
-    respondent2deadline = {'respondent2ResponseDeadline': '2022-01-10T15:59:50'};
+    let respondent2deadline ={};
+    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
@@ -663,9 +647,9 @@ module.exports = {
   },
 
   getCaseId: async () => {
-    console.log(`case created: ${caseId}`);
-    return caseId;
-  },
+     console.log (`case created: ${caseId}`);
+     return caseId;
+   },
 
   getLegacyCaseReference: async () => {
     return legacyCaseReference;
@@ -681,11 +665,11 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'Upload' || pageId === 'DraftDirections' || pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+    if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    // data = await updateCaseDataWithPlaceholders(data);
+   // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -771,15 +755,15 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 };
 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
-  const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
     assert.property(returnedCaseData, populatedCaseField);
   }
 };
 
-// Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
-// This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
-// Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
+  // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
+  // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
+  // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
@@ -805,7 +789,7 @@ function addMidEventFields(pageId, responseBody) {
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
 
-  if (eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE') {
+  if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];
@@ -817,9 +801,9 @@ function addMidEventFields(pageId, responseBody) {
 
   caseData = {...caseData, ...midEventData};
   responseBody.data[midEventField.id] = caseData[midEventField.id];
-}
+  }
 
-function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
+  function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
   const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
@@ -856,7 +840,7 @@ async function removeCaseAccessCateogryIfAatEnv(createClaimData) {
         ...createClaimData.valid,
         References: {
           solicitorReferences: {
-            ...createClaimData.valid.References.solicitorReferences
+           ...createClaimData.valid.References.solicitorReferences
           }
         }
       }
@@ -924,7 +908,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
 
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  switch (mpScenario) {
+  switch(mpScenario){
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
@@ -939,9 +923,9 @@ const assignCase = async () => {
 // solicitor 1 should not see details for respondent 2
 // solicitor 2 should not see details for respondent 1
 const solicitorSetup = (solicitor) => {
-  if (solicitor === 'solicitorOne') {
+  if(solicitor === 'solicitorOne'){
     deleteCaseFields('respondent2');
-  } else if (solicitor === 'solicitorTwo') {
+  } else if (solicitor === 'solicitorTwo'){
     deleteCaseFields('respondent1');
   }
 };
@@ -955,11 +939,11 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 
   // solicitor cannot see data from respondent they do not represent
-  if (solicitor === 'solicitorOne') {
+  if(solicitor === 'solicitorOne') {
     delete responseBody.data['respondent2ResponseDeadline'];
   }
 
-  if (solicitor === 'solicitorTwo') {
+  if(solicitor === 'solicitorTwo'){
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ResponseDeadline'];
   } else {
@@ -982,10 +966,10 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
-  if (solicitor === 'solicitorOne') {
+  if(solicitor === 'solicitorOne') {
     delete responseBody.data['respondent2ResponseDeadline'];
   }
-  if (solicitor === 'solicitorTwo') {
+  if(solicitor === 'solicitorTwo'){
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ClaimResponseType'];
     delete responseBody.data['respondent1ClaimResponseDocument'];
@@ -1014,9 +998,10 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 
 const adjustDataForSolicitor = (user, data) => {
   let fixtureClone = cloneDeep(data);
-  if (user === 'solicitorOne') {
+  if(user === 'solicitorOne') {
     delete fixtureClone['respondent2ResponseDeadline'];
-  } else if (user === 'solicitorTwo') {
+  }
+  else if (user === 'solicitorTwo') {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;
