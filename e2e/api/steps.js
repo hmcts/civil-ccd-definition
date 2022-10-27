@@ -125,14 +125,12 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     let i;
-    if (createClaimData.invalid) {
-      for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
-        await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
-          null, 'Case data validation failed');
-      }
-      await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
+    for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
+      await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
         null, 'Case data validation failed');
     }
+    await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
+      null, 'Case data validation failed');
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
@@ -277,11 +275,9 @@ module.exports = {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
-    caseData = {
-      ...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
-        value: listElement('Both')
-      }
-    };
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+      value: listElement('Both')
+    }};
 
     await validateEventPages(data[eventName]);
 
@@ -519,10 +515,9 @@ module.exports = {
       'The date cannot be in the past and must not be more than a year in the future');
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    // if (['preview', 'demo'].includes(config.runningEnv)
-    //  && returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
-    //   validState = 'JUDICIAL_REFERRAL';
-    // }
+    if (['preview', 'demo'].includes(config.runningEnv)) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
 
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
@@ -740,7 +735,7 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
-  // assert.equal(responseBody.state, expectedState);
+  assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
@@ -771,11 +766,11 @@ const deleteCaseFields = (...caseFields) => {
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  // if (['preview', 'demo'].includes(config.runningEnv)) {
-  //   expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
-  // } else {
-  //   expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
-  // }
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
+  } else {
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+  }
 };
 
 // const assertCaseNotAvailableToUser = async (user) => {
