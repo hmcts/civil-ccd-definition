@@ -831,7 +831,7 @@ async function replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, solicito
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
   console.log(`Witness selected in Env: ${config.runningEnv}`);
-  if (!isHNLEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isHNLEnabled) {
       defendantResponseData = {
         ...defendantResponseData,
         valid: {

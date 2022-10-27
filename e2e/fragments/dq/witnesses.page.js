@@ -41,7 +41,7 @@ module.exports = {
     });
 
     let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if (!isHNLEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    if (!isHNLEnabled) {
       await this.addWitnessOldFields(party);
     } else {
       await this.addWitness(party);
