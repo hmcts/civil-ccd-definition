@@ -2,8 +2,7 @@ const config = require('../../../config.js');
 
 Feature('CCD 1v1 API test @api-sdo');
 
-// eslint-disable-next-line no-unused-vars
-Scenario('1v1 full defence unspecified - judge draws disposal order', async ({I, api_sdo}) => {
+Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
   await api_sdo.createSDO(null, config.judgeUser);
 });
@@ -16,10 +15,9 @@ Scenario.skip('1v1 full defence unspecified - legal advisor draws disposal order
 });
 
 //TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({I, api_sdo}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_SMALL');
+  await api_sdo.createSDO(null, config.judgeUser, 'CREATE_SMALL');
 });
 
 //TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
