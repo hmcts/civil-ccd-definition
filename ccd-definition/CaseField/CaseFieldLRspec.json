@@ -961,20 +961,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseClaimExpertSpecRequired",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "responseClaimExpertSpecRequired2",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
     "Label": "Do you want hearing to be held at specific court ? \n",
     "HintText": "If the defendant is an individual the case will be held at defendant's preferred court ",
