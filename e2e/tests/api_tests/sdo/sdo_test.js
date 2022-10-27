@@ -7,86 +7,69 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ a
   await api_sdo.createSDO(null, config.judgeUser);
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - legal advisor draws disposal order', async ({I, api_sdo}) => {
+// skipped because Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence unspecified - legal advisor draws disposal order', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser);
+  await api_sdo.createSDO(null, config.legalAdvisorUser);
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
 Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
   await api_sdo.createSDO(null, config.judgeUser, 'CREATE_SMALL');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({I, api_sdo}) => {
+// skipped because Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_SMALL');
+  await api_sdo.createSDO(null, config.legalAdvisorUser, 'CREATE_SMALL');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({I, api_sdo}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_FAST');
+  await api_sdo.createSDO(null, config.judgeUser, 'CREATE_FAST');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({I, api_sdo}) => {
+// skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_FAST');
+  await api_sdo.createSDO(null, config.legalAdvisorUser, 'CREATE_FAST');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({I, api_sdo}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({ api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_SMALL_NO_SUM');
+  await api_sdo.createSDO(null, config.judgeUser, 'CREATE_SMALL_NO_SUM');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({I, api_sdo}) => {
+// skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_SMALL_NO_SUM');
+  await api_sdo.createSDO(null, config.legalAdvisorUser, 'CREATE_SMALL_NO_SUM');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages', async ({I, api_sdo}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_FAST_NO_SUM');
+  await api_sdo.createSDO(null, config.judgeUser, 'CREATE_FAST_NO_SUM');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({I, api_sdo}) => {
+// skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_FAST_NO_SUM');
+  await api_sdo.createSDO(null, config.legalAdvisorUser, 'CREATE_FAST_NO_SUM');
 });
 
-//TODO: Uncomment tests once CIV-4106 is merged.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - judge declares SDO unsuitable', async ({I, api_sdo}) => {
+Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'UNSUITABLE_FOR_SDO');
+  await api_sdo.createSDO(null, config.judgeUser, 'UNSUITABLE_FOR_SDO');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({I, api_sdo}) => {
+// skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
   await api_sdo.createSDO(config.legalAdvisorUser, 'UNSUITABLE_FOR_SDO');
   await api_sdo.createSDO(config.judgeUser, 'CREATE_DISPOSAL');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - judge draws disposal order', async ({I, api_spec, api_sdo}) => {
+Scenario('1v1 full defence specified - judge draws disposal order', async ({I, api_spec, api_sdo}) => {
   let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
@@ -95,96 +78,106 @@ Scenario.skip('1v1 full defence specified - judge draws disposal order', async (
   await api_sdo.createSDO(caseId, config.judgeUser);
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - legal advisor draws disposal order', async ({I, api_sdo}) => {
+// skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence specified - legal advisor draws disposal order', async ({api_sdo}) => {
   await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser, '950');
   await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
   await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, '950');
   await api_sdo.createSDO(config.legalAdvisorUser);
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - judge draws small claims WITH sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_SMALL');
-});
+Scenario('1v1 full defence specified - judge draws small claims WITH sum of damages',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - legal advisor draws small claims WITH sum of damages', async ({I, api_sdo}) => {
+    await api_sdo.createSDO(caseId, config.judgeUser, 'CREATE_SMALL');
+  });
+
+// skip bcLegal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence specified - legal advisor draws small claims WITH sum of damages', async ({api_sdo}) => {
   await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser, '950');
   await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
   await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, '950');
   await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_SMALL');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - judge draws fast track WITH sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_FAST');
+Scenario('1v1 full defence specified - judge draws fast track WITH sum of damages',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+
+    await api_sdo.createSDO(caseId, config.judgeUser, 'CREATE_FAST');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - legal advisor draws fast track WITH sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_FAST');
+// skip bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence specified - legal advisor draws fast track WITH sum of damages',
+  async ({api_spec, api_sdo}) => {
+  let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec.defendantResponse(config.defendantSolicitorUser);
+  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+    'AWAITING_APPLICANT_INTENTION');
+
+  await api_sdo.createSDO(caseId, config.legalAdvisorUser, 'CREATE_FAST');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - judge draws small claims WITHOUT sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_SMALL_NO_SUM');
+Scenario('1v1 full defence specified - judge draws small claims WITHOUT sum of damages',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+
+    await api_sdo.createSDO(caseId, config.judgeUser, 'CREATE_SMALL_NO_SUM');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - legal advisor draws small claims WITHOUT sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser, '950');
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, '950');
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_SMALL_NO_SUM');
+// skip bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence specified - legal advisor draws small claims WITHOUT sum of damages',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+
+    await api_sdo.createSDO(caseId, config.legalAdvisorUser, 'CREATE_SMALL_NO_SUM');
 });
 
-//TODO: Uncomment tests once authorisation is shown to be working.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - judge draws fast track WITHOUT sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
-  await api_sdo.createSDO(config.judgeUser, 'CREATE_FAST_NO_SUM');
+Scenario('1v1 full defence specified - judge draws fast track WITHOUT sum of damages',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+
+    await api_sdo.createSDO(caseId, config.judgeUser, 'CREATE_FAST_NO_SUM');
 });
 
-//TODO: Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - legal advisor draws fast track WITHOUT sum of damages', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser, 950);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser, 950);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'CREATE_FAST_NO_SUM');
+// skip Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
+Scenario.skip('1v1 full defence specified - legal advisor draws fast track WITHOUT sum of damages',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+
+    await api_sdo.createSDO(caseId, config.legalAdvisorUser, 'CREATE_FAST_NO_SUM');
 });
 
-//TODO: Uncomment tests once CIV-4106 is merged.
-// eslint-disable-next-line no-unused-vars
-Scenario.skip('1v1 full defence specified - judge argues that case is not suitable for SDO', async ({I, api_sdo}) => {
-  await api_sdo.createClaimWithRepresentedRespondentSPEC(config.applicantSolicitorUser);
-  await api_sdo.defendantResponseSPEC(config.defendantSolicitorUser);
-  await api_sdo.claimantResponseSPEC(config.applicantSolicitorUser);
-  await api_sdo.createSDO(config.legalAdvisorUser, 'UNSUITABLE_FOR_SDO');
+// skip until CIV-4106 is merged.
+Scenario.skip('1v1 full defence specified - judge argues that case is not suitable for SDO',
+  async ({api_spec, api_sdo}) => {
+    let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+
+    await api_sdo.createSDO(caseId, config.legalAdvisorUser, 'UNSUITABLE_FOR_SDO');
 });
 
-AfterSuite(async  ({api}) => {
+AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
