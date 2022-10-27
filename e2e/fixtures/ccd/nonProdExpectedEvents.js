@@ -75,8 +75,7 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE,
-      events.CREATE_GENERAL_APPLICATION_CASE
+      events.ADD_CASE_NOTE
     ],
     PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS

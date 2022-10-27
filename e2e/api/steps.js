@@ -491,7 +491,7 @@ module.exports = {
     return caseId;
   },
 
-  claimantResponse: async (user, multipartyScenario, expectedCcdState, delayedCcdState) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');

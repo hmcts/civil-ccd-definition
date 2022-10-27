@@ -329,8 +329,6 @@ dependencies {
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.6'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.3'
 
-  implementation 'org.yaml:snakeyaml:1.31'
-
   constraints {
     implementation('org.apache.commons:commons-compress:1.21') {
       because 'CVE-2021-35515, CVE-2021-35516, CVE-2021-35517, CVE-2021-36090'
