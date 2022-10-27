@@ -120,6 +120,8 @@ Scenario('Make a general application', async ({api}) => {
 Scenario('Judge triggers SDO', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.judgeUserWithRegionId1);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
     await I.initiateSDO('yes', 'yes', null, null);
   }
 }).retry(3);

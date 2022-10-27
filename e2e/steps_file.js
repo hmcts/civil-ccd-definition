@@ -466,8 +466,9 @@ module.exports = function () {
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
-     
-      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+      await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
         () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
 

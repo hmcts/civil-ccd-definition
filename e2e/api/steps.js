@@ -544,17 +544,8 @@ module.exports = {
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, expectedState);
 
-    console.log('General application case state', expectedState);
-
+    console.log('General application created when main case state is', expectedState);
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, '# You have made an application');
-
-    await waitForFinishedBusinessProcess(caseId);
-    const returnedCaseData = await apiRequest.fetchCaseForDisplay(caseId);
-    let gaCaseReference = returnedCaseData.generalApplicationsDetails[0].value.caseLink.CaseReference;
-    console.log('*** GA Case Reference: ' + gaCaseReference + ' ***');
-
-    return gaCaseReference;
   },
 
   //TODO this method is not used in api tests
