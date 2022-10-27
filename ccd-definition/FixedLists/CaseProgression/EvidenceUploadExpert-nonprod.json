@@ -14,13 +14,13 @@
   {
     "ID": "EvidenceUploadExpert",
     "ListElementCode": "QUESTIONS_FOR_EXPERTS",
-    "ListElement": "Questions for other party's expert",
+    "ListElement": "Questions for other party's expert or joint experts",
     "DisplayOrder": 3
   },
   {
     "ID": "EvidenceUploadExpert",
     "ListElementCode": "ANSWERS_FOR_EXPERTS",
-    "ListElement": "Answer to questions asked by the other party",
+    "ListElement": "Answer to questions asked",
     "DisplayOrder": 4
   }
 ]
