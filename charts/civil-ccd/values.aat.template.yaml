@@ -168,7 +168,8 @@ ccd:
       enabled: false
     ras:
       enabled: true
-
+    userProfileImporter:
+      enabled: false
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
