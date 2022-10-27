@@ -431,6 +431,7 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "disposalHearingFinalDisposalHearingToggle=\"SHOW\""
   },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",

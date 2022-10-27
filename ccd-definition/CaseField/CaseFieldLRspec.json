@@ -161,6 +161,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "superClaimType",
+    "Label": "Total Interest",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimAmountBreakupSummaryLabel",
     "Label": "${claimAmountBreakupSummaryObject}",
     "FieldType": "Label",
