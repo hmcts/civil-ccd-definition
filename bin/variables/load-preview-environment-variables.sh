@@ -4,9 +4,7 @@ set -eu
 
 pr=${1}
 
-echo 'export S2S_SECRET=BTZQFPGY4TUMAFGL'
 echo 'export ENVIRONMENT=preview'
-echo 'export NODE_TLS_REJECT_UNAUTHORIZED=0'
 
 # urls
 echo "export SERVICE_AUTH_PROVIDER_API_BASE_URL=http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
