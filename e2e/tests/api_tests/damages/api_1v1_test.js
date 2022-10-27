@@ -41,10 +41,10 @@ Scenario('Defendant response', async ({I, api}) => {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
 });
 
-// Scenario('Claimant response', async ({I, api}) => {
-//   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
-// });
-//
+Scenario('Claimant response', async ({I, api}) => {
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
+});
+
 // Scenario('Create claim where respondent is litigant in person', async ({I, api}) => {
 //   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser);
 // });

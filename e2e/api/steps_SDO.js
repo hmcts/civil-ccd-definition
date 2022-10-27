@@ -166,7 +166,7 @@ module.exports = {
     await notifyClaimDetails(user1);
     await acknowledgeClaim(user2, scenario);
     caseId = await defendantResponse(user2, scenario);
-    // await claimantResponse(user1, scenario,'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
+    await claimantResponse(user1, scenario,'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
   },
 
   defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
