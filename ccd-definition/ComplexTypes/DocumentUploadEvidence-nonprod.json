@@ -240,14 +240,14 @@
     "ID": "DocumentUploadEvidence",
     "ListElementCode": "expertQuestionsLabel",
     "FieldType": "Label",
-    "ElementLabel": "### Questions for other party's expert",
+    "ElementLabel": "### Questions for other party's expert or joint experts",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DocumentUploadEvidence",
     "ListElementCode": "expertOption3Name",
     "FieldType": "Text",
-    "ElementLabel": "Expert's names",
+    "ElementLabel": "Experts' names",
     "SecurityClassification": "Public"
   },
   {

@@ -60,7 +60,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertToggleText",
-    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
+    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -91,6 +91,72 @@
     "ID": "trialSelectionEvidence",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrial",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "witnessLabelSmallClaim",
+    "Label": "You can select more than one type of document \n\n\n ## Witness evidence \n\n Your statement if you are giving evidence, statement written by your witness, summary of evidence",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "witnessToggleTextSmallClaim",
+    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "witnessSelectionEvidenceSmallClaim",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadWitnessSmallClaim",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "expertLabelSmallClaim",
+    "Label": "## expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "expertToggleTextSmallClaim",
+    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "expertSelectionEvidenceSmallClaim",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadExpertSmallClaim",
+    "Label": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialLabelSmallClaim",
+    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialToggleTextSmallClaim",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialSelectionEvidenceSmallClaim",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadTrialSmallClaim",
     "Label": " ",
     "SecurityClassification": "Public"
   },

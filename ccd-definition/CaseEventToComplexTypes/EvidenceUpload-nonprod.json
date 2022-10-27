@@ -59,7 +59,7 @@
     "ListElementCode": "witnessLabel",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\" OR witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\" OR witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -68,7 +68,7 @@
     "ListElementCode": "witnessStatementLabel",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -77,7 +77,7 @@
     "ListElementCode": "witnessOption1Name",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -86,7 +86,7 @@
     "ListElementCode": "witnessOption1UploadDate",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -95,7 +95,7 @@
     "ListElementCode": "witnessOption1",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -104,7 +104,7 @@
     "ListElementCode": "witnessSummaryLabel",
     "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -113,7 +113,7 @@
     "ListElementCode": "witnessOption2Name",
     "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -122,7 +122,7 @@
     "ListElementCode": "witnessOption2",
     "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -167,7 +167,7 @@
     "ListElementCode": "witnessDocumentLabel",
     "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -176,7 +176,7 @@
     "ListElementCode": "witnessOption4",
     "FieldDisplayOrder": 20,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\""
+    "FieldShowCondition": "witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -185,7 +185,7 @@
     "ListElementCode": "expertLabel",
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\" OR expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\" OR expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -194,7 +194,7 @@
     "ListElementCode": "expertReportLabel",
     "FieldDisplayOrder": 22,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -203,7 +203,7 @@
     "ListElementCode": "expertOption1Name",
     "FieldDisplayOrder": 23,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -212,7 +212,7 @@
     "ListElementCode": "expertOption1Expertise",
     "FieldDisplayOrder": 24,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -221,7 +221,7 @@
     "ListElementCode": "expertOption1UploadDate",
     "FieldDisplayOrder": 25,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -230,7 +230,7 @@
     "ListElementCode": "expertOption1",
     "FieldDisplayOrder": 26,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -239,7 +239,7 @@
     "ListElementCode": "expertJointLabel",
     "FieldDisplayOrder": 27,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -248,7 +248,7 @@
     "ListElementCode": "expertOption2Name",
     "FieldDisplayOrder": 28,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -257,7 +257,7 @@
     "ListElementCode": "expertOption2Expertise",
     "FieldDisplayOrder": 29,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -266,7 +266,7 @@
     "ListElementCode": "expertOption2UploadDate",
     "FieldDisplayOrder": 30,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -275,7 +275,7 @@
     "ListElementCode": "expertOption2",
     "FieldDisplayOrder": 31,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\""
+    "FieldShowCondition": "expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -392,7 +392,7 @@
     "ListElementCode": "trialLabel",
     "FieldDisplayOrder": 44,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"CASE_SUMMARY\" OR trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\" OR trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\"  OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -437,7 +437,7 @@
     "ListElementCode": "trialAuthorityLabel",
     "FieldDisplayOrder": 49,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"AUTHORITIES\""
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -446,7 +446,7 @@
     "ListElementCode": "trialOption3",
     "FieldDisplayOrder": 50,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"AUTHORITIES\""
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -455,7 +455,7 @@
     "ListElementCode": "trialDocumentLabel",
     "FieldDisplayOrder": 51,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"DOCUMENTARY\""
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\""
   },
   {
     "ID": "DocumentUploadEvidence",
@@ -464,6 +464,6 @@
     "ListElementCode": "trialOption4",
     "FieldDisplayOrder": 52,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"DOCUMENTARY\""
+    "FieldShowCondition": "trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\""
   }
 ]
