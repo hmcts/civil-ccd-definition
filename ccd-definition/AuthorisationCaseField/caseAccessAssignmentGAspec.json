@@ -100,5 +100,11 @@
     "CaseFieldID": "directionOrderDocument",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNameHmctsInternal",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

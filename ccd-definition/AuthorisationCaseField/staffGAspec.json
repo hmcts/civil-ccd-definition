@@ -160,5 +160,11 @@
     "CaseFieldID": "directionOrderDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNameHmctsInternal",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
