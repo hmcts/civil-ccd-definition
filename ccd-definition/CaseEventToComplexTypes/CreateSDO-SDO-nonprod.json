@@ -104,13 +104,13 @@
     "DisplayContext": "READONLY"
   },
   {
-  "ID": "DisposalHearingDisclosureOfDocuments",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-  "ListElementCode": "input1",
-  "FieldDisplayOrder": 2,
-  "DisplayContext": "MANDATORY"
-},
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
@@ -1228,7 +1228,6 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "EventHintText": "Number of pages, e.g. 4"
-    
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1313,12 +1312,12 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "FastTrackSchedulesOfLoss",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "fastTrackSchedulesOfLoss",
-  "ListElementCode": "input4",
-  "FieldDisplayOrder": 7,
-  "DisplayContext": "MANDATORY"
+    "ID": "FastTrackSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackSchedulesOfLoss",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
