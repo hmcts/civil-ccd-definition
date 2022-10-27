@@ -161,6 +161,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "superClaimType",
+    "Label": "Total Interest",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimAmountBreakupSummaryLabel",
     "Label": "${claimAmountBreakupSummaryObject}",
     "FieldType": "Label",
@@ -1006,14 +1013,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
-    "Label": " ",
+    "Label": "Court Location",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation2",
-    "Label": " ",
+    "Label": "Court Location",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
@@ -2073,7 +2080,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQRequestedCourt",
     "Label": " ",
-    "FieldType": "RequestedCourt",
+    "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
