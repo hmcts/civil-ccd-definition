@@ -164,18 +164,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseDismissedHearingFeeDueDate",
-    "AccessControl" : [
+    "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-staff"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
+          "caseworker-civil-admin",
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   }
