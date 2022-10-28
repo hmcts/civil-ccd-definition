@@ -11,7 +11,7 @@ dependencies:
     version: 4.0.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-general-applications
-    version: 4.0.1
+    version: 0.0.28
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
