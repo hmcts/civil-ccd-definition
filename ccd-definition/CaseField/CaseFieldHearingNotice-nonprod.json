@@ -134,12 +134,5 @@
     "Label": "Hearing Due Date",
     "FieldType": "Date",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "casePaymentWaysToPay",
-    "Label": "Service Request",
-    "FieldType": "WaysToPay",
-    "SecurityClassification": "Public"
   }
 ]
