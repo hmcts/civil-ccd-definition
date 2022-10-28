@@ -24,6 +24,9 @@ postgresql:
   persistence:
     enabled: false
 
+civil-general-applications:
+  enabled: false
+
 java:
   applicationPort: 4000
   aadIdentityName: civil
