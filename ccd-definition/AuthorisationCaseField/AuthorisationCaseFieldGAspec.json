@@ -277,7 +277,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
@@ -289,7 +290,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
@@ -301,7 +303,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
