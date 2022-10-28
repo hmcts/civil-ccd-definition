@@ -1,0 +1,40 @@
+[
+  {
+    "ID": "UploadEvidenceExpert3",
+    "ListElementCode": "expertOption3Name",
+    "FieldType": "Text",
+    "ElementLabel": "Experts' names",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert3",
+    "ListElementCode": "expertOption3OtherName",
+    "FieldType": "Text",
+    "ElementLabel": "Other party's name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert3",
+    "ListElementCode": "expertOption3Document",
+    "FieldType": "Text",
+    "ElementLabel": "Name of document you have questions about",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert3",
+    "ListElementCode": "expertOption3UploadDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date statement was made",
+    "HintText": "For example, 12/09/2022",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert3",
+    "ListElementCode": "expertOption3",
+    "ElementLabel": "Upload a file",
+    "HintText": "Each document must be less than 100MB, You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, JPG, PNG, BMG, TIF, TIFF",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "SecurityClassification": "Public"
+  }
+]

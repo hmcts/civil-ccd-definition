@@ -35,6 +35,12 @@
           "legal-adviser"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },

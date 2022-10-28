@@ -52,7 +52,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -82,7 +82,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -112,7 +112,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -142,7 +142,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -153,7 +153,7 @@
     "PageID": "DocumentSelectionSmallClaim",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "PageLabel": "Select the type of document you would like to upload #SMALLCLAIM",
+    "PageLabel": "Select the type of document you would like to upload",
     "PageShowCondition": "claimsTrack = \"smallClaimsTrack\""
   },
   {
@@ -174,7 +174,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionSmallClaim",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -204,7 +204,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionSmallClaim",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -234,16 +234,170 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionSmallClaim",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD",
-    "CaseFieldID": "documentUpload",
+    "CaseFieldID": "documentUploadLabel",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "READONLY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadDisclosure1",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadDisclosure2",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadWitness1",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadWitness2",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadWitness3",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadWitness4",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadExpert1",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadExpert2",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadExpert3",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadExpert4",
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadTrial1",
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadTrial2",
+    "PageFieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadTrial3",
+    "PageFieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "documentUploadTrial4",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "y",
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\""
   }
 ]
