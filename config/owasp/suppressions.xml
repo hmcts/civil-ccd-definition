@@ -23,8 +23,6 @@
     <cve>CVE-2021-44832</cve>
     <cve>CVE-2021-45046</cve>
     <cve>CVE-2021-45105</cve>
-    <cve>CVE-2022-22965</cve>
-    <cve>CVE-2022-22968</cve>
     <cve>CVE-2020-15522</cve>
     <cve>CVE-2016-1000027</cve>
     <cve>CVE-2022-27772</cve>
@@ -32,16 +30,12 @@
     <cve>CVE-2019-3795</cve>
     <cve>CVE-2020-5408</cve>
     <cve>CVE-2021-22060</cve>
-    <cve>CVE-2021-22096</cve>
     <cve>CVE-2022-22950</cve>
     <cve>CVE-2021-22119</cve>
-    <cve>CVE-2022-22970</cve>
-    <cve>CVE-2022-22971</cve>
     <cve>CVE-2022-22978</cve>
     <cve>CVE-2022-33915</cve>
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
-    <cve>CVE-2022-25857</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
