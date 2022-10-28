@@ -124,19 +124,6 @@ const eventData = {
 
 module.exports = {
 
-  /**
-   * Creates a claim
-   *
-   * @param user user to create the claim
-   * @return {Promise<void>}
-   */
-  specifiedProcess: async () => {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-    await api_spec.defendantResponse(config.defendantSolicitorUser);
-    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
-      'AWAITING_APPLICANT_INTENTION');
-  },
-
   unspecifiedProcess: async (user1 = config.applicantSolicitorUser, user2 = config.defendantSolicitorUser, scenario = 'ONE_V_ONE') => {
     const createData = claimData.createClaim(scenario);
     delete createData.invalid;

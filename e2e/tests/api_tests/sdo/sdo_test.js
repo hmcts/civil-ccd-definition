@@ -69,7 +69,7 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
   await api_sdo.createSDO(config.judgeUser, 'CREATE_DISPOSAL');
 });
 
-Scenario('1v1 full defence specified - judge draws disposal order', async ({I, api_spec, api_sdo}) => {
+Scenario('1v1 full defence specified - judge draws disposal order', async ({ api_spec, api_sdo}) => {
   let caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
