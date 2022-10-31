@@ -38,8 +38,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "HEARING_FEE_UNPAID",
-    "Name": "Take offline fee unpaid",
-    "Description": "Take offline fee unpaid",
+    "Name": "Dismissed for unpaid fee",
+    "Description": "Dismissed for unpaid fee",
     "PreConditionState(s)": "HEARING_READINESS",
     "PostConditionState": "CASE_DISMISSED",
     "SecurityClassification": "Public",
