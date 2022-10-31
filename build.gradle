@@ -226,7 +226,7 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
 }
 
 task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
+  commandLine '/usr/bin/yarn', '--silent', 'test:api-spec'
 }
 
 task runSdoFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
@@ -237,7 +237,7 @@ task runSdoFunctionalTests(type: Exec, description: 'Runs Spec functional tests.
 }
 
 task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
-  commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
+  commandLine '/usr/bin/yarn', '--silent', 'test:api-unspec'
 }
 
 task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
@@ -267,11 +267,11 @@ def inStrictOrder(Task... tasks) {
 }
 
 task smoke(description: 'Runs the smoke tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests))
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSpecFunctionalTests, runUnspecFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
