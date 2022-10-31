@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudicialCaseNotes",
+    "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "caseNoteTypeNoteTA",
@@ -9,7 +9,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudicialCaseNotes",
+    "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "documentAndNote",
@@ -17,7 +17,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "JudicialCaseNotes",
+    "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "documentOnly",
