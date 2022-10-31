@@ -505,7 +505,7 @@
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1009,7 +1009,7 @@
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
