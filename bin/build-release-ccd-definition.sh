@@ -6,7 +6,7 @@ environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
 if [ ${environment} == preview ]; then
-   excludedFilenamePatterns="-e *-prod.json,*HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*CUI-prod.json"
+   excludedFilenamePatterns="-e *-prod.json,*HNL-nonprod.json,*CUI.json,*CUI-nonprod.json"
    #for testing HNL uplifting, comment the above line and uncomment below
    #excludedFilenamePatterns="-e *-prod.json,*-SDO-nonprod.json"
 elif [ ${environment} == demo ]; then
@@ -14,9 +14,9 @@ elif [ ${environment} == demo ]; then
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*-SDO-HNL-nonprod.json,*CUI.json,*CUI-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*-SDO-HNL-nonprod.json,*CUI.json"
 else
-  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-prod.json,*DJ.json,*DJspec.json,*-SDO-HNL-nonprod.json,*CUI.json,*CUI-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-prod.json,*DJ.json,*DJspec.json,*-SDO-HNL-nonprod.json,*CUI.json"
 fi
 
 root_dir=$(realpath $(dirname ${0})/..)
