@@ -56,7 +56,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "HEARING_FEE_UNPAID",
     "Name": "Dismissed for unpaid fee",
-    "Description": "Dismissed for unpaid fee",
+    "Description": "Dismissed for unpaid hearing fee",
     "PreConditionState(s)": "HEARING_READINESS",
     "PostConditionState": "CASE_DISMISSED",
     "SecurityClassification": "Public",
