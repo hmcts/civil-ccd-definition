@@ -46,5 +46,45 @@
     "ListElementCode": "unavailableDates.date",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "hearingLengthHours",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "hearingLengthDays",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "unavailableDatesRequired",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "unavailableDates.who",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQHearing",
+    "ListElementCode": "unavailableDates.date",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   }
 ]
