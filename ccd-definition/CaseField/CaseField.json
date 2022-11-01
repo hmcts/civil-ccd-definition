@@ -1150,13 +1150,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "unsuitableSDODate",
-    "Label": "SDO unsuitable date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
@@ -2142,5 +2135,12 @@
     "SecurityClassification": "Public",
     "_Definition":  "Details of the next hearing on a case",
     "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
