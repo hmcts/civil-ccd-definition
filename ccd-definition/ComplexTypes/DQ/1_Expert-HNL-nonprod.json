@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "Expert",
+    "ListElementCode": "firstName",
+    "FieldType": "Text",
+    "ElementLabel": "First name",
+    "SecurityClassification": "Public",
+    "Max": 40
+  },
+  {
+    "ID": "Expert",
+    "ListElementCode": "lastName",
+    "FieldType": "Text",
+    "ElementLabel": "Last name",
+    "SecurityClassification": "Public",
+    "Max": 40
+  },
+  {
+    "ID": "Expert",
+    "ListElementCode": "emailAddress",
+    "FieldType": "Email",
+    "ElementLabel": "Email address",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Expert",
+    "ListElementCode": "phoneNumber",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone number",
+    "SecurityClassification": "Public"
+  }
+]
