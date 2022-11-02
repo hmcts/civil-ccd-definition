@@ -56,9 +56,9 @@ module.exports = {
         details: [
           element({
             firstName: 'John',
-            surname: "Doe",
-            emailAddress: "john@doemail.com",
-            phoneNumber: "07111111111",
+            surname: 'Doe',
+            emailAddress: 'john@doemail.com',
+            phoneNumber: '07111111111',
             fieldOfExpertise: 'None',
             whyRequired: 'Testing',
             estimatedCost: '10000'
