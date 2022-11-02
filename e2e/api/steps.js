@@ -515,8 +515,16 @@ module.exports = {
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
-      validState = 'JUDICIAL_REFERRAL';
+      if(caseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
+        if(caseData.respondent2ClaimResponseType != null) {
+          if(caseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
+                    validState = 'JUDICIAL_REFERRAL';
+          }
+        } else {
+        validState = 'JUDICIAL_REFERRAL';
+      }
     }
+  }
 
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
