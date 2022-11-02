@@ -522,6 +522,7 @@ module.exports = {
           }
         } else {
         validState = 'JUDICIAL_REFERRAL';
+        }
       }
     }
   }
