@@ -31,13 +31,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_EVIDENCE_UPLOAD",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_EVIDENCE_UPLOAD",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR_FOR_EVIDENCE_UPLOAD",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
