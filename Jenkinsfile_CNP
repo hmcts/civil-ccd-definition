@@ -130,8 +130,11 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "perftest"
   }
 
-  after('akschartsinstall') {
+  before('highleveldatasetup') {
     archiveCoreCaseDataDefinitions()
+  }
+
+  after('akschartsinstall') {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
       env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
