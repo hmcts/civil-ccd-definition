@@ -10,7 +10,7 @@ if [ ${environment} == preview ]; then
    #for testing HNL uplifting, comment the above line and uncomment below
    #excludedFilenamePatterns="-e *-prod.json,*-SDO-nonprod.json"
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*-GAR2GAspec-nonprod.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then
