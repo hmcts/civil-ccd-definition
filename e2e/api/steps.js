@@ -533,8 +533,10 @@ module.exports = {
     }
   },
 
-  initiateGeneralApplication: async (user, expectedState) => {
+  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
     eventName = 'INITIATE_GENERAL_APPLICATION';
+    caseId = caseId || caseNumber;
+    console.log('caseid is..', caseId);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, caseId);
