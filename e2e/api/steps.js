@@ -513,6 +513,7 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
+    // This should be uncommented in ticket CIV-2493
     /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
       if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
