@@ -513,7 +513,7 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
       if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
         if(returnedCaseData.respondent2ClaimResponseType != null) {
@@ -524,7 +524,7 @@ module.exports = {
         validState = 'JUDICIAL_REFERRAL';
         }
       }
-    }
+    }*/
 /*
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
