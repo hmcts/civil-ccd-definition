@@ -16,7 +16,6 @@ postgresql:
       CREATE DATABASE cmc WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-      CREATE DATABASE "user-profile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
   postgresqlUsername: hmcts
@@ -73,6 +72,9 @@ java:
     GENAPP_JRD_URL: http://rd-judicial-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     DOCMOSIS_TORNADO_URL: https://docmosis.aat.platform.hmcts.net
     DOCUMENT_MANAGEMENT_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    SEND_LETTER_URL: http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    CUI_URL: https://civil-citizen-ui.{{ .Values.global.environment }}.platform.hmcts.net
+    CUI_URL_RESPOND_TO_CLAIM: https://civil-citizen-ui.{{ .Values.global.environment }}.platform.hmcts.net/first-contact/start
     SPRING_CLOUD_BOOTSTRAP_ENABLED: true
     RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
@@ -90,7 +92,7 @@ java:
     STITCHING_API_ENABLED: true
     DOCUMENT_MANAGEMENT_SECURED: true
     ACA_SERVICE_API_BASEURL: http://${SERVICE_NAME}-aac-manage-case-assignment
-
+    POLLING_EVENT_EMITTER_ENABLED: false
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
   enabled: true
@@ -167,14 +169,15 @@ ccd:
       enabled: false
     ras:
       enabled: false
+    userProfile:
+      enabled: false
     userProfileImporter:
       enabled: false
-
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
-    ccdUserProfileUrl: http://${SERVICE_NAME}-ccd-user-profile-api
+    ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
@@ -182,6 +185,7 @@ ccd:
 
   ccd-api-gateway-web:
     nodejs:
+      disableKeyVaults: true
       imagePullPolicy: Always
       environment:
         ADDRESS_LOOKUP_TOKEN: ${ADDRESS_LOOKUP_TOKEN}
@@ -190,11 +194,11 @@ ccd:
         PROXY_DOCUMENT_MANAGEMENT: http://dm-store-aat.service.core-compute-aat.internal
       ingressHost: gateway-${SERVICE_FQDN}
       ingressIP: ${INGRESS_IP}
-      keyVaults: []
   ccd-data-store-api:
     java:
       replicas: 1
       imagePullPolicy: Always
+      devcpuRequests: 500m
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
         DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
@@ -213,7 +217,7 @@ ccd:
         CCD_MULTIPARTY_CASE_TYPES: CIVIL
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
-      keyVaults: []
+      disableKeyVaults: true
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   ccd-definition-store-api:
     java:
@@ -226,15 +230,8 @@ ccd:
         DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
-      keyVaults: []
+      disableKeyVaults: true
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
-  ccd-user-profile-api:
-    java:
-      imagePullPolicy: Always
-      enviroment:
-        USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
-      keyVaults: []
-      ingressHost: ccd-user-profile-api-${SERVICE_FQDN}
 
   postgresql:
     persistence:
