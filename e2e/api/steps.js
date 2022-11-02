@@ -525,7 +525,6 @@ module.exports = {
         }
       }
     }
-  }
 
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
