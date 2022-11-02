@@ -54,11 +54,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "HEARING_FEE_UNPAID",
-    "Name": "Dismissed for unpaid fee",
-    "Description": "Dismissed for unpaid hearing fee",
-    "PreConditionState(s)": "HEARING_READINESS",
-    "PostConditionState": "CASE_DISMISSED",
+    "ID": "EVIDENCE_UPLOAD_NOTIFICATION",
+    "Name": "Notify evidence upload",
+    "Description": "Notify solicitors of evidence upload",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
@@ -68,5 +68,4 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
-
 ]

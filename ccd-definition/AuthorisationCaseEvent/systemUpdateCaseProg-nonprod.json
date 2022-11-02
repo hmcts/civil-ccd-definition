@@ -1,31 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR_FOR_EVIDENCE_UPLOAD",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_HEARING_FEE_UNPAID",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIMANT_HEARING",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_HEARING",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR_FOR_EVIDENCE_UPLOAD",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
