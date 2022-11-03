@@ -1,0 +1,31 @@
+[
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "input",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "dateFrom",
+    "FieldType": "Date",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "dateTo",
+    "FieldType": "Date",
+    "ElementLabel": "Date to",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "time",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
+    "ElementLabel": "The time estimate is",
+    "SecurityClassification": "Public"
+  }
+]
