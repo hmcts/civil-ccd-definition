@@ -515,15 +515,24 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    // This should be uncommented in ticket CIV-2493
+    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
+      if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
+        if(returnedCaseData.respondent2ClaimResponseType != null) {
+          if(returnedCaseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
-
+        } else {
+        validState = 'JUDICIAL_REFERRAL';
+        }
+      }
+    }*/
+/*
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
-    });
+    });*/
 
     await waitForFinishedBusinessProcess(caseId);
     if (!expectedCcdState) {
