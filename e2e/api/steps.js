@@ -15,7 +15,7 @@ const claimData = require('../fixtures/events/createClaim.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -406,6 +406,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
 
     // solicitor 2 should not see respondent 1 data but because respondent 1 has replied before this, we need
     // to clear a big chunk of defendant response (respondent 1) data hence its cleaner to have a clean slate
@@ -428,6 +429,8 @@ module.exports = {
     // Remove after court location toggle is removed
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
+    defendantResponseData = await replaceHearingDetailsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
+
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
@@ -458,9 +461,10 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
-      'From Date should be less than To Date');
-
+    if(isHNLEnabled){
+      await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
     if (solicitor === 'solicitorOne') {
@@ -493,6 +497,8 @@ module.exports = {
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -505,7 +511,8 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    claimantResponseData = await replaceHearingDetailsIfHNLFlagIsDisabled(claimantResponseData, null, false);
 
     await validateEventPages(claimantResponseData);
 
@@ -514,8 +521,10 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
-      'From Date should be less than To Date');
+    if (isHNLEnabled) {
+      await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -824,6 +833,69 @@ async function updateCaseDataWithPlaceholders(data, document) {
   data = lodash.template(JSON.stringify(data))(placeholders);
 
   return JSON.parse(data);
+}
+
+// CIV-5514: remove when hnl is live
+async function replaceHearingDetailsIfHNLFlagIsDisabled(data, solicitor, isDefendantResponse) {
+  // let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  let isHNLEnabled = false;
+  // work around for the api  tests
+  console.log(`Hearing selected in Env: ${config.runningEnv}`);
+
+  const party = `${isDefendantResponse === true ? 'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQHearing`
+  if (!isHNLEnabled) {
+    data = {
+      ...data,
+      valid: {
+        ...data.valid,
+        Hearing: {
+          [party]: {
+            hearingLength: 'MORE_THAN_DAY',
+            hearingLengthDays: '5',
+            unavailableDatesRequired: 'Yes',
+            unavailableDates: [
+              element({
+                date: date(10),
+                who: 'Foo Bar'
+              })
+            ]
+          }
+        }
+      },
+      invalid: {
+        ...data.invalid,
+        Hearing: {
+          past: {
+            [party]: {
+              hearingLength: 'MORE_THAN_DAY',
+              hearingLengthDays: 5,
+              unavailableDatesRequired: 'Yes',
+              unavailableDates: [
+                element({
+                  date: date(-1),
+                  who: 'Foo Bar'
+                })
+              ]
+            }
+          },
+          moreThanYear: {
+            [party]: {
+              hearingLength: 'MORE_THAN_DAY',
+              hearingLengthDays: 5,
+              unavailableDatesRequired: 'Yes',
+              unavailableDates: [
+                element({
+                  date: date(367),
+                  who: 'Foo Bar'
+                })
+              ]
+            }
+          }
+        }
+      }
+    };
+  }
+  return data;
 }
 
 // CIV-3521: remove when access profiles is live
