@@ -458,8 +458,8 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    // await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
-    //   'Dates must be within the next 12 months.');
+    await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+      'From Date should be less than To Date');
 
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
@@ -511,9 +511,11 @@ module.exports = {
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Dates must be within the next 12 months.');
+    await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
+      'From Date should be less than To Date');
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
