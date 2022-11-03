@@ -398,6 +398,7 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\""
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValues"
   }
 ]
