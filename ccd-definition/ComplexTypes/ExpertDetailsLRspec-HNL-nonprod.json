@@ -1,0 +1,39 @@
+[
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "firstName",
+    "FieldType": "Text",
+    "ElementLabel": "First name",
+    "SecurityClassification": "Public",
+    "Max": 40
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "lastName",
+    "FieldType": "Text",
+    "ElementLabel": "Last name",
+    "SecurityClassification": "Public",
+    "Max": 40
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "phoneNumber",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone number",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "emailAddress",
+    "FieldType": "Email",
+    "ElementLabel": "Email address",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ExpertDetails",
+    "ListElementCode": "whyRequired",
+    "FieldType": "TextArea",
+    "ElementLabel": "Why do you need this expert?",
+    "SecurityClassification": "Public"
+  }
+]
