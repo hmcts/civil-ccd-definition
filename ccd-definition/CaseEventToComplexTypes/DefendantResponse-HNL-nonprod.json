@@ -11,7 +11,7 @@
     "ID": "Experts",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQExperts",
-    "ListElementCode": "details.surname",
+    "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },

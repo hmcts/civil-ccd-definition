@@ -37,7 +37,7 @@ module.exports = {
         },
         elements: {
           firstName: `#${party}DQExperts_details_0_firstName`,
-          surname: `#${party}DQExperts_details_0_surname`,
+          lastName: `#${party}DQExperts_details_0_surname`,
           emailAddress: `#${party}DQExperts_details_0_emailAddress`,
           phoneNumber: `#${party}DQExperts_details_0_phoneNumber`,
           fieldOfExpertise: `#${party}DQExperts_details_0_fieldOfExpertise`,
@@ -76,7 +76,7 @@ module.exports = {
     await I.addAnotherElementToCollection();
     I.waitForElement(this.fields(party).expertDetails.elements.firstName);
     I.fillField(this.fields(party).expertDetails.elements.firstName, 'John');
-    I.fillField(this.fields(party).expertDetails.elements.surname, 'Smith');
+    I.fillField(this.fields(party).expertDetails.elements.lastName, 'Smith');
     I.fillField(this.fields(party).expertDetails.elements.emailAddress, 'johnsmith@email.com');
     I.fillField(this.fields(party).expertDetails.elements.phoneNumber, '07000111000');
     I.fillField(this.fields(party).expertDetails.elements.fieldOfExpertise, 'Science');

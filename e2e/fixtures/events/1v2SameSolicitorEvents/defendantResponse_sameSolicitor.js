@@ -68,7 +68,7 @@ module.exports = {
         details: [
           element({
             firstName: 'John',
-            surname: 'Doe',
+            lastName: 'Doe',
             emailAddress: 'john@doemail.com',
             phoneNumber: '07111111111',
             fieldOfExpertise: 'None',
