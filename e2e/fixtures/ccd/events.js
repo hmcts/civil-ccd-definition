@@ -143,6 +143,12 @@ module.exports = {
     name: 'View and respond to defence',
     order: 7
   },
+  REFER_TO_JUDGE: {
+    id: 'REFER_TO_JUDGE',
+    name: 'Refer to Judge',
+    description: 'Refer to Judge',
+    order: 19
+  },
   INITIATE_GENERAL_APPLICATION: {
     id: 'INITIATE_GENERAL_APPLICATION',
     name: 'Make an application',
