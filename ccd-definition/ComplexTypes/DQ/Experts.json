@@ -19,7 +19,7 @@
     "ID": "Experts",
     "ListElementCode": "jointExpertSuitable",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Do you think the case is suitable for a joint expert",
+    "ElementLabel": "Do you think the case is suitable for a joint expert?",
     "FieldShowCondition": "expertRequired = \"Yes\"",
     "SecurityClassification": "Public"
   },
