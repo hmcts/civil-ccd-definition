@@ -455,9 +455,11 @@ module.exports = {
       'The date entered cannot be in the future');
     await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Dates must be within the next 12 months.');
+    // await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+    //   'Dates must be within the next 12 months.');
 
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
