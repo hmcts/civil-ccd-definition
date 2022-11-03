@@ -141,5 +141,12 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeeServiceRequestDetails",
+    "Label": "Pay for application with PBA\n",
+    "FieldType": "HearingSRDetails",
+    "SecurityClassification": "Public"
   }
 ]

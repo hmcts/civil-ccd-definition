@@ -1,0 +1,30 @@
+[
+  {
+    "ID": "HearingSRDetails",
+    "ListElementCode": "fee",
+    "ElementLabel": "Hearing Notice fee",
+    "FieldType": "Fee",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSRDetails",
+    "ListElementCode": "paymentDetails",
+    "ElementLabel": "Details of PBA payment",
+    "FieldType": "FeeResult",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSRDetails",
+    "ListElementCode": "paymentSuccessfulDate",
+    "ElementLabel": "Payment successful date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSRDetails",
+    "ListElementCode": "serviceRequestReference",
+    "ElementLabel": "Service Request Reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
