@@ -16,5 +16,19 @@
     "FieldTypeParameter": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
     "Comment": "Field storing noc update details"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1LIPAtClaimIssued",
+    "Label": "Is defendant 1 is litigant Party at claim issue?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2LIPAtClaimIssued",
+    "Label": "Is defendant 2 is litigant Party at claim issue?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
