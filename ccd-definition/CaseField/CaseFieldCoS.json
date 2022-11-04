@@ -1,0 +1,136 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant1",
+    "Label": "Claimant's name\n ${applicant1.partyName}\n Defandant's name \n ${respondent1Copy.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosDateOfServiceForDefendant1",
+    "Label": "Date you served the claim",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Definition":  "Date you served the claim",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosServedDocumentFiles1",
+    "Label": "What documents did you serve?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "What documents did you serve?",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosUploadEvidenceLabel1",
+    "Label": "Supporting evidence",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosEvidenceDocument1",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Supporting evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosRecipient1",
+    "Label": "Who did you serve the claim to?",
+    "HintText": "Include their position if they have one, for example - partner, director",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Who did you serve the claim to?",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosRecipient1ServeType",
+    "Label": "How did you serve the documents?",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ServeTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "How did you serve the documents?",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosRecipient1ServeLocation",
+    "Label": "Where did you serve the documents?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Where did you serve the documents?",
+    "HintText": "Enter the postal address, email address, fax or DX number",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosRecipient1ServeLocationOwnerType",
+    "Label": "The location where you served the documents was the:",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ServeLocationOwnerTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "The location where you served the documents was the:",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosRecipient1ServeLocationType",
+    "Label": "Select the type of location where you served the documents",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ServeLocationTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "Select the type of location where you served the documents",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosRecipient1ServeLocationTypeOther",
+    "Label": "Other",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Other",
+    "HintText": "Tell other the other type of location where you served the documents",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosSender1",
+    "Label": "Your name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Definition":  "cosSender1",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosSender1DeclarationLabel",
+    "Label": "I believe the facts stated in the application are true",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosSenderFirm1",
+    "Label": "Your firm",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Definition":  "cosSenderFirm1",
+    "Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosSender1TabLabel",
+    "Label": "<div class=\"govuk-inset-text\">This information will be display on the Certificate of Service tab</div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]

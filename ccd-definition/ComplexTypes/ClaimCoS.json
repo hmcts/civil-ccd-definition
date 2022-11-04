@@ -1,0 +1,118 @@
+[
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosDateOfServiceForDefendant",
+    "ElementLabel": "Date you served the claim",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Definition":  "Date you served the claim"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosServedDocumentFiles",
+    "ElementLabel": "What documents did you serve?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "What documents did you serve?"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosUploadEvidenceLabel",
+    "ElementLabel": "Supporting evidence",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosEvidenceDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "ElementLabel": "Supporting evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosRecipient",
+    "ElementLabel": "Who did you serve the claim to?",
+    "HintText": "Include their position if they have one, for example - partner, director",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Who did you serve the claim to?"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosRecipient1ServeType",
+    "ElementLabel": "How did you serve the documents?",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ServeTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "How did you serve the documents?"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosRecipient1ServeLocation",
+    "ElementLabel": "Where did you serve the documents?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Where did you serve the documents?",
+    "HintText": "Enter the postal address, email address, fax or DX number"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosRecipient1ServeLocationOwnerType",
+    "ElementLabel": "The location where you served the documents was the:",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ServeLocationOwnerTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "The location where you served the documents was the:"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosRecipient1ServeLocationType",
+    "ElementLabel": "Select the type of location where you served the documents",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ServeLocationTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "Select the type of location where you served the documents"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosRecipient1ServeLocationTypeOther",
+    "ElementLabel": "Other",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Other",
+    "HintText": "Tell other the other type of location where you served the documents"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosSender1",
+    "ElementLabel": "Your name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Definition":  "cosSender1"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosSender1DeclarationLabel",
+    "ElementLabel": "I believe the facts stated in the application are true",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosSenderFirm1",
+    "ElementLabel": "Your firm",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Definition":  "cosSenderFirm1"
+  },
+  {
+    "ID": "ClaimCoS",
+    "ListElementCode": "cosSender1TabLabel",
+    "ElementLabel": "<div class=\"govuk-inset-text\">This information will be display on the Certificate of Service tab</div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]

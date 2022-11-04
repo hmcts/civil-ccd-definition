@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "ServeLocationTypeCoS",
+    "ListElementCode": "USUAL_RESIDENCE",
+    "ListElement": "usual residence",
+    "DisplayOrder": 1
+  },
+  {
+      "ID": "ServeLocationTypeCoS",
+      "ListElementCode": "EMAIL",
+      "ListElement": "email",
+      "DisplayOrder": 2
+  },
+  {
+    "ID": "ServeLocationTypeCoS",
+    "ListElementCode": "OTHER",
+    "ListElement": "Other",
+    "DisplayOrder": 3
+  }
+]
