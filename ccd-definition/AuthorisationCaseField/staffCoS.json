@@ -1,38 +1,13 @@
 [
-
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosDateOfServiceForDefendant1",
+    "CaseFieldID": "cosNotifyClaimDetails1",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosServedDocumentFiles1",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosUploadEvidenceLabel1",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosEvidenceDocument1",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosRecipient1",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosRecipient1ServeType",
+    "CaseFieldID": "cosNotifyClaimDetails2",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

@@ -2,152 +2,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosLabelForDefendant1",
+    "CaseFieldID": "cosNotifyClaimDetails1",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosDateOfServiceForDefendant1",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosServedDocumentFiles1",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosUploadEvidenceLabel1",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosEvidenceDocument1",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosRecipient1",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosRecipient1ServeType",
-    "PageFieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosRecipient1ServeLocation",
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosRecipient1ServeLocationOwnerType",
-    "PageFieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosRecipient1ServeLocationType",
-    "PageFieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosRecipient1ServeLocationTypeOther",
-    "PageFieldDisplayOrder": 10,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
+    "PageLabel": "Certificate Of Service - notify claim details for defendant 1",
+    "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "cosRecipient1ServeLocationType=\"OTHER\""
+    "_CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos1",
+    "_RetriesTimeoutURLMidEvent": 0,
+    "_PageShowCondition": "claimStarted=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosSender1",
-    "PageFieldDisplayOrder": 11,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosSender1DeclarationLabel",
-    "PageFieldDisplayOrder": 12,
-    "DisplayContext": "READONLY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosSenderFirm1",
-    "PageFieldDisplayOrder": 13,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosSender1TabLabel",
-    "PageFieldDisplayOrder": 14,
-    "DisplayContext": "READONLY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
+    "CaseFieldID": "cosNotifyClaimDetails2",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "CertificateOfService2",
+    "PageLabel": "Certificate Of Service - notify claim details for defendant 2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "_CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos2",
+    "_RetriesTimeoutURLMidEvent": 0,
+    "_PageShowCondition": "claimStarted=\"Yes\""
   }
 ]
