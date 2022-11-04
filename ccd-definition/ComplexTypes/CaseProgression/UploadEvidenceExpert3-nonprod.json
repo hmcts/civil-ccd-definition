@@ -9,7 +9,7 @@
   {
     "ID": "UploadEvidenceExpert3",
     "ListElementCode": "expertOption3OtherName3",
-    "FieldType": "DynamicList",
+    "FieldType": "Text",
     "ElementLabel": "Other party's name",
     "SecurityClassification": "Public"
   },
