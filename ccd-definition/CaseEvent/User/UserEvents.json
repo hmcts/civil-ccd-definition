@@ -52,7 +52,8 @@
     "EndButtonLabel": "Acknowledge claim",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
