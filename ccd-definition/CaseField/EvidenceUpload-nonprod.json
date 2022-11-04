@@ -278,5 +278,12 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentUploadTrial4",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseDocumentUploadDate",
+    "Label": "upload date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
