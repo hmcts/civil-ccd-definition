@@ -466,8 +466,9 @@ module.exports = function () {
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
-      await caseViewPage.startEvent(eventName, caseId);
 
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+      await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
         () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
 
@@ -482,7 +483,7 @@ module.exports = function () {
 
         () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
         () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
-        //() => event.submit('Submit', '')
+        () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
 
