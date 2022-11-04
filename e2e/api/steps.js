@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement } = require('./dataHelper');
+const { date, element, listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -837,13 +837,13 @@ async function updateCaseDataWithPlaceholders(data, document) {
 
 // CIV-5514: remove when hnl is live
 async function replaceHearingDetailsIfHNLFlagIsDisabled(data, solicitor, isDefendantResponse) {
-  // let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-  let isHNLEnabled = false;
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
   console.log(`Hearing selected in Env: ${config.runningEnv}`);
 
-  const party = `${isDefendantResponse === true ? 'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQHearing`
   if (!isHNLEnabled) {
+    const party = `${isDefendantResponse === true ?
+      'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQHearing`
     data = {
       ...data,
       valid: {
