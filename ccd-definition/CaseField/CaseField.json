@@ -326,8 +326,7 @@
     "FieldTypeParameter": "ResponseIntention",
     "SecurityClassification": "Public",
     "_Definition":  "The intended response of the first respondent to the claim",
-    "_Category":  "CIVIL",
-    "Publish": "Y"
+    "_Category":  "CIVIL"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -470,8 +469,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -495,8 +493,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1404,8 +1401,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -161,6 +161,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
+    "Publish": "Y",
     "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
   },
   {
@@ -185,7 +186,8 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\""
+    "FieldShowCondition": "isRespondent1 = \"Yes\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -267,6 +269,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
+    "Publish": "Y",
     "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame = \"Yes\""
   },
   {
