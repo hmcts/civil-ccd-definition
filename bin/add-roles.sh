@@ -21,7 +21,6 @@
 ./bin/utils/ccd-add-role.sh "RES-SOL-ONE-SPEC-PROFILE"
 ./bin/utils/ccd-add-role.sh "RES-SOL-TWO-UNSPEC-PROFILE"
 ./bin/utils/ccd-add-role.sh "RES-SOL-TWO-SPEC-PROFILE"
-./bin/utils/ccd-add-role.sh "hearing-schedule-access"
 ./bin/utils/ccd-add-role.sh "payment-access"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
