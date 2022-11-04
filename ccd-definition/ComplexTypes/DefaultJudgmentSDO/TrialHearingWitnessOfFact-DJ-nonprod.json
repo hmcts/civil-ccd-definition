@@ -8,7 +8,7 @@
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
-    "ListElementCode": "TextArea",
+    "ListElementCode": "input2",
     "FieldType": "Number",
     "HintText":"Number of witnesses (claimant), e.g. 4",
     "ElementLabel": " ",
@@ -39,7 +39,7 @@
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input6",
-    "FieldType": "TextArea",
+    "FieldType": "Number",
     "HintText":"Number of pages, e.g. 4",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
