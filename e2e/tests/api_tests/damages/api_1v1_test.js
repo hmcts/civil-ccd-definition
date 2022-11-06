@@ -45,7 +45,7 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('Create claim where respondent is litigant in person', async ({I, api}) => {
+Scenario.only('Create claim where respondent is litigant in person', async ({I, api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser);
 });
 
@@ -60,6 +60,6 @@ Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({I,
   await api.resubmitClaim(config.applicantSolicitorUser);
 });
 
-AfterSuite(async  ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async  ({api}) => {
+//   await api.cleanUp();
+// });
