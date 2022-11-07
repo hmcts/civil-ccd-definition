@@ -438,6 +438,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "orderSDODocumentDJCollection",
+    "Label": "View directions order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingDisclosureOfDocumentsDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
