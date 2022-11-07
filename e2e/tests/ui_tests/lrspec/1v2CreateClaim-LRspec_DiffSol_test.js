@@ -38,6 +38,12 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async ()
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
+Scenario('Make a general application', async ({api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  }
+}).retry(3);
+
 Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -63,6 +69,15 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
+}).retry(3);
+
+Scenario('Judge triggers SDO', async ({I, LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.judgeUserWithRegionId1);
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
+    await LRspec.initiateSDO('yes', 'yes', null, null);
+  }
 }).retry(3);
 
 AfterSuite(async  () => {

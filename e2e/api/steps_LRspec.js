@@ -15,11 +15,13 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSp
 const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {checkAccessProfilesIsEnabled} = require('./testingSupport');
+const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
 
 let caseId, eventName;
 let caseData = {};
 
 const data = {
+  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500', 'FEE0442'),
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
@@ -241,6 +243,23 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
+    eventName = 'INITIATE_GENERAL_APPLICATION';
+    caseId = caseId || caseNumber;
+    console.log('caseid is..', caseId);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, caseId);
+
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, caseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, expectedState);
+
+    console.log('General application created for spec claim when main case state is', expectedState);
+    assert.equal(responseBody.callback_response_status_code, 200);
   },
 
   amendRespondent1ResponseDeadline: async (user) => {

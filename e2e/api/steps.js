@@ -20,7 +20,7 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAcces
 const {cloneDeep} = require('lodash');
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
+  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500', 'FEE0442'),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,

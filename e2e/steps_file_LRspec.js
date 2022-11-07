@@ -81,6 +81,12 @@ const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathi
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
 const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDefendantDetailsLRspec.page');
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
+const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeDecided.page');
+const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
+const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
+const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
+const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
+
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
 
@@ -576,6 +582,29 @@ module.exports = function () {
                    await this.takeScreenshot();
       },
 
+    async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
+        eventName = 'Standard Direction Order';
+  
+        await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+        await this.waitForText('Standard Direction Order');
+        await this.triggerStepsWithScreenshot([
+          () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+  
+          ...conditionalSteps(damages, [
+            () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+            ...conditionalSteps(!allocateSmallClaims,[
+              () => sdoOrderTypePage.decideOrderType(orderType)])
+          ]),
+  
+          ...conditionalSteps(trackType, [
+          () => allocateClaimPage.selectTrackType(trackType)]),
+  
+          () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+          () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+          () => event.submit('Submit', 'Your order has been issued')
+        ]);
+    },
+  
     async caseProceedsInCaseman() {
       eventName = 'Case proceeds in Caseman';
 
