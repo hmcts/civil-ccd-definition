@@ -1,8 +1,6 @@
-[
-  {
+{
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "CaseAccessCategory",
   "UserRole": "caseworker-civil-systemupdate",
-  "CRUD": "CRU"
-  }
-]
+  "CRUD": "CRUD"
+}
