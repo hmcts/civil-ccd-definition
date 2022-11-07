@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "HearingSupportRequirementsListDJ",
+    "ListElementCode": "hearingVulnerabilityQuestion",
+    "ElementLabel": "Do you believe you, or a witness who will give evidence on your behalf, are vulnerable?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsListDJ",
+    "ListElementCode": "hearingVulnerabilityAdditional",
+    "ElementLabel": "How are you or the witness vulnerable and what support or adjustments do you want the court to consider?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingVulnerabilityQuestion=\"Yes\""
+  },
+  {
+    "ID": "HearingSupportRequirementsListDJ",
+    "ListElementCode": "hearingSupportQuestion",
+    "ElementLabel": "Does anyone require support for a court hearing?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HearingSupportRequirementsListDJ",
+    "ListElementCode": "hearingSupportAdditional",
+    "ElementLabel": "Please mention the name of a person who needs support and the kind of support they will need in below box. If multiple people need support, then please feel free to add them in the same box.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "hearingSupportQuestion=\"Yes\""
+  }
+]
