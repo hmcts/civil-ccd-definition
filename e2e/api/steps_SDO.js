@@ -6,7 +6,15 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {assert} = chai;
 
-const {createClaimWithRepresentedRespondent, claimantResponse, amendClaimDocuments, notifyClaim, notifyClaimDetails, acknowledgeClaim, defendantResponse} = require('../api/steps.js');
+const {
+  createClaimWithRepresentedRespondent,
+  claimantResponse,
+  amendClaimDocuments,
+  notifyClaim,
+  notifyClaimDetails,
+  acknowledgeClaim,
+  defendantResponse
+} = require('../api/steps.js');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -15,7 +23,6 @@ const claimData = require('../fixtures/events/createClaim.js');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const claimResponse = require('../fixtures/events/claimantResponse');
 const testingSupport = require('./testingSupport');
-
 
 
 let caseId, eventName, responseData;
@@ -39,10 +46,10 @@ const data = {
   ACKNOWLEDGE_CLAIM_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor1.js'),
   ACKNOWLEDGE_CLAIM_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor2.js'),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  DEFENDANT_RESPONSE_SAME_SOLICITOR:  require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
-  DEFENDANT_RESPONSE_SOLICITOR_ONE:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
-  DEFENDANT_RESPONSE_SOLICITOR_TWO:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
-  DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
+  DEFENDANT_RESPONSE_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
+  DEFENDANT_RESPONSE_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
+  DEFENDANT_RESPONSE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
+  DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/defendantResponse_2v1'),
   CLAIMANT_RESPONSE: (mpScenario) => claimResponse.claimantResponse(mpScenario),
 
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
@@ -124,20 +131,24 @@ const eventData = {
 
 module.exports = {
 
-  unspecifiedProcess: async (user1 = config.applicantSolicitorUser, user2 = config.defendantSolicitorUser, scenario = 'ONE_V_ONE') => {
+  unspecifiedProcess: async (user1 = config.applicantSolicitorUser,
+                             user2 = config.defendantSolicitorUser,
+                             scenario = 'ONE_V_ONE') => {
     const createData = claimData.createClaim(scenario);
     delete createData.invalid;
     await createClaimWithRepresentedRespondent(user1, scenario, createData);
     await amendClaimDocuments(config.applicantSolicitorUser);
-    // await notifyClaim(user1, scenario);
-    // await notifyClaimDetails(user1);
-    // await acknowledgeClaim(user2, scenario);
-    // caseId = await defendantResponse(user2, scenario);
-    // await claimantResponse(user1, scenario,'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
+    if (scenario === 'NO_SKIP') {
+      await notifyClaim(user1, scenario);
+      await notifyClaimDetails(user1);
+      await acknowledgeClaim(user2, scenario);
+      caseId = await defendantResponse(user2, scenario);
+      await claimantResponse(user1, scenario, 'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
+    }
   },
 
   defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                            expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
+                                expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -216,7 +227,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-    if(response == 'UNSUITABLE_FOR_SDO'){
+    if (response == 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
       eventName = 'CREATE_SDO';
@@ -246,15 +257,15 @@ module.exports = {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline ={};
-    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    let respondent1deadline = {};
+    respondent1deadline = {'respondent1ResponseDeadline': '2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1deadline);
   },
 
   amendRespondent2ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent2deadline ={};
-    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    let respondent2deadline = {};
+    respondent2deadline = {'respondent2ResponseDeadline': '2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 };
