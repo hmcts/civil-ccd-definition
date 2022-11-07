@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure")
+@Library("Infrastructure@disabledockerstepsifnotneeded")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "java"
