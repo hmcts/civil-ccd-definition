@@ -138,13 +138,11 @@ module.exports = {
     delete createData.invalid;
     await createClaimWithRepresentedRespondent(user1, scenario, createData);
     await amendClaimDocuments(config.applicantSolicitorUser);
-    if (scenario === 'NO_SKIP') {
-      await notifyClaim(user1, scenario);
-      await notifyClaimDetails(user1);
-      await acknowledgeClaim(user2, scenario);
-      caseId = await defendantResponse(user2, scenario);
-      await claimantResponse(user1, scenario, 'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
-    }
+    await notifyClaim(user1, scenario);
+    await notifyClaimDetails(user1);
+    await acknowledgeClaim(user2, scenario);
+    caseId = await defendantResponse(user2, scenario);
+    await claimantResponse(user1, scenario, 'AWAITING_APPLICANT_INTENTION', 'JUDICIAL_REFERRAL');
   },
 
   defendantResponseSPEC: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
