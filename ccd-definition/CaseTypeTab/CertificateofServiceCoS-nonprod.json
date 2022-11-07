@@ -4,7 +4,7 @@
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
-    "CaseFieldID": "cosNotifyClaimDetails1",
+    "CaseFieldID": "cosLabelForClaimant1_1",
     "TabFieldDisplayOrder": 1,
     "_FieldShowCondition": "servedDocumentFiles = \"*\""
   },
@@ -13,8 +13,44 @@
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
-    "CaseFieldID": "cosNotifyClaimDetails2",
+    "CaseFieldID": "cosLabelForDefendant1",
     "TabFieldDisplayOrder": 2,
+    "_FieldShowCondition": "servedDocumentFiles = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDetails1",
+    "TabFieldDisplayOrder": 3,
+    "_FieldShowCondition": "servedDocumentFiles = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForClaimant2_1",
+    "TabFieldDisplayOrder": 4,
+    "_FieldShowCondition": "servedDocumentFiles = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForDefendant2",
+    "TabFieldDisplayOrder": 5,
+    "_FieldShowCondition": "servedDocumentFiles = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDetails2",
+    "TabFieldDisplayOrder": 6,
     "_FieldShowCondition": "servedDocumentFiles = \"*\""
   }
 ]

@@ -3,14 +3,6 @@
     "ID": "Claimant",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "ListElementCode": "cosLabelForDefendant1",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "Claimant",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosNotifyClaimDetails1",
     "ListElementCode": "cosDateOfServiceForDefendant",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -110,14 +102,6 @@
     "CaseFieldID": "cosNotifyClaimDetails1",
     "ListElementCode": "cosSenderTabLabel",
     "PageFieldDisplayOrder": 15,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "Claimant",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosNotifyClaimDetails2",
-    "ListElementCode": "cosLabelForDefendant2",
-    "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
   {

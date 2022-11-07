@@ -2,8 +2,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosNotifyClaimDetails1",
+    "CaseFieldID": "cosLabelForClaimant1_1",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService1",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "cosLabelForDefendant1",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService1",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "cosNotifyClaimDetails1",
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService1",
     "PageLabel": "Certificate Of Service - notify claim details for defendant 1",
@@ -16,8 +38,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosNotifyClaimDetails2",
+    "CaseFieldID": "cosLabelForClaimant2_1",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "cosLabelForDefendant2",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "cosNotifyClaimDetails2",
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService2",
     "PageLabel": "Certificate Of Service - notify claim details for defendant 2",

@@ -1,20 +1,6 @@
 [
   {
     "ID": "NotifyClaimDetailsCoS",
-    "ListElementCode": "cosLabelForDefendant1",
-    "ElementLabel": "Claimant's name - ${applicant1.partyName}<br/> Defendant's name - ${respondent1.partyName}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "NotifyClaimDetailsCoS",
-    "ListElementCode": "cosLabelForDefendant2",
-    "ElementLabel": "Claimant's name - ${applicant1.partyName}<br/> Defendant's name - ${respondent2.partyName}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "NotifyClaimDetailsCoS",
     "ListElementCode": "cosDateOfServiceForDefendant",
     "ElementLabel": "Date you served the claim",
     "FieldType": "Date",
