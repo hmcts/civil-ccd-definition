@@ -7,7 +7,7 @@ const { listElement } = require('./dataHelper');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-
+const {element} = require('../api/dataHelper');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -16,7 +16,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -121,6 +121,7 @@ module.exports = {
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData, '','applicant');
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -830,6 +831,33 @@ function addMidEventFields(pageId, responseBody) {
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+async function replaceLitigantFriendIfHNLFlagDisabled(responseData, solicitor,personType) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  console.log(`Litigation friend selected in Env: ${config.runningEnv}`);
+  if (!isHNLEnabled) {
+    responseData = {
+      ...responseData,
+      valid: {
+        ...responseData.valid,
+        ClaimantLitigationFriend: {
+          applicant1LitigationFriend: {
+            [`${personType}${solicitor === 'solicitorTwo' ? 2 : 1}LitigationFriend`]: {
+              details: [
+                element({
+                  fullName: 'John Doe',
+                  hasSameAddressAsLitigant: 'Yes'
+                })
+              ]
+            }
+          }
+        }
+      }
+    };
+  }
+  return responseData;
 }
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
