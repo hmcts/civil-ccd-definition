@@ -244,7 +244,7 @@ task runDJFunctionalTests(type: Exec, description: 'Runs default judgement funct
  onlyIf {
     return System.env.ENVIRONMENT == 'preview'
   }
-  commandLine '/usr/bin/yarn', '--silent', 'test:api-dj'
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
 }
 
 task demoEnvNonProdFeaturesEnabledFunctionalTests(type: Exec, description: 'Runs Non prod functional tests in demo') {
