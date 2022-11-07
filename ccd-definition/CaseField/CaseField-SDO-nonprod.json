@@ -270,6 +270,7 @@
     "FieldType": "DisposalHearingFinalDisposalHearing",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingEndLine",
@@ -338,6 +339,7 @@
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleStartLine",
@@ -1089,15 +1091,36 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "reasonNotSuitableSDO",
-    "Label": "## What is the reason for not drawing a Standard Directions Order? \n",
+    "Label": "What is the reason for not drawing a Standard Directions Order? \n",
     "FieldType": "ReasonNotSuitableSDO",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unsuitableSDODate",
+    "Label": "SDO unsuitable date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoOrderDocument",
     "Label": "View directions order",
-    "FieldType": "Document",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
 ]
