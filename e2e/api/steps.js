@@ -119,9 +119,11 @@ module.exports = {
 
     let createClaimData = createData || data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
+    console.log('before replace');
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
 
+    console.log('before setup tokens');
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
@@ -763,7 +765,7 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
-  // assert.equal(responseBody.state, expectedState);
+  assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
