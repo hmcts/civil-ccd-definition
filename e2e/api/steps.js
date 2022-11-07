@@ -432,7 +432,7 @@ module.exports = {
       defendantResponseData, solicitor);
 
     // CIV-5514: remove when hnl is live
-    defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, solicitor);
+    defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, true, solicitor);
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
@@ -505,10 +505,14 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+
+    // CIV-5514: remove when hnl is live
+    claimantResponseData = await replaceWitnessIfHNLFlagIsDisabled(claimantResponseData, false);
 
     await validateEventPages(claimantResponseData);
 
@@ -854,17 +858,19 @@ async function updateCaseDataWithPlaceholders(data, document) {
 }
 
 // CIV-5514: remove when hnl is live
-async function replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, solicitor) {
+async function replaceWitnessIfHNLFlagIsDisabled(data, isDefendantResponse, solicitor = "solicitorOne", ) {
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
   console.log(`Witness selected in Env: ${config.runningEnv}`);
   if (!isHNLEnabled) {
-      defendantResponseData = {
-        ...defendantResponseData,
+    const party = `${isDefendantResponse === true ?
+      'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQWitnesses`
+    data = {
+        ...data,
         valid: {
-          ...defendantResponseData.valid,
+          ...data.valid,
           Witnesses: {
-            [`respondent${solicitor === 'solicitorTwo' ? 2 : 1}DQWitnesses`]: {
+            [party]: {
               witnessesToAppear: 'Yes',
               details: [
                 element({
@@ -877,7 +883,7 @@ async function replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, solicito
         }
       };
   }
-  return defendantResponseData;
+  return data;
 }
 
 // CIV-3521: remove when access profiles is live
