@@ -4,17 +4,5 @@
   "CaseFieldID": "CaseAccessCategory",
   "UserRole": "caseworker-civil-systemupdate",
   "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendant1LIPAtClaimIssued",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendant2LIPAtClaimIssued",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]

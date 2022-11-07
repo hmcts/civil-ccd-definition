@@ -1,13 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CaseAccessCategory",
+    "CaseFieldID": "defendant1LIPAtClaimIssued",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "unsuitableSDODate",
+    "CaseFieldID": "defendant2LIPAtClaimIssued",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
