@@ -143,12 +143,6 @@ module.exports = {
     description: 'Not suitable for SDO',
     order: 19
   },
-  REFER_TO_JUDGE: {
-    id: 'REFER_TO_JUDGE',
-    name: 'Refer to judge',
-    description: 'Legal advisor can refer to judge if SDO unsuitable',
-    order: 19
-  },
   CREATE_GENERAL_APPLICATION_CASE: {
     id: 'CREATE_GENERAL_APPLICATION_CASE',
     name: 'Create general application',
