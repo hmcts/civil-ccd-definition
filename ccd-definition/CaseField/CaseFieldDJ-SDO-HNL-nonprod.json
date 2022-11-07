@@ -439,8 +439,9 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "orderSDODocumentDJCollection",
-    "Label": "View directions order",
-    "FieldType": "Document",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
   },
   {

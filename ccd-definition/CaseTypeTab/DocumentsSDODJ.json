@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "TabID": "Documents",
     "TabLabel": "Claim documents",
-    "TabDisplayOrder": 11,
+    "TabDisplayOrder": 10,
     "CaseFieldID": "orderSDODocumentDJCollection",
     "TabFieldDisplayOrder": 3,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
