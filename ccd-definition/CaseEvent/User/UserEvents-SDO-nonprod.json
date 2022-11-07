@@ -61,7 +61,7 @@
     "Name": "Refer to Judge",
     "Description": "Refer to Judge",
     "DisplayOrder": 19,
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "JUDICIAL_REFERRAL",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
