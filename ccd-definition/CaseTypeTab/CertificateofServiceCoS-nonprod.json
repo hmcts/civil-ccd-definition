@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDetails1",
+    "TabFieldDisplayOrder": 1,
+    "_FieldShowCondition": "servedDocumentFiles = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDetails2",
+    "TabFieldDisplayOrder": 2,
+    "_FieldShowCondition": "servedDocumentFiles = \"*\""
+  }
+]
