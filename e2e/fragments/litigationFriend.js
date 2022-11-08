@@ -1,6 +1,6 @@
 const {I} = inject();
 const postcodeLookup = require('./addressPostcodeLookup');
-const {checkToggleEnabled} = require('./../../api/testingSupport');
+const {checkToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
 
