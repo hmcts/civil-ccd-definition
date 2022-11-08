@@ -133,6 +133,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

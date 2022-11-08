@@ -145,6 +145,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "gaDetailsRespondentSolTwo",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "generalAppHearingDetails",
     "Label": "Scheduled hearings and trials",
     "FieldType": "GAHearingDetailsGAspec",
