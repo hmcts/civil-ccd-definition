@@ -137,17 +137,17 @@ module.exports = {
     description: 'Standard Direction Order',
     order: 17
   },
-  CREATE_GENERAL_APPLICATION_CASE: {
-    id: 'CREATE_GENERAL_APPLICATION_CASE',
-    name: 'Create general application',
-    description: 'Create general application',
-    order: null
-  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
     name: 'View and respond to defence',
     order: 7
+  },
+  REFER_TO_JUDGE: {
+    id: 'REFER_TO_JUDGE',
+    name: 'Refer to Judge',
+    description: 'Refer to Judge',
+    order: 19
   },
   INITIATE_GENERAL_APPLICATION: {
     id: 'INITIATE_GENERAL_APPLICATION',
