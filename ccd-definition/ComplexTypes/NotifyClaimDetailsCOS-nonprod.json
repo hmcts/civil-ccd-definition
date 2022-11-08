@@ -89,13 +89,6 @@
   },
   {
     "ID": "NotifyClaimDetailsCoS",
-    "ListElementCode": "cosSenderDeclarationLabel",
-    "ElementLabel": "I believe the facts stated in the application are true",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "NotifyClaimDetailsCoS",
     "ListElementCode": "cosSenderFirm",
     "ElementLabel": "Your firm",
     "FieldType": "Text",
@@ -104,9 +97,11 @@
   },
   {
     "ID": "NotifyClaimDetailsCoS",
-    "ListElementCode": "cosSenderTabLabel",
-    "ElementLabel": "<div class=\"govuk-inset-text\">This information will be display on the Certificate of Service tab</div>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "NotifyClaimStatement",
+    "SecurityClassification": "Public",
+    "Definition":  "Confirm that you believe that the facts stated in the application are true"
   }
 ]

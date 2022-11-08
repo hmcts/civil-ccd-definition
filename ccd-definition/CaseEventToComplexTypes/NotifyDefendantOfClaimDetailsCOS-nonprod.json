@@ -84,14 +84,6 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "ListElementCode": "cosSenderDeclarationLabel",
-    "PageFieldDisplayOrder": 13,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosNotifyClaimDetails1",
     "ListElementCode": "cosSenderFirm",
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
@@ -100,9 +92,9 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "ListElementCode": "cosSenderTabLabel",
+    "ListElementCode": "cosSenderStatementOfTruthLabel",
     "PageFieldDisplayOrder": 15,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Claimant",
@@ -189,14 +181,6 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "ListElementCode": "cosSenderDeclarationLabel",
-    "PageFieldDisplayOrder": 13,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosNotifyClaimDetails2",
     "ListElementCode": "cosSenderFirm",
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
@@ -205,8 +189,8 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "ListElementCode": "cosSenderTabLabel",
+    "ListElementCode": "cosSenderStatementOfTruthLabel",
     "PageFieldDisplayOrder": 15,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   }
 ]
