@@ -30,5 +30,32 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "TabFieldDisplayOrder": 4
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgment",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "caseNameHmctsInternal",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "caseNameHmctsInternal=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgment",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "caseManagementLocation",
+    "TabFieldDisplayOrder": 6,
+    "FieldShowCondition": "caseManagementLocation=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgment",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "caseManagementCategory",
+    "TabFieldDisplayOrder": 7,
+    "FieldShowCondition": "caseManagementCategory=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]
