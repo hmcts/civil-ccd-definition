@@ -6,7 +6,8 @@
       "legal-adviser",
       "admin-access",
       "full-access",
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "payment-access"
     ],
     "CRUD": "CRU"
   },
