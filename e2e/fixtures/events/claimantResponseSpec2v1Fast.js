@@ -49,7 +49,6 @@ module.exports = {
           },
           Language: {
             applicant1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }

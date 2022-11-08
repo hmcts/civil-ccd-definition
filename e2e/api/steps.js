@@ -7,7 +7,7 @@ const { listElement } = require('./dataHelper');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-
+const {element} = require('../api/dataHelper');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -16,7 +16,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -431,6 +431,9 @@ module.exports = {
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
 
+    //Remove after HNL toggle removed
+    defendantResponseData = await replaceLanguageIfHNLFlagDisabled(defendantResponseData, solicitor, 'respondent');
+
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
@@ -505,7 +508,8 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    claimantResponseData = await replaceLanguageIfHNLFlagDisabled(claimantResponseData, '', 'applicant');
 
     await validateEventPages(claimantResponseData);
 
@@ -830,6 +834,32 @@ function addMidEventFields(pageId, responseBody) {
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+async function replaceLanguageIfHNLFlagDisabled(responseData, solicitor, personType) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  console.log(`Pre-HNL Language selected in Env: ${config.runningEnv}`);
+  if (!isHNLEnabled) {
+    responseData = {
+      ...responseData,
+      valid: {
+        ...responseData.valid,
+        Language: {
+          [`${personType}${solicitor}DQLanguage`]: {
+              details: [
+                element({
+                  evidence: 'ENGLISH',
+                  court: 'ENGLISH',
+                  documents: 'ENGLISH'
+                })
+              ]
+          }
+        }
+      }
+    };
+  }
+  return responseData;
 }
 
 function removeUuidsFromDynamicList(data, dynamicListField) {

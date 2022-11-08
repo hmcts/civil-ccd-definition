@@ -142,9 +142,8 @@ module.exports = {
         },
         Language: {
           applicant1DQLanguage: {
-            evidence: 'WELSH',
-              court: 'WELSH',
-              documents: 'WELSH'
+            court: 'WELSH',
+            documents: 'WELSH'
           }
         },
         Hearing: {
