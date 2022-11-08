@@ -3,7 +3,7 @@ const { buildAddress } = require('../../api/dataHelper');
 module.exports = {
   valid: {
     DefendantLitigationFriend: {
-      respondent11LitigationFriend: {
+      respondent1LitigationFriend: {
         firstName: 'Bob',
         lastName: 'the litigant friend',
         emailAddress: 'bobthelitigant@litigants.com',

@@ -564,6 +564,7 @@ module.exports = {
   addDefendantLitigationFriend: async () => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData, '', 'respondent');
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
@@ -833,7 +834,7 @@ function addMidEventFields(pageId, responseBody) {
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
 }
 
-async function replaceLitigantFriendIfHNLFlagDisabled(responseData, solicitor,personType) {
+async function replaceLitigantFriendIfHNLFlagDisabled(responseData, solicitor, personType) {
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
   console.log(`Litigation friend selected in Env: ${config.runningEnv}`);
@@ -842,16 +843,14 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData, solicitor,pe
       ...responseData,
       valid: {
         ...responseData.valid,
-        ClaimantLitigationFriend: {
-          applicant1LitigationFriend: {
-            [`${personType}${solicitor === 'solicitorTwo' ? 2 : 1}LitigationFriend`]: {
-              details: [
-                element({
-                  fullName: 'John Doe',
-                  hasSameAddressAsLitigant: 'Yes'
-                })
-              ]
-            }
+        [`${personType === 'applicant' ? 'Claimant' : 'Defendant'}LitigationFriend`]: {
+          [`${personType}${solicitor === 'solicitorTwo' ? 2 : 1}LitigationFriend`]: {
+            details: [
+              element({
+                fullName: 'John Doe',
+                hasSameAddressAsLitigant: 'Yes'
+              })
+            ]
           }
         }
       }
