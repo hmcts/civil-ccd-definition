@@ -9,7 +9,7 @@
   {
     "ID": "HearingSupportRequirementsListDJ",
     "ListElementCode": "hearingSupportAdditional",
-    "ElementLabel": "Please name all people who need support and the kind of support they will need. For example, Jane Smith : requires wheelchair access.",
+    "ElementLabel": "Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "FieldShowCondition": "hearingSupportQuestion=\"Yes\""
