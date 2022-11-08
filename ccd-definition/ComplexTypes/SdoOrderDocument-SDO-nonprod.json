@@ -2,7 +2,7 @@
   {
     "ID": "SdoOrderDocument",
     "ListElementCode": "sdoOrderDocument",
-    "FieldType": "Document",
+    "FieldType": "CaseDocument",
     "ElementLabel": "Document",
     "SecurityClassification": "Public"
   }
