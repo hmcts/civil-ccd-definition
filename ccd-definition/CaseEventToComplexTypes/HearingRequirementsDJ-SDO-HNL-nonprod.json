@@ -3,20 +3,6 @@
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingVulnerabilityQuestion",
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingVulnerabilityAdditional",
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportQuestion",
     "DisplayContext": "MANDATORY"
   },
