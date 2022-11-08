@@ -130,12 +130,10 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
-    console.log('All pages validated');
     let i;
     if (createClaimData.invalid) {
       if (elvis(createClaimData.invalid, ['Court', 'courtLocation', 'applicantPreferredCourt'])) {
         for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
-          console.log('Asserting error for invalid court');
           await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
             null, 'Case data validation failed');
         }
@@ -738,7 +736,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
-    console.log('After removing ui fields from ' + pageId);
   }
 
   assert.deepEqual(responseBody.data, caseData);
