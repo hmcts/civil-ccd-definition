@@ -119,11 +119,9 @@ module.exports = {
 
     let createClaimData = createData || data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
-    console.log('before replace');
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
 
-    console.log('before setup tokens');
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
@@ -725,6 +723,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
+    console.log("After removing ui fields from " + pageId);
   }
 
   assert.deepEqual(responseBody.data, caseData);
