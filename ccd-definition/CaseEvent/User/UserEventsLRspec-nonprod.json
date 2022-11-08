@@ -20,6 +20,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "CASE_ISSUED_AFTER_FEE_PAID",
+    "Name": "Case issued after payment",
+    "Description": "Move to case issued when fee paid",
+    "DisplayOrder": 2,
+    "PreConditionState": "PENDING_CASE_ISSUED",
+    "PostConditionState": "CASE_ISSUED",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-submit",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "DEFENDANT_RESPONSE_SPEC",
     "Name": "Respond to claim",
     "Description": "Defendant response to Specified claim",
