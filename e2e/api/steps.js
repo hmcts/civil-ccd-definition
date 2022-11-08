@@ -723,7 +723,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
-    console.log("After removing ui fields from " + pageId);
+    console.log('After removing ui fields from ' + pageId);
   }
 
   assert.deepEqual(responseBody.data, caseData);
