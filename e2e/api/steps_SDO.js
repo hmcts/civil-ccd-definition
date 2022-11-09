@@ -224,7 +224,7 @@ module.exports = {
       caseId = informedCaseId;
     }
 
-    console.log('Before tokens')
+    console.log('Before tokens');
     await apiRequest.setupTokens(user);
 
     if (response == 'UNSUITABLE_FOR_SDO') {
@@ -237,11 +237,11 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = eventData['sdoTracks'][response];
 
-    console.log('before validating pages')
+    console.log('before validating pages');
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
-    console.log('after validationg pages')
+    console.log('after validationg pages');
 
     if (response == 'UNSUITABLE_FOR_SDO' && user == config.judgeUser) {
       await assertSubmittedEvent('JUDICIAL_REFERRAL');
