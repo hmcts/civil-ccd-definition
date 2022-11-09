@@ -10,5 +10,17 @@
     "CaseFieldID": "defendant2LIPAtClaimIssued",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosNotifyClaim1",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosNotifyClaim2",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
