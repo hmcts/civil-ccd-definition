@@ -9,14 +9,18 @@ const respondent1 = {
   individualFirstName: 'John',
   individualLastName: 'Doe',
   individualTitle: 'Sir',
-  primaryAddress: buildAddress('respondent')
+  primaryAddress: buildAddress('respondent'),
+  partyEmail: 'johndoe@example.com',
+  partyPhone: '07898678902',
 };
 const respondent2 = {
   type: 'INDIVIDUAL',
   individualFirstName: 'Foo',
   individualLastName: 'Bar',
   individualTitle: 'Dr',
-  primaryAddress: buildAddress('second respondent')
+  primaryAddress: buildAddress('second respondent'),
+  partyEmail: 'foo.bar@example.com',
+  partyPhone: '07898678912',
 };
 const respondent1WithPartyName = {
   ...respondent1,
