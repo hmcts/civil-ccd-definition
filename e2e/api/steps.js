@@ -12,13 +12,16 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled,
+  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
+  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -161,10 +164,13 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
+    let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+      header: isCertificateOfServiceEnabled ? 'Your claim has been received':
+        'Your claim has been received and will progress offline',
+      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment is confirmed.' :
+        'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
 
     await waitForFinishedBusinessProcess(caseId);
@@ -513,15 +519,24 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    // This should be uncommented in ticket CIV-2493
+    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (['preview', 'demo'].includes(config.runningEnv)) {
+      if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
+        if(returnedCaseData.respondent2ClaimResponseType != null) {
+          if(returnedCaseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
-
+        } else {
+        validState = 'JUDICIAL_REFERRAL';
+        }
+      }
+    }*/
+/*
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
-    });
+    });*/
 
     await waitForFinishedBusinessProcess(caseId);
     if (!expectedCcdState) {
@@ -529,6 +544,23 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
+  },
+
+  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
+    eventName = 'INITIATE_GENERAL_APPLICATION';
+    caseId = caseId || caseNumber;
+    console.log('caseid is..', caseId);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, caseId);
+
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, caseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, expectedState);
+
+    console.log('General application created when main case state is', expectedState);
+    assert.equal(responseBody.callback_response_status_code, 200);
   },
 
   //TODO this method is not used in api tests
