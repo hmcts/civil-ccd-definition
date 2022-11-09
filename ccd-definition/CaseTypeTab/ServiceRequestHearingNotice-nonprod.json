@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "casePaymentWaysToPay",
+    "TabFieldDisplayOrder": 1
+  }
+]
