@@ -4,7 +4,7 @@ Feature('CCD 1v1 API test @api-sdo');
 
 Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api_sdo}) => {
   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-  // await api_sdo.createSDO(null, config.judgeUser);
+  await api_sdo.createSDO(null, config.judgeUser);
 });
 
 // skipped because Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
