@@ -1,0 +1,96 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "defendant1LIPAtClaimIssued",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CertificateOfService1",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "cosLabelForClaimant1_1=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosLabelForClaimant1_1",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService1",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosLabelForDefendant1",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService1",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosNotifyClaim1",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "CertificateOfService1",
+    "PageLabel": "Certificate Of Service - notify claim details for defendant 1",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos1",
+    "RetriesTimeoutURLMidEvent": 0,
+    "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "defendant2LIPAtClaimIssued",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CertificateOfService2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "cosLabelForClaimant2_1=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosLabelForClaimant2_1",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosLabelForDefendant2",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "CertificateOfService2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "_PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosNotifyClaim2",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "CertificateOfService2",
+    "PageLabel": "Certificate Of Service - notify claim details for defendant 2",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos2",
+    "RetriesTimeoutURLMidEvent": 0,
+    "_PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
+  }
+]

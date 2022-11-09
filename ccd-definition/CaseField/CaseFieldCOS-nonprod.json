@@ -12,5 +12,55 @@
     "Label": "Is defendant 2 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaim1",
+    "Label": " ",
+    "FieldType": "NotifyClaimCoS",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaim2",
+    "Label": " ",
+    "FieldType": "NotifyClaimCoS",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant1",
+    "Label": "Claimant's name - ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant1_1",
+    "Label": "Claimant's name - ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant2_1",
+    "Label": "Claimant's name - ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant1",
+    "Label": "Defendant's name - ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant2",
+    "Label": "Defendant's name - ${respondent2.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
+
