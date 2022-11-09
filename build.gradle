@@ -201,6 +201,7 @@ jar {
 task highLevelDataSetup(type: JavaExec) {
   main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
+  args = ['PREVIEW']
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
 
@@ -247,6 +248,13 @@ task runDJFunctionalTests(type: Exec, description: 'Runs default judgement funct
   commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
 }
 
+task runSDOAPIFunctionalTests(type: Exec, description: 'Runs SDO functional tests.') {
+  onlyIf {
+    return System.env.ENVIRONMENT == 'preview'
+  }
+  commandLine '/usr/bin/yarn', '--silent', 'test:api-sdo'
+}
+
 task demoEnvNonProdFeaturesEnabledFunctionalTests(type: Exec, description: 'Runs Non prod functional tests in demo') {
   commandLine '/usr/bin/yarn', '--silent', 'test:DemoFunctional'
 }
@@ -271,7 +279,8 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity,
+    runSDOAPIFunctionalTests, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport

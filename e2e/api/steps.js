@@ -111,13 +111,13 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, createData) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario);
+    let createClaimData = createData || data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
@@ -127,12 +127,19 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     let i;
-    for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
-      await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
-        null, 'Case data validation failed');
+    if (createClaimData.invalid) {
+      if (elvis(createClaimData.invalid, ['Court', 'courtLocation', 'applicantPreferredCourt'])) {
+        for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
+          await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
+            null, 'Case data validation failed');
+        }
+      }
+      if (elvis(createClaimData.invalid, ['Upload', 'servedDocumentFiles', 'particularsOfClaimDocument'])) {
+        await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles
+            .particularsOfClaimDocument,
+          null, 'Case data validation failed');
+      }
     }
-    await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
-      null, 'Case data validation failed');
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
@@ -490,6 +497,7 @@ module.exports = {
 
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
+    return caseId;
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
@@ -836,6 +844,24 @@ function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
   // eslint-disable-next-line no-unused-vars
   return dynamicElements.map(({code, ...item}) => item);
+}
+
+/**
+ * named after the elvis operator.
+ *
+ * @param object an object
+ * @param names a list of strings with names of properties
+ * @return object[property1][property2]...[propertyN] if at no point in that chain the result is null or undefined,
+ * null otherwise
+ */
+function elvis(object, names) {
+  let current = object;
+  let toCheck = names;
+  while (current && toCheck && toCheck.length > 0) {
+    current = current[toCheck[0]];
+    toCheck = toCheck.shift();
+  }
+  return current;
 }
 
 async function updateCaseDataWithPlaceholders(data, document) {
