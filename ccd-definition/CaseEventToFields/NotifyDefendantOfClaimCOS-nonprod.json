@@ -19,7 +19,7 @@
     "PageID": "CertificateOfService1",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
+    "PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -66,7 +66,7 @@
     "PageID": "CertificateOfService2",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
+    "PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
