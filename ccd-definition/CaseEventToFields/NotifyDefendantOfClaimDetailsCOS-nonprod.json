@@ -2,73 +2,91 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "cosLabelForClaimant1_1",
+    "CaseFieldID": "defendant1LIPAtClaimIssued",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CertificateOfService1",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "cosLabelForClaimant1_1=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "cosLabelForClaimant1_1",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosLabelForDefendant1",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService1",
     "PageLabel": "Certificate Of Service - notify claim details for defendant 1",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos1",
-    "RetriesTimeoutURLMidEvent": 0,
-    "_PageShowCondition": "claimStarted=\"Yes\""
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "defendant2LIPAtClaimIssued",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CertificateOfService2",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "cosLabelForClaimant2_1=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosLabelForClaimant2_1",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "CertificateOfService2",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosLabelForDefendant2",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "CertificateOfService2",
-    "PageDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService2",
     "PageLabel": "Certificate Of Service - notify claim details for defendant 2",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos2",
-    "RetriesTimeoutURLMidEvent": 0,
-    "_PageShowCondition": "claimStarted=\"Yes\""
+    "RetriesTimeoutURLMidEvent": 0
   }
 ]
