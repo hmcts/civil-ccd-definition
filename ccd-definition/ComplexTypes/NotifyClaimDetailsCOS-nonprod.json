@@ -2,7 +2,7 @@
   {
     "ID": "NotifyClaimDetailsCoS",
     "ListElementCode": "cosDateOfServiceForDefendant",
-    "ElementLabel": "Date you served the claim",
+    "ElementLabel": "Date you served the documents",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Definition":  "Enter the date you served the documents"
