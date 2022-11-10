@@ -227,14 +227,22 @@ module.exports = {
     console.log('Before tokens');
     await apiRequest.setupTokens(user);
 
-    if (response == 'UNSUITABLE_FOR_SDO') {
+    if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }
 
-    console.log('Before get data claim ' + caseId);
+    console.log('Before get data claim ' + caseId + ' for event ' + eventName);
     caseData = await apiRequest.startEvent(eventName, caseId);
+    console.log('case data obtained');
+    console.log('event data sdoTracks exists ' + !!(eventData['sdoTracks']));
+    console.log('response is ' + response);
+    if (eventData['sdoTracks']) {
+      console.log('sdo tracks '+ response + ' does not exist');
+    } else {
+      console.log('sdo tracks response does not exist');
+    }
     let disposalData = eventData['sdoTracks'][response];
 
     console.log('before validating pages');
