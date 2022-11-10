@@ -26,7 +26,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CASE_ISSUED_AFTER_FEE_PAID",
+    "CaseEventID": "CREATE_CLAIM_SPEC_AFTER_PAYMENT",
     "AccessControl": [
       {
         "UserRoles": [
@@ -36,8 +36,12 @@
       },
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
