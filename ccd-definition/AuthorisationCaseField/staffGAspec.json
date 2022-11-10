@@ -127,6 +127,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

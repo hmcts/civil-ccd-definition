@@ -1,13 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "Applications",
+    "TabID": "ApplicationsJudge",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
-      "APP-SOL-UNSPEC-PROFILE"
+      "judge-profile"
     ],
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "gaDetailsMasterCollection",
     "TabFieldDisplayOrder": 1
   }
 ]

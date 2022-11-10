@@ -73,6 +73,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

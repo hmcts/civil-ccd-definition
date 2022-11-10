@@ -79,6 +79,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
