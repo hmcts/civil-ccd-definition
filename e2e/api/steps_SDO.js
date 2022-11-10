@@ -243,13 +243,13 @@ module.exports = {
     }
     console.log('after validationg pages');
 
-    if (response == 'UNSUITABLE_FOR_SDO' && user == config.judgeUser) {
+    if (response == 'UNSUITABLE_FOR_SDO' && user == config.judgeUserWithRegionId1) {
       await assertSubmittedEvent('JUDICIAL_REFERRAL');
       await waitForFinishedBusinessProcess(caseId);
       const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
       assert.equal(caseForDisplay.state.id, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     } else if (response == 'UNSUITABLE_FOR_SDO') {
-      await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUser);
+      await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUserWithRegionId1);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION');
     }

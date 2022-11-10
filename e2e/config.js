@@ -52,13 +52,6 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
-  judgeUser: {
-    password: defaultPassword,
-    email: 'judge-civil-02@example.com',
-    type: 'judge',
-    roleCategory: 'JUDICIAL',
-    regionId: '1'
-  },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
     email: '4917924EMP-@ejudiciary.net',
