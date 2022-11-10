@@ -92,7 +92,8 @@ civil-general-applications:
           - sendgrid-api-key
           - robotics-notification-sender
           - robotics-notification-recipient
-          - launch-darkly-sdk-key
+          - name: launch-darkly-sdk-key-non-prod
+            alias: launch-darkly-sdk-key
           - robotics-notification-multipartyrecipient
     environment:
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
