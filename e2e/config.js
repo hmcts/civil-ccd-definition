@@ -21,7 +21,7 @@ module.exports = {
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
+    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
   },
   s2s: {
@@ -52,13 +52,21 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
-  judgeUserWithRegionId1: {
-    password: judgeDefaultPassword,
-    email: '4917924EMP-@ejudiciary.net',
-    type: 'judge',
-    roleCategory: 'JUDICIAL',
-    regionId: '1'
-  },
+  judgeUserWithRegionId1:
+  // local env does not have the same users than preview/demo/etc
+    process.env.ENVIRONMENT ? {
+      password: judgeDefaultPassword,
+      email: '4917924EMP-@ejudiciary.net',
+      type: 'judge',
+      roleCategory: 'JUDICIAL',
+      regionId: '1'
+    } : {
+      password: defaultPassword,
+      email: 'judge-civil-02@example.com',
+      type: 'judge',
+      roleCategory: 'JUDICIAL',
+      regionId: '1'
+    },
   judgeUserWithRegionId2: {
     password: judgeDefaultPassword,
     email: '4915631EMP-@ejudiciary.net',
@@ -97,7 +105,7 @@ module.exports = {
     caseType: 'CIVIL',
   },
   waTaskIds: {
-    judgeUnspecDJTask :'summaryJudgmentDirections',
+    judgeUnspecDJTask: 'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
@@ -107,10 +115,10 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  claimantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  defendantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
-  djClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
-  sdoJudgeSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
+  djClaimantSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  djJudgeClaimantSelectedCourt: 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
+  sdoJudgeSelectedCourt: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
 };
