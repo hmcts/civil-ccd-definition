@@ -208,7 +208,8 @@ module.exports = {
             date1: date(1),
             date2: date(1),
             input2: 'string',
-            input3: 'string'
+            input3: 'string',
+            type: ['DOCUMENTS']
           },
           fastTrackMethod: 'fastTrackMethodTelephoneHearing',
           fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
@@ -363,6 +364,7 @@ module.exports = {
         },
         ClaimsTrack: {
           claimsTrack: 'fastTrack',
+          drawDirectionsOrderSmallClaims: 'No',
           fastClaims: [
             'fastClaimBuildingDispute',
             'fastClaimClinicalNegligence',
@@ -372,6 +374,9 @@ module.exports = {
             'fastClaimPersonalInjury',
             'fastClaimRoadTrafficAccident'
           ]
+        },
+        OrderType: {
+          orderType: 'DECIDE_DAMAGES'
         },
         FastTrack: {
           fastTrackJudgesRecital: {
@@ -412,7 +417,8 @@ module.exports = {
             date1: date(1),
             date2: date(1),
             input2: 'string',
-            input3: 'string'
+            input3: 'string',
+            type: ['DOCUMENTS']
           },
           fastTrackMethod: 'fastTrackMethodTelephoneHearing',
           fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
