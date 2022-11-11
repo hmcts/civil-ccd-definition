@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "TrialHearingHearingNotesDJ",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingHearingNotesDJ",
+    "ListElementCode": "input",
+    "FieldType": "TextArea",
+    "ElementLabel": "This is only seen by the listing officer.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingHearingNotesDJ",
+    "ListElementCode": "line",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
+  }
+]
