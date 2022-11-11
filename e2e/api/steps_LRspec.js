@@ -460,7 +460,14 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  assert.deepEqual(responseBody.data, caseData);
+  
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  } 
+  catch(err) {
+    console.log('Valid data is failed with mismatch ..', err);
+    throw err;
+  }
 };
 
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
