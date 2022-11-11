@@ -1,0 +1,36 @@
+[
+  {
+    "ID": "GAHearingDateGAspec",
+    "ListElementCode": "hearingScheduledPreferenceYesNoLabel",
+    "FieldType": "Label",
+    "FieldTypeParameter": "GAHearingScheduleGAspec",
+    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Is there a hearing scheduled related to this application?</p>",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDateGAspec",
+    "ListElementCode": "hearingScheduledPreferenceYesNo",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "GAHearingScheduleGAspec",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDateGAspec",
+    "ListElementCode": "hearingScheduledDateLabel",
+    "FieldType": "Label",
+    "FieldTypeParameter": "GAHearingScheduleGAspec",
+    "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
+    "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Please provide the hearing dates.</p>",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAHearingDateGAspec",
+    "ListElementCode": "hearingScheduledDate",
+    "FieldType": "Date",
+    "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
+    "ElementLabel": " ",
+    "HintText": "If there are multiple hearings, then please select the earliest date.",
+    "SecurityClassification": "Public"
+  }
+]
