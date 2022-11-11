@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disclosureLabel",
-    "Label": "You can select more than one type of document \n\n\n ## Disclosure",
+    "Label": "You can select more than one type of documen1t \n\n\n ## Disclosure",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -82,7 +82,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleText",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -141,14 +141,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialLabelSmallClaim",
-    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities.",
+    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities and Costs.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleTextSmallClaim",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -266,7 +266,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentUploadTrial3",
-    "Label": "Authorities",
+    "Label": "Authorities and Costs",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentUploadTrial3",
     "SecurityClassification": "Public"
@@ -369,7 +369,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleTextRes",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -428,14 +428,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialLabelSmallClaimRes",
-    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities.",
+    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities and Costs.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleTextSmallClaimRes",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -553,7 +553,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentUploadTrial3Res",
-    "Label": "Authorities",
+    "Label": "Authorities and Costs",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentUploadTrial3",
     "SecurityClassification": "Public"
@@ -656,7 +656,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleTextOther",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -715,14 +715,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialLabelSmallClaimOther",
-    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities.",
+    "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities and Costs.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleTextSmallClaimOther",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -840,7 +840,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentUploadTrial3Other",
-    "Label": "Authorities",
+    "Label": "Authorities and Costs",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentUploadTrial3",
     "SecurityClassification": "Public"
