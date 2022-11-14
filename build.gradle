@@ -133,7 +133,13 @@ allprojects {
       ) {
         entry 'spring-cloud-starter-openfeign'
       }
-
+      // CVE-2020-15250
+      dependencySet(
+        group: 'junit',
+        version: '4.13.1'
+      ) {
+        entry 'junit'
+      }
     }
   }
   repositories {
@@ -338,7 +344,7 @@ dependencies {
   // prevent CVE-2020-0187
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
   // prevent CVE-2022-22978
-  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.2'
+  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.5'
 }
 
 wrapper {
