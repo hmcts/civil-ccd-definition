@@ -728,7 +728,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     assert.deepEqual(responseBody.data, caseData);
   } 
   catch(err) {
-    console.log('Valid data is failed with mismatch ..', err);
+    console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
   }
 };
