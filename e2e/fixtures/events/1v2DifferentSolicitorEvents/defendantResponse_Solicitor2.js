@@ -85,7 +85,6 @@ module.exports = {
     },
     Language: {
       respondent2DQLanguage: {
-        evidence: 'WELSH',
         court: 'WELSH',
         documents: 'WELSH'
       }
