@@ -61,6 +61,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosLabelDef1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosLabelDef2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "cosLabelForDefendant2",
     "AccessControl": [
       {
