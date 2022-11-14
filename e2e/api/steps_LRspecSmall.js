@@ -11,8 +11,9 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require("../helpers/hnlFeatureHelper");
 
 let caseId, eventName;
 let caseData = {};
@@ -117,6 +118,14 @@ module.exports = {
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo'
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+        defendantResponseData, solicitor);
+    }
+
     caseData = returnedCaseData;
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -145,6 +154,13 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE();
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+        claimantResponseData);
+    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);

@@ -71,7 +71,6 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -243,7 +242,6 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -396,7 +394,6 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }

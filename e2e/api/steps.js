@@ -16,7 +16,8 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
+const {replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -431,6 +432,13 @@ module.exports = {
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
 
+// ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
+        defendantResponseData, solicitor);
+    }
+
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
@@ -505,7 +513,14 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
+        claimantResponseData);
+    }
 
     await validateEventPages(claimantResponseData);
 
