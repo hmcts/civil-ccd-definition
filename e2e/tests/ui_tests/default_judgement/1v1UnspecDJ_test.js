@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 const testingSupport = require('../../../api/testingSupport.js');
 let caseId;
 
-Feature('1v1 Unspec defaultJudgement @zakiTest');
+Feature('1v1 Unspec defaultJudgement');
 
 Scenario('DefaultJudgement @create-claim @e2e-dj-1v1 @e2e-wa', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
