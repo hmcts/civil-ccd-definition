@@ -20,7 +20,7 @@
     "PageID": "SelectDefendantSolicitor",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "respondent2SameLegalRepresentative=\"No\" AND defendant1LIPAtClaimIssued=\"No\" AND defendant2LIPAtClaimIssued!=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
