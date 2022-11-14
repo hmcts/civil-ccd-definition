@@ -35,6 +35,7 @@
     "test:nightly-multiparty": "MOCHAWESOME_REPORTFILENAME=nightly-multiparty npx codeceptjs run --grep '@e2e-nightly' --reporter mocha-multi --verbose",
     "test:rpa": "MOCHAWESOME_REPORTFILENAME=rpa npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
     "test:rpa-spec": "MOCHAWESOME_REPORTFILENAME=rpa-spec npx codeceptjs run --grep @rpa-handoff-tests-spec --reporter mocha-multi --verbose",
+    "test:zakiTest": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @zakiTest --reporter mocha-multi --verbose",
     "test:crossbrowser-e2e": "MOCHAWESOME_REPORTFILENAME=crossbrowser codeceptjs run-multiple --grep @cross-browser-tests ${BROWSER_GROUP:-'--all'} -c saucelabs.conf.js --reporter mocha-multi",
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
     "test:AATFunctional": "./e2e/run-prod-functional-tests.sh",

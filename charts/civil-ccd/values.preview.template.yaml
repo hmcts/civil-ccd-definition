@@ -26,6 +26,7 @@ postgresql:
 civil-service:
   java:
     imagePullPolicy: Always
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1724'
     ingressHost: ${SERVICE_FQDN}
     keyVaults:
       civil:
