@@ -2,7 +2,7 @@
   {
     "ID": "NotifyClaimCoS",
     "ListElementCode": "cosDateOfServiceForDefendant",
-    "ElementLabel": "Date you served the claim",
+    "ElementLabel": "Date you served the documents",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Definition":  "Enter the date you served the documents"
@@ -14,15 +14,6 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Definition":  "Enter details of the documents you served"
-  },
-  {
-    "ID": "NotifyClaimCoS",
-    "ListElementCode": "cosEvidenceDocument",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "ElementLabel": "Supporting evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -45,7 +36,7 @@
   {
     "ID": "NotifyClaimCoS",
     "ListElementCode": "cosRecipientServeLocation",
-    "ElementLabel": "Where did you serve the documents?",
+    "ElementLabel": "How did you serve the documents?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Definition":  "Enter the details of where you served the documents",
@@ -89,13 +80,6 @@
   },
   {
     "ID": "NotifyClaimCoS",
-    "ListElementCode": "cosSenderDeclarationLabel",
-    "ElementLabel": "I believe the facts stated in the application are true",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "NotifyClaimCoS",
     "ListElementCode": "cosSenderFirm",
     "ElementLabel": "Your firm",
     "FieldType": "Text",
@@ -104,9 +88,11 @@
   },
   {
     "ID": "NotifyClaimCoS",
-    "ListElementCode": "cosSenderTabLabel",
-    "ElementLabel": "<div class=\"govuk-inset-text\">This information will be display on the Certificate of Service tab</div>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "NotifyClaimStatement",
+    "SecurityClassification": "Public",
+    "Definition":  "Confirm that you believe that the facts stated in the application are true"
   }
 ]

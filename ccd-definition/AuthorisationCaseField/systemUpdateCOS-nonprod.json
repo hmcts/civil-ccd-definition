@@ -13,13 +13,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaim1",
+    "CaseFieldID": "CosNotifyClaimDefendant1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaim2",
+    "CaseFieldID": "cosNotifyClaimDefendant2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaim1",
+    "CaseFieldID": "CosNotifyClaimDefendant1",
     "AccessControl": [
       {
         "UserRoles": [
@@ -49,7 +49,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaim2",
+    "CaseFieldID": "cosNotifyClaimDefendant2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -73,7 +73,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosLabelForClaimant2_1",
+    "CaseFieldID": "cosLabelForDefendant1",
     "AccessControl": [
       {
         "UserRoles": [
@@ -85,7 +85,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosLabelForDefendant1",
+    "CaseFieldID": "cosLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosLabelDef1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosLabelDef2",
     "AccessControl": [
       {
         "UserRoles": [
