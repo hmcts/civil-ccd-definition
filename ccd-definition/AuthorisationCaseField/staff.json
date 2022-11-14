@@ -739,12 +739,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "unsuitableSDODate",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimDismissedDate",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"

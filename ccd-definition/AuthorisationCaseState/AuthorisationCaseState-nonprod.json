@@ -142,6 +142,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
@@ -174,6 +175,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
@@ -195,6 +197,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"

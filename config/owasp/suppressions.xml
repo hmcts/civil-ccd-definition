@@ -10,12 +10,10 @@
     <cve>CVE-2018-1000180</cve>
     <cve>CVE-2020-25649</cve>
     <cve>CVE-2018-1000873</cve>
-    <cve>CVE-2020-15250</cve>
     <cve>CVE-2020-9488</cve>
     <cve>CVE-2017-18640</cve>
     <cve>CVE-2020-5398</cve>
     <cve>CVE-2018-15756</cve>
-    <cve>CVE-2021-42550</cve>
     <cve>CVE-2021-44228</cve>
     <cve>CVE-2021-44832</cve>
     <cve>CVE-2021-45046</cve>
@@ -24,26 +22,17 @@
     <cve>CVE-2021-44832</cve>
     <cve>CVE-2021-45046</cve>
     <cve>CVE-2021-45105</cve>
-    <cve>CVE-2022-22965</cve>
-    <cve>CVE-2022-22968</cve>
     <cve>CVE-2020-15522</cve>
     <cve>CVE-2016-1000027</cve>
     <cve>CVE-2022-27772</cve>
     <cve>CVE-2020-5412</cve>
     <cve>CVE-2019-3795</cve>
     <cve>CVE-2020-5408</cve>
-    <cve>CVE-2021-22060</cve>
-    <cve>CVE-2021-22096</cve>
-    <cve>CVE-2022-22950</cve>
-    <cve>CVE-2021-22118</cve>
     <cve>CVE-2021-22119</cve>
-    <cve>CVE-2022-22970</cve>
-    <cve>CVE-2022-22971</cve>
     <cve>CVE-2022-22978</cve>
     <cve>CVE-2022-33915</cve>
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
-    <cve>CVE-2022-25857</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
@@ -82,5 +71,23 @@
     <packageUrl regex="true">^pkg:npm/file-type@7.7.1</packageUrl>
     <cve>CVE-2022-36313</cve>
     <vulnerabilityName>1081704</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+    Risk of DoS if used to parse user-inputted yml file
+    ]]></notes>
+    <cve>CVE-2022-38752</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+    Supposedly a false positive for 3.0.4
+    ]]></notes>
+    <cve>1084765</cve>
+  </suppress>
+  <suppress until="2022-10-10">
+    <cve>CVE-2022-42003</cve>
+  </suppress>
+  <suppress until="2022-10-10">
+    <cve>CVE-2022-42004</cve>
   </suppress>
  </suppressions>
