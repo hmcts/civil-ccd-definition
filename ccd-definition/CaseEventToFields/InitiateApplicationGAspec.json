@@ -19,7 +19,8 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-validate-type"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -27,7 +28,7 @@
     "CaseFieldID": "generalAppRespondentAgreement",
     "DisplayContext": "COMPLEX",
     "PageID": "GARespondentAgreementPage",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -39,7 +40,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "GAUrgencyRecordPage",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-validate-urgency-date",
     "ShowSummaryChangeOption": "Y"
@@ -51,7 +52,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "GAWithOrWithoutNoticePage",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -63,7 +64,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-fees-and-pba"
@@ -75,7 +76,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -86,7 +87,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -98,7 +99,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -110,7 +111,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -122,7 +123,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -134,7 +135,7 @@
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
@@ -146,7 +147,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "HearingDetails",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ga-hearing-screen-validation",
     "ShowSummaryChangeOption": "Y"
@@ -157,7 +158,7 @@
     "CaseFieldID": "generalAppPBADetails",
     "DisplayContext": "COMPLEX",
     "PageID": "GAPBADetailsGAspec",
-    "PageDisplayOrder": 7,
+    "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"

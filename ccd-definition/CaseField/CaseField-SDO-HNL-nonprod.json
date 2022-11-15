@@ -251,7 +251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
-    "Label": "## Final disposal hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -268,6 +268,13 @@
     "ID": "disposalHearingFinalDisposalHearing",
     "Label": " ",
     "FieldType": "DisposalHearingFinalDisposalHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingTime",
+    "Label": " ",
+    "FieldType": "DisposalHearingHearingTime",
     "SecurityClassification": "Public"
   },
   {
@@ -336,6 +343,34 @@
     "ID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesTitle",
+    "Label": "## Hearing notes",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotes",
+    "Label": "This is only seen by the listing officer",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalOrderWithoutHearing",
+    "Label": " ",
+    "FieldType": "DisposalOrderWithoutHearing",
     "SecurityClassification": "Public"
   },
   {
@@ -506,7 +541,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsHearingTitle",
-    "Label": "## Hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -647,8 +682,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
-    "Label": "Notes",
+    "Label": "The Order has been made without a hearing",
     "FieldType": "SmallClaimsNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "SDOHearingNotes",
     "SecurityClassification": "Public"
   },
   {
@@ -935,7 +977,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackTrialTitle",
-    "Label": "## Trial",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -952,6 +994,13 @@
     "ID": "fastTrackTrial",
     "Label": " ",
     "FieldType": "FastTrackTrial",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHearingTime",
+    "Label": " ",
+    "FieldType": "FastTrackHearingTime",
     "SecurityClassification": "Public"
   },
   {
@@ -1024,6 +1073,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "FastTrackHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackOrderWithoutJudgement",
+    "Label": "This Order has been made without hearing",
+    "FieldType": "FastTrackOrderWithoutJudgement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "fastTrackBuildingDispute",
     "Label": "Building dispute",
     "FieldType": "FastTrackBuildingDispute",
@@ -1089,15 +1152,22 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "reasonNotSuitableSDO",
-    "Label": "## What is the reason for not drawing a Standard Directions Order? \n",
+    "Label": "What is the reason for not drawing a Standard Directions Order? \n",
     "FieldType": "ReasonNotSuitableSDO",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unsuitableSDODate",
+    "Label": "SDO unsuitable date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoOrderDocument",
     "Label": "View directions order",
-    "FieldType": "Document",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   },
   {

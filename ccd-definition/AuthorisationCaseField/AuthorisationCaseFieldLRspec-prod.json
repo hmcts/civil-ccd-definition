@@ -3112,11 +3112,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "superClaimType",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
   }
 ]

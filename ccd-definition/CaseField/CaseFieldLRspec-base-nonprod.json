@@ -1,6 +1,20 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired2",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
