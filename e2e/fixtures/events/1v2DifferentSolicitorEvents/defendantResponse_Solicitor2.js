@@ -121,7 +121,12 @@ module.exports = {
         requestHearingAtSpecificCourt: 'Yes'
       }
     },
-    HearingSupport: {},
+    HearingSupport: {
+      respondent2DQHearingSupport: {
+        supportRequirements: 'Yes',
+        supportRequirementsAdditional: 'Additional support reasons'
+      }
+    },
     VulnerabilityQuestions: {
       respondent2DQVulnerabilityQuestions: {
         vulnerabilityAdjustmentsRequired: 'Yes',

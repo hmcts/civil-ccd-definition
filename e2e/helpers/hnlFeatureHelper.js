@@ -5,6 +5,7 @@ module.exports = {
         ...defendantResponseData,
         valid: {
           ...defendantResponseData.valid,
+          HearingSupport: {},
           Language: {
             respondent2DQLanguage: {
               evidence: 'WELSH',
@@ -19,6 +20,7 @@ module.exports = {
         ...defendantResponseData,
         valid: {
           ...defendantResponseData.valid,
+          HearingSupport: {},
           Language: {
             respondent1DQLanguage: {
               evidence: 'WELSH',
@@ -36,6 +38,7 @@ module.exports = {
         ...claimantResponseData,
         valid: {
           ...claimantResponseData.valid,
+          HearingSupport: {},
           Language: {
             applicant1DQLanguage: {
               evidence: 'WELSH',
@@ -52,6 +55,7 @@ module.exports = {
       ...claimantResponseData,
       userInput: {
         ...claimantResponseData.userInput,
+        HearingSupport: {},
         Language: {
           applicant1DQLanguage: {
             evidence: 'WELSH',
@@ -69,6 +73,7 @@ module.exports = {
         ...defendantResponseData,
         userInput: {
           ...defendantResponseData.userInput,
+          HearingSupport: {},
           Language: {
             respondent2DQLanguage: {
               evidence: 'WELSH',
@@ -83,6 +88,7 @@ module.exports = {
         ...defendantResponseData,
         userInput: {
           ...defendantResponseData.userInput,
+          HearingSupport: {},
           Language: {
             respondent1DQLanguage: {
               evidence: 'WELSH',

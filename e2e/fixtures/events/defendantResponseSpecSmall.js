@@ -53,6 +53,12 @@ module.exports = {
             reasonForHearingAtSpecificCourt: 'Reasons'
           }
         },
+        HearingSupport: {
+          respondent1DQHearingSupport: {
+            supportRequirements: 'Yes',
+            supportRequirementsAdditional: 'Additional support reasons'
+          }
+        },
         VulnerabilityQuestions: {
           respondent1DQVulnerabilityQuestions: {
             vulnerabilityAdjustmentsRequired: 'No'

@@ -166,7 +166,12 @@ module.exports = {
               document_filename: '${TEST_DOCUMENT_FILENAME}'
           }
         },
-        HearingSupport: {},
+        HearingSupport: {
+            applicant1DQHearingSupport: {
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
+            }
+        },
         VulnerabilityQuestions: {
           applicant1DQVulnerabilityQuestions: {
             vulnerabilityAdjustmentsRequired: 'Yes',

@@ -67,10 +67,8 @@ module.exports = {
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -218,14 +216,14 @@ module.exports = {
           },
           RepaymentPlan: {
             respondent1RepaymentPlan: {
-              firstRepaymentDate: '2022-11-11',
+              firstRepaymentDate: '2022-11-15',
               paymentAmount: '100',
               repaymentFrequency: 'ONCE_ONE_MONTH'
             }
           },
           RepaymentPlanRespondent2: {
             respondent2RepaymentPlan: {
-              firstRepaymentDate: '2022-11-11',
+              firstRepaymentDate: '2022-11-15',
               paymentAmount: '200',
               repaymentFrequency: 'ONCE_TWO_WEEKS'
             }
@@ -328,10 +326,8 @@ module.exports = {
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -472,10 +468,8 @@ module.exports = {
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
