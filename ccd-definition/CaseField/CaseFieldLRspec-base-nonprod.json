@@ -1,13 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "superClaimType",
-    "Label": "Total Interest",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
