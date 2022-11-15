@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingSupportQuestion",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingSupportAdditional",
+    "DisplayContext": "MANDATORY"
+  }
+]
