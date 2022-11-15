@@ -195,6 +195,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "superClaimType",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimInterestLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CR"

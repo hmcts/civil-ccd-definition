@@ -2,5 +2,5 @@
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "CaseAccessCategory",
   "UserRole": "caseworker-civil-systemupdate",
-  "CRUD": "R"
+  "CRUD": "CRUD"
 }

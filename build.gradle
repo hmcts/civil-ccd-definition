@@ -70,6 +70,12 @@ allprojects {
   dependencyManagement {
     dependencies {
       dependencySet(
+        group: 'com.google.guava',
+        version: '31.1-jre'
+      ) {
+        entry 'guava'
+      }
+      dependencySet(
         group: 'com.fasterxml.jackson.core',
         version: versions.jackson
       ) {
@@ -112,6 +118,27 @@ allprojects {
         version: '4.1.0'
       ) {
         entry 'service-auth-provider-java-client'
+      }
+      //  resolve CVE-2021-22044
+      dependencySet(
+        group: 'org.springframework.cloud',
+        version: '2.2.11.RELEASE'
+      ) {
+        entry 'spring-cloud-starter-netflix-hystrix'
+      }
+      //  resolve CVE-2021-22044
+      dependencySet(
+        group: 'org.springframework.cloud',
+        version: '3.1.3'
+      ) {
+        entry 'spring-cloud-starter-openfeign'
+      }
+      // CVE-2020-15250
+      dependencySet(
+        group: 'junit',
+        version: '4.13.1'
+      ) {
+        entry 'junit'
       }
     }
   }
@@ -317,7 +344,7 @@ dependencies {
   // prevent CVE-2020-0187
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
   // prevent CVE-2022-22978
-  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.2'
+  implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.5'
 }
 
 wrapper {
