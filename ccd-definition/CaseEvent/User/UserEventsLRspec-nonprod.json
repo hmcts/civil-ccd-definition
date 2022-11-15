@@ -34,6 +34,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "CREATE_SERVICE_REQUEST",
+    "Name": "Create service request",
+    "Description": "Create service request",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "DEFENDANT_RESPONSE_SPEC",
     "Name": "Respond to claim",
     "Description": "Defendant response to Specified claim",

@@ -49,6 +49,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SERVICE_REQUEST",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_FAILED_PAYMENT_SPEC",
     "AccessControl": [
       {
