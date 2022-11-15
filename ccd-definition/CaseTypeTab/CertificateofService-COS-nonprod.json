@@ -6,7 +6,8 @@
     "TabDisplayOrder": 11,
     "CaseFieldID": "cosLabelForClaimant1_1",
     "TabFieldDisplayOrder": 1,
-    "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
+    "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\"",
+    "TabShowCondition": "cosNotifyClaimDetails1 = \"*\" OR cosNotifyClaimDetails2 = \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
