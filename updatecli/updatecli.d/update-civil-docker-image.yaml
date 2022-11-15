@@ -1,0 +1,49 @@
+---
+version: 0.33.3
+name: "Update docker images"
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: '{{ .github.user }}'
+      email: '{{ .github.email }}'
+      owner: '{{ .github.owner }}'
+      repository: '{{ .github.repository }}'
+      token: '{{ or .github.token (requiredEnv "UPDATECLI_GITHUB_TOKEN") }}'
+      username: '{{ or .github.user (requiredEnv "UPDATECLI_GITHUB_ACTOR") }}'
+      branch: '{{ or .github.branch "main" }}'
+
+sources:
+  latestCivilServiceImage:
+    name: "Docker Image Published on Registry"
+    kind: dockerImage
+    spec:
+      image: "hmctspublic.azurecr.io/civil/service"
+      versionfilter:
+        kind: regex
+        pattern: ""^prod-[a-f0-9]+-(?P<ts>[0-9]+)"
+
+targets:
+  setAzureGalleryImageVersion:
+    sourceid: latestCivilServiceImage
+    name: Bump civil service Image Version
+    kind: file
+    scmid: default
+    spec:
+      files:
+        - charts/civil-ccd/values.template.yaml
+      matchpattern: 'image: hmctspublic.azurecr.io/civil/service:*'
+      content: 'image: hmctspublic.azurecr.io/civil/service: "{{ source `latestCivilServiceImage` }}"'
+
+pullrequests:
+  setAzureGalleryImageVersion:
+    kind: github
+    scmid: default
+    title: >-
+      [updatecli] Bump civil-service version to {{ source "latestCivilServiceImage" }}
+    spec:
+      automerge: false
+      draft: false
+      description: |
+        Bump jenkins-packer version to {{ source "latestCivilServiceImage" }}
