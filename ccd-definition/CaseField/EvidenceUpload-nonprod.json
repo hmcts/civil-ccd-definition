@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disclosureLabel",
-    "Label": "You can select more than one type of documen1t \n\n\n ## Disclosure",
+    "Label": "You can select more than one type of document \n\n\n ## Disclosure",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
