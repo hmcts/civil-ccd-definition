@@ -184,7 +184,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
-      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo'
+      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
         defendantResponseData, solicitor);
     }
@@ -477,10 +477,10 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  
+
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;

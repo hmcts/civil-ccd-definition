@@ -1,4 +1,4 @@
-const {checkToggleEnabled} = require("../../api/testingSupport");
+const {checkToggleEnabled} = require('../../api/testingSupport');
 const {I} = inject();
 
 module.exports = {
