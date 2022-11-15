@@ -1,4 +1,4 @@
-const {listElement} = require('../../api/dataHelper');
+const {listElement, date} = require('../../api/dataHelper');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -216,14 +216,14 @@ module.exports = {
           },
           RepaymentPlan: {
             respondent1RepaymentPlan: {
-              firstRepaymentDate: '2022-11-15',
+              firstRepaymentDate: date(30),
               paymentAmount: '100',
               repaymentFrequency: 'ONCE_ONE_MONTH'
             }
           },
           RepaymentPlanRespondent2: {
             respondent2RepaymentPlan: {
-              firstRepaymentDate: '2022-11-15',
+              firstRepaymentDate: date(60),
               paymentAmount: '200',
               repaymentFrequency: 'ONCE_TWO_WEEKS'
             }
