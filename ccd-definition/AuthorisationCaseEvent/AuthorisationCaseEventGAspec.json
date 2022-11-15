@@ -13,12 +13,6 @@
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -31,12 +25,6 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "RU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
       }
     ]
   },
@@ -47,12 +35,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

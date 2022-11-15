@@ -282,7 +282,7 @@
     "RoleName" : "specific-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil,GS_profile",
+    "AccessProfiles": "judge-profile,caseworker-civil,GS_profile",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -291,7 +291,7 @@
     "RoleName" : "specific-access-legal-ops",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,legal-adviser,caseworker-civil,GS_profile",
+    "AccessProfiles": "legal-adviser,caseworker-civil,GS_profile",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -300,7 +300,7 @@
     "RoleName" : "specific-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -309,7 +309,7 @@
     "RoleName" : "challenged-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,judge-profile,caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -318,7 +318,7 @@
     "RoleName" : "challenged-access-legal-ops",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -327,7 +327,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,judge-profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

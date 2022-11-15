@@ -65,7 +65,6 @@ module.exports = {
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.CREATE_GENERAL_APPLICATION_CASE,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],
@@ -79,7 +78,6 @@ module.exports = {
     ],
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.CREATE_GENERAL_APPLICATION_CASE,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],

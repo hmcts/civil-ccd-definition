@@ -9,12 +9,9 @@ module.exports = {
         return {
           oldFields: {
             chooseCourtLocation: {
-              id: '#applicant1DQRequestedCourt_requestHearingAtSpecificCourt_radio',
-              options: {
-                yes: 'Yes',
-                no: 'No'
-              }
+              id: '#applicant1DQRequestedCourt_responseCourtCode'
             },
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
           },
           fields: {
             responseCourtLocations: {
@@ -82,9 +79,15 @@ module.exports = {
     if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
       I.waitForElement(this.fields(mpScenario).oldFields.chooseCourtLocation.id);
       await I.runAccessibilityTest();
-      await within(this.fields(mpScenario).oldFields.chooseCourtLocation.id, () => {
-        I.click(this.fields(mpScenario).oldFields.chooseCourtLocation.options.no);
-      });
+      if (mpScenario == 'ClaimantResponse') {
+        I.fillField(this.fields(mpScenario).oldFields.chooseCourtLocation.id, '343');
+        I.fillField(this.fields(mpScenario).oldFields.reasonForHearingAtSpecificCourt, 'Some reason');
+
+      } else {
+        await within(this.fields(mpScenario).oldFields.chooseCourtLocation.id, () => {
+          I.click(this.fields(mpScenario).oldFields.chooseCourtLocation.options.no);
+        });
+      }
     }
     else {
       I.waitForElement(this.fields(mpScenario).fields.responseCourtLocations.id);
@@ -92,7 +95,7 @@ module.exports = {
       I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
       this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
       I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
-      await I.clickContinue();
     }
+    await I.clickContinue();
   }
 };

@@ -232,7 +232,13 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent(expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
+
+    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -454,7 +460,14 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  assert.deepEqual(responseBody.data, caseData);
+  
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  } 
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    throw err;
+  }
 };
 
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
