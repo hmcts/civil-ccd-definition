@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "test1",
+    "CategoryLabel": "a label",
+    "DisplayOrder": "1",
+    "ParentCategoryID": ""
+  }
+]

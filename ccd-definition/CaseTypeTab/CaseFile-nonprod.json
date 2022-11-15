@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFile",
+    "TabLabel": "Case File",
+    "TabDisplayOrder": 20,
+    "CaseFieldID": "componentLauncher",
+    "TabFieldDisplayOrder": 1,
+    "DisplayContextParameter": "#ARGUMENT(CaseFileView)\n"
+  }
+]

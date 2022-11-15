@@ -16,5 +16,20 @@
     "FieldTypeParameter": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
     "Comment": "Field storing noc update details"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "componentLauncher",
+    "Label": "component launcher",
+    "FieldType": "ComponentLauncher",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "componentLauncherTest",
+    "Label": "component launcher document",
+    "FieldType": "Document",
+    "SecurityClassification": "Public",
+    "CategoryID": "test1"
   }
 ]
