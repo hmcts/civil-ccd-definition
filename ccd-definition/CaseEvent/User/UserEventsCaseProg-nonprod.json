@@ -54,7 +54,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "TRIAL_READY",
+    "ID": "TRIAL_READY_NOTIFICATION",
     "Name": "Notify of trial readiness",
     "Description": "Notify solicitors of trial readiness",
     "PreConditionState(s)": "PREPARE_FOR_HEARING_CONDUCT_HEARING",

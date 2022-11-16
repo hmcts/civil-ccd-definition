@@ -45,7 +45,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "TRIAL_READY",
+    "CaseEventID": "TRIAL_READY_NOTIFICATION",
     "AccessControl": [
       {
         "UserRoles": [
