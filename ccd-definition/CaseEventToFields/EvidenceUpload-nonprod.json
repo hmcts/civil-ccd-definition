@@ -254,7 +254,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\""
   },
   {
@@ -265,7 +265,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
   },
   {
@@ -276,7 +276,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
   },
   {
@@ -287,7 +287,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\""
   },
   {
@@ -298,7 +298,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
   },
   {
@@ -309,7 +309,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\""
   },
   {
@@ -320,7 +320,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
   },
   {
@@ -331,7 +331,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
   },
   {
@@ -342,7 +342,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
   },
   {
@@ -353,7 +353,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
   },
   {
@@ -364,7 +364,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
   },
   {
@@ -375,7 +375,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\""
   },
   {
@@ -386,7 +386,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\""
   },
   {
@@ -397,9 +397,9 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValues"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValuesApplicant"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -409,7 +409,7 @@
     "DisplayContext": "READONLY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition":"trialSelectionEvidence = \"DO_NOT_SHOW\""
   },
@@ -668,7 +668,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"disclosureSelectionEvidenceRes CONTAINS \"DISCLOSURE_LIST\""
   },
   {
@@ -679,7 +679,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"disclosureSelectionEvidenceRes CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
   },
   {
@@ -690,7 +690,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceRes CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaimRes CONTAINS \"WITNESS_STATEMENT\""
   },
   {
@@ -701,7 +701,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceRes CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaimRes CONTAINS \"WITNESS_SUMMARY\""
   },
   {
@@ -712,7 +712,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceRes CONTAINS \"NOTICE_OF_INTENTION\""
   },
   {
@@ -723,7 +723,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceRes CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaimRes CONTAINS \"DOCUMENTS_REFERRED\""
   },
   {
@@ -734,7 +734,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceRes CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaimRes CONTAINS \"EXPERT_REPORT\""
   },
   {
@@ -745,7 +745,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceRes CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaimRes CONTAINS \"JOINT_STATEMENT\""
   },
   {
@@ -756,7 +756,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceRes CONTAINS \"QUESTIONS_FOR_EXPERTS\""
   },
   {
@@ -767,7 +767,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceRes CONTAINS \"ANSWERS_FOR_EXPERTS\""
   },
   {
@@ -778,7 +778,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes CONTAINS \"CASE_SUMMARY\""
   },
   {
@@ -789,7 +789,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes CONTAINS \"SKELETON_ARGUMENT\""
   },
   {
@@ -800,7 +800,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaimRes CONTAINS \"AUTHORITIES\""
   },
   {
@@ -811,9 +811,9 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaimRes CONTAINS \"DOCUMENTARY\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValues"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValuesRespondent"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -823,7 +823,7 @@
     "DisplayContext": "READONLY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes = \"DO_NOT_SHOW\""
   },
@@ -1082,7 +1082,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"disclosureSelectionEvidenceOther CONTAINS \"DISCLOSURE_LIST\""
   },
   {
@@ -1093,7 +1093,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"disclosureSelectionEvidenceOther CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
   },
   {
@@ -1104,7 +1104,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceOther CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaimOther CONTAINS \"WITNESS_STATEMENT\""
   },
   {
@@ -1115,7 +1115,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceOther CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaimOther CONTAINS \"WITNESS_SUMMARY\""
   },
   {
@@ -1126,7 +1126,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceOther CONTAINS \"NOTICE_OF_INTENTION\""
   },
   {
@@ -1137,7 +1137,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"witnessSelectionEvidenceOther CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaimOther CONTAINS \"DOCUMENTS_REFERRED\""
   },
   {
@@ -1148,7 +1148,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceOther CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaimOther CONTAINS \"EXPERT_REPORT\""
   },
   {
@@ -1159,7 +1159,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceOther CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaimOther CONTAINS \"JOINT_STATEMENT\""
   },
   {
@@ -1170,7 +1170,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceOther CONTAINS \"QUESTIONS_FOR_EXPERTS\""
   },
   {
@@ -1181,7 +1181,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"expertSelectionEvidenceOther CONTAINS \"ANSWERS_FOR_EXPERTS\""
   },
   {
@@ -1192,7 +1192,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceOther CONTAINS \"CASE_SUMMARY\""
   },
   {
@@ -1203,7 +1203,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceOther CONTAINS \"SKELETON_ARGUMENT\""
   },
   {
@@ -1214,7 +1214,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceOther CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaimOther CONTAINS \"AUTHORITIES\""
   },
   {
@@ -1225,9 +1225,9 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialSelectionEvidenceOther CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaimOther CONTAINS \"DOCUMENTARY\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValues"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValuesOtherParty"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1237,7 +1237,7 @@
     "DisplayContext": "READONLY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "y",
+    "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition":"trialSelectionEvidenceOther = \"DO_NOT_SHOW\""
   }
