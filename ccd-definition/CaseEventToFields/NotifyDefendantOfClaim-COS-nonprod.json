@@ -88,7 +88,7 @@
     "PageID": "CertificateOfService2",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
+    "PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
