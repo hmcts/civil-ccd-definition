@@ -135,7 +135,7 @@
     ],
     "CRUD": "CRU"
   },
-  {
+ {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDueDate",
     "AccessControl" : [
@@ -152,14 +152,6 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "casePaymentWaysToPay",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",

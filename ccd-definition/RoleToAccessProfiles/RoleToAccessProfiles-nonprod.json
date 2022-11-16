@@ -57,7 +57,7 @@
     "RoleName" : "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE",
+    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE,payment-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "UNSPEC_CLAIM"
@@ -66,7 +66,7 @@
     "RoleName" : "[APPLICANTSOLICITORONE]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "APP-SOL-SPEC-PROFILE",
+    "AccessProfiles": "APP-SOL-SPEC-PROFILE,payment-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "SPEC_CLAIM"
@@ -346,6 +346,15 @@
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:pui-case-manager",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "payment-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
