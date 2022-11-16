@@ -16,5 +16,17 @@
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_HEARING_FEE_UNPAID",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_CLAIMANT_HEARING",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_HEARING",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
