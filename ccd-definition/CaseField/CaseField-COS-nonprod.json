@@ -36,7 +36,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CosNotifyClaimDefendant1",
+    "ID": "cosNotifyClaimDefendant1",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
     "SecurityClassification": "Public"

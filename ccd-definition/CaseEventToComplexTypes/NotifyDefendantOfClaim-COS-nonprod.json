@@ -2,7 +2,7 @@
   {
     "ID": "Claimant",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosDateOfServiceForDefendant",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -10,7 +10,7 @@
   {
     "ID": "Claimant",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosServedDocumentFiles",
     "EventElementLabel": "What documents did you serve?",
     "FieldDisplayOrder": 3,
@@ -19,7 +19,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosRecipient",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -27,7 +27,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosRecipientServeType",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
@@ -35,7 +35,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosRecipientServeLocation",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
@@ -43,7 +43,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosRecipientServeLocationOwnerType",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -51,7 +51,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosRecipientServeLocationType",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
@@ -59,7 +59,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosRecipientServeLocationTypeOther",
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL"
@@ -67,7 +67,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosSender",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
@@ -75,7 +75,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosSenderFirm",
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
@@ -83,7 +83,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosSenderStatementOfTruthLabel",
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"

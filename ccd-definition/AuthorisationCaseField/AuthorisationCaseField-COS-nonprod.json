@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "AccessControl": [
       {
         "UserRoles": [

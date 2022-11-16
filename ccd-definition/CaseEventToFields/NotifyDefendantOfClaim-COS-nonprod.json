@@ -57,7 +57,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "CosNotifyClaimDefendant1",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService1",
