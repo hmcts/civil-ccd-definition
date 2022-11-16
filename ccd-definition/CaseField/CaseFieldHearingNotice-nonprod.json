@@ -142,13 +142,5 @@
     "HintText": "For example, 27 3 2022",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "caseDismissedHearingFeeDueDate",
-    "Label": "Date of dismissal",
-    "HintText": "For example, 27 3 2022",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
   }
 ]
