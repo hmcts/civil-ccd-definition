@@ -1,14 +1,10 @@
-tags:
-  civil-ccd-stack: false
-
+civil-ccd-stack:
+  enabled: false
 postgresql:
   enabled: false
-
 idam-pr:
   enabled: false
-
 xui-webapp:
   enabled: false
-
 camunda-bpm:
   enabled: false
