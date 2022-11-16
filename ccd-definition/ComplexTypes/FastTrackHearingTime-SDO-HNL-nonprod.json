@@ -1,0 +1,52 @@
+[
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "dateFrom",
+    "FieldType": "Date",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "dateTo",
+    "FieldType": "Date",
+    "ElementLabel": "Date to",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "hearingDuration",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FastTrackTimeEstimate",
+    "ElementLabel": "The time estimate is",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldType": "Number",
+    "ElementLabel": "Hours",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldType": "Number",
+    "ElementLabel": "Minutes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "helpText1",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "helpText2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

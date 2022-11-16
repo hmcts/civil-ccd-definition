@@ -37,15 +37,15 @@
   {
     "ID": "TrialPersonalInjury",
     "ListElementCode": "input3",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "TrialPersonalInjury",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]

@@ -14,6 +14,7 @@
     "test:api-dj": "MOCHAWESOME_REPORTFILENAME=e2e-sdo npx codeceptjs run --grep @api-dj-1v2 --reporter mocha-multi --verbose",
     "test:e2e-dj": "MOCHAWESOME_REPORTFILENAME=e2e-dj NODE_TLS_REJECT_UNAUTHORIZED=0 npx codeceptjs run --grep @e2e-1v1-dj --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api-multiparty npx codeceptjs run --grep @api-multiparty --reporter mocha-multi --verbose",
+    "test:e2e-wa": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @e2e-wa --reporter mocha-multi --verbose",
     "test:api-1v1": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @api-tests-1v1 --reporter mocha-multi --verbose",
     "test:api-1v2SS": "MOCHAWESOME_REPORTFILENAME=api-1v2SS npx codeceptjs run --grep @api-tests-1v2SS --reporter mocha-multi --verbose",
     "test:api-1v2DS": "MOCHAWESOME_REPORTFILENAME=api-1v2DS npx codeceptjs run --grep @api-tests-1v2DS --reporter mocha-multi --verbose",
@@ -23,12 +24,13 @@
     "test:e2e-1v2SS": "MOCHAWESOME_REPORTFILENAME=e2e-1v2SS npx codeceptjs run --grep @e2e-1v2SS --reporter mocha-multi --verbose",
     "test:e2e-1v2DS": "MOCHAWESOME_REPORTFILENAME=e2e-1v2DS npx codeceptjs run --grep @e2e-1v2DS --reporter mocha-multi --verbose",
     "test:e2e-2v1": "MOCHAWESOME_REPORTFILENAME=e2e-2v1 npx codeceptjs run --grep @e2e-2v1 --reporter mocha-multi --verbose",
-    "test:api-spec": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec --reporter mocha-multi --verbose",
+    "test:api-spec": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-specified --reporter mocha-multi --verbose",
     "test:api-spec-1v2": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-1v2 --reporter mocha-multi --verbose",
     "test:api-spec-1v1": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-1v1 --reporter mocha-multi --verbose",
     "test:api-spec-small": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-small --reporter mocha-multi --verbose",
-    "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-tests-spec --reporter mocha-multi --verbose",
-    "test:functional-unspec": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep '@api-multiparty|@e2e-multiparty' --reporter mocha-multi --verbose",
+    "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-spec-1v2DS --reporter mocha-multi --verbose",
+    "test:e2e-spec-1v2DS": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-spec-1v2DS --reporter mocha-multi --verbose",
+    "test:functional-unspec": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep '@e2e-unspec-1v2DS' --reporter mocha-multi --verbose",
     "test:functional-dj": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep @e2e-dj --reporter mocha-multi --verbose",
     "test:nightly-multiparty": "MOCHAWESOME_REPORTFILENAME=nightly-multiparty npx codeceptjs run --grep '@e2e-nightly' --reporter mocha-multi --verbose",
     "test:rpa": "MOCHAWESOME_REPORTFILENAME=rpa npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
@@ -64,5 +66,8 @@
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
+  },
+  "resolutions": {
+    "minimatch": "^3.0.5"
   }
 }

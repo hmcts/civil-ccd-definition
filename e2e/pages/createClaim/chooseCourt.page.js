@@ -10,14 +10,14 @@ module.exports = {
     courtLocation: {
       id: 'select[id$="Location_applicantPreferredCourtLocationList"]',
       options: {
-        claimantPreferredCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
+        claimantPreferredCourt: config.claimantSelectedCourt
       }
     }
   },
 
   async selectCourt() {
     let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled || config.runningEnv === 'aat') {
+    if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
       I.waitForElement(this.oldFields.courtLocation);
       await I.runAccessibilityTest();
       I.fillField(this.oldFields.courtLocation, '344');

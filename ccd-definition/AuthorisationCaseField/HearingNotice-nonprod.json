@@ -138,6 +138,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDueDate",
+    "AccessControl" : [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "casePaymentWaysToPay",
     "UserRoles": [
       "hearing-schedule-access"
     ],
@@ -145,11 +163,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "casePaymentWaysToPay",
-    "UserRoles": [
-      "hearing-schedule-access",
-      "caseworker-civil-solicitor"
-    ],
-    "CRUD": "CRU"
+    "CaseFieldID": "caseDismissedHearingFeeDueDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]

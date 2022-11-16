@@ -15,9 +15,9 @@
   },
   {
     "ID": "TrialRoadTrafficAccident",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]

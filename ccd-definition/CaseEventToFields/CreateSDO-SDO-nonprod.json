@@ -431,6 +431,7 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "disposalHearingFinalDisposalHearingToggle=\"SHOW\""
   },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
@@ -1717,7 +1718,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoOrderDocument",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "OrderPreview",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,

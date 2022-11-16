@@ -125,7 +125,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingFee",
     "Label": "Hearing Fee",
-    "FieldType": "Text",
+    "FieldType": "Fee",
     "SecurityClassification": "Public"
   },
   {
@@ -140,6 +140,14 @@
     "ID": "casePaymentWaysToPay",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseDismissedHearingFeeDueDate",
+    "Label": "Date of dismissal",
+    "HintText": "For example, 27 3 2022",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public"
   }
 ]

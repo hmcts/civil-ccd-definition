@@ -8,6 +8,13 @@
   },
   {
     "ID": "DisposalHearingJudgesRecitalDJ",
+    "ListElementCode": "judgeNameTitle",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingJudgesRecitalDJ",
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",

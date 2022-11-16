@@ -6,7 +6,40 @@
     "TabDisplayOrder": 8,
     "CaseFieldID": "gaDetailsRespondentSol",
     "UserRoles": [
-      "[RESPONDENTSOLICITORONE]"
+      "RES-SOL-ONE-UNSPEC-PROFILE"
+    ],
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "GAApplicationsRespOneSpec",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "CaseFieldID": "gaDetailsRespondentSol",
+    "UserRoles": [
+      "RES-SOL-ONE-SPEC-PROFILE"
+    ],
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "GAApplicationsRespTwo",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "CaseFieldID": "gaDetailsRespondentSol",
+    "UserRoles": [
+      "RES-SOL-TWO-UNSPEC-PROFILE"
+    ],
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "GAApplicationsRespTwoSpec",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "CaseFieldID": "gaDetailsRespondentSol",
+    "UserRoles": [
+      "RES-SOL-TWO-SPEC-PROFILE"
     ],
     "TabFieldDisplayOrder": 1
   }

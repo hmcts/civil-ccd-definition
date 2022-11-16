@@ -115,6 +115,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "SERVICE_REQUEST_UPDATE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_CLAIM_FORM",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -224,6 +230,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CLAIMANT_CONFIRMS_NOT_TO_PROCEED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "migrateCase",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

@@ -2,7 +2,12 @@ const config = require('../config.js');
 
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
+const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
+
+
+const TASK_MAX_RETRIES = 40;
+const TASK_RETRY_TIMEOUT_MS = 10000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -75,5 +80,45 @@ module.exports = {
         event_data: caseData,
         event_token: tokens.ccdEvent
       }, 'POST', 201);
+  },
+
+  fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2sForXUI.microservice,
+        oneTimePassword: totp(config.s2sForXUI.secret)
+      })
+      .then(response => response.text());
+
+    const inputData = {
+      'search_parameters': [
+          {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
+          {'key': 'caseId','operator': 'IN','values': [caseNumber]},
+          {'key': 'taskType','operator': 'IN','values': [taskId]},
+          {'key':'state','operator':'IN','values':['assigned','unassigned', 'unconfigured']}
+      ],
+      'sorting_parameters': [{'sort_by': 'dueDate','sort_order': 'asc'}]
+    };
+
+    return retry(() => {
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task`, 
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+        'ServiceAuthorization': `Bearer ${s2sToken}`
+      }, inputData, 'POST', expectedStatus)
+        .then(async response => await response.json())
+        .then(jsonResponse => {
+          let availableTaskDetails = jsonResponse['tasks'][0];
+          if (!availableTaskDetails) {
+            throw new Error(`Ongoing task retrieval process for case id: ${caseNumber}`);
+          }
+          return availableTaskDetails;
+      });
+    }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
   }
+
 };

@@ -36,16 +36,23 @@
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
-    "ListElementCode": "text",
-    "FieldType": "Label",
-    "ElementLabel": "If there is a claim for future pecuniary loss and the parties have not already set out their case on periodical payments, then they must do so in the respective schedule and counter-schedule.",
+    "ListElementCode": "input3",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
-    "ListElementCode": "line",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "text",
     "FieldType": "Label",
-    "ElementLabel": "****",
+    "ElementLabel": "If there is a claim for future pecuniary loss and the parties have not already set out their case on periodical payments, then they must do so in the respective schedule and counter-schedule.",
     "SecurityClassification": "Public"
   }
 ]
