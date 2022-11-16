@@ -135,7 +135,7 @@
     ],
     "CRUD": "CRU"
   },
-  {
+ {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDueDate",
     "AccessControl" : [
