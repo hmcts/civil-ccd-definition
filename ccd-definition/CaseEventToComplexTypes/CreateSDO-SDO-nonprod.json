@@ -1899,5 +1899,14 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SdoOrderDocumentPage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoOrderDocument",
+    "ListElementCode": "documentLink",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "Draft Order"
   }
 ]
