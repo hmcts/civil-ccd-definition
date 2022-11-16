@@ -6,7 +6,7 @@ let caseId;
 
 Feature('1v1 Unspec defaultJudgement');
 
-Scenario('DefaultJudgement @create-claim @e2e-dj-1v1 @e2e-wa', async ({I, api}) => {
+Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   //below amend claim documents only needed as assertion was failing on notify claims
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -33,19 +33,19 @@ Scenario('DefaultJudgement @create-claim @e2e-dj-1v1 @e2e-wa', async ({I, api}) 
   await I.login(config.hearingCenterAdminWithRegionId4);
   await I.staffPerformDJCaseTransferCaseOffline(caseId);
 
-});
+}).retry(3);
 
 Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
   await I.login(config.judgeUserWithRegionId2);
   await WA.runChallengedAccessSteps(caseId);
-});
+}).retry(3);
 
 Scenario('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
   await I.login(config.hearingCenterAdminWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
-});
+}).retry(3);
 
 Scenario('Verify Challenged access check for legalops @e2e-wa', async ({I, WA}) => {
   await I.login(config.tribunalCaseworkerWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
-});
+}).retry(3);
