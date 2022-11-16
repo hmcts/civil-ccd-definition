@@ -165,16 +165,19 @@ module.exports = {
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
     let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
-
+    console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
+    console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: isCertificateOfServiceEnabled ? 'Your claim has been received':
         'Your claim has been received and will progress offline',
       body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment is confirmed.' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
-
+    console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
+    console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
@@ -730,7 +733,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
