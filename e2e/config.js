@@ -7,7 +7,7 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net/',
+    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
     // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
     // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
     // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',

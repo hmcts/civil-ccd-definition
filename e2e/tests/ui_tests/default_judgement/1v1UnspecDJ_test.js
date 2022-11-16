@@ -22,9 +22,9 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) 
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
   }
   await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
-  await I.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
