@@ -103,26 +103,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_CUI_DEADLINE_EXTENSION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
     "AccessControl": [
       {
@@ -133,6 +113,8 @@
       },
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
@@ -154,6 +136,8 @@
       },
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
