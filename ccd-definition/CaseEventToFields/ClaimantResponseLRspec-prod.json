@@ -24,6 +24,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1ProceedWithClaim",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?",
+    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimTrack",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
