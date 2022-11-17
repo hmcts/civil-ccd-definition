@@ -17,4 +17,4 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
   let caseid = await api.getCaseId();
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseid, 'ONE_V_TWO');
-});
+}).retry(3);
