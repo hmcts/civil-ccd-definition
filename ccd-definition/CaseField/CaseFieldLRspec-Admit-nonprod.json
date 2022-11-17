@@ -1,0 +1,23 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTypeLabelForSpec",
+    "Label": "${respondent1ClaimResponseTypeForSpec}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimAdmitAllRepaymentPlanLabel",
+    "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AcceptPaymentPlanSpec",
+    "Label": "Does the claimant accept the repayment plan?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]

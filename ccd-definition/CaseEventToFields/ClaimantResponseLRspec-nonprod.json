@@ -15,13 +15,48 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" OR defenceAdmitPartPaymentTimeRouteRequired!=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR claimantResponseScenarioFlag!=\"ONE_V_ONE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitAllRepaymentPlanLabel",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" AND claimantResponseScenarioFlag=\"ONE_V_ONE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1ProceedWithClaim",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "Y",
-    "Publish": "Y"
+    "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?",
+    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1AcceptPaymentPlanSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Does the claimant accept the repayment plan?",
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_ONE\" AND respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -33,6 +68,30 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 17,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
   },
   {
