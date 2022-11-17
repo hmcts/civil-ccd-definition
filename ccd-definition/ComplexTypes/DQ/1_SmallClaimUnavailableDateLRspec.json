@@ -1,6 +1,6 @@
 [
   {
-    "ID": "UnavailableDateLRspec",
+    "ID": "SmallClaimUnavailableDate",
     "ListElementCode": "unavailableDateType",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimUnavailable",
@@ -8,7 +8,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "UnavailableDateLRspec",
+    "ID": "SmallClaimUnavailableDate",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -16,7 +16,7 @@
     "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\""
   },
   {
-    "ID": "UnavailableDateLRspec",
+    "ID": "SmallClaimUnavailableDate",
     "ListElementCode": "fromDate",
     "FieldType": "Date",
     "ElementLabel": "Date from",
@@ -24,7 +24,7 @@
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
   },
   {
-    "ID": "UnavailableDateLRspec",
+    "ID": "SmallClaimUnavailableDate",
     "ListElementCode": "toDate",
     "FieldType": "Date",
     "ElementLabel": "Date to",
@@ -32,5 +32,3 @@
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
   }
 ]
-
-
