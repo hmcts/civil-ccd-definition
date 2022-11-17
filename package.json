@@ -42,6 +42,7 @@
     "test:fullfunctional": "./e2e/run-features-flag-enabled-functional-tests.sh",
     "test:sdo": "MOCHAWESOME_REPORTFILENAME=functional npx codeceptjs run --grep @sdo --reporter mocha-multi --verbose",
     "generate-dev": "./bin/build-release-ccd-definition.sh local false",
+    "upload": "yarn generate-dev && USER_TOKEN=/mnt/c/Users/DeekondaN/dev/civil/civil-sdk/bin/utils/idam-user-token.sh && SERVICE_TOKEN=/mnt/c/Users/DeekondaN/dev/civil/civil-sdk/bin/utils/idam-service-token.sh && curl http://127.0.0.1:4451/import -H \"Authorization: Bearer ${USER_TOKEN}\" -H \"ServiceAuthorization: Bearer ${SERVICE_TOKEN}\" -F file=\"/tmp/ccd-definition.xlsx\" && echo ''",
     "upload-wa": "yarn generate-dev && USER_TOKEN=$(${WA_KUBE_ENV_PATH}/scripts/actions/idam-user-token.sh) && SERVICE_TOKEN=$(${WA_KUBE_ENV_PATH}/scripts/actions/idam-service-token.sh) && curl http://ccd-definition-store-api/import -H \"Authorization: Bearer ${USER_TOKEN}\" -H \"ServiceAuthorization: Bearer ${SERVICE_TOKEN}\" -F file=\"@build/ccd-release-config/civil-ccd-local.xlsx\" && echo ''",
     "prepare": "husky install"
   },
