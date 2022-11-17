@@ -133,6 +133,7 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup:aat') {
+    yarnBuilder.yarn('setup')
     echo "current environment is ${env.ENVIRONMENT}"
     for(PROD_ENV in ["aat","prod"]){
       echo "environment is ${PROD_ENV}"
@@ -151,6 +152,7 @@ withPipeline(type, product, component) {
 
 
   before('highleveldatasetup:preview') {
+    yarnBuilder.yarn('setup')
     dir("${WORKSPACE}/bin") {
       sh """
           eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
