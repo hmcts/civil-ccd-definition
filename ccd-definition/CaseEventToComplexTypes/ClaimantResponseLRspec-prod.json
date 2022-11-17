@@ -62,6 +62,15 @@
     "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "hearingLength",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "allocatedTrack !=\"SMALL_CLAIM\""
+  },
+  {
+    "ID": "HearingLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "unavailableDatesLRspec.who",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
