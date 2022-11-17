@@ -9,13 +9,6 @@
   },
   {
     "ID": "SmallClaimUnavailableDate",
-    "ListElementCode": "who",
-    "FieldType": "Text",
-    "ElementLabel": "Name of unavailable person",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimUnavailableDate",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -37,5 +30,12 @@
     "ElementLabel": "Date to",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
+  },
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "who",
+    "FieldType": "Text",
+    "ElementLabel": "Name of unavailable person",
+    "SecurityClassification": "Public"
   }
 ]

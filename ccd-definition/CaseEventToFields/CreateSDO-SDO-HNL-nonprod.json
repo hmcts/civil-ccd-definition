@@ -423,6 +423,18 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "PageFieldDisplayOrder": 58,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingToggle=\"DONT SHOW UI BEING UPDATED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
     "PageFieldDisplayOrder": 28,
     "DisplayContext": "COMPLEX",
     "PageID": "DisposalHearing",
@@ -486,7 +498,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodInPerson\" AND disposalHearingMethodToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodInPerson\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -498,7 +510,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingMethodToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -510,7 +522,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingMethodVideoConferenceHearing=\"videoTheCourt\" AND disposalHearingMethodToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingMethodVideoConferenceHearing=\"videoTheCourt\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -522,7 +534,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\" AND disposalHearingMethodToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -534,7 +546,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\" AND disposalHearingMethodTelephoneHearing=\"telephoneTheCourt\" AND disposalHearingMethodToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\" AND disposalHearingMethodTelephoneHearing=\"telephoneTheCourt\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -707,13 +719,47 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingNotes",
-    "PageFieldDisplayOrder": 53,
-    "DisplayContext": "COMPLEX",
+    "CaseFieldID": "disposalHearingHearingNotesTitle",
+    "PageFieldDisplayOrder": 54,
+    "DisplayContext": "READONLY",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingNotes",
+    "PageFieldDisplayOrder": 55,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalOrderWithoutHearing",
+    "PageFieldDisplayOrder": 56,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingNotes",
+    "PageFieldDisplayOrder": 57,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingCostsToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -880,38 +926,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsMethodInPerson",
+    "CaseFieldID": "sdoHearingNotes",
     "PageFieldDisplayOrder": 15,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsMethod=\"smallClaimsMethodInPerson\" AND smallClaimsMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsMethodVideoConferenceHearing",
+    "CaseFieldID": "smallClaimsNotes",
     "PageFieldDisplayOrder": 16,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsMethod=\"smallClaimsMethodVideoConferenceHearing\" AND smallClaimsMethodToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsMethodTelephoneHearing",
-    "PageFieldDisplayOrder": 17,
-    "DisplayContext": "MANDATORY",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsMethod=\"smallClaimsMethodTelephoneHearing\" AND smallClaimsMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1055,17 +1087,6 @@
     "CaseFieldID": "smallClaimsAddNewDirectionsEndLine",
     "PageFieldDisplayOrder": 30,
     "DisplayContext": "READONLY",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "PageFieldDisplayOrder": 31,
-    "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
@@ -1495,6 +1516,18 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrial",
+    "PageFieldDisplayOrder": 57,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "fastTrackTrialToggle=\"DONT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
     "PageFieldDisplayOrder": 38,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
@@ -1558,7 +1591,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethod=\"fastTrackMethodInPerson\" AND fastTrackMethodToggle=\"SHOW\""
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\" AND fastTrackMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1570,7 +1603,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethod=\"fastTrackMethodVideoConferenceHearing\" AND fastTrackMethodToggle=\"SHOW\""
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\" AND fastTrackMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1582,7 +1615,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethod=\"fastTrackMethodTelephoneHearing\" AND fastTrackMethodToggle=\"SHOW\""
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\" AND fastTrackMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1705,7 +1738,30 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
+    "PageFieldDisplayOrder": 58,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingNotes",
     "PageFieldDisplayOrder": 56,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "PageFieldDisplayOrder": 58,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
     "PageDisplayOrder": 6,
@@ -1717,7 +1773,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoOrderDocument",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "OrderPreview",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,

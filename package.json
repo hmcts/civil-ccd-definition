@@ -66,5 +66,8 @@
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
+  },
+  "resolutions": {
+    "minimatch": "^3.0.5"
   }
 }
