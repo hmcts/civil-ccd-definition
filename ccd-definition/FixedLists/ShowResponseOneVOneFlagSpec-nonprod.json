@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "ShowResponseOneVOneFlag",
+    "ListElementCode": "ONE_V_ONE_FULL_ADMIT",
+    "ListElement": "ONE_V_ONE_FULL_ADMIT",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ShowResponseOneVOneFlag",
+    "ListElementCode": "ONE_V_ONE_FULL_DEFENCE",
+    "ListElement": "ONE_V_ONE_FULL_DEFENCE",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "ShowResponseOneVOneFlag",
+    "ListElementCode": "ONE_V_ONE_PART_ADMIT",
+    "ListElement": "ONE_V_ONE_PART_ADMIT",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "ShowResponseOneVOneFlag",
+    "ListElementCode": "ONE_V_ONE_COUNTER_CLAIM",
+    "ListElement": "ONE_V_ONE_COUNTER_CLAIM",
+    "DisplayOrder": 4
+  }
+]

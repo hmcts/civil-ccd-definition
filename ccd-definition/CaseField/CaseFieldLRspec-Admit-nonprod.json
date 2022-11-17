@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimAdmitAllRepaymentPlanLabel",
-    "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments",
+    "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -18,6 +18,21 @@
     "ID": "applicant1AcceptPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "showResponseOneVOneFlag",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ShowResponseOneVOneFlag",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseDocumentSpec",
+    "Label": " ",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]

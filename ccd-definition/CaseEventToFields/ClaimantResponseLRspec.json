@@ -48,17 +48,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1GeneratedResponseDocument",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": " "
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2GeneratedResponseDocument",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 7,
