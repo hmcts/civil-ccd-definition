@@ -381,7 +381,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Hearing",
-    "PageLabel": "Hearing availability",
+    "PageLabel": "Hearing",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "FieldShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
@@ -396,7 +396,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Hearing",
-    "PageLabel": "Hearing availability",
     "FieldShowCondition": "responseClaimTrack =\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
