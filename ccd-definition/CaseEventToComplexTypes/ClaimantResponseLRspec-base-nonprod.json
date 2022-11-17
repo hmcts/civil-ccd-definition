@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "HearingLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "ListElementCode": "unavailableDatesLRspec.who",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQSmallClaimHearing",
+    "ListElementCode": "smallClaimUnavailableDate.who",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]
