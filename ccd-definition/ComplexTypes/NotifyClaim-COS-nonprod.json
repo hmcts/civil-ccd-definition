@@ -36,7 +36,7 @@
   {
     "ID": "NotifyClaimCoS",
     "ListElementCode": "cosRecipientServeLocation",
-    "ElementLabel": "How did you serve the documents?",
+    "ElementLabel": "Where did you serve the documents?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Definition":  "Enter the details of where you served the documents",

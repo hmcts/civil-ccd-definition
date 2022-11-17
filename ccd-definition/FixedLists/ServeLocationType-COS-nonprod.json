@@ -14,7 +14,7 @@
   {
     "ID": "ServeLocationTypeCoS",
     "ListElementCode": "PLACE_OF_BUSINESS_WITH_CONNECTION",
-    "ListElement": "Place of business of the partnership/company/corporation within the jurisdiction with a connection to claim",
+    "ListElement": "Place of business of the partnership/company/corporation within the jurisdiction with a connection to the claim",
     "DisplayOrder": 3
   },
   {
