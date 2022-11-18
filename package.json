@@ -4,6 +4,7 @@
   "description": "Civil e2e tests",
   "scripts": {
     "lint": "eslint e2e",
+    "setup": "echo yarn:setup",
     "test": "npx codeceptjs run e2e/tests/unit/*.js",
     "test:a11y": "echo test:a11y",
     "test:coverage": "echo test:coverage",
