@@ -226,14 +226,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQHearing",
-    "ListElementCode": "hearingLength",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
