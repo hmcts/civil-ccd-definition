@@ -459,6 +459,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "orderSDODocumentDJCollection",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingDisclosureOfDocumentsDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
