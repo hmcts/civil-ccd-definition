@@ -4985,5 +4985,43 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

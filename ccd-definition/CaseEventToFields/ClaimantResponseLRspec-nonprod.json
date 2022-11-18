@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimAdmitAllRepaymentPlanLabel",
+    "CaseFieldID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
