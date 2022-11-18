@@ -885,17 +885,5 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "orderSDODocumentDJCollection",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "OrderPreview",
-    "PageDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional=\"NOT_SHOWN\""
   }
 ]
