@@ -170,7 +170,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: isCertificateOfServiceEnabled ? 'Your claim has been received':
         'Your claim has been received and will progress offline',
-      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment is confirmed.' :
+      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
     console.log('***waitForFinishedBusinessProcess');
@@ -771,11 +771,12 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-
+  console.log('submittedCallbackResponseContains:' + JSON.stringify(submittedCallbackResponseContains));
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
-  assert.equal(responseBody.state, expectedState);
+  assert.equal(responseBody.state, JSON.stringify(expectedState));
+  console.log('responseBody:' + responseBody);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
