@@ -1,0 +1,11 @@
+[
+  {
+    "ID": "CaseDocument",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
+    "ListElementCode": "documentLink",
+    "EventElementLabel": "Defendant response form",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  }
+]
