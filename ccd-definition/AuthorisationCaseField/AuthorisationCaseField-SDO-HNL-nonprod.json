@@ -482,6 +482,66 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingHearingNotesTitle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingHearingNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalOrderWithoutHearing",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingFinalDisposalHearingEndLine",
     "AccessControl": [
       {
@@ -786,7 +846,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1143,6 +1203,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sdoHearingNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsCreditHire",
     "AccessControl": [
       {
@@ -1176,7 +1249,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1689,6 +1762,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackHearingTime",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrialEndLine",
     "AccessControl": [
       {
@@ -1806,6 +1892,32 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackHearingNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackBuildingDispute",
     "AccessControl": [
       {
@@ -1904,7 +2016,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1944,6 +2056,57 @@
           "caseworker-civil-solicitor",
           "judge-profile",
           "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unsuitableSDODate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }

@@ -65,8 +65,29 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "HEARING_READINESS",
-    "Name": "Hearing readiness",
-    "Description": "Claim is readied for hearing",
-    "DisplayOrder": 9
+    "Name": "Hearing Readiness",
+    "Description": "placeholder",
+    "DisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "Name": "Prepare For Hearing Conduct Hearing",
+    "Description": "Placeholder",
+    "DisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "IN_MEDIATION",
+    "Name": "In Mediation",
+    "Description": "Placeholder",
+    "DisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DECISION_OUTCOME",
+    "Name": "Decision Outcome",
+    "Description": "Placeholder",
+    "DisplayOrder": 13
   }
 ]

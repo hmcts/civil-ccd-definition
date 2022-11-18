@@ -69,12 +69,12 @@
         "CRUD": "R"
       },
       {
-      "UserRoles": [
-      "APP-SOL-UNSPEC-PROFILE",
-      "APP-SOL-SPEC-PROFILE",
-      "caseworker-civil-admin"
-      ],
-      "CRUD": "CRUD"
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -117,9 +117,18 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
           "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
           "caseworker-ras-validation",
           "GS_profile"
         ],
@@ -133,13 +142,26 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "caseworker-ras-validation",
           "GS_profile"
         ],
@@ -153,10 +175,41 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }

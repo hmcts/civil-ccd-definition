@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseFieldID": "placeholder",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "page",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  }
+]

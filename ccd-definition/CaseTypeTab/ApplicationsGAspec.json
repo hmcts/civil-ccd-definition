@@ -9,5 +9,16 @@
     ],
     "CaseFieldID": "generalApplicationsDetails",
     "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ApplicationsJudge",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CaseFieldID": "generalApplicationsDetails",
+    "TabFieldDisplayOrder": 1
   }
 ]

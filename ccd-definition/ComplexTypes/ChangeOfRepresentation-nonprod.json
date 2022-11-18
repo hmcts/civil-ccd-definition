@@ -1,0 +1,30 @@
+[
+  {
+    "ID": "ChangeOfRepresentation",
+    "ListElementCode": "organisationToAddID",
+    "FieldType": "Text",
+    "ElementLabel": "organisationToAddID",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ChangeOfRepresentation",
+    "ListElementCode": "organisationToRemoveID",
+    "FieldType": "Text",
+    "ElementLabel": "organisationToRemoveID",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ChangeOfRepresentation",
+    "ListElementCode": "caseRole",
+    "FieldType": "Text",
+    "ElementLabel": "caseRole",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ChangeOfRepresentation",
+    "ListElementCode": "timestamp",
+    "FieldType": "DateTime",
+    "ElementLabel": "timestamp",
+    "SecurityClassification": "Public"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "placeholder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }]
+    }
+  ]

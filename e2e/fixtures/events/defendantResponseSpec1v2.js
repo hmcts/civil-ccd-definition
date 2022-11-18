@@ -1,3 +1,4 @@
+const {listElement, date} = require('../../api/dataHelper');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -55,7 +56,15 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -210,14 +219,14 @@ module.exports = {
           },
           RepaymentPlan: {
             respondent1RepaymentPlan: {
-              firstRepaymentDate: '2022-11-11',
+              firstRepaymentDate: date(30),
               paymentAmount: '100',
               repaymentFrequency: 'ONCE_ONE_MONTH'
             }
           },
           RepaymentPlanRespondent2: {
             respondent2RepaymentPlan: {
-              firstRepaymentDate: '2022-11-11',
+              firstRepaymentDate: date(60),
               paymentAmount: '200',
               repaymentFrequency: 'ONCE_TWO_WEEKS'
             }
@@ -309,7 +318,15 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -446,7 +463,15 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
