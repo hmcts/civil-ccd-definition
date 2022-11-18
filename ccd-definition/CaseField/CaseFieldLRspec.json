@@ -1043,7 +1043,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaimLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Hearing</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">Hearing availability</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2067,20 +2067,6 @@
     "ID": "applicant1DQRequestedCourt",
     "Label": " ",
     "FieldType": "RequestedCourtLocationLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQHearingLRspec",
-    "Label": "Hearing",
-    "FieldType": "HearingLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQSmallClaimHearing",
-    "Label": "Hearing",
-    "FieldType": "SmallClaimHearing",
     "SecurityClassification": "Public"
   },
   {
