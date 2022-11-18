@@ -132,37 +132,9 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "perftest"
   }
 
-  before('highleveldatasetup:aat') {
+  before('highleveldatasetup') {
     yarnBuilder.yarn('setup')
-    echo "current environment is ${env.ENVIRONMENT}"
-    for(PROD_ENV in ["aat","prod"]){
-      echo "environment is ${PROD_ENV}"
-      dir("${WORKSPACE}/bin") {
-        sh """
-          eval \$(./variables/load-${PROD_ENV}-environment-variables.sh)
-          ./build-release-ccd-definition.sh ${PROD_ENV}
-        """
-      }
-
-      dir("${WORKSPACE}/build") {
-        steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx"
-      }
-    }
-  }
-
-
-  before('highleveldatasetup:preview') {
-    yarnBuilder.yarn('setup')
-    dir("${WORKSPACE}/bin") {
-      sh """
-          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
-          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
-      """
-    }
-
-    dir("${WORKSPACE}/build") {
-      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
-    }
+    archiveCoreCaseDataDefinitions()
   }
 
   after('akschartsinstall') {
