@@ -1,5 +1,4 @@
 const config = require('../../../config.js');
-const apiRequest = require('./apiRequest.js');
 
 Feature('@api-unspec');
 
