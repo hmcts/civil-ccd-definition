@@ -30,5 +30,37 @@
     "ListElementCode": "details.estimatedCost",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.name",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.fieldOfExpertise",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.whyRequired",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.estimatedCost",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
   }
 ]
