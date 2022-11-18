@@ -23,13 +23,5 @@
     "Label": "component launcher",
     "FieldType": "ComponentLauncher",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "componentLauncherTest",
-    "Label": "component launcher document",
-    "FieldType": "Document",
-    "SecurityClassification": "Public",
-    "CategoryID": "test1"
   }
 ]

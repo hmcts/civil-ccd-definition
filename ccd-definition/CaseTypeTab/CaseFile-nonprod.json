@@ -6,6 +6,6 @@
     "TabDisplayOrder": 20,
     "CaseFieldID": "componentLauncher",
     "TabFieldDisplayOrder": 1,
-    "DisplayContextParameter": "#ARGUMENT(CaseFileView)\n"
+    "DisplayContextParameter": "#ARGUMENT(CaseFileView)"
   }
 ]
