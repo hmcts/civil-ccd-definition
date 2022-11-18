@@ -1,5 +1,6 @@
 exports.config = {
   tests: [
+    './e2e/*_test.js',
     './bin/tests/*_test.js',
     './bin/tests/api_tests/damages/*_test.js',
     './bin/tests/api_tests/lrspec/*_test.js',
