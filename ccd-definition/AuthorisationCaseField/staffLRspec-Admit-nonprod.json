@@ -7,7 +7,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "responseClaimAdmitAllRepaymentPlanLabel",
+    "CaseFieldID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
