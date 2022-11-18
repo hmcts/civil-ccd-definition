@@ -1,37 +1,31 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaimDetails1",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaimDetails2",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendant1LIPAtClaimIssued",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_HEARING_FEE_UNPAID",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendant2LIPAtClaimIssued",
+    "CaseEventID": "NOTIFY_CLAIMANT_HEARING",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaimDefendant1",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "cosNotifyClaimDefendant2",
+    "CaseEventID": "NOTIFY_DEFENDANT_HEARING",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
