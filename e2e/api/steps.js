@@ -773,7 +773,9 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   await apiRequest.startEvent(eventName, caseId);
   console.log('submittedCallbackResponseContains:' + JSON.stringify(submittedCallbackResponseContains));
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
+  console.log('Call made successfully:' + JSON.stringify(submittedCallbackResponseContains));
   const responseBody = await response.json();
+  console.log('responseBody:' + responseBody);
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, JSON.stringify(expectedState));
   console.log('responseBody:' + responseBody);
