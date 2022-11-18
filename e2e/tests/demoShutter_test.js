@@ -3,6 +3,6 @@ const apiRequest = require('./apiRequest.js');
 
 Feature('@api-unspec');
 
-Scenario('Login', async ({}) => {
-  await apiRequest.setupTokens(config.applicantSolicitorUser);
+Scenario('Login', async ({I}) => {
+  await I.retry(5).login(config.applicantSolicitorUser);
 });
