@@ -82,7 +82,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SERVICE_REQUEST_RECEIVED",
-    "UserRoles": "caseworker-civil-systemupdate",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
 ]

@@ -142,5 +142,12 @@
     "HintText": "For example, 27 3 2022",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeePaymentDetails",
+    "Label": "Hearing Payment Details",
+    "FieldType": "PaymentDetails",
+    "SecurityClassification": "Public"
   }
 ]
