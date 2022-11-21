@@ -10,399 +10,399 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "claimantDisclosure",
     "CategoryLabel": "Claimant",
-    "DisplayOrder": "1",
+    "DisplayOrder": "2",
     "ParentCategoryID": "disclosureDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "defendantDisclosure",
     "CategoryLabel": "Defendant",
-    "DisplayOrder": "2",
+    "DisplayOrder": "4",
     "ParentCategoryID": "disclosureDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "otherDisclosure",
     "CategoryLabel": "Additional Party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "5",
     "ParentCategoryID": "disclosureDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "disclosureListID1",
     "CategoryLabel": "Disclosure List",
-    "DisplayOrder": "1",
+    "DisplayOrder": "6",
     "ParentCategoryID": "claimantDisclosure"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "disclosureDocumentsID2",
     "CategoryLabel": "Disclosure",
-    "DisplayOrder": "2",
+    "DisplayOrder": "7",
     "ParentCategoryID": "claimantDisclosure"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "disclosureListID3",
     "CategoryLabel": "Disclosure List",
-    "DisplayOrder": "1",
+    "DisplayOrder": "8",
     "ParentCategoryID": "defendantDisclosure"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "disclosureDocumentsID4",
     "CategoryLabel": "Disclosure",
-    "DisplayOrder": "2",
+    "DisplayOrder": "9",
     "ParentCategoryID": "defendantDisclosure"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "disclosureListID5",
     "CategoryLabel": "Disclosure List",
-    "DisplayOrder": "1",
+    "DisplayOrder": "10",
     "ParentCategoryID": "otherDisclosure"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "disclosureDocumentsID6",
     "CategoryLabel": "Disclosure",
-    "DisplayOrder": "2",
+    "DisplayOrder": "11",
     "ParentCategoryID": "otherDisclosure"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessDocuments",
     "CategoryLabel": "Witness statements for trial",
-    "DisplayOrder": "2",
+    "DisplayOrder": "12",
     "ParentCategoryID": ""
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "claimantWitness",
     "CategoryLabel": "Claimant",
-    "DisplayOrder": "1",
+    "DisplayOrder": "13",
     "ParentCategoryID": "witnessDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "defendantWitness",
     "CategoryLabel": "Defendant",
-    "DisplayOrder": "2",
+    "DisplayOrder": "14",
     "ParentCategoryID": "witnessDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "otherWitness",
     "CategoryLabel": "Additional Party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "15",
     "ParentCategoryID": "witnessDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessStatementID1",
     "CategoryLabel": "Statement",
-    "DisplayOrder": "1",
+    "DisplayOrder": "16",
     "ParentCategoryID": "claimantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessSummaryID2",
     "CategoryLabel": "Summary",
-    "DisplayOrder": "2",
+    "DisplayOrder": "17",
     "ParentCategoryID": "claimantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessNoticeHearsayID3",
     "CategoryLabel": "Notice of intention to rely on hearsay evidence",
-    "DisplayOrder": "3",
+    "DisplayOrder": "18",
     "ParentCategoryID": "claimantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessDocumentsID4",
     "CategoryLabel": "Statement",
-    "DisplayOrder": "4",
+    "DisplayOrder": "19",
     "ParentCategoryID": "claimantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessStatementID5",
     "CategoryLabel": "Statement",
-    "DisplayOrder": "1",
+    "DisplayOrder": "20",
     "ParentCategoryID": "defendantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessSummaryID6",
     "CategoryLabel": "Summary",
-    "DisplayOrder": "2",
+    "DisplayOrder": "21",
     "ParentCategoryID": "defendantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessNoticeHearsayID7",
     "CategoryLabel": "Notice of intention to rely on hearsay evidence",
-    "DisplayOrder": "3",
+    "DisplayOrder": "22",
     "ParentCategoryID": "defendantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessDocumentsID8",
     "CategoryLabel": "Statement",
-    "DisplayOrder": "4",
+    "DisplayOrder": "23",
     "ParentCategoryID": "defendantWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessStatementID9",
     "CategoryLabel": "Statement",
-    "DisplayOrder": "1",
+    "DisplayOrder": "24",
     "ParentCategoryID": "otherWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessSummaryID10",
     "CategoryLabel": "Summary",
-    "DisplayOrder": "2",
+    "DisplayOrder": "25",
     "ParentCategoryID": "otherWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessNoticeHearsayID11",
     "CategoryLabel": "Notice of intention to rely on hearsay evidence",
-    "DisplayOrder": "3",
+    "DisplayOrder": "26",
     "ParentCategoryID": "otherWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "witnessDocumentsID12",
     "CategoryLabel": "Statement",
-    "DisplayOrder": "4",
+    "DisplayOrder": "27",
     "ParentCategoryID": "otherWitness"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertDocuments",
     "CategoryLabel": "Expert witness",
-    "DisplayOrder": "3",
+    "DisplayOrder": "28",
     "ParentCategoryID": ""
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "claimantExpert",
     "CategoryLabel": "Claimant",
-    "DisplayOrder": "1",
+    "DisplayOrder": "29",
     "ParentCategoryID": "expertDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "defendantExpert",
     "CategoryLabel": "Defendant",
-    "DisplayOrder": "2",
+    "DisplayOrder": "30",
     "ParentCategoryID": "expertDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "otherExpert",
     "CategoryLabel": "Additional Party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "31",
     "ParentCategoryID": "expertDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsReportID1",
     "CategoryLabel": "Reports",
-    "DisplayOrder": "1",
+    "DisplayOrder": "32",
     "ParentCategoryID": "claimantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsJointStatementID2",
     "CategoryLabel": "Joint statement of experts",
-    "DisplayOrder": "2",
+    "DisplayOrder": "33",
     "ParentCategoryID": "claimantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsQuestionsID3",
     "CategoryLabel": "Questions of experts of any other party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "34",
     "ParentCategoryID": "claimantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsAnswersID4",
     "CategoryLabel": "Answers to any questions asked by another party",
-    "DisplayOrder": "4",
-    "ParentCategoryID": "expertsAnswersID"
+    "DisplayOrder": "35",
+    "ParentCategoryID": "claimantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsReportID5",
     "CategoryLabel": "Reports",
-    "DisplayOrder": "1",
+    "DisplayOrder": "36",
     "ParentCategoryID": "defendantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsJointStatementID6",
     "CategoryLabel": "Joint statement of experts",
-    "DisplayOrder": "2",
+    "DisplayOrder": "37",
     "ParentCategoryID": "defendantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsQuestionsID7",
     "CategoryLabel": "Questions of experts of any other party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "38",
     "ParentCategoryID": "defendantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsAnswersID8",
     "CategoryLabel": "Answers to any questions asked by another party",
-    "DisplayOrder": "4",
+    "DisplayOrder": "39",
     "ParentCategoryID": "defendantExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsReportID9",
     "CategoryLabel": "Reports",
-    "DisplayOrder": "1",
+    "DisplayOrder": "40",
     "ParentCategoryID": "otherExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsJointStatementID10",
     "CategoryLabel": "Joint statement of experts",
-    "DisplayOrder": "2",
+    "DisplayOrder": "41",
     "ParentCategoryID": "otherExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsQuestionsID11",
     "CategoryLabel": "Questions of experts of any other party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "42",
     "ParentCategoryID": "otherExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "expertsAnswersID12",
     "CategoryLabel": "Answers to any questions asked by another party",
-    "DisplayOrder": "4",
+    "DisplayOrder": "43",
     "ParentCategoryID": "otherExpert"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialDocuments",
     "CategoryLabel": "Trial",
-    "DisplayOrder": "4",
+    "DisplayOrder": "44",
     "ParentCategoryID": ""
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "claimantTrial",
     "CategoryLabel": "Claimant",
-    "DisplayOrder": "1",
+    "DisplayOrder": "45",
     "ParentCategoryID": "expertDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "defendantTrial",
     "CategoryLabel": "Defendant",
-    "DisplayOrder": "2",
+    "DisplayOrder": "46",
     "ParentCategoryID": "expertDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "otherTrial",
     "CategoryLabel": "Additional Party",
-    "DisplayOrder": "3",
+    "DisplayOrder": "47",
     "ParentCategoryID": "expertDocuments"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialSummaryID1",
     "CategoryLabel": "Case Summary",
-    "DisplayOrder": "1",
+    "DisplayOrder": "48",
     "ParentCategoryID": "claimantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialSkeletonID2",
     "CategoryLabel": "Skeleton argument",
-    "DisplayOrder": "2",
+    "DisplayOrder": "49",
     "ParentCategoryID": "claimantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialAuthoritiesID3",
     "CategoryLabel": "Authorities and costs",
-    "DisplayOrder": "3",
+    "DisplayOrder": "50",
     "ParentCategoryID": "claimantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialDocumentaryID4",
     "CategoryLabel": "Documentary evidence for trial",
-    "DisplayOrder": "4",
+    "DisplayOrder": "51",
     "ParentCategoryID": "claimantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialSummaryID5",
     "CategoryLabel": "Case Summary",
-    "DisplayOrder": "1",
+    "DisplayOrder": "52",
     "ParentCategoryID": "defendantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialSkeletonID6",
     "CategoryLabel": "Skeleton argument",
-    "DisplayOrder": "2",
+    "DisplayOrder": "53",
     "ParentCategoryID": "defendantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialAuthoritiesID7",
     "CategoryLabel": "Authorities and costs",
-    "DisplayOrder": "3",
+    "DisplayOrder": "54",
     "ParentCategoryID": "defendantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialDocumentaryID8",
     "CategoryLabel": "Documentary evidence for trial",
-    "DisplayOrder": "4",
+    "DisplayOrder": "55",
     "ParentCategoryID": "defendantTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialSummaryID9",
     "CategoryLabel": "Case Summary",
-    "DisplayOrder": "1",
+    "DisplayOrder": "56",
     "ParentCategoryID": "otherTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialSkeletonID10",
     "CategoryLabel": "Skeleton argument",
-    "DisplayOrder": "2",
+    "DisplayOrder": "57",
     "ParentCategoryID": "otherTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialAuthoritiesID11",
     "CategoryLabel": "Authorities and costs",
-    "DisplayOrder": "3",
+    "DisplayOrder": "58",
     "ParentCategoryID": "otherTrial"
   },
   {
     "CaseTypeID": "CIVIL",
     "CategoryID": "trialDocumentaryID12",
     "CategoryLabel": "Documentary evidence for trial",
-    "DisplayOrder": "4",
+    "DisplayOrder": "59",
     "ParentCategoryID": "otherTrial"
   }
 ]

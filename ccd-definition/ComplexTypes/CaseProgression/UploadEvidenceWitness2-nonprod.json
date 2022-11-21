@@ -14,6 +14,6 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public",
-    "CategoryID":"witnessSummaryID"
+    "_CategoryID":"witnessSummaryID"
   }
 ]
