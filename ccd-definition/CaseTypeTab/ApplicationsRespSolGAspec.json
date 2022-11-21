@@ -4,7 +4,7 @@
     "TabID": "GAApplicationsRespOne",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "UserRoles": [
       "RES-SOL-ONE-UNSPEC-PROFILE"
     ],
@@ -15,7 +15,7 @@
     "TabID": "GAApplicationsRespOneSpec",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "UserRoles": [
       "RES-SOL-ONE-SPEC-PROFILE"
     ],

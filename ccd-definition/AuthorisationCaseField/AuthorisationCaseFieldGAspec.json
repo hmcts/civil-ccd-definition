@@ -216,7 +216,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -250,7 +250,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -263,7 +263,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [

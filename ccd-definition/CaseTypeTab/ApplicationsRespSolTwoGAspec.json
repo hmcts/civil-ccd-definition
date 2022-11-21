@@ -4,7 +4,7 @@
     "TabID": "GAApplicationsRespTwo",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRoles": [
       "RES-SOL-TWO-UNSPEC-PROFILE"
     ],
@@ -15,7 +15,7 @@
     "TabID": "GAApplicationsRespTwoSpec",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
-    "CaseFieldID": "gaDetailsRespondentSolTwo",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRoles": [
       "RES-SOL-TWO-SPEC-PROFILE"
     ],

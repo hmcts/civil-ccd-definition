@@ -7,7 +7,7 @@
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE"
     ],
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "TabFieldDisplayOrder": 1
   }
 ]

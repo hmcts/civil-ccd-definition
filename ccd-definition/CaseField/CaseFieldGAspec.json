@@ -123,7 +123,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationsDetails",
+    "ID": "claimantGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
@@ -145,7 +145,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSol",
+    "ID": "respondentSolGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
@@ -156,7 +156,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSolTwo",
+    "ID": "respondentSolTwoGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
