@@ -726,7 +726,13 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   }
 
-  assert.deepEqual(responseBody.data, caseData);
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  } 
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    throw err;
+  }
 };
 
 function removeUiFields(pageId, caseData) {

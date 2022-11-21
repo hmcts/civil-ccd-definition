@@ -39,7 +39,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("RES-SOL-ONE-SPEC-PROFILE", "PUBLIC"),
         new CcdRoleConfig("RES-SOL-TWO-UNSPEC-PROFILE", "PUBLIC"),
         new CcdRoleConfig("RES-SOL-TWO-SPEC-PROFILE", "PUBLIC"),
-        new CcdRoleConfig("hearing-schedule-access", "PUBLIC")
+        new CcdRoleConfig("payment-access", "PUBLIC")
     };
 
     private final CcdEnvironment environment;
@@ -79,5 +79,10 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     public void createRoleAssignments() {
         // Do not create role assignments.
         BeftaUtils.defaultLog("Will NOT create role assignments!");
+    }
+
+    @Override
+    protected boolean shouldTolerateDataSetupFailure() {
+        return true;
     }
 }
