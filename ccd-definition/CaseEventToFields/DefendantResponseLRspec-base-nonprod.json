@@ -1,0 +1,31 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "PageDisplayOrder": 48,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmaillClaimHearing",
+    "CaseEventFieldLabel": "Hearing",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQHearingSmallClaim",
+    "PageDisplayOrder": 48,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmaillClaimHearing",
+    "CaseEventFieldLabel": "Hearing",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0
+  }
+]
