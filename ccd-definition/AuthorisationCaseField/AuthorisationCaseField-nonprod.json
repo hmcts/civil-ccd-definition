@@ -516,24 +516,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CaseAccessCategory",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "changeOrganisationRequestField",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "R"
