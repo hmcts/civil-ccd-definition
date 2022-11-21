@@ -3,36 +3,36 @@
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STRIKE_OUT",
     "ListElement": "Strike out",
-    "DisplayOrder": 1
+    "DisplayOrder": 6
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "SUMMARY_JUDGEMENT",
     "ListElement": "Summary judgment",
-    "DisplayOrder": 2
+    "DisplayOrder": 7
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STAY_THE_CLAIM",
     "ListElement": "Stay the claim",
-    "DisplayOrder": 3
+    "DisplayOrder": 5
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "EXTEND_TIME",
     "ListElement": "Extend time",
-    "DisplayOrder": 4
+    "DisplayOrder": 3
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "AMEND_A_STMT_OF_CASE",
     "ListElement": "Amend a statement of case",
-    "DisplayOrder": 5
+    "DisplayOrder": 2
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "RELIEF_FROM_SANCTIONS",
     "ListElement": "Relief from sanctions",
-    "DisplayOrder": 6
+    "DisplayOrder": 8
   }
 ]
