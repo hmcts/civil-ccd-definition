@@ -254,6 +254,7 @@ ccd:
         DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
+        WELSH_TRANSLATION_ENABLED: false
         RELEASE_REVISION: "{{ .Release.Revision }}"
       disableKeyVaults: true
   ccd-user-profile-api:
