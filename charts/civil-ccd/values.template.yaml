@@ -27,7 +27,7 @@ civil-general-applications:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
     imagePullPolicy: Always
     ingressHost: ga-${SERVICE_FQDN}
-    releaseNameOverride: {{ .Release.Name }}-ga
+    releaseNameOverride: "{{ .Release.Name }}-ga"
     keyVaults:
       civil:
         resourceGroup: civil
@@ -51,19 +51,19 @@ civil-general-applications:
             alias: launch-darkly-sdk-key
           - robotics-notification-multipartyrecipient
     environment:
-      CORE_CASE_DATA_API_URL: http://{{ .Release.Name }}-ccd-data-store-api
+      CORE_CASE_DATA_API_URL: "http://{{ .Release.Name }}-ccd-data-store-api"
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
-      CMC_DB_HOST: {{ .Release.Name }}-postgresql
+      CMC_DB_HOST: "{{ .Release.Name }}-postgresql"
       CMC_DB_USERNAME: ${POSTGRES_USER}
       CMC_DB_PASSWORD: ${POSTGRES_PASSWORD}
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       REFERENCE_DATABASE_MIGRATION: false
-      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://{{ .Release.Name }}-camunda/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://{{ .Release.Name }}-camunda/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://{{ .Release.Name }}-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: "http://{{ .Release.Name }}-camunda/engine-rest/"
+      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: "http://{{ .Release.Name }}-camunda/engine-rest/"
+      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: "http://{{ .Release.Name }}-camunda/engine-rest/"
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
       GENAPP_LRD_URL: http://rd-location-ref-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-      PAY_CALLBACK_URL: https://{{ .Release.Name }}.preview.platform.hmcts.net/service-request-update
+      PAY_CALLBACK_URL: "https://{{ .Release.Name }}.preview.platform.hmcts.net/service-request-update"
       TESTING_SUPPORT_ENABLED: true
       POLLING_EVENT_EMITTER_ENABLED: false
       CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
@@ -99,21 +99,21 @@ civil-service:
     environment:
       PAYMENTS_CALLBACK_URL: http://${SERVICE_FQDN}/service-request-update
       TESTING_SUPPORT_ENABLED: true
-      CORE_CASE_DATA_API_URL: http://{{ .Release.Name }}-ccd-data-store-api
-      CMC_DB_HOST: {{ .Release.Name }}-postgresql
+      CORE_CASE_DATA_API_URL: "http://{{ .Release.Name }}-ccd-data-store-api"
+      CMC_DB_HOST: "{{ .Release.Name }}-postgresql"
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: hmcts
       CMC_DB_PASSWORD: hmcts
       REFERENCE_DATABASE_MIGRATION: true
-      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://{{ .Release.Name }}-camunda/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://{{ .Release.Name }}-camunda/engine-rest/
-      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: http://{{ .Release.Name }}-camunda/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: "http://{{ .Release.Name }}-camunda/engine-rest/"
+      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: "http://{{ .Release.Name }}-camunda/engine-rest/"
+      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: "http://{{ .Release.Name }}-camunda/engine-rest/"
       STITCHING_API_ENABLED: true
-      ACA_SERVICE_API_BASEURL: http://{{ .Release.Name }}-aac-manage-case-assignment
+      ACA_SERVICE_API_BASEURL: "http://{{ .Release.Name }}-aac-manage-case-assignment"
       RELEASE_REVISION: "{{ .Release.Revision }}"
       POLLING_EVENT_EMITTER_ENABLED: false
 idam-pr:
-  releaseNameOverride: {{ .Release.Name }}-xui-idam-pr
+  releaseNameOverride: "{{ .Release.Name }}-xui-idam-pr"
   enabled: true
   redirect_uris:
     XUI:
@@ -123,7 +123,7 @@ aac-manage-case-assignment:
   enabled: true
   java:
     imagePullPolicy: Always
-    releaseNameOverride: {{ .Release.Name }}-aac-manage-case-assignment
+    releaseNameOverride: "{{ .Release.Name }}-aac-manage-case-assignment"
     image: hmctspublic.azurecr.io/aac/manage-case-assignment:latest
     environment:
       IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
@@ -133,8 +133,8 @@ aac-manage-case-assignment:
       MCA_DS_PROXY_URLS_ALLOWED_LIST: /searchCases.*,/internal/searchCases.*,/internal/cases.*
       MCA_DEF_STORE_PROXY_URLS_ALLOWED_LIST: /api/display/challenge-questions.*
       MANAGE_CASE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_data,fpl_case_service,divorce_frontend,divorce_ccd_submission,finrem_case_orchestration, civil_service
-      CCD_DATA_STORE_API_BASE_URL: http://{{ .Release.Name }}-ccd-data-store-api
-      CCD_DEFINITION_STORE_API_BASE_URL: http://{{ .Release.Name }}-ccd-definition-store
+      CCD_DATA_STORE_API_BASE_URL: "http://{{ .Release.Name }}-ccd-data-store-api"
+      CCD_DEFINITION_STORE_API_BASE_URL: "http://{{ .Release.Name }}-ccd-definition-store"
       PRD_HOST: http://rd-professional-api-aat.service.core-compute-aat.internal
     autoscaling:
       enabled: false
@@ -153,22 +153,22 @@ xui-webapp:
   enabled: true
   nodejs:
     imagePullPolicy: Always
-    releaseNameOverride: {{ .Release.Name }}-xui-webapp
+    releaseNameOverride: "{{ .Release.Name }}-xui-webapp"
     image: hmctspublic.azurecr.io/xui/webapp:latest
     devcpuRequests: 500m
     devmemoryRequests: 512Mi
     devcpuLimits: 1
     devmemoryLimits: 1Gi
     environment:
-      HEALTH_CCD_COMPONENT_API: http://{{ .Release.Name }}-ccd-api-gw/health
-      HEALTH_CCD_DATA_API: http://{{ .Release.Name }}-ccd-data-store-api/health
+      HEALTH_CCD_COMPONENT_API: "http://{{ .Release.Name }}-ccd-api-gw/health"
+      HEALTH_CCD_DATA_API: "http://{{ .Release.Name }}-ccd-data-store-api/health"
       HEALTH_TERMS_AND_CONDITIONS_API: http://xui-terms-and-conditions-aat.service.core-compute-aat.internal/health
-      SERVICES_CCD_COMPONENT_API: http://{{ .Release.Name }}-ccd-api-gw
-      SERVICES_CCD_DATA_STORE_API: http://{{ .Release.Name }}-ccd-data-store-api
+      SERVICES_CCD_COMPONENT_API: "http://{{ .Release.Name }}-ccd-api-gw"
+      SERVICES_CCD_DATA_STORE_API: "http://{{ .Release.Name }}-ccd-data-store-api"
       SERVICES_TERMS_AND_CONDITIONS: http://xui-terms-and-conditions-aat.service.core-compute-aat.internal
       JURISDICTIONS: CIVIL
       SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
-      SERVICES_CCD_CASE_ASSIGNMENT_API: http://{{ .Release.Name }}-aac-manage-case-assignment
+      SERVICES_CCD_CASE_ASSIGNMENT_API: "http://{{ .Release.Name }}-aac-manage-case-assignment"
 
 ccd:
   ccd:
@@ -191,9 +191,9 @@ ccd:
     userProfileImporter:
       enabled: false
   global:
-    ccdApiGatewayIngress: http://{{ .Release.Name }}-ccd-api-gw
-    ccdDataStoreUrl: http://{{ .Release.Name }}-ccd-data-store-api
-    ccdDefinitionStoreUrl: http://{{ .Release.Name }}-ccd-definition-store
+    ccdApiGatewayIngress: "http://{{ .Release.Name }}-ccd-api-gw"
+    ccdDataStoreUrl: "http://{{ .Release.Name }}-ccd-data-store-api"
+    ccdDefinitionStoreUrl: "http://{{ .Release.Name }}-ccd-definition-store"
     ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
@@ -218,7 +218,7 @@ ccd:
       disableKeyVaults: true
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
-        DATA_STORE_DB_HOST: {{ .Release.Name }}-postgresql
+        DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
         DATA_STORE_IDAM_KEY: ${CCD_DATA_STORE_S2S_SECRET}
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment
         IDAM_API_BASE_URL: https://idam-api.aat.platform.hmcts.net
@@ -251,7 +251,7 @@ ccd:
       devcpuLimits: 2
       devmemoryLimits: 1Gi
       environment:
-        DEFINITION_STORE_DB_HOST: {{ .Release.Name }}-postgresql
+        DEFINITION_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         RELEASE_REVISION: "{{ .Release.Revision }}"
@@ -260,7 +260,7 @@ ccd:
     java:
       imagePullPolicy: Always
       enviroment:
-        USER_PROFILE_DB_HOST: {{ .Release.Name }}-postgresql
+        USER_PROFILE_DB_HOST: "{{ .Release.Name }}-postgresql"
         RELEASE_REVISION: "{{ .Release.Revision }}"
       disableKeyVaults: true
 
@@ -273,14 +273,14 @@ camunda-bpm:
   java:
     imagePullPolicy: Always
     disableKeyVaults: true
-    releaseNameOverride: {{ .Release.Name }}-camunda
+    releaseNameOverride: "{{ .Release.Name }}-camunda"
     devcpuRequests: 500m
     devmemoryRequests: 512Mi
     devcpuLimits: 1
     devmemoryLimits: 1Gi
     environment:
       CAMUNDA_API_AUTH_ENABLED: false
-      CAMUNDA_DB_HOST: {{ .Release.Name }}-postgresql
+      CAMUNDA_DB_HOST: "{{ .Release.Name }}-postgresql"
       CAMUNDA_DB_NAME: camunda
       CAMUNDA_DB_USER_NAME: hmcts
       CAMUNDA_DB_PASSWORD: hmcts
