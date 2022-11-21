@@ -30,13 +30,13 @@ module.exports = {
       hearingSupportRequirementsDJ: {
         hearingTemporaryLocation: {
           value: {
-            code: '62ff8ded-ab50-47a6-894e-c101fb56a89f',
-            label: 'site_name 0000 - court address 0000 - AA0 0BB'
+            code: 'b8af31b7-4e8b-4b34-8c60-ed2e0361d310',
+            label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
           },
           list_items: [
             {
-              code: '86f55ca6-d20c-4f29-b4a9-0c17c29c8122',
-              label: 'site_name 0000 - court address 0000 - AA0 0BB'
+              code: 'b8af31b7-4e8b-4b34-8c60-ed2e0361d310',
+              label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
             },
             {
               code: '86f55ca6-d20c-4f29-b4a9-0c17c29c8122',
@@ -236,11 +236,11 @@ module.exports = {
             }
           ]
         },
-        hearingPreferredLocation: 'site_name 0000 - court address 0000 - AA0 0BB'
+        hearingPreferredLocation: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
       },
       caseManagementLocation: {
-        baseLocation: '000000',
-        region: '2'
+        baseLocation: '20262',
+        region: '1'
       },
       respondent1OrganisationPolicy: {
         Organisation: {
@@ -249,7 +249,7 @@ module.exports = {
         OrgPolicyReference: 'Defendant policy reference456',
         OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]'
       },
-      locationName: 'site_name 0000'
+      locationName: 'Central London County Court'
     }
   }
 };
