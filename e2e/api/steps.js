@@ -771,18 +771,19 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-  console.log('submittedCallbackResponseContains:' + JSON.stringify(submittedCallbackResponseContains));
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
-  console.log('Call made successfully:' + JSON.stringify(submittedCallbackResponseContains));
   const responseBody = await response.json();
-  console.log('responseBody:' + responseBody);
+  console.log('responseBody:');
   assert.equal(response.status, 201);
-  assert.equal(responseBody.state, JSON.stringify(expectedState));
-  console.log('responseBody:' + responseBody);
+  assert.equal(responseBody.state, expectedState);
+  console.log('expected state and status is correct:');
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
+    console.log('comparing header:');
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    console.log('header compared succesfully:');
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    console.log('body compared succesfully:');
   }
 
   if (eventName === 'CREATE_CLAIM') {
