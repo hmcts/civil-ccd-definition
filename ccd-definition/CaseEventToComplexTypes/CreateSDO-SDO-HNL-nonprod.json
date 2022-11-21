@@ -692,24 +692,48 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "label",
+    "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsHearing",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "time",
+    "ListElementCode": "dateTo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "label",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -717,7 +741,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "input2",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -798,24 +822,8 @@
     "ID": "SmallClaimsNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
     "ListElementCode": "input",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "date",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1293,7 +1301,6 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "EventHintText": "Number of pages, e.g. 4"
-
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -2055,5 +2062,14 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SdoOrderDocumentPage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoOrderDocument",
+    "ListElementCode": "documentLink",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "Draft Order"
   }
 ]
