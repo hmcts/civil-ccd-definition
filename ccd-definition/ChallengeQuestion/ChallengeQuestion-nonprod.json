@@ -6,8 +6,7 @@
     "QuestionText": "Claimant name",
     "AnswerFieldType": "Text",
     "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${applicant1.partyName}|${applicant2.partyName}:[RESPONDENTSOLICITORONE],${applicant1.partyName}|${applicant2.partyName}:[RESPONDENTSOLICITORTWO]",
-    "QuestionId": "applicantName",
-    "IgnoreNULLFields": "Yes"
+    "QuestionId": "applicantName"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -16,7 +15,6 @@
     "QuestionText": "Clients title (if applicable), First and Last Name/Organisation Name",
     "AnswerFieldType": "Text",
     "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${respondent1.partyName}:[RESPONDENTSOLICITORONE],${respondent2.partyName}:[RESPONDENTSOLICITORTWO]",
-    "QuestionId": "clientName",
-    "IgnoreNULLFields": "Yes"
+    "QuestionId": "clientName"
   }
 ]
