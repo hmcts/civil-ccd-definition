@@ -7,7 +7,6 @@ const { listElement, buildAddress} = require('./dataHelper');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-const {element} = require('../api/dataHelper');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -853,14 +852,14 @@ function replaceLitigationFriendFields(caseData) {
       fullName: 'John Doe',
       hasSameAddressAsLitigant: 'No',
       primaryAddress: buildAddress('litigant friend')
-    }
+    };
   }
   if (caseData.applicant2LitigationFriend) {
     caseData.applicant2LitigationFriend = {
       fullName: 'Jane Doe',
       hasSameAddressAsLitigant: 'No',
       primaryAddress: buildAddress('litigant friend')
-    }
+    };
   }
   return caseData;
 }
