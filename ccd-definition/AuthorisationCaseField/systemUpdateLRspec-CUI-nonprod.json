@@ -1,6 +1,12 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1PaymentDateToStringSpec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

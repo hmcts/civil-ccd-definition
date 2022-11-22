@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "CaseFieldID": "respondent1PaymentDateToStringSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",

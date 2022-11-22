@@ -16,7 +16,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimAdmitAllBySetDateLabel",
-    "Label": "${respondent1.partyName} admits all of the claim and said that they will paid by ${respondToClaimAdmitPartLRspec.whenWillThisAmountBePaid}. \n\nDetails of the repayment plan can be found in the Defendant response document",
+    "Label": "${respondent1.partyName} admits all of the claim and said that they will paid by ${respondent1PaymentDateToStringSpec}. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -40,6 +40,13 @@
     "ID": "respondent1ClaimResponseDocumentSpec",
     "Label": " ",
     "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PaymentDateToStringSpec",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
