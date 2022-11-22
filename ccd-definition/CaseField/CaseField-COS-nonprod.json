@@ -15,20 +15,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "cosLabelDef1",
-    "Label": "# Certificate of Service [defendant1]",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "cosLabelDef2",
-    "Label": "# Certificate of Service [defendant2]",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "cosLabelForClaimant1",
     "Label": "Claimant's name - ${applicant1.partyName}",
     "FieldType": "Label",
@@ -113,30 +99,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "cosLabelForClaimant1_1",
-    "Label": "Claimant's name <br /> ${applicant1.partyName}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "cosLabelForClaimant1_2",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "cosLabelForDefendant1",
-    "Label": "Defendant's name <br /> ${respondent1.partyName}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "cosLabelForDefendant2",
-    "Label": "Defendant's name <br /> ${respondent2.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
