@@ -501,7 +501,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant2LitigationFriend",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "SecondClaimantLitigationFriend",
     "PageDisplayOrder": 11,
     "PageColumnNumber": 1,

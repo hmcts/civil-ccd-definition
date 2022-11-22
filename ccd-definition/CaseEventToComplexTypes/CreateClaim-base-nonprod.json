@@ -14,7 +14,8 @@
     "ListElementCode": "fullName",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
-  },{
+  },
+  {
     "ID": "LitigationFriend",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriend",
@@ -90,6 +91,102 @@
     "ID": "LitigationFriend",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriend",
+    "ListElementCode": "certificateOfSuitability.document",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "CourtLocation",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "courtLocation",
+    "ListElementCode": "applicantPreferredCourtLocationList",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "fullName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "hasSameAddressAsLitigant",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.AddressLine1",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.AddressLine2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.AddressLine3",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.PostTown",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.County",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.Country",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "primaryAddress.PostCode",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "certificateOfSuitability.document",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
