@@ -1431,7 +1431,7 @@
     "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "e.g. The time provisionally allowed for the trial is 2 days."
+    "EventHintText": "e.g. The time provisionally allowed for the trial is 1 days."
   },
   {
     "ID": "FastTrackTrial",
