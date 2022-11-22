@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement } = require('./dataHelper');
+const { listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -121,7 +121,7 @@ module.exports = {
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
-    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData, '','applicant');
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -160,6 +160,7 @@ module.exports = {
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     await validateEventPages(createClaimData);
 
@@ -718,6 +719,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
   }
 
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -726,9 +728,14 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   }
 
+  if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
+    caseData = replaceLitigationFriendFields(caseData);
+  }
+
+
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
@@ -840,27 +847,39 @@ function addMidEventFields(pageId, responseBody) {
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
 }
 
-async function replaceLitigantFriendIfHNLFlagDisabled(responseData, solicitor, personType) {
+function replaceLitigationFriendFields(caseData) {
+  if (caseData.applicant1LitigationFriend) {
+    caseData.applicant1LitigationFriend = {
+      fullName: 'John Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    }
+  }
+  if (caseData.applicant2LitigationFriend) {
+    caseData.applicant2LitigationFriend = {
+      fullName: 'Jane Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    }
+  }
+  return caseData;
+}
+
+async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
-  console.log(`Litigation friend selected in Env: ${config.runningEnv}`);
   if (!isHNLEnabled) {
-    responseData = {
-      ...responseData,
-      valid: {
-        ...responseData.valid,
-        [`${personType === 'applicant' ? 'Claimant' : 'Defendant'}LitigationFriend`]: {
-          [`${personType}${solicitor === 'solicitorTwo' ? 2 : 1}LitigationFriend`]: {
-            details: [
-              element({
-                fullName: 'John Doe',
-                hasSameAddressAsLitigant: 'Yes'
-              })
-            ]
-          }
-        }
+    const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
+
+    if (claimantLitigationPage) {
+      const updated = replaceLitigationFriendFields(claimantLitigationPage);
+      if(claimantLitigationPage.applicant1LitigationFriend) {
+        claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
       }
-    };
+      if(claimantLitigationPage.applicant2LitigationFriend) {
+        claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
   }
   return responseData;
 }
