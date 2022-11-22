@@ -12,6 +12,7 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const createDJ = require('../fixtures/events/createDJ.js');
 const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
@@ -47,9 +48,7 @@ const data = {
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
-  DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
-  DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
-  DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
+  REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   SDO_DEFAULT_JUDGEMENT: require('../fixtures/events/sdoDefaultJudgment.js'),
   SDO_DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/sdoDefaultJudgment1v2.js'),
   SDO_DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/sdoDefaultJudgment2v1.js'),
@@ -648,7 +647,7 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
-  defaultJudgment: async (user) => {
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
@@ -657,13 +656,12 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     // workaround: caseManagementLocation shows in startevent api request but not in validate request
     deleteCaseFields('caseManagementLocation');
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
-    } else if (mpScenario === 'TWO_V_ONE') {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_2V1);
+    if (djRequestType === 'DISPOSAL_HEARING') {
+      await validateEventPages(data.REQUEST_DJ('DISPOSAL_HEARING', mpScenario));
     } else {
-      await validateEventPages(data.DEFAULT_JUDGEMENT);
+      await validateEventPages(data.REQUEST_DJ('TRIAL_HEARING', mpScenario));
     }
+
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
@@ -686,7 +684,11 @@ module.exports = {
     } else {
       await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT);
     }
-
+    
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '',
+      body: ''
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -708,7 +710,7 @@ module.exports = {
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
-  console.log('validateEventPages');
+  console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
@@ -720,8 +722,8 @@ const validateEventPages = async (data, solicitor) => {
 };
 
 const validateEventPagesSdoDj = async (data, solicitor) => {
-
-  console.log('validateEventPages');
+ 
+  console.log('validateEventPagesSDODJ');
   for (let pageId of Object.keys(data.valid)) {
     await assertValidDataSdoDj(data, pageId, solicitor);
   }
@@ -777,9 +779,9 @@ const assertValidDataSdoDj = async (data, pageId, solicitor) => {
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
   let responseBody = await response.json();
-
+  
   assert.equal(response.status, 200);
-
+  
   responseBody.data.trialHearingMethodInPersonDJ = null;
   responseBody.data.disposalHearingMethodInPersonDJ = null;
   if ( pageId === 'TrialHearing') {
@@ -787,7 +789,7 @@ const assertValidDataSdoDj = async (data, pageId, solicitor) => {
     responseBody.data.orderSDODocumentDJ = sdoDjDocument(documentName);
   }
 
-  assert.deepEqual(responseBody.data, caseData);
+    assert.deepEqual(responseBody.data, caseData);
 };
 
 function removeUiFields(pageId, caseData) {
