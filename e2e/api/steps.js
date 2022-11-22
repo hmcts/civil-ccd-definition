@@ -170,7 +170,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: isCertificateOfServiceEnabled ? 'Your claim has been received':
         'Your claim has been received and will progress offline',
-      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment is confirmed.' :
+      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
     console.log('***waitForFinishedBusinessProcess');
@@ -771,15 +771,19 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
+  console.log('responseBody:');
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, expectedState);
+  console.log('expected state and status is correct:');
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
+    console.log('comparing header:');
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    console.log('header compared succesfully:');
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    console.log('body compared succesfully:');
   }
 
   if (eventName === 'CREATE_CLAIM') {
