@@ -105,7 +105,6 @@ wa-case-event-handler:
       POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
       POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
       POSTGRES_CONNECTION_OPTIONS: ""
-      AZURE_SERVICE_BUS_CONNECTION_STRING:
 
 wa-workflow-api:
   java:
