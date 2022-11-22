@@ -15,6 +15,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimAdmitAllBySetDateLabel",
+    "Label": "${respondent1.partyName} admits all of the claim and said that they will paid by ${respondToClaimAdmitPartLRspec.whenWillThisAmountBePaid}. \n\nDetails of the repayment plan can be found in the Defendant response document",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1AcceptPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",

@@ -2,12 +2,24 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" OR defenceAdmitPartPaymentTimeRouteRequired!=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR claimantResponseScenarioFlag!=\"ONE_V_ONE\"",
+    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y",
     "Publish": "Y"
@@ -20,7 +32,19 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" AND claimantResponseScenarioFlag=\"ONE_V_ONE\"",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimAdmitAllBySetDateLabel",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
   },
@@ -32,7 +56,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec!=\"FULL_ADMISSION\" OR defenceAdmitPartPaymentTimeRouteRequired!=\"SUGGESTION_OF_REPAYMENT_PLAN\" OR claimantResponseScenarioFlag!=\"ONE_V_ONE\"",
+    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -44,7 +68,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND defenceAdmitPartPaymentTimeRouteRequired=\"SUGGESTION_OF_REPAYMENT_PLAN\" AND claimantResponseScenarioFlag=\"ONE_V_ONE\"",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -57,7 +81,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?",
-    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT\"",
+    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
   },
@@ -70,7 +94,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "CaseEventFieldLabel": "Does the claimant accept the repayment plan?",
-    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT\"",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
   },
@@ -111,6 +135,7 @@
     "RetainHiddenValue": "Y"
   },
   {
+    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "claimantResponseScenarioFlag",
@@ -124,6 +149,7 @@
     "Publish": "Y"
   },
   {
+    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimTrack",
@@ -136,6 +162,7 @@
     "Publish": "Y"
   },
   {
+    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
@@ -149,6 +176,7 @@
     "Publish": "Y"
   },
   {
+    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
