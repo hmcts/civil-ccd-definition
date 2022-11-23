@@ -71,27 +71,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EVIDENCE_UPLOAD_OTHER_PARTY",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "HEARING_FEE_UNPAID",
     "AccessControl": [
       {
