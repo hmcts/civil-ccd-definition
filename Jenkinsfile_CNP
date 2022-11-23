@@ -6,7 +6,7 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "java"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "master"
+def camundaBranch = "feat/CIV-6204"
 
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
