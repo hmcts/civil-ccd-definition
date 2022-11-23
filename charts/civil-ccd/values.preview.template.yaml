@@ -132,6 +132,7 @@ wa-task-batch-service:
       WA_TASK_MONITOR_SERVICE_URL: http://wa-task-management-api-${SERVICE_FQDN}
 
 wa-message-cron-service:
+  releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
   java:
     environment:
       WA_CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler-${SERVICE_FQDN}
