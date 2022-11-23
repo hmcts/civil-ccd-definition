@@ -1106,7 +1106,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "sdoOrderDocument",
     "Label": "View directions order",
-    "FieldType": "Document",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   },
   {

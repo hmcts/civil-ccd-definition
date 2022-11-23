@@ -703,6 +703,18 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialHearingTrialDJ",
+    "PageFieldDisplayOrder": 43,
+    "DisplayContext": "COMPLEX",
+    "PageID": "TrialHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialHearingTrialDJToggle=\"DONOTSHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialHearingTimeDJ",
     "PageFieldDisplayOrder": 21,
     "DisplayContext": "COMPLEX",
     "PageID": "TrialHearing",
@@ -743,7 +755,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingMethodDJ=\"disposalHearingMethodInPerson\""
+    "FieldShowCondition": "trialHearingMethodDJ=\"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -755,7 +767,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingMethodDJ = \"disposalHearingMethodVideoConferenceHearing\""
+    "FieldShowCondition": "trialHearingMethodDJ = \"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -767,7 +779,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingMethodVideoConferenceHearingDJ = \"videoTheCourt\""
+    "FieldShowCondition": "trialHearingMethodVideoConferenceHearingDJ = \"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -779,7 +791,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingMethodDJ = \"disposalHearingMethodTelephoneHearing\""
+    "FieldShowCondition": "trialHearingMethodDJ = \"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -791,14 +803,37 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingMethodTelephoneHearingDJ = \"telephoneTheCourt\""
+    "FieldShowCondition": "trialHearingMethodTelephoneHearingDJ = \"DONOTSHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialHearingNotesDJ",
-    "PageFieldDisplayOrder": 29,
+    "PageFieldDisplayOrder": 44,
     "DisplayContext": "MANDATORY",
+    "PageID": "TrialHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialHearingMethodTelephoneHearingDJ = \"DONOTSHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialHearingHearingNotesDJ",
+    "PageFieldDisplayOrder": 29,
+    "DisplayContext": "COMPLEX",
+    "PageID": "TrialHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialOrderMadeWithoutHearingDJ",
+    "PageFieldDisplayOrder": 30,
+    "DisplayContext": "COMPLEX",
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -920,5 +955,18 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "HearingSupportRequirementsFieldDJ",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/HearingSupportRequirementsDJ",
+    "PageLabel": "Enter hearing details"
   }
 ]
