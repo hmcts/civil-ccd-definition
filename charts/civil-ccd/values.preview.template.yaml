@@ -62,7 +62,9 @@ wa:
 
 
 wa-task-management-api:
+  enabled: true
   java:
+    releaseNameOverride: ${SERVICE_NAME}-wa-task-management-api
     ingressHost: wa-task-management-api-${SERVICE_FQDN}
     environment:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
@@ -74,8 +76,10 @@ wa-task-management-api:
       POSTGRES_CONNECTION_OPTIONS: ""
 
 wa-task-monitor:
+  enabled: true
   java:
     ingressHost: wa-task-monitor-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-wa-task-monitor
     environment:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
       TASK_MANAGEMENT_SERVICE_URL: http://wa-task-management-api-${SERVICE_FQDN}
@@ -85,8 +89,10 @@ wa-task-monitor:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
 
 wa-case-event-handler:
+  enabled: true
   java:
     ingressHost: wa-case-event-handler-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
         secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-ccd-case-events # todo is this right?
@@ -107,8 +113,10 @@ wa-case-event-handler:
       POSTGRES_CONNECTION_OPTIONS: ""
 
 wa-workflow-api:
+  enabled: true
   java:
     ingressHost: wa-workflow-api-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-wa-workflow-api
     environment:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
@@ -129,8 +137,10 @@ wa-message-cron-service:
       WA_CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler-${SERVICE_FQDN}
 
 ccd-message-publisher:
+  enabled: true
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     environment:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
       DATA_STORE_DB_NAME: "{{ .Values.postgresql.auth.database }}"
