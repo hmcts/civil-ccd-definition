@@ -169,23 +169,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadDisclosure1",
+    "ID": "documentDisclosureList",
     "Label": "Disclosure list",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDisclosure1",
+    "FieldTypeParameter": "UploadEvidenceDisclosure",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadDisclosure2",
+    "ID": "documentForDisclosure",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDisclosure2",
+    "FieldTypeParameter": "UploadEvidenceDisclosure",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness1",
+    "ID": "documentWitnessStatement",
     "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
@@ -193,7 +193,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness2",
+    "ID": "documentWitnessSummary",
     "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
@@ -201,7 +201,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness3",
+    "ID": "documentHearsayNotice",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
@@ -209,7 +209,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness4",
+    "ID": "documentReferredInStatement",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness4",
@@ -217,7 +217,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert1",
+    "ID": "documentExpertReport",
     "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
@@ -225,7 +225,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert2",
+    "ID": "documentJointStatement",
     "Label": "Joint statement of experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
@@ -233,7 +233,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert3",
+    "ID": "documentQuestions",
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
@@ -241,7 +241,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert4",
+    "ID": "documentAnswers",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
@@ -249,34 +249,34 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial1",
+    "ID": "documentCaseSummary",
     "Label": "Case summary",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial1",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial2",
+    "ID": "documentSkeletonArgument",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial2",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial3",
+    "ID": "documentAuthorities",
     "Label": "Authorities and Costs",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial3",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial4",
+    "ID": "documentEvidenceForTrial",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial4",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
@@ -456,23 +456,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadDisclosure1Res",
+    "ID": "documentDisclosureListRes",
     "Label": "Disclosure list",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDisclosure1",
+    "FieldTypeParameter": "UploadEvidenceDisclosure",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadDisclosure2Res",
+    "ID": "documentForDisclosureRes",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDisclosure2",
+    "FieldTypeParameter": "UploadEvidenceDisclosure",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness1Res",
+    "ID": "documentWitnessStatementRes",
     "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
@@ -480,7 +480,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness2Res",
+    "ID": "documentWitnessSummaryRes",
     "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
@@ -488,7 +488,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness3Res",
+    "ID": "documentHearsayNoticeRes",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
@@ -496,7 +496,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness4Res",
+    "ID": "documentReferredInStatementRes",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness4",
@@ -504,7 +504,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert1Res",
+    "ID": "documentExpertReportRes",
     "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
@@ -512,7 +512,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert2Res",
+    "ID": "documentJointStatementRes",
     "Label": "Joint statement of experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
@@ -520,7 +520,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert3Res",
+    "ID": "documentQuestionsRes",
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
@@ -528,7 +528,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert4Res",
+    "ID": "documentAnswersRes",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
@@ -536,34 +536,34 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial1Res",
+    "ID": "documentCaseSummaryRes",
     "Label": "Case summary",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial1",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial2Res",
+    "ID": "documentSkeletonArgumentRes",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial2",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial3Res",
+    "ID": "documentAuthoritiesRes",
     "Label": "Authorities and Costs",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial3",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial4Res",
+    "ID": "documentEvidenceForTrialRes",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial4",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
@@ -743,23 +743,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadDisclosure1Other",
+    "ID": "documentDisclosureListOther",
     "Label": "Disclosure list",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDisclosure1",
+    "FieldTypeParameter": "UploadEvidenceDisclosure",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadDisclosure2Other",
+    "ID": "documentForDisclosureResOther",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDisclosure2",
+    "FieldTypeParameter": "UploadEvidenceDisclosure",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness1Other",
+    "ID": "documentWitnessStatementOther",
     "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
@@ -767,7 +767,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness2Other",
+    "ID": "documentWitnessSummaryOther",
     "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
@@ -775,7 +775,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness3Other",
+    "ID": "documentHearsayNoticeOther",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
@@ -783,7 +783,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadWitness4Other",
+    "ID": "documentReferredInStatementOther",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness4",
@@ -791,7 +791,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert1Other",
+    "ID": "documentExpertReportOther",
     "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
@@ -799,7 +799,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert2Other",
+    "ID": "documentJointStatementOther",
     "Label": "Joint statement of experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
@@ -807,7 +807,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert3Other",
+    "ID": "documentQuestionsOther",
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
@@ -815,7 +815,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadExpert4Other",
+    "ID": "documentAnswersOther",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
@@ -823,34 +823,34 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial1Other",
+    "ID": "documentCaseSummaryOther",
     "Label": "Case summary",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial1",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial2Other",
+    "ID": "documentSkeletonArgumentOther",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial2",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial3Other",
+    "ID": "documentAuthoritiesOther",
     "Label": "Authorities and Costs",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial3",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "documentUploadTrial4Other",
+    "ID": "documentEvidenceForTrialOther",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DocumentUploadTrial4",
+    "FieldTypeParameter": "DocumentUploadTrial",
     "SecurityClassification": "Public"
   },
   {
