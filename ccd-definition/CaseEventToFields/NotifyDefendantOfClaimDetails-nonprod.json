@@ -14,13 +14,81 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
+    "CaseFieldID": "defendant1LIPAtClaimIssued",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "SelectDefendantSolicitor",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "defendant2LIPAtClaimIssued",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitor",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitor",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitor",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "respondent2Represented",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitor",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "documentUploadWarning",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Upload",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
+    "CaseFieldID": "servedDocumentFiles",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Upload",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "respondent1Represented=\"Yes\" OR respondent2Represented=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/particulars-of-claim"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -32,51 +100,5 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "respondent1Represented",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Upload",
-    "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "respondent2Represented",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "Upload",
-    "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "servedDocumentFiles=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "documentUploadWarning",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "Upload",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
-    "CaseFieldID": "servedDocumentFiles",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Upload",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1Represented=\"Yes\" OR respondent2Represented=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/particulars-of-claim"
   }
 ]
