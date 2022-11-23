@@ -1,5 +1,6 @@
 const config = require('../../config.js');
 const {listElement } = require('../../api/dataHelper');
+const courts = require('../../courts.js');
 
 const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') => {
     const userInput = {
@@ -16,12 +17,13 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
           hearingSupportRequirementsDJ: {
             hearingType: 'IN_PERSON',
             hearingTemporaryLocation: {
-              list_items: [
-                listElement(config.claimantSelectedCourt)
-              ],
-              value: listElement(config.claimantSelectedCourt)
+              value: {
+                code: '00c98f7b-8cd5-44c0-9132-c2a173f89e0e',
+                label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
+              },
+              list_items: courts.refDataList
             },
-            hearingPreferredLocation: null,
+            hearingPreferredLocation: config.claimantSelectedCourt,
             hearingPreferredTelephoneNumber1: '07444552365',
             hearingPreferredEmail: 'test@gmail.com',
             hearingLengthEstimate: '15_MINUTES',
@@ -34,7 +36,13 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
           }
         },
         locationName : {
-          locationName: null
+          locationName: 'Central London County Court'
+        },
+        caseManagementLocation: {
+          caseManagementLocation: {     
+            region: '1',
+            baseLocation: '20262'
+          }
         }
     };
     switch (mpScenario) {

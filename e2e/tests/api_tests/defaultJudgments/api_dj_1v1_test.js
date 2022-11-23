@@ -19,5 +19,5 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
 });
 
 AfterSuite(async  ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
