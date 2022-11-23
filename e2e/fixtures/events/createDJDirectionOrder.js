@@ -19,7 +19,6 @@ const djOrderCaseManagementOrderSelection = (djOrderType = 'DISPOSAL_HEARING') =
 const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') => {
     const userInput = (djOrderType = 'DISPOSAL_HEARING') => {
       if (djOrderType == 'DISPOSAL_HEARING') {
-        console.log('i am here', djOrderType);
         return {
           ...disposalHearing
         };
