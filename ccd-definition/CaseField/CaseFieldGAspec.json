@@ -129,7 +129,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Claimant solicitor",
     "_Category":  "COMMON"
   },
   {
@@ -151,7 +151,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for respondent solicitor",
     "_Category":  "COMMON"
   },
   {
@@ -162,7 +162,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for respondent2 solicitor ",
     "_Category":  "COMMON"
   },
   {
