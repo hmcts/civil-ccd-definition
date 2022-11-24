@@ -1,3 +1,8 @@
 [
-
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  }
 ]
