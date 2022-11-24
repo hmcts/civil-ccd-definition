@@ -1,5 +1,6 @@
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1798'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -25,7 +26,6 @@ civil-service:
           - robotics-notification-multipartyrecipient
           - notification-caseworker-spec-receiver
     environment:
-      image: 'hmctspublic.azurecr.io/civil/service:pr-1798'
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
 idam-pr:
