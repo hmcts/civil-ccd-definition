@@ -48,5 +48,19 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AcceptAdmitAmountPaidSpec",
+    "Label": "Does the claimant accept the amount?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AcceptPartAdmitPaymentPlanSpec",
+    "Label": "Does the claimant accept the amount?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
