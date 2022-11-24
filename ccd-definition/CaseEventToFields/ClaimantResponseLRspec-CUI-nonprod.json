@@ -88,12 +88,36 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
+    "CaseFieldID": "applicant1AcceptAdmitAmountPaidSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "applicant1AcceptAdmitAmountPaidSpec=\"Yes\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
   },
