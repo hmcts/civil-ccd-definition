@@ -95,7 +95,7 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1AcceptPaymentPlanSpec: 'Yes',
+            applicant1AcceptFullAdmitPaymentPlanSpec: 'Yes',
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {

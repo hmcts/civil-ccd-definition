@@ -88,7 +88,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AcceptPaymentPlanSpec",
+    "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",

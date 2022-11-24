@@ -22,7 +22,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1AcceptPaymentPlanSpec",
+    "ID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
