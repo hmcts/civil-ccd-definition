@@ -97,6 +97,9 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
+          PaymentDate: {
+            applicant1RequestedPaymentDateForDefendantSpec : '2220-01-01'
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
