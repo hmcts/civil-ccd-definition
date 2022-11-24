@@ -85,8 +85,8 @@ wa-task-management-api:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-task-management-api
-      POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
-      POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+      POSTGRES_USERNAME: hmcts
+      POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
 
 wa-task-monitor:
@@ -146,8 +146,8 @@ wa-case-event-handler:
       AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: wa-ccd-case-events-sub
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-case-event-handler
-      POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
-      POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+      POSTGRES_USERNAME: hmcts
+      POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
 
 wa-workflow-api:
@@ -167,8 +167,8 @@ wa-workflow-api:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-workflow-api
-      POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
-      POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
+      POSTGRES_USERNAME: hmcts
+      POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
       TASK_MANAGEMENT_URL: http://wa-task-management-api-${SERVICE_FQDN}
 
@@ -204,8 +204,8 @@ ccd-message-publisher:
     environment:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
       DATA_STORE_DB_NAME: ccd-message-publisher
-      DATA_STORE_DB_USERNAME: "{{ .Values.postgresql.auth.username }}"
-      DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.password }}"
+      DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_PASSWORD: hmcts
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       CCD_CASE_EVENTS_DESTINATION: ccd-case-events
   secrets:
