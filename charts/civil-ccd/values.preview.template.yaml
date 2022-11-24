@@ -208,21 +208,21 @@ ccd-message-publisher:
       DATA_STORE_DB_PASSWORD: hmcts
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       CCD_CASE_EVENTS_DESTINATION: ccd-case-events
-  secrets:
-    SERVICE_BUS_CONNECTION_STRING:
-      secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-ccd-case-events
-      key: connectionString
-
-servicebus:
-  teamName: CCD # todo Civil?
-  resourceGroup: ccd-aks # todo Civil?
-  enabled: true
-  serviceplan: standard
-  setup:
-    topics:
-      - name: ccd-case-events
-        subscriptionNeeded: yes
-      - name: wa-case-events-sub
-        subscriptionNeeded: yes
-      - name: wa-ccd-case-events-sub
-        subscriptionNeeded: yes
+    secrets:
+      SERVICE_BUS_CONNECTION_STRING:
+        secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-ccd-case-events
+        key: connectionString
+  servicebus:
+    releaseNameOverride: ${SERVICE_NAME}-asb
+    teamName: Civil
+    resourceGroup: civil-service-aat
+    enabled: true
+    serviceplan: standard
+    setup:
+      topics:
+        - name: ccd-case-events
+          subscriptionNeeded: yes
+        - name: wa-case-events-sub
+          subscriptionNeeded: yes
+        - name: wa-ccd-case-events-sub
+          subscriptionNeeded: yes
