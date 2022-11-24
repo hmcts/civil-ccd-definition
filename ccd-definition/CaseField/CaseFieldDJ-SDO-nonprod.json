@@ -204,7 +204,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseManagementOrderTrial",
-    "Label": "### ${applicantVRespondentText}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
