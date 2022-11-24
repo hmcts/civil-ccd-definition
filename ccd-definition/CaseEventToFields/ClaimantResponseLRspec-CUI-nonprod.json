@@ -93,7 +93,6 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
-    "CaseEventFieldLabel": "Does the claimant accept the repayment plan?",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
