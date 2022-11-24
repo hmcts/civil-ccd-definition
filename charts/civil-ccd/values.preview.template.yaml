@@ -84,7 +84,7 @@ wa-task-management-api:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-      POSTGRES_NAME: wa-task-management-api
+      POSTGRES_NAME: cft_task_db
       POSTGRES_USERNAME: hmcts
       POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
