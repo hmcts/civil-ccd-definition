@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1AcceptPaymentPlanSpec",
+    "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "AccessControl": [
       {
         "UserRoles": [

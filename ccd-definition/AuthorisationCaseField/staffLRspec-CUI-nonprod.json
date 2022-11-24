@@ -25,7 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1AcceptPaymentPlanSpec",
+    "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
