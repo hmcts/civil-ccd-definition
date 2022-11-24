@@ -174,6 +174,7 @@ wa-workflow-api:
 
 wa-task-batch-service:
   job:
+    releaseNameOverride: ${SERVICE_NAME}-wa-task-batch-service
     keyVaults:
       wa:
         secrets:
@@ -182,8 +183,8 @@ wa-task-batch-service:
       WA_TASK_MONITOR_SERVICE_URL: http://wa-task-management-api-${SERVICE_FQDN}
 
 wa-message-cron-service:
-  releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
   job:
+    releaseNameOverride: ${SERVICE_NAME}-wa-message-cron-service
     keyVaults:
       wa:
         secrets:
