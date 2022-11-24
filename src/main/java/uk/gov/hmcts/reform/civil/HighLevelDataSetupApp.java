@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
+import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Locale;
 public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
+    private static final int HTTP_STATUS_CODE_504 = 504;
 
     private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_NFD = {
         new CcdRoleConfig("caseworker-civil", "PUBLIC"),
@@ -84,5 +86,25 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     @Override
     protected boolean shouldTolerateDataSetupFailure() {
         return true;
+    }
+
+    @Override
+    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
+        if (e instanceof ImportException) {
+            ImportException importException = (ImportException) e;
+            return importException.getHttpStatusCode() == HTTP_STATUS_CODE_504;
+        }
+        return false;
+    }
+
+    @Override
+    protected void importDefinitionsAt(String definitionsPath) {
+        try {
+            super.importDefinitionsAt(definitionsPath);
+        } catch (Exception e) {
+            if (!shouldTolerateDataSetupFailure(e)) {
+                throw e;
+            }
+        }
     }
 }
