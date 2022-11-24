@@ -1,3 +1,24 @@
 [
-
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RepaymentPlanForDefendantSpec",
+    "Label": "temporary label",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "PaymentTypeList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RequestedPaymentDateForDefendantSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">When do you want ${respondent1.partyName} to pay?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RequestedPaymentDateForDefendantSpec",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  }
 ]
