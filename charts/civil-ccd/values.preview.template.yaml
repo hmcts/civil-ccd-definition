@@ -216,6 +216,7 @@ ccd-message-publisher:
 servicebus:
   teamName: CCD # todo Civil?
   resourceGroup: ccd-aks # todo Civil?
+  enabled: true
   serviceplan: standard
   setup:
     topics:
