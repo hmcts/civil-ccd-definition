@@ -12,10 +12,18 @@
       },
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "[CREATOR]",
           "caseworker-civil-admin"
+
         ],
         "CRUD": "CRUD"
       }
