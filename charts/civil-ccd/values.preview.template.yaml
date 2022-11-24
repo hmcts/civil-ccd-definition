@@ -120,7 +120,7 @@ wa-case-event-handler:
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-ccd-case-events # todo is this right?
+        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events # todo is this right?
         key: connectionString
     keyVaults:
       wa:
@@ -210,7 +210,7 @@ ccd-message-publisher:
       CCD_CASE_EVENTS_DESTINATION: ccd-case-events
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-secret-topic-{{ .Release.Name }}-servicebus-ccd-case-events
+        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
         key: connectionString
   servicebus:
     releaseNameOverride: ${SERVICE_NAME}-asb
