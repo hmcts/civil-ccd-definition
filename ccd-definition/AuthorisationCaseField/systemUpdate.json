@@ -490,11 +490,5 @@
     "CaseFieldID": "migrationId",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CaseAccessCategory",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
   }
 ]
