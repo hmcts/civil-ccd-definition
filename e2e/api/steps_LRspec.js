@@ -233,9 +233,9 @@ module.exports = {
     }
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+    /*if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
       validState = 'JUDICIAL_REFERRAL';
-    }
+    }*/
 
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -460,10 +460,10 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  
+
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
