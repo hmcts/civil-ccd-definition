@@ -33,7 +33,6 @@ idam-pr:
       - https://xui-${SERVICE_FQDN}/oauth2/callback
 
 civil-general-applications:
-  enabled: true
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
@@ -62,7 +61,6 @@ wa:
 
 
 wa-task-management-api:
-  enabled: true
   java:
     releaseNameOverride: ${SERVICE_NAME}-wa-task-management-api
     ingressHost: wa-task-management-api-${SERVICE_FQDN}
@@ -70,13 +68,12 @@ wa-task-management-api:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-      POSTGRES_NAME: "{{ .Values.postgresql.auth.database}}"
+      POSTGRES_NAME: wa-task-management-api
       POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
       POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
       POSTGRES_CONNECTION_OPTIONS: ""
 
 wa-task-monitor:
-  enabled: true
   java:
     ingressHost: wa-task-monitor-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-wa-task-monitor
@@ -89,7 +86,6 @@ wa-task-monitor:
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
 
 wa-case-event-handler:
-  enabled: true
   java:
     ingressHost: wa-case-event-handler-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
@@ -107,20 +103,19 @@ wa-case-event-handler:
       AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: wa-case-events-sub
       AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: wa-ccd-case-events-sub
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-      POSTGRES_NAME: "{{ .Values.postgresql.auth.database}}"
+      POSTGRES_NAME: wa-case-event-handler
       POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
       POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
       POSTGRES_CONNECTION_OPTIONS: ""
 
 wa-workflow-api:
-  enabled: true
   java:
     ingressHost: wa-workflow-api-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-wa-workflow-api
     environment:
       CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-      POSTGRES_NAME: "{{ .Values.postgresql.auth.database}}"
+      POSTGRES_NAME: wa-workflow-api
       POSTGRES_USERNAME: "{{ .Values.postgresql.auth.username}}"
       POSTGRES_PASSWORD: "{{ .Values.postgresql.auth.password}}"
       POSTGRES_CONNECTION_OPTIONS: ""
@@ -138,13 +133,12 @@ wa-message-cron-service:
       WA_CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler-${SERVICE_FQDN}
 
 ccd-message-publisher:
-  enabled: true
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     environment:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
-      DATA_STORE_DB_NAME: "{{ .Values.postgresql.auth.database }}"
+      DATA_STORE_DB_NAME: ccd-message-publisher
       DATA_STORE_DB_USERNAME: "{{ .Values.postgresql.auth.username }}"
       DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.password }}"
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
@@ -155,7 +149,6 @@ ccd-message-publisher:
       key: connectionString
 
 servicebus:
-  enabled: true
   teamName: CCD # todo Civil?
   resourceGroup: ccd-aks # todo Civil?
   serviceplan: standard
