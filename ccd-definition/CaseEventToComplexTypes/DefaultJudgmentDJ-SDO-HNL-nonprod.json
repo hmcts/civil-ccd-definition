@@ -251,6 +251,14 @@
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingSchedulesOfLossDJ",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLossDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingSchedulesOfLossDJ",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
