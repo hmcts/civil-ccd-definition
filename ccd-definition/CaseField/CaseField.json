@@ -727,7 +727,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRequestedCourt",
     "Label": "Court location code",
-    "FieldType": "RequestedCourt",
+    "FieldType": "Number",
     "SecurityClassification": "Public"
   },
   {
