@@ -81,8 +81,8 @@ module.exports = {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     }
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    // await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
