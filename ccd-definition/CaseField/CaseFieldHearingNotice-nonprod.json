@@ -146,7 +146,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "serviceRequestPBADetails",
-    "Label": "Pay for application with PBA\n",
+    "Label": "Service request PBA details\n",
     "FieldType": "SRPbaDetails",
     "SecurityClassification": "Public"
   }
