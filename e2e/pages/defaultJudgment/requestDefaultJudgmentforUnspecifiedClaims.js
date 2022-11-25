@@ -158,7 +158,7 @@ module.exports = {
   },
 
   async verifyOrderPreview() {
-    await I.waitForText('View directions order', 60);
+    await I.waitForText('View directions order', 90);
     const linkXPath = '//a[contains(text(), \'Order_disposal_\')]';
     await I.waitForClickable(linkXPath);
     await I.clickContinue();
