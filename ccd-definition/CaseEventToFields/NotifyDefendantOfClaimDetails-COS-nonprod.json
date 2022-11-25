@@ -18,8 +18,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CertificateOfService1",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y",
-    "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -41,7 +40,7 @@
     "PageLabel": "Certificate Of Service - notify claim details for defendant 1",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos1",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateCosNotifyClaimDetails1",
     "RetriesTimeoutURLMidEvent": 0
   },
   {
@@ -86,7 +85,7 @@
     "PageLabel": "Certificate Of Service - notify claim details for defendant 2",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/cos2",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateCosNotifyClaimDetails2",
     "RetriesTimeoutURLMidEvent": 0
   }
 ]
