@@ -14,7 +14,6 @@ import java.util.Locale;
 public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
-    private static final int HTTP_STATUS_CODE_504 = 504;
 
     private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_NFD = {
         new CcdRoleConfig("caseworker-civil", "PUBLIC"),
@@ -90,9 +89,10 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     protected boolean shouldTolerateDataSetupFailure(Throwable e) {
+        int httpStatusCode504 = 504;
         if (e instanceof ImportException) {
             ImportException importException = (ImportException) e;
-            return importException.getHttpStatusCode() == HTTP_STATUS_CODE_504;
+            return importException.getHttpStatusCode() == httpStatusCode504;
         }
         return false;
     }
