@@ -142,5 +142,12 @@
     "HintText": "For example, 27 3 2022",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "serviceRequestPBADetails",
+    "Label": "Pay for application with PBA\n",
+    "FieldType": "SRPbaDetails",
+    "SecurityClassification": "Public"
   }
 ]
