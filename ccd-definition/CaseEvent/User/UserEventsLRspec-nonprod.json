@@ -36,7 +36,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_SERVICE_REQUEST",
     "Name": "Create service request",
-    "Description": "Create service request",
+    "Description": "Create service request specified",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
