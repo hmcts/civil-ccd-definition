@@ -22,7 +22,7 @@
     "CaseFieldID": "cosNotifyClaimDetails1",
     "ListElementCode": "cosEvidenceDocument",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "COMPLEX"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -119,7 +119,7 @@
     "CaseFieldID": "cosNotifyClaimDetails2",
     "ListElementCode": "cosEvidenceDocument",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "COMPLEX"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
