@@ -14,6 +14,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimantResponseScenarioFlag",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
@@ -100,6 +113,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimTrack",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 16,
@@ -133,34 +158,6 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "claimantResponseScenarioFlag",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
-    "Publish": "Y"
-  },
-  {
-    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimTrack",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 10,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y",
-    "Publish": "Y"
-  },
-  {
-    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
@@ -174,7 +171,6 @@
     "Publish": "Y"
   },
   {
-    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
