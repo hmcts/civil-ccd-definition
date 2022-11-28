@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpecLabel",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -23,7 +23,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpec",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "AccessControl": [
       {
         "UserRoles": [

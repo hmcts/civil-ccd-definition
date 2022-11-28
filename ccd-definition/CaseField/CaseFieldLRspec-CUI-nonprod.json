@@ -1,14 +1,14 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1RepaymentMethodForDefendantSpecLabel",
+    "ID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">How do you want ${respondent1.partyName} to pay?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1RepaymentMethodForDefendantSpec",
+    "ID": "applicant1RepaymentOptionForDefendantSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",

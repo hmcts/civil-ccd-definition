@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpecLabel",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -13,7 +13,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpec",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
