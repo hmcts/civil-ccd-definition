@@ -81,8 +81,8 @@ module.exports = {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
     }
     await waitForFinishedBusinessProcess(caseId);
-    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    // await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -339,14 +339,14 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
   return responseData;
 }
 
-// const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-//   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-//   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-//   if (['preview', 'demo'].includes(config.runningEnv)) {
-//     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
-//       'Unexpected events for state ' + state + ' and user type ' + user.type);
-//   } else {
-//     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
-//       'Unexpected events for state ' + state + ' and user type ' + user.type);
-//   }
-// };
+const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
+  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  } else {
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  }
+};
