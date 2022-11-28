@@ -15,6 +15,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpecLabel",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND claimantResponseScenarioFlag!=\"ONE_V_TWO_TWO_LEGAL_REP\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
@@ -37,6 +48,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2GeneratedResponseDocument",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "N",
+    "CaseEventFieldLabel": " ",
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ProceedWithClaim",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 8,
@@ -49,6 +72,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1ProceedWithClaimSpec2v1",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "claimantResponseScenarioFlag=\"TWO_V_ONE\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-applicant1-proceed-flag"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimTrack",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
@@ -57,6 +93,61 @@
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "allocatedTrack",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimType",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defenceRouteRequired",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 13,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentResponseIsSame",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 14,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "defendantSingleResponseToBothClaimants",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
