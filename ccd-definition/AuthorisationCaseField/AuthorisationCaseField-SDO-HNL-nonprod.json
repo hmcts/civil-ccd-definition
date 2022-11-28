@@ -1209,6 +1209,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sdoHearingNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsCreditHire",
     "AccessControl": [
       {
