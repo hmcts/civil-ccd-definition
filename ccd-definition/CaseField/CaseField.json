@@ -7,6 +7,13 @@
     "SecurityClassification": "Public"
   },
   {
+  "CaseTypeID": "CIVIL",
+  "ID": "caseHistory",
+  "Label": " ",
+  "FieldType": "CaseHistoryViewer",
+  "SecurityClassification": "Public"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
     "Label": "Your File Reference",
