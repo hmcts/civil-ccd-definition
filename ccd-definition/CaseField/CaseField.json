@@ -1,4 +1,6 @@
-CaseTypeID": "CIVIL",
+[
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "caseHistory",
     "Label": " ",
     "FieldType": "CaseHistoryViewer",
