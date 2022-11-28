@@ -339,7 +339,7 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
   return responseData;
 }
 
-const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+export const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
