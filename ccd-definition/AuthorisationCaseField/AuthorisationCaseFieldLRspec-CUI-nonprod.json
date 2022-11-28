@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RepaymentPlanForDefendantSpec",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "AccessControl": [
       {
         "UserRoles": [

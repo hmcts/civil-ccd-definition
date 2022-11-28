@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1RepaymentPlanForDefendantSpec",
+    "ID": "applicant1RepaymentOptionForDefendantSpec",
     "Label": "temporary label",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",
@@ -18,7 +18,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1RequestedPaymentDateForDefendantSpec",
     "Label": " ",
-    "HintText": "For example, 12 11 2050",
+    "HintText": "For example, 12 11 2023",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   }
