@@ -18,6 +18,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1RequestedPaymentDateForDefendantSpec",
     "Label": " ",
+    "HintText": "For example, 12 11 2050",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   }

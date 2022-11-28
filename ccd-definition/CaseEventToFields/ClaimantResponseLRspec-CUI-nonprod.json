@@ -19,7 +19,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "PaymentDate",
-    "FieldShowCondition": "applicant1RepaymentPlanForDefendantSpec=\"SET_DATE\"",
+    "PageShowCondition": "applicant1RepaymentPlanForDefendantSpec=\"SET_DATE\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
   },
@@ -30,7 +30,6 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
     "PageID": "PaymentDate",
-    "FieldShowCondition": "applicant1RepaymentPlanForDefendantSpec=\"SET_DATE\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/validate-respondent-payment-date",
     "Publish": "Y",
