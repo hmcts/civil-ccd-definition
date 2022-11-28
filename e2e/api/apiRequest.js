@@ -113,7 +113,6 @@ module.exports = {
       }, inputData, 'POST', expectedStatus)
         .then(async response => await response.json())
         .then(jsonResponse => {
-          console.log('1669302569087877 jsonResponse...',jsonResponse);
           let availableTaskDetails = jsonResponse['tasks'];
           availableTaskDetails.forEach((taskInfo) => {
             if(taskInfo['type'] == taskId) {
