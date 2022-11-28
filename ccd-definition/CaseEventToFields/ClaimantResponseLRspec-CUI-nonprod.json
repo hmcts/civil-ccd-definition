@@ -1,3 +1,23 @@
 [
-
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpecLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentProposedRepayment",
+    "PageShowCondition": "applicant1AcceptPaymentPlanSpec=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentProposedRepayment",
+    "ShowSummaryChangeOption": "Y"
+  }
 ]

@@ -1,3 +1,8 @@
 [
-
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1RepaymentMethodForDefendantSpec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  }
 ]
