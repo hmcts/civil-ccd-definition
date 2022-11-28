@@ -4,11 +4,11 @@ exports.config = {
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
-    './bin/tests/ui_tests/damages/*_test.js',
-    './bin/tests/ui_tests/damages/nightly/*_test.js',
-    './bin/tests/ui_tests/lrspec/*_test.js',
-    './bin/tests/ui_tests/sdo/*_test.js',
-    './bin/tests/ui_tests/default_judgement/*_test.js'
+    './e2e/tests/ui_tests/damages/*_test.js',
+    './e2e/tests/ui_tests/damages/nightly/*_test.js',
+    './e2e/tests/ui_tests/lrspec/*_test.js',
+    './e2e/tests/ui_tests/sdo/*_test.js',
+    './e2e/tests/ui_tests/default_judgement/*_test.js'
   ],
   output: 'test-results/functional',
   helpers: {
