@@ -53,6 +53,6 @@
     "PageID": "AccessGrantedWarning",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "defendant1LIPAtClaimIssued=\"No\""
+    "PageShowCondition": "defendant1LIPAtClaimIssued=\"No\" OR defendant2LIPAtClaimIssued=\"No\""
   }
 ]
