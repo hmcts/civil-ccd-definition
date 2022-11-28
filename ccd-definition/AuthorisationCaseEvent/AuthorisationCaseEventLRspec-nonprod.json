@@ -36,6 +36,7 @@
       },
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
