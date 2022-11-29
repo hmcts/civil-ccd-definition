@@ -18,7 +18,6 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -111,7 +110,6 @@
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
   },
   {
