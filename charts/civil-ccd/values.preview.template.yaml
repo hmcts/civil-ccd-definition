@@ -81,8 +81,8 @@ wa-task-management-api:
           - name: ld-secret
             alias: LAUNCH_DARKLY_SDK_KEY
     environment:
-      CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
-      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
+      CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
+      ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: cft_task_db
       POSTGRES_USERNAME: hmcts
@@ -107,12 +107,12 @@ wa-task-monitor:
           - name: wa-idam-client-secret
             alias: WA_IDAM_CLIENT_SECRET
     environment:
-      CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
-      TASK_MANAGEMENT_SERVICE_URL: http://wa-task-management-api-${SERVICE_FQDN}
-      CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler-${SERVICE_FQDN}
-      CCD_SEARCH_URL: http://ccd-data-store-api-${SERVICE_FQDN}
-      CCD_URL: http://ccd-data-store-api-${SERVICE_FQDN}
-      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
+      CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
+      TASK_MANAGEMENT_SERVICE_URL: http://{{ .Release.Name }}-wa-task-management-api
+      CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
+      CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
+      CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
+      ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
 
 wa-case-event-handler:
   java:
@@ -136,11 +136,11 @@ wa-case-event-handler:
           - name: wa-idam-client-secret
             alias: WA_IDAM_CLIENT_SECRET
     environment:
-      CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
-      CCD_URL: http://ccd-data-store-api-${SERVICE_FQDN}
-      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-${SERVICE_FQDN}
-      WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
-      WA_TASK_MANAGEMENT_API_URL: http://wa-task-management-api-${SERVICE_FQDN}
+      CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
+      CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
+      ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
+      WA_WORKFLOW_API_URL: http://{{ .Release.Name }}-wa-workflow-api
+      WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
       AZURE_SERVICE_BUS_TOPIC_NAME: ccd-case-events
       AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: wa-case-events-sub
       AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: wa-ccd-case-events-sub
@@ -164,13 +164,13 @@ wa-workflow-api:
           - name: ld-secret
             alias: LAUNCH_DARKLY_SDK_KEY
     environment:
-      CAMUNDA_URL: http://camunda-${SERVICE_FQDN}/engine-rest
+      CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-workflow-api
       POSTGRES_USERNAME: hmcts
       POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
-      TASK_MANAGEMENT_URL: http://wa-task-management-api-${SERVICE_FQDN}
+      TASK_MANAGEMENT_URL: http://{{ .Release.Name }}-wa-task-management-api
 
 wa-task-batch-service:
   job:
@@ -180,7 +180,7 @@ wa-task-batch-service:
         secrets:
           - s2s-secret-task-monitor
     environment:
-      WA_TASK_MONITOR_SERVICE_URL: http://wa-task-management-api-${SERVICE_FQDN}
+      WA_TASK_MONITOR_SERVICE_URL: http://{{ .Release.Name }}-wa-task-management-api
 
 wa-message-cron-service:
   job:
@@ -190,7 +190,7 @@ wa-message-cron-service:
         secrets:
           - s2s-secret-case-event-handler
     environment:
-      WA_CASE_EVENT_HANDLER_SERVICE_URL: http://wa-case-event-handler-${SERVICE_FQDN}
+      WA_CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
 
 ccd-message-publisher:
   java:
