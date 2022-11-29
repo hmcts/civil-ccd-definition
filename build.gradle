@@ -19,7 +19,7 @@ repositories {
 }
 
 task highLevelDataSetup(type: JavaExec) {
-  main = "uk.gov.hmcts.reform.prl.HighLevelDataSetupApp"
+  main = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
