@@ -18,8 +18,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -109,8 +108,7 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "RetainHiddenValue": "Y"
+    "PageID": "RespondentResponse"
   },
   {
     "CaseTypeID": "CIVIL",
