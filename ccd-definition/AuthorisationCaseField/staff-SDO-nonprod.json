@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CaseAccessCategory",
+    "CaseFieldID": "unsuitableSDODate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

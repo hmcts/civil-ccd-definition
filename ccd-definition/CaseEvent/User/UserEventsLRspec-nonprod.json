@@ -54,7 +54,6 @@
     "EndButtonLabel": "Submit your response",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "Publish": "Y"
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]

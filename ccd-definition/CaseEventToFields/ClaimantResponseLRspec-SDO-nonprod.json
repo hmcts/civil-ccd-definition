@@ -9,7 +9,8 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,7 +20,8 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -30,7 +32,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +45,8 @@
     "PageID": "Mediation",
     "PageShowCondition": "responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "FieldShowCondition": "defendantSingleResponseToBothClaimants !=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -53,6 +57,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "defendantSingleResponseToBothClaimants =\"Yes\"",
-    "ShowSummaryChangeOption" : "Y"
+    "ShowSummaryChangeOption" : "Y",
+    "Publish": "Y"
   }
 ]
