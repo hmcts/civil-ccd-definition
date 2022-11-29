@@ -236,8 +236,6 @@ module.exports = {
     /*if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
       validState = 'JUDICIAL_REFERRAL';
     }*/
-
-
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);

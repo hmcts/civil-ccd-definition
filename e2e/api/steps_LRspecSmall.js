@@ -150,7 +150,7 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+//    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },
