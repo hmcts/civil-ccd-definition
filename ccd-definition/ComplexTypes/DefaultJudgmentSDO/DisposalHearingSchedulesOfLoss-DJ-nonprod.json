@@ -50,7 +50,7 @@
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
-    "ListElementCode": "input4",
+    "ListElementCode": "inputText4",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
