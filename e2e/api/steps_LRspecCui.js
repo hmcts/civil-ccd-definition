@@ -60,12 +60,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
-    } else {
-      createClaimData = data.CREATE_CLAIM(scenario);
-    }
+    createClaimData = data.CREATE_CLAIM_AP(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -75,11 +70,8 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    } else {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    }
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -346,7 +338,8 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+    // expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
