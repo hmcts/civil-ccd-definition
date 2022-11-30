@@ -676,6 +676,55 @@ module.exports = {
 
   cleanUp: async () => {
     await unAssignAllUsers();
+  },
+
+  createSDO: async (informedCaseId, user, response = 'CREATE_DISPOSAL') => {
+
+    console.log('Informed Case Id ' + informedCaseId);
+    if (informedCaseId) {
+      caseId = informedCaseId;
+    }
+
+    console.log('Before tokens');
+    await apiRequest.setupTokens(user);
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      eventName = 'NotSuitable_SDO';
+    } else {
+      eventName = 'CREATE_SDO';
+    }
+
+    console.log('Before get data claim ' + caseId + ' for event ' + eventName);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    console.log('case data obtained');
+    console.log('event data sdoTracks exists ' + !!(eventData['sdoTracks']));
+    console.log('response is ' + response);
+    if (eventData['sdoTracks']) {
+      console.log('sdo tracks '+ response + ' does not exist');
+    } else {
+      console.log('sdo tracks response does not exist');
+    }
+    let disposalData = eventData['sdoTracks'][response];
+
+    console.log('before validating pages');
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    console.log('after validationg pages');
+
+    if (response === 'UNSUITABLE_FOR_SDO' && user === config.judgeUserWithRegionId1) {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+      await waitForFinishedBusinessProcess(caseId);
+      const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+      assert.equal(caseForDisplay.state.id, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    } else if (response === 'UNSUITABLE_FOR_SDO') {
+      await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUserWithRegionId1);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION');
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+
   }
 };
 
@@ -723,7 +772,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
