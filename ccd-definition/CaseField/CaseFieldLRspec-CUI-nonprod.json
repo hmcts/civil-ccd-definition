@@ -52,7 +52,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1AcceptAdmitAmountPaidSpec",
-    "Label": "Does the claimant accept the amount?",
+    "Label": "Does the claimant want to settle the claim for the £${respondToAdmittedClaimOwingAmountPounds} the defendant admitted",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
