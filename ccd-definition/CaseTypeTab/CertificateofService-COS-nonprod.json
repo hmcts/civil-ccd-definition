@@ -1,0 +1,57 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForClaimant1_1",
+    "TabFieldDisplayOrder": 1,
+    "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\"",
+    "TabShowCondition": "cosNotifyClaimDetails1 = \"*\" OR cosNotifyClaimDetails2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForDefendant1",
+    "TabFieldDisplayOrder": 2,
+    "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDetails1",
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForClaimant2_1",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForDefendant2",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDetails2",
+    "TabFieldDisplayOrder": 6,
+    "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
+  }
+]
