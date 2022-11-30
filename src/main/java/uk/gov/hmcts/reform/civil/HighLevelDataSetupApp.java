@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.civil;
 
+import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
@@ -8,6 +9,8 @@ import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -90,5 +93,21 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
             return importException.getHttpStatusCode() == httpStatusCode504;
         }
         return false;
+    }
+
+    protected void importDefinition(String fileResourcePath) throws IOException {
+        File file = new File(fileResourcePath).exists() ? new File(fileResourcePath)
+            : BeftaUtils.getClassPathResourceIntoTemporaryFile(fileResourcePath);
+        try {
+            Response response = asAutoTestImporter().given().multiPart(file).when().post("/import");
+            if (response.getStatusCode() != 201) {
+                String message = "Import failed with response body: " + response.body().prettyPrint();
+                message += "\nand http code: " + response.statusCode();
+                message += "\nfor file: " + fileResourcePath;
+                throw new ImportException(message, response.statusCode());
+            }
+        } finally {
+            file.delete();
+        }
     }
 }
