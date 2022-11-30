@@ -12,7 +12,6 @@ civil-service:
           - cross-access-user-password
           - prd-admin-user-username
           - prd-admin-user-password
-          - AppInsightsInstrumentationKey
           - docmosis-api-key
           - gov-notify-api-key
           - sendgrid-api-key

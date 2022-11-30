@@ -1,5 +1,4 @@
 const config = require('../../../config.js');
-const {checkAccessProfilesIsEnabled} = require('../../../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
@@ -27,14 +26,8 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
-  let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-  if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
     await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-  } else {
-    await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
-  }
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
