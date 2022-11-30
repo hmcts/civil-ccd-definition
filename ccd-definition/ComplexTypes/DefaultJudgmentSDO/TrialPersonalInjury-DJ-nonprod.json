@@ -23,7 +23,7 @@
   {
     "ID": "TrialPersonalInjury",
     "ListElementCode": "input2",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -37,7 +37,7 @@
   {
     "ID": "TrialPersonalInjury",
     "ListElementCode": "input3",
-    "FieldType": "TextArea",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },

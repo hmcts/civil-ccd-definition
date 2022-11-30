@@ -72,7 +72,7 @@
   {
     "ID": "TrialCreditHire",
     "ListElementCode": "input7",
-    "FieldType": "TextArea",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -86,7 +86,7 @@
   {
     "ID": "TrialCreditHire",
     "ListElementCode": "input8",
-    "FieldType": "TextArea",
+    "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
