@@ -37,14 +37,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForDefendant1",
-    "Label": "Defendant's name <br /> ${respondent1DetailsForClaimDetailsTab.partyName}",
+    "Label": "Defendant's name <br /> ${respondent1.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForDefendant2",
-    "Label": "Defendant's name <br /> ${respondent2DetailsForClaimDetailsTab.partyName}",
+    "Label": "Defendant's name <br /> ${respondent2.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
