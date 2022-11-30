@@ -142,9 +142,9 @@ wa-case-event-handler:
       ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
       WA_WORKFLOW_API_URL: http://{{ .Release.Name }}-wa-workflow-api
       WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
-      AZURE_SERVICE_BUS_TOPIC_NAME: ccd-case-events
-      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: wa-case-events-sub
-      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: wa-ccd-case-events-sub
+      AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
+      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: servicebus-topic-{{ .Release.Name }}-asb-wa-case-events-sub
+      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: servicebus-topic-{{ .Release.Name }}-asb-wa-ccd-case-events-sub
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-case-event-handler
       POSTGRES_USERNAME: hmcts
@@ -208,7 +208,7 @@ ccd-message-publisher:
       DATA_STORE_DB_USERNAME: hmcts
       DATA_STORE_DB_PASSWORD: hmcts
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
-      CCD_CASE_EVENTS_DESTINATION: ccd-case-events
+      CCD_CASE_EVENTS_DESTINATION: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
         secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
