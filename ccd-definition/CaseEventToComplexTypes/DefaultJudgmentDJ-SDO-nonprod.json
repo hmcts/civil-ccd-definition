@@ -244,7 +244,7 @@
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingSchedulesOfLossDJ",
     "ListElementCode": "input3",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -252,15 +252,15 @@
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingSchedulesOfLossDJ",
     "ListElementCode": "date3",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingSchedulesOfLossDJ",
-    "ListElementCode": "input4",
-    "FieldDisplayOrder": 6,
+    "ListElementCode": "inputText4",
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
