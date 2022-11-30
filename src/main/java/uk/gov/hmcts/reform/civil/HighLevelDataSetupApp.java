@@ -100,14 +100,14 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
             : BeftaUtils.getClassPathResourceIntoTemporaryFile(fileResourcePath);
         try {
             Response response = asAutoTestImporter().given().multiPart(file).when().post("/import");
-            if (response.getStatusCode() != 201) {
+            if (response.getStatusCode() / 100 != 2) {
                 String message = "Import failed with response body: " + response.body().prettyPrint();
                 message += "\nand http code: " + response.statusCode();
                 message += "\nfor file: " + fileResourcePath;
                 throw new ImportException(message, response.statusCode());
             }
         } finally {
-            file.delete();
+            java.nio.file.Files.delete(file.toPath());
         }
     }
 }
