@@ -65,8 +65,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -77,7 +76,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -88,7 +87,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -99,7 +98,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -110,7 +109,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -121,7 +120,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
