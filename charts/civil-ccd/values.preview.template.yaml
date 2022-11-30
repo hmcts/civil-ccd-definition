@@ -121,8 +121,11 @@ wa-case-event-handler:
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events # todo is this right?
+        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
         key: connectionString
+      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME:
+        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
+        key: subscriptionName
     keyVaults:
       wa:
         secrets:
@@ -139,12 +142,11 @@ wa-case-event-handler:
     environment:
       CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
       CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
+      CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
       ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
       WA_WORKFLOW_API_URL: http://{{ .Release.Name }}-wa-workflow-api
       WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
       AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
-      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: servicebus-topic-{{ .Release.Name }}-asb-wa-case-events-sub
-      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: servicebus-topic-{{ .Release.Name }}-asb-wa-ccd-case-events-sub
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-case-event-handler
       POSTGRES_USERNAME: hmcts
@@ -222,8 +224,4 @@ ccd-message-publisher:
     setup:
       topics:
         - name: ccd-case-events
-          subscriptionNeeded: yes
-        - name: wa-case-events-sub
-          subscriptionNeeded: yes
-        - name: wa-ccd-case-events-sub
           subscriptionNeeded: yes
