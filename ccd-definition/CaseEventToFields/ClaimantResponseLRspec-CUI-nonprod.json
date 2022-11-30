@@ -320,6 +320,38 @@
     "RetainHiddenValue": "Y"
   },
   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjPaymentPaidSomeLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjPaymentPaidSome",
+    "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec =\"Yes\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjPaymentPaidSomeOption",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CcjPaymentPaidSome",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjPaymentPaidSomeAmount",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "CcjPaymentPaidSome",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\""
+  },
+  {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
