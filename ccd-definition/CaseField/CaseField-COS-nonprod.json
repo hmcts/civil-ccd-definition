@@ -103,6 +103,48 @@
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1",
+    "Label": "# Defendant 1 details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1CoSNc",
+    "Label": "Certificate of Service - Notify Claim",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1CoSNcd",
+    "Label": "Certificate of Service - Notify Claim Details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2",
+    "Label": "# Defendant 2 details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2CoSNc",
+    "Label": "Certificate of Service - Notify Claim",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2CoSNcd",
+    "Label": "Certificate of Service - Notify Claim Details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
 

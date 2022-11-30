@@ -1,6 +1,14 @@
 [
   {
     "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosDetailSaved",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "cosDateOfServiceForDefendant = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
     "ListElementCode": "cosDateOfServiceForDefendant",
     "ElementLabel": "Date you served the documents",
     "FieldType": "Date",
@@ -22,7 +30,8 @@
     "FieldTypeParameter": "Document",
     "ElementLabel": "Supporting evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "cosDetailSaved = \"\" OR cosDetailSaved = \"No\" "
   },
   {
     "ID": "NotifyClaimDetailsCoS",

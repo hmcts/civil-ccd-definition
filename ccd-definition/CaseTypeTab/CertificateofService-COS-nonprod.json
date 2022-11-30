@@ -4,10 +4,19 @@
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
-    "CaseFieldID": "cosLabelForClaimant1_1",
+    "CaseFieldID": "cosLabelTabDef1",
     "TabFieldDisplayOrder": 1,
-    "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\"",
-    "TabShowCondition": "cosNotifyClaimDetails1 = \"*\" OR cosNotifyClaimDetails2 = \"*\""
+    "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\"",
+    "TabShowCondition": "cosNotifyClaimDetails1 = \"*\" OR cosNotifyClaimDetails2 = \"*\" OR cosNotifyClaimDefendant1 = \"*\" OR cosNotifyClaimDefendant2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForClaimant1_1",
+    "TabFieldDisplayOrder": 2,
+    "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -15,7 +24,34 @@
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
     "CaseFieldID": "cosLabelForDefendant1",
-    "TabFieldDisplayOrder": 2,
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelTabDef1CoSNc",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDefendant1",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelTabDef1CoSNcd",
+    "TabFieldDisplayOrder": 6,
     "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
   },
   {
@@ -24,7 +60,7 @@
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "TabFieldDisplayOrder": 3,
+    "TabFieldDisplayOrder": 7,
     "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
   },
   {
@@ -32,9 +68,18 @@
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
-    "CaseFieldID": "cosLabelForClaimant2_1",
-    "TabFieldDisplayOrder": 4,
-    "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
+    "CaseFieldID": "cosLabelTabDef2",
+    "TabFieldDisplayOrder": 8,
+    "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelForClaimant1_2",
+    "TabFieldDisplayOrder": 10,
+    "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +87,34 @@
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
     "CaseFieldID": "cosLabelForDefendant2",
-    "TabFieldDisplayOrder": 5,
+    "TabFieldDisplayOrder": 11,
+    "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelTabDef2CoSNc",
+    "TabFieldDisplayOrder": 12,
+    "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosNotifyClaimDefendant2",
+    "TabFieldDisplayOrder": 13,
+    "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CertificateOfService",
+    "TabLabel": "Certificate of Service",
+    "TabDisplayOrder": 11,
+    "CaseFieldID": "cosLabelTabDef2CoSNcd",
+    "TabFieldDisplayOrder": 14,
     "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
   },
   {
@@ -51,7 +123,7 @@
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "TabFieldDisplayOrder": 6,
+    "TabFieldDisplayOrder": 15,
     "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
   }
 ]
