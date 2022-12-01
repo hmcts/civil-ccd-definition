@@ -2,8 +2,12 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
-const summaryJudgmentDirectionsExpectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
-const caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
+let caseProgressionOfflineExpectedTask;
+let summaryJudgmentDirectionsExpectedTask;
+if (config.runWAApiTest) {
+  summaryJudgmentDirectionsExpectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+  caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
+}
 
 Feature('CCD 1v1 API test @api-dj-1v2, @api-dj @dmn-task-dj');
 
