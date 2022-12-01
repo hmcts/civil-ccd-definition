@@ -5,7 +5,7 @@
     "CaseFieldID": "respondent2DQRequestedCourt",
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "RequestedCourt",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
@@ -16,8 +16,8 @@
     "CaseFieldID": "respondent1DQRequestedCourt",
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourt",
+    "DisplayContext": "COMPLEX",
+    "PageID": "COMPLEX",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
