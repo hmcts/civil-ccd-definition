@@ -10,7 +10,7 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ a
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
-  await api.createSDO(null, config.judgeUserWithRegionId1Local);
+  await api.createSDO(config.judgeUserWithRegionId1Local);
 });
 
 // skipped because Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later

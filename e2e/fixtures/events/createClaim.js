@@ -187,7 +187,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
+        statementOfValueInPennies: '2000000'
       }
     },
     PbaNumber: {
