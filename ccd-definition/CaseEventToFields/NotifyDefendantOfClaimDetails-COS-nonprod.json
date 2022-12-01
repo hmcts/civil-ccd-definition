@@ -202,7 +202,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "CertificateOfService2",
     "PageLabel": "Certificate Of Service - notify claim details for defendant 2",
