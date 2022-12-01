@@ -97,8 +97,6 @@ civil-service:
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
     environment:
-      SERVICE_REQUEST_UPDATE: https://${SERVICE_FQDN}/service-request-update
-      SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_FQDN}/service-request-update-claim-issued
       TESTING_SUPPORT_ENABLED: true
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       CMC_DB_HOST: ${SERVICE_NAME}-postgresql
