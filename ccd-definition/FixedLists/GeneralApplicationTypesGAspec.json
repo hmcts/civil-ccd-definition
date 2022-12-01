@@ -3,19 +3,19 @@
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STRIKE_OUT",
     "ListElement": "Strike out",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "SUMMARY_JUDGEMENT",
     "ListElement": "Summary judgment",
-    "DisplayOrder": 7
+    "DisplayOrder": 8
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STAY_THE_CLAIM",
     "ListElement": "Stay the claim",
-    "DisplayOrder": 5
+    "DisplayOrder": 6
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
@@ -33,6 +33,6 @@
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "RELIEF_FROM_SANCTIONS",
     "ListElement": "Relief from sanctions",
-    "DisplayOrder": 8
+    "DisplayOrder": 4
   }
 ]
