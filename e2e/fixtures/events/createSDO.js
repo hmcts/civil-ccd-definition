@@ -120,13 +120,13 @@ module.exports = {
               && typeof data.input4 === 'string';
           },
           disposalHearingNotes: (data) => {
-            return typeof data.input1 === 'string';
+            return typeof data.input === 'string';
           },
-          smallClaimsMethod: (data) => typeof this === 'string',
+          smallClaimsMethod: (data) => typeof data === 'string',
           fastTrackWitnessOfFactToggle: (data) => Array.isArray(data),
           smallClaimsWitnessStatement: (data) => {
             return typeof data.input1 === 'string'
-              && data.text === 'string'
+              && typeof data.text === 'string'
               && typeof data.input4 === 'string';
           },
           disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
@@ -173,7 +173,6 @@ module.exports = {
             return typeof data.input1 === 'string'
               && typeof data.input4 === 'string'
               && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
               && typeof data.input7 === 'string'
               && typeof data.input8 === 'string'
               && typeof data.input9 === 'string';
