@@ -67,8 +67,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "caseworker-civil-solicitor"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
