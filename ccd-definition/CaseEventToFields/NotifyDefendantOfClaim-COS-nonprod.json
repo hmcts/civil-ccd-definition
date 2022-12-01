@@ -47,35 +47,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "respondent1Represented",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "AccessGrantedWarning",
-    "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "respondent2Represented",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "AccessGrantedWarning",
-    "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "notifyClaimLabel",
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "AccessGrantedWarning",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "respondent1Represented=\"Yes\" OR respondent2Represented=\"Yes\""
+    "PageShowCondition": "defendant1LIPAtClaimIssued=\"No\" OR defendant2LIPAtClaimIssued=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
