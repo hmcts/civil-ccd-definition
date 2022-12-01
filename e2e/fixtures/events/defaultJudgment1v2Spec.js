@@ -45,7 +45,5 @@ module.exports = {
       repaymentSuggestion: '3',
       repaymentDate: '2220-01-01'
     }
-
-
   }
 };
