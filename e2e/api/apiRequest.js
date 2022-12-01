@@ -83,7 +83,6 @@ module.exports = {
   },
 
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
-    let taskDetails;
     const userToken =  await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
@@ -98,11 +97,11 @@ module.exports = {
       'search_parameters': [
           {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
           {'key': 'caseId','operator': 'IN','values': [caseNumber]},
-          {'key':'state','operator':'IN','values':['assigned','unassigned']}
+          {'key': 'taskType','operator': 'IN','values': [taskId]},
+          {'key':'state','operator':'IN','values':['assigned','unassigned', 'unconfigured']}
       ],
-      'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
+      'sorting_parameters': [{'sort_by': 'dueDate','sort_order': 'asc'}]
     };
-
 
     return retry(() => {
       return restHelper.request(`${config.url.waTaskMgmtApi}/task`, 
@@ -113,19 +112,13 @@ module.exports = {
       }, inputData, 'POST', expectedStatus)
         .then(async response => await response.json())
         .then(jsonResponse => {
-          let availableTaskDetails = jsonResponse['tasks'];
-          availableTaskDetails.forEach((taskInfo) => {
-            if(taskInfo['type'] == taskId) {
-              console.log('Found taskInfo with id ...', taskId);
-              taskDetails = taskInfo;
-            }
-          });
-          if (!taskDetails) {
+          let availableTaskDetails = jsonResponse['tasks'][0];
+          if (!availableTaskDetails) {
             throw new Error(`Ongoing task retrieval process for case id: ${caseNumber}`);
-          } else {
-            return taskDetails;
           }
+          return availableTaskDetails;
       });
     }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
   }
+
 };

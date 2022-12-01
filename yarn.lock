@@ -662,10 +662,10 @@ clone@2.x:
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
 
-codeceptjs@^3.3.7:
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/codeceptjs/-/codeceptjs-3.3.7.tgz#0ce460e98cbe45cb97caf727a348d398a0af85b3"
-  integrity sha512-NLug9VKnMcIhjY9kt/QP7e0D6YoAx0vIs11Zb35vwlzA+jSPXtN5g+Nh6T+N9af+NxHDXOIn0qOy3bGF1bOFlw==
+codeceptjs@^3.3.4:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/codeceptjs/-/codeceptjs-3.3.6.tgz#3631c7e7e9bd9ff7c41e61296e4ca45403359efc"
+  integrity sha512-NYDY8Iuwr/RMfME1Ho75TmmtnDUzuMhB4USCAZWtxtxpC0IhuczdX3QqYlkyrOTe3/XGed8hbx3V10q1Z0NYrQ==
   dependencies:
     "@codeceptjs/configure" "^0.8.0"
     "@codeceptjs/helper" "^1.0.2"
