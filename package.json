@@ -53,7 +53,7 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.4",
-    "codeceptjs": "^3.3.4",
+    "codeceptjs": "^3.3.7",
     "deep-equal-in-any-order": "^1.0.28",
     "eslint": "^8.20.0",
     "eslint-plugin-codeceptjs": "^1.3.0",
