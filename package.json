@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint e2e",
     "setup": "echo yarn:setup",
-    "test": "npx codeceptjs run e2e/tests/unit/*.js",
+    "test": "./e2e/generate-ccd-configs.sh",
     "test:a11y": "echo test:a11y",
     "test:coverage": "echo test:coverage",
     "highLevelDataSetup": "echo './gradlew highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
