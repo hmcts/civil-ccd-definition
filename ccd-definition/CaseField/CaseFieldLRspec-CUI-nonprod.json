@@ -8,6 +8,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1FullAdmitPaidLabelSpec",
+    "Label": "${respondent1.partyName} fully admits the claim and states the paid the £${totalClaimAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1FullAdmitConfirmAmountPaidSpec",
+    "Label": "Has ${respondent1.partyName} paid the claimant £${totalClaimAmount}?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
