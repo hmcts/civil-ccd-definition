@@ -14,6 +14,8 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -50,10 +52,10 @@ class HighLevelDataSetupAppTest {
         int statusCode = 409;
 
         // When
-        HighLevelDataSetupApp.validateCCDFile(file, statusCode, validators);
+        HighLevelDataSetupApp.validateCCDFile(file, statusCode, validators, "Unimportant");
 
         // Then
-        verify(validator, times(1)).validate(file);
+        verify(validator, times(1)).validate(file, "Unimportant", statusCode);
     }
 
     @Test
@@ -67,10 +69,10 @@ class HighLevelDataSetupAppTest {
         int statusCode = 500;
 
         // When: I call validateCCDFile
-        HighLevelDataSetupApp.validateCCDFile(file, statusCode, validators);
+        HighLevelDataSetupApp.validateCCDFile(file, statusCode, validators, "Unimportant");
 
         // Then: the validators are called
-        verify(validator, times(1)).validate(file);
+        verify(validator, times(1)).validate(file, "Unimportant", statusCode);
     }
 
     @Test
@@ -84,7 +86,7 @@ class HighLevelDataSetupAppTest {
         int statusCode = 200;
 
         // When: I call validateCCDFile
-        HighLevelDataSetupApp.validateCCDFile(file, statusCode, validators);
+        HighLevelDataSetupApp.validateCCDFile(file, statusCode, validators, "OK");
 
         // Then: the validators are not called
         verifyNoInteractions(validator);
@@ -110,7 +112,7 @@ class HighLevelDataSetupAppTest {
             () -> HighLevelDataSetupApp.importDefinitionTestable(file, validators, (fl) -> response));
 
         // Then: the validators must be called
-        verify(validator, times(1)).validate(file);
+        verify(validator, times(1)).validate(eq(file), any(), eq(409));
     }
 
 }

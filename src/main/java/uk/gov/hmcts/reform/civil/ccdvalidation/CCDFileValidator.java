@@ -4,5 +4,5 @@ import java.io.File;
 
 public interface CCDFileValidator {
 
-    void validate(File file);
+    void validate(File file, String originalErrorMessage, Integer originalStatusCode);
 }

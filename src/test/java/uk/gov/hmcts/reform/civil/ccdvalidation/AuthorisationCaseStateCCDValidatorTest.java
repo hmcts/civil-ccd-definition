@@ -28,11 +28,28 @@ class AuthorisationCaseStateCCDValidatorTest {
 
         // When: I call the verifyDuplicates method
         CCDValidationError ex = assertThrows(CCDValidationError.class,
-            () -> validator.verifyDuplicates(duplicates, "Unimportant"));
+            () -> validator.verifyDuplicates(duplicates, "Key1/Key2", "Conflict", 409));
 
         // Then: The resulting error message contains a reference to each duplicated entry
         assertThat(ex.getMessage(), containsString("Duplicate 1"));
         assertThat(ex.getMessage(), containsString("Duplicate 2"));
+    }
+
+    @Test
+    void verifyOriginalHttpErrorReported() {
+        // Given: a collection of entries that are believed to be duplicates
+        Set<String> duplicates = new HashSet<>();
+        duplicates.add("Duplicate 1");
+        duplicates.add("Duplicate 2");
+
+        // When: I call the verifyDuplicates method
+        CCDValidationError ex = assertThrows(CCDValidationError.class,
+            () -> validator.verifyDuplicates(duplicates, "Key1/Key2",
+                "Conflict", 409));
+
+        // Then: The resulting error message contains a reference to each duplicated entry
+        assertThat(ex.getMessage(), containsString("Conflict"));
+        assertThat(ex.getMessage(), containsString("409"));
     }
 
     @Test
@@ -63,7 +80,7 @@ class AuthorisationCaseStateCCDValidatorTest {
 
             // When: I try to validate the spreadsheet
             CCDValidationError ex = assertThrows(CCDValidationError.class,
-                () -> validator.validate(workbookToValidate));
+                () -> validator.validate(workbookToValidate, "Conflict", 409));
 
             // Then: an exception is thrown
             assertThat(ex.getMessage(), containsString("STATE_1/ROLE_1"));
@@ -97,7 +114,7 @@ class AuthorisationCaseStateCCDValidatorTest {
         try (XSSFWorkbook workbookToValidate = new XSSFWorkbook(new ByteArrayInputStream(outputStream.toByteArray()))) {
 
             // When: I try to validate the spreadsheet
-            validator.validate(workbookToValidate);
+            validator.validate(workbookToValidate, "Conflict", 409);
 
             // Then: it's all good
             // all is fine if we get here
@@ -132,10 +149,11 @@ class AuthorisationCaseStateCCDValidatorTest {
 
             // When: I try to validate the spreadsheet
             IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> validator.validate(workbookToValidate));
+                () -> validator.validate(workbookToValidate, "Conflict", 409));
 
             // Then: an exception is thrown
-            assertThat(ex.getMessage(), containsString("The cell is not of String type."));
+            assertThat(ex.getMessage(), containsString("The cell is not of String type and is not blank."
+                                                           + " Actual type: NUMERIC"));
         }
     }
 
@@ -167,7 +185,7 @@ class AuthorisationCaseStateCCDValidatorTest {
 
             // When: I try to validate the spreadsheet
             IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> validator.validate(workbookToValidate));
+                () -> validator.validate(workbookToValidate, "Conflict", 409));
 
             // Then: an exception is thrown
             assertThat(ex.getMessage(), containsString("Could not find a matching column for UserRole"
@@ -194,7 +212,7 @@ class AuthorisationCaseStateCCDValidatorTest {
         try (XSSFWorkbook workbookToValidate = new XSSFWorkbook(new ByteArrayInputStream(outputStream.toByteArray()))) {
 
             // When: I try to validate the spreadsheet
-            validator.validate(workbookToValidate);
+            validator.validate(workbookToValidate, "Conflict", 409);
 
             // Then: it's all good
             // all is fine if we get here

@@ -15,7 +15,9 @@ import uk.gov.hmcts.reform.civil.ccdvalidation.AuthorisationCaseTypeCCDValidator
 import uk.gov.hmcts.reform.civil.ccdvalidation.AuthorisationComplexTypeCCDValidator;
 import uk.gov.hmcts.reform.civil.ccdvalidation.CCDFileValidator;
 import uk.gov.hmcts.reform.civil.ccdvalidation.CaseFieldCCDValidator;
+import uk.gov.hmcts.reform.civil.ccdvalidation.CaseTypeTabHasLabelCCDValidator;
 import uk.gov.hmcts.reform.civil.ccdvalidation.ComplexTypesCCDValidator;
+import uk.gov.hmcts.reform.civil.ccdvalidation.PreUploadCCDFileValidator;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +64,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new AuthorisationCaseTypeCCDValidator(),
         new AuthorisationComplexTypeCCDValidator(),
         new CaseFieldCCDValidator(),
-        new ComplexTypesCCDValidator()
+        new ComplexTypesCCDValidator(),
+        new CaseTypeTabHasLabelCCDValidator()
     );
 
     private final CcdEnvironment environment;
@@ -127,10 +130,11 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         // this contraption of a method is needed to make things unit-testable as the superclass does not shine on
         //  that front
         try {
+            preValidateCCDFile(file, validators);
             Response response = httpCallHandler.apply(file);
             if (response.getStatusCode() / 100 != 2) {
-                validateCCDFile(file, response.statusCode(), validators);
                 String message = getImportDefinitionErrorMessage(response, file);
+                validateCCDFile(file, response.statusCode(), validators, message);
                 throw new ImportException(message, response.statusCode());
             }
         } finally {
@@ -153,11 +157,24 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         return message;
     }
 
-    static void validateCCDFile(File file, int statusCode, List<CCDFileValidator> validators) {
+    static void preValidateCCDFile(File file, List<CCDFileValidator> validators) {
+        validators.forEach(validator -> {
+            if (validator instanceof PreUploadCCDFileValidator) {
+                validator.validate(file, null, null);
+            }
+        });
+    }
+
+    static void validateCCDFile(File file, int statusCode, List<CCDFileValidator> validators,
+                                String originalErrorMessage) {
         if ((statusCode < 400 || statusCode > 499) && statusCode != 500) {
             // we only try to validate the 4xx range of errors and the generic 500 error (just in case)
             return;
         }
-        validators.forEach(validator -> validator.validate(file));
+        validators.forEach(validator -> {
+            if (!(validator instanceof PreUploadCCDFileValidator)) {
+                validator.validate(file, originalErrorMessage, statusCode);
+            }
+        });
     }
 }

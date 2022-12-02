@@ -1,13 +1,9 @@
 package uk.gov.hmcts.reform.civil.ccdvalidation;
 
-import lombok.SneakyThrows;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class UniqueConstraintCCDFileValidator implements CCDFileValidator {
+public abstract class UniqueConstraintCCDFileValidator extends CCDFileValidatorBase {
 
     abstract List<String> getPrimaryKeyColumns();
 
@@ -26,14 +22,7 @@ public abstract class UniqueConstraintCCDFileValidator implements CCDFileValidat
         // nothing for us to do here. This is for subclasses to override as needed
     }
 
-    @SneakyThrows
-    public void validate(File file) {
-        try (XSSFWorkbook workbook = new XSSFWorkbook(file)) {
-            validate(workbook);
-        }
-    }
-
-    void validate(XSSFWorkbook workbook) {
+    void validate(XSSFWorkbook workbook, String originalErrorMessage, Integer originalStatusCode) {
         Map<String, Integer> counters = new HashMap<>();
         Set<String> duplicates = new HashSet<>();
         Sheet sheet = workbook.getSheet(getSheetName());
@@ -54,14 +43,20 @@ public abstract class UniqueConstraintCCDFileValidator implements CCDFileValidat
             }
         }
 
-        verifyDuplicates(duplicates, extractPrimaryKeyName(primaryKeyInfo));
+        verifyDuplicates(duplicates, extractPrimaryKeyName(primaryKeyInfo), originalErrorMessage, originalStatusCode);
     }
 
-    void verifyDuplicates(Set<String> duplicates, String primaryKeyName) {
+    void verifyDuplicates(Set<String> duplicates, String primaryKeyName, String originalErrorMessage,
+                          Integer originalStatusCode) {
         if (!duplicates.isEmpty()) {
-            StringBuilder msg = new StringBuilder("The following entries of " + getSheetName() + " are duplicate:\n");
+            StringBuilder msg = new StringBuilder();
+            msg.append(String.format("The import failed with the following error during CCD import:%n"));
+            msg.append(String.format("    HTTP Status Code: %d%n", originalStatusCode));
+            msg.append(String.format("    Message: %s%n", originalErrorMessage));
+            msg.append("\n");
+            msg.append(String.format("The following entries of %s are duplicate:%n", getSheetName()));
             duplicates.forEach(entry -> msg.append(entry).append("\n"));
-            msg.append("Please check your CCD configuration changes and ensure the combination of")
+            msg.append("Please check your CCD configuration changes and ensure the combination of ")
                 .append(primaryKeyName)
                 .append(" is always unique.")
                 .append("\n");
@@ -69,28 +64,6 @@ public abstract class UniqueConstraintCCDFileValidator implements CCDFileValidat
 
             throw new CCDValidationError(msg.toString());
         }
-    }
-
-    String getCellStringValue(Cell cell) {
-        if (cell.getCellType() == CellType.STRING) {
-            return cell.getStringCellValue();
-        }
-        throw new IllegalArgumentException("The cell is not of String type.");
-    }
-
-    int getColumnIndex(String colName, Row headingRow) {
-        Iterator<Cell> cellIterator = headingRow.cellIterator();
-        int index = -1;
-        while (cellIterator.hasNext()) {
-            index++;
-            Cell cell = cellIterator.next();
-            //Check the cell type and format accordingly
-            if (cell.getCellType() == CellType.STRING && colName.equalsIgnoreCase(cell.getStringCellValue())) {
-                return index;
-            }
-        }
-        throw new IllegalArgumentException("Could not find a matching column for " + colName
-                                               + " in the provided heading row.");
     }
 
     List<ColumnInfo> prepareColumnsInfo(Row headingRow, List<String> columnNames) {
@@ -105,7 +78,7 @@ public abstract class UniqueConstraintCCDFileValidator implements CCDFileValidat
         StringBuilder result = new StringBuilder();
         boolean first = true;
         for (ColumnInfo col : primaryKeyInfo) {
-            result.append(getCellStringValue(row.getCell(col.index)));
+            result.append(getCellStringValue(row.getCell(col.index), ""));
             if (first) {
                 result.append("/");
             }
