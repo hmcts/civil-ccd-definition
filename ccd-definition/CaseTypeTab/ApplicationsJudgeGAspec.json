@@ -1,13 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "ApplicationsSpec",
+    "TabID": "ApplicationsJudge",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
-      "APP-SOL-SPEC-PROFILE"
+      "judge-profile"
     ],
-    "CaseFieldID": "claimantGaAppDetails",
+    "CaseFieldID": "gaDetailsMasterCollection",
     "TabFieldDisplayOrder": 1
   }
 ]
