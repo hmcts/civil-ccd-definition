@@ -19,19 +19,18 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ a
   await api.createSDO(judgeUser);
 });
 
-// skipped because Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
 // Scenario.skip('1v1 full defence unspecified - legal advisor draws disposal order', async ({api_sdo}) => {
-//   await api_sdo.unspecifiedProcess(config.applicantSolicitorUser, config.defendantSolicitorUser);
-//   await api_sdo.createSDO(null, config.legalAdvisorUser);
+//   await prepareClaim(api);
+//   await api_sdo.createSDO(config.legalAdvisorUser);
 // });
 
-Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api}) => {
   await prepareClaim(api);
   await api.createSDO(judgeUser, 'CREATE_SMALL');
 });
 
 // // skipped because Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api}) => {
+// Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api}) => {
 //   await prepareClaim(api);
 //   await api.createSDO(null, config.legalAdvisorUser, 'CREATE_SMALL');
 // });
@@ -42,7 +41,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
 });
 
 // // skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({api}) => {
+// Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({api}) => {
 //   await prepareClaim(api);
 //   await api.createSDO(null, config.legalAdvisorUser, 'CREATE_FAST');
 // });
@@ -53,7 +52,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
 });
 
 // // skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api}) => {
+// Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api}) => {
 //   await prepareClaim(api);
 //   await api.createSDO(null, config.legalAdvisorUser, 'CREATE_SMALL_NO_SUM');
 // });
@@ -64,7 +63,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
 });
 
 // // skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api}) => {
+// Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api}) => {
 //   await prepareClaim(api);
 //   await api.createSDO(null, config.legalAdvisorUser, 'CREATE_FAST_NO_SUM');
 // });
@@ -75,7 +74,7 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async (
 });
 
 // // skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
-// Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
+// Scenario('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
 //   await prepareClaim(api);
 //   await api.createSDO(config.legalAdvisorUser, 'UNSUITABLE_FOR_SDO');
 //   await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_DISPOSAL');
