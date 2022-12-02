@@ -392,18 +392,6 @@
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToCourtLocation",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQRequestedCourt",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
   }
 
 ]

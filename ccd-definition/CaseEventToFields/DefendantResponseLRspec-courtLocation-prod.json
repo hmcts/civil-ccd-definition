@@ -3,7 +3,6 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimCourtLocationLabel",
-    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "PageDisplayOrder": 49,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -32,27 +31,5 @@
     "PageID": "RequestedCourtLocationLRspec",
     "FieldShowCondition": "isRespondent2 = \"Yes\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimCourtLocationRequired = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation2",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimCourtLocation2Required = \"Yes\""
   }
 ]

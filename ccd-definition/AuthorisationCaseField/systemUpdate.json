@@ -514,17 +514,5 @@
     "CaseFieldID": "caseNameHmctsInternal",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQRequestedCourt",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRequestedCourt",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
   }
 ]
