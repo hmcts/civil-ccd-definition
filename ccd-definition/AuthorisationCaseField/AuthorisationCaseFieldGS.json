@@ -12,7 +12,6 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate",
           "GS_profile",
           "judge-profile"
         ],

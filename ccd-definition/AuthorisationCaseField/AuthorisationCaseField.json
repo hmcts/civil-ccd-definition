@@ -4671,7 +4671,6 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate",
           "caseworker-ras-validation",
           "GS_profile"
         ],
