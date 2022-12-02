@@ -68,19 +68,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeLabel",
-    "UserRole": "caseworker-civil-staff",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeOption",
-    "UserRole": "caseworker-civil-staff",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeAmount",
-    "UserRole": "caseworker-civil-staff",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   }
 ]
