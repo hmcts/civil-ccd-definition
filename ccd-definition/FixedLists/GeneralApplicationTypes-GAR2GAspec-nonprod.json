@@ -2,7 +2,7 @@
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "SET_ASIDE_JUDGEMENT",
-    "ListElement": "Set aside Judgement",
+    "ListElement": "Set aside judgment",
     "DisplayOrder": 5
   },
   {
@@ -32,7 +32,7 @@
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "VARY_JUDGEMENT",
-    "ListElement": "Vary judgement",
+    "ListElement": "Vary judgment",
     "DisplayOrder": 10
   }
 ]
