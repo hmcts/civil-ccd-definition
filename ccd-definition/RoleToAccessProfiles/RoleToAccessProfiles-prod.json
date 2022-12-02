@@ -16,14 +16,5 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "SPEC_CLAIM"
-  },
-  {
-    "RoleName" : "[APPLICANTSOLICITORONE]",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "APP-SOL-SPEC-PROFILE",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": "SPEC_CLAIM"
   }
 ]
