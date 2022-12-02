@@ -119,12 +119,6 @@ const midEventFieldForPage = {
       remove: true,
       field: 'uiStatementOfTruth'
     },
-  },
-  ClaimsTrack: {
-    dynamicList: false,
-    uiField: {
-      remove: false
-    }
   }
 };
 
@@ -765,6 +759,16 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if (eventName === 'CREATE_SDO' && responseBody.data.sdoOrderDocument) {
     caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
+  }
+
+  // noinspection EqualityComparisonWithCoercionJS
+  if (eventName === 'CREATE_SDO'
+    && caseData.drawDirectionsOrder && caseData.drawDirectionsOrder.judgementSum
+    && responseBody.data.drawDirectionsOrder && responseBody.data.drawDirectionsOrder.judgementSum
+    && caseData.drawDirectionsOrder.judgementSum !== responseBody.data.drawDirectionsOrder.judgementSum
+    && caseData.drawDirectionsOrder.judgementSum == responseBody.data.drawDirectionsOrder.judgementSum) {
+    // sometimes difference may be because of decimals .0, not an actual difference
+    caseData.drawDirectionsOrder.judgementSum = responseBody.data.drawDirectionsOrder.judgementSum;
   }
 
   try {
