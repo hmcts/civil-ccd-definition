@@ -81,7 +81,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingWitnessOfFactDJ",
-    "Label": "Witness of Fact",
+    "Label": "Witnesses of Fact",
     "FieldType": "DisposalHearingWitnessOfFactDJ",
     "SecurityClassification": "Public"
   },
