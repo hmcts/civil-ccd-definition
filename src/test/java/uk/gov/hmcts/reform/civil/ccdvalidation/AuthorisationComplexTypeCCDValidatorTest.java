@@ -13,7 +13,7 @@ class AuthorisationComplexTypeCCDValidatorTest {
     void testGetPrimaryKeyColumnsReturnsCorrectColumns() {
         //Then: the columns must be correct
         assertThat(new AuthorisationComplexTypeCCDValidator().getPrimaryKeyColumns(),
-            is(List.of("CaseFieldID", "ListElementCode")));
+            is(List.of("CaseFieldID", "ListElementCode", "UserRole")));
     }
 
     @Test
