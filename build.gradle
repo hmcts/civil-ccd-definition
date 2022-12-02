@@ -8,6 +8,7 @@ plugins {
   id 'org.sonarqube' version '3.4.0.2513'
   id 'au.com.dius.pact' version '4.2.7'
   id 'net.ltgt.apt' version '0.21'
+  id 'io.freefair.lombok' version '5.3.3.3'
 }
 
 group = 'uk.gov.hmcts.reform'
@@ -320,10 +321,12 @@ ext.libraries = [
 ]
 
 dependencies {
+  implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.4.0'
+
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.7.4'
   implementation group: 'org.springframework', name: 'spring-core', version: '5.3.23'
   implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.23'
-  implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
+  implementation group: 'org.apache.poi', name: 'poi', version: '5.2.3'
   implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.8'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.3'
@@ -336,6 +339,9 @@ dependencies {
 
 
   testImplementation libraries.junit5
+
+  testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.2.0'
+  testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.8.1'
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
