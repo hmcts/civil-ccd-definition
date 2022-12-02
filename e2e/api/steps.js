@@ -698,13 +698,8 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
-    if (response === 'UNSUITABLE_FOR_SDO' && user === config.judgeUserWithRegionId1) {
-      await assertSubmittedEvent('JUDICIAL_REFERRAL');
-      await waitForFinishedBusinessProcess(caseId);
-      const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-      assert.equal(caseForDisplay.state.id, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    } else if (response === 'UNSUITABLE_FOR_SDO') {
-      await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUserWithRegionId1);
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
