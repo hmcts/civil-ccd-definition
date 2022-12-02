@@ -3,8 +3,12 @@
 const { assert } = require('chai');
 const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
-const summaryJudgmentDirectionsExpectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
-const caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
+let caseProgressionOfflineExpectedTask;
+let summaryJudgmentDirectionsExpectedTask;
+if (config.runWAApiTest) {
+  summaryJudgmentDirectionsExpectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+  caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
+}
 
 Feature('CCD 2v1 API test @api-dj-2v1, @api-dj @dmn-task-dj');
 
