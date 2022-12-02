@@ -2,8 +2,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
-    "CaseFieldID": "evidenceUploadText",
+    "CaseFieldID": "caseTypeFlag",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EvidenceUpload",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "evidenceUploadText",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "EvidenceUpload",
     "PageDisplayOrder": 1,
