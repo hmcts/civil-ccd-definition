@@ -478,6 +478,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "docDisclosureListResApp2",
+    "Label": "Disclosure list",
+    "HintText": "Upload a file",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "documentForDisclosureRes",
     "Label": "Documents for disclosure",
     "HintText": "Upload a file",

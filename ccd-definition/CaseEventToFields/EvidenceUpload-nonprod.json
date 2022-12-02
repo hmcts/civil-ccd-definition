@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "caseTypeFlag",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -13,7 +13,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "evidenceUploadText",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "EvidenceUpload",
     "PageDisplayOrder": 1,
@@ -427,7 +427,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "evidenceUploadTextRes",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "EvidenceUpload",
     "PageDisplayOrder": 1,
@@ -438,7 +438,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "claimsTrack",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "EvidenceUpload",
     "PageDisplayOrder": 1,
@@ -679,7 +679,18 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition":"disclosureSelectionEvidenceRes CONTAINS \"DISCLOSURE_LIST\""
+    "FieldShowCondition":"disclosureSelectionEvidenceRes CONTAINS \"DISCLOSURE_LIST\" AND caseTypeFlag = \"NotMultiParty\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "docDisclosureListResApp2",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":"disclosureSelectionEvidenceRes CONTAINS \"DISCLOSURE_LIST\" AND caseTypeFlag = \"NotMultiParty\""
   },
   {
     "CaseTypeID": "CIVIL",
