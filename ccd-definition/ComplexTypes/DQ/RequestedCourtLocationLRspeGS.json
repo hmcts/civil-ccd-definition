@@ -23,12 +23,5 @@
     "FieldShowCondition": "responseCourtLocations = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "RegularExpression": "[0-9]{3}"
-  },
-  {
-    "ID": "RequestedCourtLocationLRspec",
-    "ListElementCode": "reasonForHearingAtSpecificCourt",
-    "FieldType": "TextArea",
-    "ElementLabel": "Briefly explain your reasons",
-    "SecurityClassification": "Public"
   }
 ]
