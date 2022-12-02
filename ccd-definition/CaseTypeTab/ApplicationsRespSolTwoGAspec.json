@@ -1,23 +1,23 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "GAApplicationsRespOne",
+    "TabID": "GAApplicationsRespTwo",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
-    "CaseFieldID": "respondentSolGaAppDetails",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRoles": [
-      "RES-SOL-ONE-UNSPEC-PROFILE"
+      "RES-SOL-TWO-UNSPEC-PROFILE"
     ],
     "TabFieldDisplayOrder": 1
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "GAApplicationsRespOneSpec",
+    "TabID": "GAApplicationsRespTwoSpec",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
-    "CaseFieldID": "respondentSolGaAppDetails",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRoles": [
-      "RES-SOL-ONE-SPEC-PROFILE"
+      "RES-SOL-TWO-SPEC-PROFILE"
     ],
     "TabFieldDisplayOrder": 1
   }
