@@ -4,7 +4,7 @@ const {date, element} = require('../../api/dataHelper');
 module.exports = {
 
   createSDODisposal: () => {
-    return {
+    const data = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'Yes',
@@ -88,6 +88,12 @@ module.exports = {
         ClaimsTrack: {
           setSmallClaimsFlag: "No",
           setFastTrackFlag: "No"
+        },
+        OrderType: {
+          // to trigger calculated
+        },
+        DisposalHearing: {
+          // to trigger calculated
         }
       },
       calculated: {
@@ -185,14 +191,14 @@ module.exports = {
           },
           fastTrackTrialToggle: (data) => Array.isArray(data),
           fastTrackNotes: (data) => {
-            return typeof data.input1 === 'string';
+            return typeof data.input === 'string';
           },
           disposalHearingMethodToggle: (data) => Array.isArray(data),
           disposalHearingMedicalEvidence: (data) => {
             return typeof data.input === 'string';
           },
           disposalHearingQuestionsToExperts: (data) => {
-            return data.date.matches(/\d{4}-\d{2}-\d{2}/) === 'string';
+            return data.date.match(/\d{4}-\d{2}-\d{2}/);
           },
           fastTrackTrial: (data) => {
             return typeof data.input1 === 'string'
@@ -229,7 +235,7 @@ module.exports = {
           },
           fastTrackSchedulesOfLossToggle: (data) => Array.isArray(data),
 
-          fastTrackMethod: (data) => typeof this === 'string',
+          fastTrackMethod: (data) => typeof data === 'string',
           fastTrackJudgesRecital: (data) => {
             return typeof data.input === 'string';
           },
@@ -270,6 +276,12 @@ module.exports = {
         }
       }
     };
+    data.calculated.OrderType = data.calculated.ClaimsTrack;
+    data.calculated.DisposalHearing = {...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
+    };
+    return data;
   },
 
 

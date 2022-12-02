@@ -712,7 +712,7 @@ module.exports = {
     } else if (response === 'UNSUITABLE_FOR_SDO') {
       await assignCaseRoleToUser(caseId, 'judge-profile', config.judgeUserWithRegionId1);
     } else {
-      await assertSubmittedEvent('CASE_PROGRESSION');
+      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -760,15 +760,53 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody, data);
     caseData = removeUiFields(pageId, caseData);
+  } else if (data.midEventData && data.midEventData[pageId]) {
+    addMidEventFields(pageId, responseBody, data);
+  }
+  if (eventName === 'CREATE_SDO' && responseBody.data.sdoOrderDocument) {
+    caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
   }
 
   try {
+    whatsTheDifference(caseData, responseBody.data);
     assert.deepEqual(responseBody.data, caseData);
   } catch (err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
   }
 };
+
+/**
+ * helper function to help locate differences between expected and actual.
+ *
+ * @param caseData expected
+ * @param responseBodyData actual
+ * @param path initially undefined
+ */
+function whatsTheDifference(caseData, responseBodyData, path) {
+  Object.keys(caseData).forEach(key => {
+    if (Object.keys(responseBodyData).indexOf(key) < 0) {
+      console.log('response does not have ' + appendToPath(path, key));
+    } else if (typeof caseData[key] === 'object') {
+      whatsTheDifference(caseData[key], responseBodyData[key], [key]);
+    } else if (caseData[key] !== responseBodyData[key]) {
+      console.log('response and case data are different on ' + appendToPath(path, key));
+    }
+  });
+  Object.keys(responseBodyData).forEach(key => {
+    if (Object.keys(caseData).indexOf(key) < 0) {
+      console.log('caseData does not have ' + appendToPath(path, key));
+    }
+  });
+}
+
+function appendToPath(path, key) {
+  if (path) {
+    return path.concat([key]);
+  } else {
+    return [key];
+  }
+}
 
 function removeUiFields(pageId, caseData) {
   console.log(`Removing ui fields for pageId: ${pageId}`);
@@ -866,12 +904,12 @@ function addMidEventFields(pageId, responseBody, instanceData) {
     midEventData = data[eventName].midEventData[pageId];
   }
 
-  if (midEventField.dynamicList === true) {
+  if (midEventField && midEventField.dynamicList === true) {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
   caseData = {...caseData, ...midEventData};
-  if (midEventField.id) {
+  if (midEventField && midEventField.id) {
     responseBody.data[midEventField.id] = caseData[midEventField.id];
   }
   if (calculated) {
