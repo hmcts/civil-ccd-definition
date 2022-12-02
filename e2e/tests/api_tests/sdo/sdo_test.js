@@ -36,7 +36,7 @@ Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum 
 //   await api.createSDO(null, config.legalAdvisorUser, 'CREATE_SMALL');
 // });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api}) => {
   await prepareClaim(api);
   await api.createSDO(user, 'CREATE_FAST');
 });
@@ -46,12 +46,12 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
 //   await prepareClaim(api);
 //   await api.createSDO(null, config.legalAdvisorUser, 'CREATE_FAST');
 // });
-//
-// Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({ api}) => {
-//   await prepareClaim(api);
-//   await api.createSDO(user, 'CREATE_SMALL_NO_SUM');
-// });
-//
+
+Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({ api}) => {
+  await prepareClaim(api);
+  await api.createSDO(user, 'CREATE_SMALL_NO_SUM');
+});
+
 // // skipped bc Legal advisor user not yet implemented on environment, so legal advisor tests must be uncommented later
 // Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api}) => {
 //   await prepareClaim(api);

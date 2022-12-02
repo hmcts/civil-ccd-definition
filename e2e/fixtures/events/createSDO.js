@@ -1,5 +1,190 @@
 const {date, element} = require('../../api/dataHelper');
 
+const calculatedClaimsTrackWOSum = {
+  ClaimsTrack: {
+    smallClaimsHearing: (data) => {
+      return typeof data.input1 === 'string' && typeof data.input2 === 'string';
+    },
+    disposalHearingDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
+    disposalHearingFinalDisposalHearing: (data) => {
+      return typeof data.input === 'string' && data.date.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    fastTrackBuildingDispute: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    fastTrackDisclosureOfDocuments: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    fastTrackSettlementToggle: (data) => Array.isArray(data),
+    disposalHearingWitnessOfFactToggle: (data) => Array.isArray(data),
+    fastTrackSchedulesOfLoss: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    disposalHearingNotes: (data) => {
+      return typeof data.input === 'string';
+    },
+    smallClaimsMethod: (data) => typeof data === 'string',
+    fastTrackWitnessOfFactToggle: (data) => Array.isArray(data),
+    smallClaimsWitnessStatement: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.text === 'string'
+        && typeof data.input4 === 'string';
+    },
+    disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
+    fastTrackMethodInPerson: (data) => {
+      return data.value.code && data.value.label && Array.isArray(data.list_items);
+    },
+    fastTrackDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
+    disposalHearingMedicalEvidenceToggle: (data) => Array.isArray(data),
+    disposalHearingSchedulesOfLossToggle: (data) => Array.isArray(data),
+    disposalHearingSchedulesOfLoss: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    fastTrackAltDisputeResolutionToggle: (data) => Array.isArray(data),
+    fastTrackPersonalInjury: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    disposalHearingBundleToggle: (data) => Array.isArray(data),
+    smallClaimsCreditHire: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string'
+        && typeof data.input5 === 'string'
+        && typeof data.input6 === 'string'
+        && typeof data.input7 === 'string'
+        && typeof data.input8 === 'string'
+        && typeof data.input9 === 'string'
+        && typeof data.input10 === 'string';
+    },
+    disposalHearingCostsToggle: (data) => Array.isArray(data),
+    smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
+    smallClaimsHearingToggle: (data) => Array.isArray(data),
+    fastTrackMethodToggle: (data) => Array.isArray(data),
+    disposalHearingBundle: (data) => {
+      return typeof data.input === 'string';
+    },
+    fastTrackWitnessOfFact: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input4 === 'string'
+        && typeof data.input5 === 'string'
+        && typeof data.input7 === 'string'
+        && typeof data.input8 === 'string'
+        && typeof data.input9 === 'string';
+    },
+    fastTrackClinicalNegligence: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    fastTrackTrialToggle: (data) => Array.isArray(data),
+    fastTrackNotes: (data) => {
+      return typeof data.input === 'string';
+    },
+    disposalHearingMethodToggle: (data) => Array.isArray(data),
+    disposalHearingMedicalEvidence: (data) => {
+      return typeof data.input === 'string';
+    },
+    disposalHearingQuestionsToExperts: (data) => {
+      return data.date.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    fastTrackTrial: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string';
+    },
+    smallClaimsJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    fastTrackCreditHire: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string'
+        && typeof data.input5 === 'string'
+        && typeof data.input6 === 'string'
+        && typeof data.input7 === 'string'
+        && typeof data.input8 === 'string';
+    },
+    smallClaimsMethodInPerson: (data) => {
+      return data.value.code && data.value.label && Array.isArray(data.list_items);
+    },
+    smallClaimsNotes: (data) => {
+      return typeof data.input === 'string';
+    },
+    fastTrackRoadTrafficAccident: (data) => {
+      return typeof data.input === 'string';
+    },
+    disposalHearingJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    disposalHearingMethodInPerson: (data) => {
+      return data.value.code && data.value.label && Array.isArray(data.list_items);
+    },
+    fastTrackSchedulesOfLossToggle: (data) => Array.isArray(data),
+
+    fastTrackMethod: (data) => typeof data === 'string',
+    fastTrackJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    fastTrackHousingDisrepair: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
+    },
+    disposalHearingDisclosureOfDocuments: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string';
+    },
+    smallClaimsRoadTrafficAccident:(data) => {
+      return typeof data.input === 'string';
+    },
+    fastTrackCostsToggle: (data) => Array.isArray(data),
+    smallClaimsDocumentsToggle: (data) => Array.isArray(data),
+    fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
+    disposalHearingWitnessOfFact: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string'
+        && typeof data.input5 === 'string'
+        && typeof data.input6 === 'string';
+    },
+    disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
+    smallClaimsDocuments: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string';
+    },
+    smallClaimsMethodToggle: (data) => Array.isArray(data),
+    disposalHearingClaimSettlingToggle: (data) => Array.isArray(data)
+  }
+};
+
+const calculatedClaimsTrackWSum = {
+  ClaimsTrack: {...calculatedClaimsTrackWOSum.ClaimsTrack,
+    drawDirectionsOrder: (data) => {
+      return typeof data.judgementSum === 'string';
+    }
+  }
+};
+
 //Disposal Hearing
 module.exports = {
 
@@ -96,185 +281,7 @@ module.exports = {
           // to trigger calculated
         }
       },
-      calculated: {
-        ClaimsTrack: {
-          smallClaimsHearing: (data) => {
-            return typeof data.input1 === 'string' && typeof data.input2 === 'string';
-          },
-          disposalHearingDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
-          disposalHearingFinalDisposalHearing: (data) => {
-            return typeof data.input === 'string' && data.date.match(/\d{4}-\d{2}-\d{2}/);
-          },
-          fastTrackBuildingDispute: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackDisclosureOfDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackSettlementToggle: (data) => Array.isArray(data),
-          disposalHearingWitnessOfFactToggle: (data) => Array.isArray(data),
-          fastTrackSchedulesOfLoss: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          smallClaimsMethod: (data) => typeof data === 'string',
-          fastTrackWitnessOfFactToggle: (data) => Array.isArray(data),
-          smallClaimsWitnessStatement: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.text === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
-          fastTrackMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          fastTrackDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
-          disposalHearingMedicalEvidenceToggle: (data) => Array.isArray(data),
-          disposalHearingSchedulesOfLossToggle: (data) => Array.isArray(data),
-          disposalHearingSchedulesOfLoss: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackAltDisputeResolutionToggle: (data) => Array.isArray(data),
-          fastTrackPersonalInjury: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingBundleToggle: (data) => Array.isArray(data),
-          smallClaimsCreditHire: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string'
-              && typeof data.input9 === 'string'
-              && typeof data.input10 === 'string';
-          },
-          disposalHearingCostsToggle: (data) => Array.isArray(data),
-          smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
-          smallClaimsHearingToggle: (data) => Array.isArray(data),
-          fastTrackMethodToggle: (data) => Array.isArray(data),
-          disposalHearingBundle: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackWitnessOfFact: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string'
-              && typeof data.input9 === 'string';
-          },
-          fastTrackClinicalNegligence: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackTrialToggle: (data) => Array.isArray(data),
-          fastTrackNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingMethodToggle: (data) => Array.isArray(data),
-          disposalHearingMedicalEvidence: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingQuestionsToExperts: (data) => {
-            return data.date.match(/\d{4}-\d{2}-\d{2}/);
-          },
-          fastTrackTrial: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string';
-          },
-          smallClaimsJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackCreditHire: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string';
-          },
-          smallClaimsMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          smallClaimsNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackRoadTrafficAccident: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          fastTrackSchedulesOfLossToggle: (data) => Array.isArray(data),
-
-          fastTrackMethod: (data) => typeof data === 'string',
-          fastTrackJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackHousingDisrepair: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingDisclosureOfDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string';
-          },
-          smallClaimsRoadTrafficAccident:(data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackCostsToggle: (data) => Array.isArray(data),
-          smallClaimsDocumentsToggle: (data) => Array.isArray(data),
-          fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
-          disposalHearingWitnessOfFact: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string';
-          },
-          disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
-          smallClaimsDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string';
-          },
-          smallClaimsMethodToggle: (data) => Array.isArray(data),
-          disposalHearingClaimSettlingToggle: (data) => Array.isArray(data),
-          drawDirectionsOrder: (data) => {
-            return typeof data.judgementSum === 'string';
-          }
-        }
-      }
+      calculated: calculatedClaimsTrackWSum
     };
     data.calculated.OrderType = data.calculated.ClaimsTrack;
     data.calculated.DisposalHearing = {...data.calculated.ClaimsTrack,
@@ -342,185 +349,7 @@ module.exports = {
         SmallClaims: {
         }
       },
-      calculated: {
-        ClaimsTrack: {
-          smallClaimsHearing: (data) => {
-            return typeof data.input1 === 'string' && typeof data.input2 === 'string';
-          },
-          disposalHearingDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
-          disposalHearingFinalDisposalHearing: (data) => {
-            return typeof data.input === 'string' && data.date.match(/\d{4}-\d{2}-\d{2}/);
-          },
-          fastTrackBuildingDispute: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackDisclosureOfDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackSettlementToggle: (data) => Array.isArray(data),
-          disposalHearingWitnessOfFactToggle: (data) => Array.isArray(data),
-          fastTrackSchedulesOfLoss: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          smallClaimsMethod: (data) => typeof data === 'string',
-          fastTrackWitnessOfFactToggle: (data) => Array.isArray(data),
-          smallClaimsWitnessStatement: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.text === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
-          fastTrackMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          fastTrackDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
-          disposalHearingMedicalEvidenceToggle: (data) => Array.isArray(data),
-          disposalHearingSchedulesOfLossToggle: (data) => Array.isArray(data),
-          disposalHearingSchedulesOfLoss: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackAltDisputeResolutionToggle: (data) => Array.isArray(data),
-          fastTrackPersonalInjury: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingBundleToggle: (data) => Array.isArray(data),
-          smallClaimsCreditHire: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string'
-              && typeof data.input9 === 'string'
-              && typeof data.input10 === 'string';
-          },
-          disposalHearingCostsToggle: (data) => Array.isArray(data),
-          smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
-          smallClaimsHearingToggle: (data) => Array.isArray(data),
-          fastTrackMethodToggle: (data) => Array.isArray(data),
-          disposalHearingBundle: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackWitnessOfFact: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string'
-              && typeof data.input9 === 'string';
-          },
-          fastTrackClinicalNegligence: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackTrialToggle: (data) => Array.isArray(data),
-          fastTrackNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingMethodToggle: (data) => Array.isArray(data),
-          disposalHearingMedicalEvidence: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingQuestionsToExperts: (data) => {
-            return data.date.match(/\d{4}-\d{2}-\d{2}/);
-          },
-          fastTrackTrial: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string';
-          },
-          smallClaimsJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackCreditHire: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string';
-          },
-          smallClaimsMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          smallClaimsNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackRoadTrafficAccident: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          fastTrackSchedulesOfLossToggle: (data) => Array.isArray(data),
-
-          fastTrackMethod: (data) => typeof data === 'string',
-          fastTrackJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackHousingDisrepair: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingDisclosureOfDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string';
-          },
-          smallClaimsRoadTrafficAccident:(data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackCostsToggle: (data) => Array.isArray(data),
-          smallClaimsDocumentsToggle: (data) => Array.isArray(data),
-          fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
-          disposalHearingWitnessOfFact: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string';
-          },
-          disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
-          smallClaimsDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string';
-          },
-          smallClaimsMethodToggle: (data) => Array.isArray(data),
-          disposalHearingClaimSettlingToggle: (data) => Array.isArray(data),
-          drawDirectionsOrder: (data) => {
-            return typeof data.judgementSum === 'string';
-          }
-        }
-      }
+      calculated: calculatedClaimsTrackWSum
     };
     data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
@@ -674,185 +503,7 @@ module.exports = {
 
         }
       },
-      calculated: {
-        ClaimsTrack: {
-          smallClaimsHearing: (data) => {
-            return typeof data.input1 === 'string' && typeof data.input2 === 'string';
-          },
-          disposalHearingDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
-          disposalHearingFinalDisposalHearing: (data) => {
-            return typeof data.input === 'string' && data.date.match(/\d{4}-\d{2}-\d{2}/);
-          },
-          fastTrackBuildingDispute: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackDisclosureOfDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackSettlementToggle: (data) => Array.isArray(data),
-          disposalHearingWitnessOfFactToggle: (data) => Array.isArray(data),
-          fastTrackSchedulesOfLoss: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          smallClaimsMethod: (data) => typeof data === 'string',
-          fastTrackWitnessOfFactToggle: (data) => Array.isArray(data),
-          smallClaimsWitnessStatement: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.text === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
-          fastTrackMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          fastTrackDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
-          disposalHearingMedicalEvidenceToggle: (data) => Array.isArray(data),
-          disposalHearingSchedulesOfLossToggle: (data) => Array.isArray(data),
-          disposalHearingSchedulesOfLoss: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackAltDisputeResolutionToggle: (data) => Array.isArray(data),
-          fastTrackPersonalInjury: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingBundleToggle: (data) => Array.isArray(data),
-          smallClaimsCreditHire: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string'
-              && typeof data.input9 === 'string'
-              && typeof data.input10 === 'string';
-          },
-          disposalHearingCostsToggle: (data) => Array.isArray(data),
-          smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
-          smallClaimsHearingToggle: (data) => Array.isArray(data),
-          fastTrackMethodToggle: (data) => Array.isArray(data),
-          disposalHearingBundle: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackWitnessOfFact: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string'
-              && typeof data.input9 === 'string';
-          },
-          fastTrackClinicalNegligence: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          fastTrackTrialToggle: (data) => Array.isArray(data),
-          fastTrackNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingMethodToggle: (data) => Array.isArray(data),
-          disposalHearingMedicalEvidence: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingQuestionsToExperts: (data) => {
-            return data.date.match(/\d{4}-\d{2}-\d{2}/);
-          },
-          fastTrackTrial: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string';
-          },
-          smallClaimsJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackCreditHire: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string'
-              && typeof data.input7 === 'string'
-              && typeof data.input8 === 'string';
-          },
-          smallClaimsMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          smallClaimsNotes: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackRoadTrafficAccident: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          disposalHearingMethodInPerson: (data) => {
-            return data.value.code && data.value.label && Array.isArray(data.list_items);
-          },
-          fastTrackSchedulesOfLossToggle: (data) => Array.isArray(data),
-
-          fastTrackMethod: (data) => typeof data === 'string',
-          fastTrackJudgesRecital: (data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackHousingDisrepair: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string';
-          },
-          disposalHearingDisclosureOfDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string';
-          },
-          smallClaimsRoadTrafficAccident:(data) => {
-            return typeof data.input === 'string';
-          },
-          fastTrackCostsToggle: (data) => Array.isArray(data),
-          smallClaimsDocumentsToggle: (data) => Array.isArray(data),
-          fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
-          disposalHearingWitnessOfFact: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string'
-              && typeof data.input3 === 'string'
-              && typeof data.input4 === 'string'
-              && typeof data.input5 === 'string'
-              && typeof data.input6 === 'string';
-          },
-          disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
-          smallClaimsDocuments: (data) => {
-            return typeof data.input1 === 'string'
-              && typeof data.input2 === 'string';
-          },
-          smallClaimsMethodToggle: (data) => Array.isArray(data),
-          disposalHearingClaimSettlingToggle: (data) => Array.isArray(data),
-          drawDirectionsOrder: (data) => {
-            return typeof data.judgementSum === 'string';
-          }
-        }
-      }
+      calculated: calculatedClaimsTrackWSum
     };
     data.calculated.OrderType = {...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
@@ -867,7 +518,7 @@ module.exports = {
 //Small Claims WITHOUT Sum of Damages
 
   createSDOSmallWODamageSum: () => {
-    return {
+    const data = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'No',
@@ -935,14 +586,28 @@ module.exports = {
             date: date(1)
           }
         }
-      }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: "Yes",
+          setFastTrackFlag: "No"
+        },
+        SmallClaims: {
+        }
+      },
+      calculated: calculatedClaimsTrackWOSum
     };
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
+    };
+    return data;
   },
 
 //Fast Track WITHOUT Sum of damages
 
   createSDOFastWODamageSum: () => {
-    return {
+    const data = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'Yes',
@@ -1067,8 +732,30 @@ module.exports = {
             date: date(1)
           }
         }
-      }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: "No",
+          setFastTrackFlag: "No"
+        },
+        OrderType: {
+          setSmallClaimsFlag: "No",
+          setFastTrackFlag: "Yes"
+        },
+        FastTrack: {
+
+        }
+      },
+      calculated: calculatedClaimsTrackWOSum
     };
+    data.calculated.OrderType = {...data.calculated.ClaimsTrack,
+      orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.FastTrack = {...data.calculated.OrderType,
+      setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
+    };
+    return data;
   },
 
 //Unsuitable for SDO
