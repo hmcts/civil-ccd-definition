@@ -65,6 +65,7 @@
     "ID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
     "FieldType": "Date",
     "Label": "Date for first instalment",
+    "HintText": "This must be after ${currentDateboxDefendantSpec}",
     "SecurityClassification": "Public"
   }
 ]
