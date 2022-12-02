@@ -73,13 +73,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
