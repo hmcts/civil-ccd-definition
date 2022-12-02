@@ -8,14 +8,6 @@
   },
   {
     "ID": "RequestedCourtLocationLRspec",
-    "ListElementCode": "responseCourtCode",
-    "FieldType": "Text",
-    "ElementLabel": "Court location code",
-    "SecurityClassification": "Public",
-    "RegularExpression": "[0-9]{3}"
-  },
-  {
-    "ID": "RequestedCourtLocationLRspec",
     "ListElementCode": "reasonForHearingAtSpecificCourt",
     "FieldType": "TextArea",
     "ElementLabel": "Briefly explain your reasons",
