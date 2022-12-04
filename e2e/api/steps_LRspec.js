@@ -14,7 +14,6 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
-const {checkAccessProfilesIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
@@ -109,12 +108,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
-    } else {
-      createClaimData = data.CREATE_CLAIM(scenario);
-    }
+    createClaimData = data.CREATE_CLAIM_AP(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -124,20 +118,12 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    } else {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    }
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
-      if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
         await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-      } else {
-        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
-      }
     }
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
