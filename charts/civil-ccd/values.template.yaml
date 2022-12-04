@@ -72,6 +72,7 @@ civil-general-applications:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1848'
     imagePullPolicy: Always
     ingressHost: ${SERVICE_FQDN}
     keyVaults:
