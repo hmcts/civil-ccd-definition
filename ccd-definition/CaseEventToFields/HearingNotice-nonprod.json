@@ -112,7 +112,7 @@
     "PageID": "HearingDetails",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -168,16 +168,16 @@
     "PageID": "HearingDetails",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "HEARING_SCHEDULED",
     "CaseFieldID": "information",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingInformation",
-    "PageDisplayOrder": 5,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }
