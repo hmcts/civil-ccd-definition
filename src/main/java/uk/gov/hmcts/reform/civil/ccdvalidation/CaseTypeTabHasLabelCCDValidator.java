@@ -54,6 +54,7 @@ public class CaseTypeTabHasLabelCCDValidator extends CCDFileValidatorBase implem
         if (!emptyLabels.isEmpty()) {
             StringBuilder sb = new StringBuilder();
             emptyLabels.forEach(entry -> {
+                sb.append("  TabId -> ");
                 sb.append(entry.getKey());
                 sb.append("\n");
             });
