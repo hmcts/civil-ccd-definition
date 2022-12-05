@@ -1,3 +1,25 @@
 [
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitConfirmAmountPaidSpec",
+    "Label": "Temporary label",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitIntentionToSettleClaimSpec",
+    "Label": "Does the claimant want to settle the claim for the £${respondToClaim.howMuchWasPaid} the defendant has paid?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitRejectReasonSpec",
+    "Label": "Why does the claimant reject their response?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+
 
 ]
