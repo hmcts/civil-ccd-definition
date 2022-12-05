@@ -4,7 +4,7 @@ import java.util.List;
 
 public class AuthorisationComplexTypeCCDValidator extends UniqueConstraintCCDFileValidator {
 
-    private static final List<String> PRIMARY_KEY_COLUMNS = List.of("CaseFieldID", "ListElementCode");
+    private static final List<String> PRIMARY_KEY_COLUMNS = List.of("CaseFieldID", "ListElementCode", "UserRole");
 
     private static final String SHEET_NAME = "AuthorisationComplexType";
 
