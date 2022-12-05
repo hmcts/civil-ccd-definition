@@ -238,7 +238,7 @@ task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests
 
 task runSdoFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
   onlyIf {
-    return System.env.ENVIRONMENT == 'preview'
+    return System.env.RUNNONPROD == 'preview'
   }
   commandLine '/usr/bin/yarn', '--silent', 'test:e2e-sdo'
 }
@@ -249,7 +249,7 @@ task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional t
 
 task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
  onlyIf {
-    return System.env.ENVIRONMENT == 'preview'
+    return System.env.RUNNONPROD == 'preview'
   }
   commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
 }
