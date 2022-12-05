@@ -56,7 +56,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingLocation",
-    "Label": "Location",
+    "Label": " ",
     "HintText": "Venue",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
@@ -71,7 +71,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "channel",
-    "Label": "Channel ",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingChannel",
     "SecurityClassification": "Public"
@@ -86,7 +86,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingDate",
-    "Label": "Date ",
+    "Label": " ",
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
     "SecurityClassification": "Public"
