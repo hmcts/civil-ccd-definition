@@ -133,10 +133,7 @@ withPipeline(type, product, component) {
   before('highleveldatasetup') {
     archiveCoreCaseDataDefinitions()
   }
-
-  before('smoketest:preview'){
-    env.ENVIRONMENT="aat"
-  }
+  
 
   afterSuccess('akschartsinstall') {
     onPR {
