@@ -134,6 +134,10 @@ withPipeline(type, product, component) {
     archiveCoreCaseDataDefinitions()
   }
 
+  before('smoketest:preview'){
+    env.ENVIRONMENT="aat"
+  }
+
   afterSuccess('akschartsinstall') {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
