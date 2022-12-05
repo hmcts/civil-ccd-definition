@@ -3,7 +3,7 @@
     "ID": "NotifyClaimDetailsCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "ListElementCode": "cosDetailSaved",
+    "ListElementCode": "cosDocSaved",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL"
   },
@@ -108,7 +108,7 @@
     "ID": "NotifyClaimDetailsCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "ListElementCode": "cosDetailSaved",
+    "ListElementCode": "cosDocSaved",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL"
   },

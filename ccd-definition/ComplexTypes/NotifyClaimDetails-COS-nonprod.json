@@ -1,7 +1,7 @@
 [
   {
     "ID": "NotifyClaimDetailsCoS",
-    "ListElementCode": "cosDetailSaved",
+    "ListElementCode": "cosDocSaved",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
@@ -31,7 +31,7 @@
     "ElementLabel": "Supporting evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "cosDetailSaved = \"\" OR cosDetailSaved = \"No\" "
+    "FieldShowCondition": "cosDocSaved = \"\" OR cosDocSaved = \"No\" "
   },
   {
     "ID": "NotifyClaimDetailsCoS",
