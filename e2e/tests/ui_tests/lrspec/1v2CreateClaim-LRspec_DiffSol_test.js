@@ -43,6 +43,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.secondDefendantSolicitorUser);
+  await sleep(5000);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
     defendant1Response: 'fullDefence',
@@ -51,6 +52,10 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects cl
   });
   await LRspec.click('Sign out');
 }).retry(3);
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
