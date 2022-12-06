@@ -20,6 +20,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentOnly",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNoteTypeNoteLabel",
     "AccessControl": [
       {
@@ -40,6 +59,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNoteTypeNoteTA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentAndNote",
     "AccessControl": [
       {
         "UserRoles": [

@@ -270,6 +270,7 @@
     "FieldType": "DisposalHearingFinalDisposalHearing",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingEndLine",
@@ -338,6 +339,7 @@
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleStartLine",
@@ -1104,7 +1106,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "sdoOrderDocument",
     "Label": "View directions order",
-    "FieldType": "Document",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   },
   {

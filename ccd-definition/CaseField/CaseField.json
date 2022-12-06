@@ -767,20 +767,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -877,13 +863,6 @@
     "ID": "applicant1DQFurtherInformation",
     "Label": "Applicant 1 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
     "SecurityClassification": "Public"
   },
   {
@@ -2009,13 +1988,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant2DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -2162,6 +2134,22 @@
     "FieldType": "NextHearingDetails",
     "SecurityClassification": "Public",
     "_Definition":  "Details of the next hearing on a case",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CaseAccessCategory",
+    "Label": "Case Access Category",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Definition":  "Case Access Category",
     "_Category":  "CIVIL"
   }
 ]

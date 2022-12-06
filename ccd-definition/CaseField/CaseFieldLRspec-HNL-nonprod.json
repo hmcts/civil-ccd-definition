@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired",
+    "Label": "Do you want to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired2",
+    "Label": "Do you want to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]

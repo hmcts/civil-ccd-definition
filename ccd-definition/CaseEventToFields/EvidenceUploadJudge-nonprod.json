@@ -8,8 +8,21 @@
     "PageID": "CaseNoteSelection",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "PageLabel": "How do you want to add a case note?"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
+    "CaseFieldID": "documentOnly",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "UploadDocument",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageLabel": "Add a document",
+    "PageShowCondition": "caseNoteType = \"DOCUMENT_ONLY\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +34,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseNoteType=\"NOTE_ONLY\""
+    "PageShowCondition": "caseNoteType=\"NOTE_ONLY\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -33,5 +46,18 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
+    "CaseFieldID": "documentAndNote",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "UploadDocumentAndNote",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageLabel": "Add a document with a note?",
+    "PageShowCondition": "caseNoteType = \"DOCUMENT_AND_NOTE\""
   }
 ]

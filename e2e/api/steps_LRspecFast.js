@@ -11,7 +11,6 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkAccessProfilesIsEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
@@ -92,12 +91,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
-    } else {
-      createClaimData = data.CREATE_CLAIM(scenario);
-    }
+    createClaimData = data.CREATE_CLAIM_AP(scenario);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -107,11 +101,8 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    } else {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    }
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -191,7 +182,12 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent(expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },

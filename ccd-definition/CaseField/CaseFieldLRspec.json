@@ -968,20 +968,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseClaimExpertSpecRequired",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "responseClaimExpertSpecRequired2",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
     "Label": "Do you want hearing to be held at specific court ? \n",
     "HintText": "If the defendant is an individual the case will be held at defendant's preferred court ",
@@ -1057,7 +1043,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaimLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Hearing</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">Hearing availability</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2267,6 +2253,34 @@
     "ID": "respondent1PinToPostLRspec",
     "Label": " ",
     "FieldType": "DefendantPinToPostLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent1DQLanguage",
+  "Label": "Welsh language",
+  "FieldType": "Language",
+  "SecurityClassification": "Public"
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
     "SecurityClassification": "Public"
   }
 ]

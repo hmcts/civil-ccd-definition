@@ -786,7 +786,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1176,7 +1176,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -1904,7 +1904,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },

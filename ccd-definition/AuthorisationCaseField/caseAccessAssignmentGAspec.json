@@ -67,13 +67,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
@@ -98,6 +110,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocument",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDate",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaUploadN245FormUploadLabel",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppN245FormUpload",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   }
