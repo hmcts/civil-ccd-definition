@@ -340,8 +340,8 @@ dependencies {
 
   testImplementation libraries.junit5
 
-  testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.2.0'
-  testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.8.1'
+  testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.9.0'
+  testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.9.0'
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
