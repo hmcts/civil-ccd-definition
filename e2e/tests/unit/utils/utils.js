@@ -82,11 +82,6 @@ function noDuplicateFoundCT(a, b) {
   return a.CaseTypeID === b.CaseTypeID && a.TabID === b.TabID && a.CaseFieldID === b.CaseFieldID;
 }
 
-function noDuplicateFoundCaseEventToField(a, b) {
-  return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.CaseFieldID === b.CaseFieldID && a.PageDisplayOrder === b.PageDisplayOrder;
-}
-
-
 function noDuplicateFoundEvent(a, b) {
   return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.UserRole === b.UserRole;
 }

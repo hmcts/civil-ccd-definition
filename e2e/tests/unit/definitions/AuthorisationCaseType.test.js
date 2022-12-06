@@ -1,9 +1,6 @@
 const { expect } = require('chai');
 const { uniqWith } = require('lodash');
-const {
-  isNotEmpty,
-  noDuplicateFoundACT, isNotLongerThan, MEDIUM_STRING
-} = require('../utils/utils');
+const { noDuplicateFoundACT } = require('../utils/utils');
 const { AuthorisationCaseType } = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {

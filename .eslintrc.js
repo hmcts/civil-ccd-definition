@@ -8,6 +8,7 @@ module.exports = {
     'es2020': true,
     'codeceptjs/codeceptjs': true,
     'node': true,
+    'mocha': true,
     'jest': true
   },
   'extends': 'eslint:recommended',

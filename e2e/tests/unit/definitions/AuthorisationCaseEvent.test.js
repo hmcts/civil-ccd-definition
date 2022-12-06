@@ -3,7 +3,7 @@ const { uniqWith } = require('lodash');
 const {
   MEDIUM_STRING,
   isNotLongerThan,
-  noDuplicateFoundEvent, isNotEmpty
+  noDuplicateFoundEvent
 } = require('../utils/utils');
 const { AuthorisationCaseEvent } = require('../utils/dataProvider');
 

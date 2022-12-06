@@ -2,7 +2,6 @@ const { expect } = require('chai');
 const { uniqWith } = require('lodash');
 const {
   MEDIUM_STRING,
-  isNotEmpty,
   isNotLongerThan,
   noDuplicateFoundCT
 } = require('../utils/utils');

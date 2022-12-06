@@ -34,7 +34,6 @@ function assertEventDefinitionIsValid(row) {
 
 describe('CaseEvent', () => {
   describe('should ', () => {
-    let nonProd = [];
     let uniqResult = [];
 
     before(() => {
