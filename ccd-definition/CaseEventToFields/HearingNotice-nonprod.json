@@ -177,7 +177,7 @@
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingInformation",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }
