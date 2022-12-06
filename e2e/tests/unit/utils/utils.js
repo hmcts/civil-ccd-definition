@@ -86,6 +86,10 @@ function noDuplicateFoundEvent(a, b) {
   return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.UserRole === b.UserRole;
 }
 
+function noDuplicateFoundAccessProfiles(a, b) {
+  return a.CaseTypeID === b.CaseTypeID && a.AccessProfiles === b.AccessProfiles;
+}
+
 function noDuplicateFoundACT(a, b) {
   return a.CaseTypeID === b.CaseTypeID && a.UserRole === b.UserRole;
 }
@@ -167,5 +171,6 @@ module.exports = {
   byCaseType,
   byStateName,
   mapErrorArray,
+  noDuplicateFoundAccessProfiles,
   missingAuthorisationsExist
 };
