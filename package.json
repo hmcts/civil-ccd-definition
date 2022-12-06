@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint e2e",
     "setup": "echo yarn:setup",
-    "test": "./e2e/generate-ccd-configs.sh",
+    "test": "NODE_PATH=. mocha e2e/tests/unit/definitions/**/*.js",
     "test:a11y": "echo test:a11y",
     "test:coverage": "echo test:coverage",
     "highLevelDataSetup": "echo './gradlew highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
