@@ -121,7 +121,10 @@ module.exports = {
               jointExpertSuitable: 'Yes',
               details: [
               element({
-                name: 'John Doe',
+                firstName: 'John',
+                lastName: 'Doe',
+                emailAddress: 'test@email.com',
+                phoneNumber: '07000111000',
                 fieldOfExpertise: 'None',
                 whyRequired: 'Testing',
                 estimatedCost: '10000'

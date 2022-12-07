@@ -53,6 +53,11 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
 };
 
+const responseDataType = {
+  applicant: 'applicant',
+  defendant: 'respondent'
+}
+
 const eventData = {
   acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
@@ -535,6 +540,7 @@ module.exports = {
 
     // CIV-5514: remove when hnl is live
     claimantResponseData = await replaceWitnessIfHNLFlagIsDisabled(claimantResponseData, false);
+    claimantResponseData = await replaceExpertsIfHNLFlagIsDisabled(claimantResponseData, '', responseDataType.defendant);
 
     await validateEventPages(claimantResponseData);
 
@@ -892,6 +898,35 @@ function addMidEventFields(pageId, responseBody) {
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+// CIV-5514: remove when hnl is live
+async function replaceExpertsIfHNLFlagIsDisabled(responseData, solicitor, personType) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  console.log(`Experts selected in Env: ${config.runningEnv}`);
+  if (!isHNLEnabled) {
+    responseData = {
+      ...responseData,
+      valid: {
+        ...responseData.valid,
+        Experts: {
+          [`${personType}${solicitor === 'solicitorTwo' ? 2 : 1}DQExperts`]: {
+            expertRequired: 'Yes',
+            details: [
+              element({
+                name: 'John Doe',
+                fieldOfExpertise: 'Science',
+                whyRequired: 'Reason',
+                estimatedCost: '100',
+              })
+            ]
+          }
+        }
+      }
+    };
+  }
+  return responseData;
 }
 
 function replaceLitigationFriendFields(caseData) {
