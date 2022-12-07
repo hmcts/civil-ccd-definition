@@ -134,7 +134,10 @@ module.exports = {
             witnessesToAppear: 'Yes',
               details: [
               element({
-                name: 'John Doe',
+                firstName: 'John',
+                lastName: 'Smith',
+                phoneNumber: '07012345678',
+                emailAddress: 'johnsmith@email.com',
                 reasonForWitness: 'None'
               })
             ]

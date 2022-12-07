@@ -7,6 +7,7 @@ const { listElement, buildAddress} = require('./dataHelper');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
+const {element} = require('../api/dataHelper');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -17,7 +18,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData} = require('../helpers/hnlFeatureHelper');
 
@@ -121,7 +122,6 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
@@ -167,7 +167,6 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
@@ -455,6 +454,9 @@ module.exports = {
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
 
+    // CIV-5514: remove when hnl is live
+    defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, true, solicitor);
+
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
@@ -529,7 +531,10 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+
+    // CIV-5514: remove when hnl is live
+    claimantResponseData = await replaceWitnessIfHNLFlagIsDisabled(claimantResponseData, false);
 
     await validateEventPages(claimantResponseData);
 
@@ -942,6 +947,35 @@ async function updateCaseDataWithPlaceholders(data, document) {
   data = lodash.template(JSON.stringify(data))(placeholders);
 
   return JSON.parse(data);
+}
+
+// CIV-5514: remove when hnl is live
+async function replaceWitnessIfHNLFlagIsDisabled(data, isDefendantResponse, solicitor = "solicitorOne", ) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  console.log(`Witness selected in Env: ${config.runningEnv}`);
+  if (!isHNLEnabled) {
+    const party = `${isDefendantResponse === true ?
+      'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQWitnesses`
+    data = {
+        ...data,
+        valid: {
+          ...data.valid,
+          Witnesses: {
+            [party]: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  name: 'John Doe',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
+          }
+        }
+      };
+  }
+  return data;
 }
 
 // CIV-4959: needs to be removed when court location goes live
