@@ -5,6 +5,7 @@ set -eu
 environment=${1:-prod}
 excludeNonProdFiles=${2:-true}
 
+# if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
    excludedFilenamePatterns="-e *-prod.json,*HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR2GAspec-nonprod.json"
    #for testing HNL uplifting, comment the above line and uncomment below
@@ -18,7 +19,7 @@ elif [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*-HNL-nonprod.json,*CUI.json"
 else
   #nonprod+SDO
-  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*DJ.json,*DJspec.json,*-HNL-nonprod.json,*CUI.json"
+  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json"
 fi
 
 root_dir=$(realpath $(dirname ${0})/..)
