@@ -11,7 +11,9 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const {checkToggleEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -92,6 +94,13 @@ module.exports = {
     let createClaimData  = {};
 
     createClaimData = data.CREATE_CLAIM_AP(scenario);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
+    }
+    //==============================================================
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
