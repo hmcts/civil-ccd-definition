@@ -34,17 +34,5 @@
     "ListElementCode": "OTHER",
     "ListElement": "Other",
     "DisplayOrder": 6
-  },
-  {
-    "ID": "SmallClaimsTimeEstimate",
-    "ListElementCode": "FOUR_HOURS",
-    "ListElement": "Four hours",
-    "DisplayOrder": 7
-  },
-  {
-    "ID": "SmallClaimsTimeEstimate",
-    "ListElementCode": "ONE_DAY",
-    "ListElement": "One day",
-    "DisplayOrder": 8
   }
 ]
