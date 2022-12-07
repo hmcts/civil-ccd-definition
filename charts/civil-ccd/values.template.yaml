@@ -151,7 +151,6 @@ aac-manage-case-assignment:
 
 xui-webapp:
   enabled: true
-  image: hmctspublic.azurecr.io/xui/webapp:pr-2330
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
