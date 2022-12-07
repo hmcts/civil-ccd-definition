@@ -318,7 +318,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "responseClaimTrack",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "responseClaimTrack",
     "TabFieldDisplayOrder": 49,
     "FieldShowCondition": "responseClaimTrack = \"DO NOT SHOW IN UI\""
