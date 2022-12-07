@@ -11,8 +11,8 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkAccessProfilesIsEnabled} = require('./testingSupport');
-const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled} = require('./testingSupport');
+const {removeHNLFieldsFromClaimData} = require("../helpers/hnlFeatureHelper");
 
 let caseId, eventName;
 let caseData = {};
@@ -60,11 +60,11 @@ module.exports = {
 
     let createClaimData  = {};
 
-    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
-    } else {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
+    createClaimData = data.CREATE_CLAIM_AP(scenario);
+
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
     }
 
     await apiRequest.setupTokens(user);
@@ -75,14 +75,11 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    } else {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    }
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
     await waitForFinishedBusinessProcess(caseId);
-    // await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    // await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
@@ -339,14 +336,15 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
   return responseData;
 }
 
-// const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-//   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-//   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-//   if (['preview', 'demo'].includes(config.runningEnv)) {
-//     expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
-//       'Unexpected events for state ' + state + ' and user type ' + user.type);
-//   } else {
-//     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
-//       'Unexpected events for state ' + state + ' and user type ' + user.type);
-//   }
-// };
+const assertCorrectEventsAreAvailableToUser = async (user, state) => {
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
+  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  } else {
+    // expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  }
+};

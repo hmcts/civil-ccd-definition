@@ -100,6 +100,11 @@ module.exports = {
           PaymentDate: {
             applicant1RequestedPaymentDateForDefendantSpec : '2220-01-01'
           },
+          SuggestInstalments: {
+            applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec : '2220-01-01',
+            applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec: 'ONCE_ONE_WEEK',
+            applicant1SuggestInstalmentsPaymentAmountForDefendantSpec: '3'
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
