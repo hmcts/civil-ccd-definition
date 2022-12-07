@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1_SPEC",
+    "Name": "Assign to applicantSolicitor1",
+    "Description": "Assign case to applicant solicitor 1 for Spec",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-submit",
+    "_comment": "change to submitted callback to enable hmctssupplementary data",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
+  }
+]

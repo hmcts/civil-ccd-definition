@@ -64,6 +64,7 @@ const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeD
 const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
+const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -150,7 +151,7 @@ const firstDefendantSteps = (respondent1) => [
   () => party.enterParty(parties.RESPONDENT_SOLICITOR_1, address),
   () => respondentRepresentedPage.enterRespondentRepresented(parties.RESPONDENT_SOLICITOR_1, respondent1.represented),
   ...conditionalSteps(respondent1.represented, [
-    () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+    () => defendantSolicitorOrganisation.enterOrganisationDetails('1', respondent1.representativeOrgNumber),
     ...conditionalSteps(!respondent1.representativeRegistered, [
       () => unRegisteredDefendantSolicitorOrganisationPage.enterDefendantSolicitorDetails('1')
     ]),
@@ -172,9 +173,7 @@ const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenar
         () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
       ]),
       ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
-        () => defendantSolicitorOrganisation.enterOrganisationDetails(
-          respondent2.representativeRegistered,
-          '2',
+        () => defendantSolicitorOrganisation.enterOrganisationDetails('2',
           respondent2.representativeOrgNumber),
         () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
         () => secondDefendantSolicitorReference.enterReference(),
@@ -258,7 +257,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
-        () => chooseCourtPage.enterCourt(),
+        () => chooseCourtPage.selectCourt(),
         ...firstClaimantSteps(),
         ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
@@ -333,6 +332,22 @@ module.exports = function () {
         () => specifiedDefaultJudmentPage.paymentTypeSelection(),
         () => event.submit('Submit', 'Default Judgment Granted'),
         () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async judgePerformDJDirectionOrder() {
+      eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.selectCaseManagementOrder('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.verifyOrderPreview(),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async staffPerformDJCaseTransferCaseOffline(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.performAndVerifyTransferCaseOffline(caseId)
       ]);
     },
 
@@ -451,8 +466,9 @@ module.exports = function () {
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
-      await caseViewPage.startEvent(eventName, caseId);
 
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+      await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
         () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
 
@@ -463,7 +479,11 @@ module.exports = function () {
         ]),
 
         ...conditionalSteps(trackType, [
-        () => allocateClaimPage.selectTrackType(trackType)])
+        () => allocateClaimPage.selectTrackType(trackType)]),
+
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+        () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
 

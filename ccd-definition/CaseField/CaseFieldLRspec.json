@@ -439,20 +439,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specAoSRespondentInformation",
-    "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name: ${respondent1Copy.partyName}** ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "specAoSRespondent2Information",
-    "Label": "**Party type:** ${respondent2Copy.partyTypeDisplayValue}\n\n**Name: ${respondent2Copy.partyName}** ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specAoSApplicantCorrespondenceAddressdetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
@@ -968,20 +954,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "responseClaimExpertSpecRequired",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "responseClaimExpertSpecRequired2",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "responseClaimCourtLocationRequired",
     "Label": "Do you want hearing to be held at specific court ? \n",
     "HintText": "If the defendant is an individual the case will be held at defendant's preferred court ",
@@ -1013,14 +985,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation",
-    "Label": " ",
+    "Label": "Court Location",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondToCourtLocation2",
-    "Label": " ",
+    "Label": "Court Location",
     "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
@@ -1057,7 +1029,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingFastClaimLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Hearing</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">Hearing availability</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2080,7 +2052,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQRequestedCourt",
     "Label": " ",
-    "FieldType": "RequestedCourt",
+    "FieldType": "RequestedCourtLocationLRspec",
     "SecurityClassification": "Public"
   },
   {
@@ -2264,16 +2236,37 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1EmailAddress",
+    "ID": "respondent1PinToPostLRspec",
     "Label": " ",
-    "FieldType": "Email",
+    "FieldType": "DefendantPinToPostLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent1DQLanguage",
+  "Label": "Welsh language",
+  "FieldType": "Language",
+  "SecurityClassification": "Public"
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1PinToPostLRspec",
-    "Label": " ",
-    "FieldType": "DefendantPinToPostLRspec",
+    "ID": "applicant1DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQLanguage",
+    "Label": "Welsh language",
+    "FieldType": "Language",
     "SecurityClassification": "Public"
   }
 ]

@@ -14,6 +14,13 @@
 ./bin/utils/ccd-add-role.sh "full-access"
 ./bin/utils/ccd-add-role.sh "civil-administrator-basic"
 ./bin/utils/ccd-add-role.sh "civil-administrator-standard"
+./bin/utils/ccd-add-role.sh "APP-SOL-UNSPEC-PROFILE"
+./bin/utils/ccd-add-role.sh "APP-SOL-SPEC-PROFILE"
+./bin/utils/ccd-add-role.sh "RES-SOL-ONE-UNSPEC-PROFILE"
+./bin/utils/ccd-add-role.sh "RES-SOL-ONE-SPEC-PROFILE"
+./bin/utils/ccd-add-role.sh "RES-SOL-TWO-UNSPEC-PROFILE"
+./bin/utils/ccd-add-role.sh "RES-SOL-TWO-SPEC-PROFILE"
+./bin/utils/ccd-add-role.sh "payment-access"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"

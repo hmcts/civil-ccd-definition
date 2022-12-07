@@ -9,8 +9,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": "Do you wish to enter judgment for a sum of damages to be decided ?",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details"
+    "CaseEventFieldLabel": "Do you wish to enter judgment for a sum of damages to be decided ?"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -124,7 +123,8 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DISPOSAL\""
+    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DISPOSAL\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-sdo-order"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -431,6 +431,7 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "disposalHearingFinalDisposalHearingToggle=\"SHOW\""
   },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
@@ -725,7 +726,8 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -737,7 +739,8 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "setSmallClaimsFlag=\"Yes\""
+    "PageShowCondition": "setSmallClaimsFlag=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-sdo-order"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1079,7 +1082,8 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1091,7 +1095,8 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "setFastTrackFlag=\"Yes\""
+    "PageShowCondition": "setFastTrackFlag=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-sdo-order"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1705,6 +1710,17 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
     "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoOrderDocument",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "OrderPreview",
+    "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }

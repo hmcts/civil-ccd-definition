@@ -630,7 +630,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "superClaimType",
+    "CaseFieldID": "CaseAccessCategory",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "ClaimAmountDetails",

@@ -1,4 +1,4 @@
-const {date, element, buildAddress} = require('../../../api/dataHelper');
+const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
 
 module.exports = {
   valid: {
@@ -103,7 +103,12 @@ module.exports = {
     },
     RequestedCourt: {
       respondent1DQRequestedCourt: {
-        responseCourtCode: '343',
+        responseCourtLocations: {
+          list_items: [
+            listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+          ],
+          value: listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+        },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
       }

@@ -5,8 +5,9 @@
     "DisplayOrder": "1",
     "QuestionText": "Claimant name",
     "AnswerFieldType": "Text",
-    "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${applicant1.partyName}|${applicant2.partyName}:[RESPONDENTSOLICITORONE]",
-    "QuestionId": "applicantName"
+    "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${applicant1.partyName}|${applicant2.partyName}:[RESPONDENTSOLICITORONE],${applicant1.partyName}|${applicant2.partyName}:[RESPONDENTSOLICITORTWO]",
+    "QuestionId": "applicantName",
+    "IgnoreNULLFields": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -14,7 +15,8 @@
     "DisplayOrder": "2",
     "QuestionText": "Clients title (if applicable), First and Last Name/Organisation Name",
     "AnswerFieldType": "Text",
-    "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${respondent1.partyName}:[RESPONDENTSOLICITORONE]",
-    "QuestionId": "clientName"
+    "Answer": "${applicant1.partyName}|${applicant2.partyName}:[APPLICANTSOLICITORONE],${respondent1.partyName}:[RESPONDENTSOLICITORONE],${respondent2.partyName}:[RESPONDENTSOLICITORTWO]",
+    "QuestionId": "clientName",
+    "IgnoreNULLFields": "Yes"
   }
 ]

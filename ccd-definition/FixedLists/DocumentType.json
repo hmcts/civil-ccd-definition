@@ -32,7 +32,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "CLAIMANT_DEFENCE",
-    "ListElement": "Claimant defence",
+    "ListElement": "Claimant response",
     "DisplayOrder": 6
   },
   {
@@ -46,5 +46,11 @@
     "ListElementCode": "DEFAULT_JUDGMENT",
     "ListElement": "Default Judgment",
     "DisplayOrder": 8
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_SDO_ORDER",
+    "ListElement": "Default Judgment Order",
+    "DisplayOrder": 9
   }
 ]

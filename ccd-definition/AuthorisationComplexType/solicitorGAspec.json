@@ -440,36 +440,50 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "generalAppSubmittedDateGAspec",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "caseLink",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "caseState",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
-    "ListElementCode": "generalApplicationType",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "civilServiceUserRoles",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
-    "ListElementCode": "civilServiceUserRoles",
+    "ListElementCode": "caseManagementCategory",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate.hearingScheduledPreferenceYesNo",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate.hearingScheduledDate",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate.hearingScheduledDateLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "generalAppHearingDate.hearingScheduledPreferenceYesNoLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }

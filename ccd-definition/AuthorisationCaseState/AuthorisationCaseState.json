@@ -1,21 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseStateID": "PENDING_CASE_ISSUED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]",
-          "[CREATOR]",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -52,12 +37,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "[CREATOR]",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_ISSUED",
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
@@ -70,18 +70,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORONESPEC]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONESPEC]",
-          "[RESPONDENTSOLICITORTWOSPEC]"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }

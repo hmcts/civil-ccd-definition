@@ -10,7 +10,7 @@
     "ID": "DisposalHearingQuestionsToExpertsDJ",
     "ListElementCode": "text1",
     "FieldType": "Label",
-    "ElementLabel": "The time for service of any question addressed to an expert instructed is not later than 4pm on",
+    "ElementLabel": "Any questions which are to be addressed to an expert must be sent to the expert directly and uploaded to the Digital Portal by 4pm on",
     "SecurityClassification": "Public"
   },
   {
@@ -24,14 +24,7 @@
     "ID": "DisposalHearingQuestionsToExpertsDJ",
     "ListElementCode": "text2",
     "FieldType": "Label",
-    "ElementLabel": "Any such question shall be answered within 14 days of service.",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingQuestionsToExpertsDJ",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
+    "ElementLabel": "The answers to the questions shall be answered by the Expert within 14 days and uploaded to the Digital Portal within 21 days.",
     "SecurityClassification": "Public"
   }
 ]

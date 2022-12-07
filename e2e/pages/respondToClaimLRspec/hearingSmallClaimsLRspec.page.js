@@ -18,7 +18,8 @@ module.exports = {
       default: {
         return {
           hearingType: {
-            id: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_radio',
+            id: '#SmallClaimHearingInterpreterRequired_radio',
+            id2: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_radio',
             options: {
               yes: 'Yes',
               no: 'No'
@@ -37,6 +38,14 @@ module.exports = {
     await within(this.fields(mpScenario).hearingType.id, () => {
     I.click(this.fields(mpScenario).hearingType.options.no);
     });
+
+    if(mpScenario === 'DefendantResponse'){
+          I.waitForElement(this.fields(mpScenario).hearingType.id2);
+          await I.runAccessibilityTest();
+          await within(this.fields(mpScenario).hearingType.id2, () => {
+          I.click(this.fields(mpScenario).hearingType.options.no);
+      });
+    }
 
     await I.clickContinue();
   }

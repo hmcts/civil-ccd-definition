@@ -70,7 +70,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -254,7 +253,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimantResponseDocuments",
-    "Label": "Claimant response Case Documents",
+    "Label": "Claimant response to defence documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
@@ -768,20 +767,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -832,21 +817,21 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQExperts",
-    "Label": "Applicant 1 experts",
+    "Label": "Claimant 1 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQWitnesses",
-    "Label": "Applicant 1 witnesses",
+    "Label": "Claimant 1 witnesses",
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearing",
-    "Label": "Applicant 1 Hearing",
+    "Label": "Claimant 1 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -869,7 +854,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingSupport",
-    "Label": "Applicant 1 Hearing support requirements",
+    "Label": "Claimant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
     "SecurityClassification": "Public"
   },
@@ -878,13 +863,6 @@
     "ID": "applicant1DQFurtherInformation",
     "Label": "Applicant 1 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
     "SecurityClassification": "Public"
   },
   {
@@ -1302,7 +1280,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1961,21 +1938,21 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQExperts",
-    "Label": "Applicant 2 experts",
+    "Label": "Claimant 2 experts",
     "FieldType": "Experts",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQWitnesses",
-    "Label": "Applicant 2 witnesses",
+    "Label": "Claimant 2 witnesses",
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQHearing",
-    "Label": "Applicant 2 Hearing",
+    "Label": "Claimant 2 Hearing",
     "FieldType": "Hearing",
     "SecurityClassification": "Public"
   },
@@ -1998,7 +1975,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQHearingSupport",
-    "Label": "Applicant 2 Hearing support requirements",
+    "Label": "Claimant 2 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
     "SecurityClassification": "Public"
   },
@@ -2007,13 +1984,6 @@
     "ID": "applicant2DQFurtherInformation",
     "Label": "Applicant 2 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant2DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
     "SecurityClassification": "Public"
   },
   {
@@ -2106,6 +2076,80 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "_Definition":  "Next deadline on a case",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingParticularsOfClaim",
+    "Label": "## Particulars of claim",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingClaimantDetails",
+    "Label": "## Claimant details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingDefendantDetails",
+    "Label": "## Defendant details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingClaimantDQ",
+    "Label": "## Claimant directions questionnaire",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingDefendantDQ",
+    "Label": "## Defendant directions questionnaire",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingSolicitorReferences",
+    "Label": "## Solicitor references",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingAmountClaiming",
+    "Label": "## Amount claiming",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextHearingDetails",
+    "Label": "Next hearing details",
+    "FieldType": "NextHearingDetails",
+    "SecurityClassification": "Public",
+    "_Definition":  "Details of the next hearing on a case",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CaseAccessCategory",
+    "Label": "Case Access Category",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Definition":  "Case Access Category",
     "_Category":  "CIVIL"
   }
 ]

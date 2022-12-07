@@ -47,12 +47,5 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "TrialBuildingDispute",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
-    "SecurityClassification": "Public"
   }
 ]

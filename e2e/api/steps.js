@@ -2,6 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const { listElement } = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -11,12 +12,17 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const createDJ = require('../fixtures/events/createDJ.js');
+const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
+const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
+  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
@@ -29,6 +35,7 @@ const data = {
   ACKNOWLEDGE_CLAIM_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/acknowledgeClaim_sameSolicitor.js'),
   ACKNOWLEDGE_CLAIM_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor1.js'),
   ACKNOWLEDGE_CLAIM_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor2.js'),
+  ACKNOWLEDGE_CLAIM_TWO_V_ONE: require('../fixtures/events/2v1Events/acknowledgeClaim_2v1.js'),
   INFORM_AGREED_EXTENSION_DATE: require('../fixtures/events/informAgreeExtensionDate.js'),
   INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
   DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
@@ -40,7 +47,9 @@ const data = {
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
-  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js')
+  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
+  REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
 };
 
 const eventData = {
@@ -51,7 +60,7 @@ const eventData = {
       solicitorOne: data.ACKNOWLEDGE_CLAIM_SOLICITOR_ONE,
       solicitorTwo: data.ACKNOWLEDGE_CLAIM_SOLICITOR_TWO
     },
-    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM
+    TWO_V_ONE: data.ACKNOWLEDGE_CLAIM_TWO_V_ONE
   },
   informAgreedExtensionDates: {
     ONE_V_ONE: data.INFORM_AGREED_EXTENSION_DATE,
@@ -98,19 +107,20 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-
   createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
-
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const createClaimData = data.CREATE_CLAIM(mpScenario);
+
+    let createClaimData = data.CREATE_CLAIM(mpScenario);
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -134,7 +144,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
-    //field is deleted in about to submit callback
+    // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
@@ -144,7 +154,12 @@ module.exports = {
     caseData = {};
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_RESPONDENT_LIP);
+
+    let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+
+    await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
 
@@ -158,33 +173,19 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
-  createClaimWithRespondentSolicitorFirmNotInMyHmcts: async (user) => {
-    eventName = 'CREATE_CLAIM';
-    caseId = null;
-    caseData = {};
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS);
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
-  },
-
   createClaimWithFailingPBAAccount: async (user) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    await validateEventPages(data.CREATE_CLAIM_TERMINATED_PBA);
+
+    let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
+    // Remove after court location toggle is removed
+    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+
+    await validateEventPages(createClaimData);
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
       body: 'You have until DATE to notify the defendant of the claim and claim details.'
@@ -252,6 +253,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
 
     await validateEventPages(data[eventName]);
@@ -273,6 +275,9 @@ module.exports = {
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
+    caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
+      value: listElement('Both')
+    }};
 
     await validateEventPages(data[eventName]);
 
@@ -367,6 +372,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1');
+    }
 
     let informAgreedExtensionData;
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -417,6 +425,10 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
 
+    // Remove after court location toggle is removed
+    defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+      defendantResponseData, solicitor);
+
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
@@ -425,6 +437,17 @@ module.exports = {
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
+    deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
+
+    if (solicitor === 'solicitorTwo'){
+      deleteCaseFields('respondent1DQHearing');
+      deleteCaseFields('respondent1DQLanguage');
+      deleteCaseFields('respondent1DQRequestedCourt');
+      deleteCaseFields('respondent2DQRequestedCourt');
+      deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQExperts');
+      deleteCaseFields('respondent1DQWitnesses');
+    }
 
     await validateEventPages(defendantResponseData, solicitor);
 
@@ -467,7 +490,7 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  claimantResponse: async (user, multipartyScenario) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -490,15 +513,48 @@ module.exports = {
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'The date cannot be in the past and must not be more than a year in the future');
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+    // This should be uncommented in ticket CIV-2493
+    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (['preview', 'demo'].includes(config.runningEnv)) {
+      if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
+        if(returnedCaseData.respondent2ClaimResponseType != null) {
+          if(returnedCaseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+        } else {
+        validState = 'JUDICIAL_REFERRAL';
+        }
+      }
+    }*/
+/*
+    await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
-    });
+    });*/
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    if (!expectedCcdState) {
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
+  },
+
+  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
+    eventName = 'INITIATE_GENERAL_APPLICATION';
+    caseId = caseId || caseNumber;
+    console.log('caseid is..', caseId);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, caseId);
+
+    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, caseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, expectedState);
+
+    console.log('General application created when main case state is', expectedState);
+    assert.equal(responseBody.callback_response_status_code, 200);
   },
 
   //TODO this method is not used in api tests
@@ -543,6 +599,10 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
+  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
+     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
   addCaseNote: async (user) => {
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
@@ -582,10 +642,58 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'DEFAULT_JUDGEMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    // workaround: caseManagementLocation shows in startevent api request but not in validate request
+    deleteCaseFields('caseManagementLocation');
+    if (djRequestType === 'DISPOSAL_HEARING') {
+      await validateEventPages(data.REQUEST_DJ('DISPOSAL_HEARING', mpScenario));
+    } else {
+      await validateEventPages(data.REQUEST_DJ('TRIAL_HEARING', mpScenario));
+    }
+
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  sdoDefaultJudgment: async (user, orderType = 'DISPOSAL_HEARING') => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (orderType === 'DISPOSAL_HEARING') {
+      await validateEventPages(data.REQUEST_DJ_ORDER('DISPOSAL_HEARING', mpScenario));
+    } else {
+      await validateEventPages(data.REQUEST_DJ_ORDER('TRIAL_HEARING', mpScenario));
+    }
+    
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   getCaseId: async () => {
      console.log (`case created: ${caseId}`);
      return caseId;
    },
+
+  getLegacyCaseReference: async () => {
+    return legacyCaseReference;
+  },
 
   cleanUp: async () => {
     await unAssignAllUsers();
@@ -595,7 +703,7 @@ module.exports = {
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
-  console.log('validateEventPages');
+  console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
@@ -619,7 +727,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
   let responseBody = await response.json();
-
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -634,7 +742,13 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   }
 
-  assert.deepEqual(responseBody.data, caseData);
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  } 
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    throw err;
+  }
 };
 
 function removeUiFields(pageId, caseData) {
@@ -704,7 +818,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
@@ -760,6 +874,63 @@ async function updateCaseDataWithPlaceholders(data, document) {
   return JSON.parse(data);
 }
 
+// CIV-4959: needs to be removed when court location goes live
+async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api  tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    createClaimData = {
+      ...createClaimData,
+      valid: {
+        ...createClaimData.valid,
+        Court: {
+          courtLocation: {
+            applicantPreferredCourt: '344'
+          }
+        }
+      }
+    };
+  }
+  return createClaimData;
+}
+
+// CIV-4959: needs to be removed when court location goes live
+async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
+  defendantResponseData, solicitor) {
+  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  // work around for the api tests
+  console.log(`Court location selected in Env: ${config.runningEnv}`);
+  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    if (solicitor === 'solicitorTwo') {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          RequestedCourt: {
+            respondent2DQRequestedCourt: {
+              responseCourtCode: '343'
+            }
+          }
+        }
+      };
+    } else {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          RequestedCourt: {
+            respondent1DQRequestedCourt: {
+              responseCourtCode: '343'
+            }
+          }
+        }
+      };
+    }
+  }
+  return defendantResponseData;
+}
+
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   switch(mpScenario){
@@ -803,6 +974,11 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
   } else {
     delete responseBody.data['respondent2'];
   }
+  return responseBody;
+};
+
+const clearDataForSearchCriteria = (responseBody) => {
+  delete responseBody.data['SearchCriteria'];
   return responseBody;
 };
 

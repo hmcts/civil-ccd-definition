@@ -1,0 +1,72 @@
+[
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input1",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "date2",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input3",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input4",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input5",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "input6",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

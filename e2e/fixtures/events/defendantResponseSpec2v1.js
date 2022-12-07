@@ -1,3 +1,4 @@
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -56,7 +57,15 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -192,7 +201,15 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -318,7 +335,15 @@ module.exports = {
             },
           },
           RequestedCourtLocationLRspec: {
-            responseClaimCourtLocationRequired: 'No'
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {

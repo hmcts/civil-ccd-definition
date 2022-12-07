@@ -383,13 +383,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1EmailAddress",
+    "CaseFieldID": "respondent1PinToPostLRspec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1PinToPostLRspec",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }

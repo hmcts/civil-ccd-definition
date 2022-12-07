@@ -104,13 +104,13 @@
     "DisplayContext": "READONLY"
   },
   {
-  "ID": "DisposalHearingDisclosureOfDocuments",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-  "ListElementCode": "input1",
-  "FieldDisplayOrder": 2,
-  "DisplayContext": "MANDATORY"
-},
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
@@ -702,7 +702,7 @@
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (claimant), e.g. 4 "
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -711,7 +711,7 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (defendant), e.g. 4"
+    "EventHintText": "Number of witnesses (defendant), e.g. 4 "
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -1228,7 +1228,6 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "EventHintText": "Number of pages, e.g. 4"
-    
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1313,12 +1312,12 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "FastTrackSchedulesOfLoss",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "fastTrackSchedulesOfLoss",
-  "ListElementCode": "input4",
-  "FieldDisplayOrder": 7,
-  "DisplayContext": "MANDATORY"
+    "ID": "FastTrackSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackSchedulesOfLoss",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -1407,6 +1406,22 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1884,5 +1899,14 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SdoOrderDocumentPage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoOrderDocument",
+    "ListElementCode": "documentLink",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "Draft Order"
   }
 ]

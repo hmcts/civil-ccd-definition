@@ -5,7 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -15,7 +16,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -23,7 +25,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -31,7 +34,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -39,7 +43,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -49,7 +54,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -61,7 +67,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -81,10 +88,20 @@
       },
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "caseworker-civil-admin",
-          "[APPLICANTSOLICITORONE]",
-          "GS_profile",
-          "caseworker-ras-validation"
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -97,16 +114,71 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin"
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "basic-access",
-          "caseworker-ras-validation"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "HEARING_READINESS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
         ],
         "CRUD": "R"
       }

@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "JudgementSum",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "JudgementSum",
+    "ListElementCode": "judgementSum",
+    "FieldType": "Number",
+    "ElementLabel": "Judgment for the claimant for a sum to be decided by the court",
+    "HintText": "Subject to a deduction of the percentage below",
+    "SecurityClassification": "Public",
+    "Min": 0,
+    "Max": 100
+  }
+]
