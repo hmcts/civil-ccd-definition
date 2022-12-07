@@ -4,7 +4,7 @@ const {
   isNotEmpty,
   noDuplicateFound
 } = require('../utils/utils');
-const { ccdData } = require('../utils/dataProvider');
+const dataProvider = require("../utils/dataProvider");
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.BannerEnabled).to.be.a('string').and.satisfy(isNotEmpty());
@@ -16,7 +16,7 @@ describe('Banner', () => {
     let uniqResult = [];
 
     before(() => {
-      uniqResult = uniqWith(ccdData.Banner, noDuplicateFound);
+      uniqResult = uniqWith(dataProvider.ccdData.Banner, noDuplicateFound);
     });
 
     it('should have only valid definitions', () => {

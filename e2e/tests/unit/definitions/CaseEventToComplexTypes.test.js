@@ -6,7 +6,7 @@ const {
   isNotLongerThan,
   noDuplicateFoundCCT
 } = require('../utils/utils');
-const { CaseEventToComplexTypes } = require('../utils/dataProvider');
+const dataProvider = require("../utils/dataProvider");
 
 function assertFieldDefinitionIsValid(row) {
   // todo type not populated
@@ -19,17 +19,20 @@ function assertFieldDefinitionIsValid(row) {
   expect(row.ListElementCode).to.be.a('string').and.satisfy(isNotEmpty());
 }
 
-describe('CaseEventToComplexTypes', () => {
-  context('should :', () => {
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('CaseEventToComplexTypes'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let uniqResult = [];
+      let caseEventToComplexTypes = dataProvider.getConfig('../../../../ccd-definition/CaseEventToComplexTypes', key);
 
-    before(() => {
-      uniqResult = uniqWith(CaseEventToComplexTypes, noDuplicateFoundCCT);
-    });
+      before(() => {
+        uniqResult = uniqWith(caseEventToComplexTypes, noDuplicateFoundCCT);
+      });
 
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });

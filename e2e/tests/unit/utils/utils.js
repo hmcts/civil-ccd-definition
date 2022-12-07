@@ -10,12 +10,16 @@ function isFieldDuplicated(field) {
   return function isDuplicated(field1, field2) {
     if (field1.CaseTypeID === field2.CaseTypeID
       && field1[field] === field2[field]
-      && field1.UserRole === field2.UserRole) {
+      && field1.UserRoles === field2.UserRoles
+      && field1.UserRole === field2.UserRole
+      && field1.AccessControl === field2.AccessControl) {
       console.log(`Duplicated field: ${field1[field]}`);
     }
     return field1.CaseTypeID === field2.CaseTypeID
             && field1[field] === field2[field]
-            && field1.UserRole === field2.UserRole;
+            && field1.AccessControl === field2.AccessControl
+            && field1.UserRole === field2.UserRole
+            && field1.UserRoles === field2.UserRoles;
   };
 }
 
@@ -83,7 +87,11 @@ function noDuplicateFoundCT(a, b) {
 }
 
 function noDuplicateFoundEvent(a, b) {
-  return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.UserRole === b.UserRole;
+  if (a.AccessControl != null && b.AccessControl != null) {
+    return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.AccessControl === b.AccessControl
+  } else if (a.UserRole != null && b.UserRole != null) {
+    return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.UserRole === b.UserRole;
+  }
 }
 
 function noDuplicateFoundAccessProfiles(a, b) {
@@ -91,7 +99,11 @@ function noDuplicateFoundAccessProfiles(a, b) {
 }
 
 function noDuplicateFoundACT(a, b) {
-  return a.CaseTypeID === b.CaseTypeID && a.UserRole === b.UserRole;
+  if (a.UserRole != null &&  b.UserRole != null) {
+    return a.CaseTypeID === b.CaseTypeID && a.UserRole === b.UserRole ;
+  } else {
+    return a.CaseTypeID === b.CaseTypeID && a.UserRoles === b.UserRoles ;
+  }
 }
 
 function noDuplicateFoundCCT(a, b) {

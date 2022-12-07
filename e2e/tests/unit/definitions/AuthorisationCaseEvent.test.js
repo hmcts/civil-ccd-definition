@@ -5,7 +5,7 @@ const {
   isNotLongerThan,
   noDuplicateFoundEvent
 } = require('../utils/utils');
-const { AuthorisationCaseEvent } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -15,24 +15,27 @@ function assertFieldDefinitionIsValid(row) {
   expect(row.AccessControl).to.not.be.null;
 }
 
-describe('AuthorisationCaseEvent', () => {
-  context('should :', () => {
-    let nonProd = [];
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('AuthorisationCaseEvent'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let authorisationCaseEventConfig = [];
+      let uniqResult = [];
 
-    before(() => {
-      nonProd = AuthorisationCaseEvent;
-      console.log('nonProd', nonProd.length);
-      uniqResult = uniqWith(nonProd, noDuplicateFoundEvent);
-    });
+      before(() => {
+        authorisationCaseEventConfig = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseEvent', key);
+        uniqResult = uniqWith(authorisationCaseEventConfig, noDuplicateFoundEvent);
+      });
 
-    it('not contain duplicated definitions of the same field', () => {
-      console.log('uniqResult', uniqResult.length);
-      expect(uniqResult).to.eql(nonProd);
-    });
+      it('not contain duplicated definitions of the same field', () => {
+        console.log('uniqResult', uniqResult.length);
+        expect(uniqResult).to.eql(authorisationCaseEventConfig);
+      });
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });
+
+

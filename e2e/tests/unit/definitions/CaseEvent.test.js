@@ -7,7 +7,7 @@ const {
   isNotEmpty, isNotLongerThan, noDuplicateFound,
   whenPopulated
 } = require('../utils/utils');
-const { CaseEvent } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertEventDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -32,20 +32,23 @@ function assertEventDefinitionIsValid(row) {
   whenPopulated(row.EndButtonLabel).expect(isNotLongerThan(MEDIUM_STRING));
 }
 
-describe('CaseEvent', () => {
-  describe('should ', () => {
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('CaseEvent'.concat(': ', key, ' config'), () => {
+    describe('should ', () => {
+      let uniqResult = [];
+      let caseEventConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEvent', key);
 
-    before(() => {
-      uniqResult = uniqWith(CaseEvent, noDuplicateFound);
-    });
+      before(() => {
+        uniqResult = uniqWith(caseEventConfig, noDuplicateFound);
+      });
 
-    it('not contain duplicated definitions of the same event', () => {
-      expect(uniqResult.length).to.equal(CaseEvent.length);
-    });
+      it('not contain duplicated definitions of the same event', () => {
+        expect(uniqResult.length).to.equal(caseEventConfig.length);
+      });
 
-    it('have only valid definitions', () => {
-      uniqResult.forEach(assertEventDefinitionIsValid);
+      it('have only valid definitions', () => {
+        uniqResult.forEach(assertEventDefinitionIsValid);
+      });
     });
   });
 });

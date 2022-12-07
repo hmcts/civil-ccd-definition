@@ -5,7 +5,7 @@ const {
   isNotLongerThan,
   noDuplicateFoundCT
 } = require('../utils/utils');
-const { CaseTypeTab } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -16,20 +16,24 @@ function assertFieldDefinitionIsValid(row) {
   // expect(row.TabLabel).to.be.a('string').and.satisfy(isNotEmpty());
 }
 
-describe('CaseTypeTab', () => {
-  context('should :', () => {
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('CaseTypeTab'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let uniqResult = [];
+      let caseTypeTabConfig = []
 
-    before(() => {
-      uniqResult = uniqWith(CaseTypeTab, noDuplicateFoundCT);
-    });
+      before(() => {
+        caseTypeTabConfig = dataProvider.getConfig('../../../../ccd-definition/CaseTypeTab', key);
+        uniqResult = uniqWith(caseTypeTabConfig, noDuplicateFoundCT);
+      });
 
-    it('not contain duplicated definitions of the same field', () => {
-      expect(uniqResult).to.eql(CaseTypeTab);
-    });
+      it('not contain duplicated definitions of the same field', () => {
+        expect(uniqResult).to.eql(caseTypeTabConfig);
+      });
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });

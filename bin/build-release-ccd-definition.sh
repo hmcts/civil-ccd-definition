@@ -17,6 +17,7 @@ elif [ ${environment} == local ]; then
 elif [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*-HNL-nonprod.json,*CUI.json"
 else
+  #nonprod+SDO
   excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*DJ.json,*DJspec.json,*-HNL-nonprod.json,*CUI.json"
 fi
 

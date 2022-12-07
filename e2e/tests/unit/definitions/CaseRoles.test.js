@@ -6,7 +6,7 @@ const {
   isNotLongerThan,
   noDuplicateFound
 } = require('../utils/utils');
-const { ccdData } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -22,14 +22,14 @@ function assertFieldDefinitionIsValid(row) {
 describe('CaseRoles', () => {
   context('should :', () => {
     let uniqResult = [];
-    let nonProd = [];
+    let caseRolesConfig = [];
     before(() => {
-      nonProd = ccdData.CaseRoles;
-      uniqResult = uniqWith(nonProd, noDuplicateFound);
+      caseRolesConfig = dataProvider.ccdData.CaseRoles;
+      uniqResult = uniqWith(caseRolesConfig, noDuplicateFound);
     });
 
     it('not contain duplicated definitions of the same field', () => {
-      expect(uniqResult).to.eql(nonProd);
+      expect(uniqResult).to.eql(caseRolesConfig);
     });
 
     it('should have only valid definitions', () => {

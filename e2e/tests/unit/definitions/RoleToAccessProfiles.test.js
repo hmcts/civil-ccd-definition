@@ -4,7 +4,7 @@ const {
   isNotEmpty,
   noDuplicateFoundAccessProfiles
 } = require('../utils/utils');
-const { RoleToAccessProfiles} = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -14,16 +14,20 @@ function assertFieldDefinitionIsValid(row) {
   expect(row.AccessProfiles).to.be.a('string').and.satisfy(isNotEmpty());
 }
 
-describe('RoleToAccessProfiles', () => {
-  context('should :', () => {
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('RoleToAccessProfiles'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let uniqResult = [];
+      let roleToAccessProfiles = [];
 
-    before(() => {
-      uniqResult = uniqWith(RoleToAccessProfiles, noDuplicateFoundAccessProfiles);
-    });
+      before(() => {
+        roleToAccessProfiles = dataProvider.getConfig('../../../../ccd-definition/RoleToAccessProfiles', key)
+        uniqResult = uniqWith(roleToAccessProfiles, noDuplicateFoundAccessProfiles);
+      });
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });

@@ -4,7 +4,7 @@ const {
   isNotEmpty,
   noDuplicateFound
 } = require('../utils/utils');
-const { ccdData } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.ID).to.be.a('string').and.satisfy(v => {
@@ -21,7 +21,7 @@ describe('CaseType', () => {
     let uniqResult = [];
 
     before(() => {
-      uniqResult = uniqWith(ccdData.CaseType, noDuplicateFound);
+      uniqResult = uniqWith(dataProvider.ccdData.CaseType, noDuplicateFound);
     });
 
     it('should have only valid definitions', () => {

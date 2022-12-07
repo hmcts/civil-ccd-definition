@@ -1,20 +1,30 @@
 const { expect } = require('chai');
 const { uniqWith } = require('lodash');
-const { isFieldDuplicated } = require('../utils/utils');
+const { isFieldDuplicated, noDuplicateFoundEvent} = require('../utils/utils');
 const { createAssertExists } = require('../utils/assertBuilders');
-const { AuthorisationCaseFieldData, caseFieldata } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 const assertFieldExists = createAssertExists('Field');
 
-describe('AuthorisationCaseField', () => {
-  describe('should :', () => {
-    it('contain a unique case field ID, case type ID and role (no duplicates)', () => {
-      const uniqResult = uniqWith(AuthorisationCaseFieldData, isFieldDuplicated('CaseFieldID'));
-      expect(uniqResult).to.eql(AuthorisationCaseFieldData);
-    });
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('AuthorisationCaseField'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let authorisationCaseFieldConfig = [];
+      let caseFieldConfig = [];
 
-    it('use existing fields', () => {
-      assertFieldExists(AuthorisationCaseFieldData, caseFieldata);
+      before(() => {
+        authorisationCaseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseField', key);
+        caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseField', key);
+      });
+
+      it('contain a unique case field ID, case type ID and role (no duplicates)', () => {
+        const uniqResult = uniqWith(authorisationCaseFieldConfig, isFieldDuplicated('CaseFieldID'));
+        expect(uniqResult).to.eql(authorisationCaseFieldConfig);
+      });
+
+      it('use existing fields', () => {
+        assertFieldExists(authorisationCaseFieldConfig, caseFieldConfig);
+      });
     });
   });
 });

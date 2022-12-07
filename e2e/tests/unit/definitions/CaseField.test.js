@@ -6,7 +6,7 @@ const {
   isNotLongerThan,
   noDuplicateFound
 } = require('../utils/utils');
-const { caseFieldata } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -14,7 +14,8 @@ function assertFieldDefinitionIsValid(row) {
   });
   expect(row.ID).to.be.a('string').and.satisfy(isNotLongerThan(MEDIUM_STRING));
   expect(row.Label).to.be.a('string').and.satisfy(isNotEmpty());
-  expect(row.SecurityClassification).to.eq('Public');
+  // todo: had to toLowercase this because of inconsistency
+  expect((row.SecurityClassification).toLowerCase()).to.eq('public');
   expect(row.FieldType).to.be.a('string').and.satisfy(isNotLongerThan(MEDIUM_STRING));
   if (row.FieldType === 'Collection' || row.FieldType === 'FixedList' ||
     row.FieldType === 'FixedRadioList' || row.FieldType === 'MultiSelectList') {
@@ -22,21 +23,23 @@ function assertFieldDefinitionIsValid(row) {
   }
 }
 
-describe('CaseField', () => {
-  context('should :', () => {
-    let uniqResult = [];
-    let nonProd = [];
-    before(() => {
-      nonProd = caseFieldata;
-      uniqResult = uniqWith(nonProd, noDuplicateFound);
-    });
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('CaseField'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let uniqResult = [];
+      let caseFieldConfig = [];
+      before(() => {
+        caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseField', key);
+        uniqResult = uniqWith(caseFieldConfig, noDuplicateFound);
+      });
 
-    it('not contain duplicated definitions of the same field', () => {
-      expect(uniqResult).to.eql(nonProd);
-    });
+      it('not contain duplicated definitions of the same field', () => {
+        expect(uniqResult).to.eql(caseFieldConfig);
+      });
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });

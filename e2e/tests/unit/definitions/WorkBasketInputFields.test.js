@@ -4,7 +4,7 @@ const {
   isNotEmpty,
   noDuplicateFoundWB
 } = require('../utils/utils');
-const { ccdData } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -17,14 +17,14 @@ function assertFieldDefinitionIsValid(row) {
 describe('WorkBasketInputFields', () => {
   context('should :', () => {
     let uniqResult = [];
-    let nonProd = [];
+    let workBasketInputFieldsConfig = [];
     before(() => {
-      nonProd = ccdData.WorkBasketInputFields;
-      uniqResult = uniqWith(nonProd, noDuplicateFoundWB);
+      workBasketInputFieldsConfig = dataProvider.ccdData.WorkBasketInputFields;
+      uniqResult = uniqWith(workBasketInputFieldsConfig, noDuplicateFoundWB);
     });
 
     it('not contain duplicated definitions of the same field', () => {
-      expect(uniqResult).to.eql(nonProd);
+      expect(uniqResult).to.eql(workBasketInputFieldsConfig);
     });
 
     it('should have only valid definitions', () => {

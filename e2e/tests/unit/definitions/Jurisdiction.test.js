@@ -4,7 +4,7 @@ const {
   isNotEmpty,
   noDuplicateFound
 } = require('../utils/utils');
-const { ccdData } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.Name).to.be.a('string').and.satisfy(isNotEmpty());
@@ -17,7 +17,7 @@ describe('Jurisdiction', () => {
     let uniqResult = [];
 
     before(() => {
-      uniqResult = uniqWith(ccdData.Jurisdiction, noDuplicateFound);
+      uniqResult = uniqWith(dataProvider.ccdData.Jurisdiction, noDuplicateFound);
     });
 
     it('should have only valid definitions', () => {

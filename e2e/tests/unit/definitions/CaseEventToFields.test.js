@@ -1,7 +1,7 @@
 const { expect, assert } = require('chai');
 const { find, uniqWith } = require('lodash');
 const { isPositiveNumber, whenPopulated, isCaseEventToFieldDuplicated } = require('../utils/utils');
-const { CaseEventToFieldData, CaseEvent, caseFieldata } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertHasOnlyValidEventIds(caseEventToFieldsFile, caseEventFile) {
   const errors = [];
@@ -21,7 +21,7 @@ function assertHasOnlyValidFieldIds(caseEventToFieldsFile, caseFieldFile) {
   const errors = [];
   caseEventToFieldsFile.forEach(caseEventToFieldsEntry => {
     try {
-      expect(find(caseFieldFile, ['ID', caseEventToFieldsEntry.CaseFieldID])).to.be.an('object');
+      expect(find(caseFieldFile, ['ID', (caseEventToFieldsEntry.CaseFieldID).trim()])).to.be.an('object');
     } catch (error) {
       errors.push(`Field ID ${caseEventToFieldsEntry.CaseFieldID} is not valid`);
     }
@@ -53,25 +53,38 @@ function assertPageColumnNumber(row) {
   assertOrderField(row, 'PageColumnNumber');
 }
 
-describe('CaseEventToFields ', () => {
-  it('should contain valid event IDs', () => {
-    assertHasOnlyValidEventIds(CaseEventToFieldData, CaseEvent);
-  });
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('CaseEventToFields'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let caseEventToFieldConfig = [];
+      let caseEventConfig = [];
+      let caseFieldConfig = [];
 
-  it('should contain valid field IDs', () => {
-    assertHasOnlyValidFieldIds(CaseEventToFieldData, caseFieldata);
-  });
+      before(() => {
+        caseEventToFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEventToFields', key);
+        caseEventConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEvent', key);
+        caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseField', key);
+      });
+      it('contain valid event IDs', () => {
+        assertHasOnlyValidEventIds(caseEventToFieldConfig, caseEventConfig);
+      });
 
-  it('should not contain duplicate field IDs', () => {
-    const uniqResult = uniqWith(CaseEventToFieldData, isCaseEventToFieldDuplicated('CaseFieldID'));
-    expect(uniqResult).to.eql(CaseEventToFieldData);
-  });
+      it('contain valid field IDs', () => {
+        assertHasOnlyValidFieldIds(caseEventToFieldConfig, caseFieldConfig);
+      });
 
-  it('should contain valid order fields', () => {
-    CaseEventToFieldData.forEach(row => {
-      assertPageFieldDisplayOrder(row);
-      assertPageDisplayOrder(row);
-      assertPageColumnNumber(row);
+      it('not contain duplicate field IDs', () => {
+        const uniqResult = uniqWith(caseEventToFieldConfig, isCaseEventToFieldDuplicated('CaseFieldID'));
+        expect(uniqResult).to.eql(caseEventToFieldConfig);
+      });
+
+      it('contain valid order fields', () => {
+        caseEventToFieldConfig.forEach(row => {
+          assertPageFieldDisplayOrder(row);
+          assertPageDisplayOrder(row);
+          assertPageColumnNumber(row);
+        });
+      });
     });
   });
 });

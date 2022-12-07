@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { uniqWith } = require('lodash');
 const { noDuplicateFoundACT } = require('../utils/utils');
-const { AuthorisationCaseType } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
@@ -11,20 +11,24 @@ function assertFieldDefinitionIsValid(row) {
   expect(row.AccessControl).to.not.be.null;
 }
 
-describe('AuthorisationCaseType', () => {
-  context('should :', () => {
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('AuthorisationCaseType'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let uniqResult = [];
+      let authorisationCaseType = [];
 
-    before(() => {
-      uniqResult = uniqWith(AuthorisationCaseType, noDuplicateFoundACT);
-    });
+      before(() => {
+        authorisationCaseType = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseType', key);
+        uniqResult = uniqWith(authorisationCaseType, noDuplicateFoundACT);
+      });
 
-    it('not contain duplicated definitions of the same field', () => {
-      expect(uniqResult).to.eql(AuthorisationCaseType);
-    });
+      it('not contain duplicated definitions of the same field', () => {
+        expect(uniqResult).to.eql(authorisationCaseType);
+      });
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });

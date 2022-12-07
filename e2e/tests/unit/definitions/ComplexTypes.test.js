@@ -6,7 +6,7 @@ const {
   isNotLongerThan,
   noDuplicateFoundFL
 } = require('../utils/utils');
-const { ComplexTypes } = require('../utils/dataProvider');
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.ID).to.be.a('string').and.satisfy(isNotLongerThan(MEDIUM_STRING));
@@ -21,17 +21,21 @@ function assertFieldDefinitionIsValid(row) {
   }
 }
 
-describe('ComplexTypes', () => {
-  context('should :', () => {
-    let uniqResult = [];
+dataProvider.exclusions.forEach((value, key) =>  {
+  describe('ComplexTypes'.concat(': ', key, ' config'), () => {
+    context('should :', () => {
+      let uniqResult = [];
+      let complexTypesConfig = []
 
-    before(() => {
-      uniqResult = uniqWith(ComplexTypes, noDuplicateFoundFL);
-    });
+      before(() => {
+        complexTypesConfig = dataProvider.getConfig('../../../../ccd-definition/ComplexTypes', key);
+        uniqResult = uniqWith(complexTypesConfig, noDuplicateFoundFL);
+      });
 
 
-    it('should have only valid definitions', () => {
-      uniqResult.forEach(assertFieldDefinitionIsValid);
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
+      });
     });
   });
 });
