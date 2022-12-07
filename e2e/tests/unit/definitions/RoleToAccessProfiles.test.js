@@ -14,7 +14,7 @@ function assertFieldDefinitionIsValid(row) {
   expect(row.AccessProfiles).to.be.a('string').and.satisfy(isNotEmpty());
 }
 
-describe('Jurisdiction.test.js', () => {
+describe('RoleToAccessProfiles', () => {
   context('should :', () => {
     let uniqResult = [];
 
