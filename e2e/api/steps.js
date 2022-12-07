@@ -2,12 +2,11 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement } = require('./dataHelper');
+const { listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -18,7 +17,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -121,6 +120,8 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -158,6 +159,8 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     await validateEventPages(createClaimData);
 
@@ -561,6 +564,7 @@ module.exports = {
   addDefendantLitigationFriend: async () => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData, '', 'respondent');
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
@@ -677,7 +681,7 @@ module.exports = {
     } else {
       await validateEventPages(data.REQUEST_DJ_ORDER('TRIAL_HEARING', mpScenario));
     }
-    
+
     await assertSubmittedEvent('CASE_PROGRESSION', {
       header: '',
       body: ''
@@ -734,6 +738,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
   }
 
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -742,9 +747,14 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   }
 
+  if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
+    caseData = replaceLitigationFriendFields(caseData);
+  }
+
+
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
@@ -854,6 +864,43 @@ function addMidEventFields(pageId, responseBody) {
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+function replaceLitigationFriendFields(caseData) {
+  if (caseData.applicant1LitigationFriend) {
+    caseData.applicant1LitigationFriend = {
+      fullName: 'John Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.applicant2LitigationFriend) {
+    caseData.applicant2LitigationFriend = {
+      fullName: 'Jane Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  return caseData;
+}
+
+async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  if (!isHNLEnabled) {
+    const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
+
+    if (claimantLitigationPage) {
+      const updated = replaceLitigationFriendFields(claimantLitigationPage);
+      if(claimantLitigationPage.applicant1LitigationFriend) {
+        claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
+      }
+      if(claimantLitigationPage.applicant2LitigationFriend) {
+        claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
+  }
+  return responseData;
 }
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
