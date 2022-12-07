@@ -12,8 +12,9 @@ const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
-const {checkAccessProfilesIsEnabled, checkToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
@@ -59,12 +60,14 @@ module.exports = {
 
     let createClaimData  = {};
 
-    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
-    } else {
-      createClaimData = data.CREATE_CLAIM(scenario);
+    createClaimData = data.CREATE_CLAIM_AP(scenario);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('');
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
     }
+    //==============================================================
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -74,11 +77,8 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    } else {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    }
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -157,7 +157,7 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+    //await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
   },

@@ -739,12 +739,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "unsuitableSDODate",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimDismissedDate",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -1065,6 +1059,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "nextDeadline",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "CaseAccessCategory",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

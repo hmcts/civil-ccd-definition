@@ -9,15 +9,6 @@
           "GS_profile"
         ],
         "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "[CREATOR]",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRUD"
       }
     ]
   },
@@ -67,14 +58,6 @@
           "GS_profile"
         ],
         "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRUD"
       }
     ]
   },
@@ -84,18 +67,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-ras-validation",
           "GS_profile"
         ],
@@ -142,6 +113,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
@@ -174,6 +146,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
@@ -195,6 +168,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"

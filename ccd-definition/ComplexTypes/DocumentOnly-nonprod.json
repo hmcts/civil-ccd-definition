@@ -1,0 +1,17 @@
+[
+  {
+    "ID": "DocumentOnly",
+    "ListElementCode": "documentName",
+    "FieldType": "Text",
+    "ElementLabel": "Name of document",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DocumentOnly",
+    "ListElementCode": "document",
+    "FieldType": "Document",
+    "ElementLabel": "Document",
+    "SecurityClassification": "Public",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png"
+  }
+]

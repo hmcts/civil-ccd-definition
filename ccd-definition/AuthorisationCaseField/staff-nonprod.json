@@ -1,6 +1,8 @@
-{
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "CaseAccessCategory",
-  "UserRole": "caseworker-civil-staff",
-  "CRUD": "R"
-}
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unsuitableSDODate",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  }
+]

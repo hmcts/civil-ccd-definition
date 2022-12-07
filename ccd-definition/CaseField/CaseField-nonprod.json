@@ -1,20 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CaseAccessCategory",
-    "Label": "Case Access Category",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "_Definition":  "Case Access Category",
-    "_Category":  "CIVIL"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "changeOfRepresentation",
     "Label": "change of representation details",
     "FieldType": "Collection",
     "FieldTypeParameter": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
     "Comment": "Field storing noc update details"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePaymentWaysToPay",
+    "Label": "Service Request",
+    "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
   }
 ]

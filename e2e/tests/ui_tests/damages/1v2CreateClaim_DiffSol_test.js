@@ -51,6 +51,13 @@ Scenario('Claimant solicitor notifies defendant solicitors of claim details', as
   await I.click('Sign out');
 }).retry(3);
 
+Scenario('Make a general application', async ({api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  }
+}).retry(3);
+
+
 Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
@@ -107,6 +114,15 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
+}).retry(3);
+
+Scenario('Judge triggers SDO', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.judgeUserWithRegionId1);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
+    await I.initiateSDO('yes', 'yes', null, null);
+  }
 }).retry(3);
 
 AfterSuite(async  () => {

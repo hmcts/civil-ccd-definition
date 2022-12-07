@@ -96,121 +96,9 @@
   {
     "ID": "Experts",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQExperts",
-    "ListElementCode": "jointExpertSuitable",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQExperts",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQExperts",
-    "ListElementCode": "details.fieldOfExpertise",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQExperts",
-    "ListElementCode": "details.whyRequired",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQExperts",
-    "ListElementCode": "details.estimatedCost",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "expertRequired",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "expertReportsSent",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "jointExpertSuitable",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "details.fieldOfExpertise",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "details.whyRequired",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQExperts",
     "ListElementCode": "details.estimatedCost",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearingFastClaim",
-    "ListElementCode": "hearingLength",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearingFastClaim",
-    "ListElementCode": "hearingLengthHours",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearingFastClaim",
-    "ListElementCode": "hearingLengthDays",
-    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -219,14 +107,6 @@
     "CaseFieldID": "respondent1DQHearingFastClaim",
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearingFastClaim",
-    "ListElementCode": "unavailableDatesLRspec.who",
-    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -265,40 +145,8 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQHearingFastClaim",
-    "ListElementCode": "hearingLength",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQHearingFastClaim",
-    "ListElementCode": "hearingLengthHours",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQHearingFastClaim",
-    "ListElementCode": "hearingLengthDays",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQHearingFastClaim",
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQHearingFastClaim",
-    "ListElementCode": "unavailableDatesLRspec.who",
-    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -657,14 +505,6 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
-    "ListElementCode": "smallClaimUnavailableDate.who",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQHearingSmallClaim",
     "ListElementCode": "smallClaimUnavailableDate.unavailableDateType",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -699,14 +539,6 @@
     "CaseFieldID": "respondent2DQHearingSmallClaim",
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQHearingSmallClaim",
-    "ListElementCode": "smallClaimUnavailableDate.who",
-    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
