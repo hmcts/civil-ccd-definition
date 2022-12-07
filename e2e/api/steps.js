@@ -18,7 +18,6 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {sdoDjDocument} = require('../api/dataHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -669,25 +668,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  sdoDefaultJudgment: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    eventName = 'STANDARD_DIRECTION_ORDER_DJ';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT_1V2);
-    } else if (mpScenario === 'TWO_V_ONE') {
-      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT_2V1);
-    } else {
-      await validateEventPagesSdoDj(data.SDO_DEFAULT_JUDGEMENT);
-    }
-
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
   getCaseId: async () => {
      console.log (`case created: ${caseId}`);
      return caseId;
@@ -713,14 +693,6 @@ const validateEventPages = async (data, solicitor) => {
     }
    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
-  }
-};
-
-const validateEventPagesSdoDj = async (data, solicitor) => {
-
-  console.log('validateEventPages');
-  for (let pageId of Object.keys(data.valid)) {
-    await assertValidDataSdoDj(data, pageId, solicitor);
   }
 };
 
@@ -754,40 +726,11 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   try {
     assert.deepEqual(responseBody.data, caseData);
-  } 
+  }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     throw err;
   }
-};
-
-const assertValidDataSdoDj = async (data, pageId, solicitor) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-
-  const validDataForPage = data.valid[pageId];
-  caseData = {...caseData, ...validDataForPage};
-  caseData = adjustDataForSolicitor(solicitor, caseData);
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
-  );
-  let responseBody = await response.json();
-
-  assert.equal(response.status, 200);
-
-  responseBody.data.trialHearingMethodInPersonDJ = null;
-  responseBody.data.disposalHearingMethodInPersonDJ = null;
-  if ( pageId === 'CaseManagementOrder') {
-    responseBody.data.trialHearingTrialDJ.type = 'DOCUMENTS';
-  }
-  if ( pageId === 'TrialHearing') {
-    const documentName = responseBody.data.orderSDODocumentDJ.document_filename;
-    responseBody.data.orderSDODocumentDJ = sdoDjDocument(documentName);
-  }
-
-  assert.deepEqual(responseBody.data, caseData);
 };
 
 function removeUiFields(pageId, caseData) {
