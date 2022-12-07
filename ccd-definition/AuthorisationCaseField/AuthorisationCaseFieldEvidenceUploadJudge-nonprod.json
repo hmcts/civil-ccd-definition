@@ -8,13 +8,6 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -27,13 +20,6 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -46,13 +32,6 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -65,13 +44,6 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -84,13 +56,6 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   }
