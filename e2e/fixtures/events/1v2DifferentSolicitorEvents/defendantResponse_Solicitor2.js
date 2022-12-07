@@ -98,13 +98,16 @@ module.exports = {
     },
     Hearing: {
       respondent2DQHearing: {
-        hearingLength: 'MORE_THAN_DAY',
-        hearingLengthDays: '5',
         unavailableDatesRequired: 'Yes',
         unavailableDates: [
           element({
-            date: date(10),
-            who: 'James Foo'
+            unavailableDateType: 'SINGLE_DATE',
+            date: date(10)
+          }),
+          element({
+            fromDate: date(30),
+            toDate: date(35),
+            unavailableDateType: 'DATE_RANGE',
           })
         ]
       }
@@ -181,26 +184,34 @@ module.exports = {
     Hearing: {
       past: {
         respondent2DQHearing: {
-          hearingLength: 'MORE_THAN_DAY',
-          hearingLengthDays: 5,
           unavailableDatesRequired: 'Yes',
           unavailableDates: [
             element({
               date: date(-1),
-              who: 'Foo Bar'
+              unavailableDateType: 'SINGLE_DATE',
             })
           ]
         }
       },
       moreThanYear: {
         respondent2DQHearing: {
-          hearingLength: 'MORE_THAN_DAY',
-          hearingLengthDays: 5,
           unavailableDatesRequired: 'Yes',
           unavailableDates: [
             element({
               date: date(367),
-              who: 'Foo Bar'
+              unavailableDateType: 'SINGLE_DATE',
+            })
+          ]
+        }
+      },
+      wrongDateRange: {
+        respondent2DQHearing: {
+          unavailableDatesRequired: 'Yes',
+          unavailableDates: [
+            element({
+              fromDate: date(15),
+              toDate: date(10),
+              unavailableDateType: 'DATE_RANGE',
             })
           ]
         }

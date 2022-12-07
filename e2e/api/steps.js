@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement, buildAddress} = require('./dataHelper');
+const { listElement, date, element, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -436,6 +436,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
 
     // solicitor 2 should not see respondent 1 data but because respondent 1 has replied before this, we need
     // to clear a big chunk of defendant response (respondent 1) data hence its cleaner to have a clean slate
@@ -458,6 +459,8 @@ module.exports = {
     // Remove after court location toggle is removed
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
+    defendantResponseData = await replaceHearingDetailsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
+
 
     // CIV-5514: remove when hnl is live
     defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, true, solicitor);
@@ -489,10 +492,13 @@ module.exports = {
       'The date entered cannot be in the future');
     await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
-
+      'Dates must be within the next 12 months.');
+    if(isHNLEnabled){
+      await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
     if (solicitor === 'solicitorOne') {
@@ -525,6 +531,8 @@ module.exports = {
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -542,14 +550,19 @@ module.exports = {
     // CIV-5514: remove when hnl is live
     claimantResponseData = await replaceWitnessIfHNLFlagIsDisabled(claimantResponseData, false);
     claimantResponseData = await replaceExpertsIfHNLFlagIsDisabled(claimantResponseData, '', responseDataType.applicant);
+    claimantResponseData = await replaceHearingDetailsIfHNLFlagIsDisabled(claimantResponseData, null, false);
 
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+      'Dates must be within the next 12 months.');
+    if (isHNLEnabled) {
+      await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
 
     // This should be uncommented in ticket CIV-2493
     /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
@@ -981,6 +994,69 @@ async function replaceWitnessIfHNLFlagIsDisabled(data, isDefendantResponse, soli
           }
         }
       };
+  }
+  return data;
+}
+
+// CIV-5514: remove when hnl is live
+async function replaceHearingDetailsIfHNLFlagIsDisabled(data, solicitor, isDefendantResponse) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  console.log(`Hearing selected in Env: ${config.runningEnv}`);
+
+  if (!isHNLEnabled) {
+    const party = `${isDefendantResponse === true ?
+      'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQHearing`
+    data = {
+      ...data,
+      valid: {
+        ...data.valid,
+        Hearing: {
+          [party]: {
+            hearingLength: 'MORE_THAN_DAY',
+            hearingLengthDays: '5',
+            unavailableDatesRequired: 'Yes',
+            unavailableDates: [
+              element({
+                date: date(10),
+                who: 'Foo Bar'
+              })
+            ]
+          }
+        }
+      },
+      invalid: {
+        ...data.invalid,
+        Hearing: {
+          past: {
+            [party]: {
+              hearingLength: 'MORE_THAN_DAY',
+              hearingLengthDays: 5,
+              unavailableDatesRequired: 'Yes',
+              unavailableDates: [
+                element({
+                  date: date(-1),
+                  who: 'Foo Bar'
+                })
+              ]
+            }
+          },
+          moreThanYear: {
+            [party]: {
+              hearingLength: 'MORE_THAN_DAY',
+              hearingLengthDays: 5,
+              unavailableDatesRequired: 'Yes',
+              unavailableDates: [
+                element({
+                  date: date(367),
+                  who: 'Foo Bar'
+                })
+              ]
+            }
+          }
+        }
+      }
+    };
   }
   return data;
 }
