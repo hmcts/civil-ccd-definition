@@ -543,7 +543,7 @@
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -829,6 +829,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingTimeDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingMethodTitleDJ",
     "AccessControl": [
       {
@@ -928,6 +942,34 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingNotesDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingHearingNotesDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialOrderMadeWithoutHearingDJ",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1047,13 +1089,27 @@
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderSDODocumentDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderSDODocumentDJCollection",
     "AccessControl": [
       {
         "UserRoles": [

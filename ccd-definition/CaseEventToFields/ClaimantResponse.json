@@ -46,16 +46,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "respondent1ClaimResponseType",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseDocument",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,
@@ -126,17 +116,6 @@
     "CaseFieldID": "defendant2ResponseToDefendantLabel",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 13,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_ONE_LEGAL_REP\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "respondent2ClaimResponseType",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
