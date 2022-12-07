@@ -17,8 +17,9 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkToggleEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkAccessProfilesIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
+const {removeHNLFieldsFromUnspecClaimData} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -123,6 +124,13 @@ module.exports = {
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromUnspecClaimData(createClaimData);
+    }
+    //==============================================================
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
@@ -162,6 +170,13 @@ module.exports = {
     createClaimData = await removeCaseAccessCateogryIfAatEnv(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromUnspecClaimData(createClaimData);
+    }
+    //==============================================================
+
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
@@ -186,6 +201,14 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromUnspecClaimData(createClaimData);
+    }
+    //==============================================================
+
 
     await validateEventPages(createClaimData);
 

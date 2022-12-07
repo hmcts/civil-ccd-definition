@@ -15,5 +15,15 @@ module.exports = {
       delete data.userInput.SecondDefendant.respondent2['partyEmail'];
       delete data.userInput.SecondDefendant.respondent2['partyPhone'];
     }
+  },
+
+  removeHNLFieldsFromUnspecClaimData: (data) => {
+    delete data.valid.Defendant.respondent1['partyEmail'];
+    delete data.valid.Defendant.respondent1['partyPhone'];
+
+    if (data.valid.SecondDefendant) {
+      delete data.valid.SecondDefendant.respondent2['partyEmail'];
+      delete data.valid.SecondDefendant.respondent2['partyPhone'];
+    }
   }
 };
