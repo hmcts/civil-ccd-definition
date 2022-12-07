@@ -25,7 +25,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
   describe('ComplexTypes'.concat(': ', key, ' config'), () => {
     context('should :', () => {
       let uniqResult = [];
-      let complexTypesConfig = []
+      let complexTypesConfig = [];
 
       before(() => {
         complexTypesConfig = dataProvider.getConfig('../../../../ccd-definition/ComplexTypes', key);

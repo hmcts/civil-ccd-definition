@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { uniqWith } = require('lodash');
-const { isFieldDuplicated, noDuplicateFoundEvent} = require('../utils/utils');
+const { isFieldDuplicated } = require('../utils/utils');
 const { createAssertExists } = require('../utils/assertBuilders');
 const dataProvider = require('../utils/dataProvider');
 

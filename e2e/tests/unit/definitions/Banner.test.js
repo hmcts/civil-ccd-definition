@@ -4,7 +4,7 @@ const {
   isNotEmpty,
   noDuplicateFound
 } = require('../utils/utils');
-const dataProvider = require("../utils/dataProvider");
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.BannerEnabled).to.be.a('string').and.satisfy(isNotEmpty());

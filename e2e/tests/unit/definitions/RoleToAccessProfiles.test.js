@@ -21,7 +21,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let roleToAccessProfiles = [];
 
       before(() => {
-        roleToAccessProfiles = dataProvider.getConfig('../../../../ccd-definition/RoleToAccessProfiles', key)
+        roleToAccessProfiles = dataProvider.getConfig('../../../../ccd-definition/RoleToAccessProfiles', key);
         uniqResult = uniqWith(roleToAccessProfiles, noDuplicateFoundAccessProfiles);
       });
 

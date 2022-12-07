@@ -20,7 +20,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
   describe('CaseTypeTab'.concat(': ', key, ' config'), () => {
     context('should :', () => {
       let uniqResult = [];
-      let caseTypeTabConfig = []
+      let caseTypeTabConfig = [];
 
       before(() => {
         caseTypeTabConfig = dataProvider.getConfig('../../../../ccd-definition/CaseTypeTab', key);

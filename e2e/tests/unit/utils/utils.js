@@ -88,7 +88,7 @@ function noDuplicateFoundCT(a, b) {
 
 function noDuplicateFoundEvent(a, b) {
   if (a.AccessControl != null && b.AccessControl != null) {
-    return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.AccessControl === b.AccessControl
+    return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.AccessControl === b.AccessControl;
   } else if (a.UserRole != null && b.UserRole != null) {
     return a.CaseTypeID === b.CaseTypeID && a.CaseEventID === b.CaseEventID && a.UserRole === b.UserRole;
   }
@@ -100,7 +100,7 @@ function noDuplicateFoundAccessProfiles(a, b) {
 
 function noDuplicateFoundACT(a, b) {
   if (a.UserRole != null &&  b.UserRole != null) {
-    return a.CaseTypeID === b.CaseTypeID && a.UserRole === b.UserRole ;
+    return a.CaseTypeID === b.CaseTypeID && a.UserRole === b.UserRole;
   } else {
     return a.CaseTypeID === b.CaseTypeID && a.UserRoles === b.UserRoles ;
   }

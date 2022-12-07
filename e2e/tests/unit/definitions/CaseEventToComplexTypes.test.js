@@ -6,7 +6,7 @@ const {
   isNotLongerThan,
   noDuplicateFoundCCT
 } = require('../utils/utils');
-const dataProvider = require("../utils/dataProvider");
+const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   // todo type not populated

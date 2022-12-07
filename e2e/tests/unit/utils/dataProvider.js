@@ -7,12 +7,12 @@ const loadFile = file => {
 };
 
 const exclusions = new Map([
-  ["preview", ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json','-GAR2GAspec-nonprod.json']],
-  ["previewHNL", ['-prod.json','-SDO-nonprod.json','-base-nonprod.json']],
-  ["previewGA", ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
-  ["demo", ['UserProfile.json','-prod.json','HNL-nonprod.json','-GAR2GAspec-nonprod.json']],
-  ["prod", ['UserProfile.json','-nonprod.json','GAspec.json','-GAR2GAspec-nonprod.json','DJ.json','DJspec.json','DJ-SDO-nonprod.json','DJ-nonprod.json','-HNL-nonprod.json','CUI.json']],
-  ["nonprod+SDO", ['UserProfile.json','GAspec.json','-GAR2GAspec-nonprod.json','-prod.json','DJ.json','DJspec.json','-HNL-nonprod.json','CUI.json','DJ-base']]
+  ['preview', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json','-GAR2GAspec-nonprod.json']],
+  ['previewHNL', ['-prod.json','-SDO-nonprod.json','-base-nonprod.json']],
+  ['previewGA', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
+  ['demo', ['UserProfile.json','-prod.json','HNL-nonprod.json','-GAR2GAspec-nonprod.json']],
+  ['prod', ['UserProfile.json','-nonprod.json','GAspec.json','-GAR2GAspec-nonprod.json','DJ.json','DJspec.json','DJ-SDO-nonprod.json','DJ-nonprod.json','-HNL-nonprod.json','CUI.json']],
+  ['nonprod+SDO', ['UserProfile.json','GAspec.json','-GAR2GAspec-nonprod.json','-prod.json','DJ.json','DJspec.json','-HNL-nonprod.json','CUI.json','DJ-base']]
 ]);
 
 const ccdData = {
