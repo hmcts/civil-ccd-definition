@@ -20,7 +20,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {removeHNLFieldsFromUnspecClaimData} = require('../helpers/hnlFeatureHelper');
+const {removeHNLFieldsFromUnspecClaimData, replaceExpertsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -461,6 +461,7 @@ module.exports = {
 
     // CIV-5514: remove when hnl is live
     defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, true, solicitor);
+    defendantResponseData = await replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor);
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;

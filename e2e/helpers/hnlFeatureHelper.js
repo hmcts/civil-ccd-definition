@@ -1,3 +1,7 @@
+const {checkToggleEnabled} = require("./testingSupport");
+const config = require("../config.js");
+const {element} = require("../api/dataHelper");
+
 module.exports = {
   removeHNLFieldsFromClaimData: (data) => {
     delete data.userInput.Claimant.applicant1['partyEmail'];
@@ -25,5 +29,33 @@ module.exports = {
       delete data.valid.SecondDefendant.respondent2['partyEmail'];
       delete data.valid.SecondDefendant.respondent2['partyPhone'];
     }
+  },
+
+  async replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor) {
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    // work around for the api  tests
+    console.log(`Experts selected in Env: ${config.runningEnv}`);
+    if (!isHNLEnabled) {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          Experts: {
+            [`respondent${solicitor === 'solicitorTwo' ? 2 : 1}DQExperts`]: {
+              expertRequired: 'Yes',
+              details: [
+                element({
+                  name: 'John Doe',
+                  fieldOfExpertise: 'Science',
+                  whyRequired: 'Reason',
+                  estimatedCost: '100',
+                })
+              ]
+            }
+          }
+        }
+      };
+    }
+    return defendantResponseData;
   }
 };
