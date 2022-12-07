@@ -461,7 +461,7 @@ module.exports = {
 
     // CIV-5514: remove when hnl is live
     defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, true, solicitor);
-    defendantResponseData = await replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor);
+    defendantResponseData = await replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor, responseDataType.defendant);
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
@@ -541,7 +541,7 @@ module.exports = {
 
     // CIV-5514: remove when hnl is live
     claimantResponseData = await replaceWitnessIfHNLFlagIsDisabled(claimantResponseData, false);
-    claimantResponseData = await replaceExpertsIfHNLFlagIsDisabled(claimantResponseData, '', responseDataType.defendant);
+    claimantResponseData = await replaceExpertsIfHNLFlagIsDisabled(claimantResponseData, '', responseDataType.applicant);
 
     await validateEventPages(claimantResponseData);
 
@@ -899,35 +899,6 @@ function addMidEventFields(pageId, responseBody) {
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
-}
-
-// CIV-5514: remove when hnl is live
-async function replaceExpertsIfHNLFlagIsDisabled(responseData, solicitor, personType) {
-  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-  // work around for the api  tests
-  console.log(`Experts selected in Env: ${config.runningEnv}`);
-  if (!isHNLEnabled) {
-    responseData = {
-      ...responseData,
-      valid: {
-        ...responseData.valid,
-        Experts: {
-          [`${personType}${solicitor === 'solicitorTwo' ? 2 : 1}DQExperts`]: {
-            expertRequired: 'Yes',
-            details: [
-              element({
-                name: 'John Doe',
-                fieldOfExpertise: 'Science',
-                whyRequired: 'Reason',
-                estimatedCost: '100',
-              })
-            ]
-          }
-        }
-      }
-    };
-  }
-  return responseData;
 }
 
 function replaceLitigationFriendFields(caseData) {
