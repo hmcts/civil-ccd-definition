@@ -1,6 +1,5 @@
 const {I} = inject();
 const {checkToggleEnabled} = require('./../../api/testingSupport');
-const config = require('./../../config');
 
 module.exports = {
 

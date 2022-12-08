@@ -1,6 +1,6 @@
-const config = require("../config.js");
-const {element, date} = require("../api/dataHelper");
-const {checkToggleEnabled} = require("../api/testingSupport");
+const config = require('../config.js');
+const {element, date} = require('../api/dataHelper');
+const {checkToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
   removeHNLFieldsFromClaimData: (data) => {
@@ -38,7 +38,7 @@ module.exports = {
 
     if (!isHNLEnabled) {
       const party = `${isDefendantResponse === true ?
-        'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQ`
+        'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQ`;
       data = {
         ...data,
         valid: {

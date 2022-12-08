@@ -17,7 +17,8 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
+  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
 
@@ -492,6 +493,7 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(isHNLEnabled){
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
@@ -534,6 +536,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
+
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -552,6 +555,7 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (isHNLEnabled) {
       await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');

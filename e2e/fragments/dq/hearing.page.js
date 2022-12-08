@@ -26,7 +26,7 @@ module.exports = {
           date: 'date',
         }
       },
-    }
+    };
   },
   oldFields: function (party) {
     return {
