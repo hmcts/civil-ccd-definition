@@ -9,7 +9,7 @@
       "hearing-schedule-access",
       "payment-access"
     ],
-    "CRUD": "CRU"
+    "CRUD": "D"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -17,6 +17,6 @@
       "GS_profile",
       "caseworker-ras-validation"
     ],
-    "CRUD": "R"
+    "CRUD": "D"
   }
 ]
