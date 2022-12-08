@@ -17,7 +17,8 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
+  checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
 
@@ -179,14 +180,20 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
-
+    let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
+    console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
+    console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+      header: isCertificateOfServiceEnabled ? 'Your claim has been received':
+        'Your claim has been received and will progress offline',
+      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
+        'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
-
+    console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
+    console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
@@ -431,7 +438,6 @@ module.exports = {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
 
     // solicitor 2 should not see respondent 1 data but because respondent 1 has replied before this, we need
     // to clear a big chunk of defendant response (respondent 1) data hence its cleaner to have a clean slate
@@ -523,8 +529,6 @@ module.exports = {
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -646,7 +650,6 @@ module.exports = {
   },
 
   addCaseNote: async (user) => {
-
     await apiRequest.setupTokens(user);
 
     eventName = 'ADD_CASE_NOTE';
@@ -787,7 +790,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
     caseData = replaceLitigationFriendFields(caseData);
   }
-
 
   try {
     assert.deepEqual(responseBody.data, caseData);
