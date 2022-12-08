@@ -80,8 +80,8 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'No'
-
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
+            applicant1PartAdmitConfirmAmountPaidSpec: 'Yes'
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
