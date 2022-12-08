@@ -45,9 +45,11 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('Create claim where respondent is litigant in person', async ({I, api}) => {
+Scenario('Create claim where respondent is litigant in person and notify him', async ({I, api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser);
+  await api.notifyClaimLip(config.applicantSolicitorUser);
 });
+
 
 Scenario('Create claim and move it to caseman', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

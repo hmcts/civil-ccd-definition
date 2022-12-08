@@ -389,5 +389,21 @@ module.exports = {
         }
       },
     }
+  },
+  cosNotifyClaim : () => {
+    return {
+      cosDateOfServiceForDefendant: date.getDate(),
+      cosServedDocumentFiles: 'sample text',
+      cosRecipient: 'sample text',
+      cosRecipientServeType: 'HANDED',
+      cosRecipientServeLocation: 'sample text',
+      cosRecipientServeLocationOwnerType: 'SOLICITOR',
+      cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+      cosSender: 'sample text',
+      cosSenderFirm: 'sample text',
+      cosSenderStatementOfTruthLabel: [
+        'CERTIFIED'
+      ]
+    };
   }
 };
