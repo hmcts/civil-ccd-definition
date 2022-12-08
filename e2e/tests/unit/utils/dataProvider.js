@@ -11,8 +11,9 @@ const exclusions = new Map([
   ['previewHNL', ['-prod.json','-SDO-nonprod.json','-base-nonprod.json']],
   ['previewGA', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
   ['demo', ['UserProfile.json','-prod.json','HNL-nonprod.json','-GAR2GAspec-nonprod.json']],
-  ['prod', ['UserProfile.json','-nonprod.json','GAspec.json','-GAR2GAspec-nonprod.json','DJ.json','DJspec.json','DJ-SDO-nonprod.json','DJ-nonprod.json','-HNL-nonprod.json','CUI.json']],
-  ['nonprod+SDO', ['UserProfile.json','GAspec.json','-GAR2GAspec-nonprod.json','-prod.json','-HNL-nonprod.json','CUI.json','CUI-nonprod.json']]
+  // ['local', ['-prod.json']], upload doesn't currently work with this command due to SDO and SDO-HNL files
+  ['prod', ['UserProfile.json','-nonprod.json','-COS-nonprod.json','GAspec.json','-GAR2GAspec-nonprod.json','DJ.json','DJspec.json','DJ-SDO-nonprod.json','DJ-nonprod.json','-HNL-nonprod.json','CUI.json']],
+  ['default', ['UserProfile.json','GAspec.json','-GAR2GAspec-nonprod.json','-prod.json','-HNL-nonprod.json','CUI.json','CUI-nonprod.json']]
 ]);
 
 const ccdData = {
