@@ -6,6 +6,7 @@ const loadFile = file => {
   return Object.assign(load(`../../../../ccd-definition/${file}.json`), []);
 };
 
+// Please update this map whenever exclusions are updated in build-release-definition.sh
 const exclusions = new Map([
   ['preview', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json','-GAR2GAspec-nonprod.json']],
   ['previewHNL', ['-prod.json','-SDO-nonprod.json','-base-nonprod.json']],
