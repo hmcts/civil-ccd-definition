@@ -65,5 +65,19 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partAdmitPaidValuePounds",
+    "AccessControl": [
+      {
+        "UserRoles": ["caseworker-civil-solicitor"],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": ["caseworker-civil-admin"],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
