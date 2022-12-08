@@ -151,6 +151,13 @@ withPipeline(type, product, component) {
     }
   }
 
+  afterAlways('smoketest:preview') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+  }
+
+  afterAlways('functionalTest:preview') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+  }
 
   before('smoketest:aat') {
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
