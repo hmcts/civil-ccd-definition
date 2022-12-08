@@ -4,6 +4,7 @@
     <cve>CVE-2019-12415</cve>
   </suppress>
   <suppress>
+    <cve>CVE-2021-37533</cve>
     <cve>CVE-2018-1000613</cve>
     <cve>CVE-2020-26939</cve>
     <cve>CVE-2017-13098</cve>
