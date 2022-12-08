@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
 const {
   MEDIUM_STRING,
@@ -21,6 +21,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
     context('should :', () => {
       let uniqResult = [];
       let caseTypeTabConfig = [];
+      let errors = [];
 
       before(() => {
         caseTypeTabConfig = dataProvider.getConfig('../../../../ccd-definition/CaseTypeTab', key);
@@ -28,7 +29,18 @@ dataProvider.exclusions.forEach((value, key) =>  {
       });
 
       it('not contain duplicated definitions of the same field', () => {
-        expect(uniqResult).to.eql(caseTypeTabConfig);
+        try {
+          expect(uniqResult).to.eql(caseTypeTabConfig);
+        } catch (error) {
+          caseTypeTabConfig.forEach(c => {
+            if (!uniqResult.includes(c)) {
+              errors.push(c.CaseFieldID);
+            }
+          });
+        }
+        if (errors.length) {
+          assert.fail(`Found duplicated CaseTypeTab - ${errors}`);
+        }
       });
 
       it('should have only valid definitions', () => {

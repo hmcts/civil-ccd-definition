@@ -59,6 +59,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let caseEventToFieldConfig = [];
       let caseEventConfig = [];
       let caseFieldConfig = [];
+      let errors = [];
 
       before(() => {
         caseEventToFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEventToFields', key);
@@ -75,7 +76,18 @@ dataProvider.exclusions.forEach((value, key) =>  {
 
       it('not contain duplicate field IDs', () => {
         const uniqResult = uniqWith(caseEventToFieldConfig, isCaseEventToFieldDuplicated('CaseFieldID'));
-        expect(uniqResult).to.eql(caseEventToFieldConfig);
+        try {
+          expect(uniqResult).to.eql(caseEventToFieldConfig);
+        } catch (error) {
+          caseEventToFieldConfig.forEach(c => {
+            if (!uniqResult.includes(c)) {
+              errors.push(c.CaseFieldID);
+            }
+          });
+        }
+        if (errors.length) {
+          assert.fail(`Found duplicated CaseEventToFields - ${errors}`);
+        }
       });
 
       it('contain valid order fields', () => {

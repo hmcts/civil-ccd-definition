@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
 const {
   SHORT_STRING,
@@ -36,6 +36,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
   describe('CaseEvent'.concat(': ', key, ' config'), () => {
     describe('should ', () => {
       let uniqResult = [];
+      let errors = [];
       let caseEventConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEvent', key);
 
       before(() => {
@@ -43,7 +44,18 @@ dataProvider.exclusions.forEach((value, key) =>  {
       });
 
       it('not contain duplicated definitions of the same event', () => {
-        expect(uniqResult.length).to.equal(caseEventConfig.length);
+        try {
+          expect(uniqResult.length).to.equal(caseEventConfig.length);
+        } catch (error) {
+          caseEventConfig.forEach(c => {
+            if (!uniqResult.includes(c)) {
+              errors.push(c.ID);
+            }
+          });
+        }
+        if (errors.length) {
+          assert.fail(`Found duplicated CaseEvent - ${errors}`);
+        }
       });
 
       it('have only valid definitions', () => {

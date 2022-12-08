@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
 const { isFieldDuplicated } = require('../utils/utils');
 const { createAssertExists } = require('../utils/assertBuilders');
@@ -11,6 +11,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
     context('should :', () => {
       let authorisationCaseFieldConfig = [];
       let caseFieldConfig = [];
+      let errors = [];
 
       before(() => {
         authorisationCaseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseField', key);
@@ -19,7 +20,18 @@ dataProvider.exclusions.forEach((value, key) =>  {
 
       it('contain a unique case field ID, case type ID and role (no duplicates)', () => {
         const uniqResult = uniqWith(authorisationCaseFieldConfig, isFieldDuplicated('CaseFieldID'));
-        expect(uniqResult).to.eql(authorisationCaseFieldConfig);
+        try {
+          expect(uniqResult).to.eql(authorisationCaseFieldConfig);
+        } catch (error) {
+          authorisationCaseFieldConfig.forEach(c => {
+            if (!uniqResult.includes(c)) {
+              errors.push(c.CaseFieldID);
+            }
+          });
+        }
+        if (errors.length) {
+          assert.fail(`Found duplicated AuthorisationCaseField - ${errors}`);
+        }
       });
 
       it('use existing fields', () => {

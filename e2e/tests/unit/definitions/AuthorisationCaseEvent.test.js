@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
 const {
   MEDIUM_STRING,
@@ -20,6 +20,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
     context('should :', () => {
       let authorisationCaseEventConfig = [];
       let uniqResult = [];
+      let errors = [];
 
       before(() => {
         authorisationCaseEventConfig = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseEvent', key);
@@ -27,8 +28,18 @@ dataProvider.exclusions.forEach((value, key) =>  {
       });
 
       it('not contain duplicated definitions of the same field', () => {
-        console.log('uniqResult', uniqResult.length);
-        expect(uniqResult).to.eql(authorisationCaseEventConfig);
+        try {
+          expect(uniqResult).to.eql(authorisationCaseEventConfig);
+        } catch (error) {
+          authorisationCaseEventConfig.forEach(c => {
+            if (!uniqResult.includes(c)) {
+              errors.push(c.CaseEventID);
+            }
+          });
+        }
+        if (errors.length) {
+          assert.fail(`Found duplicated AuthorisationCaseEvent - ${errors}`);
+        }
       });
 
       it('should have only valid definitions', () => {

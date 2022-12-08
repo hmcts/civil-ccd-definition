@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
 const { noDuplicateFoundACT } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
@@ -16,6 +16,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
     context('should :', () => {
       let uniqResult = [];
       let authorisationCaseType = [];
+      let errors = [];
 
       before(() => {
         authorisationCaseType = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseType', key);
@@ -23,7 +24,18 @@ dataProvider.exclusions.forEach((value, key) =>  {
       });
 
       it('not contain duplicated definitions of the same field', () => {
-        expect(uniqResult).to.eql(authorisationCaseType);
+        try {
+          expect(uniqResult).to.eql(authorisationCaseType);
+        } catch (error) {
+          authorisationCaseType.forEach(c => {
+            if (!uniqResult.includes(c)) {
+              errors.push(c.CaseTypeID);
+            }
+          });
+        }
+        if (errors.length) {
+          assert.fail(`Found duplicated AuthorisationCaseType - ${errors}`);
+        }
       });
 
       it('should have only valid definitions', () => {
