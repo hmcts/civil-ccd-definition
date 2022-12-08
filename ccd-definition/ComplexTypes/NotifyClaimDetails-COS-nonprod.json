@@ -1,0 +1,116 @@
+[
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosDocSaved",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "cosDateOfServiceForDefendant = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosDateOfServiceForDefendant",
+    "ElementLabel": "Date you served the documents",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter the date you served the documents"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosServedDocumentFiles",
+    "ElementLabel": "What documents did you serve?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter details of the documents you served"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosEvidenceDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "ElementLabel": "Supporting evidence",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "cosDocSaved = \"\" OR cosDocSaved = \"No\" "
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosRecipient",
+    "ElementLabel": "Who did you serve the claim to?",
+    "HintText": "Include their position if they have one, for example - partner, director",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter the name of the person you served the documents to"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosRecipientServeType",
+    "ElementLabel": "How did you serve the documents?",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ServeTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "Select an option for how you served the documents"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosRecipientServeLocation",
+    "ElementLabel": "Where did you serve the documents?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter the details of where you served the documents",
+    "HintText": "Enter the postal address, email address, fax or DX number"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosRecipientServeLocationOwnerType",
+    "ElementLabel": "The location where you served the documents was the:",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ServeLocationOwnerTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "Select the person at whose location you served the documents"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosRecipientServeLocationType",
+    "ElementLabel": "Select the type of location where you served the documents",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ServeLocationTypeCoS",
+    "SecurityClassification": "Public",
+    "Definition":  "Select the type of location where you served the documents"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosRecipientServeLocationTypeOther",
+    "ElementLabel": "Other",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Definition":  "Other",
+    "HintText": "Tell us the other type of location where you served the documents",
+    "FieldShowCondition": "cosRecipientServeLocationType = \"OTHER\""
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosSender",
+    "ElementLabel": "Your name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter your name"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosSenderFirm",
+    "ElementLabel": "Your firm",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter the name of your firm"
+  },
+  {
+    "ID": "NotifyClaimDetailsCoS",
+    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ElementLabel": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "NotifyClaimStatement",
+    "SecurityClassification": "Public",
+    "Definition":  "Confirm that you believe that the facts stated in the application are true"
+  }
+]
