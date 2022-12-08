@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "EvidenceUploadTrialSmallClaim",
+    "ListElementCode": "AUTHORITIES",
+    "ListElement": "Authorities",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "EvidenceUploadTrialSmallClaim",
+    "ListElementCode": "DOCUMENTARY",
+    "ListElement": "Documentary evidence for trial",
+    "DisplayOrder": 2
+  }
+]
