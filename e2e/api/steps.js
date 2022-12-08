@@ -2,12 +2,11 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement, date, element, buildAddress} = require('./dataHelper');
+const { listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-const {element} = require('../api/dataHelper');
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
@@ -20,7 +19,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {removeHNLFieldsFromUnspecClaimData, replaceExpertsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
+const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -52,11 +51,6 @@ const data = {
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
 };
-
-const responseDataType = {
-  applicant: 'applicant',
-  defendant: 'respondent'
-}
 
 const eventData = {
   acknowledgeClaims: {
@@ -160,6 +154,7 @@ module.exports = {
 
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {
@@ -459,12 +454,9 @@ module.exports = {
     // Remove after court location toggle is removed
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
-    defendantResponseData = await replaceHearingDetailsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
-
 
     // CIV-5514: remove when hnl is live
-    defendantResponseData = await replaceWitnessIfHNLFlagIsDisabled(defendantResponseData, true, solicitor);
-    defendantResponseData = await replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor, responseDataType.defendant);
+    defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
@@ -548,9 +540,7 @@ module.exports = {
     let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
 
     // CIV-5514: remove when hnl is live
-    claimantResponseData = await replaceWitnessIfHNLFlagIsDisabled(claimantResponseData, false);
-    claimantResponseData = await replaceExpertsIfHNLFlagIsDisabled(claimantResponseData, '', responseDataType.applicant);
-    claimantResponseData = await replaceHearingDetailsIfHNLFlagIsDisabled(claimantResponseData, null, false);
+    claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
 
     await validateEventPages(claimantResponseData);
 
@@ -612,7 +602,7 @@ module.exports = {
   addDefendantLitigationFriend: async () => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData, '', 'respondent');
+    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
@@ -656,7 +646,6 @@ module.exports = {
   },
 
   addCaseNote: async (user) => {
-    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
     await apiRequest.setupTokens(user);
 
@@ -967,98 +956,6 @@ async function updateCaseDataWithPlaceholders(data, document) {
   data = lodash.template(JSON.stringify(data))(placeholders);
 
   return JSON.parse(data);
-}
-
-// CIV-5514: remove when hnl is live
-async function replaceWitnessIfHNLFlagIsDisabled(data, isDefendantResponse, solicitor = "solicitorOne", ) {
-  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-  // work around for the api  tests
-  console.log(`Witness selected in Env: ${config.runningEnv}`);
-  if (!isHNLEnabled) {
-    const party = `${isDefendantResponse === true ?
-      'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQWitnesses`
-    data = {
-        ...data,
-        valid: {
-          ...data.valid,
-          Witnesses: {
-            [party]: {
-              witnessesToAppear: 'Yes',
-              details: [
-                element({
-                  name: 'John Doe',
-                  reasonForWitness: 'None'
-                })
-              ]
-            }
-          }
-        }
-      };
-  }
-  return data;
-}
-
-// CIV-5514: remove when hnl is live
-async function replaceHearingDetailsIfHNLFlagIsDisabled(data, solicitor, isDefendantResponse) {
-  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-  // work around for the api  tests
-  console.log(`Hearing selected in Env: ${config.runningEnv}`);
-
-  if (!isHNLEnabled) {
-    const party = `${isDefendantResponse === true ?
-      'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQHearing`
-    data = {
-      ...data,
-      valid: {
-        ...data.valid,
-        Hearing: {
-          [party]: {
-            hearingLength: 'MORE_THAN_DAY',
-            hearingLengthDays: '5',
-            unavailableDatesRequired: 'Yes',
-            unavailableDates: [
-              element({
-                date: date(10),
-                who: 'Foo Bar'
-              })
-            ]
-          }
-        }
-      },
-      invalid: {
-        ...data.invalid,
-        Hearing: {
-          past: {
-            [party]: {
-              hearingLength: 'MORE_THAN_DAY',
-              hearingLengthDays: 5,
-              unavailableDatesRequired: 'Yes',
-              unavailableDates: [
-                element({
-                  date: date(-1),
-                  who: 'Foo Bar'
-                })
-              ]
-            }
-          },
-          moreThanYear: {
-            [party]: {
-              hearingLength: 'MORE_THAN_DAY',
-              hearingLengthDays: 5,
-              unavailableDatesRequired: 'Yes',
-              unavailableDates: [
-                element({
-                  date: date(367),
-                  who: 'Foo Bar'
-                })
-              ]
-            }
-          }
-        }
-      }
-    };
-  }
-  return data;
 }
 
 // CIV-4959: needs to be removed when court location goes live

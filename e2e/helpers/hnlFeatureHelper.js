@@ -1,6 +1,6 @@
-const {checkToggleEnabled} = require("./testingSupport");
 const config = require("../config.js");
-const {element} = require("../api/dataHelper");
+const {element, date} = require("../api/dataHelper");
+const {checkToggleEnabled} = require("../api/testingSupport");
 
 module.exports = {
   removeHNLFieldsFromClaimData: (data) => {
@@ -31,6 +31,92 @@ module.exports = {
     }
   },
 
+  async replaceDQFieldsIfHNLFlagIsDisabled(data, solicitor, isDefendantResponse) {
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    // work around for the api  tests
+    console.log(`Hearing selected in Env: ${config.runningEnv}`);
+
+    if (!isHNLEnabled) {
+      const party = `${isDefendantResponse === true ?
+        'respondent' : 'applicant'}${solicitor === 'solicitorTwo' ? 2 : 1}DQ`
+      data = {
+        ...data,
+        valid: {
+          ...data.valid,
+          Witnesses: {
+            [`${party}Witnesses`]: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  name: 'John Doe',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
+          },
+          Experts: {
+            [`${party}Experts`]: {
+              expertRequired: 'Yes',
+              details: [
+                element({
+                  name: 'John Doe',
+                  fieldOfExpertise: 'Science',
+                  whyRequired: 'Reason',
+                  estimatedCost: '100',
+                })
+              ]
+            }
+          },
+          Hearing: {
+            [`${party}Hearing`]: {
+              hearingLength: 'MORE_THAN_DAY',
+              hearingLengthDays: '5',
+              unavailableDatesRequired: 'Yes',
+              unavailableDates: [
+                element({
+                  date: date(10),
+                  who: 'Foo Bar'
+                })
+              ]
+            }
+          }
+        },
+        invalid: {
+          ...data.invalid,
+          Hearing: {
+            past: {
+              [party]: {
+                hearingLength: 'MORE_THAN_DAY',
+                hearingLengthDays: 5,
+                unavailableDatesRequired: 'Yes',
+                unavailableDates: [
+                  element({
+                    date: date(-1),
+                    who: 'Foo Bar'
+                  })
+                ]
+              }
+            },
+            moreThanYear: {
+              [party]: {
+                hearingLength: 'MORE_THAN_DAY',
+                hearingLengthDays: 5,
+                unavailableDatesRequired: 'Yes',
+                unavailableDates: [
+                  element({
+                    date: date(367),
+                    who: 'Foo Bar'
+                  })
+                ]
+              }
+            }
+          }
+        }
+      };
+    }
+    return data;
+  },
+
   async replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor) {
     let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     // work around for the api  tests
@@ -57,5 +143,5 @@ module.exports = {
       };
     }
     return defendantResponseData;
-  }
+  },
 };
