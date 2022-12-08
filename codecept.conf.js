@@ -10,6 +10,7 @@ exports.config = {
     // './e2e/tests/ui_tests/lrspec/*_test.js',
     // './e2e/tests/ui_tests/sdo/*_test.js',
     // './e2e/tests/ui_tests/default_judgement/*_test.js'
+    './e2e/tests/*_test.js',
     './bin/tests/*_test.js',
     './bin/tests/api_tests/damages/*_test.js',
     './bin/tests/api_tests/lrspec/*_test.js',
