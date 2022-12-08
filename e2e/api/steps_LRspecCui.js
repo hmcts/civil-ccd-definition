@@ -11,7 +11,9 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled} = require('./testingSupport');
+const {removeHNLFieldsFromClaimData} = require("../helpers/hnlFeatureHelper");
+const {HEARING_AND_LISTING} = require("../fixtures/featureKeys");
 
 let caseId, eventName;
 let caseData = {};
@@ -61,6 +63,13 @@ module.exports = {
 
     createClaimData = data.CREATE_CLAIM_AP(scenario);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
+    }
+    //==============================================================
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     for (let pageId of Object.keys(createClaimData.userInput)) {
@@ -91,6 +100,13 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
+
+    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
+
+    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
+    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
+      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
+    }
 
     caseData = returnedCaseData;
 
