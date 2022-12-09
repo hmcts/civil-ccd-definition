@@ -21,6 +21,7 @@ const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled,
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
+const restHelper = require("./restHelper");
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -279,13 +280,15 @@ module.exports = {
 
   notifyClaimLip: async (user, multipartyScenario) => {
     let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
-    if(isCertificateOfServiceEnabled) {
+
       eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
       mpScenario = multipartyScenario;
 
       await apiRequest.setupTokens(user);
-      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
+    if(isCertificateOfServiceEnabled) {
+
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
@@ -301,8 +304,12 @@ module.exports = {
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+
+    } else {
+      await assertStartEventNotAllowed();
     }
   },
+
   notifyClaimDetails: async (user) => {
     await apiRequest.setupTokens(user);
 
@@ -832,6 +839,13 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
     console.log('Case created: ' + caseId);
   }
+};
+
+const assertStartEventNotAllowed = async () => {
+
+  let response = await apiRequest.startEventNotAllowed(eventName, caseId);
+  assert.equal(response.status, 422);
+
 };
 
 const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
