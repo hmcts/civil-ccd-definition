@@ -1,0 +1,143 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDetails1",
+    "Label": " ",
+    "FieldType": "NotifyClaimDetailsCoS",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDetails2",
+    "Label": " ",
+    "FieldType": "NotifyClaimDetailsCoS",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant1_1",
+    "Label": "Claimant's name <br /> ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant2_1",
+    "Label": "Claimant's name <br /> ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant1",
+    "Label": "Defendant's name <br /> ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant2",
+    "Label": "Defendant's name <br /> ${respondent2.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1LIPAtClaimIssued",
+    "Label": "Is defendant 1 is litigant Party at claim issue?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2LIPAtClaimIssued",
+    "Label": "Is defendant 2 is litigant Party at claim issue?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabel",
+    "Label": "# Certificate of Service",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelDef1",
+    "Label": "# Certificate of Service [defendant1]",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelDef2",
+    "Label": "# Certificate of Service [defendant2]",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDefendant1",
+    "Label": " ",
+    "FieldType": "NotifyClaimCoS",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDefendant2",
+    "Label": " ",
+    "FieldType": "NotifyClaimCoS",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant1_2",
+    "Label": "Claimant's name <br /> ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1",
+    "Label": "# Defendant 1 details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1CoSNc",
+    "Label": "Certificate of Service - Notify Claim",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1CoSNcd",
+    "Label": "Certificate of Service - Notify Claim Details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2",
+    "Label": "# Defendant 2 details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2CoSNc",
+    "Label": "Certificate of Service - Notify Claim",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2CoSNcd",
+    "Label": "Certificate of Service - Notify Claim Details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]
+
