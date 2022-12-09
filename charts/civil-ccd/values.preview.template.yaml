@@ -31,6 +31,7 @@ idam-pr:
     XUI:
       - https://xui-${SERVICE_FQDN}/oauth2/callback
 
+
 civil-general-applications:
   enabled: true
 xui-webapp:
