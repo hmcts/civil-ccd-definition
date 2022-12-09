@@ -103,7 +103,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "TAKE_CASE_OFFLINE",
+    "CaseEventID": "RESET_PIN",
     "AccessControl": [
       {
         "UserRoles": [
