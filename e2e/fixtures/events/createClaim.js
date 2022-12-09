@@ -366,9 +366,14 @@ module.exports = {
     };
   },
 
-  createClaimLitigantInPerson: {
-    valid: createClaimData('No', true)
+  createClaimLitigantInPerson: (mpScenario, esRespodent1Litigant='No', esRespondent2Litigant='No') => {
+    valid: createClaimData(esRespodent1Litigant, true, mpScenario)
   },
+
+  // createClaimLitigantInPerson1V2: (mpScenario) => {
+  //   valid: createClaimData('No', true, mpScenario)
+  // },
+
   createClaimWithTerminatedPBAAccount: {
     valid: createClaimData('Yes', false)
   },
