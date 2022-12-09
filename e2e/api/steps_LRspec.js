@@ -8,11 +8,15 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
+const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
+const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
+const {checkToggleEnabled} = require('./testingSupport');
+const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
@@ -110,6 +114,13 @@ module.exports = {
 
     createClaimData = data.CREATE_CLAIM_AP(scenario);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
+    }
+    //==============================================================
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     for (let pageId of Object.keys(createClaimData.userInput)) {
@@ -164,6 +175,13 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
+
+    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
+
+    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
+    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
+      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
+    }
 
     caseData = returnedCaseData;
 
@@ -520,4 +538,32 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
+};
+
+const adjustDataForHnl = (inputData, response) => {
+  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
+  if (!response.startsWith('FULL_DEFENCE')) {
+    return inputData;
+  }
+  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
+  return {
+    ...inputData,
+    userInput: {
+      ...inputData.userInput,
+      SmallClaimWitnesses: {
+        [`respondent${respondentNum}DQWitnesses`]: {
+          witnessesToAppear: 'Yes',
+          details: [
+            element({
+              firstName: 'Witness',
+              lastName: 'One',
+              emailAddress: 'witness@email.com',
+              phoneNumber: '07116778998',
+              reasonForWitness: 'None'
+            })
+          ]
+        }
+      }
+    }
+  };
 };
