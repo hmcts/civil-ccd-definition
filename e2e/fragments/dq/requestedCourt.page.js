@@ -33,7 +33,7 @@ module.exports = {
     await I.runAccessibilityTest();
 
     let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    if (!isCourtListEnabled) {
       await within(this.fields(party).requestHearingAtSpecificCourt.id, () => {
         I.click(this.fields(party).requestHearingAtSpecificCourt.options.yes);
       });
