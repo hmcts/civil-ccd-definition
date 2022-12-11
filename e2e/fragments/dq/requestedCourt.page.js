@@ -1,6 +1,6 @@
 const {I} = inject();
 const {checkCourtLocationDynamicListIsEnabled} = require('./../../api/testingSupport');
-const config = require('./../../config');
+// const config = require('./../../config');
 
 module.exports = {
   oldFields: function (party) {
