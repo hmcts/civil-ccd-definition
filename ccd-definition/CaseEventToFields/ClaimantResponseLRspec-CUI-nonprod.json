@@ -351,11 +351,132 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/validate-amount-paid"
   },
   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountSummaryLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountClaimAmountLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountClaimAmount",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountClaimFee",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountSubtotalLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountSubtotal",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountAlreadyPaidLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountAlreadyPaid",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentTotalStillOwedLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentTotalStillOwed",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
@@ -368,7 +489,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
