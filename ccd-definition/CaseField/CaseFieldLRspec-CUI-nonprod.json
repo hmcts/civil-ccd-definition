@@ -120,12 +120,58 @@
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1RequestedPaymentDateForDefendantSpec",
     "Label": " ",
     "HintText": "For example, 12 11 2023",
     "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsForDefendantSpecHeader",
+    "Label": "<h2 class=\"govuk-heading-l\">Suggest instalments for ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
+    "FieldType": "Label",
+    "Label": "The claim amount is £${totalClaimAmount}.\n",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
+    "FieldType": "MoneyGBP",
+    "Label": "Regular payments of\n",
+    "HintText" : "For example, £10",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "PaymentFrequencyClaimantResponseLRspec",
+    "Label": "How often will your client make payments?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "currentDateboxDefendantSpec",
+    "Label": "currentDate",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
+    "FieldType": "Date",
+    "Label": "Date for first instalment",
+    "HintText": "This must be after ${currentDateboxDefendantSpec}",
     "SecurityClassification": "Public"
   }
 ]
