@@ -87,5 +87,17 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
