@@ -97,7 +97,6 @@ civil-service:
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
     environment:
-      PAYMENTS_CALLBACK_URL: http://${SERVICE_FQDN}/service-request-update
       TESTING_SUPPORT_ENABLED: true
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       CMC_DB_HOST: ${SERVICE_NAME}-postgresql

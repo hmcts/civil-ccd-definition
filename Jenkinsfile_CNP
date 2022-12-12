@@ -151,11 +151,11 @@ withPipeline(type, product, component) {
     }
   }
 
-  afterAlways('smoketest:preview') {
+  afterSuccess('smoketest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
-  afterAlways('functionalTest:preview') {
+  afterSuccess('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
@@ -182,11 +182,11 @@ withPipeline(type, product, component) {
     uploadCoreCaseDataDefinitions('staging')
   }
 
-  afterAlways('smoketest:aat') {
+  after('smoketest:aat') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
 
-  afterAlways('functionalTest:aat') {
+  after('functionalTest:aat') {
     createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
