@@ -27,7 +27,7 @@ const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
-  CREATE_CLAIM_RESPONDENT1_LIP_1V2: claimData.createClaimLitigantInPerson1V2(),
+  CREATE_CLAIM_RESPONDENT1_LIP_1V2: claimData.createClaimLitigantInPerson,
   COS_NOTIFY_CLAIM: claimData.cosNotifyClaim,
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
@@ -152,14 +152,16 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaimWithRespondentLitigantInPerson: async (user, mpScenario, esRespondent1Litigant, esRespondent2Litigant) => {
+  createClaimWithRespondentLitigantInPerson: async (user, mpScenarioo, esRespondent1Litigant, esRespondent2Litigant) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
+    mpScenario = mpScenarioo;
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    claimData.createClaimLitigantInPerson1V2(mpScenario, esRespondent1Litigant, esRespondent2Litigant)
-    let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP(mpScenario);
+    //let createClaimData = claimData.createClaimLitigantInPerson(mpScenario, esRespondent1Litigant, esRespondent2Litigant)
+    let createClaimData = data.CREATE_CLAIM_RESPONDENT1_LIP_1V2;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
 

@@ -233,6 +233,48 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         },
       };
     }
+
+    case 'ONE_V_TWO_ONE_LIP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'No'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SecondDefendantSolicitorOrganisation: {
+          respondent2OrgRegistered: 'Yes',
+          respondent2OrganisationPolicy: {
+            OrgPolicyReference: 'Defendant policy reference 2',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+            Organisation:
+
+              {OrganisationID: config.defendant2SolicitorOrgId}
+            ,
+          },
+        },
+        SecondDefendantSolicitorServiceAddress: {
+          respondentSolicitor2ServiceAddress: buildAddress('service')
+        },
+        SecondDefendantSolicitorReference: {
+          respondentSolicitor2Reference: 'sol2reference'
+        },
+        SecondDefendantSolicitorEmail: {
+          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+        }
+      };
+    }
+
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       return {
         ...claimData,
@@ -290,7 +332,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+      || mpScenario === 'ONE_V_TWO_ONE_LIP';
 };
 
 module.exports = {
@@ -366,10 +409,12 @@ module.exports = {
     };
   },
 
-  createClaimLitigantInPerson: (mpScenario, esRespodent1Litigant='No', esRespondent2Litigant='No') => {
-    valid: createClaimData(esRespodent1Litigant, true, mpScenario)
+ // createClaimLitigantInPerson: (esRespondent1LegalRep='No', esRespondent2LegalRep='No') => {
+ //   valid: createClaimData(esRespondent1LegalRep, true)
+ //  },
+  createClaimLitigantInPerson: {
+    valid: createClaimData('No', true, 'ONE_V_TWO_ONE_LIP')
   },
-
   // createClaimLitigantInPerson1V2: (mpScenario) => {
   //   valid: createClaimData('No', true, mpScenario)
   // },
