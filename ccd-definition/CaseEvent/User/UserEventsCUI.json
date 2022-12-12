@@ -22,7 +22,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "RESET_PIN",
     "Name": "Reset Pin",
-    "Description": "Take case offline",
+    "Description": "Reset Pin for case",
     "DisplayOrder": 7,
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
