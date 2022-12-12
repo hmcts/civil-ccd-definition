@@ -127,6 +127,14 @@
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "hearingLength",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "MANDATORY"
+    },
   {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE",
