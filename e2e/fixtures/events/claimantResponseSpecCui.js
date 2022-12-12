@@ -101,6 +101,9 @@ module.exports = {
             applicant1AcceptFullAdmitPaymentPlanSpec: 'Yes',
             applicant1ProceedWithClaim: 'Yes',
           },
+          RespondentProposedRepayment: {
+            applicant1RepaymentOptionForDefendantSpec: 'SET_DATE',
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
