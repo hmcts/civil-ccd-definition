@@ -431,6 +431,28 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1PartAdmitIntentionToSettleClaimSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageID": "IntentionToSettleClaim",
+    "PageShowCondition": "applicant1PartAdmitConfirmAmountPaidSpec=\"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "PageID": "IntentionToSettleClaim",
+    "FieldShowCondition": "applicant1PartAdmitIntentionToSettleClaimSpec=\"No\"",
+    "ShowSummaryChangeOption": "Y",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpecLabel",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,

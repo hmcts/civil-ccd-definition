@@ -130,5 +130,17 @@
     "CaseFieldID": "applicant1PartAdmitConfirmAmountPaidSpec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1PartAdmitIntentionToSettleClaimSpec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

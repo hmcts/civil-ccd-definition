@@ -87,6 +87,10 @@ module.exports = {
             ccjPaymentPaidSomeOption: 'Yes',
             ccjPaymentPaidSomeAmount: '1000',
           },
+          IntentionToSettleClaim: {
+            applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
+            applicant1PartAdmitRejectReasonSpec: 'test'
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
@@ -95,6 +99,10 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
+          RespondentResponse: {
+            applicant1ProceedWithClaim: 'Yes',
+            partAdmitPaidValuePounds: '2000.00',
+          },
         };
         break;
 
