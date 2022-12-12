@@ -23,18 +23,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "courtLocation",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1",
     "AccessControl": [
       {
