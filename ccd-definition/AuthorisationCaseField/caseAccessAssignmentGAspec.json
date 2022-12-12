@@ -67,13 +67,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolGaAppDetails",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
