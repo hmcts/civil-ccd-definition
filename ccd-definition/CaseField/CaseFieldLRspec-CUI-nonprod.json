@@ -194,5 +194,26 @@
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmitPaidValuePounds",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
+    "Label": "${respondent1.partyName} states they paid the claimant £${partAdmitPaidValuePounds} on ${respondent1PaymentDateToStringSpec}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitConfirmAmountPaidSpec",
+    "Label": "Has ${respondent1.partyName} paid the claimant £${partAdmitPaidValuePounds}?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]

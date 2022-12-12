@@ -85,7 +85,7 @@ module.exports = {
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
-            ccjPaymentPaidSomeAmount: '1000'
+            ccjPaymentPaidSomeAmount: '1000',
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
