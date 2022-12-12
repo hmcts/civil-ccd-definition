@@ -20,7 +20,6 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
-  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2Fast.js').respondToClaim(response),
   DEFENDANT_RESPONSE_2v1: (response) => require('../fixtures/events/defendantResponseSpec2v1Fast.js').respondToClaim(response),
@@ -93,7 +92,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM_AP(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');

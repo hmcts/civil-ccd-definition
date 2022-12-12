@@ -21,7 +21,6 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
-  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
@@ -60,7 +59,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM_AP(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('');
