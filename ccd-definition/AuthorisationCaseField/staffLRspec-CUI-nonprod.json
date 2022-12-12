@@ -82,5 +82,11 @@
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -104,6 +104,9 @@ module.exports = {
           RespondentProposedRepayment: {
             applicant1RepaymentOptionForDefendantSpec: 'SET_DATE',
           },
+          PaymentDate: {
+            applicant1RequestedPaymentDateForDefendantSpec : '2220-01-01'
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
