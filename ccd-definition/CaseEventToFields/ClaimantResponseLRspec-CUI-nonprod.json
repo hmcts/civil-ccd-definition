@@ -393,7 +393,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
+    "CaseFieldID": "ccjJudgmentAmountClaimFee",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
@@ -403,7 +403,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountClaimFee",
+    "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
@@ -444,7 +444,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountAlreadyPaid",
+    "CaseFieldID": "ccjPaymentPaidSomeAmount",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
