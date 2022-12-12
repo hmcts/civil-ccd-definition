@@ -326,5 +326,13 @@
     "ListElementCode": "smallClaimUnavailableDate.toDate",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQRequestedCourt",
+    "ListElementCode": "responseCourtLocations",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
   }
 ]
