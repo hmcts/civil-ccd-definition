@@ -2,18 +2,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToAdmittedClaim",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "partAdmitPaidValuePounds",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
