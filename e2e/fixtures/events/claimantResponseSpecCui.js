@@ -83,6 +83,10 @@ module.exports = {
             applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
             applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
           },
+          CcjPaymentPaidSome: {
+            ccjPaymentPaidSomeOption: 'Yes',
+            ccjPaymentPaidSomeAmount: '1000'
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'

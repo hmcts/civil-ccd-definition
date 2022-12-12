@@ -173,5 +173,26 @@
     "Label": "Date for first instalment",
     "HintText": "This must be after ${currentDateboxDefendantSpec}",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeLabel",
+    "Label": "Has ${respondent1.partyName} paid some of the amount owed?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeOption",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeAmount",
+    "Label": "Amount already paid",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
   }
 ]
