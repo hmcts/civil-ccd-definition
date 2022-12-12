@@ -177,7 +177,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjPaymentPaidSomeLabel",
-    "Label": "Has ${respondent1.partyName} paid some of the amount owed?",
+    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} paid some of the amount owed?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
