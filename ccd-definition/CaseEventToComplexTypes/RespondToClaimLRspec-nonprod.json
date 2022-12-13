@@ -2,49 +2,48 @@
   {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFurtherInformation",
-    "ListElementCode": "futureApplications",
+    "CaseFieldID": "respondent1DQRequestedCourt",
+    "ListElementCode": "requestHearingAtSpecificCourt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFurtherInformation",
-    "ListElementCode": "reasonForFutureApplications",
+    "CaseFieldID": "respondent1DQRequestedCourt",
+    "ListElementCode": "responseCourtLocations",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFurtherInformation",
-    "ListElementCode": "otherInformationForJudge",
+    "CaseFieldID": "respondent1DQRequestedCourt",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQStatementOfTruth",
-    "ListElementCode": "label",
-    "EventElementLabel": "I believe that the facts stated are true",
+    "CaseFieldID": "respondent2DQRequestedCourt",
+    "ListElementCode": "requestHearingAtSpecificCourt",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQStatementOfTruth",
-    "ListElementCode": "name",
+    "CaseFieldID": "respondent2DQRequestedCourt",
+    "ListElementCode": "responseCourtLocations",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "RespondToClaim",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQStatementOfTruth",
-    "ListElementCode": "role",
+    "CaseFieldID": "respondent2DQRequestedCourt",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
