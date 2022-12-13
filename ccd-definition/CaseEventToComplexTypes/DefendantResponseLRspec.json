@@ -804,37 +804,5 @@
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "CourtLocationSpec",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation",
-    "ListElementCode": "responseCourtLocations",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "CourtLocationSpec",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation",
-    "ListElementCode": "reasonForHearingAtSpecificCourt",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "CourtLocationSpec",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation2",
-    "ListElementCode": "responseCourtLocations",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "CourtLocationSpec",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation2",
-    "ListElementCode": "reasonForHearingAtSpecificCourt",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
   }
 ]

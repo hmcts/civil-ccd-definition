@@ -17,7 +17,7 @@ module.exports = {
 
   async selectCourt() {
     let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled) {
+    if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
       I.waitForElement(this.oldFields.courtLocation);
       await I.runAccessibilityTest();
       I.fillField(this.oldFields.courtLocation, '344');

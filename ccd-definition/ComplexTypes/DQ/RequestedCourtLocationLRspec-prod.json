@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "courtFinderLabel",
+    "FieldType": "Label",
+    "ElementLabel": "<a target=\"_blank\" href=\"https://courttribunalfinder.service.gov.uk/search/address\">Court and tribunals finder (opens in new tab)</a> \n Use the 3 digit court location code, not the court name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "responseCourtCode",
+    "FieldType": "Text",
+    "ElementLabel": "Court location code",
+    "SecurityClassification": "Public",
+    "RegularExpression": "[0-9]{3}"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "FieldType": "TextArea",
+    "ElementLabel": "Briefly explain your reasons",
+    "SecurityClassification": "Public"
+  }
+]
