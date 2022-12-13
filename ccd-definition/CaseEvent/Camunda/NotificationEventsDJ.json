@@ -15,7 +15,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "Name": "Notify IJ Def",
+    "Name": "Email: Notify Defendant",
     "Description": "Notify interim judgment to defendant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",

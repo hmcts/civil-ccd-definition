@@ -46,5 +46,17 @@
     "ListElementCode": "DEFAULT_JUDGMENT",
     "ListElement": "Default Judgment",
     "DisplayOrder": 8
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_SDO_ORDER",
+    "ListElement": "Default Judgment Order",
+    "DisplayOrder": 9
+  },
+    {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_FORM",
+    "ListElement": "Hearing Form",
+    "DisplayOrder": 10
   }
 ]
