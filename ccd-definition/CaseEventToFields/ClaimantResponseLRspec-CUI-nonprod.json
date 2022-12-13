@@ -1,5 +1,17 @@
 [
   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "partAdmitPaidValuePounds",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "PageID": "RespondentResponse",
+    "ShowSummaryChangeOption": "N",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
@@ -64,7 +76,7 @@
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
+    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -76,6 +88,17 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -141,7 +164,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
+    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -153,7 +176,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -178,7 +201,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?",
-    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
+    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -190,6 +213,17 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_HAS_PAID\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1PartAdmitConfirmAmountPaidSpec",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -393,6 +427,28 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/validate-amount-paid"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1PartAdmitIntentionToSettleClaimSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageID": "IntentionToSettleClaim",
+    "PageShowCondition": "applicant1PartAdmitConfirmAmountPaidSpec=\"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "PageID": "IntentionToSettleClaim",
+    "FieldShowCondition": "applicant1PartAdmitIntentionToSettleClaimSpec=\"No\"",
+    "ShowSummaryChangeOption": "Y",
+    "DisplayContext": "MANDATORY"
   },
   {
     "CaseTypeID": "CIVIL",
