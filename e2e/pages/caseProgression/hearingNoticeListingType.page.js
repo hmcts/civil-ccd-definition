@@ -5,15 +5,15 @@ module.exports = {
     listingOrRelisting: {
       id: '#listingOrRelisting',
       options: {
-        listing: 'listingOrRelisting-LISTING',
-        reListing: 'listingOrRelisting-RELISTING'
+        listing: '#listingOrRelisting-LISTING',
+        reListing: '#listingOrRelisting-RELISTING'
       }
     }
   },
 
   async listingOrRelistingSelect(selectType) {
       await I.runAccessibilityTest();
-       if(selectType === 'Listing'){
+        if(selectType === 'Listing'){
             I.click(this.fields.listingOrRelisting.options.listing);
           } else{
             I.click(this.fields.listingOrRelisting.options.reListing);

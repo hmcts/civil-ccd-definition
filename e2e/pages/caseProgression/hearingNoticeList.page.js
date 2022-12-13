@@ -6,8 +6,8 @@ module.exports = {
       id: '#hearingNoticeList',
       options: {
         smallClaims: '#hearingNoticeList-SMALL_CLAIMS',
-        fastTrack: 'hearingNoticeList-FAST_TRACK_TRIAL',
-        others: 'hearingNoticeList-OTHER',
+        fastTrack: '#hearingNoticeList-FAST_TRACK_TRIAL',
+        others: '#hearingNoticeList-OTHER',
       }
     }
   },
@@ -17,11 +17,9 @@ module.exports = {
          if(trackType === 'smallClaims'){
             I.click(this.fields.hearingNoticeType.options.smallClaims);
             I.waitForElement(this.fields.hearingNoticeType.id);
-
           } else if(trackType === 'fastTrack'){
             I.click(this.fields.hearingNoticeType.options.fastTrack);
             I.waitForElement((this.fields.hearingNoticeType.id));
-
           }else {
              I.click(this.fields.hearingNoticeType.options.others);
              I.waitForElement((this.fields.hearingNoticeType.id));
