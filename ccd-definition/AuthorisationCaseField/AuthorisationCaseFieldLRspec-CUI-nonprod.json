@@ -558,51 +558,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partAdmitPaidValuePounds",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1PartAdmitConfirmAmountPaidSpec",
     "AccessControl": [
       {
         "UserRoles": [
@@ -694,11 +650,15 @@
     "CaseFieldID": "partAdmitPaidValuePounds",
     "AccessControl": [
       {
-        "UserRoles": ["caseworker-civil-solicitor"],
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": ["caseworker-civil-admin"],
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
         "CRUD": "R"
       }
     ]
