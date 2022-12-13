@@ -107,6 +107,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseManagementLocation",
+    "Label": " ",
+    "FieldType": "CaseLocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "locationName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defaultJudgmentDocuments",
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
