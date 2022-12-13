@@ -540,16 +540,18 @@ module.exports = {
     // await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
     //   'The date cannot be in the past and must not be more than a year in the future');
 
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-      header: 'You have chosen to proceed with the claim',
-      body: '>We will review the case and contact you to tell you what to do next.'
-    });
+    if ('preview' === config.runningEnv) {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: 'You have chosen to proceed with the claim',
+        body: '>We will review the case and contact you to tell you what to do next.'
+      });
 
-    await waitForFinishedBusinessProcess(caseId);
-    if (!expectedCcdState) {
-      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await waitForFinishedBusinessProcess(caseId);
+      if (!expectedCcdState) {
+        await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+        await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+        await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      }
     }
   },
 

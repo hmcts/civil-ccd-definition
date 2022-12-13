@@ -17,63 +17,99 @@ async function prepareClaim(api) {
 }
 
 Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api}) => {
-  await prepareClaim(api);
-  await api.createSDO(judgeUser);
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(judgeUser);
+  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(legalAdvUser);
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(legalAdvUser);
+  }
 });
 
 Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(judgeUser, 'CREATE_SMALL');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(judgeUser, 'CREATE_SMALL');
+  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(legalAdvUser, 'CREATE_SMALL');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(legalAdvUser, 'CREATE_SMALL');
+  }
 });
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api}) => {
-  await prepareClaim(api);
-  await api.createSDO(judgeUser, 'CREATE_FAST');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(judgeUser, 'CREATE_FAST');
+  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(legalAdvUser, 'CREATE_FAST');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(legalAdvUser, 'CREATE_FAST');
+  }
 });
 
 Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({ api}) => {
-  await prepareClaim(api);
-  await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
+  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+  }
 });
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
+  }
 });
 
 Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(judgeUser, 'UNSUITABLE_FOR_SDO');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(judgeUser, 'UNSUITABLE_FOR_SDO');
+  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
-  await prepareClaim(api);
-  await api.createSDO(legalAdvUser, 'UNSUITABLE_FOR_SDO');
+  // sdo requires judicial_referral, which is not past preview
+  if ('preview' === config.runningEnv) {
+    await prepareClaim(api);
+    await api.createSDO(legalAdvUser, 'UNSUITABLE_FOR_SDO');
+  }
 });
 
 AfterSuite(async ({api}) => {
