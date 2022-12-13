@@ -498,10 +498,11 @@ module.exports = {
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
     await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+    // Uncommenting once civil service pr 1945 is merged
+    // await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
+    //   'The date cannot be in the past and must not be more than a year in the future');
+    // await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
+    //   'The date cannot be in the past and must not be more than a year in the future');
 
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
@@ -552,10 +553,11 @@ module.exports = {
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+    // Uncommenting once civil service pr 1945 is merged
+    // await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
+    //   'The date cannot be in the past and must not be more than a year in the future');
+    // await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
+    //   'The date cannot be in the past and must not be more than a year in the future');
 
     // This should be uncommented in ticket CIV-2493
     /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
