@@ -1,4 +1,3 @@
-
 [
   {
     "ID": "ResponseDocument",
@@ -103,70 +102,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "ListElementCode": "name",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "ListElementCode": "reasonForWitness",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingFastClaim",
@@ -175,12 +110,12 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "Hearing",
-  "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-  "CaseFieldID": "respondent1DQHearingFastClaim",
-  "ListElementCode": "unavailableDatesLRspec.unavailableDateType",
-  "FieldDisplayOrder": 6,
-  "DisplayContext": "MANDATORY"
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingFastClaim",
+    "ListElementCode": "unavailableDatesLRspec.unavailableDateType",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Hearing",

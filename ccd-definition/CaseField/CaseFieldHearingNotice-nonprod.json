@@ -145,10 +145,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseDismissedHearingFeeDueDate",
-    "Label": "Date of dismissal",
-    "HintText": "For example, 27 3 2022",
-    "FieldType": "DateTime",
+    "ID": "hearingDocuments",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection", 
+    "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
   }
 ]
