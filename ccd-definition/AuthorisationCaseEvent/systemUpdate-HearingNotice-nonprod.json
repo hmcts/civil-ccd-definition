@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SERVICE_REQUEST_API",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  }
-]
