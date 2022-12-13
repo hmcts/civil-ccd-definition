@@ -55,5 +55,15 @@
     "FieldTypeParameter": "DocumentOrImageWithRegex",
     "ElementLabel": "Other documents",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ServedDocumentFiles",
+    "ListElementCode": "timelineEventUpload",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "ElementLabel": "Claim timeline",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "SecurityClassification": "Public",
+    "Max": 1
   }
 ]
