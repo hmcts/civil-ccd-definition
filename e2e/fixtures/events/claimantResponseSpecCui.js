@@ -99,10 +99,6 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-          RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
-            partAdmitPaidValuePounds: '2000.00',
-          },
         };
         break;
 
