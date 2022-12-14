@@ -52,7 +52,6 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
-  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
@@ -124,7 +123,7 @@ const midEventFieldForPage = {
   }
 };
 
-let caseId, eventName, legacyCaseReference, responseData;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 

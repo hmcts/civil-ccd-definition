@@ -2,15 +2,9 @@ const {date, element} = require('../../api/dataHelper');
 
 const calculatedClaimsTrackWOSum = {
   ClaimsTrack: {
-    fastTrackJudgementDeductionValue: (data) => {
-      return typeof data.value === 'string'
-    },
-    smallClaimsJudgementDeductionValue:  (data) => {
-      return typeof data.value === 'string'
-    },
-    disposalHearingJudgementDeductionValue:  (data) => {
-      return typeof data.value === 'string'
-    },
+    fastTrackJudgementDeductionValue: (data) => typeof data.value === 'string',
+    smallClaimsJudgementDeductionValue:  (data) => typeof data.value === 'string',
+    disposalHearingJudgementDeductionValue:  (data) => typeof data.value === 'string',
     smallClaimsHearing: (data) => {
       return typeof data.input1 === 'string' && typeof data.input2 === 'string';
     },
@@ -280,8 +274,8 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          setSmallClaimsFlag: "No",
-          setFastTrackFlag: "No"
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'No'
         },
         OrderType: {
           // to trigger calculated
@@ -352,8 +346,8 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          setSmallClaimsFlag: "Yes",
-          setFastTrackFlag: "No"
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
         },
         SmallClaims: {
         }
@@ -501,12 +495,12 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          setSmallClaimsFlag: "No",
-          setFastTrackFlag: "No"
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'No'
         },
         OrderType: {
-          setSmallClaimsFlag: "No",
-          setFastTrackFlag: "Yes"
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'Yes'
         },
         FastTrack: {
 
@@ -598,8 +592,8 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          setSmallClaimsFlag: "Yes",
-          setFastTrackFlag: "No"
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
         },
         SmallClaims: {
         }
@@ -744,12 +738,12 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          setSmallClaimsFlag: "No",
-          setFastTrackFlag: "No"
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'No'
         },
         OrderType: {
-          setSmallClaimsFlag: "No",
-          setFastTrackFlag: "Yes"
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'Yes'
         },
         FastTrack: {
 
