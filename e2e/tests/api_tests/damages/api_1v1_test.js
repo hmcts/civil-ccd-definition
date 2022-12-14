@@ -49,7 +49,7 @@ Scenario('Create claim where respondent is litigant in person and notify/notify 
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
     await api.notifyClaimLip(config.applicantSolicitorUser);
-    // await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
+    await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
   }
 });
 

@@ -58,11 +58,6 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario.only('Create claim where respondent is litigant in person and notify him', async ({I, api}) => {
-  await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LIP');
-  await api.notifyClaimLip(config.applicantSolicitorUser);
-});
-
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
 });
