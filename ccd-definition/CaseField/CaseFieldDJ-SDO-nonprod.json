@@ -340,7 +340,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingNotesDJ",
-    "Label": "Notes",
+    "Label": "Important",
     "FieldType": "TrialHearingNotesDJ",
     "SecurityClassification": "Public"
   },
@@ -382,7 +382,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert evidence in relation to personal injury",
     "FieldType": "TrialPersonalInjury",
     "SecurityClassification": "Public"
   },
