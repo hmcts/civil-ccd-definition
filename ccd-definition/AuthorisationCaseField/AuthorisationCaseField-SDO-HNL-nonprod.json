@@ -35,6 +35,12 @@
           "legal-adviser"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1191,6 +1197,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sdoHearingNotes",
     "AccessControl": [
       {
         "UserRoles": [
