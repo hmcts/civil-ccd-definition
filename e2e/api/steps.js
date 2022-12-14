@@ -799,10 +799,10 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
   try {
-    whatsTheDifference(caseData, responseBody.data);
     assert.deepEqual(responseBody.data, caseData);
   } catch (err) {
-    console.error('Validate data is failed due to a mismatch ..', err);
+    console.error('Data different in page ' + pageId);
+    whatsTheDifference(caseData, responseBody.data);
     throw err;
   }
 };
@@ -818,15 +818,19 @@ function whatsTheDifference(caseData, responseBodyData, path) {
   Object.keys(caseData).forEach(key => {
     if (Object.keys(responseBodyData).indexOf(key) < 0) {
       console.log('response does not have ' + appendToPath(path, key));
+      console.log('expected: ' + JSON.stringify(caseData[key]));
     } else if (typeof caseData[key] === 'object') {
       whatsTheDifference(caseData[key], responseBodyData[key], [key]);
     } else if (caseData[key] !== responseBodyData[key]) {
       console.log('response and case data are different on ' + appendToPath(path, key));
+      console.log('caseData has ' + caseData[key]);
+      console.log('while response has ' + JSON.stringify(responseBodyData[key]));
     }
   });
   Object.keys(responseBodyData).forEach(key => {
     if (Object.keys(caseData).indexOf(key) < 0) {
       console.log('caseData does not have ' + appendToPath(path, key));
+      console.log('response has ' + JSON.stringify(responseBodyData[key]));
     }
   });
 }
@@ -944,21 +948,36 @@ function addMidEventFields(pageId, responseBody, instanceData) {
     responseBody.data[midEventField.id] = caseData[midEventField.id];
   }
   if (calculated) {
-    const calculatedValues = checkCalculated(calculated);
-    Object.keys(calculatedValues).forEach((key) => responseBody.data[key] = caseData[key]);
+    checkCalculated(calculated, responseBody.data);
   }
 }
 
-function checkCalculated(calculated) {
+function checkCalculated(calculated, responseBodyData) {
   const checked = {};
+  // strictly check
   Object.keys(calculated).forEach(key => {
-    if (calculated[key].call(null, caseData[key]) !== false) {
-      checked[key] = caseData[key];
-    } else {
-      console.log('Failed calculated key ' + key);
+    if (caseData[key]) {
+      if (calculated[key].call(null, caseData[key]) !== false) {
+        checked[key] = caseData[key];
+      } else {
+        console.log('Failed calculated key on caseData ' + key);
+      }
+    } else if (responseBodyData[key]) {
+      if (calculated[key].call(null, responseBodyData[key]) !== false) {
+        checked[key] = caseData[key];
+      } else {
+        console.log('Failed calculated key on responseBody' + key);
+      }
     }
   });
-  return checked;
+  // update
+  Object.keys(checked).forEach((key) => {
+    if (caseData[key]) {
+      responseBodyData[key] = caseData[key];
+    } else {
+      caseData[key] = responseBodyData[key];
+    }
+  });
 }
 
 function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {

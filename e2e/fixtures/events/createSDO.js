@@ -2,6 +2,15 @@ const {date, element} = require('../../api/dataHelper');
 
 const calculatedClaimsTrackWOSum = {
   ClaimsTrack: {
+    fastTrackJudgementDeductionValue: (data) => {
+      return typeof data.value === 'string'
+    },
+    smallClaimsJudgementDeductionValue:  (data) => {
+      return typeof data.value === 'string'
+    },
+    disposalHearingJudgementDeductionValue:  (data) => {
+      return typeof data.value === 'string'
+    },
     smallClaimsHearing: (data) => {
       return typeof data.input1 === 'string' && typeof data.input2 === 'string';
     },
