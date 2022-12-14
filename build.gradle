@@ -232,6 +232,15 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
+
+task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
+ onlyIf {
+    return System.env.ENVIRONMENT == 'preview'
+  }
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-1v1-djtesttest'
+}
+
+
 def inStrictOrder(Task... tasks) {
   for (int i = 0; i < tasks.size() - 1; i++) {
     tasks[i + 1].mustRunAfter(tasks[i])
@@ -243,6 +252,9 @@ task smoke(description: 'Runs the smoke tests.') {
   dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, lintUserInterfaceTests, runSmokeTests))
 }
 
+task functional(description: 'Runs the functional tests.') {
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runDJFunctionalTests))
+}
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
 
