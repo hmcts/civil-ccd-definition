@@ -183,7 +183,7 @@ wa-task-batch-service:
         secrets:
           - s2s-secret-task-monitor
     environment:
-      WA_TASK_MONITOR_SERVICE_URL: http://{{ .Release.Name }}-wa-task-management-api
+      WA_TASK_MONITOR_SERVICE_URL: http://{{ .Release.Name }}-wa_task_monitor
 
 wa-message-cron-service:
   job:
