@@ -14,7 +14,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled} = require('./testingSupport');
 const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
-const {element} = require("../api/dataHelper");
+const {element} = require('../api/dataHelper');
 
 let caseId, eventName;
 let caseData = {};
