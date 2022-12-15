@@ -1,0 +1,29 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "generalOrderDocument",
+    "TabFieldDisplayOrder": 5,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "dismissalOrderDocument",
+    "TabFieldDisplayOrder": 6,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "directionOrderDocument",
+    "TabFieldDisplayOrder": 7,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  }
+]

@@ -147,7 +147,49 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingDisclosureOfDocumentsDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingWitnessOfFactDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingWitnessOfFactDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingMedicalEvidenceDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -175,7 +217,35 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingQuestionsToExpertsDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingQuestionsToExpertsDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingSchedulesOfLossDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -203,7 +273,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingStandardDisposalOrderDJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -329,21 +399,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingPreferredTelephoneDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingPreferredEmailDJ",
+    "CaseFieldID": "disposalHearingBundleDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -371,6 +427,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingClaimSettlingDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingClaimSettlingDJ",
     "AccessControl": [
       {
@@ -385,7 +455,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "DisposalHearingCostsDJ",
+    "CaseFieldID": "disposalHearingCostsDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -399,7 +469,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingApplicationsOrderDJ",
+    "CaseFieldID": "DisposalHearingCostsDJ",
     "AccessControl": [
       {
         "UserRoles": [
@@ -435,7 +505,7 @@
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -497,7 +567,35 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingAlternativeDisputeDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialFastTrackAltDisputeResolution",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingVariationsDirectionsDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -525,7 +623,35 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingSettlementDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialFastTrackSettlement",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingDisclosureOfDocumentsDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -553,7 +679,35 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingWitnessOfFactDJToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingWitnessOfFactDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingSchedulesOfLossDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -581,7 +735,35 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingCostsToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingCosts",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHearingTrialDJToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -707,20 +889,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialHearingMethodLineDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialHearingNotesDJ",
     "AccessControl": [
       {
@@ -764,6 +932,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialCreditHire",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialHousingDisrepair",
     "AccessControl": [
       {
         "UserRoles": [
@@ -827,13 +1009,27 @@
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderSDODocumentDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderSDODocumentDJCollection",
     "AccessControl": [
       {
         "UserRoles": [

@@ -16,7 +16,7 @@ module.exports = {
     };
   },
 
-  async enterOrganisationDetails (respondentNumber = '1') {
+  async enterOrganisationDetails (respondentNumber) {
     I.waitForElement(this.fields(respondentNumber).respondentOrgRepresented.id);
     await I.runAccessibilityTest();
     await within(this.fields(respondentNumber).respondentOrgRepresented.id, () => {
@@ -26,7 +26,12 @@ module.exports = {
     I.fillField(this.fields(respondentNumber).orgPolicyReference, 'Defendant policy reference');
     I.waitForElement(this.fields(respondentNumber).searchText);
     I.fillField(this.fields(respondentNumber).searchText, 'Civil');
-    I.click('a[title="Select the organisation Civil - Organisation 1"]');
+    if (respondentNumber === 'respondent1') {
+    I.click('a[title="Select the organisation Civil - Organisation 2"]');
+    }
+    if (respondentNumber === 'respondent2') {
+      I.click('a[title="Select the organisation Civil - Organisation 3"]');
+    }
     await I.clickContinue();
   }
 };

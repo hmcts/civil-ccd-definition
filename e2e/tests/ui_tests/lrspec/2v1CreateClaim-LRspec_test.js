@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
+const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -12,10 +13,11 @@ Feature('2v1 Multi Party Claim Creation 2v1 @e2e-tests-spec');
 Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
   console.log('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims');
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('organisation', 'organisation', 'company', null, 18000);
+  await LRspec.createCaseSpecified('2v1 specified claim - fast track', 'organisation', 'organisation', 'company', null, 18000);
   caseNumber = await LRspec.grabCaseNumber();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
+  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario.skip('2v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
@@ -57,3 +59,7 @@ Scenario.skip('2v1 Respond To Claim - Defendants solicitor Admits the claim and 
   //await LRspec.see(caseEventMessage('Respond to claim'));
   await LRspec.click('Sign out');
 }).retry(3);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

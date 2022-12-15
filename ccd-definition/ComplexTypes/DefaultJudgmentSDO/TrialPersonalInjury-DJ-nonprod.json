@@ -23,7 +23,7 @@
   {
     "ID": "TrialPersonalInjury",
     "ListElementCode": "input2",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
@@ -43,9 +43,23 @@
   },
   {
     "ID": "TrialPersonalInjury",
-    "ListElementCode": "line",
-    "FieldType": "Label",
-    "ElementLabel": "****",
+    "ListElementCode": "date3",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialPersonalInjury",
+    "ListElementCode": "input4",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialPersonalInjury",
+    "ListElementCode": "date4",
+    "FieldType": "Date",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]

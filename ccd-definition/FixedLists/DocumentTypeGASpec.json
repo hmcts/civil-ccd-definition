@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "GENERAL_ORDER",
+    "ListElement": "General order",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DISMISSAL_ORDER",
+    "ListElement": "Dismissal order",
+    "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DIRECTION_ORDER",
+    "ListElement": "Directions order",
+    "DisplayOrder": 11
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SDO_ORDER",
+    "ListElement": "Standard Directions Order",
+    "DisplayOrder": 12
+  }
+]

@@ -107,7 +107,7 @@
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "input",
+    "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -115,8 +115,24 @@
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "date",
+    "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "date2",
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -176,6 +192,30 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "input5",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingWitnessOfFact",
+    "ListElementCode": "input6",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "DisposalHearingMedicalEvidence",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingMedicalEvidence",
@@ -187,7 +227,7 @@
     "ID": "DisposalHearingMedicalEvidence",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingMedicalEvidence",
-    "ListElementCode": "input1",
+    "ListElementCode": "input",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -195,24 +235,8 @@
     "ID": "DisposalHearingMedicalEvidence",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingMedicalEvidence",
-    "ListElementCode": "date1",
+    "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingMedicalEvidence",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMedicalEvidence",
-    "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingMedicalEvidence",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMedicalEvidence",
-    "ListElementCode": "date2",
-    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -291,8 +315,40 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "text",
+    "ListElementCode": "input3",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "date4",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingSchedulesOfLoss",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 10,
     "DisplayContext": "READONLY"
   },
   {
@@ -352,38 +408,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "DisposalHearingPreferredTelephone",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingPreferredTelephone",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingPreferredTelephone",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingPreferredTelephone",
-    "ListElementCode": "telephone",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingPreferredEmail",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingPreferredEmail",
-    "ListElementCode": "email",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "DisposalHearingBundle",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingBundle",
@@ -416,14 +440,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "DisposalHearingBundle",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingBundle",
-    "ListElementCode": "text",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "DisposalHearingClaimSettling",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingClaimSettling",
@@ -451,22 +467,6 @@
     "ID": "DisposalHearingCosts",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingCosts",
-    "ListElementCode": "text",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingApplicationsOrder",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingApplicationsOrder",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingApplicationsOrder",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingApplicationsOrder",
     "ListElementCode": "text",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
@@ -523,7 +523,7 @@
     "ID": "SmallClaimsOrderAndHearingDetails",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
-    "ListElementCode": "text",
+    "ListElementCode": "text1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
@@ -531,8 +531,16 @@
     "ID": "SmallClaimsOrderAndHearingDetails",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
-    "ListElementCode": "line",
+    "ListElementCode": "text2",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsOrderAndHearingDetails",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
@@ -616,14 +624,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsAllocation",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsAllocation",
-    "ListElementCode": "line2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
@@ -656,18 +656,10 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsHearing",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "SmallClaimsDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsDocuments",
-    "ListElementCode": "line1",
+    "ListElementCode": "label",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -675,16 +667,8 @@
     "ID": "SmallClaimsDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsDocuments",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsDocuments",
     "ListElementCode": "input1",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -692,16 +676,8 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsDocuments",
     "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsDocuments",
-    "ListElementCode": "line2",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -726,7 +702,7 @@
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (claimant)"
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -735,7 +711,7 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (defendant)"
+    "EventHintText": "Number of witnesses (defendant), e.g. 4 "
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -751,46 +727,6 @@
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "text",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsWitnessStatement",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsWitnessStatement",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredTelephone",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredTelephone",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredTelephone",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredTelephone",
-    "ListElementCode": "telephone",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredEmail",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsPreferredEmail",
-    "ListElementCode": "email",
-    "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
@@ -818,14 +754,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "line",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
@@ -846,7 +774,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
     "ListElementCode": "text",
-    "EventElementLabel": "2.. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "EventElementLabel": "A failure to comply with the paragraph above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -862,15 +790,15 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date1",
+    "ListElementCode": "dateText",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "input3",
+    "ListElementCode": "date1",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -878,7 +806,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "input4",
+    "ListElementCode": "input3",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -886,7 +814,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date2",
+    "ListElementCode": "input4",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -894,7 +822,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "input5",
+    "ListElementCode": "date2",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
@@ -902,7 +830,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date3",
+    "ListElementCode": "input5",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -918,7 +846,7 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "date4",
+    "ListElementCode": "date3",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
@@ -934,8 +862,64 @@
     "ID": "SmallClaimsCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsCreditHire",
-    "ListElementCode": "line",
+    "ListElementCode": "date4",
     "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input8",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input9",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "date5",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input10",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "date6",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "input11",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsCreditHire",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 21,
     "DisplayContext": "READONLY"
   },
   {
@@ -1075,14 +1059,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackAllocation",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackAllocation",
-    "ListElementCode": "line2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "FastTrackAltDisputeResolution",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackAltDisputeResolution",
@@ -1190,16 +1166,8 @@
     "ID": "FastTrackDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
-    "ListElementCode": "input5",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "date3",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1224,21 +1192,23 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "text",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "input3",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Number of witnesses (defendant), e.g. 4"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "input4",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -1246,7 +1216,7 @@
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "input4",
+    "ListElementCode": "input5",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -1254,15 +1224,16 @@
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "input5",
+    "ListElementCode": "input6",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Number of pages, e.g. 4"
   },
   {
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "date",
+    "ListElementCode": "input7",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -1270,8 +1241,24 @@
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
-    "ListElementCode": "input6",
+    "ListElementCode": "input8",
     "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackWitnessOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackWitnessOfFact",
+    "ListElementCode": "input9",
+    "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1325,12 +1312,12 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "FastTrackSchedulesOfLoss",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "fastTrackSchedulesOfLoss",
-  "ListElementCode": "input4",
-  "FieldDisplayOrder": 7,
-  "DisplayContext": "MANDATORY"
+    "ID": "FastTrackSchedulesOfLoss",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackSchedulesOfLoss",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -1370,7 +1357,8 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "e.g. The time allowed for this trial is 1 day."
   },
   {
     "ID": "FastTrackTrial",
@@ -1402,7 +1390,7 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackTrial",
@@ -1421,51 +1409,27 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackPreferredTelephone",
+    "ID": "FastTrackTrial",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackPreferredTelephone",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldDisplayOrder": 9,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "FastTrackPreferredTelephone",
+    "ID": "FastTrackTrial",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackPreferredTelephone",
-    "ListElementCode": "telephone",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FastTrackPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackPreferredEmail",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FastTrackPreferredEmail",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackPreferredEmail",
-    "ListElementCode": "email",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FastTrackNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackNotes",
-    "ListElementCode": "line1",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
+    "CaseFieldID": "fastTrackTrial",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
     "ListElementCode": "label",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
   {
@@ -1473,7 +1437,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
     "ListElementCode": "input",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1481,16 +1445,8 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
     "ListElementCode": "date",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackNotes",
-    "ListElementCode": "line2",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackBuildingDispute",
@@ -1627,7 +1583,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "text",
-    "EventElementLabel": "2.. Failed to comply with the above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "EventElementLabel": "A failure to comply with the paragraph above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -1643,15 +1599,15 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "date1",
+    "ListElementCode": "dateText",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "input3",
+    "ListElementCode": "date1",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -1659,7 +1615,7 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "input4",
+    "ListElementCode": "input3",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -1667,7 +1623,7 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "date2",
+    "ListElementCode": "input4",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -1675,7 +1631,7 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "input5",
+    "ListElementCode": "date2",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
@@ -1683,7 +1639,7 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "date3",
+    "ListElementCode": "input5",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -1699,7 +1655,7 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "date4",
+    "ListElementCode": "date3",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
@@ -1715,8 +1671,24 @@
     "ID": "FastTrackCreditHire",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCreditHire",
-    "ListElementCode": "line",
+    "ListElementCode": "date4",
     "FieldDisplayOrder": 14,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackCreditHire",
+    "ListElementCode": "input8",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackCreditHire",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 16,
     "DisplayContext": "READONLY"
   },
   {
@@ -1860,8 +1832,32 @@
     "ID": "FastTrackPersonalInjury",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackPersonalInjury",
-    "ListElementCode": "line",
+    "ListElementCode": "date3",
     "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "date4",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 10,
     "DisplayContext": "READONLY"
   },
   {
@@ -1884,8 +1880,16 @@
     "ID": "FastTrackRoadTrafficAccident",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackRoadTrafficAccident",
-    "ListElementCode": "line",
+    "ListElementCode": "date",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackRoadTrafficAccident",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackRoadTrafficAccident",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
@@ -1895,5 +1899,14 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SdoOrderDocumentPage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoOrderDocument",
+    "ListElementCode": "documentLink",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "Draft Order"
   }
 ]

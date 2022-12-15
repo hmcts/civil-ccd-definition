@@ -54,5 +54,40 @@
     "Name": "Judicial Referral",
     "Description": "Claim is moved onto judges",
     "DisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_PROGRESSION",
+    "Name": "Case Progression",
+    "Description": "Claim proceeds online",
+    "DisplayOrder": 9
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "HEARING_READINESS",
+    "Name": "Hearing Readiness",
+    "Description": "placeholder",
+    "DisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "Name": "Prepare For Hearing Conduct Hearing",
+    "Description": "Placeholder",
+    "DisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "IN_MEDIATION",
+    "Name": "In Mediation",
+    "Description": "Placeholder",
+    "DisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DECISION_OUTCOME",
+    "Name": "Decision Outcome",
+    "Description": "Placeholder",
+    "DisplayOrder": 13
   }
 ]

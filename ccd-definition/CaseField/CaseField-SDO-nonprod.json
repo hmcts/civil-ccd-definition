@@ -250,13 +250,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingStandardDisposalOrder",
-    "Label": "Standard disposal order",
-    "FieldType": "DisposalHearingStandardDisposalOrder",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
     "Label": "## Final disposal hearing",
     "FieldType": "Label",
@@ -277,6 +270,7 @@
     "FieldType": "DisposalHearingFinalDisposalHearing",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingEndLine",
@@ -333,7 +327,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodTelephoneHearing",
-    "Label": "Who will arrange the call? ",
+    "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodTelephoneHearing",
     "SecurityClassification": "Public"
@@ -345,20 +339,7 @@
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredTelephone",
-    "Label": "Preferred telephone number",
-    "FieldType": "DisposalHearingPreferredTelephone",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingPreferredEmail",
-    "Label": "Preferred email",
-    "FieldType": "DisposalHearingPreferredEmail",
-    "SecurityClassification": "Public"
-  },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleStartLine",
@@ -455,29 +436,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderTitle",
-    "Label": "## Applications to set aside, vary or stay this order",
-    "FieldType": "Label",
+    "ID": "disposalHearingAddNewDirections",
+    "Label": "Add a new direction",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DisposalHearingAddNewDirections",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrder",
-    "Label": " ",
-    "FieldType": "DisposalHearingApplicationsOrder",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingApplicationsOrderEndLine",
+    "ID": "disposalHearingAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
     "SecurityClassification": "Public"
@@ -487,14 +454,6 @@
     "ID": "disposalHearingNotes",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingAddNewDirections",
-    "Label": "Add a new direction",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "DisposalHearingAddNewDirections",
     "SecurityClassification": "Public"
   },
   {
@@ -541,9 +500,60 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsHearingStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsHearingTitle",
+    "Label": "## Hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsHearingToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsHearing",
-    "Label": "Hearing",
+    "Label": " ",
     "FieldType": "SmallClaimsHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsHearingEndLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsDocumentsStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsDocumentsTitle",
+    "Label": "## Documents",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsDocumentsToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
     "SecurityClassification": "Public"
   },
   {
@@ -555,9 +565,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsDocumentsEndLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsWitnessStatementTitle",
+    "Label": "## Witness Statement",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsWitnessStatementToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsWitnessStatement",
-    "Label": "Witness Statement",
+    "Label": " ",
     "FieldType": "SmallClaimsWitnessStatement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsWitnessStatementEndLine",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -565,6 +604,14 @@
     "ID": "smallClaimsMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsMethodToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
     "SecurityClassification": "Public"
   },
   {
@@ -593,38 +640,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsMethodVideoConferenceHearingCourtStatement",
-    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsMethodTelephoneHearing",
-    "Label": "Who will arrange the call? ",
+    "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsMethodTelephoneHearing",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsMethodTelephoneHearingCourtStatement",
-    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsPreferredTelephone",
-    "Label": "Preferred telephone number",
-    "FieldType": "SmallClaimsPreferredTelephone",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsPreferredEmail",
-    "Label": "Preferred email",
-    "FieldType": "SmallClaimsPreferredEmail",
     "SecurityClassification": "Public"
   },
   {
@@ -654,6 +673,13 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "SmallClaimsAddNewDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsAddNewDirectionsEndLine",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -696,6 +722,13 @@
     "ID": "fastTrackAllocation",
     "Label": " ",
     "FieldType": "FastTrackAllocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAltDisputeResolutionStartLine",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -971,38 +1004,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "fastTrackMethodVideoConferenceHearingCourtStatement",
-    "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "fastTrackMethodTelephoneHearing",
-    "Label": "Who will arrange the call? ",
+    "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackMethodTelephoneHearing",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "fastTrackMethodTelephoneHearingCourtStatement",
-    "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
+    "ID": "fastTrackMethodEndLine",
+    "Label": "****",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "fastTrackPreferredTelephone",
-    "Label": "Preferred telephone number",
-    "FieldType": "FastTrackPreferredTelephone",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "fastTrackPreferredEmail",
-    "Label": "Preferred email",
-    "FieldType": "FastTrackPreferredEmail",
     "SecurityClassification": "Public"
   },
   {
@@ -1067,6 +1079,48 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "FastTrackAddNewDirections",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackAddNewDirectionsEndLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonNotSuitableSDO",
+    "Label": "What is the reason for not drawing a Standard Directions Order? \n",
+    "FieldType": "ReasonNotSuitableSDO",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unsuitableSDODate",
+    "Label": "SDO unsuitable date",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoOrderDocument",
+    "Label": "View directions order",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "Label": " ",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   }
 ]

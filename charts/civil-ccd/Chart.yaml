@@ -2,25 +2,32 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.12
+version: 0.0.20
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
-  - name: java
-    version: 3.7.2
+  - name: civil-service
+    version: ~0.0.27
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+  - name: civil-general-applications
+    version: 0.0.28
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: civil-general-applications.enabled
   - name: ccd
-    version: 6.0.0
+    version: 8.0.17
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    tags:
-      - civil-ccd-stack
+    condition: civil-ccd-stack.enabled
   - name: xui-webapp
     version: ~0.2.16
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: xui-webapp.enabled
+  - name: aac-manage-case-assignment
+    version: ~0.2.0
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: aac-manage-case-assignment.enabled
   - name: idam-pr
-    version: ~2.2.3
+    version: 2.3.0-alpha
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: idam-pr.enabled
   - name: postgresql
@@ -28,6 +35,6 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
   - name: camunda-bpm
-    version: 0.0.23
+    version: 0.0.28
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled

@@ -5,8 +5,8 @@
   "AccessControl": [
       {
       "UserRoles": [
-        "caseworker-civil-admin",
-        "caseworker-civil-solicitor"
+        "judge-profile",
+        "legal-adviser"
       ],
       "CRUD": "CRU"
       }
@@ -24,10 +24,9 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -46,10 +45,9 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -68,13 +66,50 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[APPLICANTSOLICITORTWO]",
-          "[RESPONDENTSOLICITORONE]",
-          "[RESPONDENTSOLICITORTWO]",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

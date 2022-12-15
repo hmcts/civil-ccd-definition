@@ -69,6 +69,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondent1ResponseDeadline",
+    "FieldShowCondition": "respondent1Represented = \"Yes\"",
     "TabFieldDisplayOrder": 9
   },
   {
@@ -76,7 +77,8 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "claimNotificationDate",
+    "CaseFieldID": "respondent2ResponseDeadline",
+    "FieldShowCondition": "respondent2Represented = \"Yes\"",
     "TabFieldDisplayOrder": 10
   },
   {
@@ -84,7 +86,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "claimIssuedPaymentDetails",
+    "CaseFieldID": "claimNotificationDate",
     "TabFieldDisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "claimIssuedPaymentDetails",
+    "TabFieldDisplayOrder": 12
   }
 ]

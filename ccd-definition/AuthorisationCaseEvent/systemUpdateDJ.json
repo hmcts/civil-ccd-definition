@@ -16,5 +16,17 @@
     "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "UserRole": "APP-SOL-UNSPEC-PROFILE",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RPA_DJ_UNSPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]

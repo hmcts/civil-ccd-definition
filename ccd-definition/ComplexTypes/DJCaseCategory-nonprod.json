@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "value",
+    "ID": "CaseManagementCategory",
+    "ElementLabel": " ",
+    "FieldType": "CaseManagementCategoryElement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "list_items",
+    "ID": "CaseManagementCategory",
+    "ElementLabel": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseManagementCategoryElement",
+    "SecurityClassification": "Public"
+  }
+]

@@ -5,8 +5,8 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 300;
-const RETRY_TIMEOUT_MS = 1000;
+const MAX_RETRIES = 60;
+const RETRY_TIMEOUT_MS = 5000;
 
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
@@ -50,13 +50,14 @@ module.exports =  {
           } else if (response.status === 409) {
             console.log('Role already exists!');
           } else  {
+            console.log('response..', response);
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
     });
   },
 
-  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONESPEC', user = config.defendantSolicitorUser) => {
+  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
       const authToken = await idamHelper.accessToken(user);
 
       await retry(() => {
@@ -102,6 +103,86 @@ module.exports =  {
           }
         });
     });
+  },
+
+  checkToggleEnabled: async (toggle) => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+        `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+        .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+          }
+        );
+  },
+
+  checkNoCToggleEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+       return await restHelper.request(
+        `${config.url.civilService}/testing-support/feature-toggle/noc`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+         .then(async response =>  {
+             if (response.status === 200) {
+               const json = await response.json();
+               return json.toggleEnabled;
+             } else {
+               throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+             }
+           }
+         );
+  },
+
+  checkCourtLocationDynamicListIsEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+       return await restHelper.request(
+        `${config.url.civilService}/testing-support/feature-toggle/court-locations`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+         .then(async response =>  {
+             if (response.status === 200) {
+               const json = await response.json();
+               return json.toggleEnabled;
+             } else {
+               throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+             }
+           }
+         );
+  },
+
+  checkCertificateOfServiceIsEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/isCertificateOfServiceEnabled`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
   },
 
   updateCaseData: async (caseId, caseData) => {

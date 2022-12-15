@@ -14,5 +14,5 @@ echo "export CCD_DEFINITION_STORE_API_BASE_URL=https://ccd-definition-store-civi
 echo "export CAMUNDA_BASE_URL=https://camunda-civil-ccd-pr-${pr}.service.core-compute-preview.internal"
 
 # definition placeholders
-echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-pr-${pr}.service.core-compute-preview.internal"
-echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=http://civil-general-apps-ccd-definition-pr-${pr}.service.core-compute-preview.internal"
+echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-pr-${pr}-java"
+echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=https://ga-civil-ccd-pr-${pr}.service.core-compute-preview.internal"

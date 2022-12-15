@@ -1,3 +1,4 @@
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -34,7 +35,13 @@ module.exports = {
           },
           ApplicantCourtLocationLRspec: {
             applicant1DQRequestedCourt: {
-              requestHearingAtSpecificCourt: 'No'
+              responseCourtLocations: {
+                list_items: [
+                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                ],
+                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           VulnerabilityQuestions: {

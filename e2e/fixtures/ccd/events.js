@@ -119,6 +119,12 @@ module.exports = {
     name: 'Lift Breathing Space',
     order: 8
   },
+  DEFAULT_JUDGEMENT: {
+    id: 'DEFAULT_JUDGEMENT',
+    name: 'Request Default Judgment',
+    description: 'Request Default Judgment',
+    order: 17
+  },
   DEFAULT_JUDGEMENT_SPEC: {
     id: 'DEFAULT_JUDGEMENT_SPEC',
     name: 'Request Default Judgment',
@@ -131,16 +137,22 @@ module.exports = {
     description: 'Standard Direction Order',
     order: 17
   },
-  CREATE_GENERAL_APPLICATION_CASE: {
-    id: 'CREATE_GENERAL_APPLICATION_CASE',
-    name: 'Create general application',
-    description: 'Create general application',
-    order: null
-  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
     name: 'View and respond to defence',
     order: 7
+  },
+  REFER_TO_JUDGE: {
+    id: 'REFER_TO_JUDGE',
+    name: 'Refer to Judge',
+    description: 'Refer to Judge',
+    order: 19
+  },
+  INITIATE_GENERAL_APPLICATION: {
+    id: 'INITIATE_GENERAL_APPLICATION',
+    name: 'Make an application',
+    description: 'Application created, post actions triggered',
+    order: 17
   }
 };

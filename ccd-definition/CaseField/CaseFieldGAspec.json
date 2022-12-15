@@ -49,7 +49,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppStatementOfTruthLabel",
-    "Label": "## Statement of truth\nI understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.\n\n",    "FieldType": "Label",
+    "Label": "## Statement of truth\n",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -122,35 +123,46 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationsDetails",
+    "ID": "claimantGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Claimant solicitor",
     "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSol",
+    "ID": "gaDetailsMasterCollection",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Judge",
     "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSolTwo",
+    "ID": "respondentSolGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for respondent solicitor",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolTwoGaAppDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case for respondent2 solicitor ",
     "_Category":  "COMMON"
   },
   {
@@ -236,6 +248,59 @@
     "ID": "civilServiceUserRoles",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalOrderDocument",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dismissalOrderDocument",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionOrderDocument",
+    "Label": "Directions order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppVaryJudgementType",
+    "Label": "Vary Judgement GA Type",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaUploadN245FormUploadLabel",
+    "Label": "Upload your completed N245 form",
+    "FieldType": "GAN245FormUpload",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppN245FormUpload",
+    "Label": " ",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppHearingDate",
+    "Label": " ",
+    "FieldType": "GAHearingDateGAspec",
     "SecurityClassification": "Public"
   }
 ]

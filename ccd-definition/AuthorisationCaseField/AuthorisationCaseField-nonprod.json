@@ -3,7 +3,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseHistory",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
@@ -13,7 +14,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -37,7 +39,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -49,7 +52,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -61,7 +65,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -73,7 +78,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -85,7 +91,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -97,7 +104,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -109,7 +117,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -121,7 +130,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -133,7 +143,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -145,7 +156,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -157,7 +169,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -169,7 +182,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -181,7 +195,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -193,7 +208,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -205,8 +221,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -218,7 +234,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -230,7 +247,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -242,7 +260,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -254,7 +273,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -266,7 +286,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -278,7 +299,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -290,7 +312,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -302,7 +325,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -315,7 +339,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRUD"
       }
@@ -327,7 +352,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRUD"
       }
@@ -339,7 +365,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -351,7 +378,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -376,7 +404,7 @@
       {
         "UserRoles": [
           "judge-profile",
-          "basic-access"
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -388,7 +416,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -400,7 +429,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -412,7 +442,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -424,7 +455,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -436,7 +468,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -448,7 +481,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -460,7 +494,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -472,7 +507,33 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "changeOrganisationRequestField",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "casePaymentWaysToPay",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "payment-access",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

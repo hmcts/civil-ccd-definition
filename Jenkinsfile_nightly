@@ -46,6 +46,7 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
+  env.TEST_URL = params.CIVIL_SERVICE_URL
   env.URL = params.FRONTEND_URL
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_API_URL=params.IDAM_API_URL
