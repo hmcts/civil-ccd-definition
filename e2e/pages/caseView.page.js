@@ -16,6 +16,7 @@ module.exports = {
   start: function (event) {
     I.selectOption(this.fields.eventDropdown, event);
     I.click(this.goButton);
+    I.click(this.goButton);
     I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
