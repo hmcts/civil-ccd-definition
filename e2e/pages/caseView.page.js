@@ -15,9 +15,9 @@ module.exports = {
 
   start: function (event) {
     I.selectOption(this.fields.eventDropdown, event);
-    I.moveCursorTo(".button[type='submit']");
+    I.moveCursorTo('.button[type="submit"]');
     I.wait(5);
-    I.forceClick(".button[type='submit']");
+    I.forceClick('.button[type="submit"]');
    // I.click(this.goButton);
     I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
