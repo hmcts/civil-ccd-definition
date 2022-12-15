@@ -145,7 +145,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-<<<<<<< HEAD
     "ID": "claimIssuedPBADetails",
     "Label": "Claim Issued PBA details\n",
     "FieldType": "SRPbaDetails",
@@ -156,12 +155,14 @@
     "ID": "hearingFeePBADetails",
     "Label": "Hearing fee PBA details\n",
     "FieldType": "SRPbaDetails",
-=======
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "hearingDocuments",
     "Label": "System generated Case Documents",
-    "FieldType": "Collection", 
+    "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
->>>>>>> 375d31cf3395572cc7d9ac749ebb73b73f9bef6f
     "SecurityClassification": "Public"
   }
 ]
