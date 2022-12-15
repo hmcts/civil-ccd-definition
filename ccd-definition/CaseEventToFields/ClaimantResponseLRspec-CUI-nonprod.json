@@ -363,17 +363,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
+    "CaseFieldID": "ccjJudgmentSummarySubtotalAmount",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountClaimAmountLabel",
+    "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
@@ -393,7 +394,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountClaimFee",
+    "CaseFieldID": "ccjJudgmentAmountClaimAmountLabel",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
@@ -403,48 +404,51 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
+    "CaseFieldID": "claimInterest",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountSubtotalLabel",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDate",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\" "
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountSubtotal",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimInterest =\"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountAlreadyPaidLabel",
+    "CaseFieldID": "ccjJudgmentAmountClaimFee",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjPaymentPaidSomeAmount",
+    "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
@@ -454,9 +458,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentTotalStillOwedLabel",
+    "CaseFieldID": "ccjJudgmentAmountSubtotal",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountSubtotalLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y"
@@ -464,12 +479,46 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentTotalStillOwed",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPounds",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 12,
+    "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPoundsLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 14,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentTotalStillOwed",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentTotalStillOwedLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\" "
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",

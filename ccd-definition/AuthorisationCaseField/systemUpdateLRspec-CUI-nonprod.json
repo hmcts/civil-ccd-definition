@@ -91,6 +91,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentSummarySubtotalAmount",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -104,6 +110,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjJudgmentAmountClaimAmount",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
@@ -133,13 +151,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjJudgmentAmountAlreadyPaidLabel",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPoundsLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjJudgmentAmountAlreadyPaid",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPounds",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
