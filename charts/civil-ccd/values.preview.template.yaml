@@ -175,16 +175,6 @@ wa-workflow-api:
       POSTGRES_CONNECTION_OPTIONS: ""
       TASK_MANAGEMENT_URL: http://{{ .Release.Name }}-wa-task-management-api
 
-wa-task-batch-service:
-  job:
-    releaseNameOverride: ${SERVICE_NAME}-wa-task-batch-service
-    keyVaults:
-      wa:
-        secrets:
-          - s2s-secret-task-monitor
-    environment:
-      WA_TASK_MONITOR_SERVICE_URL: http://{{ .Release.Name }}-wa_task_monitor
-
 wa-message-cron-service:
   job:
     releaseNameOverride: ${SERVICE_NAME}-wa-message-cron-service
