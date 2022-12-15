@@ -12,7 +12,7 @@
     "test:api-sdo": "MOCHAWESOME_REPORTFILENAME=api-sdo npx codeceptjs run --grep @api-sdo --reporter mocha-multi --verbose",
     "test:e2e-sdo": "MOCHAWESOME_REPORTFILENAME=e2e-sdo npx codeceptjs run --grep @e2e-sdo --reporter mocha-multi --verbose",
     "test:api-dj": "MOCHAWESOME_REPORTFILENAME=e2e-sdo npx codeceptjs run --grep @api-dj-1v1-skip --reporter mocha-multi --verbose",
-    "test:e2e-dj": "MOCHAWESOME_REPORTFILENAME=e2e-dj NODE_TLS_REJECT_UNAUTHORIZED=0 npx codeceptjs run --grep @e2e-1v1-djtestest --reporter mocha-multi --verbose",
+    "test:e2e-dj": "MOCHAWESOME_REPORTFILENAME=e2e-dj NODE_TLS_REJECT_UNAUTHORIZED=0 npx codeceptjs run --grep @e2e-1v1-dj --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api-multiparty npx codeceptjs run --grep @api-multiparty --reporter mocha-multi --verbose",
     "test:e2e-wa": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @e2e-wa --reporter mocha-multi --verbose",
     "test:dmn-tasks": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @dmn-task --reporter mocha-multi --verbose",
