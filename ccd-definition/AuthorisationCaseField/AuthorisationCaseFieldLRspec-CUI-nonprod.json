@@ -322,6 +322,28 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentSummarySubtotalAmount",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
     "AccessControl": [
       {
@@ -367,6 +389,50 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjJudgmentAmountClaimAmount",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDate",
     "AccessControl": [
       {
         "UserRoles": [
@@ -476,7 +542,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjJudgmentAmountAlreadyPaidLabel",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPoundsLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -498,7 +564,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjJudgmentAmountAlreadyPaid",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPounds",
     "AccessControl": [
       {
         "UserRoles": [
