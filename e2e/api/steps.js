@@ -12,11 +12,14 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
+const createDJ = require('../fixtures/events/createDJ.js');
+const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
 const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled,
+  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 
 const data = {
@@ -46,6 +49,8 @@ const data = {
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
+  REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
   DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
   DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
@@ -164,14 +169,20 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
-
+    let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
+    console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
+    console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received and will progress offline',
-      body: 'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+      header: isCertificateOfServiceEnabled ? 'Your claim has been received':
+        'Your claim has been received and will progress offline',
+      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
+        'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
-
+    console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
+    console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
@@ -456,10 +467,11 @@ module.exports = {
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
     await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+    // Uncommenting once civil service pr 1945 is merged
+    // await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
+    //   'The date cannot be in the past and must not be more than a year in the future');
+    // await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
+    //   'The date cannot be in the past and must not be more than a year in the future');
 
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
@@ -510,10 +522,11 @@ module.exports = {
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
-      'The date cannot be in the past and must not be more than a year in the future');
-    await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
-      'The date cannot be in the past and must not be more than a year in the future');
+    // Uncommenting once civil service pr 1945 is merged
+    // await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
+    //   'The date cannot be in the past and must not be more than a year in the future');
+    // await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
+    //   'The date cannot be in the past and must not be more than a year in the future');
 
     // This should be uncommented in ticket CIV-2493
     /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
@@ -644,7 +657,7 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
-  defaultJudgment: async (user) => {
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
@@ -653,14 +666,34 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     // workaround: caseManagementLocation shows in startevent api request but not in validate request
     deleteCaseFields('caseManagementLocation');
-    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_1V2);
-    } else if (mpScenario === 'TWO_V_ONE') {
-      await validateEventPages(data.DEFAULT_JUDGEMENT_2V1);
+    if (djRequestType === 'DISPOSAL_HEARING') {
+      await validateEventPages(data.REQUEST_DJ('DISPOSAL_HEARING', mpScenario));
     } else {
-      await validateEventPages(data.DEFAULT_JUDGEMENT);
+      await validateEventPages(data.REQUEST_DJ('TRIAL_HEARING', mpScenario));
     }
+
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  sdoDefaultJudgment: async (user, orderType = 'DISPOSAL_HEARING') => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    if (orderType === 'DISPOSAL_HEARING') {
+      await validateEventPages(data.REQUEST_DJ_ORDER('DISPOSAL_HEARING', mpScenario));
+    } else {
+      await validateEventPages(data.REQUEST_DJ_ORDER('TRIAL_HEARING', mpScenario));
+    }
+
+    await assertSubmittedEvent('CASE_PROGRESSION', {
       header: '',
       body: ''
     }, true);
@@ -685,7 +718,7 @@ module.exports = {
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
-  console.log('validateEventPages');
+  console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
