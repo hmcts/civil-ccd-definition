@@ -13,9 +13,7 @@ module.exports = {
         await I.waitForText('Reset');
         await I.waitForText('Create case');
         await I.retryUntilExists( () => {
-          console.log('here1');
           I.forceClick('Create case');
-          console.log('here2');
         }, `#cc-jurisdiction > option[value="${jurisdiction}"]`);
 
         await I.retryUntilExists(() => {
