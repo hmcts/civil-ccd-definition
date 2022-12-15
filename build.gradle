@@ -232,14 +232,39 @@ task runSmokeTests(type: Exec, description: 'Runs smoke tests.') {
   commandLine '/usr/bin/yarn', '--silent', 'test:smoke'
 }
 
+task runSpecFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-spec'
+}
+
+task runSdoFunctionalTests(type: Exec, description: 'Runs Spec functional tests.') {
+  onlyIf {
+    return System.env.ENVIRONMENT == 'preview'
+  }
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-sdo'
+}
+
+task runUnspecFunctionalTests(type: Exec, description: 'Runs Unspec functional tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:functional-unspec'
+}
 
 task runDJFunctionalTests(type: Exec, description: 'Runs default judgement functional tests.') {
  onlyIf {
     return System.env.ENVIRONMENT == 'preview'
   }
-  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-1v1-djtesttest'
+  commandLine '/usr/bin/yarn', '--silent', 'test:e2e-dj'
 }
 
+task demoEnvNonProdFeaturesEnabledFunctionalTests(type: Exec, description: 'Runs Non prod functional tests in demo') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:DemoFunctional'
+}
+
+task runRpaHandOffTests(type: Exec, description: 'Runs functional tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:rpa'
+}
+
+task runNightlyMultipartyTests(type: Exec, description: 'Runs additional multiparty nightly tests.') {
+  commandLine '/usr/bin/yarn', '--silent', 'test:nightly-multiparty'
+}
 
 def inStrictOrder(Task... tasks) {
   for (int i = 0; i < tasks.size() - 1; i++) {
@@ -253,7 +278,7 @@ task smoke(description: 'Runs the smoke tests.') {
 }
 
 task functional(description: 'Runs the functional tests.') {
-  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runDJFunctionalTests))
+  dependsOn(inStrictOrder(awaitApplicationReadiness, installDependencies, checkDependenciesIntegrity, runSdoFunctionalTests, runSpecFunctionalTests, runUnspecFunctionalTests, runDJFunctionalTests))
 }
 
 project.tasks['sonarqube'].dependsOn test, jacocoTestReport
