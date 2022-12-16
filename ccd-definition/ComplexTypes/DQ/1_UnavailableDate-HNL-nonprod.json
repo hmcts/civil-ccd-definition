@@ -1,6 +1,6 @@
 [
   {
-    "ID": "SmallClaimUnavailableDate",
+    "ID": "UnavailableDate",
     "ListElementCode": "unavailableDateType",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "UnavailableDateChoice",
@@ -8,26 +8,29 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "SmallClaimUnavailableDate",
+    "ID": "UnavailableDate",
     "ListElementCode": "date",
     "FieldType": "Date",
-    "ElementLabel": " ",
+    "ElementLabel": "Unavailable date",
+    "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\""
   },
   {
-    "ID": "SmallClaimUnavailableDate",
+    "ID": "UnavailableDate",
     "ListElementCode": "fromDate",
     "FieldType": "Date",
     "ElementLabel": "Date from",
+    "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
   },
   {
-    "ID": "SmallClaimUnavailableDate",
+    "ID": "UnavailableDate",
     "ListElementCode": "toDate",
     "FieldType": "Date",
     "ElementLabel": "Date to",
+    "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
   }

@@ -11,14 +11,17 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
   },
-  goButton: 'Go',
+  goButton: '.button[type="submit"]',
 
-  start: async function (event) {
-    await I.waitForElement(this.fields.eventDropdown, 10);
-    await I.selectOption(this.fields.eventDropdown, event);
-    await I.retryUntilExists(async () => {
-      await I.click(this.goButton);
-    }, EVENT_TRIGGER_LOCATOR);
+  start: function (event) {
+    I.selectOption(this.fields.eventDropdown, event);
+    /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
+       Further investigation is required to find (hopefully) a cleaner solution
+     */
+    I.moveCursorTo(this.goButton);
+    I.wait(5);
+    I.forceClick(this.goButton);
+    I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
   async startEvent(event, caseId) {
