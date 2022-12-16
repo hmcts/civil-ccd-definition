@@ -28,7 +28,7 @@ module.exports = {
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      this.start(event);
+      await this.start(event);
     }, locate('.govuk-heading-l'));
   },
 
