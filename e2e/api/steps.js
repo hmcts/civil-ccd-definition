@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement} = require('./dataHelper');
+const { listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -19,9 +19,10 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const sdoTracks = require('../fixtures/events/createSDO.js');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled,
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
+const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500', 'FEE0442'),
@@ -137,6 +138,14 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromUnspecClaimData(createClaimData);
+    }
+    //==============================================================
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -162,6 +171,7 @@ module.exports = {
 
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
   },
 
   createClaimWithRespondentLitigantInPerson: async (user) => {
@@ -174,6 +184,14 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromUnspecClaimData(createClaimData);
+    }
+    //==============================================================
 
     await validateEventPages(createClaimData);
 
@@ -205,6 +223,14 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromUnspecClaimData(createClaimData);
+    }
+    //==============================================================
+
 
     await validateEventPages(createClaimData);
 
@@ -453,6 +479,9 @@ module.exports = {
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
 
+    // CIV-5514: remove when hnl is live
+    defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
+
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
@@ -478,12 +507,15 @@ module.exports = {
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
     await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    // Uncommenting once civil service pr 1945 is merged
-    // await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-    //   'The date cannot be in the past and must not be more than a year in the future');
-    // await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-    //   'The date cannot be in the past and must not be more than a year in the future');
-
+    await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
+      'Unavailable Date cannot be past date');
+    await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
+      'Dates must be within the next 12 months.');
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(isHNLEnabled){
+      await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
     if (solicitor === 'solicitorOne') {
@@ -528,16 +560,23 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+
+    // CIV-5514: remove when hnl is live
+    claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
 
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    // Uncommenting once civil service pr 1945 is merged
-    // await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
-    //   'The date cannot be in the past and must not be more than a year in the future');
-    // await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
-    //   'The date cannot be in the past and must not be more than a year in the future');
+    await assertError('Hearing', claimantResponseData.invalid.Hearing.past,
+      'Unavailable Date cannot be past date');
+    await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
+      'Dates must be within the next 12 months.');
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if (isHNLEnabled) {
+      await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
 
     if ('preview' === config.runningEnv) {
       await assertSubmittedEvent('JUDICIAL_REFERRAL', {
@@ -575,6 +614,7 @@ module.exports = {
   addDefendantLitigationFriend: async () => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
@@ -618,8 +658,6 @@ module.exports = {
   },
 
   addCaseNote: async (user) => {
-    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
-
     await apiRequest.setupTokens(user);
 
     eventName = 'ADD_CASE_NOTE';
@@ -774,6 +812,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
   }
 
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -795,6 +834,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     && caseData.drawDirectionsOrder.judgementSum == responseBody.data.drawDirectionsOrder.judgementSum) {
     // sometimes difference may be because of decimals .0, not an actual difference
     caseData.drawDirectionsOrder.judgementSum = responseBody.data.drawDirectionsOrder.judgementSum;
+  }
+
+  if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
+    caseData = replaceLitigationFriendFields(caseData);
   }
 
   try {
@@ -984,6 +1027,43 @@ function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListF
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+function replaceLitigationFriendFields(caseData) {
+  if (caseData.applicant1LitigationFriend) {
+    caseData.applicant1LitigationFriend = {
+      fullName: 'John Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.applicant2LitigationFriend) {
+    caseData.applicant2LitigationFriend = {
+      fullName: 'Jane Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  return caseData;
+}
+
+async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  // work around for the api  tests
+  if (!isHNLEnabled) {
+    const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
+
+    if (claimantLitigationPage) {
+      const updated = replaceLitigationFriendFields(claimantLitigationPage);
+      if(claimantLitigationPage.applicant1LitigationFriend) {
+        claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
+      }
+      if(claimantLitigationPage.applicant2LitigationFriend) {
+        claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
+  }
+  return responseData;
 }
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
