@@ -1183,5 +1183,26 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1Details",
+    "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent1Copy.partyEmail}\n\n**Phone number:** ${respondent1Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2Details",
+    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DetailsDiffLR",
+    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
