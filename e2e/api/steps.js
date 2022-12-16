@@ -51,12 +51,6 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
-  DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
-  DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
-  DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
-  SDO_DEFAULT_JUDGEMENT: require('../fixtures/events/sdoDefaultJudgment.js'),
-  SDO_DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/sdoDefaultJudgment1v2.js'),
-  SDO_DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/sdoDefaultJudgment2v1.js'),
 };
 
 const eventData = {
