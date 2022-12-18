@@ -70,5 +70,9 @@
   },
   "resolutions": {
     "minimatch": "^3.0.5"
+  },
+  "dependencies": {
+    "chromium": "^3.0.3",
+    "yarn": "^1.22.19"
   }
 }

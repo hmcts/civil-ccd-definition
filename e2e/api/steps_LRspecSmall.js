@@ -13,7 +13,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
-const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
@@ -76,6 +76,17 @@ module.exports = {
     }
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      let response = await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update - Status: ' + response.toString());
+    }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 

@@ -19,8 +19,10 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled,
-  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
+  checkCertificateOfServiceIsEnabled, checkToggleEnabled
+} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
+const {PBAv3} = require('../fixtures/featureKeys');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -140,6 +142,17 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed.'
     });
 
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      let response = await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update - Status: ' + response.toString());
+    }
+
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -172,6 +185,18 @@ module.exports = {
       body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      let response = await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update - Status: ' + response.toString());
+    }
+
     console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
     console.log('***assertCorrectEventsAreAvailableToUser');
