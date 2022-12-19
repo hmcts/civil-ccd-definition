@@ -82,6 +82,10 @@ const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspe
 const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDefendantDetailsLRspec.page');
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
+const apiRequest = require('./api/apiRequest');
+const claimData = require('./fixtures/events/createClaim');
 
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -341,6 +345,17 @@ module.exports = function () {
            ]);
 
          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+
+          const pbaV3 = await checkToggleEnabled(PBAv3);
+
+          console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+          if (pbaV3) {
+            await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+              claimData.serviceUpdateDto(caseId, 'paid'));
+            console.log('Service request update sent to callback URL');
+          }
+
   },
 
    async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
