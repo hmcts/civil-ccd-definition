@@ -27,6 +27,21 @@
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQHearingLRspec",
+    "Label": " ",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQSmallClaimHearing",
+    "Label": " ",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired",
