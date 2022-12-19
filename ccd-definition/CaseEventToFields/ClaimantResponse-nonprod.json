@@ -58,5 +58,32 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "claimantResponseScenarioFlag=\"ONE_V_TWO_TWO_LEGAL_REP\" OR claimantResponseScenarioFlag=\"ONE_V_TWO_ONE_LEGAL_REP\"",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "VulnerabilityQuestions",
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Yes"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQLanguage",
+    "PageDisplayOrder": 9,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Language",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
+    "Publish": "Yes"
   }
 ]
