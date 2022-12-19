@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled} = require('../../../api/testingSupport');
+const {checkToggleEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const apiRequest = require('../../../api/apiRequest');
 const claimData = require('../../../fixtures/events/createClaim');
@@ -31,9 +31,11 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await waitForFinishedBusinessProcess(caseId);
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
+    await waitForFinishedBusinessProcess(caseId);
   }
 
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);

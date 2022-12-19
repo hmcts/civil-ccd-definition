@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant, checkToggleEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const apiRequest = require('../../../api/apiRequest');
@@ -23,9 +23,11 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await waitForFinishedBusinessProcess(caseId);
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
+    await waitForFinishedBusinessProcess(caseId);
   }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);

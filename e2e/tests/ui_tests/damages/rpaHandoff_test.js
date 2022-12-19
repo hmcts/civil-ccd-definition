@@ -74,9 +74,11 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await waitForFinishedBusinessProcess(caseId);
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
+    await waitForFinishedBusinessProcess(caseId);
   }
 
   await I.notifyClaim();
