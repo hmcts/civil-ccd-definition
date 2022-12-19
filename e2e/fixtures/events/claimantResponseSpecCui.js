@@ -86,6 +86,14 @@ module.exports = {
             ccjPaymentPaidSomeOption: 'Yes',
             ccjPaymentPaidSomeAmount: '1000'
           },
+          CcjJudgmentSummary: {
+            ccjJudgmentAmountClaimAmount: '1000',
+            ccjJudgmentAmountInterestToDate: '35',
+            ccjJudgmentAmountClaimFee: '100',
+            ccjJudgmentAmountSubtotal: '1135',
+            ccjPaymentPaidSomeAmountInPounds: '10',
+            ccjJudgmentTotalStillOwed: '1125'
+          },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
               hasAgreedFreeMediation: 'Yes'
