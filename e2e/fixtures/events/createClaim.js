@@ -137,7 +137,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       respondent1: respondent1WithPartyName
     },
     LegalRepresentation: {
-      respondent1Represented: `${legalRepresentation}`
+      respondent1Represented: '${legalRepresentation}'
     },
     ...(legalRepresentation === 'Yes') ? {
       DefendantSolicitorOrganisation: {
@@ -311,8 +311,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           respondent2: respondent2WithPartyName,
         },
         LegalRepresentation: {
-          respondent1Represented: `No`,
-          respondent2Represented: `No`
+          respondent1Represented: 'No',
+          respondent2Represented: 'No'
         },
       };
     }
