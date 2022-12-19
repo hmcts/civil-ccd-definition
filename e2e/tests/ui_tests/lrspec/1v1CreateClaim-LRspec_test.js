@@ -1,9 +1,6 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant, checkToggleEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const apiRequest = require('../../../api/apiRequest');
-const claimData = require('../../../fixtures/events/createClaim');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -18,16 +15,6 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await waitForFinishedBusinessProcess(caseId);
-    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseId, 'paid'));
-    console.log('Service request update sent to callback URL');
-    await waitForFinishedBusinessProcess(caseId);
-  }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
