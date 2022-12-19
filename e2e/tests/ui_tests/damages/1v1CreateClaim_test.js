@@ -3,37 +3,18 @@ const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('..
 const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
 
-// Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-
-// const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseId;
-
-const claimant1 = {
-  litigantInPerson: true
-};
-
-const respondent1 = {
-  represented: true,
-  representativeRegistered: true,
-  representativeOrgNumber: 2
-};
-
-let caseNumber;
 
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I, api}) => {
-  // await I.createCase(claimant1, null, respondent1, null);
-    await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-    // await api.amendRespondent1ResponseDeadline(config.systemupdate);
-    await I.login(config.applicantSolicitorUser);
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  caseId = await api.getCaseId();
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await I.login(config.applicantSolicitorUser);
+  // Reinstate the lines below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //caseNumber = await I.grabCaseNumber();
   //await I.see(`Case ${caseNumber} has been created.`);
-
-  await addUserCaseMapping(caseId,config.applicantSolicitorUser);
-  // await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
+  caseId = await api.getCaseId();
+  await addUserCaseMapping(caseId, config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
@@ -88,6 +69,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-AfterSuite(async  () => {
+AfterSuite(async () => {
   await unAssignAllUsers();
 });
