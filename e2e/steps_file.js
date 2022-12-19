@@ -279,18 +279,6 @@ module.exports = function () {
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
       ]);
-
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-
-      const pbaV3 = await checkToggleEnabled(PBAv3);
-
-      console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-      if (pbaV3) {
-        await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-          claimData.serviceUpdateDto(caseId, 'paid'));
-        console.log('Service request update sent to callback URL');
-      }
     },
 
     async notifyClaim(solicitorToNotify) {
