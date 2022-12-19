@@ -145,7 +145,7 @@ module.exports = {
     if (pbaV3) {
       let response = await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
         claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update - Status: ' + response.toString());
+      console.log('Service request update sent to callback URL');
     }
 
     await waitForFinishedBusinessProcess(caseId);
