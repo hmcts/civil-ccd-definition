@@ -137,7 +137,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       respondent1: respondent1WithPartyName
     },
     LegalRepresentation: {
-      respondent1Represented: '${legalRepresentation}'
+      respondent1Represented: `${legalRepresentation}`
     },
     ...(legalRepresentation === 'Yes') ? {
       DefendantSolicitorOrganisation: {
