@@ -424,7 +424,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialPersonalInjury",
-    "Label": "Expert evidence in relation to personal injury",
+    "Label": "Expert evidence",
     "FieldType": "TrialPersonalInjury",
     "SecurityClassification": "Public"
   },
