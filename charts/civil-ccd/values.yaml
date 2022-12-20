@@ -1,7 +1,5 @@
 civil-ccd-stack:
   enabled: false
-postgresql:
-  enabled: false
 idam-pr:
   enabled: false
 xui-webapp:
