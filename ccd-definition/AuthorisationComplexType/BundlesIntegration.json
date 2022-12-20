@@ -1,135 +1,128 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "OrgPolicyCaseAssignedRole",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "id",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "OrgPolicyReference",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "title",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "Organisation",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "description",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "Organisation.OrganisationID",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "eligibleForStitching",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "Organisation.OrganisationName",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "eligibleForCloning",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "PrepopulateToUsersOrganisation",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "documents",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
-    "ListElementCode": "PreviousOrganisations",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "folders",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "OrgPolicyCaseAssignedRole",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "stitchStatus",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "OrgPolicyReference",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "stitchedDocument",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "Organisation",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "hasCoversheets",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "Organisation.OrganisationID",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "hasTableOfContents",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "Organisation.OrganisationName",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "paginationStyle",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1OrganisationPolicy",
-    "ListElementCode": "PreviousOrganisations",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "pageNumberFormat",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "OrgPolicyCaseAssignedRole",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "stitchingFailureMessage",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "OrgPolicyReference",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "coverpageTemplate",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "Organisation",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "enableEmailNotification",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "Organisation.OrganisationID",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "fileName",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "Organisation.OrganisationName",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2OrganisationPolicy",
-    "ListElementCode": "PreviousOrganisations",
-    "UserRole": "caseworker-caa",
+    "CaseFieldID": "caseBundles",
+    "ListElementCode": "fileNameIdentifier",
+    "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }
 ]

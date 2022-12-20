@@ -1,58 +1,15 @@
 [
   {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundles",
-    "UserRole": "caseworker-privatelaw-courtadmin",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "bundleConfiguration",
-    "UserRole": "caseworker-privatelaw-courtadmin",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "multiBundleConfiguration",
-    "UserRole": "caseworker-privatelaw-courtadmin",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "historicalBundles",
-    "UserRole": "caseworker-privatelaw-courtadmin",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "caseBundles",
-    "UserRole": "caseworker-privatelaw-judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "bundleConfiguration",
-    "UserRole": "caseworker-privatelaw-judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "multiBundleConfiguration",
-    "UserRole": "caseworker-privatelaw-judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "31/10/2022",
-    "CaseTypeID": "PRLAPPS",
-    "CaseFieldID": "historicalBundles",
-    "UserRole": "caseworker-privatelaw-judge",
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]

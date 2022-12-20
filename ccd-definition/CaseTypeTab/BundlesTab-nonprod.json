@@ -1,13 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "Applications",
-    "TabLabel": "Applications",
-    "TabDisplayOrder": 8,
-    "UserRoles": [
-      "APP-SOL-UNSPEC-PROFILE"
-    ],
-    "CaseFieldID": "claimantGaAppDetails",
+    "Channel": "CaseWorker",
+    "TabID": "CaseBundles",
+    "TabLabel": "Bundles",
+    "TabDisplayOrder": 12,
+    "CaseFieldID": "caseBundles",
     "TabFieldDisplayOrder": 1
   }
 ]
