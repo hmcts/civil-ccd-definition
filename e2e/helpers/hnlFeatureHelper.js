@@ -85,7 +85,7 @@ module.exports = {
           ...data.invalid,
           Hearing: {
             past: {
-              [party]: {
+              [`${party}Hearing`]: {
                 hearingLength: 'MORE_THAN_DAY',
                 hearingLengthDays: 5,
                 unavailableDatesRequired: 'Yes',
@@ -98,7 +98,7 @@ module.exports = {
               }
             },
             moreThanYear: {
-              [party]: {
+              [`${party}Hearing`]: {
                 hearingLength: 'MORE_THAN_DAY',
                 hearingLengthDays: 5,
                 unavailableDatesRequired: 'Yes',
