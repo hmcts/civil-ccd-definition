@@ -1,6 +1,35 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesSmallClaim",
+    "Label": "Defendant 1 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQWitnessesSmallClaim",
+    "Label": "Defendant 2 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQHearingLRspec",
+    "Label": " ",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQSmallClaimHearing",
+    "Label": " ",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired",
     "Label": "Do you want to use an expert?",
     "FieldType": "YesOrNo",
