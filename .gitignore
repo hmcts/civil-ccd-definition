@@ -29,3 +29,8 @@ node_modules/
 
 # test_output
 test-results/
+
+## Helm
+charts/civil-ccd/charts/**
+charts/civil-ccd/Chart.lock
+
