@@ -12,7 +12,8 @@ Feature('Claim creation 1v1 @e2e-tests-spec');
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec, api_spec_fast}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  let caseId = await api_spec_fast.getCaseId();
+  addUserCaseMapping(caseId, config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {

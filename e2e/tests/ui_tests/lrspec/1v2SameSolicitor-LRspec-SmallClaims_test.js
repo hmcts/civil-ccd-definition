@@ -21,14 +21,14 @@ let caseNumber;
 
 Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec');
 
-Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec}) => {
+Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec, api_spec_small}) => {
   console.log('Applicant solicitor creates 1v2 specified claim both defendants Same LR for small claims @create-claim-spec');
-  await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('1v2 specified claim both defendants same', 'organisation', null, respondent1, respondent2, 1000);
+  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  let caseId = await api_spec_small.getCaseId();
   caseNumber = await LRspec.grabCaseNumber();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseId, config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
