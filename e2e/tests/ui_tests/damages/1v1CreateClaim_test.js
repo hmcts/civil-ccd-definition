@@ -4,7 +4,7 @@ const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+let caseId;
 
 const claimant1 = {
   litigantInPerson: true
@@ -20,20 +20,21 @@ let caseNumber;
 
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1');
 
-Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
-  await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null, respondent1, null);
-  caseNumber = await I.grabCaseNumber();
+Scenario('TESTESTESTESTEST-------Applicant solicitor creates claim @create-claim', async ({I, api}) => {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api.notifyClaim(config.applicantSolicitorUser);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  caseId = await api.getCaseId();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
-  await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
+  await addUserCaseMapping(caseId,config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
   await I.notifyClaim();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
@@ -78,7 +79,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.respondToDefence('ONE_V_ONE');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseId());
+  await waitForFinishedBusinessProcess(caseId);
 }).retry(3);
 
 AfterSuite(async  () => {
