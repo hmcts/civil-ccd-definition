@@ -147,6 +147,7 @@
     ]
   },
   {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SERVICE_REQUEST_RECEIVED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
