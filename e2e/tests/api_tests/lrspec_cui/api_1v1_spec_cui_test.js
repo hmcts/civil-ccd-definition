@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 
 Feature('CCD 1v1 API test @api-spec-cui');
 
-Scenario.skip('1v1 full admit claimant and defendant response', async ({I, api_spec_cui}) => {
+Scenario('1v1 full admit claimant and defendant response', async ({I, api_spec_cui}) => {
   await api_spec_cui.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec_cui.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION');
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_ONE',
