@@ -9,14 +9,18 @@ const respondent1 = {
   individualFirstName: 'John',
   individualLastName: 'Doe',
   individualTitle: 'Sir',
-  primaryAddress: buildAddress('respondent')
+  primaryAddress: buildAddress('respondent'),
+  partyEmail: 'johndoe@example.com',
+  partyPhone: '07898678902',
 };
 const respondent2 = {
   type: 'INDIVIDUAL',
   individualFirstName: 'Foo',
   individualLastName: 'Bar',
   individualTitle: 'Dr',
-  primaryAddress: buildAddress('second respondent')
+  primaryAddress: buildAddress('second respondent'),
+  partyEmail: 'foo.bar@example.com',
+  partyPhone: '07898678912',
 };
 const respondent1WithPartyName = {
   ...respondent1,
@@ -54,7 +58,10 @@ const applicant2WithPartyName = {
 };
 
 const applicant1LitigationFriend = {
-  fullName: 'Bob the litigant friend',
+  firstName: 'Bob',
+  lastName: 'the litigant friend',
+  emailAddress: 'bobthelitigant@litigants.com',
+  phoneNumber: '07123456789',
   hasSameAddressAsLitigant: 'No',
   primaryAddress: buildAddress('litigant friend')
 };
