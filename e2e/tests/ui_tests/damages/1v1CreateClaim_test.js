@@ -6,21 +6,9 @@ const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 let caseId;
 
-const claimant1 = {
-  litigantInPerson: true
-};
-
-const respondent1 = {
-  represented: true,
-  representativeRegistered: true,
-  representativeOrgNumber: 2
-};
-
-let caseNumber;
-
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1');
 
-Scenario('TESTESTESTESTEST-------Applicant solicitor creates claim @create-claim', async ({I, api}) => {
+Scenario('TESTESTESTESTEST-------Applicant solicitor creates claim @create-claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);

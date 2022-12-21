@@ -1,14 +1,11 @@
 const config = require('../../../config.js');
 
-let caseId;
-
 Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-  caseId = await api.getCaseId();
   await I.login(config.applicantSolicitorUser);
 }).retry(3);
 
