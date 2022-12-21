@@ -102,5 +102,25 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MOVE_TO_DECISION_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
