@@ -6,17 +6,6 @@ const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAss
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
-const respondent1 = {
-  represented: true,
-  representativeRegistered: true,
-  representativeOrgNumber: 2
-};
-const respondent2 = {
-  represented: true,
-  sameLegalRepresentativeAsRespondent1: true,
-  representativeOrgNumber: 2
-};
-
 let caseNumber;
 
 Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec');
