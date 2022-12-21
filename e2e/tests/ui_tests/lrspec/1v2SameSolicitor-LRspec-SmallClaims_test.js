@@ -4,17 +4,15 @@ const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAss
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
-
-let caseNumber;
+const caseId = () => caseIdApi;
+let caseIdApi;
 
 Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec');
 
-Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec, api_spec_small}) => {
+Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({api_spec_small}) => {
   console.log('Applicant solicitor creates 1v2 specified claim both defendants Same LR for small claims @create-claim-spec');
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  let caseId = await api_spec_small.getCaseId();
-  caseNumber = await LRspec.grabCaseNumber();
+  caseIdApi = await api_spec_small.getCaseId();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId, config.applicantSolicitorUser);

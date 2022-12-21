@@ -3,16 +3,15 @@ const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
-
-let caseNumber;
+const caseId = () => caseIdApi;
+let caseIdApi;
 
 Feature('Claim creation 1v1 @e2e-tests-spec');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({api_spec_fast}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  let caseId = await api_spec_fast.getCaseId();
+  caseIdApi = await api_spec_fast.getCaseId();
   addUserCaseMapping(caseId, config.applicantSolicitorUser);
 }).retry(3);
 
