@@ -145,9 +145,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "hearingFeePaymentDetails",
+    "Label": "Hearing Payment Details",
+    "FieldType": "PaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "hearingDocuments",
     "Label": "System generated Case Documents",
-    "FieldType": "Collection", 
+    "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
   }
