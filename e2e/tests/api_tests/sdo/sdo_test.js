@@ -1,10 +1,10 @@
 const config = require('../../../config.js');
 const claimData = require('../../../fixtures/events/createClaim.js');
 const mpScenario = 'ONE_V_ONE';
-const judgeUser = config.judgeUserWithRegionId1Local;
-const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
-// const judgeUser = config.judgeUserWithRegionId1;
-// const legalAdvUser = config.tribunalCaseworkerWithRegionId1;
+// const judgeUser = config.judgeUserWithRegionId1Local;
+// const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
+const judgeUser = config.judgeUserWithRegionId1;
+const legalAdvUser = config.tribunalCaseworkerWithRegionId1;
 
 Feature('CCD 1v1 API test @api-sdo');
 
