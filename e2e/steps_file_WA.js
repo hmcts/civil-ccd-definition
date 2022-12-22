@@ -39,6 +39,9 @@ module.exports = function (){
       await this.waitForText(caseId);
       await this.waitForClickable('//a[contains(text(), \'Challenged access\')]', 60);
       await this.click('Challenged access');
+      await this.waitForText('This case requires challenged access');
+      await this.waitForText('Request access');
+      await this.forceClick('Request access');
       await this.waitForText('To determine if the case needs to be consolidated');
       await this.click('#reason-1');
       await this.click('Submit');

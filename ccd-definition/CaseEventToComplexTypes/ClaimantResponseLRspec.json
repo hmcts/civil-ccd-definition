@@ -38,62 +38,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "expertRequired",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "expertReportsSent",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "jointExpertSuitable",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "details.fieldOfExpertise",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "details.whyRequired",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQExperts",
-    "ListElementCode": "details.estimatedCost",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "Witnesses",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQWitnesses",
@@ -121,15 +65,6 @@
     "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQHearingLRspec",
-    "ListElementCode": "hearingLength",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "allocatedTrack !=\"SMALL_CLAIM\""
-  },
-  {
-    "ID": "HearingLRspec",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "hearingLengthHours",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -148,14 +83,6 @@
     "CaseFieldID": "applicant1DQHearingLRspec",
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingLRspec",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQHearingLRspec",
-    "ListElementCode": "unavailableDatesLRspec.who",
-    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -285,14 +212,6 @@
     "CaseFieldID": "applicant1DQSmallClaimHearing",
     "ListElementCode": "smallClaimUnavailableDate",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimHearing",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQSmallClaimHearing",
-    "ListElementCode": "smallClaimUnavailableDate.who",
-    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
