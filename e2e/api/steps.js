@@ -129,13 +129,13 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimData) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario);
+    let createClaimData = claimData | data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
