@@ -2021,20 +2021,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1ClaimExpertSpecRequired",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicantMPClaimExpertSpecRequired",
-    "Label": "Have the claimants asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1RespondToClaimExperts",
     "Label": " ",
     "FieldType": "ExpertDetails",
