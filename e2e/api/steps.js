@@ -782,13 +782,15 @@ module.exports = {
 const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
-  for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'Upload' || pageId === 'DraftDirections' || pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
-      const document = await testingSupport.uploadDocument();
-      data = await updateCaseDataWithPlaceholders(data, document);
+  if (data.valid) {
+    for (let pageId of Object.keys(data.valid)) {
+      if (pageId === 'Upload' || pageId === 'DraftDirections' || pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+        const document = await testingSupport.uploadDocument();
+        data = await updateCaseDataWithPlaceholders(data, document);
+      }
+      // data = await updateCaseDataWithPlaceholders(data);
+      await assertValidData(data, pageId, solicitor);
     }
-    // data = await updateCaseDataWithPlaceholders(data);
-    await assertValidData(data, pageId, solicitor);
   }
 };
 
