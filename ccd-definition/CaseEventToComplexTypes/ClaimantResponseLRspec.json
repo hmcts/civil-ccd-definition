@@ -43,7 +43,7 @@
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "expertRequired",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Witnesses",
