@@ -1050,7 +1050,7 @@ function replaceLitigationFriendFields(caseData) {
 async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
-  if (!isHNLEnabled) {
+  if (!isHNLEnabled && responseData.valid) {
     const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
 
     if (claimantLitigationPage) {
