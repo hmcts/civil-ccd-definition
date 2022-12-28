@@ -6,8 +6,7 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor",
-          "[APPLICANTSOLICITORONESPEC]"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
