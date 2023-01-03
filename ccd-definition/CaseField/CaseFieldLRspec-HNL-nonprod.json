@@ -1,6 +1,13 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQWitnessesSmallClaim",
+    "Label": "Claimant 1 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimExpertSpecRequired",
     "Label": "Do you want to use an expert?",
     "FieldType": "YesOrNo",
