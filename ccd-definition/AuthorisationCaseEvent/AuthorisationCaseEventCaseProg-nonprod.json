@@ -58,19 +58,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_BUNDLE",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
   }
 ]
