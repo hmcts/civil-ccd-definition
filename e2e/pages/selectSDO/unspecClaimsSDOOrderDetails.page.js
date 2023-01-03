@@ -50,17 +50,15 @@ module.exports = {
       await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
-      await I.fillField(this.fields.smallClaimsMethodInPerson.id, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
+      await I.click(this.fields.smallClaimsMethodInPerson.id);
     } else if (orderType == 'disposal') {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
-      await I.fillField(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingLocation, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
       await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
       await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
-      await I.fillField(this.fields.fastTrackMethodInPerson.id, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
       await I.click(this.fields.fastTrackTrial_type.documentsId);
     }
     await I.clickContinue();
