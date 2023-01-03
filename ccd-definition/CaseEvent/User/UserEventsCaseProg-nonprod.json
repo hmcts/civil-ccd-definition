@@ -37,8 +37,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "EVIDENCE_UPLOAD_APPLICANT",
-    "Name": "Upload Your Documents app",
-    "Description": "Upload Your Documents app",
+    "Name": "Upload Your Documents",
+    "Description": "Upload Your Documents",
     "DisplayOrder": 21,
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -71,8 +71,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "EVIDENCE_UPLOAD_RESPONDENT",
-    "Name": "Upload Your Documents res",
-    "Description": "Upload Your Documents res",
+    "Name": "Upload Your Documents",
+    "Description": "Upload Your Documents",
     "DisplayOrder": 22,
     "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "*",
