@@ -31,7 +31,7 @@
     "test:api-spec-small": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-small --reporter mocha-multi --verbose",
     "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-spec-1v2DS --reporter mocha-multi --verbose",
     "test:e2e-spec-1v2DS": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-spec-1v2DS --reporter mocha-multi --verbose",
-    "test:ahsanTest": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @ahsanTest --reporter mocha-multi --verbose",
+    "test:ahsanTest": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @ahsanTest --steps",
     "test:functional-unspec": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep '@e2e-unspec-1v2DS' --reporter mocha-multi --verbose",
     "test:functional-dj": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep @e2e-dj --reporter mocha-multi --verbose",
     "test:nightly-multiparty": "MOCHAWESOME_REPORTFILENAME=nightly-multiparty npx codeceptjs run --grep '@e2e-nightly' --reporter mocha-multi --verbose",

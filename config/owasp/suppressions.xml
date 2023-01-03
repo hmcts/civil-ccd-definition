@@ -90,4 +90,11 @@
   <suppress until="2022-10-10">
     <cve>CVE-2022-42004</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+      file name: flat:4.1.1
+    ]]></notes>
+    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
+    <vulnerabilityName>1085297</vulnerabilityName>
+    </suppress>
  </suppressions>
