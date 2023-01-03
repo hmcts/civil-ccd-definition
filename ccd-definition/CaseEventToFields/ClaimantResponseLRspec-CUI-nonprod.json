@@ -195,7 +195,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimTrack",
+    "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
@@ -536,6 +536,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
+    "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
