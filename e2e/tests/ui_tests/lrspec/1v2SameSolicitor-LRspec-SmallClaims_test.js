@@ -1,9 +1,6 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant, checkToggleEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const apiRequest = require('../../../api/apiRequest');
-const claimData = require('../../../fixtures/events/createClaim');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;

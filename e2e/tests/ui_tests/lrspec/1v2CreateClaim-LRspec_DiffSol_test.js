@@ -1,9 +1,5 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const apiRequest = require('../../../api/apiRequest');
-const claimData = require('../../../fixtures/events/createClaim');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
