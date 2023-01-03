@@ -1,5 +1,6 @@
 civil-service:
   java:
+    ingressHost: ${SERVICE_NAME}.preview.hmcts.platform.net
     image: 'hmctspublic.azurecr.io/civil/service:pr-1843'
     keyVaults:
       civil:
