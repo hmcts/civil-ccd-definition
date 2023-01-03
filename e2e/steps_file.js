@@ -517,7 +517,7 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
 
     /**
@@ -623,10 +623,9 @@ module.exports = function () {
     },
 
     async createCaseSpec(applicantType, defendantType, litigantInPerson = false, claimAmount) {
-      this.click('Create case');
+      this.forceClick('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-      await this.clickContinue();
       await this.clickContinue();
       await solicitorReferencesPage.enterReferences();
       await specPartyDetails.enterDetails('applicant1', address, applicantType);
