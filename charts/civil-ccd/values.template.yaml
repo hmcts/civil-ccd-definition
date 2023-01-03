@@ -79,7 +79,7 @@ civil-service:
     environment:
       PAYMENTS_CALLBACK_URL: http://${SERVICE_FQDN}/service-request-update
       TESTING_SUPPORT_ENABLED: true
-      CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api    
+      CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       CMC_DB_HOST: "{{ .Values.postgresql.releaseNameOverride}}"
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: "{{ .Values.postgresql.auth.username}}"
@@ -96,6 +96,8 @@ civil-service:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
       image:
+        registry: hmctspublic.azurecr.io
+        repository: imported/bitnami/postgresql
         tag: '11.6.0'
       primary:
         persistence:
