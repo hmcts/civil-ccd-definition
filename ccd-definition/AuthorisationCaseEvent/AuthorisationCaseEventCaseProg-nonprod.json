@@ -29,6 +29,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
