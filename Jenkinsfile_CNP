@@ -147,7 +147,7 @@ withPipeline(type, product, component) {
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
       env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-      env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+      env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.hmcts.platform.net"
     }
   }
 
