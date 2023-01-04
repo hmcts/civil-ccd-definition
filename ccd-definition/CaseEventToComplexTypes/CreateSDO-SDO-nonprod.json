@@ -1358,7 +1358,7 @@
     "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "e.g. The time provisionally allowed for the trial is 2 days."
+    "EventHintText": "e.g. The time allowed for this trial is 1 day."
   },
   {
     "ID": "FastTrackTrial",
@@ -1899,5 +1899,14 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SdoOrderDocumentPage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoOrderDocument",
+    "ListElementCode": "documentLink",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "Draft Order"
   }
 ]

@@ -10,7 +10,6 @@
     <cve>CVE-2018-1000180</cve>
     <cve>CVE-2020-25649</cve>
     <cve>CVE-2018-1000873</cve>
-    <cve>CVE-2020-15250</cve>
     <cve>CVE-2020-9488</cve>
     <cve>CVE-2017-18640</cve>
     <cve>CVE-2020-5398</cve>
@@ -34,6 +33,7 @@
     <cve>CVE-2022-33915</cve>
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
+    <cve>CVE-2021-37533</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
@@ -90,5 +90,8 @@
   </suppress>
   <suppress until="2022-10-10">
     <cve>CVE-2022-42004</cve>
+  </suppress>
+  <suppress until="2023-01-09">
+    <cve>1085297</cve>
   </suppress>
  </suppressions>
