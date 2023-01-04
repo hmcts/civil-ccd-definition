@@ -199,7 +199,7 @@
     "ID": "Bundle",
     "ListElementCode": "fileNameIdentifier",
     "FieldType": "Text",
-    "ElementLabel": "file Name Identifier",
+    "ElementLabel": "File Name Identifier",
     "SecurityClassification": "Public"
   },
   {
