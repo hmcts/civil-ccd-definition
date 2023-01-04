@@ -10,7 +10,7 @@ module.exports = {
        defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
     },
     smallClaimsMethodInPerson: {
-      id: '#smallClaimsMethodInPerson'
+      id: '#smallClaimsMethod-smallClaimsMethodInPerson'
     },
     fastTrackWitnessOfFact : {
        claimantWitnessCount: '#fastTrackWitnessOfFact_input2',
@@ -21,7 +21,7 @@ module.exports = {
       documentsId: '#fastTrackTrial_type-DOCUMENTS'
     },
     fastTrackMethodInPerson: {
-      id: '#fastTrackMethodInPerson'
+      id: '#fastTrackMethod-fastTrackMethodInPerson'
     },
     selectOrderAndHearingDetailsForSDOTask:{
       text: 'Order and hearing details',
@@ -36,7 +36,6 @@ module.exports = {
         video: '#disposalHearingMethod-disposalHearingMethodVideoConferenceHearing',
         telephone: '#disposalHearingMethod-disposalHearingMethodTelephoneHearing'
       },
-      hearingLocation: '#disposalHearingMethodInPerson',
       hearingBundleId: '#disposalHearingBundle_type',
       hearingBundleTypeDocs: '#disposalHearingBundle_type-DOCUMENTS',
       hearingBundleTypeSummary: '#disposalHearingBundle_type-SUMMARY',
@@ -50,6 +49,7 @@ module.exports = {
       await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
+      await I.click(this.fields.smallClaimsMethodInPerson.id);
     } else if (orderType == 'disposal') {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
@@ -58,6 +58,7 @@ module.exports = {
       await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
       await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
+      await I.click(this.fields.fastTrackMethodInPerson.id);
       await I.click(this.fields.fastTrackTrial_type.documentsId);
     }
     await I.clickContinue();
