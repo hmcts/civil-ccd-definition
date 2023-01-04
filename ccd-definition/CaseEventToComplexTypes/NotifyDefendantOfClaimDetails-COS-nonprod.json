@@ -108,7 +108,7 @@
     "ID": "NotifyClaimDetailsCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails1",
-    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ListElementCode": "cosUISenderStatementOfTruthLabel",
     "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
@@ -221,7 +221,7 @@
     "ID": "NotifyClaimDetailsCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "CaseFieldID": "cosNotifyClaimDetails2",
-    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ListElementCode": "cosUISenderStatementOfTruthLabel",
     "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   }
