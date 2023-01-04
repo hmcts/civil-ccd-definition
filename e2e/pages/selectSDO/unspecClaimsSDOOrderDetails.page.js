@@ -1,5 +1,7 @@
 const {I} = inject();
 
+const date = require('../../fragments/date');
+
 module.exports = {
   fields: {
     smallClaimsHearingTime: {
@@ -40,6 +42,12 @@ module.exports = {
       hearingBundleTypeDocs: '#disposalHearingBundle_type-DOCUMENTS',
       hearingBundleTypeSummary: '#disposalHearingBundle_type-SUMMARY',
       hearingBundleTypeElectronic: '#disposalHearingBundle_type-ELECTRONIC'
+    },
+    orderDetailsHearingTime: {
+      hearingTimeEstimate: {
+        thirtyMinutes: '#smallClaimsHearing_time-THIRTY_MINUTES'
+      },
+      hearingDateFromId:  'dateFrom'
     }
   },
 
@@ -49,7 +57,8 @@ module.exports = {
       await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
-      await I.click(this.fields.smallClaimsMethodInPerson.id);
+      await date.enterDate(this.fields.orderDetailsHearingTime.hearingDateFromId, 40);
+      await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
     } else if (orderType == 'disposal') {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
