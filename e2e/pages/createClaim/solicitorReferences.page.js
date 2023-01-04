@@ -12,7 +12,9 @@ module.exports = {
     await I.runAccessibilityTest();
     I.fillField(this.fields.applicantReference, 'Applicant Reference');
     I.fillField(this.fields.respondentReference, 'Respondent Reference');
+    console.log("test 1")
     await I.clickContinue();
+    console.log("test 2")
   }
 };
 

@@ -9,7 +9,8 @@ exports.config = {
     './e2e/tests/ui_tests/damages/nightly/*_test.js',
     './e2e/tests/ui_tests/lrspec/*_test.js',
     './e2e/tests/ui_tests/sdo/*_test.js',
-    './e2e/tests/ui_tests/default_judgement/*_test.js'
+    './e2e/tests/ui_tests/default_judgement/*_test.js',
+    './e2e/tests/ui_tests/case_notes/*_test.js'
   ],
   output: 'test-results/functional',
   helpers: {

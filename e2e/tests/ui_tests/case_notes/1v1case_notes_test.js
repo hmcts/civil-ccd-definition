@@ -4,9 +4,9 @@ const config = require('../../../config.js');
 const testingSupport = require('../../../api/testingSupport.js');
 let caseId;
 
-Feature('1v1 Unspec Case notes @ahsanTest');
+Feature('1v1 Unspec Case Notes');
 
-Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) => {
+Scenario('CaseNotes @create-claim @e2e-1v1-dj @e2e-wa ', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   //below amend claim documents only needed as assertion was failing on notify claims
   await api.amendClaimDocuments(config.applicantSolicitorUser);
