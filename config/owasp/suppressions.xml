@@ -98,4 +98,7 @@
   <suppress until="2022-10-10">
     <cve>CVE-2022-42004</cve>
   </suppress>
+  <suppress until="2023-01-09">
+    <cve>1085297</cve>
+  </suppress>
  </suppressions>
