@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CaseBundles",
+    "TabLabel": "Bundles",
+    "TabDisplayOrder": 12,
+    "CaseFieldID": "caseBundles",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CaseBundles",
+    "TabLabel": "Bundles",
+    "TabDisplayOrder": 12,
+    "CaseFieldID": "bundleConfiguration",
+    "TabFieldDisplayOrder": 2
+  }
+]
