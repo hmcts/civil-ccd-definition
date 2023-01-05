@@ -404,20 +404,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQHearing",
-    "PageDisplayOrder": 13,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Hearing",
-    "CaseEventFieldLabel": "Hearing",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
-    "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelHearing1",
     "PageLabel": "Respond to claim",
     "PageDisplayOrder": 13,
@@ -426,21 +412,6 @@
     "PageID": "Hearing",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQHearing",
-    "PageDisplayOrder": 13,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Hearing",
-    "CaseEventFieldLabel": "Hearing",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
-    "RetriesTimeoutURLMidEvent": 0
   },
   {
     "CaseTypeID": "CIVIL",

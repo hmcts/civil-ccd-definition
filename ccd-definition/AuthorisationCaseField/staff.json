@@ -1061,5 +1061,11 @@
     "CaseFieldID": "nextDeadline",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "CaseAccessCategory",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
