@@ -1,6 +1,20 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQHearingLRspec",
+    "Label": "Hearing",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQSmallClaimHearing",
+    "Label": "Hearing",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired",
     "Label": "Has your client asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
@@ -10,6 +24,20 @@
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimExpertSpecRequired2",
     "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimExpertSpecRequired",
+    "Label": "Has your client asked for the court's permission to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimExpertSpecRequired",
+    "Label": "Have the claimants asked for the court's permission to use an expert?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
