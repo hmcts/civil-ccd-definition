@@ -4,10 +4,10 @@ module.exports = {
 
   async uploadResponseDocuments (file) {
     await I.runAccessibilityTest();
-    await I.click("Add New");
-    await I.fillField("#documentID", "Doc 1");
-    await I.fillField("#testNote", "Test Note");
-    await I.attachFile("#FileID", file);
+    await I.click("Add new");
+    await I.fillField("#documentAndNote_0_documentName", "Doc 1");
+    await I.fillField("#documentAndNote_0_documentNote", "Test Note");
+    await I.attachFile("#documentAndNote_0_document", file);
     await I.clickContinue();
   },
 };

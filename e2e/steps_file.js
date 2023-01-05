@@ -115,6 +115,9 @@ const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
+const unspecifiedSelectCaseNote = require('./pages/addCaseNotes/selectCaseNote.js');
+const unspecifiedAddDocumentAndNotes = require('./pages/addCaseNotes/addDocumentAndNotes.js');
+
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -342,6 +345,15 @@ module.exports = function () {
         () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
         () => unspecifiedDefaultJudmentPage.verifyOrderPreview(),
         () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async judgeAddsCaseNotes() {
+      eventName = 'EVIDENCE_UPLOAD_JUDGE';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedSelectCaseNote.selectCaseNotes(),
+        () => unspecifiedAddDocumentAndNotes.uploadResponseDocuments(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Document uploaded and note added')
       ]);
     },
 

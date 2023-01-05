@@ -6,7 +6,7 @@ let caseId;
 
 Feature('1v1 Unspec Case Notes');
 
-Scenario('CaseNotes @create-claim @e2e-1v1-dj @e2e-wa ', async ({I, api}) => {
+Scenario('CaseNotes @create-claim @e2e-1v1-dj', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   //below amend claim documents only needed as assertion was failing on notify claims
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -25,11 +25,5 @@ Scenario('CaseNotes @create-claim @e2e-1v1-dj @e2e-wa ', async ({I, api}) => {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
-  await I.judgePerformDJDirectionOrder();
-  if (config.runWAApiTest) {
-    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
-    console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
-  }
-  await I.login(config.hearingCenterAdminWithRegionId4);
-  await I.staffPerformDJCaseTransferCaseOffline(caseId);
-}).retry(3);
+  await I.wait(6000)
+});

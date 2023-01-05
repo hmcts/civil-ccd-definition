@@ -20,7 +20,7 @@ module.exports = {
     ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-1858.service.core-compute-preview.internal',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-1271.service.core-compute-preview.internal',
+    civilService: 'https://civil-ccd-pr-1858.service.core-compute-preview.internal',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
   },
