@@ -36,6 +36,8 @@ const paymentReferencePage = require('./pages/createClaim/paymentReference.page'
 
 const selectDefendantSolicitorToNotifyPage = require('./pages/notifyClaim/selectDefendantSolicitorToNotify.page');
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
+const unspecifiedSelectCaseNote = require('./pages/addCaseNotes/selectCaseNote.js');
+const unspecifiedAddDocumentAndNotes = require('./pages/addCaseNotes/addDocumentAndNotes.js');
 
 const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntention.page');
 
@@ -342,6 +344,15 @@ module.exports = function () {
         () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
         () => unspecifiedDefaultJudmentPage.verifyOrderPreview(),
         () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async judgeAddsCaseNotes() {
+      eventName = 'EVIDENCE_UPLOAD_JUDGE';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedSelectCaseNote.selectCaseNotes(),
+        () => unspecifiedAddDocumentAndNotes.uploadResponseDocuments(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Document uploaded and note added')
       ]);
     },
 
