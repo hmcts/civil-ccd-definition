@@ -33,6 +33,7 @@
     <cve>CVE-2022-33915</cve>
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
+    <cve>CVE-2021-37533</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
@@ -89,5 +90,8 @@
   </suppress>
   <suppress until="2022-10-10">
     <cve>CVE-2022-42004</cve>
+  </suppress>
+  <suppress until="2023-01-09">
+    <cve>1085297</cve>
   </suppress>
  </suppressions>
