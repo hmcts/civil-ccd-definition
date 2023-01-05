@@ -97,7 +97,7 @@
     ]]></notes>
     <cve>CVE-2022-1471</cve>
   </suppress>
-  <suppress until="2023-04-01">
+  <suppress until="2023-01-09">
     <notes><![CDATA[
     codecept 3.3.7 (last at the time of writing) requires mocha 8.1.3
     which requires yargs-unparser 1.6.1
