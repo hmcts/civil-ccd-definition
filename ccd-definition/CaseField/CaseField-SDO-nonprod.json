@@ -850,7 +850,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackWitnessOfFactTitle",
-    "Label": "## Witnesses of fact",
+    "Label": "## Witnesses of Fact",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
