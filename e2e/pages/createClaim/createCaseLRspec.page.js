@@ -12,8 +12,9 @@ module.exports = {
    async createCaseSpecified(jurisdiction) {
         await I.waitForText('Reset');
         await I.waitForText('Create case');
-        await I.retryUntilExists( () => {
-          I.forceClick('Create case');
+        await I.retryUntilExists(async () => {
+          await I.forceClick('Create case');
+          await I.waitForText('Jurisdiction');
         }, `#cc-jurisdiction > option[value="${jurisdiction}"]`);
 
         await I.retryUntilExists(() => {
