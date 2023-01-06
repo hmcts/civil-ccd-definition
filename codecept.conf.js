@@ -58,6 +58,11 @@ exports.config = {
       fullPageScreenshots: true,
     },
   },
+  multiple: {
+    'parallel': {
+      'chunks': 2
+    }
+  },
   mocha: {
     bail: true,
     reporterOptions: {
