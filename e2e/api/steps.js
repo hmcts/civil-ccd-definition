@@ -1088,7 +1088,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(crea
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     createClaimData = {
       ...createClaimData,
       valid: {
@@ -1110,7 +1110,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
