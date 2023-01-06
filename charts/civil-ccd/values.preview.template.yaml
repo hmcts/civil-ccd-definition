@@ -1,8 +1,8 @@
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-1811'
     keyVaults:
       civil:
-        image: 'hmctspublic.azurecr.io/civil/service:pr-1811'
         resourceGroup: civil
         secrets:
           - civil-idam-client-secret
