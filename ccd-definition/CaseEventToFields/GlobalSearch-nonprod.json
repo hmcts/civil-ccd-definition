@@ -9,7 +9,7 @@
     "PageDisplayOrder": 37,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "uiStatementOfTruth = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -33,7 +33,7 @@
     "PageDisplayOrder": 31,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimValue = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "uiStatementOfTruth = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
