@@ -351,7 +351,7 @@ module.exports = function () {
       eventName = 'EVIDENCE_UPLOAD_JUDGE';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedSelectCaseNote.selectCaseNotes(),
-        () => unspecifiedAddDocumentAndNotes.uploadResponseDocuments(TEST_FILE_PATH),
+        () => unspecifiedAddDocumentAndNotes.addDocumentAndNotes(TEST_FILE_PATH),
         () => event.submit('Submit', 'Document uploaded and note added')
       ]);
     },
