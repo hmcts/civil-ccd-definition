@@ -1,10 +1,3 @@
 [
-  {
-    "ID": "CourtLocation",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "courtLocation",
-    "ListElementCode": "applicantPreferredCourtLocationList",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  }
+
 ]
