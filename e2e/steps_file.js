@@ -215,6 +215,7 @@ module.exports = function () {
           }
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
       }
     },
 
