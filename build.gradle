@@ -116,7 +116,7 @@ allprojects {
       }
       dependencySet(
         group: 'com.github.hmcts',
-        version: '4.1.0'
+        version: '5.0.0'
       ) {
         entry 'service-auth-provider-java-client'
       }
