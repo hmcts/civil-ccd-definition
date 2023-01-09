@@ -1062,7 +1062,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert Evidence",
     "FieldType": "FastTrackPersonalInjury",
     "SecurityClassification": "Public"
   },

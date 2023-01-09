@@ -382,7 +382,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert Evidence",
     "FieldType": "TrialPersonalInjury",
     "SecurityClassification": "Public"
   },
