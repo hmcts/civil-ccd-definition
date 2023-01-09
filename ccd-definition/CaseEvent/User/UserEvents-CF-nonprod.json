@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_CASE_FLAGS",
-    "Name": "Create case flag",
-    "Description": "Create case flag",
+    "Name": "Create case flags",
+    "Description": "Create case flags",
     "DisplayOrder": 23,
     "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
     "PostConditionState": "*",
@@ -17,8 +17,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "MANAGE_CASE_FLAGS",
-    "Name": "Manage case flag",
-    "Description": "Manage case flag",
+    "Name": "Manage case flags",
+    "Description": "Manage case flags",
     "DisplayOrder": 24,
     "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
     "PostConditionState": "*",
