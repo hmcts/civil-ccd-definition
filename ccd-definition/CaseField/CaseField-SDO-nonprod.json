@@ -15,14 +15,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimsTrack",
-    "Label": "What track are you allocating the claim to?",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ClaimsTrack",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "smallClaims",
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",

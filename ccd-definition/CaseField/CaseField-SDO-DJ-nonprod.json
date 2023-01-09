@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimsTrack",
+    "Label": "What track are you allocating the claim to?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimsTrack",
+    "SecurityClassification": "Public"
+  }
+]
