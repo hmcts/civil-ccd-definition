@@ -49,7 +49,6 @@ module.exports = {
           },
           Language: {
             applicant1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -69,6 +68,12 @@ module.exports = {
                 value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            }
+          },
+          HearingSupport: {
+            applicant1DQHearingSupport: {
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
