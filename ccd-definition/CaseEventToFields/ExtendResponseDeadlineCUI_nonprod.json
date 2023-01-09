@@ -1,0 +1,15 @@
+[
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EXTEND_RESPONSE_DEADLINE",
+    "CaseFieldID": "respondentSolicitor1AgreedDeadlineExtension",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ExtensionDate",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "RetriesTimeoutURLMidEvent": 0
+  }
+
+]

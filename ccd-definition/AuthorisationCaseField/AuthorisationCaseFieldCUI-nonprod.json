@@ -17,5 +17,17 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1AgreedDeadlineExtension",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
