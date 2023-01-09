@@ -1,4 +1,4 @@
-# civil-ccd-definition 
+# civil-ccd-definition
 
 Civil CCD Definition and E2E tests
 
@@ -47,12 +47,32 @@ To run tests with browser window open set `SHOW_BROWSER_WINDOW=true`. By default
 
 To run smoke tests enter `yarn test:smoke`.
 
-### API test 
+### API test
 
 Before running API tests, you will need the `SENDGRID_API_KEY` environment variable setup and to be running the service locally along with all containers.
 
 To run API tests enter `yarn test:api`.
 
-## License 
+### Testing in IntelliJ (Ultimate Edition)
+1) Running a test_name.js
+- Select the .js file containing the tests you want to run and modify its run configuration.
+
+- Set "Node interpreter" to: [...]\node.exe
+- Set "Node parameters" to: "[...]\civil-ccd-definition\node_modules\codeceptjs\bin\codecept.js" run --debug --verbose
+- Set "Working directory" to: "[...]\civil-ccd-definition\"
+- Set JavaScript file to: "[...]\test_name.js"
+- Set "Environment variables" to:
+- S2S_SECRET=[...];ENVIRONMENT=[...];NODE_TLS_REJECT_UNAUTHORIZED=0;SHOW_BROWSER_WINDOW=true
+
+2) Running a test from package.json
+- Run > Edit configurations > + > Node.js
+
+- Set "Node interpreter" to: [...]\node.exe
+- Set "Node parameters" to: "[...]\civil-ccd-definition\node_modules\codeceptjs\bin\codecept.js" run --grep @[test_name] --debug --verbose
+- Set "Working directory" to: "[...]\civil-ccd-definition\"
+- Set "Environment variables" to:
+- S2S_SECRET=[...];ENVIRONMENT=[...];NODE_TLS_REJECT_UNAUTHORIZED=0;SHOW_BROWSER_WINDOW=true
+
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
