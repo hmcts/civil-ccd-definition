@@ -76,7 +76,7 @@ module.exports = {
 
   async chooseCourt(mpScenario) {
     let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+    if (!isCourtListEnabled) {
       I.waitForElement(this.fields(mpScenario).oldFields.chooseCourtLocation.id);
       await I.runAccessibilityTest();
       if (mpScenario == 'ClaimantResponse') {
