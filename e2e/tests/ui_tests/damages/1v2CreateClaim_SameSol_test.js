@@ -5,6 +5,7 @@ const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('..
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const apiRequest = require('../../../api/apiRequest');
 const claimData = require('../../../fixtures/events/createClaim');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -36,11 +37,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have the sa
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
-    await waitForFinishedBusinessProcess(caseId);
-    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseId, 'paid'));
-    console.log('Service request update sent to callback URL');
-    await waitForFinishedBusinessProcess(caseId);
+    await serviceRequest.payFee(caseId());
   }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);

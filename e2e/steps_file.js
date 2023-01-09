@@ -278,6 +278,8 @@ module.exports = function () {
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
       ]);
+
+      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
 
     async notifyClaim(solicitorToNotify) {
