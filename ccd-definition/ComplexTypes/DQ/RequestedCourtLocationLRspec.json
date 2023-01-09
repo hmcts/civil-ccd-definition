@@ -1,2 +1,34 @@
 [
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "caseLocation",
+    "FieldType": "CaseLocation",
+    "ElementLabel": " ",
+    "FieldShowCondition": "responseCourtLocations = \"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "responseCourtLocations",
+    "FieldType": "DynamicList",
+    "ElementLabel": "Please select your preferred hearing court centre",
+    "HintText": "If the defendant is an individual the case will be held at the defendant's preferred court.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "responseCourtCode",
+    "FieldType": "Text",
+    "ElementLabel": "The code of your preferred County Court hearing centre",
+    "FieldShowCondition": "responseCourtLocations = \"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public",
+    "RegularExpression": "[0-9]{3}"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "FieldType": "TextArea",
+    "ElementLabel": "Briefly explain your reasons",
+    "SecurityClassification": "Public"
+  }
 ]
