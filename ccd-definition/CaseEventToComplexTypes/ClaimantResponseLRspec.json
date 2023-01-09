@@ -46,10 +46,26 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "ListElementCode": "witnessesToAppear",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "expertReportsSent",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "ListElementCode": "details.name",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -60,6 +76,15 @@
     "ListElementCode": "jointExpertSuitable",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+
   },
   {
     "ID": "Experts",
@@ -91,30 +116,6 @@
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "details.estimatedCost",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -300,6 +301,14 @@
     "CaseFieldID": "applicant1DQSmallClaimHearing",
     "ListElementCode": "smallClaimUnavailableDate.toDate",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQRequestedCourt",
+    "ListElementCode": "responseCourtLocations",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]
