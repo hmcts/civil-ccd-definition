@@ -102,10 +102,4 @@
   <suppress until="2023-05-05">
     <cve>1085318</cve>
   </suppress>
-  <suppress until="2023-05-05">
-    <cve>CVE-2021-4235</cve>
-  </suppress>
-  <suppress until="2023-05-05">
-    <cve>CVE-2022-3064</cve>
-  </suppress>
  </suppressions>
