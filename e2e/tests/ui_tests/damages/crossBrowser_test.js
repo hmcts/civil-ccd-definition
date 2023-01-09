@@ -1,8 +1,6 @@
 const config = require('../../../config.js');
 const {waitForFinishedBusinessProcess, assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
-const apiRequest = require('../../../api/apiRequest');
-const claimData = require('../../../fixtures/events/createClaim');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
