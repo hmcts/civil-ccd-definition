@@ -12,6 +12,19 @@ const respondent1 = {
   primaryAddress: buildAddress('respondent'),
   partyEmail: 'johndoe@example.com',
   partyPhone: '07898678902',
+  /* type: 'SOLE_TRADER',
+  soleTraderFirstName: 'John',
+  soleTraderLastName: 'Doe',
+  soleTraderTitle: 'Sir',
+  primaryAddress: buildAddress('respondent') */
+
+  /* type: 'COMPANY',
+  companyName: 'KGF Limited Inc',
+  primaryAddress: buildAddress('respondent') */
+
+  /* type: 'ORGANISATION',
+  organisationName: 'KGF Limited Inc',
+  primaryAddress: buildAddress('respondent') */
 };
 const respondent2 = {
   type: 'INDIVIDUAL',
@@ -21,26 +34,64 @@ const respondent2 = {
   primaryAddress: buildAddress('second respondent'),
   partyEmail: 'foo.bar@example.com',
   partyPhone: '07898678912',
+
+  /* type: 'SOLE_TRADER',
+  soleTraderFirstName: 'John',
+  soleTraderLastName: 'Doe',
+  soleTraderTitle: 'Sir',
+  primaryAddress: buildAddress('respondent') */
+
+  /* type: 'COMPANY',
+  companyName: 'RRR Limited Inc',
+  primaryAddress: buildAddress('respondent') */
+
+  /* type: 'ORGANISATION',
+  organisationName: 'RRR Limited Inc',
+  primaryAddress: buildAddress('respondent') */
 };
 const respondent1WithPartyName = {
   ...respondent1,
   partyName: 'Sir John Doe',
   partyTypeDisplayValue: 'Individual',
+  // partyTypeDisplayValue: 'Organisation',
+  // partyTypeDisplayValue: 'Sole trader',
+  // partyTypeDisplayValue: 'Company',
 };
 const respondent2WithPartyName = {
   ...respondent2,
   partyName: 'Dr Foo Bar',
   partyTypeDisplayValue: 'Individual',
+  // partyTypeDisplayValue: 'Sole trader',
+  // partyTypeDisplayValue: 'Company',
+  // partyTypeDisplayValue: 'Organisation',
 };
 const applicant1 = {
   type: 'COMPANY',
   companyName: 'Test Inc',
   primaryAddress: buildAddress('applicant')
+  /* type: 'INDIVIDUAL',
+  individualFirstName: 'Foo',
+  individualLastName: 'Bar',
+  individualTitle: 'Dr',
+  primaryAddress: buildAddress('second respondent') */
+
+  /* type: 'SOLE_TRADER',
+  soleTraderFirstName: 'krishna',
+  soleTraderLastName: 'Doe',
+  soleTraderTitle: 'Sir',
+  primaryAddress: buildAddress('respondent') */
+
+  /* type: 'ORGANISATION',
+  organisationName: 'KGF Limited Inc',
+  primaryAddress: buildAddress('respondent') */
 };
 const applicant1WithPartyName = {
   ...applicant1,
   partyName: 'Test Inc',
   partyTypeDisplayValue: 'Company',
+  // partyTypeDisplayValue: 'Sole trader',
+  // partyTypeDisplayValue: 'Individual',
+  // partyTypeDisplayValue: 'Organisation',
 };
 
 const applicant2 = {
@@ -49,12 +100,32 @@ const applicant2 = {
   individualLastName: 'Doe',
   individualTitle: 'Dr',
   primaryAddress: buildAddress('second applicant')
+
+  /* type: 'INDIVIDUAL',
+ individualFirstName: 'Foo',
+ individualLastName: 'Bar',
+ individualTitle: 'Dr',
+ primaryAddress: buildAddress('second respondent') */
+
+  /* type: 'SOLE_TRADER',
+  soleTraderFirstName: 'krishna',
+  soleTraderLastName: 'Doe',
+  soleTraderTitle: 'Sir',
+  primaryAddress: buildAddress('respondent') */
+
+  /* type: 'ORGANISATION',
+  organisationName: 'KGF Limited Inc',
+  primaryAddress: buildAddress('respondent') */
+
 };
 
 const applicant2WithPartyName = {
   ...applicant2,
   partyName: 'Dr Jane Doe',
   partyTypeDisplayValue: 'Individual',
+  // partyTypeDisplayValue: 'Sole trader',
+  // partyTypeDisplayValue: 'Company',
+  // partyTypeDisplayValue: 'Organisation',
 };
 
 const applicant1LitigationFriend = {
@@ -195,6 +266,8 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     ClaimValue: {
       claimValue: {
         statementOfValueInPennies: '3000000'
+       // statementOfValueInPennies: '300000'
+        // statementOfValueInPennies: '15000'
       }
     },
     PbaNumber: {
@@ -316,6 +389,14 @@ module.exports = {
             calculatedAmountInPence: '150000',
             code: 'FEE0209',
             version: '3'
+
+            /* calculatedAmountInPence: '11500',
+            code: 'FEE0206',
+            version: '6' */
+
+            /* calculatedAmountInPence: '3500',
+            code: 'FEE0202',
+            version: '6' */
           },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'

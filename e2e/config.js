@@ -7,13 +7,20 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
-    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
-    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
-    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
-    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
-    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+   // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
+   // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+   // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+   // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
+   // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
+   // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
+   // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+
+    /* manageCase: 'https://xui-civil-ccd-pr-1961.service.core-compute-preview.internal',
+    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-1961.service.core-compute-preview.internal',
+    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'https://civil-ccd-pr-1961.service.core-compute-preview.internal' */
 
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
@@ -113,4 +120,18 @@ module.exports = {
   djClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
   sdoJudgeSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
+
+  /* claimantSelectedCourt:'Birmingham Civil and Family Justice Centre - PRIORY COURTS, 33 BULL STREET - B4 6DS',
+  defendantSelectedCourt:'Birmingham Civil and Family Justice Centre - PRIORY COURTS, 33 BULL STREET - B4 6DS',
+  defendant2SelectedCourt: 'Birmingham Civil and Family Justice Centre - PRIORY COURTS, 33 BULL STREET - B4 6DS',
+  djClaimantSelectedCourt:'Birmingham Civil and Family Justice Centre - PRIORY COURTS, 33 BULL STREET - B4 6DS',
+  djJudgeClaimantSelectedCourt:'Birmingham Civil and Family Justice Centre - PRIORY COURTS, 33 BULL STREET - B4 6DS',
+  sdoJudgeSelectedCourt:'Birmingham Civil and Family Justice Centre - PRIORY COURTS, 33 BULL STREET - B4 6DS'
+
+  /* claimantSelectedCourt:'Blackpool Family Court - THE LAW COURTS, CIVIC CENTRE, CHAPEL STREET - FY1 5RJ',
+  defendantSelectedCourt:'Blackpool Family Court - THE LAW COURTS, CIVIC CENTRE, CHAPEL STREET - FY1 5RJ',
+  defendant2SelectedCourt: 'Blackpool Family Court - THE LAW COURTS, CIVIC CENTRE, CHAPEL STREET - FY1 5RJ',
+  djClaimantSelectedCourt:'Blackpool Family Court - THE LAW COURTS, CIVIC CENTRE, CHAPEL STREET - FY1 5RJ',
+  djJudgeClaimantSelectedCourt:'Blackpool Family Court - THE LAW COURTS, CIVIC CENTRE, CHAPEL STREET - FY1 5RJ',
+  sdoJudgeSelectedCourt:'Blackpool Family Court - THE LAW COURTS, CIVIC CENTRE, CHAPEL STREET - FY1 5RJ' */
 };
