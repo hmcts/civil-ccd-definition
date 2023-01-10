@@ -1,6 +1,6 @@
 [
   {
-    "ID": "UploadEvidenceWitness4",
+    "ID": "UploadEvidenceDocumentType",
     "ListElementCode": "typeOfDocument",
     "FieldType": "Text",
     "ElementLabel": "Type of document",
@@ -8,7 +8,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "UploadEvidenceWitness4",
+    "ID": "UploadEvidenceDocumentType",
     "ListElementCode": "documentIssuedDate",
     "FieldType": "Date",
     "ElementLabel": "Date document was issued or message was sent",
@@ -16,8 +16,8 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "UploadEvidenceWitness4",
-    "ListElementCode": "expertDocument",
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "documentUpload",
     "ElementLabel": "Upload a file",
     "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, JPG, PNG, BMG, TIF, TIFF",
     "FieldType": "Document",
