@@ -1,5 +1,4 @@
 const {I} = inject();
-const TAB_HEADER = 'div.mat-tab-label-content';
 
 module.exports = {
 
