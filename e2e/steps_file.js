@@ -116,7 +116,7 @@ const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
-const {PBAv3} = require("./fixtures/featureKeys");
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -274,8 +274,8 @@ module.exports = function () {
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
         () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
         () => claimValuePage.enterClaimValue(),
-        () => { if (!pbaV3) pbaNumberPage.selectPbaNumber() },
-        () => { if (!pbaV3) paymentReferencePage.updatePaymentReference() },
+        () => { if (!pbaV3) pbaNumberPage.selectPbaNumber(); },
+        () => { if (!pbaV3) paymentReferencePage.updatePaymentReference(); },
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),

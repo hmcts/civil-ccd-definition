@@ -21,7 +21,7 @@ const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const event = require('./fragments/event');
 const proceedPage = require('./pages/respondToDefence/proceed.page');
-const {PBAv3} = require("./fixtures/featureKeys");
+const {PBAv3} = require('./fixtures/featureKeys');
 const {checkToggleEnabled} = require('./api/testingSupport');
 
 // DQ fragments
@@ -335,8 +335,8 @@ module.exports = function () {
                  () => specInterestDateStartPage.selectInterestDateStart(),
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
-                 () => { if (!pbaV3) pbaNumberPage.selectPbaNumber() },
-                 () => { if (!pbaV3) paymentReferencePage.updatePaymentReference() },
+                 () => { if (!pbaV3) pbaNumberPage.selectPbaNumber(); },
+                 () => { if (!pbaV3) paymentReferencePage.updatePaymentReference(); },
                  () => statementOfTruth.enterNameAndRole('claim'),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
                  () => event.returnToCaseDetails(),
