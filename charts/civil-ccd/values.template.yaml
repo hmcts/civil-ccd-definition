@@ -218,9 +218,8 @@ ccd:
     java:
       imagePullPolicy: Always
       devcpuRequests: 500m
-      devmemoryRequests: 512Mi
-      devcpuLimits: 2
-      devmemoryLimits: 1Gi
+      devmemoryRequests: 2048Mi
+      devmemoryLimits: 4096Mi
       disableKeyVaults: true
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
