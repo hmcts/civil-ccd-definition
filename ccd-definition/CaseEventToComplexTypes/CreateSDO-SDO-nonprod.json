@@ -283,22 +283,6 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "date1",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
