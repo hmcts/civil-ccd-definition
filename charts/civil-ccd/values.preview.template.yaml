@@ -1,6 +1,5 @@
 civil-service:
   java:
-    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
