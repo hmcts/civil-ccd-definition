@@ -22,7 +22,7 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled} = require('../helpers/hnlFeatureHelper');
+const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500', 'FEE0442'),
@@ -484,6 +484,13 @@ module.exports = {
     // CIV-5514: remove when hnl is live
     defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
+        defendantResponseData, solicitor);
+    }
+
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
@@ -566,6 +573,13 @@ module.exports = {
 
     // CIV-5514: remove when hnl is live
     claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
+        claimantResponseData);
+    }
 
     await validateEventPages(claimantResponseData);
 
@@ -1093,7 +1107,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(crea
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     createClaimData = {
       ...createClaimData,
       valid: {
@@ -1115,7 +1129,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
@@ -1219,6 +1233,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQWitnesses'];
     delete responseBody.data['respondent1DQLanguage'];
     delete responseBody.data['respondent1DQHearing'];
+    delete responseBody.data['respondent1DQHearingSupport'];
     delete responseBody.data['respondent1DQVulnerabilityQuestions'];
     delete responseBody.data['respondent1DQDraftDirections'];
     delete responseBody.data['respondent1DQRequestedCourt'];
