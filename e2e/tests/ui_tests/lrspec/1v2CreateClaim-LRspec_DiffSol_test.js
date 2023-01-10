@@ -30,6 +30,7 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
   }
 

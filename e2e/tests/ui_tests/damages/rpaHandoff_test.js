@@ -72,6 +72,7 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
   }
 

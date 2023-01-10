@@ -21,6 +21,7 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
   }
 
