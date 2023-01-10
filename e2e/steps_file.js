@@ -127,7 +127,7 @@ const CONFIRMATION_MESSAGE = {
   offline: 'Your claim has been received and will progress offline'
 };
 
-let caseId, screenshotNumber, eventName, currentEventName;
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
@@ -202,18 +202,21 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-        await this.signOut();
-      }
-
-      await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 90);
-
-        if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-          output.log(`Signing in user: ${user.type}`);
-          await loginPage.signIn(user);
+      if (loggedInUser != user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
         }
-      }, SIGNED_IN_SELECTOR);
+        await this.retryUntilExists(async () => {
+          this.amOnPage(config.url.manageCase, 90);
+
+          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+            output.log(`Signing in user: ${user.type}`);
+            await loginPage.signIn(user);
+          }
+        }, SIGNED_IN_SELECTOR);
+        loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
+      }
     },
 
     grabCaseNumber: async function () {
@@ -497,7 +500,7 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
 
     /**
@@ -603,10 +606,9 @@ module.exports = function () {
     },
 
     async createCaseSpec(applicantType, defendantType, litigantInPerson = false, claimAmount) {
-      this.click('Create case');
+      this.forceClick('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-      await this.clickContinue();
       await this.clickContinue();
       await solicitorReferencesPage.enterReferences();
       await specPartyDetails.enterDetails('applicant1', address, applicantType);

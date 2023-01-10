@@ -11,19 +11,24 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
   },
-  goButton: 'Go',
+  goButton: '.button[type="submit"]',
 
-  start: function (event) {
-    I.selectOption(this.fields.eventDropdown, event);
-    I.click(this.goButton);
-    I.waitForElement(EVENT_TRIGGER_LOCATOR);
+  start: async function (event) {
+    await I.selectOption(this.fields.eventDropdown, event);
+    /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
+       Further investigation is required to find (hopefully) a cleaner solution
+     */
+    await I.moveCursorTo(this.goButton);
+    await I.wait(5);
+    await I.forceClick(this.goButton);
+    await I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
   async startEvent(event, caseId) {
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      this.start(event);
+      await this.start(event);
     }, locate('.govuk-heading-l'));
   },
 

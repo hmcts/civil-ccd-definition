@@ -283,22 +283,6 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "date1",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -1431,7 +1415,7 @@
     "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "e.g. The time provisionally allowed for the trial is 2 days."
+    "EventHintText": "e.g. The time allowed for this trial is 1 day."
   },
   {
     "ID": "FastTrackTrial",
