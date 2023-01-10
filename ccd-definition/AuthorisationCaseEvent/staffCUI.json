@@ -16,17 +16,5 @@
     "CaseEventID": "NOTIFY_LIP_DEFENDANT_RESPONSE_SUBMISSION",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIMANT_CUI_FOR_DEADLINE_EXTENSION",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]

@@ -122,51 +122,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIMANT_CUI_FOR_DEADLINE_EXTENSION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]

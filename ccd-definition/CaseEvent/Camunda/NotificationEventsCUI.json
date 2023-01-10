@@ -50,31 +50,5 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
-    "Name": "Email: Extension agreed",
-    "Description": "Notify claimant for defendant response deadline extension",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_CLAIMANT_CUI_FOR_DEADLINE_EXTENSION",
-    "Name": "Email: Extension agreed",
-    "Description": "Notify lip defendant for defendant response deadline extension",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
