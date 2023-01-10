@@ -1,0 +1,22 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "judge-profile",
+      "legal-adviser",
+      "admin-access",
+      "full-access",
+      "hearing-schedule-access",
+      "payment-access"
+    ],
+    "CRUD": "D"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "GS_profile",
+      "caseworker-ras-validation"
+    ],
+    "CRUD": "D"
+  }
+]
