@@ -1,0 +1,87 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseTypeLabelForSpec",
+    "Label": "${respondent1ClaimResponseTypeForSpec}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
+    "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimAdmitAllBySetDateLabel",
+    "Label": "${respondent1.partyName} admits all of the claim and said that they will pay by ${respondent1PaymentDateToStringSpec}.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AcceptFullAdmitPaymentPlanSpec",
+    "Label": "Does the claimant accept the repayment plan?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "showResponseOneVOneFlag",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ShowResponseOneVOneFlag",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimResponseDocumentSpec",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PaymentDateToStringSpec",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AcceptAdmitAmountPaidSpec",
+    "Label": "Does the claimant want to settle the claim for the £${respondToAdmittedClaimOwingAmountPounds} the defendant admitted?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AcceptPartAdmitPaymentPlanSpec",
+    "Label": "Does the claimant accept the repayment plan?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimPartAdmitImmediatelyLabel",
+    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay the £${respondToAdmittedClaimOwingAmountPounds} immediately. \n\n They must make sure the claimant has the money by ${respondent1PaymentDateToStringSpec}.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimPartAdmitBySetDateLabel",
+    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay by ${respondent1PaymentDateToStringSpec}.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ClaimPartAdmitInstalmentLabel",
+    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay in instalments. \n\n Details of the repayment plan can be found in the Defendant Response form.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]
