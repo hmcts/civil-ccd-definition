@@ -3,63 +3,17 @@
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingLengthEstimate",
-    "ElementLabel": "How long do you estimate the hearing will take?",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "HearingLengthEstimate",
-    "SecurityClassification": "Public",
+    "ListElementCode": "hearingType",
+    "ElementLabel": "Choose your preferred type of hearing",
+    "HintText": "A judge will still need to approve the hearing",
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hoursEstimateOther",
-    "ElementLabel": "Hours",
-    "FieldType": "Number",
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementsDisabledAccess",
-    "ElementLabel": "Hearing support requirements ",
-    "HintText": "Select any support that you, your client or any experts or witnesses you would require for a court hearing",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "HearingSupportRequirementsDisabledAccess",
-    "SecurityClassification": "Public",
-    "Label": "Hearing support requirements ",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementHearingLoop",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "HearingSupportRequirementHearingLoop",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementInterpreter",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementInterpreter",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementSignLanguageDropdown",
-    "ElementLabel": "Sign language",
+    "ListElementCode": "hearingTypeTelephoneHearing",
+    "ElementLabel": "Who will set up the telephone meeting?",
     "FieldType": "Text",
     "DisplayContext": "MANDATORY"
   },
@@ -67,40 +21,57 @@
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementLanguage",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "HearingSupportRequirementLanguage",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsFieldDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementLanguageDropdown",
-    "ElementLabel": "Language",
-    "FieldType": "Text",
+    "ListElementCode": "hearingTemporaryLocation",
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementOther",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementOther",
+    "ListElementCode": "hearingPreferredTelephoneNumber1",
+    "ElementLabel": "Preferred telephone number",
+    "FieldType": "PhoneUK",
     "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingSupportRequirementOtherDropdown",
-    "ElementLabel": "Support needed",
-    "FieldType": "TextArea",
+    "ListElementCode": "hearingPreferredEmail",
+    "ElementLabel": "Preferred email",
+    "FieldType": "Email",
+    "SecurityClassification": "Public",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingUnavailableDates",
+    "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingDates",
+    "ElementLabel": " ",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingDates.hearingUnavailableFrom",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingDates.hearingUnavailableUntil",
     "DisplayContext": "MANDATORY"
   }
 ]
