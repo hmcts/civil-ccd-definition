@@ -80,7 +80,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         respondentSolicitor1Reference: 'Respondent reference'
       }
     },
-    ClaimantSolicitorOrganisation: {
+    ClaimantSolicitorOrg: {
       applicant1OrganisationPolicy: {
         OrgPolicyReference: null,
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
