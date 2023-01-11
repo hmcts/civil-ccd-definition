@@ -1631,15 +1631,15 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -1948,6 +1948,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
@@ -1955,9 +1957,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
