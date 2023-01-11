@@ -71,8 +71,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Publish": "Y",
-    "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

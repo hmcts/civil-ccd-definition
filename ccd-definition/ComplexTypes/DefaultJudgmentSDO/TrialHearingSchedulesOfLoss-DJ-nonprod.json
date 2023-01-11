@@ -33,19 +33,5 @@
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "TrialHearingSchedulesOfLossDJ",
-    "ListElementCode": "input4",
-    "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "TrialHearingSchedulesOfLossDJ",
-    "ListElementCode": "date3",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
   }
 ]
