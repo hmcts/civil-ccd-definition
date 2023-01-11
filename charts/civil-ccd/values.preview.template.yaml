@@ -29,26 +29,26 @@ civil-service:
 idam-pr:
   redirect_uris:
     XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
+      - https://xui-${SERVICE_NAME}.preview.platform.hmcts.net/oauth2/callback
 
 civil-general-applications:
   enabled: true
 xui-webapp:
   nodejs:
-    ingressHost: xui-${SERVICE_FQDN}
+    ingressHost: xui-${SERVICE_NAME}.preview.platform.hmcts.net
 ccd:
   ccd-api-gateway-web:
     nodejs:
-      ingressHost: gateway-${SERVICE_FQDN}
+      ingressHost: gateway-${SERVICE_NAME}.preview.platform.hmcts.net
   ccd-data-store-api:
     java:
       environment:
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
-      ingressHost: ccd-data-store-api-${SERVICE_FQDN}
+      ingressHost: ccd-data-store-api-${SERVICE_NAME}.preview.platform.hmcts.net
   ccd-definition-store-api:
     java:
-      ingressHost: ccd-definition-store-${SERVICE_FQDN}
+      ingressHost: ccd-definition-store-${SERVICE_NAME}.preview.platform.hmcts.net
 camunda-bpm:
   java:
-    ingressHost: camunda-${SERVICE_FQDN}
+    ingressHost: camunda-${SERVICE_NAME}.preview.platform.hmcts.net
