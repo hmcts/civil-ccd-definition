@@ -5,5 +5,53 @@
     "Label": "Launch the Flags screen",
     "FieldType": "FlagLauncher",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitorWitnesses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DQPartyFlagStructure",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitorExperts",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DQPartyFlagStructure",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1Witnesses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DQPartyFlagStructure",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1Experts",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DQPartyFlagStructure",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2Witnesses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DQPartyFlagStructure",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor2Experts",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DQPartyFlagStructure",
+    "SecurityClassification": "Public"
   }
 ]
