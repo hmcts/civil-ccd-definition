@@ -38,16 +38,16 @@ xui-webapp:
 ccd:
   ccd-api-gateway-web:
     nodejs:
-      ingressHost: civil-ccd-gateway-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ccd-gateway-staging-aat.aat.platform.hmcts.net
   ccd-data-store-api:
     java:
-      ingressHost: civil-ccd-data-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
   ccd-definition-store-api:
     java:
-      ingressHost: civil-ccd-definition-store-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
   ccd-user-profile-api:
     java:
-      ingressHost: civil-ccd-xui-staging-aat.service.core-compute-aat.internal
+      ingressHost: civil-ccd-xui-staging-aat.aat.platform.hmcts.net
 camunda-bpm:
   java:
-    ingressHost: civil-ccd-camunda-staging-aat.service.core-compute-aat.internal
+    ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
