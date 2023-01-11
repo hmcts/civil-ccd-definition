@@ -1369,22 +1369,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "FastTrackSchedulesOfLoss",
-  "CaseEventID": "CREATE_SDO",
-  "CaseFieldID": "fastTrackSchedulesOfLoss",
-  "ListElementCode": "input4",
-  "FieldDisplayOrder": 7,
-  "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackSchedulesOfLoss",
-    "ListElementCode": "date3",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "FastTrackCosts",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCosts",
