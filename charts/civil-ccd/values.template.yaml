@@ -215,9 +215,10 @@ ccd:
       ingressIP: ${INGRESS_IP}
   ccd-data-store-api:
     java:
-      replicas: 1
       imagePullPolicy: Always
       devcpuRequests: 500m
+      devmemoryRequests: 2048Mi
+      devmemoryLimits: 4096Mi
       disableKeyVaults: true
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
