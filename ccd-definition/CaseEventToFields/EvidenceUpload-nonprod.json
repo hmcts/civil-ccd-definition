@@ -789,6 +789,7 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition":"disclosureSelectionEvidenceRes CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\" AND caseTypeFlag != \"RespondentTwoFields\""
   },
   {
