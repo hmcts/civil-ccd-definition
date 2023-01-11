@@ -1,10 +1,6 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-const testingSupport = require('../../../api/testingSupport.js');
-const {checkToggleEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 let caseId;
 
 Feature('1v1 Unspec defaultJudgement');
@@ -12,12 +8,6 @@ Feature('1v1 Unspec defaultJudgement');
 Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.payFee(caseId);
-  }
 
   //below amend claim documents only needed as assertion was failing on notify claims
   await api.amendClaimDocuments(config.applicantSolicitorUser);

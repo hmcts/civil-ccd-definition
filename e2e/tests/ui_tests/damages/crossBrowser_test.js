@@ -32,6 +32,7 @@ Scenario('Full end-to-end journey', async ({I}) => {
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
   }
 

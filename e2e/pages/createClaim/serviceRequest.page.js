@@ -35,5 +35,14 @@ module.exports = {
     await I.waitForText('Payment successful');
     I.wait(5);
     I.click('View service requests');
+  },
+
+  async openServiceRequestTab() {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
+      await I.click(locate('div.mat-tab-label-content').withText('Service Request'));
+      await I.wait(10);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+    }, urlBefore);
   }
 };

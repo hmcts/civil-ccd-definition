@@ -22,6 +22,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
   }
 

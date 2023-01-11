@@ -33,6 +33,7 @@ Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant'
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
   }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
