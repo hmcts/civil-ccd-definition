@@ -128,4 +128,11 @@
     <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
     <vulnerabilityName>1085297</vulnerabilityName>
   </suppress>
- </suppressions>
+  <suppress until="2023-03-01">
+    <notes><![CDATA[
+   file name: debug:2.6.9
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/debug@.*$</packageUrl>
+    <vulnerabilityName>1087958</vulnerabilityName>
+  </suppress>
+</suppressions>
