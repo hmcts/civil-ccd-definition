@@ -82,7 +82,6 @@ module.exports = {
     },
     Language: {
       respondent1DQLanguage: {
-        evidence: 'WELSH',
         court: 'WELSH',
         documents: 'WELSH'
       }
@@ -122,7 +121,12 @@ module.exports = {
         requestHearingAtSpecificCourt: 'Yes'
       }
     },
-    HearingSupport: {},
+    HearingSupport: {
+      respondent1DQHearingSupport: {
+        supportRequirements: 'Yes',
+        supportRequirementsAdditional: 'Additional support reasons'
+      }
+    },
     VulnerabilityQuestions: {
       respondent1DQVulnerabilityQuestions: {
         vulnerabilityAdjustmentsRequired: 'Yes',
