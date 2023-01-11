@@ -53,7 +53,7 @@ civil-general-applications:
 civil-service:
   java:
     imagePullPolicy: Always
-    ingressHost: ${SERVICE_FQDN}
+    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -77,7 +77,7 @@ civil-service:
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
     environment:
-      PAYMENTS_CALLBACK_URL: http://${SERVICE_FQDN}/service-request-update
+      PAYMENTS_CALLBACK_URL: https://${SERVICE_FQDN}/service-request-update
       TESTING_SUPPORT_ENABLED: true
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       CMC_DB_HOST: "{{ .Values.postgresql.releaseNameOverride}}"
@@ -216,9 +216,10 @@ ccd:
       ingressIP: ${INGRESS_IP}
   ccd-data-store-api:
     java:
-      replicas: 1
       imagePullPolicy: Always
       devcpuRequests: 500m
+      devmemoryRequests: 2048Mi
+      devmemoryLimits: 4096Mi
       disableKeyVaults: true
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false

@@ -128,4 +128,11 @@
     <cve>CVE-2021-4235</cve>
     <cve>CVE-2022-3064</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: flat:4.1.1
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
+    <vulnerabilityName>1085297</vulnerabilityName>
+  </suppress>
  </suppressions>
