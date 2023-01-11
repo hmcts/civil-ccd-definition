@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "Flags",
+    "ListElementCode": "partyName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Flags",
+    "ListElementCode": "roleOnCase",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Flags",
+    "ListElementCode": "details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "FlagDetail",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

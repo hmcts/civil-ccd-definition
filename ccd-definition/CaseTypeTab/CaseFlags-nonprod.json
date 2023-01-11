@@ -1,0 +1,46 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "flagLauncher",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "caseFlags",
+    "TabFieldDisplayOrder": 2,
+    "FieldShowCondition": "flagLauncher = \"Do not show in UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "applicant1",
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "flagLauncher = \"Do not show in UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "respondent1",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "flagLauncher = \"Do not show in UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "applicant1LitigationFriend",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "flagLauncher = \"Do not show in UI\""
+  }
+]
