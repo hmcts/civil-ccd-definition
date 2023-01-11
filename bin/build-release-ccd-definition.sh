@@ -11,13 +11,13 @@ if [ ${environment} == preview ]; then
    #excludedFilenamePatterns="-e *-prod.json,*-SDO-nonprod.json,*-base-nonprod.json"
    #for testing ga enhancements please remove *-GAR2GAspec-nonprod.json which are not required for release 1
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*-GAR2GAspec-nonprod.json,*-shuttered.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*-GAR2GAspec-nonprod.json,*CUI-nonprod.json,*-shuttered.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*-HNL-nonprod.json,*CUI.json,*-unshuttered.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-unshuttered.json"
 else
-  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-shuttered.json"
+  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*DJ.json,*DJspec.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-shuttered.json"
 fi
 
 root_dir=$(realpath $(dirname ${0})/..)
