@@ -144,8 +144,6 @@ module.exports = {
     }
     await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
       null, 'Case data validation failed');
-
-    await waitForFinishedBusinessProcess(caseId);
     const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
@@ -161,6 +159,8 @@ module.exports = {
         body: 'Your claim will not be issued until payment is confirmed.'
       });
     }
+
+    await waitForFinishedBusinessProcess(caseId);
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
