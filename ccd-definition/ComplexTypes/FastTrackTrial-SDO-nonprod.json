@@ -59,7 +59,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "label2",
     "FieldType": "Label",
-    "ElementLabel": "#### Select bundle type",
+    "ElementLabel": "#### Bundle Type",
     "SecurityClassification": "Public"
   },
   {
