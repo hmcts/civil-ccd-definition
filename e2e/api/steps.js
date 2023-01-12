@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement, buildAddress} = require('./dataHelper');
+const {listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -19,10 +19,17 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const sdoTracks = require('../fixtures/events/createSDO.js');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
-  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
+const {
+  checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
+  checkCertificateOfServiceIsEnabled
+} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {
+  removeHNLFieldsFromUnspecClaimData,
+  replaceDQFieldsIfHNLFlagIsDisabled,
+  replaceFieldsIfHNLToggleIsOffForDefendantResponse,
+  replaceFieldsIfHNLToggleIsOffForClaimantResponse
+} = require('../helpers/hnlFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500', 'FEE0442'),
@@ -139,14 +146,14 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let createClaimData = claimData | data.CREATE_CLAIM(mpScenario);
+    let createClaimData = claimData || data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -189,7 +196,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
 
     let createClaimData;
-    switch (mpScenario){
+    switch (mpScenario) {
       case 'ONE_V_ONE':
         createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
         break;
@@ -206,7 +213,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -218,7 +225,7 @@ module.exports = {
     console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
     console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: isCertificateOfServiceEnabled ? 'Your claim has been received':
+      header: isCertificateOfServiceEnabled ? 'Your claim has been received' :
         'Your claim has been received and will progress offline',
       body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
@@ -244,7 +251,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -338,28 +345,28 @@ module.exports = {
   notifyClaimLip: async (user, multipartyScenario) => {
     let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
 
-      eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
-      mpScenario = multipartyScenario;
+    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
+    mpScenario = multipartyScenario;
 
-      await apiRequest.setupTokens(user);
+    await apiRequest.setupTokens(user);
 
-    if(isCertificateOfServiceEnabled) {
+    if (isCertificateOfServiceEnabled) {
 
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
       await validateEventPages(data[eventName]);
-      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
+      returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
-      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true)};
-      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+      } else if (mpScenario === 'ONE_V_TWO_LIPS') {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false)};
       } else {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false)};
       }
-      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_CASE_DETAILS_NOTIFICATION', {
+      await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
         header: 'Certificate of Service',
         body: 'You must serve the claim details and'
       });
@@ -406,20 +413,20 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-    if(isCertificateOfServiceEnabled) {
+    if (isCertificateOfServiceEnabled) {
 
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
       await validateEventPages(data[eventName]);
-      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
-      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
+      if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
         returnedCaseData = {};
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true)};
         const document = await testingSupport.uploadDocument();
         returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
-      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+      } else if (mpScenario === 'ONE_V_TWO_LIPS') {
         returnedCaseData = {};
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true), ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
         const document = await testingSupport.uploadDocument();
@@ -430,7 +437,7 @@ module.exports = {
         const document = await testingSupport.uploadDocument();
         returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
       }
-      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: 'Certificate of Service',
         body: 'The defendant(s) must'
       });
@@ -586,7 +593,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
         defendantResponseData, solicitor);
     }
@@ -621,7 +628,7 @@ module.exports = {
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
     let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(isHNLEnabled){
+    if (isHNLEnabled) {
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
     }
@@ -676,7 +683,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
         claimantResponseData);
     }
@@ -953,8 +960,14 @@ const assertValidData = async (data, pageId, solicitor) => {
     // sometimes difference may be because of decimals .0, not an actual difference
     caseData.drawDirectionsOrder.judgementSum = responseBody.data.drawDirectionsOrder.judgementSum;
   }
+  if (eventName === 'CREATE_SDO'
+    && pageId === 'ClaimsTrack'
+    && !(responseBody.data.disposalHearingSchedulesOfLoss)) {
+    // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+    delete caseData.disposalHearingSchedulesOfLoss;
+  }
 
-  if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
+  if (!isHNLEnabled && eventName === 'CREATE_CLAIM') {
     caseData = replaceLitigationFriendFields(caseData);
   }
 
@@ -1108,13 +1121,13 @@ function addMidEventFields(pageId, responseBody, instanceData) {
   let midEventData;
   let calculated;
 
-  if (eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE') {
-    midEventData = data[eventName](mpScenario).midEventData[pageId];
-  } else if (eventName === 'CREATE_SDO' && instanceData) {
+  if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
     if (instanceData.calculated) {
       calculated = instanceData.calculated[pageId];
     }
+  } else if (eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE') {
+    midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];
   }
@@ -1193,10 +1206,10 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
 
     if (claimantLitigationPage) {
       const updated = replaceLitigationFriendFields(claimantLitigationPage);
-      if(claimantLitigationPage.applicant1LitigationFriend) {
+      if (claimantLitigationPage.applicant1LitigationFriend) {
         claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
       }
-      if(claimantLitigationPage.applicant2LitigationFriend) {
+      if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
       }
     }
