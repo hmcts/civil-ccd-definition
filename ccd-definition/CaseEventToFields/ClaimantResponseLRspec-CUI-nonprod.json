@@ -382,7 +382,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentProposedRepayment",
-    "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec=\"No\"",
+    "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec=\"No\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"No\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
