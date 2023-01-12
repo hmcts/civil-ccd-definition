@@ -131,8 +131,6 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
-    steps.writeFile(file: 'testing.txt', text: 'Just checking if it picks up changes')
-    steps.archiveArtifacts artifacts: "testing.txt"
     archiveCoreCaseDataDefinitions()
   }
 
