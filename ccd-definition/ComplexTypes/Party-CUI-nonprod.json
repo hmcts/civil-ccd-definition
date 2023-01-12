@@ -9,7 +9,7 @@
   {
     "ID": "Party",
     "ListElementCode": "partyPhone",
-    "FieldType": "PhoneUK",
+    "FieldType": "Text",
     "ElementLabel": "Phone",
     "SecurityClassification": "Public"
   }
