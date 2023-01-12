@@ -16,15 +16,9 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
-      "caseworker-approver",
-      "caseworker-caa",
-      "caseworker-civil-systemupdate"
+      "GS_profile",
+      "caseworker-ras-validation"
     ],
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
 ]
