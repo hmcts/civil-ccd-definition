@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@d6c68b38d0121792e29e7b82668258b6211765e3")
+@Library("Infrastructure@features/CIV-6643-save-pods-logs-on-functional-tests-completion")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "java"
