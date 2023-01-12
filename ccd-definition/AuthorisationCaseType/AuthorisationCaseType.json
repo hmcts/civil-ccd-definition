@@ -3,7 +3,13 @@
     "CaseTypeID": "CIVIL",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "judge-profile",
+      "legal-adviser",
+      "admin-access",
+      "full-access",
+      "hearing-schedule-access",
+      "payment-access"
     ],
     "CRUD": "CRU"
   },
