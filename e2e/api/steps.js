@@ -21,6 +21,7 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {assertFlagsStructureIsCreatedForExpertsAndWitnessess} = require('../helpers/assertions/caseFlagsAssertions');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -534,6 +535,15 @@ module.exports = {
 
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
+
+    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertFlagsStructureIsCreatedForExpertsAndWitnessess(caseId, 'respondent1');
+      if (solicitor === 'solicitorTwo'){
+        await assertFlagsStructureIsCreatedForExpertsAndWitnessess(caseId, 'respondent1');
+      }
+    }
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
