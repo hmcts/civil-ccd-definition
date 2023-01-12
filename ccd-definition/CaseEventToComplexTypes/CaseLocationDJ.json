@@ -4,7 +4,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "caseManagementLocation",
     "ListElementCode": "region",
-    "ElementLabel": " ",
+    "ElementLabel": "Region ",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -12,7 +12,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "caseManagementLocation",
     "ListElementCode": "baseLocation",
-    "ElementLabel": " ",
+    "ElementLabel": "Base Location ",
     "FieldType": "Text",
     "DisplayContext": "OPTIONAL"
   }
