@@ -98,13 +98,48 @@
   <suppress until="2022-10-10">
     <cve>CVE-2022-42004</cve>
   </suppress>
+  <suppress until="2023-02-01">
+    <notes><![CDATA[
+    Undergoing reanalysis on Jan 1st 2023
+    ]]></notes>
+    <cve>CVE-2022-1471</cve>
+  </suppress>
   <suppress until="2023-01-09">
-    <cve>1085297</cve>
+    <notes><![CDATA[
+    codecept 3.3.7 (last at the time of writing) requires mocha 8.1.3
+    which requires yargs-unparser 1.6.1
+    which requires flat ^4.1.0
+    which gets resolved to 4.1.1.
+    Up to (and including) flat 5.0 this vulnerability is active.
+    ]]></notes>
+    <vulnerabilityName>1085297</vulnerabilityName>
   </suppress>
   <suppress until="2023-05-05">
     <cve>CVE-2021-4277</cve>
+    <cve>CVE-2022-3064</cve>
+    <cve>CVE-2021-4235</cve>
   </suppress>
   <suppress until="2023-05-05">
     <cve>1085318</cve>
+    <cve>CVE-2022-3064</cve>
+    <cve>CVE-2021-4235</cve>
   </suppress>
- </suppressions>
+  <suppress>
+    <cve>CVE-2021-4235</cve>
+    <cve>CVE-2022-3064</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: flat:4.1.1
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
+    <vulnerabilityName>1085297</vulnerabilityName>
+  </suppress>
+  <suppress until="2023-03-01">
+    <notes><![CDATA[
+   file name: debug:2.6.9
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/debug@.*$</packageUrl>
+    <vulnerabilityName>1087958</vulnerabilityName>
+  </suppress>
+</suppressions>

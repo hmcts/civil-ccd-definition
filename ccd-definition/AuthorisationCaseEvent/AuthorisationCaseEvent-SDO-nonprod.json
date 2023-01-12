@@ -94,8 +94,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
