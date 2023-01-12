@@ -14,6 +14,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {checkToggleEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
+const {assertFlagsInitialisedAfterCreateClaim} = require("../helpers/assertions/caseFlagsAssertions");
 
 let caseId, eventName;
 let caseData = {};
@@ -113,6 +114,7 @@ module.exports = {
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     await waitForFinishedBusinessProcess(caseId);
+    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 

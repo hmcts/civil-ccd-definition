@@ -18,6 +18,7 @@ const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
+const {assertFlagsInitialisedAfterCreateClaim} = require("../helpers/assertions/caseFlagsAssertions");
 
 let caseId, eventName;
 let caseData = {};
@@ -137,6 +138,7 @@ module.exports = {
         await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
     await waitForFinishedBusinessProcess(caseId);
+    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 

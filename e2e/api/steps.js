@@ -21,6 +21,7 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require("../helpers/assertions/caseFlagsAssertions");
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -150,6 +151,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
+    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -619,19 +621,22 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
   },
 
-  //TODO this method is not used in api tests
-  addDefendantLitigationFriend: async () => {
+  addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
+    await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
-    assertContainsPopulatedFields(returnedCaseData);
+    solicitorSetup(solicitor);
+    assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
-    await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND);
-    await assertSubmittedEvent('ADD_DEFENDANT_LITIGATION_FRIEND', {
-      header: 'You have added litigation friend details',
-      body: '<br />'
+    await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario]);
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: 'You have added litigation friend details'
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId)
   },
 
   moveCaseToCaseman: async (user) => {
@@ -856,12 +861,15 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if(submittedCallbackResponseContains.body) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 
   if (eventName === 'CREATE_CLAIM') {
     caseId = responseBody.id;
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
+    console.log(`LAZY LINK: http://localhost:3333/cases/case-details/${caseId}#Summary`);
     console.log('Case created: ' + caseId);
   }
 };
