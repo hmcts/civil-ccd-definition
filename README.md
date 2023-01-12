@@ -11,7 +11,7 @@ Civil CCD Definition and E2E tests
 
 ### Dependencies
 
-The project is dependent on other Civil repositories:
+The project is dependent on other  Civil repositories:
 
 - [civil-service](https://github.com/hmcts/civil-service)
 - [civil-camunda-bpmn-definition](https://github.com/hmcts/civil-camunda-bpmn-definition)
