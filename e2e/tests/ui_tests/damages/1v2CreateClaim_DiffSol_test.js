@@ -116,6 +116,18 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
+// ToDo: Refactor to trigger create case flags event
+Scenario.skip('Add case flags', async ({I}) => {
+  await I.login(config.adminUser);
+  // await I.createCaseFlags();
+  await I.validateCaseFlags([
+    { partyName: 'Example applicant1 company', details: [] },
+    { partyName: 'Example respondent1 company', details: [] },
+    { partyName: 'Example respondent2 company', details: [] },
+    { partyName: 'John Smith', details: [] }
+  ])
+}).retry(3);
+
 Scenario('Judge triggers SDO', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.judgeUserWithRegionId1);

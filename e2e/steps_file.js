@@ -733,6 +733,25 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
-    }
+    },
+
+    async createCaseFlags(mpScenario = 'ONE_V_ONE') {
+      eventName = 'Create case flags';
+      await this.triggerStepsWithScreenshot([
+        // ToDo trigger create case flags event
+        // () => caseViewPage.startEvent(eventName, caseId),
+        // () => event.submit('', '')
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async validateCaseFlags(caseFlags) {
+      eventName = '';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.selectCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
   });
 };

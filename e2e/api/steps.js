@@ -18,7 +18,8 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
-  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
+  checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
+} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require("../helpers/assertions/caseFlagsAssertions");
@@ -151,7 +152,9 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -636,7 +639,10 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId)
+
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId)
+    }
   },
 
   moveCaseToCaseman: async (user) => {

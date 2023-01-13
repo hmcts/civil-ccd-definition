@@ -5,8 +5,12 @@ const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
 module.exports = {
 
+  components: {
+    caseFlags: 'ccd-field-read'
+  },
   tabs: {
-    history: 'History'
+    history: 'History',
+    caseFlags: 'Case Flags'
   },
   fields: {
     eventDropdown: '#next-step',
@@ -41,5 +45,26 @@ module.exports = {
   async assertEventsAvailable(events) {
     await I.waitForElement(this.fields.eventDropdown);
     events.forEach(event => I.see(event, this.fields.eventDropdown));
+  },
+
+  async selectCaseFlagsTab(caseId) {
+    await I.navigateToCaseDetails(caseId);
+    const xpath = '//div[contains(text(), \'Case Flags\')]';
+    await I.waitForClickable(xpath);
+    await I.click(xpath);
+    await I.waitForElement(this.components.caseFlags);
+  },
+
+  async assertCaseFlags(caseFlags) {
+    caseFlags.forEach(({partyName, details}) => {
+      I.see(partyName, this.components.caseFlags)
+      details.forEach(({name, comments, creationDate, lastModified, status}) => {
+        I.see(name, this.components.caseFlags)
+        I.see(comments, this.components.caseFlags)
+        I.see(creationDate, this.components.caseFlags)
+        I.see(lastModified, this.components.caseFlags)
+        I.see(status, this.components.caseFlags)
+      })
+    })
   }
 };

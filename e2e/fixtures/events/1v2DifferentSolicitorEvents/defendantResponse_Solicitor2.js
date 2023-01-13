@@ -2,18 +2,7 @@ const {date, element, buildAddress, listElement} = require('../../../api/dataHel
 
 module.exports = {
   valid: {
-    ConfirmDetails: {
-      respondent2: {
-        type: 'INDIVIDUAL',
-        individualFirstName: 'Foo',
-        individualLastName: 'Bar',
-        individualTitle: 'Dr',
-        primaryAddress: buildAddress('second respondent'),
-        individualDateOfBirth: date(-1),
-        partyName: 'Dr Foo Bar',
-        partyTypeDisplayValue: 'Individual',
-      }
-    },
+    ConfirmDetails: {},
     RespondentResponseType: {
       respondent2ClaimResponseType: 'FULL_DEFENCE',
       multiPartyResponseTypeFlags: 'FULL_DEFENCE'
