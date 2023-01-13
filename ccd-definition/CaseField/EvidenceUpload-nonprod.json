@@ -227,9 +227,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "documentDisclosureList",
     "Label": "Disclosure list",
-    "HintText": "Upload a file",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -308,36 +307,32 @@
     "CaseTypeID": "CIVIL",
     "ID": "documentCaseSummary",
     "Label": "Case summary",
-    "HintText": "Upload a file",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentSkeletonArgument",
     "Label": "Skeleton argument",
-    "HintText": "Upload a file",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentAuthorities",
     "Label": "Authorities",
-    "HintText": "Upload a file",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentCosts",
     "Label": "Costs",
-    "HintText": "Upload a file",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
