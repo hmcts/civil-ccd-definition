@@ -76,6 +76,7 @@ civil-service:
           - launch-darkly-sdk-key
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
+          - notification-caseworker-spec-receiver
     environment:
       PAYMENTS_CALLBACK_URL: http://${SERVICE_FQDN}/service-request-update
       TESTING_SUPPORT_ENABLED: true
