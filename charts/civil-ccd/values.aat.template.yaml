@@ -2,6 +2,7 @@ civil-general-applications:
   enabled: false
 civil-service:
   java:
+    ingressHost: ${SERVICE_NAME}.aat.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
