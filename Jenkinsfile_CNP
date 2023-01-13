@@ -165,7 +165,7 @@ withPipeline(type, product, component) {
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"
+    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.service.core-compute-aat.internal"
     sh """
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
@@ -174,7 +174,7 @@ withPipeline(type, product, component) {
       ./bin/import-bpmn-diagram.sh .
     """
     env.URL="https://civil-ccd-xui-staging.aat.platform.hmcts.net"
-    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"
+    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.service.core-compute-aat.internal"
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-staging.xlsx"
