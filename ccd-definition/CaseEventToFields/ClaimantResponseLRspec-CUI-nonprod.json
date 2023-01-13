@@ -270,7 +270,6 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
   {
@@ -281,7 +280,6 @@
     "PageFieldDisplayOrder": 18,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
   },
@@ -523,6 +521,7 @@
     "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\" "
   },
   {
+
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",

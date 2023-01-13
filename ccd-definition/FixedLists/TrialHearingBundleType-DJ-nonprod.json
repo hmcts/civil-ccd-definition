@@ -1,6 +1,6 @@
 [
   {
-    "ID": "FastTrackTrialBundleType",
+    "ID": "TrialHearingBundleType",
     "ListElementCode": "DOCUMENTS",
     "ListElement": "An indexed electronic bundle of documents for trial, with each page clearly numbered including a case summary limited to 500 words",
     "DisplayOrder": 1
