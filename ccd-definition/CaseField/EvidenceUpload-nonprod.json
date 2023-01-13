@@ -244,7 +244,7 @@
     "ID": "documentWitnessStatement",
     "Label": "Witness statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness1",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -252,7 +252,7 @@
     "ID": "documentWitnessSummary",
     "Label": "Witness summary",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness2",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -260,7 +260,7 @@
     "ID": "documentHearsayNotice",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness3",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -276,7 +276,7 @@
     "ID": "documentExpertReport",
     "Label": "Expert's report",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert1",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -284,7 +284,7 @@
     "ID": "documentJointStatement",
     "Label": "Joint statement of experts",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert2",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -292,7 +292,7 @@
     "ID": "documentQuestions",
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert3",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -300,7 +300,7 @@
     "ID": "documentAnswers",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert4",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -539,7 +539,7 @@
     "ID": "documentWitnessStatementRes",
     "Label": "Witness statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness1",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -547,7 +547,7 @@
     "ID": "documentWitnessSummaryRes",
     "Label": "Witness summary",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness2",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -555,7 +555,7 @@
     "ID": "documentHearsayNoticeRes",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness3",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -571,7 +571,7 @@
     "ID": "documentExpertReportRes",
     "Label": "Expert's report",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert1",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -579,7 +579,7 @@
     "ID": "documentJointStatementRes",
     "Label": "Joint statement of experts",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert2",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -587,7 +587,7 @@
     "ID": "documentQuestionsRes",
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert3",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -595,7 +595,7 @@
     "ID": "documentAnswersRes",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert4",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -659,7 +659,7 @@
     "ID": "documentWitnessStatementRes2",
     "Label": "Witness statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness1",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -667,7 +667,7 @@
     "ID": "documentWitnessSummaryRes2",
     "Label": "Witness summary",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness2",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -675,7 +675,7 @@
     "ID": "documentHearsayNoticeRes2",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceWitness3",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -691,7 +691,7 @@
     "ID": "documentExpertReportRes2",
     "Label": "Expert's report",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert1",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -699,7 +699,7 @@
     "ID": "documentJointStatementRes2",
     "Label": "Joint statement of experts",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert2",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -707,7 +707,7 @@
     "ID": "documentQuestionsRes2",
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert3",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {
@@ -715,7 +715,7 @@
     "ID": "documentAnswersRes2",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceExpert4",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
     "SecurityClassification": "Public"
   },
   {

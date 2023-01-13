@@ -51,7 +51,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentWitnessStatement",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -67,7 +67,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentWitnessSummary",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -91,7 +91,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentHearsayNotice",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -147,7 +147,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentExpertReport",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -155,7 +155,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentJointStatement",
-    "ListElementCode": "expertOptionName",
+    "ListElementCode": "expertOptionName2",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -179,7 +179,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentJointStatement",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -187,7 +187,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentQuestions",
-    "ListElementCode": "expertOptionName",
+    "ListElementCode": "expertOptionName3",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -219,7 +219,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentQuestions",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -259,7 +259,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentAnswers",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -299,14 +299,6 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "documentEvidenceForTrial",
-    "ListElementCode": "documentUpload",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "CaseProgression",
-    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
-    "CaseFieldID": "documentEvidenceForTrial",
     "ListElementCode": "typeOfDocument",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -317,6 +309,14 @@
     "CaseFieldID": "documentEvidenceForTrial",
     "ListElementCode": "documentIssuedDate",
     "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "CaseProgression",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentEvidenceForTrial",
+    "ListElementCode": "documentUpload",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -371,7 +371,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentWitnessStatementRes",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -387,7 +387,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentWitnessSummaryRes",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -411,7 +411,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentHearsayNoticeRes",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -467,7 +467,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentExpertReportRes",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -475,7 +475,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentJointStatementRes",
-    "ListElementCode": "expertOptionName",
+    "ListElementCode": "expertOptionName2",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -499,7 +499,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentJointStatementRes",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -507,7 +507,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentQuestionsRes",
-    "ListElementCode": "expertOptionName",
+    "ListElementCode": "expertOptionName3",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -539,7 +539,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentQuestionsRes",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -579,7 +579,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentAnswersRes",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -691,7 +691,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentWitnessStatementRes2",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -707,7 +707,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentWitnessSummaryRes2",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -731,7 +731,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentHearsayNoticeRes2",
-    "ListElementCode": "witnessOptionDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -787,7 +787,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentExpertReportRes2",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -795,7 +795,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentJointStatementRes2",
-    "ListElementCode": "expertOptionName",
+    "ListElementCode": "expertOptionName2",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -819,7 +819,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentJointStatementRes2",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -827,7 +827,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentQuestionsRes2",
-    "ListElementCode": "expertOptionName",
+    "ListElementCode": "expertOptionName3",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -859,7 +859,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentQuestionsRes2",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -899,7 +899,7 @@
     "ID": "CaseProgression",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "documentAnswersRes2",
-    "ListElementCode": "expertDocument",
+    "ListElementCode": "documentUpload",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },

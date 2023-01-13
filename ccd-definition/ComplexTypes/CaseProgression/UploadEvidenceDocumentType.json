@@ -23,5 +23,84 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "witnessOptionName",
+    "FieldType": "Text",
+    "ElementLabel": "Witness's name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "witnessOptionUploadDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date statement was made",
+    "HintText": "For example, 12/09/2022",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionName",
+    "FieldType": "Text",
+    "ElementLabel": "Expert's name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionName2",
+    "FieldType": "Text",
+    "ElementLabel": "Experts' names",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionName3",
+    "FieldType": "Text",
+    "ElementLabel": "Expert's names",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionExpertise",
+    "FieldType": "Text",
+    "ElementLabel": "Field of expertise",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionExpertises",
+    "FieldType": "Text",
+    "ElementLabel": "Fields of expertise",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionOtherParty",
+    "FieldType": "Text",
+    "ElementLabel": "Other party's name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertDocumentQuestion",
+    "FieldType": "Text",
+    "ElementLabel": "Name of document you have questions about",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertDocumentAnswer",
+    "FieldType": "Text",
+    "ElementLabel": "Name of document with other party's questions",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceDocumentType",
+    "ListElementCode": "expertOptionUploadDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date statement was made",
+    "HintText": "For example, 12/09/2022",
+    "SecurityClassification": "Public"
   }
 ]
