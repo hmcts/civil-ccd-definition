@@ -847,6 +847,14 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  hearingFeePaid: async (user) => {
+
+  },
+
+  hearingFeeUnpaid: async (user) => {
+
+  },
+
   getCaseId: async () => {
      console.log (`case created: ${caseId}`);
      return caseId;
