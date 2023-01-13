@@ -60,7 +60,7 @@
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimPersonalInjury",
     "FieldType": "Text",
-    "ElementLabel": "Personal Injury",
+    "ElementLabel": "Expert evidence",
     "SecurityClassification": "Public"
   },
   {
