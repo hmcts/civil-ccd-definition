@@ -637,7 +637,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentDisclosureListRes2",
-    "Label": "Disclosure list resp2",
+    "Label": "Disclosure list",
     "HintText": "Upload a file",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -646,7 +646,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentForDisclosureRes2",
-    "Label": "Documents for disclosure resp2",
+    "Label": "Documents for disclosure",
     "HintText": "Upload a file",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -655,7 +655,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentWitnessStatementRes2",
-    "Label": "Witness statement  resp2",
+    "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
     "SecurityClassification": "Public"
@@ -663,7 +663,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentWitnessSummaryRes2",
-    "Label": "Witness summary  resp2",
+    "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
     "SecurityClassification": "Public"
@@ -671,7 +671,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentHearsayNoticeRes2",
-    "Label": "Notice of the intention to rely on hearsay evidence  resp2",
+    "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
     "SecurityClassification": "Public"
@@ -679,7 +679,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentReferredInStatementRes2",
-    "Label": "Documents referred to in the statement  resp2",
+    "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness4",
     "SecurityClassification": "Public"
@@ -687,7 +687,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentExpertReportRes2",
-    "Label": "Expert's report resp2",
+    "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
     "SecurityClassification": "Public"
@@ -695,7 +695,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentJointStatementRes2",
-    "Label": "Joint statement of experts  resp2",
+    "Label": "Joint statement of experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
     "SecurityClassification": "Public"
@@ -703,7 +703,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsRes2",
-    "Label": "Questions for other party's expert or joint experts  resp2",
+    "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public"
@@ -711,7 +711,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentAnswersRes2",
-    "Label": "Answers to questions asked by the other party  resp2",
+    "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
     "SecurityClassification": "Public"
@@ -719,7 +719,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentCaseSummaryRes2",
-    "Label": "Case summary  resp2",
+    "Label": "Case summary",
     "HintText": "Upload a file",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -728,7 +728,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentSkeletonArgumentRes2",
-    "Label": "Skeleton argument  resp2",
+    "Label": "Skeleton argument",
     "HintText": "Upload a file",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -737,7 +737,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentAuthoritiesRes2",
-    "Label": "Authorities and Costs  resp2",
+    "Label": "Authorities and Costs",
     "HintText": "Upload a file",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -746,7 +746,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentEvidenceForTrialRes2",
-    "Label": "Documentary evidence for trial  resp2",
+    "Label": "Documentary evidence for trial",
     "HintText": "Upload a file",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
