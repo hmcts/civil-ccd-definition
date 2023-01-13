@@ -1121,11 +1121,12 @@ function addMidEventFields(pageId, responseBody, instanceData) {
   let midEventData;
   let calculated;
 
+  if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
+    calculated = instanceData.calculated[pageId];
+  }
+
   if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
-    if (instanceData.calculated) {
-      calculated = instanceData.calculated[pageId];
-    }
   } else if (eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE') {
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else {
@@ -1230,9 +1231,8 @@ async function updateCaseDataWithPlaceholders(data, document) {
     TEST_DOCUMENT_FILENAME: document.document_filename
   };
 
-  data = lodash.template(JSON.stringify(data))(placeholders);
-
-  return JSON.parse(data);
+  const updatedData = JSON.parse(lodash.template(JSON.stringify(data))(placeholders));
+  return {...updatedData, calculated: data.calculated};
 }
 
 // CIV-4959: needs to be removed when court location goes live

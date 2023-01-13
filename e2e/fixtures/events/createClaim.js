@@ -342,6 +342,15 @@ const hasRespondent2 = (mpScenario) => {
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
+      calculated: {
+        ClaimValue: {
+          claimFee: (data) => {
+            return data.calculatedAmountInPence.match(/\d+/)
+              && data.version.match(/[34]/)
+              && data.code.match(/FEE\d{4}/)
+          }
+        }
+      },
       midEventData: {
         ClaimValue: {
           applicantSolicitor1PbaAccounts: {
@@ -351,11 +360,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
