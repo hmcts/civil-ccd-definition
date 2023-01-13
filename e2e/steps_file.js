@@ -466,13 +466,25 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
-    async fillNotifyClaimCOSForm(caseId) {
+    async fillNotifyClaimCOSForm(caseId, mpScenario) {
       eventName = 'Notify claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant1]', DEFENDANT1_NAME),
         () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant2]', DEFENDANT2_NAME),
-        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME, mpScenario),
+        () => event.submit('Submit', 'Certificate of Service - notify claim successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillLRNotifyClaimCOSForm(caseId, mpScenario) {
+      eventName = 'Notify claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.clickContinue(),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant2]', DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, '', DEFENDANT2_NAME, mpScenario),
         () => event.submit('Submit', 'Certificate of Service - notify claim successful'),
         () => event.returnToCaseDetails()
       ]);
@@ -488,6 +500,18 @@ module.exports = function () {
           DEFENDANT2_NAME, 'NotifyClaimDetails2', TEST_FILE_PATH),
         () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME),
         () => cosNotifyClaimCYAPage.verifyCOSSupportingEvidence(),
+        () => event.submit('Submit', 'Certificate of Service - notify claim details successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillLRNotifyClaimDetailsCOSForm(caseId) {
+      eventName = 'Notify claim details';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.clickContinue(),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant2]',
+          DEFENDANT2_NAME, 'NotifyClaimDetails2', TEST_FILE_PATH),
         () => event.submit('Submit', 'Certificate of Service - notify claim details successful'),
         () => event.returnToCaseDetails()
       ]);

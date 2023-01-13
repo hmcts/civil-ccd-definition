@@ -1,11 +1,9 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-const mpScenario = 'ONE_V_TWO';
+Feature('CCD 1v2 2 Lips API test @api-cos');
 
-Feature('CCD 1v2 2 Lips API test @api-unspec @api-multiparty @api-tests-1v2');
-
-Scenario('Create claim where one respondent is LIP one is LR and notify/notify details', async ({I, api}) => {
+Scenario('Create claim where one respondent is LIP one is LR and notify/notify details', async ({api}) => {
     if (['preview', 'demo'].includes(config.runningEnv)) {
         await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
                                                             'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
@@ -15,7 +13,7 @@ Scenario('Create claim where one respondent is LIP one is LR and notify/notify d
     }
 });
 
-Scenario('Create claim where two respondents are LIP and notify/notify details', async ({I, api}) => {
+Scenario('Create claim where two respondents are LIP and notify/notify details', async ({api}) => {
     if (['preview', 'demo'].includes(config.runningEnv)) {
         await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
                                                             'ONE_V_TWO_LIPS');

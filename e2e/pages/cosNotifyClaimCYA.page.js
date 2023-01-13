@@ -8,13 +8,17 @@ module.exports = {
     }
   },
 
-  async verifyCOSCheckAnswerForm(claimantName, def1Name, def2Name) {
+  async verifyCOSCheckAnswerForm(claimantName, def1Name, def2Name, mpScenario) {
     I.waitInUrl('/submit');
     I.seeNumberOfVisibleElements(this.fields.checkAnswerForm.cyaForm, 1);
     I.see('Check your answers');
     I.see(claimantName);
-    I.see(def1Name);
-    I.see(def2Name);
+    if (mpScenario === 'ONE_V_TWO_LIPS'){
+      I.see(def1Name);
+      I.see(def2Name);
+    } else {
+      I.see(def2Name);
+    }
     I.seeNumberOfVisibleElements('.button', 2);
   },
 
