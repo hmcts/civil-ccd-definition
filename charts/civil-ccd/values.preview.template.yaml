@@ -1,6 +1,5 @@
 civil-service:
   java:
-    imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
