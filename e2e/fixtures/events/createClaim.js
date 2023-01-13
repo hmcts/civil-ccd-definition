@@ -1,4 +1,4 @@
-const {listElement, buildAddress } = require('../../api/dataHelper');
+const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
 
@@ -292,13 +292,126 @@ const applicant1LitigationFriend = {
       default: {
         return claimData;
       }
+    },
+  };
+  switch (mpScenario){
+    case 'ONE_V_TWO_ONE_LEGAL_REP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'Yes'
+        },
+      };
+    }
+    case 'ONE_V_TWO_TWO_LEGAL_REP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'No'
+        },
+        SecondDefendantSolicitorOrganisation: {
+          respondent2OrgRegistered: 'Yes',
+          respondent2OrganisationPolicy: {
+            OrgPolicyReference: 'Defendant policy reference 2',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+            Organisation:
+
+              {OrganisationID: config.defendant2SolicitorOrgId}
+            ,
+          },
+        },
+        SecondDefendantSolicitorServiceAddress: {
+          respondentSolicitor2ServiceAddress: buildAddress('service')
+        },
+        SecondDefendantSolicitorReference: {
+          respondentSolicitor2Reference: 'sol2reference'
+        },
+        SecondDefendantSolicitorEmail: {
+          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+        }
+      };
+    }
+    case 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'No'
+        }
+      };
+    }
+    case 'ONE_V_TWO_LIPS': {
+      delete claimData.SecondDefendantLegalRepresentation;
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        LegalRepresentation: {
+          respondent1Represented: 'No',
+          respondent2Represented: 'No'
+        },
+      };
+    }
+
+    case 'TWO_V_ONE': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'Yes'
+        }
+      };
+    }
+    case 'ONE_V_ONE':
+    default: {
+      return claimData;
     }
   };
 
-  const hasRespondent2 = (mpScenario) => {
-    return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP';
-  };
+const hasRespondent2 = (mpScenario) => {
+  return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
+      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+      || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
+      || mpScenario ===  'ONE_V_TWO_LIPS';
+};
 
   module.exports = {
     createClaim: (mpScenario = 'ONE_V_ONE') => {
@@ -406,10 +519,126 @@ const applicant1LitigationFriend = {
         payment: {
           payment_amount: 167.00,
 
-          payment_reference: '13213223',
-          payment_method: 'by account',
-          case_reference: 'example of case ref'
+  createClaimLitigantInPerson: {
+    valid: createClaimData('No', true, 'ONE_V_ONE')
+  },
+  createClaimLRLIP: {
+    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+  },
+  createClaimLIPLIP: {
+    valid: createClaimData('No', true, 'ONE_V_TWO_LIPS')
+  },
+  createClaimWithTerminatedPBAAccount: {
+    valid: createClaimData('Yes', false)
+  },
+  createClaimRespondentSolFirmNotInMyHmcts: {
+    valid: {
+      ...createClaimData('Yes', true),
+      DefendantSolicitorOrganisation: {
+        respondent1OrgRegistered: 'No'
+      },
+      UnRegisteredDefendantSolicitorOrganisation: {
+        respondentSolicitor1OrganisationDetails: {
+          organisationName: 'Test org',
+          phoneNumber: '0123456789',
+          email: 'test@example.com',
+          dx: 'test dx',
+          fax: '123123123',
+          address: buildAddress('org')
         }
       };
     }
-  };
+  },
+  cosNotifyClaim : (lip1, lip2) => {
+    return {
+      ...(lip1) ? {
+         cosNotifyClaimDefendant1: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+      ...(lip2) ? {
+        cosNotifyClaimDefendant2: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+    };
+  },
+  cosNotifyClaimDetails : (lip1, lip2) => {
+    return {
+      ...(lip1) ? {
+        cosNotifyClaimDetails1: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosEvidenceDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ],
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+      ...(lip2) ? {
+        cosNotifyClaimDetails2: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosEvidenceDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ],
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+    };
+  },
+};
