@@ -347,7 +347,7 @@ module.exports = {
           claimFee: (data) => {
             return data.calculatedAmountInPence.match(/\d+/)
               && data.version.match(/[34]/)
-              && data.code.match(/FEE\d{4}/)
+              && data.code.match(/FEE\d{4}/);
           }
         }
       },
