@@ -343,6 +343,15 @@ module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
       midEventData: {
+        ClaimantSolicitorOrganisation: {
+          applicant1OrganisationPolicy: {
+            OrgPolicyReference: 'Claimant policy reference',
+            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+            Organisation: {
+              OrganisationID: config.claimantSolicitorOrgId,
+            }
+          }
+        },
         ClaimValue: {
           applicantSolicitor1PbaAccounts: {
             list_items: [
