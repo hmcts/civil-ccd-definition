@@ -16,7 +16,7 @@ version = '0.0.1'
 
 def versions = [
   junit              : '5.9.1',
-  junitPlatform      : '1.9.1',
+  junitPlatform      : '1.9.2',
   reformLogging      : '5.1.5',
   jackson            : '2.14.0-rc1'
 ]
