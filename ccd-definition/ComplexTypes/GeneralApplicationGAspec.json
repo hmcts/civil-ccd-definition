@@ -151,6 +151,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "litigiousPartyID",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "claimant1PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
