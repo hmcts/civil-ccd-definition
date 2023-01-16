@@ -21,7 +21,7 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
-const {assertFlagsStructureIsCreatedForExpertsAndWitnessess} = require('../helpers/assertions/caseFlagsAssertions');
+const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -490,6 +490,9 @@ module.exports = {
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
+      //delete case flags DQ party fields
+      deleteCaseFields('respondentSolicitor1Experts');
+      deleteCaseFields('respondentSolicitor1Witnesses');
     }
 
     await validateEventPages(defendantResponseData, solicitor);
@@ -539,10 +542,7 @@ module.exports = {
     const caseFlagsEnabled = await checkToggleEnabled('case-flags');
 
     if (caseFlagsEnabled && hnlEnabled) {
-      await assertFlagsStructureIsCreatedForExpertsAndWitnessess(caseId, 'respondent1');
-      if (solicitor === 'solicitorTwo'){
-        await assertFlagsStructureIsCreatedForExpertsAndWitnessess(caseId, 'respondent1');
-      }
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
   },
 
@@ -1125,6 +1125,8 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1ResponseDeadline'];
+    delete responseBody.data['respondentSolicitor1Experts'];
+    delete responseBody.data['respondentSolicitor1Witnesses'];
   } else {
     delete responseBody.data['respondent2'];
   }

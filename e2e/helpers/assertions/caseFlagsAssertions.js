@@ -57,16 +57,18 @@ function assertApplicantDQPartyFields(caseDetails) {
 }
 
 module.exports = {
-  assertFlagsStructureIsCreatedForExpertsAndWitnessess: async (caseId, party) => {
-    console.log('Asserting flags structure is available to admin user');
-    const caseDetails = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+  assertCaseFlags: async (caseId, user, response) => {
+    if (['FULL_DEFENCE1', 'FULL_DEFENCE2', 'FULL_DEFENCE'].indexOf(response) > -1) {
+      console.log('Asserting flags structure is available to admin user');
+      const caseDetails = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
 
-    if (party === 'respondent1') {
-      assertRespondent1DQPartyFields(caseDetails);
-    } else if (party === 'respondent2') {
-      assertRespondent2DQPartyFields(caseDetails);
-    } else {
-      assertApplicantDQPartyFields(caseDetails);
+      if (user === config.defendantSolicitorUser) {
+        await assertRespondent1DQPartyFields(caseDetails);
+      } else if (user === config.secondDefendantSolicitorUser) {
+        await assertRespondent2DQPartyFields(caseDetails);
+      } else {
+        assertApplicantDQPartyFields(caseDetails);
+      }
     }
   }
 }
