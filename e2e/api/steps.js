@@ -971,7 +971,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (!isHNLEnabled && eventName === 'CREATE_CLAIM') {
     caseData = replaceLitigationFriendFields(caseData);
   }
-
+  if (pageId == 'Claimant') {
+    delete caseData.applicant1OrganisationPolicy;
+  }
   try {
     assert.deepEqual(responseBody.data, caseData);
   } catch (err) {
