@@ -64,5 +64,11 @@
     "CaseFieldID": "respondent1ClaimPartAdmitInstalmentLabel",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "uploadDefenceDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]

@@ -29,7 +29,7 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
+    "PageShowCondition": "uploadDefenceDocument !=\"No\"",
     "DisplayContext": "READONLY",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
