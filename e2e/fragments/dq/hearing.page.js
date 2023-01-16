@@ -1,6 +1,6 @@
 const {I} = inject();
-const {checkToggleEnabled} = require('./../../api/testingSupport');
 const date = require('../../fragments/date');
+const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -58,7 +58,7 @@ module.exports = {
   },
 
   async enterHearingInformation(party) {
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     if (!isHNLEnabled) {
       I.waitForElement(this.oldFields(party).hearingLength.id);
       await I.runAccessibilityTest();

@@ -1,6 +1,6 @@
 const config = require('../config.js');
 const {element, date} = require('../api/dataHelper');
-const {checkToggleEnabled} = require('../api/testingSupport');
+const {checkHnlLegalRepToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
   removeHNLFieldsFromClaimData: (data) => {
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   async replaceDQFieldsIfHNLFlagIsDisabled(data, solicitor, isDefendantResponse) {
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     // work around for the api  tests
     console.log(`Hearing selected in Env: ${config.runningEnv}`);
 
@@ -122,7 +122,7 @@ module.exports = {
   },
 
   async replaceExpertsIfHNLFlagIsDisabled(defendantResponseData, solicitor) {
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     // work around for the api  tests
     console.log(`Experts selected in Env: ${config.runningEnv}`);
     if (!isHNLEnabled) {

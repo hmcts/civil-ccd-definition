@@ -1,5 +1,5 @@
 const {I} = inject();
-const {checkToggleEnabled} = require('./../../api/testingSupport');
+const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -63,7 +63,7 @@ module.exports = {
       I.click(this.fields(party).jointExpertSuitable.options.yes);
     });
 
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     if (!isHNLEnabled) {
       await this.addExpertOldFields(party);
     } else {
