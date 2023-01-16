@@ -22,12 +22,16 @@ module.exports = {
   },
 
   removeHNLFieldsFromUnspecClaimData: (data) => {
-    delete data.valid.Defendant.respondent1['partyEmail'];
-    delete data.valid.Defendant.respondent1['partyPhone'];
+    if (data.valid) {
+      if (data.valid.Defendant) {
+        delete data.valid.Defendant.respondent1['partyEmail'];
+        delete data.valid.Defendant.respondent1['partyPhone'];
+      }
 
-    if (data.valid.SecondDefendant) {
-      delete data.valid.SecondDefendant.respondent2['partyEmail'];
-      delete data.valid.SecondDefendant.respondent2['partyPhone'];
+      if (data.valid.SecondDefendant) {
+        delete data.valid.SecondDefendant.respondent2['partyEmail'];
+        delete data.valid.SecondDefendant.respondent2['partyPhone'];
+      }
     }
   },
 
@@ -137,6 +141,108 @@ module.exports = {
                   estimatedCost: '100',
                 })
               ]
+            }
+          }
+        }
+      };
+    }
+    return defendantResponseData;
+  },
+  replaceFieldsIfHNLToggleIsOffForDefendantResponse: (defendantResponseData,solicitor) => {
+    if (solicitor === 'solicitorTwo') {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          HearingSupport: {},
+          Language: {
+            respondent2DQLanguage: {
+              evidence: 'WELSH',
+              court: 'WELSH',
+              documents: 'WELSH'
+            }
+          }
+        }
+      };
+    } else {
+      defendantResponseData = {
+        ...defendantResponseData,
+        valid: {
+          ...defendantResponseData.valid,
+          HearingSupport: {},
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'WELSH',
+              court: 'WELSH',
+              documents: 'WELSH'
+            }
+          }
+        }
+      };
+    }
+    return defendantResponseData;
+  },
+  replaceFieldsIfHNLToggleIsOffForClaimantResponse: (claimantResponseData) => {
+    claimantResponseData = {
+      ...claimantResponseData,
+      valid: {
+        ...claimantResponseData.valid,
+        HearingSupport: {},
+        Language: {
+          applicant1DQLanguage: {
+            evidence: 'WELSH',
+            court: 'WELSH',
+            documents: 'WELSH'
+          }
+        }
+      }
+    };
+    return claimantResponseData;
+  },
+  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec: (claimantResponseData) => {
+    claimantResponseData = {
+      ...claimantResponseData,
+      userInput: {
+        ...claimantResponseData.userInput,
+        HearingSupport: {},
+        Language: {
+          applicant1DQLanguage: {
+            evidence: 'WELSH',
+            court: 'WELSH',
+            documents: 'WELSH'
+          }
+        }
+      }
+    };
+    return claimantResponseData;
+  },
+  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse: (defendantResponseData,solicitor) => {
+    if (solicitor === 'solicitorTwo') {
+      defendantResponseData = {
+        ...defendantResponseData,
+        userInput: {
+          ...defendantResponseData.userInput,
+          HearingSupport: {},
+          Language: {
+            respondent2DQLanguage: {
+              evidence: 'WELSH',
+              court: 'WELSH',
+              documents: 'WELSH'
+            }
+          }
+        }
+      };
+    } else {
+      defendantResponseData = {
+        ...defendantResponseData,
+        userInput: {
+          ...defendantResponseData.userInput,
+          HearingSupport: {},
+          Language: {
+            respondent1DQLanguage: {
+              evidence: 'WELSH',
+              court: 'WELSH',
+              documents: 'WELSH'
             }
           }
         }

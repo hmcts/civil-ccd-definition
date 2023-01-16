@@ -10,7 +10,6 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
           claimant2ResponseFlag: 'No',
           applicantsProceedIntention: 'Yes',
           claimantResponseDocumentToDefendant2Flag: 'No'
-
         },
         ApplicantDefenceResponseDocument: {
           applicant1DefenceResponseDocument: {
@@ -72,7 +71,6 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
           claimant2ResponseFlag: 'No',
           applicantsProceedIntention: 'Yes',
           claimantResponseDocumentToDefendant2Flag: 'No'
-
         },
         ApplicantDefenceResponseDocument: {
           applicant1DefenceResponseDocument: {
@@ -148,7 +146,6 @@ module.exports = {
         },
         Language: {
           applicant1DQLanguage: {
-            evidence: 'WELSH',
               court: 'WELSH',
               documents: 'WELSH'
           }
@@ -176,7 +173,12 @@ module.exports = {
               document_filename: '${TEST_DOCUMENT_FILENAME}'
           }
         },
-        HearingSupport: {},
+        HearingSupport: {
+            applicant1DQHearingSupport: {
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
+            }
+        },
         VulnerabilityQuestions: {
           applicant1DQVulnerabilityQuestions: {
             vulnerabilityAdjustmentsRequired: 'Yes',
