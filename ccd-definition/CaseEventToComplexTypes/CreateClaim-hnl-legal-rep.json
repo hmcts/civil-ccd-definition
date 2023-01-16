@@ -1,5 +1,77 @@
 [
   {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1",
+    "ListElementCode": "partyPhone",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2.type = \"INDIVIDUAL\" OR applicant2.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant2",
+    "ListElementCode": "partyPhone",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2.type = \"INDIVIDUAL\" OR applicant2.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyPhone",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2.type = \"INDIVIDUAL\" OR respondent2.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "partyPhone",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2.type = \"INDIVIDUAL\" OR respondent2.type = \"SOLE_TRADER\""
+  },
+  {
     "ID": "LitigationFriend",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriend",

@@ -34,6 +34,14 @@
   {
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 2,
@@ -62,6 +70,14 @@
     "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   },
   {
       "ID": "Experts",

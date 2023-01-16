@@ -8,6 +8,14 @@
   },
   {
     "ID": "Language",
+    "ListElementCode": "evidence",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "Language",
+    "ElementLabel": "Which language have you been advised of your right to give evidence in?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Language",
     "ListElementCode": "court",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
