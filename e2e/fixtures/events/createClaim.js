@@ -1,4 +1,4 @@
-const {listElement, buildAddress } = require('../../api/dataHelper');
+const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
 
@@ -194,7 +194,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
+        statementOfValueInPennies: '2000000'
       }
     },
     PbaNumber: {
@@ -280,6 +280,43 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         }
       };
     }
+    case 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'No'
+        }
+      };
+    }
+    case 'ONE_V_TWO_LIPS': {
+      delete claimData.SecondDefendantLegalRepresentation;
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        LegalRepresentation: {
+          respondent1Represented: 'No',
+          respondent2Represented: 'No'
+        },
+      };
+    }
+
     case 'TWO_V_ONE': {
       return {
         ...claimData,
@@ -297,12 +334,23 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+      || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
+      || mpScenario ===  'ONE_V_TWO_LIPS';
 };
 
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
+      calculated: {
+        ClaimValue: {
+          claimFee: (data) => {
+            return data.calculatedAmountInPence.match(/\d+/)
+              && data.version.match(/[34]/)
+              && data.code.match(/FEE\d{4}/);
+          }
+        }
+      },
       midEventData: {
         ClaimValue: {
           applicantSolicitor1PbaAccounts: {
@@ -312,11 +360,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -374,7 +417,13 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData('No', true)
+    valid: createClaimData('No', true, 'ONE_V_ONE')
+  },
+  createClaimLRLIP: {
+    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+  },
+  createClaimLIPLIP: {
+    valid: createClaimData('No', true, 'ONE_V_TWO_LIPS')
   },
   createClaimWithTerminatedPBAAccount: {
     valid: createClaimData('Yes', false)
@@ -396,5 +445,97 @@ module.exports = {
         }
       },
     }
-  }
+  },
+  cosNotifyClaim : (lip1, lip2) => {
+    return {
+      ...(lip1) ? {
+         cosNotifyClaimDefendant1: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+      ...(lip2) ? {
+        cosNotifyClaimDefendant2: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+    };
+  },
+  cosNotifyClaimDetails : (lip1, lip2) => {
+    return {
+      ...(lip1) ? {
+        cosNotifyClaimDetails1: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosEvidenceDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ],
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+      ...(lip2) ? {
+        cosNotifyClaimDetails2: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosEvidenceDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ],
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+    };
+  },
 };
