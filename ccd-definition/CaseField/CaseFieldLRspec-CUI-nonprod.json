@@ -9,7 +9,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1FullAdmitPaidLabelSpec",
-    "Label": "${respondent1.partyName} fully admits the claim and states the paid the £${totalClaimAmount}",
+    "Label": "${respondent1.partyName} fully admits the claim and states they paid the £${totalClaimAmount}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
