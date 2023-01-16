@@ -57,14 +57,14 @@ module.exports = {
 
   async assertCaseFlags(caseFlags) {
     caseFlags.forEach(({partyName, details}) => {
-      I.see(partyName, this.components.caseFlags)
+      I.see(partyName, this.components.caseFlags);
       details.forEach(({name, comments, creationDate, lastModified, status}) => {
-        I.see(name, this.components.caseFlags)
-        I.see(comments, this.components.caseFlags)
-        I.see(creationDate, this.components.caseFlags)
-        I.see(lastModified, this.components.caseFlags)
-        I.see(status, this.components.caseFlags)
-      })
-    })
+        I.see(name, this.components.caseFlags);
+        I.see(comments, this.components.caseFlags);
+        I.see(creationDate, this.components.caseFlags);
+        I.see(lastModified, this.components.caseFlags);
+        I.see(status, this.components.caseFlags);
+      });
+    });
   }
 };

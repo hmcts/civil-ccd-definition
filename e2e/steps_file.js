@@ -735,7 +735,7 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async createCaseFlags(mpScenario = 'ONE_V_ONE') {
+    async createCaseFlags() {
       eventName = 'Create case flags';
       await this.triggerStepsWithScreenshot([
         // ToDo trigger create case flags event

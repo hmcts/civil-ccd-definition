@@ -66,7 +66,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
     { partyName: 'Example applicant1 company', details: [] },
     { partyName: 'Example respondent1 company', details: [] },
     { partyName: 'Example respondent2 company', details: [] }
-  ])
+  ]);
 }).retry(3);
 
 AfterSuite(async  () => {

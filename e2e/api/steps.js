@@ -22,7 +22,7 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
 } = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
-const {assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require("../helpers/assertions/caseFlagsAssertions");
+const {assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -741,7 +741,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     if(checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId)
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
     }
   },
 
@@ -975,7 +975,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   if (eventName === 'CREATE_CLAIM') {
     caseId = responseBody.id;
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
-    console.log(`LAZY LINK: http://localhost:3333/cases/case-details/${caseId}#Summary`);
     console.log('Case created: ' + caseId);
   }
 };

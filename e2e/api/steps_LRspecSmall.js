@@ -15,7 +15,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
-const {assertFlagsInitialisedAfterCreateClaim} = require("../helpers/assertions/caseFlagsAssertions");
+const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 
 let caseId, eventName;
 let caseData = {};

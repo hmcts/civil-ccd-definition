@@ -18,7 +18,7 @@ const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
-const {assertFlagsInitialisedAfterCreateClaim} = require("../helpers/assertions/caseFlagsAssertions");
+const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 
 let caseId, eventName;
 let caseData = {};

@@ -211,7 +211,7 @@ module.exports =  {
   },
 
   checkCaseFlagsEnabled: () => {
-    return true;
+    return false;
   },
 
   updateCaseData: async (caseId, caseData) => {

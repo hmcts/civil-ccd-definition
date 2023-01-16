@@ -125,7 +125,7 @@ Scenario.skip('Add case flags', async ({I}) => {
     { partyName: 'Example respondent1 company', details: [] },
     { partyName: 'Example respondent2 company', details: [] },
     { partyName: 'John Smith', details: [] }
-  ])
+  ]);
 }).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
