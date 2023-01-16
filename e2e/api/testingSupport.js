@@ -171,7 +171,7 @@ module.exports =  {
   },
 
   checkHnlLegalRepToggleEnabled: async () => {
-    return false;
+    return true;
   },
 
   checkCourtLocationDynamicListIsEnabled: async () => {
