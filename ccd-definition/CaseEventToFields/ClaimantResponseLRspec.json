@@ -26,17 +26,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "uploadDefenceDocument !=\"No\"",
-    "DisplayContext": "READONLY",
-    "PageID": "ApplicantDefenceResponseDocument",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,

@@ -226,7 +226,7 @@
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition": "claimantResponseScenarioFlag=\"TWO_V_ONE\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-applicant1-proceed-flag"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/set-applicant1-proceed-flag"
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
@@ -328,6 +328,17 @@
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "uploadDefenceDocument !=\"No\"",
+    "DisplayContext": "READONLY",
+    "PageID": "ApplicantDefenceResponseDocument",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
