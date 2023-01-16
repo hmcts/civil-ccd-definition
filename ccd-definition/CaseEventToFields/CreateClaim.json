@@ -45,8 +45,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimStarted=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populateClaimantSolicitor"
+    "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
