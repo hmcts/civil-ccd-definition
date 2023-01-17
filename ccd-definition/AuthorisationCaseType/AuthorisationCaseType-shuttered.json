@@ -3,23 +3,11 @@
     "CaseTypeID": "CIVIL",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-caa",
+      "caseworker-civil-staff",
+      "caseworker-approver"
     ],
-    "CRUD": "D"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-caa",
-    "CRUD": "D"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "D"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-approver",
     "CRUD": "D"
   },
   {
