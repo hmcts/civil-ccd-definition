@@ -10,6 +10,7 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
           claimant2ResponseFlag: 'No',
           applicantsProceedIntention: 'Yes',
           claimantResponseDocumentToDefendant2Flag: 'No'
+
         },
         ApplicantDefenceResponseDocument: {
           applicant1DefenceResponseDocument: {
@@ -71,6 +72,7 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
           claimant2ResponseFlag: 'No',
           applicantsProceedIntention: 'Yes',
           claimantResponseDocumentToDefendant2Flag: 'No'
+
         },
         ApplicantDefenceResponseDocument: {
           applicant1DefenceResponseDocument: {
