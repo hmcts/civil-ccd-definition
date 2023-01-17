@@ -87,12 +87,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
             listElement(config.claimantSelectedCourt)
           ],
           value: listElement(config.claimantSelectedCourt)
-        },
-        applicant1OrganisationPolicy: {
-          OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
-          Organisation: {
-            OrganisationID: config.claimantSolicitorOrgId,
-          }
+        }
+      },
+      applicant1OrganisationPolicy: {
+        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+        Organisation: {
+          OrganisationID: config.claimantSolicitorOrgId,
         }
       }
     },
@@ -349,15 +349,6 @@ module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
       midEventData: {
-        ClaimantSolicitorOrganisation: {
-          applicant1OrganisationPolicy: {
-            OrgPolicyReference: 'Claimant policy reference',
-            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
-            Organisation: {
-              OrganisationID: config.claimantSolicitorOrgId,
-            }
-          }
-        },
         ClaimValue: {
           applicantSolicitor1PbaAccounts: {
             list_items: [
