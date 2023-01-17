@@ -26,6 +26,10 @@ const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
+  CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
+  CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
+  COS_NOTIFY_CLAIM: (lip1, lip2) => claimData.cosNotifyClaim(lip1, lip2),
+  COS_NOTIFY_CLAIM_DETAILS: (lip1, lip2) => claimData.cosNotifyClaimDetails(lip1, lip2),
   CREATE_CLAIM_TERMINATED_PBA: claimData.createClaimWithTerminatedPBAAccount,
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
   RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
@@ -158,14 +162,26 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
   },
 
-  createClaimWithRespondentLitigantInPerson: async (user) => {
+  createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
+    mpScenario = multipartyScenario;
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
 
-    let createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
+    let createClaimData;
+    switch (mpScenario){
+      case 'ONE_V_ONE':
+        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
+        break;
+      case 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP':
+        createClaimData = data.CREATE_CLAIM_RESPONDENT_LR_LIP;
+        break;
+      case 'ONE_V_TWO_LIPS':
+        createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP_LIP;
+        break;
+    }
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
@@ -195,6 +211,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    return caseId;
   },
 
   createClaimWithFailingPBAAccount: async (user) => {
@@ -301,6 +318,44 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
+  notifyClaimLip: async (user, multipartyScenario) => {
+    let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
+
+      eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
+      mpScenario = multipartyScenario;
+
+      await apiRequest.setupTokens(user);
+
+    if(isCertificateOfServiceEnabled) {
+
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      legacyCaseReference = returnedCaseData['legacyCaseReference'];
+      // assertContainsPopulatedFields(returnedCaseData);
+
+      await validateEventPages(data[eventName]);
+      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
+
+      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+        returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true)};
+      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+        returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false)};
+      } else {
+        returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false)};
+      }
+      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_CASE_DETAILS_NOTIFICATION', {
+        header: 'Certificate of Service',
+        body: 'You must serve the claim details and'
+      });
+
+      await waitForFinishedBusinessProcess(caseId);
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
+
+    } else {
+      await assertStartEventNotAllowed();
+    }
+  },
+
   notifyClaimDetails: async (user) => {
     await apiRequest.setupTokens(user);
 
@@ -322,6 +377,52 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  notifyClaimDetailsLip: async (user, multipartyScenario) => {
+    let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
+
+    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
+    mpScenario = multipartyScenario;
+
+    await apiRequest.setupTokens(user);
+
+    if(isCertificateOfServiceEnabled) {
+
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      legacyCaseReference = returnedCaseData['legacyCaseReference'];
+      // assertContainsPopulatedFields(returnedCaseData);
+
+      await validateEventPages(data[eventName]);
+      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
+      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+        returnedCaseData = {};
+        returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true)};
+        const document = await testingSupport.uploadDocument();
+        returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
+      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+        returnedCaseData = {};
+        returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true), ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
+        const document = await testingSupport.uploadDocument();
+        returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
+      } else {
+        returnedCaseData = {};
+        returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
+        const document = await testingSupport.uploadDocument();
+        returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
+      }
+      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: 'Certificate of Service',
+        body: 'The defendant(s) must'
+      });
+
+      await waitForFinishedBusinessProcess(caseId);
+
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    } else {
+      await assertStartEventNotAllowed();
+    }
   },
 
   amendPartyDetails: async (user) => {
@@ -807,7 +908,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
     caseData = replaceLitigationFriendFields(caseData);
   }
-
+  if (pageId == 'Claimant') {
+    delete caseData.applicant1OrganisationPolicy;
+  }
   try {
     assert.deepEqual(responseBody.data, caseData);
   }
@@ -866,6 +969,26 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
+const assertStartEventNotAllowed = async () => {
+
+  let response = await apiRequest.startEventNotAllowed(eventName, caseId);
+  assert.equal(response.status, 422);
+
+};
+
+const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+  await apiRequest.startEvent(eventName, caseId);
+
+  const response = await apiRequest.submitEvent(eventName, updatedCaseData, caseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  assert.equal(responseBody.state, expectedState);
+  if (hasSubmittedCallback) {
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+  }
+};
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
