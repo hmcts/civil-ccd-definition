@@ -117,7 +117,7 @@ withPipeline(type, product, component) {
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-    env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+    env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
       enableCleanupOfHelmReleaseOnSuccess();
     }
@@ -141,16 +141,16 @@ withPipeline(type, product, component) {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
       env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-      env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
-      env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
-      env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.service.core-compute-preview.internal"
+      env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     }
   }
 
@@ -166,9 +166,9 @@ withPipeline(type, product, component) {
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
-    env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.service.core-compute-aat.internal"
+    env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
-    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.service.core-compute-aat.internal"
+    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"
     sh """
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
@@ -177,7 +177,7 @@ withPipeline(type, product, component) {
       ./bin/import-bpmn-diagram.sh .
     """
     env.URL="https://civil-ccd-xui-staging.aat.platform.hmcts.net"
-    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.service.core-compute-aat.internal"
+    env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-staging.xlsx"
