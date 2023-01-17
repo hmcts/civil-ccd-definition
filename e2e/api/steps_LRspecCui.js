@@ -24,7 +24,8 @@ const data = {
   CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario),
-  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
+  EXTEND_RESPOSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline')
 };
 
 const eventData = {
@@ -157,6 +158,23 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+  extendResponseDeadline: async (user) => {
+    eventName = 'EXTEND_RESPONSE_DEADLINE';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    let informAgreedExtensionData = data.EXTEND_RESPOSE_DEADLINE_DATE();
+
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
+      await assertValidData(informAgreedExtensionData, pageId);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 };
 
