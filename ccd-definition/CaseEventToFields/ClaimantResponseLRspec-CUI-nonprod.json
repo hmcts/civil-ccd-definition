@@ -335,7 +335,7 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "uploadDefenceDocument !=\"No\"",
+    "PageShowCondition": "applicantDefenceResponseDocument !=\"No\"",
     "DisplayContext": "READONLY",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
