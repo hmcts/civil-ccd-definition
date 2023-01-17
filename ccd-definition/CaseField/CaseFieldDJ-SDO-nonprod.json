@@ -281,7 +281,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingWitnessOfFactDJ",
-    "Label": "Witnesses of Fact",
+    "Label": "Witnesses of fact",
     "FieldType": "TrialHearingWitnessOfFactDJ",
     "SecurityClassification": "Public"
   },
@@ -316,7 +316,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingMethodTitleDJ",
-    "Label": "## Hearing Method",
+    "Label": "## Hearing method",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -368,7 +368,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingNotesDJ",
-    "Label": "Notes",
+    "Label": "Important",
     "FieldType": "TrialHearingNotesDJ",
     "SecurityClassification": "Public"
   },
@@ -424,7 +424,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert evidence",
     "FieldType": "TrialPersonalInjury",
     "SecurityClassification": "Public"
   },
