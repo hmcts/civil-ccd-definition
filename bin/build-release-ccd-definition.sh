@@ -9,7 +9,7 @@ excludeNonProdFiles=${2:-true}
 if [ ${environment} == preview ]; then
    excludedFilenamePatterns="-e *-prod.json,*HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR2GAspec-nonprod.json"
    #for testing HNL uplifting, comment the above line and uncomment below
-   #excludedFilenamePatterns="-e *-prod.json,*-SDO-nonprod.json,*-base-nonprod.json"
+   #excludedFilenamePatterns="-e *-prod.json,*-SDO-nonprod.json,*-base-nonprod.json,*CUI-nonprod.json"
    #for testing ga enhancements please remove *-GAR2GAspec-nonprod.json which are not required for release 1
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*-GAR2GAspec-nonprod.json,*CUI-nonprod.json"
