@@ -200,7 +200,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '2000000'
+        statementOfValueInPennies: '3000000'
       }
     },
     PbaNumber: {
@@ -348,15 +348,6 @@ const hasRespondent2 = (mpScenario) => {
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE') => {
     return {
-      calculated: {
-        ClaimValue: {
-          claimFee: (data) => {
-            return data.calculatedAmountInPence.match(/\d+/)
-              && data.version.match(/[34]/)
-              && data.code.match(/FEE\d{4}/);
-          }
-        }
-      },
       midEventData: {
         ClaimantSolicitorOrganisation: {
           applicant1OrganisationPolicy: {
@@ -375,6 +366,11 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
+          claimFee: {
+            calculatedAmountInPence: '150000',
+            code: 'FEE0209',
+            version: '3'
+          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
