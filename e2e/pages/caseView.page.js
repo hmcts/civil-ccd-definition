@@ -14,6 +14,7 @@ module.exports = {
   },
   fields: {
     eventDropdown: '#next-step',
+    tabButton: 'div.mat-tab-label-content'
   },
   goButton: '.button[type="submit"]',
 
@@ -34,6 +35,13 @@ module.exports = {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
     }, locate('.govuk-heading-l'));
+  },
+
+  async navigateToTab(tabName) {
+    let urlBefore = await I.grabCurrentUrl();
+    await I.retryUntilUrlChanges(async () => {
+      await I.forceClick(locate(this.fields.tabButton).withText(tabName));
+    }, urlBefore);
   },
 
   async assertNoEventsAvailable() {
