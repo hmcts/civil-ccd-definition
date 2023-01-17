@@ -211,6 +211,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    return caseId;
   },
 
   createClaimWithFailingPBAAccount: async (user) => {
