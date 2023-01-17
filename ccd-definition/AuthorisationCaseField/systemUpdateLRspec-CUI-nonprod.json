@@ -67,7 +67,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "uploadDefenceDocument",
+    "CaseFieldID": "applicantDefenceResponseDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   }

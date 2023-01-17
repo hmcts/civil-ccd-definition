@@ -65,7 +65,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "uploadDefenceDocument",
+    "ID": "applicantDefenceResponseDocument",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"

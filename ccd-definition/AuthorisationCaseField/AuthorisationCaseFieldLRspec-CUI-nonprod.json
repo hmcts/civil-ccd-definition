@@ -234,7 +234,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "uploadDefenceDocument",
+    "CaseFieldID": "applicantDefenceResponseDocument",
     "AccessControl": [
       {
         "UserRoles": [

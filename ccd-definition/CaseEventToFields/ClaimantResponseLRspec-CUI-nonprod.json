@@ -206,7 +206,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "uploadDefenceDocument",
+    "CaseFieldID": "applicantDefenceResponseDocument",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
