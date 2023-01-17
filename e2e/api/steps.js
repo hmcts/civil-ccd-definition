@@ -188,7 +188,7 @@ module.exports = {
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-                                      claimData.serviceUpdateDto(caseId, 'paid'));
+                                      createClaimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
 
