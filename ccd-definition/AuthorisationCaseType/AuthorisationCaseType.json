@@ -9,22 +9,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-approver",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-caa",
+    "UserRoles": [
+      "caseworker-approver",
+      "caseworker-caa",
+      "caseworker-civil-systemupdate"
+    ],
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
   }
 ]
