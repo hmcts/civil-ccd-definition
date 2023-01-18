@@ -5,15 +5,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -23,15 +17,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "R"
       }
     ]
   }

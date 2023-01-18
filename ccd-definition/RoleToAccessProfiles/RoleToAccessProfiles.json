@@ -129,7 +129,7 @@
     "RoleName" : "leadership-judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,GS_profile",
+    "AccessProfiles": "judge-profile,GS_profile,caseflags-viewer",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -138,7 +138,7 @@
     "RoleName" : "judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,GS_profile",
+    "AccessProfiles": "judge-profile,GS_profile,caseflags-viewer",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -219,7 +219,7 @@
     "RoleName" : "hearing-centre-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -237,7 +237,7 @@
     "RoleName" : "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -246,7 +246,7 @@
     "RoleName" : "ctsc",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -255,7 +255,7 @@
     "RoleName" : "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -264,7 +264,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -273,7 +273,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -282,7 +282,7 @@
     "RoleName" : "specific-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,caseworker-civil,GS_profile",
+    "AccessProfiles": "judge-profile,caseworker-civil,GS_profile,caseflags-viewer",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -300,7 +300,7 @@
     "RoleName" : "specific-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -309,7 +309,7 @@
     "RoleName" : "challenged-access-judiciary",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,judge-profile,caseworker-civil",
+    "AccessProfiles": "GS_profile,judge-profile,caseworker-civil,caseflags-viewer",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -327,7 +327,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
