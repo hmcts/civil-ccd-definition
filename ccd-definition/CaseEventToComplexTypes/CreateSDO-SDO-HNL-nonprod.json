@@ -147,30 +147,6 @@
     "ID": "DisposalHearingWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingWitnessOfFact",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingWitnessOfFact",
-    "ListElementCode": "date1",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingWitnessOfFact",
-    "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingWitnessOfFact",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
