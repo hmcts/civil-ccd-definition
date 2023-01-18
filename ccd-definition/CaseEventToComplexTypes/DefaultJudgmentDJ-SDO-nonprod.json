@@ -296,6 +296,30 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "date",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "DisposalHearingBundleDJ",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingBundleDJ",
@@ -333,6 +357,54 @@
     "CaseFieldID": "disposalHearingBundleDJ",
     "ListElementCode": "text",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingHearingNotesDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingHearingNotesDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingHearingNotesDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingHearingNotesDJ",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "ListElementCode": "title",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
@@ -462,6 +534,112 @@
     "ListElementCode":"type",
     "FieldDisplayOrder":6,
     "DisplayContext":"MANDATORY"
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"date1",
+    "FieldDisplayOrder":1,
+    "DisplayContext":"MANDATORY"
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"date2",
+    "FieldDisplayOrder":2,
+    "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"hearingTimeEstimate",
+    "FieldDisplayOrder":3,
+    "DisplayContext":"MANDATORY"
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"otherHours",
+    "FieldDisplayOrder":4,
+    "DisplayContext":"MANDATORY",
+    "FieldShowCondition": "trialHearingTimeDJ.hearingTimeEstimate = \"OTHER\""
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"otherMinutes",
+    "FieldDisplayOrder":5,
+    "DisplayContext":"MANDATORY",
+    "FieldShowCondition": "trialHearingTimeDJ.hearingTimeEstimate = \"OTHER\""
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"helpText1",
+    "FieldDisplayOrder":6,
+    "DisplayContext":"MANDATORY"
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"helpText2",
+    "FieldDisplayOrder":7,
+    "DisplayContext":"MANDATORY"
+  },
+  {
+    "ID":"TrialHearingHearingNotesDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingHearingNotesDJ",
+    "ListElementCode":"label",
+    "FieldDisplayOrder":1,
+    "DisplayContext":"READONLY"
+  },
+  {
+    "ID":"TrialHearingHearingNotesDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingHearingNotesDJ",
+    "ListElementCode":"input",
+    "FieldDisplayOrder":2,
+    "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID":"TrialHearingHearingNotesDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingHearingNotesDJ",
+    "ListElementCode":"line",
+    "FieldDisplayOrder":3,
+    "DisplayContext":"READONLY"
+  },
+  {
+    "ID":"TrialOrderMadeWithoutHearingDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialOrderMadeWithoutHearingDJ",
+    "ListElementCode":"title",
+    "FieldDisplayOrder":1,
+    "DisplayContext":"READONLY"
+  },
+  {
+    "ID":"TrialOrderMadeWithoutHearingDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialOrderMadeWithoutHearingDJ",
+    "ListElementCode":"input",
+    "FieldDisplayOrder":2,
+    "DisplayContext":"MANDATORY"
+  },
+  {
+    "ID":"TrialOrderMadeWithoutHearingDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialOrderMadeWithoutHearingDJ",
+    "ListElementCode":"line",
+    "FieldDisplayOrder":3,
+    "DisplayContext":"READONLY"
   },
   {
     "ID":"TrialHearingAddNewDirectionsDJ",
