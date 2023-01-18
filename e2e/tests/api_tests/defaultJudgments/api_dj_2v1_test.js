@@ -44,6 +44,10 @@ Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing cen
   }
 });
 
+Scenario('Default Judgment claim SDO', async ({I, api}) => {
+  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
+});
+
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
 });
