@@ -854,7 +854,21 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  amendHearingDueDate: async (user) => {
+    await apiRequest.setupTokens(user);
+    let hearingDueDate ={};
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2,'0');
+    var mm = String(today.getMonth()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    let dateString = yyyy + '-' + mm + '-' + dd;
+
+    hearingDueDate = {'hearingDueDate':dateString};
+    await testingSupport.updateCaseData(caseId, hearingDueDate);
+  },
+
   hearingFeePaid: async (user) => {
+
 
   },
 
