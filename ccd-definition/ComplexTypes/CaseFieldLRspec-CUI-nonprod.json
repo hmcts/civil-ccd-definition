@@ -3,18 +3,9 @@
     "CaseTypeID": "CIVIL",
     "ID": "claimantUserDetails",
     "Label": "Claimant User Details",
-    "FieldType": "Text",
+    "FieldType": "UserDetails",
     "SecurityClassification": "Public",
     "_Definition":  "Claimant User Details",
-    "_Category":  "CIVIL"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendantUserDetails",
-    "Label": "Defendant User Details",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "_Definition":  "Defendant User Details",
     "_Category":  "CIVIL"
   }
 ]

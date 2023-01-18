@@ -4,11 +4,5 @@
     "CaseFieldID": "claimantUserDetails",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendantUserDetails",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
   }
 ]

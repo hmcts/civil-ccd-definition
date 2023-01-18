@@ -231,10 +231,7 @@
         "CRUD": "R"
       }
     ]
-  }
-]
-
-[
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantUserDetails",
@@ -252,26 +249,6 @@
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendantUserDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
       }
     ]
   }
