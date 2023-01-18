@@ -865,7 +865,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -874,6 +874,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
@@ -883,7 +889,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -892,6 +898,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
@@ -901,7 +913,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -910,6 +922,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
@@ -919,7 +937,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -928,6 +946,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
@@ -937,7 +961,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -955,7 +980,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -964,6 +989,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
@@ -1021,7 +1052,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1030,6 +1061,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
@@ -1039,7 +1076,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1048,6 +1085,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   },
