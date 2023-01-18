@@ -19,9 +19,9 @@ module.exports = {
     I.waitForElement(this.fields.documentAndNote.id);
     await within(this.fields.documentAndNote.id, () => {
       I.click(this.fields.documentAndNote.fragment.button);
-      I.fillField(this.fields.documentAndNote.fragment.name, "Doc 1");
+      I.fillField(this.fields.documentAndNote.fragment.name, 'Doc 1');
       I.attachFile(this.fields.documentAndNote.fragment.document, file);
-      I.fillField(this.fields.documentAndNote.fragment.note, "Test Note");
+      I.fillField(this.fields.documentAndNote.fragment.note, 'Test Note');
     });
     await I.clickContinue();
   },
