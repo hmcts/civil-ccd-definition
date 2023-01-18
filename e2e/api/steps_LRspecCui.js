@@ -25,7 +25,7 @@ const data = {
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
-  EXTEND_RESPOSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline')
+  EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline')
 };
 
 const eventData = {
@@ -165,7 +165,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
 
 
-    let informAgreedExtensionData = data.EXTEND_RESPOSE_DEADLINE_DATE();
+    let informAgreedExtensionData = data.EXTEND_RESPONSE_DEADLINE_DATE();
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
