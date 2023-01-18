@@ -1,7 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "RESET_PIN",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
+    "CRUD": "CRU"
   }
 ]

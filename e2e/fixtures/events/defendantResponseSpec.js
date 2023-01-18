@@ -33,7 +33,6 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -58,10 +57,8 @@ module.exports = {
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -177,7 +174,6 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -288,7 +284,6 @@ module.exports = {
           },
           Language: {
             respondent2DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -313,11 +308,9 @@ module.exports = {
           },
           HearingSupport: {
             respondent2DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
-            }
+                supportRequirements: 'Yes',
+                supportRequirementsAdditional: 'Additional support reasons'
+              }
           },
           VulnerabilityQuestions: {
             respondent2DQVulnerabilityQuestions: {
@@ -432,7 +425,6 @@ module.exports = {
           },
           Language: {
             respondent2DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }

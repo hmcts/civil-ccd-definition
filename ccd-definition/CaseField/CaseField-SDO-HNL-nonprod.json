@@ -135,7 +135,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingWitnessOfFactTitle",
-    "Label": "## Witness of Fact",
+    "Label": "## Witnesses of Fact",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -890,7 +890,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackWitnessOfFactTitle",
-    "Label": "## Witness of fact",
+    "Label": "## Witnesses of Fact",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1123,7 +1123,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert Evidence",
     "FieldType": "FastTrackPersonalInjury",
     "SecurityClassification": "Public"
   },
