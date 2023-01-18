@@ -854,26 +854,37 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  amendHearingDueDate: async (user) => {
+  amendHearingDueDate: async (user, dateName, dateInput) => {
     await apiRequest.setupTokens(user);
-    let hearingDueDate ={};
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2,'0');
-    var mm = String(today.getMonth()).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    let dateString = yyyy + '-' + mm + '-' + dd;
 
-    hearingDueDate = {'hearingDueDate':dateString};
-    await testingSupport.updateCaseData(caseId, hearingDueDate);
+    let dateToChange = {};
+    var dd = String(dateInput.getDate()).padStart(2,'0');
+    var mm = String(dateInput.getMonth()).padStart(2, '0');
+    var yyyy = dateInput.getFullYear();
+    let dateValue = yyyy + '-' + mm + '-' + dd;
+
+    dateToChange = {dateName : dateValue};
+    await testingSupport.updateCaseData(caseId, dateToChange);
   },
 
   hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
 
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    amendHearingDueDate(user, 'hearingDueDate', new Date());
+
+    eventName = 'HEARING_FEE_PAID';
+    await apiRequest.submitEvent(eventName, caseId);
 
   },
 
   hearingFeeUnpaid: async (user) => {
+    await apiRequest.setupTokens(user);
 
+    eventName = 'HEARING_FEE_UNPAID';
+    await apiRequest.submitEvent(eventName, caseId);
   },
 
   getCaseId: async () => {
