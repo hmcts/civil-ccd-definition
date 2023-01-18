@@ -388,7 +388,7 @@
     "CaseFieldID": "applicant1DQLanguage",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "Language",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
     "ShowSummaryChangeOption": "Y",
@@ -400,7 +400,7 @@
     "CaseFieldID": "applicant2DQLanguage",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "Language",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\""
