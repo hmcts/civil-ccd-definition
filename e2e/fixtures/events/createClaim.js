@@ -235,47 +235,107 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         AddAnotherDefendant: {
           addRespondent2: 'Yes'
         },
-SecondDefendant: {
-  respondent2: respondent2WithPartyName,
-},
-SecondDefendantLegalRepresentation: {
-  respondent2Represented: 'No'
-}
-};
-}
-case 'ONE_V_TWO_LIPS': {
-  delete claimData.SecondDefendantLegalRepresentation;
-  return {
-    ...claimData,
-    AddAnotherClaimant: {
-      addApplicant2: 'No'
-    },
-    AddAnotherDefendant: {
-      addRespondent2: 'Yes'
-    },
-    SecondDefendant: {
-      respondent2: respondent2WithPartyName,
-    },
-    LegalRepresentation: {
-      respondent1Represented: 'No',
-      respondent2Represented: 'No'
-    },
-  };
-}
-
-case 'TWO_V_ONE': {
-  return {
-    ...claimData,
-    AddAnotherClaimant: {
-      addApplicant2: 'Yes'
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'Yes'
+        },
+      };
     }
-  };
-}
-case 'ONE_V_ONE':
-default: {
-  return claimData;
-}
-}
+    case 'ONE_V_TWO_TWO_LEGAL_REP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'No'
+        },
+        SecondDefendantSolicitorOrganisation: {
+          respondent2OrgRegistered: 'Yes',
+          respondent2OrganisationPolicy: {
+            OrgPolicyReference: 'Defendant policy reference 2',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+            Organisation:
+
+              {OrganisationID: config.defendant2SolicitorOrgId}
+            ,
+          },
+        },
+        SecondDefendantSolicitorServiceAddress: {
+          respondentSolicitor2ServiceAddress: buildAddress('service')
+        },
+        SecondDefendantSolicitorReference: {
+          respondentSolicitor2Reference: 'sol2reference'
+        },
+        SecondDefendantSolicitorEmail: {
+          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+        }
+      };
+    }
+    case 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'No'
+        }
+      };
+    }
+    case 'ONE_V_TWO_LIPS': {
+      delete claimData.SecondDefendantLegalRepresentation;
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        LegalRepresentation: {
+          respondent1Represented: 'No',
+          respondent2Represented: 'No'
+        },
+      };
+    }
+
+    case 'TWO_V_ONE': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'Yes'
+        }
+      };
+    }
+    case 'ONE_V_ONE':
+    default: {
+      return claimData;
+    }
+  }
 };
 
 const hasRespondent2 = (mpScenario) => {
@@ -388,23 +448,6 @@ module.exports = {
       },
     }
   },
-  serviceUpdateDto: (caseId, paymentStatus) => {
-    return {
-      service_request_reference: '1324646546456',
-      ccd_case_number: caseId,
-      service_request_amount: '167.00',
-      service_request_status: paymentStatus,
-      payment: {
-        payment_amount: 167.00,
-
-
-
-        payment_reference: '13213223',
-        payment_method: 'by account',
-        case_reference: 'example of case ref'
-      }
-    };
-  },
   cosNotifyClaim : (lip1, lip2) => {
     return {
       ...(lip1) ? {
@@ -439,6 +482,23 @@ module.exports = {
           ]
         }
       }: {},
+    };
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+
+
+
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
     };
   },
   cosNotifyClaimDetails : (lip1, lip2) => {
