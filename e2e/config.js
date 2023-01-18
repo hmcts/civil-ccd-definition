@@ -59,6 +59,13 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
+  judgeUserWithRegionId1Local: {
+    password: defaultPassword,
+    email: 'judge-civil-02@example.com',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '1'
+  },
   judgeUserWithRegionId2: {
     password: judgeDefaultPassword,
     email: '4915631EMP-@ejudiciary.net',
@@ -86,6 +93,20 @@ module.exports = {
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
+  },
+  tribunalCaseworkerWithRegionId1: {
+    email: 'tribunal_caseworker_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
+  },
+  tribunalCaseworkerWithRegionId1Local: {
+    email: 'tribunal-caseworker-01@example.com',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
   },
   systemupdate: {
     password: defaultPassword,
