@@ -22,16 +22,12 @@ module.exports = {
   },
 
   removeHNLFieldsFromUnspecClaimData: (data) => {
-    if (data.valid) {
-      if (data.valid.Defendant) {
-        delete data.valid.Defendant.respondent1['partyEmail'];
-        delete data.valid.Defendant.respondent1['partyPhone'];
-      }
+    delete data.valid.Defendant.respondent1['partyEmail'];
+    delete data.valid.Defendant.respondent1['partyPhone'];
 
-      if (data.valid.SecondDefendant) {
-        delete data.valid.SecondDefendant.respondent2['partyEmail'];
-        delete data.valid.SecondDefendant.respondent2['partyPhone'];
-      }
+    if (data.valid.SecondDefendant) {
+      delete data.valid.SecondDefendant.respondent2['partyEmail'];
+      delete data.valid.SecondDefendant.respondent2['partyPhone'];
     }
   },
 
