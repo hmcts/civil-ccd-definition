@@ -7,14 +7,14 @@
   },
   {
     "ID": "FastTrackMethod",
-    "ListElementCode": "fastTrackMethodVideoConferenceHearing",
-    "ListElement": "Video Conference Hearing",
+    "ListElementCode": "fastTrackMethodTelephoneHearing",
+    "ListElement": "Telephone",
     "DisplayOrder": 2
    },
   {
     "ID": "FastTrackMethod",
-    "ListElementCode": "fastTrackMethodTelephoneHearing",
-    "ListElement": "Telephone Hearing",
+    "ListElementCode": "fastTrackMethodVideoConferenceHearing",
+    "ListElement": "Video",
     "DisplayOrder": 3
   }
 ]
