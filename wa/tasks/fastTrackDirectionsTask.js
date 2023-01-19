@@ -14,6 +14,6 @@ module.exports = {
     work_type_id: 'decision_making_work',
     work_type_label: 'Decision-making work',
     permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
-    description: '[Directions - Provisional Summary Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)',
+    description: '[Directions - Fast Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOFastTrack)',
     role_category: 'JUDICIAL'
 };
