@@ -67,7 +67,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantDefenceResponseDocument",
+    "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

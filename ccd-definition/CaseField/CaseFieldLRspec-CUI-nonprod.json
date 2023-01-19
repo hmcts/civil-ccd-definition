@@ -65,7 +65,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicantDefenceResponseDocument",
+    "ID": "applicantDefenceResponseDocumentAndDQFlag",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"

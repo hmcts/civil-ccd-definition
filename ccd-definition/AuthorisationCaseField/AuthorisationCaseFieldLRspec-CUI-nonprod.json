@@ -234,7 +234,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantDefenceResponseDocument",
+    "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
     "AccessControl": [
       {
         "UserRoles": [
