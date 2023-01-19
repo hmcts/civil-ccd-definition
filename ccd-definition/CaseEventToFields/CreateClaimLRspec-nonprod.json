@@ -43,5 +43,29 @@
     "PageID": "StatementOfTruth",
     "PageDisplayOrder": 37,
     "PageColumnNumber": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "claimFee",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "applicantSolicitor1PbaAccounts",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\""
   }
 ]
