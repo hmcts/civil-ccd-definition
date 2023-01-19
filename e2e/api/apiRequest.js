@@ -144,7 +144,6 @@ module.exports = {
 
   paymentUpdate: async (caseId, endpoint, serviceRequestUpdateDto) => {
     let endpointURL = getCivilServiceUrl() + endpoint;
-
     let response = await restHelper.retriedRequest(endpointURL, getRequestHeaders(tokens.userAuth),
       serviceRequestUpdateDto,'PUT');
 
