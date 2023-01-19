@@ -1,5 +1,4 @@
 const {I} = inject();
-const {checkCourtLocationDynamicListIsEnabled} = require('./../../api/testingSupport');
 const config = require('./../../config');
 
 module.exports = {
