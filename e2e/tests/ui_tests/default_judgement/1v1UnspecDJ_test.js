@@ -24,13 +24,20 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) 
   await I.login(config.judgeUserWithRegionId1);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
+    await I.waitForText('How do you want to add a case note?');
+    await I.judgeAddsCaseNotes();
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+    await I.waitForText('Summary');
+  }
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
-  await I.login(config.hearingCenterAdminWithRegionId4);
+  await I.login(config.hearingCenterAdminWithRegionId1);
   await I.staffPerformDJCaseTransferCaseOffline(caseId);
 }).retry(3);
 
