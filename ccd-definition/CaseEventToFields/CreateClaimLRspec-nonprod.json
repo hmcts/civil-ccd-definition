@@ -46,7 +46,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "claimFee",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
@@ -59,7 +59,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicantSolicitor1PbaAccounts",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",

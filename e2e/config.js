@@ -15,12 +15,13 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    manageCase: 'https://xui-civil-ccd-pr-2019.service.core-compute-preview.internal',
+    manageCase: 'https://xui-civil-ccd-pr-1745.preview.platform.hmcts.net',
     authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2019.service.core-compute-preview.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-1745.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-2019.service.core-compute-preview.internal'
+    civilService: 'https://civil-ccd-pr-1745.preview.platform.hmcts.net',
+    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
 
     // manageCase: process.env.URL || 'http://localhost:3333',
     // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',

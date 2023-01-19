@@ -1,4 +1,5 @@
 const {I} = inject();
+const config = require('../../config');
 
 module.exports = {
 
@@ -39,8 +40,13 @@ module.exports = {
 
   async openServiceRequestTab() {
     let urlBefore = await I.grabCurrentUrl();
+    if (['preview'].includes(config.runningEnv)) {
+      await I.wait(5);
+    } else {
+      await I.wait(2);
+    }
     await I.retryUntilUrlChanges(async () => {
-      await I.click(locate('div.mat-tab-label-content').withText('Service Request'));
+      await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
       await I.wait(10);
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
