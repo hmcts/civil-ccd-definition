@@ -56,18 +56,5 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "applicantSolicitor1PbaAccounts",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 37,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
   }
 ]
