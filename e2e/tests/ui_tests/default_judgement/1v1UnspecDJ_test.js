@@ -37,7 +37,7 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) 
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
-  await I.login(config.hearingCenterAdminWithRegionId1);
+  await I.login(config.hearingCenterAdminWithRegionId11);
   if (['preview', 'demo'].includes(config.runningEnv)) {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.createHearingScheduled();
