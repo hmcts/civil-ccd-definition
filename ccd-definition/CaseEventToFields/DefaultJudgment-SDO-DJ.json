@@ -714,18 +714,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "trialHearingTimeDJ",
-    "PageFieldDisplayOrder": 21,
-    "DisplayContext": "COMPLEX",
-    "PageID": "TrialHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialHearingTrialDJToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialHearingMethodTitleDJ",
     "PageFieldDisplayOrder": 22,
     "DisplayContext": "READONLY",
