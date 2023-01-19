@@ -1,0 +1,132 @@
+[
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DocumentsWitness",
+    "CategoryLabel": "Witness statements for trial",
+    "DisplayOrder": "2",
+    "ParentCategoryID": ""
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessDocuments",
+    "CategoryLabel": "Claimant",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "DocumentsWitness"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentWitnessDocuments",
+    "CategoryLabel": "Defendant One",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "DocumentsWitness"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessDocuments",
+    "CategoryLabel": "Defendant Two",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "DocumentsWitness"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessStatement",
+    "CategoryLabel": "Claimant - Statement",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneWitnessStatement",
+    "CategoryLabel": "Defendant - Statement",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessStatement",
+    "CategoryLabel": "Defendant - Statement",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+  },
+
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessSummary",
+    "CategoryLabel": "Witness summary",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "ApplicantWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneWitnessSummary",
+    "CategoryLabel": "Witness summary",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "RespondentWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessSummary",
+    "CategoryLabel": "Witness summary",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+  },
+
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessHearsay",
+    "CategoryLabel": "Hearsay notices",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "ApplicantWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneWitnessHearsay",
+    "CategoryLabel": "Hearsay notices",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "RespondentWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessHearsay",
+    "CategoryLabel": "Hearsay notices",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessReferred",
+    "CategoryLabel": "Documents referred",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "ApplicantWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneWitnessReferred",
+    "CategoryLabel": "Documents referred",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "RespondentWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessReferred",
+    "CategoryLabel": "Documents referred",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+  }
+]
