@@ -120,7 +120,8 @@ const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furth
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList.page');
 const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
-//const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
 
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
@@ -396,16 +397,16 @@ module.exports = function () {
       ]);
     },
 
-     async createHearingScheduled() {
+    async createHearingScheduled() {
           eventName = 'Hearing Scheduled';
-
           await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, 1670573382649930),
+            () => caseViewPage.startEvent(eventName, caseId),
             () => hearingNoticeListPage.hearingType('fastTrack'),
             () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
-          //  () => hearingScheduledChooseDetailsPage.selectCourt()
-           // () => event.submit('Submit', 'Extension deadline submitted'),
-           // () => event.returnToCaseDetails()
+            () => hearingScheduledChooseDetailsPage.selectCourt(),
+            () => hearingScheduledMoreInfoPage.enterMoreInfo(),
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails()
           ]);
         },
 
