@@ -69,5 +69,31 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "claimFee",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "COMPLEX",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 31,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicantSolicitor1PbaAccounts",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 31,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   }
 ]
