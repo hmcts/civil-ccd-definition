@@ -6,5 +6,19 @@
       "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "caseworker-approver",
+      "caseworker-caa",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
