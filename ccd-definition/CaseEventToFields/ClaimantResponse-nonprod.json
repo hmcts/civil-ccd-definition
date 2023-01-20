@@ -71,7 +71,7 @@
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y",
-    "Publish": "Yes"
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -84,6 +84,20 @@
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
-    "Publish": "Yes"
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   }
 ]
