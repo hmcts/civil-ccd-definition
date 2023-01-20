@@ -106,7 +106,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR_FOR_OTHER_TRIAL_READY",
-    "Name": "Notify Claimant for other party trial ready",
+    "Name": "NotifyClaimantOtherTrialReady",
     "Description": "Notify Claimant to check other party trial readiness",
     "PreConditionState(s)": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
@@ -119,7 +119,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_OTHER_TRIAL_READY",
-    "Name": "Notify Defendant 1 for other party trial ready",
+    "Name": "NotifyDefndant1OtherTrialReady",
     "Description": "Notify Defendant 1 to check other party trial readiness",
     "PreConditionState(s)": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
@@ -132,7 +132,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_OTHER_TRIAL_READY",
-    "Name": "Notify Defendant 2 for other party trial ready",
+    "Name": "NotifyDefndant2OtherTrialReady",
     "Description": "Notify Defendant 2 to check other party trial readiness",
     "PreConditionState(s)": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
