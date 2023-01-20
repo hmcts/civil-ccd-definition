@@ -17,6 +17,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {PBAv3} = require('../fixtures/featureKeys');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -154,6 +155,17 @@ module.exports = {
       body: 'Your claim will not be issued until payment is confirmed.'
     });
 
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -207,6 +219,18 @@ module.exports = {
       body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
     console.log('***assertCorrectEventsAreAvailableToUser');
