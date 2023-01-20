@@ -1244,13 +1244,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "PageDisplayOrder": 45,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "responseClaimExpertSpecRequired2 = \"Yes\""
+    "FieldShowCondition": "responseClaimExpertSpecRequired2 = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
   },
   {
     "CaseTypeID": "CIVIL",
