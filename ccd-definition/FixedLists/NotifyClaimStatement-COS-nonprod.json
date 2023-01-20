@@ -2,7 +2,7 @@
   {
     "ID": "NotifyClaimStatement",
     "ListElementCode": "CERTIFIED",
-    "ListElement": "I believe that the facts stated in the application are true",
+    "ListElement": "I believe that the facts stated in the certificate are true",
     "DisplayOrder": 1
   }
 ]
