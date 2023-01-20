@@ -4666,6 +4666,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-ras-validation",
+          "caseworker-civil-systemupdate",
           "GS_profile"
         ],
         "CRUD": "R"

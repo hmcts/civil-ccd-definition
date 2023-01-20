@@ -85,6 +85,13 @@
     ]]></notes>
     <cve>1084765</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: flat:4.1.1
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
+    <vulnerabilityName>1085297</vulnerabilityName>
+  </suppress>
   <suppress until="2022-10-10">
     <cve>CVE-2022-42003</cve>
   </suppress>
@@ -117,7 +124,22 @@
     <cve>CVE-2022-3064</cve>
     <cve>CVE-2021-4235</cve>
   </suppress>
-  <suppress until="2023-05-05">
-    <cve>1085318</cve>
+  <suppress>
+    <cve>CVE-2021-4235</cve>
+    <cve>CVE-2022-3064</cve>
   </suppress>
- </suppressions>
+  <suppress>
+    <notes><![CDATA[
+   file name: flat:4.1.1
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
+    <vulnerabilityName>1085297</vulnerabilityName>
+  </suppress>
+  <suppress until="2023-03-01">
+    <notes><![CDATA[
+   file name: debug:2.6.9
+   ]]></notes>
+    <packageUrl regex="true">^pkg:npm/debug@.*$</packageUrl>
+    <vulnerabilityName>1087958</vulnerabilityName>
+  </suppress>
+</suppressions>
