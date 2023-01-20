@@ -36,7 +36,7 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) 
   await I.login(config.hearingCenterAdminWithRegionId11);
   console.log('login as hearingCenterAdminWithRegionId11.');
   if (['preview', 'demo'].includes(config.runningEnv)) {
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
   console.log('createHearingScheduled...');
   await I.createHearingScheduled();
   console.log('after createHearingScheduled.');

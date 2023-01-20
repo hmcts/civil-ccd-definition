@@ -411,7 +411,6 @@ module.exports = function () {
     async createHearingScheduled() {
           eventName = 'Hearing Scheduled';
           await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
             () => hearingNoticeListPage.hearingType('fastTrack'),
             () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
             () => hearingScheduledChooseDetailsPage.selectCourt(),
