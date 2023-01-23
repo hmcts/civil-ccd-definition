@@ -442,7 +442,6 @@ module.exports = function () {
 
     async respondToDefence(mpScenario = 'ONE_V_ONE') {
       eventName = 'View and respond to defence';
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.proceedWithClaim(mpScenario),
