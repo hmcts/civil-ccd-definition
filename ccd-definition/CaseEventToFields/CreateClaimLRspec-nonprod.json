@@ -1,0 +1,60 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondStatementOfTruthHeaderLabel",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageLabel": " ",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "claimStatementOfTruthLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "uiStatementOfTruth",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "statementOfTruthSubmitLabel",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "claimFee",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "StatementOfTruth",
+    "PageDisplayOrder": 37,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  }
+]

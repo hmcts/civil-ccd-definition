@@ -21,6 +21,8 @@ const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const event = require('./fragments/event');
 const proceedPage = require('./pages/respondToDefence/proceed.page');
+const {PBAv3} = require('./fixtures/featureKeys');
+const {checkToggleEnabled} = require('./api/testingSupport');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -308,6 +310,7 @@ module.exports = function () {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
+         const pbaV3 = await checkToggleEnabled(PBAv3);
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
          await this.triggerStepsWithScreenshot([
             () => this.clickContinue(),
@@ -332,8 +335,8 @@ module.exports = function () {
                  () => specInterestDateStartPage.selectInterestDateStart(),
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
-                 () => pbaNumberPage.selectPbaNumber(),
-                 () => paymentReferencePage.updatePaymentReference(),
+                 () => { if (!pbaV3) return pbaNumberPage.selectPbaNumber(); },
+                 () => { if (!pbaV3) return paymentReferencePage.updatePaymentReference(); },
                  () => statementOfTruth.enterNameAndRole('claim'),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
                  () => event.returnToCaseDetails(),

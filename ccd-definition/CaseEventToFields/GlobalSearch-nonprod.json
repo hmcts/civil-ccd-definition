@@ -5,11 +5,11 @@
     "CaseFieldID": "caseNameHmctsInternal",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
-    "PageID": "PbaNumber",
+    "PageID": "StatementOfTruth",
     "PageDisplayOrder": 37,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "uiStatementOfTruth = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -29,11 +29,11 @@
     "CaseFieldID": "caseNameHmctsInternal",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
-    "PageID": "PbaNumber",
+    "PageID": "StatementOfTruth",
     "PageDisplayOrder": 31,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimValue = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "uiStatementOfTruth = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
