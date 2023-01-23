@@ -30,5 +30,12 @@
     "ElementLabel": "Date to",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
+  },
+  {
+    "ID": "SmallClaimUnavailableDate",
+    "ListElementCode": "who",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
   }
 ]
