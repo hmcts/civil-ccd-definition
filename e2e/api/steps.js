@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement, buildAddress} = require('./dataHelper');
+const {listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -118,20 +118,20 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimData) => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let createClaimData = claimData || data.CREATE_CLAIM(mpScenario);
+    let createClaimData = data.CREATE_CLAIM(mpScenario);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -150,15 +150,19 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment is confirmed.'
-    });
-
-    await waitForFinishedBusinessProcess(caseId);
     const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+      : 'Your claim will not be issued until payment is confirmed.';
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
+      header: 'Your claim has been received',
+      body: bodyText
+    });
+
+    await waitForFinishedBusinessProcess(caseId);
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
@@ -185,7 +189,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
 
     let createClaimData;
-    switch (mpScenario){
+    switch (mpScenario) {
       case 'ONE_V_ONE':
         createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
         break;
@@ -202,7 +206,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -253,7 +257,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -347,28 +351,28 @@ module.exports = {
   notifyClaimLip: async (user, multipartyScenario) => {
     let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
 
-      eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
-      mpScenario = multipartyScenario;
+    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
+    mpScenario = multipartyScenario;
 
-      await apiRequest.setupTokens(user);
+    await apiRequest.setupTokens(user);
 
-    if(isCertificateOfServiceEnabled) {
+    if (isCertificateOfServiceEnabled) {
 
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
       await validateEventPages(data[eventName]);
-      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
+      returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
-      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true)};
-      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+      } else if (mpScenario === 'ONE_V_TWO_LIPS') {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false)};
       } else {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false)};
       }
-      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_CASE_DETAILS_NOTIFICATION', {
+      await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
         header: 'Certificate of Service',
         body: 'You must serve the claim details and'
       });
@@ -413,20 +417,20 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-    if(isCertificateOfServiceEnabled) {
+    if (isCertificateOfServiceEnabled) {
 
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
       await validateEventPages(data[eventName]);
-      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
-      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
+      if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
         returnedCaseData = {};
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true)};
         const document = await testingSupport.uploadDocument();
         returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
-      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+      } else if (mpScenario === 'ONE_V_TWO_LIPS') {
         returnedCaseData = {};
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true), ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
         const document = await testingSupport.uploadDocument();
@@ -437,7 +441,7 @@ module.exports = {
         const document = await testingSupport.uploadDocument();
         returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
       }
-      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: 'Certificate of Service',
         body: 'The defendant(s) must'
       });
@@ -531,7 +535,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
-    if (solicitor === 'solicitorTwo'){
+    if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1');
     }
 
@@ -593,7 +597,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
         defendantResponseData, solicitor);
     }
@@ -608,7 +612,7 @@ module.exports = {
     deleteCaseFields('respondentSolicitor2Reference');
     deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
 
-    if (solicitor === 'solicitorTwo'){
+    if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
@@ -628,7 +632,7 @@ module.exports = {
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
     let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(isHNLEnabled){
+    if (isHNLEnabled) {
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
     }
@@ -670,7 +674,6 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -684,7 +687,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
         claimantResponseData);
     }
@@ -789,8 +792,8 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
-  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
-     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
 
   addCaseNote: async (user) => {
@@ -818,15 +821,15 @@ module.exports = {
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline ={};
-    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    let respondent1deadline = {};
+    respondent1deadline = {'respondent1ResponseDeadline': '2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1deadline);
-   },
+  },
 
   amendRespondent2ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent2deadline ={};
-    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    let respondent2deadline = {};
+    respondent2deadline = {'respondent2ResponseDeadline': '2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
@@ -875,9 +878,9 @@ module.exports = {
   },
 
   getCaseId: async () => {
-     console.log (`case created: ${caseId}`);
-     return caseId;
-   },
+    console.log(`case created: ${caseId}`);
+    return caseId;
+  },
 
   getLegacyCaseReference: async () => {
     return legacyCaseReference;
@@ -980,7 +983,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
 
-  if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
+  if (!isHNLEnabled && eventName === 'CREATE_CLAIM') {
     caseData = replaceLitigationFriendFields(caseData);
   }
   if (pageId === 'Claimant') {
@@ -1103,15 +1106,15 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
   }
 };
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
-  const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
     assert.property(returnedCaseData, populatedCaseField);
   }
 };
 
-  // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
-  // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
-  // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
+// Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
+// This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
+// Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
@@ -1222,10 +1225,10 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
 
     if (claimantLitigationPage) {
       const updated = replaceLitigationFriendFields(claimantLitigationPage);
-      if(claimantLitigationPage.applicant1LitigationFriend) {
+      if (claimantLitigationPage.applicant1LitigationFriend) {
         claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
       }
-      if(claimantLitigationPage.applicant2LitigationFriend) {
+      if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
       }
     }
@@ -1310,7 +1313,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
 
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  switch(mpScenario){
+  switch (mpScenario) {
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
@@ -1325,9 +1328,9 @@ const assignCase = async () => {
 // solicitor 1 should not see details for respondent 2
 // solicitor 2 should not see details for respondent 1
 const solicitorSetup = (solicitor) => {
-  if(solicitor === 'solicitorOne'){
+  if (solicitor === 'solicitorOne') {
     deleteCaseFields('respondent2');
-  } else if (solicitor === 'solicitorTwo'){
+  } else if (solicitor === 'solicitorTwo') {
     deleteCaseFields('respondent1');
   }
 };
@@ -1341,11 +1344,11 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorOne') {
+  if (solicitor === 'solicitorOne') {
     delete responseBody.data['respondent2ResponseDeadline'];
   }
 
-  if(solicitor === 'solicitorTwo'){
+  if (solicitor === 'solicitorTwo') {
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ResponseDeadline'];
   } else {
@@ -1368,10 +1371,10 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorOne') {
+  if (solicitor === 'solicitorOne') {
     delete responseBody.data['respondent2ResponseDeadline'];
   }
-  if(solicitor === 'solicitorTwo'){
+  if (solicitor === 'solicitorTwo') {
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ClaimResponseType'];
     delete responseBody.data['respondent1ClaimResponseDocument'];
@@ -1401,10 +1404,9 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 
 const adjustDataForSolicitor = (user, data) => {
   let fixtureClone = cloneDeep(data);
-  if(user === 'solicitorOne') {
+  if (user === 'solicitorOne') {
     delete fixtureClone['respondent2ResponseDeadline'];
-  }
-  else if (user === 'solicitorTwo') {
+  } else if (user === 'solicitorTwo') {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;
