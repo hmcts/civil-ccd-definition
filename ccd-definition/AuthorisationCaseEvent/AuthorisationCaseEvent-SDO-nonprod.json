@@ -9,7 +9,16 @@
         "legal-adviser"
       ],
       "CRUD": "CRU"
-      }
+      },
+    {
+      "UserRoles": [
+        "APP-SOL-UNSPEC-PROFILE",
+        "RES-SOL-ONE-UNSPEC-PROFILE",
+        "RES-SOL-TWO-UNSPEC-PROFILE",
+        "caseworker-civil-admin"
+      ],
+      "CRUD": "R"
+    }
     ]
   },
   {
@@ -94,10 +103,19 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
+          "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -110,6 +128,16 @@
           "legal-adviser"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
