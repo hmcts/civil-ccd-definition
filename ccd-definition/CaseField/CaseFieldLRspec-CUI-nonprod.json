@@ -83,5 +83,12 @@
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay in instalments. \n\n Details of the repayment plan can be found in the Defendant Response form.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantUserDetails",
+    "Label": "Claimant User Details",
+    "FieldType": "UserDetails",
+    "SecurityClassification": "Public"
   }
 ]
