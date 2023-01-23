@@ -210,7 +210,9 @@
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "ElementLabel": " ",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(hhmmss)",
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "GeneralApplicationGAspec",

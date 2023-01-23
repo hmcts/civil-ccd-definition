@@ -60,6 +60,7 @@
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
     "CaseFieldID": "cosNotifyClaimDefendant1",
+    "DisplayContext": "READONLY",
     "TabFieldDisplayOrder": 7,
     "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
   },

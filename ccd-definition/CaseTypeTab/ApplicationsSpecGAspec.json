@@ -8,6 +8,7 @@
       "APP-SOL-SPEC-PROFILE"
     ],
     "CaseFieldID": "claimantGaAppDetails",
-    "TabFieldDisplayOrder": 1
+    "TabFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
   }
 ]

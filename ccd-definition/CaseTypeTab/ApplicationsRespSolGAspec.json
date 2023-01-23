@@ -8,7 +8,8 @@
     "UserRoles": [
       "RES-SOL-ONE-UNSPEC-PROFILE"
     ],
-    "TabFieldDisplayOrder": 1
+    "TabFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,6 +20,7 @@
     "UserRoles": [
       "RES-SOL-ONE-SPEC-PROFILE"
     ],
-    "TabFieldDisplayOrder": 1
+    "TabFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
   }
 ]

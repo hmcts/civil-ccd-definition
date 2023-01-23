@@ -5,7 +5,7 @@
     "CaseFieldID": "cosNotifyClaimDefendant1",
     "ListElementCode": "cosDateOfServiceForDefendant",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy),#DATETIMEENTRY(d MMMM yyyy)"
   },
   {
     "ID": "NotifyClaimCoS",

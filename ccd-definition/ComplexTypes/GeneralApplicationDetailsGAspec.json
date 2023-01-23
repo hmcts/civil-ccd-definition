@@ -28,6 +28,8 @@
     "FieldType": "DateTime",
     "Label": "Submitted on",
     "ElementLabel": "Submitted on",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)",
+    "DisplayContext": "READONLY",
     "SecurityClassification": "Public"
   }
 ]

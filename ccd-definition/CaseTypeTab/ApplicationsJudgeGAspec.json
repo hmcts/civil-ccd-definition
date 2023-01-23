@@ -8,6 +8,7 @@
       "judge-profile"
     ],
     "CaseFieldID": "gaDetailsMasterCollection",
+    "DisplayContext": "READONLY",
     "TabFieldDisplayOrder": 1
   }
 ]

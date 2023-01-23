@@ -115,7 +115,7 @@
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant1",
     "PageFieldDisplayOrder": 6,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "CertificateOfService1",
     "PageLabel": "Certificate Of Service - notify claim details for defendant 1",
     "PageDisplayOrder": 3,

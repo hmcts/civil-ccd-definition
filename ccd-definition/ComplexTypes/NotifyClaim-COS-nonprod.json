@@ -5,6 +5,7 @@
     "ElementLabel": "Date you served the documents",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d MMMM yyyy),#DATETIMEENTRY(d MMMM yyyy)",
     "Definition":  "Enter the date you served the documents"
   },
   {
