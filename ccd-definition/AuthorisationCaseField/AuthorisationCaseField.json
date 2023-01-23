@@ -4648,7 +4648,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
