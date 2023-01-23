@@ -33,13 +33,12 @@ module.exports = {
   },
 
   async enterHearing(party) {
-    if(!checkHnlLegalRepToggleEnabled()) {
-      I.waitForElement(this.fields(party).hearingLength.id);
+    const hnlLegalRepEnabled = await checkHnlLegalRepToggleEnabled();
+    if(!hnlLegalRepEnabled) {
       await I.runAccessibilityTest();
       await within(this.fields(party).hearingLength.id, () => {
         I.click(this.fields(party).hearingLength.options.lessThanOneDay);
       });
-
       I.fillField(this.fields(party).hearingLengthHours, '5');
     }
     await within(this.fields(party).unavailableDatesRequired.id, () => {
