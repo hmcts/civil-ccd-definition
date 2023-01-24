@@ -45,6 +45,7 @@ module.exports = {
       I.fillField(this.fields(party).hearingLengthHours, '5');
     }
 
+    I.waitForElement(this.fields(party).unavailableDatesRequired.id);
     await within(this.fields(party).unavailableDatesRequired.id, () => {
       I.click(this.fields(party).unavailableDatesRequired.options.no);
     });
