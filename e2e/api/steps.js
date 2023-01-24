@@ -958,7 +958,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
     caseData = removeUiFields(pageId, caseData);
-  } else if (data.midEventData && data.midEventData[pageId]) {
+  } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
     addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
   }
 

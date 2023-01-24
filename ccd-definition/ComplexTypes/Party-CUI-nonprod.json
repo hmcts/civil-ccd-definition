@@ -5,5 +5,12 @@
     "FieldType": "Email",
     "ElementLabel": "Email",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Party",
+    "ListElementCode": "partyPhone",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone",
+    "SecurityClassification": "Public"
   }
 ]
