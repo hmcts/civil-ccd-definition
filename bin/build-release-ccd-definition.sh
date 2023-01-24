@@ -14,10 +14,6 @@ elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*-GAR2GAspec-nonprod.json,*CUI-nonprod.json,*-shuttered.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json,*-shuttered.json"
-elif [ ${environment} == aat ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*CUI.json,*CUI-nonprod.json,*-shuttered.json"
-elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*CUI.json,*CUI-nonprod.json,*-shuttered.json"
 elif [ ${excludeNonProdFiles} == true ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*CUI.json,*CUI-nonprod.json,*-unshuttered.json"
 else
