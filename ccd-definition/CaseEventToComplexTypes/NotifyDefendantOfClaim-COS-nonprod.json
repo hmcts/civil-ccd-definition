@@ -68,15 +68,15 @@
     "ID": "NotifyClaimCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant1",
-    "ListElementCode": "cosSender",
+    "ListElementCode": "cosStatementOfTruthLabel",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "NotifyClaimCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant1",
-    "ListElementCode": "cosSenderFirm",
+    "ListElementCode": "cosSender",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -84,8 +84,16 @@
     "ID": "NotifyClaimCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant1",
-    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ListElementCode": "cosSenderFirm",
     "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "NotifyClaimCoS",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
+    "ListElementCode": "cosUISenderStatementOfTruthLabel",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -157,15 +165,15 @@
     "ID": "NotifyClaimCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant2",
-    "ListElementCode": "cosSender",
+    "ListElementCode": "cosStatementOfTruthLabel",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "NotifyClaimCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant2",
-    "ListElementCode": "cosSenderFirm",
+    "ListElementCode": "cosSender",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -173,8 +181,16 @@
     "ID": "NotifyClaimCoS",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant2",
-    "ListElementCode": "cosSenderStatementOfTruthLabel",
+    "ListElementCode": "cosSenderFirm",
     "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "NotifyClaimCoS",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "cosNotifyClaimDefendant2",
+    "ListElementCode": "cosUISenderStatementOfTruthLabel",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   }
 ]
