@@ -22,25 +22,6 @@
       }
     ]
    },
-   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOC_REQUEST",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_FORMER_SOLICITOR",
