@@ -1,11 +1,11 @@
 const config = require('../../../config.js');
 const claimData = require('../../../fixtures/events/createClaim.js');
 const mpScenario = 'ONE_V_ONE';
-// const judgeUser = config.judgeUserWithRegionId1;
-// const legalAdvUser = config.tribunalCaseworkerWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
+const legalAdvUser = config.tribunalCaseworkerWithRegionId1;
 // to use on local because the idam images are different
-const judgeUser = config.judgeUserWithRegionId1Local;
-const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
+// const judgeUser = config.judgeUserWithRegionId1Local;
+// const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 
 Feature('CCD 1v1 API test @api-sdo');
 
@@ -117,7 +117,8 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async (
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
+// skip while ccd-data-store says legalAdvUser has no permission to run this event
+Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, legalAdvisorClaim(mpScenario));
