@@ -118,6 +118,23 @@ wa-case-event-handler:
   java:
     ingressHost: wa-case-event-handler-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
+    postgresql:
+      enabled: true
+      image:
+        registry: hmctspublic.azurecr.io
+        repository: imported/bitnami/postgresql
+        tag: '11.6.0'
+        debug: true
+      resources:
+        requests:
+          cpu: 25m
+      initdbScripts:
+        init.sql: |
+          CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      postgresqlUsername: hmcts
+      postgresqlPassword: hmcts
+      persistence:
+        enabled: false
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
         secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
@@ -157,6 +174,23 @@ wa-workflow-api:
   java:
     ingressHost: wa-workflow-api-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-wa-workflow-api
+    postgresql:
+      enabled: true
+      image:
+        registry: hmctspublic.azurecr.io
+        repository: imported/bitnami/postgresql
+        tag: '11.6.0'
+        debug: true
+      resources:
+        requests:
+          cpu: 25m
+      initdbScripts:
+        init.sql: |
+          CREATE DATABASE "wa-workflow-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      postgresqlUsername: hmcts
+      postgresqlPassword: hmcts
+      persistence:
+        enabled: false
     keyVaults:
       wa:
         secrets:
@@ -189,6 +223,23 @@ ccd-message-publisher:
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
+    postgresql:
+      enabled: true
+      image:
+        registry: hmctspublic.azurecr.io
+        repository: imported/bitnami/postgresql
+        tag: '11.6.0'
+        debug: true
+      resources:
+        requests:
+          cpu: 25m
+      initdbScripts:
+        init.sql: |
+          CREATE DATABASE "ccd-message-publisher" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      postgresqlUsername: hmcts
+      postgresqlPassword: hmcts
+      persistence:
+        enabled: false
     keyVaults:
       ccd:
         secrets:
