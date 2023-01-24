@@ -89,7 +89,7 @@ module.exports = {
         videoconf: '#hearingSupportRequirementsDJ_hearingType-VIDEO_CONF',
         telephone: '#hearingSupportRequirementsDJ_hearingType-TELEPHONE_HEARING'
       },
-      preferredLocation: '#hearingSupportRequirementsDJ_hearingTemporaryLocation',
+      preferredLocation: '#hearingSupportRequirementsDJ_hearingPreferredLocation',
       preferredPhone: '#hearingSupportRequirementsDJ_hearingPreferredTelephoneNumber1',
       preferredEmail: '#hearingSupportRequirementsDJ_hearingPreferredEmail',
       attendHearing: '#hearingSupportRequirementsDJ_hearingUnavailableDates_No',

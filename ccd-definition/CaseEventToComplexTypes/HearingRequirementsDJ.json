@@ -21,7 +21,7 @@
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
-    "ListElementCode": "hearingTemporaryLocation",
+    "ListElementCode": "hearingPreferredLocation",
     "DisplayContext": "MANDATORY"
   },
   {

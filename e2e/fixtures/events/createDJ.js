@@ -16,14 +16,13 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
         hearingSupportRequirementsDJ: {
           hearingSupportRequirementsDJ: {
             hearingType: 'IN_PERSON',
-            hearingTemporaryLocation: {
+            hearingPreferredLocation: {
               value: {
                 code: '00c98f7b-8cd5-44c0-9132-c2a173f89e0e',
                 label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
               },
               list_items: courts.refDataList
             },
-            hearingPreferredLocation: config.claimantSelectedCourt,
             hearingPreferredTelephoneNumber1: '07444552365',
             hearingPreferredEmail: 'test@gmail.com',
             hearingLengthEstimate: '15_MINUTES',
@@ -39,7 +38,7 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
           locationName: 'Central London County Court'
         },
         caseManagementLocation: {
-          caseManagementLocation: {     
+          caseManagementLocation: {
             region: '1',
             baseLocation: '20262'
           }
@@ -90,7 +89,7 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
           ...userInput
         };
       }
-    } 
+    }
 };
 
 module.exports = {
