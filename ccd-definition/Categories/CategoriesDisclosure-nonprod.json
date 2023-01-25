@@ -4,14 +4,14 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsDisclosure",
     "CategoryLabel": "Documents",
-    "DisplayOrder": "1",
+    "DisplayOrder": "2",
     "ParentCategoryID": ""
   },
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantDisclosureDocuments",
-    "CategoryLabel": "Claimant",
+    "CategoryLabel": "Claimant(s)",
     "DisplayOrder": "1",
     "ParentCategoryID": "DocumentsDisclosure"
   },
@@ -19,7 +19,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentDisclosureDocuments",
-    "CategoryLabel": "Defendant One",
+    "CategoryLabel": "Legal Rep Defence one",
     "DisplayOrder": "2",
     "ParentCategoryID": "DocumentsDisclosure"
   },
@@ -27,7 +27,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoDisclosureDocuments",
-    "CategoryLabel": "Defendant Two",
+    "CategoryLabel": "Legal Rep Defence two",
     "DisplayOrder": "3",
     "ParentCategoryID": "DocumentsDisclosure"
   },

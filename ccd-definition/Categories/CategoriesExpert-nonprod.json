@@ -4,14 +4,14 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsExpert",
     "CategoryLabel": "Expert Evidence",
-    "DisplayOrder": "3",
+    "DisplayOrder": "4",
     "ParentCategoryID": ""
   },
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertDocuments",
-    "CategoryLabel": "Claimant",
+    "CategoryLabel": "Claimant(s)",
     "DisplayOrder": "1",
     "ParentCategoryID": "DocumentsExpert"
   },
@@ -19,7 +19,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentExpertDocuments",
-    "CategoryLabel": "Defendant One",
+    "CategoryLabel": "Legal Rep Defence one",
     "DisplayOrder": "2",
     "ParentCategoryID": "DocumentsExpert"
   },
@@ -27,7 +27,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertDocuments",
-    "CategoryLabel": "Defendant Two",
+    "CategoryLabel": "Legal Rep Defence two",
     "DisplayOrder": "3",
     "ParentCategoryID": "DocumentsExpert"
   },

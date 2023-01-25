@@ -4,14 +4,14 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsWitness",
     "CategoryLabel": "Witness statements for trial",
-    "DisplayOrder": "2",
+    "DisplayOrder": "3",
     "ParentCategoryID": ""
   },
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessDocuments",
-    "CategoryLabel": "Claimant",
+    "CategoryLabel": "Claimant(s)",
     "DisplayOrder": "1",
     "ParentCategoryID": "DocumentsWitness"
   },
@@ -19,7 +19,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentWitnessDocuments",
-    "CategoryLabel": "Defendant One",
+    "CategoryLabel": "Legal Rep Defence one",
     "DisplayOrder": "2",
     "ParentCategoryID": "DocumentsWitness"
   },
@@ -27,7 +27,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessDocuments",
-    "CategoryLabel": "Defendant Two",
+    "CategoryLabel": "Legal Rep Defence two",
     "DisplayOrder": "3",
     "ParentCategoryID": "DocumentsWitness"
   },
@@ -43,7 +43,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessStatement",
-    "CategoryLabel": "Defendant - Statement",
+    "CategoryLabel": "Defendant(s)",
     "DisplayOrder": "1",
     "ParentCategoryID": "RespondentWitnessDocuments"
   },
@@ -51,7 +51,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessStatement",
-    "CategoryLabel": "Defendant - Statement",
+    "CategoryLabel": "Defendant(s)",
     "DisplayOrder": "1",
     "ParentCategoryID": "RespondentTwoWitnessDocuments"
   },
@@ -60,7 +60,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessSummary",
-    "CategoryLabel": "Witness summary",
+    "CategoryLabel": "Witness summaries",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantWitnessDocuments"
   },
@@ -68,7 +68,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessSummary",
-    "CategoryLabel": "Witness summary",
+    "CategoryLabel": "Witness summaries",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentWitnessDocuments"
   },
@@ -76,7 +76,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessSummary",
-    "CategoryLabel": "Witness summary",
+    "CategoryLabel": "Witness summaries",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentTwoWitnessDocuments"
   },
@@ -108,25 +108,57 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
+    "CategoryID": "StatementsOfCase",
+    "CategoryLabel": "Statements of case",
+    "DisplayOrder": "1",
+    "ParentCategoryID": ""
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessStatementCase",
+    "CategoryLabel": "Claimant(s)",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "StatementsOfCase"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentWitnessStatementCase",
+    "CategoryLabel": "Legal Rep Defence one",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "StatementsOfCase"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessStatementCase",
+    "CategoryLabel": "Legal Rep Defence two",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "StatementsOfCase"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessReferred",
-    "CategoryLabel": "Documents referred",
-    "DisplayOrder": "4",
-    "ParentCategoryID": "ApplicantWitnessDocuments"
+    "CategoryLabel": "Schedules of loss",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantWitnessStatementCase"
   },
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessReferred",
-    "CategoryLabel": "Documents referred",
-    "DisplayOrder": "4",
-    "ParentCategoryID": "RespondentWitnessDocuments"
+    "CategoryLabel": "counter-schedules of loss",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentWitnessStatementCase"
   },
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessReferred",
-    "CategoryLabel": "Documents referred",
-    "DisplayOrder": "4",
-    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+    "CategoryLabel": "Counter-schedules of loss",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentTwoWitnessStatementCase"
   }
 ]
