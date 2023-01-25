@@ -694,8 +694,10 @@ module.exports = {
     }
 
     if (targetFlag === 'FOR_SDO') {
+      const expectedSubmittedStatus = caseData.claimValue.statementOfValueInPennies === '85000' ? 'JUDICIAL_REFERRAL' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      console.log('sdo test, expected status = ' + expectedSubmittedStatus);
       await assertSubmittedEvent(
-        caseData.claimValue.statementOfValueInPennies === '85000' ? 'JUDICIAL_REFERRAL' : 'PROCEEDS_IN_HERITAGE_SYSTEM', {
+        expectedSubmittedStatus, {
         header: 'You have chosen to proceed with the claim',
         body: '>We will review the case and contact you to tell you what to do next.'
       });
@@ -1127,6 +1129,7 @@ function addMidEventFields(pageId, responseBody, instanceData) {
     midEventData = data[eventName](mpScenario).midEventData[pageId];
     if (pageId === 'ClaimValue' && caseData.claimValue && caseData.claimValue.statementOfValueInPennies === '85000'
     && midEventData.claimFee) {
+      console.log('Ensuring claim fee matches value 850GBP');
       midEventData.claimFee = {
         calculatedAmountInPence: '7000',
         code: 'FEE0204',
