@@ -116,6 +116,13 @@ module.exports = {
     type: 'legalOps',
     roleCategory: 'LEGAL_OPERATIONS'
   },
+  iacCtscTeamLeaderUser: {
+    email: 'CRD_func_test_demo_ctsc_tl@justice.gov.uk',
+    password: iacDefaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
   iacAdminUser: {
     password: iacDefaultPassword,
     email: 'CRD_func_test_demo_adm21@justice.gov.uk',
@@ -135,6 +142,13 @@ module.exports = {
     type: 'senior-tribunal-caseworker',
     roleCategory: 'LEGAL_OPS',
     regionId: '4'
+  },
+  ctscTeamLeaderUser: {
+    email: 'ctsc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
   },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
