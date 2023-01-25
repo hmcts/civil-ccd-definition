@@ -694,10 +694,9 @@ module.exports = {
     }
 
     if (targetFlag === 'FOR_SDO') {
-      const expectedSubmittedStatus = caseData.claimValue.statementOfValueInPennies === '85000' ? 'JUDICIAL_REFERRAL' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      console.log('sdo test, expected status = ' + expectedSubmittedStatus);
+      console.log('sdo test');
       await assertSubmittedEvent(
-        expectedSubmittedStatus, {
+        'JUDICIAL_REFERRAL', {
         header: 'You have chosen to proceed with the claim',
         body: '>We will review the case and contact you to tell you what to do next.'
       });
