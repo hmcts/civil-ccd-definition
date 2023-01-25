@@ -87,5 +87,59 @@
     "CaseFieldID": "respondent2LitigationFriend",
     "TabFieldDisplayOrder": 10,
     "FieldShowCondition": "flagLauncher = \"Do not show in UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "applicantSolicitorExperts",
+    "TabFieldDisplayOrder": 11,
+    "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "applicantSolicitorWitnesses",
+    "TabFieldDisplayOrder": 12,
+    "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "TabFieldDisplayOrder": 13,
+    "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "respondentSolicitor1Experts",
+    "TabFieldDisplayOrder": 14,
+    "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "TabFieldDisplayOrder": 15,
+    "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "respondentSolicitor2Experts",
+    "TabFieldDisplayOrder": 16,
+    "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   }
 ]

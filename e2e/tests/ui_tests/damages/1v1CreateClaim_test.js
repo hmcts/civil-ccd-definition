@@ -1,6 +1,7 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {checkToggleEnabled} = require('../../../api/testingSupport');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -41,6 +42,16 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
   await I.click('Sign out');
+}).retry(3);
+
+Scenario('Admin adds case flags on to case', async ({I}) => {
+  let isCaseFlagsToggleEnabled = await checkToggleEnabled('case-flags');
+  if (isCaseFlagsToggleEnabled) {
+    await I.login(config.adminUser);
+    await I.navigateToCaseDetails(caseNumber);
+    await I.checkForCaseFlagsEvent();
+    await I.click('Sign out');
+  }
 }).retry(3);
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {

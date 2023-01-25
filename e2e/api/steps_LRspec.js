@@ -17,8 +17,8 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSp
 const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
-const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
-const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 
 let caseId, eventName;
 let caseData = {};
@@ -182,13 +182,9 @@ module.exports = {
 
     const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
 
-    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
-    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
-      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
-    }
     if(!hnlSdoEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
         defendantResponseData, solicitor);
     }
 
@@ -225,6 +221,10 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    if (caseFlagsEnabled && hnlSdoEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
     deleteCaseFields('respondent1Copy');
   },
 
@@ -244,7 +244,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim(
         claimantResponseData);
     }
 
@@ -261,6 +261,11 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+
+    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
   },
 
   amendRespondent1ResponseDeadline: async (user) => {

@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "DQPartyFlagStructure",
+    "ListElementCode": "firstName",
+    "FieldType": "Text",
+    "ElementLabel": "First name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "ListElementCode": "lastName",
+    "FieldType": "Text",
+    "ElementLabel": "Last name",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "ListElementCode": "flags",
+    "FieldType": "Flags",
+    "ElementLabel": "flags",
+    "SecurityClassification": "Public"
+  }
+]

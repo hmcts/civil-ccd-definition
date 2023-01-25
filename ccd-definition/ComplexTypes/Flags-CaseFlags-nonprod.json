@@ -3,14 +3,14 @@
     "ID": "Flags",
     "ListElementCode": "partyName",
     "FieldType": "Text",
-    "ElementLabel": " ",
+    "ElementLabel": "party name",
     "SecurityClassification": "Public"
   },
   {
     "ID": "Flags",
     "ListElementCode": "roleOnCase",
     "FieldType": "Text",
-    "ElementLabel": " ",
+    "ElementLabel": "roleOnCase",
     "SecurityClassification": "Public"
   },
   {
@@ -18,7 +18,7 @@
     "ListElementCode": "details",
     "FieldType": "Collection",
     "FieldTypeParameter": "FlagDetail",
-    "ElementLabel": " ",
+    "ElementLabel": "flag detail",
     "SecurityClassification": "Public"
   }
 ]

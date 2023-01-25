@@ -13,8 +13,12 @@ const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
-const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {removeHNLFieldsFromClaimData,
+  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim,
+  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim
+} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 
 let caseId, eventName;
 let caseData = {};
@@ -159,7 +163,7 @@ module.exports = {
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim(
         defendantResponseData, solicitor);
     }
 
@@ -183,6 +187,11 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
+
     deleteCaseFields('respondent1Copy');
   },
 
@@ -202,7 +211,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim(
         claimantResponseData);
     }
 
@@ -218,6 +227,10 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
   },
 };
 
