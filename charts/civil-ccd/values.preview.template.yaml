@@ -3,7 +3,6 @@ civil-service:
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
-        image: 'hmctspublic.azurecr.io/civil/service:pr-1894'
         resourceGroup: civil
         secrets:
           - civil-idam-client-secret
