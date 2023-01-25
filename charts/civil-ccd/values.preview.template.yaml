@@ -120,6 +120,7 @@ wa-case-event-handler:
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     postgresql:
       enabled: true
+      releaseNameOverride: ${SERVICE_NAME}-postgresql
       image:
         registry: hmctspublic.azurecr.io
         repository: imported/bitnami/postgresql
@@ -176,6 +177,7 @@ wa-workflow-api:
     releaseNameOverride: ${SERVICE_NAME}-wa-workflow-api
     postgresql:
       enabled: true
+      releaseNameOverride: ${SERVICE_NAME}-postgresql
       image:
         registry: hmctspublic.azurecr.io
         repository: imported/bitnami/postgresql
@@ -225,6 +227,7 @@ ccd-message-publisher:
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     postgresql:
       enabled: true
+      releaseNameOverride: ${SERVICE_NAME}-postgresql
       image:
         registry: hmctspublic.azurecr.io
         repository: imported/bitnami/postgresql
