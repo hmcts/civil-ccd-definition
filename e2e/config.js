@@ -13,7 +13,7 @@ module.exports = {
     // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal',
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
@@ -21,8 +21,8 @@ module.exports = {
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550'
+    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
   },
   s2s: {
     microservice: 'civil_service',
@@ -60,18 +60,25 @@ module.exports = {
     regionId: '1'
   },
   judgeUserWithRegionId1Local: {
-  password: defaultPassword,
+    password: defaultPassword,
     email: 'judge-civil-02@example.com',
-  type: 'judge',
-  roleCategory: 'JUDICIAL',
-  regionId: '1'
-},
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '1'
+  },
   judgeUserWithRegionId2: {
     password: judgeDefaultPassword,
     email: '4915631EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '2'
+  },
+  hearingCenterAdminWithRegionId1: {
+    email: 'hearing_center_admin_reg1@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '1'
   },
   hearingCenterAdminWithRegionId4: {
     email: 'hearing_center_admin_region4@justice.gov.uk',
@@ -87,6 +94,13 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '12'
   },
+  tribunalCaseworkerWithRegionId12: {
+    email: 'CIVIL_WA_func_test_demo_user7@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '12'
+  },
   tribunalCaseworkerWithRegionId1: {
     email: 'tribunal_caseworker_region4@justice.gov.uk',
     password: defaultPassword,
@@ -100,13 +114,6 @@ module.exports = {
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '1'
-  },
-  tribunalCaseworkerWithRegionId12: {
-    email: 'CIVIL_WA_func_test_demo_user7@justice.gov.uk',
-    password: defaultPassword,
-    type: 'tribunal-caseworker',
-    roleCategory: 'LEGAL_OPERATIONS',
-    regionId: '12'
   },
   systemupdate: {
     password: defaultPassword,
