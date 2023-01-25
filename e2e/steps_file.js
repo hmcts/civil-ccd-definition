@@ -35,7 +35,16 @@ const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
 
 const selectDefendantSolicitorToNotifyPage = require('./pages/notifyClaim/selectDefendantSolicitorToNotify.page');
+const cosNotifyClaimPage = require('./pages/notifyClaim/certificateOfServiceNotifyClaim.page');
+const cosNotifyClaimDetailsPage = require('./pages/notifyClaimDetails/certificateOfServiceNotifyClaimDetails.page');
+
+const cosNotifyClaimCYAPage = require('./pages/cosNotifyClaimCYA.page');
+const cosTab = require('./pages/cosTab.page');
+
+
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
+const unspecifiedSelectCaseNote = require('./pages/addCaseNotes/selectCaseNote.js');
+const unspecifiedAddDocumentAndNotes = require('./pages/addCaseNotes/addDocumentAndNotes.js');
 
 const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntention.page');
 
@@ -121,6 +130,9 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+const CLAIMANT_NAME = 'Test Inc';
+const DEFENDANT1_NAME = 'Sir John Doe';
+const DEFENDANT2_NAME = 'Dr Foo Bar';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
@@ -202,7 +214,7 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (loggedInUser != user) {
+      if (loggedInUser !== user) {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
           await this.signOut();
         }
@@ -357,6 +369,15 @@ module.exports = function () {
       ]);
     },
 
+    async judgeAddsCaseNotes() {
+      eventName = 'EVIDENCE_UPLOAD_JUDGE';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedSelectCaseNote.selectCaseNotes(),
+        () => unspecifiedAddDocumentAndNotes.addDocumentAndNotes(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Document uploaded and note added')
+      ]);
+    },
+
     async staffPerformDJCaseTransferCaseOffline(caseId) {
       await this.triggerStepsWithScreenshot([
         () => unspecifiedDefaultJudmentPage.performAndVerifyTransferCaseOffline(caseId)
@@ -463,6 +484,77 @@ module.exports = function () {
         () => this.click('Close and Return to case details')
       ]);
       await this.takeScreenshot();
+    },
+
+    async fillNotifyClaimCOSForm(caseId, mpScenario) {
+      eventName = 'Notify claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant1]', DEFENDANT1_NAME),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant2]', DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME, mpScenario),
+        () => event.submit('Submit', 'Certificate of Service - notify claim successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillLRNotifyClaimCOSForm(caseId, mpScenario) {
+      eventName = 'Notify claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.clickContinue(),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant2]', DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, '', DEFENDANT2_NAME, mpScenario),
+        () => event.submit('Submit', 'Certificate of Service - notify claim successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillNotifyClaimDetailsCOSForm(caseId) {
+      eventName = 'Notify claim details';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant1]',
+          DEFENDANT1_NAME, 'NotifyClaimDetails1', TEST_FILE_PATH),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant2]',
+          DEFENDANT2_NAME, 'NotifyClaimDetails2', TEST_FILE_PATH),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSSupportingEvidence(),
+        () => event.submit('Submit', 'Certificate of Service - notify claim details successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillLRNotifyClaimDetailsCOSForm(caseId) {
+      eventName = 'Notify claim details';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.clickContinue(),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant2]',
+          DEFENDANT2_NAME, 'NotifyClaimDetails2', TEST_FILE_PATH),
+        () => event.submit('Submit', 'Certificate of Service - notify claim details successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async verifyCOSTabDetails() {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Certificate of Service'),
+        () => cosTab.verifyCOSDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
+      ]);
+    },
+
+    async navigateToTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab(tabName),
+      ]);
+    },
+
+    async verifyCOSTabNotifyClaimDetails() {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Certificate of Service'),
+        () => cosTab.verifyCOSNCDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
+      ]);
     },
 
     async caseProceedsInCaseman() {

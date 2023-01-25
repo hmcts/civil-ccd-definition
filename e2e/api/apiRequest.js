@@ -66,6 +66,18 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
+  startEventNotAllowed: async (eventName, caseId) => {
+    let url = getCcdDataStoreBaseUrl();
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/event-triggers/${eventName}/token`;
+
+    let response = await restHelper.request(url, getRequestHeaders(tokens.userAuth), null, 'GET');
+      //.then(response => response.json());
+    tokens.ccdEvent = response.token;
+   return response;
+  },
   validatePage: async (eventName, pageId, caseData, caseId, expectedStatus = 200) => {
     return restHelper.retriedRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
       {
