@@ -1,11 +1,12 @@
 #!groovy
 
 @Library("Infrastructure")
+import uk.gov.hmcts.contino.GithubAPI
 
 def type = "java"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "feat/CIV-6204"
+def camundaBranch = "master"
 
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
@@ -102,6 +103,10 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def checkForEnableHelmLabel(branch_name) {
+    return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
+}
+
 withPipeline(type, product, component) {
   syncBranchesWithMaster(['demo'])
   enableHighLevelDataSetup()
@@ -111,7 +116,9 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    enableCleanupOfHelmReleaseOnSuccess();
+    if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
+      enableCleanupOfHelmReleaseOnSuccess();
+    }
   }
   onMaster {
     env.ENVIRONMENT="aat"
