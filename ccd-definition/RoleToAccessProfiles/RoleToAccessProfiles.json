@@ -21,7 +21,7 @@
     "RoleName" : "idam:caseworker-civil-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "caseworker-civil-admin",
+    "AccessProfiles": "caseworker-civil-admin,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
