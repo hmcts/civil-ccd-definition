@@ -56,4 +56,3 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_NAME}.preview.platform.hmcts.net
-    image: 'hmctspublic.azurecr.io/civil/camunda:pr-406'
