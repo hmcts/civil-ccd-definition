@@ -16,7 +16,7 @@ module.exports = {
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
     
-    manageCase: process.env.URL || 'http://localhost:3333',
+    manageCase: 'https://xui-civil-ccd-pr-1745.preview.platform.hmcts.net',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
