@@ -17,7 +17,7 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y",
-    "_EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
+    "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
   },
   {
     "CaseTypeID": "CIVIL",
