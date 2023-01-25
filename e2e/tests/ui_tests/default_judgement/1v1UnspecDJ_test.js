@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 const testingSupport = require('../../../api/testingSupport.js');
-let caseId;
+let caseId='1674567242642859';
 
 Feature('1v1 Unspec defaultJudgement');
 
@@ -34,7 +34,7 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) 
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
-    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
   await I.login(config.hearingCenterAdminWithRegionId1);
@@ -55,3 +55,67 @@ Scenario('Verify Challenged access check for legalops @e2e-wa @dmn-task', async 
   await I.login(config.tribunalCaseworkerWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
+
+Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
+  await I.login(config.iacLeadershipJudge);
+  await WA.runSpecificAccessRequestSteps(caseId);
+  if (config.runWAApiTest) {
+    const sarTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.reviewSpecificAccessRequestJudiciary);
+  } else {
+    console.log('WA flag is not enabled');
+    return;
+  }
+  await I.login(config.judgeUserWithRegionId1);
+  await WA.runSpecificAccessApprovalSteps(caseId);
+  await I.login(config.iacLeadershipJudge);
+  await WA.verifyApprovedSpecificAccess(caseId);
+});
+
+Scenario('Verify Specific access check for admin @e2e-wa', async ({I, WA, api}) => {
+  await I.login(config.iacAdminUser);
+   await WA.runSpecificAccessRequestSteps(caseId);
+   console.log('i am done1');
+   if (config.runWAApiTest) {
+     console.log('api test...');
+     const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId4, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
+   } else {
+     console.log('WA flag is not enabled');
+     return;
+   }
+   console.log('i am here');
+   await I.login(config.nbcTeamLeaderWithRegionId4);
+   await WA.runSpecificAccessApprovalSteps(caseId);
+   await I.login(config.iacAdminUser);
+   await WA.verifyApprovedSpecificAccess(caseId);
+ });
+
+Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
+  await I.login(config.iacLegalOpsUser);
+  await WA.runSpecificAccessRequestSteps(caseId);
+  if (config.runWAApiTest) {
+    const sarTask = await api.retrieveTaskDetails(config.seniorTBCWWithRegionId4, caseId, config.waTaskIds.reviewSpecificAccessRequestLegalOps);
+  } else {
+    console.log('WA flag is not enabled');
+    return;
+  }
+  await I.login(config.seniorTBCWWithRegionId4);
+  await WA.runSpecificAccessApprovalSteps(caseId);
+  await I.login(config.iacLegalOpsUser);
+  await WA.verifyApprovedSpecificAccess(caseId);
+});
+
+
+Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
+  await I.login(config.iacLegalOpsUser);
+  await WA.runSpecificAccessRequestSteps(caseId);
+  if (config.runWAApiTest) {
+    const sarTask = await api.retrieveTaskDetails(config.seniorTBCWWithRegionId4, caseId, config.waTaskIds.reviewSpecificAccessRequestLegalOps);
+  } else {
+    console.log('WA flag is not enabled');
+    return;
+  }
+  await I.login(config.seniorTBCWWithRegionId4);
+  await WA.runSpecificAccessApprovalSteps(caseId);
+  await I.login(config.iacLegalOpsUser);
+  await WA.verifyApprovedSpecificAccess(caseId);
+});
