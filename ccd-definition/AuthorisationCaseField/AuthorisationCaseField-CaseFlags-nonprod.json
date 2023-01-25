@@ -2,61 +2,145 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "flagLauncher",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseFlags",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "flagLauncher",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitorExperts",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitorWitnesses",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor1Witnesses",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor1Experts",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2Witnesses",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2Experts",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

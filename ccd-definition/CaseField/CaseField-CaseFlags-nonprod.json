@@ -15,13 +15,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "appellantFlags",
-    "Label": "Appellant Flags",
-    "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitorWitnesses",
     "Label": " ",
     "FieldType": "Collection",
