@@ -1,0 +1,79 @@
+[
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "name",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "subTypeValue",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "subTypeKey",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "otherDescription",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "flagComment",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "dateTimeModified",
+    "FieldType": "DateTime",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "dateTimeCreated",
+    "FieldType": "DateTime",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "path",
+    "FieldType": "DynamicList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "hearingRelevant",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "flagCode",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlagDetail",
+    "ListElementCode": "status",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

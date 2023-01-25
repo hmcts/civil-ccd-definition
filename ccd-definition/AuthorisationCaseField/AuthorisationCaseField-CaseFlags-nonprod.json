@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "flagLauncher",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseFlags",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  }
+]
