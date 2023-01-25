@@ -2,12 +2,23 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "claimFee",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ClaimFee",
+    "PageDisplayOrder": 31,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStatementOfTruthLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "Statement of truth",
-    "PageDisplayOrder": 31,
+    "PageDisplayOrder": 32,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth",
@@ -20,7 +31,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 31,
+    "PageDisplayOrder": 32,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -31,7 +42,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 31,
+    "PageDisplayOrder": 32,
     "PageColumnNumber": 1
   },
   {
@@ -41,7 +52,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 31,
+    "PageDisplayOrder": 32,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
@@ -53,7 +64,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 31,
+    "PageDisplayOrder": 32,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
@@ -65,22 +76,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 31,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimFee",
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "COMPLEX",
-    "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 31,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "uiStatementOfTruth=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "PageDisplayOrder": 32,
+    "ShowSummaryChangeOption": "Y"
   }
 ]
