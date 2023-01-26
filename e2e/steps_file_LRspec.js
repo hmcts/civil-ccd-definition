@@ -335,6 +335,7 @@ module.exports = function () {
                  () => specInterestDateStartPage.selectInterestDateStart(),
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
+                 () => { if (pbaV3) return this.clickContinue(); },
                  () => { if (!pbaV3) return pbaNumberPage.selectPbaNumber(); },
                  () => { if (!pbaV3) return paymentReferencePage.updatePaymentReference(); },
                  () => statementOfTruth.enterNameAndRole('claim'),
