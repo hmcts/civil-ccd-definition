@@ -21,7 +21,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "bothDefendants=\"One\"",
-    "PageLabel": "Do all of these statements apply to the Defendant?-"
+    "PageLabel": "Do all of these statements apply to the Defendant?"
   },
   {
     "CaseTypeID": "CIVIL",
