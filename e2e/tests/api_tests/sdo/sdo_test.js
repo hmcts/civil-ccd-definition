@@ -22,11 +22,13 @@ function legalAdvisorClaim(mpScenario) {
 
 function judgeClaim(mpScenario) {
   const data = claimData.createClaim(mpScenario);
+  // locally is calculated with a mock, can comment the following block
   data.midEventData.ClaimValue.claimFee = {
-    calculatedAmountInPence: '7000',
-    code: 'FEE0204',
-    version: '4'
+    calculatedAmountInPence: '100000',
+    code: 'FEE0209',
+    version: '3'
   };
+  // end of block to be commented for local run
   data.valid.ClaimValue.claimValue.statementOfValueInPennies = '2000000';
   return data;
 }
