@@ -33,7 +33,6 @@ const uploadParticularsOfClaim = require('./pages/createClaim/uploadParticularsO
 const claimValuePage = require('./pages/createClaim/claimValue.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
-const {checkToggleEnabled} = require('./api/testingSupport');
 
 const selectDefendantSolicitorToNotifyPage = require('./pages/notifyClaim/selectDefendantSolicitorToNotify.page');
 const cosNotifyClaimPage = require('./pages/notifyClaim/certificateOfServiceNotifyClaim.page');
