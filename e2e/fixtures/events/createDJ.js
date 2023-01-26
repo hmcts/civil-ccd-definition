@@ -26,11 +26,6 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
             hearingPreferredEmail: 'test@gmail.com',
             hearingLengthEstimate: '15_MINUTES',
             hearingUnavailableDates: 'No',
-            hearingSupportRequirementsDisabledAccess: [],
-            hearingSupportRequirementHearingLoop: [],
-            hearingSupportRequirementInterpreter: [],
-            hearingSupportRequirementLanguage: [],
-            hearingSupportRequirementOther: []
           }
         },
         locationName : {
