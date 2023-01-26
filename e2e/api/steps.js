@@ -1153,14 +1153,22 @@ function addMidEventFields(pageId, responseBody, instanceData) {
 
   if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
-    if (pageId === 'ClaimValue' && caseData.claimValue && caseData.claimValue.statementOfValueInPennies === '85000'
-    && midEventData.claimFee) {
-      console.log('Ensuring claim fee matches value 850GBP');
-      midEventData.claimFee = {
-        calculatedAmountInPence: '7000',
-        code: 'FEE0204',
-        version: '4'
-      };
+    if (pageId === 'ClaimValue' && caseData.claimValue
+      && midEventData.claimFee) {
+      // preventing overridden data by midEventField using createClaim data, see sdo tests
+      if (caseData.claimValue.statementOfValueInPennies === '85000') {
+        midEventData.claimFee = {
+          calculatedAmountInPence: '7000',
+          code: 'FEE0204',
+          version: '4'
+        };
+      } else if (caseData.claimValue.statementOfValueInPennies === '2000000') {
+        midEventData.claimFee = {
+          calculatedAmountInPence: '100000',
+          code: 'FEE0209',
+          version: '3'
+        };
+      }
     }
   } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
