@@ -14,13 +14,19 @@
   {
     "ID": "EvidenceUploadTrial",
     "ListElementCode": "AUTHORITIES",
-    "ListElement": "Authorities and Costs",
+    "ListElement": "Authorities",
     "DisplayOrder": 3
+  },
+  {
+    "ID": "EvidenceUploadTrial",
+    "ListElementCode": "COSTS",
+    "ListElement": "Costs",
+    "DisplayOrder": 4
   },
   {
     "ID": "EvidenceUploadTrial",
     "ListElementCode": "DOCUMENTARY",
     "ListElement": "Documentary evidence for trial",
-    "DisplayOrder": 4
+    "DisplayOrder": 5
   }
 ]
