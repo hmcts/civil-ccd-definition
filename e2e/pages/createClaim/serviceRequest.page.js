@@ -40,14 +40,11 @@ module.exports = {
 
   async openServiceRequestTab() {
     let urlBefore = await I.grabCurrentUrl();
-    if (['preview'].includes(config.runningEnv)) {
-      await I.wait(5);
-    } else {
-      await I.wait(2);
-    }
+    await I.waitForText('Service Request');
+
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
-      await I.wait(10);
+      await I.waitForElement(this.fields.spinner).withText('Loading');
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
     }, urlBefore);
   }
