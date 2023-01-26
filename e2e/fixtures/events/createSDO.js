@@ -163,9 +163,7 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
     fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
     disposalHearingWitnessOfFact: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
+      return typeof data.input3 === 'string'
         && typeof data.input4 === 'string'
         && typeof data.input5 === 'string'
         && typeof data.input6 === 'string';
