@@ -24,7 +24,7 @@ const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, r
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
+  CREATE_CLAIM: (mpScenario, claimAmount) => claimData.createClaim(mpScenario, claimAmount),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -117,13 +117,13 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '30000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
@@ -677,8 +677,8 @@ module.exports = {
     }
 
     // This should be uncommented in ticket CIV-2493
-    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv)) {
+    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    /*if (['preview', 'demo'].includes(config.runningEnv)) {
       if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
         if(returnedCaseData.respondent2ClaimResponseType != null) {
           if(returnedCaseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
@@ -689,11 +689,11 @@ module.exports = {
         }
       }
     }*/
-/*
+
     await assertSubmittedEvent(validState, {
       header: 'You have chosen to proceed with the claim',
       body: '>We will review the case and contact you to tell you what to do next.'
-    });*/
+    });
 
     await waitForFinishedBusinessProcess(caseId);
     if (!expectedCcdState) {
@@ -888,6 +888,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
+
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
