@@ -166,15 +166,11 @@ module.exports = {
     }
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
-
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
-      : 'Your claim will not be issued until payment is confirmed.';
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
-      body: bodyText
+      body: 'Your claim will not be issued until payment is confirmed.'
     });
 
     await waitForFinishedBusinessProcess(caseId);

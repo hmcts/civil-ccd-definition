@@ -125,7 +125,6 @@ const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
-const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -270,7 +269,6 @@ module.exports = function () {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
-      const pbaV3 = await checkToggleEnabled(PBAv3);
       await createCasePage.createCase(config.definition.jurisdiction);
       await this.triggerStepsWithScreenshot([
         () => continuePage.continue(),
@@ -286,8 +284,8 @@ module.exports = function () {
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
         () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
         () => claimValuePage.enterClaimValue(),
-        () => { if (!pbaV3) return pbaNumberPage.selectPbaNumber(); },
-        () => { if (!pbaV3) return paymentReferencePage.updatePaymentReference(); },
+        () => pbaNumberPage.selectPbaNumber(),
+        () => paymentReferencePage.updatePaymentReference(),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
@@ -701,7 +699,6 @@ module.exports = function () {
     },
 
     async createCaseSpec(applicantType, defendantType, litigantInPerson = false, claimAmount) {
-      const pbaV3 = await checkToggleEnabled(PBAv3);
       this.forceClick('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
@@ -732,10 +729,8 @@ module.exports = function () {
       await specInterestDateStartPage.selectInterestDateStart();
       await specInterestDateEndPage.selectInterestDateEnd();
       await this.clickContinue();
-      if (!pbaV3) {
-        await pbaNumberPage.selectPbaNumber();
-        await paymentReferencePage.updatePaymentReference();
-      }
+      await pbaNumberPage.selectPbaNumber();
+      await paymentReferencePage.updatePaymentReference();
       await statementOfTruth.enterNameAndRole('claim');
       let expectedMessage = litigantInPerson ?
         'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
