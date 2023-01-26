@@ -58,6 +58,15 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.click('Sign out');
 }).retry(3);
 
+Scenario('Judge triggers SDO', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.judgeUserWithRegionId1);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
+    await I.initiateSDO('yes', 'yes', null, null);
+  }
+}).retry(3);
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
