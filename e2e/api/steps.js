@@ -17,10 +17,9 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {
-  checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled,
-  checkCertificateOfServiceIsEnabled
-} = require('./testingSupport');
+const sdoTracks = require('../fixtures/events/createSDO.js');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
+  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 
@@ -57,6 +56,12 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
+  CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
+  CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+  CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
+  CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput)
 };
 
 const eventData = {
@@ -86,6 +91,14 @@ const eventData = {
       solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
     },
     TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
+  },
+  sdoTracks: {
+    CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
+    CREATE_SMALL: data.CREATE_SMALL(),
+    CREATE_FAST: data.CREATE_FAST(),
+    CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
+    CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
   }
 };
 
@@ -131,8 +144,8 @@ module.exports = {
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -191,8 +204,8 @@ module.exports = {
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -230,8 +243,8 @@ module.exports = {
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -570,8 +583,8 @@ module.exports = {
     defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
         defendantResponseData, solicitor);
     }
@@ -605,8 +618,8 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-    if (isHNLEnabled) {
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(isHNLEnabled){
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
     }
@@ -641,7 +654,7 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -661,8 +674,8 @@ module.exports = {
     claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
         claimantResponseData);
     }
@@ -674,30 +687,20 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (isHNLEnabled) {
       await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
     }
 
-    // This should be uncommented in ticket CIV-2493
-    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
-        if(returnedCaseData.respondent2ClaimResponseType != null) {
-          if(returnedCaseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
-      validState = 'JUDICIAL_REFERRAL';
+    if (targetFlag === 'FOR_SDO') {
+      console.log('sdo test');
+      await assertSubmittedEvent(
+        'JUDICIAL_REFERRAL', {
+        header: 'You have chosen to proceed with the claim',
+        body: '>We will review the case and contact you to tell you what to do next.'
+      });
     }
-        } else {
-        validState = 'JUDICIAL_REFERRAL';
-        }
-      }
-    }*/
-/*
-    await assertSubmittedEvent(validState, {
-      header: 'You have chosen to proceed with the claim',
-      body: '>We will review the case and contact you to tell you what to do next.'
-    });*/
 
     await waitForFinishedBusinessProcess(caseId);
     if (!expectedCcdState) {
@@ -866,6 +869,7 @@ module.exports = {
   },
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+    console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -926,7 +930,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
   }
 
-  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1122,6 +1126,23 @@ function addMidEventFields(pageId, responseBody, instanceData) {
 
   if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
+    if (pageId === 'ClaimValue' && caseData.claimValue
+      && midEventData.claimFee) {
+      // preventing overridden data by midEventField using createClaim data, see sdo tests
+      if (caseData.claimValue.statementOfValueInPennies === '85000') {
+        midEventData.claimFee = {
+          calculatedAmountInPence: '7000',
+          code: 'FEE0204',
+          version: '4'
+        };
+      } else if (caseData.claimValue.statementOfValueInPennies === '2000000') {
+        midEventData.claimFee = {
+          calculatedAmountInPence: '100000',
+          code: 'FEE0209',
+          version: '3'
+        };
+      }
+    }
   } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
   } else {
@@ -1130,12 +1151,14 @@ function addMidEventFields(pageId, responseBody, instanceData) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
-  if (midEventField.dynamicList === true) {
+  if (midEventField && midEventField.dynamicList === true) {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
   caseData = {...caseData, ...midEventData};
-  responseBody.data[midEventField.id] = caseData[midEventField.id];
+  if (midEventField) {
+    responseBody.data[midEventField.id] = caseData[midEventField.id];
+  }
 }
 
 function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
@@ -1193,7 +1216,7 @@ function replaceLitigationFriendFields(caseData) {
 }
 
 async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
-  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
   if (!isHNLEnabled) {
     const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
