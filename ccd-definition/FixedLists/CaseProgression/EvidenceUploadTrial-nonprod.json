@@ -19,8 +19,14 @@
   },
   {
     "ID": "EvidenceUploadTrial",
+    "ListElementCode": "COSTS",
+    "ListElement": "Costs",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "EvidenceUploadTrial",
     "ListElementCode": "DOCUMENTARY",
     "ListElement": "Documentary evidence for trial",
-    "DisplayOrder": 4
+    "DisplayOrder": 5
   }
 ]

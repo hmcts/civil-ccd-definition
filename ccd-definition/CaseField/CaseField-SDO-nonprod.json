@@ -135,7 +135,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingWitnessOfFactTitle",
-    "Label": "## Witness of Fact",
+    "Label": "## Witnesses of Fact",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -251,7 +251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingTitle",
-    "Label": "## Final disposal hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -270,7 +270,13 @@
     "FieldType": "DisposalHearingFinalDisposalHearing",
     "SecurityClassification": "Public"
   },
-
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingTime",
+    "Label": " ",
+    "FieldType": "DisposalHearingHearingTime",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingFinalDisposalHearingEndLine",
@@ -339,7 +345,34 @@
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
-
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesTitle",
+    "Label": "## Hearing notes",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotes",
+    "Label": "This is only seen by the listing officer",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalOrderWithoutHearing",
+    "Label": " ",
+    "FieldType": "DisposalOrderWithoutHearing",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingBundleStartLine",
@@ -508,7 +541,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsHearingTitle",
-    "Label": "## Hearing",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -649,8 +682,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
-    "Label": "Notes",
+    "Label": "The Order has been made without a hearing",
     "FieldType": "SmallClaimsNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "SDOHearingNotes",
     "SecurityClassification": "Public"
   },
   {
@@ -850,7 +890,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackWitnessOfFactTitle",
-    "Label": "## Witness of fact",
+    "Label": "## Witnesses of Fact",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -937,7 +977,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackTrialTitle",
-    "Label": "## Trial",
+    "Label": "## Hearing time",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -954,6 +994,13 @@
     "ID": "fastTrackTrial",
     "Label": " ",
     "FieldType": "FastTrackTrial",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHearingTime",
+    "Label": " ",
+    "FieldType": "FastTrackHearingTime",
     "SecurityClassification": "Public"
   },
   {
@@ -1026,6 +1073,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHearingNotes",
+    "Label": "Hearing notes",
+    "FieldType": "FastTrackHearingNotes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackOrderWithoutJudgement",
+    "Label": "This Order has been made without hearing",
+    "FieldType": "FastTrackOrderWithoutJudgement",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "fastTrackBuildingDispute",
     "Label": "Building dispute",
     "FieldType": "FastTrackBuildingDispute",
@@ -1062,7 +1123,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert Evidence",
     "FieldType": "FastTrackPersonalInjury",
     "SecurityClassification": "Public"
   },
