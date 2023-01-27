@@ -85,12 +85,6 @@
     <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
     <vulnerabilityName>1085297</vulnerabilityName>
   </suppress>
-  <suppress until="2023-02-01">
-    <notes><![CDATA[
-    Undergoing reanalysis on Jan 1st 2023
-    ]]></notes>
-    <cve>CVE-2022-1471</cve>
-  </suppress>
   <suppress until="2023-01-09">
     <notes><![CDATA[
     codecept 3.3.7 (last at the time of writing) requires mocha 8.1.3
