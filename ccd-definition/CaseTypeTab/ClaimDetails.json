@@ -251,7 +251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "TabFieldDisplayOrder": 39
   },
   {
