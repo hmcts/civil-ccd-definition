@@ -195,6 +195,15 @@
       "ID": "Hearing",
       "CaseEventID": "DEFENDANT_RESPONSE",
       "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.who",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "OPTIONAL",
+      "FieldShowCondition": "respondent1DQHearing=\"DO NOT SHOW IN UI\""
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
       "ListElementCode": "unavailableDatesRequired",
       "FieldDisplayOrder": 1,
       "DisplayContext": "MANDATORY"
@@ -230,6 +239,15 @@
       "ListElementCode": "unavailableDates.toDate",
       "FieldDisplayOrder": 5,
       "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.who",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "OPTIONAL",
+      "FieldShowCondition": "respondent2DQHearing=\"DO NOT SHOW IN UI\""
     },
     {
       "ID": "Hearing",
