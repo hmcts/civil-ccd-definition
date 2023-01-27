@@ -148,7 +148,8 @@
     "ID": "hearingFeePaymentDetails",
     "Label": "Hearing Payment Details",
     "FieldType": "PaymentDetails",
-},
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPBADetails",
