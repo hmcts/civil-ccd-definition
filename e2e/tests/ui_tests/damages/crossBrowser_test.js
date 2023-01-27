@@ -1,5 +1,7 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess, assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -25,6 +27,15 @@ Scenario('Full end-to-end journey', async ({I}) => {
   console.log('Applicant solicitor created claim');
 
   caseNumber = await I.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
+
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
 
