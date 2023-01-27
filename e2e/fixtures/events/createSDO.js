@@ -163,9 +163,7 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
     fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
     disposalHearingWitnessOfFact: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
+      return typeof data.input3 === 'string'
         && typeof data.input4 === 'string'
         && typeof data.input5 === 'string'
         && typeof data.input6 === 'string';
@@ -286,11 +284,30 @@ module.exports = {
       },
       calculated: calculatedClaimsTrackWSum
     };
+    const disposalChecks = {
+      fastTrackOrderWithoutJudgement: (d) => d.input
+        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
+          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
+      disposalOrderWithoutHearing: (d) => d.input
+        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
+          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
+      fastTrackHearingTime: (d) =>
+        d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+        && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+        + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+        + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+        + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+      disposalHearingHearingTime: (d) =>
+        d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+        && d.dateTo
+    };
     data.calculated.OrderType = data.calculated.ClaimsTrack;
     data.calculated.DisposalHearing = {...data.calculated.ClaimsTrack,
+      ...disposalChecks,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
+    data.calculated.ClaimsTrack = {...data.calculated.ClaimsTrack, ...disposalChecks};
     return data;
   },
 
@@ -603,6 +620,31 @@ module.exports = {
     data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
+    };
+    const disposalChecks = {
+      fastTrackOrderWithoutJudgement: (d) => d.input
+        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
+          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
+      disposalOrderWithoutHearing: (d) => d.input
+        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
+          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
+      fastTrackHearingTime: (d) =>
+        d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+        && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+        + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+        + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+        + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+      disposalHearingHearingTime: (d) =>
+        d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+        && d.dateTo
+    };
+    data.calculated.ClaimsTrack = {
+      ...data.calculated.ClaimsTrack,
+      ...disposalChecks
+    };
+    data.calculated.SmallClaims = {
+      ...data.calculated.SmallClaims,
+      ...disposalChecks
     };
     return data;
   },
