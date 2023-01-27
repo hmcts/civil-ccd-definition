@@ -14,7 +14,8 @@ function legalAdvisorClaim(mpScenario) {
   data.midEventData.ClaimValue.claimFee = {
     calculatedAmountInPence: '7000',
     code: 'FEE0204',
-    version: '4'
+    // local test 4
+    version: '6'
   };
   data.valid.ClaimValue.claimValue.statementOfValueInPennies = '85000';
   return data;
