@@ -198,7 +198,7 @@ ccd-message-publisher:
             alias: azure.application-insights.instrumentation-key
     environment:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
-      DATA_STORE_DB_NAME: ccd-message-publisher
+      DATA_STORE_DB_NAME: data-store
       DATA_STORE_DB_USERNAME: hmcts
       DATA_STORE_DB_PASSWORD: hmcts
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
