@@ -1,6 +1,10 @@
 civil-service:
   java:
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
+    devcpuRequests: 2000m
+    devmemoryRequests: 2048Mi
+    devcpuLimits: 8
+    devmemoryLimits: 8Gi
     keyVaults:
       civil:
         resourceGroup: civil
@@ -39,8 +43,8 @@ civil-general-applications:
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_NAME}.preview.platform.hmcts.net
-    devcpuRequests: 1000m
-    devmemoryRequests: 1024Mi
+    devcpuRequests: 2000m
+    devmemoryRequests: 2048Mi
     devcpuLimits: 8
     devmemoryLimits: 8Gi
 ccd:
@@ -49,8 +53,8 @@ ccd:
       ingressHost: gateway-${SERVICE_NAME}.preview.platform.hmcts.net
   ccd-data-store-api:
     java:
-      devcpuRequests: 1000m
-      devmemoryRequests: 1024Mi
+      devcpuRequests: 2000m
+      devmemoryRequests: 2048Mi
       devcpuLimits: 8
       devmemoryLimits: 8Gi
       environment:
@@ -60,15 +64,15 @@ ccd:
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_NAME}.preview.platform.hmcts.net
-      devcpuRequests: 1000m
-      devmemoryRequests: 1024Mi
+      devcpuRequests: 2000m
+      devmemoryRequests: 2048Mi
       devcpuLimits: 8
       devmemoryLimits: 8Gi
 
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_NAME}.preview.platform.hmcts.net
-    devcpuRequests: 1000m
-    devmemoryRequests: 1024Mi
+    devcpuRequests: 2000m
+    devmemoryRequests: 2048Mi
     devcpuLimits: 8
     devmemoryLimits: 8Gi
