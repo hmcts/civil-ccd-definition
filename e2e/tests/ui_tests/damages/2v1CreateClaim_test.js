@@ -1,6 +1,8 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
 const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -26,6 +28,14 @@ Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant'
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, claimant2, respondent1, null);
   caseNumber = await I.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
