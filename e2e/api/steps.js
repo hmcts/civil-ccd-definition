@@ -1016,20 +1016,19 @@ const assertValidData = async (data, pageId, solicitor) => {
 function whatsTheDifference(caseData, responseBodyData, path) {
   Object.keys(caseData).forEach(key => {
     if (Object.keys(responseBodyData).indexOf(key) < 0) {
-      console.log('response does not have ' + appendToPath(path, key));
-      console.log('expected: ' + JSON.stringify(caseData[key]));
+      console.log('response does not have ' + appendToPath(path, key)
+        + '. CaseData has ' + JSON.stringify(caseData[key]));
     } else if (typeof caseData[key] === 'object') {
       whatsTheDifference(caseData[key], responseBodyData[key], [key]);
     } else if (caseData[key] !== responseBodyData[key]) {
       console.log('response and case data are different on ' + appendToPath(path, key));
-      console.log('caseData has ' + caseData[key]);
-      console.log('while response has ' + JSON.stringify(responseBodyData[key]));
+      console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
     }
   });
   Object.keys(responseBodyData).forEach(key => {
     if (Object.keys(caseData).indexOf(key) < 0) {
-      console.log('caseData does not have ' + appendToPath(path, key));
-      console.log('response has ' + JSON.stringify(responseBodyData[key]));
+      console.log('caseData does not have ' + appendToPath(path, key)
+        + '. Response has ' + JSON.stringify(responseBodyData[key]));
     }
   });
 }
@@ -1160,9 +1159,11 @@ function addMidEventFields(pageId, responseBody, instanceData) {
         midEventData.claimFee = {
           calculatedAmountInPence: '7000',
           code: 'FEE0204',
-          version: '4'
+          // local test 4
+          version: '6'
         };
       } else if (caseData.claimValue.statementOfValueInPennies === '2000000') {
+        // locally is calculated with a mock, can comment the following block
         midEventData.claimFee = {
           calculatedAmountInPence: '100000',
           code: 'FEE0209',
