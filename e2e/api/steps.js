@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const { listElement, buildAddress} = require('./dataHelper');
+const {listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -17,6 +17,8 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {PBAv3} = require('../fixtures/featureKeys');
+const sdoTracks = require('../fixtures/events/createSDO.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -55,6 +57,12 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
+  CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
+  CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+  CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
+  CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput)
 };
 
 const eventData = {
@@ -84,6 +92,14 @@ const eventData = {
       solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
     },
     TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
+  },
+  sdoTracks: {
+    CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
+    CREATE_SMALL: data.CREATE_SMALL(),
+    CREATE_FAST: data.CREATE_FAST(),
+    CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
+    CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
   }
 };
 
@@ -130,7 +146,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -140,17 +156,34 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     let i;
-    for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
-      await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
+    if (createClaimData.invalid) {
+      for (i = 0; i < createClaimData.invalid.Court.courtLocation.applicantPreferredCourt.length; i++) {
+        await assertError('Court', createClaimData.invalid.Court.courtLocation.applicantPreferredCourt[i],
+          null, 'Case data validation failed');
+      }
+      await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
         null, 'Case data validation failed');
     }
-    await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
-      null, 'Case data validation failed');
+
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+      : 'Your claim will not be issued until payment is confirmed.';
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Your claim has been received',
-      body: 'Your claim will not be issued until payment is confirmed.'
+      body: bodyText
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+                                      claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
@@ -171,7 +204,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
 
     let createClaimData;
-    switch (mpScenario){
+    switch (mpScenario) {
       case 'ONE_V_ONE':
         createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
         break;
@@ -188,7 +221,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -205,6 +238,18 @@ module.exports = {
       body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
     console.log('***assertCorrectEventsAreAvailableToUser');
@@ -227,7 +272,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -321,28 +366,28 @@ module.exports = {
   notifyClaimLip: async (user, multipartyScenario) => {
     let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
 
-      eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
-      mpScenario = multipartyScenario;
+    eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
+    mpScenario = multipartyScenario;
 
-      await apiRequest.setupTokens(user);
+    await apiRequest.setupTokens(user);
 
-    if(isCertificateOfServiceEnabled) {
+    if (isCertificateOfServiceEnabled) {
 
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
       await validateEventPages(data[eventName]);
-      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
+      returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
-      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true)};
-      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+      } else if (mpScenario === 'ONE_V_TWO_LIPS') {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false)};
       } else {
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false)};
       }
-      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_CASE_DETAILS_NOTIFICATION', {
+      await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
         header: 'Certificate of Service',
         body: 'You must serve the claim details and'
       });
@@ -387,20 +432,20 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-    if(isCertificateOfServiceEnabled) {
+    if (isCertificateOfServiceEnabled) {
 
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       legacyCaseReference = returnedCaseData['legacyCaseReference'];
       // assertContainsPopulatedFields(returnedCaseData);
 
       await validateEventPages(data[eventName]);
-      returnedCaseData.defendantSolicitorNotifyClaimOptions=null;
-      if(mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
+      if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
         returnedCaseData = {};
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true)};
         const document = await testingSupport.uploadDocument();
         returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
-      } else if(mpScenario === 'ONE_V_TWO_LIPS') {
+      } else if (mpScenario === 'ONE_V_TWO_LIPS') {
         returnedCaseData = {};
         returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM_DETAILS(false, true), ...data.COS_NOTIFY_CLAIM_DETAILS(true, false)};
         const document = await testingSupport.uploadDocument();
@@ -411,7 +456,7 @@ module.exports = {
         const document = await testingSupport.uploadDocument();
         returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
       }
-      await assertSubmittedEventWithCaseData(returnedCaseData,'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: 'Certificate of Service',
         body: 'The defendant(s) must'
       });
@@ -505,7 +550,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     deleteCaseFields('systemGeneratedCaseDocuments');
-    if (solicitor === 'solicitorTwo'){
+    if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1');
     }
 
@@ -567,7 +612,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
         defendantResponseData, solicitor);
     }
@@ -582,7 +627,7 @@ module.exports = {
     deleteCaseFields('respondentSolicitor2Reference');
     deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
 
-    if (solicitor === 'solicitorTwo'){
+    if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
@@ -602,7 +647,7 @@ module.exports = {
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
     let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(isHNLEnabled){
+    if (isHNLEnabled) {
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
     }
@@ -637,13 +682,12 @@ module.exports = {
     deleteCaseFields('respondent2Copy');
   },
 
-  claimantResponse: async (user, multipartyScenario, expectedCcdState) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
 
     await apiRequest.setupTokens(user);
-
 
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
@@ -658,7 +702,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    if(!hnlEnabled) {
+    if (!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
         claimantResponseData);
     }
@@ -676,24 +720,14 @@ module.exports = {
         'From Date should be less than To Date');
     }
 
-    // This should be uncommented in ticket CIV-2493
-    /*let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      if(returnedCaseData.respondent1ClaimResponseType == 'FULL_DEFENCE') {
-        if(returnedCaseData.respondent2ClaimResponseType != null) {
-          if(returnedCaseData.respondent2ClaimResponseType == 'FULL_DEFENCE') {
-      validState = 'JUDICIAL_REFERRAL';
+    if (targetFlag === 'FOR_SDO') {
+      console.log('sdo test');
+      await assertSubmittedEvent(
+        'JUDICIAL_REFERRAL', {
+        header: 'You have chosen to proceed with the claim',
+        body: '>We will review the case and contact you to tell you what to do next.'
+      });
     }
-        } else {
-        validState = 'JUDICIAL_REFERRAL';
-        }
-      }
-    }*/
-/*
-    await assertSubmittedEvent(validState, {
-      header: 'You have chosen to proceed with the claim',
-      body: '>We will review the case and contact you to tell you what to do next.'
-    });*/
 
     await waitForFinishedBusinessProcess(caseId);
     if (!expectedCcdState) {
@@ -763,8 +797,8 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
-  retrieveTaskDetails:  async(user, caseNumber, taskId) => {
-     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
 
   addCaseNote: async (user) => {
@@ -792,15 +826,15 @@ module.exports = {
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline ={};
-    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
+    let respondent1deadline = {};
+    respondent1deadline = {'respondent1ResponseDeadline': '2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1deadline);
-   },
+  },
 
   amendRespondent2ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent2deadline ={};
-    respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
+    let respondent2deadline = {};
+    respondent2deadline = {'respondent2ResponseDeadline': '2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
@@ -849,9 +883,9 @@ module.exports = {
   },
 
   getCaseId: async () => {
-     console.log (`case created: ${caseId}`);
-     return caseId;
-   },
+    console.log(`case created: ${caseId}`);
+    return caseId;
+  },
 
   getLegacyCaseReference: async () => {
     return legacyCaseReference;
@@ -859,6 +893,33 @@ module.exports = {
 
   cleanUp: async () => {
     await unAssignAllUsers();
+  },
+
+  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+    console.log('SDO for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      eventName = 'NotSuitable_SDO';
+    } else {
+      eventName = 'CREATE_SDO';
+    }
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let disposalData = eventData['sdoTracks'][response];
+
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+
   }
 };
 
@@ -901,22 +962,85 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   // eslint-disable-next-line no-prototype-builtins
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
-    addMidEventFields(pageId, responseBody);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
     caseData = removeUiFields(pageId, caseData);
+  } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
   }
 
-  if(!isHNLEnabled && eventName === 'CREATE_CLAIM') {
+  if (eventName === 'CREATE_SDO') {
+    if (responseBody.data.sdoOrderDocument) {
+      caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
+    }
+
+    // noinspection EqualityComparisonWithCoercionJS
+    if (caseData.drawDirectionsOrder && caseData.drawDirectionsOrder.judgementSum
+      && responseBody.data.drawDirectionsOrder && responseBody.data.drawDirectionsOrder.judgementSum
+      && caseData.drawDirectionsOrder.judgementSum !== responseBody.data.drawDirectionsOrder.judgementSum
+      && caseData.drawDirectionsOrder.judgementSum == responseBody.data.drawDirectionsOrder.judgementSum) {
+      // sometimes difference may be because of decimals .0, not an actual difference
+      caseData.drawDirectionsOrder.judgementSum = responseBody.data.drawDirectionsOrder.judgementSum;
+    }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.disposalHearingSchedulesOfLoss)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.disposalHearingSchedulesOfLoss;
+    }
+  }
+
+
+  if (!isHNLEnabled && eventName === 'CREATE_CLAIM') {
     caseData = replaceLitigationFriendFields(caseData);
   }
-
+  if (pageId === 'Claimant') {
+    delete caseData.applicant1OrganisationPolicy;
+  }
   try {
     assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
+    console.error('Data different in page ' + pageId);
+    whatsTheDifference(caseData, responseBody.data);
     throw err;
   }
 };
+
+/**
+ * helper function to help locate differences between expected and actual.
+ *
+ * @param caseData expected
+ * @param responseBodyData actual
+ * @param path initially undefined
+ */
+function whatsTheDifference(caseData, responseBodyData, path) {
+  Object.keys(caseData).forEach(key => {
+    if (Object.keys(responseBodyData).indexOf(key) < 0) {
+      console.log('response does not have ' + appendToPath(path, key));
+      console.log('expected: ' + JSON.stringify(caseData[key]));
+    } else if (typeof caseData[key] === 'object') {
+      whatsTheDifference(caseData[key], responseBodyData[key], [key]);
+    } else if (caseData[key] !== responseBodyData[key]) {
+      console.log('response and case data are different on ' + appendToPath(path, key));
+      console.log('caseData has ' + caseData[key]);
+      console.log('while response has ' + JSON.stringify(responseBodyData[key]));
+    }
+  });
+  Object.keys(responseBodyData).forEach(key => {
+    if (Object.keys(caseData).indexOf(key) < 0) {
+      console.log('caseData does not have ' + appendToPath(path, key));
+      console.log('response has ' + JSON.stringify(responseBodyData[key]));
+    }
+  });
+}
+
+function appendToPath(path, key) {
+  if (path) {
+    return path.concat([key]);
+  } else {
+    return [key];
+  }
+}
 
 function removeUiFields(pageId, caseData) {
   console.log(`Removing ui fields for pageId: ${pageId}`);
@@ -988,15 +1112,15 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
   }
 };
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
-  const  fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
     assert.property(returnedCaseData, populatedCaseField);
   }
 };
 
-  // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
-  // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
-  // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
+// Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
+// This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
+// Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
@@ -1017,30 +1141,87 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 // };
 
-function addMidEventFields(pageId, responseBody) {
+function addMidEventFields(pageId, responseBody, instanceData) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
+  let calculated;
+
+  if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
+    calculated = instanceData.calculated[pageId];
+  }
 
   if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
+    if (pageId === 'ClaimValue' && caseData.claimValue
+      && midEventData.claimFee) {
+      // preventing overridden data by midEventField using createClaim data, see sdo tests
+      if (caseData.claimValue.statementOfValueInPennies === '85000') {
+        midEventData.claimFee = {
+          calculatedAmountInPence: '7000',
+          code: 'FEE0204',
+          version: '4'
+        };
+      } else if (caseData.claimValue.statementOfValueInPennies === '2000000') {
+        midEventData.claimFee = {
+          calculatedAmountInPence: '100000',
+          code: 'FEE0209',
+          version: '3'
+        };
+      }
+    }
+  } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
+    midEventData = instanceData.midEventData[pageId];
   } else {
     midEventData = data[eventName].midEventData[pageId];
   }
-
-  if (midEventField.dynamicList === true) {
+  if (calculated) {
+    checkCalculated(calculated, responseBody.data);
+  }
+  if (midEventField && midEventField.dynamicList === true) {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
   caseData = {...caseData, ...midEventData};
-  responseBody.data[midEventField.id] = caseData[midEventField.id];
+  if (midEventField) {
+    responseBody.data[midEventField.id] = caseData[midEventField.id];
   }
+}
 
-  function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
+function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
   const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
   const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
 
   expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+
+function checkCalculated(calculated, responseBodyData) {
+  const checked = {};
+  // strictly check
+  Object.keys(calculated).forEach(key => {
+    if (caseData[key]) {
+      if (calculated[key].call(null, caseData[key]) !== false) {
+        checked[key] = caseData[key];
+      } else {
+        console.log('Failed calculated key on caseData ' + key);
+      }
+    } else if (responseBodyData[key]) {
+      if (calculated[key].call(null, responseBodyData[key]) !== false) {
+        checked[key] = caseData[key];
+      } else {
+        console.log('Failed calculated key on responseBody' + key);
+      }
+    }
+  });
+  // update
+  Object.keys(checked).forEach((key) => {
+    if (caseData[key]) {
+      responseBodyData[key] = caseData[key];
+    } else {
+      caseData[key] = responseBodyData[key];
+    }
+  });
 }
 
 function replaceLitigationFriendFields(caseData) {
@@ -1069,10 +1250,10 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
 
     if (claimantLitigationPage) {
       const updated = replaceLitigationFriendFields(claimantLitigationPage);
-      if(claimantLitigationPage.applicant1LitigationFriend) {
+      if (claimantLitigationPage.applicant1LitigationFriend) {
         claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
       }
-      if(claimantLitigationPage.applicant2LitigationFriend) {
+      if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
       }
     }
@@ -1157,7 +1338,7 @@ async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDe
 
 const assignCase = async () => {
   await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  switch(mpScenario){
+  switch (mpScenario) {
     case 'ONE_V_TWO_TWO_LEGAL_REP': {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
       break;
@@ -1172,9 +1353,9 @@ const assignCase = async () => {
 // solicitor 1 should not see details for respondent 2
 // solicitor 2 should not see details for respondent 1
 const solicitorSetup = (solicitor) => {
-  if(solicitor === 'solicitorOne'){
+  if (solicitor === 'solicitorOne') {
     deleteCaseFields('respondent2');
-  } else if (solicitor === 'solicitorTwo'){
+  } else if (solicitor === 'solicitorTwo') {
     deleteCaseFields('respondent1');
   }
 };
@@ -1188,11 +1369,11 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorOne') {
+  if (solicitor === 'solicitorOne') {
     delete responseBody.data['respondent2ResponseDeadline'];
   }
 
-  if(solicitor === 'solicitorTwo'){
+  if (solicitor === 'solicitorTwo') {
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ResponseDeadline'];
   } else {
@@ -1215,10 +1396,10 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
 
   // solicitor cannot see data from respondent they do not represent
-  if(solicitor === 'solicitorOne') {
+  if (solicitor === 'solicitorOne') {
     delete responseBody.data['respondent2ResponseDeadline'];
   }
-  if(solicitor === 'solicitorTwo'){
+  if (solicitor === 'solicitorTwo') {
     delete responseBody.data['respondent1'];
     delete responseBody.data['respondent1ClaimResponseType'];
     delete responseBody.data['respondent1ClaimResponseDocument'];
@@ -1248,10 +1429,9 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 
 const adjustDataForSolicitor = (user, data) => {
   let fixtureClone = cloneDeep(data);
-  if(user === 'solicitorOne') {
+  if (user === 'solicitorOne') {
     delete fixtureClone['respondent2ResponseDeadline'];
-  }
-  else if (user === 'solicitorTwo') {
+  } else if (user === 'solicitorTwo') {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;

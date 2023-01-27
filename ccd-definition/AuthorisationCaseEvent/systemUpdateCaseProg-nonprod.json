@@ -28,5 +28,11 @@
     "CaseEventID": "NOTIFY_DEFENDANT_HEARING",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SERVICE_REQUEST_API",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
