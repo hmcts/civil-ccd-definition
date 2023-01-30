@@ -4,35 +4,40 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Document Name",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleDocument",
     "ListElementCode": "description",
     "FieldType": "TextArea",
     "ElementLabel": "Short Description",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleDocument",
     "ListElementCode": "sortIndex",
     "FieldType": "Number",
     "ElementLabel": "Sort Index",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleDocument",
     "ListElementCode": "sourceDocument",
     "FieldType": "Document",
     "ElementLabel": "Source Document",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleSubfolder",
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Subfolder Name",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleSubfolder",
@@ -40,14 +45,16 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "BundleDocument",
     "ElementLabel": "Folder Documents",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleFolder",
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Folder Name",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleFolder",
@@ -55,7 +62,8 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "BundleDocument",
     "ElementLabel": "Folder Documents",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleFolder",
@@ -63,27 +71,30 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "BundleSubfolder",
     "ElementLabel": "Subfolders",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "BundleFolder",
     "ListElementCode": "sortIndex",
     "FieldType": "Number",
     "ElementLabel": "Sort Index",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "stitchStatus",
     "FieldType": "Text",
     "ElementLabel": "Stitch status",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "stitchedDocument",
     "FieldType": "Document",
-    "ElementLabel": "Stitched document",
+    "ElementLabel": "Document URL",
     "SecurityClassification": "Public"
   },
   {
@@ -92,7 +103,8 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "BundleDocument",
     "ElementLabel": "Bundle document",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
@@ -100,7 +112,8 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "BundleFolder",
     "ElementLabel": "Bundle folder",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
@@ -112,8 +125,9 @@
   {
     "ID": "Bundle",
     "ListElementCode": "title",
-    "FieldType": "Text",
-    "ElementLabel": "Config used for bundle",
+    "FieldType": "Label",
+    "Label": "Type",
+    "ElementLabel": "Trial Bundle",
     "SecurityClassification": "Public"
   },
   {
@@ -121,55 +135,62 @@
     "ListElementCode": "id",
     "FieldType": "Text",
     "ElementLabel": "Bundle ID",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "description",
     "FieldType": "TextArea",
     "ElementLabel": "Description",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "eligibleForStitching",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is this the bundle you want to amend?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "eligibleForCloning",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is this the bundle you want to clone?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "hasCoversheets",
     "FieldType": "YesOrNo",
     "ElementLabel": "Should this bundle have coversheets separating each document?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "hasTableOfContents",
     "FieldType": "YesOrNo",
     "ElementLabel": "Should this bundle have a title page with a table of contents?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "hasFolderCoversheets",
     "FieldType": "YesOrNo",
     "ElementLabel": "Should this bundle’s folders have a coversheet?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "fileName",
     "FieldType": "Text",
-    "ElementLabel": "Name of the PDF",
+    "ElementLabel": "Name",
     "SecurityClassification": "Public"
   },
   {
@@ -178,14 +199,16 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "paginationStyle",
     "ElementLabel": "Pagination Style",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "coverpageTemplate",
     "FieldType": "Text",
     "ElementLabel": "Cover page template",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
@@ -193,20 +216,44 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "pageNumberFormat",
     "ElementLabel": "Page Number Format",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "fileNameIdentifier",
     "FieldType": "Text",
     "ElementLabel": "File Name Identifier",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "enableEmailNotification",
     "FieldType": "YesOrNo",
     "ElementLabel": "Enable Email notification?",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+  },
+  {
+    "ID": "Bundle",
+    "ListElementCode": "hearingDate",
+    "FieldType": "Date",
+    "ElementLabel": "Hearing Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Bundle",
+    "ListElementCode": "createdOn",
+    "FieldType": "DateTime",
+    "ElementLabel": "Created On",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Bundle",
+    "ListElementCode": "uploadedBy",
+    "FieldType": "Text",
+    "ElementLabel": "UploadedBy",
     "SecurityClassification": "Public"
   }
 ]

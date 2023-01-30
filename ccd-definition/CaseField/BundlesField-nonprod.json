@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseBundles",
-    "Label": "Case Bundles",
+    "Label": "System generated Case Documents",
     "HintText": "Bundle to hold documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "Bundle",
@@ -30,6 +30,13 @@
     "Label": "Bundle configuration",
     "FieldType": "Collection",
     "FieldTypeParameter": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "TrialBundles",
+    "Label": "Trial Bundle",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]

@@ -4,7 +4,7 @@
     "TabID": "CaseBundles",
     "TabLabel": "Bundles",
     "TabDisplayOrder": 12,
-    "CaseFieldID": "caseBundles",
+    "CaseFieldID": "TrialBundles",
     "TabFieldDisplayOrder": 1
   },
   {
@@ -12,7 +12,8 @@
     "TabID": "CaseBundles",
     "TabLabel": "Bundles",
     "TabDisplayOrder": 12,
-    "CaseFieldID": "bundleConfiguration",
-    "TabFieldDisplayOrder": 2
+    "CaseFieldID": "caseBundles",
+    "TabFieldDisplayOrder": 2,
+    "DisplayContextParameter": "#TABLE(title,createdOn,hearingDate,stitchedDocument)"
   }
 ]

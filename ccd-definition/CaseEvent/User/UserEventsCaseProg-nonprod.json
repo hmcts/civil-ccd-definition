@@ -131,5 +131,16 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "asyncStitchingComplete",
+    "Name": "asyncStitchingComplete",
+    "Description": "asyncStitchingComplete",
+    "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
   }
 ]
