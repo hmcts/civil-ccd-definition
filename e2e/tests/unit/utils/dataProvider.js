@@ -9,7 +9,7 @@ const loadFile = file => {
 // Please update this map whenever exclusions are updated in build-release-definition.sh
 const exclusions = new Map([
   ['preview', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json','-GAR2GAspec-nonprod.json']],
-  ['previewHNL', ['-prod.json','-SDO-nonprod.json','-base-nonprod.json','CUI-nonprod.json']],
+  ['previewHNL', ['-prod.json','-base-nonprod.json','CUI.json','CUI-nonprod.json']],
   ['previewGA', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
   ['demo', ['UserProfile.json','-prod.json',-'HNL-nonprod.json','-GAR2GAspec-nonprod.json','-CUI-nonprod.json']],
   // ['local', ['-prod.json']], upload doesn't currently work with this command due to SDO and SDO-HNL files
