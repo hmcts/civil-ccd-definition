@@ -203,6 +203,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingFeePaymentDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedPBADetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
