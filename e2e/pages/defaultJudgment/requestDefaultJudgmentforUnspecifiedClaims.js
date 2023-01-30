@@ -123,6 +123,7 @@ module.exports = {
   },
 
   async hearingSelection(){
+    console.log('Hearing selection');
     await within(this.fields.hearingSelectionForDJ.id, () => {
       I.click(this.fields.hearingSelectionForDJ.options.disposalHearing);
     });
@@ -131,16 +132,17 @@ module.exports = {
   },
 
   async hearingRequirements(){
+    console.log('Hearing Requeriments');
     await within(this.fields.hearingRequirements.id, () => {
       I.click(this.fields.hearingRequirements.options.inPerson);
     });
-    I.fillField(this.fields.hearingRequirements.preferredLocation, config.djClaimantSelectedCourt);
     I.fillField(this.fields.hearingRequirements.preferredPhone, '02087666666');
     I.fillField(this.fields.hearingRequirements.preferredEmail, 'test@test.com');
     I.click(this.fields.hearingRequirements.supportRequirement.yes);
     I.fillField(this.fields.hearingRequirements.supportRequirement.supportAdditionalId,
       'Requires wheelchair access');
     I.click(this.fields.hearingRequirements.attendHearing);
+    console.log('Finishing Hearing Reqs');
     await I.clickContinue();
   },
 
