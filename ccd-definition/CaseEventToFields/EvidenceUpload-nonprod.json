@@ -86,6 +86,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "trialCostsFlag",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseTypeFlag = \"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "trialDocumentaryFlag",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
@@ -351,6 +363,7 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\""
   },
   {
@@ -374,6 +387,7 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
   },
   {
@@ -506,7 +520,7 @@
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"COSTS\""
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"COSTS\" OR trialSelectionEvidenceSmallClaim CONTAINS \"COSTS\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -948,7 +962,7 @@
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidenceRes CONTAINS \"COSTS\" AND caseTypeFlag != \"RespondentTwoFields\""
+    "FieldShowCondition":"trialCostsFlag = \"show_trial_costs\" AND caseTypeFlag != \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1129,7 +1143,7 @@
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidenceRes CONTAINS \"COSTS\" AND caseTypeFlag = \"RespondentTwoFields\""
+    "FieldShowCondition":"trialCostsFlag = \"show_trial_costs\" AND caseTypeFlag = \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
