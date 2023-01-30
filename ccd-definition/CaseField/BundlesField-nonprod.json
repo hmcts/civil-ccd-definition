@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseBundles",
+    "ID": "caseBundlesInfo",
     "Label": "System generated Case Documents",
     "HintText": "Bundle to hold documents",
     "FieldType": "Collection",

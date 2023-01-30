@@ -237,7 +237,7 @@
   },
   {
     "ID": "Bundle",
-    "ListElementCode": "hearingDate",
+    "ListElementCode": "bundleHearingDate",
     "FieldType": "Date",
     "ElementLabel": "Hearing Date",
     "SecurityClassification": "Public"
