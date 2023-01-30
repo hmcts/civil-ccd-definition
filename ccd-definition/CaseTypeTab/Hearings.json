@@ -4,6 +4,14 @@
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
+    "CaseFieldID": "hearingNotes",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Hearings",
+    "TabDisplayOrder": 5,
     "CaseFieldID": "applicant1DQHearing",
     "TabFieldDisplayOrder": 1
   },
