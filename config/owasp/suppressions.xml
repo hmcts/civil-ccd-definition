@@ -34,6 +34,7 @@
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
     <cve>CVE-2021-37533</cve>
+    <cve>CVE-2023-1089152</cve>
   </suppress>
   <suppress>
     <notes>MEDIUM-jquery-suppressed at 21-02-2022</notes>
@@ -148,5 +149,6 @@
    ]]></notes>
     <packageUrl regex="true">^pkg:npm/ua\-parser\-js@.*$</packageUrl>
     <vulnerabilityName>1088678</vulnerabilityName>
+    <vulnerabilityName>1088697</vulnerabilityName>
   </suppress>
 </suppressions>
