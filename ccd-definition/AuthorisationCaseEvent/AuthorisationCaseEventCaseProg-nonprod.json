@@ -83,7 +83,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "asyncStitchingComplete",
+    "CaseEventID": "HEARING_FEE_PAID",
     "AccessControl": [
       {
         "UserRoles": [
@@ -96,6 +96,24 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SERVICE_REQUEST_RECEIVED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }
