@@ -63,9 +63,6 @@ processDir = (filePath, withConfig) => {
       const currentObject = path.resolve(__dirname, `${filePath}/${filename}`);
       const stat = fs.statSync(currentObject);
       if (stat.isFile()) {
-        if (filename === ('UserEventsDJ.json')) {
-          console.log('');
-        }
         if (!(exclusions.get(withConfig).filter(ext => filename.includes(ext)).length > 0)) {
           const content = Object.assign(load(currentObject), []);
           if (Object.prototype.toString.call(content) === '[object Array]') {
