@@ -662,7 +662,8 @@
       }
     ]
   },
-  {"CaseTypeID": "CIVIL",
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjJudgmentAmountSummaryLabel",
     "AccessControl": [
       {

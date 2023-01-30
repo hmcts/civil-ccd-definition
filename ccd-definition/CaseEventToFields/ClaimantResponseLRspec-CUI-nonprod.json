@@ -377,8 +377,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-<<<<<<< HEAD
-=======
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
@@ -401,7 +399,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
->>>>>>> origin/master
     "CaseFieldID": "ccjPaymentPaidSomeLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
