@@ -1128,11 +1128,10 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
           "judge-profile",
-          "legal-adviser"
+          "hearing-schedule-access"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   }
