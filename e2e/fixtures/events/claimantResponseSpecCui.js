@@ -80,11 +80,13 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'Yes'
+
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
+            applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
-            ccjPaymentPaidSomeAmount: '1000'
+            ccjPaymentPaidSomeAmount: '1000',
           },
           CcjJudgmentSummary: {
             ccjJudgmentAmountClaimAmount: '1000',
@@ -93,6 +95,10 @@ module.exports = {
             ccjJudgmentAmountSubtotal: '1135',
             ccjPaymentPaidSomeAmountInPounds: '10',
             ccjJudgmentTotalStillOwed: '1125'
+          },
+          IntentionToSettleClaim: {
+            applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
+            applicant1PartAdmitRejectReasonSpec: 'test'
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {
@@ -111,6 +117,17 @@ module.exports = {
           RespondentResponse: {
             applicant1AcceptFullAdmitPaymentPlanSpec: 'Yes',
             applicant1ProceedWithClaim: 'Yes',
+          },
+          RespondentProposedRepayment: {
+            applicant1RepaymentOptionForDefendantSpec: 'SET_DATE',
+          },
+          PaymentDate: {
+            applicant1RequestedPaymentDateForDefendantSpec : '2220-01-01'
+          },
+          SuggestInstalments: {
+            applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec : '2220-01-01',
+            applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec: 'ONCE_ONE_WEEK',
+            applicant1SuggestInstalmentsPaymentAmountForDefendantSpec: '3'
           },
           Mediation: {
             applicantMPClaimMediationSpecRequired: {

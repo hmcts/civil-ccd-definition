@@ -1,5 +1,8 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {checkToggleEnabled} = require('../../../api/testingSupport');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
@@ -22,6 +25,15 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
+
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
