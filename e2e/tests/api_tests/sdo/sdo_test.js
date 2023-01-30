@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const claimData = require('../../../fixtures/events/createClaim.js');
+
 const mpScenario = 'ONE_V_ONE';
 const judgeUser = config.judgeUserWithRegionId1;
 const legalAdvUser = config.tribunalCaseworkerWithRegionId1;

@@ -973,7 +973,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
     claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
   }
-  if (midEventFieldForPage.hasOwnProperty(pageId)) {
+  if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
     addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
