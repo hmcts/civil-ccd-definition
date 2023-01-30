@@ -612,8 +612,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingNotes",
-    "Label": " ",
-    "FieldType": "Text",
+    "Label": "Hearing notes for listing officer",
+    "FieldType": "HearingNotes",
     "SecurityClassification": "Public"
   }
 ]
