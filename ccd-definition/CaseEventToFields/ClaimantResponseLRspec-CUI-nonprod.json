@@ -480,7 +480,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -585,7 +585,7 @@
     "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
   {
@@ -596,8 +596,8 @@
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\" "
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
