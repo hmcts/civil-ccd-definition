@@ -26,13 +26,11 @@ function isFieldDuplicated(field) {
 function isCaseEventToFieldDuplicated(field) {
   return function isDuplicated(field1, field2) {
     if (field1.CaseTypeID === field2.CaseTypeID
-        && field1.CaseTypeID === field2.CaseTypeID
         && field1.CaseEventID === field2.CaseEventID
         && field1[field] === field2[field]) {
       console.log(`Duplicated field: ${field1[field]}`);
     }
     return field1.CaseTypeID === field2.CaseTypeID
-            && field1.CaseTypeID === field2.CaseTypeID
             && field1.CaseEventID === field2.CaseEventID
             && field1[field] === field2[field];
   };
