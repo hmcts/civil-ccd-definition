@@ -83,7 +83,6 @@ const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDe
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
-
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
