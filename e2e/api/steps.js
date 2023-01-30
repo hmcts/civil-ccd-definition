@@ -968,11 +968,16 @@ const assertValidData = async (data, pageId, solicitor) => {
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
+  let claimValue;
+  if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
+    && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
+    claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
+  }
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
   }
 
   if (eventName === 'CREATE_SDO') {
@@ -1147,7 +1152,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 // };
 
-function addMidEventFields(pageId, responseBody, instanceData) {
+function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
@@ -1157,7 +1162,9 @@ function addMidEventFields(pageId, responseBody, instanceData) {
     calculated = instanceData.calculated[pageId];
   }
 
-  if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
+  if(eventName === 'CREATE_CLAIM'){
+    midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
+  } else if(eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
   } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
