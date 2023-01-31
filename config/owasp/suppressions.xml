@@ -42,11 +42,4 @@
     <packageUrl regex="true">^pkg:npm/ua\-parser\-js@.*$</packageUrl>
     <vulnerabilityName>1088697</vulnerabilityName>
   </suppress>
-  <suppress until="2023-03-01">
-    <notes><![CDATA[
-   file name: flat:4.1.1
-   ]]></notes>
-    <packageUrl regex="true">^pkg:npm/flat@.*$</packageUrl>
-    <vulnerabilityName>1089152</vulnerabilityName>
-  </suppress>
 </suppressions>
