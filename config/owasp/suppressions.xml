@@ -4,15 +4,6 @@
     <cve>CVE-2019-12415</cve>
   </suppress>
   <suppress>
-    <cve>CVE-2018-1000613</cve>
-    <cve>CVE-2020-26939</cve>
-    <cve>CVE-2017-13098</cve>
-    <cve>CVE-2018-1000180</cve>
-    <cve>CVE-2020-25649</cve>
-    <cve>CVE-2018-1000873</cve>
-    <cve>CVE-2020-9488</cve>
-    <cve>CVE-2017-18640</cve>
-    <cve>CVE-2020-5398</cve>
     <cve>CVE-2018-15756</cve>
     <cve>CVE-2021-44228</cve>
     <cve>CVE-2021-44832</cve>
