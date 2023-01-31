@@ -127,6 +127,7 @@ module.exports = {
     await within(this.fields.hearingSelectionForDJ.id, () => {
       I.click(this.fields.hearingSelectionForDJ.options.disposalHearing);
     });
+    console.log('Fill field Directions Expected')
     I.fillField(this.fields.hearingSelectionForDJ.details, 'Directions expected');
     await I.clickContinue();
   },
