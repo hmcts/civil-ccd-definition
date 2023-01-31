@@ -37,14 +37,6 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
-   file name: file-type:7.7.1
-   ]]></notes>
-    <packageUrl regex="true">^pkg:npm/file-type@7.7.1</packageUrl>
-    <cve>CVE-2022-36313</cve>
-    <vulnerabilityName>1081704</vulnerabilityName>
-  </suppress>
-  <suppress>
-    <notes><![CDATA[
     Risk of DoS if used to parse user-inputted yml file
     ]]></notes>
     <cve>CVE-2022-38752</cve>
