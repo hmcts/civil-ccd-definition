@@ -45,9 +45,6 @@
     <cve>CVE-2022-3064</cve>
     <cve>CVE-2021-4235</cve>
   </suppress>
-  <suppress>
-    <cve>CVE-2022-3064</cve>
-  </suppress>
   <suppress until="2023-03-01">
     <notes><![CDATA[
    file name: ua-parser-js:0.7.32
