@@ -232,5 +232,11 @@
     "CaseFieldID": "ccjJudgmentTotalStillOwed",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
