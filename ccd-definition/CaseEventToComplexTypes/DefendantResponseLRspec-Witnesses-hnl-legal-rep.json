@@ -92,7 +92,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnesses",
     "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
