@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'Small Claims Track Directions',
-  type: 'SmallClaimsTrackDirections',
+  name: 'Confirm Case Offline',
+  type: 'transferCaseOfflineNotSuitableSDO',
   task_title: 'Directions (Provisional Summary Judgment)',
   location_name: 'Central London County Court',
   location: '20262',
