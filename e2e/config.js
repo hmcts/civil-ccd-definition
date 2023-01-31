@@ -102,8 +102,8 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
-  tribunalCaseworkerWithRegionId1: {
-    email: 'tribunal_caseworker_region4@justice.gov.uk',
+  tribunalCaseworkerWithRegionId4: {
+    email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
     password: defaultPassword,
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
