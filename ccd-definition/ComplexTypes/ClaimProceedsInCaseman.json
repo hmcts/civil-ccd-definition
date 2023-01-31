@@ -25,7 +25,7 @@
   },
   {
     "ID": "ClaimProceedsInCaseman",
-    "ListElementCode": "reason",
+    "ListElementCode": "reasonSpec",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ReasonForProceedingOnPaperSpec",
     "ElementLabel": "Reason for proceeding on paper",
