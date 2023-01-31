@@ -107,6 +107,7 @@ module.exports = function (){
     },
 
     validateTaskInfo(createdTask, expectedTaskInfo) {
+      JSON.stringify(createdTask);
       if(expectedTaskInfo && createdTask) {
         for (let taskDMN of Object.keys(taskFieldsToBeValidated)) {
             console.log(`asserting dmn info: ${taskDMN} has valid data`);
