@@ -21,7 +21,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "bothDefendants=\"One\"",
-    "PageLabel": "Do all of these statements apply to the Defendant?-"
+    "PageLabel": "Do all of these statements apply to the Defendant?"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -31,8 +31,8 @@
     "PageShowCondition": "bothDefendants=\"Both Defendants\"",
     "DisplayContext": "READONLY",
     "PageLabel": "Do all of these statements apply to the Defendants?",
-    "PageID": "showcertifystatement1",
-    "PageDisplayOrder": 3,
+    "PageID": "showcertifystatementboth",
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -65,7 +65,7 @@
     "CaseFieldID": "CPRAcceptance2DefLabel",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "PageID": "showcertifystatement1",
+    "PageID": "showcertifystatementboth",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
@@ -76,7 +76,7 @@
     "CaseFieldID": "CPRAcceptance2Def",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
-    "PageID": "showcertifystatement1",
+    "PageID": "showcertifystatementboth",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
