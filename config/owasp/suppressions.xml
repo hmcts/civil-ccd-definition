@@ -35,12 +35,6 @@
     <cve>CVE-2022-31569</cve>
     <cve>CVE-2021-37533</cve>
   </suppress>
-  <suppress>
-    <notes><![CDATA[
-    Supposedly a false positive for 3.0.4
-    ]]></notes>
-    <cve>1084765</cve>
-  </suppress>
   <suppress until="2023-05-05">
     <cve>CVE-2021-4277</cve>
     <cve>CVE-2022-3064</cve>
