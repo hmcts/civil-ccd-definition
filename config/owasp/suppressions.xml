@@ -36,10 +36,6 @@
     <cve>CVE-2021-37533</cve>
   </suppress>
   <suppress>
-    <notes>HIGH-Spring security-suppressed at 21-02-2022</notes>
-    <cve>CVE-2021-22112</cve>
-  </suppress>
-  <suppress>
     <notes><![CDATA[
     file name: poi-ooxml-schemas-4.1.2.jar
     ]]></notes>
