@@ -854,26 +854,13 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  amendHearingDueDate: async (user, dateName, dateInput) => {
-    await apiRequest.setupTokens(user);
-
-    let dateToChange = {};
-    var dd = String(dateInput.getDate()).padStart(2,'0');
-    var mm = String(dateInput.getMonth()).padStart(2, '0');
-    var yyyy = dateInput.getFullYear();
-    let dateValue = yyyy + '-' + mm + '-' + dd;
-
-    dateToChange = {dateName : dateValue};
-    await testingSupport.updateCaseData(caseId, dateToChange);
-  },
-
   hearingFeePaid: async (user) => {
     await apiRequest.setupTokens(user);
 
     await apiRequest.paymentUpdate(caseId, '/service-request-update',
       claimData.serviceUpdateDto(caseId, 'paid'));
 
-    amendHearingDueDate(user, 'hearingDueDate', new Date());
+    amendDate(user, 'hearingDueDate', new Date());
 
     eventName = 'HEARING_FEE_PAID';
     await apiRequest.submitEvent(eventName, caseId);
@@ -913,6 +900,19 @@ const validateEventPages = async (data, solicitor) => {
    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
+};
+
+const amendDate = async (user, dateName, dateInput) => {
+  await apiRequest.setupTokens(user);
+
+  let dateToChange = {};
+  var dd = String(dateInput.getDate()).padStart(2,'0');
+  var mm = String(dateInput.getMonth()).padStart(2, '0');
+  var yyyy = dateInput.getFullYear();
+  let dateValue = yyyy + '-' + mm + '-' + dd;
+
+  dateToChange = {dateName : dateValue};
+  await testingSupport.updateCaseData(caseId, dateToChange);
 };
 
 const assertValidData = async (data, pageId, solicitor) => {
