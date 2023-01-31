@@ -6,8 +6,8 @@ const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
 
 
-const TASK_MAX_RETRIES = 40;
-const TASK_RETRY_TIMEOUT_MS = 10000;
+const TASK_MAX_RETRIES = 20;
+const TASK_RETRY_TIMEOUT_MS = 20000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -130,6 +130,7 @@ module.exports = {
           availableTaskDetails.forEach((taskInfo) => {
             if(taskInfo['type'] == taskId) {
               console.log('Found taskInfo with id ...', taskId);
+              console.log('Task details are ...', taskInfo);
               taskDetails = taskInfo;
             }
           });
