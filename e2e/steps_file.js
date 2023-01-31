@@ -264,7 +264,7 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true, claimValue = '30000') {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
@@ -282,7 +282,7 @@ module.exports = function () {
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
         () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
-        () => claimValuePage.enterClaimValue(),
+        () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
         () => statementOfTruth.enterNameAndRole('claim'),

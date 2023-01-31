@@ -6,10 +6,10 @@ module.exports = {
     statementOfValue: '#claimValue_statementOfValueInPennies',
   },
 
-  async enterClaimValue() {
+  async enterClaimValue(claimValue = '30000') {
     I.waitForElement(this.fields.statementOfValue);
     await I.runAccessibilityTest();
-    I.fillField(this.fields.statementOfValue, '30000');
+    I.fillField(this.fields.statementOfValue, claimValue);
     await I.clickContinue();
   }
 };
