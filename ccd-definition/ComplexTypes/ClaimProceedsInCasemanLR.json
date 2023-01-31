@@ -1,6 +1,6 @@
 [
   {
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "ClaimProceedsInCasemanLR",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": "Date when claim was transferred to Caseman",
@@ -8,14 +8,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "ClaimProceedsInCasemanLR",
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "You are taking the claim offline. The claim will now continue by post.",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "ClaimProceedsInCasemanLR",
     "ListElementCode": "reason",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ReasonForProceedingOnPaperLR",
@@ -23,7 +23,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "ClaimProceedsInCasemanLR",
     "ListElementCode": "other",
     "FieldType": "TextArea",
     "ElementLabel": "Other reason",

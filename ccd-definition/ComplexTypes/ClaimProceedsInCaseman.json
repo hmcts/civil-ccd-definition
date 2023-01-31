@@ -24,14 +24,6 @@
   },
   {
     "ID": "ClaimProceedsInCaseman",
-    "ListElementCode": "reason",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ReasonForProceedingOnPaper",
-    "ElementLabel": "Reason for proceeding on paper",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "ClaimProceedsInCaseman",
     "ListElementCode": "other",
     "FieldType": "TextArea",
     "ElementLabel": "Other reason",
