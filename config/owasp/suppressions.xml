@@ -33,7 +33,6 @@
     <cve>CVE-2022-33915</cve>
     <cve>CVE-2022-22976</cve>
     <cve>CVE-2022-31569</cve>
-    <cve>CVE-2021-37533</cve>
   </suppress>
   <suppress until="2023-03-01">
     <notes><![CDATA[
