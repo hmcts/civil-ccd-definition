@@ -506,7 +506,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialToggleTextSmallClaimRes",
-    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Authorities and Costs \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
+    "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
