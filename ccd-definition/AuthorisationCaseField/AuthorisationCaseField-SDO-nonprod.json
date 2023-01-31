@@ -2105,7 +2105,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },
