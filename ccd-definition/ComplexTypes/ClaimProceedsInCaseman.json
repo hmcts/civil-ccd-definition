@@ -20,7 +20,17 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ReasonForProceedingOnPaper",
     "ElementLabel": "Reason for proceeding on paper",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "CaseAccessCategory=\"UNSPEC_CLAIM\""
+  },
+  {
+    "ID": "ClaimProceedsInCaseman",
+    "ListElementCode": "reason",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ReasonForProceedingOnPaperSpec",
+    "ElementLabel": "Reason for proceeding on paper",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "ID": "ClaimProceedsInCaseman",
