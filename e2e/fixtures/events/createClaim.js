@@ -88,6 +88,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           ],
           value: listElement(config.claimantSelectedCourt)
         }
+      },
+      applicant1OrganisationPolicy: {
+        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+        Organisation: {
+          OrganisationID: config.claimantSolicitorOrgId,
+        }
       }
     },
     Claimant: {
@@ -161,14 +167,14 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       addRespondent2: 'No'
     },
     ...hasRespondent2(mpScenario) ? {
-        SecondDefendant: {},
-        SecondDefendantLegalRepresentation: {},
-        SecondDefendantSolicitorOrganisation: {},
-        SecondDefendantSolicitorServiceAddress: {},
-        SecondDefendantSolicitorReference: {},
-        SecondDefendantSolicitorEmail: {},
-        SameLegalRepresentative: {},
-      } : {},
+      SecondDefendant: {},
+      SecondDefendantLegalRepresentation: {},
+      SecondDefendantSolicitorOrganisation: {},
+      SecondDefendantSolicitorServiceAddress: {},
+      SecondDefendantSolicitorReference: {},
+      SecondDefendantSolicitorEmail: {},
+      SameLegalRepresentative: {},
+    } : {},
     ClaimType: {
       claimType: 'PERSONAL_INJURY'
     },
@@ -334,9 +340,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
-      || mpScenario ===  'ONE_V_TWO_LIPS';
+    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+    || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
+    || mpScenario ===  'ONE_V_TWO_LIPS';
 };
 
 module.exports = {
@@ -445,7 +451,7 @@ module.exports = {
   cosNotifyClaim : (lip1, lip2) => {
     return {
       ...(lip1) ? {
-         cosNotifyClaimDefendant1: {
+        cosNotifyClaimDefendant1: {
           cosDateOfServiceForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosRecipient: 'sample text',
@@ -476,6 +482,20 @@ module.exports = {
           ]
         }
       }: {},
+    };
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
     };
   },
   cosNotifyClaimDetails : (lip1, lip2) => {
