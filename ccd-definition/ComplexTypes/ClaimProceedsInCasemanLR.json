@@ -1,6 +1,6 @@
 [
   {
-    "ID": "ClaimProceedsInCaseman",
+    "ID": "specClaimProceedsInCaseman",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": "Date when claim was transferred to Caseman",
@@ -8,31 +8,22 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimProceedsInCaseman",
+    "ID": "specClaimProceedsInCaseman",
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "You are taking the claim offline. The claim will now continue by post.",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimProceedsInCaseman",
+    "ID": "specClaimProceedsInCaseman",
     "ListElementCode": "reason",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ReasonForProceedingOnPaper",
+    "FieldTypeParameter": "ReasonForProceedingOnPaperLR",
     "ElementLabel": "Reason for proceeding on paper",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimProceedsInCaseman",
-    "ListElementCode": "reasonSpec",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ReasonForProceedingOnPaperSpec",
-    "ElementLabel": "Reason for proceeding on paper",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
-  },
-  {
-    "ID": "ClaimProceedsInCaseman",
+    "ID": "specClaimProceedsInCaseman",
     "ListElementCode": "other",
     "FieldType": "TextArea",
     "ElementLabel": "Other reason",
