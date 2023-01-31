@@ -37,12 +37,6 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
-    Risk of DoS if used to parse user-inputted yml file
-    ]]></notes>
-    <cve>CVE-2022-38752</cve>
-  </suppress>
-  <suppress>
-    <notes><![CDATA[
     Supposedly a false positive for 3.0.4
     ]]></notes>
     <cve>1084765</cve>
