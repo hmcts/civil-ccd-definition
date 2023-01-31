@@ -36,9 +36,6 @@
     <cve>CVE-2021-37533</cve>
   </suppress>
   <suppress>
-    <cve>CVE-2022-31569</cve>
-  </suppress>
-  <suppress>
     <notes><![CDATA[
    file name: file-type:7.7.1
    ]]></notes>
