@@ -24,12 +24,11 @@
   },
   {
     "ID": "ClaimProceedsInCaseman",
-    "ListElementCode": "reasonSpec",
+    "ListElementCode": "reason",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ReasonForProceedingOnPaperSpec",
+    "FieldTypeParameter": "ReasonForProceedingOnPaper",
     "ElementLabel": "Reason for proceeding on paper",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "ClaimProceedsInCaseman",
