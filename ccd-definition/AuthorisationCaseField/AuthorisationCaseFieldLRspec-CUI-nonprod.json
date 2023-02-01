@@ -670,7 +670,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil",
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
