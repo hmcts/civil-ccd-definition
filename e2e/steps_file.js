@@ -264,7 +264,7 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true, claimValue = '30000') {
+    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true, claimValue = 30000) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;

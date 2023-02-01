@@ -29,7 +29,7 @@ Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-un
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null, respondent1, respondent2, '20000');
+  await I.createCase(claimant1, null, respondent1, respondent2, 20000);
   caseNumber = await I.grabCaseNumber();
 
   const pbaV3 = await checkToggleEnabled(PBAv3);
