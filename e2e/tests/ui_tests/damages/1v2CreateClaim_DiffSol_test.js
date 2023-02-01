@@ -102,7 +102,8 @@ Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) =
 Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
-    defendant1Response: 'fullDefence'});
+    defendant1Response: 'fullDefence',
+    claimValue: 20000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -112,7 +113,8 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_2,
-    defendant2Response: 'fullDefence'});
+    defendant2Response: 'fullDefence',
+    claimValue: 20000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
