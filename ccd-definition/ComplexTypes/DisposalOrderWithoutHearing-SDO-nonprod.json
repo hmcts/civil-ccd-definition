@@ -10,7 +10,7 @@
     "ID": "DisposalOrderWithoutHearing",
     "ListElementCode": "title",
     "FieldType": "Label",
-    "ElementLabel": "## This order has been made without hearing",
+    "ElementLabel": "## Important notes",
     "SecurityClassification": "Public"
   },
   {
