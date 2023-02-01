@@ -1,5 +1,6 @@
 const defaultPassword = 'Password12!';
 const judgeDefaultPassword = 'Hmcts1234';
+const iacDefaultPassword = 'AldgateT0wer';
 
 module.exports = {
   idamStub: {
@@ -101,8 +102,8 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
-  tribunalCaseworkerWithRegionId1: {
-    email: 'tribunal_caseworker_region4@justice.gov.uk',
+  tribunalCaseworkerWithRegionId4: {
+    email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
     password: defaultPassword,
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
@@ -124,9 +125,59 @@ module.exports = {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
   },
+  iacLeadershipJudge: {
+    password: judgeDefaultPassword,
+    email: '330127EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
+  },
+  iacLegalOpsUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_stcwuser1@justice.gov.uk',
+    type: 'legalOps',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  iacCtscTeamLeaderUser: {
+    email: 'CRD_func_test_demo_ctsc_tl@justice.gov.uk',
+    password: iacDefaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
+  iacAdminUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_adm21@justice.gov.uk',
+    type: 'admin',
+    roleCategory: 'ADMIN'
+  },
+  nbcTeamLeaderWithRegionId4: {
+    email: 'nbc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'nbc-team-leader',
+    roleCategory: 'NBC ADMIN',
+    regionId: '4'
+  },
+  seniorTBCWWithRegionId4: {
+    email: 'seniorcivil_tbcw_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'senior-tribunal-caseworker',
+    roleCategory: 'LEGAL_OPS',
+    regionId: '4'
+  },
+  ctscTeamLeaderUser: {
+    email: 'ctsc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
+    reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
+    reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
+    reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
+    reviewSpecificAccessRequestCTSC: 'reviewSpecificAccessRequestCTSC',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
