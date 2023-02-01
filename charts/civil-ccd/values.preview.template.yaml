@@ -56,6 +56,13 @@ ccd:
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_NAME}.preview.platform.hmcts.net
+      environment:
+        DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
+        DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
+        IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
+        ELASTIC_SEARCH_ENABLED: true
+        ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
+        ELASTIC_SEARCH_CASE_INDEX_MAPPING_FIELDS_LIMIT: 10000
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_NAME}.preview.platform.hmcts.net
@@ -87,7 +94,7 @@ elasticsearch:
     path: /
     hosts:
       - es-${SERVICE_FQDN}
-        
+
 logstash:
   image:
     repository: hmctspublic.azurecr.io/ccd/logstash
