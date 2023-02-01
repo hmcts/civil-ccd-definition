@@ -49,7 +49,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order', as
       const caseId = await api.getCaseId();
       // TODO not sure which one is for this case
       const task = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId1, caseId, config.waTaskIds.legalAdvisorDirections);
-      const otherTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.smallClaimDirections);
+      // might be await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.smallClaimDirections);
       WA.validateTaskInfo(task, smallClaimDirectionsTask);
     }
     await api.createSDO(legalAdvUser);
