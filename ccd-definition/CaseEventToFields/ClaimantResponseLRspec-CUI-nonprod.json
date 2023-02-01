@@ -482,6 +482,7 @@
   "PageFieldDisplayOrder": 1,
   "DisplayContext": "READONLY",
   "PageID": "CcjJudgmentSummary",
+  "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec =\"Yes\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"Yes\"",
   "ShowSummaryChangeOption": "Y"
   },
   {
