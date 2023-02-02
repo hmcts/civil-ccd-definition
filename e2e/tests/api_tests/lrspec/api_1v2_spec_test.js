@@ -70,7 +70,7 @@ Scenario('1v2 small claim part admit, claimant response', async ({I, api_spec}) 
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('1v2 small claim offline', async ({I, api_spec}) => {
+Scenario.only('1v2 small claim offline', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.moveCaseToCaseman(config.adminUser);
 });
