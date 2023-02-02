@@ -1077,9 +1077,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "claimProceedsInCasemanLR",
     "Label": "Case proceeds in Caseman",
-    "FieldType": "ClaimProceedsInCaseman",
+    "FieldType": "ClaimProceedsInCasemanLR",
     "SecurityClassification": "Public"
   },
   {
