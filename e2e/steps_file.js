@@ -123,6 +123,7 @@ const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -814,6 +815,16 @@ module.exports = function () {
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit', ''),
         () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async uploadADocument(caseId) {
+      eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId),
+        () => unspecifiedEvidenceUpload.selectType(),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(),
+        () => event.submit('Submit', 'Documents uploaded')
       ]);
     },
 
