@@ -126,13 +126,5 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQFurtherInformation",
     "TabFieldDisplayOrder": 16
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Hearings",
-    "TabDisplayOrder": 5,
-    "CaseFieldID": "hearingNotes",
-    "TabFieldDisplayOrder": 17
   }
 ]
