@@ -18,6 +18,7 @@ const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
+const lodash = require("lodash");
 
 let caseId, eventName;
 let caseData = {};
@@ -35,7 +36,8 @@ const data = {
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
-  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js')
+  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
+  CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js')
 };
 
 const eventData = {
@@ -172,6 +174,31 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  moveCaseToCaseman: async (user) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CASE_PROCEEDS_IN_CASEMAN';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+
+    await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
+
+
+    //TODO CMC-1245 confirmation page for event
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      header: '',
+      body: ''
+    }, false);
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
   },
 
   cleanUp: async () => {
@@ -316,6 +343,45 @@ module.exports = {
 };
 
 // Functions
+const validateEventPages = async (data, solicitor) => {
+  //transform the data
+  console.log('validateEventPages....');
+  for (let pageId of Object.keys(data.valid)) {
+    if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+    // data = await updateCaseDataWithPlaceholders(data);
+    await assertValidFOfflineData(data, pageId, solicitor);
+  }
+};
+
+const assertValidFOfflineData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const userData = data.valid[pageId];
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+      eventName,
+      pageId,
+      caseData,
+      caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  caseData = update(caseData, responseBody.data);
+};
+
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
@@ -366,6 +432,18 @@ function checkExpected(responseBodyData, expected, prefix = '') {
       }
     }
   }
+}
+
+async function updateCaseDataWithPlaceholders(data, document) {
+  const placeholders = {
+    TEST_DOCUMENT_URL: document.document_url,
+    TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
+    TEST_DOCUMENT_FILENAME: document.document_filename
+  };
+
+  data = lodash.template(JSON.stringify(data))(placeholders);
+
+  return JSON.parse(data);
 }
 
 function checkGenerated(responseBodyData, generated, prefix = '') {
@@ -505,11 +583,6 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
-const assertContainsPopulatedFields = returnedCaseData => {
-  for (let populatedCaseField of Object.keys(caseData)) {
-    assert.property(returnedCaseData,  populatedCaseField);
-  }
-};
 
 // CIV-4203: needs to be removed when court location goes live
 async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
