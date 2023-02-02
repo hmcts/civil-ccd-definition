@@ -5,7 +5,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "region",
     "ListElementCode": "region",
-    "ElementLabel": "Reason",
+    "ElementLabel": "Region",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
