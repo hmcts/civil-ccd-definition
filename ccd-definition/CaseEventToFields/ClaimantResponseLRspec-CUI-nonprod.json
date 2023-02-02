@@ -695,6 +695,6 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND applicant1ProceedWithClaim =\"Yes\" OR applicant1AcceptAdmitAmountPaidSpec=\"No\""
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\""
   }
 ]
