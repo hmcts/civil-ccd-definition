@@ -216,11 +216,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin"
@@ -238,13 +250,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDetailsRespondentSol",
+    "CaseFieldID": "respondentSolGaAppDetails",
     "AccessControl": [
       {
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolTwoGaAppDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"

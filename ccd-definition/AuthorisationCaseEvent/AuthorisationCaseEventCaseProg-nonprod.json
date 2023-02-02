@@ -20,6 +20,19 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -31,15 +44,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EVIDENCE_UPLOAD",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -58,6 +78,42 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "HEARING_FEE_PAID",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SERVICE_REQUEST_RECEIVED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },

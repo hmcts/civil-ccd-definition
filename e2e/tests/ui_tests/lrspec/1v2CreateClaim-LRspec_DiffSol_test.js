@@ -1,6 +1,8 @@
 const config = require('../../../config.js');
-const {checkAccessProfilesIsEnabled} = require('../../../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {checkToggleEnabled} = require('../../../api/testingSupport');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
@@ -23,18 +25,21 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
+
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
-  let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-  if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
     await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-  } else {
-    await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWOSPEC', config.secondDefendantSolicitorUser);
-  }
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
@@ -63,6 +68,15 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
+}).retry(3);
+
+Scenario('Judge triggers SDO', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.judgeUserWithRegionId1);
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await LRspec.waitForText('Summary');
+    await LRspec.initiateSDO('yes', 'yes', null, null);
+  }
 }).retry(3);
 
 AfterSuite(async  () => {

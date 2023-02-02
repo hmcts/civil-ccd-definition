@@ -81,7 +81,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingWitnessOfFactDJ",
-    "Label": "Witness of Fact",
+    "Label": "Witnesses of Fact",
     "FieldType": "DisposalHearingWitnessOfFactDJ",
     "SecurityClassification": "Public"
   },
@@ -111,6 +111,13 @@
     "ID": "disposalHearingFinalDisposalHearingDJ",
     "Label": "Final disposal hearing",
     "FieldType": "DisposalHearingFinalDisposalHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "Label": "Hearing time",
+    "FieldType": "DisposalHearingFinalDisposalHearingTimeDJ",
     "SecurityClassification": "Public"
   },
   {
@@ -195,6 +202,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingHearingNotesDJ",
+    "Label": "Hearing notes",
+    "FieldType": "DisposalHearingHearingNotesDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "disposalHearingOrderMadeWithoutHearingDJ",
+    "Label": "Important notes",
+    "FieldType": "DisposalHearingOrderMadeWithoutHearingDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingAddNewDirectionsDJ",
     "Label": "Add a new direction",
     "FieldType": "Collection",
@@ -211,7 +232,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingOrderAndHearingDetailsDJ",
-    "Label": "# Order and hearing details \n Warning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply you must make an application to the court before any deadline expires. \n ****",
+    "Label": "# Order and hearing details \n Warning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply, you are expected to make a formal application to the court before any deadline imposed upon you expires.\n ****",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -232,14 +253,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialFastTrackAltDisputeResolution",
-    "Label": "## Alternative dispute resolution \nAt all stages, the parties must consider settling this litigation by any means of Alternative Dispute Resolution. This includes round table conferences, early neutral evaluation, mediation and arbitration. Any party not engaging in any such means proposed by another must uploaded to the Digital Portal a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise.",
+    "Label": "## Alternative dispute resolution \nAt all stages, the parties must consider settling this litigation by any means of Alternative Dispute Resolution. This includes round table conferences, early neutral evaluation, mediation and arbitration. Any party not engaging in any such means proposed by another must upload to the Digital Portal a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialFastTrackVariationOfDirections",
-    "Label": "## Variation of directions \nThe Parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4).  Otherwise, the time for compliance with a direction may only be extended by making an application",
+    "Label": "## Variation of directions \nThe Parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4). Otherwise, the time for compliance with a direction may only be extended by making an application",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -260,7 +281,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingWitnessOfFactDJ",
-    "Label": "Witness of fact",
+    "Label": "Witnesses of fact",
     "FieldType": "TrialHearingWitnessOfFactDJ",
     "SecurityClassification": "Public"
   },
@@ -287,8 +308,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "trialHearingTimeDJ",
+    "Label": "Hearing time",
+    "FieldType": "TrialHearingTimeDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "trialHearingMethodTitleDJ",
-    "Label": "## Hearing Method",
+    "Label": "## Hearing method",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -340,8 +368,22 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialHearingNotesDJ",
-    "Label": "Notes",
+    "Label": "Important",
     "FieldType": "TrialHearingNotesDJ",
+    "SecurityClassification": "Public"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "trialHearingHearingNotesDJ",
+  "Label": "Hearing notes",
+  "FieldType": "TrialHearingHearingNotesDJ",
+  "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialOrderMadeWithoutHearingDJ",
+    "Label": "Important notes",
+    "FieldType": "TrialOrderMadeWithoutHearingDJ",
     "SecurityClassification": "Public"
   },
   {
@@ -382,7 +424,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialPersonalInjury",
-    "Label": "Personal injury",
+    "Label": "Expert evidence",
     "FieldType": "TrialPersonalInjury",
     "SecurityClassification": "Public"
   },

@@ -142,5 +142,34 @@
     "HintText": "For example, 27 3 2022",
     "FieldType": "DateTime",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeePaymentDetails",
+    "Label": "Hearing Payment Details",
+    "FieldType": "PaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedPBADetails",
+    "Label": "Claim Issued PBA details\n",
+    "FieldType": "SRPbaDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeePBADetails",
+    "Label": "Hearing fee PBA details\n",
+    "FieldType": "SRPbaDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingDocuments",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
   }
 ]

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
+import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
 import java.util.List;
@@ -82,7 +83,13 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        return true;
+    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
+        int httpStatusCode504 = 504;
+        if (e instanceof ImportException) {
+            ImportException importException = (ImportException) e;
+            return importException.getHttpStatusCode() == httpStatusCode504;
+        }
+        return false;
     }
+
 }

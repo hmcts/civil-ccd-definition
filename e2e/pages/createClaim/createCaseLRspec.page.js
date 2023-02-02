@@ -1,26 +1,12 @@
 const {I} = inject();
 
+const config = require('../../config.js');
+
 module.exports = {
-
-  fields: {
-    jurisdiction: 'jurisdiction',
-    caseType: 'case-type',
-    event: 'event',
-  },
-  startButton: 'Start',
-
-   async createCaseSpecified(jurisdiction) {
-        await I.waitForText('Create case');
-        await I.retryUntilExists( () => {
-          I.click('Create case');
-        }, `#cc-jurisdiction > option[value="${jurisdiction}"]`);
-
-        await I.retryUntilExists(() => {
-          I.selectOption(this.fields.jurisdiction, 'Civil');
-          I.selectOption(this.fields.caseType, 'Civil');
-          I.selectOption(this.fields.event, 'Create claim - Specified');
-          I.click(this.startButton);
-        }, 'ccd-markdown');
+   async createCaseSpecified() {
+        await I.waitForText('Case list');
+        await I.amOnPage(config.url.manageCase + '/cases/case-create/CIVIL/CIVIL/CREATE_CLAIM_SPEC/CREATE_CLAIM_SPECCheckList');
+        await I.waitForText('Legal representatives: specified civil money claims service', 60);
     }
 };
 

@@ -6,6 +6,8 @@ const respondent1 = {
   individualFirstName: 'John',
   individualLastName: 'Doe',
   individualTitle: 'Sir',
+  partyEmail: 'johndoe@example.com',
+  partyPhone: '07898678902',
   primaryAddress: buildAddress('respondent')
 };
 const respondent1WithPartyName = {
@@ -16,7 +18,8 @@ const respondent1WithPartyName = {
 const applicant1 = {
   type: 'COMPANY',
   companyName: 'Test Inc',
-  primaryAddress: buildAddress('applicant')
+  primaryAddress: buildAddress('applicant'),
+  partyEmail: 'johndoe@example.com',
 };
 const applicant1WithPartyName = {
   ...applicant1,
@@ -211,6 +214,7 @@ module.exports = {
             respondent2: {
               type: 'ORGANISATION',
               organisationName: 'Second Defendant',
+              partyEmail: 'seconddefendant@example.com',
               primaryAddress: {
                 AddressLine1: '123 Second Close',
                 PostTown: 'Second Town',
@@ -290,6 +294,7 @@ module.exports = {
             respondent2: {
               type: 'ORGANISATION',
               organisationName: 'Second Defendant',
+              partyEmail: 'seconddefendant@example.com',
               primaryAddress: {
                 AddressLine1: '123 Second Close',
                 PostTown: 'Second Town',
@@ -353,6 +358,7 @@ module.exports = {
               type: 'ORGANISATION',
               organisationName: 'Claim 2',
               partyName: 'Claim 2',
+              partyEmail: 'secondclaimant@example.com',
               partyTypeDisplayValue: 'Organisation',
               primaryAddress: {
                 AddressLine1: '43 Montgomery Close',
@@ -570,6 +576,7 @@ module.exports = {
               respondent2: {
                 type: 'ORGANISATION',
                 organisationName: 'Second Defendant',
+                partyEmail: 'seconddefendant@example.com',
                 primaryAddress: {
                   AddressLine1: '123 Second Close',
                   PostTown: 'Second Town',
@@ -641,6 +648,7 @@ module.exports = {
               respondent2: {
                 type: 'ORGANISATION',
                 organisationName: 'Second Defendant',
+                partyEmail: 'seconddefendant@example.com',
                 primaryAddress: {
                   AddressLine1: '123 Second Close',
                   PostTown: 'Second Town',
@@ -701,6 +709,7 @@ module.exports = {
                 type: 'ORGANISATION',
                 organisationName: 'Claim 2',
                 partyName: 'Claim 2',
+                partyEmail: 'secondclaimant@example.com',
                 partyTypeDisplayValue: 'Organisation',
                 primaryAddress: {
                   AddressLine1: '43 Montgomery Close',
@@ -1039,6 +1048,7 @@ module.exports = {
               type: 'ORGANISATION',
               organisationName: 'Claim 2',
               partyName: 'Claim 2',
+              partyEmail: 'secondclaimant@example.com',
               partyTypeDisplayValue: 'Organisation',
               primaryAddress: {
                 AddressLine1: '43 Montgomery Close',
@@ -1387,6 +1397,7 @@ module.exports = {
                 type: 'ORGANISATION',
                 organisationName: 'Claim 2',
                 partyName: 'Claim 2',
+                partyEmail: 'secondclaimant@example.com',
                 partyTypeDisplayValue: 'Organisation',
                 primaryAddress: {
                   AddressLine1: '43 Montgomery Close',
@@ -1401,5 +1412,20 @@ module.exports = {
     }
 
     return userData;
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
+    };
   }
 };
