@@ -116,7 +116,9 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin",
+          "hearing-schedule-access"
         ],
         "CRUD": "R"
       }
