@@ -1,19 +1,21 @@
 [
+
   {
     "ID": "CaseLocationCivil",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "caseManagementLocation",
+    "CaseFieldID": "region",
     "ListElementCode": "region",
-    "ElementLabel": " ",
-    "DisplayContext": "OPTIONAL"
+    "ElementLabel": "Reason",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   },
   {
     "ID": "CaseLocationCivil",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "caseManagementLocation",
+    "CaseFieldID": "baseLocation",
     "ListElementCode": "baseLocation",
-    "ElementLabel": " ",
+    "ElementLabel": "Base location",
     "FieldType": "Text",
-    "DisplayContext": "OPTIONAL"
+    "SecurityClassification": "Public"
   }
 ]
