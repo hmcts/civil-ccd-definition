@@ -228,5 +228,12 @@
     "Label": "Why does the claimant reject their response?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantDefenceResponseDocumentAndDQFlag",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]

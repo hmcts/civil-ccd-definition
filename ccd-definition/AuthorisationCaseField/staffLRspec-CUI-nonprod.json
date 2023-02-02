@@ -142,5 +142,11 @@
     "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
