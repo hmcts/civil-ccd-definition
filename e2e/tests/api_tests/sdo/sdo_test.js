@@ -127,8 +127,6 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async (
     if (config.runWAApiTest) {
       const caseId = await api.getCaseId();
       const task = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.notSuitableSdo);
-      const taskAdv = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.notSuitableSdo);
-      const region4Judge = await api.retrieveTaskDetails(config.judgeUserWithRegionId4, caseId, config.waTaskIds.notSuitableSdo);
       WA.validateTaskInfo(task, transferOfflineSdoTask);
     }
   }

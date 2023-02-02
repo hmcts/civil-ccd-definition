@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Confirm Case Offline',
   type: 'transferCaseOfflineNotSuitableSDO',
-  task_title: 'Directions (Provisional Summary Judgment)',
+  task_title: 'Confirm Case Offline',
   location_name: 'Central London County Court',
   location: '20262',
   execution_type: 'Case Management Task',
@@ -11,9 +11,9 @@ module.exports = {
   case_category: 'Civil',
   auto_assigned: false,
   case_management_category: 'Civil',
-  work_type_id: 'decision_making_work',
-  work_type_label: 'Decision-making work',
-  permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel' ] },
-  description: '[Directions - Small Claim](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOFastTrack)',
-  role_category: 'JUDICIAL'
+  work_type_id: 'hearing_work',
+  work_type_label: 'Hearing work',
+  permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign' ] },
+  description: '[Case is Offline]',
+  role_category: 'ADMIN'
 };
