@@ -48,8 +48,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order', as
     if (config.runWAApiTest) {
       const caseId = await api.getCaseId();
       // TODO not sure which one is for this case
-      const task = await api.retrieveTaskDetails(config.tribunalCaseworkerWithRegionId1, caseId, config.waTaskIds.legalAdvisorDirections);
-      // might be await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.smallClaimDirections);
+      const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
       WA.validateTaskInfo(task, smallClaimDirectionsTask);
     }
     await api.createSDO(legalAdvUser);
@@ -127,7 +126,9 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async (
     await api.createSDO(judgeUser, 'UNSUITABLE_FOR_SDO');
     if (config.runWAApiTest) {
       const caseId = await api.getCaseId();
-      const task = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.notSuitableSdo);
+      const task = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.notSuitableSdo);
+      const taskAdv = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.notSuitableSdo);
+      const region4Judge = await api.retrieveTaskDetails(config.judgeUserWithRegionId4, caseId, config.waTaskIds.notSuitableSdo);
       WA.validateTaskInfo(task, transferOfflineSdoTask);
     }
   }
