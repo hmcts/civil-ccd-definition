@@ -210,7 +210,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingOrderMadeWithoutHearingDJ",
-    "Label": "This Order has been made without a hearing",
+    "Label": "Important notes",
     "FieldType": "DisposalHearingOrderMadeWithoutHearingDJ",
     "SecurityClassification": "Public"
   },
@@ -382,7 +382,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialOrderMadeWithoutHearingDJ",
-    "Label": "This order has been made without a hearing",
+    "Label": "Important notes",
     "FieldType": "TrialOrderMadeWithoutHearingDJ",
     "SecurityClassification": "Public"
   },
