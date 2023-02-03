@@ -1,40 +1,18 @@
 const config = require('../../../config.js');
-const claimData = require('../../../fixtures/events/createClaim.js');
+
 const mpScenario = 'ONE_V_ONE';
 const judgeUser = config.judgeUserWithRegionId1;
-const legalAdvUser = config.tribunalCaseworkerWithRegionId1;
+const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
+const claimAmountJudge = '11000';
+const claimAmountAdvisor = '100';
 
 Feature('CCD 1v1 API test @api-sdo');
 
-function legalAdvisorClaim(mpScenario) {
-  const data = claimData.createClaim(mpScenario);
-  data.midEventData.ClaimValue.claimFee = {
-    calculatedAmountInPence: '7000',
-    code: 'FEE0204',
-    version: '4'
-  };
-  data.valid.ClaimValue.claimValue.statementOfValueInPennies = '85000';
-  return data;
-}
-
-function judgeClaim(mpScenario) {
-  const data = claimData.createClaim(mpScenario);
-  // locally is calculated with a mock, can comment the following block
-  data.midEventData.ClaimValue.claimFee = {
-    calculatedAmountInPence: '100000',
-    code: 'FEE0209',
-    version: '3'
-  };
-  // end of block to be commented for local run
-  data.valid.ClaimValue.claimValue.statementOfValueInPennies = '2000000';
-  return data;
-}
-
-async function prepareClaim(api, claimData) {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimData);
+async function prepareClaim(api, claimAmount) {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -45,7 +23,7 @@ async function prepareClaim(api, claimData) {
 Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, judgeClaim(mpScenario));
+    await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser);
   }
 });
@@ -53,7 +31,7 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ a
 Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, legalAdvisorClaim(mpScenario));
+    await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser);
   }
 });
@@ -61,7 +39,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order', as
 Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, judgeClaim(mpScenario));
+    await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL');
   }
 });
@@ -69,7 +47,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, legalAdvisorClaim(mpScenario));
+    await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL');
   }
 });
@@ -77,7 +55,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH s
 Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, judgeClaim(mpScenario));
+    await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
   }
 });
@@ -85,7 +63,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
 Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, legalAdvisorClaim(mpScenario));
+    await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST');
   }
 });
@@ -93,7 +71,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum
 Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, judgeClaim(mpScenario));
+    await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
   }
 });
@@ -101,7 +79,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, legalAdvisorClaim(mpScenario));
+    await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
   }
 });
@@ -109,7 +87,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOU
 Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, judgeClaim(mpScenario));
+    await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
   }
 });
@@ -117,7 +95,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
 Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, legalAdvisorClaim(mpScenario));
+    await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
   }
 });
@@ -125,7 +103,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
 Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, judgeClaim(mpScenario));
+    await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'UNSUITABLE_FOR_SDO');
   }
 });
@@ -134,7 +112,7 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async (
 Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, legalAdvisorClaim(mpScenario));
+    await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'UNSUITABLE_FOR_SDO');
   }
 });
