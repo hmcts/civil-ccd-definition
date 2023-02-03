@@ -147,7 +147,7 @@ wa-case-event-handler:
       AZURE_SERVICE_BUS_TOPIC_NAME: ccd-case-events
       AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ccd-case-events
       #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
-      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: $(AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME)
+      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: ccd-case-events
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
       POSTGRES_NAME: wa-case-event-handler
       POSTGRES_USERNAME: hmcts
