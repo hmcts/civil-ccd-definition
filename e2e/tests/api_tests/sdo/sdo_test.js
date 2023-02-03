@@ -8,6 +8,14 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
+let fastTrackDirectionsTask;
+let smallClaimDirectionsTask;
+let transferOfflineSdoTask;
+if (config.runWAApiTest) {
+  fastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
+  smallClaimDirectionsTask = require('../../../../wa/tasks/smallClaimDirectionsTask.js');
+  transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
+}
 
 Feature('CCD 1v1 API test @api-sdo');
 
@@ -20,18 +28,29 @@ async function prepareClaim(api, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 }
 
-Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
+    if (config.runWAApiTest) {
+      const caseId = await api.getCaseId();
+      const task = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.fastTrackDirections);
+      WA.validateTaskInfo(task, fastTrackDirectionsTask);
+    }
     await api.createSDO(judgeUser);
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({api}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
+    if (config.runWAApiTest) {
+      const caseId = await api.getCaseId();
+      // TODO not sure which one is for this case
+      const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
+      WA.validateTaskInfo(task, smallClaimDirectionsTask);
+    }
     await api.createSDO(legalAdvUser);
   }
 });
@@ -100,11 +119,16 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
   }
 });
 
-Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'UNSUITABLE_FOR_SDO');
+    if (config.runWAApiTest) {
+      const caseId = await api.getCaseId();
+      const task = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.notSuitableSdo);
+      WA.validateTaskInfo(task, transferOfflineSdoTask);
+    }
   }
 });
 
