@@ -75,7 +75,6 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
-      CaseAccessCategory: 'UNSPEC_CLAIM',
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
         respondentSolicitor1Reference: 'Respondent reference'
