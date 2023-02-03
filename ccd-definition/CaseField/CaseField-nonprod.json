@@ -13,5 +13,21 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondent",
+    "Label": "registration information",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentTwo",
+    "Label": "registration information",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
   }
 ]

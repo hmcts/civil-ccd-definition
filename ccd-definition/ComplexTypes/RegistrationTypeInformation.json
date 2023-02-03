@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "RegistrationTypeInformation",
+    "ListElementCode": "RegistrationType",
+    "FieldType": "Text",
+    "ElementLabel": "Registration Type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RegistrationTypeInformation",
+    "ListElementCode": "JudgmentDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date of judgment",
+    "SecurityClassification": "Public"
+  }
+]
