@@ -122,11 +122,8 @@ wa-case-event-handler:
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
+        secretRef: civil-work-allocation-secret
         key: connectionString
-      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME:
-        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
-        key: subscriptionName
     keyVaults:
       wa:
         secrets:
@@ -148,7 +145,7 @@ wa-case-event-handler:
       WA_WORKFLOW_API_URL: http://{{ .Release.Name }}-wa-workflow-api
       WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
       AZURE_SERVICE_BUS_TOPIC_NAME: ccd-case-events
-      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: wa-case-events-sub-{{ .Values.global.environment }}
+      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ccd-case-events
       #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
       AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: $(AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME)
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
@@ -207,13 +204,13 @@ ccd-message-publisher:
       CCD_CASE_EVENTS_DESTINATION: ccd-case-events
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-secret-topic-{{ .Release.Name }}-asb-ccd-case-events
+        secretRef: civil-work-allocation-secret
         key: connectionString
   servicebus:
     releaseNameOverride: ${SERVICE_NAME}-asb
     teamName: Civil
     resourceGroup: civil-service-aat
-    enabled: true
+    enabled: false
     serviceplan: standard
     setup:
       topics:
