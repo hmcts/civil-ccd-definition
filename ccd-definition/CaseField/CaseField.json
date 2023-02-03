@@ -2135,7 +2135,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "caseManagementLocation",
     "Label": " ",
-    "FieldType": "CaseLocation",
+    "FieldType": "CaseLocationCivil",
     "SecurityClassification": "Public"
   },
   {
