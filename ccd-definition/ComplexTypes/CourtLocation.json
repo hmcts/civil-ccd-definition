@@ -20,7 +20,7 @@
     "ID": "CourtLocation",
     "ListElementCode": "caseLocation",
     "ElementLabel": "Case Location",
-    "FieldType": "CaseLocationCivil",
+    "FieldType": "CaseLocation",
     "SecurityClassification": "Public"
   }
 ]

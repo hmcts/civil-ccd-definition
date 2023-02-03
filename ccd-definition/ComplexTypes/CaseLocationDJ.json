@@ -1,20 +1,20 @@
 [
 
   {
-    "ID": "CaseLocationCivil",
+    "ID": "CaseLocation",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "region",
     "ListElementCode": "region",
-    "ElementLabel": "Reason",
+    "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CaseLocationCivil",
+    "ID": "CaseLocation",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "baseLocation",
     "ListElementCode": "baseLocation",
-    "ElementLabel": "Base location",
+    "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   }

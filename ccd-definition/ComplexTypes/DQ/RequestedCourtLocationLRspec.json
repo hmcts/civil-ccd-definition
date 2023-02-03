@@ -2,7 +2,7 @@
   {
     "ID": "RequestedCourtLocationLRspec",
     "ListElementCode": "caseLocation",
-    "FieldType": "CaseLocationCivil",
+    "FieldType": "CaseLocation",
     "ElementLabel": " ",
     "FieldShowCondition": "responseCourtLocations = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public"

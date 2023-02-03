@@ -1,6 +1,6 @@
 [
   {
-    "ID": "CaseLocationCivil",
+    "ID": "CaseLocation",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "caseManagementLocation",
     "ListElementCode": "region",
@@ -8,7 +8,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "CaseLocationCivil",
+    "ID": "CaseLocation",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "caseManagementLocation",
     "ListElementCode": "baseLocation",

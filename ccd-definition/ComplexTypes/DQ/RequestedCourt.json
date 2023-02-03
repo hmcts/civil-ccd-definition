@@ -32,7 +32,7 @@
   {
     "ID": "RequestedCourt",
     "ListElementCode": "caseLocation",
-    "FieldType": "CaseLocationCivil",
+    "FieldType": "CaseLocation",
     "ElementLabel": " ",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public"
