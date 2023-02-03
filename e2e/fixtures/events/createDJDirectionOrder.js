@@ -164,19 +164,16 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         disposalHearingWitnessOfFactDJ: {
           date1: date(28),
           date2: date(28),
-          date3: date(14),
           input1: 'string',
           input2: 'string',
           input3: 'string',
-          input4: 'string',
-          input5: 'string',
-          input6: 'string'
+          input4: 'string'
         },
         disposalHearingWitnessOfFactDJToggle: ['SHOW']
       }
     };
     switch (mpScenario) {
-      case 'ONE_V_TWO_TWO_LEGAL_REP': 
+      case 'ONE_V_TWO_TWO_LEGAL_REP':
       case 'ONE_V_TWO_ONE_LEGAL_REP': {
         return {
           djOrderCaseManagementOrderSelection: {
@@ -205,7 +202,7 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           ...userInput(djOrderType)
         };
       }
-    } 
+    }
 };
 
 module.exports = {
