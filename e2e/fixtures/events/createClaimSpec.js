@@ -38,6 +38,7 @@ module.exports = {
     const userData = {
       userInput: {
         References: {
+          superClaimType: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
@@ -729,6 +730,7 @@ module.exports = {
     const userData = {
       userInput: {
         References: {
+          CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
@@ -850,6 +852,7 @@ module.exports = {
           totalClaimAmount: claimAmount / 100
         },
         ClaimAmountDetails: {
+          CaseAccessCategory: 'SPEC_CLAIM'
         },
         InterestSummary: {
           totalInterest: 0,
@@ -1068,6 +1071,7 @@ module.exports = {
     let userData = {
       References: {
         userInput: {
+          CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
