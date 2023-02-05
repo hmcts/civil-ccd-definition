@@ -128,7 +128,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
-    "ListElementCode": "hearingDate",
+    "ListElementCode": "bundleHearingDate",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
