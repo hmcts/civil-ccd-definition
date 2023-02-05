@@ -3,147 +3,147 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "id",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "title",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "description",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "eligibleForStitching",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "eligibleForCloning",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "documents",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "folders",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "stitchStatus",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "stitchedDocument",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "hasCoversheets",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "hasTableOfContents",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "paginationStyle",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "pageNumberFormat",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "stitchingFailureMessage",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "coverpageTemplate",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "enableEmailNotification",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "fileName",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "fileNameIdentifier",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "bundleHearingDate",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "createdOn",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseBundlesInfo",
     "ListElementCode": "uploadedBy",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
 ]
