@@ -126,7 +126,6 @@
     "ID": "Bundle",
     "ListElementCode": "title",
     "FieldType": "Label",
-    "Label": "Type",
     "ElementLabel": "Trial Bundle",
     "SecurityClassification": "Public"
   },
