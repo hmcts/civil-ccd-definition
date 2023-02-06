@@ -27,5 +27,12 @@
     "FieldType": "Text",
     "ElementLabel": "Camunda event name used to trigger business process by sending message",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BusinessProcess",
+    "ListElementCode": "createdOn",
+    "FieldType": "DateTime",
+    "ElementLabel": "LocalDateTime when the Ready status was updated",
+    "SecurityClassification": "Public"
   }
 ]
