@@ -59,7 +59,7 @@ def uploadDmnDiagrams(String env, String changeID) {
     tenantId = "civil"
     product = "civil"
     sh """
-      ./import-dmn-diagram.sh ${WORKSPACE} ${env} ${tenantId} ${product}
+      ./bin/import-dmn-diagram.sh ${WORKSPACE} ${env} ${tenantId} ${product}
     """
   }
 }
@@ -160,10 +160,10 @@ withPipeline(type, product, component) {
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
+      uploadDmnDiagrams('preview',"${CHANGE_ID}")
       env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      sh """./bin/pull-latest-dmn-files.sh ${dmnBranch}"""
-      uploadDmnDiagrams('preview',"${CHANGE_ID}")
+
 
       deploymentNumber = githubCreateDeployment()
       githubUpdateDeploymentStatus(deploymentNumber, env.URL)
