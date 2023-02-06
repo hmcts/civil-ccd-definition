@@ -1,6 +1,7 @@
 const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
+const { getClaimFee } = require('../../claimAmountAndFee');
 
 const docUuid = uuid.v1();
 
@@ -70,7 +71,7 @@ let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -87,6 +88,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
             listElement(config.claimantSelectedCourt)
           ],
           value: listElement(config.claimantSelectedCourt)
+        }
+      },
+      applicant1OrganisationPolicy: {
+        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+        Organisation: {
+          OrganisationID: config.claimantSolicitorOrgId,
         }
       }
     },
@@ -161,19 +168,16 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       addRespondent2: 'No'
     },
     ...hasRespondent2(mpScenario) ? {
-        SecondDefendant: {},
-        SecondDefendantLegalRepresentation: {},
-        SecondDefendantSolicitorOrganisation: {},
-        SecondDefendantSolicitorServiceAddress: {},
-        SecondDefendantSolicitorReference: {},
-        SecondDefendantSolicitorEmail: {},
-        SameLegalRepresentative: {},
-      } : {},
+      SecondDefendant: {},
+      SecondDefendantLegalRepresentation: {},
+      SecondDefendantSolicitorOrganisation: {},
+      SecondDefendantSolicitorServiceAddress: {},
+      SecondDefendantSolicitorReference: {},
+      SecondDefendantSolicitorEmail: {},
+      SameLegalRepresentative: {},
+    } : {},
     ClaimType: {
-      claimType: 'PERSONAL_INJURY'
-    },
-    PersonalInjuryType: {
-      personalInjuryType: 'ROAD_ACCIDENT'
+      claimType: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
@@ -194,8 +198,9 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
-      }
+        statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+      },
+      claimFee: getClaimFee(claimAmount)
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -334,13 +339,13 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
-      || mpScenario ===  'ONE_V_TWO_LIPS';
+    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+    || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
+    || mpScenario ===  'ONE_V_TWO_LIPS';
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE') => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -351,11 +356,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -378,7 +378,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario),
+        ...createClaimData('Yes', true, mpScenario, claimAmount),
       },
       invalid: {
         Upload: {
@@ -445,7 +445,7 @@ module.exports = {
   cosNotifyClaim : (lip1, lip2) => {
     return {
       ...(lip1) ? {
-         cosNotifyClaimDefendant1: {
+        cosNotifyClaimDefendant1: {
           cosDateOfServiceForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosRecipient: 'sample text',
@@ -476,6 +476,20 @@ module.exports = {
           ]
         }
       }: {},
+    };
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
     };
   },
   cosNotifyClaimDetails : (lip1, lip2) => {
