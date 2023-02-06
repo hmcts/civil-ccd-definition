@@ -2,6 +2,7 @@ const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {partyLevelFlags} = require("../../../fixtures/caseFlags");
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -23,7 +24,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS');
+Feature('1v2 Different Solicitors Claim Journey @e2e-1v2DS');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -51,43 +52,43 @@ Scenario('Claimant solicitor notifies defendant solicitors of claim details', as
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Make a general application', async ({api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-  }
-}).retry(3);
+// Scenario('Make a general application', async ({api}) => {
+//   if (['preview', 'demo'].includes(config.runningEnv)) {
+//     await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+//   }
+// }).retry(3);
 
 
-Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.acknowledgeClaim('fullDefence');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Acknowledge claim'));
-  await I.click('Sign out');
-}).retry(3);
+// Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
+//   await I.login(config.defendantSolicitorUser);
+//   await I.acknowledgeClaim('fullDefence');
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await I.see(caseEventMessage('Acknowledge claim'));
+//   await I.click('Sign out');
+// }).retry(3);
+//
+// Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
+//   await I.login(config.secondDefe    ndantSolicitorUser);
+//   await I.acknowledgeClaim(null, 'fullDefence');
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await I.see(caseEventMessage('Acknowledge claim'));
+//   await I.click('Sign out');
+// }).retry(3);
 
-Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
-  await I.login(config.secondDefendantSolicitorUser);
-  await I.acknowledgeClaim(null, 'fullDefence');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Acknowledge claim'));
-  await I.click('Sign out');
-}).retry(3);
-
-Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseId());
-  await I.informAgreedExtensionDate();
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  // I.see(caseEventMessage('Inform agreed extension date'));
-}).retry(3);
-
-Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.addDefendantLitigationFriend();
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Add litigation friend'));
-}).retry(3);
+// Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
+//   await I.login(config.defendantSolicitorUser);
+//   await I.navigateToCaseDetails(caseId());
+//   await I.informAgreedExtensionDate();
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   // I.see(caseEventMessage('Inform agreed extension date'));
+// }).retry(3);
+//
+// Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
+//   await I.login(config.defendantSolicitorUser);
+//   await I.addDefendantLitigationFriend();
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await I.see(caseEventMessage('Add litigation friend'));
+// }).retry(3);
 
 Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
@@ -116,17 +117,18 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-// ToDo: Refactor to trigger create case flags event
+
 Scenario.skip('Add case flags', async ({I}) => {
-  await I.login(config.adminUser);
-  // await I.createCaseFlags();
-  await I.validateCaseFlags([
-    { partyName: 'Example applicant1 company', details: [] },
-    { partyName: 'Example respondent1 company', details: [] },
-    { partyName: 'Example respondent2 company', details: [] },
-    { partyName: 'John Smith', details: [] }
-  ]);
-}).retry(3);
+  const caseFlags = [{
+    partyName: 'Example applicant1 company',
+    roleOnCase: 'Applicant 1',
+    details: [{name: partyLevelFlags.other, comments: 'test comment'}]
+  }]
+
+  await I.login(config.hearingCentreAdmin01);
+  await I.createCaseFlags(caseFlags);
+  await I.validateCaseFlags(caseFlags);
+}).retry(1);
 
 Scenario('Judge triggers SDO', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {

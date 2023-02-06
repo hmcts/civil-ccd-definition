@@ -125,6 +125,8 @@ const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selec
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const {de} = require("faker/lib/locales");
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
@@ -836,23 +838,30 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async createCaseFlags() {
+    async createCaseFlags(caseFlags) {
       eventName = 'Create case flags';
-      await this.triggerStepsWithScreenshot([
-        // ToDo trigger create case flags event
-        // () => caseViewPage.startEvent(eventName, caseId),
-        // () => event.submit('', '')
-      ]);
-      await this.takeScreenshot();
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, comments} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(comments),
+            () => event.submitWithoutHeader('Submit'),
+            await this.takeScreenshot()
+          ])
+        }
+      }
     },
 
     async validateCaseFlags(caseFlags) {
       eventName = '';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.selectCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
-    },
+    }
   });
 };

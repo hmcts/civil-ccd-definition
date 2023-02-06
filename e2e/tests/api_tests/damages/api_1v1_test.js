@@ -25,6 +25,10 @@ Scenario('Notify claim details', async ({api}) => {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
 });
 
+Scenario.skip('Add case flags', async ({api}) => {
+  await api.createCaseFlags(config.hearingCentreAdmin01);
+});
+
 Scenario('Amend party details', async ({api}) => {
   await api.amendPartyDetails(config.adminUser);
 });
