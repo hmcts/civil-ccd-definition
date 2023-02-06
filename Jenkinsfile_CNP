@@ -54,7 +54,7 @@ def createGithubRelease() {
   """
 }
 
-def uploadDmnDiagrams(String env, String changeID) {
+def uploadDmnDiagrams(String env) {
   dir("${WORKSPACE}/bin") {
     tenantId = "civil"
     product = "civil"
@@ -160,7 +160,7 @@ withPipeline(type, product, component) {
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/pull-latest-camunda-files.sh ${camundaBranch} ${dmnBranch}
     """
-      uploadDmnDiagrams('preview',"${CHANGE_ID}")
+      //uploadDmnDiagrams('preview',"${CHANGE_ID}")
       env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
 

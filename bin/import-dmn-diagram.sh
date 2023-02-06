@@ -2,9 +2,8 @@
 
 set -eu
 workspace=${1}
-env=${2}
-tenant_id=${3}
-product=${4}
+tenant_id=${2}
+product=${3}
 
 s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 
