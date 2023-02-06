@@ -158,7 +158,7 @@ withPipeline(type, product, component) {
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-      ./bin/pull-latest-camunda-files.sh ${camundaBranch}
+      ./bin/pull-latest-camunda-files.sh ${camundaBranch} ${dmnBranch}
     """
       uploadDmnDiagrams('preview',"${CHANGE_ID}")
       env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
