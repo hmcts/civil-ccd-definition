@@ -170,11 +170,15 @@ wa-workflow-api:
     environment:
       CAMUNDA_URL: http://{{ .Release.Name }}-camunda/engine-rest
       POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
-      POSTGRES_NAME: wa-workflow-api
+      POSTGRES_NAME: wa_workflow_api
       POSTGRES_USERNAME: hmcts
       POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
       TASK_MANAGEMENT_URL: http://{{ .Release.Name }}-wa-task-management-api
+    postgresql:
+      enabled: true
+      auth:
+        database: wa_workflow_api
 
 wa-message-cron-service:
   job:
