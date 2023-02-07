@@ -608,6 +608,13 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingNotes",
+    "Label": "Hearing notes for listing officer",
+    "FieldType": "HearingNotes",
+    "SecurityClassification": "Public"
   }
 ]
 
