@@ -6,12 +6,13 @@ const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
 
 
-const TASK_MAX_RETRIES = 40;
-const TASK_RETRY_TIMEOUT_MS = 10000;
+const TASK_MAX_RETRIES = 20;
+const TASK_RETRY_TIMEOUT_MS = 20000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
+const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -56,6 +57,18 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
+  startEventNotAllowed: async (eventName, caseId) => {
+    let url = getCcdDataStoreBaseUrl();
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/event-triggers/${eventName}/token`;
+
+    let response = await restHelper.request(url, getRequestHeaders(tokens.userAuth), null, 'GET');
+      //.then(response => response.json());
+    tokens.ccdEvent = response.token;
+   return response;
+  },
   validatePage: async (eventName, pageId, caseData, caseId, expectedStatus = 200) => {
     return restHelper.retriedRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
       {
@@ -105,7 +118,7 @@ module.exports = {
 
 
     return retry(() => {
-      return restHelper.request(`${config.url.waTaskMgmtApi}/task`, 
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task`,
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${userToken}`,
@@ -117,6 +130,7 @@ module.exports = {
           availableTaskDetails.forEach((taskInfo) => {
             if(taskInfo['type'] == taskId) {
               console.log('Found taskInfo with id ...', taskId);
+              console.log('Task details are ...', taskInfo);
               taskDetails = taskInfo;
             }
           });
@@ -127,5 +141,16 @@ module.exports = {
           }
       });
     }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  },
+
+  paymentUpdate: async (caseId, endpoint, serviceRequestUpdateDto) => {
+    let endpointURL = getCivilServiceUrl() + endpoint;
+    let response = await restHelper.retriedRequest(endpointURL, getRequestHeaders(tokens.userAuth),
+      serviceRequestUpdateDto,'PUT');
+
+    return response || {};
   }
+
+
+
 };

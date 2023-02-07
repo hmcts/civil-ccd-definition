@@ -8,16 +8,16 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkToggleEnabled} = require('./testingSupport');
-const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkToggleEnabled} = require('./testingSupport');
+const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -136,6 +136,18 @@ module.exports = {
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
         await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -181,6 +193,11 @@ module.exports = {
     //ToDo: Remove when hnlSdoEnabled feature toggle is removed
     if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
       defendantResponseData = adjustDataForHnl(defendantResponseData, response);
+    }
+    if(!hnlSdoEnabled) {
+      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+        defendantResponseData, solicitor);
     }
 
     caseData = returnedCaseData;
@@ -231,6 +248,13 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+        claimantResponseData);
+    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -492,7 +516,7 @@ async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicList
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     responseData = {
       ...responseData,
       userInput: {
@@ -511,7 +535,7 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     responseData = {
       ...responseData,
       userInput: {

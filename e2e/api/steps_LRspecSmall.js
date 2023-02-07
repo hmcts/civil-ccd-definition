@@ -12,8 +12,9 @@ const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
-const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
+
 const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
@@ -77,6 +78,17 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     await waitForFinishedBusinessProcess(caseId);
@@ -123,6 +135,11 @@ module.exports = {
     if ((['preview', 'demo'].includes(config.runningEnv)) && response == 'FULL_DEFENCE' && hnlSdoEnabled) {
       defendantResponseData = adjustDataForHnl(defendantResponseData, response);
     }
+    if(!hnlSdoEnabled) {
+      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+        defendantResponseData, solicitor);
+    }
 
     caseData = returnedCaseData;
 
@@ -152,6 +169,13 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE();
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+        claimantResponseData);
+    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -314,7 +338,7 @@ async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicList
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     responseData = {
       ...responseData,
       userInput: {
@@ -333,7 +357,7 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     responseData = {
       ...responseData,
       userInput: {

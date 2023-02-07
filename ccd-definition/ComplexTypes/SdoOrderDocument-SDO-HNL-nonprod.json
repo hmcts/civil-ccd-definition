@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "SdoOrderDocument",
-    "ListElementCode": "sdoOrderDocument",
-    "FieldType": "Document",
-    "ElementLabel": "Document",
-    "SecurityClassification": "Public"
-  }
-]

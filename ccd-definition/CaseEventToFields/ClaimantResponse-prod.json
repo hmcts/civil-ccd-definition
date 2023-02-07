@@ -86,6 +86,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Hearing support requirements",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Hearing support requirements",
+    "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "PageDisplayOrder": 13,
     "PageFieldDisplayOrder": 1,
