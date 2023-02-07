@@ -5,7 +5,8 @@ workspace=${1}
 
 serviceToken=$($(realpath $workspace)/bin/utils/idam-lease-service-token.sh civil_service \
   $(docker run --rm toolbelt/oathtool --totp -b ${S2S_SECRET:-AABBCCDDEEFFGGHH}))
-filepath="$(realpath $workspace)/rescources"
+
+filepath="$(realpath $workspace)/resources"
 
 for file in $(find ${filepath} -name '*.bpmn')
 do

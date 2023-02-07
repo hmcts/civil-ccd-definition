@@ -13,7 +13,6 @@ cd ..
 #Copy camunda folder to civil-ccd-def which contians bpmn files
 cp -r ./wa-standalone-task-bpmn/src/main/resources .
 rm -rf ./wa-standalone-task-bpmn
-ls
 
 #upload bpmn files to environment
 ./bin/import-wa-bpmn-diagram.sh .
