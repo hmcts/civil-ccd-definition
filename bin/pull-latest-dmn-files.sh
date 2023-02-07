@@ -13,3 +13,5 @@ cd ..
 #Copy camunda folder to civil-ccd-def which contians dmn files
 cp -r ./civil-wa-task-configuration/src/main/resources .
 rm -rf ./civil-wa-task-configuration
+
+./bin/import-dmn-diagram.sh . civil civil

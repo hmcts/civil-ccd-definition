@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
 branchName=$1
-dmnBranchName=$2
-
-tenantId = "civil"
-product = "civil"
 
 #Checkout specific branch pf  civil camunda bpmn definition
 git clone https://github.com/hmcts/civil-camunda-bpmn-definition.git
@@ -20,18 +16,3 @@ rm -rf ./civil-camunda-bpmn-definition
 
 #upload bpmn files to environment
 ./bin/import-bpmn-diagram.sh .
-
-
-#Checkout specific branch pf  civil camunda bpmn definition
-git clone https://github.com/hmcts/civil-wa-task-configuration.git
-cd civil-wa-task-configuration
-
-echo "Switch to ${branchName} branch on civil-wa-task-configuration"
-git checkout ${branchName}
-cd ..
-
-#Copy camunda folder to civil-ccd-def which contians dmn files
-cp -r ./civil-wa-task-configuration/src/main/resources .
-rm -rf ./civil-wa-task-configuration
-
-./bin/import-dmn-diagram.sh . ${tenantId} ${product}
