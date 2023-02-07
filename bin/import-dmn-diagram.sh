@@ -14,6 +14,8 @@ s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 serviceToken=$($(realpath $workspace)/bin/utils/idam-lease-service-token.sh civil_service \
   $(docker run --rm toolbelt/oathtool --totp -b ${s2sSecret}))
 
+filepath="$(realpath $workspace)"
+
 for file in $(find ${filepath} -name '*.dmn')
 do
   uploadResponse=$(curl --insecure -v --silent -w "\n%{http_code}" --show-error -X POST \
