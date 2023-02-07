@@ -14,9 +14,7 @@ s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 serviceToken=$($(realpath $workspace)/bin/utils/idam-lease-service-token.sh civil_service \
   $(docker run --rm toolbelt/oathtool --totp -b ${s2sSecret}))
 
-dmnFilepath="$(realpath $workspace)/src/main/resources"
-
-for file in $(find ${dmnFilepath} -name '*.dmn')
+for file in $(find ${filepath} -name '*.dmn')
 do
   uploadResponse=$(curl --insecure -v --silent -w "\n%{http_code}" --show-error -X POST \
     ${CAMUNDA_BASE_URL:-http://localhost:9404}/engine-rest/deployment/create \
