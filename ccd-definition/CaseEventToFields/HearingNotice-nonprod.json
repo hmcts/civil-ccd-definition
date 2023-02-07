@@ -180,5 +180,16 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
+    "CaseFieldID": "relistHearingNotice",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RelistHearingNotice",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   }
 ]

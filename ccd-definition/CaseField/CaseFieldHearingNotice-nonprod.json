@@ -171,5 +171,12 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "relistHearingNotice",
+    "Label": "Requesting relist blah blah",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
