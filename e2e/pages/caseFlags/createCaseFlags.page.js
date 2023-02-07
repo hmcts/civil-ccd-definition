@@ -19,7 +19,7 @@ const fields = {
   next: {
     id: 'Next'
   }
-}
+};
 
 module.exports = {
   async selectFlagLocation(flagLocation) {

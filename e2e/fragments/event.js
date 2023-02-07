@@ -18,7 +18,7 @@ module.exports = {
   async submitWithoutHeader(buttonText) {
     I.waitForText(buttonText);
     await I.runAccessibilityTest();
-    await I.click(buttonText)
+    await I.click(buttonText);
   },
 
   async returnToCaseDetails() {

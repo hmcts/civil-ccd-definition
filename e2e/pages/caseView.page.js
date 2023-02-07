@@ -64,15 +64,15 @@ module.exports = {
   },
 
   async assertCaseFlagsInfo(numberOfFlags) {
-    I.see(`There is ${numberOfFlags} active flag on this case.`)
+    I.see(`There is ${numberOfFlags} active flag on this case.`);
   },
 
   async assertCaseFlags(caseFlags) {
-    console.log('validating case flags')
+    console.log('validating case flags');
     caseFlags.forEach(({partyName, details}) => {
-      console.log('verifying party name')
+      console.log('verifying party name');
       I.see(partyName, this.components.caseFlags);
-      details.forEach(({name, comments, creationDate, lastModified, status}) => {
+      details.forEach(({name}) => {
         console.log('verifying flag name');
         I.see(name, this.components.caseFlags);
         // I.see(comments, this.components.caseFlags);

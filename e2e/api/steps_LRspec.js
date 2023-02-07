@@ -8,8 +8,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
-const {element} = require('../api/dataHelper');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -137,6 +136,18 @@ module.exports = {
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
         await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await waitForFinishedBusinessProcess(caseId);
     if(checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
@@ -561,30 +572,3 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   }
 };
 
-const adjustDataForHnl = (inputData, response) => {
-  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
-  if (!response.startsWith('FULL_DEFENCE')) {
-    return inputData;
-  }
-  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
-  return {
-    ...inputData,
-    userInput: {
-      ...inputData.userInput,
-      SmallClaimWitnesses: {
-        [`respondent${respondentNum}DQWitnesses`]: {
-          witnessesToAppear: 'Yes',
-          details: [
-            element({
-              firstName: 'Witness',
-              lastName: 'One',
-              emailAddress: 'witness@email.com',
-              phoneNumber: '07116778998',
-              reasonForWitness: 'None'
-            })
-          ]
-        }
-      }
-    }
-  };
-};

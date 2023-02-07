@@ -163,9 +163,7 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
     fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
     disposalHearingWitnessOfFact: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
+      return typeof data.input3 === 'string'
         && typeof data.input4 === 'string'
         && typeof data.input5 === 'string'
         && typeof data.input6 === 'string';
@@ -287,12 +285,8 @@ module.exports = {
       calculated: calculatedClaimsTrackWSum
     };
     const disposalChecks = {
-      fastTrackOrderWithoutJudgement: (d) => d.input
-        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
-          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
-      disposalOrderWithoutHearing: (d) => d.input
-        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
-          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
+      fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+      disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
       fastTrackHearingTime: (d) =>
         d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
         && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
@@ -624,12 +618,8 @@ module.exports = {
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
     const disposalChecks = {
-      fastTrackOrderWithoutJudgement: (d) => d.input
-        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
-          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
-      disposalOrderWithoutHearing: (d) => d.input
-        .startsWith('Each party has the right to apply to have this Order set aside or varied. '
-          + 'Any such application must be received by the Court (together with the appropriate fee) by 4pm on '),
+      fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+      disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
       fastTrackHearingTime: (d) =>
         d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
         && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
