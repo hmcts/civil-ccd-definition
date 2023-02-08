@@ -2,13 +2,19 @@
   {
     "ID": "EvidenceUploadTrialSmallClaim",
     "ListElementCode": "AUTHORITIES",
-    "ListElement": "Authorities and Costs",
+    "ListElement": "Authorities",
     "DisplayOrder": 1
+  },
+  {
+    "ID": "EvidenceUploadTrialSmallClaim",
+    "ListElementCode": "COSTS",
+    "ListElement": "Costs",
+    "DisplayOrder": 2
   },
   {
     "ID": "EvidenceUploadTrialSmallClaim",
     "ListElementCode": "DOCUMENTARY",
     "ListElement": "Documentary evidence for trial",
-    "DisplayOrder": 2
+    "DisplayOrder": 3
   }
 ]
