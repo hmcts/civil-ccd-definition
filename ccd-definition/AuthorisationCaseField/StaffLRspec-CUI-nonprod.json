@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantUserDetails",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  }
-]
