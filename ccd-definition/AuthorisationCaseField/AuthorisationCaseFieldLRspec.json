@@ -1902,6 +1902,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentPayImmidietelyLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentPayImmidietelyText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
     "AccessControl": [
       {

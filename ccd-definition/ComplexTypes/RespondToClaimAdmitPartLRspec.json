@@ -14,5 +14,13 @@
     "HintText": "For example 9 December 2020",
     "SecurityClassification": "Public",
     "Label": "When will this amount be paid?"
+  },
+  {
+    "ID": "RespondToClaimAdmitPartLRspec",
+    "ListElementCode": "formattedWhenWillThisAmountBePaid",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "HintText": "For example 9 December 2020",
+    "SecurityClassification": "Public"
   }
 ]
