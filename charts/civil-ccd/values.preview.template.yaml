@@ -53,8 +53,8 @@ ccd:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
         am-role-assignment-service:
-          java:
-            ingressHost: am-role-assignment-service-${SERVICE_FQDN}
+        java:
+        ingressHost: am-role-assignment-service-${SERVICE_FQDN}
 camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_FQDN}
