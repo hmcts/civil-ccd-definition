@@ -114,5 +114,83 @@
     "PageID": "CreateCaseFlags",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorExperts",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorWitnesses",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Experts",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 13,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 14,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Experts",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
   }
 ]

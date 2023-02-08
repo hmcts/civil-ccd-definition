@@ -19,7 +19,8 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DQPartyFlagStructure",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -27,7 +28,8 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DQPartyFlagStructure",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -35,7 +37,8 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DQPartyFlagStructure",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -43,7 +46,8 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DQPartyFlagStructure",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,7 +55,8 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DQPartyFlagStructure",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -59,6 +64,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "DQPartyFlagStructure",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
