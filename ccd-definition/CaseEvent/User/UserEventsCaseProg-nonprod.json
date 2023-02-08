@@ -112,7 +112,7 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
-  },  
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "EVIDENCE_UPLOAD_RESPONDENT",
@@ -135,8 +135,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "TRIAL_READINESS",
-    "Name": "Trial Readiness",
-    "Description": "Trial Readiness",
+    "Name": "Confirm trial arrangements",
+    "Description": "Confirm trial arrangements",
     "PreConditionState(s)": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "SecurityClassification": "Public",
