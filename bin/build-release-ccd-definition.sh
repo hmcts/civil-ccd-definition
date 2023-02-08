@@ -11,7 +11,7 @@ if [ ${environment} == preview ]; then
       #excludedFilenamePatterns="-e *-prod.json,*CUI.json,*CUI-nonprod.json,*-base-nonprod.json"
    #for testing ga enhancements please remove *-GAR2GAspec-nonprod.json which are not required for release 1
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*-GAR2GAspec-nonprod.json,*CUI-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*CUI-nonprod.json"
 elif [ ${environment} == local ]; then
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${excludeNonProdFiles} == true ]; then

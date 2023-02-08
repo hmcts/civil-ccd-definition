@@ -1097,6 +1097,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimProceedsInCasemanLR",
+    "UserRole": "caseworker-civil-admin",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "amendPartyDetailsLabel",
     "UserRole": "caseworker-civil-admin",
     "CRUD": "CRU"
