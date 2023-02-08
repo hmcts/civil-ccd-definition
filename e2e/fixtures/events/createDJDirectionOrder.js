@@ -31,23 +31,13 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
 
     const trialHearing = {
       trialHearing: {
-        disposalHearingAddNewDirectionsDJ: [],
-        disposalHearingJudgesRecitalDJ: {
-          input: null,
-          judgeNameTitle: null
-        },
-        disposalHearingNotesDJ: {
-          date: null,
-          input:null
-        },
-        disposalHearingOrderAndHearingDetailsDJ: {},
         trialHearingAddNewDirectionsDJ: [],
         trialHearingAlternativeDisputeDJToggle: ['SHOW'],
         trialHearingCostsToggle: ['SHOW'],
         trialHearingDisclosureOfDocumentsDJ: {
           date1: date(28),
-          date2: date(28),
-          date3: date(14),
+          date2: date(43),
+          date3: date(28),
           input1: 'string',
           input2: 'string',
           input3: 'string',
@@ -60,38 +50,29 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           judgeNameTitle: 'title'
         },
         trialHearingMethodDJ: 'disposalHearingMethodInPerson',
-        trialHearingMethodInPersonDJ: {
-          list_items: [
-            listElement(config.djJudgeClaimantSelectedCourt)
-          ],
-          value: listElement(config.djJudgeClaimantSelectedCourt)
-        },
-        trialHearingNotesDJ: {
-          date: date(28),
+        trialOrderMadeWithoutHearingDJ: {
           input: 'string'
         },
         trialHearingSchedulesOfLossDJ: {
-          date1: date(28),
-          date2: date(28),
-          date3: date(14),
+          date1: date(70),
+          date2: date(84),
           input1: 'string',
           input2: 'string',
-          input3: 'string',
-          input4: 'string'
+          input3: 'string'
         },
         trialHearingSchedulesOfLossDJToggle:['SHOW'],
-        trialHearingTrialDJ: {
-          date1: date(28),
-          date2: date(28),
-          input1: 'string',
-          input2: 'string',
-          input3: 'string',
-          type: 'DOCUMENTS'
+        trialHearingSettlementDJToggle: ['SHOW'],
+        trialHearingTimeDJ: {
+          date1: date(34),
+          date2: null,
+          hearingTimeEstimate: 'string',
+          helpText1: 'string',
+          helpText2: 'string'
         },
         trialHearingTrialDJToggle: ['SHOW'],
         trialHearingVariationsDirectionsDJToggle: ['SHOW'],
         trialHearingWitnessOfFactDJ: {
-          date1: date(28),
+          date1: date(55),
           input1: 'string',
           input2: 4,
           input3: 4,
@@ -102,7 +83,10 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           input8: 'string',
           input9: 'string'
         },
-        trialHearingWitnessOfFactDJToggle: ['SHOW']
+        trialHearingWitnessOfFactDJToggle: ['SHOW'],
+        trialHearingHearingNotesDJ: {
+          input: 'Hearing notes'
+        },
       }
     };
 
@@ -121,12 +105,15 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           date: date(56),
           input: 'string'
         },
-        disposalHearingFinalDisposalHearingDJ: {
+        disposalHearingFinalDisposalHearingTimeDJ: {
           date: date(56),
           input: 'string',
           time: 'THIRTY_MINUTES'
         },
         disposalHearingFinalDisposalHearingDJToggle: ['SHOW'],
+        disposalHearingHearingNotesDJ: {
+          input: 'Hearing notes'
+        },
         disposalHearingJudgesRecitalDJ: {
           input: 'string',
           judgeNameTitle: 'title'
@@ -137,17 +124,10 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         },
         disposalHearingMedicalEvidenceDJToggle: ['SHOW'],
         disposalHearingMethodDJ: 'disposalHearingMethodInPerson',
-        disposalHearingMethodInPersonDJ: {
-          list_items: [
-            listElement(config.djJudgeClaimantSelectedCourt)
-          ],
-          value: listElement(config.djJudgeClaimantSelectedCourt)
-        },
-        disposalHearingNotesDJ: {
-          date: date(7),
-          input:'string'
-        },
         disposalHearingOrderAndHearingDetailsDJ: {},
+        disposalHearingOrderMadeWithoutHearingDJ: {
+          input: 'string'
+        },
         disposalHearingQuestionsToExpertsDJToggle: ['SHOW'],
         disposalHearingQuestionsToExpertsDJ: {
           date: date(56)
@@ -158,7 +138,8 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           date3: date(80),
           input1: 'string',
           input2: 'string',
-          input3: 'string'
+          input3: 'string',
+          inputText4: 'string'
         },
         disposalHearingSchedulesOfLossDJToggle: ['SHOW'],
         disposalHearingWitnessOfFactDJ: {
