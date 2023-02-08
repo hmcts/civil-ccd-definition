@@ -61,6 +61,12 @@ exports.config = {
       fullPageScreenshots: true,
     },
   },
+  multiple: {
+    parallel: {
+        // Splits tests into 2 chunks
+        chunks: 2
+    }
+  },
   mocha: {
     bail: true,
     reporterOptions: {

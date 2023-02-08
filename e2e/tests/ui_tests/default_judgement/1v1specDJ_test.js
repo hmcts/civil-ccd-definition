@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec defaultJudgement @e2e-1v1-dj');
+Feature('1v1 spec defaultJudgement @e2e-1v1-dj @e2e-tests');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
 
