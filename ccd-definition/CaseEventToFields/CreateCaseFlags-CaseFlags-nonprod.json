@@ -40,7 +40,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondent1",
+    "CaseFieldID": "applicant2",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
@@ -53,7 +53,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondent2",
+    "CaseFieldID": "respondent1",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
@@ -66,7 +66,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "applicant1LitigationFriend",
+    "CaseFieldID": "respondent2",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,
@@ -79,7 +79,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "applicant2LitigationFriend",
+    "CaseFieldID": "applicant1LitigationFriend",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 7,
@@ -92,7 +92,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondent1LitigationFriend",
+    "CaseFieldID": "applicant2LitigationFriend",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 8,
@@ -105,7 +105,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondent2LitigationFriend",
+    "CaseFieldID": "respondent1LitigationFriend",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 9,
@@ -118,7 +118,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "applicantSolicitorExperts",
+    "CaseFieldID": "respondent2LitigationFriend",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 10,
@@ -131,7 +131,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "applicantSolicitorWitnesses",
+    "CaseFieldID": "applicantSolicitorExperts",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 11,
@@ -144,7 +144,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "CaseFieldID": "applicantSolicitorWitnesses",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 12,
@@ -157,7 +157,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor1Experts",
+    "CaseFieldID": "respondentSolicitor1Witnesses",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 13,
@@ -170,7 +170,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "CaseFieldID": "respondentSolicitor1Experts",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 14,
@@ -183,10 +183,23 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor2Experts",
+    "CaseFieldID": "respondentSolicitor2Witnesses",
     "PageLabel": " ",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "CreateCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Experts",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
     "PageID": "CreateCaseFlags",
