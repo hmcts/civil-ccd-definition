@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseBundlesInfo",
+    "CaseFieldID": "caseBundles",
     "AccessControl": [
       {
         "UserRoles": [

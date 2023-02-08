@@ -95,7 +95,8 @@
     "ListElementCode": "stitchedDocument",
     "FieldType": "Document",
     "ElementLabel": "Document URL",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "title=\"Trial Bundle\""
   },
   {
     "ID": "Bundle",
@@ -127,7 +128,8 @@
     "ListElementCode": "title",
     "FieldType": "Text",
     "ElementLabel": "Trial Bundle",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "title=\"Trial Bundle\""
   },
   {
     "ID": "Bundle",
@@ -190,7 +192,8 @@
     "ListElementCode": "fileName",
     "FieldType": "Text",
     "ElementLabel": "Name",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "title=\"Trial Bundle\""
   },
   {
     "ID": "Bundle",
@@ -239,20 +242,23 @@
     "ListElementCode": "bundleHearingDate",
     "FieldType": "Date",
     "ElementLabel": "Hearing Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "title=\"Trial Bundle\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "createdOn",
     "FieldType": "DateTime",
     "ElementLabel": "Created On",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "title=\"Trial Bundle\""
   },
   {
     "ID": "Bundle",
     "ListElementCode": "uploadedBy",
     "FieldType": "Text",
     "ElementLabel": "UploadedBy",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "title=\"Trial Bundle\""
   }
 ]

@@ -12,7 +12,7 @@
     "TabID": "CaseBundles",
     "TabLabel": "Bundles",
     "TabDisplayOrder": 12,
-    "CaseFieldID": "caseBundlesInfo",
+    "CaseFieldID": "caseBundles",
     "TabFieldDisplayOrder": 2,
     "DisplayContextParameter": "#TABLE(title,createdOn,bundleHearingDate,stitchedDocument)"
   },
