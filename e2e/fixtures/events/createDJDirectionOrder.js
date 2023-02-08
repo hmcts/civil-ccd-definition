@@ -62,7 +62,7 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         trialHearingTimeDJ: {
           date1: date(34),
           date2: null,
-          hearingTimeEstimate: 'string',
+          hearingTimeEstimate: 'ONE_HOUR',
           helpText1: 'string',
           helpText2: 'string'
         },
