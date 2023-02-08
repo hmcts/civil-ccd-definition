@@ -6,3 +6,5 @@ xui-webapp:
   enabled: false
 camunda-bpm:
   enabled: false
+wa:
+  enabled: false
