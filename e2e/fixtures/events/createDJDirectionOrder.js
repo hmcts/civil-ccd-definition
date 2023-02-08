@@ -1,7 +1,4 @@
-const config = require('../../config.js');
 const {date} = require('../../api/dataHelper');
-const {listElement } = require('../../api/dataHelper');
-
 
 const djOrderCaseManagementOrderSelection = (djOrderType = 'DISPOSAL_HEARING') => {
   if (djOrderType == 'DISPOSAL_HEARING') {
