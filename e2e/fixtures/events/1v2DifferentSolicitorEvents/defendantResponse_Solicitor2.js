@@ -64,7 +64,10 @@ module.exports = {
         jointExpertSuitable: 'Yes',
         details: [
           element({
-            name: 'John Doe',
+            firstName: 'John',
+            lastName: 'Doe',
+            emailAddress: 'john@doemail.com',
+            phoneNumber: '07111111111',
             fieldOfExpertise: 'None',
             whyRequired: 'Testing',
             estimatedCost: '10000'
@@ -77,7 +80,10 @@ module.exports = {
         witnessesToAppear: 'Yes',
         details: [
           element({
-            name: 'John Doe',
+            firstName: 'John',
+            lastName: 'Smith',
+            phoneNumber: '07012345678',
+            emailAddress: 'johnsmith@email.com',
             reasonForWitness: 'None'
           })
         ]
@@ -85,20 +91,22 @@ module.exports = {
     },
     Language: {
       respondent2DQLanguage: {
-        evidence: 'WELSH',
         court: 'WELSH',
         documents: 'WELSH'
       }
     },
     Hearing: {
       respondent2DQHearing: {
-        hearingLength: 'MORE_THAN_DAY',
-        hearingLengthDays: '5',
         unavailableDatesRequired: 'Yes',
         unavailableDates: [
           element({
-            date: date(10),
-            who: 'James Foo'
+            unavailableDateType: 'SINGLE_DATE',
+            date: date(10)
+          }),
+          element({
+            fromDate: date(30),
+            toDate: date(35),
+            unavailableDateType: 'DATE_RANGE',
           })
         ]
       }
@@ -122,7 +130,12 @@ module.exports = {
         requestHearingAtSpecificCourt: 'Yes'
       }
     },
-    HearingSupport: {},
+    HearingSupport: {
+      respondent2DQHearingSupport: {
+        supportRequirements: 'Yes',
+        supportRequirementsAdditional: 'Additional support reasons'
+      }
+    },
     VulnerabilityQuestions: {
       respondent2DQVulnerabilityQuestions: {
         vulnerabilityAdjustmentsRequired: 'Yes',
@@ -175,26 +188,34 @@ module.exports = {
     Hearing: {
       past: {
         respondent2DQHearing: {
-          hearingLength: 'MORE_THAN_DAY',
-          hearingLengthDays: 5,
           unavailableDatesRequired: 'Yes',
           unavailableDates: [
             element({
               date: date(-1),
-              who: 'Foo Bar'
+              unavailableDateType: 'SINGLE_DATE',
             })
           ]
         }
       },
       moreThanYear: {
         respondent2DQHearing: {
-          hearingLength: 'MORE_THAN_DAY',
-          hearingLengthDays: 5,
           unavailableDatesRequired: 'Yes',
           unavailableDates: [
             element({
               date: date(367),
-              who: 'Foo Bar'
+              unavailableDateType: 'SINGLE_DATE',
+            })
+          ]
+        }
+      },
+      wrongDateRange: {
+        respondent2DQHearing: {
+          unavailableDatesRequired: 'Yes',
+          unavailableDates: [
+            element({
+              fromDate: date(15),
+              toDate: date(10),
+              unavailableDateType: 'DATE_RANGE',
             })
           ]
         }

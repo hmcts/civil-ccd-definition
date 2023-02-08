@@ -1,6 +1,8 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -14,6 +16,15 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
+
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
