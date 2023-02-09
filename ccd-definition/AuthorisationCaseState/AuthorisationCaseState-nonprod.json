@@ -185,5 +185,27 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "DECISION_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
