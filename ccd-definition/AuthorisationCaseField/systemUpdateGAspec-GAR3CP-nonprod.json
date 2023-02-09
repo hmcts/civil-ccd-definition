@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingOrderDocument",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  }
+]

@@ -682,7 +682,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsNotes",
-    "Label": "The Order has been made without a hearing",
+    "Label": "Important notes",
     "FieldType": "SmallClaimsNotes",
     "SecurityClassification": "Public"
   },
@@ -1081,7 +1081,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackOrderWithoutJudgement",
-    "Label": "This Order has been made without hearing",
+    "Label": "Important notes",
     "FieldType": "FastTrackOrderWithoutJudgement",
     "SecurityClassification": "Public"
   },

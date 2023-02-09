@@ -238,6 +238,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimantUserDetails",
+    "Label": "Claimant User Details",
+    "FieldType": "UserDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountSummaryLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Judgment Amount</h2>",
     "FieldType": "Label",
