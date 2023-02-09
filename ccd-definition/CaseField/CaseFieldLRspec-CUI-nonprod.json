@@ -260,14 +260,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountSummaryResponse",
-    "Label": "The judgment will order the defendant to pay £${ccjJudgmentSummarySubtotalAmount}, including the claim fee and interest if applicable, \n\n as shown:",
+    "Label": "The judgment will order the defendant to pay £${ccjJudgmentSummarySubtotalAmount}, including the claim fee and interest if applicable, as shown:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountClaimAmountLabel",
-    "Label": "Claim amount\n\n£${totalClaimAmount}",
+    "Label": "### Claim amount\n\n£${totalClaimAmount}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -281,7 +281,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountInterestToDateLabel",
-    "Label": "Interest to date\n\n£${ccjJudgmentAmountInterestToDate}",
+    "Label": "### Interest to date\n\n£${ccjJudgmentAmountInterestToDate}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -295,7 +295,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountClaimFeeLabel",
-    "Label": "Claim fee\n\n£${ccjJudgmentAmountClaimFee}",
+    "Label": "### Claim fee amount\n\n£${ccjJudgmentAmountClaimFee}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
