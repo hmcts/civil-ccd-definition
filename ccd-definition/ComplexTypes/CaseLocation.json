@@ -1,0 +1,19 @@
+[
+
+  {
+    "ID": "CaseLocationCivil",
+    "CaseFieldID": "region",
+    "ListElementCode": "region",
+    "ElementLabel": "Region",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseLocationCivil",
+    "CaseFieldID": "baseLocation",
+    "ListElementCode": "baseLocation",
+    "ElementLabel": "Base location",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
