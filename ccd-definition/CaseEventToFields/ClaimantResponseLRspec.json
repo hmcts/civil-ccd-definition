@@ -72,7 +72,6 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
-    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
     "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
