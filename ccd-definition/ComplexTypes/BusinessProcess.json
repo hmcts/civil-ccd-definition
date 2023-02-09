@@ -30,7 +30,7 @@
   },
   {
     "ID": "BusinessProcess",
-    "ListElementCode": "createdOn",
+    "ListElementCode": "readyOn",
     "FieldType": "DateTime",
     "ElementLabel": "LocalDateTime when the Ready status was updated",
     "SecurityClassification": "Public"
