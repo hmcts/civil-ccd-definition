@@ -145,6 +145,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantUserDetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "totalClaimAmount",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
