@@ -5,7 +5,7 @@ let caseId;
 
 Feature('1v1 Unspec defaultJudgement');
 
-Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @e2e-tests', async ({I, api}) => {
+Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @run-e2e-tests', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
 
