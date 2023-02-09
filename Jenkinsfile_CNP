@@ -159,6 +159,11 @@ withPipeline(type, product, component) {
 
   afterAlways('smoketest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+    if (checkForEnableHelmLabel(env.BRANCH_NAME)) {
+      sh """
+        exit 1
+      """
+    }
   }
 
   afterAlways('functionalTest:preview') {
@@ -190,11 +195,6 @@ withPipeline(type, product, component) {
 
   afterAlways('smoketest:aat') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
-    if (checkForEnableHelmLabel(env.BRANCH_NAME)) {
-      sh """
-        exit 1
-      """
-    }
   }
 
   afterAlways('functionalTest:aat') {
