@@ -80,6 +80,7 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',
+          reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME+'-'+new Date().getTime()}`,
           inlineAssets: true,
           json: false,
         },
