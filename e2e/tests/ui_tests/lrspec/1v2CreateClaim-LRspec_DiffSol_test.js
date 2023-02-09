@@ -18,7 +18,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-tests-spec @e2e-spec-1v2DS');
+Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-tests-spec @e2e-spec-1v2DS @master-e2e-ft');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
@@ -68,6 +68,15 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
+}).retry(3);
+
+Scenario('Judge triggers SDO', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.judgeUserWithRegionId1);
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await LRspec.waitForText('Summary');
+    await LRspec.initiateSDO('yes', 'yes', null, null);
+  }
 }).retry(3);
 
 AfterSuite(async  () => {
