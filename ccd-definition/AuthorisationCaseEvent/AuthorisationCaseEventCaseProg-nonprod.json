@@ -20,6 +20,12 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
       }
     ]
   },
