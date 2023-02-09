@@ -82,6 +82,7 @@ exports.config = {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',
           reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME+'-'+new Date().getTime()}`,
           inlineAssets: true,
+          overwrite: false,
           json: false,
         },
       },
