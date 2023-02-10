@@ -4,7 +4,7 @@
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 4,
-    "CaseFieldID": "hearingOrderDocument",
+    "CaseFieldID": "hearingNoticeDocument",
     "TabFieldDisplayOrder": 8,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }
