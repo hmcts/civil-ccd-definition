@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
