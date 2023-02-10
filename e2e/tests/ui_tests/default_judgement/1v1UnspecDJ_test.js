@@ -39,16 +39,13 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @non-prod-e2e-ft', 
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
-<<<<<<< HEAD
-  await I.login(config.hearingCenterAdminWithRegionId11);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-  await I.waitForText('Summary');
-  console.log('login as hearingCenterAdminWithRegionId11.');
+
+  await I.login(config.hearingCenterAdminWithRegionId1);
   if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+    await I.waitForText('Summary');
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
-    console.log('createHearingScheduled...');
     await I.createHearingScheduled();
-    console.log('after createHearingScheduled.');
   }
   //await I.staffPerformDJCaseTransferCaseOffline(caseId);
 })
