@@ -1,5 +1,6 @@
 const defaultPassword = 'Password12!';
 const judgeDefaultPassword = 'Hmcts1234';
+const iacDefaultPassword = 'AldgateT0wer';
 
 module.exports = {
   idamStub: {
@@ -15,12 +16,12 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    manageCase: 'https://xui-civil-ccd-pr-2181.preview.platform.hmcts.net',
-    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2181.preview.platform.hmcts.net',
-    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-2181.preview.platform.hmcts.net',
+    manageCase: process.env.URL || 'http://localhost:3333',
+    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
+    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
+    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
+    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
+    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
   },
@@ -58,6 +59,13 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
+  },
+  judgeUserWithRegionId4: {
+    password: judgeDefaultPassword,
+    email: '4925359EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
   },
   judgeUserWithRegionId1Local: {
     password: defaultPassword,
@@ -108,8 +116,8 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
-  tribunalCaseworkerWithRegionId1: {
-    email: 'tribunal_caseworker_region4@justice.gov.uk',
+  tribunalCaseworkerWithRegionId4: {
+    email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
     password: defaultPassword,
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
@@ -131,9 +139,63 @@ module.exports = {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
   },
+  iacLeadershipJudge: {
+    password: judgeDefaultPassword,
+    email: '330127EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
+  },
+  iacLegalOpsUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_stcwuser1@justice.gov.uk',
+    type: 'legalOps',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  iacCtscTeamLeaderUser: {
+    email: 'CRD_func_test_demo_ctsc_tl@justice.gov.uk',
+    password: iacDefaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
+  iacAdminUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_adm21@justice.gov.uk',
+    type: 'admin',
+    roleCategory: 'ADMIN'
+  },
+  nbcTeamLeaderWithRegionId4: {
+    email: 'nbc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'nbc-team-leader',
+    roleCategory: 'NBC ADMIN',
+    regionId: '4'
+  },
+  seniorTBCWWithRegionId4: {
+    email: 'seniorcivil_tbcw_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'senior-tribunal-caseworker',
+    roleCategory: 'LEGAL_OPS',
+    regionId: '4'
+  },
+  ctscTeamLeaderUser: {
+    email: 'ctsc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
+    reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
+    reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
+    reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
+    reviewSpecificAccessRequestCTSC: 'reviewSpecificAccessRequestCTSC',
+    fastTrackDirections: 'FastTrackDirections',
+    smallClaimDirections: 'SmallClaimsTrackDirections',
+    legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
+    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',

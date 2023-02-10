@@ -26,7 +26,7 @@ const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, r
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario) => claimData.createClaim(mpScenario),
+  CREATE_CLAIM: (mpScenario, claimAmount) => claimData.createClaim(mpScenario, claimAmount),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -133,20 +133,20 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario) => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '30000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if (!hnlEnabled) {
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -204,7 +204,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
 
     let createClaimData;
-    switch (mpScenario) {
+    switch (mpScenario){
       case 'ONE_V_ONE':
         createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP;
         break;
@@ -221,7 +221,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if (!hnlEnabled) {
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -272,7 +272,7 @@ module.exports = {
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlToggleEnabled();
-    if (!hnlEnabled) {
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -689,6 +689,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
+
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -724,6 +725,11 @@ module.exports = {
       console.log('sdo test');
       await assertSubmittedEvent(
         'JUDICIAL_REFERRAL', {
+        header: 'You have chosen to proceed with the claim',
+        body: '>We will review the case and contact you to tell you what to do next.'
+      });
+    } else {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
         header: 'You have chosen to proceed with the claim',
         body: '>We will review the case and contact you to tell you what to do next.'
       });
@@ -949,6 +955,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
   );
+
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -961,11 +968,16 @@ const assertValidData = async (data, pageId, solicitor) => {
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
-  if (midEventFieldForPage.hasOwnProperty(pageId)) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
+  let claimValue;
+  if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
+    && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
+    claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
+  }
+  if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
   }
 
   if (eventName === 'CREATE_SDO') {
@@ -1016,20 +1028,19 @@ const assertValidData = async (data, pageId, solicitor) => {
 function whatsTheDifference(caseData, responseBodyData, path) {
   Object.keys(caseData).forEach(key => {
     if (Object.keys(responseBodyData).indexOf(key) < 0) {
-      console.log('response does not have ' + appendToPath(path, key));
-      console.log('expected: ' + JSON.stringify(caseData[key]));
+      console.log('response does not have ' + appendToPath(path, key)
+        + '. CaseData has ' + JSON.stringify(caseData[key]));
     } else if (typeof caseData[key] === 'object') {
       whatsTheDifference(caseData[key], responseBodyData[key], [key]);
     } else if (caseData[key] !== responseBodyData[key]) {
       console.log('response and case data are different on ' + appendToPath(path, key));
-      console.log('caseData has ' + caseData[key]);
-      console.log('while response has ' + JSON.stringify(responseBodyData[key]));
+      console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
     }
   });
   Object.keys(responseBodyData).forEach(key => {
     if (Object.keys(caseData).indexOf(key) < 0) {
-      console.log('caseData does not have ' + appendToPath(path, key));
-      console.log('response has ' + JSON.stringify(responseBodyData[key]));
+      console.log('caseData does not have ' + appendToPath(path, key)
+        + '. Response has ' + JSON.stringify(responseBodyData[key]));
     }
   });
 }
@@ -1141,7 +1152,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 // };
 
-function addMidEventFields(pageId, responseBody, instanceData) {
+function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
@@ -1151,25 +1162,10 @@ function addMidEventFields(pageId, responseBody, instanceData) {
     calculated = instanceData.calculated[pageId];
   }
 
-  if(eventName === 'CREATE_CLAIM' || eventName === 'CLAIMANT_RESPONSE'){
+  if(eventName === 'CREATE_CLAIM'){
+    midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
+  } else if(eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
-    if (pageId === 'ClaimValue' && caseData.claimValue
-      && midEventData.claimFee) {
-      // preventing overridden data by midEventField using createClaim data, see sdo tests
-      if (caseData.claimValue.statementOfValueInPennies === '85000') {
-        midEventData.claimFee = {
-          calculatedAmountInPence: '7000',
-          code: 'FEE0204',
-          version: '4'
-        };
-      } else if (caseData.claimValue.statementOfValueInPennies === '2000000') {
-        midEventData.claimFee = {
-          calculatedAmountInPence: '100000',
-          code: 'FEE0209',
-          version: '3'
-        };
-      }
-    }
   } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
   } else {
