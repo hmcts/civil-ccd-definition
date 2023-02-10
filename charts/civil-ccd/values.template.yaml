@@ -53,6 +53,7 @@ civil-general-applications:
 civil-service:
   java:
     imagePullPolicy: Always
+    image: 'hmctspublic.azurecr.io/civil/service:pr-2263-0ac961f-20230210140423'
     ingressHost: ${SERVICE_NAME}.platform.hmcts.net
     keyVaults:
       civil:
