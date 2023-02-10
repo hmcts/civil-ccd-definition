@@ -15,7 +15,7 @@ module.exports = {
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
-
+    
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
@@ -192,7 +192,7 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-  runningEnv: 'preview',
+  runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
