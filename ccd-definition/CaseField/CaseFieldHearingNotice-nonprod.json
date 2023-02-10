@@ -175,7 +175,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "relistHearingNotice",
-    "Label": "Requesting relist blah blah",
+    "Label": "When you click Continue, the next screen will enable you to select to schedule the hearing.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }

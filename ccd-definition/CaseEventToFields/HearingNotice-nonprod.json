@@ -190,6 +190,6 @@
     "PageID": "RelistHearingNotice",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   }
 ]
