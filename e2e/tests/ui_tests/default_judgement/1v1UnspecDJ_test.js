@@ -48,10 +48,6 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @non-prod-e2e-ft', 
     await I.createHearingScheduled();
   }
   //await I.staffPerformDJCaseTransferCaseOffline(caseId);
-})
-=======
-  await I.login(config.hearingCenterAdminWithRegionId1);
-  await I.staffPerformDJCaseTransferCaseOffline(caseId);
 }).retry(3);
 
 Scenario('Verify Challenged access check for judge @e2e-wa @dmn-task', async ({I, WA}) => {
