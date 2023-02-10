@@ -8,6 +8,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1FullAdmitPaidLabelSpec",
+    "Label": "${respondent1.partyName} fully admits the claim and states they paid the £${totalClaimAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1FullAdmitConfirmAmountPaidSpec",
+    "Label": "Has ${respondent1.partyName} paid the claimant £${totalClaimAmount}?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
@@ -82,6 +96,144 @@
     "ID": "respondent1ClaimPartAdmitInstalmentLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay in instalments. \n\n Details of the repayment plan can be found in the Defendant Response form.",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RepaymentOptionForDefendantSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">How do you want ${respondent1.partyName} to pay?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RepaymentOptionForDefendantSpec",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "PaymentTypeList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RequestedPaymentDateForDefendantSpecLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">When do you want ${respondent1.partyName} to pay?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RequestedPaymentDateForDefendantSpec",
+    "Label": " ",
+    "HintText": "For example, 12 11 2023",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsForDefendantSpecHeader",
+    "Label": "<h2 class=\"govuk-heading-l\">Suggest instalments for ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
+    "FieldType": "Label",
+    "Label": "The claim amount is £${totalClaimAmount}.\n",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
+    "FieldType": "MoneyGBP",
+    "Label": "Regular payments of\n",
+    "HintText" : "For example, £10",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "PaymentFrequencyClaimantResponseLRspec",
+    "Label": "How often will your client make payments?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "currentDateboxDefendantSpec",
+    "Label": "currentDate",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
+    "FieldType": "Date",
+    "Label": "Date for first instalment",
+    "HintText": "This must be after ${currentDateboxDefendantSpec}",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} paid some of the amount owed?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeOption",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeAmount",
+    "Label": "Amount already paid",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partAdmitPaidValuePounds",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
+    "Label": "${respondent1.partyName} states they paid the claimant £${partAdmitPaidValuePounds} on ${respondent1PaymentDateToStringSpec}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitConfirmAmountPaidSpec",
+    "Label": "Has ${respondent1.partyName} paid the claimant £${partAdmitPaidValuePounds}?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitIntentionToSettleClaimSpec",
+    "Label": "Does the claimant want to settle the claim for the £${partAdmitPaidValuePounds} the defendant has paid?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartAdmitRejectReasonSpec",
+    "Label": "Why does the claimant reject their response?",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantUserDetails",
+    "Label": "Claimant User Details",
+    "FieldType": "UserDetails",
     "SecurityClassification": "Public"
   }
 ]

@@ -1,6 +1,7 @@
 const config = require('../config.js');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const {dateTime} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -8,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
@@ -136,6 +137,18 @@ module.exports = {
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
         await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -276,17 +289,56 @@ module.exports = {
   defaultJudgmentSpec: async (user, scenario) => {
     await apiRequest.setupTokens(user);
 
+    let registrationData;
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (scenario === 'ONE_V_TWO') {
+      registrationData = {
+        registrationTypeRespondentOne: [
+          {
+            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: [
+            {
+              value: {
+              registrationType: 'R',
+              judgmentDateTime: dateTime(0)
+            },
+            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+      };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
     } else if (scenario === 'TWO_V_ONE') {
+      registrationData = {
+        registrationTypeRespondentOne: [
+          {
+            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
+      };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
     } else {
+      registrationData = {
+        registrationTypeRespondentOne: [
+          {
+            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
+      };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
     }
+
+    caseData = update(caseData, registrationData);
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
@@ -452,7 +504,9 @@ const validateEventPagesDefaultJudgments = async (data, scenario) => {
 const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
+
   caseData = update(caseData, userData);
+
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -463,6 +517,10 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
+  if (pageId === 'defendantDetailsSpec') {
+    delete responseBody.data['registrationTypeRespondentOne'];
+    delete responseBody.data['registrationTypeRespondentTwo'];
+  }
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
       responseBody.data.currentDefendantName = 'Sir John Doe';
