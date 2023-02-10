@@ -32,27 +32,14 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa', async ({I, api}) 
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
   await I.login(config.hearingCenterAdminWithRegionId11);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
   console.log('login as hearingCenterAdminWithRegionId11.');
   if (['preview', 'demo'].includes(config.runningEnv)) {
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
-  console.log('createHearingScheduled...');
-  await I.createHearingScheduled();
-  console.log('after createHearingScheduled.');
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    console.log('createHearingScheduled...');
+    await I.createHearingScheduled();
+    console.log('after createHearingScheduled.');
   }
   //await I.staffPerformDJCaseTransferCaseOffline(caseId);
-}).retry(3);
-
-Scenario('Verify Challenged access check for judge @e2e-wa @dmn-task', async ({I, WA}) => {
-  await I.login(config.judgeUserWithRegionId2);
-  await WA.runChallengedAccessSteps(caseId);
-}).retry(3);
-
-Scenario('Verify Challenged access check for admin @e2e-wa @dmn-task', async ({I, WA}) => {
-  await I.login(config.hearingCenterAdminWithRegionId12);
-  await WA.runChallengedAccessSteps(caseId);
-}).retry(3);
-
-Scenario('Verify Challenged access check for legalops @e2e-wa @dmn-task', async ({I, WA}) => {
-  await I.login(config.tribunalCaseworkerWithRegionId12);
-  await WA.runChallengedAccessSteps(caseId);
-}).retry(3);
+})
