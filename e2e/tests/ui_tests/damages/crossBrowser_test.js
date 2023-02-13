@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess, assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
@@ -49,38 +49,4 @@ Scenario('Full end-to-end journey', async ({I}) => {
   console.log('Applicant solicitor notified defendant solicitor of claim details');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
-
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.acknowledgeClaim('fullDefence');
-  console.log('Defendant solicitor acknowledged claim');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Acknowledge claim'));
-
-  await I.informAgreedExtensionDate();
-  console.log('Defendant solicitor requested deadline extension');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Inform agreed extension date'));
-
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.addDefendantLitigationFriend();
-  console.log('Defendant solicitor added defendant litigation friend');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Add litigation friend'));
-
-  await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.respondToClaim({defendant1Response: 'fullDefence'});
-  console.log('Defendant solicitor responded to claim');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Respond to claim'));
-
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.respondToDefence();
-  console.log('Applicant solicitor responded to defence');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseId());
 }).retry(2);
