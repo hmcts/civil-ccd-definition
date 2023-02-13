@@ -7,5 +7,12 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadDocumentOnly",
+    "ListElementCode": "createdDatetime",
+    "ElementLabel": "Document Uploaded DateTime",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
   }
 ]
