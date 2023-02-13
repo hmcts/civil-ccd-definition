@@ -4,6 +4,7 @@ ccd:
       environment:
         ELASTIC_SEARCH_ENABLED: true
         ELASTIC_SEARCH_HOSTS: ${SERVICE_NAME}-es-master:9200
+        ELASTIC_SEARCH_NODES_DISCOVERY_ENABLED: true
         ELASTIC_SEARCH_DATA_NODES_HOSTS: http://${SERVICE_NAME}-es-master:9200
   ccd-definition-store-api:
     java:
@@ -17,7 +18,6 @@ ccd:
   elastic:
     enabled: true
   elasticsearch:
-    nameOverride: ${SERVICE_NAME}-es
     imageTag: "7.17.1"
     initResources:
       limits:
@@ -26,13 +26,6 @@ ccd:
       requests:
         cpu: "25m"
         memory: "512Mi"
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: traefik
-      path: /
-      hosts:
-        - es-${SERVICE_FQDN}
   logstash:
     image:
       pullPolicy: Always
