@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingNoticeDocument",
+    "Label": "Hearing Notice",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
+  }
+]

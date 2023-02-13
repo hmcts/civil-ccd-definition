@@ -12,7 +12,7 @@
     "ListElementCode": "hearingScheduledPreferenceYesNo",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingScheduleGAspec",
-    "ElementLabel": " ",
+    "ElementLabel": "Hearing scheduled related to this application",
     "SecurityClassification": "Public"
   },
   {
