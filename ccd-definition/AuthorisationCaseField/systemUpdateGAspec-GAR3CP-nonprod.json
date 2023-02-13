@@ -1,8 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantUserDetails",
+    "CaseFieldID": "hearingNoticeDocument",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   }
 ]

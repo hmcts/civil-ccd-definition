@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantUserDetails",
+    "CaseFieldID": "hearingNoticeDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   }
