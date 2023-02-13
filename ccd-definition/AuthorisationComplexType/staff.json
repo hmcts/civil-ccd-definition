@@ -187,5 +187,12 @@
     "ListElementCode": "address",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  }
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "respondToClaimAdmitPartLRspec",
+  "ListElementCode": "formattedWhenWillThisAmountBePaid",
+  "UserRole": "caseworker-civil-staff",
+  "CRUD": "R"
+}
 ]

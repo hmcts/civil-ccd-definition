@@ -5,6 +5,7 @@
     "CaseFieldID": "respondentPayImmidietelyLabel",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\"",
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "N"
@@ -41,18 +42,6 @@
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "showResponseOneVOneFlag",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
   {

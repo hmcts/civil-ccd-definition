@@ -131,5 +131,12 @@
     "ListElementCode": "PreviousOrganisations",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "ListElementCode": "formattedWhenWillThisAmountBePaid",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

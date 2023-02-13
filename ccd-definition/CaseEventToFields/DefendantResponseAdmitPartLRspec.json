@@ -310,10 +310,9 @@
     "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"BY_SET_DATE\" AND isRespondent1 = \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
   },
   {
