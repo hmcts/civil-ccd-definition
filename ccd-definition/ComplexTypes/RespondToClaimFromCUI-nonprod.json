@@ -1,27 +1,27 @@
 [
   {
-    "ID": "RespondentResponseCui",
+    "ID": "RespondToClaimFromCui",
     "ListElementCode": "partnerPensionCui",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "RespondentResponseCui",
+    "ID": "RespondToClaimFromCui",
     "ListElementCode": "partnerDisabilityCui",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "RespondentResponseCui",
+    "ID": "RespondToClaimFromCui",
     "ListElementCode": "partnerSevereDisabilityCui",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "RespondentResponseCui",
+    "ID": "RespondToClaimFromCui",
     "ListElementCode": "childrenEducationCui",
     "ElementLabel": " ",
     "FieldType": "Text",

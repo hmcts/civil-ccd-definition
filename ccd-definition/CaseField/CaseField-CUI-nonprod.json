@@ -10,7 +10,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseCui",
     "Label": " ",
-    "FieldType": "RespondentResponseCui",
+    "FieldType": "RespondToClaimFromCui",
     "SecurityClassification": "Public"
   }
 ]
