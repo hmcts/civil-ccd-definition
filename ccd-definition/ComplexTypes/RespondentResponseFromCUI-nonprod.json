@@ -1,0 +1,30 @@
+[
+  {
+    "ID": "RespondentResponseCui",
+    "ListElementCode": "partnerPensionCui",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentResponseCui",
+    "ListElementCode": "partnerDisabilityCui",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentResponseCui",
+    "ListElementCode": "partnerSevereDisabilityCui",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentResponseCui",
+    "ListElementCode": "childrenEducationCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
