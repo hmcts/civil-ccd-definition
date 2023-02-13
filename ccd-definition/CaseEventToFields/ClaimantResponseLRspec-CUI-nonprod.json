@@ -514,6 +514,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

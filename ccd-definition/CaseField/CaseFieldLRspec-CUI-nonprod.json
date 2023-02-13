@@ -267,7 +267,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountClaimAmountLabel",
-    "Label": "### Claim amount\n\n£${totalClaimAmount}",
+    "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
