@@ -26,6 +26,7 @@ Scenario('Claimant solicitor raise a claim against 2 defendants, one of who is w
     null,
     respondent1,
     respondent2,
+    30000,
     false
   );
 
