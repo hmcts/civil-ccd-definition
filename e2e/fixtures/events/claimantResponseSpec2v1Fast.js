@@ -130,7 +130,7 @@ module.exports = {
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC',
-              readyOn:'2023-01-01'
+              readyOn:'2023-01-10T15:59:50'
             }
           }
         };
