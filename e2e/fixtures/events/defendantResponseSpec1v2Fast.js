@@ -144,7 +144,8 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: 'CREATE_CLAIM_SPEC',
+              readyOn:'2023-01-01'
             },
           }
         };
@@ -167,7 +168,8 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: 'CREATE_CLAIM_SPEC',
+              readyOn:'2023-01-01'
             },
           },
           defenceRoute: {
@@ -287,7 +289,8 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: 'CREATE_CLAIM_SPEC',
+              readyOn:'2023-01-01'
             }
           },
 
@@ -328,7 +331,8 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: 'CREATE_CLAIM_SPEC',
+              readyOn:'2023-01-01'
             }
           }
         };
@@ -467,7 +471,8 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: 'CREATE_CLAIM_SPEC',
+              readyOn:'2023-01-01'
             },
           }
         };
@@ -503,7 +508,8 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: 'CREATE_CLAIM_SPEC',
+              readyOn:'2023-01-01'
             }
           }
         };
