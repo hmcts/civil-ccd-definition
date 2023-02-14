@@ -1,4 +1,7 @@
 ccd:
+  cc:
+    elastic:
+      enabled: true
   ccd-data-store-api:
     java:
       environment:
@@ -14,8 +17,6 @@ ccd:
         ELASTIC_SEARCH_ENABLED: true
         ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
         ELASTIC_SEARCH_CASE_INDEX_MAPPING_FIELDS_LIMIT: 10000
-  elastic:
-    enabled: true
   elasticsearch:
     imageTag: "7.17.1"
     initResources:
