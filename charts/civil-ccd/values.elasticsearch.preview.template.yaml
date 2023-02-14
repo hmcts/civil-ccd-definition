@@ -1,5 +1,5 @@
 ccd:
-  cc:
+  ccd:
     elastic:
       enabled: true
   ccd-data-store-api:
