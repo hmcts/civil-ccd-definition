@@ -3,6 +3,5 @@ set -ex
 
 echo "Run Functional tests with prod ccd def file"
 
-dir=$(dirname ${0})
-
-${dir}/run-unspec-functional-tests.sh
+yarn test:master-e2e-ft
+yarn test:e2e-nightly-prod
