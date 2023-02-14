@@ -27,7 +27,8 @@ module.exports = {
       currentDefendantName: 'both defendants',
       businessProcess: {
         camundaEvent: 'CREATE_CLAIM_SPEC',
-        status: 'FINISHED'
+        status: 'FINISHED',
+        readyOn:'2023-01-01'
       }
     },
     paymentConfirmationSpec: {

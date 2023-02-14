@@ -68,7 +68,8 @@ module.exports = {
           },
           businessProcess: {
             status: 'FINISHED',
-            camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
+            camundaEvent: 'DEFENDANT_RESPONSE_SPEC',
+            readyOn:'2023-01-01'
           }
         }
       },
