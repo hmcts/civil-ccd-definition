@@ -218,11 +218,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "businessProcess",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin",
-      "caseworker-civil-systemupdate"
-    ],
+    "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
