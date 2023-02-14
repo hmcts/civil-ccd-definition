@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-echo "Run Api Functional tests for api-unspec"
+echo "Run Api Functional tests with prod ccd def file"
 yarn test:api-unspec
 yarn test:api-spec
 
