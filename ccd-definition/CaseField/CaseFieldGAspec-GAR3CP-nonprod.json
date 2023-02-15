@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingOrderDocument",
+    "ID": "hearingNoticeDocument",
     "Label": "Hearing Notice",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
