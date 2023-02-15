@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "SmallClaimUnavailableDate",
-    "ListElementCode": "who",
-    "FieldType": "Text",
-    "ElementLabel": "Name of unavailable person",
-    "SecurityClassification": "Public"
-  }
-]

@@ -14,8 +14,7 @@ const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
-
-const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
@@ -171,7 +170,7 @@ module.exports = {
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
         claimantResponseData);

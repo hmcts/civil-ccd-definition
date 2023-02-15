@@ -1,6 +1,6 @@
 const {I} = inject();
-const {checkToggleEnabled} = require('./../../api/testingSupport');
 const date = require('../../fragments/date');
+const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -13,6 +13,7 @@ module.exports = {
           no: 'No'
         }
       },
+      //respondent1DQHearing_unavailableDates_0_unavailableDateType
       unavailableDates: {
         id: `#${party}DQHearing_unavailableDates`,
         element: {
@@ -58,7 +59,7 @@ module.exports = {
   },
 
   async enterHearingInformation(party) {
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     if (!isHNLEnabled) {
       I.waitForElement(this.oldFields(party).hearingLength.id);
       await I.runAccessibilityTest();
@@ -94,7 +95,7 @@ module.exports = {
 
   async addUnavailableDates(party) {
     await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields(party).unavailableDates.element.unavailableDateType);
+    I.waitForElement(this.fields(party).unavailableDates.element.unavailableDateType.id);
     I.click(this.fields(party).unavailableDates.element.unavailableDateType.options.singleDateId);
     await date.enterDate(this.fields(party).unavailableDates.element.date);
   },

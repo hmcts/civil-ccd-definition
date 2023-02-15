@@ -1,6 +1,6 @@
 const {I} = inject();
 const postcodeLookup = require('./addressPostcodeLookup');
-const {checkToggleEnabled} = require('../api/testingSupport');
+const {checkHnlLegalRepToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
   fields: function (partyType) {
@@ -32,7 +32,7 @@ module.exports = {
     I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
 
     // ToDo: Remove remove toggle and remove if statement after hnl release
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(hnlEnabled) {
       I.fillField(this.fields(partyType).email, `${partyType}@example.com`);
     }

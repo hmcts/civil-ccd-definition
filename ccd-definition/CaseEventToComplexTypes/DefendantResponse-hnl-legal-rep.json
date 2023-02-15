@@ -1,0 +1,292 @@
+[
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.firstName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.lastName",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.emailAddress",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.phoneNumber",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.firstName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.lastName",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.emailAddress",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.phoneNumber",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.firstName",
+      "FieldDisplayOrder": 4,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.lastName",
+      "FieldDisplayOrder": 5,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.emailAddress",
+      "FieldDisplayOrder": 6,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.phoneNumber",
+      "FieldDisplayOrder": 7,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.fieldOfExpertise",
+      "FieldDisplayOrder": 8,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.whyRequired",
+      "FieldDisplayOrder": 9,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQExperts",
+      "ListElementCode": "details.estimatedCost",
+      "FieldDisplayOrder": 10,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.firstName",
+      "FieldDisplayOrder": 4,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.lastName",
+      "FieldDisplayOrder": 5,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.phoneNumber",
+      "FieldDisplayOrder": 6,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.emailAddress",
+      "FieldDisplayOrder": 7,
+      "DisplayContext": "OPTIONAL"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.fieldOfExpertise",
+      "FieldDisplayOrder": 8,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.whyRequired",
+      "FieldDisplayOrder": 9,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Experts",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQExperts",
+      "ListElementCode": "details.estimatedCost",
+      "FieldDisplayOrder": 10,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.who",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "OPTIONAL",
+      "FieldShowCondition": "respondent1DQHearing=\"DO NOT SHOW IN UI\""
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDatesRequired",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.unavailableDateType",
+      "FieldDisplayOrder": 2,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.date",
+      "FieldDisplayOrder": 3,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.fromDate",
+      "FieldDisplayOrder": 4,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.toDate",
+      "FieldDisplayOrder": 5,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.who",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "OPTIONAL",
+      "FieldShowCondition": "respondent2DQHearing=\"DO NOT SHOW IN UI\""
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDatesRequired",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.unavailableDateType",
+      "FieldDisplayOrder": 2,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.date",
+      "FieldDisplayOrder": 3,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.fromDate",
+      "FieldDisplayOrder": 4,
+      "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.toDate",
+      "FieldDisplayOrder": 5,
+      "DisplayContext": "MANDATORY"
+    }
+]
