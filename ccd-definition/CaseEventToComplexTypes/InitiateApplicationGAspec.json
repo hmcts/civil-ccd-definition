@@ -346,22 +346,6 @@
     "ShowSummaryContentOption": "Y"
   },
   {
-    "ID": "GAPBADetailsGAspec",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "applicantsPbaAccounts",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReference",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "GAUploadN245Form",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "gaUploadN245FormUploadLabel",
