@@ -2126,7 +2126,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "CaseAccessCategory",
     "Label": "Case Access Category",
-    "FieldType": "Text",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CaseAccessCategory",
     "SecurityClassification": "Public",
     "_Definition":  "Case Access Category",
     "_Category":  "CIVIL"

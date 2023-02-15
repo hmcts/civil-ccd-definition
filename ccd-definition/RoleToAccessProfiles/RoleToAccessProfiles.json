@@ -264,7 +264,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
