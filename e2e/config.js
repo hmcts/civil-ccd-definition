@@ -25,7 +25,7 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     //ToDo: create new process env for caseAssignmentService and ensure it exists across environments
-    caseAssignmentService: 'http://localhost:4454',
+    caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     //----------------------------------------------------------------------------------------------
     wiremockService: 'http://localhost:8765'
   },
@@ -65,7 +65,7 @@ module.exports = {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
     type: 'defendant_solicitor',
-    orgId: process.env.ENVIRONMENT == 'demo' ? 'DOSS3I2' : 'N5AFUXG'
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DOSS3I2' : 'N5AFUXG'
   },
   adminUser: {
     password: defaultPassword,
