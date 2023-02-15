@@ -27,7 +27,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "ListElementCode": "emailAddress",
+    "ListElementCode": "phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -35,7 +35,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "ListElementCode": "phoneNumber",
+    "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
