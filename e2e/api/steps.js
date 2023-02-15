@@ -1058,7 +1058,7 @@ const buildNocAnswers = (clientName) => ([
 ]);
 
 const requestNoticeOfChange = async(newSolicitor, orgPolicyTag, answers) => {
-  if(config.runningEnv == 'local') {
+  if(config.localNoCTests === true) {
     await updateActiveOrganisationUsersMocks(newSolicitor);
   }
 
