@@ -60,6 +60,13 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
+  judgeUserWithRegionId4: {
+    password: judgeDefaultPassword,
+    email: '4925359EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
   judgeUserWithRegionId1Local: {
     password: defaultPassword,
     email: 'judge-civil-02@example.com',
@@ -102,8 +109,8 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
-  tribunalCaseworkerWithRegionId1: {
-    email: 'tribunal_caseworker_region4@justice.gov.uk',
+  tribunalCaseworkerWithRegionId4: {
+    email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
     password: defaultPassword,
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
@@ -178,6 +185,10 @@ module.exports = {
     reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
     reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
     reviewSpecificAccessRequestCTSC: 'reviewSpecificAccessRequestCTSC',
+    fastTrackDirections: 'FastTrackDirections',
+    smallClaimDirections: 'SmallClaimsTrackDirections',
+    legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
+    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
