@@ -319,6 +319,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "showConditionFlags",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "CRUD"

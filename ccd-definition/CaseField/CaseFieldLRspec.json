@@ -1216,7 +1216,8 @@
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2239,6 +2240,20 @@
     "ID": "applicant2DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentPayImmidietelyLabel",
+    "Label": "## The defendant said they'll pay you immediately.\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentPayImmidietelyText",
+    "Label": "<p>Claim Number: ${legacyCaseReference}</p><p>They must make sure you have the money by ${respondToClaimAdmitPartLRspec.whenWillThisAmountBePaid}. Any cheques or transfers should be clear in your account.</p><p>You need to tell us if you've settled the claim, for example because the defenrant has paid you.</p><p>You can settle for less than the full claim amount.</p><p><h3>If you haven't been paid.</h3></p><p>If the defentand has not paid you, you can request a County Court Judgement by completing the following form and sending it to the email address below.</p><p><li><a href=\"https://formfinder.hmctsformfinder.justice.gov.uk/n225-eng.pdf\" target=\"_blank\">N225 </a>- Ask for judgement on a claim for a specified amount of money</li></ul></p><p>Email: <a href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></p>",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   }
 ]
