@@ -12,5 +12,26 @@
     "Label": "Was trial ready notification sent out?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyApplicant",
+    "Label": "Are you ready for trial?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyRespondent1",
+    "Label": "Are you ready for trial?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyRespondent2",
+    "Label": "Are you ready for trial?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
