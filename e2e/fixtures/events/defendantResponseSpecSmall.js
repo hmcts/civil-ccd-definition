@@ -108,8 +108,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC',
-              readyOn:'2023-01-01'
+              camundaEvent: 'CREATE_CLAIM_SPEC'
             },
           }
         };
@@ -136,8 +135,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC',
-              readyOn:'2023-01-01'
+              camundaEvent: 'CREATE_CLAIM_SPEC'
             },
           },
           defenceRoute: {
@@ -191,8 +189,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC',
-              readyOn:'2023-01-01'
+              camundaEvent: 'CREATE_CLAIM_SPEC'
             }
           },
 
@@ -225,8 +222,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC',
-              readyOn:'2023-01-01'
+              camundaEvent: 'CREATE_CLAIM_SPEC'
             }
           },
 
