@@ -1,0 +1,34 @@
+[
+  {
+    "ID": "UploadEvidenceExpert2",
+    "ListElementCode": "expertOptionName",
+    "FieldType": "Text",
+    "ElementLabel": "Experts' names",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert2",
+    "ListElementCode": "expertOptionExpertises",
+    "FieldType": "Text",
+    "ElementLabel": "Fields of expertise",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert2",
+    "ListElementCode": "expertOptionUploadDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date statement was made",
+    "HintText": "For example, 12/09/2022",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert2",
+    "ListElementCode": "expertDocument",
+    "ElementLabel": "Upload a file",
+    "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMG, TIF, TIFF",
+    "FieldType": "Document",
+    "_RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "_comment": "Case file view doesn't work with regular expressions, investigating why",
+    "SecurityClassification": "Public"
+  }
+]

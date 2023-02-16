@@ -3,8 +3,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "changeOfRepresentation",
     "Label": "change of representation details",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "ChangeOfRepresentation",
+    "FieldType": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
     "Comment": "Field storing noc update details"
   },
@@ -14,5 +13,29 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentOne",
+    "Label": "registration information respondent one",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentTwo",
+    "Label": "registration information respondent two",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
+  },
+   {
+    "CaseTypeID": "CIVIL",
+    "ID": "componentLauncher",
+    "Label": "Case file view",
+    "FieldType": "ComponentLauncher",
+    "SecurityClassification": "Public"
   }
+  
 ]

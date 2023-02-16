@@ -147,30 +147,6 @@
     "ID": "DisposalHearingWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingWitnessOfFact",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingWitnessOfFact",
-    "ListElementCode": "date1",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingWitnessOfFact",
-    "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingWitnessOfFact",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingWitnessOfFact",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
@@ -283,22 +259,6 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingSchedulesOfLoss",
-    "ListElementCode": "date1",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -404,7 +364,72 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingFinalDisposalHearing",
     "ListElementCode": "time",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "dateFrom",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "dateTo",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalOrderWithoutHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalOrderWithoutHearing",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalOrderWithoutHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalOrderWithoutHearing",
+    "ListElementCode": "title",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalOrderWithoutHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalOrderWithoutHearing",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -627,24 +652,48 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "label",
+    "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsHearing",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "time",
+    "ListElementCode": "dateTo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "label",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -652,7 +701,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "input2",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -733,24 +782,8 @@
     "ID": "SmallClaimsNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
     "ListElementCode": "input",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsNotes",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsNotes",
-    "ListElementCode": "date",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1312,22 +1345,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackSchedulesOfLoss",
-    "ListElementCode": "input4",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackSchedulesOfLoss",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackSchedulesOfLoss",
-    "ListElementCode": "date3",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "FastTrackCosts",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackCosts",
@@ -1358,7 +1375,7 @@
     "ListElementCode": "input1",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventHintText": "e.g. The time provisionally allowed for the trial is 2 days."
+    "EventHintText": "e.g. The time allowed for this trial is 1 day."
   },
   {
     "ID": "FastTrackTrial",
@@ -1425,6 +1442,64 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "dateFrom",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "dateTo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "hearingDuration",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"OTHER\""
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "helpText1",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "helpText2",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "FastTrackNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
@@ -1447,6 +1522,38 @@
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingNotes",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackNotes",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingNotes",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackOrderWithoutJudgement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackOrderWithoutJudgement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackOrderWithoutJudgement",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "FastTrackBuildingDispute",

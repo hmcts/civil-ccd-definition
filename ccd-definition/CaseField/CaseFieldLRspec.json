@@ -30,7 +30,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
-    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
+    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \nPlease do not upload password protected documents as this will prevent the claim from being processed.\n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -73,7 +73,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "specClaimDetailsDocumentFiles",
     "Label": "Upload file",
-    "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
+    "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
@@ -349,7 +349,7 @@
     "ID": "specClaimTemplateDocumentFiles",
     "Label": "Upload files",
     "FieldType": "Document",
-    "HintText": "We only accept documents in pdf format.",
+    "HintText": "We only accept documents in pdf format. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   },
@@ -434,20 +434,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentDetails",
     "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "specAoSRespondentInformation",
-    "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name: ${respondent1Copy.partyName}** ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "specAoSRespondent2Information",
-    "Label": "**Party type:** ${respondent2Copy.partyTypeDisplayValue}\n\n**Name: ${respondent2Copy.partyName}** ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -1091,9 +1077,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "claimProceedsInCasemanLR",
     "Label": "Case proceeds in Caseman",
-    "FieldType": "ClaimProceedsInCaseman",
+    "FieldType": "ClaimProceedsInCasemanLR",
     "SecurityClassification": "Public"
   },
   {
@@ -2035,20 +2021,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1ClaimExpertSpecRequired",
-    "Label": "Has your client asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicantMPClaimExpertSpecRequired",
-    "Label": "Have the claimants asked for the court's permission to use an expert?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1RespondToClaimExperts",
     "Label": " ",
     "FieldType": "ExpertDetails",
@@ -2067,20 +2039,6 @@
     "ID": "applicant1DQRequestedCourt",
     "Label": " ",
     "FieldType": "RequestedCourtLocationLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQHearingLRspec",
-    "Label": "Hearing",
-    "FieldType": "HearingLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQSmallClaimHearing",
-    "Label": "Hearing",
-    "FieldType": "SmallClaimHearing",
     "SecurityClassification": "Public"
   },
   {

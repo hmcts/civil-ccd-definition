@@ -123,24 +123,46 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationsDetails",
+    "ID": "claimantGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Claimant solicitor",
     "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSol",
+    "ID": "gaDetailsMasterCollection",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Judge",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolGaAppDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case for respondent solicitor",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolTwoGaAppDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case for respondent2 solicitor ",
     "_Category":  "COMMON"
   },
   {
@@ -269,7 +291,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppN245FormUpload",
-    "Label": " ",
+    "Label": "N245 form",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "SecurityClassification": "Public"

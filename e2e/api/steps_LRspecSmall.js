@@ -8,10 +8,14 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
+const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
+
+const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
@@ -59,6 +63,13 @@ module.exports = {
 
     createClaimData = data.CREATE_CLAIM_AP(scenario);
 
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('');
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
+    }
+    //==============================================================
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     for (let pageId of Object.keys(createClaimData.userInput)) {
@@ -66,6 +77,17 @@ module.exports = {
     }
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
+    await waitForFinishedBusinessProcess(caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
@@ -108,6 +130,17 @@ module.exports = {
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
+    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
+
+    if ((['preview', 'demo'].includes(config.runningEnv)) && response == 'FULL_DEFENCE' && hnlSdoEnabled) {
+      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
+    }
+    if(!hnlSdoEnabled) {
+      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+        defendantResponseData, solicitor);
+    }
+
     caseData = returnedCaseData;
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -136,6 +169,13 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE();
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if(!hnlEnabled) {
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+        claimantResponseData);
+    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -298,7 +338,7 @@ async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicList
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     responseData = {
       ...responseData,
       userInput: {
@@ -317,7 +357,7 @@ async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListI
   let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
+  if (!isCourtListEnabled) {
     responseData = {
       ...responseData,
       userInput: {
@@ -344,4 +384,32 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
+};
+
+const adjustDataForHnl = (inputData, response) => {
+  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
+  if (!response.startsWith('FULL_DEFENCE')) {
+    return inputData;
+  }
+  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
+  return {
+    ...inputData,
+    userInput: {
+      ...inputData.userInput,
+      SmallClaimWitnesses: {
+        [`respondent${respondentNum}DQWitnesses`]: {
+          witnessesToAppear: 'Yes',
+          details: [
+            element({
+              firstName: 'Witness',
+              lastName: 'One',
+              emailAddress: 'witness@email.com',
+              phoneNumber: '07116778998',
+              reasonForWitness: 'None'
+            })
+          ]
+        }
+      }
+    }
+  };
 };

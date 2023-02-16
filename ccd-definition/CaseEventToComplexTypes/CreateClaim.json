@@ -1,5 +1,13 @@
 [
   {
+    "ID": "CourtLocation",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "courtLocation",
+    "ListElementCode": "applicantPreferredCourtLocationList",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
@@ -564,6 +572,16 @@
   {
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "ListElementCode": "PreviousOrganisations",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "FieldDisplayOrder": 1,
@@ -595,6 +613,16 @@
     "ListElementCode": "OrgPolicyReference",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "ListElementCode": "PreviousOrganisations",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "RespondentSolicitor1Organisation",
@@ -1026,6 +1054,16 @@
     "ListElementCode": "OrgPolicyReference",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "ListElementCode": "PreviousOrganisations",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Respondent2ServiceAddress",

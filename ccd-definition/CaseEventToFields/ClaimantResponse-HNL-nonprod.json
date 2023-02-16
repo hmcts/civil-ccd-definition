@@ -1,0 +1,56 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Hearing",
+    "CaseEventFieldLabel": "Hearing availability",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0,
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Hearing",
+    "CaseEventFieldLabel": "Hearing availability",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0,
+    "FieldShowCondition": "claimant2ResponseFlag=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  }
+]
