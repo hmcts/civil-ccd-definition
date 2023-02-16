@@ -746,6 +746,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "format",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "withdrawClaim",
     "AccessControl": [
       {

@@ -2145,5 +2145,13 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "format",
+    "Label": "When to be paid",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_Category":  "COMMON"
   }
 ]

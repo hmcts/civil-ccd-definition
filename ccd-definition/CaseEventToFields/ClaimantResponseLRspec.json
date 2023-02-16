@@ -22,16 +22,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaimAdmitPartLRspec",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmidietely",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,

@@ -259,6 +259,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "format",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "withdrawClaim",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
