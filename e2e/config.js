@@ -24,7 +24,6 @@ module.exports = {
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    //ToDo: create new process env for caseAssignmentService and ensure it exists across environments
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     //----------------------------------------------------------------------------------------------
     wiremockService: 'http://localhost:8765'
@@ -211,9 +210,7 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-
-  //ToDo: Update civil-sdk to process.env.ENVIRONMENT to 'local' ??
-  runningEnv: 'preview',
+  runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
