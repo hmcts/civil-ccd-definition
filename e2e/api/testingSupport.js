@@ -106,6 +106,9 @@ module.exports =  {
   },
 
   checkToggleEnabled: async (toggle) => {
+    if(toggle === 'pba-version-3-ways-to-pay'){
+      return true;
+    }
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
     if(toggle === 'hearing-and-listing-sdo'){
