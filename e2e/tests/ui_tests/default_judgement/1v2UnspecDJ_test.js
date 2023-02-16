@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 
 Feature('1v2 Unspec defaultJudgement @e2e-dj');
 
-Scenario('DefaultJudgement @create-claim ', async ({I, api}) => {
+Scenario('DefaultJudgement @create-claim @e2e-nightly-nonprod', async ({I, api}) => {
 
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
   let caseid = await api.getCaseId();
