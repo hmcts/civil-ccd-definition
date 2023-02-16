@@ -22,9 +22,9 @@ elif [ ${environment} == prod ]; then
 elif [ ${environment} == staging ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json,*CUI.json"
 else
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR3CP-nonprod.json"
-  #default
-  #excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*DJ.json,*DJspec.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR3CP-nonprod.json"
+  echo "ERROR! You are passing an environment that is not known by the script!"
+  echo "       Either add the new environment to the script or specify a supported environment!"
+  exit 1
 fi
 
 root_dir=$(realpath $(dirname ${0})/..)
