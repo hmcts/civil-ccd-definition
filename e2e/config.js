@@ -40,31 +40,31 @@ module.exports = {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
     type: 'applicant_solicitor',
-    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+    orgId: process.env.AAC_API_URL !== null ? 'B04IXE4' : 'Q1KOKP2'
   },
   defendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
     type: 'defendant_solicitor',
-    orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
+    orgId: process.env.AAC_API_URL !== null ? 'DAWY9LJ' : '79ZRSOU'
   },
   secondDefendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
     type: 'defendant_solicitor',
-    orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
+    orgId: process.env.AAC_API_URL !== null ? 'LCVTI1I' : 'H2156A0'
   },
   otherSolicitorUser1: {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
     type: 'defendant_solicitor',
-    orgId: process.env.ENVIRONMENT === 'demo' ? 'OZO586V' : '0FA7S8S'
+    orgId: process.env.AAC_API_URL !== null ? 'OZO586V' : '0FA7S8S'
   },
   otherSolicitorUser2: {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
     type: 'defendant_solicitor',
-    orgId: process.env.ENVIRONMENT === 'demo' ? 'DOSS3I2' : 'N5AFUXG'
+    orgId: process.env.AAC_API_URL !== null ? 'DOSS3I2' : 'N5AFUXG'
   },
   adminUser: {
     password: defaultPassword,
@@ -212,9 +212,9 @@ module.exports = {
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
-  claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
-  defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
-  defendant2SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'LCVTI1I' : 'H2156A0',
+  claimantSolicitorOrgId: process.env.AAC_API_URL !== null ? 'B04IXE4' : 'Q1KOKP2',
+  defendant1SolicitorOrgId: process.env.AAC_API_URL !== null ? 'DAWY9LJ' : '79ZRSOU',
+  defendant2SolicitorOrgId: process.env.AAC_API_URL !== null ? 'LCVTI1I' : 'H2156A0',
   claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
