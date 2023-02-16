@@ -30,7 +30,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
-    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
+    "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \nPlease do not upload password protected documents as this will prevent the claim from being processed.\n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -73,7 +73,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "specClaimDetailsDocumentFiles",
     "Label": "Upload file",
-    "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
+    "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
@@ -349,7 +349,7 @@
     "ID": "specClaimTemplateDocumentFiles",
     "Label": "Upload files",
     "FieldType": "Document",
-    "HintText": "We only accept documents in pdf format.",
+    "HintText": "We only accept documents in pdf format. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   },
@@ -1077,9 +1077,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specClaimProceedsInCaseman",
+    "ID": "claimProceedsInCasemanLR",
     "Label": "Case proceeds in Caseman",
-    "FieldType": "ClaimProceedsInCaseman",
+    "FieldType": "ClaimProceedsInCasemanLR",
     "SecurityClassification": "Public"
   },
   {

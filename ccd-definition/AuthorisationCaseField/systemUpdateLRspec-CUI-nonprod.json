@@ -21,7 +21,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CR"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -140,6 +140,36 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantUserDetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "totalClaimAmount",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "totalInterest",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimFee",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "speclistYourEvidenceList",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   }
