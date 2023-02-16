@@ -81,12 +81,21 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
+
             applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
             applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
             ccjPaymentPaidSomeAmount: '1000',
+          },
+          CcjJudgmentSummary: {
+            ccjJudgmentAmountClaimAmount: '1000',
+            ccjJudgmentAmountInterestToDate: '35',
+            ccjJudgmentAmountClaimFee: '100',
+            ccjJudgmentAmountSubtotal: '1135',
+            ccjPaymentPaidSomeAmountInPounds: '10',
+            ccjJudgmentTotalStillOwed: '1125'
           },
           IntentionToSettleClaim: {
             applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
