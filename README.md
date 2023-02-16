@@ -1,6 +1,6 @@
 # civil-ccd-definition
 
-Civil CCD Definition and E2E tests HNL 2v1 unspec
+Civil CCD Definition and E2E tests HNL 2v1 spec
 
 ### Contents:
 
