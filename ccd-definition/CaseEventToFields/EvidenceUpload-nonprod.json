@@ -140,7 +140,7 @@
     "PageDisplayOrder": 2,
     "PageLabel": "Select the type of document you would like to upload",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "allocatedTrack = \"FAST_CLAIM\""
+    "PageShowCondition": "allocatedTrack = \"FAST_CLAIM\" OR allocatedTrack = \"MULTI_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -580,7 +580,7 @@
     "PageDisplayOrder": 2,
     "PageLabel": "Select the type of document you would like to upload",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "allocatedTrack = \"FAST_CLAIM\"",
+    "PageShowCondition": "allocatedTrack = \"FAST_CLAIM\" OR allocatedTrack = \"MULTI_CLAIM\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/createShowCondition"
   },
   {
