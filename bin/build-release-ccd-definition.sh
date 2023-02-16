@@ -3,7 +3,6 @@
 set -eu
 
 environment=${1:-prod}
-excludeNonProdFiles=${2:-true}
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
@@ -16,11 +15,16 @@ elif [ ${environment} == demo ]; then
 elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to SDO and SDO-HNL files
   excludedFilenamePatterns="-e *-prod.json"
-elif [ ${excludeNonProdFiles} == true ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR3CP-nonprod.json"
+elif [ ${environment} == aat ]; then
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json,*CUI.json"
+elif [ ${environment} == prod ]; then
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json,*CUI.json"
+elif [ ${environment} == staging ]; then
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*DJ.json,*DJspec.json,*CUI.json"
 else
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-COS-nonprod.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*DJ.json,*DJspec.json,*DJ-SDO-nonprod.json,*DJ-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR3CP-nonprod.json"
   #default
-  excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*DJ.json,*DJspec.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR3CP-nonprod.json"
+  #excludedFilenamePatterns="-e UserProfile.json,*GAspec.json,*-GAR2GAspec-nonprod.json,*-prod.json,*DJ.json,*DJspec.json,*-HNL-nonprod.json,*CUI.json,*CUI-nonprod.json,*-GAR3CP-nonprod.json"
 fi
 
 root_dir=$(realpath $(dirname ${0})/..)
