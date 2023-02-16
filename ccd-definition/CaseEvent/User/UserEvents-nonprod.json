@@ -58,5 +58,19 @@
     "EndButtonLabel": "Discontinue claim",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "RetriesTimeoutAboutToStartEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DocumentUpdated",
+    "Name": "Document Updated",
+    "Description": "Document Updated",
+    "DisplayOrder": 30,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "RetriesTimeoutAboutToStartEvent": 0
   }
 ]
