@@ -38,5 +38,4 @@ Scenario('1v2 - one LIP and one LR - notify/notify claim details journey', async
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
-  await unAssignAllUsers();
 });

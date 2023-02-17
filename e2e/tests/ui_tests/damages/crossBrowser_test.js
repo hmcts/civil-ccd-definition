@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 

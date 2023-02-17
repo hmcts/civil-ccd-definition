@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 const claimant1 = {
   litigantInPerson: false
