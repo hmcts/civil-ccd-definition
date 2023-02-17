@@ -79,7 +79,8 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportQuestion",
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   },
   {
     "ID": "HearingSupportRequirementsFieldDJ",
