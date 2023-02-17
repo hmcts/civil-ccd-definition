@@ -10,7 +10,7 @@ echo "Switch to ${branchName} branch on civil-wa-task-configuration"
 git checkout ${branchName}
 cd ..
 
-#Copy camunda folder to civil-ccd-def which contains dmn files
+#Copy camunda folder to civil-ccd-def which contains dmn files.
 cp -r ./civil-wa-task-configuration/src/main/resources .
 rm -rf ./civil-wa-task-configuration
 
