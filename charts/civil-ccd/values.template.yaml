@@ -54,6 +54,7 @@ civil-service:
   java:
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.platform.hmcts.net
+    images: 'hmctspublic.azurecr.io/civil/service:pr-2295'
     keyVaults:
       civil:
         resourceGroup: civil
