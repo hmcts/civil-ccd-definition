@@ -13,5 +13,12 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "componentLauncher",
+    "Label": "Case file view",
+    "FieldType": "ComponentLauncher",
+    "SecurityClassification": "Public"
   }
 ]
