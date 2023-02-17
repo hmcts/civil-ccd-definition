@@ -7,16 +7,48 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentPayImmidietelyTextBeforeDate",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentPayImmidietelyText",
+    "CaseFieldID": "whenToBePaidText",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentPayImmidietelyTextAfterDate",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "showResponseOneVOneFlag",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -27,8 +59,9 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "RetainHiddenValue": "Y"
   },
   {
@@ -51,6 +84,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
+    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -287,7 +321,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantStatementOfTruthLabel",
-    "PageDisplayOrder": 16,
+    "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
@@ -299,7 +333,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "uiStatementOfTruth",
-    "PageDisplayOrder": 16,
+    "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 3,
     "PageColumnNumber": 1,
     "DisplayContext": "COMPLEX",
@@ -311,7 +345,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondStatementOfTruthSubmitLabel",
-    "PageDisplayOrder": 16,
+    "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",

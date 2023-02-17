@@ -746,7 +746,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "format",
+    "CaseFieldID": "whenToBePaidText",
     "AccessControl": [
       {
         "UserRoles": [

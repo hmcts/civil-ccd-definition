@@ -61,7 +61,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "format",
+    "CaseFieldID": "whenToBePaidText",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },

@@ -2148,8 +2148,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "format",
-    "Label": "When to be paid",
+    "ID": "whenToBePaidText",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "_Category":  "COMMON"

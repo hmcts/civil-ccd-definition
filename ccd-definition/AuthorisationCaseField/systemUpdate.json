@@ -181,7 +181,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "format",
+    "CaseFieldID": "whenToBePaidText",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
