@@ -1,0 +1,65 @@
+[
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "canWeUseMediationCui",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "canWeUseMediationPhoneCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "mediationDisagreementCui",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "noMediationReasonCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "noMediationOtherReasonCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "companyTelephoneOptionMediationCui",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "companyTelephoneConfirmationMediationCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "companyTelephoneContactPersonMediationCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationFromCui",
+    "ListElementCode": "companyTelephonePhoneNumberMediationCui",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
