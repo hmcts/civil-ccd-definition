@@ -19,7 +19,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -27,7 +27,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -59,7 +59,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -67,7 +67,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
