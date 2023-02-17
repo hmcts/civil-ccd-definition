@@ -112,6 +112,10 @@ module.exports =  {
       return false;
     }
 
+    if(toggle === 'pba-version-3-ways-to-pay'){
+      return true;
+    }
+
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
