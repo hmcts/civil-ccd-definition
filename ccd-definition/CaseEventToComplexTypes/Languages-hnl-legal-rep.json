@@ -109,7 +109,9 @@
     "CaseFieldID": "applicant1DQLanguage",
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -117,7 +119,9 @@
     "CaseFieldID": "applicant1DQLanguage",
     "ListElementCode": "documents",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+
   },
   {
     "ID": "Languages",
