@@ -50,3 +50,7 @@ Scenario('Full end-to-end journey', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
 }).retry(2);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

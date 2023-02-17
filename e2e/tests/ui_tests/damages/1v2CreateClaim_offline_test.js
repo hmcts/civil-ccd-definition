@@ -35,3 +35,6 @@ Scenario('Claimant solicitor raise a claim against 2 defendants, one of who is w
   //await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
