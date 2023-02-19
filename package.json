@@ -77,7 +77,7 @@
     "node-fetch": "^2.6.7",
     "puppeteer": "^18.1.0",
     "totp-generator": "^0.0.7",
-    "uuid": "^3.4.0",
+    "uuid": "^9.0.0",
     "webdriverio": "^6.12.1"
   },
   "resolutions": {
