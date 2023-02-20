@@ -64,7 +64,7 @@ module.exports = {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
     type: 'defendant_solicitor',
-    orgId: process.env.AAC_API_URL !== null ? 'DOSS3I2' : 'N5AFUXG'
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DOSS3I2' : 'N5AFUXG'
   },
   adminUser: {
     password: defaultPassword,
