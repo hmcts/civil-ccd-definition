@@ -35,6 +35,8 @@ module.exports = {
         oneTimePassword: totp(config.s2s.secret)
       })
       .then(response => response.text());
+    console.log(tokens.userId);
+    console.log(tokens.s2sAuth);
   },
 
   fetchCaseForDisplay: async(user, caseId, response = 200) => {

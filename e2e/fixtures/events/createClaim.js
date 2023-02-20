@@ -64,7 +64,19 @@ const applicant1LitigationFriend = {
   emailAddress: 'bobthelitigant@litigants.com',
   phoneNumber: '07123456789',
   hasSameAddressAsLitigant: 'No',
-  primaryAddress: buildAddress('litigant friend')
+  primaryAddress: buildAddress('litigant friend'),
+  // certificateOfSuitability: [
+  //   {
+  //     id: docUuid,
+  //     value: {
+  //       document: {
+  //         document_url: '${TEST_DOCUMENT_URL}',
+  //         document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+  //         document_filename: '${TEST_DOCUMENT_FILENAME}'
+  //       }
+  //     }
+  //   }
+  // ]
 };
 
 let selectedPba = listElement('PBA0088192');

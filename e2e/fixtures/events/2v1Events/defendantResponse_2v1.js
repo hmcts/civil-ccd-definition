@@ -12,6 +12,10 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
+        flags: {
+          partyName: "Sir John Doe",
+          roleOnCase: "Respondent 1"
+       }
       },
     },
     RespondentResponseType: {
@@ -163,6 +167,10 @@ module.exports = {
           individualTitle: 'Sir',
           individualDateOfBirth: date(1),
           primaryAddress: buildAddress('respondent')
+        },
+        flags: {
+          partyName: "Sir John Doe",
+          roleOnCase: "Respondent 1"
         }
       }
     },

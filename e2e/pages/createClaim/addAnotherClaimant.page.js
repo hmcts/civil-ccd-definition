@@ -14,7 +14,6 @@ module.exports = {
 
   async enterAddAnotherClaimant(addAnotherClaimant) {
     I.waitForElement(this.fields.addApplicant2.id);
-
     await I.runAccessibilityTest();
     await within(this.fields.addApplicant2.id, () => {
       const { yes, no } = this.fields.addApplicant2.options;

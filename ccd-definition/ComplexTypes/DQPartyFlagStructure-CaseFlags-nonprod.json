@@ -21,7 +21,6 @@
     "FieldType": "Flags",
     "ElementLabel": "flags",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "RetainHiddenValue": "Y"
   }
 ]
