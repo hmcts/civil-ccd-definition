@@ -1446,6 +1446,9 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 
 const adjustDataForSolicitor = (user, data) => {
   let fixtureClone = cloneDeep(data);
+  if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
+  }
   if (user === 'solicitorOne') {
     delete fixtureClone['respondent2ResponseDeadline'];
   } else if (user === 'solicitorTwo') {
