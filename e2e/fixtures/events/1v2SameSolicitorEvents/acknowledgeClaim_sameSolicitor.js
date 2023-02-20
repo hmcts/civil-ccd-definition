@@ -11,11 +11,7 @@ module.exports = {
         individualDateOfBirth: date(-1),
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual',
-        flags: {
-          partyName: "Sir John Doe",
-          roleOnCase: "Respondent 1"
-        }
+        partyTypeDisplayValue: 'Individual'
       },
       respondent2: {
         type: 'INDIVIDUAL',

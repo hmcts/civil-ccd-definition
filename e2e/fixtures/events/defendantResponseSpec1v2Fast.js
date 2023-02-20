@@ -1,4 +1,4 @@
-const {listElement, element} = require('../../api/dataHelper');
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -61,34 +61,12 @@ module.exports = {
           },
           Experts: {
             respondent1DQExperts: {
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Doe',
-                  emailAddress: 'john@doemail.com',
-                  phoneNumber: '07111111111',
-                  fieldOfExpertise: 'None',
-                  whyRequired: 'Testing',
-                  estimatedCost: '10000'
-                })
-              ]
-            }
+              expertRequired: 'No'
+            },
           },
           Witnesses: {
             respondent1DQWitnesses: {
-              witnessesToAppear: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
-                  reasonForWitness: 'None'
-                })
-              ]
+              witnessesToAppear: 'No'
             }
           },
           Language: {

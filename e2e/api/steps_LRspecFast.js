@@ -11,17 +11,10 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkToggleEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
-const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {removeHNLFieldsFromClaimData,
-  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim,
-  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim
-} = require('../helpers/hnlFeatureHelper');
-const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
-const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require("./caseFlagsHelper");
-const {CASE_FLAGS} = require("../fixtures/caseFlags");
+const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -131,9 +124,6 @@ module.exports = {
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -176,7 +166,7 @@ module.exports = {
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim(
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
         defendantResponseData, solicitor);
     }
 
@@ -200,11 +190,6 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
-    if (caseFlagsEnabled && hnlEnabled) {
-      await assertCaseFlags(caseId, user, response);
-    }
-
     deleteCaseFields('respondent1Copy');
   },
 
@@ -224,7 +209,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim(
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
         claimantResponseData);
     }
 
@@ -240,25 +225,7 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
-    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
-    if (caseFlagsEnabled && hnlEnabled) {
-      await assertCaseFlags(caseId, user, response);
-    }
   },
-  createCaseFlags: async (user) => {
-    eventName = 'CREATE_CASE_FLAGS';
-
-    await apiRequest.setupTokens(user);
-
-    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId)
-
-    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
-    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
-
-    for (const [index, value] of caseFlagLocations.entries()) {
-      await addAndAssertCaseFlag(value, partyFlags[index], caseId)
-    }
-  }
 };
 
 // Functions

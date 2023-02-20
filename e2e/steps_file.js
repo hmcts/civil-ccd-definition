@@ -130,7 +130,6 @@ const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selec
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
-const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
@@ -298,15 +297,6 @@ module.exports = function () {
       ]);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
-    },
-
-    async checkForCaseFlagsEvent() {
-      eventName = 'Create case flags';
-      const eventNames = ['Create case flags', 'Manage case flags'];
-
-      await this.triggerStepsWithScreenshot([
-          () => caseViewPage.assertEventsAvailable(eventNames),
-      ]);
     },
 
     async notifyClaim(solicitorToNotify) {
@@ -859,32 +849,6 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
-    },
-
-    async createCaseFlags(caseFlags) {
-      eventName = 'Create case flags';
-      for (const {partyName, roleOnCase, details} of caseFlags) {
-        for (const {name, comments} of details) {
-          await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
-            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
-            () => createCaseFlagPage.selectFlag(name),
-            () => createCaseFlagPage.inputFlagComment(comments),
-            () => event.submitWithoutHeader('Submit'),
-            await this.takeScreenshot()
-          ]);
-        }
-      }
-    },
-
-    async validateCaseFlags(caseFlags) {
-      eventName = '';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.selectCaseFlagsTab(caseId),
-        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
-        () => caseViewPage.assertCaseFlags(caseFlags)
-      ]);
-      await this.takeScreenshot();
     }
   });
 };

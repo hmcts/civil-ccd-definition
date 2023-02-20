@@ -626,25 +626,6 @@ module.exports = function () {
       ]);
     },
 
-    async createCaseFlags() {
-      eventName = 'Create case flags';
-      await this.triggerStepsWithScreenshot([
-        // ToDo trigger create case flags event
-        // () => caseViewPage.startEvent(eventName, caseId),
-        // () => event.submit('', '')
-      ]);
-      await this.takeScreenshot();
-    },
-
-    async validateCaseFlags(caseFlags) {
-      eventName = '';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.selectCaseFlagsTab(caseId),
-        () => caseViewPage.assertCaseFlags(caseFlags)
-      ]);
-      await this.takeScreenshot();
-    },
-
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');

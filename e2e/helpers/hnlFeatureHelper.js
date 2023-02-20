@@ -195,18 +195,12 @@ module.exports = {
     };
     return claimantResponseData;
   },
-  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim: (claimantResponseData) => {
+  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec: (claimantResponseData) => {
     claimantResponseData = {
       ...claimantResponseData,
       userInput: {
         ...claimantResponseData.userInput,
         HearingSupport: {},
-        SmallClaimExperts: {
-          applicant1ClaimExpertSpecRequired: 'No'
-        },
-        SmallClaimWitnesses: {
-          applicant1ClaimWitnesses: '10'
-        },
         Language: {
           applicant1DQLanguage: {
             evidence: 'WELSH',
@@ -218,43 +212,7 @@ module.exports = {
     };
     return claimantResponseData;
   },
-  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim: (claimantResponseData) => {
-    claimantResponseData = {
-      ...claimantResponseData,
-      userInput: {
-        ...claimantResponseData.userInput,
-        HearingSupport: {},
-        Experts : {
-          applicant1DQExperts: {
-            expertRequired: 'No'
-          }
-        },
-        Witnesses: {
-          applicant1DQWitnesses: {
-            witnessesToAppear: 'No'
-          }
-        },
-        Language: {
-          applicant1DQLanguage: {
-            evidence: 'WELSH',
-            court: 'WELSH',
-            documents: 'WELSH'
-          }
-        },
-      },
-      midEventData: {
-        ...claimantResponseData.midEventData,
-        Experts: {
-          ...claimantResponseData.midEventData.Experts,
-          respondent1DQExperts: {
-            expertRequired: 'No'
-          }
-        },
-      }
-    };
-    return claimantResponseData;
-  },
-  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim: (defendantResponseData, solicitor) => {
+  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse: (defendantResponseData,solicitor) => {
     if (solicitor === 'solicitorTwo') {
       defendantResponseData = {
         ...defendantResponseData,
@@ -267,13 +225,7 @@ module.exports = {
               court: 'WELSH',
               documents: 'WELSH'
             }
-          },
-          SmallClaimWitnesses: {
-            responseClaimWitnesses2: '10'
-          },
-          SmallClaimExperts: {
-            responseClaimExpertSpecRequired2: 'No'
-          },
+          }
         }
       };
     } else {
@@ -288,70 +240,10 @@ module.exports = {
               court: 'WELSH',
               documents: 'WELSH'
             }
-          },
-          SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
-          },
-          SmallClaimExperts: {
-            responseClaimExpertSpecRequired: 'No'
-          },
+          }
         }
       };
     }
     return defendantResponseData;
   },
-  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim: (defendantResponseData, solicitor) => {
-    if (solicitor === 'solicitorTwo') {
-      defendantResponseData = {
-        ...defendantResponseData,
-        userInput: {
-          ...defendantResponseData.userInput,
-          HearingSupport: {},
-          Language: {
-            respondent2DQLanguage: {
-              evidence: 'WELSH',
-              court: 'WELSH',
-              documents: 'WELSH'
-            }
-          },
-          Experts : {
-            respondent2DQExperts: {
-              expertRequired: 'No',
-            }
-          },
-          Witnesses: {
-            respondent2DQWitnesses: {
-              witnessesToAppear: 'No',
-            }
-          },
-        }
-      };
-    } else {
-      defendantResponseData = {
-        ...defendantResponseData,
-        userInput: {
-          ...defendantResponseData.userInput,
-          HearingSupport: {},
-          Language: {
-            respondent1DQLanguage: {
-              evidence: 'WELSH',
-              court: 'WELSH',
-              documents: 'WELSH'
-            }
-          },
-          Experts : {
-            respondent1DQExperts: {
-              expertRequired: 'No',
-            }
-          },
-          Witnesses: {
-            respondent1DQWitnesses: {
-              witnessesToAppear: 'No',
-            }
-          },
-        }
-      };
-    }
-    return defendantResponseData;
-  }
 };

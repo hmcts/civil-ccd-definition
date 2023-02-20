@@ -112,10 +112,6 @@ module.exports =  {
       return false;
     }
 
-    if(toggle === 'case-flags'){
-      return false;
-    }
-
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
@@ -212,10 +208,6 @@ module.exports =  {
           }
         }
       );
-  },
-
-  checkCaseFlagsEnabled: () => {
-    return false;
   },
 
   updateCaseData: async (caseId, caseData) => {

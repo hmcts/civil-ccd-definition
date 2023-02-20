@@ -1,4 +1,4 @@
-const {listElement, element} = require('../../api/dataHelper');
+const {listElement} = require('../../api/dataHelper');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -26,36 +26,11 @@ module.exports = {
             responseClaimMediationSpecRequired: 'No'
           },
           SmallClaimExperts: {
-            respondent1DQExperts: {
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Doe',
-                  emailAddress: 'john@doemail.com',
-                  phoneNumber: '07111111111',
-                  fieldOfExpertise: 'None',
-                  whyRequired: 'Testing',
-                  estimatedCost: '10000'
-                })
-              ]
-            }
+            responseClaimExpertSpecRequired: 'No'
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
-                  reasonForWitness: 'None'
-                })
-              ],
-              witnessesToAppear: 'Yes'}
-        },
+            responseClaimWitnesses: '10'
+          },
           Language: {
             respondent1DQLanguage: {
               court: 'ENGLISH',
@@ -302,35 +277,10 @@ module.exports = {
             responseClaimMediationSpec2Required: 'No'
           },
           SmallClaimExperts: {
-            respondent2DQExperts: {
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Doe',
-                  emailAddress: 'john@doemail.com',
-                  phoneNumber: '07111111111',
-                  fieldOfExpertise: 'None',
-                  whyRequired: 'Testing',
-                  estimatedCost: '10000'
-                })
-              ]
-            }
+            responseClaimExpertSpecRequired2: 'No'
           },
           SmallClaimWitnesses: {
-          respondent2DQWitnessesSmallClaim: {
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
-                  reasonForWitness: 'None'
-                })
-              ],
-              witnessesToAppear: 'Yes'}
+            responseClaimWitnesses2: '10'
           },
           Language: {
             respondent2DQLanguage: {

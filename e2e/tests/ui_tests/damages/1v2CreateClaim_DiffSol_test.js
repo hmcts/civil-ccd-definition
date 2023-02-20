@@ -1,7 +1,6 @@
 const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {partyLevelFlags} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
@@ -128,19 +127,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
-
-
-Scenario.skip('Add case flags', async ({I}) => {
-  const caseFlags = [{
-    partyName: 'Example applicant1 company',
-    roleOnCase: 'Applicant 1',
-    details: [{name: partyLevelFlags.other, comments: 'test comment'}]
-  }];
-
-  await I.login(config.hearingCentreAdmin01);
-  await I.createCaseFlags(caseFlags);
-  await I.validateCaseFlags(caseFlags);
-}).retry(1);
 
 Scenario('Judge triggers SDO', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
