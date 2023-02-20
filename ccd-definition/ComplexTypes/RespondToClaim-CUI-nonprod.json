@@ -1,9 +1,9 @@
 [
   {
-    "ID": "RespondToClaimFromCui",
-    "ListElementCode": "respondent1MediationFromCui",
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1MediationLiPResponse",
     "ElementLabel": " ",
-    "FieldType": "MediationFromCui",
+    "FieldType": "MediationLiP",
     "SecurityClassification": "Public"
   }
 ]

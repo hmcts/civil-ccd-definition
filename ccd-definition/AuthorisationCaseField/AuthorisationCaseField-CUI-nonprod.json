@@ -20,7 +20,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ResponseCui",
+    "CaseFieldID": "respondent1LiPResponse",
     "AccessControl": [
       {
         "UserRoles": [

@@ -8,9 +8,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1ResponseCui",
+    "ID": "respondent1LiPResponse",
     "Label": " ",
-    "FieldType": "RespondToClaimFromCui",
+    "FieldType": "RespondentLiPResponse",
     "SecurityClassification": "Public"
   }
 ]

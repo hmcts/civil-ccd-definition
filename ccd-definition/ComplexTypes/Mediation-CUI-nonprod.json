@@ -1,63 +1,63 @@
 [
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "canWeUseMediationCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "canWeUseMediationLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "canWeUseMediationPhoneCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "canWeUseMediationPhoneLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "mediationDisagreementCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "mediationDisagreementLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "noMediationReasonCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "noMediationReasonLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "noMediationOtherReasonCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "noMediationOtherReasonLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "companyTelephoneOptionMediationCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "companyTelephoneOptionMediationLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "companyTelephoneConfirmationMediationCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "companyTelephoneConfirmationMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "companyTelephoneContactPersonMediationCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "companyTelephoneContactPersonMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "MediationFromCui",
-    "ListElementCode": "companyTelephonePhoneNumberMediationCui",
+    "ID": "MediationLiP",
+    "ListElementCode": "companyTelephonePhoneNumberMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
