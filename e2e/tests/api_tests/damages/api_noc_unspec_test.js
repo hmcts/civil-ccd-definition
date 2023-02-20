@@ -30,10 +30,10 @@ Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) 
 
   let caseId = await api.getCaseId();
 
-  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, defendantSolicitorUser);
+  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_ONE');
 
-  await api.notifyClaim(applicantSolicitorUser);
-  await api.notifyClaimDetails(applicantSolicitorUser);
+  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, defendantSolicitorUser);
 
   await api.checkUserCaseAccess(defendantSolicitorUser, true);
 });
@@ -57,14 +57,13 @@ Scenario.skip('notice of change - 1v2 - both defendants represented - diff solic
 
 Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
+  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
 
   let caseId = await api.getCaseId();
 
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, defendantSolicitorUser);
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, defendantSolicitorUser);
-
-  await api.notifyClaim(applicantSolicitorUser);
-  await api.notifyClaimDetails(applicantSolicitorUser);
 
   await api.checkUserCaseAccess(defendantSolicitorUser, true);
 
@@ -74,14 +73,13 @@ Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', asy
 
 Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
+  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
 
   let caseId = await api.getCaseId();
 
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, defendantSolicitorUser);
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, secondDefendantSolicitorUser);
-
-  await api.notifyClaim(applicantSolicitorUser);
-  await api.notifyClaimDetails(applicantSolicitorUser);
 
   await api.checkUserCaseAccess(defendantSolicitorUser, true);
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
@@ -93,13 +91,12 @@ Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', asy
 
 Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
+  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
 
   let caseId = await api.getCaseId();
 
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, secondDefendantSolicitorUser);
-
-  await api.notifyClaim(applicantSolicitorUser);
-  await api.notifyClaimDetails(applicantSolicitorUser);
 
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 });
