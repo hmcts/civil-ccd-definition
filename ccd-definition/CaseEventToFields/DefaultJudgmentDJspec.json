@@ -206,6 +206,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "registrationTypeRespondentOne",
+    "DisplayContext": "READONLY",
+    "PageID": "paymentBreakdown",
+    "PageFieldDisplayOrder": 3,
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "registrationTypeRespondentTwo",
+    "DisplayContext": "READONLY",
+    "PageID": "paymentBreakdown",
+    "PageFieldDisplayOrder": 4,
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "currentDefendantName",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
