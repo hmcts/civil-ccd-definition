@@ -291,7 +291,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppN245FormUpload",
-    "Label": " ",
+    "Label": "N245 form",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "SecurityClassification": "Public"

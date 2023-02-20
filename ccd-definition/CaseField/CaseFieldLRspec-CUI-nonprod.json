@@ -79,6 +79,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantDefenceResponseDocumentAndDQFlag",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimPartAdmitImmediatelyLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay the £${respondToAdmittedClaimOwingAmountPounds} immediately. \n\n They must make sure the claimant has the money by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
@@ -234,6 +241,111 @@
     "ID": "claimantUserDetails",
     "Label": "Claimant User Details",
     "FieldType": "UserDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountSummaryLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Judgment Amount</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentSummarySubtotalAmount",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountSummaryResponse",
+    "Label": "The judgment will order the defendant to pay £${ccjJudgmentSummarySubtotalAmount}, including the claim fee and interest if applicable, as shown:",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountClaimAmountLabel",
+    "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountClaimAmount",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountInterestToDateLabel",
+    "Label": "### Interest to date\n\n£${ccjJudgmentAmountInterestToDate}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountInterestToDate",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountClaimFeeLabel",
+    "Label": "### Claim fee amount\n\n£${ccjJudgmentAmountClaimFee}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountClaimFee",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountSubtotalLabel",
+    "Label": "### Subtotal\n\n£${ccjJudgmentSummarySubtotalAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentAmountSubtotal",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeAmountInPoundsLabel",
+    "Label": "### Amount already paid\n\n£${ccjPaymentPaidSomeAmountInPounds}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjPaymentPaidSomeAmountInPounds",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentTotalStillOwedLabel",
+    "Label": "### Total still owed\n\n£${ccjJudgmentTotalStillOwed}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentTotalStillOwed",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]

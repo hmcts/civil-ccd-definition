@@ -1,0 +1,132 @@
+[
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DocumentsExpert",
+    "CategoryLabel": "Expert Evidence",
+    "DisplayOrder": "4",
+    "ParentCategoryID": ""
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantExpertDocuments",
+    "CategoryLabel": "Claimant(s)",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "DocumentsExpert"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentExpertDocuments",
+    "CategoryLabel": "Legal Rep Defence one",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "DocumentsExpert"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoExpertDocuments",
+    "CategoryLabel": "Legal Rep Defence two",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "DocumentsExpert"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantExpertReport",
+    "CategoryLabel": "Reports",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneExpertReport",
+    "CategoryLabel": "Reports",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoExpertReport",
+    "CategoryLabel": "Reports",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentTwoExpertDocuments"
+  },
+
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantExpertJointStatement",
+    "CategoryLabel": "Joint statement of experts",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "ApplicantExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneExpertJointStatement",
+    "CategoryLabel": "Joint statement of experts",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "RespondentExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoExpertJointStatement",
+    "CategoryLabel": "Joint statement of experts",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "RespondentTwoExpertDocuments"
+  },
+
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantExpertQuestions",
+    "CategoryLabel": "Questions of experts of any other party",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "ApplicantExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneExpertQuestions",
+    "CategoryLabel": "Questions of experts of any other party",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "RespondentExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoExpertQuestions",
+    "CategoryLabel": "Questions of experts of any other party",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "RespondentTwoExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantExpertAnswers",
+    "CategoryLabel": "Answers to any questions asked by another party",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "ApplicantExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneExpertAnswers",
+    "CategoryLabel": "Answers to any questions asked by another party",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "RespondentExpertDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoExpertAnswers",
+    "CategoryLabel": "Answers to any questions asked by another party",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "RespondentTwoExpertDocuments"
+  }
+]
