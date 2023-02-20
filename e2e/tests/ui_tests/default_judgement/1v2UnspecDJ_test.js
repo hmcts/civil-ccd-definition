@@ -42,3 +42,8 @@ Scenario('DefaultJudgement @create-claim @e2e-nightly-nonprod', async ({I, api})
   await I.login(config.hearingCenterAdminWithRegionId1);
   await I.staffPerformDJCaseTransferCaseOffline(caseid);
 }).retry(3);
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});
+
