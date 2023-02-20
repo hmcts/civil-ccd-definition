@@ -48,3 +48,8 @@ Scenario('1v1 part admit defence claimant and defendant response', async ({I, ap
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
 });
+
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});
+

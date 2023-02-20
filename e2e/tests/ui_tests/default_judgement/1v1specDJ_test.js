@@ -13,3 +13,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJSpec(caseid, 'ONE_V_ONE');
 }).retry(3);
+
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});
