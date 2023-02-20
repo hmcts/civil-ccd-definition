@@ -251,6 +251,9 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    }
     console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
     console.log('***assertCorrectEventsAreAvailableToUser');
