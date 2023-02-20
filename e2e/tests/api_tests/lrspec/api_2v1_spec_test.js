@@ -61,5 +61,6 @@ Scenario('2v1 small claim full admission and response', async ({I, api_spec}) =>
     'AWAITING_APPLICANT_INTENTION');
 });
 
-
-
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});
