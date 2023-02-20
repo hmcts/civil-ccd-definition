@@ -140,13 +140,6 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
 
-    let caseAssignmentService = config.url.caseAssignmentService;
-    let b = process.env.AAC_API_URL !== null;
-    console.log(caseAssignmentService + 'aca url');
-    console.log(b + 'aca !== null');
-    let localNoCTests = config.localNoCTests;
-    console.log(localNoCTests + ' local noc tests');
-
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
