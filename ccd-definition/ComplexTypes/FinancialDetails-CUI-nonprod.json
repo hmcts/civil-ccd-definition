@@ -1,28 +1,28 @@
 [
   {
-    "ID": "FinancialDetailsFromCui",
-    "ListElementCode": "partnerPensionCui",
+    "ID": "FinancialDetailsLiP",
+    "ListElementCode": "partnerPensionLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FinancialDetailsFromCui",
-    "ListElementCode": "partnerDisabilityCui",
+    "ID": "FinancialDetailsLiP",
+    "ListElementCode": "partnerDisabilityLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FinancialDetailsFromCui",
-    "ListElementCode": "partnerSevereDisabilityCui",
+    "ID": "FinancialDetailsLiP",
+    "ListElementCode": "partnerSevereDisabilityLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FinancialDetailsFromCui",
-    "ListElementCode": "childrenEducationCui",
+    "ID": "FinancialDetailsLiP",
+    "ListElementCode": "childrenEducationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"

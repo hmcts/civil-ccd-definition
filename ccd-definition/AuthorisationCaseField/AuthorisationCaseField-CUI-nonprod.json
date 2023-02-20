@@ -20,7 +20,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ResponseCui",
+    "CaseFieldID": "respondent1LiPResponse",
     "AccessControl": [
       {
         "UserRoles": [
@@ -31,8 +31,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

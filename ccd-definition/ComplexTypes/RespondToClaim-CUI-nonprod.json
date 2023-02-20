@@ -1,9 +1,9 @@
 [
   {
-    "ID": "RespondToClaimFromCui",
-    "ListElementCode": "respondent1FinancialDetailsFromCui",
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPFinancialDetails",
     "ElementLabel": " ",
-    "FieldType": "FinancialDetailsFromCui",
+    "FieldType": "FinancialDetailsLiP",
     "SecurityClassification": "Public"
   }
 ]
