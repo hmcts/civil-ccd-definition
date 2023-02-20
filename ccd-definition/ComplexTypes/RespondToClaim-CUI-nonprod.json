@@ -1,13 +1,6 @@
 [
   {
     "ID": "RespondToClaimFromCui",
-    "ListElementCode": "respondent1FinancialDetailsFromCui",
-    "ElementLabel": " ",
-    "FieldType": "FinancialDetailsFromCui",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "RespondToClaimFromCui",
     "ListElementCode": "respondent1MediationFromCui",
     "ElementLabel": " ",
     "FieldType": "MediationFromCui",
