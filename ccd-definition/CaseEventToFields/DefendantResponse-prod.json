@@ -1,0 +1,27 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "VulnerabilityQuestions",
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQVulnerabilityQuestions",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "PageID": "VulnerabilityQuestions",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

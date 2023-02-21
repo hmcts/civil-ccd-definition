@@ -72,6 +72,18 @@
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
-
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQVulnerabilityQuestions",
+    "PageDisplayOrder": 13,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "VulnerabilityQuestions",
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   }
 ]

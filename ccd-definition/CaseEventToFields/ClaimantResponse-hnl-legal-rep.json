@@ -52,6 +52,7 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   }
 ]
