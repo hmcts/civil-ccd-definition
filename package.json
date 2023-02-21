@@ -59,6 +59,7 @@
     "test:api-noc": "MOCHAWESOME_REPORTFILENAME=api-noc npx codeceptjs run --grep @api-noc --reporter mocha-multi --verbose",
     "test:api-noc-unspec": "MOCHAWESOME_REPORTFILENAME=api-noc-unspec npx codeceptjs run --grep @api-noc-unspec --reporter mocha-multi --verbose",
     "test:api-noc-spec": "MOCHAWESOME_REPORTFILENAME=api-noc-spec npx codeceptjs run --grep @api-noc-spec --reporter mocha-multi --verbose",
+    "test:e2e-noc": "MOCHAWESOME_REPORTFILENAME=e2e-noc npx codeceptjs run --grep @e2e-noc --reporter mocha-multi --verbose",
     "prepare": "husky install"
   },
   "license": "MIT",
