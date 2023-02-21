@@ -112,5 +112,11 @@
     "ListElementCode": "TIMELINE_MANUALLY",
     "ListElement": "TIMELINE_MANUALLY",
     "DisplayOrder": 19
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "VULNERABILITY",
+    "ListElement": "VULNERABILITY",
+    "DisplayOrder": 20
   }
 ]
