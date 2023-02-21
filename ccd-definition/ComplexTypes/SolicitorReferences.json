@@ -18,5 +18,15 @@
     "Max": "24",
     "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
     "_Category":  "COMMON"
+  },
+  {
+    "ID": "SolicitorReferences",
+    "ListElementCode": "respondentSolicitor2Reference",
+    "FieldType": "Text",
+    "ElementLabel": "Defendant's legal representative's reference",
+    "SecurityClassification": "Public",
+    "Max": "24",
+    "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
+    "_Category":  "COMMON"
   }
 ]
