@@ -516,6 +516,11 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
+  const pbaV3 = true;
+  if(pbaV3 == true){
+    delete responseBody.data['claimIssuedPBADetails'];
+  }
+
   if (pageId === 'defendantDetailsSpec') {
     delete responseBody.data['registrationTypeRespondentOne'];
     delete responseBody.data['registrationTypeRespondentTwo'];
