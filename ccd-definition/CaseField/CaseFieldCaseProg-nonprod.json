@@ -12,5 +12,12 @@
     "Label": "Was trial ready notification sent out?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "bundleCreationNotified",
+    "Label": "Was bundle creation notification sent out?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
