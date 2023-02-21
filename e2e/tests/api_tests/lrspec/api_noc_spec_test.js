@@ -24,8 +24,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api_spec, noc
   await api_spec.checkUserCaseAccess(otherSolicitorUser1, true);
 });
 
-// todo check orgs exist in preview/demo/aat
-Scenario.skip('notice of change - 1v2 - both defendants represented', async ({api_spec, noc}) => {
+Scenario('notice of change - 1v2 - both defendants represented', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
 
   let caseId = await api_spec.getCaseId();
@@ -39,8 +38,7 @@ Scenario.skip('notice of change - 1v2 - both defendants represented', async ({ap
   await api_spec.checkUserCaseAccess(otherSolicitorUser2, true);
 });
 
-// todo check orgs exist in preview/demo/aat
-Scenario.skip('notice of change - 1v2 - same solicitor', async ({api_spec, noc}) => {
+Scenario('notice of change - 1v2 - same solicitor', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
 
   let caseId = await api_spec.getCaseId();
