@@ -347,12 +347,5 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicantDefenceResponseDocumentAndDQFlag",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
   }
 ]
