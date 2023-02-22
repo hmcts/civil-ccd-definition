@@ -27,6 +27,7 @@
     "SecurityClassification": "Public",
     "Max": "24",
     "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
+    "FieldShowCondition": "respondentSolicitor1Reference=\"DO_NOT_SHOW_IN_UI\"",
     "_Category":  "COMMON"
   }
 ]
