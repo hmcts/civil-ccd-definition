@@ -14,6 +14,14 @@
     "TabDisplayOrder": 12,
     "CaseFieldID": "caseBundles",
     "TabFieldDisplayOrder": 2,
-    "DisplayContextParameter": "#TABLE(title,createdOn,hearingDate,stitchedDocument)"
+    "DisplayContextParameter": "#TABLE(title,createdOn,bundleHearingDate,stitchedDocument)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CaseBundles",
+    "TabLabel": "Bundles",
+    "TabDisplayOrder": 12,
+    "CaseFieldID": "historicalBundles",
+    "TabFieldDisplayOrder": 2
   }
 ]
