@@ -5,12 +5,5 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "repaymentDetailsLabel",
-    "Label": "## Suggest instalments for ${currentDefendantName} \n Total claim amount is £${repaymentDue} This includes all court fees and interest",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
   }
 ]
