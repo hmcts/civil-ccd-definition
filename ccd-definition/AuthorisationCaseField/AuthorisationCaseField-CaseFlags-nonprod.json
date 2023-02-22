@@ -2,7 +2,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "flagLauncher",
-    "UserRole": "caseworker-civil-admin",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
