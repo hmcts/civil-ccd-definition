@@ -197,8 +197,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedPBADetails",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
