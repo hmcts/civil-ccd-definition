@@ -177,5 +177,19 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "HEARING_SCHEDULED_RETRIGGER",
+    "Name": "Re-list Hearing",
+    "Description": "Re-list Hearing",
+    "DisplayOrder": 23,
+    "PreConditionState(s)": "HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "PostConditionState": "CASE_PROGRESSION",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
