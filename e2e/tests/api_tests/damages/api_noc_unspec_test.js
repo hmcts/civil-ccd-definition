@@ -25,34 +25,34 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) =>
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
 });
 
-// Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
-//   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
-//
-//   let caseId = await api.getCaseId();
-//
-//   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_ONE');
-//   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_ONE');
-//
-//   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, defendantSolicitorUser);
-//
-//   await api.checkUserCaseAccess(defendantSolicitorUser, true);
-// });
-
-Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
-  await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
-  await api.notifyClaim(applicantSolicitorUser);
-  await api.notifyClaimDetails(applicantSolicitorUser);
+Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
+  await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
 
   let caseId = await api.getCaseId();
 
-  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
-  await api.checkUserCaseAccess(defendantSolicitorUser, false);
-  await api.checkUserCaseAccess(otherSolicitorUser1, true);
+  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_ONE');
 
-  await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, otherSolicitorUser2);
-  await api.checkUserCaseAccess(secondDefendantSolicitorUser, false);
+  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser2);
+
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
 });
+
+// Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
+//   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+//   await api.notifyClaim(applicantSolicitorUser);
+//   await api.notifyClaimDetails(applicantSolicitorUser);
+//
+//   let caseId = await api.getCaseId();
+//
+//   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
+//   await api.checkUserCaseAccess(defendantSolicitorUser, false);
+//   await api.checkUserCaseAccess(otherSolicitorUser1, true);
+//
+//   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, otherSolicitorUser2);
+//   await api.checkUserCaseAccess(secondDefendantSolicitorUser, false);
+//   await api.checkUserCaseAccess(otherSolicitorUser2, true);
+// });
 
 // Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
 //   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
