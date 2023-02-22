@@ -264,7 +264,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -347,6 +347,15 @@
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "judge-profile",
     "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "specific-access-ctsc",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "legal-adviser,caseworker-civil,GS_profile",
+    "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
   }

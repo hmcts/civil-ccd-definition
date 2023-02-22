@@ -3,10 +3,12 @@
 @Library("Infrastructure")
 import uk.gov.hmcts.contino.GithubAPI
 
-def type = "java"
+def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
+
+def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
@@ -104,7 +106,7 @@ def uploadCoreCaseDataDefinitions(env) {
 }
 
 def checkForEnableHelmLabel(branch_name) {
-    return new GithubAPI(this).getLabelsbyPattern(branch_name, "enableHelm").contains("enableHelm")
+    return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values: enableHelm").contains("pr-values: enableHelm")
 }
 
 withPipeline(type, product, component) {
@@ -117,7 +119,7 @@ withPipeline(type, product, component) {
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     if (!checkForEnableHelmLabel(env.BRANCH_NAME)) {
-      enableCleanupOfHelmReleaseOnSuccess();
+      enableCleanupOfHelmReleaseAlways();
     }
   }
   onMaster {
@@ -131,6 +133,7 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
+    yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
 
@@ -148,11 +151,19 @@ withPipeline(type, product, component) {
     """
       env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+
+      deploymentNumber = githubCreateDeployment()
+      githubUpdateDeploymentStatus(deploymentNumber, env.URL)
     }
   }
 
   afterAlways('smoketest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+    if (checkForEnableHelmLabel(env.BRANCH_NAME)) {
+      sh """
+        exit 1
+      """
+    }
   }
 
   afterAlways('functionalTest:preview') {

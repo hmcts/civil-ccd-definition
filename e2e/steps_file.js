@@ -43,6 +43,8 @@ const cosTab = require('./pages/cosTab.page');
 
 
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
+const unspecifiedSelectCaseNote = require('./pages/addCaseNotes/selectCaseNote.js');
+const unspecifiedAddDocumentAndNotes = require('./pages/addCaseNotes/addDocumentAndNotes.js');
 
 const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntention.page');
 
@@ -118,6 +120,11 @@ const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/cl
 const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.page');
 const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
+const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList.page');
+const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
+const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
@@ -262,7 +269,7 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
@@ -280,7 +287,7 @@ module.exports = function () {
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
         () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
-        () => claimValuePage.enterClaimValue(),
+        () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
         () => statementOfTruth.enterNameAndRole('claim'),
@@ -358,6 +365,15 @@ module.exports = function () {
       ]);
     },
 
+    async judgeAddsCaseNotes() {
+      eventName = 'EVIDENCE_UPLOAD_JUDGE';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedSelectCaseNote.selectCaseNotes(),
+        () => unspecifiedAddDocumentAndNotes.addDocumentAndNotes(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Document uploaded and note added')
+      ]);
+    },
+
     async staffPerformDJCaseTransferCaseOffline(caseId) {
       await this.triggerStepsWithScreenshot([
         () => unspecifiedDefaultJudmentPage.performAndVerifyTransferCaseOffline(caseId)
@@ -389,6 +405,18 @@ module.exports = function () {
       ]);
     },
 
+    async createHearingScheduled() {
+          eventName = 'Hearing Scheduled';
+          await this.triggerStepsWithScreenshot([
+            () => hearingNoticeListPage.hearingType('fastTrack'),
+            () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
+            () => hearingScheduledChooseDetailsPage.selectCourt(),
+            () => hearingScheduledMoreInfoPage.enterMoreInfo(),
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails()
+          ]);
+        },
+
     async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
 
@@ -403,7 +431,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
       eventName = 'Respond to claim';
 
       await this.triggerStepsWithScreenshot([
@@ -411,7 +439,10 @@ module.exports = function () {
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
-          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party),
+          ...conditionalSteps(claimValue >= 25000, [
+            () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
+            ]
+          ),
           () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
           () => expertsPage.enterExpertInformation(party),
           () => witnessPage.enterWitnessInformation(party),
@@ -429,7 +460,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence(mpScenario = 'ONE_V_ONE') {
+    async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
 
       await this.triggerStepsWithScreenshot([
@@ -437,7 +468,11 @@ module.exports = function () {
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
+        ...conditionalSteps(claimValue >= 25000, [
+            () => disclosureOfElectronicDocumentsPage.
+                            enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
+          ]
+        ),
         () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
         () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
         () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),

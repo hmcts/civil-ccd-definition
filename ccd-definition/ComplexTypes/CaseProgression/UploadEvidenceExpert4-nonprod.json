@@ -1,28 +1,28 @@
 [
   {
     "ID": "UploadEvidenceExpert4",
-    "ListElementCode": "expertOption4Name",
+    "ListElementCode": "expertOptionName",
     "FieldType": "Text",
-    "ElementLabel": "Expert's names",
+    "ElementLabel": "Expert's name",
     "SecurityClassification": "Public"
   },
   {
     "ID": "UploadEvidenceExpert4",
-    "ListElementCode": "expertOption4OtherName4",
+    "ListElementCode": "expertOptionOtherParty",
     "FieldType": "Text",
     "ElementLabel": "Other party's name",
     "SecurityClassification": "Public"
   },
   {
     "ID": "UploadEvidenceExpert4",
-    "ListElementCode": "expertOption4Document",
+    "ListElementCode": "expertDocumentAnswer",
     "FieldType": "Text",
     "ElementLabel": "Name of document with other party's questions",
     "SecurityClassification": "Public"
   },
   {
     "ID": "UploadEvidenceExpert4",
-    "ListElementCode": "expertOption4UploadDate",
+    "ListElementCode": "expertOptionUploadDate",
     "FieldType": "Date",
     "ElementLabel": "Date statement was made",
     "HintText": "For example, 12/09/2022",
@@ -30,11 +30,12 @@
   },
   {
     "ID": "UploadEvidenceExpert4",
-    "ListElementCode": "expertOption4",
+    "ListElementCode": "expertDocument",
     "ElementLabel": "Upload a file",
-    "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, JPG, PNG, BMG, TIF, TIFF",
+    "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMG, TIF, TIFF",
     "FieldType": "Document",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "_RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "_comment": "Case file view doesn't work with regular expressions, investigating why",
     "SecurityClassification": "Public"
   }
 ]
