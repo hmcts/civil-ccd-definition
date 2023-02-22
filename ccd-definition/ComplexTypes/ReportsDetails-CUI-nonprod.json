@@ -1,0 +1,37 @@
+[
+  {
+    "ID": "ReportsDetailsLiP",
+    "ListElementCode": "expertName",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ReportsDetailsLiP",
+    "ListElementCode": "reportDate",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ReportsDetailsLiP",
+    "ListElementCode": "day",
+    "FieldType": "Number",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ReportsDetailsLiP",
+    "ListElementCode": "month",
+    "FieldType": "Number",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ReportsDetailsLiP",
+    "ListElementCode": "year",
+    "FieldType": "Number",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

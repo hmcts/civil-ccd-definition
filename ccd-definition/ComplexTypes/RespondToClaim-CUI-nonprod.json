@@ -1,0 +1,109 @@
+[
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "responseDeadlineMoreTimeRequest",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseOptionsLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "responseDeadlineAdditionalTime",
+    "ElementLabel": " ",
+    "FieldType": "AdditionalTimeOptionsLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "responseDeadlineAgreedResponseDeadline",
+    "ElementLabel": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "partialAdmissionAlreadyPaid",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "timelineComment",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "evidenceComment",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "mediationContactPerson",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "mediationContactPhone",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "determinationWithoutHearing",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "determinationReasonForHearing",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "defendantYourSelfEvidence",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "expertReportsAvailable",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "expertReports",
+    "ElementLabel": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ReportsDetailsLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "permissionToUseAnExpert",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "expertCanStillExamine",
+    "ElementLabel": " ",
+    "FieldType": "ExpertCanStillExamineLiP",
+    "SecurityClassification": "Public"
+  }
+]

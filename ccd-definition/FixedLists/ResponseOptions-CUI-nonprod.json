@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "ResponseOptionsLiP",
+    "ListElementCode": "ALREADY_AGREED",
+    "ListElement": "already-agreed",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ResponseOptionsLiP",
+    "ListElementCode": "REQUEST_REFUSED",
+    "ListElement": "request-refused",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "ResponseOptionsLiP",
+    "ListElementCode": "YES",
+    "ListElement": "yes",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "ResponseOptionsLiP",
+    "ListElementCode": "NO",
+    "ListElement": "no",
+    "DisplayOrder": 4
+  }
+]

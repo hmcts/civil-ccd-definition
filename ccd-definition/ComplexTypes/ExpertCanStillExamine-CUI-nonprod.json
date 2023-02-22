@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "ExpertCanStillExamineLiP",
+    "ListElementCode": "option",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ExpertCanStillExamineLiP",
+    "ListElementCode": "details",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
