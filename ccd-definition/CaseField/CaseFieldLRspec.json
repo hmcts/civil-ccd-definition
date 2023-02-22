@@ -2271,5 +2271,12 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ShowResponseOneVOneFlag",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "whenToBePaidText",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
