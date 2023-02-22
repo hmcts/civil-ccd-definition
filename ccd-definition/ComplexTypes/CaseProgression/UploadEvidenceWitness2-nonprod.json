@@ -21,6 +21,7 @@
     "ListElementCode": "createdDatetime",
     "ElementLabel": "Document Uploaded DateTime",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "witnessOptionDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]
