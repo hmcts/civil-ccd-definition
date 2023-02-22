@@ -1,4 +1,10 @@
 exports.config = {
+  by: function(numberOfWorkers) {
+    return [
+      ['./e2e/tests/api_tests/lrspec/api_1v1_spec_test.js'],
+      ['./e2e/tests/api_tests/lrspec/api_1v2_spec_test.js']
+    ];
+  }
   tests: [
     './e2e/tests/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
