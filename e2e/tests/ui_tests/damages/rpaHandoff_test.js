@@ -1,6 +1,8 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers, assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
@@ -9,7 +11,6 @@ Feature('RPA handoff points tests @rpa-handoff-tests');
 
 Scenario('Take claim offline', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
-
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim('fullDefence');
@@ -66,6 +67,15 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
+
   await I.notifyClaim();
   await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

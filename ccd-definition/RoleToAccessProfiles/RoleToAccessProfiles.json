@@ -241,5 +241,14 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "specific-access-ctsc",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "legal-adviser,caseworker-civil,GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
   }
 ]

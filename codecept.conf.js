@@ -1,11 +1,11 @@
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
-    './e2e/tests/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
+    './e2e/tests/api_tests/sdo/*_test.js',
     './e2e/tests/ui_tests/damages/*_test.js',
     './e2e/tests/ui_tests/damages/nightly/*_test.js',
     './e2e/tests/ui_tests/lrspec/*_test.js',
@@ -79,7 +79,9 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',
+          reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME+'-'+new Date().getTime()}`,
           inlineAssets: true,
+          overwrite: false,
           json: false,
         },
       },

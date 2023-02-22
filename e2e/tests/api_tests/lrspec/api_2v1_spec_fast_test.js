@@ -61,3 +61,6 @@ Scenario('2v1 fast claim part admission and claimant response', async ({I, api_s
     'AWAITING_APPLICANT_INTENTION');
 });
 
+AfterSuite(async  ({api_spec_fast}) => {
+  await api_spec_fast.cleanUp();
+});

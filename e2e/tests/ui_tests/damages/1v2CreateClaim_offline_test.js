@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 const claimant1 = {
   litigantInPerson: false
@@ -17,7 +18,7 @@ const respondent2 = {
 //let caseNumber;
 
 
-Feature('1v2 Create claim @e2e-unspec @e2e-multiparty');
+Feature('1v2 Create claim @e2e-unspec @e2e-multiparty @e2e-nightly-prod');
 
 Scenario('Claimant solicitor raise a claim against 2 defendants, one of who is without a solicitor (LiP) should progress case offline', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -26,10 +27,15 @@ Scenario('Claimant solicitor raise a claim against 2 defendants, one of who is w
     null,
     respondent1,
     respondent2,
+    30000,
     false
   );
+
   // Reinstate the lines below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //caseNumber = await I.grabCaseNumber();
   //await I.see(`Case ${caseNumber} has been created.`);
 }).retry(3);
 
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
