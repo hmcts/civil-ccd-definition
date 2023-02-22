@@ -1,0 +1,21 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingsTabAccess",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearings-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "hearings-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
+

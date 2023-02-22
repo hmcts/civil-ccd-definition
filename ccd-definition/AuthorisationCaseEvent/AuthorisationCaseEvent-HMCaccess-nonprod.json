@@ -1,0 +1,26 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_HEARING_ACCESS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearings-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+   },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_HEARING_ACCESS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearings-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
