@@ -347,5 +347,34 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostOptionLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed cost</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostOption",
+    "Label": " ",
+    "HintText": "This will include fixed costs for judgement",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostAmountLabel",
+    "Label": "### Fixed cost amount\n\n£${ccjJudgmentFixedCostAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostAmount",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
