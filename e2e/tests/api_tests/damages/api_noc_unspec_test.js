@@ -39,7 +39,7 @@ Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api
 // });
 
 Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
-  await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_LIPS');
+  await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
 
