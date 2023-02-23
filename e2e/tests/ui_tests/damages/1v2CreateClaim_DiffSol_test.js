@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
@@ -131,18 +131,20 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 
 
 Scenario('Add case flags', async ({I}) => {
-  const caseFlags = [{
-    partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-    details: [PARTY_FLAGS.vulnerableUser.value]
-  }, {
-    partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
-    details: [PARTY_FLAGS.unacceptableBehaviour.value]
-  }
-  ];
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      details: [PARTY_FLAGS.vulnerableUser.value]
+    }, {
+      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
+      details: [PARTY_FLAGS.unacceptableBehaviour.value]
+    }
+    ];
 
-  await I.login(config.hearingCentreAdmin01);
-  await I.createCaseFlags(caseFlags);
-  await I.validateCaseFlags(caseFlags);
+    await I.login(config.hearingCentreAdmin01);
+    await I.createCaseFlags(caseFlags);
+    await I.validateCaseFlags(caseFlags);
+  }
 });
 
 Scenario('Judge triggers SDO', async ({I}) => {

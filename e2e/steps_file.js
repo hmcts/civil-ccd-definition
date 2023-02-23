@@ -131,7 +131,6 @@ const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDe
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
-const {checkCaseFlagsEnabled} = require('./api/testingSupport');
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
@@ -873,10 +872,6 @@ module.exports = function () {
     },
 
     async createCaseFlags(caseFlags) {
-      if(!checkCaseFlagsEnabled()) {
-        return;
-      }
-
       eventName = 'Create case flags';
 
       for (const {partyName, roleOnCase, details} of caseFlags) {
@@ -893,11 +888,8 @@ module.exports = function () {
     },
 
     async validateCaseFlags(caseFlags) {
-      if(!checkCaseFlagsEnabled()) {
-        return;
-      }
-
       eventName = '';
+
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
         () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),

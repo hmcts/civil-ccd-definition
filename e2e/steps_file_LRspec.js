@@ -88,7 +88,6 @@ const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
-const {checkCaseFlagsEnabled} = require('./api/testingSupport');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -629,11 +628,8 @@ module.exports = function () {
     },
 
     async createCaseFlags(caseFlags) {
-      if(!checkCaseFlagsEnabled()) {
-        return;
-      }
       eventName = 'Create case flags';
-      caseId = 1677170850295347;
+
       for (const {partyName, roleOnCase, details} of caseFlags) {
         for (const {name, flagComment} of details) {
           await this.triggerStepsWithScreenshot([
@@ -648,10 +644,8 @@ module.exports = function () {
     },
 
     async validateCaseFlags(caseFlags) {
-      if(!checkCaseFlagsEnabled()) {
-        return;
-      }
       eventName = '';
+
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
         () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),

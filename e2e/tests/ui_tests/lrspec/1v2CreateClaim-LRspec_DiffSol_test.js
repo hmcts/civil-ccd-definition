@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled} = require('../../../api/testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
@@ -72,18 +72,20 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
 }).retry(3);
 
 Scenario('Add case flags', async ({LRspec}) => {
-  const caseFlags = [{
-    partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-    details: [PARTY_FLAGS.vulnerableUser.value]
-  }, {
-    partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
-    details: [PARTY_FLAGS.unacceptableBehaviour.value]
-  }
-  ];
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      details: [PARTY_FLAGS.vulnerableUser.value]
+    }, {
+      partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
+      details: [PARTY_FLAGS.unacceptableBehaviour.value]
+    }
+    ];
 
-  await LRspec.login(config.hearingCentreAdmin01);
-  await LRspec.createCaseFlags(caseFlags);
-  await LRspec.validateCaseFlags(caseFlags);
+    await LRspec.login(config.hearingCentreAdmin01);
+    await LRspec.createCaseFlags(caseFlags);
+    await LRspec.validateCaseFlags(caseFlags);
+  }
 });
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
