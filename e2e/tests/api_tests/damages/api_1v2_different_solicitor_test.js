@@ -63,7 +63,7 @@ Scenario('Claimant response', async ({I, api}) => {
 });
 
 Scenario('Add case flags', async ({api}) => {
-  await api.createCaseFlags(config.hearingCentreAdmin01);
+  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 AfterSuite(async  ({api}) => {

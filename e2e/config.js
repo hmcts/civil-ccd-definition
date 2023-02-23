@@ -123,14 +123,6 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '1'
   },
-  hearingCentreAdmin01: {
-    email: 'hearing-centre-admin-01@example.com',
-    password: defaultPassword,
-    type: 'hearing-center-admin',
-    roleCategory: 'ADMIN',
-    regionId: '1'
-  },
-
   systemupdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',

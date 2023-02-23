@@ -81,7 +81,7 @@ Scenario('Add case flags', async ({LRspec}) => {
   }
   ];
 
-  await LRspec.login(config.hearingCentreAdmin01);
+  await LRspec.login(config.hearingCenterAdminWithRegionId1);
   await LRspec.createCaseFlags(caseFlags);
   await LRspec.validateCaseFlags(caseFlags);
 });

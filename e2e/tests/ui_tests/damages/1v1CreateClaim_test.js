@@ -104,7 +104,7 @@ Scenario('Add case flags', async ({I}) => {
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }];
 
-    await I.login(config.hearingCentreAdmin01);
+    await I.login(config.hearingCenterAdminWithRegionId1);
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
