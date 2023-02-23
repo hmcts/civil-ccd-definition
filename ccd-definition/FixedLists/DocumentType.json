@@ -58,5 +58,11 @@
     "ListElementCode": "HEARING_FORM",
     "ListElement": "Hearing Form",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "TRIAL_READY_DOCUMENT",
+    "ListElement": "Trial Ready",
+    "DisplayOrder": 11
   }
 ]
