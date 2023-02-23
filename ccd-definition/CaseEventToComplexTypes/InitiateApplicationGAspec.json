@@ -346,6 +346,15 @@
     "ShowSummaryContentOption": "Y"
   },
   {
+    "ID": "GAPBADetailsGAspec",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppPBADetails",
+    "ListElementCode": "generalAppPayInformationText",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "ShowSummaryContentOption": "Y"
+  },
+  {
     "ID": "GAUploadN245Form",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "gaUploadN245FormUploadLabel",
