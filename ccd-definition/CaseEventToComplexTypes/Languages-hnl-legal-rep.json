@@ -13,8 +13,7 @@
     "CaseFieldID": "respondent1DQLanguage",
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -22,8 +21,7 @@
     "CaseFieldID": "respondent1DQLanguage",
     "ListElementCode": "documents",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Languages",
@@ -39,8 +37,7 @@
     "CaseFieldID": "respondent2DQLanguage",
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -48,8 +45,7 @@
     "CaseFieldID": "respondent2DQLanguage",
     "ListElementCode": "documents",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Languages",

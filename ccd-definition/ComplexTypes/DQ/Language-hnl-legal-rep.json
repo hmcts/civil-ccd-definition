@@ -20,7 +20,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
     "ElementLabel": "What language will you, your experts or witnesses speak at the hearing?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   },
   {
     "ID": "Language",
@@ -28,6 +29,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
     "ElementLabel": "What language will documents be provided in?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   }
 ]

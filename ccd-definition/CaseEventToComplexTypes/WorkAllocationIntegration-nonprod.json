@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "GARespondentAgreementPage",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent1DQLanguage",
+    "ListElementCode": "court",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "ID": "GAUrgencyRecordPage",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent1DQLanguage",
+    "ListElementCode": "documents",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "ID": "GARespondentAgreementPage",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent2DQLanguage",
+    "ListElementCode": "court",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  },
+  {
+    "ID": "GAUrgencyRecordPage",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent2DQLanguage",
+    "ListElementCode": "documents",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
+  }
+]
