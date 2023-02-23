@@ -85,5 +85,27 @@
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent1DQLanguage",
+    "PageDisplayOrder": 9,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Language",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent2DQLanguage",
+    "PageDisplayOrder": 9,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Language",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\""
   }
 ]

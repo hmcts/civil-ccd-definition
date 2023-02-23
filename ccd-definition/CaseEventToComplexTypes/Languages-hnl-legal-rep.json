@@ -111,7 +111,6 @@
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
-
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -121,7 +120,6 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
-
   },
   {
     "ID": "Languages",
