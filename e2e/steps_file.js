@@ -120,6 +120,11 @@ const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/cl
 const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.page');
 const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
+const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList.page');
+const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
+const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
@@ -295,6 +300,15 @@ module.exports = function () {
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
 
+    async checkForCaseFlagsEvent() {
+      eventName = 'Create case flags';
+      const eventNames = ['Create case flags', 'Manage case flags'];
+
+      await this.triggerStepsWithScreenshot([
+          () => caseViewPage.assertEventsAvailable(eventNames),
+      ]);
+    },
+
     async notifyClaim(solicitorToNotify) {
       eventName = 'Notify claim';
 
@@ -400,6 +414,18 @@ module.exports = function () {
         () => event.returnToCaseDetails()
       ]);
     },
+
+    async createHearingScheduled() {
+          eventName = 'Hearing Scheduled';
+          await this.triggerStepsWithScreenshot([
+            () => hearingNoticeListPage.hearingType('fastTrack'),
+            () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
+            () => hearingScheduledChooseDetailsPage.selectCourt(),
+            () => hearingScheduledMoreInfoPage.enterMoreInfo(),
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails()
+          ]);
+        },
 
     async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
