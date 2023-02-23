@@ -1,6 +1,7 @@
 civil-ccd-stack:
   enabled: true
 
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -52,7 +53,7 @@ civil-general-applications:
 civil-service:
   java:
     imagePullPolicy: Always
-    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
+    ingressHost: ${SERVICE_NAME}.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -114,10 +115,6 @@ civil-service:
               CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       auth:
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
