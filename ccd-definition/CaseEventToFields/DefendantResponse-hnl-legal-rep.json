@@ -39,7 +39,8 @@
     "CaseEventFieldLabel": "Support with access needs",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,6 +52,7 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   }
 ]
