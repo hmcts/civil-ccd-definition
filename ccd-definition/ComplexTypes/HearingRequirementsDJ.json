@@ -100,8 +100,7 @@
     "ListElementCode": "hearingSupportQuestion",
     "ElementLabel": "Does anyone require support for a court hearing?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "HearingSupportRequirementsListDJ",
