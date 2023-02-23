@@ -11,7 +11,8 @@
     "ID": "RespondentLiPResponse",
     "ListElementCode": "responseDeadlineAdditionalTime",
     "ElementLabel": " ",
-    "FieldType": "AdditionalTimeOptionsLiP",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "AdditionalTimeOptionsLiP",
     "SecurityClassification": "Public"
   },
   {
