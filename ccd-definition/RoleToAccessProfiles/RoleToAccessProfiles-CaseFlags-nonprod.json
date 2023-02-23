@@ -75,7 +75,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,,hearing-schedule-access,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access,caseflags-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
