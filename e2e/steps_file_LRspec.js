@@ -87,6 +87,8 @@ const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const {checkCaseFlagsEnabled} = require('./api/testingSupport');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -626,20 +628,33 @@ module.exports = function () {
       ]);
     },
 
-    async createCaseFlags() {
+    async createCaseFlags(caseFlags) {
+      if(!checkCaseFlagsEnabled()) {
+        return;
+      }
       eventName = 'Create case flags';
-      await this.triggerStepsWithScreenshot([
-        // ToDo trigger create case flags event
-        // () => caseViewPage.startEvent(eventName, caseId),
-        // () => event.submit('', '')
-      ]);
-      await this.takeScreenshot();
+      caseId = 1677170850295347;
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
     },
 
     async validateCaseFlags(caseFlags) {
+      if(!checkCaseFlagsEnabled()) {
+        return;
+      }
       eventName = '';
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.selectCaseFlagsTab(caseId),
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();

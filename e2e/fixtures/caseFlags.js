@@ -1,5 +1,5 @@
 const {element} = require('../api/dataHelper');
-const uuid = require("uuid");
+const uuid = require('uuid');
 module.exports = {
   PARTY_FLAGS: {
     vulnerableUser: element({

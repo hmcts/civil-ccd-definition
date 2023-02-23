@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-const {setupTokens} = require("../../../api/apiRequest");
+const {setupTokens} = require('../../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
 Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1');
@@ -38,20 +38,20 @@ Scenario('Inform agreed extension date', async ({api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario);
 });
 
-// Scenario('Add Litigation Friend', async ({api}) => {
-//   await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
-// });
+Scenario('Add Litigation Friend', async ({api}) => {
+  await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
+});
 
 Scenario('Defendant response', async ({api}) => {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
 });
 
-Scenario('Add case flags', async ({api}) => {
-  await api.createCaseFlags(config.hearingCentreAdmin01);
-});
-
 Scenario('Claimant response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
+});
+
+Scenario('Add case flags', async ({api}) => {
+  await api.createCaseFlags(config.hearingCentreAdmin01);
 });
 
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {

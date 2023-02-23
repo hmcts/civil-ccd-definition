@@ -13,8 +13,8 @@ module.exports = {
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',
         flags: {
-          partyName: "Sir John Doe",
-          roleOnCase: "Respondent 1"
+          partyName: 'Sir John Doe',
+          roleOnCase: 'Respondent 1'
         }
       },
       respondent2: {

@@ -2,11 +2,11 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 2v1 API test @my-target @api-specified');
-Scenario.only('2v1 fast claim full defence', async ({I, api_spec_fast}) => {
+Feature('CCD 2v1 API test @api-spec-fast @api-specified');
+Scenario('2v1 fast claim full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
-  await api_spec_fast.createCaseFlags(config.adminUser);
+  await api_spec_fast.createCaseFlags(config.hearingCentreAdmin01);
 });
 
 Scenario('2v1 fast claim counter claim', async ({I, api_spec_fast}) => {
@@ -17,7 +17,6 @@ Scenario('2v1 fast claim counter claim', async ({I, api_spec_fast}) => {
 Scenario('2v1 fast claim different response full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'TWO_V_ONE');
-
 });
 
 Scenario('2v1 fast claim different response no full defence', async ({I, api_spec_fast}) => {

@@ -21,8 +21,8 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',flags: {
-          partyName: "Sir John Doe",
-          roleOnCase: "Respondent 1"
+          partyName: 'Sir John Doe',
+          roleOnCase: 'Respondent 1'
         }
       },
     },
@@ -51,8 +51,8 @@ module.exports = {
           individualDateOfBirth: date(1),
           primaryAddress: buildAddress('respondent'),
           flags: {
-            partyName: "Sir John Doe",
-            roleOnCase: "Respondent 1"
+            partyName: 'Sir John Doe',
+            roleOnCase: 'Respondent 1'
           }
         }
       }

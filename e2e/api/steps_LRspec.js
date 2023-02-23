@@ -19,6 +19,8 @@ const {checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require(
 const {checkToggleEnabled} = require('./testingSupport');
 const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require('./caseFlagsHelper');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
 let caseId, eventName;
 let caseData = {};
@@ -232,7 +234,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
     if (caseFlagsEnabled && hnlSdoEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -273,7 +275,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -354,6 +356,25 @@ module.exports = {
 
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for (const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
   },
 
   getCaseId: async () => {

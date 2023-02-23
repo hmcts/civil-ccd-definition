@@ -2,7 +2,8 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement, buildAddress} = require('./dataHelper');
+const {listElement} = require('./dataHelper');
+
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
@@ -24,10 +25,8 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
-const {vulnerableUser, PARTY_FLAGS, CASE_FLAGS} = require('../fixtures/caseFlags');
-const uuid = require("uuid");
-const {element} = require('../api/dataHelper');
-const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags} = require("./caseFlagsHelper");
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
+const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags} = require('./caseFlagsHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -650,18 +649,18 @@ module.exports = {
 
     await validateEventPages(defendantResponseData, solicitor);
 
-    // await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
-    //   'The date entered cannot be in the future');
-    // await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
-    // await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
-    //   'Unavailable Date cannot be past date');
-    // await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
-    //   'Dates must be within the next 12 months.');
-    // let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
-    // if (isHNLEnabled) {
-    //   await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
-    //     'From Date should be less than To Date');
-    // }
+    await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
+      'The date entered cannot be in the future');
+    await assertError('Experts', defendantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
+    await assertError('Hearing', defendantResponseData.invalid.Hearing.past,
+      'Unavailable Date cannot be past date');
+    await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
+      'Dates must be within the next 12 months.');
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    if (isHNLEnabled) {
+      await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+        'From Date should be less than To Date');
+    }
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
     if (solicitor === 'solicitorOne') {
@@ -692,7 +691,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
 
-    const caseFlagsEnabled = await checkToggleEnabled('case-flags');
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
 
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
@@ -793,7 +792,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     if(checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.hearingCentreAdmin01, caseId);
     }
   },
 
@@ -951,18 +950,22 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
     eventName = 'CREATE_CASE_FLAGS';
 
     await apiRequest.setupTokens(user);
 
-    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId)
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
 
     const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
     const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
 
     for(const [index, value] of caseFlagLocations.entries()) {
-      await addAndAssertCaseFlag(value, partyFlags[index], caseId)
-    };
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
   },
 };
 
@@ -975,13 +978,7 @@ const validateEventPages = async (data, solicitor) => {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    // if(pageId === 'ClaimantLitigationFriend') {
-    //   const document = await testingSupport.uploadDocument();
-    //   data.valid[pageId].applicant1LitigationFriend = {
-    //     ...data.valid[pageId].applicant1LitigationFriend,
-    //     certificateOfSuitability: [element({document})]
-    //   }
-    // }
+   // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -1130,7 +1127,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
-
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
@@ -1266,11 +1262,13 @@ function checkCalculated(calculated, responseBodyData) {
 
 function replaceLitigationFriendFields(caseData) {
   if (caseData.applicant1LitigationFriend) {
+    // eslint-disable-next-line  no-unused-vars
     const {firstName, lastName, emailAddress, phoneNumber, ...rest} = caseData.applicant1LitigationFriend;
     caseData.applicant1LitigationFriend = {...rest, fullName: 'John Doe'};
     console.log(caseData.applicant1LitigationFriend);
   }
   if (caseData.applicant2LitigationFriend) {
+    // eslint-disable-next-line  no-unused-vars
     const {firstName, lastName, emailAddress, phoneNumber, ...rest} = caseData.applicant2LitigationFriend;
     caseData.applicant2LitigationFriend = {...rest, fullName: 'Jane Doe'};
   }

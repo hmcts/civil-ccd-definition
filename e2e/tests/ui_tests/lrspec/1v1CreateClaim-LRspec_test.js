@@ -3,6 +3,7 @@ const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
@@ -69,6 +70,21 @@ Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to pro
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
 }).retry(3);
+
+Scenario('Add case flags', async ({LRspec}) => {
+  const caseFlags = [{
+    partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+    details: [PARTY_FLAGS.vulnerableUser.value]
+  },{
+    partyName: 'John Smith', roleOnCase: 'Applicant solicitor expert',
+    details: [PARTY_FLAGS.unacceptableBehaviour.value]
+  }
+  ];
+
+  await LRspec.login(config.hearingCentreAdmin01);
+  await LRspec.createCaseFlags(caseFlags);
+  await LRspec.validateCaseFlags(caseFlags);
+});
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

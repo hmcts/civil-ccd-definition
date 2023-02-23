@@ -12,7 +12,6 @@ const TASK_RETRY_TIMEOUT_MS = 20000;
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
-
 const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getRequestHeaders = (userAuth) => {
@@ -35,8 +34,6 @@ module.exports = {
         oneTimePassword: totp(config.s2s.secret)
       })
       .then(response => response.text());
-    console.log(tokens.userId);
-    console.log(tokens.s2sAuth);
   },
 
   fetchCaseForDisplay: async(user, caseId, response = 200) => {

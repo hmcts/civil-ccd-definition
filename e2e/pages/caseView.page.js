@@ -55,30 +55,23 @@ module.exports = {
     events.forEach(event => I.see(event, this.fields.eventDropdown));
   },
 
-  async selectCaseFlagsTab(caseId) {
-    await I.navigateToCaseDetails(caseId);
-    const xpath = '//div[contains(text(), \'Case Flags\')]';
-    await I.waitForClickable(xpath);
-    await I.click(xpath);
+  async goToCaseFlagsTab(caseId) {
+    await I.navigateToCaseFlags(caseId);
     await I.waitForElement(this.components.caseFlags);
   },
 
   async assertCaseFlagsInfo(numberOfFlags) {
-    I.see(`There is ${numberOfFlags} active flag on this case.`);
+    I.see(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
   },
 
   async assertCaseFlags(caseFlags) {
     console.log('validating case flags');
     caseFlags.forEach(({partyName, details}) => {
-      console.log('verifying party name');
+      console.log(`Verifying party name [${partyName}] is displayed`);
       I.see(partyName, this.components.caseFlags);
       details.forEach(({name}) => {
-        console.log('verifying flag name');
+        console.log(`Verifying [${name}] flag is displayed`);
         I.see(name, this.components.caseFlags);
-        // I.see(comments, this.components.caseFlags);
-        // I.see(creationDate, this.components.caseFlags);
-        // I.see(lastModified, this.components.caseFlags);
-        // I.see(status, this.components.caseFlags);
       });
     });
   }

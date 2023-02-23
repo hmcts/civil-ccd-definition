@@ -38,9 +38,9 @@ Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
   await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-// Scenario('Add Litigation Friend for Respondent 2', async ({I, api}) => {
-//   await api.addDefendantLitigationFriend(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-// });
+Scenario('Add Litigation Friend for Respondent 2', async ({I, api}) => {
+  await api.addDefendantLitigationFriend(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+});
 
 Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
@@ -58,12 +58,12 @@ Scenario('Defendant response Solicitor 2', async ({I, api}) => {
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-Scenario('Add case flags', async ({api}) => {
-  await api.createCaseFlags(config.hearingCentreAdmin01);
-});
-
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
+});
+
+Scenario('Add case flags', async ({api}) => {
+  await api.createCaseFlags(config.hearingCentreAdmin01);
 });
 
 AfterSuite(async  ({api}) => {

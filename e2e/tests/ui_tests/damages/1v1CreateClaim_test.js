@@ -3,6 +3,7 @@ const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('..
 const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -53,16 +54,6 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Admin adds case flags on to case', async ({I}) => {
-  let isCaseFlagsToggleEnabled = await checkToggleEnabled('case-flags');
-  if (isCaseFlagsToggleEnabled) {
-    await I.login(config.adminUser);
-    await I.navigateToCaseDetails(caseNumber);
-    await I.checkForCaseFlagsEvent();
-    await I.click('Sign out');
-  }
-}).retry(3);
-
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
@@ -88,6 +79,21 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
 }).retry(3);
+
+Scenario('Add case flags', async ({I}) => {
+  const caseFlags = [{
+    partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+    details: [PARTY_FLAGS.vulnerableUser.value]
+  },{
+    partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+    details: [PARTY_FLAGS.unacceptableBehaviour.value]
+  }
+  ];
+
+  await I.login(config.hearingCentreAdmin01);
+  await I.createCaseFlags(caseFlags);
+  await I.validateCaseFlags(caseFlags);
+});
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
