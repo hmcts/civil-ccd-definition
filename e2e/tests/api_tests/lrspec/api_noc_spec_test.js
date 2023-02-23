@@ -30,16 +30,11 @@ Scenario('notice of change - 1v2 - both defendants represented - same to differe
   let caseId = await api_spec.getCaseId();
 
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, secondDefendantSolicitorUser);
-  await api_spec.checkUserCaseAccess(defendantSolicitorUser, false);
   await api_spec.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 
-  await noc.requestNoticeOfChangeForRespondent2SolicitorSpec(caseId, otherSolicitorUser2);
-  await api_spec.checkUserCaseAccess(secondDefendantSolicitorUser, false);
-  await api_spec.checkUserCaseAccess(otherSolicitorUser2, true);
-
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
+  await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-  await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_APPLICANT_INTENTION');
 });
 

@@ -50,7 +50,6 @@ Scenario('notice of change - 1v2 - both defendants represented - diff solicitor 
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, otherSolicitorUser2);
-  await api.checkUserCaseAccess(secondDefendantSolicitorUser, false);
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
 });
 

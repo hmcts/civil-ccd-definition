@@ -132,6 +132,11 @@ module.exports = {
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
+    if (scenario === 'ONE_V_TWO_SAME_SOL' && createClaimData.userInput.SameLegalRepresentative
+      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'Yes') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+    }
+
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
