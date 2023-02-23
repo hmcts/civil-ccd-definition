@@ -10,26 +10,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "historicalBundles",
-    "Label": "Historical Bundles",
-    "HintText": "Bundle to hold documents",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Bundle",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "bundleConfiguration",
     "Label": "Bundle configuration",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "multiBundleConfiguration",
-    "Label": "Bundle configuration",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Text",
     "SecurityClassification": "Public"
   },
   {
