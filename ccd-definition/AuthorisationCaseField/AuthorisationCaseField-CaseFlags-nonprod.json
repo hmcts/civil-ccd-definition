@@ -5,13 +5,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "judge-profile"
+          "caseflags-viewer"
         ],
         "CRUD": "R"
       }
