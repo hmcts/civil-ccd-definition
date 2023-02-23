@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "businessProcess",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "judge-profile",
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  }
+]
