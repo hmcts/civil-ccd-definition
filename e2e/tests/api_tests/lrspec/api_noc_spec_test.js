@@ -24,32 +24,23 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api_spec, noc
   await api_spec.checkUserCaseAccess(otherSolicitorUser1, true);
 });
 
-Scenario('notice of change - 1v2 - both defendants represented', async ({api_spec, noc}) => {
+Scenario('notice of change - 1v2 - both defendants represented - same to different solicitor', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
 
   let caseId = await api_spec.getCaseId();
 
-  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
+  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, secondDefendantSolicitorUser);
   await api_spec.checkUserCaseAccess(defendantSolicitorUser, false);
-  await api_spec.checkUserCaseAccess(otherSolicitorUser1, true);
+  await api_spec.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 
   await noc.requestNoticeOfChangeForRespondent2SolicitorSpec(caseId, otherSolicitorUser2);
   await api_spec.checkUserCaseAccess(secondDefendantSolicitorUser, false);
   await api_spec.checkUserCaseAccess(otherSolicitorUser2, true);
-});
 
-Scenario('notice of change - 1v2 - same solicitor', async ({api_spec, noc}) => {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-
-  let caseId = await api_spec.getCaseId();
-
-  await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
-  await api_spec.checkUserCaseAccess(defendantSolicitorUser, false);
-  await api_spec.checkUserCaseAccess(otherSolicitorUser1, true);
-
-  await noc.requestNoticeOfChangeForRespondent2SolicitorSpec(caseId, otherSolicitorUser2);
-  await api_spec.checkUserCaseAccess(secondDefendantSolicitorUser, false);
-  await api_spec.checkUserCaseAccess(otherSolicitorUser2, true);
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
+    'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
+    'AWAITING_APPLICANT_INTENTION');
 });
 
 Scenario('notice of change - 2v1', async ({api_spec, noc}) => {
