@@ -1,0 +1,131 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "trialReadyApplicant",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "trialReadyRespondent1",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "trialReadyRespondent2",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "applicantRevisedHearingRequirements",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyApplicant=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "respondent1RevisedHearingRequirements",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialReadyRespondent1=\"Yes\" OR trialReadyRespondent1=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "respondent2RevisedHearingRequirements",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialReadyRespondent2=\"Yes\" OR trialReadyRespondent2=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "applicantRevisedHearingComments",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "applicantRevisedHearingRequirements=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "respondent1RevisedHearingComments",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1RevisedHearingRequirements=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "respondent2RevisedHearingComments",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent2RevisedHearingRequirements=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "applicantHearingOtherComments",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyApplicant=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "respondent1HearingOtherComments",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialReadyRespondent1=\"Yes\" OR trialReadyRespondent1=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "CaseFieldID": "respondent2HearingOtherComments",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ConfirmReady",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "trialReadyRespondent2=\"Yes\" OR trialReadyRespondent2=\"No\""
+  }
+]

@@ -16,22 +16,85 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialReadyApplicant",
-    "Label": "Are you ready for trial?",
+    "Label": "Is the case ready for Trial or Hearing?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialReadyRespondent1",
-    "Label": "Are you ready for trial?",
+    "Label": "Is the case ready for Trial or Hearing?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialReadyRespondent2",
-    "Label": "Are you ready for trial?",
+    "Label": "Is the case ready for Trial or Hearing?",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantRevisedHearingRequirements",
+    "Label": "Hearing Requirements",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1RevisedHearingRequirements",
+    "Label": "Hearing Requirements",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2RevisedHearingRequirements",
+    "Label": "Hearing Requirements",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantRevisedHearingComments",
+    "Label": "",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1RevisedHearingComments",
+    "Label": "",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2RevisedHearingComments",
+    "Label": "",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantHearingOtherComments",
+    "Label": "",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1HearingOtherComments",
+    "Label": "",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2HearingOtherComments",
+    "Label": "",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
