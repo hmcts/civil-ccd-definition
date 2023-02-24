@@ -976,7 +976,7 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -2221,7 +2221,7 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   }
