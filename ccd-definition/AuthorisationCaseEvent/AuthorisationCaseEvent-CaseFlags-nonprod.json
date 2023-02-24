@@ -1,19 +1,25 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "flagLauncher",
+    "CaseEventID": "CREATE_CASE_FLAGS",
     "AccessControl": [
       {
         "UserRoles": [
           "caseflags-admin"
         ],
         "CRUD": "CRU"
-      },
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "AccessControl": [
       {
         "UserRoles": [
-          "caseflags-viewer"
+          "caseflags-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   }

@@ -12,12 +12,5 @@
     "Label": "Case Flags",
     "FieldType": "Flags",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "appellantFlags",
-    "Label": "Appellant Flags",
-    "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
   }
 ]
