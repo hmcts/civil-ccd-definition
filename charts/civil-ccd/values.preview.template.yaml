@@ -30,6 +30,8 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
 idam-pr:
+  java:
+    releaseNameOverride: ${SERVICE_NAME}-idam-pr
   redirect_uris:
     XUI:
       - https://xui-${SERVICE_FQDN}/oauth2/callback
