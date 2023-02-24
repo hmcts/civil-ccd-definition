@@ -58,42 +58,42 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantRevisedHearingComments",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RevisedHearingComments",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2RevisedHearingComments",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantHearingOtherComments",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1HearingOtherComments",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2HearingOtherComments",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   }
