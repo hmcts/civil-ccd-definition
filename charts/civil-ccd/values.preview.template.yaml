@@ -1,5 +1,6 @@
 civil-service:
   java:
+    releaseNameOverride: ${SERVICE_NAME}-civil-service
     keyVaults:
       civil:
         resourceGroup: civil
@@ -35,6 +36,8 @@ idam-pr:
 
 civil-general-applications:
   enabled: true
+  java:
+    releaseNameOverride: ${SERVICE_NAME}-civil-general-applications
 xui-webapp:
   nodejs:
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
