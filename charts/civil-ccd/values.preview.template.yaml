@@ -209,13 +209,13 @@ wa-workflow-api:
       POSTGRES_CONNECTION_OPTIONS: ""
       TASK_MANAGEMENT_URL: http://{{ .Release.Name }}-wa-task-management-api
 
-#wa-message-cron-service:
-#  job:
-#    releaseNameOverride: ${SERVICE_NAME}-wa-message-cron-service
-#    keyVaults:
-#      wa:
-#        secrets:
-#          - s2s-secret-case-event-handler
-#    environment:
-#      WA_CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
+  wa-message-cron-service:
+    job:
+      releaseNameOverride: ${SERVICE_NAME}-wa-message-cron-service
+      keyVaults:
+        wa:
+          secrets:
+            - s2s-secret-case-event-handler
+      environment:
+        WA_CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
 
