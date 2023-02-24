@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "DQExtraDetailsLip",
+    "ListElementCode": "phoneOrVideoHearing",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DQExtraDetailsLip",
+    "ListElementCode": "whyUnavailableForHearing",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DQExtraDetailsLip",
+    "ListElementCode": "giveEvidenceYourSelf",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+]
