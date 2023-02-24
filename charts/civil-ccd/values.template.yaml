@@ -51,6 +51,7 @@ civil-general-applications:
 
 civil-service:
   java:
+    releaseNameOverride: ${SERVICE_NAME}-civil-service
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
@@ -222,6 +223,7 @@ ccd:
       ingressIP: ${INGRESS_IP}
   ccd-data-store-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       imagePullPolicy: Always
       devcpuRequests: 1000m
       devmemoryRequests: 2048Mi
@@ -248,6 +250,7 @@ ccd:
         RELEASE_REVISION: "{{ .Release.Revision }}"
   am-role-assignment-service:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults:
@@ -256,6 +259,7 @@ ccd:
             - role-assignment-service-LD-SDK-KEY
   ccd-definition-store-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       imagePullPolicy: Always
       devcpuRequests: 500m
       devmemoryRequests: 512Mi
@@ -269,6 +273,7 @@ ccd:
       disableKeyVaults: true
   ccd-user-profile-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-user-profile-api
       imagePullPolicy: Always
       enviroment:
         USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
