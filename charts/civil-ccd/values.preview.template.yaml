@@ -56,36 +56,36 @@ ccd:
       ingressHost: am-role-assignment-service-${SERVICE_FQDN}
 
 
-  ccd-message-publisher:
-    java:
-      ingressHost: ccd-message-publisher-${SERVICE_FQDN}
-      releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
-      keyVaults:
-        ccd:
-          secrets:
-            - name: AppInsightsInstrumentationKey
-              alias: azure.application-insights.instrumentation-key
-      environment:
-        DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
-        DATA_STORE_DB_NAME: data-store
-        DATA_STORE_DB_USERNAME: hmcts
-        DATA_STORE_DB_PASSWORD: hmcts
-        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
-        CCD_CASE_EVENTS_DESTINATION: ccd-case-events
-      secrets:
-        SERVICE_BUS_CONNECTION_STRING:
-          secretRef: civil-work-allocation-secret
-          key: connectionString
-    servicebus:
-      releaseNameOverride: ${SERVICE_NAME}-asb
-      teamName: Civil
-      resourceGroup: civil-service-aat
-      enabled: false
-      serviceplan: standard
-      setup:
-        topics:
-          - name: ccd-case-events
-            subscriptionNeeded: yes
+ccd-message-publisher:
+  java:
+    ingressHost: ccd-message-publisher-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
+    keyVaults:
+      ccd:
+        secrets:
+          - name: AppInsightsInstrumentationKey
+            alias: azure.application-insights.instrumentation-key
+    environment:
+      DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
+      DATA_STORE_DB_NAME: data-store
+      DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_PASSWORD: hmcts
+      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      CCD_CASE_EVENTS_DESTINATION: ccd-case-events
+    secrets:
+      SERVICE_BUS_CONNECTION_STRING:
+        secretRef: civil-work-allocation-secret
+        key: connectionString
+  servicebus:
+    releaseNameOverride: ${SERVICE_NAME}-asb
+    teamName: Civil
+    resourceGroup: civil-service-aat
+    enabled: false
+    serviceplan: standard
+    setup:
+      topics:
+        - name: ccd-case-events
+          subscriptionNeeded: yes
 
 camunda-bpm:
   java:
