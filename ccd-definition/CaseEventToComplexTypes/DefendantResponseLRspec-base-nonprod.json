@@ -43,7 +43,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingFastClaim",
-    "ListElementCode": "unavailableDatesLRspec.who",
+    "ListElementCode": "unavailableDates.who",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -75,7 +75,7 @@
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQHearingFastClaim",
-    "ListElementCode": "unavailableDatesLRspec.who",
+    "ListElementCode": "unavailableDates.who",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   }
