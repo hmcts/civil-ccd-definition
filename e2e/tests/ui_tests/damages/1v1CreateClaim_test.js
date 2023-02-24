@@ -20,7 +20,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1');
+Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -51,6 +51,16 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
   await I.click('Sign out');
+}).retry(3);
+
+Scenario('Admin adds case flags on to case', async ({I}) => {
+  let isCaseFlagsToggleEnabled = await checkToggleEnabled('case-flags');
+  if (isCaseFlagsToggleEnabled) {
+    await I.login(config.adminUser);
+    await I.navigateToCaseDetails(caseNumber);
+    await I.checkForCaseFlagsEvent();
+    await I.click('Sign out');
+  }
 }).retry(3);
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
