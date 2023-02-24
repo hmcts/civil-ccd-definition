@@ -1,6 +1,6 @@
 civil-service:
+  releaseNameOverride: ${SERVICE_NAME}-civil-service
   java:
-    releaseNameOverride: ${SERVICE_NAME}-civil-service
     keyVaults:
       civil:
         resourceGroup: civil
@@ -37,38 +37,38 @@ idam-pr:
 
 civil-general-applications:
   enabled: true
+  releaseNameOverride: ${SERVICE_NAME}-civil-general-applications
   java:
-    releaseNameOverride: ${SERVICE_NAME}-civil-general-applications
 xui-webapp:
+  releaseNameOverride: ${SERVICE_NAME}-xui-webapp
   nodejs:
-    releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     ingressHost: xui-${SERVICE_FQDN}
 ccd:
   ccd-api-gateway-web:
+    releaseNameOverride: ${SERVICE_NAME}-ccd-api-gateway-web
     nodejs:
-      releaseNameOverride: ${SERVICE_NAME}-ccd-api-gateway-web
       ingressHost: gateway-${SERVICE_FQDN}
   ccd-data-store-api:
+    releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
     java:
-      releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       environment:
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   ccd-definition-store-api:
+    releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
     java:
-      releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
   am-role-assignment-service:
+    releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
     java:
-      releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
       ingressHost: am-role-assignment-service-${SERVICE_FQDN}
 
 
   ccd-message-publisher:
+    releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     java:
       ingressHost: ccd-message-publisher-${SERVICE_FQDN}
-      releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
       keyVaults:
         ccd:
           secrets:
@@ -104,8 +104,8 @@ wa:
   enabled: true
 
   wa-task-management-api:
+    releaseNameOverride: ${SERVICE_NAME}-wa-task-management-api
     java:
-      releaseNameOverride: ${SERVICE_NAME}-wa-task-management-api
       ingressHost: wa-task-management-api-${SERVICE_FQDN}
       keyVaults:
         wa:
@@ -133,9 +133,9 @@ wa:
         CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
 
   wa-task-monitor:
+    releaseNameOverride: ${SERVICE_NAME}-wa-task-monitor
     java:
       ingressHost: wa-task-monitor-${SERVICE_FQDN}
-      releaseNameOverride: ${SERVICE_NAME}-wa-task-monitor
       keyVaults:
         wa:
           secrets:
@@ -158,9 +158,9 @@ wa:
         ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
 
   wa-case-event-handler:
+    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     java:
       ingressHost: wa-case-event-handler-${SERVICE_FQDN}
-      releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
       secrets:
         AZURE_SERVICE_BUS_CONNECTION_STRING:
           secretRef: civil-work-allocation-secret
@@ -196,9 +196,9 @@ wa:
         POSTGRES_CONNECTION_OPTIONS: ""
 
   wa-workflow-api:
+    releaseNameOverride: ${SERVICE_NAME}-wa-workflow-api
     java:
       ingressHost: wa-workflow-api-${SERVICE_FQDN}
-      releaseNameOverride: ${SERVICE_NAME}-wa-workflow-api
       keyVaults:
         wa:
           secrets:
