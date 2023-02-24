@@ -1,9 +1,16 @@
 [
   {
     "ID": "DQExtraDetailsLip",
-    "ListElementCode": "phoneOrVideoHearing",
+    "ListElementCode": "wantPhoneOrVideoHearing",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DQExtraDetailsLip",
+    "ListElementCode": "whyPhoneOrVideoHearing",
+    "ElementLabel": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
@@ -19,5 +26,5 @@
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
-  },
+  }
 ]
