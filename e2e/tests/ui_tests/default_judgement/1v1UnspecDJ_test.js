@@ -127,3 +127,7 @@ Scenario('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) =
   await I.login(config.iacCtscTeamLeaderUser);
   await WA.verifyApprovedSpecificAccess(caseId);
 });
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});
