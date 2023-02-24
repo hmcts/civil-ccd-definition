@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flagLauncher",
+    "Label": "Launch the Flags screen",
+    "FieldType": "FlagLauncher",
+    "SecurityClassification": "Public"
+  }
+]
