@@ -36,6 +36,7 @@
     "ListElementCode": "createdDatetime",
     "ElementLabel": "Document Uploaded DateTime",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "expertDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]

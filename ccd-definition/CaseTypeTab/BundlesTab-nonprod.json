@@ -21,7 +21,17 @@
     "TabID": "CaseBundles",
     "TabLabel": "Bundles",
     "TabDisplayOrder": 12,
-    "CaseFieldID": "historicalBundles",
-    "TabFieldDisplayOrder": 2
+    "CaseFieldID": "applicantDocsUploadedAfterBundle",
+    "TabFieldDisplayOrder": 3,
+    "DisplayContextParameter": "#TABLE(typeOfDocument,createdDatetime,documentUpload)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "CaseBundles",
+    "TabLabel": "Bundles",
+    "TabDisplayOrder": 12,
+    "CaseFieldID": "respondentDocsUploadedAfterBundle",
+    "TabFieldDisplayOrder": 4,
+    "DisplayContextParameter": "#TABLE(typeOfDocument,createdDatetime,documentUpload)"
   }
 ]
