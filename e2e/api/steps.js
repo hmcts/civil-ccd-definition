@@ -1265,7 +1265,6 @@ function replaceLitigationFriendFields(caseData) {
     // eslint-disable-next-line  no-unused-vars
     const {firstName, lastName, emailAddress, phoneNumber, ...rest} = caseData.applicant1LitigationFriend;
     caseData.applicant1LitigationFriend = {...rest, fullName: 'John Doe'};
-    console.log(caseData.applicant1LitigationFriend);
   }
   if (caseData.applicant2LitigationFriend) {
     // eslint-disable-next-line  no-unused-vars
