@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
