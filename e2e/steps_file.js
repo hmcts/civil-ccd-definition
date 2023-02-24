@@ -851,12 +851,12 @@ module.exports = function () {
       ]);
     },
 
-    async uploadADocument(caseId) {
+    async evidenceUpload(caseId) {
       eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedEvidenceUpload.uploadADocument(caseId),
         () => unspecifiedEvidenceUpload.selectType(),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },

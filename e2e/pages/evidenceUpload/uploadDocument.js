@@ -5,23 +5,23 @@ module.exports = {
 
   fields: {
     witnessSelectionEvidenceSmallClaim: {
-      id: '#witnessSelectionEvidenceSmallClaim',
+      id: '#witnessSelectionEvidence',
       options: {
-        witnessStatement: '#witnessSelectionEvidenceSmallClaim-WITNESS_STATEMENT'
+        witnessStatement: '#witnessSelectionEvidence-WITNESS_STATEMENT'
       }
     },
 
     expertSelectionEvidenceSmallClaim:{
-      id: '#expertSelectionEvidenceSmallClaim',
+      id: '#expertSelectionEvidence',
       options: {
-        expertReport: '#expertSelectionEvidenceSmallClaim-EXPERT_REPORT'
+        expertReport: '#expertSelectionEvidence-EXPERT_REPORT'
       }
     },
 
     trialSelectionEvidenceSmallClaim:{
-      id: '#trialSelectionEvidenceSmallClaim',
+      id: '#trialSelectionEvidence',
       options: {
-        authorities: '#trialSelectionEvidenceSmallClaim-AUTHORITIES'
+        authorities: '#trialSelectionEvidence-AUTHORITIES'
       }
     },
 
@@ -49,7 +49,7 @@ module.exports = {
     documentAuthorities:{
       id: '#documentAuthorities',
       button: '#documentAuthorities > div:nth-child(1) > button:nth-child(2)',
-      document: '#documentAuthorities_value'
+      document: '#documentAuthorities_0_documentUpload'
     }
   },
 
@@ -61,9 +61,9 @@ module.exports = {
     await within(this.fields.expertSelectionEvidenceSmallClaim.id, () => {
       I.click(this.fields.expertSelectionEvidenceSmallClaim.options.expertReport);
     });
-    await within(this.fields.trialSelectionEvidenceSmallClaim.id, () => {
+    /*await within(this.fields.trialSelectionEvidenceSmallClaim.id, () => {
       I.click(this.fields.trialSelectionEvidenceSmallClaim.options.authorities);
-    });
+    });*/
     await I.clickContinue();
   },
 
@@ -86,10 +86,10 @@ module.exports = {
       I.fillField(this.fields.documentExpertReport.year, '2022');
       I.attachFile(this.fields.documentExpertReport.document, file);
     });
-    await within(this.fields.documentAuthorities.id, () => {
+    /*await within(this.fields.documentAuthorities.id, () => {
       I.click(this.fields.documentAuthorities.button);
       I.attachFile(this.fields.documentAuthorities.document, file);
-    });
+    });*/
     await I.clickContinue();
   },
 
