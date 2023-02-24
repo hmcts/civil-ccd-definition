@@ -138,7 +138,7 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+    const pbaV3 = true; //await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -146,9 +146,9 @@ module.exports = {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
+      await waitForFinishedBusinessProcess(caseId);
     }
 
-    await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -293,6 +293,38 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
+
+    const pbaV3 = true;
+    if(pbaV3 == true){
+      let claimIssuedPBADetails = {
+        claimIssuedPBADetails:{
+          applicantsPbaAccounts: {
+              value: {
+                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
+                label:'PBA0088192'
+              },
+            list_items:[
+              {
+                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
+                label:'PBA0088192'
+              },
+              {
+                code:'66b21c61-aed1-11ed-8aa3-494efce63912',
+                label:'PBA0078095'
+              }
+            ]
+          },
+          fee:{
+            calculatedAmountInPence:'8000',
+            code:'FEE0205',
+            version:'6'
+          },
+          serviceRequestReference:'2023-1676644996295'
+        }
+      };
+      caseData = update(caseData, claimIssuedPBADetails);
+    }
+
     if (scenario === 'ONE_V_TWO') {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -516,10 +548,6 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
-  const pbaV3 = true;
-  if(pbaV3 == true){
-    delete responseBody.data['claimIssuedPBADetails'];
-  }
 
   if (pageId === 'defendantDetailsSpec') {
     delete responseBody.data['registrationTypeRespondentOne'];
