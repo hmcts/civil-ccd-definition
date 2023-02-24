@@ -301,6 +301,15 @@ module.exports = function () {
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
 
+    async checkForCaseFlagsEvent() {
+      eventName = 'Create case flags';
+      const eventNames = ['Create case flags', 'Manage case flags'];
+
+      await this.triggerStepsWithScreenshot([
+          () => caseViewPage.assertEventsAvailable(eventNames),
+      ]);
+    },
+
     async notifyClaim(solicitorToNotify) {
       eventName = 'Notify claim';
 
