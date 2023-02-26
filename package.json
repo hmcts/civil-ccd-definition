@@ -81,6 +81,6 @@
     "webdriverio": "^6.12.1"
   },
   "resolutions": {
-    "minimatch": "^3.0.5"
+    "minimatch": "^7.0.0"
   }
 }
