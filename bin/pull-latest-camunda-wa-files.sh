@@ -10,7 +10,7 @@ echo "Switch to ${branchName} branch on wa-standalone-task-bpmn"
 git checkout ${branchName}
 cd ..
 
-#Copy camunda folder to civil-ccd-def which contains bpmn files
+#Copy camunda folder to civil-ccd-def which contians bpmn files
 cp -r ./wa-standalone-task-bpmn/src/main/resources .
 rm -rf ./wa-standalone-task-bpmn
 

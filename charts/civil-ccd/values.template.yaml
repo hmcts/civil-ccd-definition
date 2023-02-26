@@ -1,7 +1,6 @@
 civil-ccd-stack:
   enabled: true
 
-
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -52,6 +51,7 @@ civil-general-applications:
 
 civil-service:
   java:
+    releaseNameOverride: ${SERVICE_NAME}-civil-service
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
@@ -180,7 +180,6 @@ xui-webapp:
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW"
       SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICES_CCD_CASE_ASSIGNMENT_API: http://${SERVICE_NAME}-aac-manage-case-assignment
-      WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW"
 ccd:
   ccd:
     adminWeb:
@@ -223,6 +222,7 @@ ccd:
       ingressIP: ${INGRESS_IP}
   ccd-data-store-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       imagePullPolicy: Always
       devcpuRequests: 1000m
       devmemoryRequests: 2048Mi
@@ -249,6 +249,7 @@ ccd:
         RELEASE_REVISION: "{{ .Release.Revision }}"
   am-role-assignment-service:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults:
@@ -257,6 +258,7 @@ ccd:
             - role-assignment-service-LD-SDK-KEY
   ccd-definition-store-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       imagePullPolicy: Always
       devcpuRequests: 500m
       devmemoryRequests: 512Mi
@@ -270,6 +272,7 @@ ccd:
       disableKeyVaults: true
   ccd-user-profile-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-user-profile-api
       imagePullPolicy: Always
       enviroment:
         USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
