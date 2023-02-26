@@ -22,8 +22,8 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
-  DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response),
-  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
+  DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
 };
@@ -32,14 +32,21 @@ const eventData = {
   defendantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
-      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+      PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
+      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT')
     },
     ONE_V_TWO: {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
+      FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
+      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
     }
   }
 };
@@ -122,6 +129,12 @@ module.exports = {
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     await apiRequest.setupTokens(user);
+
+    const pbaV3 = true;
+    if(pbaV3 == true){
+      response = response+'_PBAv3';
+    }
+
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
