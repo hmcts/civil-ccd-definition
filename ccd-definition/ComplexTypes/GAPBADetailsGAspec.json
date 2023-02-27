@@ -9,6 +9,14 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
+    "ListElementCode": "generalAppPayInformationText",
+    "ElementLabel": "You will be able to pay for your application once it has been submitted.",
+    "HintText": "  ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GAPBADetailsGAspec",
     "ListElementCode": "applicantsPbaAccounts",
     "ElementLabel": "Select your payment by account number (PBA)\n",
     "FieldType": "DynamicList",
