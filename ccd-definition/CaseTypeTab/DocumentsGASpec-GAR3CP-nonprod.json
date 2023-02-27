@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "hearingNoticeDocument",
+    "TabFieldDisplayOrder": 8,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  }
+]
