@@ -18,7 +18,7 @@
     "ID": "applicantSolicitorWitnesses",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DQPartyFlagStructure",
+    "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -27,7 +27,7 @@
     "ID": "applicantSolicitorExperts",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DQPartyFlagStructure",
+    "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -36,7 +36,7 @@
     "ID": "respondentSolicitor1Witnesses",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DQPartyFlagStructure",
+    "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -45,7 +45,7 @@
     "ID": "respondentSolicitor1Experts",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DQPartyFlagStructure",
+    "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -54,7 +54,7 @@
     "ID": "respondentSolicitor2Witnesses",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DQPartyFlagStructure",
+    "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -63,7 +63,7 @@
     "ID": "respondentSolicitor2Experts",
     "Label": " ",
     "FieldType": "Collection",
-    "FieldTypeParameter": "DQPartyFlagStructure",
+    "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

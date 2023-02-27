@@ -1,6 +1,6 @@
 [
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "ListElementCode": "firstName",
     "FieldType": "Text",
     "ElementLabel": "First name",
@@ -8,7 +8,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "ListElementCode": "lastName",
     "FieldType": "Text",
     "ElementLabel": "Last name",
@@ -16,7 +16,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "ListElementCode": "flags",
     "FieldType": "Flags",
     "ElementLabel": "flags",

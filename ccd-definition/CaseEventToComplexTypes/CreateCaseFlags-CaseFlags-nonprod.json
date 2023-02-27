@@ -1,6 +1,6 @@
 [
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "applicantSolicitorExperts",
     "ListElementCode": "firstName",
@@ -9,7 +9,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "applicantSolicitorExperts",
     "ListElementCode": "lastName",
@@ -18,7 +18,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "applicantSolicitorExperts",
     "ListElementCode": "flags",
@@ -27,7 +27,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "applicantSolicitorWitnesses",
     "ListElementCode": "firstName",
@@ -36,7 +36,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "applicantSolicitorWitnesses",
     "ListElementCode": "lastName",
@@ -45,7 +45,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "applicantSolicitorWitnesses",
     "ListElementCode": "flags",
@@ -54,7 +54,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor1Witnesses",
     "ListElementCode": "firstName",
@@ -63,7 +63,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor1Witnesses",
     "ListElementCode": "lastName",
@@ -72,7 +72,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor1Witnesses",
     "ListElementCode": "flags",
@@ -81,7 +81,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor1Experts",
     "ListElementCode": "firstName",
@@ -90,7 +90,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor1Experts",
     "ListElementCode": "lastName",
@@ -99,7 +99,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor1Experts",
     "ListElementCode": "flags",
@@ -108,7 +108,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor2Witnesses",
     "ListElementCode": "firstName",
@@ -117,7 +117,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor2Witnesses",
     "ListElementCode": "lastName",
@@ -126,7 +126,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor2Witnesses",
     "ListElementCode": "flags",
@@ -135,7 +135,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor2Experts",
     "ListElementCode": "firstName",
@@ -144,7 +144,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor2Experts",
     "ListElementCode": "lastName",
@@ -153,7 +153,7 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DQPartyFlagStructure",
+    "ID": "PartyFlagStructure",
     "CaseEventID": "CREATE_CASE_FLAGS",
     "CaseFieldID": "respondentSolicitor2Experts",
     "ListElementCode": "flags",
