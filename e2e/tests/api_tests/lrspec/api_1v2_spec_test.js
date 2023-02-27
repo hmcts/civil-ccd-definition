@@ -69,3 +69,7 @@ Scenario('1v2 small claim part admit, claimant response', async ({I, api_spec}) 
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
 });
+
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});

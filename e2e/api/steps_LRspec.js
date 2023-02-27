@@ -1,6 +1,7 @@
 const config = require('../config.js');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
+const {dateTime} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -24,7 +25,6 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
-  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response),
   DEFENDANT_RESPONSE2: (response) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response),
   DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
@@ -112,7 +112,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM_AP(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
@@ -288,17 +288,56 @@ module.exports = {
   defaultJudgmentSpec: async (user, scenario) => {
     await apiRequest.setupTokens(user);
 
+    let registrationData;
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (scenario === 'ONE_V_TWO') {
+      registrationData = {
+        registrationTypeRespondentOne: [
+          {
+            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: [
+            {
+              value: {
+              registrationType: 'R',
+              judgmentDateTime: dateTime(0)
+            },
+            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+      };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
     } else if (scenario === 'TWO_V_ONE') {
+      registrationData = {
+        registrationTypeRespondentOne: [
+          {
+            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
+      };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
     } else {
+      registrationData = {
+        registrationTypeRespondentOne: [
+          {
+            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
+      };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
     }
+
+    caseData = update(caseData, registrationData);
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
@@ -464,7 +503,9 @@ const validateEventPagesDefaultJudgments = async (data, scenario) => {
 const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
+
   caseData = update(caseData, userData);
+
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -475,6 +516,10 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
+  if (pageId === 'defendantDetailsSpec') {
+    delete responseBody.data['registrationTypeRespondentOne'];
+    delete responseBody.data['registrationTypeRespondentTwo'];
+  }
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
       responseBody.data.currentDefendantName = 'Sir John Doe';
