@@ -170,9 +170,9 @@ module.exports = {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
-      await waitForFinishedBusinessProcess(caseId);
     }
 
+    await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
