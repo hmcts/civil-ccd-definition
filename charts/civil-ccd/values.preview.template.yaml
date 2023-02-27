@@ -123,6 +123,12 @@ wa-task-management-api:
       POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
       CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
+    postgresql:
+      primary:
+        initdb:
+          scripts:
+            init.sql: |
+              ALTER ROLE hmcts WITH SUPERUSER;
 
 wa-task-monitor:
   java:

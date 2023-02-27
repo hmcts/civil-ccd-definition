@@ -119,7 +119,6 @@ civil-service:
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              ALTER ROLE ${POSTGRES_USER} WITH SUPERUSER
       auth:
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
