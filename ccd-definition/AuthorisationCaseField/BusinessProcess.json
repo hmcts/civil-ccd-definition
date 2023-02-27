@@ -3,6 +3,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "businessProcess",
     "UserRoles": [
+      "caseworker-civil",
+      "caseworker-civil-admin",
       "caseworker-civil-solicitor",
       "judge-profile",
       "hearing-schedule-access"
