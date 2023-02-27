@@ -7,7 +7,7 @@ module.exports = {
       businessProcess:{
         status: 'FINISHED',
         camundaEvent: 'ACKNOWLEDGE_CLAIM',
-        readyOn: Joi.date()
+        readyOn: Joi.string()
       }
     },
     ConfirmDetails: {
