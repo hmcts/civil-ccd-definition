@@ -19,7 +19,6 @@
     "test:e2e-dj": "MOCHAWESOME_REPORTFILENAME=e2e-dj NODE_TLS_REJECT_UNAUTHORIZED=0 npx codeceptjs run-workers --suites 2 --grep @e2e-1v1-dj --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api-multiparty npx codeceptjs run --grep @api-multiparty --reporter mocha-multi --verbose",
     "test:e2e-wa": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @e2e-wa --reporter mocha-multi --verbose",
-    "test:e2e-eu": "MOCHAWESOME_REPORTFILENAME=e2e-eu npx codeceptjs run --grep @e2e-eu --reporter mocha-multi --verbose",
     "test:dmn-tasks": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @dmn-task --reporter mocha-multi --verbose",
     "test:api-1v1": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @api-tests-1v1 --reporter mocha-multi --verbose",
     "test:api-1v2SS": "MOCHAWESOME_REPORTFILENAME=api-1v2SS npx codeceptjs run --grep @api-tests-1v2SS --reporter mocha-multi --verbose",

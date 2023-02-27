@@ -76,6 +76,8 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
     await LRspec.waitForText('Summary');
     await LRspec.initiateSDO('yes', 'yes', null, null);
+    await LRspec.login(config.applicantSolicitorUser);
+    await LRspec.evidenceUpload(caseId);
   }
 }).retry(3);
 

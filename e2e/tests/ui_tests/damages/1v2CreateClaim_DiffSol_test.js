@@ -134,6 +134,8 @@ Scenario('Judge triggers SDO', async ({I}) => {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
     await I.waitForText('Summary');
     await I.initiateSDO('yes', 'yes', null, null);
+    await I.login(config.applicantSolicitorUser);
+    await I.evidenceUpload(caseId);
   }
 }).retry(3);
 
