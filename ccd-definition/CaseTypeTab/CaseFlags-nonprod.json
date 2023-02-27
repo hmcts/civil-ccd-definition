@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "caseFlags",
+    "TabLabel": "Case Flags",
+    "TabDisplayOrder": 13,
+    "CaseFieldID": "flagLauncher",
+    "TabFieldDisplayOrder": 1
+  }
+]
