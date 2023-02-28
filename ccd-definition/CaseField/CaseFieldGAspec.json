@@ -283,6 +283,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "generalAppParentClaimantIsApplicant",
+    "Label": "Vary Judgement GA Type",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "gaUploadN245FormUploadLabel",
     "Label": "Upload your completed N245 form",
     "FieldType": "GAN245FormUpload",
