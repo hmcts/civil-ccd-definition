@@ -13,7 +13,8 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.DEFAULT_JUDGEMENT
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -55,8 +56,7 @@ module.exports = {
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE,
-      events.DEFAULT_JUDGEMENT,
+      events.ADD_CASE_NOTE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.ADD_CASE_NOTE,
