@@ -10,7 +10,7 @@
     "ID": "RespondentLiPResponse",
     "ListElementCode": "respondent1DQHearingSupportLip",
     "ElementLabel": " ",
-    "FieldType": "HearingsSupportLip",
+    "FieldType": "HearingSupportLip",
     "SecurityClassification": "Public"
   }
 ]
