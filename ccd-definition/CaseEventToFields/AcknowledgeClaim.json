@@ -161,7 +161,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR respondent2SameLegalRepresentative != \"No\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -233,7 +233,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR respondent2SameLegalRepresentative != \"No\"  OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -245,7 +245,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR respondent2SameLegalRepresentative != \"No\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -256,7 +256,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR respondent2SameLegalRepresentative != \"No\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL",
