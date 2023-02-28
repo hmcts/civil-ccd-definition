@@ -64,6 +64,11 @@ module.exports = {
     I.see(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
   },
 
+  async assertInactiveCaseFlagsInfo(numberOfFlags) {
+    console.log('Verifying active case flags banner is not visible.');
+    I.dontSee(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
+  },
+
   async assertCaseFlags(caseFlags) {
     console.log('validating case flags');
     caseFlags.forEach(({partyName, details}) => {
@@ -73,6 +78,14 @@ module.exports = {
         console.log(`Verifying [${name}] flag is displayed`);
         I.see(name, this.components.caseFlags);
       });
+    });
+  },
+
+  async assertUpdatedCaseFlags(caseFlags) {
+    console.log('validating updated case flags');
+    caseFlags.forEach(({partyName, flagComment}) => {
+      console.log('Verifying updated flag comment is displayed');
+      I.see(`${flagComment} - Updated - ${partyName}`, this.components.caseFlags);
     });
   }
 };

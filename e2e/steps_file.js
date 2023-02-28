@@ -906,10 +906,22 @@ module.exports = function () {
         await this.triggerStepsWithScreenshot([
           () => caseViewPage.startEvent(eventName, caseId),
           () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
-          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated`),
-          () => event.submitWithoutHeader('Submit'),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
+          () => event.submitWithoutHeader('Submit')
         ]);
       }
     },
+
+    async validateUpdatedCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertInactiveCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertUpdatedCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
+
   });
 };

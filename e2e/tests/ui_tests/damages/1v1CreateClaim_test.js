@@ -124,6 +124,7 @@ Scenario('Manage case flags', async ({I}) => {
 
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.manageCaseFlags(caseFlags);
+    await I.validateUpdatedCaseFlags(caseFlags);
   }
 });
 
