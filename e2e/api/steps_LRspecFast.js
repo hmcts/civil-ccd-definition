@@ -203,7 +203,7 @@ module.exports = {
     else if(scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if (scenario === 'TWO_V_ONE')
-      if (response === ('DIFF_FULL_DEFENCE'|| 'DIFF_FULL_DEFENCE_PBAv3'))
+      if (response === 'DIFF_FULL_DEFENCE' || response === 'DIFF_FULL_DEFENCE_PBAv3')
         await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
       else
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');

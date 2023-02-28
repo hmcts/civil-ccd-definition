@@ -676,7 +676,13 @@ const adjustDataForHnl = (inputData, response) => {
   if (!response.startsWith('FULL_DEFENCE')) {
     return inputData;
   }
-  const respondentNum = response == ('FULL_DEFENCE' || 'FULL_DEFENCE_AFTER_PAYMENT') ? '1' : '2';
+
+  let fullDefence1v1 = false;
+  if(response === 'FULL_DEFENCE' || response == 'FULL_DEFENCE_AFTER_PAYMENT'){
+    fullDefence1v1 = true;
+  }
+
+  const respondentNum = response == fullDefence1v1 ? '1' : '2';
 
   return {
     ...inputData,
