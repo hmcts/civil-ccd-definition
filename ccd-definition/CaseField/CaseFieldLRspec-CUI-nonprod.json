@@ -347,5 +347,12 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1FullAdmitAmountLabel",
+    "Label": "Total Claim amount is £${totalClaimAmount}. This includes all court fees and interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
