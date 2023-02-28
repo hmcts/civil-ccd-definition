@@ -110,6 +110,23 @@ Scenario('Add case flags', async ({I}) => {
   }
 });
 
+Scenario('Manage case flags', async ({I}) => {
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      flagType: 'Vulnerable user',
+      flagComment: 'test comment'
+    }, {
+      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+      flagType: 'Unacceptable/disruptive customer behaviour',
+      flagComment: 'test comment'
+    }];
+
+    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.manageCaseFlags(caseFlags);
+  }
+});
+
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('ONE_V_ONE');

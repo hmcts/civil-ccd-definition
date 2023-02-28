@@ -5,6 +5,7 @@ const chai = require('chai');
 const {expect} = chai;
 
 const CREATE_FLAGS_EVENT = 'CREATE_CASE_FLAGS';
+const MANAGE_FLAGS_EVENT = 'MANAGE_CASE_FLAGS';
 const FLAG_LOCATIONS = [
   'applicant1',
   'applicant2',
@@ -79,4 +80,69 @@ const addAndAssertCaseFlag = async (location, flag, caseId) => {
   assertFlagAdded(case_data, location, flag);
 };
 
-module.exports = { getPartyFlags, getDefinedCaseFlagLocations, addAndAssertCaseFlag };
+const updateAndAssertCaseFlag = async (location, flag, caseId) => {
+  const response = await updateCaseFlag(location, flag, caseId);
+  expect(response.status).equal(201);
+
+  const {case_data} = await response.json();
+  assertFlagUpdated(case_data, location, flag);
+};
+
+const assertFlagUpdated = (caseData, caseFlagLocation, expectedFlag) => {
+  console.log(`Asserting [${caseFlagLocation}] [${expectedFlag.value.name}] flag has been updated.`);
+  const actual = getFlagsField(caseFlagLocation, caseData);
+  expect(actual.details[0].value.flagComment).deep.equal('Updated Comment');
+  expect(actual.details[0].value.status).deep.equal('Inactive');
+};
+
+const updateCaseFlag = async (flagLocation, flag, caseId) => {
+  console.log(`Updating [${flag.value.name}] flag at [${flagLocation}].`);
+  const caseData = await apiRequest.startEvent(MANAGE_FLAGS_EVENT, caseId);
+  const updatedData = updateFlagDetails(caseData, flagLocation);
+  return apiRequest.submitEvent(MANAGE_FLAGS_EVENT, updatedData, caseId);
+};
+
+const updateFlagDetails = (caseData, flagLocation) => {
+    return {...caseData, [flagLocation]: updateFlag(caseData[flagLocation])};
+};
+
+const updateFlag = (targetField) => {
+  if (Array.isArray(targetField)) {
+    const updated = updateFlag(targetField[0].value);
+    return [element(updated)];
+  } else if (!targetField.flags) {
+    return {
+      ...targetField,
+      details:
+        [
+          {
+            ...targetField.details[0],
+            value: {
+              ...targetField.details[0].value,
+              flagComment: 'Updated Comment',
+              status: 'Inactive'
+            }
+          }
+        ]
+    };
+  } else {
+    return {
+      ...targetField,
+      flags: {
+        ...targetField.flags,
+        details: [
+          {
+            ...targetField.flags.details[0],
+            value: {
+              ...targetField.flags.details[0].value,
+              flagComment: 'Updated Comment',
+              status: 'Inactive'
+            }
+          }
+        ]
+      }
+    };
+  }
+};
+
+module.exports = { getPartyFlags, getDefinedCaseFlagLocations, addAndAssertCaseFlag, updateAndAssertCaseFlag };

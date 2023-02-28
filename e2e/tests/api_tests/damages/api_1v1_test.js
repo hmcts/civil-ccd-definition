@@ -34,11 +34,8 @@ Scenario('Acknowledge claim', async ({api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario);
 });
 
-Scenario('Inform agreed extension date', async ({api}) => {
-  await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario);
-});
-
-Scenario('Add Litigation Friend', async ({api}) => {
+// todo re-enable after HNL legal rep release
+Scenario.skip('Add Litigation Friend', async ({api}) => {
   await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
 });
 
@@ -52,6 +49,10 @@ Scenario('Claimant response', async ({api}) => {
 
 Scenario('Add case flags', async ({api}) => {
   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
+
+Scenario('Manage case flags', async ({api}) => {
+  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {

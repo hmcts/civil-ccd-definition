@@ -131,6 +131,7 @@ const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDe
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
@@ -896,6 +897,19 @@ module.exports = function () {
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
-    }
+    },
+
+    async manageCaseFlags(caseFlags) {
+      eventName = 'Manage case flags';
+
+      for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(eventName, caseId),
+          () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated`),
+          () => event.submitWithoutHeader('Submit'),
+        ]);
+      }
+    },
   });
 };

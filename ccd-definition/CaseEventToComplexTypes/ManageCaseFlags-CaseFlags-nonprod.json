@@ -1,0 +1,164 @@
+[
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorExperts",
+    "ListElementCode": "firstName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorExperts",
+    "ListElementCode": "lastName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorExperts",
+    "ListElementCode": "flags",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorWitnesses",
+    "ListElementCode": "firstName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorWitnesses",
+    "ListElementCode": "lastName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicantSolicitorWitnesses",
+    "ListElementCode": "flags",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "ListElementCode": "firstName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "ListElementCode": "lastName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "ListElementCode": "flags",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Experts",
+    "ListElementCode": "firstName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Experts",
+    "ListElementCode": "lastName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor1Experts",
+    "ListElementCode": "flags",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "ListElementCode": "firstName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "ListElementCode": "lastName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "ListElementCode": "flags",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Experts",
+    "ListElementCode": "firstName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Experts",
+    "ListElementCode": "lastName",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DQPartyFlagStructure",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondentSolicitor2Experts",
+    "ListElementCode": "flags",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  }
+]
