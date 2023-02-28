@@ -1125,10 +1125,7 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
-    if(populatedCaseField != 'businessProcess'){
-      assert.property(returnedCaseData, populatedCaseField);
-    }
-
+    assert.property(returnedCaseData, populatedCaseField);
   }
 };
 
