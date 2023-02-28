@@ -5,5 +5,12 @@
     "ElementLabel": " ",
     "FieldType": "DQExtraDetailsLip",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1DQHearingSupportLip",
+    "ElementLabel": " ",
+    "FieldType": "HearingsSupportLip",
+    "SecurityClassification": "Public"
   }
 ]
