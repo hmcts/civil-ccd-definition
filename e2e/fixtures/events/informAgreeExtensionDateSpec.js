@@ -3,7 +3,7 @@ const {dateNoWeekends} = require('../../api/dataHelper');
 module.exports = {
   userInput: {
     ExtensionDate: {
-      respondentSolicitor1AgreedDeadlineExtension: dateNoWeekends(40)
+      respondentSolicitor1AgreedDeadlineExtension: dateNoWeekends(30)
     }
   },
   midEventData: {
