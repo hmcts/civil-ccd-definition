@@ -152,7 +152,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     const pbaV3 = true;
 
-    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE(pbaV3 == true ? 'CREATE_CLAIM_SPEC_AFTER_PAYMNET':'CREATE_CLAIM_SPEC');
+    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE(pbaV3 == true ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
