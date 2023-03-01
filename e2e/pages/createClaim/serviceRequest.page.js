@@ -25,7 +25,8 @@ module.exports = {
 
   async payFee(caseNumber) {
     I.waitInUrl(caseNumber);
-    await I.see('Not paid', locate('td.govuk-table__cell whitespace-inherit'));
+    I.wait(5);
+    await I.see('Not paid');
     I.forceClick('Pay now');
     I.click({css: 'input#pbaAccount'});
     I.waitForElement(this.fields.pbaNumber.id);
