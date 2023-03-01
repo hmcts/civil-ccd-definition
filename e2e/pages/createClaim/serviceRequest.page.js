@@ -45,8 +45,8 @@ module.exports = {
     } else {
       await I.wait(2);
     }
+    await I.refreshPage();
     await I.retryUntilUrlChanges(async () => {
-      I.waitForElement(locate('div.mat-tab-label-content').withText('Service Request'), 60);
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 30);
     }, urlBefore);
