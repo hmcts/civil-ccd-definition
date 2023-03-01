@@ -1,15 +1,7 @@
 const { date, element, buildAddress, listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
-const Joi = require('joi');
 module.exports = {
   valid: {
-    BusinessProcess:{
-      businessProcess:{
-        status: 'FINISHED',
-        camundaEvent: 'ACKNOWLEDGE_CLAIM',
-        readyOn: Joi.string()
-      }
-    },
     ConfirmDetails: {
       respondent1: {
         type: 'INDIVIDUAL',
