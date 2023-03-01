@@ -1,7 +1,4 @@
 const {listElement} = require('../../api/dataHelper');
-let selectedPba = listElement('PBA0088192');
-const validPba = listElement('PBA0088192');
-const invalidPba = listElement('PBA0078095');
 
 module.exports = {
   createGAData: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
