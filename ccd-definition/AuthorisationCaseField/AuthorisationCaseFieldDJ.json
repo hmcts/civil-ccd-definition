@@ -12,7 +12,11 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "caseworker",
+          "caseworker-civil",
+          "caseworker-civil-staff"
+
         ],
         "CRUD": "R"
       }
@@ -175,7 +179,10 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "caseworker",
+          "caseworker-civil",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -248,7 +255,11 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "caseworker",
+          "caseworker-civil",
+          "caseworker-civil-staff"
+
         ],
         "CRUD": "R"
       }
@@ -267,7 +278,10 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "caseworker",
+          "caseworker-civil",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -286,7 +300,10 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "caseworker",
+          "caseworker-civil",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
