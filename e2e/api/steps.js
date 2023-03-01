@@ -165,7 +165,7 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    const pbaV3 = true; // await checkToggleEnabled(PBAv3);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 

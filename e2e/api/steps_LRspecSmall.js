@@ -109,9 +109,9 @@ module.exports = {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
-    const pbaV3 = true;
+    const pbaV3 = await checkToggleEnabled(PBAv3);
 
-    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE(pbaV3 == true ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
+    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
@@ -130,8 +130,8 @@ module.exports = {
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     await apiRequest.setupTokens(user);
 
-    const pbaV3 = true;
-    if(pbaV3 == true){
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+    if(pbaV3){
       response = response+'_PBAv3';
     }
 
