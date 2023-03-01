@@ -1,5 +1,4 @@
 const {I} = inject();
-const config = require('../../config');
 
 module.exports = {
 
@@ -25,7 +24,7 @@ module.exports = {
 
   async payFee(caseNumber) {
     I.waitInUrl(caseNumber);
-    I.waitForText('Not paid', 8)
+    I.waitForText('Not paid', 8);
     I.see('Not paid');
     I.forceClick('Pay now');
     I.click({css: 'input#pbaAccount'});
@@ -41,7 +40,7 @@ module.exports = {
   async openServiceRequestTab() {
     let urlBefore = await I.grabCurrentUrl();
     I.refreshPage();
-    I.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 6)
+    I.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 6);
 
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
