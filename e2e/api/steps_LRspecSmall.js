@@ -135,9 +135,9 @@ module.exports = {
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
-    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
 
-    if(!hnlSdoEnabled) {
+    if(!hnlEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
         defendantResponseData, solicitor);
@@ -157,7 +157,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlSdoEnabled) {
+    if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
 
