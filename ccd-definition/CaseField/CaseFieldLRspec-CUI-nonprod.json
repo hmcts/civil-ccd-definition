@@ -365,7 +365,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "mediationSettlementAgreedAt",
-    "Label": "Mediation Settlement Agreed on",
+    "Label": "Mediation settlement agreed on",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   }
