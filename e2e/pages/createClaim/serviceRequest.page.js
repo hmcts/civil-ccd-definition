@@ -11,7 +11,7 @@ module.exports = {
         activeAccount2: 'PBA0078095'
       }
     },
-    reviewLinks: '.govuk-table__body td a',
+    reviewLinks: '.govuk-table__body td a'
   },
 
   async verifyAdditionalPayment(caseNumber) {
@@ -26,7 +26,7 @@ module.exports = {
   async payFee(caseNumber) {
     I.waitInUrl(caseNumber);
     await I.see('Not paid');
-    I.click('Pay now');
+    I.forceClick('Pay now');
     I.click({css: 'input#pbaAccount'});
     I.waitForElement(this.fields.pbaNumber.id);
     I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount1']);
@@ -48,8 +48,8 @@ module.exports = {
     await I.retryUntilUrlChanges(async () => {
       I.waitForElement(locate('div.mat-tab-label-content').withText('Service Request'), 10);
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
-      await I.wait(10);
-      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 20);
+      await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 30);
     }, urlBefore);
+
   }
 };
