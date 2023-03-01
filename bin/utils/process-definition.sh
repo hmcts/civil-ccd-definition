@@ -2,6 +2,7 @@
 
 set -eu
 
+definition_processor_version=dbyccu
 
 definition_dir=${1}
 definition_output_file=${2}
