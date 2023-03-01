@@ -64,14 +64,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: calculatedAmount,
@@ -148,14 +140,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: calculatedAmount,
@@ -231,14 +215,6 @@ module.exports = {
         SupportRequirement: []
       },
       generalAppPBADetails: {
-        applicantsPbaAccounts: {
-          list_items: [
-            validPba,
-            invalidPba
-          ],
-          value: selectedPba
-        },
-        pbaReference: 'Test PBA Reference',
         paymentSuccessfulDate: null,
         fee: {
           calculatedAmountInPence: '27500',
