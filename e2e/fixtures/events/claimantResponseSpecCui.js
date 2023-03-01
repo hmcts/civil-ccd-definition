@@ -122,7 +122,9 @@ module.exports = {
             applicant1RepaymentOptionForDefendantSpec: 'SET_DATE',
           },
           PaymentDate: {
-            applicant1RequestedPaymentDateForDefendantSpec : '2220-01-01'
+            applicant1RequestedPaymentDateForDefendantSpec : {
+              paymentSetDate: '2220-01-01'
+            }
           },
           SuggestInstalments: {
             applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec : '2220-01-01',

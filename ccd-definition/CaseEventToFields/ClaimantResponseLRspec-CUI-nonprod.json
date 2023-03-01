@@ -660,23 +660,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpecLabel",
-    "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "PaymentDate",
-    "PageShowCondition": "applicant1RepaymentOptionForDefendantSpec=\"SET_DATE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpec",
     "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "PageID": "PaymentDate",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/validate-respondent-payment-date",
+    "PageShowCondition": "applicant1RepaymentOptionForDefendantSpec=\"SET_DATE\"",
     "DisplayContext": "MANDATORY"
   },
   {
