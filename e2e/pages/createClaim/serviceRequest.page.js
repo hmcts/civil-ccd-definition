@@ -25,8 +25,7 @@ module.exports = {
 
   async payFee(caseNumber) {
     I.waitInUrl(caseNumber);
-    I.wait(5);
-    await I.see('Not paid');
+    await I.see('Not paid', locate('td.govuk-table__cell whitespace-inherit'));
     I.forceClick('Pay now');
     I.click({css: 'input#pbaAccount'});
     I.waitForElement(this.fields.pbaNumber.id);
@@ -41,12 +40,13 @@ module.exports = {
 
   async openServiceRequestTab() {
     let urlBefore = await I.grabCurrentUrl();
+    await I.refreshPage();
     if (['preview'].includes(config.runningEnv)) {
       await I.wait(5);
     } else {
       await I.wait(2);
     }
-    await I.refreshPage();
+
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 30);
