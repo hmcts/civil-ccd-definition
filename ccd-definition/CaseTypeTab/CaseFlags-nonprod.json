@@ -93,7 +93,7 @@
     "TabID": "caseFlags",
     "TabLabel": "Case Flags",
     "TabDisplayOrder": 13,
-    "CaseFieldID": "applicantSolicitorExperts",
+    "CaseFieldID": "applicantExperts",
     "TabFieldDisplayOrder": 11,
     "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   },
@@ -102,7 +102,7 @@
     "TabID": "caseFlags",
     "TabLabel": "Case Flags",
     "TabDisplayOrder": 13,
-    "CaseFieldID": "applicantSolicitorWitnesses",
+    "CaseFieldID": "applicantWitnesses",
     "TabFieldDisplayOrder": 12,
     "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   },
@@ -111,7 +111,7 @@
     "TabID": "caseFlags",
     "TabLabel": "Case Flags",
     "TabDisplayOrder": 13,
-    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "CaseFieldID": "respondent1Witnesses",
     "TabFieldDisplayOrder": 13,
     "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   },
@@ -120,7 +120,7 @@
     "TabID": "caseFlags",
     "TabLabel": "Case Flags",
     "TabDisplayOrder": 13,
-    "CaseFieldID": "respondentSolicitor1Experts",
+    "CaseFieldID": "respondent1Experts",
     "TabFieldDisplayOrder": 14,
     "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   },
@@ -129,7 +129,7 @@
     "TabID": "caseFlags",
     "TabLabel": "Case Flags",
     "TabDisplayOrder": 13,
-    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "CaseFieldID": "respondent2Witnesses",
     "TabFieldDisplayOrder": 15,
     "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   },
@@ -138,7 +138,7 @@
     "TabID": "caseFlags",
     "TabLabel": "Case Flags",
     "TabDisplayOrder": 13,
-    "CaseFieldID": "respondentSolicitor2Experts",
+    "CaseFieldID": "respondent2Experts",
     "TabFieldDisplayOrder": 16,
     "FieldShowCondition": "flagLauncher = \"DO NO SHOW IN UI\""
   }

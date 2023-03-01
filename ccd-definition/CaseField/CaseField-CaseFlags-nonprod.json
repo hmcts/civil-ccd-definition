@@ -15,7 +15,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicantSolicitorWitnesses",
+    "ID": "applicantWitnesses",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
@@ -24,7 +24,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicantSolicitorExperts",
+    "ID": "applicantExperts",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
@@ -33,7 +33,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentSolicitor1Witnesses",
+    "ID": "respondent1Witnesses",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
@@ -42,7 +42,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentSolicitor1Experts",
+    "ID": "respondent1Experts",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
@@ -51,7 +51,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentSolicitor2Witnesses",
+    "ID": "respondent2Witnesses",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
@@ -60,7 +60,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondentSolicitor2Experts",
+    "ID": "respondent2Experts",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",

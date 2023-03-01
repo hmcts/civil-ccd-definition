@@ -26,51 +26,51 @@ const assertLitigationFriendFlags = (flagsParent, roleOnCase) => {
 };
 
 const assertRespondent1DQPartyFields = (caseDetails) => {
-  let respondentSolicitor1Experts = caseDetails.case_data.respondentSolicitor1Experts;
-  let respondentSolicitor1Witnesses = caseDetails.case_data.respondentSolicitor1Witnesses;
+  let respondent1Experts = caseDetails.case_data.respondent1Experts;
+  let respondent1Witnesses = caseDetails.case_data.respondent1Witnesses;
 
   console.log(`${assertionText} [Respondent solicitor 1 expert]`);
-  expect(respondentSolicitor1Experts[0].value.flags).deep.equal({
+  expect(respondent1Experts[0].value.flags).deep.equal({
     'partyName': 'John Doe',
     'roleOnCase': 'Respondent solicitor 1 expert'
   });
 
   console.log(`${assertionText} [Respondent solicitor 1 witness]`);
-  expect(respondentSolicitor1Witnesses[0].value.flags).deep.equal({
+  expect(respondent1Witnesses[0].value.flags).deep.equal({
     'partyName': 'John Smith',
     'roleOnCase': 'Respondent solicitor 1 witness'
   });
 };
 
 function assertRespondent2DQPartyFields(caseDetails) {
-  let respondentSolicitor2Experts = caseDetails.case_data.respondentSolicitor2Experts;
-  let respondentSolicitor2Witnesses = caseDetails.case_data.respondentSolicitor2Witnesses;
+  let respondent2Experts = caseDetails.case_data.respondent2Experts;
+  let respondent2Witnesses = caseDetails.case_data.respondent2Witnesses;
 
   console.log(`${assertionText} [Respondent solicitor 2 expert]`);
-  expect(respondentSolicitor2Experts[0].value.flags).deep.equal({
+  expect(respondent2Experts[0].value.flags).deep.equal({
     'partyName': 'John Doe',
     'roleOnCase': 'Respondent solicitor 2 expert'
   });
 
   console.log(`${assertionText} [Respondent solicitor 2 witness]`);
-  expect(respondentSolicitor2Witnesses[0].value.flags).deep.equal({
+  expect(respondent2Witnesses[0].value.flags).deep.equal({
     'partyName': 'John Smith',
     'roleOnCase': 'Respondent solicitor 2 witness'
   });
 }
 
 function assertApplicantDQPartyFields(caseDetails) {
-  let applicantSolicitorExperts = caseDetails.case_data.applicantSolicitorExperts;
-  let applicantSolicitorWitnesses = caseDetails.case_data.applicantSolicitorWitnesses;
+  let applicantExperts = caseDetails.case_data.applicantExperts;
+  let applicantWitnesses = caseDetails.case_data.applicantWitnesses;
 
   console.log(`${assertionText} [Applicant solicitor expert]`);
-  expect(applicantSolicitorExperts[0].value.flags).deep.equal({
+  expect(applicantExperts[0].value.flags).deep.equal({
     'partyName': 'John Doe',
     'roleOnCase': 'Applicant solicitor expert'
   });
 
   console.log(`${assertionText} [Applicant solicitor witness]`);
-  expect(applicantSolicitorWitnesses[0].value.flags).deep.equal({
+  expect(applicantWitnesses[0].value.flags).deep.equal({
     'partyName': 'John Smith',
     'roleOnCase': 'Applicant solicitor witness'
   });

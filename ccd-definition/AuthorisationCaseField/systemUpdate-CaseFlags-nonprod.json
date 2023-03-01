@@ -1,37 +1,37 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolicitorExperts",
+    "CaseFieldID": "applicantExperts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolicitorWitnesses",
+    "CaseFieldID": "applicantWitnesses",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "CaseFieldID": "respondent1Witnesses",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolicitor1Experts",
+    "CaseFieldID": "respondent1Experts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "CaseFieldID": "respondent2Witnesses",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolicitor2Experts",
+    "CaseFieldID": "respondent2Experts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   }
