@@ -19,7 +19,7 @@
     "ID": "Witnesses",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -27,7 +27,7 @@
     "ID": "Witnesses",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -51,7 +51,7 @@
     "ID": "Witnesses",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -59,7 +59,7 @@
     "ID": "Witnesses",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -121,6 +121,15 @@
   },
   {
     "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "unavailableDates.who",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQHearing=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Hearing",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQHearing",
     "ListElementCode": "unavailableDatesRequired",
@@ -166,6 +175,15 @@
     "ListElementCode": "unavailableDatesRequired",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "unavailableDates.who",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQHearing=\"DO NOT SHOW IN UI\""
   },
   {
     "ID": "Hearing",

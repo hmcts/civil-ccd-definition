@@ -1,5 +1,5 @@
 const {I} = inject();
-const {checkToggleEnabled} = require('./../../api/testingSupport');
+const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -39,7 +39,7 @@ module.exports = {
       I.click(this.fields(party).witnessesToAppear.options.yes);
     });
 
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     if (!isHNLEnabled) {
       await this.addWitnessOldFields(party);
     } else {

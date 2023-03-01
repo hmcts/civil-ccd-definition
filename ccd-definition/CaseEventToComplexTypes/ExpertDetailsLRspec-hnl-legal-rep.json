@@ -66,7 +66,7 @@
   {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "firstName",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -74,7 +74,7 @@
   {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -82,7 +82,7 @@
   {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -90,7 +90,7 @@
   {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -98,7 +98,7 @@
   {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "fieldofExpertise",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
@@ -106,7 +106,7 @@
   {
     "ID": "SmallClaimExpert",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "whyRequired",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -114,7 +114,7 @@
   {
     "ID": "SolicitorReferences",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "estimatedCost",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"

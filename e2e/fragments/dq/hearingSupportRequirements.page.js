@@ -1,4 +1,4 @@
-const {checkToggleEnabled} = require('../../api/testingSupport');
+const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 const {I} = inject();
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
 
   async selectRequirements(party) {
 
-    let isHnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHnlEnabled = await checkHnlLegalRepToggleEnabled();
 
     if (!isHnlEnabled) {
       I.waitForElement(this.fields(party).requirements.options.disabledAccess);

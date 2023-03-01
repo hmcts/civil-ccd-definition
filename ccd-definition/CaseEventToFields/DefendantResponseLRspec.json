@@ -1244,13 +1244,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToClaim_experts2",
+    "CaseFieldID": "respondToClaimExperts2",
     "PageDisplayOrder": 45,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaimExperts",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "responseClaimExpertSpecRequired2 = \"Yes\""
+    "FieldShowCondition": "responseClaimExpertSpecRequired2 = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1258,7 +1258,7 @@
     "CaseFieldID": "respondent1DQLanguage",
     "PageDisplayOrder": 47,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "Language",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
@@ -1271,7 +1271,7 @@
     "CaseFieldID": "respondent2DQLanguage",
     "PageDisplayOrder": 47,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "PageID": "Language",
     "ShowSummaryChangeOption": "Y"

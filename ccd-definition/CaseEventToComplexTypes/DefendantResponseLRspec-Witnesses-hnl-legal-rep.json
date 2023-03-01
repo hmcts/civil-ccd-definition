@@ -27,7 +27,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "ListElementCode": "emailAddress",
+    "ListElementCode": "phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -35,7 +35,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "ListElementCode": "phoneNumber",
+    "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -75,7 +75,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -83,7 +83,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -92,7 +92,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnesses",
     "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -123,7 +123,7 @@
     "ID": "SmallClaimWitnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesSmallClaim",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -131,7 +131,7 @@
     "ID": "SmallClaimWitnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQWitnessesSmallClaim",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -171,7 +171,7 @@
     "ID": "SmallClaimWitnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnessesSmallClaim",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -179,7 +179,7 @@
     "ID": "SmallClaimWitnesses",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQWitnessesSmallClaim",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },

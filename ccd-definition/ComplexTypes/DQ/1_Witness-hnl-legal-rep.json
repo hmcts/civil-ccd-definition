@@ -28,5 +28,12 @@
     "FieldType": "PhoneUK",
     "ElementLabel": "Phone number",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Witness",
+    "ListElementCode": "reasonForWitness",
+    "FieldType": "Text",
+    "ElementLabel": "What event did they witness?",
+    "SecurityClassification": "Public"
   }
 ]

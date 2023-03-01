@@ -19,7 +19,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -27,9 +27,17 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Witnesses",
@@ -51,7 +59,7 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.emailAddress",
+    "ListElementCode": "details.phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -59,9 +67,17 @@
     "ID": "Witnesses",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "ListElementCode": "details.emailAddress",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.reasonForWitness",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   },
   {
       "ID": "Experts",
@@ -174,6 +190,15 @@
       "ListElementCode": "details.estimatedCost",
       "FieldDisplayOrder": 10,
       "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent1DQHearing",
+      "ListElementCode": "unavailableDates.who",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "OPTIONAL",
+      "FieldShowCondition": "respondent1DQHearing=\"DO NOT SHOW IN UI\""
     },
     {
       "ID": "Hearing",
@@ -214,6 +239,15 @@
       "ListElementCode": "unavailableDates.toDate",
       "FieldDisplayOrder": 5,
       "DisplayContext": "MANDATORY"
+    },
+    {
+      "ID": "Hearing",
+      "CaseEventID": "DEFENDANT_RESPONSE",
+      "CaseFieldID": "respondent2DQHearing",
+      "ListElementCode": "unavailableDates.who",
+      "FieldDisplayOrder": 1,
+      "DisplayContext": "OPTIONAL",
+      "FieldShowCondition": "respondent2DQHearing=\"DO NOT SHOW IN UI\""
     },
     {
       "ID": "Hearing",

@@ -1,6 +1,13 @@
 [
   {
     "ID": "Language",
+    "ListElementCode": "helpText",
+    "FieldType": "Label",
+    "ElementLabel": "Welsh is an official language of Wales. You can use Welsh in court hearings. Asking to speak in Welsh in your hearing will not delay the hearing or have any effect on proceedings or the outcome of a case.",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Language",
     "ListElementCode": "evidence",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
@@ -12,7 +19,7 @@
     "ListElementCode": "court",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
-    "ElementLabel": "Do you want to speak Welsh or English in court, or will both languages be used?",
+    "ElementLabel": "What language will you, your experts or witnesses speak at the hearing?",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +27,7 @@
     "ListElementCode": "documents",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
-    "ElementLabel": "Will documents produced to court during the case be in Welsh, English or both?",
+    "ElementLabel": "What language will documents be provided in?",
     "SecurityClassification": "Public"
   }
 ]
