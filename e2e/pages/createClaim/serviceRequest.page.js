@@ -42,6 +42,7 @@ module.exports = {
     let urlBefore = await I.grabCurrentUrl();
     I.refreshPage();
     I.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 6)
+
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 30);
