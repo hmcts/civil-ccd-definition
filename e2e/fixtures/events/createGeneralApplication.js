@@ -1,5 +1,3 @@
-const {listElement} = require('../../api/dataHelper');
-
 module.exports = {
   createGAData: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {
     return {
