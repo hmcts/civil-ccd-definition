@@ -15,12 +15,12 @@ const FLAG_LOCATIONS = [
   'respondent2',
   'respondent1LitigationFriend',
   'respondent2LitigationFriend',
-  'respondentSolicitor1Witnesses',
-  'respondentSolicitor1Experts',
-  'respondentSolicitor2Witnesses',
-  'respondentSolicitor2Experts',
-  'applicantSolicitorWitnesses',
-  'applicantSolicitorExperts'
+  'respondent1Witnesses',
+  'respondent1Experts',
+  'respondent2Witnesses',
+  'respondent2Experts',
+  'applicantWitnesses',
+  'applicantExperts'
 ];
 
 const getPartyFlags = () => {
