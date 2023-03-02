@@ -237,5 +237,13 @@
       "hearing-schedule-access"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingReferenceNumber",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
   }
 ]
