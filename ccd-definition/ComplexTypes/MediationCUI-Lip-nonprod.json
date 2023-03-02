@@ -1,6 +1,13 @@
 [
   {
     "ID": "MediationCUI",
+    "ListElementCode": "mediationSummary",
+    "ElementLabel": "<p>${applicant1.partyName} has automatically been registered to take part in free mediation from HM Courts and Tribunals Service.</p> \n <p>Using a mediator can help settle a dispute without going to court which can be quicker, cheaper and less stressful for all parties.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationCUI",
     "ListElementCode": "claimMediationLabel",
     "ElementLabel": "<p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
@@ -9,9 +16,9 @@
   {
     "ID": "MediationCUI",
     "ListElementCode": "hasAgreedFreeMediation",
-    "ElementLabel": " ",
+    "ElementLabel": "Mediation Decision",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "MediationOpt",
+    "FieldTypeParameter": "MediationDecision",
     "SecurityClassification": "Public"
   }
 ]

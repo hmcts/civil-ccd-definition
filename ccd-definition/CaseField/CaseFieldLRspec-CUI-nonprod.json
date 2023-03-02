@@ -350,15 +350,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1ClaimMediationSpecRequiredCUILabel",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimMediationSpecRequiredCUI",
-    "Label": "${applicant1.partyName} has automatically been registered to take part in free mediation from HM Courts and Tribunals Service.\n\nUsing a mediator can help settle a dispute without going to court which can be quicker, cheaper and less stressful for all parties.",
+    "Label": " ",
     "FieldType": "MediationCUI",
     "SecurityClassification": "Public"
   }
