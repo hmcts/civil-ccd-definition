@@ -92,7 +92,7 @@ camunda-bpm:
     ingressHost: camunda-${SERVICE_FQDN}
 
 wa:
-  enabled: false
+  enabled: true
 
 wa-task-management-api:
   java:
