@@ -60,3 +60,7 @@ Scenario('1v2 fast claim part admit, defendant and claimant response', async ({I
   await api_spec_fast.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
 });
+
+AfterSuite(async  ({api_spec_fast}) => {
+  await api_spec_fast.cleanUp();
+});
