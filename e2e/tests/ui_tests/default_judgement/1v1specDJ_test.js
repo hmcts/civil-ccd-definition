@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec defaultJudgement @e2e-1v1-dj @non-prod-e2e-ft');
+Feature('1v1 spec defaultJudgement @e2e-1v1-dj @master-e2e-ft');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
 
@@ -13,3 +13,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJSpec(caseid, 'ONE_V_ONE');
 }).retry(3);
+
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});
