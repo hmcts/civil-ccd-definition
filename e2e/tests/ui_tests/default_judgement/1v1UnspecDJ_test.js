@@ -5,7 +5,7 @@ let caseId;
 
 Feature('1v1 Unspec defaultJudgement');
 
-Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @non-prod-e2e-ft', async ({I, api}) => {
+Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
 
@@ -27,7 +27,7 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @non-prod-e2e-ft', 
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
   }
-  
+
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
@@ -39,8 +39,17 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @non-prod-e2e-ft', 
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
   }
+
   await I.login(config.hearingCenterAdminWithRegionId1);
-  await I.staffPerformDJCaseTransferCaseOffline(caseId);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+    await I.waitForText('Summary');
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await I.createHearingScheduled();
+  }
+  else {
+    await I.staffPerformDJCaseTransferCaseOffline(caseId);
+  }
 }).retry(3);
 
 Scenario('Verify Challenged access check for judge @e2e-wa @dmn-task', async ({I, WA}) => {
@@ -117,4 +126,8 @@ Scenario('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) =
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacCtscTeamLeaderUser);
   await WA.verifyApprovedSpecificAccess(caseId);
+});
+
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
 });

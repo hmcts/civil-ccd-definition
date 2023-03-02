@@ -22,7 +22,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('2v1 Claim Journey @e2e-unspec @e2e-nightly @e2e-2v1');
+Feature('2v1 Claim Journey @e2e-unspec @e2e-nightly @e2e-2v1 @e2e-nightly-prod');
 
 Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -62,7 +62,6 @@ Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.acknowledgeClaim('fullDefence', null, 'fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
