@@ -28,6 +28,7 @@
     "FieldType": "DateTime",
     "Label": "Submitted on",
     "ElementLabel": "Submitted on",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "DisplayContextParameter": "#DATETIMEDISPLAY(d LLLL yyyy)"
   }
 ]
