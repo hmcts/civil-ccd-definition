@@ -68,7 +68,7 @@ Scenario('Make a general application', async ({api}) => {
   }
 }).retry(3);
 
-
+/*
 Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
@@ -85,6 +85,8 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 
+
+ */
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseId());

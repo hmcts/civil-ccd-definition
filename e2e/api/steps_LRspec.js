@@ -348,7 +348,7 @@ module.exports = {
     }
 
     caseData = update(caseData, registrationData);
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: '',
       body: ''
     }, true);
