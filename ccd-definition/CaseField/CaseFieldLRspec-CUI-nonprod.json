@@ -351,15 +351,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendantNameLabel",
-    "Label": "Defendant Name",
+    "Label": "### Defendant Name",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendantName",
-    "Label": " ",
-    "FieldType": "Text",
+    "Label": "${respondent1.partyName}",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
