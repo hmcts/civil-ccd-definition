@@ -94,7 +94,6 @@ camunda-bpm:
 wa:
   enabled: true
 
-
 wa-task-management-api:
   java:
     releaseNameOverride: ${SERVICE_NAME}-wa-task-management-api
