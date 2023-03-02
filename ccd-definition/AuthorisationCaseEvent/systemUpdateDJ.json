@@ -44,7 +44,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "CRU"
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   }
 ]
