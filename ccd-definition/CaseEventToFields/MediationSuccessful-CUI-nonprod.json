@@ -11,7 +11,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EXTEND_RESPONSE_DEADLINE",
+    "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "defendantName",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
@@ -21,7 +21,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EXTEND_RESPONSE_DEADLINE",
+    "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "mediationSettlementAgreedAt",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
