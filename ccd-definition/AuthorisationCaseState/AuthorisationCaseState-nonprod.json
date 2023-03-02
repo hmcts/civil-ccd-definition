@@ -81,28 +81,12 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
           "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-ras-validation",
-          "GS_profile",
           "caseflags-viewer"
         ],
         "CRUD": "R"
@@ -167,28 +151,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "hearing-schedule-access",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-ras-validation",
-          "GS_profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "DECISION_OUTCOME",
     "AccessControl": [
       {
         "UserRoles": [
