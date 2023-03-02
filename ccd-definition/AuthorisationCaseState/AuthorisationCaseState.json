@@ -113,9 +113,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-ras-validation",
-          "GS_profile",
-          "caseworker-civil",
-          "caseworker-civil-staff"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
