@@ -74,58 +74,6 @@
       }
     ]
   },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "JUDICIAL_REFERRAL",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseflags-admin"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseflags-viewer"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseStateID": "CASE_PROGRESSION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "hearing-schedule-access",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-ras-validation",
-          "GS_profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "HEARING_READINESS",
