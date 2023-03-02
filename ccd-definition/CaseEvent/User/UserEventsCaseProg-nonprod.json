@@ -197,8 +197,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "asyncStitchingComplete",
-    "Name": "asyncStitchingComplete",
-    "Description": "asyncStitchingComplete",
+    "Name": "Bundle Stitching Complete",
+    "Description": "Bundle Stitching Complete",
     "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
