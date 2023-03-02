@@ -100,5 +100,17 @@
     "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ClaimMediationSpecRequiredCUILabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ClaimMediationSpecRequiredCUI",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
