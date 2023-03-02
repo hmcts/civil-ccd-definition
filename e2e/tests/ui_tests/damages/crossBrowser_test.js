@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
@@ -50,3 +51,7 @@ Scenario('Full end-to-end journey', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
 }).retry(2);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
