@@ -112,5 +112,11 @@
     "ListElementCode": "TIMELINE_MANUALLY",
     "ListElement": "TIMELINE_MANUALLY",
     "DisplayOrder": 19
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "MEDIATION_2",
+    "ListElement": "MEDIATION_2",
+    "DisplayOrder": 20
   }
 ]

@@ -350,9 +350,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1ClaimMediationSpecRequiredCUI",
+    "ID": "applicant1ClaimMediationSpecRequiredLip",
     "Label": " ",
-    "FieldType": "MediationCUI",
+    "FieldType": "MediationLip",
     "SecurityClassification": "Public"
   }
 ]

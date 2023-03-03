@@ -1034,7 +1034,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1ClaimMediationSpecRequiredCUI",
+    "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
     "AccessControl": [
       {
         "UserRoles": [
