@@ -12,9 +12,11 @@ const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
-const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
+const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 
 let caseId, eventName;
 let caseData = {};
@@ -90,6 +92,9 @@ module.exports = {
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
     await waitForFinishedBusinessProcess(caseId);
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
