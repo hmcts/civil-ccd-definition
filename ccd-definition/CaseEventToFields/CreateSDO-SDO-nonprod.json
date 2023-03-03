@@ -1708,7 +1708,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "_FieldShowCondition": "fastTrackMethod=\"DO NOT SHOW\""
+    "FieldShowCondition": "hearingMethodValues=\"DO NOT SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
