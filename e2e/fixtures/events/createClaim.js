@@ -2,7 +2,6 @@ const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
 const { getClaimFee } = require('../../claimAmountAndFee');
-const Joi = require('joi');
 
 const docUuid = uuid.v1();
 
@@ -128,12 +127,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
     },
     ClaimantSolicitorServiceAddress: {
       applicantSolicitor1ServiceAddressRequired: 'Yes',
-      applicantSolicitor1ServiceAddress:  buildAddress('service'),
-      businessProcess: {
-        status: 'FINISHED',
-        camundaEvent: 'ACKNOWLEDGE_CLAIM',
-        readyOn: Joi.string()
-      }
+      applicantSolicitor1ServiceAddress:  buildAddress('service')
     },
     AddAnotherClaimant: {
       addApplicant2: 'No'
