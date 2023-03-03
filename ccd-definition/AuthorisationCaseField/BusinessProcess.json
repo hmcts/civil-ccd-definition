@@ -7,7 +7,8 @@
       "caseworker-civil-admin",
       "caseworker-civil-solicitor",
       "judge-profile",
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRU"
   }
