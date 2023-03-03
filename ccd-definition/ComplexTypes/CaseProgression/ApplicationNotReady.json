@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "ApplicationNotReady",
+    "ListElementCode": "title",
+    "ElementLabel": "You will need to make an application to the court if this case is not ready for the trial or hearing.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ApplicationNotReady",
+    "ListElementCode": "label1",
+    "ElementLabel": "##### The trial or hearing will go ahead as planned on the specified date unless a judge makes an order changing the date of hearing. If you want the date of hearing to be changed (or any other order to make the case ready for trial) you will need to make an application to the court.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ApplicationNotReady",
+    "ListElementCode": "label2",
+    "ElementLabel": "##### You will still need to provide the following information on trial arrangments.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]

@@ -15,86 +15,103 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "trialReadyApplicant",
+    "ID": "trialReadyLabel",
     "Label": "Is the case ready for Trial or Hearing?",
-    "FieldType": "YesOrNo",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyApplicant",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrialReadyList",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialReadyRespondent1",
-    "Label": "Is the case ready for Trial or Hearing?",
-    "FieldType": "YesOrNo",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrialReadyList",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "trialReadyRespondent2",
-    "Label": "Is the case ready for Trial or Hearing?",
-    "FieldType": "YesOrNo",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrialReadyList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicationNotReady",
+    "Label": " ",
+    "FieldType": "ApplicationNotReady",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantRevisedHearingRequirements",
-    "Label": "Hearing Requirements",
-    "FieldType": "YesOrNo",
+    "Label": " ",
+    "FieldType": "RevisedHearingRequirements",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RevisedHearingRequirements",
-    "Label": "Hearing Requirements",
-    "FieldType": "YesOrNo",
+    "Label": " ",
+    "FieldType": "RevisedHearingRequirements",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2RevisedHearingRequirements",
-    "Label": "Hearing Requirements",
-    "FieldType": "YesOrNo",
+    "Label": " ",
+    "FieldType": "RevisedHearingRequirements",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantRevisedHearingComments",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "RevisedHearingComments",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RevisedHearingComments",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "RevisedHearingComments",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2RevisedHearingComments",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "RevisedHearingComments",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantHearingOtherComments",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "HearingOtherComments",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1HearingOtherComments",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "HearingOtherComments",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2HearingOtherComments",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "HearingOtherComments",
     "SecurityClassification": "Public"
   }
 ]
