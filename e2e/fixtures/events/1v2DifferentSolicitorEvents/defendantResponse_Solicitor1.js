@@ -3,14 +3,14 @@ const Joi = require('joi');
 
 module.exports = {
   valid: {
-    BusinessProcess:{
-      businessProcess: {
-        status: 'FINISHED',
-        camundaEvent: 'ACKNOWLEDGE_CLAIM',
-        readyOn: Joi.string()
-      }
-    },
     ConfirmDetails: {
+      BusinessProcess:{
+        businessProcess: {
+          status: 'FINISHED',
+          camundaEvent: 'ACKNOWLEDGE_CLAIM',
+          readyOn: Joi.string()
+        }
+      },
       respondent1: {
         type: 'INDIVIDUAL',
         individualFirstName: 'John',
