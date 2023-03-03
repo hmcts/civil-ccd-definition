@@ -51,10 +51,6 @@ ccd:
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
-  am-role-assignment-service:
-    java:
-      ingressHost: am-role-assignment-service-${SERVICE_FQDN}
-
 
 ccd-message-publisher:
   java:
