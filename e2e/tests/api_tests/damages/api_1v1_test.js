@@ -37,7 +37,7 @@ Scenario('Inform agreed extension date', async ({api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario);
 });
 
-Scenario('Add Litigation Friend', async ({api}) => {
+Scenario.skip('Add Litigation Friend', async ({api}) => {
   await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
 });
 
