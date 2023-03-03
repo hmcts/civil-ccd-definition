@@ -210,6 +210,10 @@ module.exports =  {
       );
   },
 
+  checkCaseFlagsEnabled: () => {
+    return false;
+  },
+
   updateCaseData: async (caseId, caseData) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 

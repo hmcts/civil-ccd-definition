@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPFinancialDetails",
+    "ElementLabel": " ",
+    "FieldType": "FinancialDetailsLiP",
+    "SecurityClassification": "Public"
+  }
+]
