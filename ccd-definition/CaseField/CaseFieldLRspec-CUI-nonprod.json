@@ -350,6 +350,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseTitle",
+    "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "defendantNameLabel",
     "Label": "### Defendant Name",
     "FieldType": "Label",
