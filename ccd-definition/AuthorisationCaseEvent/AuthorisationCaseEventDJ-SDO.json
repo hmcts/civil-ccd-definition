@@ -30,7 +30,17 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
       }
+
     ]
   }
 

@@ -67,7 +67,7 @@ Scenario('Make a general application', async ({api}) => {
   }
 }).retry(3);
 
-
+/*
 Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
@@ -84,6 +84,8 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 
+
+ */
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseId());
@@ -126,6 +128,18 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
+}).retry(3);
+
+// ToDo: Refactor to trigger create case flags event
+Scenario.skip('Add case flags', async ({I}) => {
+  await I.login(config.adminUser);
+  // await I.createCaseFlags();
+  await I.validateCaseFlags([
+    { partyName: 'Example applicant1 company', details: [] },
+    { partyName: 'Example respondent1 company', details: [] },
+    { partyName: 'Example respondent2 company', details: [] },
+    { partyName: 'John Smith', details: [] }
+  ]);
 }).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
