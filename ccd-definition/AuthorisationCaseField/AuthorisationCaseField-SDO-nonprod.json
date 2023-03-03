@@ -1833,6 +1833,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValues",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodInPerson",
     "AccessControl": [
       {

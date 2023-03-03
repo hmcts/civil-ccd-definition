@@ -1027,6 +1027,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValues",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "fastTrackMethodToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
