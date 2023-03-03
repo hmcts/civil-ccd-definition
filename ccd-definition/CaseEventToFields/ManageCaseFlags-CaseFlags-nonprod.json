@@ -131,7 +131,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
-    "CaseFieldID": "applicantSolicitorWitnesses",
+    "CaseFieldID": "applicantWitnesses",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "ManageCaseFlags",
@@ -144,7 +144,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
-    "CaseFieldID": "applicantSolicitorExperts",
+    "CaseFieldID": "applicantExperts",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "ManageCaseFlags",
@@ -157,7 +157,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor1Witnesses",
+    "CaseFieldID": "respondent1Witnesses",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "PageID": "ManageCaseFlags",
@@ -170,7 +170,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor1Experts",
+    "CaseFieldID": "respondent1Experts",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "ManageCaseFlags",
@@ -183,7 +183,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor2Witnesses",
+    "CaseFieldID": "respondent2Witnesses",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "ManageCaseFlags",
@@ -196,7 +196,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
-    "CaseFieldID": "respondentSolicitor2Experts",
+    "CaseFieldID": "respondent2Experts",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "COMPLEX",
     "PageID": "ManageCaseFlags",
