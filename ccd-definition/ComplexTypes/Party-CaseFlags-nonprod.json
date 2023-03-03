@@ -4,6 +4,7 @@
     "ListElementCode": "flags",
     "FieldType": "Flags",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
