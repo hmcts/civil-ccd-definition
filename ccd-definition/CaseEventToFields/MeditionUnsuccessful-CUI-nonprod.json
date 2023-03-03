@@ -1,0 +1,42 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "caseTitle",
+    "DisplayContext": "READONLY",
+    "PageID": "mediationUnsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "defendantNameLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "mediationUnsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "defendantName",
+    "DisplayContext": "READONLY",
+    "PageID": "mediationUnsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "unsuccessfulMediationReasons",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationUnsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y"
+  }
+]

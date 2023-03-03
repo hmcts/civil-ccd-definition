@@ -107,6 +107,35 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseTitle",
+    "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantNameLabel",
+    "Label": "### Defendant Name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantName",
+    "Label": "${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "unsuccessfulMediationReasons",
+    "Label": "Mediation failed reason",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "MediationUnsuccessfulReasons",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">How do you want ${respondent1.partyName} to pay?</h2>",
     "FieldType": "Label",
