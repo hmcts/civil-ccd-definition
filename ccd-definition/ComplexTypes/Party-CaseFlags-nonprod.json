@@ -1,9 +1,9 @@
 [
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "caseFlags",
-    "Label": " ",
+    "ID": "Party",
+    "ListElementCode": "flags",
     "FieldType": "Flags",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   }
 ]
