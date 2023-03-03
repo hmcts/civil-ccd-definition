@@ -125,4 +125,3 @@ wa-message-cron-service:
           - s2s-secret-case-event-handler
     environment:
       WA_CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
-

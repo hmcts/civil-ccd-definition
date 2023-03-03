@@ -51,7 +51,7 @@ civil-general-applications:
 
 civil-service:
   java:
-    releaseNameOverride: ${SERVICE_NAME}-civil-service
+    releaseNameOverride: ${SERVICE_NAME}-java
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
@@ -145,7 +145,7 @@ aac-manage-case-assignment:
       MCA_DEF_STORE_PROXY_URLS_ALLOWED_LIST: /api/display/challenge-questions.*
       MANAGE_CASE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_data,fpl_case_service,divorce_frontend,divorce_ccd_submission,finrem_case_orchestration, civil_service
       CCD_DATA_STORE_API_BASE_URL: http://${SERVICE_NAME}-ccd-data-store-api
-      CCD_DEFINITION_STORE_API_BASE_URL: http://${SERVICE_NAME}-ccd-definition-store
+      CCD_DEFINITION_STORE_API_BASE_URL: http://${SERVICE_NAME}-ccd-definition-store-api
       PRD_HOST: http://rd-professional-api-aat.service.core-compute-aat.internal
     autoscaling:
       enabled: false
@@ -204,7 +204,7 @@ ccd:
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
-    ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
+    ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store-api
     ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
