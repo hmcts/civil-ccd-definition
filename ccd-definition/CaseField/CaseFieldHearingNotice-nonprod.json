@@ -183,7 +183,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingReferenceNumber",
     "Label": "Hearing reference",
-    "FieldType": "Label",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
