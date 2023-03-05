@@ -769,12 +769,14 @@ module.exports = {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
     solicitorSetup(solicitor);
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
-    await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario]);
+    let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
+    fixture = await replaceLitigantFriendIfHNLFlagDisabled(fixture);
+
+    await validateEventPages(fixture);
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'You have added litigation friend details'
     });
@@ -1248,6 +1250,20 @@ function replaceLitigationFriendFields(caseData) {
       primaryAddress: buildAddress('litigant friend')
     };
   }
+  if (caseData.respondent1LitigationFriend) {
+    caseData.respondent1LitigationFriend = {
+      fullName: 'Bob the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.respondent2LitigationFriend) {
+    caseData.respondent2LitigationFriend = {
+      fullName: 'Davif the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
   return caseData;
 }
 
@@ -1264,6 +1280,18 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
       }
       if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
+
+    const respondentLitigationPage = responseData.valid.DefendantLitigationFriend;
+
+    if(respondentLitigationPage) {
+      const updated = replaceLitigationFriendFields(claimantLitigationPage);
+      if (respondentLitigationPage.respondent1LitigationFriend) {
+        claimantLitigationPage.respondent1LitigationFriend = updated.respondent1LitigationFriend;
+      }
+      if (respondentLitigationPage.respondent2LitigationFriend) {
+        claimantLitigationPage.respondent2LitigationFriend = updated.respondent2LitigationFriend;
       }
     }
   }
