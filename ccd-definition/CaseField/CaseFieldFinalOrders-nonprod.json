@@ -20,5 +20,61 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrderSelection",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseParticipantsFreeForm",
+    "Label": "${caseNameHmctsInternal}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormRecitalAndOrderLabel",
+    "Label": "**** \n ## Recital and order \n ### Insert any recitals amd order you wish to make below",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormRecitalTextArea",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormRecordedTextAreaLabel",
+    "Label": "### It is recorded that:",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormRecordedTextArea",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormOrderedLabel",
+    "Label": "**** \n ## Ordered \n ### It is ordered that:",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormOrderedTextArea",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderOnCourtInitiative",
+    "Label": " ",
+    "FieldType": "OrderOnCourtInitiative",
+    "SecurityClassification": "Public"
   }
 ]
