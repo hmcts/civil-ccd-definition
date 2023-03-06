@@ -854,7 +854,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsMethod",
+    "CaseFieldID": "hearingMethodValuesSmallClaims",
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY",
     "PageID": "SmallClaims",

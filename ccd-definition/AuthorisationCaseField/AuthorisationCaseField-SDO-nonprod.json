@@ -1053,6 +1053,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesSmallClaims",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodInPerson",
     "AccessControl": [
       {
