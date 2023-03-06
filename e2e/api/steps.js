@@ -27,6 +27,7 @@ const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, r
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags} = require('./caseFlagsHelper');
+const {fetchCaseDetails} = require('./apiRequest');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -257,12 +258,19 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    }
     console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
     return caseId;
   },
 
@@ -356,6 +364,7 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
+    caseData = returnedCaseData;
 
     await validateEventPages(data[eventName]);
 
@@ -759,6 +768,12 @@ module.exports = {
     }
   },
 
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
+  },
+
   initiateGeneralApplication: async (caseNumber, user, expectedState) => {
     eventName = 'INITIATE_GENERAL_APPLICATION';
     caseId = caseId || caseNumber;
@@ -1001,6 +1016,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  responseBody = clearNoCData(responseBody);
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1454,6 +1470,11 @@ const clearDataForSearchCriteria = (responseBody) => {
   return responseBody;
 };
 
+const clearNoCData = (responseBody) => {
+  delete responseBody.data['changeOfRepresentation'];
+  return responseBody;
+};
+
 const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
@@ -1498,6 +1519,9 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 
 const adjustDataForSolicitor = (user, data) => {
   let fixtureClone = cloneDeep(data);
+  if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
+  }
   if (user === 'solicitorOne') {
     delete fixtureClone['respondent2ResponseDeadline'];
   } else if (user === 'solicitorTwo') {

@@ -18,6 +18,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSp
 const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
+const {fetchCaseDetails} = require('./apiRequest');
 const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require('./caseFlagsHelper');
@@ -157,6 +158,11 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
+    if (scenario === 'ONE_V_TWO_SAME_SOL' && createClaimData.userInput.SameLegalRepresentative
+      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'Yes') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+    }
 
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
@@ -447,6 +453,12 @@ module.exports = {
     console.log (`case created: ${caseId}`);
     return caseId;
   },
+
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
+  },
 };
 
 // Functions
@@ -710,7 +722,14 @@ const adjustDataForHnl = (inputData, response) => {
   if (!response.startsWith('FULL_DEFENCE')) {
     return inputData;
   }
-  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
+
+  let fullDefence1v1 = false;
+  if(response === 'FULL_DEFENCE' || response == 'FULL_DEFENCE_AFTER_PAYMENT'){
+    fullDefence1v1 = true;
+  }
+
+  const respondentNum = response == fullDefence1v1 ? '1' : '2';
+
   return {
     ...inputData,
     userInput: {
