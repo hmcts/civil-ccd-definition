@@ -46,5 +46,57 @@
     "FieldDisplayOrder": 15,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
-  }
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingSupport",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQHearingSupport",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
+    "PageDisplayOrder": 51,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "VulnerabilityQuestions",
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQVulnerabilityQuestions",
+    "PageDisplayOrder": 51,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "VulnerabilityQuestions",
+    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "Publish": "Y"
+  },
 ]
