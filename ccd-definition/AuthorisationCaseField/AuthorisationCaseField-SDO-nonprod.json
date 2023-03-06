@@ -600,6 +600,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesDisposalHearing",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodInPerson",
     "AccessControl": [
       {
@@ -1833,7 +1846,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingMethodValues",
+    "CaseFieldID": "hearingMethodValuesFastTrack",
     "AccessControl": [
       {
         "UserRoles": [

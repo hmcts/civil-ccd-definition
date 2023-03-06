@@ -479,7 +479,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethod",
+    "CaseFieldID": "hearingMethodValuesDisposalHearing",
     "PageFieldDisplayOrder": 32,
     "DisplayContext": "MANDATORY",
     "PageID": "DisposalHearing",
@@ -487,66 +487,6 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "disposalHearingMethodToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethodInPerson",
-    "PageFieldDisplayOrder": 33,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodInPerson\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethodVideoConferenceHearing",
-    "PageFieldDisplayOrder": 34,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethodVideoConferenceHearingCourtStatement",
-    "PageFieldDisplayOrder": 35,
-    "DisplayContext": "READONLY",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodVideoConferenceHearing\" AND disposalHearingMethodVideoConferenceHearing=\"videoTheCourt\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethodTelephoneHearing",
-    "PageFieldDisplayOrder": 36,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethodTelephoneHearingCourtStatement",
-    "PageFieldDisplayOrder": 37,
-    "DisplayContext": "READONLY",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethod=\"disposalHearingMethodTelephoneHearing\" AND disposalHearingMethodTelephoneHearing=\"telephoneTheCourt\" AND disposalHearingMethodToggle=\"DONT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1572,7 +1512,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "hearingMethodValues",
+    "CaseFieldID": "hearingMethodValuesFastTrack",
     "PageFieldDisplayOrder": 42,
     "DisplayContext": "MANDATORY",
     "PageID": "FastTrack",
@@ -1708,7 +1648,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hearingMethodValues=\"DO NOT SHOW\""
+    "FieldShowCondition": "hearingMethodValuesFastTrack=\"DO NOT SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
