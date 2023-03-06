@@ -17,7 +17,13 @@
     "ID": "RespondentLiPResponse",
     "ListElementCode": "evidenceComment",
     "ElementLabel": " ",
-    "FieldType": "Text",
+    "FieldType": "Text"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPFinancialDetails",
+    "ElementLabel": " ",
+    "FieldType": "FinancialDetailsLiP",
     "SecurityClassification": "Public"
   }
 ]
