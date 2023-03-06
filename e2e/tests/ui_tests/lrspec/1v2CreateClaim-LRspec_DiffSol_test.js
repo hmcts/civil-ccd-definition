@@ -88,6 +88,17 @@ Scenario('Claimant uploads evidence', async ({LRspec}) => {
   }
 }).retry(3);
 
+// ToDo: Refactor to trigger create case flags event
+Scenario.skip('Add case flags', async ({LRspec}) => {
+  await LRspec.login(config.adminUser);
+  // await I.createCaseFlags();
+  await LRspec.validateCaseFlags([
+    { partyName: 'Example applicant1 company', details: [] },
+    { partyName: 'Example respondent1 company', details: [] },
+    { partyName: 'Example respondent2 company', details: [] }
+  ]);
+}).retry(3);
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
