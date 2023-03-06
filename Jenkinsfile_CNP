@@ -193,6 +193,10 @@ withPipeline(type, product, component) {
     uploadCoreCaseDataDefinitions('staging')
   }
 
+  before('functionalTest:aat') {
+    env.IDAM_STUB_ENABLED=false
+  }
+
   afterAlways('smoketest:aat') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
   }
