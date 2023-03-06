@@ -1,6 +1,6 @@
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr-2128'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-2396'
     ingressHost: ${SERVICE_FQDN}
     keyVaults:
       civil:
