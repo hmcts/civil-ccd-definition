@@ -194,7 +194,7 @@ withPipeline(type, product, component) {
   }
 
   before('functionalTest:aat') {
-    env.IDAM_STUB_ENABLED=false
+    env.IDAM_STUB_ENABLED='false'
   }
 
   afterAlways('smoketest:aat') {
