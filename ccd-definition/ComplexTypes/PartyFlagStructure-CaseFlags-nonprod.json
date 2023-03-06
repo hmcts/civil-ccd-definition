@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "PartyFlagStructure",
+    "ListElementCode": "firstName",
+    "FieldType": "Text",
+    "ElementLabel": "First name",
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "ID": "PartyFlagStructure",
+    "ListElementCode": "lastName",
+    "FieldType": "Text",
+    "ElementLabel": "Last name",
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "ID": "PartyFlagStructure",
+    "ListElementCode": "flags",
+    "FieldType": "Flags",
+    "ElementLabel": "flags",
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
+  }
+]
