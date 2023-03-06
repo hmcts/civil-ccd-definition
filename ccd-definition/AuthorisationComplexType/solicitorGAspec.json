@@ -156,13 +156,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "applicantsPbaAccounts",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "fee",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
@@ -178,13 +171,6 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "paymentSuccessfulDate",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReference",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
