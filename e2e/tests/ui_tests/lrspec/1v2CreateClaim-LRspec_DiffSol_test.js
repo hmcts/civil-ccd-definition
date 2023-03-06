@@ -81,6 +81,13 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
   }
 }).retry(3);
 
+Scenario('Claimant uploads evidence', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.applicantSolicitorUser);
+    await LRspec.evidenceUpload(caseId());
+  }
+}).retry(3);
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
