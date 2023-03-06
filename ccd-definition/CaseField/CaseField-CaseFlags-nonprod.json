@@ -5,5 +5,12 @@
     "Label": "Launch the Flags screen",
     "FieldType": "FlagLauncher",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseFlags",
+    "Label": "Case Flags",
+    "FieldType": "Flags",
+    "SecurityClassification": "Public"
   }
 ]

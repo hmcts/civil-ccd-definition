@@ -20,10 +20,12 @@ const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
-  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
+  checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
+} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {fetchCaseDetails} = require('./apiRequest');
+const {assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -188,6 +190,9 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -775,19 +780,27 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
   },
 
-  //TODO this method is not used in api tests
-  addDefendantLitigationFriend: async () => {
+  addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
+    await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
-    assertContainsPopulatedFields(returnedCaseData);
+    solicitorSetup(solicitor);
+    assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
-    await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND);
-    await assertSubmittedEvent('ADD_DEFENDANT_LITIGATION_FRIEND', {
-      header: 'You have added litigation friend details',
-      body: '<br />'
+    let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
+    fixture = await replaceLitigantFriendIfHNLFlagDisabled(fixture);
+
+    await validateEventPages(fixture);
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: 'You have added litigation friend details'
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
+    }
   },
 
   moveCaseToCaseman: async (user) => {
@@ -1108,7 +1121,9 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if(submittedCallbackResponseContains.body) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 
   if (eventName === 'CREATE_CLAIM') {
@@ -1251,6 +1266,20 @@ function replaceLitigationFriendFields(caseData) {
       primaryAddress: buildAddress('litigant friend')
     };
   }
+  if (caseData.respondent1LitigationFriend) {
+    caseData.respondent1LitigationFriend = {
+      fullName: 'Bob the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.respondent2LitigationFriend) {
+    caseData.respondent2LitigationFriend = {
+      fullName: 'Davif the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
   return caseData;
 }
 
@@ -1267,6 +1296,18 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
       }
       if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
+
+    const respondentLitigationPage = responseData.valid.DefendantLitigationFriend;
+
+    if(respondentLitigationPage) {
+      const updated = replaceLitigationFriendFields(respondentLitigationPage);
+      if (respondentLitigationPage.respondent1LitigationFriend) {
+        respondentLitigationPage.respondent1LitigationFriend = updated.respondent1LitigationFriend;
+      }
+      if (respondentLitigationPage.respondent2LitigationFriend) {
+        respondentLitigationPage.respondent2LitigationFriend = updated.respondent2LitigationFriend;
       }
     }
   }
