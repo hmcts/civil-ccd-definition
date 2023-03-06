@@ -1,6 +1,5 @@
 civil-service:
   java:
-    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -32,26 +31,61 @@ civil-service:
 idam-pr:
   redirect_uris:
     XUI:
-      - https://xui-${SERVICE_NAME}.preview.platform.hmcts.net/oauth2/callback
+      - https://xui-${SERVICE_FQDN}/oauth2/callback
 
 civil-general-applications:
   enabled: true
 xui-webapp:
   nodejs:
-    ingressHost: xui-${SERVICE_NAME}.preview.platform.hmcts.net
+    ingressHost: xui-${SERVICE_FQDN}
 ccd:
   ccd-api-gateway-web:
     nodejs:
-      ingressHost: gateway-${SERVICE_NAME}.preview.platform.hmcts.net
+      ingressHost: gateway-${SERVICE_FQDN}
   ccd-data-store-api:
     java:
       environment:
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
-      ingressHost: ccd-data-store-api-${SERVICE_NAME}.preview.platform.hmcts.net
+      ingressHost: ccd-data-store-api-${SERVICE_FQDN}
   ccd-definition-store-api:
     java:
-      ingressHost: ccd-definition-store-${SERVICE_NAME}.preview.platform.hmcts.net
+      ingressHost: ccd-definition-store-${SERVICE_FQDN}
+
+ccd-message-publisher:
+  java:
+    ingressHost: ccd-message-publisher-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
+    keyVaults:
+      ccd:
+        secrets:
+          - name: AppInsightsInstrumentationKey
+            alias: azure.application-insights.instrumentation-key
+    environment:
+      DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
+      DATA_STORE_DB_NAME: data-store
+      DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_PASSWORD: hmcts
+      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      CCD_CASE_EVENTS_DESTINATION: ccd-case-events
+    secrets:
+      SERVICE_BUS_CONNECTION_STRING:
+        secretRef: civil-work-allocation-secret
+        key: connectionString
+  servicebus:
+    releaseNameOverride: ${SERVICE_NAME}-asb
+    teamName: Civil
+    resourceGroup: civil-service-aat
+    enabled: false
+    serviceplan: standard
+    setup:
+      topics:
+        - name: ccd-case-events
+          subscriptionNeeded: yes
+
 camunda-bpm:
   java:
-    ingressHost: camunda-${SERVICE_NAME}.preview.platform.hmcts.net
+    ingressHost: camunda-${SERVICE_FQDN}
+
+wa:
+  enabled: false
