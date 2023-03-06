@@ -22,5 +22,11 @@
     "ListElementCode": "SDO_ORDER",
     "ListElement": "Standard Directions Order",
     "DisplayOrder": 12
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_NOTICE",
+    "ListElement": "Hearing Notice",
+    "DisplayOrder": 13
   }
 ]
