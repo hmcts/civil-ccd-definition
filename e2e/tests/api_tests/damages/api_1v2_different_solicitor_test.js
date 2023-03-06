@@ -38,10 +38,6 @@ Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
   await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-Scenario('Add Litigation Friend for Respondent 2', async ({I, api}) => {
-  await api.addDefendantLitigationFriend(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-});
-
 Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
