@@ -128,7 +128,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "unsuccessfulMediationReasons",
+    "ID": "unsuccessfulMediationReason",
     "Label": "Mediation failed reason",
     "FieldType": "FixedList",
     "FieldTypeParameter": "MediationUnsuccessfulReasons",

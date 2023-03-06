@@ -1034,7 +1034,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "unsuccessfulMediationReasons",
+    "CaseFieldID": "unsuccessfulMediationReason",
     "AccessControl": [
       {
         "UserRoles": [

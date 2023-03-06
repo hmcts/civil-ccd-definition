@@ -32,7 +32,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
-    "CaseFieldID": "unsuccessfulMediationReasons",
+    "CaseFieldID": "unsuccessfulMediationReason",
     "DisplayContext": "MANDATORY",
     "PageID": "mediationUnsuccessful",
     "PageDisplayOrder": 1,
