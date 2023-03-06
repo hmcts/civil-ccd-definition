@@ -24,8 +24,10 @@ const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlTo
 } = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
+const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags} = require('./caseFlagsHelper');
 const {fetchCaseDetails} = require('./apiRequest');
-const {assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -649,6 +651,9 @@ module.exports = {
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
+      //delete case flags DQ party fields
+      deleteCaseFields('respondent1Experts');
+      deleteCaseFields('respondent1Witnesses');
     }
 
     await validateEventPages(defendantResponseData, solicitor);
@@ -694,6 +699,12 @@ module.exports = {
 
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
+
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
+    }
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag) => {
@@ -954,7 +965,26 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-  }
+  },
+
+  createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for(const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
 };
 
 // Functions
@@ -1475,6 +1505,8 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1ResponseDeadline'];
+    delete responseBody.data['respondent1Experts'];
+    delete responseBody.data['respondent1Witnesses'];
   } else {
     delete responseBody.data['respondent2'];
   }
