@@ -1,14 +1,15 @@
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
+    './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
-    './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/sdo/*_test.js',
     './e2e/tests/ui_tests/damages/*_test.js',
     './e2e/tests/ui_tests/damages/nightly/*_test.js',
     './e2e/tests/ui_tests/lrspec/*_test.js',
+    './e2e/tests/ui_tests/noticeofchange/*_test.js',
     './e2e/tests/ui_tests/sdo/*_test.js',
     './e2e/tests/ui_tests/default_judgement/*_test.js'
   ],
@@ -39,7 +40,8 @@ exports.config = {
     api_spec: './e2e/api/steps_LRspec.js',
     api_spec_fast: './e2e/api/steps_LRspecFast.js',
     api_spec_small: './e2e/api/steps_LRspecSmall.js',
-    api_spec_cui: './e2e/api/steps_LRspecCui.js'
+    api_spec_cui: './e2e/api/steps_LRspecCui.js',
+    noc: './e2e/api/steps_noc.js'
   },
   plugins: {
     autoDelay: {
