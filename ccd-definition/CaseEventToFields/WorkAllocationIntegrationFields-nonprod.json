@@ -56,7 +56,7 @@
     "DisplayContext": "READONLY",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
-    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -69,7 +69,7 @@
     "DisplayContext": "READONLY",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
-    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -82,7 +82,7 @@
     "DisplayContext": "READONLY",
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
-    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -94,7 +94,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "VulnerabilityQuestions",
-    "FieldShowCondition": "showConditionFlags=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Vulnerability Questions",
     "Publish": "Y"
