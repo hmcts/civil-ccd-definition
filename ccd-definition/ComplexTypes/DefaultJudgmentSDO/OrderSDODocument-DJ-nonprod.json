@@ -1,0 +1,10 @@
+[
+  {
+    "LiveFrom": "01/06/2020",
+    "ID": "FR_ct_refusedOrderCollection",
+    "ListElementCode": "orderSDODocumentDJ",
+    "FieldType": "Document",
+    "ElementLabel": "Document",
+    "SecurityClassification": "Public"
+  }
+]

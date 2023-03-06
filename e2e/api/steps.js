@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement} = require('./dataHelper');
+const {listElement, buildAddress} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -720,7 +720,8 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(claimantResponseData);
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
+        claimantResponseData);
     }
 
     await validateEventPages(claimantResponseData);
@@ -779,12 +780,14 @@ module.exports = {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
     solicitorSetup(solicitor);
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
-    await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario]);
+    let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
+    fixture = await replaceLitigantFriendIfHNLFlagDisabled(fixture);
+
+    await validateEventPages(fixture);
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'You have added litigation friend details'
     });
@@ -792,7 +795,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     if(checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterAddLitigationFriend(config.hearingCentreAdmin01, caseId);
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
     }
   },
 
@@ -1132,7 +1135,9 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if(submittedCallbackResponseContains.body) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 
   if (eventName === 'CREATE_CLAIM') {
@@ -1262,14 +1267,32 @@ function checkCalculated(calculated, responseBodyData) {
 
 function replaceLitigationFriendFields(caseData) {
   if (caseData.applicant1LitigationFriend) {
-    // eslint-disable-next-line  no-unused-vars
-    const {firstName, lastName, emailAddress, phoneNumber, ...rest} = caseData.applicant1LitigationFriend;
-    caseData.applicant1LitigationFriend = {...rest, fullName: 'John Doe'};
+    caseData.applicant1LitigationFriend = {
+      fullName: 'John Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
   }
   if (caseData.applicant2LitigationFriend) {
-    // eslint-disable-next-line  no-unused-vars
-    const {firstName, lastName, emailAddress, phoneNumber, ...rest} = caseData.applicant2LitigationFriend;
-    caseData.applicant2LitigationFriend = {...rest, fullName: 'Jane Doe'};
+    caseData.applicant2LitigationFriend = {
+      fullName: 'Jane Doe',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.respondent1LitigationFriend) {
+    caseData.respondent1LitigationFriend = {
+      fullName: 'Bob the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.respondent2LitigationFriend) {
+    caseData.respondent2LitigationFriend = {
+      fullName: 'Davif the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
   }
   return caseData;
 }
@@ -1287,6 +1310,18 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
       }
       if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
+
+    const respondentLitigationPage = responseData.valid.DefendantLitigationFriend;
+
+    if(respondentLitigationPage) {
+      const updated = replaceLitigationFriendFields(respondentLitigationPage);
+      if (respondentLitigationPage.respondent1LitigationFriend) {
+        respondentLitigationPage.respondent1LitigationFriend = updated.respondent1LitigationFriend;
+      }
+      if (respondentLitigationPage.respondent2LitigationFriend) {
+        respondentLitigationPage.respondent2LitigationFriend = updated.respondent2LitigationFriend;
       }
     }
   }

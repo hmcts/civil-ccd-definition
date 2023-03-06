@@ -1,0 +1,31 @@
+[
+  {
+    "ID": "DisposalHearingBundleDJ",
+    "ListElementCode": "label1",
+    "FieldType": "Label",
+    "ElementLabel": "## Disposal hearing bundle ##",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundleDJ",
+    "ListElementCode": "input",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundleDJ",
+    "ListElementCode": "label2",
+    "FieldType": "Label",
+    "ElementLabel": "#### Select bundle type",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingBundleDJ",
+    "ListElementCode": "type",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DisposalHearingBundleType",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
