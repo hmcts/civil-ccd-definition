@@ -98,8 +98,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DIRECTIONS_ORDER",
-    "Name": "Generate Directions Order",
-    "Description": "Generate Directions Order",
+    "Name": "Make an order",
+    "Description": "Make an order",
     "PreConditionState(s)": "JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
