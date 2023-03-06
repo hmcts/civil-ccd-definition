@@ -4,7 +4,7 @@ const iacDefaultPassword = 'AldgateT0wer';
 
 module.exports = {
   idamStub: {
-    enabled: process.env.IDAM_STUB_ENABLED || false,
+    enabled: process.env.IDAM_STUB_ENABLED === 'true',
     url: 'http://localhost:5555'
   },
   url: {
