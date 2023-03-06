@@ -166,6 +166,10 @@ withPipeline(type, product, component) {
     }
   }
 
+  before('functionalTest:preview') {
+    env.IDAM_STUB_ENABLED='false'
+  }
+
   afterAlways('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
@@ -191,6 +195,10 @@ withPipeline(type, product, component) {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-staging.xlsx"
     }
     uploadCoreCaseDataDefinitions('staging')
+  }
+
+  before('functionalTest:aat') {
+    env.IDAM_STUB_ENABLED='false'
   }
 
   afterAlways('smoketest:aat') {
