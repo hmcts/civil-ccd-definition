@@ -166,6 +166,10 @@ withPipeline(type, product, component) {
     }
   }
 
+  before('functionalTest:preview') {
+    env.IDAM_STUB_ENABLED='false'
+  }
+
   afterAlways('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
@@ -194,7 +198,7 @@ withPipeline(type, product, component) {
   }
 
   before('functionalTest:aat') {
-    env.IDAM_STUB_ENABLED=false
+    env.IDAM_STUB_ENABLED='false'
   }
 
   afterAlways('smoketest:aat') {
