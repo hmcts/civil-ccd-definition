@@ -145,6 +145,7 @@ withPipeline(type, product, component) {
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
       env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.AAC_API_URL="https://manage-case-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
       eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
@@ -181,6 +182,7 @@ withPipeline(type, product, component) {
     env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"
+    env.AAC_API_URL="https://manage-case.aat.platform.hmcts.net"
     sh """
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
