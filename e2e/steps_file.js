@@ -130,6 +130,9 @@ const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selec
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const noticeOfChange = require('./pages/noticeOfChange.page');
+
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
@@ -227,7 +230,7 @@ module.exports = function () {
           this.amOnPage(config.url.manageCase, 90);
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-            output.log(`Signing in user: ${user.type}`);
+            console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
         }, SIGNED_IN_SELECTOR);
@@ -860,23 +863,51 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async createCaseFlags() {
-      eventName = 'Create case flags';
+    async initiateNoticeOfChange(caseId, clientName) {
+      eventName = 'NoC Request';
       await this.triggerStepsWithScreenshot([
-        // ToDo trigger create case flags event
-        // () => caseViewPage.startEvent(eventName, caseId),
-        // () => event.submit('', '')
+        () => noticeOfChange.initiateNoticeOfChange(),
+        () => noticeOfChange.enterCaseId(caseId),
+        () => noticeOfChange.enterClientName(clientName),
+        () => noticeOfChange.checkAndSubmit(caseId)
       ]);
-      await this.takeScreenshot();
+    },
+
+    async navigateToCaseFlags(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async createCaseFlags(caseFlags) {
+      eventName = 'Create case flags';
+
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
     },
 
     async validateCaseFlags(caseFlags) {
       eventName = '';
+
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.selectCaseFlagsTab(caseId),
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
-    },
+    }
   });
 };
