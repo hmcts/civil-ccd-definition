@@ -121,6 +121,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppParentClaimantIsApplicant",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppHearingDate",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

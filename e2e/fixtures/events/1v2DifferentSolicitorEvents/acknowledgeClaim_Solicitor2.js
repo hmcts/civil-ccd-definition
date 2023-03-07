@@ -20,7 +20,10 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         individualDateOfBirth: date(-1),
         partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual'
+        partyTypeDisplayValue: 'Individual',flags: {
+          partyName: 'Sir John Doe',
+          roleOnCase: 'Respondent 1'
+        }
       },
       respondent2: {
         type: 'INDIVIDUAL',
