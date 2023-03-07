@@ -43,10 +43,6 @@ module.exports = {
           individualTitle: 'Sir',
           individualDateOfBirth: date(1),
           primaryAddress: buildAddress('respondent')
-        },
-        flags: {
-          partyName: 'Sir John Doe',
-          roleOnCase: 'Respondent 1'
         }
       }
     }
