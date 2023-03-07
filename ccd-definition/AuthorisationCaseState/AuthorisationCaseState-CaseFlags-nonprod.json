@@ -1,22 +1,17 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseStateID": "JUDICIAL_REFERRAL",
     "AccessControl": [
       {
         "UserRoles": [
-
-          "APP-SOL-UNSPEC-PROFILE",
-          "[CREATOR]"
-
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
+          "caseflags-viewer"
         ],
         "CRUD": "R"
       }

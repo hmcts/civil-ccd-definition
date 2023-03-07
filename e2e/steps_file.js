@@ -130,6 +130,7 @@ const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selec
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
+const noticeOfChange = require('./pages/noticeOfChange.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -229,7 +230,7 @@ module.exports = function () {
           this.amOnPage(config.url.manageCase, 90);
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-            output.log(`Signing in user: ${user.type}`);
+            console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
         }, SIGNED_IN_SELECTOR);
@@ -862,6 +863,16 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
+    async initiateNoticeOfChange(caseId, clientName) {
+      eventName = 'NoC Request';
+      await this.triggerStepsWithScreenshot([
+        () => noticeOfChange.initiateNoticeOfChange(),
+        () => noticeOfChange.enterCaseId(caseId),
+        () => noticeOfChange.enterClientName(clientName),
+        () => noticeOfChange.checkAndSubmit(caseId)
+      ]);
+    },
+
     async navigateToCaseFlags(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -922,6 +933,5 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
-
   });
 };
