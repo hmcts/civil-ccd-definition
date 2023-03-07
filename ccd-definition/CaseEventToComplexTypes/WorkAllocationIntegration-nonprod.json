@@ -43,32 +43,5 @@
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "Publish": "Y"
-  },
-  {
-    "ID": "Languages",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQLanguage",
-    "ListElementCode": "documents",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
-    "Publish": "Y"
-  },
-  {
-    "ID": "Languages",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQLanguage",
-    "ListElementCode": "court",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
-    "Publish": "Y"
-  },
-  {
-    "ID": "Languages",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQLanguage",
-    "ListElementCode": "documents",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
-    "Publish": "Y"
   }
 ]
