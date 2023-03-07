@@ -115,8 +115,26 @@
   },
   {
     "ID": "ShowConditionFlags",
-    "ListElementCode": "MEDIATION_2",
-    "ListElement": "MEDIATION_2",
+    "ListElementCode": "CLAIMANT_MEDIATION_ONE_V_ONE",
+    "ListElement": "CLAIMANT_MEDIATION_ONE_V_ONE",
     "DisplayOrder": 20
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE",
+    "ListElement": "CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE",
+    "DisplayOrder": 21
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "CLAIMANT_MEDIATION_ONE_V_TWO",
+    "ListElement": "CLAIMANT_MEDIATION_ONE_V_TWO",
+    "DisplayOrder": 22
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "CLAIMANT_MEDIATION_TWO_V_ONE",
+    "ListElement": "CLAIMANT_MEDIATION_TWO_V_ONE",
+    "DisplayOrder": 23
   }
 ]

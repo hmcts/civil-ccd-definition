@@ -81,8 +81,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
 
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
-            applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'No'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
