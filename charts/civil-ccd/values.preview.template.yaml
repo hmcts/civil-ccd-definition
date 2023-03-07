@@ -34,6 +34,10 @@ idam-pr:
     XUI:
       - https://xui-${SERVICE_NAME}.preview.platform.hmcts.net/oauth2/callback
 
+aac-manage-case-assignment:
+  java:
+    ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
+
 civil-general-applications:
   enabled: true
 xui-webapp:
