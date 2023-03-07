@@ -217,8 +217,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedPBADetails",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
