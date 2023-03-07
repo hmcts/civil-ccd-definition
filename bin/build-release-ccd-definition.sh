@@ -30,7 +30,7 @@ else
 fi
 
 # deciding which enviornment should be excluded for unshuttered/shuttered
-if( ( ${#environment[@]} )  && (grep -q "${environment}" <<< $(j "${shutterlist[@]}"))) ; then
+if( ( ${#shutterlist[@]} )  && (grep -q "${environment}" <<< $(j "${shutterlist[@]}"))) ; then
   excludedFilenamePatterns="${excludedFilenamePatterns} ,*-shuttered.json"
   echo "${excludedFilenamePatterns}"
 else
