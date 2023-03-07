@@ -5,7 +5,6 @@
     "Name": "Civil",
     "Description": "Civil",
     "JurisdictionID": "CIVIL",
-    "SecurityClassification": "Public",
-    "CallbackGetCaseUrl": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/getWAToggle"
+    "SecurityClassification": "Public"
   }
 ]
