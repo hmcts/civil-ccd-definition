@@ -1,9 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "caseFlags",
-    "Label": " ",
-    "FieldType": "Flags",
-    "SecurityClassification": "Public"
-  }
-]
