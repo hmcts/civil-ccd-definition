@@ -8,6 +8,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
+const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -149,6 +150,10 @@ module.exports = {
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
+
+    if ((['preview', 'demo'].includes(config.runningEnv)) && response == 'FULL_DEFENCE' && hnlSdoEnabled) {
+      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
+    }
 
     if(!hnlSdoEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
@@ -447,5 +452,33 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
+};
+
+const adjustDataForHnl = (inputData, response) => {
+  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
+  if (!response.startsWith('FULL_DEFENCE')) {
+    return inputData;
+  }
+  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
+  return {
+    ...inputData,
+    userInput: {
+      ...inputData.userInput,
+      SmallClaimWitnesses: {
+        [`respondent${respondentNum}DQWitnesses`]: {
+          witnessesToAppear: 'Yes',
+          details: [
+            element({
+              firstName: 'Witness',
+              lastName: 'One',
+              emailAddress: 'witness@email.com',
+              phoneNumber: '07116778998',
+              reasonForWitness: 'None'
+            })
+          ]
+        }
+      }
+    }
+  };
 };
 

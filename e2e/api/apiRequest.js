@@ -90,15 +90,6 @@ module.exports = {
       }, 'POST', expectedStatus);
   },
 
-  fetchCaseDetails: async(user, caseId, response = 200) => {
-    let eventUserAuth = await idamHelper.accessToken(user);
-    let eventUserId = await idamHelper.userId(eventUserAuth);
-    let url = getCaseDetailsUrl(eventUserId, caseId);
-
-    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
-      .then(response => response.json());
-  },
-
   submitEvent: async (eventName, caseData, caseId) => {
     let url = `${getCcdDataStoreBaseUrl()}/cases`;
     if (caseId) {

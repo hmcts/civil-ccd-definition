@@ -10,6 +10,7 @@ const {expect, assert} = chai;
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -229,6 +230,11 @@ module.exports = {
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
+
+    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
+    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
+      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
+    }
 
     if(!hnlSdoEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
