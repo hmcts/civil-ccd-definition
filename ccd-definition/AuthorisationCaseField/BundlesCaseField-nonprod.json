@@ -6,7 +6,6 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
@@ -21,7 +20,6 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
@@ -36,7 +34,6 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "judge-profile"
         ],
