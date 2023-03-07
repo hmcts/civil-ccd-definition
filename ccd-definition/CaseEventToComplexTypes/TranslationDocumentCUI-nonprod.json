@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "TranslationDocument",
+    "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
+    "CaseFieldID": "translationDocument",
+    "ListElementCode": "documentType",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TranslationDocument",
+    "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
+    "CaseFieldID": "translationDocument",
+    "ListElementCode": "file",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  }
+]
