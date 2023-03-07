@@ -20,7 +20,7 @@ const {removeHNLFieldsFromClaimData,
   replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim
 } = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
-const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require('./caseFlagsHelper');
+const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
 let caseId, eventName;
@@ -281,6 +281,25 @@ module.exports = {
 
     for (const [index, value] of caseFlagLocations.entries()) {
       await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
+
+  manageCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'MANAGE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await updateAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for(const [index, value] of caseFlagLocations.entries()) {
+      await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
   }
 };

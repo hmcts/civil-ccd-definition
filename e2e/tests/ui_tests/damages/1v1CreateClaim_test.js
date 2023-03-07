@@ -58,16 +58,6 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Admin adds case flags on to case', async ({I}) => {
-  let isCaseFlagsToggleEnabled = await checkToggleEnabled('case-flags');
-  if (isCaseFlagsToggleEnabled) {
-    await I.login(config.adminUser);
-    await I.navigateToCaseDetails(caseNumber);
-    await I.checkForCaseFlagsEvent();
-    await I.click('Sign out');
-  }
-}).retry(3);
-
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
@@ -107,6 +97,24 @@ Scenario('Add case flags', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
+  }
+});
+
+Scenario('Manage case flags', async ({I}) => {
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      flagType: 'Vulnerable user',
+      flagComment: 'test comment'
+    }, {
+      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+      flagType: 'Unacceptable/disruptive customer behaviour',
+      flagComment: 'test comment'
+    }];
+
+    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.manageCaseFlags(caseFlags);
+    await I.validateUpdatedCaseFlags(caseFlags);
   }
 });
 

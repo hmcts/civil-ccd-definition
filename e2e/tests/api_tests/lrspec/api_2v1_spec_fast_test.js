@@ -7,6 +7,7 @@ Scenario('2v1 fast claim full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec_fast.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+  await api_spec_fast.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 Scenario('2v1 fast claim counter claim', async ({I, api_spec_fast}) => {
