@@ -2152,5 +2152,21 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentOne",
+    "Label": "registration information respondent one",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentTwo",
+    "Label": "registration information respondent two",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
   }
 ]
