@@ -31,7 +31,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
