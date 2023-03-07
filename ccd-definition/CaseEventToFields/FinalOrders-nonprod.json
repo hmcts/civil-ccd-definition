@@ -78,7 +78,7 @@
     "CaseFieldID": "freeFormRecordedTextArea",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y"
   },

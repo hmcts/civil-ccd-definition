@@ -31,7 +31,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recital and order \n ### Insert any recitals amd order you wish to make below",
+    "Label": "**** \n ## Recital and order \n ### Insert any recitals and order you wish to make below",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
