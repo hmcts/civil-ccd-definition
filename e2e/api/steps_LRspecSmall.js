@@ -17,7 +17,7 @@ const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim,
   replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim
 } = require('../helpers/hnlFeatureHelper');
-const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
