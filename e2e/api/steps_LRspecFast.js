@@ -14,8 +14,14 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
-const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {removeHNLFieldsFromClaimData,
+  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim,
+  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim
+} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
+const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require('./caseFlagsHelper');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
 let caseId, eventName;
 let caseData = {};
@@ -190,7 +196,7 @@ module.exports = {
     const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim(
         defendantResponseData, solicitor);
     }
 
@@ -214,6 +220,11 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
+
     deleteCaseFields('respondent1Copy');
   },
 
@@ -233,7 +244,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim(
         claimantResponseData);
     }
 
@@ -249,7 +260,29 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
   },
+  createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for (const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  }
 };
 
 // Functions
