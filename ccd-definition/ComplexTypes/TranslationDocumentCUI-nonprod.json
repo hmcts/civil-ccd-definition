@@ -10,7 +10,8 @@
   {
     "ID": "TranslationDocument",
     "ListElementCode": "documentType",
-    "FieldType": "TranslationDocumentType",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "TranslationDocumentType",
     "ElementLabel": "Document Type",
     "SecurityClassification": "Public"
   }
