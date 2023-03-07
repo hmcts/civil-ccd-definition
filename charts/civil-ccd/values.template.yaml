@@ -53,7 +53,7 @@ civil-service:
   java:
     releaseNameOverride: ${SERVICE_NAME}-java
     imagePullPolicy: Always
-    image: 'hmctspublic.azurecr.io/civil/service:pr-2322'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-2399'
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
