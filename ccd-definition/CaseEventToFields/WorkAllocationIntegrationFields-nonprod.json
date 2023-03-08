@@ -96,7 +96,8 @@
     "PageID": "VulnerabilityQuestions",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": "Vulnerability Questions"
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
