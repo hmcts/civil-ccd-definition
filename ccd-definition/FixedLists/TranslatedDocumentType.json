@@ -1,6 +1,6 @@
 [
   {
-    "ID": "TranslationDocumentType",
+    "ID": "TranslatedDocumentType",
     "ListElementCode": "DEFENDANT_RESPONSE",
     "ListElement": "Defendant Response",
     "DisplayOrder": 1

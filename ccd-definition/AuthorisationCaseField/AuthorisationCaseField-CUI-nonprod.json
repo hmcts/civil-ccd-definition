@@ -39,7 +39,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "translationDocument",
+    "CaseFieldID": "translatedDocument",
     "AccessControl": [
       {
         "UserRoles": [

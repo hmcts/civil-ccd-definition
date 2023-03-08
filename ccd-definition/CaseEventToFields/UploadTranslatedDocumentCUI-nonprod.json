@@ -2,10 +2,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
-    "CaseFieldID": "translationDocument",
+    "CaseFieldID": "translatedDocument",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
-    "PageID": "UploadTranslationDocument",
+    "PageID": "UploadTranslatedDocument",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
