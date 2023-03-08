@@ -338,7 +338,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ClaimMediationSpecRequiredLip",
     "Label": " ",
-    "FieldType": "MediationLip",
+    "FieldType": "ClaimantMediationLip",
     "SecurityClassification": "Public"
   }
 ]
