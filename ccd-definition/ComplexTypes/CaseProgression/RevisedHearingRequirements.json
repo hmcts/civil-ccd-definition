@@ -3,7 +3,7 @@
     "ID": "RevisedHearingRequirements",
     "ListElementCode": "startLabel",
     "FieldType": "Label",
-    "ElementLabel": "Hearing Requirements",
+    "ElementLabel": "### Hearing Requirements",
     "SecurityClassification": "Public"
   },
   {
@@ -27,8 +27,15 @@
     "ID": "RevisedHearingRequirements",
     "ListElementCode": "endLabel",
     "FieldType": "Label",
-    "ElementLabel": "##### You are reminded that this information will be shared with all other parties.",
+    "ElementLabel": "You are reminded that this information will be shared with all other parties.",
     "SecurityClassification": "Public",
     "FieldShowCondition": "revisedHearingRequirements = \"Yes\""
+  },
+  {
+    "ID": "RevisedHearingRequirements",
+    "ListElementCode": "endLine",
+    "FieldType": "Label",
+    "ElementLabel": "****",
+    "SecurityClassification": "Public"
   }
 ]

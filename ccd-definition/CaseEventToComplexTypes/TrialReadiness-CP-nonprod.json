@@ -1,29 +1,5 @@
 [
   {
-    "ID": "ApplicationNotReady",
-    "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "applicationNotReady",
-    "ListElementCode": "title",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "ApplicationNotReady",
-    "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "applicationNotReady",
-    "ListElementCode": "label1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "ApplicationNotReady",
-    "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "applicationNotReady",
-    "ListElementCode": "label2",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
     "ID": "RevisedHearingRequirements",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicantRevisedHearingRequirements",
@@ -56,19 +32,19 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "HearingOtherComments",
+    "ID": "RevisedHearingRequirements",
     "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "applicantHearingOtherComments",
-    "ListElementCode": "startLine",
+    "CaseFieldID": "applicantRevisedHearingRequirements",
+    "ListElementCode": "endLine",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "OtherHearingComments",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicantHearingOtherComments",
     "ListElementCode": "startLabel",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
@@ -76,8 +52,8 @@
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicantHearingOtherComments",
     "ListElementCode": "hearingOtherComments",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "RevisedHearingRequirements",
@@ -85,7 +61,7 @@
     "CaseFieldID": "respondent1RevisedHearingRequirements",
     "ListElementCode": "startLabel",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "RevisedHearingRequirements",
@@ -96,9 +72,9 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "RevisedHearingComments",
+    "ID": "RevisedHearingRequirements",
     "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "respondent1RevisedHearingComments",
+    "CaseFieldID": "respondent1RevisedHearingRequirements",
     "ListElementCode": "revisedHearingComments",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -106,25 +82,25 @@
   {
     "ID": "RevisedHearingRequirements",
     "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "respondent1RevisedHearingComments",
+    "CaseFieldID": "respondent1RevisedHearingRequirements",
     "ListElementCode": "endLabel",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "HearingOtherComments",
+    "ID": "RevisedHearingRequirements",
     "CaseEventID": "TRIAL_READINESS",
-    "CaseFieldID": "respondent1HearingOtherComments",
-    "ListElementCode": "startLine",
+    "CaseFieldID": "respondent1RevisedHearingRequirements",
+    "ListElementCode": "endLine",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HearingOtherComments",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "respondent1HearingOtherComments",
     "ListElementCode": "startLabel",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
@@ -132,8 +108,8 @@
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "respondent1HearingOtherComments",
     "ListElementCode": "hearingOtherComments",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
   },
   {
   "ID": "RevisedHearingRequirements",
@@ -152,26 +128,26 @@
   "DisplayContext": "MANDATORY"
 },
 {
-  "ID": "RevisedHearingComments",
+  "ID": "RevisedHearingRequirements",
   "CaseEventID": "TRIAL_READINESS",
-  "CaseFieldID": "respondent2RevisedHearingComments",
+  "CaseFieldID": "respondent2RevisedHearingRequirements",
   "ListElementCode": "revisedHearingComments",
   "FieldDisplayOrder": 3,
   "DisplayContext": "MANDATORY"
 },
 {
-  "ID": "RevisedHearingComments",
+  "ID": "RevisedHearingRequirements",
   "CaseEventID": "TRIAL_READINESS",
-  "CaseFieldID": "respondent2RevisedHearingComments",
+  "CaseFieldID": "respondent2RevisedHearingRequirements",
   "ListElementCode": "endLabel",
   "FieldDisplayOrder": 4,
   "DisplayContext": "READONLY"
 },
 {
-  "ID": "HearingOtherComments",
+  "ID": "RevisedHearingRequirements",
   "CaseEventID": "TRIAL_READINESS",
-  "CaseFieldID": "respondent2HearingOtherComments",
-  "ListElementCode": "startLine",
+  "CaseFieldID": "respondent2RevisedHearingRequirements",
+  "ListElementCode": "endLine",
   "FieldDisplayOrder": 5,
   "DisplayContext": "READONLY"
 },
@@ -180,7 +156,7 @@
   "CaseEventID": "TRIAL_READINESS",
   "CaseFieldID": "respondent2HearingOtherComments",
   "ListElementCode": "startLabel",
-  "FieldDisplayOrder": 6,
+  "FieldDisplayOrder": 2,
   "DisplayContext": "READONLY"
 },
 {
@@ -188,7 +164,7 @@
   "CaseEventID": "TRIAL_READINESS",
   "CaseFieldID": "respondent2HearingOtherComments",
   "ListElementCode": "hearingOtherComments",
-  "FieldDisplayOrder": 7,
-  "DisplayContext": "MANDATORY"
+  "FieldDisplayOrder": 3,
+  "DisplayContext": "OPTIONAL"
 }
 ]
