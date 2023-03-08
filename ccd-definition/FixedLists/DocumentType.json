@@ -53,10 +53,16 @@
     "ListElement": "Default Judgment Order",
     "DisplayOrder": 9
   },
-    {
+  {
     "ID": "DocumentType",
     "ListElementCode": "HEARING_FORM",
     "ListElement": "Hearing Form",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SDO_ORDER",
+    "ListElement": "Standard Directions Order",
+    "DisplayOrder": 11
   }
 ]
