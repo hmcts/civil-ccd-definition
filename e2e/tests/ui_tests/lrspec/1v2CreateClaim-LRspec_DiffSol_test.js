@@ -89,12 +89,10 @@ Scenario('Add case flags', async ({LRspec}) => {
 });
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.judgeUserWithRegionId1);
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
-    await LRspec.waitForText('Summary');
-    await LRspec.initiateSDO('yes', 'yes', null, null);
-  }
+   await LRspec.login(config.judgeUserWithRegionId1);
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await LRspec.waitForText('Summary');
+   await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
 // ToDo: Refactor to trigger create case flags event
