@@ -137,6 +137,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesDisposalHearingDJ",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodInPersonDJ",
     "Label": "Hearing location ",
     "FieldType": "DynamicList",
