@@ -57,5 +57,17 @@
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppInformOtherParty",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "GAWithOrWithoutNoticePage",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\" AND generalAppVaryJudgementType=\"No\""
   }
 ]

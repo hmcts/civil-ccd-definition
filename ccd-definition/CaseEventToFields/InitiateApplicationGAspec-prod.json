@@ -55,7 +55,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\" AND generalAppVaryJudgementType=\"No\""
+    "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
