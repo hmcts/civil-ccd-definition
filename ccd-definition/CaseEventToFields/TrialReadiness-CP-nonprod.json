@@ -9,6 +9,7 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "trialReadyApplicant = \"DO_NOT_SHOW_IN_UI\"",
+    "PageLabel":  "Confirm this case is ready for trial or hearing",
     "PageShowCondition": "isApplicant1 = \"Yes\""
   },
   {
@@ -21,6 +22,7 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "trialReadyRespondent1 = \"DO_NOT_SHOW_IN_UI\"",
+    "PageLabel":  "Confirm this case is ready for trial or hearing",
     "PageShowCondition": "isRespondent1 = \"Yes\""
   },
   {
@@ -33,6 +35,7 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "trialReadyRespondent2 = \"DO_NOT_SHOW_IN_UI\"",
+    "PageLabel":  "Confirm this case is ready for trial or hearing",
     "PageShowCondition": "isRespondent2 = \"Yes\""
   },
   {
