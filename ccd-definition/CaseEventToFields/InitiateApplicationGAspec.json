@@ -48,14 +48,26 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "DisplayContext": "READONLY",
+    "PageID": "GAWithOrWithoutNoticePage",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\" AND generalAppVaryJudgementType=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppInformOtherParty",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "GAWithOrWithoutNoticePage",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "generalAppRespondentAgreement.hasAgreed=\"No\" AND generalAppType CONTAINS \"VARY_JUDGEMENT\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
