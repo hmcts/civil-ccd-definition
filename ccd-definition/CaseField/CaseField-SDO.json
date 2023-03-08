@@ -309,20 +309,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingMethodValuesDisposalHearing",
-    "Label": " ",
-    "FieldType": "DynamicRadioList",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingMethodValuesSmallClaims",
-    "Label": " ",
-    "FieldType": "DynamicRadioList",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMethodInPerson",
     "Label": "Select hearing location ",
     "FieldType": "DynamicList",
@@ -1037,13 +1023,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackMethod",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingMethodValuesFastTrack",
-    "Label": " ",
-    "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public"
   },
   {

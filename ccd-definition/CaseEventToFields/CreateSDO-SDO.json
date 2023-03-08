@@ -479,18 +479,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "hearingMethodValuesDisposalHearing",
-    "PageFieldDisplayOrder": 32,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingBundleStartLine",
     "PageFieldDisplayOrder": 38,
     "DisplayContext": "READONLY",
@@ -850,18 +838,6 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "hearingMethodValuesSmallClaims",
-    "PageFieldDisplayOrder": 14,
-    "DisplayContext": "MANDATORY",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsMethodToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1512,18 +1488,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "hearingMethodValuesFastTrack",
-    "PageFieldDisplayOrder": 42,
-    "DisplayContext": "MANDATORY",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 6,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethodToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackMethodEndLine",
     "PageFieldDisplayOrder": 46,
     "DisplayContext": "READONLY",
@@ -1637,18 +1601,6 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackNotes",
-    "PageFieldDisplayOrder": 58,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 6,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hearingMethodValuesFastTrack=\"DO NOT SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",
