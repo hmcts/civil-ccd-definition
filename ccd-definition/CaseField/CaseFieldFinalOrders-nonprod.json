@@ -72,9 +72,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "orderOnCourtsListLabel",
+    "Label": "**** \n ## Order made on court's own initiative/without notice \n ### Select as appropriate",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderOnCourtsList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderOnCourtsList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "orderOnCourtInitiative",
     "Label": " ",
     "FieldType": "OrderOnCourtInitiative",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderWithoutNotice",
+    "Label": " ",
+    "FieldType": "OrderWithoutNotice",
     "SecurityClassification": "Public"
   }
 ]

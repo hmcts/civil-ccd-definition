@@ -1,28 +1,28 @@
 [
   {
-    "ID": "OrderOnCourtInitiative",
-    "ListElementCode": "onInitiativeSelectionLabel",
+    "ID": "OrderWithoutNotice",
+    "ListElementCode": "withoutNoticeSelectionLabel",
     "FieldType": "Label",
-    "ElementLabel": "### Order on court's own initiative",
+    "ElementLabel": "### Order without notice",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OrderOnCourtInitiative",
-    "ListElementCode": "onInitiativeSelectionTextArea",
+    "ID": "OrderWithoutNotice",
+    "ListElementCode": "withoutNoticeSelectionTextArea",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OrderOnCourtInitiative",
-    "ListElementCode": "onInitiativeSelectionDateLabel",
+    "ID": "OrderWithoutNotice",
+    "ListElementCode": "withoutNoticeSelectionDateLabel",
     "FieldType": "Label",
     "ElementLabel": "### Please enter date",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OrderOnCourtInitiative",
-    "ListElementCode": "onInitiativeSelectionDate",
+    "ID": "OrderWithoutNotice",
+    "ListElementCode": "withoutNoticeSelectionDate",
     "FieldType": "Date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
