@@ -167,7 +167,7 @@
     "PageID": "ConfirmReadyClaimant",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant = \"No\" OR trialReadyRespondent1 = \"No\" OR trialReadyRespondent2 = \"No\""
+    "FieldShowCondition": "trialReadyApplicant = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -178,7 +178,7 @@
     "PageID": "ConfirmReadyDefendant1",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant = \"No\" OR trialReadyRespondent1 = \"No\" OR trialReadyRespondent2 = \"No\""
+    "FieldShowCondition": "trialReadyRespondent1 = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -189,7 +189,7 @@
     "PageID": "ConfirmReadyDefendant2",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant = \"No\" OR trialReadyRespondent1 = \"No\" OR trialReadyRespondent2 = \"No\""
+    "FieldShowCondition": "trialReadyRespondent2 = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -233,7 +233,7 @@
     "PageID": "ConfirmReadyClaimant",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant=\"No\" OR trialReadyRespondent1 = \"No\" OR trialReadyRespondent2 = \"No\""
+    "FieldShowCondition": "trialReadyApplicant=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -244,7 +244,7 @@
     "PageID": "ConfirmReadyDefendant1",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant=\"No\" OR trialReadyRespondent1 = \"No\" OR trialReadyRespondent2 = \"No\""
+    "FieldShowCondition": "trialReadyRespondent1 = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -255,7 +255,7 @@
     "PageID": "ConfirmReadyDefendant2",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant=\"No\" OR trialReadyRespondent1 = \"No\" OR trialReadyRespondent2 = \"No\""
+    "FieldShowCondition": "trialReadyRespondent2 = \"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -266,7 +266,7 @@
     "PageID": "ConfirmReadyClaimant",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyRespondent1 = \"Yes\" OR trialReadyRespondent2 = \"Yes\""
+    "FieldShowCondition": "trialReadyApplicant=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -277,7 +277,7 @@
     "PageID": "ConfirmReadyDefendant1",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyRespondent1 = \"Yes\" OR trialReadyRespondent2 = \"Yes\""
+    "FieldShowCondition": "trialReadyRespondent1 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -288,7 +288,7 @@
     "PageID": "ConfirmReadyDefendant2",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyRespondent1 = \"Yes\" OR trialReadyRespondent2 = \"Yes\""
+    "FieldShowCondition": "trialReadyRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
