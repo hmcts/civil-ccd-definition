@@ -590,6 +590,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "businessProcess",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "RU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialReadyDocuments",
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE",

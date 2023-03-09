@@ -115,7 +115,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDuration",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "caseworker-civil-solicitor"
     ],
     "CRUD": "CRU"
   },
@@ -197,8 +198,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedPBADetails",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",

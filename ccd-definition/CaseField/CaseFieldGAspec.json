@@ -175,7 +175,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppPBADetails",
-    "Label": "Pay for application with PBA",
+    "Label": "Paying for an application",
     "FieldType": "GAPBADetailsGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds applicant's PBA details.",
