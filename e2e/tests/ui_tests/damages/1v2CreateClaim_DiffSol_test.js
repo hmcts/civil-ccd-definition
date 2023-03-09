@@ -150,12 +150,10 @@ Scenario('Add case flags', async ({I}) => {
 });
 
 Scenario('Judge triggers SDO', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.login(config.judgeUserWithRegionId1);
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
-    await I.waitForText('Summary');
-    await I.initiateSDO('yes', 'yes', null, null);
-  }
+   await I.login(config.judgeUserWithRegionId1);
+   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await I.waitForText('Summary');
+   await I.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
 Scenario('Claimant uploads evidence', async ({I}) => {
