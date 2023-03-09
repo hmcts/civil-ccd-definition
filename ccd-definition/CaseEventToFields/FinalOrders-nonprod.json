@@ -33,9 +33,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderMadeLabel",
+    "CaseFieldID": "caseParticipantsAssistedOrder",
+    "PageLabel": "Make an order",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderMadeLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "PageShowCondition": "finalOrderSelection=\"ASSISTED_ORDER\"",
@@ -46,7 +57,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderMadeSelectionLabel",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -56,7 +67,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderMadeSelection",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -66,10 +77,20 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderDateHeard",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
-    "FieldShowCondition": "finalOrderMadeSelection=\"YES\"",
+    "FieldShowCondition": "finalOrderMadeSelection=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderJudgeHeardFormComplex",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
   }
 ]

@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "FieldTestTest",
+    "ListElementCode": "abcde",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "FinalOrdersClaimantRepresentationList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FieldTestTest",
+    "ListElementCode": "abc",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "FinalOrdersClaimantNotAttending",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

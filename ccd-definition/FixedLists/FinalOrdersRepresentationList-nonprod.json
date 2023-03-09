@@ -1,0 +1,56 @@
+[
+  {
+    "ID": "FinalOrdersRepresentationList",
+    "ListElementCode": "CLAIMANT_AND_DEFENDANT",
+    "ListElement": "Claimant and Defendant",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "FinalOrdersRepresentationList",
+    "ListElementCode": "OTHER_REPRESENTATION",
+    "ListElement": "Other representation",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "COUNSEL_FOR_CLAIMANT",
+    "ListElement": "Counsel for claimant",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "SOLICITOR_FOR_CLAIMANT",
+    "ListElement": "Solicitor for claimant",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "COST_DRAFTSMAN_FOR_THE_CLAIMANT",
+    "ListElement": "Cost draftsman for the claimant",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "THE_CLAIMANT_IN_PERSON",
+    "ListElement": "The claimant in person",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "LAY_REPRESENTATIVE_FOR_THE_CLAIMANT",
+    "ListElement": "Lay representative for the claimant",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "CLAIMANT_NOT_ATTENDING",
+    "ListElement": "Claimant not attending",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "FinalOrdersClaimantNotAttending",
+    "ListElementCode": "SATISFIED_REASONABLE_TO_PROCEED",
+    "ListElement": "Satisfied reasonable to proceed",
+    "DisplayOrder": 1
+  }
+]

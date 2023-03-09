@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "FinalOrderJudgeHeardFormField",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": "Test Representation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FinalOrderJudgeHeardFormField",
+    "ListElementCode": "representation",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrdersRepresentationList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FinalOrderJudgeHeardFormField",
+    "ListElementCode": "claimantRepresentationNested",
+    "FieldType": "FieldTestTest",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]

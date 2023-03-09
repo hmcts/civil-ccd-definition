@@ -23,6 +23,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseParticipantsAssistedOrder",
+    "Label": "${caseNameHmctsInternal}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderMadeLabel",
     "Label": "**** \n ## Order Made",
     "FieldType": "Label",
@@ -48,6 +55,20 @@
     "Label": "Date heard",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderJudgeHeardFormComplex",
+    "Label": " ",
+    "FieldType": "FinalOrderJudgeHeardFormField",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantRepresentationNested",
+    "Label": " ",
+    "FieldType": "FieldTestTest",
     "SecurityClassification": "Public"
   }
 ]

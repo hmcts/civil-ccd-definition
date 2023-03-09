@@ -3,7 +3,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseParticipants",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   },
@@ -11,7 +13,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderSelectionLabel",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   },
@@ -19,7 +23,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderSelection",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   },
@@ -27,7 +33,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeLabel",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   },
@@ -35,7 +43,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeSelectionLabel",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   },
@@ -43,7 +53,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeSelection",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   },
@@ -51,7 +63,30 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDateHeard",
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseParticipantsAssistedOrder",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  }
+,
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderJudgeHeardFormComplex",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
     ],
     "CRUD": "CRU"
   }

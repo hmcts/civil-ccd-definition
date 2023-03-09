@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "FinalOrderJudgeHeardFormField",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderJudgeHeardFormComplex",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderJudgeHeardFormField",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderJudgeHeardFormComplex",
+    "ListElementCode": "representation",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FieldTestTest",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "claimantRepresentationNested",
+    "ListElementCode": "representation2",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  }
+]
