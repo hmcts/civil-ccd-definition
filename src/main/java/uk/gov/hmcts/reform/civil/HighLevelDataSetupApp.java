@@ -43,6 +43,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("payment-access", "PUBLIC"),
         new CcdRoleConfig("hearing-manager", "PUBLIC"),
         new CcdRoleConfig("hearing-viewer", "PUBLIC")
+        new CcdRoleConfig("caseflags-admin", "PUBLIC"),
+        new CcdRoleConfig("caseflags-viewer", "PUBLIC")
     };
 
     private final CcdEnvironment environment;
