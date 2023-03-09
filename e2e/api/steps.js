@@ -991,6 +991,23 @@ module.exports = {
       await addAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
   },
+
+  scheduleHearing: async (user, allocatedTrack) => {
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'HEARING_SCHEDULED';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let scheduleData = eventData['hearingScheduled'][allocatedTrack];
+
+    for (let pageId of Object.keys(scheduleData)) {
+      await assertValidData(scheduleData, pageId);
+    }
+
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  }
 };
 
 // Functions
