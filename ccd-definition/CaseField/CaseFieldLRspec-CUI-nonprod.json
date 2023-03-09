@@ -351,7 +351,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentFixedCostOptionLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed cost</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed costs?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
