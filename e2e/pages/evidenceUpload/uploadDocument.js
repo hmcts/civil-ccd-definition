@@ -54,16 +54,15 @@ module.exports = {
   },
 
   async selectType(){
-    await I.waitForText('Select the type of document you would like to upload');
     await within(this.fields.witnessSelectionEvidenceSmallClaim.id, () => {
       I.click(this.fields.witnessSelectionEvidenceSmallClaim.options.witnessStatement);
     });
     await within(this.fields.expertSelectionEvidenceSmallClaim.id, () => {
       I.click(this.fields.expertSelectionEvidenceSmallClaim.options.expertReport);
     });
-    /*await within(this.fields.trialSelectionEvidenceSmallClaim.id, () => {
+    await within(this.fields.trialSelectionEvidenceSmallClaim.id, () => {
       I.click(this.fields.trialSelectionEvidenceSmallClaim.options.authorities);
-    });*/
+    });
     await I.clickContinue();
   },
 
@@ -86,10 +85,10 @@ module.exports = {
       I.fillField(this.fields.documentExpertReport.year, '2022');
       I.attachFile(this.fields.documentExpertReport.document, file);
     });
-    /*await within(this.fields.documentAuthorities.id, () => {
+    await within(this.fields.documentAuthorities.id, () => {
       I.click(this.fields.documentAuthorities.button);
       I.attachFile(this.fields.documentAuthorities.document, file);
-    });*/
+    });
     await I.clickContinue();
   },
 
