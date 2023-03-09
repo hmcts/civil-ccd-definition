@@ -1,8 +1,9 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled} = require('../../../api/testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
@@ -70,13 +71,39 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('Judge triggers SDO', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.judgeUserWithRegionId1);
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
-    await LRspec.waitForText('Summary');
-    await LRspec.initiateSDO('yes', 'yes', null, null);
+Scenario('Add case flags', async ({LRspec}) => {
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      details: [PARTY_FLAGS.vulnerableUser.value]
+    }, {
+      partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
+      details: [PARTY_FLAGS.unacceptableBehaviour.value]
+    }
+    ];
+
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.createCaseFlags(caseFlags);
+    await LRspec.validateCaseFlags(caseFlags);
   }
+});
+
+Scenario('Judge triggers SDO', async ({LRspec}) => {
+   await LRspec.login(config.judgeUserWithRegionId1);
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await LRspec.waitForText('Summary');
+   await LRspec.initiateSDO('yes', 'yes', null, null);
+}).retry(3);
+
+// ToDo: Refactor to trigger create case flags event
+Scenario.skip('Add case flags', async ({LRspec}) => {
+  await LRspec.login(config.adminUser);
+  // await I.createCaseFlags();
+  await LRspec.validateCaseFlags([
+    { partyName: 'Example applicant1 company', details: [] },
+    { partyName: 'Example respondent1 company', details: [] },
+    { partyName: 'Example respondent2 company', details: [] }
+  ]);
 }).retry(3);
 
 AfterSuite(async  () => {
