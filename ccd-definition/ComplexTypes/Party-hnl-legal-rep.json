@@ -5,13 +5,15 @@
     "FieldType": "Email",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
-    "Max": "40"
+    "Max": "40",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
     "ListElementCode": "partyPhone",
     "FieldType": "PhoneUK",
     "ElementLabel": "Phone",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

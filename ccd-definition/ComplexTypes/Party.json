@@ -6,7 +6,8 @@
     "FieldTypeParameter": "PartyType",
     "ElementLabel": "Party type",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -15,7 +16,8 @@
     "ElementLabel": "Title",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -24,7 +26,8 @@
     "ElementLabel": "First name",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -33,7 +36,8 @@
     "ElementLabel": "Last name",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -42,7 +46,8 @@
     "ElementLabel": "Date of birth",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -51,7 +56,8 @@
     "ElementLabel": "Name",
     "FieldShowCondition": "type = \"COMPANY\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -60,7 +66,8 @@
     "ElementLabel": "Name",
     "FieldShowCondition": "type = \"ORGANISATION\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -69,7 +76,8 @@
     "ElementLabel": "Title",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -78,7 +86,8 @@
     "ElementLabel": "First name",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -87,7 +96,8 @@
     "ElementLabel": "Last name",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -96,7 +106,8 @@
     "ElementLabel": "Trading as",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -105,7 +116,8 @@
     "ElementLabel": "Date of birth",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -113,7 +125,8 @@
     "FieldType": "AddressUK",
     "ElementLabel": "Address",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -121,7 +134,8 @@
     "FieldType": "Text",
     "ElementLabel": "Party name",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   },
   {
     "ID": "Party",
@@ -131,6 +145,7 @@
     "SecurityClassification": "Public",
     "_Comments": "Field interpolation used on fixed list field will display its code instead of text, hence the workaround field populated on claim creation.",
     "_Category": "WORKAROUND",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   }
 ]

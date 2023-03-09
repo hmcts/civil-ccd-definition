@@ -5,7 +5,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingLength",
     "ElementLabel": "How long do you estimate the hearing will take?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "HearingLRspec",
@@ -16,7 +17,8 @@
     "FieldShowCondition": "hearingLength = \"LESS_THAN_DAY\"",
     "SecurityClassification": "Public",
     "Min": 1,
-    "Max": 6
+    "Max": 6,
+    "Searchable": "N"
   },
   {
     "ID": "HearingLRspec",
@@ -27,14 +29,16 @@
     "FieldShowCondition": "hearingLength = \"MORE_THAN_DAY\"",
     "SecurityClassification": "Public",
     "Min": 1,
-    "Max": 28
+    "Max": 28,
+    "Searchable": "N"
   },
   {
     "ID": "HearingLRspec",
     "ListElementCode": "unavailableDatesRequired",
     "FieldType": "YesOrNo",
     "ElementLabel": "Are there any dates when you, your client(s), experts or any witnesses are unavailable?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "HearingLRspec",
@@ -43,6 +47,7 @@
     "FieldTypeParameter": "UnavailableDateLRspec",
     "ElementLabel": "Unavailable date",
     "FieldShowCondition": "unavailableDatesRequired = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -5,7 +5,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HomeOption",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "HomeDetailsLRspec",
@@ -13,6 +14,7 @@
     "FieldType": "Text",
     "ElementLabel": "What type of housing",
     "FieldShowCondition": "type = \"OTHER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
