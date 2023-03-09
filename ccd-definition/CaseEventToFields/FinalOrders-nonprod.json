@@ -18,7 +18,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderSelect",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -28,7 +28,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderSelect",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populate-freeForm-values"
   },
   {
@@ -40,7 +40,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
     "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\""
   },
   {
@@ -51,7 +51,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -61,7 +61,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -71,7 +71,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -81,7 +81,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -91,7 +91,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -101,7 +101,7 @@
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -111,7 +111,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -121,7 +121,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -132,7 +132,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
+    "RetainHiddenValue": "N",
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_ON_COURT_INITIATIVE\""
   },
   {
@@ -143,8 +143,7 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_WITHOUT_NOTICE\""
   }
 ]
