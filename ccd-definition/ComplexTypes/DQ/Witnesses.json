@@ -4,7 +4,8 @@
     "ListElementCode": "witnessesToAppear",
     "FieldType": "YesOrNo",
     "ElementLabel": "Are there any witnesses who should attend the hearing?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "Witnesses",
@@ -13,6 +14,7 @@
     "FieldTypeParameter": "Witness",
     "ElementLabel": "Witness details",
     "FieldShowCondition": "witnessesToAppear = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

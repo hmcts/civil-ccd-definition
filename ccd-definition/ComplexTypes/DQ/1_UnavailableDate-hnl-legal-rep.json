@@ -5,7 +5,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "UnavailableDateChoice",
     "ElementLabel": "Add a single date or a date range",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -14,7 +15,8 @@
     "ElementLabel": "Unavailable date",
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\""
+    "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\"",
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -23,7 +25,8 @@
     "ElementLabel": "Date from",
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
+    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -32,7 +35,8 @@
     "ElementLabel": "Date to",
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
+    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -42,6 +46,7 @@
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DO NOT SHOW IN UI\"",
     "DisplayContext": "OPTIONAL",
-    "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING"
+    "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
+    "Searchable": "N"
   }
 ]

@@ -5,6 +5,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GeneralApplicationTypesGAspec",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
