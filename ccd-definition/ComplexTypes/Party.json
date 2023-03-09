@@ -5,7 +5,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PartyType",
     "ElementLabel": "Party type",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -13,7 +14,8 @@
     "FieldType": "Text",
     "ElementLabel": "Title",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -21,7 +23,8 @@
     "FieldType": "Text",
     "ElementLabel": "First name",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -29,7 +32,8 @@
     "FieldType": "Text",
     "ElementLabel": "Last name",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -37,7 +41,8 @@
     "FieldType": "Date",
     "ElementLabel": "Date of birth",
     "FieldShowCondition": "type = \"INDIVIDUAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -45,7 +50,8 @@
     "FieldType": "Text",
     "ElementLabel": "Name",
     "FieldShowCondition": "type = \"COMPANY\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -53,7 +59,8 @@
     "FieldType": "Text",
     "ElementLabel": "Name",
     "FieldShowCondition": "type = \"ORGANISATION\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -61,7 +68,8 @@
     "FieldType": "Text",
     "ElementLabel": "Title",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -69,7 +77,8 @@
     "FieldType": "Text",
     "ElementLabel": "First name",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -77,7 +86,8 @@
     "FieldType": "Text",
     "ElementLabel": "Last name",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -85,7 +95,8 @@
     "FieldType": "Text",
     "ElementLabel": "Trading as",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -93,21 +104,24 @@
     "FieldType": "Date",
     "ElementLabel": "Date of birth",
     "FieldShowCondition": "type = \"SOLE_TRADER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
     "ListElementCode": "primaryAddress",
     "FieldType": "AddressUK",
     "ElementLabel": "Address",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
     "ListElementCode": "partyName",
     "FieldType": "Text",
     "ElementLabel": "Party name",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -116,6 +130,7 @@
     "ElementLabel": "Party type displayed value",
     "SecurityClassification": "Public",
     "_Comments": "Field interpolation used on fixed list field will display its code instead of text, hence the workaround field populated on claim creation.",
-    "_Category": "WORKAROUND"
+    "_Category": "WORKAROUND",
+    "RetainHiddenValue": "Y"
   }
 ]

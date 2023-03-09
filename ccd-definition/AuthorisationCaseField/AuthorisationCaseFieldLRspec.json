@@ -4965,6 +4965,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "paymentTypePBASpec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-ras-validation",
+          "caseworker-civil-systemupdate",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentPayImmidietelyLabel",
     "AccessControl": [
       {

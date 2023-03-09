@@ -1216,8 +1216,7 @@
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
-    "SecurityClassification": "Public",
-    "_Category":  "COMMON"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2240,6 +2239,13 @@
     "ID": "applicant2DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypePBASpec",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
 

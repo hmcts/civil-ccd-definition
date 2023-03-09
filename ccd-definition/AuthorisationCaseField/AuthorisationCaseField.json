@@ -79,7 +79,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -4839,6 +4840,27 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "judge-profile",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "paymentTypePBA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-ras-validation",
+          "caseworker-civil-systemupdate",
           "GS_profile"
         ],
         "CRUD": "R"
