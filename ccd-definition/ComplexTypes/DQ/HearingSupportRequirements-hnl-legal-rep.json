@@ -5,6 +5,7 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Does anyone require support for a court hearing?",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Publish": "Y"
   },
   {
@@ -13,6 +14,7 @@
     "ElementLabel": "Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "supportRequirements=\"Yes\""
+    "FieldShowCondition": "supportRequirements=\"Yes\"",
+    "Searchable": "N"
   }
 ]

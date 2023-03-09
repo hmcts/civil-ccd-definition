@@ -5,6 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Name",
     "SecurityClassification": "Public",
-    "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING"
+    "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
+    "Searchable": "N"
   }
 ]

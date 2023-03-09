@@ -4,7 +4,8 @@
     "ListElementCode": "reachedAgreement",
     "FieldType": "YesOrNo",
     "ElementLabel": "Have you reached agreement, either using Electronic Documents Questionnaire in Practice Direction 31B or otherwise, about the scope and extent of disclosure of electronic documents on each side?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisclosureOfElectronicDocumentsLRspec",
@@ -12,7 +13,8 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Is such an agreement likely?",
     "FieldShowCondition": "reachedAgreement = \"No\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisclosureOfElectronicDocumentsLRspec",
@@ -20,6 +22,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "What are the issues?",
     "FieldShowCondition": "agreementLikely = \"No\" AND reachedAgreement = \"No\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

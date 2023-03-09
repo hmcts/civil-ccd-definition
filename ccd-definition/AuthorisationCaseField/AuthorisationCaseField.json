@@ -79,7 +79,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
