@@ -20,6 +20,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1AgreedDeadlineExtension",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1LiPResponse",
     "AccessControl": [
       {
