@@ -5,6 +5,7 @@ const config = require('../../../config.js');
 Feature('CCD 2v1 API test @api-spec');
 Scenario('2v1 small claim full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
+  await api_spec.createCaseFlags(config.hearingCenterAdminWithRegionId1);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
 });
 
@@ -61,5 +62,6 @@ Scenario('2v1 small claim full admission and response', async ({I, api_spec}) =>
     'AWAITING_APPLICANT_INTENTION');
 });
 
-
-
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});

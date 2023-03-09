@@ -20,9 +20,15 @@ const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
-  checkCertificateOfServiceIsEnabled} = require('./testingSupport');
+  checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
+} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
+const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags} = require('./caseFlagsHelper');
+const {fetchCaseDetails} = require('./apiRequest');
+const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -193,6 +199,9 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -256,12 +265,19 @@ module.exports = {
       console.log('Service request update sent to callback URL');
     }
 
+    if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    }
     console.log('***waitForFinishedBusinessProcess');
     await waitForFinishedBusinessProcess(caseId);
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
     console.log('***assertCorrectEventsAreAvailableToUser');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, noCToggleEnabled ? 'CASE_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
     return caseId;
   },
 
@@ -355,6 +371,7 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
+    caseData = returnedCaseData;
 
     await validateEventPages(data[eventName]);
 
@@ -520,11 +537,13 @@ module.exports = {
       deleteCaseFields('respondent1ResponseDeadline');
     }
 
-    if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      await validateEventPages(eventData['acknowledgeClaims'][mpScenario]);
-    } else {
-      await validateEventPages(eventData['acknowledgeClaims'][mpScenario][solicitor]);
-    }
+    const fixture = mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP' ?
+      eventData['acknowledgeClaims'][mpScenario] : eventData['acknowledgeClaims'][mpScenario][solicitor];
+
+    //Todo: Remove after caseflags release
+    removeFlagsFieldsFromFixture(fixture);
+
+    await validateEventPages(fixture);
 
     await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
@@ -609,6 +628,9 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
     }
 
+    //Todo: Remove after caseflags release
+    removeFlagsFieldsFromFixture(defendantResponseData);
+
     // Remove after court location toggle is removed
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
       defendantResponseData, solicitor);
@@ -641,6 +663,9 @@ module.exports = {
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
+      //delete case flags DQ party fields
+      deleteCaseFields('respondent1Experts');
+      deleteCaseFields('respondent1Witnesses');
     }
 
     await validateEventPages(defendantResponseData, solicitor);
@@ -686,6 +711,12 @@ module.exports = {
 
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
+
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
+    }
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag) => {
@@ -749,6 +780,12 @@ module.exports = {
     }
   },
 
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
+  },
+
   initiateGeneralApplication: async (caseNumber, user, expectedState) => {
     eventName = 'INITIATE_GENERAL_APPLICATION';
     caseId = caseId || caseNumber;
@@ -766,19 +803,27 @@ module.exports = {
     assert.equal(responseBody.callback_response_status_code, 200);
   },
 
-  //TODO this method is not used in api tests
-  addDefendantLitigationFriend: async () => {
+  addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
+    await apiRequest.setupTokens(user);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    returnedCaseData = await replaceLitigantFriendIfHNLFlagDisabled(returnedCaseData);
-    assertContainsPopulatedFields(returnedCaseData);
+    solicitorSetup(solicitor);
+    assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
-    await validateEventPages(data.ADD_DEFENDANT_LITIGATION_FRIEND);
-    await assertSubmittedEvent('ADD_DEFENDANT_LITIGATION_FRIEND', {
-      header: 'You have added litigation friend details',
-      body: '<br />'
+    let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
+    fixture = await replaceLitigantFriendIfHNLFlagDisabled(fixture);
+
+    await validateEventPages(fixture);
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: 'You have added litigation friend details'
     });
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
+    }
   },
 
   moveCaseToCaseman: async (user) => {
@@ -932,7 +977,26 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-  }
+  },
+
+  createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for(const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
 };
 
 // Functions
@@ -964,6 +1028,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  responseBody = clearNoCData(responseBody);
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1098,7 +1163,9 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if(submittedCallbackResponseContains.body) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 
   if (eventName === 'CREATE_CLAIM') {
@@ -1241,6 +1308,20 @@ function replaceLitigationFriendFields(caseData) {
       primaryAddress: buildAddress('litigant friend')
     };
   }
+  if (caseData.respondent1LitigationFriend) {
+    caseData.respondent1LitigationFriend = {
+      fullName: 'Bob the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
+  if (caseData.respondent2LitigationFriend) {
+    caseData.respondent2LitigationFriend = {
+      fullName: 'Davif the litigant friend',
+      hasSameAddressAsLitigant: 'No',
+      primaryAddress: buildAddress('litigant friend')
+    };
+  }
   return caseData;
 }
 
@@ -1257,6 +1338,18 @@ async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
       }
       if (claimantLitigationPage.applicant2LitigationFriend) {
         claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
+      }
+    }
+
+    const respondentLitigationPage = responseData.valid.DefendantLitigationFriend;
+
+    if(respondentLitigationPage) {
+      const updated = replaceLitigationFriendFields(respondentLitigationPage);
+      if (respondentLitigationPage.respondent1LitigationFriend) {
+        respondentLitigationPage.respondent1LitigationFriend = updated.respondent1LitigationFriend;
+      }
+      if (respondentLitigationPage.respondent2LitigationFriend) {
+        respondentLitigationPage.respondent2LitigationFriend = updated.respondent2LitigationFriend;
       }
     }
   }
@@ -1389,6 +1482,11 @@ const clearDataForSearchCriteria = (responseBody) => {
   return responseBody;
 };
 
+const clearNoCData = (responseBody) => {
+  delete responseBody.data['changeOfRepresentation'];
+  return responseBody;
+};
+
 const clearDataForDefendantResponse = (responseBody, solicitor) => {
   delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
@@ -1419,6 +1517,8 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1ResponseDeadline'];
+    delete responseBody.data['respondent1Experts'];
+    delete responseBody.data['respondent1Witnesses'];
   } else {
     delete responseBody.data['respondent2'];
   }
@@ -1431,6 +1531,9 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 
 const adjustDataForSolicitor = (user, data) => {
   let fixtureClone = cloneDeep(data);
+  if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
+  }
   if (user === 'solicitorOne') {
     delete fixtureClone['respondent2ResponseDeadline'];
   } else if (user === 'solicitorTwo') {
