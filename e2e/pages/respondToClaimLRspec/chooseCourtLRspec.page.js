@@ -62,7 +62,7 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="Location_responseCourtLocations"]',
+              id: 'select[id$="courtLocation_responseCourtLocations"]',
               options: {
                 preferredCourt: config.defendantSelectedCourt
               }
