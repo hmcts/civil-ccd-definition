@@ -219,7 +219,7 @@ module.exports = {
   defendantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
   defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
   djClaimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
+  liverpoolCourt:'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
   localNoCTests: false
 };
