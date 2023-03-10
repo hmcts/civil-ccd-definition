@@ -2240,5 +2240,12 @@
     "Label": "Welsh language",
     "FieldType": "Language",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypePBASpec",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

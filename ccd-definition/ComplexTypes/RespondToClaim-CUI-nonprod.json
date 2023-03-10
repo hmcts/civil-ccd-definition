@@ -8,6 +8,13 @@
   },
   {
     "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1MediationLiPResponse",
+    "ElementLabel": " ",
+    "FieldType": "MediationLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
     "ListElementCode": "respondent1DQExtraDetails",
     "ElementLabel": " ",
     "FieldType": "DQExtraDetailsLip",
