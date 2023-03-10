@@ -16,7 +16,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "translatedDocument",
-    "Label": "",
+    "Label": " ",
     "FieldType": "TranslatedDocument",
     "SecurityClassification": "Public"
   }
