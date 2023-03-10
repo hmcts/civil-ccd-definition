@@ -1,6 +1,6 @@
 const {I} = inject();
 const {checkCourtLocationDynamicListIsEnabled} = require('./../../api/testingSupport');
-// const config = require('./../../config');
+const config = require('./../../config');
 
 module.exports = {
   oldFields: function (party) {
@@ -22,7 +22,7 @@ module.exports = {
       courtLocation: {
         id: `#${party}DQRequestedCourt_responseCourtLocations`,
         options: {
-          defendantPreferredCourt: 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX'
+          defendantPreferredCourt: config.liverpoolCourt
         }
       }
     };
