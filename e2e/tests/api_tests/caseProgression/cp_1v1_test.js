@@ -7,7 +7,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 
-Feature('CCD 1v1 API test @api-sdo');
+Feature('CCD 1v1 API test @api-cp');
 
 async function prepareClaimSDO(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
@@ -29,19 +29,20 @@ async function prepareClaimDJ(api) {
   await api.sdoDefaultJudgment(judgeUser);
 }
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api}) => {
+Scenario('Hearing Scheduled after SDO - Other type', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSDO(api, claimAmountJudge);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
 
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api}) => {
+Scenario('Hearing Scheduled after DJ SDO - Other type', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimDJ(api, claimAmountJudge);
-
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
   }
 });
 

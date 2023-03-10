@@ -19,6 +19,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
@@ -68,7 +69,8 @@ const data = {
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
-  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput)
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
 };
 
 const eventData = {
@@ -999,7 +1001,7 @@ module.exports = {
     eventName = 'HEARING_SCHEDULED';
 
     caseData = await apiRequest.startEvent(eventName, caseId);
-    let scheduleData = eventData['hearingScheduled'][allocatedTrack];
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
 
     for (let pageId of Object.keys(scheduleData)) {
       await assertValidData(scheduleData, pageId);
