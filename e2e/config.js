@@ -23,7 +23,7 @@ module.exports = {
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     //----------------------------------------------------------------------------------------------
     wiremockService: 'http://localhost:8765'
@@ -217,7 +217,7 @@ module.exports = {
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
   claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
+  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
   djClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
   djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
   sdoJudgeSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
