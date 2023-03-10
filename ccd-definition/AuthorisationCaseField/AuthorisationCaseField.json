@@ -1710,41 +1710,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "isApplicant1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "isRespondent1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "isRespondent2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
