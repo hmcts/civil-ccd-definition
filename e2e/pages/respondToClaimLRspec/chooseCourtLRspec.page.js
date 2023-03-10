@@ -38,12 +38,12 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="respondent2DQRequestedCourt_responseCourtLocations"]',
+              id: 'select[id$="respondToCourtLocation2_responseCourtLocations"]',
               options: {
                 preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#respondent2DQRequestedCourt_reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#respondToCourtLocation2_reasonForHearingAtSpecificCourt'
           }
         };
        }
@@ -62,12 +62,12 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="respondent1DQRequestedCourt_responseCourtLocations"]',
+              id: 'select[id$="respondToCourtLocation_responseCourtLocations"]',
               options: {
                 preferredCourt: config.defendantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#respondent1DQRequestedCourt_reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#respondToCourtLocation_reasonForHearingAtSpecificCourt'
           }
         };
       }
