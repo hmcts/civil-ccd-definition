@@ -20,14 +20,5 @@
     "Label": "Case file view",
     "FieldType": "ComponentLauncher",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "trialReadyDocuments",
-    "Label": "System generated Case Documents",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
-}
-
+  }
 ]

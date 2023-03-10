@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_RESPONSE_SEALED",
-    "Name": "Generate response sealed form",
-    "Description": "Generates sealed form for claim response",
+    "ID": "GENERATE_TRIAL_READY_FORM",
+    "Name": "Generate trial ready documents",
+    "Description": "Generate trial ready documents",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

@@ -204,5 +204,13 @@
     "Label": " ",
     "FieldType": "HearingOtherComments",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyDocuments",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public"
   }
 ]
