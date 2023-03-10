@@ -25,7 +25,11 @@ module.exports = {
     } else {
       I.waitForElement(this.fields.courtLocation.id);
       await I.runAccessibilityTest();
-      I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.claimantPreferredCourt);
+
+      I.click(this.fields.courtLocation.id);
+      let courtLocationOption = locate('select').withAttr({ id: this.fields.courtLocation.id }).find('option').withText(this.fields.courtLocation.options.claimantPreferredCourt);
+      I.click(courtLocationOption);
+
       await I.clickContinue();
     }
   }
