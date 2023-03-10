@@ -1,6 +1,6 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
 
-const config = require('../../config.js');
+const config = require('../../../config.js');
 
 module.exports = {
   valid: {
