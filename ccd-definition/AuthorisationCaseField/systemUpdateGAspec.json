@@ -127,6 +127,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppParentClaimantIsApplicant",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppHearingDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

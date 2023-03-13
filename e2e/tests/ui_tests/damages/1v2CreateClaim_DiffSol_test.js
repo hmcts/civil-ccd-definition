@@ -1,7 +1,8 @@
 const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
+const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
+const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
@@ -130,25 +131,29 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-// ToDo: Refactor to trigger create case flags event
-Scenario.skip('Add case flags', async ({I}) => {
-  await I.login(config.adminUser);
-  // await I.createCaseFlags();
-  await I.validateCaseFlags([
-    { partyName: 'Example applicant1 company', details: [] },
-    { partyName: 'Example respondent1 company', details: [] },
-    { partyName: 'Example respondent2 company', details: [] },
-    { partyName: 'John Smith', details: [] }
-  ]);
-}).retry(3);
+
+Scenario('Add case flags', async ({I}) => {
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      details: [PARTY_FLAGS.vulnerableUser.value]
+    }, {
+      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
+      details: [PARTY_FLAGS.unacceptableBehaviour.value]
+    }
+    ];
+
+    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.createCaseFlags(caseFlags);
+    await I.validateCaseFlags(caseFlags);
+  }
+});
 
 Scenario('Judge triggers SDO', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.login(config.judgeUserWithRegionId1);
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
-    await I.waitForText('Summary');
-    await I.initiateSDO('yes', 'yes', null, null);
-  }
+   await I.login(config.judgeUserWithRegionId1);
+   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await I.waitForText('Summary');
+   await I.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
 AfterSuite(async  () => {

@@ -17,22 +17,6 @@
   },
   {
     "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "applicantsPbaAccounts",
-    "ElementLabel": "Select your payment by account number (PBA)\n",
-    "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
-    "ListElementCode": "pbaReference",
-    "ElementLabel": "Enter a reference for your PBA account statements",
-    "HintText": "This should be your own unique reference to identify the case. It will appear on your statements.",
-    "FieldType": "TextArea",
-    "Max": 400,
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
     "ListElementCode": "fee",
     "ElementLabel": " ",
     "FieldType": "Fee",
