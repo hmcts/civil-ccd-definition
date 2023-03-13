@@ -170,6 +170,6 @@ Scenario('Defendant solicitor uploads evidence', async ({I}) => {
   }
 }).retry(3);
 
-AfterSuite(async  () => {
+/*AfterSuite(async  () => {
   await unAssignAllUsers();
-});
+});*/
