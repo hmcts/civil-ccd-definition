@@ -115,13 +115,13 @@ module.exports = {
     }
     else {
       await within(this.fields.witnessSelectionEvidence.id, () => {
-        I.click(this.fields.witnessSelectionEvidenceSmallClaim.options.witnessStatement);
+        I.click(this.fields.witnessSelectionEvidence.options.witnessStatement);
       });
       await within(this.fields.expertSelectionEvidence.id, () => {
-        I.click(this.fields.expertSelectionEvidenceSmallClaim.options.expertReport);
+        I.click(this.fields.expertSelectionEvidence.options.expertReport);
       });
       await within(this.fields.trialSelectionEvidence.id, () => {
-        I.click(this.fields.trialSelectionEvidenceSmallClaim.options.authorities);
+        I.click(this.fields.trialSelectionEvidence.options.authorities);
       });
     }
     await I.clickContinue();
