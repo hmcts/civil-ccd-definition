@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
