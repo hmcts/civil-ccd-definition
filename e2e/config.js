@@ -215,11 +215,11 @@ module.exports = {
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
-  djClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
-  sdoJudgeSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
+  claimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  defendantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  djClaimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  liverpoolCourt:'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
+  sdoJudgeSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
   localNoCTests: false
 };

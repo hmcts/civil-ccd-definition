@@ -1,4 +1,5 @@
 const {listElement} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -37,9 +38,9 @@ module.exports = {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.claimantSelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
