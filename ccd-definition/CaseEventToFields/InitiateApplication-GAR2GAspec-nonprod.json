@@ -14,14 +14,26 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppVaryJudgementType",
+    "CaseFieldID": "generalAppParentClaimantIsApplicant",
     "DisplayContext": "READONLY",
     "PageID": "GAUploadN245Form",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "DisplayContext": "READONLY",
+    "PageID": "GAUploadN245Form",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
     "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\"",
-    "PageShowCondition": "generalAppVaryJudgementType=\"Yes\"",
+    "PageShowCondition": "generalAppVaryJudgementType=\"Yes\" AND generalAppParentClaimantIsApplicant=\"No\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -31,7 +43,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "GAUploadN245Form",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -42,7 +54,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "GAUploadN245Form",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   }

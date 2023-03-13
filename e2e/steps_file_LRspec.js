@@ -87,6 +87,7 @@ const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -624,6 +625,33 @@ module.exports = function () {
         () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
+    },
+
+    async createCaseFlags(caseFlags) {
+      eventName = 'Create case flags';
+
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
+    },
+
+    async validateCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
     },
 
     async navigateToCaseDetails(caseNumber) {

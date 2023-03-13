@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPFinancialDetails",
+    "ElementLabel": " ",
+    "FieldType": "FinancialDetailsLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1MediationLiPResponse",
+    "ElementLabel": " ",
+    "FieldType": "MediationLiP",
+    "SecurityClassification": "Public"
+  }
+]
