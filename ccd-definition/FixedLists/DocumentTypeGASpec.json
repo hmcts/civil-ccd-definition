@@ -16,11 +16,5 @@
     "ListElementCode": "DIRECTION_ORDER",
     "ListElement": "Directions order",
     "DisplayOrder": 11
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "SDO_ORDER",
-    "ListElement": "Standard Directions Order",
-    "DisplayOrder": 12
   }
 ]

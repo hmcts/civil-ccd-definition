@@ -1,5 +1,7 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
 
+const config = require('../../../config.js');
+
 module.exports = {
   valid: {
     ConfirmDetails: {
@@ -129,9 +131,9 @@ module.exports = {
       respondent1DQRequestedCourt: {
         responseCourtLocations: {
           list_items: [
-            listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+            listElement(config.liverpoolCourt)
           ],
-          value: listElement('Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX')
+          value: listElement(config.liverpoolCourt)
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
@@ -178,11 +180,7 @@ module.exports = {
           individualLastName: 'Doe',
           individualTitle: 'Sir',
           individualDateOfBirth: date(1),
-          primaryAddress: buildAddress('respondent'),
-          flags: {
-            partyName: 'Sir John Doe',
-            roleOnCase: 'Respondent 1'
-         }
+          primaryAddress: buildAddress('respondent')
         }
       }
     },
