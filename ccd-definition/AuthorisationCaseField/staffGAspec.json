@@ -181,6 +181,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppParentClaimantIsApplicant",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppHearingDate",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
