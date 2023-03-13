@@ -11,10 +11,10 @@ module.exports = {
       }
     },
 
-    witnessSelectionEvidenceSmallClaimRes: {
-      id: '#witnessSelectionEvidenceSmallClaimRes',
+    witnessSelectionEvidenceRes: {
+      id: '#witnessSelectionEvidenceRes',
       options: {
-        witnessStatement: '#witnessSelectionEvidenceSmallClaimRes-WITNESS_STATEMENT'
+        witnessStatement: '#witnessSelectionEvidenceRes-WITNESS_STATEMENT'
       }
     },
 
@@ -25,10 +25,10 @@ module.exports = {
       }
     },
 
-    expertSelectionEvidenceSmallClaimRes:{
-      id: '#expertSelectionEvidenceSmallClaimRes',
+    expertSelectionEvidenceRes:{
+      id: '#expertSelectionEvidenceRes',
       options: {
-        expertReport: '#expertSelectionEvidenceSmallClaimRes-EXPERT_REPORT'
+        expertReport: '#expertSelectionEvidenceRes-EXPERT_REPORT'
       }
     },
 
@@ -40,9 +40,9 @@ module.exports = {
     },
 
     trialSelectionEvidenceRes:{
-      id: '#trialSelectionEvidenceSmallClaimRes',
+      id: '#trialSelectionEvidenceRes',
       options: {
-        authorities: '#trialSelectionEvidenceSmallClaimRes-AUTHORITIES'
+        authorities: '#trialSelectionEvidenceRes-AUTHORITIES'
       }
     },
 
@@ -103,14 +103,14 @@ module.exports = {
 
   async selectType(defendant){
     if(defendant) {
-      await within(this.fields.witnessSelectionEvidenceSmallClaimRes.id, () => {
-        I.click(this.fields.witnessSelectionEvidenceSmallClaim.options.witnessStatement);
+      await within(this.fields.witnessSelectionEvidenceRes.id, () => {
+        I.click(this.fields.witnessSelectionEvidence.options.witnessStatement);
       });
-      await within(this.fields.expertSelectionEvidenceSmallClaimRes.id, () => {
-        I.click(this.fields.expertSelectionEvidenceSmallClaim.options.expertReport);
+      await within(this.fields.expertSelectionEvidenceRes.id, () => {
+        I.click(this.fields.expertSelectionEvidence.options.expertReport);
       });
-      await within(this.fields.trialSelectionEvidenceSmallClaimRes.id, () => {
-        I.click(this.fields.trialSelectionEvidenceSmallClaim.options.authorities);
+      await within(this.fields.trialSelectionEvidenceRes.id, () => {
+        I.click(this.fields.trialSelectionEvidence.options.authorities);
       });
     }
     else {
