@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
-const {assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
