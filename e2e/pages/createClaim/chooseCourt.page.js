@@ -8,7 +8,7 @@ module.exports = {
   },
   fields: {
     courtLocation: {
-      id: 'select[id$="Location_applicantPreferredCourtLocationList"]',
+      id: 'select[id$="courtLocation_applicantPreferredCourtLocationList"]',
       options: {
         claimantPreferredCourt: config.claimantSelectedCourt
       }
