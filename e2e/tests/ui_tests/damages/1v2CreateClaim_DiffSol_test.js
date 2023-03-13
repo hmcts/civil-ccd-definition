@@ -166,10 +166,10 @@ Scenario('Claimant solicitor uploads evidence', async ({I}) => {
 Scenario('Defendant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
-    await I.evidenceUpload(caseId());
+    await I.evidenceUpload(caseId(), true);
   }
 }).retry(3);
 
-/*AfterSuite(async  () => {
+AfterSuite(async  () => {
   await unAssignAllUsers();
-});*/
+});
