@@ -101,7 +101,7 @@ module.exports = {
     }
   },
 
-  async selectType(defendant = false){
+  async selectType(defendant){
     if(defendant) {
       await within(this.fields.witnessSelectionEvidenceSmallClaimRes.id, () => {
         I.click(this.fields.witnessSelectionEvidenceSmallClaim.options.witnessStatement);
@@ -127,7 +127,7 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async uploadYourDocument(file, defendant = false){
+  async uploadYourDocument(file, defendant){
     await I.waitForText('Upload Your Documents');
     if(defendant) {
       await within(this.fields.documentWitnessStatementRes.id, () => {
@@ -178,7 +178,7 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async uploadADocument(caseId, defendant = false) {
+  async uploadADocument(caseId, defendant) {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + defendant ? '/trigger/EVIDENCE_UPLOAD_RESPONDENT/EVIDENCE_UPLOAD_RESPONDENTEvidenceUpload':'/trigger/EVIDENCE_UPLOAD_APPLICANT/EVIDENCE_UPLOAD_APPLICANTEvidenceUpload');

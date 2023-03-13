@@ -854,7 +854,7 @@ module.exports = function () {
       ]);
     },
 
-    async evidenceUpload(caseId, defendant = false) {
+    async evidenceUpload(caseId, defendant) {
       defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
