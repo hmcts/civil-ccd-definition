@@ -1105,6 +1105,12 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1119,6 +1125,12 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
