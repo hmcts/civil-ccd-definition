@@ -57,8 +57,8 @@ module.exports = {
     },
 
     documentWitnessStatementRes:{
-      id: '#documentWitnessStatementRes_0_0',
-      button: '#documentWitnessStatementRes_0_0 > div:nth-child(1) > button:nth-child(2)',
+      id: '#documentWitnessStatementRes',
+      button: '#documentWitnessStatementRes > div:nth-child(1) > button:nth-child(2)',
       name: '#documentWitnessStatementRes_0_witnessOptionName',
       day: '#witnessOptionUploadDate-day',
       month: '#witnessOptionUploadDate-month',
@@ -104,13 +104,13 @@ module.exports = {
   async selectType(defendant){
     if(defendant) {
       await within(this.fields.witnessSelectionEvidenceRes.id, () => {
-        I.click(this.fields.witnessSelectionEvidence.options.witnessStatement);
+        I.click(this.fields.witnessSelectionEvidenceRes.options.witnessStatement);
       });
       await within(this.fields.expertSelectionEvidenceRes.id, () => {
-        I.click(this.fields.expertSelectionEvidence.options.expertReport);
+        I.click(this.fields.expertSelectionEvidenceRes.options.expertReport);
       });
       await within(this.fields.trialSelectionEvidenceRes.id, () => {
-        I.click(this.fields.trialSelectionEvidence.options.authorities);
+        I.click(this.fields.trialSelectionEvidenceRes.options.authorities);
       });
     }
     else {
