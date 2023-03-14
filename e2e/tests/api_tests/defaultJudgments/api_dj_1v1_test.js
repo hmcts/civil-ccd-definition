@@ -45,7 +45,7 @@ Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing cen
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
     WA.validateTaskInfo(caseProgressionTakeCaseOfflineTask, caseProgressionOfflineExpectedTask);
     if (config.runWAApiTest) {
-      taskId = caseProgressionTakeCaseOfflineTask['id']
+      taskId = caseProgressionTakeCaseOfflineTask['id'];
       api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
       api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
     }

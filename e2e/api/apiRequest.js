@@ -122,7 +122,7 @@ module.exports = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${userToken}`,
         'ServiceAuthorization': `Bearer ${s2sToken}`
-      }, '', 'POST', expectedStatus)
+      }, '', 'POST', expectedStatus);
     }, 2, TASK_RETRY_TIMEOUT_MS);
   },
 
