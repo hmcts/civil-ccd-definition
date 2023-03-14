@@ -131,6 +131,7 @@ const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDe
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -908,6 +909,30 @@ module.exports = function () {
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
-    }
+    },
+
+    async manageCaseFlags(caseFlags) {
+      eventName = 'Manage case flags';
+
+      for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(eventName, caseId),
+          () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
+          () => event.submitWithoutHeader('Submit')
+        ]);
+      }
+    },
+
+    async validateUpdatedCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertInactiveCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertUpdatedCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
   });
 };
