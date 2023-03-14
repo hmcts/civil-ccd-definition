@@ -18,9 +18,9 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
+  caseId = await api.getCaseId();
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await api.defaultJudgment(config.applicantSolicitorUser);
-  caseId = api.getCaseId();
 });
 
 Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
