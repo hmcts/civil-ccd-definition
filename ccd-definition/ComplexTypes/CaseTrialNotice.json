@@ -1,0 +1,20 @@
+[
+  {
+  "CaseTypeID": "CIVIL",
+  "ListElementCode": "list",
+  "ID": "TrialNoticeProcedure",
+  "ElementLabel": " ",
+  "FieldType": "FixedList",
+  "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
+  "SecurityClassification": "Public"
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "label1",
+    "ID": "TrialNoticeProcedure",
+    "ElementLabel": " Test label1",
+    "FieldType": "Label",
+    "FieldShowCondition": "list=\"SATISFIED_REASONABLE_TO_PROCEED\"",
+    "SecurityClassification": "Public"
+  }
+]

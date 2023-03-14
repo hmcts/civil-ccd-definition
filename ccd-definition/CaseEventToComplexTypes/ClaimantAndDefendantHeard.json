@@ -59,16 +59,16 @@
     "ID": "ClaimantAndDefendantHeard",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
-    "ListElementCode": "typeRepresentationComplex.typeRepresentationClaimantNotAttendingList",
-    "FieldDisplayOrder": 6,
+    "ListElementCode": "typeRepresentationComplex.trialProcedureClaimantComplex",
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
-  },
+    },
   {
     "ID": "ClaimantAndDefendantHeard",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationDefendantListLabel",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "READONLY"
   },
   {
@@ -76,7 +76,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationDefendantList",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -84,7 +84,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationCounselForDefendantList",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
@@ -92,7 +92,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationSolicitorForDefendantList",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
@@ -100,7 +100,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationCostDraftsmanDefList",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
@@ -108,7 +108,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationTheDefendantInPersonList",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
@@ -116,15 +116,15 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationLayRepresentativeDefList",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
-    "ListElementCode": "typeRepresentationComplex.typeRepresentationDefendantNotAttendingList",
-    "FieldDisplayOrder": 9,
+    "ListElementCode": "typeRepresentationComplex.trialProcedureComplex",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   }
 ]

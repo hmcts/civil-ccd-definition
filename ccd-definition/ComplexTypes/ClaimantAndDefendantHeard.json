@@ -81,11 +81,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "typeRepresentationClaimantNotAttendingList",
+    "ListElementCode": "trialProcedureClaimantComplex",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
+    "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationClaimantList=\"CLAIMANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public"
   },
@@ -153,11 +152,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "typeRepresentationDefendantNotAttendingList",
+    "ListElementCode": "trialProcedureComplex",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
+    "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationDefendantList=\"DEFENDANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public"
   }

@@ -1,0 +1,34 @@
+[
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureClaimantComplex.list",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureClaimantComplex.label1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureComplex.list",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureComplex.label1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  }
+]
