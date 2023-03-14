@@ -1,4 +1,5 @@
 const {listElement, element} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const responseData = {
@@ -46,9 +47,9 @@ module.exports = {
           respondToCourtLocation: {
             responseCourtLocations: {
               list_items: [
-                listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                listElement(config.defendantSelectedCourt)
               ],
-              value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              value: listElement(config.defendantSelectedCourt)
             },
             reasonForHearingAtSpecificCourt: 'Reasons'
           }
