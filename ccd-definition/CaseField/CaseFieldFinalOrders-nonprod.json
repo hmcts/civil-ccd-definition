@@ -98,5 +98,12 @@
     "Label": " ",
     "FieldType": "OrderWithoutNotice",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormOrderDocument",
+    "Label": "View order",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
   }
 ]

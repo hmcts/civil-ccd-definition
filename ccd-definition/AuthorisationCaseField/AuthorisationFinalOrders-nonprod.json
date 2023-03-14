@@ -110,5 +110,13 @@
       "judge-profile"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormOrderDocument",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]
