@@ -1026,9 +1026,11 @@ module.exports = {
   eventName = 'HEARING_SCHEDULED';
 
   caseData = await apiRequest.startEvent(eventName, caseId);
+  delete caseData['SearchCriteria'];
+
   let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
 
-  for (let pageId of Object.keys(scheduleData)) {
+  for (let pageId of Object.keys(scheduleData.valid)) {
     await assertValidData(scheduleData, pageId);
   }
 
@@ -1036,6 +1038,7 @@ module.exports = {
   await waitForFinishedBusinessProcess(caseId);
   }
 };
+
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
@@ -1070,6 +1073,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
+  {
+    responseBody = clearHearingLocationData(responseBody);
   }
 
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
@@ -1521,6 +1528,11 @@ const clearDataForSearchCriteria = (responseBody) => {
 
 const clearNoCData = (responseBody) => {
   delete responseBody.data['changeOfRepresentation'];
+  return responseBody;
+};
+
+const clearHearingLocationData = (responseBody) => {
+  delete responseBody.data['hearingLocation'];
   return responseBody;
 };
 
