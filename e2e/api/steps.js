@@ -27,7 +27,7 @@ const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags} = require('./caseFlagsHelper');
+const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
 
@@ -774,6 +774,12 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
+
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
+    }
   },
 
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
@@ -994,24 +1000,42 @@ module.exports = {
     }
   },
 
-  scheduleHearing: async (user, allocatedTrack) => {
-    console.log('Hearing Scheduled for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'HEARING_SCHEDULED';
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
-
-    for (let pageId of Object.keys(scheduleData)) {
-      await assertValidData(scheduleData, pageId);
+  manageCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
     }
 
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
-    await waitForFinishedBusinessProcess(caseId);
+    eventName = 'MANAGE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await updateAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for(const [index, value] of caseFlagLocations.entries()) {
+      await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
+
+  scheduleHearing: async (user, allocatedTrack) => {
+  console.log('Hearing Scheduled for case id ' + caseId);
+  await apiRequest.setupTokens(user);
+
+  eventName = 'HEARING_SCHEDULED';
+
+  caseData = await apiRequest.startEvent(eventName, caseId);
+  let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+  for (let pageId of Object.keys(scheduleData)) {
+    await assertValidData(scheduleData, pageId);
+  }
+
+  await assertSubmittedEvent('HEARING_READINESS', null, false);
+  await waitForFinishedBusinessProcess(caseId);
   }
 };
-
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
