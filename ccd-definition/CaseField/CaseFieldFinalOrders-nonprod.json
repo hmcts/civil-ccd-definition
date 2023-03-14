@@ -59,16 +59,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "finalOrderJudgeHeardFormComplex",
-    "Label": " ",
-    "FieldType": "FinalOrderJudgeHeardFormField",
+    "ID": "finalOrderJudgeHeardFrom",
+    "Label": "Judge heard from",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimantRepresentationNested",
+    "ID": "finalOrderRepresentation",
     "Label": " ",
-    "FieldType": "FieldTestTest",
+    "FieldType": "FinalOrderRepresentation",
     "SecurityClassification": "Public"
   }
 ]

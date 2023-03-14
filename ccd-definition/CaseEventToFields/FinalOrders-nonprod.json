@@ -86,11 +86,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderJudgeHeardFormComplex",
+    "CaseFieldID": "finalOrderJudgeHeardFrom",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 7,
     "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
+    "FieldShowCondition": "finalOrderJudgeHeardFrom=\"SHOW\"",
     "ShowSummaryChangeOption": "Y"
   }
 ]

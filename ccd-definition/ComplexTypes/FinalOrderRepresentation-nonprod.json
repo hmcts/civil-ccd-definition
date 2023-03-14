@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "typeRepresentationList",
+    "ID": "FinalOrderRepresentation",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrdersRepresentationList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "typeRepresentationComplex",
+    "ID": "FinalOrderRepresentation",
+    "ElementLabel": " ",
+    "FieldType": "ClaimantAndDefendantHeard",
+    "FieldShowCondition": "typeRepresentationList=\"CLAIMANT_AND_DEFENDANT\"",
+    "SecurityClassification": "Public"
+  }
+]

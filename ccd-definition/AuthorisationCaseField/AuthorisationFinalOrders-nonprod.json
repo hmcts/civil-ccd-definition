@@ -78,11 +78,20 @@
       "[CREATOR]"
     ],
     "CRUD": "CRU"
-  }
-,
+  },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "finalOrderJudgeHeardFormComplex",
+    "CaseFieldID": "finalOrderJudgeHeardFrom",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderRepresentation",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
