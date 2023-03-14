@@ -50,6 +50,10 @@ Scenario('Add case flags', async ({api}) => {
   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
+Scenario('Manage case flags', async ({api}) => {
+  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
+
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
 });
