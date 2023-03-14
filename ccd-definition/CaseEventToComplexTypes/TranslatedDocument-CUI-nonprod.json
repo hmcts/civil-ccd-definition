@@ -13,6 +13,6 @@
     "CaseFieldID": "translatedDocument",
     "ListElementCode": "file",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   }
 ]
