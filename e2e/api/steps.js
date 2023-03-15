@@ -211,7 +211,7 @@ module.exports = {
     mpScenario = multipartyScenario;
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -224,6 +224,7 @@ module.exports = {
         createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP_LIP;
         break;
     }
+
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
@@ -234,7 +235,9 @@ module.exports = {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
-
+    if (pbaV3) {
+      createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
+    }
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
@@ -249,7 +252,6 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
