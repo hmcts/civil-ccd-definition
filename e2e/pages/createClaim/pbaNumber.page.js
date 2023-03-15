@@ -8,9 +8,6 @@ module.exports = {
       options: {
         activeAccount: 'PBA0088192'
       }
-    },
-    feeValue: {
-      id: 'claimFee_claimFee'
     }
   },
 
@@ -22,7 +19,6 @@ module.exports = {
   },
 
   async clickContinue() {
-    I.waitForElement(this.fields.feeValue.id);
     await I.clickContinue();
   }
 };
