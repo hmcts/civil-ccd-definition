@@ -1010,28 +1010,29 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
-        ]
+        ],
+        "CRUD": "R"
       }
     ]
-    },
-    {
-      "CaseTypeID": "CIVIL",
-      "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
-      "AccessControl": [
-        {
-          "UserRoles": [
-            "caseworker-civil-solicitor"
-          ],
-          "CRUD": "CRU"
-        },
-        {
-          "UserRoles": [
-            "caseworker-civil-admin",
-            "RES-SOL-ONE-SPEC-PROFILE",
-            "RES-SOL-TWO-SPEC-PROFILE"
-          ],
-          "CRUD": "R"
-        }
-      ]
-    }
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
 ]
