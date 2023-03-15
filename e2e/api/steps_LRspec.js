@@ -23,7 +23,7 @@ const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFi
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-const pbaV3 = await checkToggleEnabled(PBAv3);
+
 let caseId, eventName;
 let caseData = {};
 
@@ -133,7 +133,7 @@ module.exports = {
    * @return {Promise<void>}
    */
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
-
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
