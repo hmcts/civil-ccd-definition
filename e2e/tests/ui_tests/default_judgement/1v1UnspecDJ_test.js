@@ -59,17 +59,17 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft', as
   }
 }).retry(3);
 
-Scenario('Verify Challenged access check for judge @e2e-wa @dmn-task', async ({I, WA}) => {
+Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
   await I.login(config.judgeUserWithRegionId2);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Challenged access check for admin @e2e-wa @dmn-task', async ({I, WA}) => {
+Scenario('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
   await I.login(config.hearingCenterAdminWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Challenged access check for legalops @e2e-wa @dmn-task', async ({I, WA}) => {
+Scenario('Verify Challenged access check for legalops @e2e-wa', async ({I, WA}) => {
   await I.login(config.tribunalCaseworkerWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
