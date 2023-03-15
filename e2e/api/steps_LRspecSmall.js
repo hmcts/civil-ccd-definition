@@ -25,7 +25,7 @@ let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
