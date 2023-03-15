@@ -144,8 +144,8 @@ module.exports = {
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
@@ -171,7 +171,7 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
