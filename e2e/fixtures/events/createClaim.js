@@ -2,7 +2,7 @@ const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
 const { getClaimFee } = require('../../claimAmountAndFee');
-const {PBAv3} = require("../../fixtures/featureKeys");
+const {PBAv3} = require('../../fixtures/featureKeys');
 const testingSupport = require('../../api/testingSupport');
 
 const docUuid = uuid.v1();
@@ -204,7 +204,7 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
       },
       claimFee: getClaimFee(claimAmount),
-      ...isPBAv3 ? {
+      ...isPBAv3(pbaV3) ? {
         paymentTypePBA: 'PBAv3'
       } : {},
     },
@@ -352,7 +352,7 @@ const hasRespondent2 = (mpScenario) => {
 
 const isPBAv3 = (pbaV3) => {
   return pbaV3;
-}
+};
 
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
@@ -374,7 +374,7 @@ module.exports = {
           ...hasRespondent2(mpScenario) ? {
             respondent2: respondent2WithPartyName
           } : {},
-          ...isPBAv3 ? {
+          ...isPBAv3(pbaV3) ? {
             paymentTypePBA: 'PBAv3'
           } : {},
         },
