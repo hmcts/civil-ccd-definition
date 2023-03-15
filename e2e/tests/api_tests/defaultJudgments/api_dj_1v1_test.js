@@ -33,6 +33,7 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
 
 Scenario('Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
+  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
 });
 
 Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
