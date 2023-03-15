@@ -132,7 +132,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
     "FieldType": "Label",
-    "Label": "The claim amount is £${totalClaimAmount}.\n",
+    "Label": "The claim amount is £${totalClaimAmount}. This includes all court fees and interest.\n",
     "SecurityClassification": "Public"
   },
   {

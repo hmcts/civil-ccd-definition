@@ -266,7 +266,7 @@ module.exports = {
     },
     {
       code: '032f98f5-078b-424d-befd-877a915377dc',
-      label: 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX'
+      label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
     },
     {
       code: 'e59b0345-b79a-4d27-a7fe-a72cf36a035a',
