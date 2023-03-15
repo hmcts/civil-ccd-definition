@@ -1,6 +1,43 @@
 [
   {
     "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "ADJOURN_VACATE_HEARING",
+    "ListElement": "Adjourn or vacate a hearing",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "AMEND_A_STMT_OF_CASE",
+    "ListElement": "Amend a statement of case",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "EXTEND_TIME",
+    "ListElement": "Extend time",
+    "DisplayOrder": 3
+  },
+
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "RELIEF_FROM_SANCTIONS",
+    "ListElement": "Relief from sanctions",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "SET_ASIDE_JUDGEMENT",
+    "ListElement": "Set aside judgment",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "STAY_THE_CLAIM",
+    "ListElement": "Stay the claim",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STRIKE_OUT",
     "ListElement": "Strike out",
     "DisplayOrder": 7
@@ -13,26 +50,26 @@
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "STAY_THE_CLAIM",
-    "ListElement": "Stay the claim",
-    "DisplayOrder": 6
+    "ListElementCode": "UNLESS_ORDER",
+    "ListElement": "Unless order",
+    "DisplayOrder": 9
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "EXTEND_TIME",
-    "ListElement": "Extend time",
-    "DisplayOrder": 3
+    "ListElementCode": "VARY_JUDGEMENT",
+    "ListElement": "Vary judgment",
+    "DisplayOrder": 10
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "AMEND_A_STMT_OF_CASE",
-    "ListElement": "Amend a statement of case",
-    "DisplayOrder": 2
+    "ListElementCode": "VARY_ORDER",
+    "ListElement": "Vary order",
+    "DisplayOrder": 11
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "RELIEF_FROM_SANCTIONS",
-    "ListElement": "Relief from sanctions",
-    "DisplayOrder": 4
+    "ListElementCode": "OTHER",
+    "ListElement": "Other",
+    "DisplayOrder": 12
   }
 ]
