@@ -87,8 +87,7 @@ module.exports = {
     Language: {
       respondent1DQLanguage: {
         court: 'WELSH',
-        documents: 'WELSH',
-        evidence: 'WELSH'
+        documents: 'WELSH'
       }
     },
     Hearing: {
