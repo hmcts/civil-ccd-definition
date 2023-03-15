@@ -44,7 +44,8 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "generalAppVaryJudgementType=\"Yes\" AND generalAppParentClaimantIsApplicant=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
