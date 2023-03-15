@@ -133,6 +133,8 @@ const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefa
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
+const {checkToggleEnabled} = require("./api/testingSupport");
+const {PBAv3} = require("./fixtures/featureKeys");
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -276,9 +278,28 @@ module.exports = function () {
     async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
       eventName = 'Create case';
 
-      const twoVOneScenario = claimant1 && claimant2;
-      await createCasePage.createCase(config.definition.jurisdiction);
-      await this.triggerStepsWithScreenshot([
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+
+      let steps = pbaV3 ? [
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.selectCourt(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(claimValue),
+        () => pbaNumberPage.clickContinue(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
+      ] : [
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.selectCourt(),
@@ -298,7 +319,11 @@ module.exports = function () {
         () => event.submit('Submit',
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
-      ]);
+      ];
+
+      const twoVOneScenario = claimant1 && claimant2;
+      await createCasePage.createCase(config.definition.jurisdiction);
+      await this.triggerStepsWithScreenshot(steps);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
