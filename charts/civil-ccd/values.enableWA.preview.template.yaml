@@ -126,7 +126,7 @@ wa-message-cron-service:
     environment:
       WA_CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
 
-wa-task-batch-service:
+wa-task-batch-initiation:
   job:
     schedule: "*/5 * * * *"
     aadIdentityName: wa
