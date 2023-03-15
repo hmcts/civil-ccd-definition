@@ -1,9 +1,5 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
 const config = require('../../config.js');
-const {PBAv3} = require('../../fixtures/featureKeys');
-const testingSupport = require('../../api/testingSupport');
-
-const pbaV3 = testingSupport.checkToggleEnabled(PBAv3);
 
 
 const respondent1 = {
@@ -43,7 +39,7 @@ const invalidPba = listElement('PBA0078095');
 
 module.exports = {
 
-  createClaim: (mpScenario) => {
+  createClaim: (mpScenario, pbaV3) => {
     const userData = {
       userInput: {
         References: {
