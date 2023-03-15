@@ -10,7 +10,7 @@ module.exports = {
       }
     },
     feeValue: {
-      id: 'claimFee_claimFee'
+      id: 'claimFee_calculatedAmountInPence'
     }
   },
 
