@@ -1,8 +1,7 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
 const config = require('../../config.js');
-const {PBAv3} = require("../../fixtures/featureKeys");
+const {PBAv3} = require('../../fixtures/featureKeys');
 const testingSupport = require('../../api/testingSupport');
-const uuid = require("uuid");
 
 const pbaV3 = testingSupport.checkToggleEnabled(PBAv3);
 
@@ -34,7 +33,7 @@ const applicant1WithPartyName = {
 
 const isPBAv3 = (pbaV3) => {
   return pbaV3;
-}
+};
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
@@ -141,7 +140,7 @@ module.exports = {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
-          ...isPBAv3 ? {
+          ...isPBAv3(pbaV3) ? {
             paymentTypePBA: 'PBAv3'
           } : {},
         },
@@ -177,7 +176,7 @@ module.exports = {
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          ...isPBAv3 ? {
+          ...isPBAv3(pbaV3) ? {
             paymentTypePBA: 'PBAv3'
           } : {},
         }
@@ -208,7 +207,7 @@ module.exports = {
             code: 'string',
             version: 'string'
           },
-          ...isPBAv3 ? {
+          ...isPBAv3 (pbaV3) ? {
             paymentTypePBA: 'PBAv3'
           } : {},
         }
@@ -277,7 +276,7 @@ module.exports = {
             claimIssuedPaymentDetails: {
               customerReference: 'Applicant reference'
             },
-            ...isPBAv3 ? {
+            ...isPBAv3(pbaV3) ? {
               paymentTypePBA: 'PBAv3'
             } : {},
           },
@@ -553,7 +552,7 @@ module.exports = {
         expected: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          ...isPBAv3 ? {
+          ...isPBAv3(pbaV3) ? {
             paymentTypePBA: 'PBAv3'
           } : {},
         },
