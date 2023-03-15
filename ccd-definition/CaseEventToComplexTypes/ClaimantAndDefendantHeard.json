@@ -126,5 +126,21 @@
     "ListElementCode": "typeRepresentationComplex.trialProcedureComplex",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "ClaimantAndDefendantHeard",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationOtherComplex.detailsRepresentationLabel",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "ClaimantAndDefendantHeard",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationOtherComplex.detailsRepresentationText",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL"
   }
 ]

@@ -1,24 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "code",
-    "ID": "ClaimantAndDefendantHeard",
-    "Label": "Civil",
-    "ElementLabel": "Civil",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ListElementCode": "label",
-    "ID": "ClaimantAndDefendantHeard",
-    "Label": "Civil",
-    "ElementLabel": "Civil",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationClaimantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -157,6 +139,25 @@
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationDefendantList=\"DEFENDANT_NOT_ATTENDING\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "detailsRepresentationLabel",
+    "ID": "ClaimantAndDefendantHeard",
+    "ElementLabel": "### Enter details of representation",
+    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+,
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "detailsRepresentationText",
+    "ID": "ClaimantAndDefendantHeard",
+    "ElementLabel": " ",
+    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]

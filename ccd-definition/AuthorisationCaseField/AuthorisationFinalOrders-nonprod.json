@@ -61,7 +61,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "finalOrderDateHeard",
+    "CaseFieldID": "finalOrderDateHeardComplex",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -72,6 +72,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseParticipantsAssistedOrder",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderJudgeHeardLabel",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -92,6 +102,66 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRepresentation",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderRecitalsLabel",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderRecitals",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderRecitalsRecorded",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderOrdered",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderOrderedThat",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderOrderedThatText",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
