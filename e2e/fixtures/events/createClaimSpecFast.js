@@ -1,5 +1,9 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
 const config = require('../../config.js');
+const {PBAv3} = require("../../fixtures/featureKeys");
+const testingSupport = require('../../api/testingSupport');
+
+const pbaV3 = testingSupport.checkToggleEnabled(PBAv3);
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -25,6 +29,10 @@ const applicant1WithPartyName = {
   partyName: 'Test Inc',
   partyTypeDisplayValue: 'Company',
 };
+const isPBAv3 = (pbaV3) => {
+  return pbaV3;
+}
+
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '1500000';
@@ -131,6 +139,9 @@ module.exports = {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
+          ...isPBAv3 ? {
+            paymentTypePBA: 'PBAv3'
+          } : {},
         },
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
@@ -164,6 +175,9 @@ module.exports = {
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
+          ...isPBAv3 ? {
+            paymentTypePBA: 'PBAv3'
+          } : {},
         }
       },
 
@@ -191,7 +205,10 @@ module.exports = {
             calculatedAmountInPence: 'string',
             code: 'string',
             version: 'string'
-          }
+          },
+          ...isPBAv3 ? {
+            paymentTypePBA: 'PBAv3'
+          } : {},
         }
       }
     };
@@ -258,7 +275,10 @@ module.exports = {
           InterestSummary: {
             claimIssuedPaymentDetails: {
               customerReference: 'Applicant reference'
-            }
+            },
+            ...isPBAv3 ? {
+              paymentTypePBA: 'PBAv3'
+            } : {},
           },
         };
 
