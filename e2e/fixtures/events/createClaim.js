@@ -2,11 +2,8 @@ const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
 const { getClaimFee } = require('../../claimAmountAndFee');
-const {PBAv3} = require('../../fixtures/featureKeys');
-const testingSupport = require('../../api/testingSupport');
 
 const docUuid = uuid.v1();
-const pbaV3 = testingSupport.checkToggleEnabled(PBAv3);
 
 const respondent1 = {
   type: 'INDIVIDUAL',
@@ -351,6 +348,7 @@ const hasRespondent2 = (mpScenario) => {
 };
 
 const isPBAv3 = (pbaV3) => {
+  console.log( 'Pba value in create claim' + pbaV3);
   return pbaV3;
 };
 
@@ -426,20 +424,20 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData(pbaV3,'No', true, 'ONE_V_ONE')
+    valid: createClaimData(false,'No', true, 'ONE_V_ONE')
   },
   createClaimLRLIP: {
-    valid: createClaimData(pbaV3,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+    valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
   },
   createClaimLIPLIP: {
-    valid: createClaimData(pbaV3,'No', true, 'ONE_V_TWO_LIPS')
+    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData(pbaV3,'Yes', false)
+    valid: createClaimData(false,'Yes', false)
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
-      ...createClaimData(pbaV3,'Yes', true),
+      ...createClaimData('Yes', true),
       DefendantSolicitorOrganisation: {
         respondent1OrgRegistered: 'No'
       },
