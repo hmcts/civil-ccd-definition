@@ -30,5 +30,13 @@
     "_RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "_comment": "Case file view doesn't work with regular expressions, investigating why",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "UploadEvidenceExpert1",
+    "ListElementCode": "createdDatetime",
+    "ElementLabel": "Document Uploaded DateTime",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "expertDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]
