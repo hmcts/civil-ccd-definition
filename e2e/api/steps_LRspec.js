@@ -23,12 +23,12 @@ const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFi
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-
+const pbaV3 = await checkToggleEnabled(PBAv3);
 let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
@@ -140,7 +140,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
@@ -171,7 +171,7 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 

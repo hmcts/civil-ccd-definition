@@ -21,11 +21,12 @@ const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlag
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
+const pbaV3 = await checkToggleEnabled(PBAv3);
 let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
@@ -71,7 +72,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('');
