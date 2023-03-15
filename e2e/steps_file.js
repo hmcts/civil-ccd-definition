@@ -133,8 +133,8 @@ const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefa
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
-const {checkToggleEnabled} = require("./api/testingSupport");
-const {PBAv3} = require("./fixtures/featureKeys");
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
