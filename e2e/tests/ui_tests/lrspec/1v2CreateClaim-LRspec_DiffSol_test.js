@@ -110,7 +110,7 @@ Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
 }).retry(3);
 
 // ToDo: Refactor to trigger create case flags event
-Scenario.skip('Add case flags', async ({LRspec}) => {
+Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
   // await I.createCaseFlags();
   await LRspec.validateCaseFlags([
