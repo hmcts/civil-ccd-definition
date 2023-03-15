@@ -23,7 +23,6 @@ const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
-const pbaV3 = await checkToggleEnabled(PBAv3);
 
 let caseId, eventName;
 let caseData = {};
@@ -118,6 +117,7 @@ module.exports = {
 
     let createClaimData  = {};
 
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
 
     // ToDo: Remove and delete function after hnl uplift released

@@ -21,7 +21,6 @@ const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlag
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
-const pbaV3 = await checkToggleEnabled(PBAv3);
 let caseId, eventName;
 let caseData = {};
 
@@ -70,6 +69,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData  = {};
 
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
@@ -90,7 +90,6 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
