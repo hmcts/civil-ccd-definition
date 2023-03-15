@@ -42,9 +42,9 @@
   },
   {
     "ID": "HearingLRspec",
-    "ListElementCode": "unavailableDatesLRspec",
+    "ListElementCode": "unavailableDates",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UnavailableDateLRspec",
+    "FieldTypeParameter": "UnavailableDate",
     "ElementLabel": "Unavailable date",
     "FieldShowCondition": "unavailableDatesRequired = \"Yes\"",
     "SecurityClassification": "Public",
