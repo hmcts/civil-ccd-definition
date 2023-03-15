@@ -88,8 +88,8 @@ const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
-const {checkToggleEnabled} = require("./api/testingSupport");
-const {PBAv3} = require("./fixtures/featureKeys");
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
