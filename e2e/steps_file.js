@@ -278,6 +278,8 @@ module.exports = function () {
     async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
       eventName = 'Create case';
 
+      const twoVOneScenario = claimant1 && claimant2;
+      await createCasePage.createCase(config.definition.jurisdiction);
       const pbaV3 = await checkToggleEnabled(PBAv3);
 
       let steps = pbaV3 ? [
@@ -321,8 +323,6 @@ module.exports = function () {
         () => event.returnToCaseDetails(),
       ];
 
-      const twoVOneScenario = claimant1 && claimant2;
-      await createCasePage.createCase(config.definition.jurisdiction);
       await this.triggerStepsWithScreenshot(steps);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
