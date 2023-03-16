@@ -161,7 +161,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"\" AND respondent2SameLegalRepresentative = \"No\" AND isRespondent1 = \"No\" "
+    "FieldShowCondition": "isRespondent1 = \"No\" AND respondent2SameLegalRepresentative = \"No\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -233,7 +233,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "isRespondent1 = \"No\" AND respondent2SameLegalRepresentative = \"No\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -245,7 +245,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "ConfirmNameAddress",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "isRespondent1 = \"No\" AND respondent2SameLegalRepresentative = \"No\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -256,7 +256,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "isRespondent1 = \"No\" AND respondent2SameLegalRepresentative = \"No\" "
   },
   {
     "CaseTypeID": "CIVIL",
