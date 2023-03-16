@@ -137,7 +137,7 @@ module.exports = {
             customerReference: 'Applicant reference'
           },
           ...isPBAv3(pbaV3) ? {
-            paymentTypePBA: 'PBAv3'
+            paymentTypePBASpec: 'PBAv3'
           } : {},
         },
         PbaNumber: {
@@ -173,7 +173,7 @@ module.exports = {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
           ...isPBAv3(pbaV3) ? {
-            paymentTypePBA: 'PBAv3'
+            paymentTypePBASpec: 'PBAv3'
           } : {},
         },
       },
@@ -204,7 +204,7 @@ module.exports = {
             version: 'string'
           },
           ...isPBAv3(pbaV3) ? {
-            paymentTypePBA: 'PBAv3'
+            paymentTypePBASpec: 'string'
           } : {},
         },
 
