@@ -112,10 +112,6 @@ module.exports =  {
       return false;
     }
 
-    if(toggle === 'pba-version-3-ways-to-pay'){
-      return true;
-    }
-
     if(toggle === 'case-flags'){
       return false;
     }
