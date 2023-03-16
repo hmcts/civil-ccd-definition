@@ -858,6 +858,14 @@ module.exports = {
     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
 
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
+  completeTaskByUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'complete');
+  },
+
   addCaseNote: async (user) => {
     await apiRequest.setupTokens(user);
 
