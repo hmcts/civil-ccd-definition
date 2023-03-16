@@ -34,6 +34,8 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
 
 Scenario('Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
+  await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
   await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
 });
 

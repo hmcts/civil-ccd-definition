@@ -20,6 +20,8 @@ const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
@@ -70,7 +72,11 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
+  EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
 };
 
 const eventData = {
@@ -1036,7 +1042,56 @@ module.exports = {
 
   await assertSubmittedEvent('HEARING_READINESS', null, false);
   await waitForFinishedBusinessProcess(caseId);
+  },
+
+  evidenceUploadApplicant: async (user) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL();
+    console.log('evidence upload small claim applicant for case id ' + caseId);
+    for (let pageId of Object.keys(ApplicantEvidenceSmallClaimData.valid)) {
+      await assertValidData(ApplicantEvidenceSmallClaimData, pageId);
+    }
+
+    let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
+    console.log('evidence upload applicant fast track for case id ' + caseId);
+    for (let pageId of Object.keys(ApplicantEvidenceFastClaimData.valid)) {
+      await assertValidData(ApplicantEvidenceFastClaimData, pageId);
+    }
+
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  evidenceUploadRespondent: async (user, multipartyScenario) => {
+    console.log('evidence upload respondent for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+    mpScenario = multipartyScenario;
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+
+    for (let pageId of Object.keys(RespondentEvidenceSmallClaimData.valid)) {
+      await assertValidData(RespondentEvidenceSmallClaimData, pageId);
+    }
+
+    let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+
+    for (let pageId of Object.keys(RespondentEvidenceFastClaimData.valid)) {
+      await assertValidData(RespondentEvidenceFastClaimData, pageId);
+    }
+
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
   }
+
 };
 
 // Functions
