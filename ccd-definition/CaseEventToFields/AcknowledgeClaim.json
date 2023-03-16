@@ -161,7 +161,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"No\" OR isRespondent1 = \"No\" OR respondent2SameLegalRepresentative = \"Yes\" "
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"\" AND respondent2SameLegalRepresentative = \"No\" AND isRespondent1 = \"No\" "
   },
   {
     "CaseTypeID": "CIVIL",
