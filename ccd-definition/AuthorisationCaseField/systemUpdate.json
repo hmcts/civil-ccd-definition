@@ -502,5 +502,11 @@
     "CaseFieldID": "CaseAccessCategory",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNamePublic",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
