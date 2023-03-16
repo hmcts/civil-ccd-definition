@@ -128,6 +128,7 @@ wa-message-cron-service:
 
 wa-task-batch-initiation:
   job:
+    kind: CronJob
     releaseNameOverride: ${SERVICE_NAME}-wa-task-batch-initiation
     schedule: "*/5 * * * *"
     aadIdentityName: wa
@@ -141,7 +142,3 @@ wa-task-batch-initiation:
       WA_TASK_MONITOR_SERVICE_URL: http://{{ .Release.Name }}-wa-task-monitor
       JOB_NAME: "INITIATION"
       ALLOW_CONFIG_MUTATIONS: true
-  global:
-    jobKind: CronJob
-    enableKeyVaults: true
-    environment: aat
