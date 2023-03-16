@@ -154,6 +154,20 @@ Scenario('Judge triggers SDO', async ({I}) => {
    await I.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
+Scenario('Claimant solicitor uploads evidence', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.applicantSolicitorUser);
+    await I.evidenceUpload(caseId(), false);
+  }
+}).retry(3);
+
+Scenario('Defendant solicitor uploads evidence', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.defendantSolicitorUser);
+    await I.evidenceUpload(caseId(), true);
+  }
+}).retry(3);
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
