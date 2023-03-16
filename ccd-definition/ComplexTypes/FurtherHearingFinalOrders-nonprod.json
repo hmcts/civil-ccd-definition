@@ -1,0 +1,61 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "label",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": "### Date of new hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "listFromLabel",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": "### List from",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "listFromDate",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "dateToLabel",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": "### Date to (optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "dateToDate",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "lengthLabel",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": "### Length of new hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "lengthList",
+    "ID": "FinalOrderFurtherHearing",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "HearingLengthFinalOrderList",
+    "SecurityClassification": "Public"
+  }
+]

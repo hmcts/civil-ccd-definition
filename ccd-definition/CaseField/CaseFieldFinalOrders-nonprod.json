@@ -142,5 +142,27 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrderCostsSelection",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderFurtherHearingLabel",
+    "Label": "**** \n ## Further hearing (part heard or adjourned)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderFurtherHearingToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderFurtherHearingComplex",
+    "Label": " ",
+    "FieldType": "FinalOrderFurtherHearing",
+    "SecurityClassification": "Public"
   }
 ]
