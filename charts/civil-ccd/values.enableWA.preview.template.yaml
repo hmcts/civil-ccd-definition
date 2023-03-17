@@ -1,6 +1,9 @@
 wa:
   enabled: true
 
+global:
+  jobKind: true
+
 
 wa-task-management-api:
   java:
