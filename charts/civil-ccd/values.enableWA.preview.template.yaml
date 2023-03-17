@@ -1,4 +1,4 @@
-wa:
+a:
   enabled: true
 
 global:
@@ -131,7 +131,6 @@ wa-message-cron-service:
 
 wa-task-batch-initiation:
   job:
-    kind: CronJob
     releaseNameOverride: ${SERVICE_NAME}-wa-task-batch-initiation
     schedule: "*/5 * * * *"
     aadIdentityName: wa
