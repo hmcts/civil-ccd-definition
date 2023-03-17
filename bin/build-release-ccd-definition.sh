@@ -3,8 +3,6 @@
 set -eu
 
 environment=${1:-prod}
-declare -a unshutterlist=["prod","staging"]
-
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
@@ -28,16 +26,6 @@ else
   echo "       Either add the new environment to the script or specify a supported environment!"
   exit 1
 fi
-
-# deciding if unshuttered or shuttered should be excluded
-if grep -q "${environment}" <<< $(j "${unshutterlist[@]}") ; then
-  excludedFilenamePatterns="${excludedFilenamePatterns} ,*-unshuttered.json"
-  echo "${excludedFilenamePatterns}"
-else
-  excludedFilenamePatterns="${excludedFilenamePatterns} ,*-shuttered.json"
-  echo "${excludedFilenamePatterns}"
-fi
-
 
 root_dir=$(realpath $(dirname ${0})/..)
 config_dir=${root_dir}/ccd-definition
