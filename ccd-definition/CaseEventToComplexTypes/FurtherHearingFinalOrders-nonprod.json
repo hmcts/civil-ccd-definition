@@ -54,5 +54,61 @@
     "ListElementCode": "lengthList",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "lengthListOther",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "alternativeHearingLabel",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "alternativeHearingList",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "hearingMethodLabel",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "hearingMethodList",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "hearingNotesLabel",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderFurtherHearing",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "ListElementCode": "hearingNotesText",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "OPTIONAL"
   }
 ]
