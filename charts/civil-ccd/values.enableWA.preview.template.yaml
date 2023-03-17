@@ -2,7 +2,7 @@ wa:
   enabled: true
 
 global:
-  jobKind: true
+  jobKind: CronJob
 
 
 wa-task-management-api:
