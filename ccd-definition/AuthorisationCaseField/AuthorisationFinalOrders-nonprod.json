@@ -171,7 +171,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "finalOrderCostList",
+    "CaseFieldID": "assistedOrderCostDetails",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",
@@ -202,6 +202,76 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderFurtherHearingComplex",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderAppealLabel",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderAppealToggle",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderReasonsLabel",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderGiveReasonsLabel",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderGiveReasonsYesNo",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderGiveReasonsComplex",
     "UserRoles": [
       "judge-profile",
       "APP-SOL-UNSPEC-PROFILE",

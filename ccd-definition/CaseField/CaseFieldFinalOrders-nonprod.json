@@ -137,10 +137,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "finalOrderCostList",
+    "ID": "assistedOrderCostDetails",
     "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "FinalOrderCostsSelection",
+    "FieldType": "AssistedOrderCostDetails",
     "SecurityClassification": "Public"
   },
   {
@@ -163,6 +162,56 @@
     "ID": "finalOrderFurtherHearingComplex",
     "Label": " ",
     "FieldType": "FinalOrderFurtherHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderAppealLabel",
+    "Label": "**** \n ## Appeal",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderAppealToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderAppealComplex",
+    "Label": " ",
+    "FieldType": "FinalOrderAppeal",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderReasonsLabel",
+    "Label": "**** \n ## Reasons",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderGiveReasonsLabel",
+    "Label": "### Do you want to give reasons for the order?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderGiveReasonsYesNo",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderGiveReasonsComplex",
+    "Label": " ",
+    "FieldType": "AssistedOrderReasons",
     "SecurityClassification": "Public"
   }
 ]

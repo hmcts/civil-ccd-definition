@@ -198,10 +198,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderCostList",
+    "CaseFieldID": "assistedOrderCostDetails",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 17,
-    "DisplayContext": "MANDATORY",
+    "PageFieldDisplayOrder": 18,
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
   },
@@ -210,7 +210,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFurtherHearingLabel",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 18,
+    "PageFieldDisplayOrder": 19,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -220,7 +220,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFurtherHearingToggle",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 19,
+    "PageFieldDisplayOrder": 20,
     "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "Y"
@@ -230,10 +230,82 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 20,
+    "PageFieldDisplayOrder": 21,
     "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "finalOrderFurtherHearingToggle=\"SHOW\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealToggle",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 23,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 24,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FinalOrderAssistedOrder",
+    "FieldShowCondition": "finalOrderAppealToggle=\"SHOW\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderReasonsLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 28,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderGiveReasonsLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 29,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderGiveReasonsYesNo",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 30,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderGiveReasonsComplex",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 31,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FinalOrderAssistedOrder",
+    "FieldShowCondition": "finalOrderGiveReasonsYesNo=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   }
 ]
