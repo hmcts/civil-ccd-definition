@@ -3,15 +3,21 @@
     "ID": "CostReservedDetails",
     "ListElementCode": "detailsRepresentationLabel",
     "ElementLabel": "### Cost reserved",
-    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CostReservedDetails",
+    "ListElementCode": "detailsRepresentationSecondLabel",
+    "ElementLabel": "### Please type in the cost order you wish to make (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "CostReservedDetails",
     "ListElementCode": "detailsRepresentationText",
-    "ElementLabel": "Please type in the cost order you wish to make",
-    "HintText": "For example, For example, to whom/when the cost are reserved",
+    "ElementLabel": " ",
+    "HintText": "For example, to whom/when the cost are reserved",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
@@ -24,9 +30,17 @@
   },
   {
     "ID": "ClaimantCostStandardBase",
+    "ListElementCode": "claimantCostStandardSecondLabel",
+    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimantCostStandardBase",
     "ListElementCode": "claimantCostStandardText",
     "FieldType": "Text",
-    "ElementLabel": "£(amount of any payment on account) (optional)",
+    "ElementLabel": " ",
+    "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
   },
   {
@@ -68,9 +82,17 @@
   },
   {
     "ID": "DefendantCostStandardBase",
+    "ListElementCode": "defendantCostStandardSecondLabel",
+    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DefendantCostStandardBase",
     "ListElementCode": "defendantCostStandardText",
     "FieldType": "Text",
-    "ElementLabel": "£(amount of any payment on account) (optional)",
+    "ElementLabel": " ",
+    "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
   },
   {
@@ -112,9 +134,17 @@
   },
   {
     "ID": "ClaimantCostSummarilyBase",
+    "ListElementCode": "claimantCostSummarilySecondLabel",
+    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimantCostSummarilyBase",
     "ListElementCode": "claimantCostSummarilyText",
     "FieldType": "Text",
-    "ElementLabel": "£(amount of any payment on account) (optional)",
+    "ElementLabel": " ",
+    "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
   },
   {
@@ -156,9 +186,17 @@
   },
   {
     "ID": "DefendantCostSummarilyBase",
+    "ListElementCode": "defendantCostSummarilySecondLabel",
+    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DefendantCostSummarilyBase",
     "ListElementCode": "defendantCostSummarilyText",
     "FieldType": "Text",
-    "ElementLabel": "£(amount of any payment on account) (optional)",
+    "ElementLabel": " ",
+    "HintText": "For example, 145.00",
     "SecurityClassification": "Public"
   },
   {
