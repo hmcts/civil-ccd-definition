@@ -265,5 +265,27 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_SUCCESSFUL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
