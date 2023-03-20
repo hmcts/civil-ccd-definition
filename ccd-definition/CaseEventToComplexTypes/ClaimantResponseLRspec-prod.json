@@ -12,7 +12,7 @@
     "ID": "HearingLRspec",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQHearingLRspec",
-    "ListElementCode": "unavailableDatesLRspec.who",
+    "ListElementCode": "unavailableDates.who",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
