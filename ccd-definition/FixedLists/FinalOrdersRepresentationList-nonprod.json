@@ -26,7 +26,7 @@
   {
     "ID": "FinalOrdersClaimantRepresentationList",
     "ListElementCode": "COST_DRAFTSMAN_FOR_THE_CLAIMANT",
-    "ListElement": "Cost draftsman for the claimant",
+    "ListElement": "Costs draftsman for the claimant",
     "DisplayOrder": 3
   },
   {
@@ -44,7 +44,7 @@
   {
     "ID": "FinalOrdersClaimantRepresentationList",
     "ListElementCode": "CLAIMANT_NOT_ATTENDING",
-    "ListElement": "Claimant not attending",
+    "ListElement": "The claimant not attending",
     "DisplayOrder": 6
   },
   {
@@ -62,7 +62,7 @@
   {
     "ID": "FinalOrdersDefendantRepresentationList",
     "ListElementCode": "COST_DRAFTSMAN_FOR_THE_DEFENDANT",
-    "ListElement": "Cost draftsman for the defendant",
+    "ListElement": "Costs draftsman for the defendant",
     "DisplayOrder": 3
   },
   {
@@ -80,7 +80,7 @@
   {
     "ID": "FinalOrdersDefendantRepresentationList",
     "ListElementCode": "DEFENDANT_NOT_ATTENDING",
-    "ListElement": "Defendant not attending",
+    "ListElement": "The defendant not attending",
     "DisplayOrder": 6
   },
   {

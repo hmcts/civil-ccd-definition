@@ -270,6 +270,36 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "orderMadeOnDetailsPrimaryLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 25,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "orderMadeOnDetailsSecondaryLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 26,
+    "DisplayContext": "READONLY",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "orderMadeOnDetails",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 27,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FinalOrderAssistedOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderReasonsLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 28,

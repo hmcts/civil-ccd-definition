@@ -131,7 +131,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderCostSecondaryLabel",
-    "Label": "Select as appropriate",
+    "Label": "### Select as appropriate",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -184,6 +184,27 @@
     "ID": "finalOrderAppealComplex",
     "Label": " ",
     "FieldType": "FinalOrderAppeal",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderMadeOnDetailsPrimaryLabel",
+    "Label": "**** \n ## Order made on court's own initiative/without notice",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderMadeOnDetailsSecondaryLabel",
+    "Label": "### Select as appropriate",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderMadeOnDetails",
+    "Label": " ",
+    "FieldType": "OrderMadeOnDetails",
     "SecurityClassification": "Public"
   },
   {

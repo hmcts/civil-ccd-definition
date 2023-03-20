@@ -267,8 +267,16 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostDetails",
-    "ListElementCode": "besPokeCostDetails.besPokeCostDetailsText",
+    "ListElementCode": "besPokeCostDetails.besPokeCostDetailsSecondLabel",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderCostDetails",
+    "ListElementCode": "besPokeCostDetails.besPokeCostDetailsText",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }
 ]

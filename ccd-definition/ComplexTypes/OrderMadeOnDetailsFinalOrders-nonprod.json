@@ -1,0 +1,90 @@
+[
+  {
+    "ID": "OrderMadeOnOwnInitiative",
+    "ListElementCode": "ownInitiativeLabel",
+    "ElementLabel": "### Order on court's own initiative",
+    "HintText": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnOwnInitiative",
+    "ListElementCode": "ownInitiativeText",
+    "ElementLabel": " ",
+    "HintText": "",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnOwnInitiative",
+    "ListElementCode": "ownInitiativeDateLabel",
+    "ElementLabel": "### Please enter date",
+    "HintText": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnOwnInitiative",
+    "ListElementCode": "ownInitiativeDate",
+    "ElementLabel": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnWithOutNotice",
+    "ListElementCode": "withOutNoticeLabel",
+    "ElementLabel": "### Order without notice",
+    "HintText": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnWithOutNotice",
+    "ListElementCode": "withOutNoticeText",
+    "ElementLabel": " ",
+    "HintText": "",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnWithOutNotice",
+    "ListElementCode": "withOutNoticeDateLabel",
+    "ElementLabel": "### Please enter date",
+    "HintText": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnWithOutNotice",
+    "ListElementCode": "withOutNoticeDate",
+    "ElementLabel": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnDetails",
+    "ListElementCode": "orderMadeOnOptionList",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderMadeOnTypes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnDetails",
+    "ListElementCode": "orderMadeOnDetails",
+    "ElementLabel": " ",
+    "FieldType": "OrderMadeOnOwnInitiative",
+    "FieldShowCondition": "orderMadeOnOptionList=\"COURTS_INITIATIVE\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "OrderMadeOnDetails",
+    "ListElementCode": "orderMadeOnWithOutNotice",
+    "ElementLabel": " ",
+    "FieldType": "OrderMadeOnWithOutNotice",
+    "FieldShowCondition": "orderMadeOnOptionList=\"WITHOUT_NOTICE\"",
+    "SecurityClassification": "Public"
+  }
+]

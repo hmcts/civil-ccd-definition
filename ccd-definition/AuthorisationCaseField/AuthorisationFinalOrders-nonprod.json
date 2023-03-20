@@ -278,5 +278,35 @@
       "[CREATOR]"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderMadeOnDetailsPrimaryLabel",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderMadeOnDetailsSecondaryLabel",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderMadeOnDetails",
+    "UserRoles": [
+      "judge-profile",
+      "APP-SOL-UNSPEC-PROFILE",
+      "[CREATOR]"
+    ],
+    "CRUD": "CRU"
   }
 ]

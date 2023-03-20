@@ -2,7 +2,7 @@
   {
     "ID": "CostReservedDetails",
     "ListElementCode": "detailsRepresentationLabel",
-    "ElementLabel": "### Cost reserved",
+    "ElementLabel": "### Costs reserved",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -233,14 +233,20 @@
     "ID": "BesPokeCostDetails",
     "ListElementCode": "besPokeCostDetailsLabel",
     "ElementLabel": "### Bespoke costs order",
-    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BesPokeCostDetails",
+    "ListElementCode": "besPokeCostDetailsSecondLabel",
+    "ElementLabel": "### Please insert cost order you wish to make",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "BesPokeCostDetails",
     "ListElementCode": "besPokeCostDetailsText",
-    "ElementLabel": "Please insert cost order you wish to make",
+    "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
