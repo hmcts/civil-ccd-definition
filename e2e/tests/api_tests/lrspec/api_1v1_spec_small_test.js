@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 1v1 API test @api-spec-small @api-specified');
+Feature('CCD 1v1 API test @api-spec-small @api-specified @api-all');
 
 Scenario.skip('1v1 full defence claimant and defendant response small claim', async ({I, api_spec_small}) => {
   const defenceRoutes = ['FULL_DEFENCE', 'FULL_ADMISSION', 'PART_ADMISSION', 'COUNTER_CLAIM'];
