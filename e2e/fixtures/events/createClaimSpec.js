@@ -27,6 +27,10 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
+const isPBAv3 = (pbaV3) => {
+  return pbaV3;
+};
+
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
 
@@ -34,7 +38,7 @@ const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
-  createClaim: (mpScenario) => {
+  createClaim: (mpScenario, pbaV3) => {
     const userData = {
       userInput: {
         References: {
@@ -131,7 +135,10 @@ module.exports = {
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          }
+          },
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
         },
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
@@ -165,6 +172,9 @@ module.exports = {
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
         }
       },
 
@@ -192,7 +202,10 @@ module.exports = {
             calculatedAmountInPence: 'string',
             code: 'string',
             version: 'string'
-          }
+          },
+          ...isPBAv3 (pbaV3) ? {
+            paymentTypePBASpec: 'string'
+          } : {},
         }
       }
     };
@@ -258,7 +271,10 @@ module.exports = {
           InterestSummary: {
             claimIssuedPaymentDetails: {
               customerReference: 'Applicant reference'
-            }
+            },
+            ...isPBAv3(pbaV3) ? {
+              paymentTypePBASpec: 'PBAv3'
+            } : {},
           },
         };
 
@@ -375,7 +391,7 @@ module.exports = {
     return userData;
   },
 
-  createClaimDataByPage: (mpScenario) => {
+  createClaimDataByPage: (mpScenario, pbaV3) => {
     let userData = {
       References: {
         userInput: {
@@ -527,11 +543,14 @@ module.exports = {
         userInput: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          }
+          },
         },
         expected: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
         },
         generated: {
           applicantSolicitor1PbaAccounts: {
