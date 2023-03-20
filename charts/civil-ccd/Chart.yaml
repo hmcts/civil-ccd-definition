@@ -53,7 +53,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: wa.enabled
 # WA Crons
-  - name: wa-task-batch-initiation
+  - name: wa-task-batch-service
     version: ~0.0.15
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: wa.enabled
