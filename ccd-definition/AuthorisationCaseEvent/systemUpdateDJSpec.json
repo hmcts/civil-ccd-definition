@@ -13,7 +13,8 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -33,7 +34,8 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -53,7 +55,8 @@
         "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }

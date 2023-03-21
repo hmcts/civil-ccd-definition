@@ -8,14 +8,14 @@ maintainers:
 
 dependencies:
   - name: civil-service
-    version: ~0.0.27
+    version: ~0.0.32
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-general-applications
     version: 0.0.28
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 8.0.17
+    version: 8.0.23
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp

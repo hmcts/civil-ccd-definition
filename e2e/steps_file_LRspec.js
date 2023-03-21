@@ -81,8 +81,15 @@ const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathi
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
 const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDefendantDetailsLRspec.page');
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
+const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeDecided.page');
+const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
+const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
+const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
+const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
-
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -309,8 +316,9 @@ module.exports = function () {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
+         const pbaV3 = await checkToggleEnabled(PBAv3);
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
-         await this.triggerStepsWithScreenshot([
+          let steps = pbaV3 ? [
             () => this.clickContinue(),
             () => this.clickContinue(),
             () => solicitorReferencesPage.enterReferences(),
@@ -333,13 +341,41 @@ module.exports = function () {
                  () => specInterestDateStartPage.selectInterestDateStart(),
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
-                 () => pbaNumberPage.selectPbaNumber(),
-                 () => paymentReferencePage.updatePaymentReference(),
+                 () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
                  () => event.returnToCaseDetails(),
-           ]);
+           ] : [
+            () => this.clickContinue(),
+            () => this.clickContinue(),
+            () => solicitorReferencesPage.enterReferences(),
+            ...firstClaimantSteps(),
+            ...secondClaimantSteps(claimant2),
+            ...firstDefendantSteps(respondent1),
+            ...conditionalSteps(claimant2 == null, [
+              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+            ]),
+            ...secondDefendantSteps(respondent2, respondent1.represented),
+            () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
+            () => specTimelinePage.addManually(),
+            () => specAddTimelinePage.addTimeline(),
+            () => specListEvidencePage.addEvidence(),
+            () => specClaimAmountPage.addClaimItem(claimAmount),
+            () => this.clickContinue(),
+            () => specInterestPage.addInterest(),
+            () => specInterestValuePage.selectInterest(),
+            () => specInterestRatePage.selectInterestRate(),
+            () => specInterestDateStartPage.selectInterestDateStart(),
+            () => specInterestDateEndPage.selectInterestDateEnd(),
+            () => this.clickContinue(),
+            () => pbaNumberPage.selectPbaNumber(),
+            () => paymentReferencePage.updatePaymentReference(),
+            () => statementOfTruth.enterNameAndRole('claim'),
+            () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+            () => event.returnToCaseDetails(),
+          ];
 
+          await this.triggerStepsWithScreenshot(steps);
          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
   },
 
@@ -596,6 +632,57 @@ module.exports = function () {
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails(),
       ]);
+    },
+
+    async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = 'Standard Direction Order';
+
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+
+      await this.waitForText('Standard Direction Order');
+      await this.triggerStepsWithScreenshot([
+        () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+
+        ...conditionalSteps(damages, [
+          () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+          ...conditionalSteps(!allocateSmallClaims,[
+            () => sdoOrderTypePage.decideOrderType(orderType)])
+        ]),
+
+        ...conditionalSteps(trackType, [
+        () => allocateClaimPage.selectTrackType(trackType)]),
+
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async createCaseFlags(caseFlags) {
+      eventName = 'Create case flags';
+
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
+    },
+
+    async validateCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
     },
 
     async navigateToCaseDetails(caseNumber) {

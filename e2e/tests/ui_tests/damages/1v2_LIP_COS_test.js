@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 let civilCaseReference;
 
-Feature('CCD 1v2 2 LIPs COS UI test @e2e-cos');
+Feature('CCD 1v2 2 LIPs COS UI test @e2e-unspec @e2e-cos @e2e-nightly-nonprod');
 
 Scenario('1v2 two respondents are LIP - notify/notify claim details journey', async ({I, api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {

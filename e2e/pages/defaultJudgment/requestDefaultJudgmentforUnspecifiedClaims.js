@@ -1,5 +1,6 @@
 const {I} = inject();
 const config = require('../../config.js');
+const date = require('../../fragments/date');
 
 module.exports = {
 
@@ -53,6 +54,11 @@ module.exports = {
         thirtyMinutes: '#disposalHearingFinalDisposalHearingDJ_time-THIRTY_MINUTES',
         fifteenMinutes: '#disposalHearingFinalDisposalHearingDJ_time-FIFTEEN_MINUTES'
       },
+      hearingTimeOptions: {
+        input: '#disposalHearingFinalDisposalHearingTimeDJ_input',
+        hearingTimeDateFrom: 'disposalHearingFinalDisposalHearingTimeDJ_disposalHearingFinalDisposalHearingTimeDJ #date',
+        hearingTimeEstimate: '#disposalHearingFinalDisposalHearingTimeDJ_time-THIRTY_MINUTES',
+      },
       hearingMethodId: '#disposalHearingMethodDJ',
       hearingMethodOptions: {
         inPerson: '#disposalHearingMethodDJ-disposalHearingMethodInPerson',
@@ -63,7 +69,8 @@ module.exports = {
       hearingBundleId: '#disposalHearingBundleDJ_type',
       hearingBundleTypeDocs: '#disposalHearingBundleDJ_type-DOCUMENTS',
       hearingBundleTypeSummary: '#ådisposalHearingBundleDJ_type-SUMMARY',
-      hearingBundleTypeElectronic: '#disposalHearingBundleDJ_type-ELECTRONIC'
+      hearingBundleTypeElectronic: '#disposalHearingBundleDJ_type-ELECTRONIC',
+      orderWithoutHearing: '#disposalHearingOrderMadeWithoutHearingDJ_input'
     },
 
     hearingSelectionForDJ:{
@@ -85,8 +92,11 @@ module.exports = {
       preferredLocation: '#hearingSupportRequirementsDJ_hearingTemporaryLocation',
       preferredPhone: '#hearingSupportRequirementsDJ_hearingPreferredTelephoneNumber1',
       preferredEmail: '#hearingSupportRequirementsDJ_hearingPreferredEmail',
-      estimatedTime: '#hearingSupportRequirementsDJ_hearingLengthEstimate-15_MINUTES',
-      attendHearing: '#hearingSupportRequirementsDJ_hearingUnavailableDates_No'
+      attendHearing: '#hearingSupportRequirementsDJ_hearingUnavailableDates_No',
+      supportRequirement: {
+        yes: '#hearingSupportRequirementsDJ_hearingSupportQuestion_Yes',
+        supportAdditionalId: '#hearingSupportRequirementsDJ_hearingSupportAdditional'
+      }
     }
   },
 
@@ -127,7 +137,9 @@ module.exports = {
     I.fillField(this.fields.hearingRequirements.preferredLocation, config.djClaimantSelectedCourt);
     I.fillField(this.fields.hearingRequirements.preferredPhone, '02087666666');
     I.fillField(this.fields.hearingRequirements.preferredEmail, 'test@test.com');
-    I.click(this.fields.hearingRequirements.estimatedTime);
+    I.click(this.fields.hearingRequirements.supportRequirement.yes);
+    I.fillField(this.fields.hearingRequirements.supportRequirement.supportAdditionalId,
+      'Requires wheelchair access');
     I.click(this.fields.hearingRequirements.attendHearing);
     await I.clickContinue();
   },
@@ -145,18 +157,20 @@ module.exports = {
     });
     await I.clickContinue();
   },
-  
+
   async selectOrderAndHearingDetailsForDJTask(orderType = 'DisposalHearing') {
     await I.waitForText(this.fields.selectOrderAndHearingDetailsForDJTask.text);
     if (orderType == 'DisposalHearing') {
-      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.disposalHearingTimeOptions.thirtyMinutes);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingMethodOptions.inPerson);
-      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingLocation, config.djJudgeClaimantSelectedCourt);
+      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.input, 'hearing time');
+      await date.enterDate(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeDateFrom, 40);
+      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeEstimate);
+      await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.orderWithoutHearing, 'order has been made without hearing');
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
     }
     await I.clickContinue();
   },
-  
+
   async verifyOrderPreview() {
     await I.waitForText('View directions order', 60);
     const linkXPath = '//a[contains(text(), \'Order_disposal_\')]';

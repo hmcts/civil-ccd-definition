@@ -87,7 +87,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "DECISION_OUTCOME",
     "Name": "Decision Outcome",
-    "Description": "Placeholder",
+    "Description": "Day of Trial state",
     "DisplayOrder": 13
   }
 ]

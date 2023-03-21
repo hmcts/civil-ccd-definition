@@ -26,20 +26,16 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
             hearingPreferredLocation: config.claimantSelectedCourt,
             hearingPreferredTelephoneNumber1: '07444552365',
             hearingPreferredEmail: 'test@gmail.com',
-            hearingLengthEstimate: '15_MINUTES',
             hearingUnavailableDates: 'No',
-            hearingSupportRequirementsDisabledAccess: [],
-            hearingSupportRequirementHearingLoop: [],
-            hearingSupportRequirementInterpreter: [],
-            hearingSupportRequirementLanguage: [],
-            hearingSupportRequirementOther: []
+            hearingSupportQuestion: 'Yes',
+            hearingSupportAdditional: 'Support',
           }
         },
         locationName : {
           locationName: 'Central London County Court'
         },
         caseManagementLocation: {
-          caseManagementLocation: {     
+          caseManagementLocation: {
             region: '1',
             baseLocation: '20262'
           }
@@ -90,7 +86,7 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
           ...userInput
         };
       }
-    } 
+    }
 };
 
 module.exports = {

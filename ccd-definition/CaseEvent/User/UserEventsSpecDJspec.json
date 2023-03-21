@@ -6,7 +6,7 @@
     "Description": "Request Default Judgment",
     "DisplayOrder": 18,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
-    "PostConditionState": "*",
+    "PostConditionState": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "EventEnablingCondition": "specRespondent1Represented = \"No\" OR specRespondent1Represented =  \"Yes\"",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",

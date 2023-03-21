@@ -391,6 +391,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimProceedsInCasemanLR",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1ProceedWithClaimMultiParty2v1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

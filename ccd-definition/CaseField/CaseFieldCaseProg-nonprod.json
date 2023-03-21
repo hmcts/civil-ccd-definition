@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyNotified",
+    "Label": "Was trial ready notification sent out?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialReadyChecked",
+    "Label": "Was trial ready notification sent out?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]

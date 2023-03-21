@@ -27,7 +27,7 @@ properties([
 
 @Library("Infrastructure")
 
-def type = "java"
+def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 

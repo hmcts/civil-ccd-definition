@@ -6,8 +6,8 @@ const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
 
 
-const TASK_MAX_RETRIES = 40;
-const TASK_RETRY_TIMEOUT_MS = 10000;
+const TASK_MAX_RETRIES = 20;
+const TASK_RETRY_TIMEOUT_MS = 20000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -95,6 +95,27 @@ module.exports = {
       }, 'POST', 201);
   },
 
+  taskActionByUser: async function(user, taskId, url, expectedStatus = 204) {
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2sForXUI.microservice,
+        oneTimePassword: totp(config.s2sForXUI.secret)
+      })
+      .then(response => response.text());
+
+    return retry(() => {
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task/${taskId}/${url}`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+        'ServiceAuthorization': `Bearer ${s2sToken}`
+      }, '', 'POST', expectedStatus);
+    }, 2, TASK_RETRY_TIMEOUT_MS);
+  },
+
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     let taskDetails;
     const userToken = await idamHelper.accessToken(user);
@@ -130,6 +151,7 @@ module.exports = {
           availableTaskDetails.forEach((taskInfo) => {
             if (taskInfo['type'] == taskId) {
               console.log('Found taskInfo with id ...', taskId);
+              console.log('Task details are ...', taskInfo);
               taskDetails = taskInfo;
             }
           });
@@ -149,6 +171,5 @@ module.exports = {
       serviceRequestUpdateDto, 'PUT');
 
     return response || {};
-
   }
 };

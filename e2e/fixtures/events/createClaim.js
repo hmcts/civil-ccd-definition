@@ -1,6 +1,7 @@
 const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
+const { getClaimFee } = require('../../claimAmountAndFee');
 
 const docUuid = uuid.v1();
 
@@ -70,7 +71,7 @@ let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -120,7 +121,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.claimantSolicitorOrgId,
+          OrganisationID: config.applicantSolicitorUser.orgId,
         }
       }
     },
@@ -152,7 +153,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
           OrgPolicyReference: 'Defendant policy reference',
           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
           Organisation: {
-            OrganisationID: config.defendant1SolicitorOrgId
+            OrganisationID: config.defendantSolicitorUser.orgId
           },
         },
       },
@@ -167,19 +168,16 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
       addRespondent2: 'No'
     },
     ...hasRespondent2(mpScenario) ? {
-        SecondDefendant: {},
-        SecondDefendantLegalRepresentation: {},
-        SecondDefendantSolicitorOrganisation: {},
-        SecondDefendantSolicitorServiceAddress: {},
-        SecondDefendantSolicitorReference: {},
-        SecondDefendantSolicitorEmail: {},
-        SameLegalRepresentative: {},
-      } : {},
+      SecondDefendant: {},
+      SecondDefendantLegalRepresentation: {},
+      SecondDefendantSolicitorOrganisation: {},
+      SecondDefendantSolicitorServiceAddress: {},
+      SecondDefendantSolicitorReference: {},
+      SecondDefendantSolicitorEmail: {},
+      SameLegalRepresentative: {},
+    } : {},
     ClaimType: {
-      claimType: 'PERSONAL_INJURY'
-    },
-    PersonalInjuryType: {
-      personalInjuryType: 'ROAD_ACCIDENT'
+      claimType: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
@@ -200,8 +198,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
-      }
+        statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+      },
+      claimFee: getClaimFee(claimAmount),
+      ...isPBAv3(pbaV3) ? {
+        paymentTypePBA: 'PBAv3'
+      } : {},
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -211,7 +213,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         ],
         value: selectedPba
 
-      }
+      },
     },
     PaymentReference: {
       claimIssuedPaymentDetails:  {
@@ -271,7 +273,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
             Organisation:
 
-              {OrganisationID: config.defendant2SolicitorOrgId}
+              {OrganisationID: config.secondDefendantSolicitorUser.orgId}
             ,
           },
         },
@@ -340,13 +342,18 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
-      || mpScenario ===  'ONE_V_TWO_LIPS';
+    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+    || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
+    || mpScenario ===  'ONE_V_TWO_LIPS';
+};
+
+const isPBAv3 = (pbaV3) => {
+  console.log( 'Pba value in create claim' + pbaV3);
+  return pbaV3;
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE') => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -357,11 +364,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -369,7 +371,10 @@ module.exports = {
           respondent1: respondent1WithPartyName,
           ...hasRespondent2(mpScenario) ? {
             respondent2: respondent2WithPartyName
-          } : {}
+          } : {},
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBA: 'PBAv3'
+          } : {},
         },
         ClaimantLitigationFriend: {
           applicant1: applicant1WithPartyName,
@@ -384,7 +389,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount),
       },
       invalid: {
         Upload: {
@@ -419,16 +424,16 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData('No', true, 'ONE_V_ONE')
+    valid: createClaimData(false,'No', true, 'ONE_V_ONE')
   },
   createClaimLRLIP: {
-    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+    valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
   },
   createClaimLIPLIP: {
-    valid: createClaimData('No', true, 'ONE_V_TWO_LIPS')
+    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData('Yes', false)
+    valid: createClaimData(false,'Yes', false)
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
@@ -451,7 +456,7 @@ module.exports = {
   cosNotifyClaim : (lip1, lip2) => {
     return {
       ...(lip1) ? {
-         cosNotifyClaimDefendant1: {
+        cosNotifyClaimDefendant1: {
           cosDateOfServiceForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosRecipient: 'sample text',
@@ -492,9 +497,6 @@ module.exports = {
       service_request_status: paymentStatus,
       payment: {
         payment_amount: 167.00,
-
-
-
         payment_reference: '13213223',
         payment_method: 'by account',
         case_reference: 'example of case ref'

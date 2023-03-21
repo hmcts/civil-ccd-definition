@@ -8,7 +8,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentCheckList",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/determineLoggedInSolicitor",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/determineLoggedInSolicitor",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -274,7 +274,7 @@
     "PageLabel": "Defendant's legal representative's reference (optional)",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/confirm-details",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
     "RetriesTimeoutURLMidEvent": 0
   },
   {
@@ -462,7 +462,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponseTypeSpec2v1",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/set-generic-response-type-flag"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -496,7 +496,7 @@
     "PageID": "RespondentResponseTypeSpec",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondentResponseIsSame != \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/set-generic-response-type-flag"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -751,7 +751,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defenceRoute",
     "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/set-generic-response-type-flag"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-generic-response-type-flag"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1179,7 +1179,7 @@
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack= \"FAST_CLAIM\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/experts",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1192,7 +1192,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/experts",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },

@@ -1,9 +1,10 @@
 const defaultPassword = 'Password12!';
 const judgeDefaultPassword = 'Hmcts1234';
+const iacDefaultPassword = 'AldgateT0wer';
 
 module.exports = {
   idamStub: {
-    enabled: process.env.IDAM_STUB_ENABLED || false,
+    enabled: process.env.IDAM_STUB_ENABLED === 'true',
     url: 'http://localhost:5555'
   },
   url: {
@@ -22,7 +23,10 @@ module.exports = {
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
+    //----------------------------------------------------------------------------------------------
+    wiremockService: 'http://localhost:8765'
   },
   s2s: {
     microservice: 'civil_service',
@@ -35,17 +39,32 @@ module.exports = {
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
-    type: 'applicant_solicitor'
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
   defendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
   },
   secondDefendantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
-    type: 'defendant_solicitor'
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
+  },
+  otherSolicitorUser1: {
+    password: defaultPassword,
+    email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'OZO586V' : '0FA7S8S'
+  },
+  otherSolicitorUser2: {
+    password: defaultPassword,
+    email: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DOSS3I2' : 'N5AFUXG'
   },
   adminUser: {
     password: defaultPassword,
@@ -59,12 +78,33 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
+  judgeUserWithRegionId4: {
+    password: judgeDefaultPassword,
+    email: '4925359EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
+  judgeUserWithRegionId1Local: {
+    password: defaultPassword,
+    email: 'judge-civil-02@example.com',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '1'
+  },
   judgeUserWithRegionId2: {
     password: judgeDefaultPassword,
     email: '4915631EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '2'
+  },
+  hearingCenterAdminWithRegionId1: {
+    email: 'hearing_center_admin_reg1@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '1'
   },
   hearingCenterAdminWithRegionId4: {
     email: 'hearing_center_admin_region4@justice.gov.uk',
@@ -87,6 +127,20 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
+  tribunalCaseworkerWithRegionId4: {
+    email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
+  },
+  tribunalCaseworkerWithRegionId1Local: {
+    email: 'tribunal-caseworker-01@example.com',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
+  },
   systemupdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
@@ -96,21 +150,76 @@ module.exports = {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
   },
+  iacLeadershipJudge: {
+    password: judgeDefaultPassword,
+    email: '330127EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
+  },
+  iacLegalOpsUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_stcwuser1@justice.gov.uk',
+    type: 'legalOps',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  iacCtscTeamLeaderUser: {
+    email: 'CRD_func_test_demo_ctsc_tl@justice.gov.uk',
+    password: iacDefaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
+  iacAdminUser: {
+    password: iacDefaultPassword,
+    email: 'CRD_func_test_demo_adm21@justice.gov.uk',
+    type: 'admin',
+    roleCategory: 'ADMIN'
+  },
+  nbcTeamLeaderWithRegionId4: {
+    email: 'nbc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'nbc-team-leader',
+    roleCategory: 'NBC ADMIN',
+    regionId: '4'
+  },
+  seniorTBCWWithRegionId4: {
+    email: 'seniorcivil_tbcw_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'senior-tribunal-caseworker',
+    roleCategory: 'LEGAL_OPS',
+    regionId: '4'
+  },
+  ctscTeamLeaderUser: {
+    email: 'ctsc_team_leader_region4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'ctsc-team-leader',
+    roleCategory: 'CTSC',
+    regionId: 'none'
+  },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
+    reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
+    reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
+    reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
+    reviewSpecificAccessRequestCTSC: 'reviewSpecificAccessRequestCTSC',
+    fastTrackDirections: 'FastTrackDirections',
+    smallClaimDirections: 'SmallClaimsTrackDirections',
+    legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
+    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
-  claimantSolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'B04IXE4' : 'Q1KOKP2',
-  defendant1SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'DAWY9LJ' : '79ZRSOU',
-  defendant2SolicitorOrgId: process.env.ENVIRONMENT == 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ',
-  djClaimantSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL',
-  djJudgeClaimantSelectedCourt:'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX',
-  sdoJudgeSelectedCourt:'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
+  claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
+  defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
+  defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
+  claimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  defendantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  djClaimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  liverpoolCourt:'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
+  sdoJudgeSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  localNoCTests: false
 };
