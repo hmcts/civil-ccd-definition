@@ -54,6 +54,10 @@ Scenario('Add case flags', async ({api}) => {
   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
+Scenario('Manage case flags', async ({api}) => {
+  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
+
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
   if (['preview', 'demo'].includes(config.runningEnv)) {
