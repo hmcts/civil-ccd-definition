@@ -16,6 +16,10 @@ module.exports = {
     await I.runAccessibilityTest();
     I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options.activeAccount);
     await I.clickContinue();
+  },
+
+  async clickContinue() {
+    await I.clickContinue();
   }
 };
 

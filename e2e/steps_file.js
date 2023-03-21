@@ -128,11 +128,14 @@ const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingSch
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -278,7 +281,28 @@ module.exports = function () {
 
       const twoVOneScenario = claimant1 && claimant2;
       await createCasePage.createCase(config.definition.jurisdiction);
-      await this.triggerStepsWithScreenshot([
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+
+      let steps = pbaV3 ? [
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.selectCourt(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(claimValue),
+        () => pbaNumberPage.clickContinue(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
+      ] : [
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.selectCourt(),
@@ -298,7 +322,9 @@ module.exports = function () {
         () => event.submit('Submit',
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
-      ]);
+      ];
+
+      await this.triggerStepsWithScreenshot(steps);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
@@ -851,6 +877,16 @@ module.exports = function () {
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit', ''),
         () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async evidenceUpload(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => event.submit('Submit', 'Documents uploaded')
       ]);
     },
 
