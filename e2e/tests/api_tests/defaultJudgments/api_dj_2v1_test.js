@@ -3,8 +3,7 @@
 const { assert } = require('chai');
 const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
-let caseProgressionOfflineExpectedTask;
-let summaryJudgmentDirectionsExpectedTask;
+let caseProgressionOfflineExpectedTask, summaryJudgmentDirectionsExpectedTask, taskId;
 if (config.runWAApiTest) {
   summaryJudgmentDirectionsExpectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
@@ -19,9 +18,9 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
+  caseId = await api.getCaseId();
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await api.defaultJudgment(config.applicantSolicitorUser);
-  caseId = api.getCaseId();
 });
 
 Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
@@ -29,19 +28,29 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
     WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
+    taskId = summaryJudgmentDirectionsTask['id'];
+    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
   }
 });
 
 Scenario('Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
+  if (config.runWAApiTest) {
+    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+  }
   await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
 });
 
 Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
-    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
     WA.validateTaskInfo(caseProgressionTakeCaseOfflineTask, caseProgressionOfflineExpectedTask);
+    if (config.runWAApiTest) {
+      taskId = caseProgressionTakeCaseOfflineTask['id'];
+      api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
+      api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+    }
   }
 });
 

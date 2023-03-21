@@ -33,7 +33,7 @@ const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelpe
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount) => claimData.createClaim(mpScenario, claimAmount),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3) => claimData.createClaim(mpScenario, claimAmount, pbaV3),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -146,8 +146,8 @@ module.exports = {
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
@@ -173,7 +173,7 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -213,7 +213,7 @@ module.exports = {
     mpScenario = multipartyScenario;
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -226,6 +226,7 @@ module.exports = {
         createClaimData = data.CREATE_CLAIM_RESPONDENT_LIP_LIP;
         break;
     }
+
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
@@ -236,7 +237,9 @@ module.exports = {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
-
+    if (pbaV3) {
+      createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
+    }
     await validateEventPages(createClaimData);
 
     let noCToggleEnabled = await checkNoCToggleEnabled();
@@ -251,7 +254,6 @@ module.exports = {
     });
 
     await waitForFinishedBusinessProcess(caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -858,6 +860,14 @@ module.exports = {
 
   retrieveTaskDetails: async (user, caseNumber, taskId) => {
     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
+  completeTaskByUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'complete');
   },
 
   addCaseNote: async (user) => {
