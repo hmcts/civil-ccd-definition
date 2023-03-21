@@ -1,6 +1,9 @@
 wa:
   enabled: true
 
+global:
+  jobKind: CronJob
+
 
 wa-task-management-api:
   java:
@@ -126,8 +129,9 @@ wa-message-cron-service:
     environment:
       WA_CASE_EVENT_HANDLER_SERVICE_URL: http://{{ .Release.Name }}-wa-case-event-handler
 
-wa-task-batch-service:
+wa-task-batch-initiation:
   job:
+    releaseNameOverride: ${SERVICE_NAME}-wa-task-batch-initiation
     schedule: "*/5 * * * *"
     aadIdentityName: wa
     keyVaults:
@@ -140,7 +144,3 @@ wa-task-batch-service:
       WA_TASK_MONITOR_SERVICE_URL: http://{{ .Release.Name }}-wa-task-monitor
       JOB_NAME: "INITIATION"
       ALLOW_CONFIG_MUTATIONS: true
-  global:
-    jobKind: CronJob
-    enableKeyVaults: true
-    environment: aat

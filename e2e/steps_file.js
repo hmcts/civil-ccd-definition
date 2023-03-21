@@ -128,9 +128,11 @@ const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingSch
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -853,6 +855,16 @@ module.exports = function () {
       ]);
     },
 
+    async evidenceUpload(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => event.submit('Submit', 'Documents uploaded')
+      ]);
+    },
+
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -908,6 +920,30 @@ module.exports = function () {
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
-    }
+    },
+
+    async manageCaseFlags(caseFlags) {
+      eventName = 'Manage case flags';
+
+      for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(eventName, caseId),
+          () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
+          () => event.submitWithoutHeader('Submit')
+        ]);
+      }
+    },
+
+    async validateUpdatedCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertInactiveCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertUpdatedCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
   });
 };
