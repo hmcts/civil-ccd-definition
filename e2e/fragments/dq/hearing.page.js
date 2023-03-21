@@ -80,7 +80,7 @@ module.exports = {
       await within(this.fields(party).unavailableDatesRequired.id, () => {
         I.click(this.fields(party).unavailableDatesRequired.options.no);
       });
-      // await this.addUnavailableDates(party);
+      await this.addUnavailableDates(party);
     }
 
     await I.clickContinue();
@@ -96,7 +96,7 @@ module.exports = {
   async addUnavailableDates(party) {
     await I.addAnotherElementToCollection();
     I.waitForElement(this.fields(party).unavailableDates.element.unavailableDateType.id);
-    I.click(this.fields(party).unavailableDates.element.unavailableDateType.options.singleDateId);
+    I.forceClick(this.fields(party).unavailableDates.element.unavailableDateType.options.singleDateId);
     await date.enterDate(this.fields(party).unavailableDates.element.date);
   },
 };
