@@ -7,7 +7,6 @@
     "FieldDisplayOrder": 20,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\" OR applicant1.type = \"ORGANISATION\" OR applicant1.type = \"COMPANY\""
-
   },
   {
     "ID": "Claimant",

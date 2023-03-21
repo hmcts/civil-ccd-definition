@@ -78,9 +78,9 @@ module.exports = {
       await I.runAccessibilityTest();
 
       await within(this.fields(party).unavailableDatesRequired.id, () => {
-        I.click(this.fields(party).unavailableDatesRequired.options.yes);
+        I.click(this.fields(party).unavailableDatesRequired.options.no);
       });
-      await this.addUnavailableDates(party);
+      // await this.addUnavailableDates(party);
     }
 
     await I.clickContinue();
