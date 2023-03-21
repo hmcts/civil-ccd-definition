@@ -2,7 +2,7 @@ const {} = require('../../api/dataHelper');
 module.exports = {
   createApplicantSmallClaimsEvidenceUpload: () => {
     console.log('Applicant small claims');
-    return {
+    const responseData =  {
       valid: {
         EvidenceUpload: {
           caseProgAllocatedTrack: 'SMALL_CLAIM'
@@ -19,11 +19,12 @@ module.exports = {
         }
       }
     };
+    return responseData;
   },
 
   createApplicantFastClaimsEvidenceUpload: () => {
     console.log('Applicant fast claims');
-    return {
+    const responseData =   {
       valid: {
         EvidenceUpload: {
           caseProgAllocatedTrack: 'FAST_CLAIM'
@@ -42,5 +43,6 @@ module.exports = {
         }
       }
     };
+    return responseData;
   }
 };
