@@ -137,7 +137,50 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostDetails",
+    "ID": "assistedOrderCostList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "AssistedCostTypesList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderCostsReserved",
+    "Label": " ",
+    "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderCostsDefendantPaySub",
+    "Label": " ",
+    "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderCostsClaimantPaySub",
+    "Label": " ",
+    "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderCostsDefendantSum",
+    "Label": " ",
+    "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderCostsClaimantSum",
+    "Label": " ",
+    "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderCostsBespoke",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
     "SecurityClassification": "Public"
@@ -202,9 +245,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "orderMadeOnDetails",
+    "ID": "orderMadeOnDetailsList",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "OrderMadeOnTypes",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderMadeOnDetailsOrderCourt",
     "Label": " ",
     "FieldType": "OrderMadeOnDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orderMadeOnDetailsOrderWithoutNotice",
+    "Label": " ",
+    "FieldType": "OrderMadeOnDetailsOrderWithoutNotice",
     "SecurityClassification": "Public"
   },
   {

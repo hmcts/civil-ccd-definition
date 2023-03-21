@@ -2,73 +2,65 @@
   {
     "ID": "OrderMadeOnDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOptionList",
+    "CaseFieldID": "orderMadeOnDetailsOrderCourt",
+    "ListElementCode": "ownInitiativeLabel",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "OrderMadeOnDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOwnInitiative.ownInitiativeLabel",
+    "CaseFieldID": "orderMadeOnDetailsOrderCourt",
+    "ListElementCode": "ownInitiativeText",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "OrderMadeOnDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOwnInitiative.ownInitiativeText",
+    "CaseFieldID": "orderMadeOnDetailsOrderCourt",
+    "ListElementCode": "ownInitiativeDateLabel",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "OrderMadeOnDetails",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOwnInitiative.ownInitiativeDateLabel",
-    "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
     "ID": "OrderMadeOnDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnOwnInitiative.ownInitiativeDate",
-    "FieldDisplayOrder": 5,
+    "CaseFieldID": "orderMadeOnDetailsOrderCourt",
+    "ListElementCode": "ownInitiativeDate",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrderMadeOnDetails",
+    "ID": "OrderMadeOnDetailsOrderWithoutNotice",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnWithOutNotice.withOutNoticeLabel",
+    "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
+    "ListElementCode": "withOutNoticeLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "OrderMadeOnDetailsOrderWithoutNotice",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
+    "ListElementCode": "withOutNoticeText",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "OrderMadeOnDetails",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnWithOutNotice.withOutNoticeText",
-    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrderMadeOnDetails",
+    "ID": "OrderMadeOnDetailsOrderWithoutNotice",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnWithOutNotice.withOutNoticeDateLabel",
-    "FieldDisplayOrder": 4,
+    "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
+    "ListElementCode": "withOutNoticeDateLabel",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "OrderMadeOnDetails",
+    "ID": "OrderMadeOnDetailsOrderWithoutNotice",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "orderMadeOnDetails",
-    "ListElementCode": "orderMadeOnWithOutNotice.withOutNoticeDate",
-    "FieldDisplayOrder": 5,
+    "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
+    "ListElementCode": "withOutNoticeDate",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }
 ]

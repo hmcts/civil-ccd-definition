@@ -1,20 +1,20 @@
 [
   {
-    "ID": "CostReservedDetails",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "detailsRepresentationLabel",
     "ElementLabel": "### Costs reserved",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CostReservedDetails",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "detailsRepresentationSecondLabel",
     "ElementLabel": "### Please type in the cost order you wish to make (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "CostReservedDetails",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "detailsRepresentationText",
     "ElementLabel": " ",
     "HintText": "For example, to whom/when the cost are reserved",
@@ -22,21 +22,21 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardLabel",
     "ElementLabel": "### The claimant shall pay the claimant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardSecondLabel",
     "ElementLabel": "### £(amount of any payment on account) (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardText",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -44,14 +44,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardDate",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
@@ -59,14 +59,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardProtectionLabel",
     "ElementLabel": "#### Does the paying party have cost protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardProtectionOption",
     "Label": " ",
     "ElementLabel": " ",
@@ -74,21 +74,21 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardLabel",
     "ElementLabel": "### The defendant shall pay the claimant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardSecondLabel",
     "ElementLabel": "### £(amount of any payment on account) (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardText",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -96,14 +96,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardDate",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
@@ -111,14 +111,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardProtectionLabel",
     "ElementLabel": "#### Does the paying party have cost protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostStandardBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardProtectionOption",
     "Label": " ",
     "ElementLabel": " ",
@@ -126,21 +126,21 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyLabel",
     "ElementLabel": "### The claimant shall pay the defendant's cost of the claim summarily assessed in the sum of",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilySecondLabel",
     "ElementLabel": "### £(amount of any payment on account) (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyText",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -148,14 +148,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyDate",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
@@ -163,14 +163,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyProtectionLabel",
     "ElementLabel": "#### Does the paying party have cost protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "ClaimantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyProtectionOption",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -178,21 +178,21 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyLabel",
     "ElementLabel": "### The defendant shall pay the claimant's cost of the claim summarily assessed in the sum of",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilySecondLabel",
     "ElementLabel": "### £(amount of any payment on account) (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyText",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -200,14 +200,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyDate",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
@@ -215,14 +215,14 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyProtectionLabel",
     "ElementLabel": "#### Does the paying party have cost protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DefendantCostSummarilyBase",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyProtectionOption",
     "ElementLabel": " ",
     "Label": " ",
@@ -230,81 +230,25 @@
     "SecurityClassification": "Public"
   },
   {
-    "ID": "BesPokeCostDetails",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "besPokeCostDetailsLabel",
     "ElementLabel": "### Bespoke costs order",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "BesPokeCostDetails",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "besPokeCostDetailsSecondLabel",
     "ElementLabel": "### Please insert cost order you wish to make",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "BesPokeCostDetails",
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "besPokeCostDetailsText",
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "assistedOrderCostsList",
-    "ElementLabel": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "AssistedCostTypesList",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "costReservedDetails",
-    "ElementLabel": " ",
-    "FieldType": "CostReservedDetails",
-    "FieldShowCondition": "assistedOrderCostsList=\"COSTS_RESERVED\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "defendantCostStandardBase",
-    "ElementLabel": " ",
-    "FieldType": "DefendantCostStandardBase",
-    "FieldShowCondition": "assistedOrderCostsList=\"DEFENDANT_COST_STANDARD_BASE\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "claimantCostStandardBase",
-    "ElementLabel": " ",
-    "FieldType": "ClaimantCostStandardBase",
-    "FieldShowCondition": "assistedOrderCostsList=\"CLAIMANT_COST_STANDARD_BASE\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "claimantCostSummarilyBase",
-    "ElementLabel": " ",
-    "FieldType": "ClaimantCostSummarilyBase",
-    "FieldShowCondition": "assistedOrderCostsList=\"CLAIMANT_COST_SUMMARILY_BASE\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "defendantCostSummarilyBase",
-    "ElementLabel": " ",
-    "FieldType": "DefendantCostSummarilyBase",
-    "FieldShowCondition": "assistedOrderCostsList=\"DEFENDANT_COST_SUMMARILY_BASE\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "besPokeCostDetails",
-    "ElementLabel": " ",
-    "FieldType": "BesPokeCostDetails",
-    "FieldShowCondition": "assistedOrderCostsList=\"BESPOKE_COSTS_ORDER\"",
     "SecurityClassification": "Public"
   }
 ]
