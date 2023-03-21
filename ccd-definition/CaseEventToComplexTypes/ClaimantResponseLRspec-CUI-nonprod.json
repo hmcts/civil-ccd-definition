@@ -15,13 +15,5 @@
     "ListElementCode": "responseCourtLocations",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Claimant",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1",
-    "ListElementCode": "partyName",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
   }
 ]
