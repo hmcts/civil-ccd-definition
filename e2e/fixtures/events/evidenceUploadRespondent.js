@@ -217,4 +217,4 @@ module.exports = {
       }
     }
   }
-}
+};

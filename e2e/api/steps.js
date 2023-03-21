@@ -1080,7 +1080,6 @@ module.exports = {
   },
 
   evidenceUploadRespondent: async (user, multipartyScenario) => {
-    console.log('evidence upload respondent for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
 
@@ -1089,7 +1088,6 @@ module.exports = {
     delete caseData['SearchCriteria'];
 
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
       let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
       console.log('evidence upload small claim respondent for case id ' + caseId);
       for (let pageId of Object.keys(RespondentEvidenceSmallClaimData.valid)) {
@@ -1097,9 +1095,6 @@ module.exports = {
       }
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
-      console.log("before3     "+caseData.respondent1OrganisationPolicy.OrgPolicyCaseAssignedRole)
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
-      console.log("after   "+caseData.respondent1OrganisationPolicy.OrgPolicyCaseAssignedRole)
       let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
       console.log('evidence upload fast claim respondent for case id ' + caseId);
       for (let pageId of Object.keys(RespondentEvidenceFastClaimData.valid)) {

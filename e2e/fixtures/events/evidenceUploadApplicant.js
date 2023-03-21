@@ -1,7 +1,7 @@
 const {} = require('../../api/dataHelper');
 module.exports = {
   createApplicantSmallClaimsEvidenceUpload: () => {
-    console.log('Applicant small claims')
+    console.log('Applicant small claims');
     return {
       valid: {
         EvidenceUpload: {
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   createApplicantFastClaimsEvidenceUpload: () => {
-    console.log('Applicant fast claims')
+    console.log('Applicant fast claims');
     return {
       valid: {
         EvidenceUpload: {
@@ -43,4 +43,4 @@ module.exports = {
       }
     };
   }
-}
+};
