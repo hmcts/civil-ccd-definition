@@ -19,6 +19,8 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
@@ -71,6 +73,10 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
+  EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
+  EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
 };
 
 const eventData = {
@@ -1046,6 +1052,62 @@ module.exports = {
 
   await assertSubmittedEvent('HEARING_READINESS', null, false);
   await waitForFinishedBusinessProcess(caseId);
+  },
+
+  evidenceUploadApplicant: async (user) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
+      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL();
+      console.log('evidence upload small claim applicant for case id ' + caseId);
+      for (let pageId of Object.keys(ApplicantEvidenceSmallClaimData.valid)) {
+        await assertValidData(ApplicantEvidenceSmallClaimData, pageId);
+      }
+    }
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
+      console.log('evidence upload applicant fast track for case id ' + caseId);
+      for (let pageId of Object.keys(ApplicantEvidenceFastClaimData.valid)) {
+        await assertValidData(ApplicantEvidenceFastClaimData, pageId);
+      }
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  evidenceUploadRespondent: async (user, multipartyScenario) => {
+    console.log('evidence upload respondent for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
+
+    mpScenario = multipartyScenario;
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      console.log('evidence upload small claim respondent for case id ' + caseId);
+      for (let pageId of Object.keys(RespondentEvidenceSmallClaimData.valid)) {
+        await assertValidData(RespondentEvidenceSmallClaimData, pageId);
+      }
+    }
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+      console.log("before3     "+caseData.respondent1OrganisationPolicy.OrgPolicyCaseAssignedRole)
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+      console.log("after   "+caseData.respondent1OrganisationPolicy.OrgPolicyCaseAssignedRole)
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+      console.log('evidence upload fast claim respondent for case id ' + caseId);
+      for (let pageId of Object.keys(RespondentEvidenceFastClaimData.valid)) {
+        await assertValidData(RespondentEvidenceFastClaimData, pageId);
+      }
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
   }
 };
 
