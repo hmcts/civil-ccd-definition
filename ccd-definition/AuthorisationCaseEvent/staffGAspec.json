@@ -19,12 +19,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_GA_LOC_TO_MAIN_CASE",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "TRIGGER_UPDATE_GA_LOCATION",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

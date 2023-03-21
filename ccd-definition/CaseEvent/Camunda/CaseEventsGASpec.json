@@ -64,19 +64,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "UPDATE_GA_LOC_TO_MAIN_CASE",
-    "Name": "Update Claim with GA Location",
-    "Description": "Trigger event to update claim with General Application Location",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "TRIGGER_UPDATE_GA_LOCATION",
     "Name": "Update child cases location",
     "Description": "Trigger event to update child casedata",
