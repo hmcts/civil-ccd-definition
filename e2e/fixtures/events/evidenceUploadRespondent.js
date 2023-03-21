@@ -1,4 +1,3 @@
-const {} = require('../../api/dataHelper');
 module.exports = {
   createRespondentSmallClaimsEvidenceUpload: (mpScenario) => {
     switch (mpScenario) {
