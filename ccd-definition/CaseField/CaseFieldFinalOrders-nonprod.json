@@ -102,7 +102,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderDocument",
-    "Label": "View order",
+    "Label": "Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"
   }
