@@ -75,10 +75,9 @@ module.exports = {
   },
 
   async selectHearingMethodOption(text) {
-    let xPath = `//label[contains(text(), ${text})]`;
-    let label = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    let inputId = label.htmlFor;
-    await I.click(inputId);
+    let xPath = `//label[contains(text(), \'${text}\')]`;
+    let inputId = await I.grabAttributeFrom(xPath, 'for');
+    await I.click(`#${inputId}`);
   },
 
   async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {
