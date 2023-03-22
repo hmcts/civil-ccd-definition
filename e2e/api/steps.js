@@ -19,6 +19,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
@@ -63,19 +64,13 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
-  DEFAULT_JUDGEMENT: require('../fixtures/events/defaultJudgment.js'),
-  DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/defaultJudgment1v2.js'),
-  DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/defaultJudgment2v1.js'),
-  SDO_DEFAULT_JUDGEMENT: require('../fixtures/events/sdoDefaultJudgment.js'),
-  SDO_DEFAULT_JUDGEMENT_1V2: require('../fixtures/events/sdoDefaultJudgment1v2.js'),
-  SDO_DEFAULT_JUDGEMENT_2V1: require('../fixtures/events/sdoDefaultJudgment2v1.js'),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
-  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput)
-
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
 };
 
 const eventData = {
@@ -956,26 +951,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  hearingFeePaid: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    await apiRequest.paymentUpdate(caseId, '/service-request-update',
-      claimData.serviceUpdateDto(caseId, 'paid'));
-
-    amendDate(user, 'hearingDueDate', new Date());
-
-    eventName = 'HEARING_FEE_PAID';
-    await apiRequest.submitEvent(eventName, caseId);
-
-  },
-
-  hearingFeeUnpaid: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    eventName = 'HEARING_FEE_UNPAID';
-    await apiRequest.submitEvent(eventName, caseId);
-  },
-
   getCaseId: async () => {
     console.log(`case created: ${caseId}`);
     return caseId;
@@ -1053,6 +1028,53 @@ module.exports = {
       await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
   },
+
+  scheduleHearing: async (user, allocatedTrack) => {
+  console.log('Hearing Scheduled for case id ' + caseId);
+  await apiRequest.setupTokens(user);
+
+  eventName = 'HEARING_SCHEDULED';
+
+  caseData = await apiRequest.startEvent(eventName, caseId);
+  delete caseData['SearchCriteria'];
+
+  let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+  for (let pageId of Object.keys(scheduleData.valid)) {
+    await assertValidData(scheduleData, pageId);
+  }
+
+  await assertSubmittedEvent('HEARING_READINESS', null, false);
+  await waitForFinishedBusinessProcess(caseId);
+  },
+
+  hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    amendDate(user, 'hearingDueDate', new Date());
+
+    const response_msg = await apiRequest.hearingFeeDueCheckHandler(user);
+    assert.equal(response_msg.status, 200);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedBusinessProcessData(caseId, user);
+    const updatedBusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedBusinessProcessData.ccdState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+  },
+
+  hearingFeeUnpaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    amendDate(user, 'hearingDueDate', new Date());
+
+    await apiRequest.hearingFeeDueCheckHandler(user);
+
+    const updatedBusinessProcess = await apiRequest.fetchUpdatedBusinessProcessData(caseId, user);
+    const updatedBusinessProcessData = await updatedBusinessProcess.json();
+    assert.equal(updatedBusinessProcessData.ccdState, 'CASE_DISMISSED');
+  }
 };
 
 // Functions
@@ -1102,6 +1124,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
+  {
+    responseBody = clearHearingLocationData(responseBody);
   }
 
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
@@ -1553,6 +1579,11 @@ const clearDataForSearchCriteria = (responseBody) => {
 
 const clearNoCData = (responseBody) => {
   delete responseBody.data['changeOfRepresentation'];
+  return responseBody;
+};
+
+const clearHearingLocationData = (responseBody) => {
+  delete responseBody.data['hearingLocation'];
   return responseBody;
 };
 

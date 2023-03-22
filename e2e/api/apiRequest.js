@@ -13,6 +13,7 @@ const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
+const getHearingFeeDueHandlerUrl = () => `${config.url.civilService}/testing-support/trigger-hearing-fee-check-scheduler`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -171,5 +172,32 @@ module.exports = {
       serviceRequestUpdateDto, 'PUT');
 
     return response || {};
+  },
+
+  hearingFeeDueCheckHandler: async() => {
+    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    let url = getHearingFeeDueHandlerUrl();
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg || {};
+  },
+
+  fetchUpdatedBusinessProcessData: async (caseId, user) => {
+
+    const authToken = await idamHelper.accessToken(user);
+
+    let url = getCivilServiceUrl();
+    if (caseId) {
+      url += `/testing-support/case/${caseId}/business-process`;
+    }
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null, 'GET');
   }
 };

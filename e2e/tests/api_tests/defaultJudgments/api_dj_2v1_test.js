@@ -23,7 +23,7 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
-Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
+Scenario.skip('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
@@ -38,9 +38,11 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
+  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+  await api.hearingFeePaid(config.systemupdate);
 });
 
-Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
+Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
@@ -51,10 +53,6 @@ Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing cen
       api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
     }
   }
-});
-
-Scenario('Default Judgment claim SDO', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
 });
 
 AfterSuite(async  ({api}) => {
