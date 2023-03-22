@@ -194,7 +194,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
