@@ -161,7 +161,7 @@ module.exports = {
   async selectOrderAndHearingDetailsForDJTask(orderType = 'DisposalHearing') {
     await I.waitForText(this.fields.selectOrderAndHearingDetailsForDJTask.text);
     if (orderType == 'DisposalHearing') {
-      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingMethodOptions.inPerson);
+      await this.selectHearingMethodOption('In Person');
       await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.input, 'hearing time');
       await date.enterDate(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeDateFrom, 40);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeEstimate);
@@ -169,6 +169,12 @@ module.exports = {
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
     }
     await I.clickContinue();
+  },
+
+  async selectHearingMethodOption(text) {
+    let xPath = `//label[contains(text(), '${text}')]`;
+    let inputId = await I.grabAttributeFrom(xPath, 'for');
+    await I.click(`#${inputId}`);
   },
 
   async verifyOrderPreview() {
