@@ -46,7 +46,7 @@ ccd:
       initialDelaySeconds: 90
 
 em-ccdorc:
-  releaseNameOverride: ${SERVICE_NAME}-em-ccdorc
+  nameOverride: ${SERVICE_NAME}-em-ccdorc
   enabled: true
   java:
     image: hmctspublic.azurecr.io/em/ccdorc:latest
