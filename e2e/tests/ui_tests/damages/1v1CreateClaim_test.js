@@ -1,8 +1,13 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
+const {
+  waitForFinishedBusinessProcess,
+  checkToggleEnabled,
+  checkCaseFlagsEnabled
+} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -36,7 +41,7 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
-  await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
+  await addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
@@ -89,6 +94,22 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 
+Scenario('Add case flags', async ({I}) => {
+  if(checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      details: [PARTY_FLAGS.vulnerableUser.value]
+    }, {
+      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+      details: [PARTY_FLAGS.unacceptableBehaviour.value]
+    }];
+
+    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.createCaseFlags(caseFlags);
+    await I.validateCaseFlags(caseFlags);
+  }
+});
+
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('ONE_V_ONE');
@@ -97,6 +118,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-AfterSuite(async  () => {
+AfterSuite(async () => {
   await unAssignAllUsers();
 });

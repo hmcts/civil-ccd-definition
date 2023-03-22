@@ -18,8 +18,11 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSp
 const testingSupport = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
-const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
-const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {fetchCaseDetails} = require('./apiRequest');
+const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations} = require('./caseFlagsHelper');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
 let caseId, eventName;
 let caseData = {};
@@ -156,6 +159,11 @@ module.exports = {
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 
+    if (scenario === 'ONE_V_TWO_SAME_SOL' && createClaimData.userInput.SameLegalRepresentative
+      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'Yes') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.defendantSolicitorUser);
+    }
+
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
@@ -229,7 +237,7 @@ module.exports = {
     }
     if(!hnlSdoEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
         defendantResponseData, solicitor);
     }
 
@@ -266,6 +274,10 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    if (caseFlagsEnabled && hnlSdoEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
     deleteCaseFields('respondent1Copy');
   },
 
@@ -285,7 +297,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim(
         claimantResponseData);
     }
 
@@ -302,6 +314,11 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
   },
 
   amendRespondent1ResponseDeadline: async (user) => {
@@ -413,9 +430,34 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for (const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
+
   getCaseId: async () => {
     console.log (`case created: ${caseId}`);
     return caseId;
+  },
+
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 404;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
   },
 };
 

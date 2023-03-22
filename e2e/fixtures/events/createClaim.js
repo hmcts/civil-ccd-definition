@@ -121,7 +121,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.claimantSolicitorOrgId,
+          OrganisationID: config.applicantSolicitorUser.orgId,
         }
       }
     },
@@ -153,7 +153,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
           OrgPolicyReference: 'Defendant policy reference',
           OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
           Organisation: {
-            OrganisationID: config.defendant1SolicitorOrgId
+            OrganisationID: config.defendantSolicitorUser.orgId
           },
         },
       },
@@ -270,7 +270,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
             Organisation:
 
-              {OrganisationID: config.defendant2SolicitorOrgId}
+              {OrganisationID: config.secondDefendantSolicitorUser.orgId}
             ,
           },
         },
