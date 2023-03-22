@@ -47,42 +47,24 @@ ccd:
 
   em-ccdorc:
     enabled: true
-    image: hmctspublic.azurecr.io/em/ccdorc:latest
-    ingressHost: emccdorc-${SERVICE_FQDN}
-    keyVaults:
-      em-ccdorc:
-        resourceGroup: em-ccdorc
-        secrets:
-          - name: microservicekey-em-ccd-orchestrator
-            alias: S2S_KEY
-          - name: notification-api-key
-            alias: NOTIFICATION_API_KEY
-          - name: app-insights-connection-string
-            alias: app-insights-connection-string
-    environment:
-      IDAM_API_BASE_URI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-      OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
-      S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-      EM_STITCHING_API_URL: http://em-stitching-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-      DM_STORE_APP_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-      CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
-      CALLBACK_DOMAIN: emccdorc-${SERVICE_FQDN}
-      S2S_NAMES_WHITELIST: sscs,divorce,ccd,em_gw,ccd_data,iac,em_stitching_api,ia,xui_webapp,civil_service,prl_cos_api,sptribs_case_api
-
-      REFORM_SERVICE_NAME: em-ccd-orchestrator
-      REFORM_TEAM: Evidence Management
-      REFORM_SERVICE_TYPE: java
-      REFORM_ENVIRONMENT: preview
-      PACKAGES_NAME: em-ccd-orchestrator
-      PACKAGES_PROJECT: evidence
-      PACKAGES_ENVIRONMENT: preview
-      JSON_CONSOLE_PRETTY_PRINT: false
-      ENDPOINTS_HEALTH_SENSITIVE: false
-      ENDPOINTS_INFO_SENSITIVE: false
-      ENABLE_IDAM_HEALTH_CHECK: false
-      ENABLE_S2S_HEALTH_CHECK: false
-      SERVER_PORT: 8080
-      CALLBACK_HTTP_SCHEME: http
-      CALLBACK_HTTP_HOST_PORT: 80
-      HTTPCLIENT_CALL_TIMEOUT: 30
-      APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: DEBUG
+    java:
+      image: hmctspublic.azurecr.io/em/ccdorc:latest
+      ingressHost: emccdorc-${SERVICE_FQDN}
+      keyVaults:
+        em-ccdorc:
+          resourceGroup: em-ccdorc
+          secrets:
+            - name: microservicekey-em-ccd-orchestrator
+              alias: S2S_KEY
+            - name: notification-api-key
+              alias: NOTIFICATION_API_KEY
+            - name: app-insights-connection-string
+              alias: app-insights-connection-string
+      environment:
+        IDAM_API_BASE_URI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+        OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
+        S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+        EM_STITCHING_API_URL: http://em-stitching-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+        DM_STORE_APP_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+        CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
+        CALLBACK_DOMAIN: emccdorc-${SERVICE_FQDN}
