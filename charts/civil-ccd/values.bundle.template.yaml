@@ -45,27 +45,22 @@ ccd:
     livenessProbe:
       initialDelaySeconds: 90
 
-  em-ccdorc:
-    releaseNameOverride: ${SERVICE_NAME}-em-ccdorc
-    enabled: true
-    java:
-      image: hmctspublic.azurecr.io/em/ccdorc:latest
-      ingressHost: em-ccdorc-${SERVICE_FQDN}
-      keyVaults:
-        em-ccdorc:
-          resourceGroup: em-ccdorc
-          secrets:
-            - name: microservicekey-em-ccd-orchestrator
-              alias: S2S_KEY
-            - name: notification-api-key
-              alias: NOTIFICATION_API_KEY
-            - name: app-insights-connection-string
-              alias: app-insights-connection-string
-      environment:
-        IDAM_API_BASE_URI: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-        OPEN_ID_API_BASE_URI: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o
-        S2S_BASE_URI: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-        EM_STITCHING_API_URL: http://em-stitching-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-        DM_STORE_APP_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-        CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
-        CALLBACK_DOMAIN: emccdorc-${SERVICE_FQDN}
+em-ccdorc:
+  releaseNameOverride: ${SERVICE_NAME}-em-ccdorc
+  enabled: true
+  java:
+    image: hmctspublic.azurecr.io/em/ccdorc:latest
+    ingressHost: em-ccdorc-${SERVICE_FQDN}
+    keyVaults:
+      em-ccdorc:
+        resourceGroup: em-ccdorc
+        secrets:
+          - name: microservicekey-em-ccd-orchestrator
+            alias: S2S_KEY
+          - name: notification-api-key
+            alias: NOTIFICATION_API_KEY
+          - name: app-insights-connection-string
+            alias: app-insights-connection-string
+    environment:
+      CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
+      CALLBACK_DOMAIN: emccdorc-${SERVICE_FQDN}
