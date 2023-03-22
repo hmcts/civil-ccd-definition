@@ -8,3 +8,7 @@ camunda-bpm:
   enabled: false
 em-ccdorc:
   enabled: false
+ccd:
+  ccd:
+    elastic:
+      enabled: false
