@@ -1012,6 +1012,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "mediationSettlementAgreedAt",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "unsuccessfulMediationReason",
     "AccessControl": [
       {
