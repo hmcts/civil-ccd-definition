@@ -172,7 +172,7 @@ module.exports = {
   },
 
   async selectHearingMethodOption(text) {
-    let xPath = `//label[contains(text(), \'${text}\')]`;
+    let xPath = `//label[contains(text(), '${text}')]`;
     let inputId = await I.grabAttributeFrom(xPath, 'for');
     await I.click(`#${inputId}`);
   },
