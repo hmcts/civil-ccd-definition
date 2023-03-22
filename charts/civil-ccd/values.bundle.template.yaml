@@ -63,4 +63,4 @@ em-ccdorc:
             alias: app-insights-connection-string
     environment:
       CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
-      CALLBACK_DOMAIN: emccdorc-${SERVICE_FQDN}
+      CALLBACK_DOMAIN: em-ccdorc-${SERVICE_FQDN}
