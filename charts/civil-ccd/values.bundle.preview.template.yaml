@@ -45,7 +45,8 @@ ccd:
     livenessProbe:
       initialDelaySeconds: 90
 
-  em-ccd-orchestrator:
+  em-ccdorc:
+    enabled: true
     image: hmctspublic.azurecr.io/em/ccdorc:latest
     ingressHost: emccdorc-${SERVICE_FQDN}
     keyVaults:
