@@ -175,7 +175,7 @@ module.exports = {
   },
 
   hearingFeeDueCheckHandler: async() => {
-    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getHearingFeeDueHandlerUrl();
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
