@@ -1067,7 +1067,7 @@ module.exports = {
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
       console.log('evidence upload applicant fast track for case id ' + caseId);
       let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
-      await validateEventPages(ApplicantEvidenceFastClaimData)
+      await validateEventPages(ApplicantEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
