@@ -1,6 +1,7 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
 const config = require('../../config.js');
 
+
 const respondent1 = {
   type: 'INDIVIDUAL',
   individualFirstName: 'John',
@@ -26,6 +27,10 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
+const isPBAv3 = (pbaV3) => {
+  return pbaV3;
+};
+
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '85000';
 
@@ -34,7 +39,7 @@ const invalidPba = listElement('PBA0078095');
 
 module.exports = {
 
-  createClaim: (mpScenario) => {
+  createClaim: (mpScenario, pbaV3) => {
     const userData = {
       userInput: {
         References: {
@@ -130,7 +135,10 @@ module.exports = {
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          }
+          },
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
         },
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
@@ -164,7 +172,10 @@ module.exports = {
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-        }
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
+        },
       },
 
       midEventGeneratedData: {
@@ -191,8 +202,12 @@ module.exports = {
             calculatedAmountInPence: 'string',
             code: 'string',
             version: 'string'
-          }
-        }
+          },
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'string'
+          } : {},
+        },
+
       }
     };
 
