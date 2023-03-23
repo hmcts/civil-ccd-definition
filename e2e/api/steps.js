@@ -1098,18 +1098,18 @@ const validateEventPages = async (data, solicitor) => {
   }
 };
 
-const amendDate = async (user, dateName, dateInput) => {
-  await apiRequest.setupTokens(user);
-
-  var dd = String(dateInput.getDate()).padStart(2,'0');
-  var mm = String(dateInput.getMonth()).padStart(2, '0');
-  var yyyy = dateInput.getFullYear();
-  let dateValue = yyyy + '-' + mm + '-' + dd;
-
-  const dateToChange = {[dateName]: dateValue};
-  console.log(JSON.stringify(dateToChange));
-  await testingSupport.updateCaseData(caseId, dateToChange, user);
-};
+// const amendDate = async (user, dateName, dateInput) => {
+//   await apiRequest.setupTokens(user);
+//
+//   var dd = String(dateInput.getDate()).padStart(2,'0');
+//   var mm = String(dateInput.getMonth()).padStart(2, '0');
+//   var yyyy = dateInput.getFullYear();
+//   let dateValue = yyyy + '-' + mm + '-' + dd;
+//
+//   const dateToChange = {[dateName]: dateValue};
+//   console.log(JSON.stringify(dateToChange));
+//   await testingSupport.updateCaseData(caseId, dateToChange, user);
+// };
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
