@@ -40,7 +40,7 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
   }
   await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   await api.amendHearingDueDate(config.systemupdate);
-  await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+  await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
 });
 
 Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {

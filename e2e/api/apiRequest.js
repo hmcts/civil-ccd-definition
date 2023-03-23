@@ -13,7 +13,8 @@ const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
-const getHearingFeeDueHandlerUrl = () => `${config.url.civilService}/testing-support/trigger-hearing-fee-check-scheduler`;
+const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
+const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -55,7 +56,6 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     tokens.ccdEvent = response.token;
-    console.log(JSON.stringify(response));
     return response.case_details.case_data || {};
   },
 
@@ -175,9 +175,20 @@ module.exports = {
     return response || {};
   },
 
-  hearingFeeDueCheckHandler: async() => {
+  hearingFeePaidEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
-    let url = getHearingFeeDueHandlerUrl();
+    let url = getHearingFeePaidUrl(caseId);
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg || {};
+  },
+
+  hearingFeeUnpaidEvent: async(caseId) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getHearingFeeUnpaidUrl(caseId);
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,

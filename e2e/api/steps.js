@@ -1060,34 +1060,25 @@ module.exports = {
     await apiRequest.paymentUpdate(caseId, '/service-request-update',
       claimData.serviceUpdateDto(caseId, 'paid'));
 
-    //await amendDate(user, 'hearingDueDate', new Date());
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
 
-    // const response_msg = await apiRequest.hearingFeeDueCheckHandler(user);
-    // assert.equal(response_msg.status, 200);
-
-    eventName = 'HEARING_FEE_PAID';
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-
-    await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
-    await waitForFinishedBusinessProcess(caseId);
-
-    // console.log('Hearing Fee Paid');
-    // const updatedBusinessProcess = await apiRequest.fetchCaseState(caseId, 'HEARING_FEE_PAID');
-    // console.log(JSON.stringify(updatedBusinessProcess));
-    // assert.equal(updatedBusinessProcess, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+updatedCaseState);
   },
 
   hearingFeeUnpaid: async (user) => {
     await apiRequest.setupTokens(user);
 
-    //await amendDate(user, 'hearingDueDate', new Date());
-
-    await apiRequest.hearingFeeDueCheckHandler(user);
+    const response_msg = await apiRequest.hearingFeeUnpaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
     console.log('Hearing Fee Unpaid');
-    const updatedBusinessProcess = await apiRequest.fetchCaseState(caseId);
-    console.log(JSON.stringify(updatedBusinessProcess));
-    assert.equal(updatedBusinessProcess, 'CASE_DISMISSED');
+
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'ADD_CASE_NOTE');
+    assert.equal(updatedCaseState, 'CASE_DISMISSED');
+    console.log('State moved to:'+ updatedCaseState);
   }
 };
 
