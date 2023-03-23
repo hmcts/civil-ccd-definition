@@ -72,5 +72,22 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "UPLOAD_TRANSLATED_DOCUMENT",
+    "Name": "Upload translated document",
+    "Description": "Upload Translated Document",
+    "DisplayOrder": 3,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "Y",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
