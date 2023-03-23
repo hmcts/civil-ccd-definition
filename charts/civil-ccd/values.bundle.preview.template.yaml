@@ -28,8 +28,6 @@ ccd:
         cpu: "25m"
         memory: "512Mi"
   logstash:
-    image:
-      imagePullPolicy: Always
     resources:
       requests:
         cpu: "500m"
