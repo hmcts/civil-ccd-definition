@@ -22,7 +22,7 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
-Scenario.skip('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
+Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
