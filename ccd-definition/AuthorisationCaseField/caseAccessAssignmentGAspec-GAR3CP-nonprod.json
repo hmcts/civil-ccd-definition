@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingNoticeDocument",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  }
-]

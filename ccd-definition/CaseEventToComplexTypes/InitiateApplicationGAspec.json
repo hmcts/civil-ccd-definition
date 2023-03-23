@@ -349,17 +349,10 @@
     "ID": "GAPBADetailsGAspec",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "applicantsPbaAccounts",
+    "ListElementCode": "generalAppPayInformationText",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "GAPBADetailsGAspec",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "generalAppPBADetails",
-    "ListElementCode": "pbaReference",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY",
+    "ShowSummaryContentOption": "Y"
   },
   {
     "ID": "GAUploadN245Form",
