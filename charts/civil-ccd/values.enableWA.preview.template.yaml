@@ -131,6 +131,7 @@ wa-message-cron-service:
 
 wa-task-batch-service:
   job:
+    kind: CronJob
     releaseNameOverride: ${SERVICE_NAME}-wa-task-batch-service
     schedule: "*/5 * * * *"
     aadIdentityName: wa
