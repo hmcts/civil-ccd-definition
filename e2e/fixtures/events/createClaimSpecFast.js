@@ -203,7 +203,7 @@ module.exports = {
             version: 'string'
           },
           ...isPBAv3(pbaV3) ? {
-            paymentTypePBASpec: 'PBAv3'
+            paymentTypePBASpec: 'string'
           } : {},
         }
       }
