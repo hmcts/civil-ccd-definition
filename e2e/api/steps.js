@@ -1057,23 +1057,17 @@ module.exports = {
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
-
     caseData = await apiRequest.startEvent(eventName, caseId);
-    delete caseData['SearchCriteria'];
 
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
-      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL();
       console.log('evidence upload small claim applicant for case id ' + caseId);
-      for (let pageId of Object.keys(ApplicantEvidenceSmallClaimData.valid)) {
-        await assertValidData(ApplicantEvidenceSmallClaimData, pageId);
-      }
+      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL();
+      await validateEventPages(ApplicantEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
-      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
       console.log('evidence upload applicant fast track for case id ' + caseId);
-      for (let pageId of Object.keys(ApplicantEvidenceFastClaimData.valid)) {
-        await assertValidData(ApplicantEvidenceFastClaimData, pageId);
-      }
+      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
+      await validateEventPages(ApplicantEvidenceFastClaimData)
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
@@ -1082,24 +1076,18 @@ module.exports = {
   evidenceUploadRespondent: async (user, multipartyScenario) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
-
     mpScenario = multipartyScenario;
     caseData = await apiRequest.startEvent(eventName, caseId);
-    delete caseData['SearchCriteria'];
 
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
-      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
       console.log('evidence upload small claim respondent for case id ' + caseId);
-      for (let pageId of Object.keys(RespondentEvidenceSmallClaimData.valid)) {
-        await assertValidData(RespondentEvidenceSmallClaimData, pageId);
-      }
+      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      await validateEventPages(RespondentEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
-      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
       console.log('evidence upload fast claim respondent for case id ' + caseId);
-      for (let pageId of Object.keys(RespondentEvidenceFastClaimData.valid)) {
-        await assertValidData(RespondentEvidenceFastClaimData, pageId);
-      }
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+      await validateEventPages(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
@@ -1111,7 +1099,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
