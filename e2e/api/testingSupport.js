@@ -218,8 +218,8 @@ module.exports =  {
     return false;
   },
 
-  updateCaseData: async (caseId, caseData) => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+  updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
+    const authToken = await idamHelper.accessToken(user);
 
     await restHelper.retriedRequest(
       `${config.url.civilService}/testing-support/case/${caseId}`,

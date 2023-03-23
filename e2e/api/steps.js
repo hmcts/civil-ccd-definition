@@ -907,6 +907,12 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
+  amendHearingDueDate: async (user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
   defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
@@ -1054,26 +1060,27 @@ module.exports = {
     await apiRequest.paymentUpdate(caseId, '/service-request-update',
       claimData.serviceUpdateDto(caseId, 'paid'));
 
-    amendDate(user, 'hearingDueDate', new Date());
+    //await amendDate(user, 'hearingDueDate', new Date());
 
     const response_msg = await apiRequest.hearingFeeDueCheckHandler(user);
     assert.equal(response_msg.status, 200);
 
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedBusinessProcessData(caseId, user);
-    const updatedBusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedBusinessProcessData.ccdState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('Hearing Fee Paid');
+    const updatedBusinessProcess = await apiRequest.fetchCaseState(caseId, 'HEARING_FEE_PAID');
+    console.log(JSON.stringify(updatedBusinessProcess));
+    assert.equal(updatedBusinessProcess, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
   },
 
   hearingFeeUnpaid: async (user) => {
     await apiRequest.setupTokens(user);
 
-    amendDate(user, 'hearingDueDate', new Date());
+    //await amendDate(user, 'hearingDueDate', new Date());
 
     await apiRequest.hearingFeeDueCheckHandler(user);
-
-    const updatedBusinessProcess = await apiRequest.fetchUpdatedBusinessProcessData(caseId, user);
-    const updatedBusinessProcessData = await updatedBusinessProcess.json();
-    assert.equal(updatedBusinessProcessData.ccdState, 'CASE_DISMISSED');
+    console.log('Hearing Fee Unpaid');
+    const updatedBusinessProcess = await apiRequest.fetchCaseState(caseId);
+    console.log(JSON.stringify(updatedBusinessProcess));
+    assert.equal(updatedBusinessProcess, 'CASE_DISMISSED');
   }
 };
 
@@ -1094,14 +1101,14 @@ const validateEventPages = async (data, solicitor) => {
 const amendDate = async (user, dateName, dateInput) => {
   await apiRequest.setupTokens(user);
 
-  let dateToChange = {};
   var dd = String(dateInput.getDate()).padStart(2,'0');
   var mm = String(dateInput.getMonth()).padStart(2, '0');
   var yyyy = dateInput.getFullYear();
   let dateValue = yyyy + '-' + mm + '-' + dd;
 
-  dateToChange = {dateName : dateValue};
-  await testingSupport.updateCaseData(caseId, dateToChange);
+  const dateToChange = {[dateName]: dateValue};
+  console.log(JSON.stringify(dateToChange));
+  await testingSupport.updateCaseData(caseId, dateToChange, user);
 };
 
 const assertValidData = async (data, pageId, solicitor) => {

@@ -55,6 +55,7 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     tokens.ccdEvent = response.token;
+    console.log(JSON.stringify(response));
     return response.case_details.case_data || {};
   },
 
@@ -185,19 +186,14 @@ module.exports = {
     return response_msg || {};
   },
 
-  fetchUpdatedBusinessProcessData: async (caseId, user) => {
+  fetchCaseState: async (caseId, eventName) => {
+    let url = getCcdDataStoreBaseUrl();
+    url += `/cases/${caseId}`;
 
-    const authToken = await idamHelper.accessToken(user);
+    url += `/event-triggers/${eventName}/token`;
 
-    let url = getCivilServiceUrl();
-    if (caseId) {
-      url += `/testing-support/case/${caseId}/business-process`;
-    }
-
-    return await restHelper.retriedRequest(url,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-      },null, 'GET');
-  }
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
+      .then(response => response.json());
+    return response.case_details.state || {};
+  },
 };

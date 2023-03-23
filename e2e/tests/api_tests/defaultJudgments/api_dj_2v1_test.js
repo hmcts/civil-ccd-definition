@@ -39,7 +39,8 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
   await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
-  await api.hearingFeePaid(config.systemupdate);
+  await api.amendHearingDueDate(config.systemupdate);
+  await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
 });
 
 Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
