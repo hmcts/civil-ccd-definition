@@ -88,6 +88,8 @@ const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -314,8 +316,9 @@ module.exports = function () {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
+         const pbaV3 = await checkToggleEnabled(PBAv3);
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
-         await this.triggerStepsWithScreenshot([
+          let steps = pbaV3 ? [
             () => this.clickContinue(),
             () => this.clickContinue(),
             () => solicitorReferencesPage.enterReferences(),
@@ -338,13 +341,41 @@ module.exports = function () {
                  () => specInterestDateStartPage.selectInterestDateStart(),
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
-                 () => pbaNumberPage.selectPbaNumber(),
-                 () => paymentReferencePage.updatePaymentReference(),
+                 () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
                  () => event.returnToCaseDetails(),
-           ]);
+           ] : [
+            () => this.clickContinue(),
+            () => this.clickContinue(),
+            () => solicitorReferencesPage.enterReferences(),
+            ...firstClaimantSteps(),
+            ...secondClaimantSteps(claimant2),
+            ...firstDefendantSteps(respondent1),
+            ...conditionalSteps(claimant2 == null, [
+              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+            ]),
+            ...secondDefendantSteps(respondent2, respondent1.represented),
+            () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
+            () => specTimelinePage.addManually(),
+            () => specAddTimelinePage.addTimeline(),
+            () => specListEvidencePage.addEvidence(),
+            () => specClaimAmountPage.addClaimItem(claimAmount),
+            () => this.clickContinue(),
+            () => specInterestPage.addInterest(),
+            () => specInterestValuePage.selectInterest(),
+            () => specInterestRatePage.selectInterestRate(),
+            () => specInterestDateStartPage.selectInterestDateStart(),
+            () => specInterestDateEndPage.selectInterestDateEnd(),
+            () => this.clickContinue(),
+            () => pbaNumberPage.selectPbaNumber(),
+            () => paymentReferencePage.updatePaymentReference(),
+            () => statementOfTruth.enterNameAndRole('claim'),
+            () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+            () => event.returnToCaseDetails(),
+          ];
 
+          await this.triggerStepsWithScreenshot(steps);
          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
   },
 
