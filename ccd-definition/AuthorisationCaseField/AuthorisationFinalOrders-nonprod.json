@@ -3,9 +3,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseParticipants",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -13,9 +11,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderSelectionLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -23,9 +19,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderSelection",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -33,9 +27,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -43,9 +35,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeSelectionLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -53,9 +43,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeSelection",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -63,9 +51,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDateHeardComplex",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -73,9 +59,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseParticipantsAssistedOrder",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -83,9 +67,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderJudgeHeardLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -93,9 +75,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderJudgeHeardFrom",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -103,9 +83,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRepresentation",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -113,9 +91,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRecitalsLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -123,9 +99,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRecitals",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -133,9 +107,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRecitalsRecorded",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -143,9 +115,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderOrdered",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -153,9 +123,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderOrderedThat",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -163,9 +131,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderOrderedThatText",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -173,9 +139,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderFurtherHearingLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -183,9 +147,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderFurtherHearingToggle",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -193,9 +155,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -203,9 +163,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderAppealLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -213,9 +171,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderAppealToggle",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -223,9 +179,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderAppealComplex",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -233,9 +187,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderReasonsLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -243,9 +195,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderGiveReasonsLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -253,9 +203,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderGiveReasonsYesNo",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -263,9 +211,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderGiveReasonsComplex",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -273,9 +219,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsPrimaryLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -283,9 +227,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsSecondaryLabel",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -293,9 +235,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostList",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -303,9 +243,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostsReserved",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -313,9 +251,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostsDefendantPaySub",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -323,9 +259,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostsClaimantPaySub",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -333,9 +267,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostsDefendantSum",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -343,9 +275,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostsClaimantSum",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -353,9 +283,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -363,9 +291,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsList",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -373,9 +299,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsOrderCourt",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -383,9 +307,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
     "UserRoles": [
-      "judge-profile",
-      "APP-SOL-UNSPEC-PROFILE",
-      "[CREATOR]"
+      "judge-profile"
     ],
     "CRUD": "CRU"
   }
