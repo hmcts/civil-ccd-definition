@@ -1,31 +1,31 @@
 [
   {
     "ID": "HearingLengthFinalOrderList",
-    "ListElementCode": "15_MINUTES",
+    "ListElementCode": "MINUTES_15",
     "ListElement": "15 minutes",
     "DisplayOrder": 1
   },
   {
     "ID": "HearingLengthFinalOrderList",
-    "ListElementCode": "30_MINUTES",
+    "ListElementCode": "MINUTES_30",
     "ListElement": "30 minutes",
     "DisplayOrder": 2
   },
   {
     "ID": "HearingLengthFinalOrderList",
-    "ListElementCode": "1_HOUR",
+    "ListElementCode": "HOUR_1",
     "ListElement": "1 hour",
     "DisplayOrder": 3
   },
   {
     "ID": "HearingLengthFinalOrderList",
-    "ListElementCode": "1_5_HOUR",
+    "ListElementCode": "HOUR_1_5",
     "ListElement": "1.5 hours",
     "DisplayOrder": 4
   },
   {
     "ID": "HearingLengthFinalOrderList",
-    "ListElementCode": "2_HOUR",
+    "ListElementCode": "HOUR_2",
     "ListElement": "2 hours",
     "DisplayOrder": 5
   },
