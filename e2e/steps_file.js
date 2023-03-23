@@ -128,9 +128,14 @@ const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingSch
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -276,7 +281,28 @@ module.exports = function () {
 
       const twoVOneScenario = claimant1 && claimant2;
       await createCasePage.createCase(config.definition.jurisdiction);
-      await this.triggerStepsWithScreenshot([
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+
+      let steps = pbaV3 ? [
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.selectCourt(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(claimValue),
+        () => pbaNumberPage.clickContinue(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
+      ] : [
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.selectCourt(),
@@ -296,7 +322,9 @@ module.exports = function () {
         () => event.submit('Submit',
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
-      ]);
+      ];
+
+      await this.triggerStepsWithScreenshot(steps);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
     },
@@ -852,6 +880,16 @@ module.exports = function () {
       ]);
     },
 
+    async evidenceUpload(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => event.submit('Submit', 'Documents uploaded')
+      ]);
+    },
+
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -872,21 +910,63 @@ module.exports = function () {
       ]);
     },
 
-    async createCaseFlags() {
+    async navigateToCaseFlags(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async createCaseFlags(caseFlags) {
       eventName = 'Create case flags';
-      await this.triggerStepsWithScreenshot([
-        // ToDo trigger create case flags event
-        // () => caseViewPage.startEvent(eventName, caseId),
-        // () => event.submit('', '')
-      ]);
-      await this.takeScreenshot();
+
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
     },
 
     async validateCaseFlags(caseFlags) {
       eventName = '';
+
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.selectCaseFlagsTab(caseId),
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async manageCaseFlags(caseFlags) {
+      eventName = 'Manage case flags';
+
+      for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(eventName, caseId),
+          () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
+          () => event.submitWithoutHeader('Submit')
+        ]);
+      }
+    },
+
+    async validateUpdatedCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertInactiveCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertUpdatedCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
     },

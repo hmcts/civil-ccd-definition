@@ -12,17 +12,20 @@ const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec} = require('../helpers/hnlFeatureHelper');
+const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
-const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim,
+  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim
+} = require('../helpers/hnlFeatureHelper');
+const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
 
 let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
@@ -66,9 +69,10 @@ module.exports = {
     caseId = null;
     caseData = {};
 
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('');
@@ -86,7 +90,6 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -153,7 +156,7 @@ module.exports = {
     }
     if(!hnlSdoEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponse(
+      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
         defendantResponseData, solicitor);
     }
 
@@ -169,6 +172,11 @@ module.exports = {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
+
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    if (caseFlagsEnabled && hnlSdoEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
 
     deleteCaseFields('respondent1Copy');
   },
@@ -189,7 +197,7 @@ module.exports = {
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpec(
+      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim(
         claimantResponseData);
     }
 
@@ -200,6 +208,49 @@ module.exports = {
     //await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+
+    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    if (caseFlagsEnabled && hnlEnabled) {
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
+    }
+  },
+
+  createCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for (const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
+
+  manageCaseFlags: async (user) => {
+    if(!checkCaseFlagsEnabled()) {
+      return;
+    }
+
+    eventName = 'MANAGE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await updateAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for(const [index, value] of caseFlagLocations.entries()) {
+      await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
   },
 };
 

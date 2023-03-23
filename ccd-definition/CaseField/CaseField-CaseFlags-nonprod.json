@@ -12,5 +12,59 @@
     "Label": "Case Flags",
     "FieldType": "Flags",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantWitnesses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantExperts",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1Witnesses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1Experts",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2Witnesses",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2Experts",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
