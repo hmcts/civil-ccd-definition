@@ -12,6 +12,7 @@ const TASK_RETRY_TIMEOUT_MS = 20000;
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
+const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
@@ -35,6 +36,15 @@ module.exports = {
         oneTimePassword: totp(config.s2s.secret)
       })
       .then(response => response.text());
+  },
+
+  fetchCaseDetails: async(user, caseId, response = 200) => {
+    let eventUserAuth = await idamHelper.accessToken(user);
+    let eventUserId = await idamHelper.userId(eventUserAuth);
+    let url = getCaseDetailsUrl(eventUserId, caseId);
+
+    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
+      .then(response => response.json());
   },
 
   fetchCaseForDisplay: async (user, caseId, response = 200) => {
@@ -132,8 +142,8 @@ module.exports = {
 
     const inputData = {
       'search_parameters': [
-        {'key': 'jurisdiction', 'operator': 'IN', 'values': ['CIVIL']},
         {'key': 'caseId', 'operator': 'IN', 'values': [caseNumber]},
+        {'key': 'jurisdiction', 'operator': 'IN', 'values': ['CIVIL']},
         {'key': 'state', 'operator': 'IN', 'values': ['assigned', 'unassigned']}
       ],
       'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
