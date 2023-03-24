@@ -103,6 +103,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentFixedCostOptionLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentFixedCostOption",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentFixedCostAmount",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
