@@ -18,7 +18,7 @@ ccd:
         ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
         ELASTIC_SEARCH_CASE_INDEX_MAPPING_FIELDS_LIMIT: 10000
   elasticsearch:
-    nameOverride: ${SERVICE_NAME}-es-master
+    nameOverride: ${SERVICE_NAME}-es
     imageTag: "7.17.1"
     initResources:
       limits:
@@ -45,7 +45,7 @@ ccd:
       - name: pipeline
         mountPath: /usr/share/logstash/files # hack to prevent override of default pipeline in the custom image hmcts/ccd-logst
     elasticsearch:
-      host: ${SERVICE_NAME}-es
+      host: ${SERVICE_NAME}-es-master
       port: 9200
     configTpl:
       xpack.monitoring.enabled: "false"
