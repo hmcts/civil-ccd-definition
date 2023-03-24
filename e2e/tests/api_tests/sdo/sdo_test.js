@@ -34,7 +34,9 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
-    await api.hearingFeePaid(config.systemupdate);
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+
   }
 });
 
@@ -44,7 +46,8 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
-    await api.hearingFeePaid(config.systemupdate);
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
   }
 });
 
@@ -54,7 +57,8 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
-    await api.hearingFeeUnpaid(config.systemupdate);
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
   }
 });
 
@@ -65,7 +69,8 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
-    await api.hearingFeeUnpaid(config.systemupdate);
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
   }
 });
 
@@ -122,6 +127,8 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ a
     }
     await api.createSDO(judgeUser);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
   }
 });
 
@@ -137,6 +144,8 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order', as
     }
     await api.createSDO(legalAdvUser);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
   }
 });
 
