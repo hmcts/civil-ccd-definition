@@ -205,5 +205,16 @@
     "PageID": "CreateCaseFlags",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "CaseFieldID": "urgentFlag",
+    "PageFieldDisplayOrder": 17,
+    "DisplayContext": "READONLY",
+    "PageID": "CreateCaseFlags",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_UI\""
   }
 ]
