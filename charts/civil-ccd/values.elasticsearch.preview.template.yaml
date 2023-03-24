@@ -41,7 +41,7 @@ ccd:
     logstashJavaOpts: -Xmx1g -Xms512M
     persistence:
       enabled: false
-    extraEnvVars:
+    extraEnvs:
       - name: ELASTICSEARCH_HOST
         value: "${SERVICE_NAME}-es-master"
     volumeMounts:
