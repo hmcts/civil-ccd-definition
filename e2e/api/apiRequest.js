@@ -105,6 +105,27 @@ module.exports = {
       }, 'POST', 201);
   },
 
+  taskActionByUser: async function(user, taskId, url, expectedStatus = 204) {
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2sForXUI.microservice,
+        oneTimePassword: totp(config.s2sForXUI.secret)
+      })
+      .then(response => response.text());
+
+    return retry(() => {
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task/${taskId}/${url}`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+        'ServiceAuthorization': `Bearer ${s2sToken}`
+      }, '', 'POST', expectedStatus);
+    }, 2, TASK_RETRY_TIMEOUT_MS);
+  },
+
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     let taskDetails;
     const userToken =  await idamHelper.accessToken(user);
@@ -119,8 +140,8 @@ module.exports = {
 
     const inputData = {
       'search_parameters': [
-          {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
           {'key': 'caseId','operator': 'IN','values': [caseNumber]},
+          {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
           {'key':'state','operator':'IN','values':['assigned','unassigned']}
       ],
       'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
