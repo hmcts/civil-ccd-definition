@@ -45,7 +45,7 @@ ccd:
       - name: pipeline
         mountPath: /usr/share/logstash/files # hack to prevent override of default pipeline in the custom image hmcts/ccd-logst
     elasticsearch:
-      host: ${SERVICE_NAME}-es-master
+      host: ${SERVICE_NAME}-es
       port: 9200
     configTpl:
       xpack.monitoring.enabled: "false"
