@@ -29,7 +29,7 @@ const calculatedClaimsTrackWOSum = {
     fastTrackSchedulesOfLoss: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
+        && typeof data.input3 === 'string';
     },
     disposalHearingNotes: (data) => {
       return typeof data.input === 'string';
