@@ -30,7 +30,6 @@ const calculatedClaimsTrackWOSum = {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
         && typeof data.input3 === 'string'
-        && typeof data.input4 === 'string';
     },
     disposalHearingNotes: (data) => {
       return typeof data.input === 'string';
@@ -431,9 +430,7 @@ module.exports = {
             date1: date(1),
             input2: 'string',
             date2: date(1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(1)
+            input3: 'string'
           },
           fastTrackTrial: {
             input1: 'string',
@@ -695,9 +692,7 @@ module.exports = {
             date1: date(1),
             input2: 'string',
             date2: date(1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(1)
+            input3: 'string'
           },
           fastTrackTrial: {
             input1: 'string',
