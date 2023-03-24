@@ -1,6 +1,7 @@
-const {listElement} = require('../../api/dataHelper');
+const {listElement, element} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -46,9 +47,9 @@ module.exports = {
           respondToCourtLocation: {
             responseCourtLocations: {
               list_items: [
-                listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                listElement(config.defendantSelectedCourt)
               ],
-              value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              value: listElement(config.defendantSelectedCourt)
             },
             reasonForHearingAtSpecificCourt: 'Reasons'
           }
@@ -87,6 +88,37 @@ module.exports = {
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
           },
+          SmallClaimExperts: {
+            respondent1DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
+          },
+          SmallClaimWitnesses: {
+            respondent1DQWitnessesSmallClaim: {
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Smith',
+                  phoneNumber: '07012345678',
+                  emailAddress: 'johnsmith@email.com',
+                  reasonForWitness: 'None'
+                })
+              ],
+              witnessesToAppear: 'Yes'}
+          },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
@@ -108,7 +140,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           }
         };
@@ -135,7 +167,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           },
           defenceRoute: {
@@ -189,7 +221,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
 
@@ -222,7 +254,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
 

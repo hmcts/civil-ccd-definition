@@ -21,7 +21,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CR"
   },
   {
     "CaseTypeID": "CIVIL",

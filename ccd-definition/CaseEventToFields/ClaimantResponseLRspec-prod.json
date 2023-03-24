@@ -19,7 +19,8 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,7 +52,8 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -110,7 +112,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -170,6 +173,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
+    "DisplayContext": "READONLY",
+    "PageID": "ApplicantDefenceResponseDocument",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
@@ -177,7 +191,8 @@
     "PageID": "Mediation",
     "PageShowCondition": "responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "FieldShowCondition": "defendantSingleResponseToBothClaimants !=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -188,7 +203,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "defendantSingleResponseToBothClaimants =\"Yes\"",
-    "ShowSummaryChangeOption" : "Y"
+    "ShowSummaryChangeOption" : "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

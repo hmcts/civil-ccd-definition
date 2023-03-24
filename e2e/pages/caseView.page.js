@@ -5,8 +5,12 @@ const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
 module.exports = {
 
+  components: {
+    caseFlags: 'ccd-field-read'
+  },
   tabs: {
-    history: 'History'
+    history: 'History',
+    caseFlags: 'Case Flags'
   },
   fields: {
     eventDropdown: '#next-step',
@@ -49,5 +53,39 @@ module.exports = {
   async assertEventsAvailable(events) {
     await I.waitForElement(this.fields.eventDropdown);
     events.forEach(event => I.see(event, this.fields.eventDropdown));
+  },
+
+  async goToCaseFlagsTab(caseId) {
+    await I.navigateToCaseFlags(caseId);
+    await I.waitForElement(this.components.caseFlags);
+  },
+
+  async assertCaseFlagsInfo(numberOfFlags) {
+    I.see(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
+  },
+
+  async assertCaseFlags(caseFlags) {
+    console.log('validating case flags');
+    caseFlags.forEach(({partyName, details}) => {
+      console.log(`Verifying party name [${partyName}] is displayed`);
+      I.see(partyName, this.components.caseFlags);
+      details.forEach(({name}) => {
+        console.log(`Verifying [${name}] flag is displayed`);
+        I.see(name, this.components.caseFlags);
+      });
+    });
+  },
+
+  async assertInactiveCaseFlagsInfo(numberOfFlags) {
+    console.log('Verifying active case flags banner is not visible.');
+    I.dontSee(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
+  },
+
+  async assertUpdatedCaseFlags(caseFlags) {
+    console.log('validating updated case flags');
+    caseFlags.forEach(({partyName, flagComment}) => {
+      console.log('Verifying updated flag comment is displayed');
+      I.see(`${flagComment} - Updated - ${partyName}`, this.components.caseFlags);
+    });
   }
 };

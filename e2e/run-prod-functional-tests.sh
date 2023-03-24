@@ -1,8 +1,13 @@
 #!/bin/bash
 set -ex
 
-echo "Run Functional tests with prod ccd def file"
+echo "Run Api Functional tests with prod ccd def file"
+yarn test:api-unspec
+yarn test:api-spec
 
-dir=$(dirname ${0})
+echo "Run E2E Functional tests with prod ccd def file"
 
-${dir}/run-unspec-functional-tests.sh
+yarn test:master-e2e-ft
+yarn test:e2e-nightly-prod
+
+
