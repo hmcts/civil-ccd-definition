@@ -29,7 +29,7 @@ ccd:
         memory: "512Mi"
   logstash:
     image:
-      imagePullPolicy: "Always"
+      logstashJavaOpts: "-Xmx1g -Xms1g"
     resources:
       requests:
         cpu: "500m"
