@@ -1076,7 +1076,7 @@ module.exports = {
     assert.equal(response_msg.status, 200);
     console.log('Hearing Fee Unpaid');
 
-    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'ADD_CASE_NOTE');
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN');
     assert.equal(updatedCaseState, 'CASE_DISMISSED');
     console.log('State moved to:'+ updatedCaseState);
   }
