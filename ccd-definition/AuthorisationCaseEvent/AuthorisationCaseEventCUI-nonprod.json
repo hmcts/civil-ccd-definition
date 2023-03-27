@@ -312,7 +312,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIMANT_FOR_RESPONDENT1_DISAGREED_REPAYMENT",
+    "CaseEventID": "NOTIFY_CLAIMANT_FOR_RESPONDENT1_REJECT_REPAYMENT",
     "AccessControl": [
       {
         "UserRoles": [
@@ -333,7 +333,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_LIP_DEFENDANT_DISAGREED_REPAYMENT",
+    "CaseEventID": "NOTIFY_LIP_DEFENDANT_REJECT_REPAYMENT",
     "AccessControl": [
       {
         "UserRoles": [
