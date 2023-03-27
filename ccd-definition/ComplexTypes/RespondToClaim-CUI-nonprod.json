@@ -15,6 +15,20 @@
   },
   {
     "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1DQExtraDetails",
+    "ElementLabel": " ",
+    "FieldType": "DQExtraDetailsLip",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1DQHearingSupportLip",
+    "ElementLabel": " ",
+    "FieldType": "HearingSupportLip",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
     "ListElementCode": "respondent1ResponseLanguage",
     "ElementLabel": " ",
     "FieldType": "Text",
