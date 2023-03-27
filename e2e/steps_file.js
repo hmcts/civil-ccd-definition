@@ -301,7 +301,7 @@ module.exports = function () {
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
-          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+          shouldStayOnline ? CONFIRMATION_MESSAGE.pbaV3Online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
       ] : [
         () => continuePage.continue(),
@@ -321,7 +321,7 @@ module.exports = function () {
         () => paymentReferencePage.updatePaymentReference(),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
-          shouldStayOnline ? CONFIRMATION_MESSAGE.pbaV3Online : CONFIRMATION_MESSAGE.offline),
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
       ];
 
