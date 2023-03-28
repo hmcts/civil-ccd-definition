@@ -4,8 +4,13 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Name",
-    "SecurityClassification": "Public",
-    "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Witness",
+    "ListElementCode": "reasonForWitness",
+    "FieldType": "TextArea",
+    "ElementLabel": "What event did they witness?",
+    "SecurityClassification": "Public"
   }
 ]

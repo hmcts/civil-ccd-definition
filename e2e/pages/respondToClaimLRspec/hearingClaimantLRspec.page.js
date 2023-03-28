@@ -1,4 +1,3 @@
-const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 const {I} = inject();
 
 module.exports = {
@@ -33,19 +32,13 @@ module.exports = {
   },
 
   async enterHearing(party) {
+    I.waitForElement(this.fields(party).hearingLength.id);
+    await I.runAccessibilityTest();
+    await within(this.fields(party).hearingLength.id, () => {
+      I.click(this.fields(party).hearingLength.options.lessThanOneDay);
+    });
 
-    const hnlLegalRepEnabled = await checkHnlLegalRepToggleEnabled();
-
-    if (!hnlLegalRepEnabled) {
-      I.waitForElement(this.fields(party).hearingLength.id);
-      await I.runAccessibilityTest();
-      await within(this.fields(party).hearingLength.id, () => {
-        I.click(this.fields(party).hearingLength.options.lessThanOneDay);
-      });
-      I.fillField(this.fields(party).hearingLengthHours, '5');
-    }
-
-    I.waitForElement(this.fields(party).unavailableDatesRequired.id);
+    I.fillField(this.fields(party).hearingLengthHours, '5');
     await within(this.fields(party).unavailableDatesRequired.id, () => {
       I.click(this.fields(party).unavailableDatesRequired.options.no);
     });
