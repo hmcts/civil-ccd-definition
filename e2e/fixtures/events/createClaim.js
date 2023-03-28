@@ -172,7 +172,6 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantLegalRepresentation: {},
       SecondDefendantSolicitorOrganisation: {},
       SecondDefendantSolicitorServiceAddress: {},
-      SecondDefendantSolicitor2ServiceAddressRequired:{},
       SecondDefendantSolicitorReference: {},
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
@@ -246,15 +245,6 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         },
         SameLegalRepresentative: {
           respondent2SameLegalRepresentative: 'Yes'
-        },
-        SecondDefendantSolicitor2ServiceAddressRequired: {
-          respondentSolicitor2ServiceAddressRequired: 'Yes'
-        },
-        SecondDefendantSolicitorServiceAddress: {
-          respondentSolicitor2ServiceAddress: buildAddress('service')
-        },
-        SecondDefendantSolicitorReference: {
-          respondentSolicitor2Reference: 'sol2reference'
         },
       };
     }
