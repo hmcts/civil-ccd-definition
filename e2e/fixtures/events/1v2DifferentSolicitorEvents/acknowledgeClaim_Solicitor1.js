@@ -5,7 +5,8 @@ module.exports = {
     SolicitorReferences:{
       solicitorReferences:{
         applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference'
+        respondentSolicitor1Reference: 'Respondent reference',
+        respondentSolicitor2Reference: 'sol2reference',
       },
     }
   },

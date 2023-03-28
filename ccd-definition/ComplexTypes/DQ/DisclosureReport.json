@@ -4,16 +4,14 @@
     "ListElementCode": "disclosureFormFiledAndServed",
     "FieldType": "YesOrNo",
     "ElementLabel": "Have you filed and served a disclosure report (Form N263) (see Civil Procedure Rules Part 31)?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "DisclosureReport",
     "ListElementCode": "disclosureProposalAgreed",
     "FieldType": "YesOrNo",
     "ElementLabel": "Have you agreed a proposal in relation to disclosure that meets the overriding objective?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "DisclosureReport",
@@ -21,7 +19,6 @@
     "FieldType": "Text",
     "ElementLabel": "Please ensure this is contained within the proposed directions attached and specify the draft order number",
     "FieldShowCondition": "disclosureProposalAgreed = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   }
 ]

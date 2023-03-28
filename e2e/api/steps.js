@@ -20,7 +20,7 @@ const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -153,7 +153,7 @@ module.exports = {
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    const hnlEnabled = await checkHnlToggleEnabled();
     if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
@@ -232,8 +232,8 @@ module.exports = {
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -291,8 +291,8 @@ module.exports = {
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
+    const hnlEnabled = await checkHnlToggleEnabled();
+    if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -637,7 +637,7 @@ module.exports = {
     defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (!hnlEnabled) {
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
         defendantResponseData, solicitor);
@@ -675,7 +675,7 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (isHNLEnabled) {
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
@@ -724,6 +724,7 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
+
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -736,7 +737,7 @@ module.exports = {
     claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
         claimantResponseData);
@@ -749,7 +750,7 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (isHNLEnabled) {
       await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
@@ -1088,7 +1089,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearHearingLocationData(responseBody);
   }
 
-  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1379,7 +1380,7 @@ function replaceLitigationFriendFields(caseData) {
 }
 
 async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
-  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
   // work around for the api  tests
   if (!isHNLEnabled) {
     const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;

@@ -1012,7 +1012,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToClaimExperts2",
+    "CaseFieldID": "respondToClaim_experts2",
     "AccessControl": [
       {
         "UserRoles": [
