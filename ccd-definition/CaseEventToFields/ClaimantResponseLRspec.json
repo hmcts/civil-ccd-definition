@@ -165,7 +165,7 @@
     "CaseFieldID": "applicant1DQLanguage",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "Language",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "ShowSummaryChangeOption": "Y"

@@ -11,7 +11,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
@@ -121,7 +121,7 @@ module.exports = {
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       removeHNLFieldsFromClaimData(createClaimData);
     }
@@ -194,7 +194,7 @@ module.exports = {
     defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim(
@@ -243,7 +243,7 @@ module.exports = {
     claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim(
         claimantResponseData);
