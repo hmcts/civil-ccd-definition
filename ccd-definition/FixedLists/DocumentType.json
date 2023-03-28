@@ -58,5 +58,11 @@
     "ListElementCode": "HEARING_FORM",
     "ListElement": "Hearing Form",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "JUDGE_FINAL_ORDER",
+    "ListElement": "Judge final order",
+    "DisplayOrder": 11
   }
 ]
