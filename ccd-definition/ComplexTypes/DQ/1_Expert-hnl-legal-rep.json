@@ -1,33 +1,35 @@
 [
   {
     "ID": "Expert",
-    "ListElementCode": "name",
+    "ListElementCode": "firstName",
     "FieldType": "Text",
-    "ElementLabel": "Expert's name",
+    "ElementLabel": "First name",
     "SecurityClassification": "Public",
+    "Max": 40,
     "Searchable": "N"
   },
   {
     "ID": "Expert",
-    "ListElementCode": "fieldOfExpertise",
+    "ListElementCode": "lastName",
     "FieldType": "Text",
-    "ElementLabel": "Field of expertise",
+    "ElementLabel": "Last name",
+    "SecurityClassification": "Public",
+    "Max": 40,
+    "Searchable": "N"
+  },
+  {
+    "ID": "Expert",
+    "ListElementCode": "emailAddress",
+    "FieldType": "Email",
+    "ElementLabel": "Email address",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "Expert",
-    "ListElementCode": "whyRequired",
-    "FieldType": "TextArea",
-    "ElementLabel": "Why do you need this expert?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "Expert",
-    "ListElementCode": "estimatedCost",
-    "FieldType": "MoneyGBP",
-    "ElementLabel": "Estimated cost",
+    "ListElementCode": "phoneNumber",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone number",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
