@@ -5,9 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access",
-          "judge-profile",
-          "legal-adviser"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       }
