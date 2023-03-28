@@ -4,8 +4,7 @@
     "ListElementCode": "expertRequired",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want to use an expert?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Experts",
@@ -14,8 +13,7 @@
     "FieldTypeParameter": "ExpertReportsSent",
     "ElementLabel": "Have you already sent expert reports or similar to other parties?",
     "FieldShowCondition": "expertRequired = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Experts",
@@ -23,8 +21,7 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you think the case is suitable for a joint expert?",
     "FieldShowCondition": "expertRequired = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Experts",
@@ -33,7 +30,6 @@
     "FieldTypeParameter": "Expert",
     "ElementLabel": "Expert details",
     "FieldShowCondition": "expertRequired = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   }
 ]

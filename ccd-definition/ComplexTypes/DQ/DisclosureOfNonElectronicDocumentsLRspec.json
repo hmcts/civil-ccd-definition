@@ -4,7 +4,6 @@
     "ListElementCode": "bespokeDirections",
     "FieldType": "Text",
     "ElementLabel": "What directions are proposed for disclosure?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   }
 ]
