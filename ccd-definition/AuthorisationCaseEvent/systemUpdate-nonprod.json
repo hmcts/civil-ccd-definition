@@ -19,7 +19,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_TRIAL_READY_FORM",
+    "CaseEventID": "GENERATE_TRIAL_READY_FORM_APPLICANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_TRIAL_READY_FORM_RESPONDENT1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_TRIAL_READY_FORM_RESPONDENT2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
