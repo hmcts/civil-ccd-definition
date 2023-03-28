@@ -1,0 +1,146 @@
+[
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "ListElementCode": "details.name",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQWitnesses",
+    "ListElementCode": "details.name",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQExperts",
+    "ListElementCode": "details.name",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQExperts",
+    "ListElementCode": "details.fieldOfExpertise",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQExperts",
+    "ListElementCode": "details.whyRequired",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQExperts",
+    "ListElementCode": "details.estimatedCost",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "hearingLength",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "hearingLengthHours",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "hearingLengthDays",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "unavailableDatesRequired",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "unavailableDates.who",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "unavailableDates.date",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "hearingLength",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "hearingLengthHours",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "hearingLengthDays",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "unavailableDatesRequired",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "unavailableDates.who",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "unavailableDates.date",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  }
+]

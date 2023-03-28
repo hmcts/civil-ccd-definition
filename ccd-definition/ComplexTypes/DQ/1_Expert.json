@@ -4,31 +4,27 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Expert's name",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Expert",
     "ListElementCode": "fieldOfExpertise",
     "FieldType": "Text",
     "ElementLabel": "Field of expertise",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Expert",
     "ListElementCode": "whyRequired",
     "FieldType": "TextArea",
     "ElementLabel": "Why do you need this expert?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Expert",
     "ListElementCode": "estimatedCost",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Estimated cost",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   }
 ]

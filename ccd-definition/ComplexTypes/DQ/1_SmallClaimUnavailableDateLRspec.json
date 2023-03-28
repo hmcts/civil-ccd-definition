@@ -5,8 +5,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "UnavailableDateChoice",
     "ElementLabel": "Add a single date or a date range",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "SmallClaimUnavailableDate",
@@ -14,8 +13,7 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\"",
-    "Searchable": "N"
+    "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\""
   },
   {
     "ID": "SmallClaimUnavailableDate",
@@ -23,8 +21,7 @@
     "FieldType": "Date",
     "ElementLabel": "Date from",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N"
+    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
   },
   {
     "ID": "SmallClaimUnavailableDate",
@@ -32,15 +29,6 @@
     "FieldType": "Date",
     "ElementLabel": "Date to",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SmallClaimUnavailableDate",
-    "ListElementCode": "who",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\""
   }
 ]

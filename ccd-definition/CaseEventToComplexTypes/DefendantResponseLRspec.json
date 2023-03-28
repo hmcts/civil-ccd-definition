@@ -78,6 +78,30 @@
     "FieldShowCondition": "respondent2=\"DO_NOT_SHOW_IN_UI\""
   },
   {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQExperts",
+    "ListElementCode": "expertRequired",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQExperts",
+    "ListElementCode": "expertReportsSent",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.estimatedCost",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Hearing",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingFastClaim",

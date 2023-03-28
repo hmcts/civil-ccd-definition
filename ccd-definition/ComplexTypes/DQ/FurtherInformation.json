@@ -4,8 +4,7 @@
     "ListElementCode": "futureApplications",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you intend to make any applications in the future?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FurtherInformation",
@@ -13,15 +12,13 @@
     "FieldType": "TextArea",
     "ElementLabel": "What for?",
     "FieldShowCondition": "futureApplications = \"Yes\"",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "ID": "FurtherInformation",
     "ListElementCode": "otherInformationForJudge",
     "FieldType": "TextArea",
     "ElementLabel": "Please provide any further information the Judge may need, including if you do not agree with the provisional track allocation of this claim",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   }
 ]

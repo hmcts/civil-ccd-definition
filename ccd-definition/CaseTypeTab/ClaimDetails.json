@@ -93,26 +93,18 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim Details",
+    "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1OrganisationPolicy",
+    "CaseFieldID": "applicant2",
     "TabFieldDisplayOrder": 14
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
+    "TabLabel": "Claim Details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant2",
-    "TabFieldDisplayOrder": 15
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
-    "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant2LitigationFriend",
-    "TabFieldDisplayOrder": 16
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "TabFieldDisplayOrder": 17
   },
   {
     "CaseTypeID": "CIVIL",
@@ -259,7 +251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondToClaimExperts2",
+    "CaseFieldID": "respondToClaim_experts2",
     "TabFieldDisplayOrder": 39
   },
   {

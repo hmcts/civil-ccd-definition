@@ -1,6 +1,6 @@
 const {I} = inject();
 const postcodeLookup = require('./addressPostcodeLookup');
-const {checkHnlLegalRepToggleEnabled} = require('../api/testingSupport');
+const {checkToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
 
@@ -26,7 +26,7 @@ module.exports = {
   },
 
   async enterLitigantFriendWithDifferentAddressToLitigant(partyType, address, file) {
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
     if (!isHNLEnabled) {
       I.fillField(this.fields(partyType).oldFields.litigationFriendName, 'John Smith');
     } else {
