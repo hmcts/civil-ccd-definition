@@ -22,39 +22,32 @@ module.exports = {
   },
 
   dateNoWeekends: async function dateNoWeekends(days = 0) {
-    let date = getDate(days);
-    var ukbankholidays;
-    /*if(bankHolidayCache.get() != null) {
-      ukbankholidays = bankHolidayCache;
-    } else {
-      const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json')
-      ukbankholidays = await rawBankHolidays.json();
-      bankHolidayCache.set(ukbankholidays);
-    }*/
-    const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
-    ukbankholidays = await rawBankHolidays.json();
-
+    const date = getDate(days);
     let date_month = date.getMonth() + 1;
     let date_date = date.getDate();
-    if(date_month.toString().length == 1) {
-      date_month = '0' + date_month;
+    if (date_month.toString().length == 1) {
+      date_month = "0" + date_month;
     }
-    if(date_date.toString().length == 1) {
-      date_date = '0' + date_date;
+    if (date_date.toString().length == 1) {
+      date_date = "0" + date_date;
     }
-    let date_String = date.getFullYear() + '-' + date_month + '-' + date_date  ;
-    console.log(date_String);
-    const isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
-    console.log(isDateABankHoliday);
-
-    if(date.getDay() !== 6 && date.getDay() !== 0 && !isDateABankHoliday) {
+    let date_String = date.getFullYear() + "-" + date_month + "-" + date_date;
+    let isDateABankHoliday = false;
+    try {
+      const rawBankHolidays = await fetch("https://www.gov.uk/bank-holidays.json");
+      const ukbankholidays = await rawBankHolidays.json();
+      console.log(date_String);
+      isDateABankHoliday = JSON.stringify(ukbankholidays["england-and-wales"].events).includes(date_String);
+      console.log(isDateABankHoliday);
+    } catch (err) {
+      console.log('Error while fetching UK Bank Holidays...', err)
+    }
+    if (date.getDay() !== 6 && date.getDay() !== 0 && !isDateABankHoliday) {
       return date.toISOString().slice(0, 10);
     } else {
       return await dateNoWeekends(days - 1);
     }
-
   },
-
   dateTime: (days = 0) => {
     return getDateTimeISOString(days);
   },
