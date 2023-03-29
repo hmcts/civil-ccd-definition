@@ -27,7 +27,6 @@ module.exports = {
     if (date.getDay() !== 6 && date.getDay() !== 0) {
       if(date.getDay() == 1 || date.getDay() == 5) {
         try {
-          console.log('------------------------here-----------------------');
           const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
           const ukbankholidays = await rawBankHolidays.json();
           isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
@@ -35,7 +34,7 @@ module.exports = {
             return date_String;
           }
         } catch (err) {
-          console.log('Error while fetching UK Bank Holidays...', err);
+          console.warn('Error while fetching UK Bank Holidays...', err);
         }
       } else {
         return date_String;
