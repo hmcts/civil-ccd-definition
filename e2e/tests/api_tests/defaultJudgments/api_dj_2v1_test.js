@@ -38,12 +38,12 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
-  await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
 });
 
-Scenario('Schedule a hearing', async ({I, api}) => {
+Scenario('Case progression tests', async ({I, api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
   }
 });

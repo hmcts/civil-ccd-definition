@@ -166,8 +166,6 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable - hearing
       const task = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.notSuitableSdo);
       WA.validateTaskInfo(task, transferOfflineSdoTask);
     }
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
   }
 });
 
