@@ -22,30 +22,29 @@ module.exports = {
 
   dateNoWeekends: async function dateNoWeekends(days = 0) {
     const date = getDate(days);
-    let date_month = date.getMonth() + 1;
-    let date_date = date.getDate();
-    if (date_month.toString().length == 1) {
-      date_month = '0' + date_month;
-    }
-    if (date_date.toString().length == 1) {
-      date_date = '0' + date_date;
-    }
-    let date_String = date.getFullYear() + '-' + date_month + '-' + date_date;
+    let date_String = date.toISOString().slice(0, 10);
     let isDateABankHoliday = false;
-    try {
-      console.log("--------------------calling bank holiday----------------------");
-      const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
-      const ukbankholidays = await rawBankHolidays.json();
-      isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
-    } catch (err) {
-      console.log('Error while fetching UK Bank Holidays...', err);
-    }
-    if (date.getDay() !== 6 && date.getDay() !== 0 && !isDateABankHoliday) {
-      return date.toISOString().slice(0, 10);
+    if (date.getDay() !== 6 && date.getDay() !== 0) {
+      return date_String;
     } else {
-      return await dateNoWeekends(days - 1);
+      if(date.getDay() == 1 || date.getDay() == 5) {
+        try {
+          const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
+          const ukbankholidays = await rawBankHolidays.json();
+          isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
+        } catch (err) {
+          console.log('Error while fetching UK Bank Holidays...', err);
+        }
+      }
+      if (!isDateABankHoliday) {
+        return date_String;
+      } else {
+        return await dateNoWeekends(days - 1);
+      }
+
     }
   },
+
   dateTime: (days = 0) => {
     return getDateTimeISOString(days);
   },
