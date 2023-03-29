@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const uuid = require('uuid');
 const config = require('../config.js');
 const address = require('../fixtures/address');
-
 const getDateTimeISOString = days => {
   const date = new Date();
   date.setDate(date.getDate() + days);
@@ -34,6 +33,7 @@ module.exports = {
     let date_String = date.getFullYear() + '-' + date_month + '-' + date_date;
     let isDateABankHoliday = false;
     try {
+      console.log("--------------------calling bank holiday----------------------");
       const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
       const ukbankholidays = await rawBankHolidays.json();
       isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
