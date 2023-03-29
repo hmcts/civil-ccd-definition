@@ -17,7 +17,8 @@
     "ID": "RespondentLiPResponse",
     "ListElementCode": "evidenceComment",
     "ElementLabel": " ",
-    "FieldType": "Text"
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   },
   {
     "ID": "RespondentLiPResponse",
