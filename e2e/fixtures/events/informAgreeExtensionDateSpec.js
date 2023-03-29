@@ -5,7 +5,7 @@ module.exports = {
     const extension = {
       userInput: {
         ExtensionDate: {
-          respondentSolicitor1AgreedDeadlineExtension: await dateNoWeekends(33)
+          respondentSolicitor1AgreedDeadlineExtension: await dateNoWeekends(40)
         }
       },
       midEventData: {

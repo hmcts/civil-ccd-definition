@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const uuid = require('uuid');
 const config = require('../config.js');
 const address = require('../fixtures/address');
-const NodeCache = require("node-cache");
 
 const getDateTimeISOString = days => {
   const date = new Date();
