@@ -88,13 +88,17 @@ module.exports = {
             ccjPaymentPaidSomeOption: 'Yes',
             ccjPaymentPaidSomeAmount: '1000',
           },
+          FixedCost: {
+            ccjJudgmentFixedCostOption: 'Yes',
+          },
           CcjJudgmentSummary: {
             ccjJudgmentAmountClaimAmount: '1000',
             ccjJudgmentAmountInterestToDate: '35',
             ccjJudgmentAmountClaimFee: '100',
-            ccjJudgmentAmountSubtotal: '1135',
+            ccjJudgmentFixedCostAmount: '40',
+            ccjJudgmentAmountSubtotal: '1175',
             ccjPaymentPaidSomeAmountInPounds: '10',
-            ccjJudgmentTotalStillOwed: '1125'
+            ccjJudgmentTotalStillOwed: '1165'
           },
           IntentionToSettleClaim: {
             applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
