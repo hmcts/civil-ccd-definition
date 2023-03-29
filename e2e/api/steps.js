@@ -17,11 +17,11 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
-  checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
+  checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled, checkPBAv3IsEnabled
 } = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
@@ -70,7 +70,8 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user)
 };
 
 const eventData = {
@@ -146,7 +147,7 @@ module.exports = {
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+    const pbaV3 = await checkPBAv3IsEnabled();
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
     // Remove after court location toggle is removed
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
@@ -213,7 +214,7 @@ module.exports = {
     mpScenario = multipartyScenario;
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+    const pbaV3 = await checkPBAv3IsEnabled();
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -1079,6 +1080,22 @@ module.exports = {
     const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN');
     assert.equal(updatedCaseState, 'CASE_DISMISSED');
     console.log('State moved to:'+ updatedCaseState);
+  },
+
+  trialReadiness: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    var event = 'TRIAL_READINESS';
+    caseData = await apiRequest.startEvent(event, caseId);
+
+    let readinessData = data.TRIAL_READINESS(user);
+
+    for (let pageId of Object.keys(readinessData.valid)) {
+      await assertValidData(readinessData, pageId);
+    }
+
+    await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
+    await waitForFinishedBusinessProcess(caseId);
   }
 };
 
