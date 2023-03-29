@@ -1,6 +1,8 @@
+const fetch = require('node-fetch');
 const uuid = require('uuid');
 const config = require('../config.js');
 const address = require('../fixtures/address');
+const NodeCache = require("node-cache");
 
 const getDateTimeISOString = days => {
   const date = new Date();
@@ -14,19 +16,44 @@ const getDate = days => {
   return date;
 };
 
+
 module.exports = {
   date: (days = 0) => {
     return getDateTimeISOString(days).slice(0, 10);
   },
 
-  dateNoWeekends: function dateNoWeekends(days = 0) {
+  dateNoWeekends: async function dateNoWeekends(days = 0) {
     let date = getDate(days);
+    var ukbankholidays;
+    /*if(bankHolidayCache.get() != null) {
+      ukbankholidays = bankHolidayCache;
+    } else {
+      const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json')
+      ukbankholidays = await rawBankHolidays.json();
+      bankHolidayCache.set(ukbankholidays);
+    }*/
+    const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json')
+    ukbankholidays = await rawBankHolidays.json();
 
-    if(date.getDay() !== 6 && date.getDay() !== 0) {
+    let date_month = date.getMonth() + 1;
+    let date_date = date.getDate();
+    if(date_month.toString().length == 1) {
+      date_month = "0" + date_month;
+    }
+    if(date_date.toString().length == 1) {
+      date_date = "0" + date_date;
+    }
+    let date_String = date.getFullYear() + "-" + date_month + "-" + date_date  ;
+    console.log(date_String);
+    const isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
+    console.log(isDateABankHoliday);
+
+    if(date.getDay() !== 6 && date.getDay() !== 0 && !isDateABankHoliday) {
       return date.toISOString().slice(0, 10);
     } else {
-      return dateNoWeekends(days - 1);
+      return await dateNoWeekends(days - 1);
     }
+
   },
 
   dateTime: (days = 0) => {
