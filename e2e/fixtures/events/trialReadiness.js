@@ -8,9 +8,12 @@ const trialReadyClaimant = {
           revisedHearingRequirements: 'Yes',
           revisedHearingComments: 'string'
         },
-        applicantHearingOtherComments:'string'
+        applicantHearingOtherComments:{
+          hearingOtherComments: 'string'
+        }
       }
-    }};
+    }
+};
 
 const trialReadyDefendant1 = {
   valid:{
@@ -20,9 +23,12 @@ const trialReadyDefendant1 = {
         revisedHearingRequirements: 'Yes',
         revisedHearingComments: 'string'
       },
-      respondent1HearingOtherComments:'string'
+      respondent1HearingOtherComments:{
+        hearingOtherComments: 'string'
+      }
     }
-  }};
+  }
+};
 
 const trialReadyDefendant2 = {
   valid:{
@@ -32,13 +38,16 @@ const trialReadyDefendant2 = {
         revisedHearingRequirements: 'Yes',
         revisedHearingComments: 'string'
       },
-      respondent2HearingOtherComments:'string'
+      respondent2HearingOtherComments: {
+        hearingOtherComments: 'string'
+      }
     }
-  }};
+  }
+};
 
 module.exports = {
 
-  scheduleHearing: (user) => {
+  confirmTrialReady: (user) => {
 
     switch(user)
     {

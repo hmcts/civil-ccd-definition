@@ -1065,6 +1065,7 @@ module.exports = {
     assert.equal(response_msg.status, 200);
     console.log('Hearing Fee Paid');
 
+    await apiRequest.setupTokens(config.applicantSolicitorUser);
     const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
     assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
     console.log('State moved to:'+updatedCaseState);
@@ -1077,7 +1078,7 @@ module.exports = {
     assert.equal(response_msg.status, 200);
     console.log('Hearing Fee Unpaid');
 
-    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN');
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN', user);
     assert.equal(updatedCaseState, 'CASE_DISMISSED');
     console.log('State moved to:'+ updatedCaseState);
   },
@@ -1085,8 +1086,8 @@ module.exports = {
   trialReadiness: async (user) => {
     await apiRequest.setupTokens(user);
 
-    var event = 'TRIAL_READINESS';
-    caseData = await apiRequest.startEvent(event, caseId);
+    eventName = 'TRIAL_READINESS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
 
     let readinessData = data.TRIAL_READINESS(user);
 
