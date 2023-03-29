@@ -31,18 +31,18 @@ module.exports = {
       ukbankholidays = await rawBankHolidays.json();
       bankHolidayCache.set(ukbankholidays);
     }*/
-    const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json')
+    const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
     ukbankholidays = await rawBankHolidays.json();
 
     let date_month = date.getMonth() + 1;
     let date_date = date.getDate();
     if(date_month.toString().length == 1) {
-      date_month = "0" + date_month;
+      date_month = '0' + date_month;
     }
     if(date_date.toString().length == 1) {
-      date_date = "0" + date_date;
+      date_date = '0' + date_date;
     }
-    let date_String = date.getFullYear() + "-" + date_month + "-" + date_date  ;
+    let date_String = date.getFullYear() + '-' + date_month + '-' + date_date  ;
     console.log(date_String);
     const isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
     console.log(isDateABankHoliday);
