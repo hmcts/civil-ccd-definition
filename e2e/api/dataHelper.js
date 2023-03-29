@@ -26,21 +26,19 @@ module.exports = {
     let date_month = date.getMonth() + 1;
     let date_date = date.getDate();
     if (date_month.toString().length == 1) {
-      date_month = "0" + date_month;
+      date_month = '0' + date_month;
     }
     if (date_date.toString().length == 1) {
-      date_date = "0" + date_date;
+      date_date = '0' + date_date;
     }
-    let date_String = date.getFullYear() + "-" + date_month + "-" + date_date;
+    let date_String = date.getFullYear() + '-' + date_month + '-' + date_date;
     let isDateABankHoliday = false;
     try {
-      const rawBankHolidays = await fetch("https://www.gov.uk/bank-holidays.json");
+      const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
       const ukbankholidays = await rawBankHolidays.json();
-      console.log(date_String);
-      isDateABankHoliday = JSON.stringify(ukbankholidays["england-and-wales"].events).includes(date_String);
-      console.log(isDateABankHoliday);
+      isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
     } catch (err) {
-      console.log('Error while fetching UK Bank Holidays...', err)
+      console.log('Error while fetching UK Bank Holidays...', err);
     }
     if (date.getDay() !== 6 && date.getDay() !== 0 && !isDateABankHoliday) {
       return date.toISOString().slice(0, 10);
