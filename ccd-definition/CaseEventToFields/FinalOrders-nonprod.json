@@ -132,6 +132,7 @@
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
+    "RetainHiddenValue": "Y",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_ON_COURT_INITIATIVE\""
   },
@@ -143,6 +144,7 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
+    "RetainHiddenValue": "Y",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_WITHOUT_NOTICE\""
   },
