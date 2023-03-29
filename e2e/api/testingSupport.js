@@ -241,6 +241,25 @@ module.exports =  {
       'POST');
 
     return await response.json();
+  },
+
+  triggerBundle: async (caseId) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.responseMsg;
+          } else {
+            throw new Error(`Error when triggering trial bundle with status : ${response.status}`);
+          }
+        }
+      );
   }
 
 };
