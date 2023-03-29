@@ -26,5 +26,19 @@
     "ElementLabel": " ",
     "FieldType": "HearingSupportLip",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPContactPerson",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPCorrespondenceAddress",
+    "ElementLabel": " ",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
   }
 ]
