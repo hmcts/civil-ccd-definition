@@ -5,9 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access",
-          "judge-profile",
-          "legal-adviser"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       }
@@ -249,6 +247,18 @@
       {
         "UserRoles": [
           "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "BUNDLE_CREATION_NOTIFICATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
