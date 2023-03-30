@@ -21,10 +21,10 @@ const retrieveBankHolidays = async function() {
     return _bankHolidays;
   }
   try {
-    console.debug("About to retrieve bank holidays from gov.uk");
+    console.debug('About to retrieve bank holidays from gov.uk');
     const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
     _bankHolidays = await rawBankHolidays.json();
-    console.debug("Successfully retrieved and cached bank holidays from gov.uk");
+    console.debug('Successfully retrieved and cached bank holidays from gov.uk');
   } catch (err) {
     console.warn('Error while fetching UK Bank Holidays...', err);
   }
