@@ -32,6 +32,8 @@ module.exports = {
           isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
           if (!isDateABankHoliday) {
             return date_String;
+          } else {
+            return await dateNoWeekends(days - 1);
           }
         } catch (err) {
           console.warn('Error while fetching UK Bank Holidays...', err);
