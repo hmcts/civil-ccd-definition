@@ -19,6 +19,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
@@ -68,7 +69,8 @@ const data = {
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
-  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput)
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
 };
 
 const eventData = {
@@ -1026,6 +1028,25 @@ module.exports = {
       await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
   },
+
+  scheduleHearing: async (user, allocatedTrack) => {
+  console.log('Hearing Scheduled for case id ' + caseId);
+  await apiRequest.setupTokens(user);
+
+  eventName = 'HEARING_SCHEDULED';
+
+  caseData = await apiRequest.startEvent(eventName, caseId);
+  delete caseData['SearchCriteria'];
+
+  let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+  for (let pageId of Object.keys(scheduleData.valid)) {
+    await assertValidData(scheduleData, pageId);
+  }
+
+  await assertSubmittedEvent('HEARING_READINESS', null, false);
+  await waitForFinishedBusinessProcess(caseId);
+  }
 };
 
 // Functions
@@ -1062,6 +1083,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
+  {
+    responseBody = clearHearingLocationData(responseBody);
   }
 
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
@@ -1513,6 +1538,11 @@ const clearDataForSearchCriteria = (responseBody) => {
 
 const clearNoCData = (responseBody) => {
   delete responseBody.data['changeOfRepresentation'];
+  return responseBody;
+};
+
+const clearHearingLocationData = (responseBody) => {
+  delete responseBody.data['hearingLocation'];
   return responseBody;
 };
 
