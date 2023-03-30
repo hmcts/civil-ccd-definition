@@ -91,7 +91,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOU
     await api.trialReadiness(config.applicantSolicitorUser);
     await api.trialReadiness(config.defendantSolicitorUser);
   }
-  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api}) => {
@@ -104,7 +103,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH s
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
     await api.trialReadiness(config.applicantSolicitorUser);
     await api.trialReadiness(config.defendantSolicitorUser);
-  }
   }
 });
 
@@ -119,7 +117,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum
     await api.trialReadiness(config.applicantSolicitorUser);
     await api.trialReadiness(config.defendantSolicitorUser);
   }
-  }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api}) => {
@@ -132,7 +129,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
     await api.trialReadiness(config.applicantSolicitorUser);
     await api.trialReadiness(config.defendantSolicitorUser);
-  }
   }
 });
 
