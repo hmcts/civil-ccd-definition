@@ -188,7 +188,7 @@
       {
         "UserRoles": [
           "hearing-schedule-access",
-          caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
