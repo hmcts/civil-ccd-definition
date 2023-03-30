@@ -32,16 +32,22 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
   }
 });
 
-Scenario('Default Judgment claim SDO - Hearing Fee Paid', async ({I, api}) => {
+Scenario('Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
-  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
-  await api.amendHearingDueDate(config.systemupdate);
-  await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-  await api.trialReadiness(config.applicantSolicitorUser);
-  await api.trialReadiness(config.defendantSolicitorUser);
+});
+
+Scenario('Schedule A Hearing', async ({api, WA}) => {
+  // sdo requires judicial_referral, which is not past preview
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    await api.trialReadiness(config.applicantSolicitorUser);
+    await api.trialReadiness(config.defendantSolicitorUser);
+  }
 });
 
 Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {

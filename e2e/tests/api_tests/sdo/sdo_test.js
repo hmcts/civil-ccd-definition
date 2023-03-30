@@ -86,6 +86,11 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOU
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    await api.trialReadiness(config.applicantSolicitorUser);
+    await api.trialReadiness(config.defendantSolicitorUser);
+  }
   }
 });
 
@@ -95,6 +100,11 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH s
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    await api.trialReadiness(config.applicantSolicitorUser);
+    await api.trialReadiness(config.defendantSolicitorUser);
+  }
   }
 });
 
@@ -104,6 +114,11 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    await api.trialReadiness(config.applicantSolicitorUser);
+    await api.trialReadiness(config.defendantSolicitorUser);
+  }
   }
 });
 
@@ -113,6 +128,11 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    await api.trialReadiness(config.applicantSolicitorUser);
+    await api.trialReadiness(config.defendantSolicitorUser);
+  }
   }
 });
 
