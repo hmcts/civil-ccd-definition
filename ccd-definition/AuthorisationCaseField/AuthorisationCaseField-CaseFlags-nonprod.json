@@ -286,5 +286,24 @@
         "CRUD": "R"
       }
     ]
+  },
+  ,
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "urgentFlag",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseflags-admin"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseflags-viewer"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
