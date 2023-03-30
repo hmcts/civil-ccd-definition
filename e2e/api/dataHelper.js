@@ -37,7 +37,6 @@ module.exports = {
     return getDateTimeISOString(days).slice(0, 10);
   },
 
-
   dateNoWeekends: async function dateNoWeekends(days = 0) {
     const date = getDate(days);
     let date_String = date.toISOString().slice(0, 10);
