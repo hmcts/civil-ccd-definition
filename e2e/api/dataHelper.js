@@ -18,6 +18,7 @@ var _bankHolidays = null;
 
 const retrieveBankHolidays = async function() {
   if (_bankHolidays != null) {
+    console.log("Using cached bank holidays collection");
     return _bankHolidays;
   }
   try {
