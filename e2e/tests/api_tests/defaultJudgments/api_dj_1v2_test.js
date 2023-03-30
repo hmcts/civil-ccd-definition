@@ -8,7 +8,7 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('CCD 1v1 API test @api-dj-1v2, @api-dj @dmn-task-dj');
+Feature('CCD 1v2 API test @api-dj-1v2, @api-dj @dmn-task-dj');
 
 let caseId;
 
@@ -42,7 +42,6 @@ Scenario('Default Judgment claim SDO - Hearing Fee Paid', async ({I, api}) => {
   await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
   await api.trialReadiness(config.applicantSolicitorUser);
   await api.trialReadiness(config.defendantSolicitorUser);
-  await api.trialReadiness(config.secondDefendantSolicitorUser);
 });
 
 Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
