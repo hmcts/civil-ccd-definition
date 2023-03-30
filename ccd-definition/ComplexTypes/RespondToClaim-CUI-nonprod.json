@@ -1,13 +1,6 @@
 [
   {
     "ID": "RespondentLiPResponse",
-    "ListElementCode": "partialAdmissionAlreadyPaid",
-    "ElementLabel": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "RespondentLiPResponse",
     "ListElementCode": "timelineComment",
     "ElementLabel": " ",
     "FieldType": "Text",
