@@ -166,7 +166,7 @@ Scenario('Defendant solicitor uploads evidence', async ({I}) => {
 
 Scenario('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
 }).retry(3);
 
