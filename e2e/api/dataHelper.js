@@ -17,14 +17,11 @@ const getDate = days => {
 const retrieveBankHolidays = async function() {
   try {
     const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
-    _bankHolidays = await rawBankHolidays.json();
+    return await rawBankHolidays.json();
   } catch (err) {
     console.warn('Error while fetching UK Bank Holidays. On specific days tests may fail because of this.', err);
   }
-  return _bankHolidays;
 };
-
-retrieveBankHolidays(); // eager initialization, just to see if it works.
 
 module.exports = {
   date: (days = 0) => {
