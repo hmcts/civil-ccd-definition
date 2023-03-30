@@ -505,7 +505,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNamePublic",
     "CaseFieldID": "respondent1LitigationFriend",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
