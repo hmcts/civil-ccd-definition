@@ -14,18 +14,10 @@ const getDate = days => {
   return date;
 };
 
-var _bankHolidays = null;
-
 const retrieveBankHolidays = async function() {
-  if (_bankHolidays != null) {
-    console.log('Using cached bank holidays collection');
-    return _bankHolidays;
-  }
   try {
-    console.debug('About to retrieve bank holidays from gov.uk');
     const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
     _bankHolidays = await rawBankHolidays.json();
-    console.log('Successfully retrieved and cached bank holidays from gov.uk');
   } catch (err) {
     console.warn('Error while fetching UK Bank Holidays. On specific days tests may fail because of this.', err);
   }
