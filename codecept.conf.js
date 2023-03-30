@@ -63,7 +63,7 @@ exports.config = {
     },
   },
   mocha: {
-    bail: true,
+    bail: false,
     reporterOptions: {
       'codeceptjs-cli-reporter': {
         stdout: '-',
