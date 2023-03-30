@@ -300,7 +300,8 @@
       },
       {
         "UserRoles": [
-          "caseflags-viewer"
+          "caseflags-viewer",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
