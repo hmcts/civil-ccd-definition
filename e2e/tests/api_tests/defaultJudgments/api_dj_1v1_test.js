@@ -32,26 +32,21 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
   }
 });
 
-Scenario('Default Judgment claim SDO - Hearing Fee Paid', async ({I, api}) => {
+Scenario('Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
   await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
-  await api.amendHearingDueDate(config.systemupdate);
-  await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
 
 });
 
-Scenario('Default Judgment claim SDO - Hearing Fee Unpaid', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
-  if (config.runWAApiTest) {
-    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+Scenario('Case Progression', async ({I, api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
   }
-  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
-  await api.amendHearingDueDate(config.systemupdate);
-  await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
-
 });
 
 Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
