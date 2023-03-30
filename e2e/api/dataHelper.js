@@ -26,7 +26,7 @@ const retrieveBankHolidays = async function() {
     _bankHolidays = await rawBankHolidays.json();
     console.debug('Successfully retrieved and cached bank holidays from gov.uk');
   } catch (err) {
-    console.warn('Error while fetching UK Bank Holidays...', err);
+    console.warn('Error while fetching UK Bank Holidays. On specific days tests may fail because of this.', err);
   }
   return _bankHolidays;
 };
