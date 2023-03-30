@@ -40,7 +40,7 @@ module.exports = {
   dateNoWeekends: async function dateNoWeekends(days = 0) {
     const date = getDate(days);
     let date_String = date.toISOString().slice(0, 10);
-    if (date.getDay() == 6 && date.getDay() == 0) {
+    if (date.getDay() == 6 || date.getDay() == 0) {
       return await dateNoWeekends(days - 1);
     }
     const ukbankholidays = await retrieveBankHolidays();
