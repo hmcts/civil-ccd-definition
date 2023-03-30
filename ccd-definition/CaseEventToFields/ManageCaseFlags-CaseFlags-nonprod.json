@@ -210,9 +210,9 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "urgentFlag",
-    "PageFieldDisplayOrder": 17,
+    "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
-    "PageID": "CreateCaseFlags",
+    "PageID": "ManageCaseFlags",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_UI\""
