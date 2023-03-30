@@ -58,5 +58,23 @@
     "CaseEventID": "CREATE_SERVICE_REQUEST_API",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_BUNDLE_CREATED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_BUNDLE_CREATED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_BUNDLE_CREATED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
