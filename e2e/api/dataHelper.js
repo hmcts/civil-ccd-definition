@@ -14,34 +14,42 @@ const getDate = days => {
   return date;
 };
 
+var _bankHolidays = null;
+
+const retrieveBankHolidays = async function() {
+  if (_bankHolidays != null) {
+    return _bankHolidays;
+  }
+  try {
+    console.debug("About to retrieve bank holidays from gov.uk");
+    const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
+    _bankHolidays = await rawBankHolidays.json();
+    console.debug("Successfully retrieved and cached bank holidays from gov.uk");
+  } catch (err) {
+    console.warn('Error while fetching UK Bank Holidays...', err);
+  }
+  return _bankHolidays;
+};
+
 
 module.exports = {
   date: (days = 0) => {
     return getDateTimeISOString(days).slice(0, 10);
   },
 
+
   dateNoWeekends: async function dateNoWeekends(days = 0) {
     const date = getDate(days);
     let date_String = date.toISOString().slice(0, 10);
-    let isDateABankHoliday = false;
-    if (date.getDay() !== 6 && date.getDay() !== 0) {
-      if(date.getDay() == 1 || date.getDay() == 5) {
-        try {
-          const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
-          const ukbankholidays = await rawBankHolidays.json();
-          isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
-          if (!isDateABankHoliday) {
-            return date_String;
-          }
-        } catch (err) {
-          console.warn('Error while fetching UK Bank Holidays...', err);
-        }
-      } else {
-        return date_String;
-      }
-    } else {
+    if (date.getDay() == 6 && date.getDay() == 0) {
       return await dateNoWeekends(days - 1);
     }
+    const ukbankholidays = await retrieveBankHolidays();
+    let isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
+    if (isDateABankHoliday) {
+      return await dateNoWeekends(days - 1);
+    }
+    return date_String;
   },
 
   dateTime: (days = 0) => {
