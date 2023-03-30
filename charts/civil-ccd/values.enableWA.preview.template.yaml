@@ -62,7 +62,7 @@ wa-task-management-api:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: hmcts
       POSTGRES_CONNECTION_OPTIONS: ""
-      CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
+      CCD_URL: ccd-data-store-api-${SERVICE_FQDN}
 
 wa-task-monitor:
   java:
