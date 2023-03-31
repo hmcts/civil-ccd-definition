@@ -22,6 +22,7 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
@@ -73,6 +74,7 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote)
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
@@ -1054,12 +1056,30 @@ module.exports = {
   await waitForFinishedBusinessProcess(caseId);
   },
 
+  evidenceUploadJudge: async (user, typeOfNote, currentState) => {
+    console.log('Evidence Upload of type:' + typeOfNote);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'EVIDENCE_UPLOAD_JUDGE';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    let caseNoteData = data.EVIDENCE_UPLOAD_JUDGE(typeOfNote);
+
+    for (let pageId of Object.keys(caseNoteData.valid)) {
+      await assertValidData(caseNoteData, pageId);
+    }
+
+    await assertSubmittedEvent(currentState, null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   triggerBundle: async () => {
     const response_msg = await apiRequest.bundleTriggerEvent(caseId);
     const response = await response_msg.text();
     assert.equal(response, 'success');
   },
-  
+
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
