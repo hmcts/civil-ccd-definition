@@ -12,7 +12,7 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "Y",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "publish": "Y"
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -27,6 +27,6 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "Y",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "publish": "Y"
+    "Publish": "Y"
   }
 ]
