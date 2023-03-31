@@ -53,7 +53,7 @@
     "ListElement": "Default Judgment Order",
     "DisplayOrder": 9
   },
-    {
+  {
     "ID": "DocumentType",
     "ListElementCode": "HEARING_FORM",
     "ListElement": "Hearing Form",

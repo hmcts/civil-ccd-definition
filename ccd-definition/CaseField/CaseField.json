@@ -2148,6 +2148,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "paymentTypePBA",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "registrationTypeRespondentOne",
     "Label": "registration information respondent one",
     "FieldType": "Collection",
