@@ -37,8 +37,12 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
-  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+});
 
+Scenario('Schedule a hearing', async ({I, api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+  }
 });
 
 Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
