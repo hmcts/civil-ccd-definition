@@ -1,5 +1,3 @@
-const {dateNoWeekends} = require('../../api/dataHelper');
-
 module.exports = {
   informExtension: async (camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const extension = {

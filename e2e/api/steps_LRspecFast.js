@@ -22,7 +22,7 @@ const {removeHNLFieldsFromClaimData,
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-const {dateNoWeekends} = require("./dataHelper");
+const {dateNoWeekends} = require('./dataHelper');
 
 
 let caseId, eventName;

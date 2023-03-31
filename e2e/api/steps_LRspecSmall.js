@@ -20,7 +20,7 @@ const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSp
 const {checkToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-const {dateNoWeekends} = require("./dataHelper");
+const {dateNoWeekends} = require('./dataHelper');
 
 let caseId, eventName;
 let caseData = {};
