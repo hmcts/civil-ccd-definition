@@ -1036,22 +1036,23 @@ module.exports = {
   },
 
   scheduleHearing: async (user, allocatedTrack) => {
-  console.log('Hearing Scheduled for case id ' + caseId);
-  await apiRequest.setupTokens(user);
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
 
-  eventName = 'HEARING_SCHEDULED';
+    eventName = 'HEARING_SCHEDULED';
 
-  caseData = await apiRequest.startEvent(eventName, caseId);
-  delete caseData['SearchCriteria'];
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
 
-  let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
 
-  for (let pageId of Object.keys(scheduleData.valid)) {
-    await assertValidData(scheduleData, pageId);
-  }
+    for (let pageId of Object.keys(scheduleData.valid)) {
+      await assertValidData(scheduleData, pageId);
+    }
 
-  await assertSubmittedEvent('HEARING_READINESS', null, false);
-  await waitForFinishedBusinessProcess(caseId);
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+
   },
 
   hearingFeePaid: async (user) => {
@@ -1079,6 +1080,7 @@ module.exports = {
     const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN');
     assert.equal(updatedCaseState, 'CASE_DISMISSED');
     console.log('State moved to:'+ updatedCaseState);
+
   }
 };
 
