@@ -1079,7 +1079,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "claimProceedsInCasemanLR",
     "Label": "Case proceeds in Caseman",
-    "FieldType": "ClaimProceedsInCasemanLR",
+    "FieldType": "ClaimProceedsInCaseman",
     "SecurityClassification": "Public"
   },
   {
