@@ -89,16 +89,28 @@ Scenario('Add case flags', async ({LRspec}) => {
 });
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
+   await LRspec.login(config.judgeUserWithRegionId1);
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await LRspec.waitForText('Summary');
+   await LRspec.initiateSDO('yes', 'yes', null, null);
+}).retry(3);
+
+Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.judgeUserWithRegionId1);
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
-    await LRspec.waitForText('Summary');
-    await LRspec.initiateSDO('yes', 'yes', null, null);
+    await LRspec.login(config.applicantSolicitorUser);
+    await LRspec.evidenceUpload(caseId(), false);
+  }
+}).retry(3);
+
+Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.defendantSolicitorUser);
+    await LRspec.evidenceUpload(caseId(), true);
   }
 }).retry(3);
 
 // ToDo: Refactor to trigger create case flags event
-Scenario.skip('Add case flags', async ({LRspec}) => {
+Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
   // await I.createCaseFlags();
   await LRspec.validateCaseFlags([
