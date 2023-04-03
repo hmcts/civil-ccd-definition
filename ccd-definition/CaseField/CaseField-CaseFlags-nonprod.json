@@ -66,5 +66,12 @@
     "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "urgentFlag",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   }
 ]
