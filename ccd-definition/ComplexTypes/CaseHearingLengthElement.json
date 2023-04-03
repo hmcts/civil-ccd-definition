@@ -24,8 +24,7 @@
     "HintText": "For example, 4",
     "FieldType": "Number",
     "SecurityClassification": "Public",
-    "Min": 0,
-    "Max": 23
+    "RegularExpression": "^([0-9]|[1-9][0-9]|[1-9][0-9][0-9])$"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -35,7 +34,6 @@
     "HintText": "For example, 0",
     "FieldType": "Number",
     "SecurityClassification": "Public",
-    "Min": 0,
-    "Max": 59
+    "RegularExpression": "[0-9]|[0-5][0-9]"
   }
 ]
