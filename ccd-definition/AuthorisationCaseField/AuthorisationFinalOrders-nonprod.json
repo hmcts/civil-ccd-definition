@@ -33,7 +33,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseParticipantsFreeForm",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderMadeSelectionLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormRecitalAndOrderLabel",
     "UserRoles": [
       "judge-profile"
     ],
@@ -49,7 +65,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormRecitalTextArea",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDateHeardComplex",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormRecordedTextAreaLabel",
     "UserRoles": [
       "judge-profile"
     ],
@@ -65,7 +97,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormRecordedTextArea",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderJudgeHeardLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormOrderedLabel",
     "UserRoles": [
       "judge-profile"
     ],
@@ -81,6 +129,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormOrderedTextArea",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRepresentation",
     "UserRoles": [
       "judge-profile"
@@ -89,7 +145,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderOnCourtsListLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRecitalsLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderOnCourtsList",
     "UserRoles": [
       "judge-profile"
     ],
@@ -306,6 +378,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderOnCourtInitiative",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "orderWithoutNotice",
     "UserRoles": [
       "judge-profile"
     ],
