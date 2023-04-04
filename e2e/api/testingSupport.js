@@ -241,5 +241,6 @@ module.exports =  {
       'POST');
 
     return await response.json();
-  },
+  }
+
 };
