@@ -1051,7 +1051,7 @@ module.exports = {
   triggerBundle: async () => {
     const response_msg = await apiRequest.bundleTriggerEvent(caseId);
     const response = await response_msg.text();
-    assert.equal(response, "success");
+    assert.equal(response, 'success');
   }
 };
 

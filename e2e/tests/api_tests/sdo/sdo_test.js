@@ -156,7 +156,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
       WA.validateTaskInfo(task, smallClaimDirectionsTask);
     }
     await api.createSDO(legalAdvUser);
-    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');,
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
