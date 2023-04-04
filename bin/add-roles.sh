@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # User used during the CCD import and ccd-role creation
 ./bin/utils/ccd-add-role.sh "caseworker-civil"
