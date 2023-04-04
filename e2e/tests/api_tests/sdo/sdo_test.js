@@ -34,6 +34,9 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -43,6 +46,9 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -52,6 +58,9 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -62,6 +71,9 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -77,6 +89,9 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOU
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -86,6 +101,9 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH s
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -104,6 +122,9 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -118,6 +139,9 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
     }
     await api.createSDO(judgeUser);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -132,7 +156,10 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
       WA.validateTaskInfo(task, smallClaimDirectionsTask);
     }
     await api.createSDO(legalAdvUser);
-    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');,
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 

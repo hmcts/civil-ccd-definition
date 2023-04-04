@@ -1046,6 +1046,12 @@ module.exports = {
 
   await assertSubmittedEvent('HEARING_READINESS', null, false);
   await waitForFinishedBusinessProcess(caseId);
+  },
+
+  triggerBundle: async () => {
+    const response_msg = await apiRequest.bundleTriggerEvent(caseId);
+    const response = await response_msg.text();
+    assert.equal(response, "success");
   }
 };
 

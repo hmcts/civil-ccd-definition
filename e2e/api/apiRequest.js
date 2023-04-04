@@ -14,7 +14,7 @@ const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${t
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
-const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
+const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -181,5 +181,16 @@ module.exports = {
       serviceRequestUpdateDto,'PUT');
 
     return response || {};
-  }
+  },
+
+  bundleTriggerEvent: async(caseId) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getBundleTriggerUrl(caseId);
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg || {};
+  },
 };
