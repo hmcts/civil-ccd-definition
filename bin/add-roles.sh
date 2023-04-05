@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-exit 130
-
 # User used during the CCD import and ccd-role creation
 ./bin/utils/ccd-add-role.sh "caseworker-civil"
 ./bin/utils/ccd-add-role.sh "caseworker-caa"
