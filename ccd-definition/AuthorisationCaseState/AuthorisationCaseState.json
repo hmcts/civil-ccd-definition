@@ -176,8 +176,7 @@
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile",
-      "caseworker-wa-task-configuration"
+      "GS_profile"
     ],
     "CRUD": "R"
   },
@@ -186,8 +185,7 @@
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile",
-      "caseworker-wa-task-configuration"
+      "GS_profile"
     ],
     "CRUD": "R"
   },
