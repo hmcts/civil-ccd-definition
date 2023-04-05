@@ -34,5 +34,12 @@
     "CaseFieldID": "respondent2Experts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "urgentFlag",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
+
 ]
