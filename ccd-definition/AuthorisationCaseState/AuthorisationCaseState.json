@@ -118,8 +118,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-ras-validation",
-          "GS_profile",
-          "caseworker-wa-task-configuration"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
