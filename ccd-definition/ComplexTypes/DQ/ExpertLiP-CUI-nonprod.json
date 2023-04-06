@@ -22,7 +22,7 @@
   },
   {
     "ID": "ExpertLiP",
-    "ListElementCode": "reportDetails",
+    "ListElementCode": "details",
     "ElementLabel": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "ExpertReportLiP",
