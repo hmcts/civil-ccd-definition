@@ -1,7 +1,7 @@
 [
   {
     "ID": "ExpertLiP",
-    "ListElementCode": "expertCanStillExamine",
+    "ListElementCode": "caseNeedsAnExpert",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
