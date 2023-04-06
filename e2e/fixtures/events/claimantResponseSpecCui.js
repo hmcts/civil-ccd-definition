@@ -12,7 +12,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {
-            applicant1ClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           },
@@ -82,27 +82,30 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
 
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
-            applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'No'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
             ccjPaymentPaidSomeAmount: '1000',
           },
+          FixedCost: {
+            ccjJudgmentFixedCostOption: 'Yes',
+          },
           CcjJudgmentSummary: {
             ccjJudgmentAmountClaimAmount: '1000',
             ccjJudgmentAmountInterestToDate: '35',
             ccjJudgmentAmountClaimFee: '100',
-            ccjJudgmentAmountSubtotal: '1135',
+            ccjJudgmentFixedCostAmount: '40',
+            ccjJudgmentAmountSubtotal: '1175',
             ccjPaymentPaidSomeAmountInPounds: '10',
-            ccjJudgmentTotalStillOwed: '1125'
+            ccjJudgmentTotalStillOwed: '1165'
           },
           IntentionToSettleClaim: {
             applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
             applicant1PartAdmitRejectReasonSpec: 'test'
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           }
@@ -133,7 +136,7 @@ module.exports = {
             applicant1SuggestInstalmentsPaymentAmountForDefendantSpec: '3'
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           }
