@@ -401,17 +401,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "showConditionFlags",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 14,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
