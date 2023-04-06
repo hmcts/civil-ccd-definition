@@ -12,7 +12,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {
-            applicant1ClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           },
@@ -82,8 +82,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
 
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
-            applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'No'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
@@ -106,7 +105,7 @@ module.exports = {
             applicant1PartAdmitRejectReasonSpec: 'test'
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           }
@@ -137,7 +136,7 @@ module.exports = {
             applicant1SuggestInstalmentsPaymentAmountForDefendantSpec: '3'
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           }
