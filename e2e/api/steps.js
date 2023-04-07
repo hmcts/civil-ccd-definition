@@ -1054,6 +1054,12 @@ module.exports = {
   await waitForFinishedBusinessProcess(caseId);
   },
 
+  triggerBundle: async () => {
+    const response_msg = await apiRequest.bundleTriggerEvent(caseId);
+    const response = await response_msg.text();
+    assert.equal(response, 'success');
+  },
+  
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
