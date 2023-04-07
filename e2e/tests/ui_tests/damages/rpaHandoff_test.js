@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers, assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;

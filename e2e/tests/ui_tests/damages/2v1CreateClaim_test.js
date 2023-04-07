@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 

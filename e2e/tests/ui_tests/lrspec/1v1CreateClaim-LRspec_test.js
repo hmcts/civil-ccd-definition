@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');

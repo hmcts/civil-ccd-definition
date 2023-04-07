@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed

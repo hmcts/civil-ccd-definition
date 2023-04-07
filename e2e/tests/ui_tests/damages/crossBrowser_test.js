@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {assignCaseToDefendant} = require('../../../api/testingSupport');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 
