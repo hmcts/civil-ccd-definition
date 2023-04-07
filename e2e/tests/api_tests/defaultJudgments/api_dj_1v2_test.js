@@ -39,9 +39,10 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
   }
 });
 
-Scenario('Schedule A Hearing', async ({api, WA}) => {
-  // sdo requires judicial_referral, which is not past preview
+Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
