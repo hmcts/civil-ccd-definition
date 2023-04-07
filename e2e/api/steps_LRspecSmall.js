@@ -14,6 +14,7 @@ const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {markPaymentAsReceived} = require('../../../api/pbav3CompatibilityHelper');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim,
   replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim
 } = require('../helpers/hnlFeatureHelper');
@@ -92,13 +93,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    markPaymentAsReceived(caseId, claimData);
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 

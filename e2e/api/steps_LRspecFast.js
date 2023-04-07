@@ -14,6 +14,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
+const {markPaymentAsReceived} = require('../../../api/pbav3CompatibilityHelper');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {removeHNLFieldsFromClaimData,
   replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim,
@@ -138,13 +139,8 @@ module.exports = {
 
 
     await waitForFinishedBusinessProcess(caseId);
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    markPaymentAsReceived(caseId, claimData);
 
     await waitForFinishedBusinessProcess(caseId);
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

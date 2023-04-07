@@ -3,8 +3,7 @@ const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -29,17 +28,14 @@ let caseNumber;
 Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
+  console.log('Logging in as', config.applicantSolicitorUser.email);
   await I.login(config.applicantSolicitorUser);
+  console.log('Logged in as', config.applicantSolicitorUser.email);
   await I.createCase(claimant1, null, respondent1, respondent2, 20000);
   caseNumber = await I.grabCaseNumber();
+  console.log('Case created. Case number: ', caseNumber);
+  payClaimFee(caseId());
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);

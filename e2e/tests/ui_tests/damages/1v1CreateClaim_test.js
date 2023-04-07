@@ -5,8 +5,7 @@ const {
   checkToggleEnabled,
   checkCaseFlagsEnabled
 } = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
@@ -28,17 +27,14 @@ let caseNumber;
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
+  console.log('Logging in as', config.applicantSolicitorUser.email);
   await I.login(config.applicantSolicitorUser);
+  console.log('Logged in as', config.applicantSolicitorUser.email);
   await I.createCase(claimant1, null, respondent1, null);
   caseNumber = await I.grabCaseNumber();
+  console.log('Case created. Case number: ', caseNumber);
+  payClaimFee(caseId());
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   await addUserCaseMapping(caseId(), config.applicantSolicitorUser);

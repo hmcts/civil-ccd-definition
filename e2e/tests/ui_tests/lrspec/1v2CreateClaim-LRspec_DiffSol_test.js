@@ -1,8 +1,7 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
@@ -22,19 +21,13 @@ let caseNumber;
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-tests-spec @e2e-spec-1v2DS @master-e2e-ft');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
-  console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
+  console.log('Logging in as', config.applicantSolicitorUser.email);
   await LRspec.login(config.applicantSolicitorUser);
+  console.log('Logged in as', config.applicantSolicitorUser.email);
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
-
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
-
+  console.log('Case created. Case number: ', caseNumber);
+  payClaimFee(caseId());
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 

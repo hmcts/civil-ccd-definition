@@ -17,6 +17,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
+const {markPaymentAsReceived} = require('./pbav3CompatibilityHelper');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
@@ -193,11 +194,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-                                      claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    markPaymentAsReceived(caseId, claimData);
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
@@ -261,13 +258,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    markPaymentAsReceived(caseId, claimData);
 
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

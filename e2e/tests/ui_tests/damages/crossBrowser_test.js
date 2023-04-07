@@ -1,8 +1,7 @@
 const config = require('../../../config.js');
 const {assignCaseToDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -23,23 +22,18 @@ Scenario('Full end-to-end journey', async ({I}) => {
     representativeOrgNumber: 2
   };
   console.log(`Test run attempt: #${attempt++}`);
+  console.log('Logging in as', config.applicantSolicitorUser.email);
   await I.login(config.applicantSolicitorUser);
+  console.log('Logged in as', config.applicantSolicitorUser.email);
   await I.createCase(claimant1, null, respondent1, null);
   console.log('Applicant solicitor created claim');
-
   caseNumber = await I.grabCaseNumber();
-
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
+  console.log('Case created. Case number: ', caseNumber);
+  payClaimFee(caseId());
 
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
-
+  console.log('Notifying claim');
   await I.notifyClaim();
   console.log('Applicant solicitor notified defendant solicitor of claim');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed

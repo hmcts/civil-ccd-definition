@@ -10,6 +10,7 @@ const {expect, assert} = chai;
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
+const {markPaymentAsReceived} = require('../../../api/pbav3CompatibilityHelper');
 const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
@@ -134,13 +135,13 @@ module.exports = {
    * @return {Promise<void>}
    */
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
-    const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
 
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
 
     // ToDo: Remove and delete function after hnl uplift released
@@ -173,14 +174,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    markPaymentAsReceived(caseId, claimData);
 
     await waitForFinishedBusinessProcess(caseId);
     if(checkCaseFlagsEnabled()) {

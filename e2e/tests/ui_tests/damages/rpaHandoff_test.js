@@ -1,8 +1,7 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers, assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
@@ -64,18 +63,14 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
     representativeRegistered: true,
     representativeOrgNumber: 2
   };
+  console.log('Logging in as', config.applicantSolicitorUser.email);
   await I.login(config.applicantSolicitorUser);
+  console.log('Logged in as', config.applicantSolicitorUser.email);
   await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
   caseNumber = await I.grabCaseNumber();
-
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
-
+  console.log('Case created. Case number: ', caseNumber);
+  payClaimFee(caseId());
+  console.log('Notify claim');
   await I.notifyClaim();
   await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

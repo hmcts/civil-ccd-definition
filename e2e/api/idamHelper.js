@@ -16,12 +16,12 @@ async function getAccessTokenFromIdam(user) {
 async function accessToken(user) {
     console.log('User logged in', user.email);
     if (idamTokenCache.get(user.email) != null) {
-        console.log('User access token coming from cache', user.email);
+        console.debug('User access token coming from cache', user.email);
         return idamTokenCache.get(user.email);
     } else {
         const accessToken = await getAccessTokenFromIdam(user);
         idamTokenCache.set(user.email, accessToken);
-        console.log('user access token coming from idam', user.email);
+        console.log('User access token coming from idam', user.email);
         return accessToken;
     }
 }

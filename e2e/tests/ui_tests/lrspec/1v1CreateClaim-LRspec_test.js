@@ -1,8 +1,7 @@
 const config = require('../../../config.js');
 const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {payClaimFee} = require('../../../api/pbav3CompatibilityHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -14,17 +13,13 @@ Feature('Claim creation 1v1 @e2e-tests-spec @e2e-nightly-prod');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
+  console.log('Logging in as', config.applicantSolicitorUser.email);
   await LRspec.login(config.applicantSolicitorUser);
+  console.log('Logged in as', config.applicantSolicitorUser.email);
   await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
-
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
+  console.log('Case created. Case number: ', caseNumber);
+  payClaimFee(caseId());
 
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
