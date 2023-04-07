@@ -1,6 +1,6 @@
-const {checkToggleEnabled} = require('../../../api/testingSupport');
+const {checkToggleEnabled} = require('../testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const serviceRequest = require('../pages/createClaim/serviceRequest.page');
 const apiRequest = require('./apiRequest.js');
 
 
