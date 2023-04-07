@@ -1,5 +1,5 @@
 const {checkToggleEnabled} = require('./testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
+const {PBAv3} = require('../fixtures/featureKeys');
 const serviceRequest = require('../pages/createClaim/serviceRequest.page');
 const apiRequest = require('./apiRequest.js');
 
