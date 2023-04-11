@@ -16,7 +16,7 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    manageCase: 'https://xui-civil-citizen-ui-pr-1488.preview.platform.hmcts.ne',
+    manageCase: 'https://xui-civil-citizen-ui-pr-1488.preview.platform.hmcts.net',
     authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     ccdDataStore: 'https://ccd-data-store-api-civil-citizen-ui-pr-1488.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
@@ -44,7 +44,7 @@ module.exports = {
   },
   defendantSolicitorUser: {
     password: defaultPassword,
-    email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
+    email: 'cuiuser@gmail.com',
     type: 'defendant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
   },
