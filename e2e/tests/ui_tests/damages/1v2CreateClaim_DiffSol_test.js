@@ -151,6 +151,8 @@ Scenario('Judge triggers SDO', async ({I}) => {
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
     await I.evidenceUpload(caseId(), false);
   }
 }).retry(3);
