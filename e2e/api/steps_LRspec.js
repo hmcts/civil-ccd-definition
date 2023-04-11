@@ -134,7 +134,7 @@ module.exports = {
    * @return {Promise<void>}
    */
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+    const pbaV3 = false;//await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};

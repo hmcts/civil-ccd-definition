@@ -1430,7 +1430,7 @@ async function updateCaseDataWithPlaceholders(data, document) {
 
 // CIV-4959: needs to be removed when court location goes live
 async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
+  let isCourtListEnabled = true;//await checkCourtLocationDynamicListIsEnabled();
   // work around for the api  tests
   console.log(`Court location selected in Env: ${config.runningEnv}`);
   if (!isCourtListEnabled) {

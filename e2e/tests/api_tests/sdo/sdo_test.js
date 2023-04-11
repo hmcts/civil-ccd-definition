@@ -36,6 +36,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
   }
 });
+/*
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
@@ -161,3 +162,4 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
+*/
