@@ -872,7 +872,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Hearing",
-    "PageLabel": "Hearing availability",
+    "PageLabel": "Hearing",
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "FieldShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "Y",
