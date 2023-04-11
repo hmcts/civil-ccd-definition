@@ -221,18 +221,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant1DQLanguage",
-    "PageDisplayOrder": 9,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "Language",
-    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimant2ResponseFlag=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
     "PageDisplayOrder": 11,
