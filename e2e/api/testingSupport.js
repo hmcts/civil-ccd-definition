@@ -174,6 +174,10 @@ module.exports =  {
     //   );
   },
 
+  checkHnlLegalRepToggleEnabled: async () => {
+    return true;
+  },
+
   checkCourtLocationDynamicListIsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 

@@ -1,6 +1,6 @@
 [
   {
-    "ID": "HearingLRspec",
+    "ID": "Hearing",
     "ListElementCode": "hearingLength",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingLength",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "HearingLRspec",
+    "ID": "Hearing",
     "ListElementCode": "hearingLengthHours",
     "FieldType": "Number",
     "ElementLabel": "How many hours?",
@@ -21,7 +21,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "HearingLRspec",
+    "ID": "Hearing",
     "ListElementCode": "hearingLengthDays",
     "FieldType": "Number",
     "ElementLabel": "How many days?",
@@ -33,15 +33,15 @@
     "Searchable": "N"
   },
   {
-    "ID": "HearingLRspec",
+    "ID": "Hearing",
     "ListElementCode": "unavailableDatesRequired",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Are there any dates when you, your client(s), experts or any witnesses are unavailable?",
+    "ElementLabel": "Are there any days in the next 12 months when your client, an expert, or a witness, cannot attend a hearing?",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "HearingLRspec",
+    "ID": "Hearing",
     "ListElementCode": "unavailableDates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
