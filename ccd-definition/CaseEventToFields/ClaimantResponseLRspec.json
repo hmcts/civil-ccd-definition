@@ -93,18 +93,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimExpertSpecLabel",
-    "PageDisplayOrder": 7,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "SmallClaimExperts",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND responseClaimTrack =\"SMALL_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
-    "ShowSummaryChangeOption": "N",
-    "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 2,
@@ -194,18 +182,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
-    "PageDisplayOrder": 13,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "VulnerabilityQuestions",
-    "CaseEventFieldLabel": "Vulnerability Questions",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND applicant1ProceedWithClaim =\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFutureApplicationsLabel",
     "PageLabel": "",
     "PageDisplayOrder": 14,
@@ -249,19 +225,6 @@
     "CaseEventFieldLabel": "Further information",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW\" AND responseClaimTrack!=\"FAST_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondStatementOfTruthHeaderLabel",
-    "PageDisplayOrder": 15,
-    "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "StatementOfTruth",
-    "PageLabel": "",
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
