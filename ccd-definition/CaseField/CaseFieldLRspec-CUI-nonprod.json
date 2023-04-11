@@ -8,20 +8,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1FullAdmitPaidLabelSpec",
-    "Label": "${respondent1.partyName} fully admits the claim and states they paid the £${totalClaimAmount}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1FullAdmitConfirmAmountPaidSpec",
-    "Label": "Has ${respondent1.partyName} paid the claimant £${totalClaimAmount}?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
@@ -107,6 +93,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "unsuccessfulMediationReason",
+    "Label": "Mediation failed reason",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "MediationUnsuccessfulReasons",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">How do you want ${respondent1.partyName} to pay?</h2>",
     "FieldType": "Label",
@@ -122,17 +116,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1RequestedPaymentDateForDefendantSpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">When do you want ${respondent1.partyName} to pay?</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1RequestedPaymentDateForDefendantSpec",
-    "Label": " ",
-    "HintText": "For example, 12 11 2023",
-    "FieldType": "Date",
+    "Label": "When do you want ${respondent1.partyName} to pay?",
+    "FieldType": "PaymentBySetDate",
     "SecurityClassification": "Public"
   },
   {
@@ -146,7 +132,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
     "FieldType": "Label",
-    "Label": "The claim amount is £${totalClaimAmount}.\n",
+    "Label": "The claim amount is £${totalClaimAmount}. This includes all court fees and interest.\n",
     "SecurityClassification": "Public"
   },
   {
@@ -346,6 +332,77 @@
     "ID": "ccjJudgmentTotalStillOwed",
     "Label": " ",
     "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1FullAdmitAmountLabel",
+    "Label": "Total Claim amount is £${totalClaimAmount}. This includes all court fees and interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitle",
+    "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantNameLabel",
+    "Label": "### Defendant Name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantName",
+    "Label": "${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationSettlementAgreedAt",
+    "Label": "Mediation settlement agreed on",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostOptionLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed costs?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostOption",
+    "Label": " ",
+    "HintText": "This will include fixed costs for judgement",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostAmountLabel",
+    "Label": "### Fixed cost amount\n\n£${ccjJudgmentFixedCostAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentFixedCostAmount",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimMediationSpecRequiredLip",
+    "Label": " ",
+    "FieldType": "ClaimantMediationLip",
     "SecurityClassification": "Public"
   }
 ]

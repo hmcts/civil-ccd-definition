@@ -12,7 +12,9 @@ const TASK_RETRY_TIMEOUT_MS = 20000;
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
+const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
+const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -33,6 +35,15 @@ module.exports = {
         oneTimePassword: totp(config.s2s.secret)
       })
       .then(response => response.text());
+  },
+
+  fetchCaseDetails: async(user, caseId, response = 200) => {
+    let eventUserAuth = await idamHelper.accessToken(user);
+    let eventUserId = await idamHelper.userId(eventUserAuth);
+    let url = getCaseDetailsUrl(eventUserId, caseId);
+
+    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
+      .then(response => response.json());
   },
 
   fetchCaseForDisplay: async(user, caseId, response = 200) => {
@@ -95,6 +106,27 @@ module.exports = {
       }, 'POST', 201);
   },
 
+  taskActionByUser: async function(user, taskId, url, expectedStatus = 204) {
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2sForXUI.microservice,
+        oneTimePassword: totp(config.s2sForXUI.secret)
+      })
+      .then(response => response.text());
+
+    return retry(() => {
+      return restHelper.request(`${config.url.waTaskMgmtApi}/task/${taskId}/${url}`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+        'ServiceAuthorization': `Bearer ${s2sToken}`
+      }, '', 'POST', expectedStatus);
+    }, 2, TASK_RETRY_TIMEOUT_MS);
+  },
+
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     let taskDetails;
     const userToken =  await idamHelper.accessToken(user);
@@ -109,8 +141,8 @@ module.exports = {
 
     const inputData = {
       'search_parameters': [
-          {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
           {'key': 'caseId','operator': 'IN','values': [caseNumber]},
+          {'key': 'jurisdiction','operator': 'IN','values': ['CIVIL']},
           {'key':'state','operator':'IN','values':['assigned','unassigned']}
       ],
       'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
@@ -149,8 +181,16 @@ module.exports = {
       serviceRequestUpdateDto,'PUT');
 
     return response || {};
-  }
+  },
 
-
-
+  bundleTriggerEvent: async(caseId) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getBundleTriggerUrl(caseId);
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg || {};
+  },
 };

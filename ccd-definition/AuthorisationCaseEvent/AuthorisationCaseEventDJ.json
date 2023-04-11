@@ -5,6 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+
           "APP-SOL-UNSPEC-PROFILE",
           "[CREATOR]"
 
@@ -14,7 +15,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
