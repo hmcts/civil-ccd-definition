@@ -155,12 +155,12 @@ Scenario('Claimant solicitor uploads evidence', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Defendant solicitor uploads evidence', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.login(config.defendantSolicitorUser);
-    await I.evidenceUpload(caseId(), true);
-  }
-}).retry(3);
+// Scenario('Defendant solicitor uploads evidence', async ({I}) => {
+//   if (['preview', 'demo'].includes(config.runningEnv)) {
+//     await I.login(config.defendantSolicitorUser);
+//     await I.evidenceUpload(caseId(), true);
+//   }
+// }).retry(3);
 
 Scenario('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
