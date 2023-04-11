@@ -514,5 +514,11 @@
     "CaseFieldID": "respondent2LitigationFriend",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNamePublic",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
