@@ -140,7 +140,7 @@
     "PageDisplayOrder": 2,
     "PageLabel": "Select the type of document you would like to upload",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "caseProgAllocatedTrack = \"FAST_CLAIM\" OR caseProgAllocatedTrack = \"MULTI_CLAIM\""
+    "_PageShowCondition": "caseProgAllocatedTrack = \"FAST_CLAIM\" OR caseProgAllocatedTrack = \"MULTI_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -262,7 +262,7 @@
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
     "PageLabel": "Select the type of document you would like to upload",
-    "PageShowCondition": "caseProgAllocatedTrack = \"SMALL_CLAIM\""
+    "PageShowCondition": "caseProgAllocatedTrack = \"do_not_show\""
   },
   {
     "CaseTypeID": "CIVIL",
