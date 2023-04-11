@@ -19,6 +19,8 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js'
 const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
@@ -70,7 +72,11 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
+  EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
 };
 
 const eventData = {
@@ -1046,6 +1052,51 @@ module.exports = {
 
   await assertSubmittedEvent('HEARING_READINESS', null, false);
   await waitForFinishedBusinessProcess(caseId);
+  },
+
+  triggerBundle: async () => {
+    const response_msg = await apiRequest.bundleTriggerEvent(caseId);
+    const response = await response_msg.text();
+    assert.equal(response, 'success');
+  },
+  
+  evidenceUploadApplicant: async (user) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
+      console.log('evidence upload small claim applicant for case id ' + caseId);
+      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL();
+      await validateEventPages(ApplicantEvidenceSmallClaimData);
+    }
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+      console.log('evidence upload applicant fast track for case id ' + caseId);
+      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
+      await validateEventPages(ApplicantEvidenceFastClaimData);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  evidenceUploadRespondent: async (user, multipartyScenario) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
+    mpScenario = multipartyScenario;
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
+      console.log('evidence upload small claim respondent for case id ' + caseId);
+      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      await validateEventPages(RespondentEvidenceSmallClaimData);
+    }
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+      console.log('evidence upload fast claim respondent for case id ' + caseId);
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+      await validateEventPages(RespondentEvidenceFastClaimData);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
   }
 };
 
@@ -1054,7 +1105,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
