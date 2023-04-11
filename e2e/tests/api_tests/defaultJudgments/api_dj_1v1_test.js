@@ -33,7 +33,7 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
 });
 
 Scenario('Default Judgment claim SDO', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1Local);
+  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
@@ -41,9 +41,9 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
 
 Scenario('Case progression tests', async ({I, api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1Local, 'NOTE_ONLY', 'CASE_PROGRESSION');
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1Local, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1Local, 'DOCUMENT_AND_NOTE', 'CASE_PROGRESSION');
+    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
+    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
+    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_AND_NOTE', 'CASE_PROGRESSION');
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');

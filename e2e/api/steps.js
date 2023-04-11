@@ -74,7 +74,7 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
-  EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote)
+  EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
@@ -1063,8 +1063,10 @@ module.exports = {
     eventName = 'EVIDENCE_UPLOAD_JUDGE';
 
     caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
 
-    let caseNoteData = data.EVIDENCE_UPLOAD_JUDGE(typeOfNote);
+    const document = await testingSupport.uploadDocument();
+    let caseNoteData = await updateCaseDataWithPlaceholders(data.EVIDENCE_UPLOAD_JUDGE(typeOfNote), document);
 
     for (let pageId of Object.keys(caseNoteData.valid)) {
       await assertValidData(caseNoteData, pageId);
