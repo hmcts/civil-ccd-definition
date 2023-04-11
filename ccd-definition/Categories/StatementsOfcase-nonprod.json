@@ -34,7 +34,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "scheduleOfLoss",
+    "CategoryID": "ApplicantWitnessReferred",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
     "ParentCategoryID": "claimant"
@@ -77,17 +77,11 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "defendant1CounterScheduleOfLoss",
+    "CategoryID": "RespondentOneWitnessReferred",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
     "ParentCategoryID": "defendantOne"
   },
-
-
-
-
-
-
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
@@ -107,7 +101,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "defendant2CounterScheduleOfLoss",
+    "CategoryID": "RespondentTwoWitnessReferred",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
     "ParentCategoryID": "defendantTwo"
