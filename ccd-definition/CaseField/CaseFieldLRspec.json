@@ -977,7 +977,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondToClaim_experts2",
+    "ID": "respondToClaimExperts2",
     "Label": " ",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public"
