@@ -112,6 +112,10 @@ module.exports =  {
       return false;
     }
 
+    if(toggle === 'case-flags'){
+      return false;
+    }
+
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
@@ -170,6 +174,10 @@ module.exports =  {
     //   );
   },
 
+  checkHnlLegalRepToggleEnabled: async () => {
+    return true;
+  },
+
   checkCourtLocationDynamicListIsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
@@ -208,6 +216,10 @@ module.exports =  {
           }
         }
       );
+  },
+
+  checkCaseFlagsEnabled: () => {
+    return false;
   },
 
   updateCaseData: async (caseId, caseData) => {

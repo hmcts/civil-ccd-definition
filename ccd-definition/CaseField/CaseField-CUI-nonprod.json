@@ -5,5 +5,19 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1LiPResponse",
+    "Label": " ",
+    "FieldType": "RespondentLiPResponse",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "translatedDocument",
+    "Label": " ",
+    "FieldType": "TranslatedDocument",
+    "SecurityClassification": "Public"
   }
 ]

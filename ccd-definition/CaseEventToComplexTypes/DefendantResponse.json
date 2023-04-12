@@ -49,22 +49,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "DisclosureReport",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureReport",
@@ -199,30 +183,6 @@
     "CaseFieldID": "respondent2DQWitnesses",
     "ListElementCode": "details.reasonForWitness",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "expertRequired",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "expertReportsSent",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQExperts",
-    "ListElementCode": "jointExpertSuitable",
-    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
