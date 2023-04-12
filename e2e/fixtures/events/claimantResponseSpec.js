@@ -49,8 +49,8 @@ module.exports = {
           },
           Language: {
             applicant1DQLanguage: {
-              court: 'ENGLISH',
-              documents: 'ENGLISH'
+              court: 'WELSH',
+              documents: 'WELSH'
             }
           },
           Hearing: {
@@ -77,7 +77,8 @@ module.exports = {
           },
           VulnerabilityQuestions: {
             applicant1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'No'
+              vulnerabilityAdjustmentsRequired: 'Yes',
+              vulnerabilityAdjustments: 'test'
             }
           },
           StatementOfTruth: {
@@ -90,10 +91,6 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            },
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'

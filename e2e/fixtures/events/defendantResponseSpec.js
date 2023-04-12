@@ -59,8 +59,8 @@ module.exports = {
         },
           Language: {
             respondent1DQLanguage: {
-              court: 'ENGLISH',
-              documents: 'ENGLISH'
+              court: 'WELSH',
+              documents: 'WELSH'
             }
           },
           SmaillClaimHearing: {
@@ -335,8 +335,8 @@ module.exports = {
           },
           Language: {
             respondent2DQLanguage: {
-              court: 'ENGLISH',
-              documents: 'ENGLISH'
+              court: 'WELSH',
+              documents: 'WELSH'
             }
           },
           SmaillClaimHearing: {
@@ -359,9 +359,9 @@ module.exports = {
           },
           HearingSupport: {
             respondent2DQHearingSupport: {
-                supportRequirements: 'Yes',
-                supportRequirementsAdditional: 'Additional support reasons'
-              }
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
+            }
           },
           VulnerabilityQuestions: {
             respondent2DQVulnerabilityQuestions: {

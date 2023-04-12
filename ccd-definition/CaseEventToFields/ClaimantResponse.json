@@ -461,7 +461,8 @@
     "CaseEventFieldLabel": "Vulnerability Questions",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -473,7 +474,8 @@
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "y"
   },
   {
     "CaseTypeID": "CIVIL",
