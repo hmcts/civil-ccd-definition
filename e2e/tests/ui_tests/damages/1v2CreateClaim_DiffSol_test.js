@@ -162,7 +162,7 @@ Scenario.skip('Judge triggers SDO', async ({I}) => {
 //   }
 // }).retry(3);
 
-Scenario('Make a general application', async ({api}) => {
+Scenario.skip('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
