@@ -19,6 +19,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIGGER_UPDATE_GA_LOCATION",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "APPLICATION_CLOSED_UPDATE_CLAIM",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
