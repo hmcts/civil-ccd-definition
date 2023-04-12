@@ -4,7 +4,8 @@
     "ListElementCode": "applicantRequestedCourt",
     "FieldType": "Label",
     "ElementLabel": "The claimant legal representative requested the following court location code. \n ## ${courtLocation.applicantPreferredCourt}",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -12,7 +13,8 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want to ask for the hearing to be held at a specific court?",
     "HintText": "If not, it'll be held at the claimant's preferred court.",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -20,14 +22,16 @@
     "FieldType": "TextArea",
     "ElementLabel": "Briefly explain your reasons",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
     "ListElementCode": "otherPartyPreferredSite",
     "FieldType": "Text",
     "ElementLabel": "The claimant legal representative requested the following court location code.",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -35,7 +39,8 @@
     "FieldType": "CaseLocationCivil",
     "ElementLabel": " ",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -43,7 +48,8 @@
     "FieldType": "DynamicList",
     "ElementLabel": "Preferred court hearing centre",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -52,6 +58,7 @@
     "ElementLabel": "The code of your preferred County Court hearing centre",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
-    "RegularExpression": "[0-9]{3}"
+    "RegularExpression": "[0-9]{3}",
+    "Searchable": "N"
   }
 ]
