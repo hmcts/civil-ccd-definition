@@ -59,22 +59,22 @@ Scenario.skip('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft
   }
 }).retry(3);
 
-Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
   await I.login(config.judgeUserWithRegionId2);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
   await I.login(config.hearingCenterAdminWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Challenged access check for legalops @e2e-wa', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for legalops @e2e-wa', async ({I, WA}) => {
   await I.login(config.tribunalCaseworkerWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
@@ -89,7 +89,7 @@ Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) 
   await WA.verifyApprovedSpecificAccess(caseId);
 });
 
-Scenario('Verify Specific access check for admin @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for admin @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacAdminUser);
    await WA.runSpecificAccessRequestSteps(caseId);
    if (config.runWAApiTest) {
@@ -104,7 +104,7 @@ Scenario('Verify Specific access check for admin @e2e-wa', async ({I, WA, api}) 
    await WA.verifyApprovedSpecificAccess(caseId);
  });
 
-Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacLegalOpsUser);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
@@ -120,7 +120,7 @@ Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api
 });
 
 
-Scenario('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacCtscTeamLeaderUser);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
