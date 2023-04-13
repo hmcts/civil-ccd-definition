@@ -124,5 +124,11 @@
     "CaseFieldID": "ccjJudgmentFixedCostAmount",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "requestForJudgementByAdmission",
+  "UserRole": "caseworker-civil-staff",
+  "CRUD": "R"
   }
 ]
