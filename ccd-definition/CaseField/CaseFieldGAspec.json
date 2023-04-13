@@ -452,13 +452,5 @@
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaApplicantDisplayName",
-    "Label": "Applicant",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
