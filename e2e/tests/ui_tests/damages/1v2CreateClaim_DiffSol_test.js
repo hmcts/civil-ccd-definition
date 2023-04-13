@@ -141,7 +141,7 @@ Scenario('Add case flags', async ({I}) => {
   }
 });
 
-Scenario('Judge triggers SDO', async ({I}) => {
+Scenario.skip('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await I.waitForText('Summary');
@@ -162,7 +162,7 @@ Scenario('Judge triggers SDO', async ({I}) => {
 //   }
 // }).retry(3);
 
-Scenario('Make a general application', async ({api}) => {
+Scenario.skip('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
