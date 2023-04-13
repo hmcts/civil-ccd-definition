@@ -510,7 +510,7 @@
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "N"
   },
-  {
+ {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtsList",
@@ -518,7 +518,8 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-document-preview"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -528,8 +529,8 @@
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
-    "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "N",
+    "RetainHiddenValue": "Y",
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_ON_COURT_INITIATIVE\""
   },
   {
@@ -540,7 +541,31 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
     "PageID": "FreeFormOrder",
+    "RetainHiddenValue": "Y",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_WITHOUT_NOTICE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "freeFormOrderDocument",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "FreeFormOrderPreview",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderDocumentCollection",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FreeFormOrderPreview",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "RetainHiddenValue": "Y",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "orderWithoutNotice=\"NOT_SHOWN\""
   }
 ]

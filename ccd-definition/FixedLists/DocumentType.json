@@ -64,5 +64,10 @@
     "ListElementCode": "SDO_ORDER",
     "ListElement": "Standard Directions Order",
     "DisplayOrder": 11
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "JUDGE_FINAL_ORDER",
+    "ListElement": "Judge final order",
+    "DisplayOrder": 12
   }
 ]
