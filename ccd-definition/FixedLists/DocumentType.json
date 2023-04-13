@@ -64,5 +64,11 @@
     "ListElementCode": "SDO_ORDER",
     "ListElement": "Standard Directions Order",
     "DisplayOrder": 11
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "TRIAL_READY_DOCUMENT",
+    "ListElement": "Trial Ready",
+    "DisplayOrder": 11
   }
 ]
