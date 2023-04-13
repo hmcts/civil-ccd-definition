@@ -640,5 +640,15 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaApplicantDisplayName",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "judge-profile",
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
   }
 ]

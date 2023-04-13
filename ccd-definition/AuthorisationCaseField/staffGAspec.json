@@ -298,5 +298,11 @@
     "CaseFieldID": "directionOrderDocRespondentSolTwo",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaApplicantDisplayName",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
   }
 ]
