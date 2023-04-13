@@ -39,6 +39,20 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
   }
 });
 
+Scenario('Case progression tests', async ({I, api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+  }
+});
+
+Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {
+  if (['demo'].includes(config.runningEnv)) {
+    await api.triggerBundle(config.systemupdate);
+  }
+});
+
 Scenario('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
