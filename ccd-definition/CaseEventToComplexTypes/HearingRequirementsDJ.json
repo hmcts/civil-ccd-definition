@@ -80,7 +80,7 @@
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingSupportQuestion",
     "DisplayContext": "MANDATORY",
-    "Publish": "y"
+    "Publish": "Y"
   },
   {
     "ID": "HearingSupportRequirementsFieldDJ",

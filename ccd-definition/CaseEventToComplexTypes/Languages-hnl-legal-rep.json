@@ -62,7 +62,7 @@
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "Publish": "y"
+    "Publish": "Y"
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -71,7 +71,7 @@
     "ListElementCode": "documents",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "Publish": "y"
+    "Publish": "Y"
   },
   {
     "ID": "Languages",
@@ -88,7 +88,7 @@
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "Publish": "y"
+    "Publish": "Y"
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -97,6 +97,6 @@
     "ListElementCode": "documents",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "Publish": "y"
+    "Publish": "Y"
   }
 ]
