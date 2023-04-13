@@ -977,7 +977,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondToClaim_experts2",
+    "ID": "respondToClaimExperts2",
     "Label": " ",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public"
@@ -2239,6 +2239,13 @@
     "ID": "applicant2DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypePBASpec",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]

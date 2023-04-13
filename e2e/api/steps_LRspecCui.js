@@ -11,7 +11,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled} = require('./testingSupport');
+const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
@@ -24,7 +24,8 @@ const data = {
   CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario),
-  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
+  EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline')
 };
 
 const eventData = {
@@ -62,10 +63,10 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM_AP(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       removeHNLFieldsFromClaimData(createClaimData);
     }
@@ -151,12 +152,29 @@ module.exports = {
 
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (['preview', 'demo'].includes(config.runningEnv) && (response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
       validState = 'JUDICIAL_REFERRAL';
     }
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+  extendResponseDeadline: async (user) => {
+    eventName = 'EXTEND_RESPONSE_DEADLINE';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    let informAgreedExtensionData = data.EXTEND_RESPONSE_DEADLINE_DATE();
+
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
+      await assertValidData(informAgreedExtensionData, pageId);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 };
 
