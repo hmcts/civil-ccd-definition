@@ -67,18 +67,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1FullAdmitPaidLabelSpec",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1FullAdmitConfirmAmountPaidSpec",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
