@@ -193,4 +193,13 @@ module.exports = {
       'GET');
     return response_msg || {};
   },
+
+  getHearingsPayload: async (user, caseId) => {
+    return restHelper.request(
+      `${config.url.civilService}/serviceHearingValues`, getRequestHeaders(tokens.userAuth), {caseReference: caseId, hearingId: 'HER123123123'}, 'POST')
+      .then(
+        async response =>
+          await response.json()
+        );
+  },
 };

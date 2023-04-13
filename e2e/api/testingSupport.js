@@ -222,6 +222,10 @@ module.exports =  {
     return false;
   },
 
+  checkHmcEnabled: () => {
+    return false;
+  },
+
   updateCaseData: async (caseId, caseData) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 

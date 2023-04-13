@@ -133,7 +133,7 @@ module.exports = {
     HearingSupport: {
       respondent2DQHearingSupport: {
         supportRequirements: 'Yes',
-        supportRequirementsAdditional: 'Additional support reasons'
+        supportRequirementsAdditional: 'Witness John Smith: Requires support worker'
       }
     },
     VulnerabilityQuestions: {
