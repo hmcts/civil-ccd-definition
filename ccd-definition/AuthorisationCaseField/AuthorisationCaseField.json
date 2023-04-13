@@ -104,8 +104,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin",
-          "caseworker-wa-task-configuration"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -124,8 +123,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-wa-task-configuration"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -851,7 +849,6 @@
     "CaseFieldID": "respondent2DQDraftDirectionsLabel",
     "UserRoles": [
       "caseworker-civil-solicitor",
-          "caseworker-wa-task-configuration",
       "caseworker-civil-admin"
     ],
     "CRUD": "R"
