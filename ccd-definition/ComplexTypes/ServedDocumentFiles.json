@@ -3,7 +3,7 @@
     "ID": "ServedDocumentFiles",
     "ListElementCode": "documentsLabel",
     "FieldType": "Label",
-    "ElementLabel": "Aside from medical reports, any documents you upload must be in the following machine readable format: doc, docx, dot, pdf, rtf, txt, xlt or xlsx. Pdf's must be text based, not a scanned document.",
+    "ElementLabel": "Aside from medical reports, any documents you upload must be in the following machine readable format: doc, docx, dot, pdf, rtf, txt, xlt or xlsx. Pdf’s must be text based, not a scanned document.",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +14,6 @@
     "ElementLabel": "Particulars of claim",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public",
-    "CategoryID": "particularsOfClaim",
     "Max": 1
   },
   {
@@ -65,7 +64,6 @@
     "ElementLabel": "Claim timeline",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
     "SecurityClassification": "Public",
-    "CategoryID": "particularsOfClaim",
     "Max": 1
   }
 ]
