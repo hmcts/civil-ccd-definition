@@ -112,6 +112,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRIAL_READINESS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "TRIAL_READY_NOTIFICATION",
     "AccessControl": [
       {
@@ -194,24 +212,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "TRIAL_READINESS",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "asyncStitchingComplete",
     "AccessControl": [
       {
@@ -247,6 +247,18 @@
       {
         "UserRoles": [
           "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "BUNDLE_CREATION_NOTIFICATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
