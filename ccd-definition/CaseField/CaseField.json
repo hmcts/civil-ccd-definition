@@ -2168,5 +2168,12 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "RegistrationTypeInformation",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNamePublic",
+    "Label": "Public case name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

@@ -1,12 +1,9 @@
-const {dateNoWeekends} = require('../../api/dataHelper');
-
 module.exports = {
-  informExtension: (camundaEvent = 'CREATE_CLAIM_SPEC') =>
-  {
+  informExtension: async (camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const extension = {
       userInput: {
         ExtensionDate: {
-          respondentSolicitor1AgreedDeadlineExtension: dateNoWeekends(40)
+          respondentSolicitor1AgreedDeadlineExtension: ''
         }
       },
       midEventData: {
