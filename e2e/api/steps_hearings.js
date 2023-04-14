@@ -4,6 +4,7 @@ const {addAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {getHearingsPayload} = require('./apiRequest');
 const chai = require('chai');
 const {expect} = chai;
+const {date} = require('../api/dataHelper');
 
 const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
@@ -28,8 +29,8 @@ const getExpectedPayload = (serviceId, caseId) => {
       ],
         'caseDeepLink': `http://localhost:3333/cases/case-details/${caseId}`,
         'externalCaseReference': null,
-        'caseManagementLocationCode': '192280',
-        'caseSLAStartDate': '2023-11-09',
+        'caseManagementLocationCode': '000000',
+        'caseSLAStartDate': date(210),
         'autoListFlag': false,
         'hearingType': '',
         'hearingWindow': {
@@ -43,7 +44,7 @@ const getExpectedPayload = (serviceId, caseId) => {
         'hearingInWelshFlag': false,
         'hearingLocations': [
         {
-          'locationId': '192280',
+          'locationId': '000000',
           'locationType': 'court'
         }
       ],
@@ -332,18 +333,18 @@ const getExpectedPayload = (serviceId, caseId) => {
       'caseCategories': [
         {
           'categoryType': 'caseType',
-          'categoryValue': 'AAA7-MULTI_CLAIM'
+          'categoryValue': 'AAA7-FAST_CLAIM'
         },
         {
           'categoryType': 'caseSubType',
-          'categoryValue': 'AAA7-MULTI_CLAIM',
-          'categoryParent': 'AAA7-MULTI_CLAIM'
+          'categoryValue': 'AAA7-FAST_CLAIM',
+          'categoryParent': 'AAA7-FAST_CLAIM'
         }
       ],
       'caseDeepLink': `http://localhost:3333/cases/case-details/${caseId}`,
       'externalCaseReference': null,
       'caseManagementLocationCode': '111100',
-      'caseSLAStartDate': '2024-10-24',
+      'caseSLAStartDate': date(350),
       'autoListFlag': false,
       'hearingType': '',
       'hearingWindow': {

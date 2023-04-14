@@ -35,7 +35,7 @@ const data = {
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
-  CREATE_SDO: () => sdoTracks.createSDOSmallWODamageSumInPerson(),
+  CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
 };
 
 const eventData = {
@@ -284,7 +284,7 @@ module.exports = {
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
-    let disposalData = data.CREATE_SDO;
+    let disposalData = data.CREATE_SDO();
 
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
@@ -305,7 +305,13 @@ module.exports = {
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = data.userInput[pageId];
+  let userData;
+
+  if (eventName === 'CREATE_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
