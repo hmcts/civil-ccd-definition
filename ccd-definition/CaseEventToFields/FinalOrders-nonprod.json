@@ -29,7 +29,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderSelect",
     "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populate-Form-values"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populate-form-values"
   },
   {
     "CaseTypeID": "CIVIL",
