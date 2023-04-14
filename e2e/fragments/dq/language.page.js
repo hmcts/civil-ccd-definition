@@ -1,5 +1,5 @@
 const {I} = inject();
-const {checkToggleEnabled} = require('../../api/testingSupport');
+const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -30,7 +30,7 @@ module.exports = {
     I.waitForElement(this.fields(party).court.id);
     await I.runAccessibilityTest();
 
-    let isHnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHnlEnabled = await checkHnlLegalRepToggleEnabled();
 
     if (!isHnlEnabled) {
       I.click(this.fields(party).evidence.options.welsh);
