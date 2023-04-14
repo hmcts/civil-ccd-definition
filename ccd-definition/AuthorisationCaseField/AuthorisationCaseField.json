@@ -4925,18 +4925,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant2DQLanguage",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQLanguage",
     "AccessControl": [
       {
