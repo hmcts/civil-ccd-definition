@@ -96,7 +96,7 @@ wa-case-event-handler:
     releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: civil-work-allocation-secret
+        secretRef: civil-sb-preview
         key: connectionString
     keyVaults:
       wa:
