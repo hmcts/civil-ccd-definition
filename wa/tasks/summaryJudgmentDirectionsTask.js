@@ -14,6 +14,6 @@ module.exports = {
     work_type_id: 'decision_making_work',
     work_type_label: 'Decision-making work',
     permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign' ] },
-    description: '[Directions - Provisional Summary Judgment](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)',
+    description: '[Directions after Judgment (Damages)](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)',
     role_category: 'JUDICIAL'
 };
