@@ -29,8 +29,7 @@ const calculatedClaimsTrackWOSum = {
     fastTrackSchedulesOfLoss: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
-        && typeof data.input4 === 'string';
+        && typeof data.input3 === 'string';
     },
     disposalHearingNotes: (data) => {
       return typeof data.input === 'string';
@@ -70,10 +69,7 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input4 === 'string'
         && typeof data.input5 === 'string'
         && typeof data.input6 === 'string'
-        && typeof data.input7 === 'string'
-        && typeof data.input8 === 'string'
-        && typeof data.input9 === 'string'
-        && typeof data.input10 === 'string';
+        && typeof data.input7 === 'string';
     },
     disposalHearingCostsToggle: (data) => Array.isArray(data),
     smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
@@ -431,9 +427,7 @@ module.exports = {
             date1: date(1),
             input2: 'string',
             date2: date(1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(1)
+            input3: 'string'
           },
           fastTrackTrial: {
             input1: 'string',
@@ -583,11 +577,6 @@ module.exports = {
             date3: date(1),
             input7: 'string',
             date4: date(1),
-            input8: 'string',
-            input9: 'string',
-            date5: date(1),
-            input10: 'string',
-            date6: date(1),
             input11: 'string'
           },
           smallClaimsRoadTrafficAccident: {
@@ -808,9 +797,7 @@ module.exports = {
             date1: date(1),
             input2: 'string',
             date2: date(1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(1)
+            input3: 'string'
           },
           fastTrackTrial: {
             input1: 'string',
