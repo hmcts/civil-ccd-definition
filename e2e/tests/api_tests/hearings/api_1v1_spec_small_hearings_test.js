@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_ONE';
 const hearingsApi = true;
 let caseId;
 
-Feature('CCD 1v1 Spec small hearings API test @api-hearings-spec @api-hearings');
+Feature('CCD 1v1 Spec small hearings API test @non-prod-e2e-ft @api-hearings-spec @api-hearings');
 
 Scenario('1v1 full defence defendant and claimant response', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, hearingsApi);

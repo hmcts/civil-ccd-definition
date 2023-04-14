@@ -16,7 +16,7 @@ module.exports = {
         };
       case '11000':
         return {
-          calculatedAmountInPence: '55000',
+          calculatedAmountInPence: '150000',
           code: 'FEE0209',
           version: '3'
         };
