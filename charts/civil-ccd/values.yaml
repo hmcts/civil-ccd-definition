@@ -8,3 +8,5 @@ camunda-bpm:
   enabled: false
 wa:
   enabled: false
+servicebus:
+  enabled: false

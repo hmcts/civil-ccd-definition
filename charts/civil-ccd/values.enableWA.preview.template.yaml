@@ -22,18 +22,18 @@ ccd-message-publisher:
       CCD_CASE_EVENTS_DESTINATION: ccd-case-events
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
-        secretRef: civil-work-allocation-secret
+        secretRef: civil-sb-preview
         key: connectionString
-  servicebus:
-    releaseNameOverride: ${SERVICE_NAME}-asb
-    teamName: Civil
-    resourceGroup: civil-service-aat
-    enabled: false
-    serviceplan: standard
-    setup:
-      topics:
-        - name: ccd-case-events
-          subscriptionNeeded: yes
+
+servicebus:
+  enabled: true
+  releaseNameOverride: ${SERVICE_NAME}-asb
+  resourceGroup: civil-aso-preview-rg
+  sbNamespace: civil
+  setup:
+    topics:
+      - name: ccd-case-events
+        subscriptionNeeded: yes
 
 wa-task-management-api:
   java:
