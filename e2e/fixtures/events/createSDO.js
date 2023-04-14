@@ -499,7 +499,6 @@ module.exports = {
             date: date(1)
           },
           fastTrackHearingNotes: {
-            date: date(0),
             input: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
           }
         }
