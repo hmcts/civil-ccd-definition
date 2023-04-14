@@ -67,8 +67,8 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "TRIAL_READY_DOCUMENT",
-    "ListElement": "Trial Ready",
-    "DisplayOrder": 11
+    "ListElementCode": "JUDGE_FINAL_ORDER",
+    "ListElement": "Judge final order",
+    "DisplayOrder": 12
   }
 ]

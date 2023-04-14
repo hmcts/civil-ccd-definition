@@ -204,9 +204,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "APP-SOL-UNSPEC-PROFILE",
-          "[CREATOR]"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
