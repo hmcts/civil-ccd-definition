@@ -28,36 +28,60 @@ async function prepareClaim(api, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 }
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled @non-prod-e2e-ft', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
@@ -67,39 +91,60 @@ AfterSuite(async ({api}) => {
 
 Feature('CCD 1v1 API test @e2e-nightly');
 
-Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages', async ({api}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ api, WA}) => {
+Scenario('1v1 full defence unspecified - judge draws disposal order - hearing scheduled', async ({ api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
@@ -109,10 +154,16 @@ Scenario('1v1 full defence unspecified - judge draws disposal order', async ({ a
       WA.validateTaskInfo(task, fastTrackDirectionsTask);
     }
     await api.createSDO(judgeUser);
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor draws disposal order', async ({api, WA}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws disposal order - hearing scheduled', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
@@ -123,10 +174,16 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order', as
       WA.validateTaskInfo(task, smallClaimDirectionsTask);
     }
     await api.createSDO(legalAdvUser);
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
   }
 });
 
-Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async ({api, WA}) => {
+Scenario('1v1 full defence unspecified - judge declares SDO unsuitable - hearing scheduled', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
@@ -140,7 +197,7 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable', async (
 });
 
 // skip while ccd-data-store says legalAdvUser has no permission to run this event
-Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuitable - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
