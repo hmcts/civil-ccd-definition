@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const config = require('../../../config.js');
 const {getLanguageInterpreterFlag, getRAWheelchairFlag} = require('../../../api/caseFlagsHelper');
 
