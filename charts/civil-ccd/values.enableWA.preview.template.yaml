@@ -29,16 +29,10 @@ ccd-message-publisher:
       CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-asb-ccd-case-events
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
-        secretRef: civil-sb-preview
+        secretRef: servicebus-access
         key: connectionString
 
 servicebus:
-  tags:
-    teamName: "Work Allocation"
-    applicationName: "event handler"
-    builtFrom: "https://github.com/hmcts/wa-chart"
-    businessArea: "CFT"
-    environment: "development"
   enabled: true
   releaseNameOverride: ${SERVICE_NAME}-asb
   resourceGroup: civil-aso-preview-rg
@@ -110,21 +104,21 @@ wa-case-event-handler:
 #    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: civil-sb-preview
+        secretRef: servicebus-access
         key: connectionString
-    keyVaults:
-      wa:
-        secrets:
-          - name: app-insights-connection-string
-            alias: app-insights-connection-string
-          - name: s2s-secret-case-event-handler
-            alias: S2S_SECRET_CASE_EVENT_HANDLER
-          - name: ld-secret
-            alias: LAUNCH_DARKLY_SDK_KEY
-          - name: wa-case-event-handler-POSTGRES-DATABASE
-            alias: POSTGRES_NAME
-          - name: wa-idam-client-secret
-            alias: WA_IDAM_CLIENT_SECRET
+#    keyVaults:
+#      wa:
+#        secrets:
+#          - name: app-insights-connection-string
+#            alias: app-insights-connection-string
+#          - name: s2s-secret-case-event-handler
+#            alias: S2S_SECRET_CASE_EVENT_HANDLER
+#          - name: ld-secret
+#            alias: LAUNCH_DARKLY_SDK_KEY
+#          - name: wa-case-event-handler-POSTGRES-DATABASE
+#            alias: POSTGRES_NAME
+#          - name: wa-idam-client-secret
+#            alias: WA_IDAM_CLIENT_SECRET
     environment:
       CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
       CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
