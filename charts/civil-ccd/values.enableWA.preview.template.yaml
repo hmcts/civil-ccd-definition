@@ -4,8 +4,11 @@ wa:
     postgresql:
       enabled: false
 
-global:
-  jobKind: CronJob
+camunda-bpm:
+  enabled: false
+
+#global:
+#  jobKind: CronJob
 
 
 ccd-message-publisher:
