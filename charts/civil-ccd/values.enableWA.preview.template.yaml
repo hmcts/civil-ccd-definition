@@ -34,6 +34,7 @@ servicebus:
     topics:
       - name: ccd-case-events
         subscriptionNeeded: yes
+        requiresSession: true
 
 wa-task-management-api:
   java:
