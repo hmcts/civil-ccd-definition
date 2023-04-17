@@ -3,7 +3,7 @@
 set -eu
 
 environment=${1:-prod}
-declare -a shutterlist=["prod","staging"]
+shutterlist='demo'
 
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
@@ -30,16 +30,23 @@ else
 fi
 
 # deciding which enviornment should be excluded for unshuttered/shuttered
-if( ( ${#shutterlist[@]} )  && (grep -q "${environment}" <<< $(j "${shutterlist[@]}"))) ; then
-  excludedFilenamePatterns="${excludedFilenamePatterns} ,*-shuttered.json"
-  echo "${excludedFilenamePatterns}"
-else
-  excludedFilenamePatterns="${excludedFilenamePatterns} ,*-unshuttered.json"
-  echo "${excludedFilenamePatterns}"
+if [ -n "$shutterlist" ]; then
+  echo 'Shutter list is not empty'
+  if [ -z "${shutterlist##*$enviornment*}" ]; then
+    echo "We are using shuttered file for $environment"
+    excludedFilenamePatterns="${excludedFilenamePatterns} ,*-shuttered.json"
+    echo "${excludedFilenamePatterns}"
+  fi
+  else
+    echo "We are using unshuttered file for $environment"
+    excludedFilenamePatterns="${excludedFilenamePatterns} ,*-unshuttered.json"
+    echo "${excludedFilenamePatterns}"
+
 fi
 
+
 root_dir=$(realpath $(dirname ${0})/..)
-config_dir=${root_dir}/ccd-definition
+config_dir=${root_dir}/ccd-definitioni
 build_dir=${root_dir}/build/ccd-release-config
 github_dir=${root_dir}/build/github-release
 release_definition_output_file=${build_dir}/civil-ccd-${environment}.xlsx
