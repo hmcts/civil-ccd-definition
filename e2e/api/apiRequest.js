@@ -196,13 +196,6 @@ module.exports = {
       'GET');
     return response_msg || {};
   },
-    let response_msg =  await restHelper.retriedRequest(url, {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-      },null,
-      'GET');
-    return response_msg || {};
-  },
   
   bundleTriggerEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
