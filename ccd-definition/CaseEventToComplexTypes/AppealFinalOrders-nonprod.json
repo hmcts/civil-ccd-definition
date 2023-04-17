@@ -43,7 +43,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "reasonsLabel",
+    "ListElementCode": "appealGranted.reasonsLabel",
     "FieldDisplayOrder": 6,
     "DisplayContext": "READONLY"
   },
@@ -51,8 +51,104 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "reasonsText",
+    "ListElementCode": "appealGranted.reasonsText",
     "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealGranted.permissionLabel",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealGranted.permissionText",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealGranted.appealDateLabel",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealGranted.appealDate",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.reasonsLabel",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.reasonsText",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.permissionLabel",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.permissionText",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.refusedAppealLabel",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.refusedText",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.appealDateLabel",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.appealDate",
+    "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
   }
 ]
