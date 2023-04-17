@@ -11,7 +11,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
 const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
@@ -101,7 +101,6 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
-    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
 
     const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
 
@@ -144,7 +143,6 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
-    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -323,47 +321,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
-
-// CIV-4203: needs to be removed when court location goes live
-async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        RequestedCourtLocationLRspec: {
-          responseClaimCourtLocationRequired: 'No'
-        }
-      }
-    };
-  }
-  return responseData;
-}
-
-// CIV-4203: needs to be removed when court location goes live
-async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        ApplicantCourtLocationLRspec: {
-          applicant1DQRequestedCourt: {
-            reasonForHearingAtSpecificCourt: 'Reasons',
-            responseCourtCode: '123'
-          }
-        }
-      }
-    };
-  }
-  return responseData;
-}
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);

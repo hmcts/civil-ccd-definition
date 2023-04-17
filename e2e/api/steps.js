@@ -22,7 +22,7 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -152,8 +152,7 @@ module.exports = {
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
+
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
@@ -633,10 +632,6 @@ module.exports = {
     //Todo: Remove after caseflags release
     removeFlagsFieldsFromFixture(defendantResponseData);
 
-    // Remove after court location toggle is removed
-    defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
-      defendantResponseData, solicitor);
-
     // CIV-5514: remove when hnl is live
     defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
 
@@ -1056,7 +1051,7 @@ module.exports = {
     const response = await response_msg.text();
     assert.equal(response, 'success');
   },
-  
+
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
@@ -1474,63 +1469,6 @@ async function updateCaseDataWithPlaceholders(data, document) {
   data = lodash.template(JSON.stringify(data))(placeholders);
 
   return JSON.parse(data);
-}
-
-// CIV-4959: needs to be removed when court location goes live
-async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled) {
-    createClaimData = {
-      ...createClaimData,
-      valid: {
-        ...createClaimData.valid,
-        Court: {
-          courtLocation: {
-            applicantPreferredCourt: '344'
-          }
-        }
-      }
-    };
-  }
-  return createClaimData;
-}
-
-// CIV-4959: needs to be removed when court location goes live
-async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
-  defendantResponseData, solicitor) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled) {
-    if (solicitor === 'solicitorTwo') {
-      defendantResponseData = {
-        ...defendantResponseData,
-        valid: {
-          ...defendantResponseData.valid,
-          RequestedCourt: {
-            respondent2DQRequestedCourt: {
-              responseCourtCode: '343'
-            }
-          }
-        }
-      };
-    } else {
-      defendantResponseData = {
-        ...defendantResponseData,
-        valid: {
-          ...defendantResponseData.valid,
-          RequestedCourt: {
-            respondent1DQRequestedCourt: {
-              responseCourtCode: '343'
-            }
-          }
-        }
-      };
-    }
-  }
-  return defendantResponseData;
 }
 
 const assignCase = async () => {
