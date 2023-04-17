@@ -101,10 +101,10 @@ wa-case-event-handler:
   java:
 #    ingressHost: wa-case-event-handler-${SERVICE_FQDN}
 #    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
-#    secrets:
-#      AZURE_SERVICE_BUS_CONNECTION_STRING:
-#        secretRef: civil-sb-preview
-#        key: connectionString
+    secrets:
+      AZURE_SERVICE_BUS_CONNECTION_STRING:
+        secretRef: civil-sb-preview
+        key: connectionString
 #    keyVaults:
 #      wa:
 #        secrets:
