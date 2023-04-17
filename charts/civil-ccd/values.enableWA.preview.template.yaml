@@ -1,8 +1,11 @@
 wa:
   enabled: true
+  postgresql:
+    enabled: false
 
 global:
   jobKind: CronJob
+
 
 ccd-message-publisher:
   java:
