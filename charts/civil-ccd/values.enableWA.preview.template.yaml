@@ -29,7 +29,7 @@ ccd-message-publisher:
       CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-asb-ccd-case-events
     secrets:
       SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-access
+        secretRef: civil-sb-preview
         key: connectionString
 
 servicebus:
@@ -104,7 +104,7 @@ wa-case-event-handler:
 #    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
     secrets:
       AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: servicebus-access
+        secretRef: civil-sb-preview
         key: connectionString
 #    keyVaults:
 #      wa:
