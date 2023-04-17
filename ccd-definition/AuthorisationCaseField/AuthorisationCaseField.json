@@ -73,7 +73,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "CRU"
       },
@@ -93,7 +94,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "CRU"
       },
@@ -307,7 +309,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "CRU"
       },
@@ -401,7 +404,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "CRU"
       },
@@ -421,7 +425,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "CRU"
       },
