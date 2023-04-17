@@ -373,7 +373,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "freeFormOrderDocument",
+    "ID": "finalOrderDocument",
     "Label": "Order",
     "FieldType": "Document",
     "SecurityClassification": "Public"

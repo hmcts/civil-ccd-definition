@@ -548,11 +548,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "freeFormOrderDocument",
+    "CaseFieldID": "finalOrderDocument",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "FreeFormOrderPreview",
+    "PageID": "FinalOrderPreview",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -561,7 +561,7 @@
     "CaseFieldID": "finalOrderDocumentCollection",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "PageID": "FreeFormOrderPreview",
+    "PageID": "FinalOrderPreview",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "RetainHiddenValue": "Y",
