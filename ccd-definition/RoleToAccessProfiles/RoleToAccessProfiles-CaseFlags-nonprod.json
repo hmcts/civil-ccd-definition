@@ -66,7 +66,7 @@
     "RoleName" : "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin,hearing-manager",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -75,7 +75,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access,caseflags-admin,hearing-manager",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -84,7 +84,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin,hearing-manager",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -93,7 +93,7 @@
     "RoleName" : "specific-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin,hearing-manager",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -102,7 +102,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin,hearing-manager",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
