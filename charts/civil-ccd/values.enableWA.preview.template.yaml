@@ -1,7 +1,8 @@
 wa:
   enabled: true
-  postgresql:
-    enabled: false
+  wa:
+    postgresql:
+      enabled: false
 
 global:
   jobKind: CronJob
