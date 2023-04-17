@@ -680,11 +680,6 @@ module.exports = {
             date3: date(1),
             input7: 'string',
             date4: date(1),
-            input8: 'string',
-            input9: 'string',
-            date5: date(1),
-            input10: 'string',
-            date6: date(1),
             input11: 'string'
           },
           smallClaimsRoadTrafficAccident: {
