@@ -41,9 +41,17 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
 
 Scenario('Case Progression', async ({I, api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+  }
+});
+
+Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {
+  if (['demo'].includes(config.runningEnv)) {
+    await api.triggerBundle(config.systemupdate);
   }
 });
 

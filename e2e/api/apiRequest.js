@@ -16,6 +16,7 @@ const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/casewo
 const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
+const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -195,6 +196,24 @@ module.exports = {
       'GET');
     return response_msg || {};
   },
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg || {};
+  },
+  
+  bundleTriggerEvent: async(caseId) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getBundleTriggerUrl(caseId);
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      },null,
+      'GET');
+    return response_msg || {};
+  },
 
   hearingFeeUnpaidEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
@@ -216,5 +235,5 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     return response.case_details.state || {};
-  },
+  }
 };
