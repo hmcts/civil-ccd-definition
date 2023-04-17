@@ -29,7 +29,7 @@
     "PageID": "CcjPaymentPaidSome",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "ccjPaymentPaidSomeOption =\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/validate-amount-paid"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-amount-paid"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -38,8 +38,7 @@
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "PageID": "FixedCost",
-    "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec =\"Yes\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/set-up-ccj-amount-summary",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-up-ccj-amount-summary",
     "ShowSummaryChangeOption": "Y",
     "DisplayContext": "READONLY"
   },
@@ -61,7 +60,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec =\"Yes\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -73,7 +71,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -93,7 +91,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -115,7 +113,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -126,7 +124,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\" "
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -148,7 +146,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -170,7 +168,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -191,7 +189,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -212,7 +210,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -234,7 +232,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",

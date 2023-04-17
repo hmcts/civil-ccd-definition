@@ -312,7 +312,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "REQUEST_JUDGEMENT_BY_ADMISSION",
+    "CaseEventID": "DEFAULT_JUDGEMENT_ADMISSION_SPEC",
     "AccessControl": [
       {
         "UserRoles": [
