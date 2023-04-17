@@ -117,7 +117,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrderedThat",
-    "Label": "### It is ordered that:",
+    "Label": "### The court orders that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
