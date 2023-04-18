@@ -52,7 +52,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       }
     ]
   }
