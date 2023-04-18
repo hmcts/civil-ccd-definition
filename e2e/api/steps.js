@@ -62,6 +62,7 @@ const data = {
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  FINAL_ORDERS: require('../fixtures/events/finalOrder.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
@@ -991,6 +992,19 @@ module.exports = {
 
   },
 
+  createFinalOrder: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.FINAL_ORDERS);
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   createCaseFlags: async (user) => {
     if(!checkCaseFlagsEnabled()) {
       return;
@@ -1266,7 +1280,7 @@ const deleteCaseFields = (...caseFields) => {
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  if (['preview', 'demo'].includes(config.runningEnv)) {
+  if (['preview', 'demo', undefined].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
