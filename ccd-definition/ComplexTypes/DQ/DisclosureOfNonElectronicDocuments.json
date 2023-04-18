@@ -4,7 +4,8 @@
     "ListElementCode": "directionsForDisclosureProposed",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want to propose directions for disclosure?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisclosureOfNonElectronicDocuments",
@@ -12,7 +13,8 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want standard disclosure?",
     "FieldShowCondition": "directionsForDisclosureProposed = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisclosureOfNonElectronicDocuments",
@@ -20,6 +22,7 @@
     "FieldType": "Text",
     "ElementLabel": "What directions are proposed for disclosure?",
     "FieldShowCondition": "directionsForDisclosureProposed = \"Yes\" AND standardDirectionsRequired = \"No\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
