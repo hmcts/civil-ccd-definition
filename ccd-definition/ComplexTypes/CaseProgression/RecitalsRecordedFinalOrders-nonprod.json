@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "label",
     "ID": "FinalOrderRecitalsRecorded",
-    "ElementLabel": "### Is recorded that: (Optional)",
+    "ElementLabel": "### The court records that: (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

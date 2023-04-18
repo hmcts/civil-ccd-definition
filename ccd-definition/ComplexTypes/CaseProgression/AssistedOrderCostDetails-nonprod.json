@@ -24,14 +24,14 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardLabel",
-    "ElementLabel": "### The claimant shall pay the claimant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
+    "ElementLabel": "### The claimant shall pay the defendant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardSecondLabel",
-    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -61,7 +61,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardProtectionLabel",
-    "ElementLabel": "#### Does the paying party have cost protection?",
+    "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -83,7 +83,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardSecondLabel",
-    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -113,7 +113,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardProtectionLabel",
-    "ElementLabel": "#### Does the paying party have cost protection?",
+    "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -135,7 +135,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilySecondLabel",
-    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -165,7 +165,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyProtectionLabel",
-    "ElementLabel": "#### Does the paying party have cost protection?",
+    "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -187,7 +187,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilySecondLabel",
-    "ElementLabel": "### £(amount of any payment on account) (Optional)",
+    "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -217,7 +217,7 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyProtectionLabel",
-    "ElementLabel": "#### Does the paying party have cost protection?",
+    "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

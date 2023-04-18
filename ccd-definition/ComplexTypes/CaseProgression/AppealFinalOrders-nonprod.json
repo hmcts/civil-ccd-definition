@@ -44,18 +44,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "reasonsLabel",
+    "ListElementCode": "appealGranted",
     "ID": "FinalOrderAppeal",
-    "ElementLabel": "### Reasons",
-    "FieldType": "Label",
+    "ElementLabel": " ",
+    "FieldType": "AppealGrantedRefused",
+    "FieldShowCondition": "applicationList = \"GRANTED\"",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "reasonsText",
+    "ListElementCode": "appealRefused",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
-    "FieldType": "TextArea",
+    "FieldType": "AppealGrantedRefused",
+    "FieldShowCondition": "applicationList = \"REFUSED\"",
     "SecurityClassification": "Public"
   }
 ]
