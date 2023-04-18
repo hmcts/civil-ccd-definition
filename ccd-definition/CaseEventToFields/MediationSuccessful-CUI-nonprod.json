@@ -39,5 +39,16 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_SUCCESSFUL",
+    "CaseFieldID": "mediationAgreement",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "MediationAgreement",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
   }
 ]

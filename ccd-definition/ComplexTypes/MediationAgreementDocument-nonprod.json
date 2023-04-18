@@ -2,7 +2,7 @@
   {
     "ID": "MediationAgreementDocument",
     "ListElementCode": "name",
-    "ElementLabel": "Title",
+    "ElementLabel": "Document name",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
