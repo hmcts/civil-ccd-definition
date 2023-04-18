@@ -95,7 +95,7 @@ module.exports = {
       I.click(this.fields.witnessSelectionEvidence.witnessStatement);
     });
     await within(this.fields.expertSelectionEvidence.id, () => {
-      I.waitForElement(this.fields.expertSelectionEvidence.options.expertReport);
+      I.waitForElement(this.fields.expertSelectionEvidence.expertReport);
       I.click(this.fields.expertSelectionEvidence.expertReport);
     });
     await within(this.fields.trialSelectionEvidence.id, () => {
