@@ -32,7 +32,7 @@ fi
 # deciding which enviornment should be excluded for unshuttered/shuttered
 if [ -n "$shutterlist" ]; then
   echo 'Shutter list is not empty'
-  if [ -z "${shutterlist##*$enviornment*}" ]; then
+  if [ -z "${shutterlist##*$environment*}" ]; then
     echo "We are using shuttered file for $environment"
     excludedFilenamePatterns="${excludedFilenamePatterns} ,*-shuttered.json"
     echo "${excludedFilenamePatterns}"
@@ -46,7 +46,7 @@ fi
 
 
 root_dir=$(realpath $(dirname ${0})/..)
-config_dir=${root_dir}/ccd-definitioni
+config_dir=${root_dir}/ccd-definition
 build_dir=${root_dir}/build/ccd-release-config
 github_dir=${root_dir}/build/github-release
 release_definition_output_file=${build_dir}/civil-ccd-${environment}.xlsx
