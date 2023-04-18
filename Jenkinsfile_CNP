@@ -8,7 +8,6 @@ def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
 
-
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
