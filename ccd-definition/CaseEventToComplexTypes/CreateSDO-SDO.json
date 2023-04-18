@@ -117,7 +117,7 @@
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
@@ -133,7 +133,7 @@
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
@@ -157,7 +157,7 @@
     "CaseFieldID": "disposalHearingWitnessOfFact",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
@@ -181,7 +181,7 @@
     "CaseFieldID": "disposalHearingWitnessOfFact",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
@@ -213,7 +213,7 @@
     "CaseFieldID": "disposalHearingMedicalEvidence",
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingQuestionsToExperts",
@@ -237,7 +237,7 @@
     "CaseFieldID": "disposalHearingQuestionsToExperts",
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingQuestionsToExperts",
@@ -269,7 +269,7 @@
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingSchedulesOfLoss",
@@ -285,7 +285,7 @@
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingSchedulesOfLoss",
@@ -301,7 +301,7 @@
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "ListElementCode": "date4",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingSchedulesOfLoss",
@@ -357,7 +357,7 @@
     "CaseFieldID": "disposalHearingFinalDisposalHearing",
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingFinalDisposalHearing",
@@ -390,7 +390,7 @@
     "CaseFieldID": "disposalHearingHearingTime",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingHearingTime",
@@ -518,7 +518,7 @@
     "CaseFieldID": "disposalHearingNotes",
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingNotes",
@@ -654,7 +654,7 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsHearing",
@@ -833,7 +833,7 @@
     "CaseFieldID": "smallClaimsCreditHire",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsCreditHire",
@@ -857,7 +857,7 @@
     "CaseFieldID": "smallClaimsCreditHire",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsCreditHire",
@@ -881,7 +881,7 @@
     "CaseFieldID": "smallClaimsCreditHire",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 12,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsCreditHire",
@@ -897,7 +897,7 @@
     "CaseFieldID": "smallClaimsCreditHire",
     "ListElementCode": "date4",
     "FieldDisplayOrder": 14,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsCreditHire",
@@ -1121,7 +1121,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -1137,7 +1137,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackDisclosureOfDocuments",
@@ -1161,7 +1161,7 @@
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1244,7 +1244,7 @@
     "CaseFieldID": "fastTrackWitnessOfFact",
     "ListElementCode": "date",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackWitnessOfFact",
@@ -1277,7 +1277,7 @@
     "CaseFieldID": "fastTrackSchedulesOfLoss",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -1294,7 +1294,7 @@
     "CaseFieldID": "fastTrackSchedulesOfLoss",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackSchedulesOfLoss",
@@ -1351,7 +1351,7 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackTrial",
@@ -1367,7 +1367,7 @@
     "CaseFieldID": "fastTrackTrial",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackTrial",
@@ -1407,7 +1407,7 @@
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackHearingTime",
@@ -1481,7 +1481,7 @@
     "CaseFieldID": "fastTrackNotes",
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackNotes",
@@ -1554,7 +1554,7 @@
     "CaseFieldID": "fastTrackBuildingDispute",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackBuildingDispute",
@@ -1570,7 +1570,7 @@
     "CaseFieldID": "fastTrackBuildingDispute",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackBuildingDispute",
@@ -1676,7 +1676,7 @@
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackCreditHire",
@@ -1700,7 +1700,7 @@
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackCreditHire",
@@ -1724,7 +1724,7 @@
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 12,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackCreditHire",
@@ -1740,7 +1740,7 @@
     "CaseFieldID": "fastTrackCreditHire",
     "ListElementCode": "date4",
     "FieldDisplayOrder": 14,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackCreditHire",
@@ -1821,7 +1821,7 @@
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackHousingDisrepair",
@@ -1837,7 +1837,7 @@
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackHousingDisrepair",
@@ -1869,7 +1869,7 @@
     "CaseFieldID": "fastTrackPersonalInjury",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackPersonalInjury",
@@ -1885,7 +1885,7 @@
     "CaseFieldID": "fastTrackPersonalInjury",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackPersonalInjury",
@@ -1901,7 +1901,7 @@
     "CaseFieldID": "fastTrackPersonalInjury",
     "ListElementCode": "date3",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackPersonalInjury",
@@ -1917,7 +1917,7 @@
     "CaseFieldID": "fastTrackPersonalInjury",
     "ListElementCode": "date4",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackPersonalInjury",
@@ -1949,7 +1949,7 @@
     "CaseFieldID": "fastTrackRoadTrafficAccident",
     "ListElementCode": "date",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackRoadTrafficAccident",
