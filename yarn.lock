@@ -2996,6 +2996,11 @@ requireindex@~1.1.0:
   resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
   integrity sha512-LBnkqsDE7BZKvqylbmn7lTIVdpx4K/QCduRATpO5R+wtPmky/a8pN1bO2D6wXppn1497AJF9mNjqAXr6bdl9jg==
 
+reset@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/reset/-/reset-0.1.0.tgz#9fc7314171995ae6cb0b7e58b06ce7522af4bafb"
+  integrity sha512-RF7bp2P2ODreUPA71FZ4DSK52gNLJJ8dSwA1nhOCoC0mI4KZ4D/W6zhd2nfBqX/JlR+QZ/iUqAYPjq1UQU8l0Q==
+
 resolve-alpn@^1.0.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/resolve-alpn/-/resolve-alpn-1.2.1.tgz#b7adbdac3546aaaec20b45e7d8265927072726f9"
