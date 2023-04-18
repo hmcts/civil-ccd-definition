@@ -52,7 +52,7 @@ civil-general-applications:
 
 civil-service:
   java:
-    releaseNameOverride: ${SERVICE_NAME}-java
+    releaseNameOverride: ${SERVICE_NAME}-civil-service
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
