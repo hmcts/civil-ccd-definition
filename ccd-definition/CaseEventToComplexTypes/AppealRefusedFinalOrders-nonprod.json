@@ -3,7 +3,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "label",
+    "ListElementCode": "appealRefused.reasonsLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -11,7 +11,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "list",
+    "ListElementCode": "appealRefused.reasonsText",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -19,31 +19,31 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "otherText",
+    "ListElementCode": "appealRefused.permissionLabel",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FinalOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "applicationLabel",
-    "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "applicationList",
+    "ListElementCode": "appealRefused.permissionText",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.refusedAppealLabel",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealGranted",
+    "ListElementCode": "appealRefused.refusedText",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -51,8 +51,16 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused",
-    "FieldDisplayOrder": 6,
+    "ListElementCode": "appealRefused.appealDateLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FinalOrderAppeal",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderAppealComplex",
+    "ListElementCode": "appealRefused.appealDate",
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   }
 ]
