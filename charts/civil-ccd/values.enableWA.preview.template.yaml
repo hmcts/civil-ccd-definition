@@ -4,6 +4,10 @@ wa:
     postgresql:
       enabled: false
 
+  camunda-bpm:
+    java:
+      disableKeyVaults: true
+
   wa-task-management-api:
     java:
       #    releaseNameOverride: ${SERVICE_NAME}-wa-task-management-api
