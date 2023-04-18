@@ -2,7 +2,7 @@
 
 set -eu
 
-definition_processor_version=latest
+definition_processor_version=pr-299-9c50430
 
 definition_dir=${1}
 definition_output_file=${2}
