@@ -19,5 +19,12 @@
     "Label": " ",
     "FieldType": "TranslatedDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ResponseLanguage",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
