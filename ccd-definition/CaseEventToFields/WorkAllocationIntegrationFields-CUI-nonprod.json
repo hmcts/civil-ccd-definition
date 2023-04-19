@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_CUI",
-    "CaseFieldID": "respondent1ResponseLanguage",
+    "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
@@ -10,3 +10,4 @@
     "Publish": "Y"
   }
 ]
+

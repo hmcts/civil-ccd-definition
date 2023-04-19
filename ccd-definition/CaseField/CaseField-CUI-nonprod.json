@@ -11,20 +11,14 @@
     "ID": "respondent1LiPResponse",
     "Label": " ",
     "FieldType": "RespondentLiPResponse",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "translatedDocument",
     "Label": " ",
     "FieldType": "TranslatedDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent1ResponseLanguage",
-    "Label": " ",
-    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
