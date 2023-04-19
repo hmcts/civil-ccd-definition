@@ -3,7 +3,7 @@
 set -eu
 
 environment=${1:-prod}
-shutterlist='demo'
+shutterlist='aat'
 
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
