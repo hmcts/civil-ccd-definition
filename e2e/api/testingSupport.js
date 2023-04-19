@@ -99,7 +99,8 @@ module.exports =  {
             caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
           }
           else  {
-            throw new Error(`Error occurred with status : ${response.status}`);
+            console.log(`Error occurred with status : ${response.status}`);
+            //throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
     });
@@ -218,12 +219,32 @@ module.exports =  {
       );
   },
 
+  checkPBAv3IsEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
+  },
+
   checkCaseFlagsEnabled: () => {
     return false;
   },
 
-  updateCaseData: async (caseId, caseData) => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+  updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
+    const authToken = await idamHelper.accessToken(user);
 
     await restHelper.retriedRequest(
       `${config.url.civilService}/testing-support/case/${caseId}`,
