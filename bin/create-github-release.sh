@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 getNextReleaseVersion() {
   repoName=$1
   currentVersion=$(curl --silent "https://api.github.com/repos/hmcts/${repoName}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
