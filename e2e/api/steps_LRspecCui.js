@@ -15,8 +15,8 @@ const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled, checkHnlLegal
 const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
-const testingSupport = require("./testingSupport");
-const {dateNoWeekends} = require("./dataHelper");
+const testingSupport = require('./testingSupport');
+const {dateNoWeekends} = require('./dataHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -169,8 +169,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  requestJudgement: async (user, response = 'FULL_ADMISSION', scenario = 'ONE_V_ONE',
-                           expectedCcdState) => {
+  requestJudgement: async (user, response = 'FULL_ADMISSION', scenario = 'ONE_V_ONE') => {
 
     await apiRequest.setupTokens(user);
 

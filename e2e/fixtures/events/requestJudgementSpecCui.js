@@ -1,5 +1,3 @@
-const {listElement} = require('../../api/dataHelper');
-const config = require('../../config.js');
 module.exports = {
   response: (response = 'REQUEST_JUDGEMENT') => {
     const responseData = {
