@@ -181,7 +181,7 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment is confirmed.'
       : 'Your claim will not be issued until payment is confirmed.';
     let headerText = pbaV3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
@@ -1056,7 +1056,7 @@ module.exports = {
     const response = await response_msg.text();
     assert.equal(response, 'success');
   },
-  
+
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
