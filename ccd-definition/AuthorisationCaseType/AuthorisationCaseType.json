@@ -18,8 +18,7 @@
     "UserRoles": [
       "caseworker-approver",
       "caseworker-caa",
-      "caseworker-civil-systemupdate",
-      "caseworker-wa-task-configuration"
+      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRUD"
   },
