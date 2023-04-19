@@ -109,8 +109,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOU
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
@@ -127,8 +125,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH s
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
@@ -145,8 +141,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
   }
 });
 
@@ -160,8 +154,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
