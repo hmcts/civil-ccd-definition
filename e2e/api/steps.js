@@ -22,6 +22,7 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -72,6 +73,7 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
@@ -1059,6 +1061,26 @@ module.exports = {
   await waitForFinishedBusinessProcess(caseId);
   },
 
+  evidenceUploadJudge: async (user, typeOfNote, currentState) => {
+    console.log('Evidence Upload of type:' + typeOfNote);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'EVIDENCE_UPLOAD_JUDGE';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    const document = await testingSupport.uploadDocument();
+    let caseNoteData = await updateCaseDataWithPlaceholders(data.EVIDENCE_UPLOAD_JUDGE(typeOfNote), document);
+
+    for (let pageId of Object.keys(caseNoteData.valid)) {
+      await assertValidData(caseNoteData, pageId);
+    }
+
+    await assertSubmittedEvent(currentState, null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   hearingFeePaid: async (user) => {
     await apiRequest.setupTokens(user);
 
@@ -1108,7 +1130,7 @@ module.exports = {
     const response = await response_msg.text();
     assert.equal(response, 'success');
   },
-  
+
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
