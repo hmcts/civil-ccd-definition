@@ -99,41 +99,6 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input8",
-    "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input9",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "date5",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input10",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "date6",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
     "ListElementCode": "input11",
     "FieldType": "Text",
     "ElementLabel": " ",

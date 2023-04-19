@@ -22,9 +22,9 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
-  checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
-} = require('./testingSupport');
+const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
+const trialReadiness = require('../fixtures/events/trialReadiness.js');
+const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -73,10 +73,12 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
+  TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario)
 };
 
 const eventData = {
@@ -159,7 +161,7 @@ module.exports = {
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlToggleEnabled();
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
@@ -238,8 +240,8 @@ module.exports = {
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -297,8 +299,8 @@ module.exports = {
     createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlToggleEnabled();
-    if(!hnlEnabled) {
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    if (!hnlEnabled) {
       removeHNLFieldsFromUnspecClaimData(createClaimData);
     }
     //==============================================================
@@ -643,7 +645,7 @@ module.exports = {
     defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if (!hnlEnabled) {
       defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
         defendantResponseData, solicitor);
@@ -681,7 +683,7 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     if (isHNLEnabled) {
       await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
@@ -730,7 +732,6 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-
     eventName = 'CLAIMANT_RESPONSE';
     mpScenario = multipartyScenario;
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -743,7 +744,7 @@ module.exports = {
     claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if (!hnlEnabled) {
       claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
         claimantResponseData);
@@ -756,7 +757,7 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
     if (isHNLEnabled) {
       await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
         'From Date should be less than To Date');
@@ -913,6 +914,12 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
+  amendHearingDueDate: async (user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
   defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
@@ -1054,12 +1061,76 @@ module.exports = {
   await waitForFinishedBusinessProcess(caseId);
   },
 
+  evidenceUploadJudge: async (user, typeOfNote, currentState) => {
+    console.log('Evidence Upload of type:' + typeOfNote);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'EVIDENCE_UPLOAD_JUDGE';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    const document = await testingSupport.uploadDocument();
+    let caseNoteData = await updateCaseDataWithPlaceholders(data.EVIDENCE_UPLOAD_JUDGE(typeOfNote), document);
+
+    for (let pageId of Object.keys(caseNoteData.valid)) {
+      await assertValidData(caseNoteData, pageId);
+    }
+
+    await assertSubmittedEvent(currentState, null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
+    await apiRequest.setupTokens(config.applicantSolicitorUser);
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+updatedCaseState);
+  },
+
+  hearingFeeUnpaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    const response_msg = await apiRequest.hearingFeeUnpaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Unpaid');
+
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN', user);
+    assert.equal(updatedCaseState, 'CASE_DISMISSED');
+    console.log('State moved to:'+ updatedCaseState);
+  },
+
+  trialReadiness: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'TRIAL_READINESS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    let readinessData = data.TRIAL_READINESS(user);
+
+    for (let pageId of Object.keys(readinessData.valid)) {
+      await assertValidData(readinessData, pageId);
+    }
+
+    await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   triggerBundle: async () => {
     const response_msg = await apiRequest.bundleTriggerEvent(caseId);
     const response = await response_msg.text();
     assert.equal(response, 'success');
   },
-  
+
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
@@ -1140,7 +1211,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearHearingLocationData(responseBody);
   }
 
-  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1431,7 +1502,7 @@ function replaceLitigationFriendFields(caseData) {
 }
 
 async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
-  let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
+  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
   // work around for the api  tests
   if (!isHNLEnabled) {
     const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
