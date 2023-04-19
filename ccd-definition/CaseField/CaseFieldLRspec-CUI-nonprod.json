@@ -371,6 +371,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "mediationAgreementTitle",
+    "Label": "## Upload Mediation Agreement",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "stuffUploadedDocumentsLabel",
+    "Label": "### Stuff uploaded documents",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "mediationAgreement",
     "Label": " ",
     "FieldType": "MediationAgreementDocument",

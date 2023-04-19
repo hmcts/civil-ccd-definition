@@ -43,8 +43,28 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
-    "CaseFieldID": "mediationAgreement",
+    "CaseFieldID": "mediationAgreementTitle",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "MediationAgreement",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_SUCCESSFUL",
+    "CaseFieldID": "stuffUploadedDocumentsLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "MediationAgreement",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_SUCCESSFUL",
+    "CaseFieldID": "mediationAgreement",
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "MediationAgreement",
     "PageDisplayOrder": 2,
