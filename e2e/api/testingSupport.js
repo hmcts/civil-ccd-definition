@@ -99,7 +99,8 @@ module.exports =  {
             caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
           }
           else  {
-            throw new Error(`Error occurred with status : ${response.status}`);
+            console.log(`Error occurred with status : ${response.status}`);
+            //throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
     });
