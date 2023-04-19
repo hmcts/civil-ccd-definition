@@ -68,6 +68,7 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
@@ -113,6 +114,7 @@ const eventData = {
     CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
     CREATE_SMALL: data.CREATE_SMALL(),
     CREATE_FAST: data.CREATE_FAST(),
+    CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()

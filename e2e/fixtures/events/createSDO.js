@@ -528,6 +528,160 @@ module.exports = {
     return data;
   },
 
+  createSDOFastInPerson: () => {
+    const data = {
+      valid: {
+        SDO: {
+          drawDirectionsOrderRequired: 'Yes',
+          drawDirectionsOrder: {
+            judgementSum: 20
+          },
+        },
+        ClaimsTrack: {
+          drawDirectionsOrderSmallClaims: 'No'
+        },
+        OrderType: {
+          orderType: 'DECIDE_DAMAGES',
+          orderTypeTrialAdditionalDirections: [
+            'OrderTypeTrialAdditionalDirectionsBuildingDispute',
+            'OrderTypeTrialAdditionalDirectionsClinicalNegligence',
+            'OrderTypeTrialAdditionalDirectionsCreditHire',
+            'OrderTypeTrialAdditionalDirectionsEmployersLiability',
+            'OrderTypeTrialAdditionalDirectionsHousingDisrepair',
+            'OrderTypeTrialAdditionalDirectionsPersonalInjury',
+            'OrderTypeTrialAdditionalDirectionsRoadTrafficAccident',
+          ]
+        },
+        FastTrack: {
+          fastTrackJudgesRecital: {
+            input: 'string'
+          },
+          fastTrackDisclosureOfDocuments: {
+            input1: 'string',
+            date1: date(-1),
+            input2: 'string',
+            date2: date(-1),
+            input3: 'string',
+            input4: 'string',
+            date3: date(-1)
+          },
+          fastTrackWitnessOfFact: {
+            input1: 'string',
+            input2: '1',
+            input3: '1',
+            input4: 'string',
+            input5: 'string',
+            input6: '1',
+            input7: 'string',
+            input8: 'string',
+            date: date(1),
+            input9: 'string'
+          },
+          fastTrackSchedulesOfLoss: {
+            input1: 'string',
+            date1: date(1),
+            input2: 'string',
+            date2: date(1),
+            input3: 'string'
+          },
+          fastTrackTrial: {
+            input1: 'string',
+            date1: date(1),
+            date2: date(1),
+            input2: 'string',
+            input3: 'string',
+            type: ['DOCUMENTS']
+          },
+          fastTrackMethod: 'fastTrackMethodInPerson',
+          fastTrackBuildingDispute: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
+          },
+          fastTrackClinicalNegligence: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            input4: 'string'
+          },
+          fastTrackCreditHire: {
+            input1: 'string',
+            input2: 'string',
+            date1: date(1),
+            input3: 'string',
+            input4: 'string',
+            date2: date(1),
+            input5: 'string',
+            input6: 'string',
+            date3: date(1),
+            input7: 'string',
+            date4: date(1),
+            input8: 'string'
+          },
+          fastTrackHousingDisrepair: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
+          },
+          fastTrackPersonalInjury: {
+            input1: 'string',
+            date1: date(1),
+            input2: 'string',
+            date2: date(1),
+            input3: 'string'
+          },
+          fastTrackRoadTrafficAccident: {
+            input: 'string',
+            date: date(1)
+          },
+          fastTrackAddNewDirections: [
+            element({
+              directionComment: 'string'
+            }),
+            element({
+              directionComment: 'string'
+            })
+          ],
+          fastTrackNotes: {
+            input: 'string',
+            date: date(1)
+          },
+          fastTrackHearingNotes: {
+            input: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
+          }
+        }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'No'
+        },
+        OrderType: {
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'Yes'
+        },
+        FastTrack: {
+
+        }
+      },
+      calculated: calculatedClaimsTrackWSum
+    };
+    data.calculated.OrderType = {...data.calculated.ClaimsTrack,
+      orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.FastTrack = {...data.calculated.OrderType,
+      setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
+    };
+    return data;
+  },
+
 //Small Claims WITHOUT Sum of Damages
 
   createSDOSmallWODamageSum: () => {
