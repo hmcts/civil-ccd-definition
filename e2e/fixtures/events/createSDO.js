@@ -480,10 +480,7 @@ module.exports = {
             date1: date(1),
             input2: 'string',
             date2: date(1),
-            input3: 'string',
-            date3: date(1),
-            input4: 'string',
-            date4: date(1)
+            input3: 'string'
           },
           fastTrackRoadTrafficAccident: {
             input: 'string',
