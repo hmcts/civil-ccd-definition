@@ -698,12 +698,12 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async evidenceUploadSpec() {
-      eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+    async evidenceUploadSpec(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
-        () => unspecifiedEvidenceUpload.uploadADocument(caseId),
-        () => unspecifiedEvidenceUpload.selectType(),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH),
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },

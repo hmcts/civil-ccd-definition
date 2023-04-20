@@ -89,59 +89,92 @@ module.exports = {
     }
   },
 
-  async selectType(){
-    await I.runAccessibilityTest();
-    await within(this.fields.witnessSelectionEvidence.id, () => {
-      I.waitForElement(this.fields.witnessSelectionEvidence.witnessStatement);
-      I.click(this.fields.witnessSelectionEvidence.witnessStatement);
-    });
-    await within(this.fields.expertSelectionEvidence.id, () => {
-      I.waitForElement(this.fields.expertSelectionEvidence.expertReport);
-      I.click(this.fields.expertSelectionEvidence.expertReport);
-    });
-    await within(this.fields.trialSelectionEvidence.id, () => {
-      I.waitForElement(this.fields.trialSelectionEvidence.authorities);
-      I.click(this.fields.trialSelectionEvidence.authorities);
-    });
-
+  async selectType(defendant){
+    if(defendant) {
+      await within(this.fields.witnessSelectionEvidenceRes.id, () => {
+        I.click(this.fields.witnessSelectionEvidenceRes.witnessStatement);
+      });
+      await within(this.fields.expertSelectionEvidenceRes.id, () => {
+        I.click(this.fields.expertSelectionEvidenceRes.expertReport);
+      });
+      await within(this.fields.trialSelectionEvidenceRes.id, () => {
+        I.click(this.fields.trialSelectionEvidenceRes.authorities);
+      });
+    }
+    else {
+      await within(this.fields.witnessSelectionEvidence.id, () => {
+        I.click(this.fields.witnessSelectionEvidence.witnessStatement);
+      });
+      await within(this.fields.expertSelectionEvidence.id, () => {
+        I.click(this.fields.expertSelectionEvidence.expertReport);
+      });
+      await within(this.fields.trialSelectionEvidence.id, () => {
+        I.click(this.fields.trialSelectionEvidence.authorities);
+      });
+    }
     await I.clickContinue();
   },
 
-  async uploadYourDocument(file){
+  async uploadYourDocument(file, defendant){
     await I.waitForText('Upload Your Documents');
-    await I.runAccessibilityTest();
-    await within(this.fields.documentWitnessStatement.id, () => {
-      I.click(this.fields.documentWitnessStatement.button);
-      I.fillField(this.fields.documentWitnessStatement.name, 'test name');
-      I.fillField(this.fields.documentWitnessStatement.day, '1');
-      I.fillField(this.fields.documentWitnessStatement.month, '1');
-      I.fillField(this.fields.documentWitnessStatement.year, '2022');
-      I.attachFile(this.fields.documentWitnessStatement.document, file);
-    });
-    await within(this.fields.documentExpertReport.id, () => {
-      I.click(this.fields.documentExpertReport.button);
-      I.fillField(this.fields.documentExpertReport.name, 'test name');
-      I.fillField(this.fields.documentExpertReport.expertise, 'test expertise');
-      I.fillField(this.fields.documentExpertReport.day, '1');
-      I.fillField(this.fields.documentExpertReport.month, '1');
-      I.fillField(this.fields.documentExpertReport.year, '2022');
-      I.attachFile(this.fields.documentExpertReport.document, file);
-    });
-    await within(this.fields.documentAuthorities.id, () => {
-      I.click(this.fields.documentAuthorities.button);
-      I.attachFile(this.fields.documentAuthorities.document, file);
-    });
-
+    if(defendant) {
+      await within(this.fields.documentWitnessStatementRes.id, () => {
+        I.click(this.fields.documentWitnessStatementRes.button);
+        I.fillField(this.fields.documentWitnessStatementRes.name, 'test name');
+        I.fillField(this.fields.documentWitnessStatementRes.day, '1');
+        I.fillField(this.fields.documentWitnessStatementRes.month, '1');
+        I.fillField(this.fields.documentWitnessStatementRes.year, '2022');
+        I.attachFile(this.fields.documentWitnessStatementRes.document, file);
+      });
+      await within(this.fields.documentExpertReportRes.id, () => {
+        I.click(this.fields.documentExpertReportRes.button);
+        I.fillField(this.fields.documentExpertReportRes.name, 'test name');
+        I.fillField(this.fields.documentExpertReportRes.expertise, 'test expertise');
+        I.fillField(this.fields.documentExpertReportRes.day, '1');
+        I.fillField(this.fields.documentExpertReportRes.month, '1');
+        I.fillField(this.fields.documentExpertReportRes.year, '2022');
+        I.attachFile(this.fields.documentExpertReportRes.document, file);
+      });
+      await within(this.fields.documentAuthoritiesRes.id, () => {
+        I.click(this.fields.documentAuthoritiesRes.button);
+        I.attachFile(this.fields.documentAuthoritiesRes.document, file);
+      });
+    }
+    else {
+      await within(this.fields.documentWitnessStatement.id, () => {
+        I.click(this.fields.documentWitnessStatement.button);
+        I.fillField(this.fields.documentWitnessStatement.name, 'test name');
+        I.fillField(this.fields.documentWitnessStatement.day, '1');
+        I.fillField(this.fields.documentWitnessStatement.month, '1');
+        I.fillField(this.fields.documentWitnessStatement.year, '2022');
+        I.attachFile(this.fields.documentWitnessStatement.document, file);
+      });
+      await within(this.fields.documentExpertReport.id, () => {
+        I.click(this.fields.documentExpertReport.button);
+        I.fillField(this.fields.documentExpertReport.name, 'test name');
+        I.fillField(this.fields.documentExpertReport.expertise, 'test expertise');
+        I.fillField(this.fields.documentExpertReport.day, '1');
+        I.fillField(this.fields.documentExpertReport.month, '1');
+        I.fillField(this.fields.documentExpertReport.year, '2022');
+        I.attachFile(this.fields.documentExpertReport.document, file);
+      });
+      await within(this.fields.documentAuthorities.id, () => {
+        I.click(this.fields.documentAuthorities.button);
+        I.attachFile(this.fields.documentAuthorities.document, file);
+      });
+    }
     await I.clickContinue();
   },
 
-  async uploadADocument(caseId) {
-    await I.runAccessibilityTest();
+  async uploadADocument(caseId, defendant) {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
-
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_APPLICANT/EVIDENCE_UPLOAD_APPLICANTEvidenceUpload');
-
+    if (defendant) {
+      await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_RESPONDENT/EVIDENCE_UPLOAD_RESPONDENTEvidenceUpload');
+    }
+    else {
+      await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_APPLICANT/EVIDENCE_UPLOAD_APPLICANTEvidenceUpload');
+    }
     await I.waitForText('Upload Your Documents');
     await I.clickContinue();
   }
