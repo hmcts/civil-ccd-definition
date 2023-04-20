@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 getNextReleaseVersion() {
   repoName=$1
   currentVersion=$(curl --silent "https://api.github.com/repos/hmcts/${repoName}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
@@ -47,7 +49,7 @@ fi
 
 zip -r civil-ccd-definition.zip ccd-definition
 zip -r civil-e2e.zip e2e codecept.conf.js package.json steps.d.ts yarn.lock saucelabs.conf.js
-zip -r civil-screenshots.zip output
+zip -r civil-screenshots.zip test-results/functional
 ls -lash
 cp build/github-release/civil-ccd-aat.xlsx civil-ccd-aat.xlsx
 cp build/github-release/civil-ccd-prod.xlsx civil-ccd-prod.xlsx
