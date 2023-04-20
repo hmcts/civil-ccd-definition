@@ -81,9 +81,16 @@ async function prepareClaimForFinalOrders(api, claimAmount) {
   await api.defaultJudgment(config.applicantSolicitorUser);
 }
 
-Scenario('1v1 Judge complete Final Order', async ({api}) => {
+Scenario('1v1 Judge complete Final Order Free form order', async ({api}) => {
   if (['preview', 'demo', undefined].includes(config.runningEnv)) {
     await prepareClaimForFinalOrders(api, claimAmountJudge);
-    await api.createFinalOrder(judgeUser);
+    await api.createFinalOrder(judgeUser, 'FREE_FORM_ORDER');
+  }
+});
+
+Scenario('1v1 Judge complete Final Order Assisted Order', async ({api}) => {
+  if (['preview', 'demo', undefined].includes(config.runningEnv)) {
+    await prepareClaimForFinalOrders(api, claimAmountJudge);
+    await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
   }
 });

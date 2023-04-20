@@ -20,6 +20,7 @@ const testingSupport = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlToggleEnabled, checkToggleEnabled,
   checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled
 } = require('./testingSupport');
@@ -62,7 +63,6 @@ const data = {
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
-  FINAL_ORDERS: require('../fixtures/events/finalOrder.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
@@ -71,7 +71,8 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack)
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
 };
 
 const eventData = {
@@ -992,14 +993,20 @@ module.exports = {
 
   },
 
-  createFinalOrder: async (user) => {
+  createFinalOrder: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
     await apiRequest.setupTokens(user);
 
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
+
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.FINAL_ORDERS);
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+    }
 
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1101,6 +1108,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
     responseBody = clearHearingLocationData(responseBody);
+  }
+  if(eventName === 'GENERATE_DIRECTIONS_ORDER' && pageId === 'FinalOrderSelect') {
+    responseBody = clearFinalOrderLocationData(responseBody);
   }
 
   let isHNLEnabled = await checkToggleEnabled('hearing-and-listing-sdo');
@@ -1613,4 +1623,9 @@ const adjustDataForSolicitor = (user, data) => {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;
+};
+
+const clearFinalOrderLocationData = (responseBody) => {
+  delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
 };
