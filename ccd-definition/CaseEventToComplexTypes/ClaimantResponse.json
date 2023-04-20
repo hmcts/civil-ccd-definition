@@ -187,14 +187,6 @@
     "ID": "Experts",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQExperts",
-    "ListElementCode": "details.name",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Experts",
-    "CaseEventID": "CLAIMANT_RESPONSE",
-    "CaseFieldID": "applicant2DQExperts",
     "ListElementCode": "details.fieldOfExpertise",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
