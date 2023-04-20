@@ -44,13 +44,6 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async ()
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
-Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.evidenceUploadSpec();
-  }
-}).retry(3);
-
 Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -102,19 +95,19 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-// Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
-//   if (['preview', 'demo'].includes(config.runningEnv)) {
-//     await LRspec.login(config.applicantSolicitorUser);
-//     await LRspec.evidenceUpload(caseId(), false);
-//   }
-// }).retry(3);
-//
-// Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
-//   if (['preview', 'demo'].includes(config.runningEnv)) {
-//     await LRspec.login(config.defendantSolicitorUser);
-//     await LRspec.evidenceUpload(caseId(), true);
-//   }
-// }).retry(3);
+Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.applicantSolicitorUser);
+    await LRspec.evidenceUploadSpec(caseId(), false);
+  }
+}).retry(3);
+
+Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.defendantSolicitorUser);
+    await LRspec.evidenceUploadSpec(caseId(), true);
+  }
+}).retry(3);
 
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
