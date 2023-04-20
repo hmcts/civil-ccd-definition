@@ -264,7 +264,8 @@
     "Label": "Dismissal order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryId" : "Applications"
   },
   {
     "CaseTypeID": "CIVIL",
