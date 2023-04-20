@@ -87,5 +87,6 @@
   "resolutions": {
     "minimatch": "^3.0.5"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "packageManager": "yarn@3.5.0"
 }
