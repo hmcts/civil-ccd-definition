@@ -90,6 +90,7 @@ module.exports = {
   },
 
   async selectType(){
+    await I.runAccessibilityTest();
     await within(this.fields.witnessSelectionEvidence.id, () => {
       I.waitForElement(this.fields.witnessSelectionEvidence.witnessStatement);
       I.click(this.fields.witnessSelectionEvidence.witnessStatement);
@@ -108,7 +109,7 @@ module.exports = {
 
   async uploadYourDocument(file){
     await I.waitForText('Upload Your Documents');
-
+    await I.runAccessibilityTest();
     await within(this.fields.documentWitnessStatement.id, () => {
       I.click(this.fields.documentWitnessStatement.button);
       I.fillField(this.fields.documentWitnessStatement.name, 'test name');
@@ -135,6 +136,7 @@ module.exports = {
   },
 
   async uploadADocument(caseId) {
+    await I.runAccessibilityTest();
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
 
