@@ -53,7 +53,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
-    "CaseFieldID": "stuffUploadedDocumentsLabel",
+    "CaseFieldID": "staffUploadedDocumentsLabel",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "MediationAgreement",
