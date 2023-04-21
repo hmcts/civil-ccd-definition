@@ -43,8 +43,8 @@ xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
     environment:
-      SERVICES_WORK_ALLOCATION_TASK_API: https://wa-task-management-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-      SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+      SERVICES_WORK_ALLOCATION_TASK_API: https://wa-task-management-api-${SERVICE_FQDN}.preview.platform.hmcts.net
+      SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}.preview.platform.hmcts.net
 ccd:
   ccd-api-gateway-web:
     nodejs:
