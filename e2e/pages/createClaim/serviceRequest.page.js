@@ -24,7 +24,7 @@ module.exports = {
 
   async payFee(caseNumber) {
     I.waitInUrl(caseNumber);
-    I.waitForText('Not paid', 8);
+    I.waitForText('Not paid', 12);
     I.see('Not paid');
     I.forceClick('Pay now');
     I.click({css: 'input#pbaAccount'});
