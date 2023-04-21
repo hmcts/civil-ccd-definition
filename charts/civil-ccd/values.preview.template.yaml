@@ -42,6 +42,8 @@ civil-general-applications:
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
+    environment:
+      HEALTH_WORK_ALLOCATION_TASK_API: https://wa-task-management-api-civil-ccd-pr-${pr}.preview.platform.hmcts.net/health
 ccd:
   ccd-api-gateway-web:
     nodejs:
