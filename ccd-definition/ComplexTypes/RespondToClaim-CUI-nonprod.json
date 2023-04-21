@@ -1,6 +1,20 @@
 [
   {
     "ID": "RespondentLiPResponse",
+    "ListElementCode": "timelineComment",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "evidenceComment",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
     "ListElementCode": "respondent1LiPFinancialDetails",
     "ElementLabel": " ",
     "FieldType": "FinancialDetailsLiP",
