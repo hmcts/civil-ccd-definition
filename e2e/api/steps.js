@@ -234,8 +234,6 @@ module.exports = {
         break;
     }
 
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
     createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
@@ -294,8 +292,6 @@ module.exports = {
     await apiRequest.startEvent(eventName);
 
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
 
     // ToDo: Remove and delete function after hnl uplift released
     const hnlEnabled = await checkHnlLegalRepToggleEnabled();
