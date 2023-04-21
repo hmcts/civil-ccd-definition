@@ -5,7 +5,8 @@
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
-      "judge-profile"
+      "judge-profile",
+      "legal-advisor"
     ],
     "CaseFieldID": "gaDetailsMasterCollection",
     "TabFieldDisplayOrder": 1
