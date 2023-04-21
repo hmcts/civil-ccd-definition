@@ -1,11 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "ApplicationsJudge",
+    "TabID": "ApplicationsLegalAdviser",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
-      "judge-profile"
+      "legal-adviser"
     ],
     "CaseFieldID": "gaDetailsMasterCollection",
     "TabFieldDisplayOrder": 1
