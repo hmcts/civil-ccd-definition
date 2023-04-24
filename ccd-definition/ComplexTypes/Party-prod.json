@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "Party",
-    "ListElementCode": "partyEmail",
-    "FieldType": "Email",
-    "ElementLabel": "Email",
-    "SecurityClassification": "Public"
-  }
-]
