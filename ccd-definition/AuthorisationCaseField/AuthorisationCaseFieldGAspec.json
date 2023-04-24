@@ -13,18 +13,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppTypeLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppType",
     "AccessControl": [
       {
