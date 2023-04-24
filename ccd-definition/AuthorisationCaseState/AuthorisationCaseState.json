@@ -4,7 +4,8 @@
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-wa-task-configuration"
     ],
     "CRUD": "CRUD"
   },
@@ -13,7 +14,8 @@
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-wa-task-configuration"
       ],
     "CRUD": "CRUD"
   },
@@ -22,7 +24,8 @@
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-wa-task-configuration"
     ],
     "CRUD": "CRUD"
   },
@@ -31,7 +34,8 @@
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-wa-task-configuration"
     ],
     "CRUD": "CRUD"
   },
@@ -94,7 +98,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "CRU"
       },
@@ -221,7 +226,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "caseworker-wa-task-configuration"
         ],
         "CRUD": "R"
       }
