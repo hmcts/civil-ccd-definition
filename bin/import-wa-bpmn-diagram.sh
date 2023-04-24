@@ -5,7 +5,8 @@ workspace=${1}
 
 serviceToken=$($(realpath $workspace)/bin/utils/idam-lease-service-token.sh civil_service \
   $(docker run --rm toolbelt/oathtool --totp -b ${S2S_SECRET:-AABBCCDDEEFFGGHH}))
-filepath="$(realpath $workspace)/camunda"
+
+filepath="$(realpath $workspace)/resources"
 
 for file in $(find ${filepath} -name '*.bpmn')
 do
@@ -14,7 +15,6 @@ do
     -H "Accept: application/json" \
     -H "ServiceAuthorization: Bearer ${serviceToken}" \
     -F "deployment-name=$(date +"%Y%m%d-%H%M%S")-$(basename ${file})" \
-    -F "tenant-id=civil" \
     -F "file=@${filepath}/$(basename ${file})")
 
 upload_http_code=$(echo "$uploadResponse" | tail -n1)
