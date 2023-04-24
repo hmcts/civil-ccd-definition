@@ -4,11 +4,17 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
+      "judge-profile",
+      "legal-adviser",
+      "admin-access",
+      "full-access",
+      "hearing-schedule-access",
+      "payment-access",
+      "caseworker-approver",
       "caseworker-caa",
       "caseworker-civil-staff",
-      "caseworker-approver",
-      "judge-profile",
-      "legal-adviser"
+      "GS_profile",
+      "caseworker-ras-validation"
     ],
     "CRUD": "D"
   },
