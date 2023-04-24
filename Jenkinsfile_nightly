@@ -63,13 +63,13 @@ withNightlyPipeline(type, product, component) {
 
   enableFullFunctionalTest(200)
 
-  after('fullFunctionalTest') {
+  afterAlways('fullFunctionalTest') {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   enableCrossBrowserTest()
 
-  after('crossBrowserTest') {
+  afterAlways('crossBrowserTest') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }
