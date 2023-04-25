@@ -176,20 +176,10 @@ module.exports = {
     eventName = 'REQUEST_JUDGEMENT_ADMISSION_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     let requestJudgementData = eventData['requestJudgement'][scenario][response];
-    // requestJudgementData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(requestJudgementData);
 
     for (let pageId of Object.keys(requestJudgementData.userInput)) {
       await assertValidData(requestJudgementData, pageId);
     }
-
-
-    // let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    // if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
-    //   validState = 'JUDICIAL_REFERRAL';
-    // }
-    // await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
-    // await waitForFinishedBusinessProcess(caseId);
   },
 
   extendResponseDeadline: async (user) => {
