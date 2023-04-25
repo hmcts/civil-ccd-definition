@@ -79,12 +79,13 @@
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
-    "puppeteer": "^18.1.0",
+    "puppeteer": "^19.0.0",
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
   },
   "resolutions": {
     "minimatch": "^3.0.5"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
