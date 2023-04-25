@@ -378,6 +378,27 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "mediationAgreementTitle",
+    "Label": "## Upload Mediation Agreement",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "staffUploadedDocumentsLabel",
+    "Label": "### Staff uploaded documents",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAgreement",
+    "Label": " ",
+    "FieldType": "MediationAgreementDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentFixedCostOptionLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed costs?</h2>",
     "FieldType": "Label",
