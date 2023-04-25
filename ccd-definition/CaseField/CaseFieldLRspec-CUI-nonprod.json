@@ -246,8 +246,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "ccjJudgmentAmountSummaryResponse",
-    "Label": "The judgment will order the defendant to pay £${ccjJudgmentSummarySubtotalAmount}, including the claim fee and interest if applicable, as shown:",
+    "Label": "${ccjJudgmentStatement}",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentStatement",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   },
   {
@@ -367,6 +374,27 @@
     "ID": "mediationSettlementAgreedAt",
     "Label": "Mediation settlement agreed on",
     "FieldType": "Date",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAgreementTitle",
+    "Label": "## Upload Mediation Agreement",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "staffUploadedDocumentsLabel",
+    "Label": "### Staff uploaded documents",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAgreement",
+    "Label": " ",
+    "FieldType": "MediationAgreementDocument",
     "SecurityClassification": "Public"
   },
   {
