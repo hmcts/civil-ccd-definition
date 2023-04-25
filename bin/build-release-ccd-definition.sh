@@ -3,7 +3,7 @@
 set -eu
 
 environment=${1:-prod}
-shutterlist='aat'
+activateShutter=${2:-false}
 
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
@@ -30,18 +30,14 @@ else
 fi
 
 # deciding which enviornment should be excluded for unshuttered/shuttered
-if [ -n "$shutterlist" ]; then
-  echo 'Shutter list is not empty'
-  if [ -z "${shutterlist##*$environment*}" ]; then
-    echo "We are using shuttered file for $environment"
-    excludedFilenamePatterns="${excludedFilenamePatterns} ,*-shuttered.json"
-    echo "${excludedFilenamePatterns}"
-  fi
-  else
-    echo "We are using unshuttered file for $environment"
-    excludedFilenamePatterns="${excludedFilenamePatterns} ,*-unshuttered.json"
-    echo "${excludedFilenamePatterns}"
-
+if [ "$activateShutter" = true ] ; then
+  echo "We are activating shuttered file for $environment"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-unshuttered.json"
+  echo "${excludedFilenamePatterns}"
+else
+  echo "We are activating unshuttered file for $environment"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-shuttered.json"
+  echo "${excludedFilenamePatterns}"
 fi
 
 
