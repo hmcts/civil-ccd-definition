@@ -13,10 +13,6 @@
     "test:smoke-spec": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests-spec --reporter mocha-multi --verbose",
     "test:api-unspec": "MOCHAWESOME_REPORTFILENAME=api-unspec npx codeceptjs run-workers --suites 4  --grep @api-unspec --reporter mocha-multi --verbose",
     "test:e2e-unspec": "MOCHAWESOME_REPORTFILENAME=e2e-unspec npx codeceptjs run-workers --suites 2 --grep @e2e-unspec --reporter mocha-multi --verbose",
-    "test:api-sdo": "MOCHAWESOME_REPORTFILENAME=api-sdo npx codeceptjs run-workers --suites 4 --grep @api-sdo --reporter mocha-multi --verbose",
-    "test:e2e-sdo": "MOCHAWESOME_REPORTFILENAME=e2e-sdo npx codeceptjs run-workers --suites 2 --grep @e2e-sdo --reporter mocha-multi --verbose",
-    "test:api-dj": "MOCHAWESOME_REPORTFILENAME=api-dj npx codeceptjs  run-workers --suites 4  --grep @api-dj --reporter mocha-multi --verbose",
-    "test:e2e-dj": "MOCHAWESOME_REPORTFILENAME=e2e-dj NODE_TLS_REJECT_UNAUTHORIZED=0 npx codeceptjs run-workers --suites 2 --grep @e2e-1v1-dj --reporter mocha-multi --verbose",
     "test:api": "MOCHAWESOME_REPORTFILENAME=api-multiparty npx codeceptjs run --grep @api-multiparty --reporter mocha-multi --verbose",
     "test:e2e-wa": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @e2e-wa --reporter mocha-multi --verbose",
     "test:dmn-tasks": "MOCHAWESOME_REPORTFILENAME=api-1v1 npx codeceptjs run --grep @dmn-task --reporter mocha-multi --verbose",
@@ -49,7 +45,6 @@
     "test:DemoFunctional": "./e2e/run-non-prod-features-flag-enabled-functional-tests.sh",
     "test:fullfunctional": "./e2e/run-features-flag-enabled-full-functional-tests.sh",
     "test:e2e-nightly-prod": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
-    "test:e2e-nightly-nonprod": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-nonprod' --reporter mocha-multi --verbose",
     "test:non-prod-e2e-ft": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 3 --grep '@master-e2e-ft|@non-prod-e2e-ft' --reporter mocha-multi --verbose",
     "test:master-e2e-ft": "MOCHAWESOME_REPORTFILENAME=master-e2e-ft npx codeceptjs run-workers --suites 3 --grep @master-e2e-ft --reporter mocha-multi --verbose",
     "test:functional": "./e2e/run-functional-tests.sh",
@@ -79,12 +74,13 @@
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
-    "puppeteer": "^18.1.0",
+    "puppeteer": "^19.0.0",
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
   },
   "resolutions": {
     "minimatch": "^3.0.5"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }

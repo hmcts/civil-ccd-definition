@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 # User used during the CCD import and ccd-role creation
 ./bin/utils/ccd-add-role.sh "caseworker-civil"
@@ -24,6 +25,7 @@
 ./bin/utils/ccd-add-role.sh "payment-access"
 ./bin/utils/ccd-add-role.sh "caseflags-admin"
 ./bin/utils/ccd-add-role.sh "caseflags-viewer"
+./bin/utils/ccd-add-role.sh "caseworker-wa-task-configuration"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"
