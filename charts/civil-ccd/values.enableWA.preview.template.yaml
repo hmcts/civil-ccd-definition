@@ -9,6 +9,9 @@ servicebus:
         subscriptionNeeded: yes
         requiresSession: true
 
+global:
+  jobKind: CronJob
+
 camunda-bpm:
   enabled: false # comes from WA chart
 

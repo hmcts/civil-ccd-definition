@@ -164,8 +164,8 @@ withPipeline(type, product, component) {
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.AAC_API_URL="https://manage-case-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
-      set -e
-      eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
+        set -e
+        eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}

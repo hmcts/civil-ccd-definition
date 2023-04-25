@@ -11,14 +11,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppTypeLabel",
-    "Label": "<p class=\"govuk-body\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
-    "HintText": "  ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "generalAppType",
     "Label": "What type of applications do you want to make?",
     "HintText": "  ",
