@@ -96,17 +96,14 @@ module.exports = {
             ccjJudgmentFixedCostAmount: '40',
             ccjJudgmentAmountSubtotal: '1175',
             ccjPaymentPaidSomeAmountInPounds: '10',
-            ccjJudgmentTotalStillOwed: '1165'
-          },
-          IntentionToSettleClaim: {
-            applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
-            applicant1PartAdmitRejectReasonSpec: 'test'
+            ccjJudgmentTotalStillOwed: '1165',
+            ccjJudgmentStatement: 'test'
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
-          }
+          },
         };
         responseData.midEventData = {
           ...responseData.midEventData,

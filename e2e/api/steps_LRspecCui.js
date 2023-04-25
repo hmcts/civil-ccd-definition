@@ -15,6 +15,8 @@ const {checkCourtLocationDynamicListIsEnabled, checkToggleEnabled, checkHnlLegal
 const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
+const testingSupport = require('./testingSupport');
+const {dateNoWeekends} = require('./dataHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -24,8 +26,9 @@ const data = {
   CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario),
+  REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
-  EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline')
+  EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js')
 };
 
 const eventData = {
@@ -34,7 +37,8 @@ const eventData = {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
-      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
+      REQUEST_JUDGEMENT: data.DEFENDANT_RESPONSE('REQUEST_JUDGEMENT'),
     }
   },
   claimantResponses: {
@@ -44,6 +48,11 @@ const eventData = {
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM'),
       PART_ADMISSION_SETTLE: data.CLAIMANT_RESPONSE('PART_ADMISSION_SETTLE'),
+    }
+  },
+  requestJudgement: {
+    ONE_V_ONE: {
+      REQUEST_JUDGEMENT: data.REQUEST_JUDGEMENT('REQUEST_JUDGEMENT'),
     }
   }
 };
@@ -160,13 +169,27 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
+
+  requestJudgement: async (user, response = 'FULL_ADMISSION', scenario = 'ONE_V_ONE') => {
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'REQUEST_JUDGEMENT_ADMISSION_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let requestJudgementData = eventData['requestJudgement'][scenario][response];
+
+    for (let pageId of Object.keys(requestJudgementData.userInput)) {
+      await assertValidData(requestJudgementData, pageId);
+    }
+  },
+
   extendResponseDeadline: async (user) => {
     eventName = 'EXTEND_RESPONSE_DEADLINE';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
 
-
-    let informAgreedExtensionData = data.EXTEND_RESPONSE_DEADLINE_DATE();
+    let informAgreedExtensionData = await data.EXTEND_RESPONSE_DEADLINE_DATE();
+    informAgreedExtensionData.userInput.ResponseDeadlineExtension.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
@@ -176,6 +199,13 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  amendRespondent1ResponseDate: async (user) => {
+    await apiRequest.setupTokens(user);
+    let respondent1ResponseDate ={};
+    respondent1ResponseDate = {'respondent1ResponseDate':'2022-01-10T15:59:50'};
+    testingSupport.updateCaseData(caseId, respondent1ResponseDate);
   },
 };
 
