@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "MediationAgreementDocument",
+    "ListElementCode": "name",
+    "ElementLabel": "Document name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationAgreementDocument",
+    "ListElementCode": "documentType",
+    "ElementLabel": "Document type",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "MediationDocumentType",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "MediationAgreementDocument",
+    "ListElementCode": "document",
+    "ElementLabel": "Document link",
+    "FieldType": "Document",
+    "SecurityClassification": "Public"
+  }
+]

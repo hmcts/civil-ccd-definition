@@ -79,10 +79,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
-
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'No'
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'Yes'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
@@ -98,17 +96,14 @@ module.exports = {
             ccjJudgmentFixedCostAmount: '40',
             ccjJudgmentAmountSubtotal: '1175',
             ccjPaymentPaidSomeAmountInPounds: '10',
-            ccjJudgmentTotalStillOwed: '1165'
-          },
-          IntentionToSettleClaim: {
-            applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
-            applicant1PartAdmitRejectReasonSpec: 'test'
+            ccjJudgmentTotalStillOwed: '1165',
+            ccjJudgmentStatement: 'test'
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
-          }
+          },
         };
         responseData.midEventData = {
           ...responseData.midEventData,
@@ -120,7 +115,6 @@ module.exports = {
           ...responseData.userInput,
           RespondentResponse: {
             applicant1AcceptFullAdmitPaymentPlanSpec: 'Yes',
-            applicant1ProceedWithClaim: 'Yes',
           },
           RespondentProposedRepayment: {
             applicant1RepaymentOptionForDefendantSpec: 'SET_DATE',
