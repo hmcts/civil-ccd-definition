@@ -4986,7 +4986,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1Link",
+    "CaseFieldID": "respondent1DocumentURL",
     "AccessControl": [
       {
         "UserRoles": [
@@ -5005,7 +5005,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2Link",
+    "CaseFieldID": "respondent2DocumentURL",
     "AccessControl": [
       {
         "UserRoles": [
