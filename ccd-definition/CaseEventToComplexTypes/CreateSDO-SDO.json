@@ -115,25 +115,41 @@
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "date1",
+    "ListElementCode": "date1Label",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "date1",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "date2Label",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "date2",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
@@ -1405,15 +1421,15 @@
     "ID": "FastTrackHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "dateFrom",
+    "ListElementCode": "dateFromLabel",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FastTrackHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "dateTo",
+    "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
@@ -1421,8 +1437,24 @@
     "ID": "FastTrackHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "hearingDuration",
+    "ListElementCode": "dateToLabel",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "dateTo",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "hearingDuration",
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1430,7 +1462,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "otherHours",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"OTHER\""
   },
@@ -1439,7 +1471,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "otherMinutes",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"OTHER\""
   },
@@ -1448,7 +1480,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "helpText1",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1456,7 +1488,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "helpText2",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
