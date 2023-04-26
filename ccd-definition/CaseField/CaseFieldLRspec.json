@@ -2247,5 +2247,21 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DocumentURL",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "used in civil-service to determine which document belongs to which respondent, to populate preview on claimant response event "
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DocumentURL",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "used in civil-service to determine which document belongs to which respondent, to populate preview on claimant response event "
   }
 ]
