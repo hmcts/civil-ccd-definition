@@ -2253,13 +2253,15 @@
     "ID": "respondent1Link",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_comment": "used in civil-service to determine which document belongs to which respondent "
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2Link",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "_comment": "used in civil-service to determine which document belongs to which respondent "
   }
 ]
