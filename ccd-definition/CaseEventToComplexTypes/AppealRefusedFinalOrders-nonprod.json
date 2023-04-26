@@ -19,7 +19,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.permissionLabel",
+    "ListElementCode": "appealRefused.refusedAppealLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
@@ -27,7 +27,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.permissionText",
+    "ListElementCode": "appealRefused.refusedText",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -35,7 +35,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.refusedAppealLabel",
+    "ListElementCode": "appealRefused.permissionLabel",
     "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
@@ -43,7 +43,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.refusedText",
+    "ListElementCode": "appealRefused.permissionText",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },

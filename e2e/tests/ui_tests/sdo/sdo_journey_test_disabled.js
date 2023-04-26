@@ -13,7 +13,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo');
+Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

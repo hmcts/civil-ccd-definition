@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
-Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @non-prod-e2e-ft');
+Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @non-prod-e2e-ft @e2e-nightly-nonprod');
 
 Scenario('Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
