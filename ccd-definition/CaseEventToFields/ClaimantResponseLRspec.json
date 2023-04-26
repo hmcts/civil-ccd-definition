@@ -228,5 +228,15 @@
     "PageID": "StatementOfTruth",
     "PageLabel": "",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQWitnessesSmallClaim",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaimWitnesses",
+    "ShowSummaryChangeOption": "Y"
   }
 ]

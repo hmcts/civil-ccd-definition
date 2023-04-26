@@ -147,5 +147,22 @@
     "_Category": "WORKAROUND",
     "RetainHiddenValue": "Y",
     "Searchable": "N"
+  },
+  {
+    "ID": "Party",
+    "ListElementCode": "partyEmail",
+    "FieldType": "Email",
+    "ElementLabel": "Email",
+    "SecurityClassification": "Public",
+    "Max": "40",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Party",
+    "ListElementCode": "partyPhone",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

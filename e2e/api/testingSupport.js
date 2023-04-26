@@ -109,10 +109,6 @@ module.exports =  {
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
-    if(toggle === 'hearing-and-listing-sdo'){
-      return false;
-    }
-
     if(toggle === 'case-flags'){
       return false;
     }
