@@ -15,13 +15,6 @@
     },
     {
       "ID": "DisposalHearingMedicalEvidence",
-      "ListElementCode": "dateLabel",
-      "FieldType": "Label",
-      "ElementLabel": " ",
-      "SecurityClassification": "Public"
-    },
-    {
-      "ID": "DisposalHearingMedicalEvidence",
       "ListElementCode": "date",
       "FieldType": "Date",
       "ElementLabel": " ",

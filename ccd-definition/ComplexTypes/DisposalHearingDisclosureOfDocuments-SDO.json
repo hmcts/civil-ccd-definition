@@ -15,13 +15,6 @@
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
-    "ListElementCode": "date1Label",
-    "FieldType": "Label",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingDisclosureOfDocuments",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -31,13 +24,6 @@
     "ID": "DisposalHearingDisclosureOfDocuments",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "DisposalHearingDisclosureOfDocuments",
-    "ListElementCode": "date2Label",
-    "FieldType": "Label",
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
