@@ -25,7 +25,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_HEARING",
+    "CaseEventID": "NOTIFY_DEFENDANT1_HEARING",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT2_HEARING",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
