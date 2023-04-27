@@ -47,8 +47,15 @@
   },
   {
     "ID": "SmallClaimsHearing",
-    "ListElementCode": "dateTo",
+    "ListElementCode": "dateToLabel",
     "ElementLabel": "Date to",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "dateTo",
+    "ElementLabel": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
