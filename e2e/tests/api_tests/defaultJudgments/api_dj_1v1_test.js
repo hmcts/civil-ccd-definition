@@ -76,36 +76,3 @@ Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearin
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
 });
-const claimAmountJudge = '11000';
-const judgeUser = {
-  password: 'Password12!',
-  email: 'judge-civil-01@example.com',
-  type: 'judge',
-  roleCategory: 'JUDICIAL',
-  regionId: '1'
-};
-Feature('CCD 1v1 API test @api-finalOrders');
-
-async function prepareClaimForFinalOrders(api, claimAmount) {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.addCaseNote(config.adminUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
-  caseId = await api.getCaseId();
-  await api.amendRespondent1ResponseDeadline(config.systemupdate);
-  await api.defaultJudgment(config.applicantSolicitorUser);
-}
-
-Scenario('1v1 Judge complete Final Order Free form order', async ({api}) => {
-  if (['preview', 'demo', undefined].includes(config.runningEnv)) {
-    await prepareClaimForFinalOrders(api, claimAmountJudge);
-    await api.createFinalOrder(judgeUser, 'FREE_FORM_ORDER');
-  }
-});
-
-Scenario('1v1 Judge complete Final Order Assisted Order', async ({api}) => {
-  if (['preview', 'demo', undefined].includes(config.runningEnv)) {
-    await prepareClaimForFinalOrders(api, claimAmountJudge);
-    await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
-  }
-});

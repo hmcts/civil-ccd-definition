@@ -39,8 +39,6 @@ const createAssistedOrder = () => {
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
       }
     },
-    FinalOrderAssistedOrder: {
-    },
   }
 };
 

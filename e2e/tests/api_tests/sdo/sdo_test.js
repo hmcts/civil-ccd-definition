@@ -233,6 +233,29 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
   }
 });
 
+Feature('CCD 1v1 API test @api-finalOrders');
+async function prepareClaimForFinalOrders(api) {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.amendRespondent1ResponseDeadline(config.systemupdate);
+  await api.defaultJudgment(config.applicantSolicitorUser);
+}
+
+Scenario('1v1 Judge complete Final Order Free Form Order', async ({api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimForFinalOrders(api);
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+  }
+});
+
+Scenario('1v1 Judge complete Final Order Assisted Order', async ({api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimForFinalOrders(api);
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
+  }
+});
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
