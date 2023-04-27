@@ -971,24 +971,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFutureApplications",
+    "CaseFieldID": "respondent1DQFutureApplicationsLabel",
     "PageLabel": "",
     "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "responseClaimTrack =\"FAST_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AdditionalInformationForJudge",
-    "PageDisplayOrder": 14,
-    "PageFieldDisplayOrder": 3,
-    "CaseEventFieldLabel": "Provide any other information the judge may need",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "Applications",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND responseClaimTrack =\"FAST_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
     "ShowSummaryChangeOption": "N"
   },
   {
