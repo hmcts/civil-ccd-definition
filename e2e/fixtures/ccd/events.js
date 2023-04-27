@@ -154,5 +154,11 @@ module.exports = {
     name: 'Make an application',
     description: 'Application created, post actions triggered',
     order: 17
-  }
+  },
+  REQUEST_JUDGEMENT_ADMISSION_SPEC: {
+    id: 'REQUEST_JUDGEMENT_ADMISSION_SPEC',
+    name: 'Request Judgement by Admission',
+    description: 'Request Judgement by Admission',
+    order: 10
+  },
 };
