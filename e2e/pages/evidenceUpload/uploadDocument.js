@@ -6,44 +6,32 @@ module.exports = {
   fields: {
     witnessSelectionEvidence: {
       id: '#witnessSelectionEvidence',
-      options: {
-        witnessStatement: '#witnessSelectionEvidence-WITNESS_STATEMENT'
-      }
+      witnessStatement: '#witnessSelectionEvidence-WITNESS_STATEMENT'
     },
 
     witnessSelectionEvidenceRes: {
       id: '#witnessSelectionEvidenceRes',
-      options: {
-        witnessStatement: '#witnessSelectionEvidenceRes-WITNESS_STATEMENT'
-      }
+      witnessStatement: '#witnessSelectionEvidenceRes-WITNESS_STATEMENT'
     },
 
     expertSelectionEvidence:{
       id: '#expertSelectionEvidence',
-      options: {
-        expertReport: '#expertSelectionEvidence-EXPERT_REPORT'
-      }
+      expertReport: '#expertSelectionEvidence-EXPERT_REPORT'
     },
 
     expertSelectionEvidenceRes:{
       id: '#expertSelectionEvidenceRes',
-      options: {
-        expertReport: '#expertSelectionEvidenceRes-EXPERT_REPORT'
-      }
+      expertReport: '#expertSelectionEvidenceRes-EXPERT_REPORT'
     },
 
     trialSelectionEvidence:{
       id: '#trialSelectionEvidence',
-      options: {
-        authorities: '#trialSelectionEvidence-AUTHORITIES'
-      }
+      authorities: '#trialSelectionEvidence-AUTHORITIES'
     },
 
     trialSelectionEvidenceRes:{
       id: '#trialSelectionEvidenceRes',
-      options: {
-        authorities: '#trialSelectionEvidenceRes-AUTHORITIES'
-      }
+      authorities: '#trialSelectionEvidenceRes-AUTHORITIES'
     },
 
     documentWitnessStatement:{
@@ -104,24 +92,24 @@ module.exports = {
   async selectType(defendant){
     if(defendant) {
       await within(this.fields.witnessSelectionEvidenceRes.id, () => {
-        I.click(this.fields.witnessSelectionEvidenceRes.options.witnessStatement);
+        I.click(this.fields.witnessSelectionEvidenceRes.witnessStatement);
       });
       await within(this.fields.expertSelectionEvidenceRes.id, () => {
-        I.click(this.fields.expertSelectionEvidenceRes.options.expertReport);
+        I.click(this.fields.expertSelectionEvidenceRes.expertReport);
       });
       await within(this.fields.trialSelectionEvidenceRes.id, () => {
-        I.click(this.fields.trialSelectionEvidenceRes.options.authorities);
+        I.click(this.fields.trialSelectionEvidenceRes.authorities);
       });
     }
     else {
       await within(this.fields.witnessSelectionEvidence.id, () => {
-        I.click(this.fields.witnessSelectionEvidence.options.witnessStatement);
+        I.click(this.fields.witnessSelectionEvidence.witnessStatement);
       });
       await within(this.fields.expertSelectionEvidence.id, () => {
-        I.click(this.fields.expertSelectionEvidence.options.expertReport);
+        I.click(this.fields.expertSelectionEvidence.expertReport);
       });
       await within(this.fields.trialSelectionEvidence.id, () => {
-        I.click(this.fields.trialSelectionEvidence.options.authorities);
+        I.click(this.fields.trialSelectionEvidence.authorities);
       });
     }
     await I.clickContinue();
@@ -188,6 +176,6 @@ module.exports = {
       await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_APPLICANT/EVIDENCE_UPLOAD_APPLICANTEvidenceUpload');
     }
     await I.waitForText('Upload Your Documents');
-    await I.click('Continue');
+    await I.clickContinue();
   }
 };
