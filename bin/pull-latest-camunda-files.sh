@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 branchName=$1
 
 #Checkout specific branch pf  civil camunda bpmn definition

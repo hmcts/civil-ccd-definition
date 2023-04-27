@@ -5,8 +5,11 @@ module.exports = {
       case 'ClaimantResponse': {
         return {
           noOfWitnesses: {
-            id: '#applicant1ClaimWitnesses',
-
+            id: '#applicant1DQWitnessesSmallClaim_witnessesToAppear',
+            options: {
+              yes: '#applicant1DQWitnessesSmallClaim_witnessesToAppear_Yes',
+              no: '#applicant1DQWitnessesSmallClaim_witnessesToAppear_No'
+            },
           },
         };
       }
@@ -15,8 +18,11 @@ module.exports = {
       default: {
         return {
           noOfWitnesses: {
-            id: '#responseClaimWitnesses',
-
+            id: '#respondent1DQWitnessesSmallClaim_witnessesToAppear',
+            options: {
+              yes: '#respondent1DQWitnessesSmallClaim_witnessesToAppear_Yes',
+              no: '#respondent1DQWitnessesSmallClaim_witnessesToAppear_No'
+            },
           }
         };
       }
@@ -25,10 +31,9 @@ module.exports = {
 
 
  async howManyWitnesses(mpScenario) {
-
     I.waitForElement(this.fields(mpScenario).noOfWitnesses.id);
     await I.runAccessibilityTest();
-    await I.fillField(this.fields(mpScenario).noOfWitnesses.id,2);
+    await I.click(this.fields(mpScenario).noOfWitnesses.options.no);
     await I.clickContinue();
   }
 };

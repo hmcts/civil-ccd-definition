@@ -98,14 +98,14 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
 Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.evidenceUpload(caseId(), false);
+    await LRspec.evidenceUploadSpec(caseId(), false);
   }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.defendantSolicitorUser);
-    await LRspec.evidenceUpload(caseId(), true);
+    await LRspec.evidenceUploadSpec(caseId(), true);
   }
 }).retry(3);
 

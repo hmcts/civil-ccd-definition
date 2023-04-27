@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.23
+version: 0.0.25
 maintainers:
   - name: HMCTS Civil team
 
@@ -15,7 +15,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 8.0.27
+    version: 8.0.29
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
@@ -34,8 +34,12 @@ dependencies:
     version: 0.0.28
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
+  - name: servicebus
+    version: 1.0.2
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: servicebus.enabled
 
-  # WA
+# WA
   - name: wa-task-management-api
     version: ~0.0.37
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
@@ -52,16 +56,16 @@ dependencies:
     version: ~0.0.26
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: wa.enabled
-  # WA Crons
+# WA Crons
   - name: wa-task-batch-service
     version: ~0.0.15
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: false
+    condition: wa.enabled
   - name: wa-message-cron-service
     version: ~0.0.3
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: wa.enabled
-  # CCD message publisher
+# CCD message publisher
   - name: ccd-message-publisher
     version: ~0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'

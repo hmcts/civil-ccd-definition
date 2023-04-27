@@ -168,7 +168,7 @@ const secondClaimantSteps = (claimant2) => [
   () => addAnotherClaimant.enterAddAnotherClaimant(claimant2),
   ...conditionalSteps(claimant2, [
     () => party.enterParty(parties.APPLICANT_SOLICITOR_2, address),
-    () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_2, address, TEST_FILE_PATH),]
+    () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_2, false, TEST_FILE_PATH),]
   )
 ];
 const firstDefendantSteps = (respondent1) => [
@@ -501,7 +501,6 @@ module.exports = function () {
 
     async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.proceedWithClaim(mpScenario),
