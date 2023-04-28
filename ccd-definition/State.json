@@ -89,5 +89,12 @@
     "Name": "Decision Outcome",
     "Description": "Day of Trial state",
     "DisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_SETTLED",
+    "Name": "Case Settled",
+    "Description": "Case settled",
+    "DisplayOrder": 14
   }
 ]
