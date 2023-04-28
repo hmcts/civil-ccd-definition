@@ -43,6 +43,7 @@ module.exports = {
     let eventUserAuth = await idamHelper.accessToken(user);
     let eventUserId = await idamHelper.userId(eventUserAuth);
     let url = getCaseDetailsUrl(eventUserId, caseId);
+    console.log('fetchCaseDetails>>>',url);
 
     return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
       .then(response => response.json());
@@ -53,6 +54,7 @@ module.exports = {
     let eventUserId = await idamHelper.userId(eventUserAuth);
     let url = getCcdCaseUrl(eventUserId, caseId);
 
+    console.log('fetchCaseForDisplay>>>',url);
     return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
       .then(response => response.json());
   },
