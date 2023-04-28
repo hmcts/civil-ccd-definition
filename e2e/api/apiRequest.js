@@ -64,6 +64,8 @@ module.exports = {
     }
     url += `/event-triggers/${eventName}/token`;
 
+    console.log('startEventurl>>>',url);
+
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     tokens.ccdEvent = response.token;
@@ -196,7 +198,7 @@ module.exports = {
       'GET');
     return response_msg || {};
   },
-  
+
   bundleTriggerEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getBundleTriggerUrl(caseId);
