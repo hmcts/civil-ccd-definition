@@ -20,6 +20,8 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   caseId = await api.getCaseId();
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await api.defaultJudgment(config.applicantSolicitorUser);
+  await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+  await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
 });
 
 Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
