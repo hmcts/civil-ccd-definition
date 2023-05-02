@@ -34,7 +34,8 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -317,7 +318,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -805,7 +807,8 @@
     "PageID": "Mediation",
     "PageShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_TWO\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
