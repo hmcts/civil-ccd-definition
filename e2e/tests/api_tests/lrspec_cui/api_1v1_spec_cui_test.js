@@ -18,7 +18,14 @@ Scenario('1v1 part admit claimant and defendant response', async ({I, api_spec_c
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('Extend response deadline', async ({api_spec_cui}) => {
+Scenario('1v1 part admit claimant and defendant response', async ({I, api_spec_cui}) => {
+  await api_spec_cui.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec_cui.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION');
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION_SETTLE', 'ONE_V_ONE',
+    'CASE_SETTLED');
+});
+
+Scenario.skip('Extend response deadline', async ({api_spec_cui}) => {
   await api_spec_cui.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec_cui.extendResponseDeadline(config.applicantSolicitorUser);
 });
