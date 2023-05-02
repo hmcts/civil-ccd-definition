@@ -76,19 +76,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageShowCondition": "responseClaimMediationSpecRequired=\"DO NOT SHOW IN UI\"",
-    "PageDisplayOrder": 1,
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
