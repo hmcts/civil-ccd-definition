@@ -16,5 +16,28 @@
       "GS_profile"
     ],
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_STAYED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
