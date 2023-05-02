@@ -93,6 +93,30 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
   }
 });
 
+Scenario('1v1 full defence unspecified - judge generates final free form order', async ({api}) => {
+  // sdo requires judicial_referral, which is not past preview
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaim(api, claimAmountJudge);
+    await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+  }
+});
+
+Scenario('1v1 full defence unspecified - judge generates final assisted form order', async ({api}) => {
+  // sdo requires judicial_referral, which is not past preview
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaim(api, claimAmountJudge);
+    await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
+  }
+});
+
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
