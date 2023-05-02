@@ -175,6 +175,7 @@
     "PageDisplayOrder": 12,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/defendant",
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
@@ -447,6 +448,7 @@
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/defendant2",
     "PageShowCondition": "addRespondent2=\"Yes\""
   },
   {
