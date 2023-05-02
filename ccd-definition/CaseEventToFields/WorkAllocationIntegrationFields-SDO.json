@@ -89,18 +89,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimMediationSpec2Required",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
-    "EventElementLabel": "  ",
-    "EventHintText": "  ",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
@@ -134,10 +122,10 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1LiPResponse",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 12,
     "Publish": "Y"
   }
 ]
