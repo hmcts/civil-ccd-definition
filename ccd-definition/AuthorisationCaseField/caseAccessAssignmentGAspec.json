@@ -103,6 +103,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaAddlnInfoList",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWrittenRepDocList",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDirectionDocList",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocument",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

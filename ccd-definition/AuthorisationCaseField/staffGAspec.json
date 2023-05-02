@@ -157,6 +157,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaAddlnInfoList",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWrittenRepDocList",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDirectionDocList",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
