@@ -15,6 +15,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppConsentOrder",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppUrgencyRequirement",
     "FieldType": "GAUrgencyRecordGAspec",
     "ElementLabel": " ",
