@@ -25,16 +25,15 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "caseworker-ras-validation",
-          "GS_profile"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }

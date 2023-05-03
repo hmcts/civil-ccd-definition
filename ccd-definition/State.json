@@ -100,8 +100,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CASE_STAYED",
-    "Name": "Case Settled",
-    "Description": "Case settled",
+    "Name": "Case Stayed",
+    "Description": "Case stayed",
     "DisplayOrder": 15
   }
 ]
