@@ -5,6 +5,8 @@
   "scripts": {
     "lint": "eslint e2e",
     "setup": "echo yarn:setup",
+    "yarn-update": "yarn set version 3.x",
+    "install-dependencies": "/usr/bin/yarn install --immutable --silent",
     "test": "NODE_PATH=. mocha e2e/tests/unit/definitions/**/*.js",
     "test:a11y": "echo test:a11y",
     "test:coverage": "echo test:coverage",
@@ -89,5 +91,5 @@
   "resolutions": {
     "minimatch": "^3.0.5"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.1"
 }
