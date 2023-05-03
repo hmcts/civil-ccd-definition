@@ -2,6 +2,9 @@
   "name": "civil-ccd-definition",
   "version": "0.0.1",
   "description": "Civil e2e tests",
+  "engines": {
+    "node": ">=16.13"
+  },
   "scripts": {
     "lint": "eslint e2e",
     "setup": "echo yarn:setup",
@@ -80,7 +83,7 @@
     "mocha-multi": "^1.1.6",
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.6.9",
     "puppeteer": "^19.0.0",
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
