@@ -2,9 +2,9 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 1v1 API test @api-spec-small');
+Feature('CCD 1v1 API test @api-spec-small @api-specified @api-nightly-prod');
 
-Scenario.skip('1v1 full defence claimant and defendant response small claim', async ({I, api_spec_small}) => {
+Scenario('1v1 full defence claimant and defendant response small claim', async ({I, api_spec_small}) => {
   const defenceRoutes = ['FULL_DEFENCE', 'FULL_ADMISSION', 'PART_ADMISSION', 'COUNTER_CLAIM'];
   for (let i = 0; i < defenceRoutes.length; i++) {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

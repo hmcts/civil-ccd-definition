@@ -5,8 +5,8 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 300;
-const RETRY_TIMEOUT_MS = 1000;
+const MAX_RETRIES = 60;
+const RETRY_TIMEOUT_MS = 5000;
 
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
@@ -50,13 +50,14 @@ module.exports =  {
           } else if (response.status === 409) {
             console.log('Role already exists!');
           } else  {
+            console.log('response..', response);
             throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
     });
   },
 
-  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONESPEC', user = config.defendantSolicitorUser) => {
+  assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
       const authToken = await idamHelper.accessToken(user);
 
       await retry(() => {
@@ -98,7 +99,8 @@ module.exports =  {
             caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
           }
           else  {
-            throw new Error(`Error occurred with status : ${response.status}`);
+            console.log(`Error occurred with status : ${response.status}`);
+            //throw new Error(`Error occurred with status : ${response.status}`);
           }
         });
     });
@@ -106,6 +108,14 @@ module.exports =  {
 
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    if(toggle === 'hearing-and-listing-sdo'){
+      return false;
+    }
+
+    if(toggle === 'case-flags'){
+      return false;
+    }
 
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
@@ -144,8 +154,97 @@ module.exports =  {
          );
   },
 
-  updateCaseData: async (caseId, caseData) => {
+  checkHnlToggleEnabled: async () => {
+    return false;
+    // const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    //
+    // return await restHelper.request(
+    //   `${config.url.civilService}/testing-support/feature-toggle/hearing-and-listing-sdo`,
+    //   {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer ${authToken}`,
+    //   }, null, 'GET')
+    //   .then(async response =>  {
+    //       if (response.status === 200) {
+    //         const json = await response.json();
+    //         return json.toggleEnabled;
+    //       } else {
+    //         throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+    //       }
+    //     }
+    //   );
+  },
+
+  checkHnlLegalRepToggleEnabled: async () => {
+    return true;
+  },
+
+  checkCourtLocationDynamicListIsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+       return await restHelper.request(
+        `${config.url.civilService}/testing-support/feature-toggle/court-locations`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+        }, null, 'GET')
+         .then(async response =>  {
+             if (response.status === 200) {
+               const json = await response.json();
+               return json.toggleEnabled;
+             } else {
+               throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+             }
+           }
+         );
+  },
+
+  checkCertificateOfServiceIsEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/isCertificateOfServiceEnabled`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
+  },
+
+  checkPBAv3IsEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
+  },
+
+  checkCaseFlagsEnabled: () => {
+    return false;
+  },
+
+  updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
+    const authToken = await idamHelper.accessToken(user);
 
     await restHelper.retriedRequest(
       `${config.url.civilService}/testing-support/case/${caseId}`,

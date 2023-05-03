@@ -35,7 +35,16 @@ const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
 
 const selectDefendantSolicitorToNotifyPage = require('./pages/notifyClaim/selectDefendantSolicitorToNotify.page');
+const cosNotifyClaimPage = require('./pages/notifyClaim/certificateOfServiceNotifyClaim.page');
+const cosNotifyClaimDetailsPage = require('./pages/notifyClaimDetails/certificateOfServiceNotifyClaimDetails.page');
+
+const cosNotifyClaimCYAPage = require('./pages/cosNotifyClaimCYA.page');
+const cosTab = require('./pages/cosTab.page');
+
+
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
+const unspecifiedSelectCaseNote = require('./pages/addCaseNotes/selectCaseNote.js');
+const unspecifiedAddDocumentAndNotes = require('./pages/addCaseNotes/addDocumentAndNotes.js');
 
 const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntention.page');
 
@@ -64,6 +73,7 @@ const sumOfDamagesToBeDecidedPage = require('./pages/selectSDO/sumOfDamagesToBeD
 const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallClaimsTrack.page');
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
+const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -110,23 +120,38 @@ const claimResponseTimelineLRspecPage = require('./pages/respondToClaimLRspec/cl
 const hearingLRspecPage = require('./pages/respondToClaimLRspec/hearingLRspec.page');
 const furtherInformationLRspecPage = require('./pages/respondToClaimLRspec/furtherInformationLRspec.page');
 const disclosureReportPage = require('./fragments/dq/disclosureReport.page');
+const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList.page');
+const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
+const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
+
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
+const noticeOfChange = require('./pages/noticeOfChange.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+const CLAIMANT_NAME = 'Test Inc';
+const DEFENDANT1_NAME = 'Sir John Doe';
+const DEFENDANT2_NAME = 'Dr Foo Bar';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
   offline: 'Your claim has been received and will progress offline'
 };
 
-let caseId, screenshotNumber, eventName, currentEventName;
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
@@ -143,14 +168,14 @@ const secondClaimantSteps = (claimant2) => [
   () => addAnotherClaimant.enterAddAnotherClaimant(claimant2),
   ...conditionalSteps(claimant2, [
     () => party.enterParty(parties.APPLICANT_SOLICITOR_2, address),
-    () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_2, address, TEST_FILE_PATH),]
+    () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_2, false, TEST_FILE_PATH),]
   )
 ];
 const firstDefendantSteps = (respondent1) => [
   () => party.enterParty(parties.RESPONDENT_SOLICITOR_1, address),
   () => respondentRepresentedPage.enterRespondentRepresented(parties.RESPONDENT_SOLICITOR_1, respondent1.represented),
   ...conditionalSteps(respondent1.represented, [
-    () => defendantSolicitorOrganisation.enterOrganisationDetails(respondent1.representativeRegistered, '1', respondent1.representativeOrgNumber),
+    () => defendantSolicitorOrganisation.enterOrganisationDetails('1', respondent1.representativeOrgNumber),
     ...conditionalSteps(!respondent1.representativeRegistered, [
       () => unRegisteredDefendantSolicitorOrganisationPage.enterDefendantSolicitorDetails('1')
     ]),
@@ -172,9 +197,7 @@ const secondDefendantSteps = (respondent2, respondent1Represented, twoVOneScenar
         () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
       ]),
       ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
-        () => defendantSolicitorOrganisation.enterOrganisationDetails(
-          respondent2.representativeRegistered,
-          '2',
+        () => defendantSolicitorOrganisation.enterOrganisationDetails('2',
           respondent2.representativeOrgNumber),
         () => secondDefendantSolicitorServiceAddress.enterOrganisationServiceAddress(),
         () => secondDefendantSolicitorReference.enterReference(),
@@ -203,18 +226,21 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-        await this.signOut();
-      }
-
-      await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 90);
-
-        if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-          output.log(`Signing in user: ${user.type}`);
-          await loginPage.signIn(user);
+      if (loggedInUser !== user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
         }
-      }, SIGNED_IN_SELECTOR);
+        await this.retryUntilExists(async () => {
+          this.amOnPage(config.url.manageCase, 90);
+
+          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+            console.log(`Signing in user: ${user.type}`);
+            await loginPage.signIn(user);
+          }
+        }, SIGNED_IN_SELECTOR);
+        loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
+      }
     },
 
     grabCaseNumber: async function () {
@@ -250,15 +276,17 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, shouldStayOnline = true) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
       await createCasePage.createCase(config.definition.jurisdiction);
-      await this.triggerStepsWithScreenshot([
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+
+      let steps = pbaV3 ? [
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
-        () => chooseCourtPage.enterCourt(),
+        () => chooseCourtPage.selectCourt(),
         ...firstClaimantSteps(),
         ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
@@ -268,16 +296,46 @@ module.exports = function () {
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
         () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
-        () => claimValuePage.enterClaimValue(),
+        () => claimValuePage.enterClaimValue(claimValue),
+        () => pbaNumberPage.clickContinue(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
+      ] : [
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.selectCourt(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
           shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
-      ]);
+      ];
+
+      await this.triggerStepsWithScreenshot(steps);
 
       caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+    },
+
+    async checkForCaseFlagsEvent() {
+      eventName = 'Create case flags';
+      const eventNames = ['Create case flags', 'Manage case flags'];
+
+      await this.triggerStepsWithScreenshot([
+          () => caseViewPage.assertEventsAvailable(eventNames),
+      ]);
     },
 
     async notifyClaim(solicitorToNotify) {
@@ -336,6 +394,31 @@ module.exports = function () {
       ]);
     },
 
+    async judgePerformDJDirectionOrder() {
+      eventName = 'STANDARD_DIRECTION_ORDER_DJ';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.selectCaseManagementOrder('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.selectOrderAndHearingDetailsForDJTask('DisposalHearing'),
+        () => unspecifiedDefaultJudmentPage.verifyOrderPreview(),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async judgeAddsCaseNotes() {
+      eventName = 'EVIDENCE_UPLOAD_JUDGE';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedSelectCaseNote.selectCaseNotes(),
+        () => unspecifiedAddDocumentAndNotes.addDocumentAndNotes(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Document uploaded and note added')
+      ]);
+    },
+
+    async staffPerformDJCaseTransferCaseOffline(caseId) {
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedDefaultJudmentPage.performAndVerifyTransferCaseOffline(caseId)
+      ]);
+    },
+
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
 
@@ -361,6 +444,18 @@ module.exports = function () {
       ]);
     },
 
+    async createHearingScheduled() {
+          eventName = 'Hearing Scheduled';
+          await this.triggerStepsWithScreenshot([
+            () => hearingNoticeListPage.hearingType('fastTrack'),
+            () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
+            () => hearingScheduledChooseDetailsPage.selectCourt(),
+            () => hearingScheduledMoreInfoPage.enterMoreInfo(),
+            () => event.submit('Submit', ''),
+            () => event.returnToCaseDetails()
+          ]);
+        },
+
     async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
 
@@ -375,7 +470,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
       eventName = 'Respond to claim';
 
       await this.triggerStepsWithScreenshot([
@@ -383,7 +478,10 @@ module.exports = function () {
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
-          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party),
+          ...conditionalSteps(claimValue >= 25000, [
+            () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
+            ]
+          ),
           () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
           () => expertsPage.enterExpertInformation(party),
           () => witnessPage.enterWitnessInformation(party),
@@ -401,15 +499,18 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence(mpScenario = 'ONE_V_ONE') {
+    async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
+        ...conditionalSteps(claimValue >= 25000, [
+            () => disclosureOfElectronicDocumentsPage.
+                            enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
+          ]
+        ),
         () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
         () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
         () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
@@ -438,6 +539,77 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
+    async fillNotifyClaimCOSForm(caseId, mpScenario) {
+      eventName = 'Notify claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant1]', DEFENDANT1_NAME),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant2]', DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME, mpScenario),
+        () => event.submit('Submit', 'Certificate of Service - notify claim successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillLRNotifyClaimCOSForm(caseId, mpScenario) {
+      eventName = 'Notify claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.clickContinue(),
+        () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant2]', DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, '', DEFENDANT2_NAME, mpScenario),
+        () => event.submit('Submit', 'Certificate of Service - notify claim successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillNotifyClaimDetailsCOSForm(caseId) {
+      eventName = 'Notify claim details';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant1]',
+          DEFENDANT1_NAME, 'NotifyClaimDetails1', TEST_FILE_PATH),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant2]',
+          DEFENDANT2_NAME, 'NotifyClaimDetails2', TEST_FILE_PATH),
+        () => cosNotifyClaimCYAPage.verifyCOSCheckAnswerForm(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME),
+        () => cosNotifyClaimCYAPage.verifyCOSSupportingEvidence(),
+        () => event.submit('Submit', 'Certificate of Service - notify claim details successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async fillLRNotifyClaimDetailsCOSForm(caseId) {
+      eventName = 'Notify claim details';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.clickContinue(),
+        () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant2]',
+          DEFENDANT2_NAME, 'NotifyClaimDetails2', TEST_FILE_PATH),
+        () => event.submit('Submit', 'Certificate of Service - notify claim details successful'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async verifyCOSTabDetails() {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Certificate of Service'),
+        () => cosTab.verifyCOSDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
+      ]);
+    },
+
+    async navigateToTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab(tabName),
+      ]);
+    },
+
+    async verifyCOSTabNotifyClaimDetails() {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Certificate of Service'),
+        () => cosTab.verifyCOSNCDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
+      ]);
+    },
+
     async caseProceedsInCaseman() {
       eventName = 'Case proceeds in Caseman';
 
@@ -451,8 +623,9 @@ module.exports = function () {
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
-      await caseViewPage.startEvent(eventName, caseId);
 
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+      await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
         () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
 
@@ -463,7 +636,11 @@ module.exports = function () {
         ]),
 
         ...conditionalSteps(trackType, [
-        () => allocateClaimPage.selectTrackType(trackType)])
+        () => allocateClaimPage.selectTrackType(trackType)]),
+
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+        () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
 
@@ -477,7 +654,7 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
 
     /**
@@ -583,10 +760,9 @@ module.exports = function () {
     },
 
     async createCaseSpec(applicantType, defendantType, litigantInPerson = false, claimAmount) {
-      this.click('Create case');
+      this.forceClick('Create case');
       this.waitForElement(`#cc-jurisdiction > option[value="${config.definition.jurisdiction}"]`);
       await this.retryUntilExists(() => specCreateCasePage.selectCaseType(), 'ccd-markdown');
-      await this.clickContinue();
       await this.clickContinue();
       await solicitorReferencesPage.enterReferences();
       await specPartyDetails.enterDetails('applicant1', address, applicantType);
@@ -703,6 +879,16 @@ module.exports = function () {
       ]);
     },
 
+    async evidenceUpload(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => event.submit('Submit', 'Documents uploaded')
+      ]);
+    },
+
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -711,6 +897,77 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
-    }
+    },
+
+    async initiateNoticeOfChange(caseId, clientName) {
+      eventName = 'NoC Request';
+      await this.triggerStepsWithScreenshot([
+        () => noticeOfChange.initiateNoticeOfChange(),
+        () => noticeOfChange.enterCaseId(caseId),
+        () => noticeOfChange.enterClientName(clientName),
+        () => noticeOfChange.checkAndSubmit(caseId)
+      ]);
+    },
+
+    async navigateToCaseFlags(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async createCaseFlags(caseFlags) {
+      eventName = 'Create case flags';
+
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
+    },
+
+    async validateCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async manageCaseFlags(caseFlags) {
+      eventName = 'Manage case flags';
+
+      for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(eventName, caseId),
+          () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
+          () => event.submitWithoutHeader('Submit')
+        ]);
+      }
+    },
+
+    async validateUpdatedCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertInactiveCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertUpdatedCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
   });
 };

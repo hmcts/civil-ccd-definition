@@ -5,8 +5,7 @@ module.exports = {
     SolicitorReferences:{
       solicitorReferences:{
         applicantSolicitor1Reference: 'Applicant reference',
-        respondentSolicitor1Reference: 'Respondent reference',
-        respondentSolicitor2Reference: 'sol2reference',
+        respondentSolicitor1Reference: 'Respondent reference'
       },
     }
   },
@@ -20,7 +19,10 @@ module.exports = {
         primaryAddress: buildAddress('respondent'),
         individualDateOfBirth: date(-1),
         partyName: 'Sir John Doe',
-        partyTypeDisplayValue: 'Individual'
+        partyTypeDisplayValue: 'Individual',flags: {
+          partyName: 'Sir John Doe',
+          roleOnCase: 'Respondent 1'
+        }
       },
       respondent2: {
         type: 'INDIVIDUAL',

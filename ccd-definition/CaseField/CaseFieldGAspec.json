@@ -11,14 +11,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppTypeLabel",
-    "Label": "<p class=\"govuk-body\">To make an application not shown on this list, you'll need to submit a paper application to the court.</p>",
-    "HintText": "  ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "generalAppType",
     "Label": "What type of applications do you want to make?",
     "HintText": "  ",
@@ -123,35 +115,46 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalApplicationsDetails",
+    "ID": "claimantGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Claimant solicitor",
     "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSol",
+    "ID": "gaDetailsMasterCollection",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for Judge",
     "_Category":  "COMMON"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDetailsRespondentSolTwo",
+    "ID": "respondentSolGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
-    "_Definition":  "The details of the child application on the case",
+    "_Definition":  "The details of the child application on the case for respondent solicitor",
+    "_Category":  "COMMON"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolTwoGaAppDetails",
+    "Label": " ",
+    "ElementLabel": "Application Type",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
+    "SecurityClassification": "Public",
+    "_Definition":  "The details of the child application on the case for respondent2 solicitor ",
     "_Category":  "COMMON"
   },
   {
@@ -164,7 +167,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppPBADetails",
-    "Label": "Pay for application with PBA",
+    "Label": "Paying for an application",
     "FieldType": "GAPBADetailsGAspec",
     "SecurityClassification": "Public",
     "_Definition":  "This fields holds applicant's PBA details.",
@@ -262,5 +265,184 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppVaryJudgementType",
+    "Label": "Vary Judgement GA Type",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppParentClaimantIsApplicant",
+    "Label": "Vary Judgement GA Type",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaUploadN245FormUploadLabel",
+    "Label": "Upload your completed N245 form",
+    "FieldType": "GAN245FormUpload",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppN245FormUpload",
+    "Label": "N245 form",
+    "FieldType": "Document",
+    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppHearingDate",
+    "Label": " ",
+    "FieldType": "GAHearingDateGAspec",
+    "SecurityClassification": "Public"
+  },  {
+  "CaseTypeID": "CIVIL",
+  "ID": "hearingNoticeDocStaff",
+  "Label": "Hearing Notice",
+  "FieldType": "Collection",
+  "FieldTypeParameter": "CaseDocument",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingNoticeDocClaimant",
+    "Label": "Hearing Notice",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingNoticeDocRespondentSol",
+    "Label": "Hearing Notice",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingNoticeDocRespondentSolTwo",
+    "Label": "Hearing Notice",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalOrderDocStaff",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalOrderDocClaimant",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalOrderDocRespondentSol",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalOrderDocRespondentSolTwo",
+    "Label": "General order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dismissalOrderDocStaff",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dismissalOrderDocClaimant",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dismissalOrderDocRespondentSol",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dismissalOrderDocRespondentSolTwo",
+    "Label": "Dismissal order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionOrderDocStaff",
+    "Label": "Directions order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionOrderDocClaimant",
+    "Label": "Directions order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionOrderDocRespondentSol",
+    "Label": "Directions order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionOrderDocRespondentSolTwo",
+    "Label": "Directions order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

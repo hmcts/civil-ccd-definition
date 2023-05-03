@@ -1,3 +1,5 @@
+const {listElement, element} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -15,14 +17,38 @@ module.exports = {
             }
           },
           SmallClaimExperts: {
-            applicant1ClaimExpertSpecRequired: 'No'
+            applicant1DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
           },
           SmallClaimWitnesses: {
-            applicant1ClaimWitnesses: '10'
+            applicant1DQWitnessesSmallClaim: {
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Smith',
+                  phoneNumber: '07012345678',
+                  emailAddress: 'johnsmith@email.com',
+                  reasonForWitness: 'None'
+                })
+              ],
+              witnessesToAppear: 'Yes'}
           },
           Language: {
             applicant1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -34,7 +60,19 @@ module.exports = {
           },
           ApplicantCourtLocationLRspec: {
             applicant1DQRequestedCourt: {
-              requestHearingAtSpecificCourt: 'No'
+              responseCourtLocations: {
+                list_items: [
+                  listElement(config.claimantSelectedCourt)
+                ],
+                value: listElement(config.claimantSelectedCourt)
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
+          },
+          HearingSupport: {
+            applicant1DQHearingSupport: {
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {

@@ -1,10 +1,17 @@
 #!/bin/bash
 set -ex
 
-echo "Run Non prod Functional tests with all feature flags enabled in ccd def file"
+echo "Run Api Functional tests with non prod ccd def "
+yarn test:api-unspec
+yarn test:api-spec
+yarn test:api-dj
+yarn test:api-cos
+yarn test:api-sdo
 
-dir=$(dirname ${0})
+echo "Run E2E Functional tests with non prod ccd def file"
 
-${dir}/run-spec-functional-tests.sh
-${dir}/run-sdo-functional-tests.sh
-${dir}/run-dj-functional-tests.sh
+yarn test:master-e2e-ft
+yarn test:e2e-nightly-prod
+yarn test:e2e-nightly-nonprod
+
+

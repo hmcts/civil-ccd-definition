@@ -46,5 +46,35 @@
     "ListElementCode": "DEFAULT_JUDGMENT",
     "ListElement": "Default Judgment",
     "DisplayOrder": 8
-  }
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_SDO_ORDER",
+    "ListElement": "Default Judgment Order",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_FORM",
+    "ListElement": "Hearing Form",
+    "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SDO_ORDER",
+    "ListElement": "Standard Directions Order",
+    "DisplayOrder": 11
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "TRIAL_READY_DOCUMENT",
+    "ListElement": "Trial Ready",
+    "DisplayOrder": 12
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "JUDGE_FINAL_ORDER",
+    "ListElement": "Judge final order",
+    "DisplayOrder": 13
+   }
 ]

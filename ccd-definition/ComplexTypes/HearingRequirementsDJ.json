@@ -96,87 +96,18 @@
     "FieldShowCondition": "hearingUnavailableDates = \"Yes\""
   },
   {
-
     "ID": "HearingSupportRequirementsListDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementsDisabledAccess",
-    "ListElementCode": "hearingSupportRequirementsDisabledAccess",
-    "ElementLabel": "Hearing support requirements",
-    "HintText": "Select any support that you, your client or any experts or witnesses you would require for a court hearing",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementsDisabledAccess",
-    "SecurityClassification": "Public",
-    "Label": "Hearing support requirements (optional)"
+    "ListElementCode": "hearingSupportQuestion",
+    "ElementLabel": "Does anyone require support for a court hearing?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
   },
   {
     "ID": "HearingSupportRequirementsListDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementHearingLoop",
-    "ListElementCode": "hearingSupportRequirementHearingLoop",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementHearingLoop",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsListDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementInterpreter",
-    "ListElementCode": "hearingSupportRequirementInterpreter",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementInterpreter",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsListDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementSignLanguageDropdown",
-    "ListElementCode": "hearingSupportRequirementSignLanguageDropdown",
-    "ElementLabel": "Sign language",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "hearingSupportRequirementInterpreter=\"SIGN_INTERPRETER\""
-  },
-  {
-    "ID": "HearingSupportRequirementsListDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementLanguage",
-    "ListElementCode": "hearingSupportRequirementLanguage",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementLanguage",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsListDJ",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "hearingSupportRequirementLanguageDropdown",
-    "ListElementCode": "hearingSupportRequirementLanguageDropdown",
-    "ElementLabel": "Language",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "hearingSupportRequirementLanguage=\"LANGUAGE_INTERPRETER\""
-  },
-
-  {
-    "ID": "HearingSupportRequirementsListDJ",
-    "ListElementCode": "hearingSupportRequirementOther",
-    "ElementLabel": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "hearingSupportRequirementOther",
-    "SecurityClassification": "Public",
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "HearingSupportRequirementsListDJ",
-    "ListElementCode": "hearingSupportRequirementOtherDropdown",
-    "ElementLabel": "Support needed",
+    "ListElementCode": "hearingSupportAdditional",
+    "ElementLabel": "Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "hearingSupportRequirementOther=\"OTHER_SUPPORT\""
+    "FieldShowCondition": "hearingSupportQuestion=\"Yes\""
   }
 ]

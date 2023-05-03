@@ -6,15 +6,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONESPEC]",
-          "caseworker-civil-solicitor",
+          "APP-SOL-SPEC-PROFILE",
           "[CREATOR]"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }

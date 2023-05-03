@@ -70,7 +70,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -302,13 +301,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "claimantSolicitorEmail",
     "Label": "**Claimant’s email address:** ${applicantSolicitor1UserDetails.email}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent1Details",
-    "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -768,20 +760,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -878,13 +856,6 @@
     "ID": "applicant1DQFurtherInformation",
     "Label": "Applicant 1 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
     "SecurityClassification": "Public"
   },
   {
@@ -1302,7 +1273,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
-    "HintText": "Select yes if the defendant’s legal representative is registered with My HMCTS and has confirmed that it is authorised to accept notifications on behalf of the defendant (including notification of the Claim Form) through the MyHMCTS portal. Otherwise select No",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
@@ -1424,20 +1394,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2Details",
-    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DetailsDiffLR",
-    "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
-    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
@@ -1773,7 +1729,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA)\n\nIf the defendant has legal representation, you'll need:\n* name of the defendant's firm of solicitors \n* email address the firm uses for notifications from MyHMCTS \n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* is not made under one of the provisions of the Consumer Credit Act 1974 specified in Civil Procedure Rules PD 7B paragraph 3.1\n* is conducted in English \n",
+    "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA)\n\nIf the defendant has legal representation, you'll need:\n* name of the defendant's firm of solicitors \n* email address the firm uses for notifications from MyHMCTS \n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* meets all the conditions in PD51ZB 1.6(3)\n* is conducted in English \n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2011,13 +1967,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2DQLanguage",
-    "Label": "Welsh language",
-    "FieldType": "Language",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant2DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -2155,6 +2104,76 @@
     "ID": "headingAmountClaiming",
     "Label": "## Amount claiming",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextHearingDetails",
+    "Label": "Next hearing details",
+    "FieldType": "NextHearingDetails",
+    "SecurityClassification": "Public",
+    "_Definition":  "Details of the next hearing on a case",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "migrationId",
+    "Label": "Migration Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CaseAccessCategory",
+    "Label": "Case Access Category",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CaseAccessCategory",
+    "SecurityClassification": "Public",
+    "_Definition":  "Case Access Category",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseManagementLocation",
+    "Label": " ",
+    "FieldType": "CaseLocationCivil",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "locationName",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "paymentTypePBA",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentOne",
+    "Label": "registration information respondent one",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "registrationTypeRespondentTwo",
+    "Label": "registration information respondent two",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "RegistrationTypeInformation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNamePublic",
+    "Label": "Public case name",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]

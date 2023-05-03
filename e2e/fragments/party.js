@@ -1,5 +1,6 @@
 const {I} = inject();
 const postcodeLookup = require('./addressPostcodeLookup');
+const {checkHnlLegalRepToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
   fields: function (partyType) {
@@ -16,7 +17,8 @@ module.exports = {
       company: {
         name: `#${partyType}_companyName`
       },
-      address: `#${partyType}_primaryAddress_primaryAddress`,
+      email:  `#${partyType}_partyEmail`,
+      address: `#${partyType}_primaryAddress_primaryAddress`
     };
   },
 
@@ -28,6 +30,13 @@ module.exports = {
     });
 
     I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
+
+    // ToDo: Remove remove toggle and remove if statement after hnl release
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    if(hnlEnabled) {
+      I.fillField(this.fields(partyType).email, `${partyType}@example.com`);
+    }
+    //==============================================================
 
     await within(this.fields(partyType).address, () => {
       postcodeLookup.enterAddressManually(address);

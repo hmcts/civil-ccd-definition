@@ -55,7 +55,15 @@ Scenario('Defendant response Solicitor 2', async ({I, api}) => {
 });
 
 Scenario('Claimant response', async ({I, api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario);
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
+});
+
+Scenario('Add case flags', async ({api}) => {
+  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
+
+Scenario('Manage case flags', async ({api}) => {
+  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 AfterSuite(async  ({api}) => {

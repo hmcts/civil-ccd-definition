@@ -1,0 +1,9 @@
+[
+  {
+    "ID": "SdoOrderDocument",
+    "ListElementCode": "sdoOrderDocument",
+    "FieldType": "CaseDocument",
+    "ElementLabel": "Document",
+    "SecurityClassification": "Public"
+  }
+]

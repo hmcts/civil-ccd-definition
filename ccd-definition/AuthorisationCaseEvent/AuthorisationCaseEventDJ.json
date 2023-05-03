@@ -5,14 +5,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "caseworker-civil-solicitor"
+
+          "APP-SOL-UNSPEC-PROFILE",
+          "[CREATOR]"
+
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }

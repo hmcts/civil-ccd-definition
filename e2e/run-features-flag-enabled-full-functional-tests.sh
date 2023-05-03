@@ -9,3 +9,4 @@ ${dir}/run-unspec-functional-tests.sh
 ${dir}/run-spec-functional-tests.sh
 ${dir}/run-sdo-functional-tests.sh
 ${dir}/run-dj-functional-tests.sh
+${dir}/run-cos-functional-tests.sh

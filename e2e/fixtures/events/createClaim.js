@@ -1,6 +1,7 @@
-const {listElement, buildAddress } = require('../../api/dataHelper');
+const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
+const { getClaimFee } = require('../../claimAmountAndFee');
 
 const docUuid = uuid.v1();
 
@@ -9,14 +10,18 @@ const respondent1 = {
   individualFirstName: 'John',
   individualLastName: 'Doe',
   individualTitle: 'Sir',
-  primaryAddress: buildAddress('respondent')
+  primaryAddress: buildAddress('respondent'),
+  partyEmail: 'johndoe@example.com',
+  partyPhone: '07898678902',
 };
 const respondent2 = {
   type: 'INDIVIDUAL',
   individualFirstName: 'Foo',
   individualLastName: 'Bar',
   individualTitle: 'Dr',
-  primaryAddress: buildAddress('second respondent')
+  primaryAddress: buildAddress('second respondent'),
+  partyEmail: 'foo.bar@example.com',
+  partyPhone: '07898678912',
 };
 const respondent1WithPartyName = {
   ...respondent1,
@@ -54,7 +59,10 @@ const applicant2WithPartyName = {
 };
 
 const applicant1LitigationFriend = {
-  fullName: 'Bob the litigant friend',
+  firstName: 'Bob',
+  lastName: 'the litigant friend',
+  emailAddress: 'bobthelitigant@litigants.com',
+  phoneNumber: '07123456789',
   hasSameAddressAsLitigant: 'No',
   primaryAddress: buildAddress('litigant friend')
 };
@@ -63,10 +71,11 @@ let selectedPba = listElement('PBA0088192');
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
+      CaseAccessCategory: 'UNSPEC_CLAIM',
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
         respondentSolicitor1Reference: 'Respondent reference'
@@ -74,7 +83,18 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     Court: {
       courtLocation: {
-        applicantPreferredCourt: '344'
+        applicantPreferredCourtLocationList: {
+          list_items: [
+            listElement(config.claimantSelectedCourt)
+          ],
+          value: listElement(config.claimantSelectedCourt)
+        }
+      },
+      applicant1OrganisationPolicy: {
+        OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
+        Organisation: {
+          OrganisationID: config.claimantSolicitorOrgId,
+        }
       }
     },
     Claimant: {
@@ -101,7 +121,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         OrgPolicyReference: 'Claimant policy reference',
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
-          OrganisationID: config.claimantSolicitorOrgId,
+          OrganisationID: config.applicantSolicitorUser.orgId,
         }
       }
     },
@@ -126,39 +146,38 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     LegalRepresentation: {
       respondent1Represented: `${legalRepresentation}`
     },
-    DefendantSolicitorOrganisation: {
-      respondent1OrgRegistered: 'Yes',
-      respondent1OrganisationPolicy: {
-        OrgPolicyReference: 'Defendant policy reference',
-        OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
-        Organisation: {
-          OrganisationID: config.defendant1SolicitorOrgId
+    ...(legalRepresentation === 'Yes') ? {
+      DefendantSolicitorOrganisation: {
+        respondent1OrgRegistered: 'Yes',
+        respondent1OrganisationPolicy: {
+          OrgPolicyReference: 'Defendant policy reference',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
+          Organisation: {
+            OrganisationID: config.defendantSolicitorUser.orgId
+          },
         },
       },
-    },
-    DefendantSolicitorServiceAddress: {
-      respondentSolicitor1ServiceAddress: buildAddress('service')
-    },
-    DefendantSolicitorEmail: {
-      respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
-    },
+      DefendantSolicitorServiceAddress: {
+        respondentSolicitor1ServiceAddress: buildAddress('service')
+      },
+      DefendantSolicitorEmail: {
+        respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+      },
+    }: {},
     AddAnotherDefendant: {
       addRespondent2: 'No'
     },
     ...hasRespondent2(mpScenario) ? {
-        SecondDefendant: {},
-        SecondDefendantLegalRepresentation: {},
-        SecondDefendantSolicitorOrganisation: {},
-        SecondDefendantSolicitorServiceAddress: {},
-        SecondDefendantSolicitorReference: {},
-        SecondDefendantSolicitorEmail: {},
-        SameLegalRepresentative: {},
-      } : {},
+      SecondDefendant: {},
+      SecondDefendantLegalRepresentation: {},
+      SecondDefendantSolicitorOrganisation: {},
+      SecondDefendantSolicitorServiceAddress: {},
+      SecondDefendantSolicitorReference: {},
+      SecondDefendantSolicitorEmail: {},
+      SameLegalRepresentative: {},
+    } : {},
     ClaimType: {
-      claimType: 'PERSONAL_INJURY'
-    },
-    PersonalInjuryType: {
-      personalInjuryType: 'ROAD_ACCIDENT'
+      claimType: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
@@ -179,8 +198,12 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
     },
     ClaimValue: {
       claimValue: {
-        statementOfValueInPennies: '3000000'
-      }
+        statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
+      },
+      claimFee: getClaimFee(claimAmount),
+      ...isPBAv3(pbaV3) ? {
+        paymentTypePBA: 'PBAv3'
+      } : {},
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -190,7 +213,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         ],
         value: selectedPba
 
-      }
+      },
     },
     PaymentReference: {
       claimIssuedPaymentDetails:  {
@@ -250,7 +273,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
             OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
             Organisation:
 
-              {OrganisationID: config.defendant2SolicitorOrgId}
+              {OrganisationID: config.secondDefendantSolicitorUser.orgId}
             ,
           },
         },
@@ -265,6 +288,43 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
         }
       };
     }
+    case 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP': {
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'No'
+        }
+      };
+    }
+    case 'ONE_V_TWO_LIPS': {
+      delete claimData.SecondDefendantLegalRepresentation;
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        LegalRepresentation: {
+          respondent1Represented: 'No',
+          respondent2Represented: 'No'
+        },
+      };
+    }
+
     case 'TWO_V_ONE': {
       return {
         ...claimData,
@@ -282,11 +342,18 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario) => {
 
 const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
-      || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP';
+    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
+    || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
+    || mpScenario ===  'ONE_V_TWO_LIPS';
+};
+
+const isPBAv3 = (pbaV3) => {
+  console.log( 'Pba value in create claim' + pbaV3);
+  return pbaV3;
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE') => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -297,11 +364,6 @@ module.exports = {
             ]
           },
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          claimFee: {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          },
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
@@ -309,7 +371,10 @@ module.exports = {
           respondent1: respondent1WithPartyName,
           ...hasRespondent2(mpScenario) ? {
             respondent2: respondent2WithPartyName
-          } : {}
+          } : {},
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBA: 'PBAv3'
+          } : {},
         },
         ClaimantLitigationFriend: {
           applicant1: applicant1WithPartyName,
@@ -324,7 +389,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData('Yes', true, mpScenario),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount),
       },
       invalid: {
         Upload: {
@@ -359,10 +424,16 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData('No', true)
+    valid: createClaimData(false,'No', true, 'ONE_V_ONE')
+  },
+  createClaimLRLIP: {
+    valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+  },
+  createClaimLIPLIP: {
+    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData('Yes', false)
+    valid: createClaimData(false,'Yes', false)
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
@@ -381,5 +452,111 @@ module.exports = {
         }
       },
     }
-  }
+  },
+  cosNotifyClaim : (lip1, lip2) => {
+    return {
+      ...(lip1) ? {
+        cosNotifyClaimDefendant1: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+      ...(lip2) ? {
+        cosNotifyClaimDefendant2: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+    };
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
+    };
+  },
+  cosNotifyClaimDetails : (lip1, lip2) => {
+    return {
+      ...(lip1) ? {
+        cosNotifyClaimDetails1: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosEvidenceDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ],
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+      ...(lip2) ? {
+        cosNotifyClaimDetails2: {
+          cosDateOfServiceForDefendant: date(-1),
+          cosServedDocumentFiles: 'sample text',
+          cosEvidenceDocument: [
+            {
+              id: docUuid,
+              value: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          ],
+          cosRecipient: 'sample text',
+          cosRecipientServeType: 'HANDED',
+          cosRecipientServeLocation: 'sample text',
+          cosRecipientServeLocationOwnerType: 'SOLICITOR',
+          cosRecipientServeLocationType: 'USUAL_RESIDENCE',
+          cosSender: 'sample text',
+          cosSenderFirm: 'sample text',
+          cosSenderStatementOfTruthLabel: [
+            'CERTIFIED'
+          ]
+        }
+      }: {},
+    };
+  },
 };

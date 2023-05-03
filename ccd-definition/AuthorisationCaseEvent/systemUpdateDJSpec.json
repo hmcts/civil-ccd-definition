@@ -11,9 +11,10 @@
       },
       {
         "UserRoles": [
-          "[APPLICANTSOLICITORONE]",
-          "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -31,9 +32,31 @@
       },
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_CASEWORKER_DJ_RECEIVED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "[APPLICANTSOLICITORONE]",
           "[RESPONDENTSOLICITORONE]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -42,6 +65,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DJ_FORM_SPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RPA_DJ_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

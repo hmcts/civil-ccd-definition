@@ -1,27 +1,39 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('Claim creation 1v1 @e2e-tests-spec');
+Feature('Claim creation 1v1 @e2e-tests-spec @e2e-nightly-prod');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
+
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId());
+  }
+
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
-  await LRspec.click('Sign out');
+  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.enterBreathingSpace();
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario('1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
@@ -53,35 +65,27 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
   await LRspec.click('Sign out');
 }).retry(3);
 
-
 Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
 }).retry(3);
 
+Scenario.skip('Add case flags', async ({LRspec}) => {
+  const caseFlags = [{
+    partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+    details: [PARTY_FLAGS.vulnerableUser.value]
+  },{
+    partyName: 'John Smith', roleOnCase: 'Applicant solicitor expert',
+    details: [PARTY_FLAGS.unacceptableBehaviour.value]
+  }
+  ];
 
-Scenario.skip('1v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async (LRspec) => {
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.respondToClaimPartAdmit({
-    defendant1Response: 'partAdmission',
-    claimType: 'fast',
-    defenceType: 'repaymentPlan'
-  });
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
-}).retry(3);
+  await LRspec.login(config.hearingCenterAdminWithRegionId1);
+  await LRspec.createCaseFlags(caseFlags);
+  await LRspec.validateCaseFlags(caseFlags);
+});
 
-Scenario.skip('1v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.respondToClaimFullAdmit({
-    defendant1Response: 'fullAdmission',
-    claimType: 'fast',
-    defenceType: 'setDate'
-  });
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
-}).retry(3);
-
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

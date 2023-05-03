@@ -1,11 +1,14 @@
 const {listElement, buildAddress} = require('../../api/dataHelper');
 const config = require('../../config.js');
 
+
 const respondent1 = {
   type: 'INDIVIDUAL',
   individualFirstName: 'John',
   individualLastName: 'Doe',
   individualTitle: 'Sir',
+  partyEmail: 'johndoe@example.com',
+  partyPhone: '07898678902',
   primaryAddress: buildAddress('respondent')
 };
 const respondent1WithPartyName = {
@@ -24,6 +27,10 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
+const isPBAv3 = (pbaV3) => {
+  return pbaV3;
+};
+
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '85000';
 
@@ -32,11 +39,11 @@ const invalidPba = listElement('PBA0078095');
 
 module.exports = {
 
-  createClaim: (mpScenario) => {
+  createClaim: (mpScenario, pbaV3) => {
     const userData = {
       userInput: {
         References: {
-          superClaimType: 'SPEC_CLAIM',
+          CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
@@ -59,7 +66,7 @@ module.exports = {
         ClaimantSolicitorOrganisation: {
           applicant1OrganisationPolicy: {
             OrgPolicyReference: 'Claimant policy reference',
-            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONESPEC]',
+            OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.claimantSolicitorOrgId
             }
@@ -79,7 +86,7 @@ module.exports = {
           respondent1OrgRegistered: 'Yes',
           respondent1OrganisationPolicy: {
             OrgPolicyReference: 'Defendant policy reference',
-            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONESPEC]',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.defendant1SolicitorOrgId
             },
@@ -128,7 +135,10 @@ module.exports = {
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
-          }
+          },
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
         },
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
@@ -157,12 +167,15 @@ module.exports = {
           totalClaimAmount: claimAmount / 100
         },
         ClaimAmountDetails: {
-          superClaimType: 'SPEC_CLAIM'
+          CaseAccessCategory: 'SPEC_CLAIM'
         },
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-        }
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'PBAv3'
+          } : {},
+        },
       },
 
       midEventGeneratedData: {
@@ -189,8 +202,12 @@ module.exports = {
             calculatedAmountInPence: 'string',
             code: 'string',
             version: 'string'
-          }
-        }
+          },
+          ...isPBAv3(pbaV3) ? {
+            paymentTypePBASpec: 'string'
+          } : {},
+        },
+
       }
     };
 
@@ -211,6 +228,7 @@ module.exports = {
             respondent2: {
               type: 'ORGANISATION',
               organisationName: 'Second Defendant',
+              partyEmail: 'seconddefendant@example.com',
               primaryAddress: {
                 AddressLine1: '123 Second Close',
                 PostTown: 'Second Town',
@@ -244,7 +262,7 @@ module.exports = {
           SecondDefendantSolicitorOrganisation: {
             respondent2OrgRegistered: 'Yes',
             respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWOSPEC]',
+              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
               Organisation: {
                 OrganisationID: config.defendant2SolicitorOrgId,
                 OrganisationName: 'Civil - Organisation 2'
@@ -285,6 +303,7 @@ module.exports = {
               type: 'ORGANISATION',
               organisationName: 'Claim 2',
               partyName: 'Claim 2',
+              partyEmail: 'secondclaimant@example.com',
               partyTypeDisplayValue: 'Organisation',
               primaryAddress: {
                 AddressLine1: '43 Montgomery Close',
@@ -301,5 +320,20 @@ module.exports = {
     }
 
     return userData;
+  },
+  serviceUpdateDto: (caseId, paymentStatus) => {
+    return {
+      service_request_reference: '1324646546456',
+      ccd_case_number: caseId,
+      service_request_amount: '167.00',
+      service_request_status: paymentStatus,
+      payment: {
+        payment_amount: 167.00,
+
+        payment_reference: '13213223',
+        payment_method: 'by account',
+        case_reference: 'example of case ref'
+      }
+    };
   }
 };
