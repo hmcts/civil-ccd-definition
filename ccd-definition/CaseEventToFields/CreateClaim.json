@@ -163,6 +163,7 @@
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "FieldShowCondition": "applicantSolicitor1ServiceAddressRequired=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/applicantLrCorrespondence",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -215,7 +216,8 @@
     "PageDisplayOrder": 15,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent1Represented=\"Yes\""
+    "PageShowCondition": "respondent1Represented=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/defendant1LrCorrespondence"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -501,7 +503,8 @@
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
+    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/defendant2LrCorrespondence"
   },
   {
     "CaseTypeID": "CIVIL",
