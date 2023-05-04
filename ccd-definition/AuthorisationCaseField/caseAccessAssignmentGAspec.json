@@ -280,5 +280,29 @@
     "CaseFieldID": "gaEvidenceDocRespondentSolTwo",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWrittenRepDocStaff",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWrittenRepDocClaimant",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWrittenRepDocRespondentSol",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWrittenRepDocRespondentSolTwo",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]
