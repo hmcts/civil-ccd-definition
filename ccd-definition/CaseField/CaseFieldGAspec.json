@@ -581,5 +581,41 @@
     "Label": "Upload GA Direction casefile view",
     "SecurityClassification": "Public",
     "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaAddlnInfoDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Addln Info casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaAddlnInfoDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Addln Info casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaAddlnInfoDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Addln Info casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaAddlnInfoDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Addln Info casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   }
 ]
