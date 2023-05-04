@@ -236,6 +236,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@puppeteer/browsers@npm:0.5.0":
+  version: 0.5.0
+  resolution: "@puppeteer/browsers@npm:0.5.0"
+  dependencies:
+    debug: 4.3.4
+    extract-zip: 2.0.1
+    https-proxy-agent: 5.0.1
+    progress: 2.0.3
+    proxy-from-env: 1.1.0
+    tar-fs: 2.1.1
+    unbzip2-stream: 1.4.3
+    yargs: 17.7.1
+  peerDependencies:
+    typescript: ">= 4.7.4"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  bin:
+    browsers: lib/cjs/main-cli.js
+  checksum: d75fde03be4be106ca907834739251c2bb0b33a09fa23315c5dbe8b8b4cfed2f1b26af62e1dbe5fccc227e9bc87b51da0815461b982477eb01439bfdd6e7b01a
+  languageName: node
+  linkType: hard
+
 "@sideway/address@npm:^4.1.3":
   version: 4.1.4
   resolution: "@sideway/address@npm:4.1.4"
@@ -1015,6 +1038,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chromium-bidi@npm:0.4.7":
+  version: 0.4.7
+  resolution: "chromium-bidi@npm:0.4.7"
+  dependencies:
+    mitt: 3.0.0
+  peerDependencies:
+    devtools-protocol: "*"
+  checksum: eec7581e2eddd2c95014c6edc5aae0b036c79bbeadee05166436b16139b6932c902c5ce21d95ed919a592f58d3a47c5469dc5f3de2a300700b2748ab119ad65e
+  languageName: node
+  linkType: hard
+
 "civil-ccd-definition@workspace:.":
   version: 0.0.0-use.local
   resolution: "civil-ccd-definition@workspace:."
@@ -1035,6 +1069,7 @@ __metadata:
     node-cache: ^5.1.2
     node-fetch: ^2.6.9
     puppeteer: ^19.0.0
+    puppeteer-core: ^19.0.0
     totp-generator: ^0.0.7
     uuid: ^3.4.0
     webdriverio: ^6.12.1
@@ -4329,6 +4364,30 @@ fsevents@~2.3.2:
     typescript:
       optional: true
   checksum: 6bad7a7279403be6b6799876e2ebafb3713d965ec4befe78207b19e05c4a06ff296b90f7f04007f32a80a41a1bf96930a86524cba27915f0b76112261d30833f
+  languageName: node
+  linkType: hard
+
+"puppeteer-core@npm:^19.0.0":
+  version: 19.11.1
+  resolution: "puppeteer-core@npm:19.11.1"
+  dependencies:
+    "@puppeteer/browsers": 0.5.0
+    chromium-bidi: 0.4.7
+    cross-fetch: 3.1.5
+    debug: 4.3.4
+    devtools-protocol: 0.0.1107588
+    extract-zip: 2.0.1
+    https-proxy-agent: 5.0.1
+    proxy-from-env: 1.1.0
+    tar-fs: 2.1.1
+    unbzip2-stream: 1.4.3
+    ws: 8.13.0
+  peerDependencies:
+    typescript: ">= 4.7.4"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 06126e478b8b653e83b98b51cec35dceef8ab576abd1369afd45360c5bac3711443e58ebe3b852d40801a118e4cb7ddf5d3154518b5a9294ee93f7a42d9f22d4
   languageName: node
   linkType: hard
 
