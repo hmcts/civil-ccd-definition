@@ -248,7 +248,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish" : "Y"
   },
   {
     "CaseTypeID": "CIVIL",
