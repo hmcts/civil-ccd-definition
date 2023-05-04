@@ -617,5 +617,50 @@
     "Label": "Upload GA Addln Info casefile view",
     "SecurityClassification": "Public",
     "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInformationDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Request for information document",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload Request for information casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload Request for information casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload Request for information casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload Request for information casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   }
 ]
