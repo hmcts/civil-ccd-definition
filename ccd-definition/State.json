@@ -96,5 +96,12 @@
     "Name": "All final orders issued",
     "Description": "All final orders issued",
     "DisplayOrder": 14
+   },
+   {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_SETTLED",
+    "Name": "Case Settled",
+    "Description": "Case settled",
+    "DisplayOrder": 15
   }
 ]
