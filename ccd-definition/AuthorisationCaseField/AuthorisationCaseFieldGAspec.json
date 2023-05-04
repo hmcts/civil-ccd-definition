@@ -676,7 +676,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileStaff",
+    "CaseFieldID": "gaEvidenceDocStaff",
     "AccessControl": [
       {
         "UserRoles": [
@@ -689,7 +689,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileClaimant",
+    "CaseFieldID": "gaEvidenceDocClaimant",
     "AccessControl": [
       {
         "UserRoles": [
@@ -702,7 +702,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileRespSol",
+    "CaseFieldID": "gaEvidenceDocRespondentSol",
     "AccessControl": [
       {
         "UserRoles": [
@@ -715,7 +715,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileRespSolTwo",
+    "CaseFieldID": "gaEvidenceDocRespondentSolTwo",
     "AccessControl": [
       {
         "UserRoles": [

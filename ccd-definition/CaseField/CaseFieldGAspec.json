@@ -476,7 +476,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaEvidenceDocCaseFileStaff",
+    "ID": "gaEvidenceDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
@@ -485,7 +485,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaEvidenceDocCaseFileClaimant",
+    "ID": "gaEvidenceDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
@@ -494,7 +494,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaEvidenceDocCaseFileRespSol",
+    "ID": "gaEvidenceDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
@@ -503,7 +503,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaEvidenceDocCaseFileRespSolTwo",
+    "ID": "gaEvidenceDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",

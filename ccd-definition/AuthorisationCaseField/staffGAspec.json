@@ -313,7 +313,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileStaff",
+    "CaseFieldID": "gaEvidenceDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   }

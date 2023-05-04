@@ -259,25 +259,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileStaff",
+    "CaseFieldID": "gaEvidenceDocStaff",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileClaimant",
+    "CaseFieldID": "gaEvidenceDocClaimant",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileRespSol",
+    "CaseFieldID": "gaEvidenceDocRespondentSol",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaEvidenceDocCaseFileRespSolTwo",
+    "CaseFieldID": "gaEvidenceDocRespondentSolTwo",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   }
