@@ -509,5 +509,41 @@
     "Label": "Upload evidence casefile view",
     "SecurityClassification": "Public",
     "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaWrittenRepDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Written Rep casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaWrittenRepDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Written Rep casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaWrittenRepDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Written Rep casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaWrittenRepDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload GA Written Rep casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   }
 ]
