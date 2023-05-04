@@ -481,6 +481,7 @@
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "CategoryID": "applications"
   },
   {
@@ -490,6 +491,7 @@
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "CategoryID": "applications"
   },
   {
@@ -499,6 +501,7 @@
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "CategoryID": "applications"
   },
   {
@@ -508,159 +511,187 @@
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence casefile view",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "CategoryID": "applications"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaWrittenRepDocStaff",
+    "ID": "hearingOrderDocument",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Written Rep casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaWrittenRepDocClaimant",
+    "ID": "hearingOrderStaff",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Written Rep casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaWrittenRepDocRespondentSol",
+    "ID": "hearingOrderClaimant",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Written Rep casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaWrittenRepDocRespondentSolTwo",
+    "ID": "hearingOrderRespondentSol",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Written Rep casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaDirectionDocStaff",
+    "ID": "hearingOrderRespondentSolTwo",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Direction casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaDirectionDocClaimant",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Direction casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaDirectionDocRespondentSol",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Direction casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaDirectionDocRespondentSolTwo",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Direction casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlnInfoDocStaff",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Addln Info casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlnInfoDocClaimant",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Addln Info casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlnInfoDocRespondentSol",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Addln Info casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlnInfoDocRespondentSolTwo",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload GA Addln Info casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "requestForInformationDocument",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Request for information document",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "requestForInfoDocStaff",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload Request for information casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "requestForInfoDocClaimant",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload Request for information casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "requestForInfoDocRespondentSol",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "Label": "Upload Request for information casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "requestForInfoDocRespondentSolTwo",
     "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSequentialDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
     "Label": "Upload Request for information casefile view",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConcurrentDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Upload Request for information casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   }
 ]
