@@ -54,13 +54,5 @@
     "CategoryLabel": "Orders",
     "DisplayOrder": "1",
     "ParentCategoryID": "ordersMadeOnApplications"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "orderDocuments",
-    "CategoryLabel": "Documents",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "ordersMadeOnApplications"
   }
 ]
