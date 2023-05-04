@@ -27,7 +27,8 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
-      events.DEFAULT_JUDGEMENT_SPEC
+      events.DEFAULT_JUDGEMENT_SPEC,
+      events.REQUEST_JUDGEMENT_ADMISSION_SPEC
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
