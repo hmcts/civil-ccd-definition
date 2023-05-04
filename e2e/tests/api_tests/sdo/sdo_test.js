@@ -41,6 +41,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
   }
 });
 
@@ -57,6 +58,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
   }
 });
 
