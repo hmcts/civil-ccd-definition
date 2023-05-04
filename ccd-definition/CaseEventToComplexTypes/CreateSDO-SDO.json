@@ -670,7 +670,7 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateFromLabel",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsHearing",
@@ -678,7 +678,7 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsHearing",
