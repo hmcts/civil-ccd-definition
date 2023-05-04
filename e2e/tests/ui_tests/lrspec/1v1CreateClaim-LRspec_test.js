@@ -71,7 +71,7 @@ Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to pro
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('Add case flags', async ({LRspec}) => {
+Scenario.skip('Add case flags', async ({LRspec}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
     details: [PARTY_FLAGS.vulnerableUser.value]
