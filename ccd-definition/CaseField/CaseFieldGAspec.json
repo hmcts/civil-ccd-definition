@@ -320,7 +320,6 @@
     "ID": "generalAppN245FormUpload",
     "Label": "N245 form",
     "FieldType": "Document",
-    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "SecurityClassification": "Public",
     "CategoryID": "applications"
   },
@@ -473,5 +472,41 @@
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocCaseFileStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocCaseFileClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocCaseFileRespSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocCaseFileRespSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   }
 ]
