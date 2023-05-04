@@ -321,6 +321,7 @@
     "Label": "N245 form",
     "FieldType": "Document",
     "SecurityClassification": "Public",
+    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
     "CategoryID": "applications"
   },
   {
