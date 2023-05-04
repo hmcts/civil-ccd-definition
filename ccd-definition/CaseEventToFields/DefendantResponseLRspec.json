@@ -917,7 +917,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-upload-timeline-type-flag"
   },
