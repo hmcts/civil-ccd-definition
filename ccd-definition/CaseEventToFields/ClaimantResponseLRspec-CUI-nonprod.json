@@ -260,7 +260,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "applicant1AcceptAdmitAmountPaidSpec=\"Yes\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish" : "Y"
   },
   {
     "CaseTypeID": "CIVIL",
