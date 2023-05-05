@@ -142,11 +142,5 @@
     "CaseFieldID": "totalClaimAmount",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1RepaymentPlan",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]
