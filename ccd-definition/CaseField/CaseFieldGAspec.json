@@ -253,33 +253,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaAddlnInfoList",
-    "Label": "GA Addln Info document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaWrittenRepDocList",
-    "Label": "GA Written Rep document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaDirectionDocList",
-    "Label": "GA Direction document",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
-    "SecurityClassification": "Public",
-    "CategoryID": "applications"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "dismissalOrderDocument",
     "Label": "Dismissal order document",
     "FieldType": "Collection",
