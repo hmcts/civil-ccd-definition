@@ -213,12 +213,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@puppeteer/browsers@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@puppeteer/browsers@npm:0.4.0"
+"@puppeteer/browsers@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@puppeteer/browsers@npm:1.0.1"
   dependencies:
     debug: 4.3.4
     extract-zip: 2.0.1
+    http-proxy-agent: 5.0.0
     https-proxy-agent: 5.0.1
     progress: 2.0.3
     proxy-from-env: 1.1.0
@@ -232,7 +233,7 @@ __metadata:
       optional: true
   bin:
     browsers: lib/cjs/main-cli.js
-  checksum: d21fce3daa739f156a2539cc1893adad7572c4253ff5a9e3785745c614ff30306b69f327c4e21c50c96cffbaa4d858037e4e72fb291065bc83caf0997f186a05
+  checksum: 0dc83d75b0799b8bcc077a17bff3f01d24e4bc3b4449a9fa3f30247eca3b9deb3e7a2fe2f31efb32ed75ca23bd0137ad28b86412a0c1fbce9bcd1aa2ed7bfeb0
   languageName: node
   linkType: hard
 
@@ -1004,14 +1005,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromium-bidi@npm:0.4.6":
-  version: 0.4.6
-  resolution: "chromium-bidi@npm:0.4.6"
+"chromium-bidi@npm:0.4.7":
+  version: 0.4.7
+  resolution: "chromium-bidi@npm:0.4.7"
   dependencies:
     mitt: 3.0.0
   peerDependencies:
     devtools-protocol: "*"
-  checksum: 1d6365896bca4592ddd95233a784e4743d2c8c692d065327a416a09acddc3d05e300c360b859d7049f91924be326d801e6fe9860ace4541325b25f4ec6b94b97
+  checksum: eec7581e2eddd2c95014c6edc5aae0b036c79bbeadee05166436b16139b6932c902c5ce21d95ed919a592f58d3a47c5469dc5f3de2a300700b2748ab119ad65e
   languageName: node
   linkType: hard
 
@@ -1034,7 +1035,7 @@ __metadata:
     mochawesome: ^7.0.1
     node-cache: ^5.1.2
     node-fetch: ^2.6.9
-    puppeteer: ^19.0.0
+    puppeteer: ^20.0.0
     totp-generator: ^0.0.7
     uuid: ^3.4.0
     webdriverio: ^6.12.1
@@ -1491,10 +1492,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devtools-protocol@npm:0.0.1107588":
-  version: 0.0.1107588
-  resolution: "devtools-protocol@npm:0.0.1107588"
-  checksum: 9064fd643f39ae0adabb8f425b746899ff24371d89a5047d38752653259e6afcb6bcb2d9759ff727eb5885cfc0f9ba8eb384850a2af00694135622e88080e3e5
+"devtools-protocol@npm:0.0.1120988":
+  version: 0.0.1120988
+  resolution: "devtools-protocol@npm:0.0.1120988"
+  checksum: 68eb7aa6a2fe20f8321168f9381849296b203355a5c052461b7ed95e8787b34458029dd64c8d4a8640d9fd329138a6d82f41237f5331ea4267c090dcbf6581f7
   languageName: node
   linkType: hard
 
@@ -2539,7 +2540,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"http-proxy-agent@npm:^5.0.0":
+"http-proxy-agent@npm:5.0.0, http-proxy-agent@npm:^5.0.0":
   version: 5.0.0
   resolution: "http-proxy-agent@npm:5.0.0"
   dependencies:
@@ -4308,15 +4309,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:19.8.5":
-  version: 19.8.5
-  resolution: "puppeteer-core@npm:19.8.5"
+"puppeteer-core@npm:20.1.1":
+  version: 20.1.1
+  resolution: "puppeteer-core@npm:20.1.1"
   dependencies:
-    "@puppeteer/browsers": 0.4.0
-    chromium-bidi: 0.4.6
+    "@puppeteer/browsers": 1.0.1
+    chromium-bidi: 0.4.7
     cross-fetch: 3.1.5
     debug: 4.3.4
-    devtools-protocol: 0.0.1107588
+    devtools-protocol: 0.0.1120988
     extract-zip: 2.0.1
     https-proxy-agent: 5.0.1
     proxy-from-env: 1.1.0
@@ -4328,7 +4329,7 @@ fsevents@~2.3.2:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 6bad7a7279403be6b6799876e2ebafb3713d965ec4befe78207b19e05c4a06ff296b90f7f04007f32a80a41a1bf96930a86524cba27915f0b76112261d30833f
+  checksum: 60d1932c84b017694285568102360338c529e0cc7afe8a09e4ede3969db415ea6f3c115df009017876144a3a005a3e777a8d1b9e97baba25936f8fa44db55ebb
   languageName: node
   linkType: hard
 
@@ -4352,17 +4353,17 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^19.0.0":
-  version: 19.8.5
-  resolution: "puppeteer@npm:19.8.5"
+"puppeteer@npm:^20.0.0":
+  version: 20.1.1
+  resolution: "puppeteer@npm:20.1.1"
   dependencies:
-    "@puppeteer/browsers": 0.4.0
+    "@puppeteer/browsers": 1.0.1
     cosmiconfig: 8.1.3
     https-proxy-agent: 5.0.1
     progress: 2.0.3
     proxy-from-env: 1.1.0
-    puppeteer-core: 19.8.5
-  checksum: 3e83eff1ab650e50f708b38beadac51ba68be9a5f1b4c6227996e92d87873b99e8cc20304e72a68acd1501bdbfa222f81db0d0b20c37196a9b73523e1fcf987b
+    puppeteer-core: 20.1.1
+  checksum: b97fbb7305471144648af45636c209c0a733b90612548f29f802ba90c759463e6dd13cefef915ea0891ad1c9bad1366814124b4d00a3b4ab8aee1df7370d419a
   languageName: node
   linkType: hard
 
