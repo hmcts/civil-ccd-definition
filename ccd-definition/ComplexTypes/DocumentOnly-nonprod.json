@@ -13,5 +13,13 @@
     "ElementLabel": "Document",
     "SecurityClassification": "Public",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png"
+  },
+  {
+    "ID": "DocumentOnly",
+    "ListElementCode": "createdDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date added",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "document = \"DO_NOT_SHOW\""
   }
 ]
