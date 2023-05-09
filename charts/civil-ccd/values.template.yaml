@@ -1,7 +1,6 @@
 civil-ccd-stack:
   enabled: true
 
-
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -30,6 +29,10 @@ civil-general-applications:
           - name: launch-darkly-sdk-key-non-prod
             alias: launch-darkly-sdk-key
           - robotics-notification-multipartyrecipient
+      civil-gen-apps:
+        resourceGroup: civil
+        secrets:
+          - microservicekey-civil-general-applications
     environment:
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
@@ -53,8 +56,9 @@ civil-general-applications:
 
 civil-service:
   java:
+    releaseNameOverride: ${SERVICE_NAME}-java
     imagePullPolicy: Always
-    ingressHost: ${SERVICE_NAME}.platform.hmcts.net
+    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
         resourceGroup: civil
@@ -116,9 +120,14 @@ civil-service:
               CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       auth:
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
+        postgresPassword: ${POSTGRES_PASSWORD}
 idam-pr:
   releaseNameOverride: ${SERVICE_NAME}-xui-idam-pr
   enabled: true
@@ -141,7 +150,7 @@ aac-manage-case-assignment:
       MCA_DEF_STORE_PROXY_URLS_ALLOWED_LIST: /api/display/challenge-questions.*
       MANAGE_CASE_S2S_AUTHORISED_SERVICES: xui_webapp,ccd_data,fpl_case_service,divorce_frontend,divorce_ccd_submission,finrem_case_orchestration, civil_service
       CCD_DATA_STORE_API_BASE_URL: http://${SERVICE_NAME}-ccd-data-store-api
-      CCD_DEFINITION_STORE_API_BASE_URL: http://${SERVICE_NAME}-ccd-definition-store
+      CCD_DEFINITION_STORE_API_BASE_URL: http://${SERVICE_NAME}-ccd-definition-store-api
       PRD_HOST: http://rd-professional-api-aat.service.core-compute-aat.internal
     autoscaling:
       enabled: false
@@ -207,7 +216,7 @@ ccd:
   global:
     ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
-    ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store
+    ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store-api
     ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
@@ -226,6 +235,7 @@ ccd:
       ingressIP: ${INGRESS_IP}
   ccd-data-store-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       imagePullPolicy: Always
       devcpuRequests: 1000m
       devmemoryRequests: 2048Mi
@@ -235,11 +245,11 @@ ccd:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
         DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DATA_STORE_IDAM_KEY: ${CCD_DATA_STORE_S2S_SECRET}
-        DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment
+        DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,civil_general_applications
         IDAM_API_BASE_URL: https://idam-api.aat.platform.hmcts.net
         IDAM_OIDC_URL:  https://idam-web-public.aat.platform.hmcts.net
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
-        CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service
+        CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,civil_general_applications
         CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
         IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
         IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
@@ -252,6 +262,7 @@ ccd:
         RELEASE_REVISION: "{{ .Release.Revision }}"
   am-role-assignment-service:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
       keyVaults:
@@ -260,6 +271,7 @@ ccd:
             - role-assignment-service-LD-SDK-KEY
   ccd-definition-store-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       imagePullPolicy: Always
       devcpuRequests: 500m
       devmemoryRequests: 512Mi
@@ -273,6 +285,7 @@ ccd:
       disableKeyVaults: true
   ccd-user-profile-api:
     java:
+      releaseNameOverride: ${SERVICE_NAME}-ccd-user-profile-api
       imagePullPolicy: Always
       enviroment:
         USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
