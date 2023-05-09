@@ -1,18 +1,23 @@
-const {date} = require('../../api/dataHelper');
+const {date,dateNoWeekends} = require('../../api/dataHelper');
 
 module.exports = {
-  valid: {
-    ExtensionDate: {
-      respondentSolicitor1AgreedDeadlineExtension: date(40)
-    }
-  },
-  invalid: {
-    ExtensionDate: {
-      past: {
-        respondentSolicitor1AgreedDeadlineExtension: date(-1)
+
+  agreedData: async () => {
+    return {
+      valid: {
+        ExtensionDate: {
+          respondentSolicitor1AgreedDeadlineExtension: await dateNoWeekends(40)
+        }
       },
-      beforeCurrentDeadline: {
-        respondentSolicitor1AgreedDeadlineExtension: date(10)
+      invalid: {
+        ExtensionDate: {
+          past: {
+            respondentSolicitor1AgreedDeadlineExtension: date(-1)
+          },
+          beforeCurrentDeadline: {
+            respondentSolicitor1AgreedDeadlineExtension: date(10)
+          }
+        }
       }
     }
   }
