@@ -27,7 +27,7 @@ module.exports = {
     await I.waitForText('Not paid', 30);
     await I.see('Not paid');
     await I.forceClick('Pay now');
-    await I.waitForElement({'input#pbaAccount'});
+    await I.waitForElement('#pbaAccount');
     await I.click({css: 'input#pbaAccount'});
     await I.waitForElement(this.fields.pbaNumber.id);
     await I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount1']);
