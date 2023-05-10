@@ -698,7 +698,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderStaff",
+    "CaseFieldID": "hearingOrderDocStaff",
     "AccessControl": [
       {
         "UserRoles": [
@@ -711,7 +711,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderClaimant",
+    "CaseFieldID": "hearingOrderDocClaimant",
     "AccessControl": [
       {
         "UserRoles": [
@@ -724,7 +724,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderRespondentSol",
+    "CaseFieldID": "hearingOrderDocRespondentSol",
     "AccessControl": [
       {
         "UserRoles": [
@@ -737,7 +737,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderRespondentSolTwo",
+    "CaseFieldID": "hearingOrderDocRespondentSolTwo",
     "AccessControl": [
       {
         "UserRoles": [

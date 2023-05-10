@@ -301,7 +301,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderStaff",
+    "CaseFieldID": "hearingOrderDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
