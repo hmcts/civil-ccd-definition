@@ -276,25 +276,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderStaff",
+    "CaseFieldID": "hearingOrderDocStaff",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderClaimant",
+    "CaseFieldID": "hearingOrderDocClaimant",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderRespondentSol",
+    "CaseFieldID": "hearingOrderDocRespondentSol",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingOrderRespondentSolTwo",
+    "CaseFieldID": "hearingOrderDocRespondentSolTwo",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

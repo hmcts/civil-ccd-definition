@@ -498,7 +498,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingOrderStaff",
+    "ID": "hearingOrderDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "Label": "hearing order doc in casefile view",
@@ -507,7 +507,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingOrderClaimant",
+    "ID": "hearingOrderDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "Label": "hearing order doc in casefile view",
@@ -516,7 +516,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingOrderRespondentSol",
+    "ID": "hearingOrderDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "Label": "hearing order doc in casefile view",
@@ -525,7 +525,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingOrderRespondentSolTwo",
+    "ID": "hearingOrderDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "Label": "hearing order doc in casefile view",
