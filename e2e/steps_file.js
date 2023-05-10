@@ -137,7 +137,7 @@ const noticeOfChange = require('./pages/noticeOfChange.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 
-const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_IN_SELECTOR = 'ul[class*="navigation-list"] a';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
@@ -237,6 +237,7 @@ module.exports = function () {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
+          await this.waitForText('Sign out', 20, SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
