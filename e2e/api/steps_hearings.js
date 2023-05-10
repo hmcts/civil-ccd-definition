@@ -246,16 +246,16 @@ const getExpectedPayload = (serviceId, caseId) => {
         },
         {
           'screenName': 'hearing-venue',
-          'conditionKey': 'region',
+          'conditionKey': 'regionId',
           'navigation': [
             {
               'conditionOperator': 'INCLUDE',
-              'conditionValue': 'Wales',
+              'conditionValue': '7',
               'resultValue': 'hearing-welsh'
             },
             {
               'conditionOperator': 'NOT INCLUDE',
-              'conditionValue': 'Wales',
+              'conditionValue': '7',
               'resultValue': 'hearing-judge'
             }
           ]
@@ -343,7 +343,7 @@ const getExpectedPayload = (serviceId, caseId) => {
       ],
       'caseDeepLink': `http://localhost:3333/cases/case-details/${caseId}`,
       'externalCaseReference': null,
-      'caseManagementLocationCode': '111100',
+      'caseManagementLocationCode': '000000',
       'caseSLAStartDate': date(350),
       'autoListFlag': false,
       'hearingType': '',
@@ -358,11 +358,13 @@ const getExpectedPayload = (serviceId, caseId) => {
       'hearingInWelshFlag': false,
       'hearingLocations': [
         {
-          'locationId': '111100',
+          'locationId': '000000',
           'locationType': 'court'
         }
       ],
-      'facilitiesRequired': null,
+      'facilitiesRequired': [
+        '11'
+      ],
       'listingComments': '',
       'hearingRequester': '',
       'privateHearingRequiredFlag': false,
@@ -732,16 +734,16 @@ const getExpectedPayload = (serviceId, caseId) => {
         },
         {
           'screenName': 'hearing-venue',
-          'conditionKey': 'region',
+          'conditionKey': 'regionId',
           'navigation': [
             {
               'conditionOperator': 'INCLUDE',
-              'conditionValue': 'Wales',
+              'conditionValue': '7',
               'resultValue': 'hearing-welsh'
             },
             {
               'conditionOperator': 'NOT INCLUDE',
-              'conditionValue': 'Wales',
+              'conditionValue': '7',
               'resultValue': 'hearing-judge'
             }
           ]
