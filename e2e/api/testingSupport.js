@@ -113,10 +113,6 @@ module.exports =  {
       return false;
     }
 
-    if(toggle === 'case-flags'){
-      return false;
-    }
-
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
@@ -239,12 +235,44 @@ module.exports =  {
       );
   },
 
-  checkCaseFlagsEnabled: () => {
-    return false;
+  checkCaseFlagsEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/case-flags`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
   },
 
-  checkHmcEnabled: () => {
-    return false;
+  checkHmcEnabled: async () => {
+    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+    return await restHelper.request(
+      `${config.url.civilService}/testing-support/feature-toggle/hmc`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      }, null, 'GET')
+      .then(async response =>  {
+          if (response.status === 200) {
+            const json = await response.json();
+            return json.toggleEnabled;
+          } else {
+            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+          }
+        }
+      );
   },
 
   updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
