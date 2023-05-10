@@ -137,7 +137,7 @@ const noticeOfChange = require('./pages/noticeOfChange.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 
-const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_IN_SELECTOR = 'ul[class*="navigation-list"] a';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
@@ -230,14 +230,13 @@ module.exports = function () {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
           await this.signOut();
         }
-        await this.retryUntilExists(async () => {
-          this.amOnPage(config.url.manageCase, 90);
+        this.amOnPage(config.url.manageCase, 90);
 
-          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-            console.log(`Signing in user: ${user.type}`);
-            await loginPage.signIn(user);
-          }
-        }, SIGNED_IN_SELECTOR);
+        if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+          console.log(`Signing in user: ${user.type}`);
+          await loginPage.signIn(user);
+        }
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
       }
@@ -706,17 +705,17 @@ module.exports = function () {
      */
     async retryUntilExists(action, locator, maxNumberOfTries = 6) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
-        output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
+        console.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
-          output.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
           break;
         }
         await action();
         if (await this.waitForSelector(locator) != null) {
-          output.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
           break;
         } else {
-          output.print(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
+          console.print(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
         }
         if (tryNumber === maxNumberOfTries) {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);
