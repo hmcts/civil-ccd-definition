@@ -150,6 +150,7 @@ module.exports = {
           }
         };
         break;
+
       case 'PART_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,
@@ -228,6 +229,56 @@ module.exports = {
           }
         };
         break;
+
+      case 'REQUEST_JUDGEMENT':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_ADMISSION',
+            responseClaimTrack: 'SMALL_CLAIM',
+            sameSolicitorSameResponse: null,
+            specFullAdmissionOrPartAdmission:'Yes',
+            specFullDefenceOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission1V1: null,
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No'
+          },
+          defenceAdmittedPartRoute: {
+            respondToAdmittedClaimOwingAmountPounds: null,
+            specDefenceFullAdmittedRequired: 'No'
+          },
+          WhenWillClaimBePaid: {
+            defenceAdmitPartPaymentTimeRouteGeneric: 'IMMEDIATELY',
+            defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
+          },
+
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          },
+          defenceRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullDefenceOrPartAdmission: 'No',
+            multiPartyResponseTypeFlags: 'FULL_ADMISSION',
+            specDefenceFullAdmittedRequired: 'No'
+          },
+          defenceAdmittedPartRoute: {
+            responseClaimTrack: 'SMALL_CLAIM'
+          },
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            responseClaimTrack: 'SMALL_CLAIM'
+          }
+        };
+        break;
+
       case 'COUNTER_CLAIM':
         responseData.userInput = {
           ...responseData.userInput,

@@ -88,7 +88,7 @@ module.exports = {
     }
 
     // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkToggleEnabled('hearing-and-listing-legal-rep');
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
     if(!hnlEnabled) {
       removeHNLFieldsFromClaimData(createClaimData);
     }
