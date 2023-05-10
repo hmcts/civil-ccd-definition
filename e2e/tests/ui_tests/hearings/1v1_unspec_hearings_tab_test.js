@@ -1,22 +1,20 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkHmcEnabled} = require('../../../api/testingSupport');
 
 Feature('1v1 - Unspec create claim @e2e-hearings @non-prod-e2e-ft');
 
-if (['preview', 'demo'].includes(config.runningEnv) && checkHmcEnabled) {
+// Skipped until hearings tabs is available on preview
+Scenario.skip('Listing officer access the hearings tab', async ({I, api}) => {
 
-  Scenario('Listing officer access the hearings tab', async ({I, api}) => {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  let caseId = await api.getCaseId();
+  await I.login(config.hearingCenterAdminWithRegionId1);
+  await I.navigateToCaseDetails(caseId);
+  await I.accessHearingsTab(caseId);
+});
 
-    await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
-    let caseId = await api.getCaseId();
-    await I.login(config.hearingCenterAdminWithRegionId1);
-    await I.navigateToCaseDetails(caseId);
-    await I.accessHearingsTab(caseId);
-  });
+AfterSuite(async () => {
+  await unAssignAllUsers();
+});
 
-  AfterSuite(async () => {
-    await unAssignAllUsers();
-  });
-}
 

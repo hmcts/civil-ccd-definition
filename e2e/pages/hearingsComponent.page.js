@@ -7,6 +7,6 @@ module.exports = {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Hearings');
     await I.click('Hearings');
-    await I.waitForText('Request hearing', 60);
+    await I.waitForText('Request a hearing', 60);
   },
 };
