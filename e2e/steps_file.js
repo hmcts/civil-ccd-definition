@@ -124,6 +124,7 @@ const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList
 const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
 const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
 const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+const confirmTrialReadinessPage = require('./pages/caseProgression/confirmTrialReadiness.page');
 
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
@@ -453,6 +454,20 @@ module.exports = function () {
             () => hearingScheduledMoreInfoPage.enterMoreInfo(),
             () => event.submit('Submit', ''),
             () => event.returnToCaseDetails()
+          ]);
+        },
+
+    async confirmTrialReadiness(user = config.applicantSolicitorUser, hearingDueDateIsLessThan3Weeks = true) {
+          eventName = 'Confirm trial arrangements';
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            ...conditionalSteps(hearingDueDateIsLessThan3Weeks == true, [
+              () => confirmTrialReadinessPage.decideSmallClaimsTrack(allocateSmallClaims),
+              () => event.submit('Submit', ''),
+              () => event.returnToCaseDetails()
+            ]),
+            ...conditionalSteps(hearingDueDateIsLessThan3Weeks == false, [
+            ])
           ]);
         },
 
