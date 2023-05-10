@@ -75,7 +75,7 @@
     "Label": "Upload file",
     "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "FieldType": "Document",
-    "_RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
   },
   {
@@ -350,7 +350,7 @@
     "Label": "Upload files",
     "FieldType": "Document",
     "HintText": "We only accept documents in pdf format. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
-    "_RegularExpression": ".pdf",
+    "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   },
   {
@@ -846,7 +846,7 @@
     "Label": "Upload files",
     "FieldType": "Document",
     "HintText": "We only accept documents in pdf format.",
-    "_RegularExpression": ".pdf",
+    "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   },
   {
@@ -855,7 +855,7 @@
     "Label": "Upload files",
     "FieldType": "Document",
     "HintText": "We only accept documents in pdf format.",
-    "_RegularExpression": ".pdf",
+    "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
   },
   {
