@@ -715,7 +715,7 @@ module.exports = function () {
           console.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
           break;
         } else {
-          console.print(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
         }
         if (tryNumber === maxNumberOfTries) {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);

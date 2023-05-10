@@ -92,7 +92,7 @@ const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 
-const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_IN_SELECTOR = 'ul[class*="navigation-list"] a';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
@@ -103,7 +103,7 @@ const CONFIRMATION_MESSAGE = {
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
-let caseId, screenshotNumber, eventName, currentEventName;
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
@@ -157,18 +157,20 @@ module.exports = function () {
 
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-        await this.signOut();
-      }
-
-      await this.retryUntilExists(async () => {
+      if (loggedInUser !== user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
+        }
         this.amOnPage(config.url.manageCase, 90);
 
         if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-          output.log(`Signing in user: ${user.type}`);
+          console.log(`Signing in user: ${user.type}`);
           await loginPage.signIn(user);
         }
-      }, SIGNED_IN_SELECTOR);
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
+        loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
+      }
     },
 
     grabCaseNumber: async function () {
