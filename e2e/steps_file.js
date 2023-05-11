@@ -138,7 +138,7 @@ const noticeOfChange = require('./pages/noticeOfChange.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 
-const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_IN_SELECTOR = 'h1';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
@@ -240,6 +240,7 @@ module.exports = function () {
           }
           await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
+
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
       }
@@ -458,16 +459,18 @@ module.exports = function () {
           ]);
         },
 
-    async confirmTrialReadiness(user = config.applicantSolicitorUser, hearingDueDateIsLessThan3Weeks = true) {
+    async confirmTrialReadiness(hearingDateIsLessThan3Weeks = false, readyForTrial = 'yes') {
           eventName = 'Confirm trial arrangements';
+          const confirmationMessage = readyForTrial == 'yes' ? 'You have said this case is ready for trial or hearing' : 'You have said this case is not ready for trial or hearing';
           await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
-            ...conditionalSteps(hearingDueDateIsLessThan3Weeks == true, [
-              () => confirmTrialReadinessPage.decideSmallClaimsTrack(allocateSmallClaims),
-              () => event.submit('Submit', ''),
+            ...conditionalSteps(hearingDateIsLessThan3Weeks == false, [
+              () => caseViewPage.startEvent(eventName, caseId),
+              () => confirmTrialReadinessPage.updateTrialConfirmation(readyForTrial, 'yes'),
+              () => event.submit('Submit', confirmationMessage),
               () => event.returnToCaseDetails()
             ]),
-            ...conditionalSteps(hearingDueDateIsLessThan3Weeks == false, [
+            ...conditionalSteps(hearingDateIsLessThan3Weeks == true, [
+              () => caseViewPage.verifyErrorMessageOnEvent(eventName, caseId, 'Trial arrangements had to be confirmed more than 3 weeks before the trial')
             ])
           ]);
         },

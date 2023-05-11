@@ -13,7 +13,7 @@ module.exports = {
   },
 
   async hearingType(trackType) {
-     await I.runAccessbilityTest();
+     await I.runAccessibilityTest();
      await I.waitForElement(this.fields.hearingNoticeType.id);
      if(trackType === 'smallClaims'){
         await I.click(this.fields.hearingNoticeType.options.smallClaims);

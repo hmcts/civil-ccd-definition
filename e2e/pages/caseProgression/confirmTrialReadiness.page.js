@@ -3,39 +3,41 @@ const config = require('./../../config');
 
 module.exports = {
   fields: {
-    courtLocation: {
-      id: 'select[id$="hearingLocation"]',
+    trialReadyApplicant: {
+      id: '#trialReadyApplicant',
       options: {
-        preferredCourt: config.claimantSelectedCourt
+        yes: '#trialReadyApplicant-Yes',
+        no: '#trialReadyApplicant-No'
       }
     },
-   selectChannel: {
-          id: '#channel',
-          options: {
-               person: '#channel-IN_PERSON',
-               video: '#channel-VIDEO',
-               telephone: '#channel-TELEPHONE',
-          }
-   },
-   dayOfHearing: '#hearingDate-day',
-   monthOfHearing: '#hearingDate-month',
-   yearOfHearing: '#hearingDate-year',
-   hearingTimeHourMinute: '#hearingTimeHourMinute',
-   hearingDuration: '#hearingDuration',
-
+    applicantRevisedHearingRequirements: {
+      id: '#applicantRevisedHearingRequirements_revisedHearingRequirements_radio',
+      options: {
+        yes: '#applicantRevisedHearingRequirements_revisedHearingRequirements_Yes',
+        no: '#applicantRevisedHearingRequirements_revisedHearingRequirements_No'
+      }
+    },
+    revisedHearingComments: '#applicantRevisedHearingRequirements_revisedHearingComments',
+    hearingOtherComments: '#applicantHearingOtherComments_hearingOtherComments'
   },
 
-  async selectCourt() {
-      I.waitForElement(this.fields.courtLocation.id);
+  async updateTrialConfirmation(readyForTrial = 'yes', hearingRequirementsChanged = 'yes') {
+      await I.waitForElement(this.fields.trialReadyApplicant.id);
       await I.runAccessibilityTest();
-      I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.preferredCourt);
-      I.click(this.fields.selectChannel.options.person);
-      I.selectOption(this.fields.hearingTimeHourMinute, '08:00');
-      I.selectOption(this.fields.hearingDuration, '30 minutes');
-      I.fillField(this.fields.dayOfHearing, 1);
-      I.fillField(this.fields.monthOfHearing, 12);
-      I.fillField(this.fields.yearOfHearing, 2025);
+      if (readyForTrial == 'yes') {
+        await I.click(this.fields.trialReadyApplicant.options.yes);
+      } else {
+        await I.click(this.fields.trialReadyApplicant.options.no);
+      }
+      await I.waitForElement(this.fields.applicantRevisedHearingRequirements.id);
+      if (hearingRequirementsChanged == 'yes') {
+        await I.click(this.fields.applicantRevisedHearingRequirements.options.yes);
+        await I.waitForElement(this.fields.revisedHearingComments);
+        await I.fillField(this.fields.revisedHearingComments, 'Revised hearing comments');
+      } else {
+        await I.waitForElement(this.fields.applicantRevisedHearingRequirements.options.no);
+      }
+      await I.fillField(this.fields.hearingOtherComments, 'Court needs to know this info');
       await I.clickContinue();
   }
-
 };
