@@ -23,29 +23,30 @@ module.exports = {
   },
 
   async payFee(caseNumber) {
-    I.waitInUrl(caseNumber);
-    I.waitForText('Not paid', 12);
-    I.see('Not paid');
-    I.forceClick('Pay now');
-    I.click({css: 'input#pbaAccount'});
-    I.waitForElement(this.fields.pbaNumber.id);
-    I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount1']);
-    I.fillField('pbaAccountRef', 'Test Test');
-    I.click({css: 'div.govuk-form-group span'});
-    I.click('Confirm payment');
-    I.waitForText('Payment successful');
-    I.click('View service requests');
+    await I.waitInUrl(caseNumber);
+    await I.waitForText('Not paid', 30);
+    await I.see('Not paid');
+    await I.forceClick('Pay now');
+    await I.waitForElement('#pbaAccount');
+    await I.click({css: 'input#pbaAccount'});
+    await I.waitForElement(this.fields.pbaNumber.id);
+    await I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount1']);
+    await I.fillField('pbaAccountRef', 'Test Test');
+    await I.click({css: 'div.govuk-form-group span'});
+    await I.click('Confirm payment');
+    await I.waitForText('Payment successful');
+    await I.click('View service requests');
   },
 
   async openServiceRequestTab() {
     let urlBefore = await I.grabCurrentUrl();
-    I.refreshPage();
-    I.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 6);
+    console.log('openServiceRequestTab urlBefore ..', urlBefore);
+    await I.refreshPage();
+    await I.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 60);
 
     await I.retryUntilUrlChanges(async () => {
       await I.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
       await I.waitForInvisible(locate(this.fields.spinner).withText('Loading'), 30);
     }, urlBefore);
-
   }
 };
