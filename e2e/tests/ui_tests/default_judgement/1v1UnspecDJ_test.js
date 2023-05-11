@@ -56,6 +56,7 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft', as
     await performConfirmTrialReadiness(I, config.defendantSolicitorUser, hearingDateIsLessThan3Weeks, 'yes');
   }
   else {
+    await I.login(config.hearingCenterAdminWithRegionId1);
     api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
     await I.staffPerformDJCaseTransferCaseOffline(caseId);
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
