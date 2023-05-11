@@ -54,7 +54,6 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft', as
     hearingDateIsLessThan3Weeks = false;
     await performConfirmTrialReadiness(I, config.applicantSolicitorUser, hearingDateIsLessThan3Weeks, 'no');
     await performConfirmTrialReadiness(I, config.defendantSolicitorUser, hearingDateIsLessThan3Weeks, 'yes');
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
   }
   else {
     api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
