@@ -73,7 +73,7 @@ async function createHearingScheduled(I) {
 async function performConfirmTrialReadiness(I, user = config.applicantSolicitorUser, readyForTrial = 'yes') {
     await I.login(user);
     console.log('value of hearingDateIsLessThan3Weeks..', hearingDateIsLessThan3Weeks);
-    await I.confirmTrialReadiness(hearingDateIsLessThan3Weeks, readyForTrial);
+    await I.confirmTrialReadiness(user, hearingDateIsLessThan3Weeks, readyForTrial);
 }
 
 Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {

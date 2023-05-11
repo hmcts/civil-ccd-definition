@@ -460,13 +460,13 @@ module.exports = function () {
           ]);
         },
 
-    async confirmTrialReadiness(hearingDateIsLessThan3Weeks = false, readyForTrial = 'yes') {
+    async confirmTrialReadiness(user, hearingDateIsLessThan3Weeks = false, readyForTrial = 'yes') {
           eventName = 'Confirm trial arrangements';
           const confirmationMessage = readyForTrial == 'yes' ? 'You have said this case is ready for trial or hearing' : 'You have said this case is not ready for trial or hearing';
           await this.triggerStepsWithScreenshot([
             ...conditionalSteps(hearingDateIsLessThan3Weeks == false, [
               () => caseViewPage.startEvent(eventName, caseId),
-              () => confirmTrialReadinessPage.updateTrialConfirmation(readyForTrial, 'yes'),
+              () => confirmTrialReadinessPage.updateTrialConfirmation(user, readyForTrial, 'yes'),
               () => event.submit('Submit', confirmationMessage),
               () => event.returnToCaseDetails()
             ]),
