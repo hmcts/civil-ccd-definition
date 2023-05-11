@@ -861,8 +861,13 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "RU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

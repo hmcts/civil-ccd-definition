@@ -250,5 +250,14 @@
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-wa-task-configuration",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-wa-task-configuration",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
   }
 ]
