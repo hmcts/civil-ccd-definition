@@ -61,7 +61,8 @@
     "AccessControl" : [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -103,7 +104,8 @@
     "AccessControl" : [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -127,7 +129,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingTimeHourMinute",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "caseworker-civil-solicitor"
     ],
     "CRUD": "CRU"
   },
