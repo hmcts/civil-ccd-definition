@@ -138,7 +138,7 @@ const noticeOfChange = require('./pages/noticeOfChange.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 
-const SIGNED_IN_SELECTOR = 'h1';
+const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
 
