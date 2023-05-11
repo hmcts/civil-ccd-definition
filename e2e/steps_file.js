@@ -238,6 +238,7 @@ module.exports = function () {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
@@ -709,15 +710,15 @@ module.exports = function () {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
-          output.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
           break;
         }
         await action();
         if (await this.waitForSelector(locator) != null) {
-          output.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
           break;
         } else {
-          output.print(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
         }
         if (tryNumber === maxNumberOfTries) {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);
