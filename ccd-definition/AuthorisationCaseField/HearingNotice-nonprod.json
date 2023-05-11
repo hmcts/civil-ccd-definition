@@ -105,15 +105,10 @@
       {
         "UserRoles": [
           "hearing-schedule-access",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
