@@ -1,5 +1,4 @@
 const {I} = inject();
-const config = require('./../../config');
 
 module.exports = {
   fields: {
