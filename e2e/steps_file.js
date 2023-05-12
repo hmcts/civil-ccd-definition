@@ -124,6 +124,7 @@ const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList
 const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
 const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
 const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+const confirmTrialReadinessPage = require('./pages/caseProgression/confirmTrialReadiness.page');
 
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
@@ -239,6 +240,7 @@ module.exports = function () {
           }
           await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
+
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
       }
@@ -367,7 +369,8 @@ module.exports = function () {
       ]);
     },
 
-    async initiateDJUnspec(caseId, scenario) {
+    async initiateDJUnspec(caseNumber, scenario) {
+      caseId = caseNumber;
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -454,6 +457,22 @@ module.exports = function () {
             () => hearingScheduledMoreInfoPage.enterMoreInfo(),
             () => event.submit('Submit', ''),
             () => event.returnToCaseDetails()
+          ]);
+        },
+
+    async confirmTrialReadiness(user, hearingDateIsLessThan3Weeks = false, readyForTrial = 'yes') {
+          eventName = 'Confirm trial arrangements';
+          const confirmationMessage = readyForTrial == 'yes' ? 'You have said this case is ready for trial or hearing' : 'You have said this case is not ready for trial or hearing';
+          await this.triggerStepsWithScreenshot([
+            ...conditionalSteps(hearingDateIsLessThan3Weeks == false, [
+              () => caseViewPage.startEvent(eventName, caseId),
+              () => confirmTrialReadinessPage.updateTrialConfirmation(user, readyForTrial, 'yes'),
+              () => event.submit('Submit', confirmationMessage),
+              () => event.returnToCaseDetails()
+            ]),
+            ...conditionalSteps(hearingDateIsLessThan3Weeks == true, [
+              () => caseViewPage.verifyErrorMessageOnEvent(eventName, caseId, 'Trial arrangements had to be confirmed more than 3 weeks before the trial')
+            ])
           ]);
         },
 
@@ -893,7 +912,7 @@ module.exports = function () {
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        output.log(`Navigating to case: ${normalizedCaseId}`);
+        console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
       }, SIGNED_IN_SELECTOR);
 
