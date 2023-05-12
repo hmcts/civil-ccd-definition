@@ -183,7 +183,7 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -276,7 +276,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled && hnlSdoEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -317,7 +317,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -433,7 +433,7 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -452,7 +452,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 

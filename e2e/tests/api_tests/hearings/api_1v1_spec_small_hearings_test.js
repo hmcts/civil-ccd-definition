@@ -7,7 +7,7 @@ const hearingsApi = true;
 const serviceId = 'AAA6';
 let caseId;
 
-Feature('CCD 1v1 Spec small hearings API test @non-prod-e2e-ft @api-hearings-spec @api-hearings');
+Feature('CCD 1v1 Spec small hearings API test @non-prod-e2e-ft @api-hearings-spec');
 
 Scenario('1v1 full defence defendant and claimant response', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, hearingsApi);
@@ -18,14 +18,14 @@ Scenario('1v1 full defence defendant and claimant response', async ({api_spec_sm
 });
 
 Scenario('Listing officer adds case flags', async ({hearings}) => {
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'applicant1', getLanguageInterpreterFlag());
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent1', getRAWheelchairFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId4, caseId, 'applicant1', getLanguageInterpreterFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId4, caseId, 'respondent1', getRAWheelchairFlag());
 });
 
 Scenario('Judge choose hearing in person', async ({api_spec_small}) => {
-  await api_spec_small.createSDO(config.judgeUserWithRegionId4, 'CREATE_SMALL');
+  await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL');
 });
 
 Scenario('Hearing centre admin requests a hearing', async ({hearings}) => {
-  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId1, caseId, serviceId);
+  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId4, caseId, serviceId);
 });

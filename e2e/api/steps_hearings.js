@@ -1,4 +1,4 @@
-const {checkCaseFlagsEnabled, checkHmcEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled, checkCaseFlagsAndHmcEnabled} = require('./testingSupport');
 const apiRequest = require('./apiRequest.js');
 const {addAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {getHearingsPayload} = require('./apiRequest');
@@ -9,7 +9,7 @@ const {date} = require('../api/dataHelper');
 const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
 
-const getExpectedPayload = (serviceId, caseId) => {
+const getExpectedPayload = (serviceId) => {
   if (serviceId === specServiceId) {
     return {
       'hmctsServiceID': 'AAA6',
@@ -27,9 +27,8 @@ const getExpectedPayload = (serviceId, caseId) => {
           'categoryParent': 'AAA6-SMALL_CLAIM'
         }
       ],
-        'caseDeepLink': `http://localhost:3333/cases/case-details/${caseId}`,
         'externalCaseReference': null,
-        'caseManagementLocationCode': '000000',
+        'caseManagementLocationCode': '229786',
         'caseSLAStartDate': date(210),
         'autoListFlag': false,
         'hearingType': '',
@@ -44,7 +43,7 @@ const getExpectedPayload = (serviceId, caseId) => {
         'hearingInWelshFlag': false,
         'hearingLocations': [
         {
-          'locationId': '000000',
+          'locationId': '229786',
           'locationType': 'court'
         }
       ],
@@ -341,9 +340,8 @@ const getExpectedPayload = (serviceId, caseId) => {
           'categoryParent': 'AAA7-FAST_CLAIM'
         }
       ],
-      'caseDeepLink': `http://localhost:3333/cases/case-details/${caseId}`,
       'externalCaseReference': null,
-      'caseManagementLocationCode': '000000',
+      'caseManagementLocationCode': '229786',
       'caseSLAStartDate': date(350),
       'autoListFlag': false,
       'hearingType': '',
@@ -358,7 +356,7 @@ const getExpectedPayload = (serviceId, caseId) => {
       'hearingInWelshFlag': false,
       'hearingLocations': [
         {
-          'locationId': '000000',
+          'locationId': '229786',
           'locationType': 'court'
         }
       ],
@@ -822,7 +820,7 @@ const getExpectedPayload = (serviceId, caseId) => {
 
 module.exports = {
   createCaseFlags: async (user, caseId, flagLocation, flag) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -832,16 +830,18 @@ module.exports = {
   },
 
   generateHearingsPayload: async (user, caseId, serviceId = 'AAA7') => {
-    if(!checkCaseFlagsEnabled() && !checkHmcEnabled()) {
+    if(!(await checkCaseFlagsAndHmcEnabled())) {
       return;
     }
 
     await apiRequest.setupTokens(user);
 
     const payload = await getHearingsPayload(user, caseId);
+    const {caseDeepLink, ...actualPayload} = payload;
 
-    const expectedPayload = getExpectedPayload(serviceId, caseId);
+    const expectedPayload = getExpectedPayload(serviceId);
 
-    expect(payload).deep.equal(expectedPayload);
+    expect(actualPayload).deep.equal(expectedPayload);
+    expect(caseDeepLink).deep.contain(`/cases/case-details/${caseId}`);
   },
 };

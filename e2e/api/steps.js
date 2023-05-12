@@ -207,7 +207,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -639,7 +639,7 @@ module.exports = {
     }
 
     //Todo: Remove after caseflags release
-    removeFlagsFieldsFromFixture(defendantResponseData);
+    await removeFlagsFieldsFromFixture(defendantResponseData);
 
     // Remove after court location toggle is removed
     defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
@@ -722,7 +722,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
 
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
@@ -788,7 +788,7 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
 
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
@@ -836,7 +836,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
     }
   },
@@ -1029,7 +1029,7 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -1048,7 +1048,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
