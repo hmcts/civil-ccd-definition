@@ -17,7 +17,7 @@ if (config.runWAApiTest) {
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
 }
 
-Feature('CCD 1v1 API test @api-sdo');
+Feature('CCD 1v1 API test');
 
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
@@ -41,10 +41,11 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
@@ -57,6 +58,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
   }
 });
 
@@ -109,8 +111,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOU
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
@@ -127,8 +127,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws small claims WITH s
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
@@ -145,8 +143,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITH sum
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
   }
 });
 
@@ -160,8 +156,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
