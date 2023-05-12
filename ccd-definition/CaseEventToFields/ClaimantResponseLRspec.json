@@ -192,7 +192,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FurtherInformation",
     "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW\" AND responseClaimTrack!=\"FAST_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW\" AND responseClaimTrack!=\"FAST_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
