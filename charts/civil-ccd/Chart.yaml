@@ -33,7 +33,7 @@ dependencies:
   - name: camunda-bpm
     version: 0.0.28
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: false
+    condition: camunda-bpm.enabled
   - name: servicebus
     version: 1.0.2
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
@@ -47,15 +47,15 @@ dependencies:
   - name: wa-task-monitor
     version: ~0.0.27
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: false
+    condition: wa.enabled
   - name: wa-case-event-handler
     version: ~0.0.30
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: false
+    condition: wa.enabled
   - name: wa-workflow-api
     version: ~0.0.26
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: false
+    condition: wa.enabled
 # WA Crons
   - name: wa-task-batch-service
     version: ~0.0.15
