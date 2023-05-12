@@ -924,6 +924,12 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },
 
+  amendHearingDate: async (user, updatedDate) => {
+    let hearingDate = {};
+    hearingDate = {'hearingDate': updatedDate};
+    await testingSupport.updateCaseData(caseId, hearingDate, user);
+  },
+
   defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
