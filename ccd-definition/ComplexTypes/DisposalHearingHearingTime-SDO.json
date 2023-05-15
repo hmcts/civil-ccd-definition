@@ -8,16 +8,30 @@
   },
   {
     "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "dateFromLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
     "ListElementCode": "dateFrom",
     "FieldType": "Date",
-    "ElementLabel": "Date from",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "dateToLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Date to",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DisposalHearingHearingTime",
     "ListElementCode": "dateTo",
     "FieldType": "Date",
-    "ElementLabel": "Date to",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
