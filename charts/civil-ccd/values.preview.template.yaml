@@ -66,5 +66,5 @@ camunda-bpm:
   java:
     ingressHost: camunda-${SERVICE_FQDN}
 
-wa:
+civil-wa:
   enabled: false
