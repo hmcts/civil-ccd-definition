@@ -12,5 +12,8 @@ yarn test:api-spec
 echo "Run Api Functional tests for api-sdo"
 yarn test:api-sdo
 
+echo "Run All Api Functional tests"
+yarn test:api-all
+
 #echo "Run Api Functional tests for api-spec-cui"
 #yarn test:api-spec-cui
