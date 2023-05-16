@@ -401,7 +401,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "freeFormOrderDocument",
+    "CaseFieldID": "finalOrderDocument",
     "UserRoles": [
       "judge-profile"
     ],
