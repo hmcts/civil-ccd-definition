@@ -37,6 +37,18 @@ module.exports = {
     }, locate('.govuk-heading-l'));
   },
 
+  async verifyErrorMessageOnEvent(event, caseId, errorMsg) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+    await I.navigateToCaseDetails(caseId);
+    await I.selectOption(this.fields.eventDropdown, event);
+    await I.moveCursorTo(this.goButton);
+    await I.wait(5);
+    await I.forceClick(this.goButton);
+    await I.waitForText(errorMsg);
+  }, locate('#errors'));
+},
+
   async navigateToTab(tabName) {
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
