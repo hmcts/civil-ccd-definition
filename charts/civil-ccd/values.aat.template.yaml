@@ -54,5 +54,5 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
-wa:
+civil-wa:
   enabled: false
