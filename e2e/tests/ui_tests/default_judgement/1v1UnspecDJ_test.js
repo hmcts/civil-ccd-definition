@@ -2,6 +2,9 @@
 
 const config = require('../../../config.js');
 let caseId, taskId, hearingDateIsLessThan3Weeks;
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const { checkToggleEnabled } = require('../../../api/testingSupport');
+const {PBAv3} = require('../../../fixtures/featureKeys');
 
 Feature('1v1 Unspec defaultJudgement');
 
@@ -54,6 +57,7 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft', as
     hearingDateIsLessThan3Weeks = false;
     await performConfirmTrialReadiness(I, config.applicantSolicitorUser, hearingDateIsLessThan3Weeks, 'no');
     await performConfirmTrialReadiness(I, config.defendantSolicitorUser, hearingDateIsLessThan3Weeks, 'yes');
+    await payHearingFee(I);
   }
   else {
     await I.login(config.hearingCenterAdminWithRegionId1);
@@ -75,6 +79,16 @@ async function performConfirmTrialReadiness(I, user = config.applicantSolicitorU
     await I.login(user);
     console.log('value of hearingDateIsLessThan3Weeks..', hearingDateIsLessThan3Weeks);
     await I.confirmTrialReadiness(user, hearingDateIsLessThan3Weeks, readyForTrial);
+}
+
+async function payHearingFee(I, user = config.applicantSolicitorUser) {
+  await I.login(user);
+  const pbaV3 = await checkToggleEnabled(PBAv3);
+  if (pbaV3) {
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+    await serviceRequest.openServiceRequestTab();
+    await serviceRequest.payFee(caseId, true);
+  }
 }
 
 Scenario('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
