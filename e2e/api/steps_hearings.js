@@ -5,9 +5,13 @@ const {getHearingsPayload} = require('./apiRequest');
 const chai = require('chai');
 const {expect} = chai;
 const {date} = require('../api/dataHelper');
+const config = require("../config");
 
 const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
+
+const runningOnLocal = () => !['aat', 'demo', 'preview'].includes(config.runningEnv);
+const locationId = () => runningOnLocal() ? '000000' : '229786';
 
 const getExpectedPayload = (serviceId) => {
   if (serviceId === specServiceId) {
@@ -28,7 +32,7 @@ const getExpectedPayload = (serviceId) => {
         }
       ],
         'externalCaseReference': null,
-        'caseManagementLocationCode': '229786',
+        'caseManagementLocationCode': locationId(),
         'caseSLAStartDate': date(210),
         'autoListFlag': false,
         'hearingType': '',
@@ -43,7 +47,7 @@ const getExpectedPayload = (serviceId) => {
         'hearingInWelshFlag': false,
         'hearingLocations': [
         {
-          'locationId': '229786',
+          'locationId': locationId(),
           'locationType': 'court'
         }
       ],
@@ -310,13 +314,15 @@ const getExpectedPayload = (serviceId) => {
             'partyName': 'Sir John Doe',
             'flagId': 'RA0019',
             'flagDescription': 'Step free / wheelchair access',
-            'flagStatus': 'Active'
+            'flagStatus': 'Active',
+            'partyID': ''
           },
           {
             'partyName': 'Test Inc',
             'flagId': 'PF0015',
             'flagDescription': 'Language Interpreter',
-            'flagStatus': 'Active'
+            'flagStatus': 'Active',
+            'partyID': ''
           }
         ]
       },
@@ -341,7 +347,7 @@ const getExpectedPayload = (serviceId) => {
         }
       ],
       'externalCaseReference': null,
-      'caseManagementLocationCode': '229786',
+      'caseManagementLocationCode': locationId(),
       'caseSLAStartDate': date(350),
       'autoListFlag': false,
       'hearingType': '',
@@ -356,7 +362,7 @@ const getExpectedPayload = (serviceId) => {
       'hearingInWelshFlag': false,
       'hearingLocations': [
         {
-          'locationId': '229786',
+          'locationId': locationId(),
           'locationType': 'court'
         }
       ],
@@ -797,19 +803,23 @@ const getExpectedPayload = (serviceId) => {
             'partyName': 'Sir John Doe',
             'flagId': 'PF0019',
             'flagDescription': 'Detained individual',
-            'flagStatus': 'Active'
+            'flagStatus': 'Active',
+            'partyID': ''
           },
           {
             'partyName': 'Sir John Doe',
             'flagId': 'PF0007',
             'flagDescription': 'Unacceptable/disruptive customer behaviour',
-            'flagStatus': 'Active'
+            'flagStatus': 'Active',
+            'partyID': ''
+
           },
           {
             'partyName': 'John Smith',
             'flagId': 'RA0026',
             'flagDescription': 'Support worker or carer with me',
-            'flagStatus': 'Active'
+            'flagStatus': 'Active',
+            'partyID': ''
           }
         ]
       },
@@ -837,11 +847,14 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     const payload = await getHearingsPayload(user, caseId);
-    const {caseDeepLink, ...actualPayload} = payload;
 
+    let {caseDeepLink, ...actualPayload} = payload;
+    actualPayload.parties = actualPayload.parties.map(party => ({...party, partyID:''}));
+    actualPayload.caseFlags.flags = actualPayload.caseFlags.flags.map(flag => ({...flag, partyID: ''}))
     const expectedPayload = getExpectedPayload(serviceId);
 
     expect(actualPayload).deep.equal(expectedPayload);
     expect(caseDeepLink).deep.contain(`/cases/case-details/${caseId}`);
   },
 };
+

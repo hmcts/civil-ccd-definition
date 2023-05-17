@@ -2,6 +2,8 @@ const defaultPassword = 'Password12!';
 const judgeDefaultPassword = 'Hmcts1234';
 const iacDefaultPassword = 'AldgateT0wer';
 
+const judgePassword = () => ['aat', 'demo', 'preview'].includes(process.env.ENVIRONMENV) ? judgeDefaultPassword : defaultPassword;
+
 module.exports = {
   idamStub: {
     enabled: process.env.IDAM_STUB_ENABLED === 'true',
@@ -15,14 +17,6 @@ module.exports = {
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
-
-
-    /*manageCase: 'https://xui-civil-ccd-pr-2068.preview.platform.hmcts.net',
-    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2068.preview.platform.hmcts.net',
-    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-2068.preview.platform.hmcts.net'*/
 
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
@@ -80,21 +74,21 @@ module.exports = {
     type: 'admin'
   },
   judgeUserWithRegionId1: {
-    password: judgeDefaultPassword,
+    password: judgePassword(),
     email: '4917924EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
   judgeUserWithRegionId4: {
-    password: judgeDefaultPassword,
-    email: '4925359EMP-@ejudiciary.net',
+    password: judgePassword(),
+    email: '4924159EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '4'
   },
   judgeUser2WithRegionId4: {
-    password: judgeDefaultPassword,
+    password: judgePassword(),
     email: '4924246EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
