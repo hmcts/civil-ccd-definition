@@ -24,8 +24,7 @@ module.exports = {
   async enterDateNoWeekends(fieldId = '', plusDays = 28) {
     I.waitForElement(this.fields(fieldId).day);
     await I.runAccessibilityTest();
-    const date = new Date();
-    const workingDayDateString = await dateNoWeekends(date.getDate() + plusDays);
+    const workingDayDateString = await dateNoWeekends(plusDays);
     let parts = workingDayDateString.split('-');
     let workingDayDate = new Date(parts[0], parts[1] - 1, parts[2]);
     I.fillField(this.fields(fieldId).day, workingDayDate.getDate());
