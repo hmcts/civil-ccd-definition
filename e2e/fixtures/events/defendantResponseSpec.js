@@ -76,7 +76,7 @@ module.exports = {
                 list_items: [
                   listElement(config.defendantSelectedCourt)
                 ],
-                value: listElement()
+                value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
