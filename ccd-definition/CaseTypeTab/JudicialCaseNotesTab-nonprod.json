@@ -29,7 +29,7 @@
     "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "documentOnly",
+    "CaseFieldID": "documentAndName",
     "TabFieldDisplayOrder": 4,
     "DisplayContextParameter": "#TABLE(documentName, createdDateTime, document)"
   }
