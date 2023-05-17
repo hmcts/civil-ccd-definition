@@ -61,12 +61,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "whenToBePaidText",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
@@ -104,12 +98,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "nextDeadline",
-    "UserRole": "caseworker-caa",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   }
