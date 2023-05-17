@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesDisposalHearingDJ",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesTrialHearingDJ",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  }
+]

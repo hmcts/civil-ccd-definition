@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesDisposalHearing",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesSmallClaims",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingMethodValuesFastTrack",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  }
+]
