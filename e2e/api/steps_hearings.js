@@ -5,7 +5,7 @@ const {getHearingsPayload} = require('./apiRequest');
 const chai = require('chai');
 const {expect} = chai;
 const {date} = require('../api/dataHelper');
-const config = require("../config");
+const config = require('../config');
 
 const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
@@ -850,7 +850,7 @@ module.exports = {
 
     let {caseDeepLink, ...actualPayload} = payload;
     actualPayload.parties = actualPayload.parties.map(party => ({...party, partyID:''}));
-    actualPayload.caseFlags.flags = actualPayload.caseFlags.flags.map(flag => ({...flag, partyID: ''}))
+    actualPayload.caseFlags.flags = actualPayload.caseFlags.flags.map(flag => ({...flag, partyID: ''}));
     const expectedPayload = getExpectedPayload(serviceId);
 
     expect(actualPayload).deep.equal(expectedPayload);

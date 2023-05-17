@@ -1,4 +1,3 @@
-const config = require('../config.js');
 const {checkCaseFlagsEnabled} = require('../api/testingSupport');
 
 module.exports = {
