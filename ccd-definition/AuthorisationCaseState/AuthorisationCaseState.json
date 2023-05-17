@@ -5,7 +5,8 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
-      "caseworker-wa-task-configuration"
+      "caseworker-wa-task-configuration",
+      "judge-profile"
     ],
     "CRUD": "CRUD"
   },
@@ -15,7 +16,8 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
-      "caseworker-wa-task-configuration"
+      "caseworker-wa-task-configuration",
+      "judge-profile"
       ],
     "CRUD": "CRUD"
   },
@@ -48,7 +50,8 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "[CREATOR]",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "CRUD"
       }
@@ -62,7 +65,8 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "CRUD"
       }
@@ -76,7 +80,8 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
@@ -193,7 +198,8 @@
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile"
+      "GS_profile",
+      "judge-profile"
     ],
     "CRUD": "R"
   },
@@ -202,7 +208,8 @@
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile"
+      "GS_profile",
+      "judge-profile"
     ],
     "CRUD": "R"
   },
@@ -258,6 +265,50 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "IN_MEDIATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
     "AccessControl": [
       {
         "UserRoles": [

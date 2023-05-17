@@ -24,6 +24,7 @@ const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespo
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {checkNoCToggleEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
@@ -78,7 +79,8 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario)
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
 };
 
 const eventData = {
@@ -911,6 +913,12 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },
 
+  amendHearingDate: async (user, updatedDate) => {
+    let hearingDate = {};
+    hearingDate = {'hearingDate': updatedDate};
+    await testingSupport.updateCaseData(caseId, hearingDate, user);
+  },
+
   defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
@@ -995,6 +1003,26 @@ module.exports = {
 
   },
 
+  createFinalOrder: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   createCaseFlags: async (user) => {
     if(!checkCaseFlagsEnabled()) {
       return;
@@ -1067,6 +1095,7 @@ module.exports = {
     for (let pageId of Object.keys(caseNoteData.valid)) {
       await assertValidData(caseNoteData, pageId);
     }
+    delete caseData['noteAdditionDateTime'];
 
     await assertSubmittedEvent(currentState, null, false);
     await waitForFinishedBusinessProcess(caseId);
@@ -1200,6 +1229,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
     responseBody = clearHearingLocationData(responseBody);
+  }
+  if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    responseBody = clearFinalOrderLocationData(responseBody);
   }
 
   let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
@@ -1655,4 +1687,9 @@ const adjustDataForSolicitor = (user, data) => {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;
+};
+
+const clearFinalOrderLocationData = (responseBody) => {
+  delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
 };
