@@ -22,11 +22,17 @@ module.exports = {
     I.see('Total fees to pay: £167.00');
   },
 
-  async payFee(caseNumber) {
+  async payFee(caseNumber, hearingFee = false) {
+    let feePaymentXPath;
     await I.waitInUrl(caseNumber);
     await I.waitForText('Not paid', 30);
     await I.see('Not paid');
-    await I.forceClick('Pay now');
+    if (hearingFee) {
+      feePaymentXPath = '//table/tbody/tr[position()=2]/td[position()=5]/a[contains(text(), \'Pay now\')]';
+    } else {
+      feePaymentXPath = '//table/tbody/tr[position()=1]/td[position()=5]/a[contains(text(), \'Pay now\')]';
+    }
+    await I.forceClick(feePaymentXPath);
     await I.waitForElement('#pbaAccount');
     await I.click({css: 'input#pbaAccount'});
     await I.waitForElement(this.fields.pbaNumber.id);
