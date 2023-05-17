@@ -1,0 +1,29 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolOrgIndividuals",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1SolOrgIndividuals",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+   {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2SolOrgIndividuals",
+     "Label": " ",
+     "FieldType": "Collection",
+     "FieldTypeParameter": "PartyFlagStructure",
+     "SecurityClassification": "Public",
+     "Searchable": "N"
+  }
+]
