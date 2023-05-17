@@ -47,15 +47,29 @@
   },
   {
     "ID": "SmallClaimsHearing",
-    "ListElementCode": "dateTo",
+    "ListElementCode": "dateToLabel",
     "ElementLabel": "Date to",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "dateTo",
+    "ElementLabel": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   },
   {
     "ID": "SmallClaimsHearing",
-    "ListElementCode": "dateFrom",
+    "ListElementCode": "dateFromLabel",
     "ElementLabel": "Date from",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "ListElementCode": "dateFrom",
+    "ElementLabel": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public"
   }

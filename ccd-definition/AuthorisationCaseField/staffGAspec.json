@@ -7,12 +7,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppTypeLabel",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppType",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -296,6 +290,36 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocRespondentSolTwo",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaEvidenceDocStaff",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingOrderDocStaff",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "requestForInfoDocStaff",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "writtenRepSeqDocStaff",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "writtenRepConDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   }

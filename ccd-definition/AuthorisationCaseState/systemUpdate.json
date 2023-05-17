@@ -70,5 +70,17 @@
     "CaseStateID": "DECISION_OUTCOME",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "IN_MEDIATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]

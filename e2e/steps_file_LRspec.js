@@ -90,6 +90,7 @@ const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -100,7 +101,9 @@ const CONFIRMATION_MESSAGE = {
   offline: 'Your claim has been received and will progress offline'
 };
 
-let caseId, screenshotNumber, eventName, currentEventName;
+const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
@@ -154,18 +157,22 @@ module.exports = function () {
 
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-        await this.signOut();
-      }
-
-      await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 90);
-
-        if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-          output.log(`Signing in user: ${user.type}`);
-          await loginPage.signIn(user);
+      if (loggedInUser !== user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
         }
-      }, SIGNED_IN_SELECTOR);
+        await this.retryUntilExists(async () => {
+          this.amOnPage(config.url.manageCase, 90);
+
+          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+            console.log(`Signing in user: ${user.type}`);
+            await loginPage.signIn(user);
+          }
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
+        }, SIGNED_IN_SELECTOR);
+        loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
+      }
     },
 
     grabCaseNumber: async function () {
@@ -693,6 +700,16 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
-    }
+    },
+
+    async evidenceUploadSpec(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => event.submit('Submit', 'Documents uploaded')
+      ]);
+    },
   });
 };

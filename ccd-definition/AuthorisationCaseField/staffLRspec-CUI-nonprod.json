@@ -127,7 +127,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "ccjJudgmentStatement",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "totalClaimAmount",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

@@ -18,6 +18,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "idam:caseworker-civil-judge",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "judge-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "idam:caseworker-civil-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
@@ -248,6 +257,15 @@
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "legal-adviser,caseworker-civil,GS_profile",
     "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:caseworker-wa-task-configuration",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "caseworker-wa-task-configuration",
+    "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
   }
