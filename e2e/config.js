@@ -2,7 +2,7 @@ const defaultPassword = 'Password12!';
 const judgeDefaultPassword = 'Hmcts1234';
 const iacDefaultPassword = 'AldgateT0wer';
 
-const judgePassword = () => ['aat', 'demo', 'preview'].includes(process.env.ENVIRONMENV) ? judgeDefaultPassword : defaultPassword;
+const judgePassword = () => ['aat', 'demo', 'preview'].includes(process.env.ENVIRONMENT) ? judgeDefaultPassword : defaultPassword;
 
 module.exports = {
   idamStub: {
