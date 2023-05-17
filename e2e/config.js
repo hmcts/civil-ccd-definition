@@ -16,6 +16,14 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
+
+    /*manageCase: 'https://xui-civil-ccd-pr-2068.preview.platform.hmcts.net',
+    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2068.preview.platform.hmcts.net',
+    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'https://civil-ccd-pr-2068.preview.platform.hmcts.net'*/
+
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
@@ -98,6 +106,13 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '2'
+  },
+  hearingCenterAdminLocal: {
+    email: 'hearing-centre-admin-01@example.com',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '1'
   },
   hearingCenterAdminWithRegionId1: {
     email: 'hearing_center_admin_reg1@justice.gov.uk',

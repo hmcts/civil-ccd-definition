@@ -22,6 +22,9 @@ const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
+const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
+const trialReadiness = require('../fixtures/events/trialReadiness.js');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
@@ -71,10 +74,13 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
+  TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
 };
 
 const eventData = {
@@ -910,6 +916,18 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
+  amendHearingDueDate: async (user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
+  amendHearingDate: async (user, updatedDate) => {
+    let hearingDate = {};
+    hearingDate = {'hearingDate': updatedDate};
+    await testingSupport.updateCaseData(caseId, hearingDate, user);
+  },
+
   defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
@@ -994,6 +1012,26 @@ module.exports = {
 
   },
 
+  createFinalOrder: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   createCaseFlags: async (user) => {
     if(!checkCaseFlagsEnabled()) {
       return;
@@ -1051,12 +1089,76 @@ module.exports = {
   await waitForFinishedBusinessProcess(caseId);
   },
 
+  evidenceUploadJudge: async (user, typeOfNote, currentState) => {
+    console.log('Evidence Upload of type:' + typeOfNote);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'EVIDENCE_UPLOAD_JUDGE';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    const document = await testingSupport.uploadDocument();
+    let caseNoteData = await updateCaseDataWithPlaceholders(data.EVIDENCE_UPLOAD_JUDGE(typeOfNote), document);
+
+    for (let pageId of Object.keys(caseNoteData.valid)) {
+      await assertValidData(caseNoteData, pageId);
+    }
+
+    await assertSubmittedEvent(currentState, null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
+    await apiRequest.setupTokens(config.applicantSolicitorUser);
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+updatedCaseState);
+  },
+
+  hearingFeeUnpaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    const response_msg = await apiRequest.hearingFeeUnpaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Unpaid');
+
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'CASE_PROCEEDS_IN_CASEMAN', user);
+    assert.equal(updatedCaseState, 'CASE_DISMISSED');
+    console.log('State moved to:'+ updatedCaseState);
+  },
+
+  trialReadiness: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    eventName = 'TRIAL_READINESS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    let readinessData = data.TRIAL_READINESS(user);
+
+    for (let pageId of Object.keys(readinessData.valid)) {
+      await assertValidData(readinessData, pageId);
+    }
+
+    await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   triggerBundle: async () => {
     const response_msg = await apiRequest.bundleTriggerEvent(caseId);
     const response = await response_msg.text();
     assert.equal(response, 'success');
   },
-  
+
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
@@ -1135,6 +1237,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
     responseBody = clearHearingLocationData(responseBody);
+  }
+  if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    responseBody = clearFinalOrderLocationData(responseBody);
   }
 
   let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
@@ -1647,4 +1752,9 @@ const adjustDataForSolicitor = (user, data) => {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;
+};
+
+const clearFinalOrderLocationData = (responseBody) => {
+  delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
 };
