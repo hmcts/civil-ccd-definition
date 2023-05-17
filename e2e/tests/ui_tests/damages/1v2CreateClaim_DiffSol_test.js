@@ -43,7 +43,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
     await serviceRequest.payFee(caseId());
     await paymentUpdate(caseId(), '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseId(), 'paid'));
-    console.log('Service request update sent to callback URL')
+    console.log('Service request update sent to callback URL');
   }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
