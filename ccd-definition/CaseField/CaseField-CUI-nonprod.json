@@ -11,7 +11,8 @@
     "ID": "respondent1LiPResponse",
     "Label": " ",
     "FieldType": "RespondentLiPResponse",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
