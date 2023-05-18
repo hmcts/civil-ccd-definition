@@ -7,8 +7,9 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "RetainHiddenValue": "Y"
   },
   {
@@ -31,6 +32,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
+    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -108,7 +110,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FurtherInformation",
     "CaseEventFieldLabel": "Further information",
-    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW\" AND responseClaimTrack!=\"FAST_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\"",
+    "PageShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW\" AND responseClaimTrack!=\"FAST_CLAIM\" AND applicant1ProceedWithClaim !=\"No\" AND applicant1ProceedWithClaimSpec2v1 !=\"No\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -145,6 +147,58 @@
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentPayImmidietelyLabel",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentPayImmidietelyTextBeforeDate",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "whenToBePaidText",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentPayImmidietelyTextAfterDate",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "showResponseOneVOneFlag",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponsePayImmidietely",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N"
   }
 ]
