@@ -114,7 +114,7 @@ Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
     await LRspec.waitForText('Summary');
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId() + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
     await LRspec.createHearingScheduled();
     await LRspec.payHearingFee();
   }
