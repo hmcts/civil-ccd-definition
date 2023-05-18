@@ -395,18 +395,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "showResponseOneVOneFlag",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 23,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
@@ -423,6 +411,16 @@
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag !=\"No\"",
     "DisplayContext": "READONLY",
+    "PageID": "ApplicantDefenceResponseDocument",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
   },

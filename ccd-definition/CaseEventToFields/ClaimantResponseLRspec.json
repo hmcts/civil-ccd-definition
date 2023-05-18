@@ -27,17 +27,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "ApplicantDefenceResponseDocument",
-    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 2,
@@ -122,7 +111,6 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "PageLabel": "",
     "ShowSummaryChangeOption": "N"
   },
