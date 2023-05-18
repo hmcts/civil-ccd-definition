@@ -400,8 +400,9 @@
     "PageFieldDisplayOrder": 23,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N"
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
