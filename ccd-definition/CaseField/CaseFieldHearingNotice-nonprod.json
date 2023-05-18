@@ -185,5 +185,12 @@
     "Label": "Hearing reference",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingUnpaidAfterNocFlag",
+    "Label": "Hearing reference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
