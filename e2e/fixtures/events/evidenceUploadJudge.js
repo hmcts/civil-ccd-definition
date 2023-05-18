@@ -15,7 +15,7 @@ module.exports = {
       };
     } else if (typeOfNote === 'DOCUMENT_ONLY') {
       caseNoteData.UploadDocument = {
-        documentOnly: [{
+        documentAndName: [{
           id: docUuid,
           value: {
             documentName: 'string',
