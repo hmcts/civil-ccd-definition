@@ -1104,6 +1104,7 @@ module.exports = {
     for (let pageId of Object.keys(caseNoteData.valid)) {
       await assertValidData(caseNoteData, pageId);
     }
+    delete caseData['noteAdditionDateTime'];
 
     await assertSubmittedEvent(currentState, null, false);
     await waitForFinishedBusinessProcess(caseId);
