@@ -178,16 +178,5 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "showResponseOneVOneFlag",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmidietely",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N"
   }
 ]
