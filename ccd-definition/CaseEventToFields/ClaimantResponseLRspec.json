@@ -122,7 +122,6 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "PageLabel": "",
     "ShowSummaryChangeOption": "N"
   },
