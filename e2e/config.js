@@ -156,13 +156,6 @@ module.exports = {
     roleCategory: 'CTSC',
     regionId: '1'
   },
-  ctscTeamLeaderUser: {
-    email: 'ctsc_team_leader_region4@justice.gov.uk',
-    password: defaultPassword,
-    type: 'tribunal-caseworker',
-    roleCategory: 'CTSC',
-    regionId: '1'
-  },
   tribunalCaseworkerWithRegionId1Local: {
     email: 'tribunal-caseworker-01@example.com',
     password: defaultPassword,
@@ -234,7 +227,7 @@ module.exports = {
   ctscTeamLeaderUser: {
     email: 'ctsc_team_leader_region4@justice.gov.uk',
     password: defaultPassword,
-    type: 'ctsc-team-leader',
+    type: 'hmcts-ctsc',
     roleCategory: 'CTSC',
     regionId: 'none'
   },
