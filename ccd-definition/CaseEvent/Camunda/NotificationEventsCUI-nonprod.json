@@ -80,8 +80,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_TRANSLATED_DOCUMENT_UPLOADED",
-    "Name": "Email: Translated doc Uploaded",
-    "Description": "Notify claimant that case worker has uploaded translated document.",
+    "Name": "Email: Upload translated document",
+    "Description": "Notify claimant that case worker has uploaded the translated document.",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -93,8 +93,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_TRANSLATED_DOCUMENT_UPLOADED",
-    "Name": "Email: Translated doc Uploaded",
-    "Description": "Notify defendant that case worker has uploaded translated document.",
+    "Name": "Email: Upload translated document",
+    "Description": "Notify defendant that case worker has uploaded the translated document.",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
