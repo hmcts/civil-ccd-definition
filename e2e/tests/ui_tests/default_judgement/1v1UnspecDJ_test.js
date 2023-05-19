@@ -101,12 +101,12 @@ Scenario('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => 
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Challenged access check for legalops @e2e-wa', async ({I, WA}) => {
+Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
   await I.login(config.tribunalCaseworkerWithRegionId12);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
+Scenario('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {

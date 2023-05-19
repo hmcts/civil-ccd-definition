@@ -8,7 +8,7 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
-let fastTrackDirectionsTask;
+let fastTrackDirectionsTask, taskId;
 let smallClaimDirectionsTask;
 let transferOfflineSdoTask;
 if (config.runWAApiTest) {
@@ -162,7 +162,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws disposal order - hearing scheduled', async ({ api, WA}) => {
+Scenario('1v1 full defence unspecified - judge draws disposal order - hearing scheduled @wa-r4', async ({ api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
@@ -170,8 +170,12 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
       const caseId = await api.getCaseId();
       const task = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.fastTrackDirections);
       WA.validateTaskInfo(task, fastTrackDirectionsTask);
+      taskId = task['id'];
     }
     await api.createSDO(judgeUser);
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+    }
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
@@ -179,6 +183,18 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
     await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
+    }
+  } else if (['aat'].includes(config.runningEnv)) {
+    await prepareClaim(api, claimAmountJudge);
+    if (config.runWAApiTest) {
+      const caseId = await api.getCaseId();
+      const task = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.fastTrackDirections);
+      WA.validateTaskInfo(task, fastTrackDirectionsTask);
+      taskId = task['id'];
+    }
+    await api.createSDO(judgeUser);
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
     }
   }
 });
