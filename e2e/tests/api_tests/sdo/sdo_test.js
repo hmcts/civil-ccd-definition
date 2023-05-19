@@ -226,6 +226,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
       // TODO not sure which one is for this case
       const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
       WA.validateTaskInfo(task, legalAdvisorSmallClaimsTrackDirectionsTask);
+      taskId = task['id'];
     }
     await api.createSDO(legalAdvUser);
     if (config.runWAApiTest) {
