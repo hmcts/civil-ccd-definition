@@ -109,6 +109,17 @@ Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   }
 }).retry(3);
 
+Scenario('Schedule a hearing', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await LRspec.waitForText('Summary');
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId() + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await LRspec.createHearingScheduled();
+    await LRspec.payHearingFee();
+  }
+}).retry(3);
+
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
