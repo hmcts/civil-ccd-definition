@@ -102,7 +102,7 @@ Scenario('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => 
 }).retry(3);
 
 Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.tribunalCaseworkerWithRegionId12);
+  await I.login(config.tribunalCaseworkerWithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
