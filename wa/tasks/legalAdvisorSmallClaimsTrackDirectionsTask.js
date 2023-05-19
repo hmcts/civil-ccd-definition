@@ -15,5 +15,7 @@ module.exports = {
     work_type_label: 'Decision-making work',
     permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign' ] },
     description: '[Directions - Legal Adviser Small Claims Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOSmallClaims)',
-    role_category: 'LEGAL_OPERATIONS'
+    role_category: 'LEGAL_OPERATIONS',
+    minor_priority: 500,
+    major_priority: 5000
 };  

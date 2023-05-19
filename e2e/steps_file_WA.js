@@ -28,6 +28,10 @@ const taskFieldsToBeValidated = {
   ],
   taskPermissionFields: [
     'permissions'
+  ],
+  taskPriorityFields: [
+    'minor_priority',
+    'major_priority'
   ]
 };
 
