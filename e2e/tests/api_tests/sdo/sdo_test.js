@@ -9,11 +9,12 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
 let fastTrackDirectionsTask, taskId;
-let smallClaimDirectionsTask;
+let smallClaimDirectionsTask, legalAdvisorSmallClaimsTrackDirectionsTask;
 let transferOfflineSdoTask;
 if (config.runWAApiTest) {
   fastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
   smallClaimDirectionsTask = require('../../../../wa/tasks/smallClaimDirectionsTask.js');
+  legalAdvisorSmallClaimsTrackDirectionsTask = require('../../../../wa/tasks/legalAdvisorSmallClaimsTrackDirectionsTask.js');
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
 }
 
@@ -199,7 +200,7 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
   }
 });
 
-Scenario('1v1 full defence unspecified - legal advisor draws disposal order - hearing scheduled', async ({api, WA}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws disposal order - hearing scheduled @wa-r4', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
@@ -217,6 +218,18 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
     await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
+    }
+  } else if (['aat'].includes(config.runningEnv)) {
+    await prepareClaim(api, claimAmountAdvisor);
+    if (config.runWAApiTest) {
+      const caseId = await api.getCaseId();
+      // TODO not sure which one is for this case
+      const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
+      WA.validateTaskInfo(task, legalAdvisorSmallClaimsTrackDirectionsTask);
+    }
+    await api.createSDO(legalAdvUser);
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(config.legalAdvUser, taskId);
     }
   }
 });
