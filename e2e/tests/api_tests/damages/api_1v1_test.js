@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 const {setupTokens} = require('../../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-all-non-prod');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-all-non-prod @api-all-prod');
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
