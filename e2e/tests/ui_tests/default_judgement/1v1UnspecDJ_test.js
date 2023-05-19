@@ -8,7 +8,7 @@ const {PBAv3} = require('../../../fixtures/featureKeys');
 
 Feature('1v1 Unspec defaultJudgement');
 
-Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft', async ({I, api}) => {
+Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
 
@@ -106,7 +106,7 @@ Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
+Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
@@ -121,8 +121,9 @@ Scenario('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA,
   await WA.verifyApprovedSpecificAccess(caseId);
 });
 
-Scenario('Verify Specific access check for admin @e2e-wa', async ({I, WA, api}) => {
-  await I.login(config.iacAdminUser);
+Scenario('Verify Specific access check for admin @e2e-wa @wa-r4', async ({I, WA, api}) => {
+   let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
+   await I.login(userToBeLoggedIn);
    await WA.runSpecificAccessRequestSteps(caseId);
    if (config.runWAApiTest) {
      const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId4, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
@@ -130,9 +131,9 @@ Scenario('Verify Specific access check for admin @e2e-wa', async ({I, WA, api}) 
      console.log('WA flag is not enabled');
      return;
    }
-   await I.login(config.nbcTeamLeaderWithRegionId4);
+   await I.login(config.nbcTeamLeaderWithRegionId1);
    await WA.runSpecificAccessApprovalSteps(caseId);
-   await I.login(config.iacAdminUser);
+   await I.login(config.userToBeLoggedIn);
    await WA.verifyApprovedSpecificAccess(caseId);
  });
 

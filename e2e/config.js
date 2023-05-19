@@ -190,12 +190,25 @@ module.exports = {
     type: 'admin',
     roleCategory: 'ADMIN'
   },
+  iacAATAdminUser: {
+    password: iacDefaultPassword,
+    email: '	crd_func_test_aat_adm22@justice.gov.uk  ',
+    type: 'admin',
+    roleCategory: 'ADMIN'
+  },
   nbcTeamLeaderWithRegionId4: {
     email: 'nbc_team_leader_region4@justice.gov.uk',
     password: defaultPassword,
     type: 'nbc-team-leader',
     roleCategory: 'NBC ADMIN',
     regionId: '4'
+  },
+  nbcTeamLeaderWithRegionId1: {
+    email: 'nbc_team_leader_region1@justice.gov.uk',
+    password: defaultPassword,
+    type: 'nbc-team-leader',
+    roleCategory: 'NBC ADMIN',
+    regionId: '1'
   },
   seniorTBCWWithRegionId4: {
     email: 'seniorcivil_tbcw_region4@justice.gov.uk',
