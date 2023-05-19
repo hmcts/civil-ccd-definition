@@ -7,7 +7,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-all-non-prod');
+Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-all-non-prod @api-all-prod');
 
 Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
