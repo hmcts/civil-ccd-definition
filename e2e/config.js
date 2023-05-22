@@ -17,14 +17,14 @@ module.exports = {
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
 
-    /*manageCase: 'https://xui-civil-ccd-pr-2068.preview.platform.hmcts.net',
+    manageCase: 'https://xui-civil-ccd-pr-2685.preview.platform.hmcts.net',
     authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2068.preview.platform.hmcts.net',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2685.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-2068.preview.platform.hmcts.net'*/
+    civilService: 'https://civil-ccd-pr-2685.preview.platform.hmcts.net'
 
-    manageCase: process.env.URL || 'http://localhost:3333',
+   /* manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
@@ -34,15 +34,15 @@ module.exports = {
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     //----------------------------------------------------------------------------------------------
-    wiremockService: 'http://localhost:8765'
+    wiremockService: 'http://localhost:8765'*/
   },
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.S2S_SECRET || 'BTZQFPGY4TUMAFGL'
   },
   s2sForXUI: {
     microservice: 'xui_webapp',
-    secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.XUI_S2S_SECRET || 'BTZQFPGY4TUMAFGL'
   },
   applicantSolicitorUser: {
     password: defaultPassword,
