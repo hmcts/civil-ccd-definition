@@ -103,7 +103,8 @@ const CASE_HEADER = 'ccd-case-header > h1';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
-  offline: 'Your claim has been received and will progress offline'
+  offline: 'Your claim has been received and will progress offline',
+  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
@@ -355,7 +356,7 @@ module.exports = function () {
                  () => this.clickContinue(),
                  () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
-                 () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+                 () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
            ] : [
             () => this.clickContinue(),
