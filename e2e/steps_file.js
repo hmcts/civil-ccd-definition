@@ -149,7 +149,8 @@ const DEFENDANT2_NAME = 'Dr Foo Bar';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
-  offline: 'Your claim has been received and will progress offline'
+  offline: 'Your claim has been received and will progress offline',
+  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
@@ -303,7 +304,7 @@ module.exports = function () {
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
-          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+          shouldStayOnline ? CONFIRMATION_MESSAGE.pbaV3Online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
       ] : [
         () => continuePage.continue(),
