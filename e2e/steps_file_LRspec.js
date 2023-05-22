@@ -86,6 +86,11 @@ const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallCla
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
+const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList.page');
+const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
+const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
@@ -98,7 +103,8 @@ const CASE_HEADER = 'ccd-case-header > h1';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
-  offline: 'Your claim has been received and will progress offline'
+  offline: 'Your claim has been received and will progress offline',
+  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
@@ -350,7 +356,7 @@ module.exports = function () {
                  () => this.clickContinue(),
                  () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
-                 () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+                 () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
            ] : [
             () => this.clickContinue(),
@@ -711,5 +717,27 @@ module.exports = function () {
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },
+
+    async createHearingScheduled() {
+      eventName = 'Hearing Scheduled';
+      await this.triggerStepsWithScreenshot([
+        () => hearingNoticeListPage.hearingType('fastTrack'),
+        () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
+        () => hearingScheduledChooseDetailsPage.selectCourt(),
+        () => hearingScheduledMoreInfoPage.enterMoreInfo(),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async payHearingFee(user = config.applicantSolicitorUser) {
+      await this.login(user);
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+      if (pbaV3) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+        await serviceRequest.openServiceRequestTab();
+        await serviceRequest.payFee(caseId, true);
+      }
+    }
   });
 };
