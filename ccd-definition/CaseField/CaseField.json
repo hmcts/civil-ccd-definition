@@ -2182,5 +2182,12 @@
     "Label": "Service Request",
     "FieldType": "WaysToPay",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedPBADetails",
+    "Label": "Claim Issued PBA details\n",
+    "FieldType": "SRPbaDetails",
+    "SecurityClassification": "Public"
   }
 ]
