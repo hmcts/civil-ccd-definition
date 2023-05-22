@@ -2175,5 +2175,12 @@
     "Label": "Public case name",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePaymentWaysToPay",
+    "Label": "Service Request",
+    "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
   }
 ]
