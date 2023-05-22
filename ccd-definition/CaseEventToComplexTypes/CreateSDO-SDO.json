@@ -684,7 +684,7 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "dateToLabel",
+    "ListElementCode": "dateToToggle",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -693,7 +693,8 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateTo",
-    "FieldDisplayOrder": 4,
+    "FieldShowCondition": "smallClaimsHearing.dateToToggle=\"SHOW\"",
+    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -701,7 +702,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "label",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "READONLY"
   },
   {
@@ -709,14 +710,6 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "time",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsHearing",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "otherHours",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -724,8 +717,16 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "otherMinutes",
+    "ListElementCode": "otherHours",
     "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearing",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1453,7 +1454,7 @@
     "ID": "FastTrackHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "dateToLabel",
+    "ListElementCode": "dateToToggle",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -1462,6 +1463,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "dateTo",
+    "FieldShowCondition": "fastTrackHearingTime.dateToToggle=\"SHOW\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
