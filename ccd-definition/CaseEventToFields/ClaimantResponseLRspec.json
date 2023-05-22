@@ -141,22 +141,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentPayImmediatelyLabel",
+    "CaseFieldID": "respondentPayImmidietelyLabel",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmediately",
+    "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentPayImmediatelyTextBeforeDate",
+    "CaseFieldID": "respondentPayImmidietelyTextBeforeDate",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmediately",
+    "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -166,17 +166,17 @@
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmediately",
+    "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondentPayImmediatelyTextAfterDate",
+    "CaseFieldID": "respondentPayImmidietelyTextAfterDate",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmediately",
+    "PageID": "RespondentResponsePayImmidietely",
     "ShowSummaryChangeOption": "N"
   }
 ]

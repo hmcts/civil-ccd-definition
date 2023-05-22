@@ -4986,7 +4986,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentPayImmediatelyLabel",
+    "CaseFieldID": "respondentPayImmidietelyLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -5006,7 +5006,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentPayImmediatelyTextBeforeDate",
+    "CaseFieldID": "respondentPayImmidietelyTextBeforeDate",
     "AccessControl": [
       {
         "UserRoles": [
@@ -5027,7 +5027,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentPayImmediatelyTextAfterDate",
+    "CaseFieldID": "respondentPayImmidietelyTextAfterDate",
     "AccessControl": [
       {
         "UserRoles": [
