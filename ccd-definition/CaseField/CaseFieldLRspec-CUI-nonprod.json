@@ -29,14 +29,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "showResponseOneVOneFlag",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ShowResponseOneVOneFlag",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseDocumentSpec",
     "Label": " ",
     "FieldType": "CaseDocument",
