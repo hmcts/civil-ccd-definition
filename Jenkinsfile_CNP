@@ -127,7 +127,6 @@ def checkForEnableHelmLabel(branch_name) {
 }
 
 withPipeline(type, product, component) {
-  syncBranchesWithMaster(['demo'])
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
 

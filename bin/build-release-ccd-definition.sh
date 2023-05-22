@@ -12,6 +12,10 @@ if [ ${environment} == preview ]; then
    #for testing ga enhancements please remove *-GAR2GAspec-nonprod.json which are not required for release 1
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*CUI-nonprod.json,*CUI.json"
+elif [ ${environment} == perftest ]; then
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*CUI-nonprod.json,*CUI.json"
+elif [ ${environment} == ithc ]; then
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*CUI-nonprod.json,*CUI.json"
 elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to SDO and SDO-HNL files
   excludedFilenamePatterns="-e *-prod.json"
