@@ -78,7 +78,11 @@ module.exports = {
                 ],
                 value: listElement()
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
+              reasonForHearingAtSpecificCourt: 'Reasons',
+              caseLocation: {
+                region: '2',
+                baseLocation: '000000'
+              }
             }
           },
           HearingSupport: {
