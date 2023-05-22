@@ -117,6 +117,10 @@ module.exports =  {
       return false;
     }
 
+    if(toggle === 'ss'){
+      return false;
+    }
+
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
