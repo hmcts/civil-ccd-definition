@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
