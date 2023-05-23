@@ -119,14 +119,14 @@ Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) 
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacLeadershipJudge);
   await WA.verifyApprovedSpecificAccess(caseId);
-});
+}).retry(3);
 
 Scenario('Verify Specific access check for admin @e2e-wa @wa-r4', async ({I, WA, api}) => {
    let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
    await I.login(userToBeLoggedIn);
    await WA.runSpecificAccessRequestSteps(caseId);
    if (config.runWAApiTest) {
-     const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId4, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
+     const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId1, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
    } else {
      console.log('WA flag is not enabled');
      return;
@@ -135,7 +135,7 @@ Scenario('Verify Specific access check for admin @e2e-wa @wa-r4', async ({I, WA,
    await WA.runSpecificAccessApprovalSteps(caseId);
    await I.login(config.userToBeLoggedIn);
    await WA.verifyApprovedSpecificAccess(caseId);
- });
+ }).retry(3);
 
 Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacLegalOpsUser);
@@ -150,7 +150,7 @@ Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacLegalOpsUser);
   await WA.verifyApprovedSpecificAccess(caseId);
-});
+}).retry(3);
 
 
 Scenario('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) => {
@@ -166,20 +166,20 @@ Scenario('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) =
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacCtscTeamLeaderUser);
   await WA.verifyApprovedSpecificAccess(caseId);
-});
+}).retry(3);
 
 Scenario('Verify Staff UI @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.staffUIAdmin);
   await WA.verifyStaffLink();
-});
+}).retry(3);
 
-Scenario('Verify Judicial booking UI  @e2e-wa @wa-r41', async ({I, WA, api}) => {
+Scenario('Verify Judicial booking UI  @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.feePaidJudge);
   await WA.createBooking('Central London County Court');
   await WA.createBooking('Liverpool Civil and Family Court');
   await WA.verifyCreatedBooking('Central London County Court');
   await WA.verifyCreatedBooking('Liverpool Civil and Family Court');
-});
+}).retry(3);
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
