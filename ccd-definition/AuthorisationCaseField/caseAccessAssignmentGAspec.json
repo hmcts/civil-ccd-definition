@@ -238,5 +238,29 @@
     "CaseFieldID": "directionOrderDocRespondentSolTwo",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespDocStaff",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespDocClaimant",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespDocRespondentSol",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespDocRespondentSolTwo",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]
