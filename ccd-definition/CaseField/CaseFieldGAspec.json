@@ -663,7 +663,43 @@
     "ID": "writtenRepConDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "Label": "Upload Request for information casefile view",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence casefile view",
     "Searchable": "N",
     "SecurityClassification": "Public"
   },
