@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const judgeUser = config.judgeUserWithRegionId1;
 
 Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @non-prod-e2e-ft @e2e-nightly-nonprod');
 
@@ -29,6 +30,10 @@ Scenario('Respondent solicitor completes response', async ({api}) => {
 
 Scenario('Applicant solicitor completes response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION');
+});
+
+Scenario('Create SDO', async ({api}) => {
+  await api.createSDO(judgeUser, 'CREATE_SMALL');
 });
 
 AfterSuite(async  () => {
