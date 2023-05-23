@@ -168,6 +168,19 @@ Scenario('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) =
   await WA.verifyApprovedSpecificAccess(caseId);
 });
 
+Scenario('Verify Staff UI @e2e-wa @wa-r4', async ({I, WA, api}) => {
+  await I.login(config.staffUIAdmin);
+  await WA.verifyStaffLink();
+});
+
+Scenario('Verify Judicial booking UI  @e2e-wa @wa-r41', async ({I, WA, api}) => {
+  await I.login(config.feePaidJudge);
+  await WA.createBooking('Central London County Court');
+  await WA.createBooking('Liverpool Civil and Family Court');
+  await WA.verifyCreatedBooking('Central London County Court');
+  await WA.verifyCreatedBooking('Liverpool Civil and Family Court');
+});
+
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
 });

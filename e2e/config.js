@@ -211,7 +211,7 @@ module.exports = {
     regionId: '4'
   },
   nbcTeamLeaderWithRegionId1: {
-    email: 'nbc_team_leader_region1@justice.gov.uk',
+    email: 'nbc_team_lead_reg1@justice.gov.uk',
     password: defaultPassword,
     type: 'nbc-team-leader',
     roleCategory: 'NBC ADMIN',
@@ -230,6 +230,19 @@ module.exports = {
     type: 'hmcts-ctsc',
     roleCategory: 'CTSC',
     regionId: 'none'
+  },
+  staffUIAdmin: {
+    email: 'staff-ui-admin@justice.gov.uk',
+    password: defaultPassword,
+    type: 'staff-admin',
+    roleCategory: 'cwd-admin',
+    regionId: 'none'
+  },
+  feePaidJudge: {
+    email: '49932114EMP-@ejudiciary.net',
+    password: judgeDefaultPassword,
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
   },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',

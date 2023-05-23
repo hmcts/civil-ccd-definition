@@ -83,7 +83,7 @@ module.exports = function (){
     runSpecificAccessApprovalSteps: async function(caseId, approveType = '7 days') {
       console.log('Test...', caseId);
       console.log('config.url.manageCase...', config.url.manageCase);
-      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId + '/tasks');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
       await this.waitForText('Assign to me');
       await this.click('Assign to me');
       await this.waitForText('Review Access Request');
@@ -108,6 +108,45 @@ module.exports = function (){
     verifyApprovedSpecificAccess: async function(caseId) {
       await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
       await this.waitForText('Your fee will be calculated based on the statement of value');
+    },
+
+    verifyStaffLink: async function (){
+      await this.waitForText('Staff');
+      await this.click('Staff');
+      await this.waitForText('Add new user');
+      await this.wait(5);
+      await this.fillField({css: 'input#user-partial-name'}, 'nbc team');
+      await this.wait(5);
+      await this.click('#applyFilter');
+      await this.waitForText('nbc teamlead');
+    },
+
+    createBooking: async function (location) {
+      await this.amOnPage(config.url.manageCase + '/booking');
+      await this.waitForText('Create a new booking');
+      await this.waitForClickable('input#type-1');
+      await this.click({css: 'input#type-1'});
+      await this.click('Continue');
+      await this.fillField({css: 'input#inputLocationSearch'}, location);
+      await this.wait(5);
+      await this.click('#mat-option-0');
+      await this.wait(2);
+      await this.click('Continue');
+      await this.waitForText('Book your time at the location');
+      await this.click({css: 'input#date-0'});
+      await this.click('Continue');
+      await this.waitForText('Check your new booking');
+      await this.click('Confirm Booking');
+      await this.waitForText('Show work filter');
+      console.log('Booking is created for ', location);
+    },
+
+    verifyCreatedBooking: async function(location) {
+      await this.amOnPage(config.url.manageCase + '/booking');
+      await this.waitForText('Choose an existing booking');
+      await this.waitForClickable('input#type-0');
+      await this.click('input#type-0');
+      await this.waitForText(location);
     },
 
     validateTaskInfo(createdTask, expectedTaskInfo) {
