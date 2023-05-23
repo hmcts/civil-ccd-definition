@@ -29,7 +29,7 @@ Scenario('Respondent solicitor completes response', async ({api}) => {
 });
 
 Scenario('Applicant solicitor completes response', async ({api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION');
+  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
 Scenario('Create SDO', async ({api}) => {
