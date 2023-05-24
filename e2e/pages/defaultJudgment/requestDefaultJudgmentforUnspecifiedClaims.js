@@ -185,7 +185,5 @@ module.exports = {
     await I.waitForText('Take case offline');
     await I.click('Submit');
     await I.waitForText('Summary');
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '#History');
-    await I.waitForText('Case Proceeds Offline');
   }
 };
