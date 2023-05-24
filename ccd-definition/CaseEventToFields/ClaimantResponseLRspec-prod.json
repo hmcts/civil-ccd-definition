@@ -365,7 +365,7 @@
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponsePayImmidietely",
+    "PageID": "RespondentResponsePayImmediately",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N"
   }
