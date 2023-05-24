@@ -58,10 +58,6 @@ civil-service:
   java:
     releaseNameOverride: ${SERVICE_NAME}-java
     imagePullPolicy: Always
-    devcpuRequests: 500m
-    devmemoryRequests: 512Mi
-    devcpuLimits: 1
-    devmemoryLimits: 1Gi
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
       civil:
@@ -182,14 +178,10 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
-    memoryRequests: 2Gi
-    cpuRequests: 1000m
-    memoryLimits: 4Gi
-    cpuLimits: 2500m
-    devmemoryRequests: 4Gi
-    devcpuRequests: 1000m
-    devmemoryLimits: 4Gi
-    devcpuLimits: 2500m
+    devcpuRequests: 500m
+    devmemoryRequests: 1Gi
+    devcpuLimits: 1
+    devmemoryLimits: 2Gi
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
       HEALTH_CCD_DATA_API: http://${SERVICE_NAME}-ccd-data-store-api/health
