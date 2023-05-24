@@ -71,7 +71,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "MEDIATION_UNSUCCESSFUL",
-    "Name": "Mediation unsuccessful",
+    "Name": "Mediation Unsuccessful",
     "Description": "Mediation was unsuccessful",
     "DisplayOrder": 9,
     "PreConditionState(s)": "*",
