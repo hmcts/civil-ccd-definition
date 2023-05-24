@@ -43,10 +43,8 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
-    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
-    console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
-    taskId = caseProgressionTakeCaseOfflineTask['id'];
   }
+  await I.click('Sign out');
 
   if (['preview', 'demo'  ].includes(config.runningEnv)) {
     await createHearingScheduled(I);
@@ -60,10 +58,15 @@ Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
     await payHearingFee(I);
   }
   else {
+    if (config.runWAApiTest) {
+      const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+      console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
+      taskId = caseProgressionTakeCaseOfflineTask['id'];
+    }
     await I.login(config.hearingCenterAdminWithRegionId1);
-    api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
+    await api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
     await I.staffPerformDJCaseTransferCaseOffline(caseId);
-    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+    await api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
 });
 
