@@ -71,4 +71,4 @@ async function runWorkers() {
   }
 }
 
-runWorkers();
+runWorkers().catch(err => console.log(err));
