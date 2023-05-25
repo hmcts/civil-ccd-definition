@@ -1068,25 +1068,25 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimCreditHire\" OR drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderSmallClaimsAdditionalDirections=\"DrawDirectionsOrderSmallClaimsAdditionalDirectionsCreditHire\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimCreditHire\" OR drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderSmallClaimsAdditionalDirectionsCONTAINS\"DrawDirectionsOrderSmallClaimsAdditionalDirectionsCreditHire\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsRoadTrafficAccident",
-    "PageFieldDisplayOrder": 28,
+    "PageFieldDisplayOrder": 29,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimRoadTrafficAccident\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimRoadTrafficAccident\" OR drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderSmallClaimsAdditionalDirectionsCONTAINS\"DrawDirectionsOrderSmallClaimsAdditionalDirectionsTrafficAccident\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsAddNewDirections",
-    "PageFieldDisplayOrder": 29,
+    "PageFieldDisplayOrder": 30,
     "DisplayContext": "OPTIONAL",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
@@ -1097,7 +1097,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsAddNewDirectionsEndLine",
-    "PageFieldDisplayOrder": 30,
+    "PageFieldDisplayOrder": 31,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
