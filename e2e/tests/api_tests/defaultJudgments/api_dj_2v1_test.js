@@ -9,7 +9,7 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('CCD 2v1 API test @api-dj-2v1, @api-all-non-prod, @api-all-prod, @api-dj @dmn-task-dj');
+Feature('CCD 2v1 API test @api-dj-2v1, @api-all-non-prod @non-prod-e2e-ft, @api-all-prod, @api-dj @dmn-task-dj');
 
 let caseId;
 
