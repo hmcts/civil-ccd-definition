@@ -48,7 +48,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "drawDirectionsOrderSmallClaims=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -87,6 +87,18 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "claimsTrack=\"fastTrack\" AND drawDirectionsOrderRequired=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "trialAdditionalDirectionsForFastTrack",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "OrderType",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "orderType=\"DECIDE_DAMAGES\" AND drawDirectionsOrderRequired=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
