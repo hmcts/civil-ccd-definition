@@ -283,25 +283,5 @@
         "CRUD": "CRU"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingUnpaidAfterNocFlag",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "hearing-schedule-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
