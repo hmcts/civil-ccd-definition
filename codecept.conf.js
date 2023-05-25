@@ -12,12 +12,12 @@ const splitTests = () => {
     ],
     [
       './e2e/tests/ui_tests/default_judgement/*_test.js',
-      './e2e/tests/api_tests/defaultJudgments/*_test.js'
+      './e2e/tests/ui_tests/noticeofchange/*_test.js',
+      './e2e/tests/ui_tests/sdo/*_test.js',
+      './e2e/tests/api_tests/defaultJudgments/*_test.js',
     ],
     [
-      './e2e/tests/ui_tests/noticeofchange/*_test.js',
       './e2e/tests/api_tests/noticeofchange/*_test.js',
-      './e2e/tests/ui_tests/sdo/*_test.js',
       './e2e/tests/api_tests/sdo/*_test.js',
     ]
   ];
