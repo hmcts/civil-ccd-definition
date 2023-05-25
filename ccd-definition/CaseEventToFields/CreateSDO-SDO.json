@@ -1068,7 +1068,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimCreditHire\""
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimCreditHire\" OR drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderSmallClaimsAdditionalDirections=\"DrawDirectionsOrderSmallClaimsAdditionalDirectionsCreditHire\""
   },
   {
     "CaseTypeID": "CIVIL",
