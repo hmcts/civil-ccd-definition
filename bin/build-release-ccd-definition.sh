@@ -30,11 +30,15 @@ else
 fi
 
 # deciding which enviornment should be excluded for unshuttered/shuttered
-
-  echo "We are activating unshuttered file for $environment"
-  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType.json"
+if [ "$activateShutter" = true ] ; then
+  echo "We are activating shuttered file for $environment"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-shuttered.json"
   echo "${excludedFilenamePatterns}"
-
+else
+  echo "We are activating unshuttered file for $environment"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-unshuttered.json"
+  echo "${excludedFilenamePatterns}"
+fi
 
 
 root_dir=$(realpath $(dirname ${0})/..)
