@@ -430,7 +430,7 @@ module.exports = {
     valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
   },
   createClaimLIPLIP: {
-    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS')
+    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS', '11000')
   },
   createClaimWithTerminatedPBAAccount: {
     valid: createClaimData(false,'Yes', false)
