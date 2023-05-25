@@ -10,7 +10,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('2v1 Multi Party Claim Creation 2v1 @e2e-tests-spec');
+Feature('2v1 Multi Party Claim Creation 2v1 @e2e-tests-spec @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
   console.log('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims');

@@ -1,4 +1,5 @@
 const {listElement} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -11,7 +12,7 @@ module.exports = {
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {
-            applicant1ClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           },
@@ -37,9 +38,9 @@ module.exports = {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.claimantSelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
@@ -78,21 +79,48 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
             applicant1AcceptAdmitAmountPaidSpec: 'Yes',
-            applicant1AcceptPartAdmitPaymentPlanSpec: 'No',
-            applicant1FullAdmitConfirmAmountPaidSpec: 'Yes'
+            applicant1AcceptPartAdmitPaymentPlanSpec: 'Yes'
           },
           CcjPaymentPaidSome: {
             ccjPaymentPaidSomeOption: 'Yes',
             ccjPaymentPaidSomeAmount: '1000',
           },
-          IntentionToSettleClaim: {
-            applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
-            applicant1PartAdmitRejectReasonSpec: 'test'
+          FixedCost: {
+            ccjJudgmentFixedCostOption: 'Yes',
+          },
+          CcjJudgmentSummary: {
+            ccjJudgmentAmountClaimAmount: '1000',
+            ccjJudgmentAmountInterestToDate: '35',
+            ccjJudgmentAmountClaimFee: '100',
+            ccjJudgmentFixedCostAmount: '40',
+            ccjJudgmentAmountSubtotal: '1175',
+            ccjPaymentPaidSomeAmountInPounds: '10',
+            ccjJudgmentTotalStillOwed: '1165',
+            ccjJudgmentStatement: 'test'
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
+              hasAgreedFreeMediation: 'Yes'
+            }
+          },
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+        };
+        break;
+
+      case 'PART_ADMISSION_SETTLE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponse: {
+            applicant1PartAdmitConfirmAmountPaidSpec: 'Yes',
+          },
+          IntentionToSettleClaim: {
+            applicant1PartAdmitIntentionToSettleClaimSpec: 'Yes',
+          },
+          Mediation: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           }
@@ -107,13 +135,14 @@ module.exports = {
           ...responseData.userInput,
           RespondentResponse: {
             applicant1AcceptFullAdmitPaymentPlanSpec: 'Yes',
-            applicant1ProceedWithClaim: 'Yes',
           },
           RespondentProposedRepayment: {
             applicant1RepaymentOptionForDefendantSpec: 'SET_DATE',
           },
           PaymentDate: {
-            applicant1RequestedPaymentDateForDefendantSpec : '2220-01-01'
+            applicant1RequestedPaymentDateForDefendantSpec : {
+              paymentSetDate: '2220-01-01'
+            }
           },
           SuggestInstalments: {
             applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec : '2220-01-01',
@@ -121,7 +150,7 @@ module.exports = {
             applicant1SuggestInstalmentsPaymentAmountForDefendantSpec: '3'
           },
           Mediation: {
-            applicantMPClaimMediationSpecRequired: {
+            applicant1ClaimMediationSpecRequiredLip: {
               hasAgreedFreeMediation: 'Yes'
             }
           }

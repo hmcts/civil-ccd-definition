@@ -1,0 +1,65 @@
+[
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "timelineComment",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "evidenceComment",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPFinancialDetails",
+    "ElementLabel": " ",
+    "FieldType": "FinancialDetailsLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1MediationLiPResponse",
+    "ElementLabel": " ",
+    "FieldType": "MediationLiP",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1DQExtraDetails",
+    "ElementLabel": " ",
+    "FieldType": "DQExtraDetailsLip",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1DQHearingSupportLip",
+    "ElementLabel": " ",
+    "FieldType": "HearingSupportLip",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPContactPerson",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1LiPCorrespondenceAddress",
+    "ElementLabel": " ",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1ResponseLanguage",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]

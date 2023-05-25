@@ -86,7 +86,16 @@ const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallCla
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
+const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList.page');
+const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
+const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
+const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
+const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const {checkToggleEnabled} = require('./api/testingSupport');
+const {PBAv3} = require('./fixtures/featureKeys');
+const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -94,10 +103,13 @@ const CASE_HEADER = 'ccd-case-header > h1';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
-  offline: 'Your claim has been received and will progress offline'
+  offline: 'Your claim has been received and will progress offline',
+  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
-let caseId, screenshotNumber, eventName, currentEventName;
+const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
@@ -151,18 +163,22 @@ module.exports = function () {
 
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-        await this.signOut();
-      }
-
-      await this.retryUntilExists(async () => {
-        this.amOnPage(config.url.manageCase, 90);
-
-        if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
-          output.log(`Signing in user: ${user.type}`);
-          await loginPage.signIn(user);
+      if (loggedInUser !== user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
         }
-      }, SIGNED_IN_SELECTOR);
+        await this.retryUntilExists(async () => {
+          this.amOnPage(config.url.manageCase, 90);
+
+          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+            console.log(`Signing in user: ${user.type}`);
+            await loginPage.signIn(user);
+          }
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
+        }, SIGNED_IN_SELECTOR);
+        loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
+      }
     },
 
     grabCaseNumber: async function () {
@@ -313,8 +329,9 @@ module.exports = function () {
          eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
+         const pbaV3 = await checkToggleEnabled(PBAv3);
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
-         await this.triggerStepsWithScreenshot([
+          let steps = pbaV3 ? [
             () => this.clickContinue(),
             () => this.clickContinue(),
             () => solicitorReferencesPage.enterReferences(),
@@ -337,13 +354,41 @@ module.exports = function () {
                  () => specInterestDateStartPage.selectInterestDateStart(),
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
-                 () => pbaNumberPage.selectPbaNumber(),
-                 () => paymentReferencePage.updatePaymentReference(),
+                 () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
-                 () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+                 () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
-           ]);
+           ] : [
+            () => this.clickContinue(),
+            () => this.clickContinue(),
+            () => solicitorReferencesPage.enterReferences(),
+            ...firstClaimantSteps(),
+            ...secondClaimantSteps(claimant2),
+            ...firstDefendantSteps(respondent1),
+            ...conditionalSteps(claimant2 == null, [
+              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+            ]),
+            ...secondDefendantSteps(respondent2, respondent1.represented),
+            () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
+            () => specTimelinePage.addManually(),
+            () => specAddTimelinePage.addTimeline(),
+            () => specListEvidencePage.addEvidence(),
+            () => specClaimAmountPage.addClaimItem(claimAmount),
+            () => this.clickContinue(),
+            () => specInterestPage.addInterest(),
+            () => specInterestValuePage.selectInterest(),
+            () => specInterestRatePage.selectInterestRate(),
+            () => specInterestDateStartPage.selectInterestDateStart(),
+            () => specInterestDateEndPage.selectInterestDateEnd(),
+            () => this.clickContinue(),
+            () => pbaNumberPage.selectPbaNumber(),
+            () => paymentReferencePage.updatePaymentReference(),
+            () => statementOfTruth.enterNameAndRole('claim'),
+            () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+            () => event.returnToCaseDetails(),
+          ];
 
+          await this.triggerStepsWithScreenshot(steps);
          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
   },
 
@@ -626,6 +671,33 @@ module.exports = function () {
       ]);
     },
 
+    async createCaseFlags(caseFlags) {
+      eventName = 'Create case flags';
+
+      for (const {partyName, roleOnCase, details} of caseFlags) {
+        for (const {name, flagComment} of details) {
+          await this.triggerStepsWithScreenshot([
+            () => caseViewPage.startEvent(eventName, caseId),
+            () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
+            () => createCaseFlagPage.selectFlag(name),
+            () => createCaseFlagPage.inputFlagComment(flagComment),
+            () => event.submitWithoutHeader('Submit'),
+          ]);
+        }
+      }
+    },
+
+    async validateCaseFlags(caseFlags) {
+      eventName = '';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
+        () => caseViewPage.assertCaseFlags(caseFlags)
+      ]);
+      await this.takeScreenshot();
+    },
+
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -634,6 +706,38 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async evidenceUploadSpec(caseId, defendant) {
+      defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+      await this.triggerStepsWithScreenshot([
+        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => event.submit('Submit', 'Documents uploaded')
+      ]);
+    },
+
+    async createHearingScheduled() {
+      eventName = 'Hearing Scheduled';
+      await this.triggerStepsWithScreenshot([
+        () => hearingNoticeListPage.hearingType('fastTrack'),
+        () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
+        () => hearingScheduledChooseDetailsPage.selectCourt(),
+        () => hearingScheduledMoreInfoPage.enterMoreInfo(),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async payHearingFee(user = config.applicantSolicitorUser) {
+      await this.login(user);
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+      if (pbaV3) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+        await serviceRequest.openServiceRequestTab();
+        await serviceRequest.payFee(caseId, true);
+      }
     }
   });
 };

@@ -4,11 +4,7 @@ set -ex
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
 if [ ${ENVIRONMENT} == preview ]; then
-  yarn test:e2e-sdo
-  yarn test:e2e-spec
-  yarn test:functional-unspec
-  yarn test:e2e-dj
+  yarn test:non-prod-e2e-ft
 else
-  yarn test:e2e-spec
-  yarn test:functional-unspec
+  yarn test:master-e2e-ft
 fi

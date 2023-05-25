@@ -1,6 +1,6 @@
 module.exports = {
   getClaimFee: (amount) => {
-    console.log('amount ti passed...', amount);
+    console.log('claim amount passed...', amount);
     switch(amount) {
       case '3000':
         return {

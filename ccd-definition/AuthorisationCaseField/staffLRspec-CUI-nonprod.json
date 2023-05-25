@@ -1,145 +1,151 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1PaymentDateToStringSpec",
+    "CaseFieldID": "claimantUserDetails",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
+    "CaseFieldID": "ccjJudgmentAmountSummaryLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
+    "CaseFieldID": "ccjJudgmentSummarySubtotalAmount",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
+    "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
+    "CaseFieldID": "ccjJudgmentAmountClaimAmountLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "showResponseOneVOneFlag",
+    "CaseFieldID": "ccjJudgmentAmountClaimAmount",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1AcceptAdmitAmountPaidSpec",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimPartAdmitImmediatelyLabel",
+    "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimPartAdmitBySetDateLabel",
+    "CaseFieldID": "ccjJudgmentAmountClaimFee",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ClaimPartAdmitInstalmentLabel",
+    "CaseFieldID": "ccjJudgmentAmountSubtotalLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1FullAdmitPaidLabelSpec",
+    "CaseFieldID": "ccjJudgmentAmountSubtotal",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1FullAdmitConfirmAmountPaidSpec",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPoundsLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
+    "CaseFieldID": "ccjPaymentPaidSomeAmountInPounds",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpec",
+    "CaseFieldID": "ccjJudgmentTotalStillOwedLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
+    "CaseFieldID": "ccjJudgmentTotalStillOwed",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjPaymentPaidSomeLabel",
+    "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjPaymentPaidSomeOption",
+    "CaseFieldID": "ccjJudgmentFixedCostOptionLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "ccjPaymentPaidSomeAmount",
+    "CaseFieldID": "ccjJudgmentFixedCostOption",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partAdmitPaidValuePounds",
+    "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
+    "CaseFieldID": "ccjJudgmentFixedCostAmount",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1PartAdmitConfirmAmountPaidSpec",
+    "CaseFieldID": "ccjJudgmentStatement",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1PartAdmitIntentionToSettleClaimSpec",
+    "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
+    "CaseFieldID": "totalClaimAmount",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
