@@ -32,7 +32,7 @@ const workerConfig = {
 const workers = new Workers(null, workerConfig);
 
 // split tests by suites in 3 groups
-const testGroups = workers.createGroupsOfSuites(3);
+const testGroups = workers.createGroupsOfSuites(4);
 
 for (const group of testGroups) {
   const worker = workers.spawn();
