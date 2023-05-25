@@ -52,5 +52,11 @@
     "ListElementCode": "HEARING_ORDER",
     "ListElement": "Hearing order",
     "DisplayOrder": 17
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CONSENT_ORDER",
+    "ListElement": "Consent order",
+    "DisplayOrder": 18
   }
 ]
