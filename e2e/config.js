@@ -150,6 +150,13 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '1'
   },
+  ctscAdminUser: {
+    email: 'ctsc_admin@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'CTSC',
+    regionId: '1'
+  },
   tribunalCaseworkerWithRegionId1Local: {
     email: 'tribunal-caseworker-01@example.com',
     password: defaultPassword,
@@ -191,12 +198,25 @@ module.exports = {
     type: 'admin',
     roleCategory: 'ADMIN'
   },
+  iacAATAdminUser: {
+    password: iacDefaultPassword,
+    email: '	crd_func_test_aat_adm22@justice.gov.uk  ',
+    type: 'admin',
+    roleCategory: 'ADMIN'
+  },
   nbcTeamLeaderWithRegionId4: {
     email: 'nbc_team_leader_region4@justice.gov.uk',
     password: defaultPassword,
     type: 'nbc-team-leader',
     roleCategory: 'NBC ADMIN',
     regionId: '4'
+  },
+  nbcTeamLeaderWithRegionId1: {
+    email: 'nbc_team_lead_reg1@justice.gov.uk',
+    password: defaultPassword,
+    type: 'nbc-team-leader',
+    roleCategory: 'NBC ADMIN',
+    regionId: '1'
   },
   seniorTBCWWithRegionId4: {
     email: 'seniorcivil_tbcw_region4@justice.gov.uk',
@@ -208,9 +228,22 @@ module.exports = {
   ctscTeamLeaderUser: {
     email: 'ctsc_team_leader_region4@justice.gov.uk',
     password: defaultPassword,
-    type: 'ctsc-team-leader',
+    type: 'hmcts-ctsc',
     roleCategory: 'CTSC',
     regionId: 'none'
+  },
+  staffUIAdmin: {
+    email: 'staff-ui-admin@justice.gov.uk',
+    password: defaultPassword,
+    type: 'staff-admin',
+    roleCategory: 'cwd-admin',
+    regionId: 'none'
+  },
+  feePaidJudge: {
+    email: '49932114EMP-@ejudiciary.net',
+    password: judgeDefaultPassword,
+    type: 'judge',
+    roleCategory: 'JUDICIAL'
   },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',

@@ -1,10 +1,12 @@
 const config = require('../../../config.js');
+const {paymentUpdate} = require('../../../api/apiRequest');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const claimData = require('../../../fixtures/events/createClaimSpec.js');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -39,6 +41,9 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
+    await paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
   }
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);

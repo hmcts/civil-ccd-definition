@@ -745,15 +745,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
           "caseworker-civil-staff",
-          "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
