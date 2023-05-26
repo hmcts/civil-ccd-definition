@@ -58,5 +58,11 @@
     "ListElementCode": "CONSENT_ORDER",
     "ListElement": "Consent order",
     "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "GENERAL_APPLICATION_DRAFT",
+    "ListElement": "Application Draft",
+    "DisplayOrder": 19
   }
 ]
