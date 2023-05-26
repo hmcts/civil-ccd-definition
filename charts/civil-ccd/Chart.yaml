@@ -35,11 +35,11 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: elasticsearch
-    version: 7.17.3
+    version: 8.5.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: elastic.enabled
   - name: logstash
-    version: 2.4.1
+    version: 6.8.22
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: elastic.enabled
   - name: servicebus
