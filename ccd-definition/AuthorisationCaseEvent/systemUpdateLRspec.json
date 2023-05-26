@@ -19,12 +19,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ASSIGN_CASE_TO_APPLICANT_SOLICITOR1_SPEC",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_FEE_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
