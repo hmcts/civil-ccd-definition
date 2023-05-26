@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.27
+version: 0.0.26
 maintainers:
   - name: HMCTS Civil team
 
@@ -34,14 +34,6 @@ dependencies:
     version: 0.0.28
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
-  - name: elasticsearch
-    version: 8.5.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: elastic.enabled
-  - name: logstash
-    version: 6.8.22
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: elastic.enabled
   - name: servicebus
     version: 1.0.2
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
