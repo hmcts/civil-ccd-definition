@@ -11,6 +11,7 @@ Feature('1v1 Unspec defaultJudgement');
 Scenario('DefaultJudgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
+  
 
   //below amend claim documents only needed as assertion was failing on notify claims
   await api.amendClaimDocuments(config.applicantSolicitorUser);
