@@ -206,7 +206,9 @@ module.exports = function () {
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
         try {
+          output.log('--------------takeScreenshot ------------' + i);
           await this.takeScreenshot();
+          output.log('--------------takeScreenshot ------------' + i + ' taken');
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
         }
@@ -326,11 +328,14 @@ module.exports = function () {
     },
 
     async createCaseSpecified(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
-         eventName = 'Create claim - Specified';
+      output.log('Create claim - Specified');
+      eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
          const pbaV3 = await checkToggleEnabled(PBAv3);
+         output.log('--------------createCaseSpecified calling------------');
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
+         output.log('--------------createCaseSpecified finished------------');
           let steps = pbaV3 ? [
             () => this.clickContinue(),
             () => this.clickContinue(),
