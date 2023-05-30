@@ -35,12 +35,8 @@ const getExpectedPayload = (serviceId) => {
         'caseManagementLocationCode': locationId(),
         'caseSLAStartDate': date(210),
         'autoListFlag': false,
-        'hearingType': '',
-        'hearingWindow': {
-        'dateRangeEnd': null,
-          'dateRangeStart': null,
-          'firstDateTimeMustBe': null
-      },
+        'hearingType': null,
+        'hearingWindow': null,
       'duration': 0,
         'hearingPriorityType': 'Standard',
         'numberOfPhysicalAttendees': 0,
@@ -56,7 +52,7 @@ const getExpectedPayload = (serviceId) => {
         'hearingRequester': '',
         'privateHearingRequiredFlag': false,
         'caseInterpreterRequiredFlag': true,
-        'panelRequirements': {},
+        'panelRequirements': null,
       'leadJudgeContractType': '',
         'judiciary': {},
       'hearingIsLinkedFlag': false,
@@ -71,7 +67,7 @@ const getExpectedPayload = (serviceId) => {
             'firstName': 'Test',
             'lastName': 'Inc',
             'preferredHearingChannel': null,
-            'interpreterLanguage': 'Huttese',
+            'interpreterLanguage': 'HUT',
             'reasonableAdjustments': [],
             'vulnerableFlag': false,
             'vulnerabilityDetails': null,
@@ -86,7 +82,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -96,10 +91,9 @@ const getExpectedPayload = (serviceId) => {
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 1',
           'partyRole': 'LGRP',
-          'individualDetails': null,
           'organisationDetails': {
             'name': 'Civil - Organisation 1',
-            'organisationType': null,
+            'organisationType': 'ORG',
             'cftOrganisationID': 'Q1KOKP2'
           },
           'unavailabilityDOW': null,
@@ -131,7 +125,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -161,7 +154,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -193,7 +185,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -203,10 +194,9 @@ const getExpectedPayload = (serviceId) => {
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 2',
           'partyRole': 'LGRP',
-          'individualDetails': null,
           'organisationDetails': {
             'name': 'Civil - Organisation 2',
-            'organisationType': null,
+            'organisationType': 'ORG',
             'cftOrganisationID': '79ZRSOU'
           },
           'unavailabilityDOW': null,
@@ -350,12 +340,8 @@ const getExpectedPayload = (serviceId) => {
       'caseManagementLocationCode': locationId(),
       'caseSLAStartDate': date(350),
       'autoListFlag': false,
-      'hearingType': '',
-      'hearingWindow': {
-        'dateRangeStart': null,
-        'dateRangeEnd': null,
-        'firstDateTimeMustBe': null
-      },
+      'hearingType': null,
+      'hearingWindow': null,
       'duration': 0,
       'hearingPriorityType': 'Standard',
       'numberOfPhysicalAttendees': 0,
@@ -373,7 +359,7 @@ const getExpectedPayload = (serviceId) => {
       'hearingRequester': '',
       'privateHearingRequiredFlag': false,
       'caseInterpreterRequiredFlag': false,
-      'panelRequirements': {},
+      'panelRequirements': null,
       'leadJudgeContractType': '',
       'judiciary': {},
       'hearingIsLinkedFlag': false,
@@ -383,14 +369,24 @@ const getExpectedPayload = (serviceId) => {
           'partyType': 'ORG',
           'partyName': 'Test Inc',
           'partyRole': 'CLAI',
-          'individualDetails': null,
           'organisationDetails': {
             'name': 'Test Inc',
-            'organisationType': null,
+            'organisationType': 'ORG',
             'cftOrganisationID': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRange': [
+            {
+                'unavailabilityType': 'ALL_DAY',
+                'unavailableFromDate': '2023-06-09',
+                'unavailableToDate': '2023-06-09'
+            },
+            {
+              'unavailabilityType': 'ALL_DAY',
+              'unavailableFromDate': '2023-06-29',
+              'unavailableToDate': '2023-07-04'
+            }
+          ],
           'hearingSubChannel': null
         },
         {
@@ -398,10 +394,9 @@ const getExpectedPayload = (serviceId) => {
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 1',
           'partyRole': 'LGRP',
-          'individualDetails': null,
           'organisationDetails': {
             'name': 'Civil - Organisation 1',
-            'organisationType': null,
+            'organisationType': 'ORG',
             'cftOrganisationID': 'Q1KOKP2'
           },
           'unavailabilityDOW': null,
@@ -433,7 +428,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -463,7 +457,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -493,7 +486,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -519,20 +511,28 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': 'C'
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
-          'hearingSubChannel': null
+          'unavailabilityRange': [
+            {
+              'unavailabilityType': 'ALL_DAY',
+              'unavailableFromDate': '2023-06-09',
+              'unavailableToDate': '2023-06-09'
+            },
+            {
+              'unavailabilityType': 'ALL_DAY',
+              'unavailableFromDate': '2023-06-29',
+              'unavailableToDate': '2023-07-04'
+            }
+          ],          'hearingSubChannel': null
         },
         {
           'partyID': '',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 2',
           'partyRole': 'LGRP',
-          'individualDetails': null,
           'organisationDetails': {
             'name': 'Civil - Organisation 2',
-            'organisationType': null,
+            'organisationType': 'ORG',
             'cftOrganisationID': '79ZRSOU'
           },
           'unavailabilityDOW': null,
@@ -564,7 +564,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -594,7 +593,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -620,20 +618,28 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
-          'hearingSubChannel': null
+          'unavailabilityRange': [
+            {
+              'unavailabilityType': 'ALL_DAY',
+              'unavailableFromDate': '2023-06-09',
+              'unavailableToDate': '2023-06-09'
+            },
+            {
+              'unavailabilityType': 'ALL_DAY',
+              'unavailableFromDate': '2023-06-29',
+              'unavailableToDate': '2023-07-04'
+            }
+          ],          'hearingSubChannel': null
         },
         {
           'partyID': '',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 3',
           'partyRole': 'LGRP',
-          'individualDetails': null,
           'organisationDetails': {
             'name': 'Civil - Organisation 3',
-            'organisationType': null,
+            'organisationType': 'ORG',
             'cftOrganisationID': 'H2156A0'
           },
           'unavailabilityDOW': null,
@@ -665,7 +671,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null
@@ -685,7 +690,7 @@ const getExpectedPayload = (serviceId) => {
               'RA0026'
             ],
             'vulnerableFlag': true,
-            'vulnerabilityDetails': null,
+            'vulnerabilityDetails': 'Support worker or carer with me - support worker comment',
             'hearingChannelEmail': [
               'johnsmith@email.com'
             ],
@@ -697,7 +702,6 @@ const getExpectedPayload = (serviceId) => {
             ],
             'custodyStatus': null
           },
-          'organisationDetails': null,
           'unavailabilityDOW': null,
           'unavailabilityRange': null,
           'hearingSubChannel': null

@@ -101,6 +101,7 @@ module.exports = {
       hearingRelevant: 'Yes',
       flagCode: 'PF0015',
       status: 'Active',
+      subTypeKey:'HUT',
       subTypeValue: 'Huttese',
     }),
   },
