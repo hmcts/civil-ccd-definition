@@ -4,6 +4,8 @@ const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testin
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
+const {paymentUpdate} = require("../../../api/apiRequest");
+const claimData = require("../../../fixtures/events/createClaimSpec");
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
@@ -33,6 +35,9 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
+    await paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
   }
 
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
