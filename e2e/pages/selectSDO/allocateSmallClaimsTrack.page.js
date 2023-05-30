@@ -23,7 +23,7 @@ module.exports = {
       I.click(smallClaims ? yes : no);
     });
     if (smallClaims) {
-      I.waitForElement(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.id)
+      I.waitForElement(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.id);
       I.checkOption(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.creditHire);
       I.checkOption(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.roadTrafficAccident);
     }

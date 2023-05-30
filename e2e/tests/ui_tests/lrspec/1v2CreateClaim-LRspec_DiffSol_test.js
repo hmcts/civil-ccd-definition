@@ -4,8 +4,8 @@ const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testin
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {paymentUpdate} = require("../../../api/apiRequest");
-const claimData = require("../../../fixtures/events/createClaimSpec");
+const {paymentUpdate} = require('../../../api/apiRequest');
+const claimData = require('../../../fixtures/events/createClaimSpec');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
