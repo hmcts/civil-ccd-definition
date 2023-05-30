@@ -25,18 +25,18 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
 
 Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-  await I.waitForText('Summary');
   if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+    await I.waitForText('Summary');
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
     await I.waitForText('How do you want to add a case note?');
     await I.judgeAddsCaseNotes();
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-    await I.waitForText('Summary');
   }
 }).retry(3);
 
-Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => { 
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
