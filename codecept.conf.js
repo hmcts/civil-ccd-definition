@@ -1,6 +1,7 @@
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
+    './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/ui_tests/damages/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
@@ -10,8 +11,7 @@ exports.config = {
     './e2e/tests/ui_tests/lrspec/*_test.js',
     './e2e/tests/ui_tests/noticeofchange/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
-    './e2e/tests/ui_tests/sdo/*_test.js',
-    './e2e/tests/ui_tests/default_judgement/*_test.js'
+    './e2e/tests/ui_tests/sdo/*_test.js'
   ],
   output: 'test-results/functional',
   helpers: {
