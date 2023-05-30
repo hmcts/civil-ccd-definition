@@ -977,6 +977,10 @@ module.exports = {
     return caseId;
   },
 
+  setCaseId: async (caseNumber) => {
+    caseId = caseNumber;
+  },
+
   getLegacyCaseReference: async () => {
     return legacyCaseReference;
   },

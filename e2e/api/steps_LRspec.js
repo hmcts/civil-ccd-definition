@@ -475,6 +475,10 @@ module.exports = {
     return caseId;
   },
 
+  setCaseId: async (caseNumber) => {
+    caseId = caseNumber;
+  },
+
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
     console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
     const expectedStatus = shouldHaveAccess ? 200 : 404;

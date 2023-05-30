@@ -438,6 +438,14 @@ module.exports = function () {
       ]);
     },
 
+    async getCaseId() {
+      return caseId;
+    },
+  
+    async setCaseID(caseNumber) {
+      caseId = caseNumber;
+    },
+
     async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
       eventName = 'Inform agreed extension date';
 

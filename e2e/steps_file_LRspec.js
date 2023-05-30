@@ -392,7 +392,15 @@ module.exports = function () {
          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
   },
 
-   async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
+  async getCaseId() {
+    return caseId;
+  },
+
+  async setCaseID(caseNumber) {
+    caseId = caseNumber;
+  },
+
+  async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
        eventName = 'Inform agreed extension date';
        await this.triggerStepsWithScreenshot([
          () => caseViewPage.startEvent(eventName, caseId),
