@@ -62,6 +62,24 @@ module.exports = {
     type: 'defendant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
   },
+  specApplicantSolicitorUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.2@gmail.com',
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+  },
+  specDefendantSolicitorUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.2.solicitor.2@gmail.com',
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
+  },
+  specSecondDefendantSolicitorUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.3.solicitor.2@gmail.com',
+    type: 'defendant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
+  },
   otherSolicitorUser1: {
     password: defaultPassword,
     email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',

@@ -23,7 +23,7 @@ Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
-  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.login(config.specApplicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
 
@@ -35,17 +35,17 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
     await serviceRequest.payFee(caseId());
   }
 
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseId(), config.specApplicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
-    await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.specDefendantSolicitorUser);
+    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.specSecondDefendantSolicitorUser);
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
-  await LRspec.login(config.defendantSolicitorUser);
+  await LRspec.login(config.specDefendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
     claimType: 'fast',
@@ -55,7 +55,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
-  await LRspec.login(config.secondDefendantSolicitorUser);
+  await LRspec.login(config.specSecondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
     defendant1Response: 'fullDefence',
@@ -66,7 +66,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects cl
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
-  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.login(config.specApplicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
 }).retry(3);
@@ -97,14 +97,14 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
 
 Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.applicantSolicitorUser);
+    await LRspec.login(config.specApplicantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseId(), false);
   }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.defendantSolicitorUser);
+    await LRspec.login(config.specDefendantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseId(), true);
   }
 }).retry(3);
