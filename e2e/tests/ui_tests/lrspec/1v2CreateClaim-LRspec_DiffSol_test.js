@@ -1,40 +1,18 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
-
-const respondent1 = {
-  represented: true,
-  representativeRegistered: true,
-  representativeOrgNumber: 2
-};
-const respondent2 = {
-  represented: true,
-  sameLegalRepresentativeAsRespondent1: false,
-  representativeOrgNumber: 3
-};
 
 let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
-Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
-  console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
-  await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
-  caseNumber = await LRspec.grabCaseNumber();
-
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
-
+Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec, api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  caseNumber = await api_spec.getCaseId();
+  LRspec.setCaseId(caseNumber);
+  console.log('Case created is..', caseNumber);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
@@ -87,6 +65,51 @@ Scenario('Add case flags', async ({LRspec}) => {
     await LRspec.validateCaseFlags(caseFlags);
   }
 });
+
+
+
+Scenario('Judge triggers SDO', async ({LRspec}) => {
+  await LRspec.login(config.judgeUserWithRegionId1);
+  await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+  await LRspec.waitForText('Summary');
+  await LRspec.initiateSDO('yes', 'yes', null, null);
+}).retry(3);
+
+Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
+ if (['preview', 'demo'].includes(config.runningEnv)) {
+   await LRspec.login(config.applicantSolicitorUser);
+   await LRspec.evidenceUploadSpec(caseId(), false);
+ }
+}).retry(3);
+
+Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
+ if (['preview', 'demo'].includes(config.runningEnv)) {
+   await LRspec.login(config.defendantSolicitorUser);
+   await LRspec.evidenceUploadSpec(caseId(), true);
+ }
+}).retry(3);
+
+Scenario('Schedule a hearing', async ({LRspec}) => {
+ if (['preview', 'demo'].includes(config.runningEnv)) {
+   await LRspec.login(config.hearingCenterAdminWithRegionId1);
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await LRspec.waitForText('Summary');
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId() + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+   await LRspec.createHearingScheduled();
+   await LRspec.payHearingFee();
+ }
+}).retry(3);
+
+// ToDo: Refactor to trigger create case flags event
+Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
+ await LRspec.login(config.adminUser);
+ // await I.createCaseFlags();
+ await LRspec.validateCaseFlags([
+   { partyName: 'Example applicant1 company', details: [] },
+   { partyName: 'Example respondent1 company', details: [] },
+   { partyName: 'Example respondent2 company', details: [] }
+ ]);
+}).retry(3);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
