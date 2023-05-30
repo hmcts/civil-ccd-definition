@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+const caseId = () => `${caseNumber}`;
 
 let caseNumber;
 

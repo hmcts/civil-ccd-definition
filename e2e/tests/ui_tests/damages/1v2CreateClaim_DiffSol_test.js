@@ -6,7 +6,7 @@ const {waitForFinishedBusinessProcess, checkCaseFlagsEnabled} = require('../../.
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+const caseId = () => `${caseNumber}`;
 
 let caseNumber;
 
