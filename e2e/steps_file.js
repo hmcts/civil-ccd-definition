@@ -442,7 +442,7 @@ module.exports = function () {
       return caseId;
     },
   
-    async setCaseID(caseNumber) {
+    async setCaseId(caseNumber) {
       caseId = caseNumber;
     },
 

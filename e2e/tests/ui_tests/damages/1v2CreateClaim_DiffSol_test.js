@@ -14,8 +14,8 @@ Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-un
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
-  caseNumber = await api.getCaseid();
-  I.setCaseId(caseNumber);
+  caseNumber = await api.getCaseId();
+  await I.setCaseId(caseNumber);
   console.log('Case created is..', caseNumber);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);

@@ -11,7 +11,7 @@ Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   caseNumber = await api_spec.getCaseId();
-  LRspec.setCaseId(caseNumber);
+  await LRspec.setCaseId(caseNumber);
   console.log('Case created is..', caseNumber);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
