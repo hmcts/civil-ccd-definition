@@ -87,7 +87,7 @@ const getExpectedPayload = (serviceId) => {
           'hearingSubChannel': null
         },
         {
-          'partyID': '',
+          'partyID': 'Q1KOKP2',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 1',
           'partyRole': 'LGRP',
@@ -190,7 +190,7 @@ const getExpectedPayload = (serviceId) => {
           'hearingSubChannel': null
         },
         {
-          'partyID': '',
+          'partyID': '79ZRSOU',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 2',
           'partyRole': 'LGRP',
@@ -378,19 +378,19 @@ const getExpectedPayload = (serviceId) => {
           'unavailabilityRange': [
             {
                 'unavailabilityType': 'ALL_DAY',
-                'unavailableFromDate': '2023-06-09',
-                'unavailableToDate': '2023-06-09'
+                'unavailableFromDate': date(10),
+                'unavailableToDate': date(10)
             },
             {
               'unavailabilityType': 'ALL_DAY',
-              'unavailableFromDate': '2023-06-29',
-              'unavailableToDate': '2023-07-04'
+              'unavailableFromDate': date(30),
+              'unavailableToDate': date(35)
             }
           ],
           'hearingSubChannel': null
         },
         {
-          'partyID': '',
+          'partyID': 'Q1KOKP2',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 1',
           'partyRole': 'LGRP',
@@ -515,18 +515,19 @@ const getExpectedPayload = (serviceId) => {
           'unavailabilityRange': [
             {
               'unavailabilityType': 'ALL_DAY',
-              'unavailableFromDate': '2023-06-09',
-              'unavailableToDate': '2023-06-09'
+              'unavailableFromDate': date(10),
+              'unavailableToDate': date(10)
             },
             {
               'unavailabilityType': 'ALL_DAY',
-              'unavailableFromDate': '2023-06-29',
-              'unavailableToDate': '2023-07-04'
+              'unavailableFromDate': date(30),
+              'unavailableToDate': date(35)
             }
-          ],          'hearingSubChannel': null
+          ],
+          'hearingSubChannel': null
         },
         {
-          'partyID': '',
+          'partyID': '79ZRSOU',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 2',
           'partyRole': 'LGRP',
@@ -622,18 +623,18 @@ const getExpectedPayload = (serviceId) => {
           'unavailabilityRange': [
             {
               'unavailabilityType': 'ALL_DAY',
-              'unavailableFromDate': '2023-06-09',
-              'unavailableToDate': '2023-06-09'
+              'unavailableFromDate': date(10),
+              'unavailableToDate': date(10)
             },
             {
               'unavailabilityType': 'ALL_DAY',
-              'unavailableFromDate': '2023-06-29',
-              'unavailableToDate': '2023-07-04'
+              'unavailableFromDate': date(30),
+              'unavailableToDate': date(35)
             }
           ],          'hearingSubChannel': null
         },
         {
-          'partyID': '',
+          'partyID': 'H2156A0',
           'partyType': 'ORG',
           'partyName': 'Civil - Organisation 3',
           'partyRole': 'LGRP',
@@ -853,8 +854,22 @@ module.exports = {
     const payload = await getHearingsPayload(user, caseId);
 
     let {caseDeepLink, ...actualPayload} = payload;
-    actualPayload.parties = actualPayload.parties.map(party => ({...party, partyID:''}));
-    actualPayload.caseFlags.flags = actualPayload.caseFlags.flags.map(flag => ({...flag, partyID: ''}));
+
+    // remove uniquely generated partyID for all parties except legal rep
+    actualPayload.parties = actualPayload.parties.map(function (party) {
+      if (party.partyRole !== 'LGRP') {
+        return {...party, partyID:''};
+      } else {
+        return {...party};
+      }
+    });
+    actualPayload.caseFlags.flags = actualPayload.caseFlags.flags.map(function (flag) {
+      if (flag.partyRole !== 'LGRP') {
+        return {...flag, partyID:''};
+      } else {
+        return {...flag};
+      }
+    });
     const expectedPayload = getExpectedPayload(serviceId);
 
     expect(actualPayload).deep.equal(expectedPayload);
