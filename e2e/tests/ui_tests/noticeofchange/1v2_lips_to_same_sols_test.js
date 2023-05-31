@@ -1,6 +1,8 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const judgeUser = config.judgeUserWithRegionId1;
 
+//Skipping to limit Ft to less than 40 mins - short term skip
 Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @non-prod-e2e-ft @e2e-nightly-nonprod');
 
 Scenario('Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
@@ -28,7 +30,12 @@ Scenario('Respondent solicitor completes response', async ({api}) => {
 });
 
 Scenario('Applicant solicitor completes response', async ({api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION');
+  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
+});
+
+//to be enabled in next pr - atm it is failing at some key but adding this change to see timeout
+xScenario('Create SDO', async ({api}) => {
+  await api.createSDO(judgeUser, 'CREATE_SMALL');
 });
 
 AfterSuite(async  () => {
