@@ -271,11 +271,11 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
-        try {
+        /*try {
           await this.takeScreenshot();
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
-        }
+        }*/
         await steps[i]();
       }
     },
