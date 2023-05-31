@@ -7,7 +7,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
-//const claimData = require('../../../fixtures/events/createClaimSpec.js');
+const claimData = require('../../../fixtures/events/createClaimSpec.js');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
