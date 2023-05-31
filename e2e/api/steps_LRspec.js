@@ -13,6 +13,7 @@ const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
+const claimDataBulk = require('../fixtures/events/createClaimSpecBulk.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
@@ -30,6 +31,7 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM_BULK: (scenario, pbaV3) => claimDataBulk.createClaimBulk(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
@@ -173,6 +175,51 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    if(checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+  },
+
+  createClaimWithNonRepresentedRespondentBulkClaim: async (user, scenario) => {
+    const pbaV3 = true;
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+
+    let createClaimData  = {};
+
+    createClaimData = data.CREATE_CLAIM_BULK(scenario, pbaV3);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
+    }
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimData.userInput)) {
+      await assertValidData(createClaimData, pageId);
+    }
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
+    await waitForFinishedBusinessProcess(caseId);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
