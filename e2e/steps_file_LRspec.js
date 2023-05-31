@@ -103,14 +103,15 @@ const CASE_HEADER = 'ccd-case-header > h1';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
-  offline: 'Your claim has been received and will progress offline'
+  offline: 'Your claim has been received and will progress offline',
+  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
@@ -204,11 +205,12 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
-        try {
+        //commenting this out, this will give us few minutes back
+        /*try {
           await this.takeScreenshot();
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
-        }
+        }*/
         await steps[i]();
       }
     },
@@ -325,11 +327,14 @@ module.exports = function () {
     },
 
     async createCaseSpecified(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
-         eventName = 'Create claim - Specified';
+      output.log('Create claim - Specified');
+      eventName = 'Create claim - Specified';
 
          //const twoVOneScenario = claimant1 && claimant2;
          const pbaV3 = await checkToggleEnabled(PBAv3);
+         output.log('--------------createCaseSpecified calling------------');
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
+         output.log('--------------createCaseSpecified finished------------');
           let steps = pbaV3 ? [
             () => this.clickContinue(),
             () => this.clickContinue(),
@@ -355,7 +360,7 @@ module.exports = function () {
                  () => this.clickContinue(),
                  () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
-                 () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+                 () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
            ] : [
             () => this.clickContinue(),
