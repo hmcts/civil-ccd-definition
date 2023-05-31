@@ -47,18 +47,16 @@
   },
   {
     "ID": "SmallClaimsHearing",
-    "ListElementCode": "dateToToggle",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DateToShowToggle",
-    "ElementLabel": " ",
+    "ListElementCode": "dateToLabel",
+    "ElementLabel": "Date to",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "dateTo",
-    "ElementLabel": "Date to",
+    "ElementLabel": " ",
     "FieldType": "Date",
-    "FieldShowCondition": "dateToToggle=\"SHOW\"",
     "SecurityClassification": "Public"
   },
   {

@@ -404,24 +404,8 @@
     "ID": "DisposalHearingHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingHearingTime",
-    "ListElementCode": "dateToLabel",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DisposalHearingHearingTime",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingHearingTime",
-    "ListElementCode": "dateTo",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "DisposalHearingHearingTime",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingHearingTime",
     "ListElementCode": "time",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -684,7 +668,7 @@
     "ID": "SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
-    "ListElementCode": "dateToToggle",
+    "ListElementCode": "dateToLabel",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -693,8 +677,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateTo",
-    "FieldShowCondition": "smallClaimsHearing.dateToToggle=\"SHOW\"",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -702,7 +685,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "label",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
@@ -710,7 +693,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "time",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -718,7 +701,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "otherHours",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -726,7 +709,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "otherMinutes",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
