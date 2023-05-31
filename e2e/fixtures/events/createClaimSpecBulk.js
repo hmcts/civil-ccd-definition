@@ -1,4 +1,3 @@
-const {} = require('../../api/dataHelper');
 const config = require('../../config.js');
 const address = require('../address');
 
