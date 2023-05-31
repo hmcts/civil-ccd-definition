@@ -1,6 +1,6 @@
-const {listElement, buildAddress} = require('../../api/dataHelper');
+const {} = require('../../api/dataHelper');
 const config = require('../../config.js');
-const address = require("../address");
+const address = require('../address');
 
 const Address = {
   AddressLine1: `${address.buildingAndStreet.lineOne}`, //SDT:claimant.address.line1, defendant1.address.line1, defendant2.address.line1
@@ -8,7 +8,7 @@ const Address = {
   AddressLine3: address.buildingAndStreet.lineThree, //SDT:claimant.address.line3, defendant1.address.line3, defendant2.address.line3
   PostTown: address.town, //SDT:claimant.address.line4, defendant1.address.line4, defendant2.address.line4
   PostCode: address.postcode //SDT:claimant.address.postcode, defendant1.address.postcode, defendant2.address.postcode
-}
+};
 
 const applicant1 = {
   type: 'ORGANISATION',
@@ -41,7 +41,7 @@ const claimAmount = '151234';
 module.exports = {
   createClaimBulk: (mpScenario, pbaV3) => {
     if (mpScenario == 'ONE_V_ONE') {
-      console.log('1 v 1 claim, with interest')
+      console.log('1 v 1 claim, with interest');
       return {
         userInput: {
           References: {
@@ -142,7 +142,7 @@ module.exports = {
       };
     }
     if (mpScenario == 'ONE_V_TWO') {
-      console.log('1 v 2 claim, with interest')
+      console.log('1 v 2 claim, with interest');
       return {
         userInput: {
           References: {
