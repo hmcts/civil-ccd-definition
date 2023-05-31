@@ -187,16 +187,30 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createNewClaimWithCaseworker: async (user, scenario) => {
+  createClaimWithNonRepresentedRespondentBulkClaim: async (user, scenario) => {
     const pbaV3 = true;
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
+
     let createClaimData  = {};
 
     createClaimData = data.CREATE_CLAIM_BULK(scenario, pbaV3);
+
+    // ToDo: Remove and delete function after hnl uplift released
+    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
+    if(!hnlEnabled) {
+      removeHNLFieldsFromClaimData(createClaimData);
+    }
+
     await apiRequest.setupTokens(user);
-    await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimData.userInput)) {
+      await assertValidData(createClaimData, pageId);
+    }
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
     await waitForFinishedBusinessProcess(caseId);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
@@ -208,12 +222,14 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    if(await checkCaseFlagsEnabled()) {
+    if(checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -614,19 +630,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
   }
-
-  if (eventName === 'CREATE_CLAIM_SPEC') {
-    caseId = responseBody.id;
-    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
-    console.log('Case created: ' + caseId);
-  }
-};
-
-const assertCaseworkerSubmittedNewClaim = async (expectedState, caseData) => {
-  const response = await apiRequest.submitNewClaimAsCaseworker(eventName, caseData);
-  const responseBody = await response.json();
-  assert.equal(response.status, 201);
-  assert.equal(responseBody.state, expectedState);
 
   if (eventName === 'CREATE_CLAIM_SPEC') {
     caseId = responseBody.id;
