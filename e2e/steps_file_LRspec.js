@@ -111,7 +111,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
@@ -205,13 +205,13 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
-        /*try {
+        try {
           output.log('--------------takeScreenshot ------------' + i);
           await this.takeScreenshot();
           output.log('--------------takeScreenshot ------------' + i + ' taken');
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
-        }*/
+        }
         await steps[i]();
       }
     },
