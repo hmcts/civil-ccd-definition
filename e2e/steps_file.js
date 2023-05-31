@@ -271,6 +271,7 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
+        //commenting this out, this will give us few minutes back
         /*try {
           await this.takeScreenshot();
         } catch {
