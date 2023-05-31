@@ -5,6 +5,8 @@ const {PBAv3} = require('../../../fixtures/featureKeys');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+const claimData = require('../../../fixtures/events/createClaimSpec.js');
+const apiRequest = require('./../../../api/apiRequest.js');
 
 const respondent1 = {
   represented: true,
@@ -30,6 +32,11 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   const pbaV3 = await checkToggleEnabled(PBAv3);
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
+  if (pbaV3) {
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
+  }
   /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
