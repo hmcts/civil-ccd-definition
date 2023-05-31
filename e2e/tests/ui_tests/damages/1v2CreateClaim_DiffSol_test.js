@@ -1,6 +1,7 @@
 const config = require('../../../config.js');
 //const {paymentUpdate} = require('../../../api/apiRequest');
 const parties = require('../../../helpers/party');
+const apiRequest = require('./../../../api/apiRequest.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
@@ -37,6 +38,12 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
 
   const pbaV3 = await checkToggleEnabled(PBAv3);
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+  if (pbaV3) {
+    await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
+  }
 
   /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
