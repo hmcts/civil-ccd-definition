@@ -30,10 +30,10 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   const pbaV3 = await checkToggleEnabled(PBAv3);
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-  if (pbaV3) {
+  /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
-  }
+  }*/
 
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);

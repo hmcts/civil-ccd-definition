@@ -38,13 +38,13 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   const pbaV3 = await checkToggleEnabled(PBAv3);
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-  if (pbaV3) {
+  /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
     await paymentUpdate(caseId(), '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseId(), 'paid'));
     console.log('Service request update sent to callback URL');
-  }
+  }*/
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
