@@ -379,6 +379,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partyOptions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "defendantSolicitorNotifyClaimDetailsOptions",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

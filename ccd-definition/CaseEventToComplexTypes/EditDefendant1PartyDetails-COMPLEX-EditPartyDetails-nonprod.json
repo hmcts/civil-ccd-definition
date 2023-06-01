@@ -1,0 +1,210 @@
+[
+ {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualTitle",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualFirstName",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualLastName",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "companyName",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "organisationName",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderTitle",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderFirstName",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderLastName",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderTradingAs",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine1",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine2",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine3",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.PostTown",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.County",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.Country",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.PostCode",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyPhone",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Experts",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Experts",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Experts",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Experts",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Witnesses",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Witnesses",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Witnesses",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Expert",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "CaseFieldID": "respondent1Witnesses",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  }
+]

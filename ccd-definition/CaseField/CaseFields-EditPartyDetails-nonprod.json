@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyOptions",
+    "Label": "Which party in relation do you want to edit?",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public",
+    "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partySelected",
+    "Label": "partySelected: Which party do you want to edit?",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "PartySelected",
+    "SecurityClassification": "Public"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "CLAIMANT_ONE",
+    "ListElement": "Claimant one",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "CLAIMANT_ONE_LITIGATION_FRIEND",
+    "ListElement": "Claimant one litigation friend",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "CLAIMANT_TWO",
+    "ListElement": "Claimant two",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "CLAIMANT_TWO_LITIGATION_FRIEND",
+    "ListElement": "Claimant two litigation friend",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "CLAIMANT_ONE_EXPERTS",
+    "ListElement": "Claimant one experts",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "CLAIMANT_ONE_WITNESSES",
+    "ListElement": "Claimant one witnesses",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_ONE",
+    "ListElement": "Defendant one",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_ONE_LITIGATION_FRIEND",
+    "ListElement": "Defendant one litigation friend",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_ONE_EXPERTS",
+    "ListElement": "Defendant one experts",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_ONE_WITNESSES",
+    "ListElement": "Defendant one witnesses",
+    "DisplayOrder": 10
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_TWO",
+    "ListElement": "Defendant one",
+    "DisplayOrder": 11
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_TWO_LITIGATION_FRIEND",
+    "ListElement": "Defendant two litigation friend",
+    "DisplayOrder": 12
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_TWO_EXPERTS",
+    "ListElement": "Defendant two experts",
+    "DisplayOrder": 13
+  },
+  {
+    "ID": "PartySelected",
+    "ListElementCode": "DEFENDANT_TWO_WITNESSES",
+    "ListElement": "Defendant two witnesses",
+    "DisplayOrder": 14
+  }
+]

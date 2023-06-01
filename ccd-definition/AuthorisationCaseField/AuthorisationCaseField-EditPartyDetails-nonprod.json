@@ -1,0 +1,30 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partyOptions",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "legal-adviser"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partySelected",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "legal-adviser"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
+]

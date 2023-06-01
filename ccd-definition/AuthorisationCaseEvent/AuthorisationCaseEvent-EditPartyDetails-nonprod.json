@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EDIT_PARTY_DETAILS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
