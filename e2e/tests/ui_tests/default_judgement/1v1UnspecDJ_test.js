@@ -164,7 +164,7 @@ Scenario('Request Specific access check for admin @e2e-wa  @wa-r4', async ({I, W
 
 Scenario('Verify approved Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
   let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
-  await I.login(config.userToBeLoggedIn);
+  await I.login(userToBeLoggedIn);
   await WA.verifyApprovedSpecificAccess(caseId);
 }).retry(3);
 
