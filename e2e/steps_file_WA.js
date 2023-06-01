@@ -107,7 +107,7 @@ module.exports = function (){
     },
 
     verifyApprovedSpecificAccess: async function(caseId) {
-      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Your fee will be calculated based on the statement of value');
     },
 
