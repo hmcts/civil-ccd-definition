@@ -5,6 +5,7 @@
     "ListElementCode": "hearingUnavailableFrom",
     "ElementLabel": "Date from",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "ListElementCode": "hearingUnavailableUntil",
     "ElementLabel": "Date to",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
