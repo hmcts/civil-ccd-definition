@@ -77,9 +77,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07898878902'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -120,9 +118,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07111111111'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -149,9 +145,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07012345678'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -180,9 +174,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07898678902'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -423,9 +415,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07000111000'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -452,9 +442,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07012345678'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -481,9 +469,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07123456789'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -506,9 +492,7 @@ const getExpectedPayload = (serviceId) => {
             'vulnerabilityDetails': null,
             'hearingChannelEmail': [],
             'hearingChannelPhone': [],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': 'C'
           },
           'unavailabilityDOW': null,
@@ -560,9 +544,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07111111111'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -589,9 +571,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07012345678'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -614,9 +594,7 @@ const getExpectedPayload = (serviceId) => {
             'vulnerabilityDetails': null,
             'hearingChannelEmail': [],
             'hearingChannelPhone': [],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -667,9 +645,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07111111111'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
@@ -698,9 +674,7 @@ const getExpectedPayload = (serviceId) => {
             'hearingChannelPhone': [
               '07012345678'
             ],
-            'relatedParties': [
-              {}
-            ],
+            'relatedParties': [],
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
