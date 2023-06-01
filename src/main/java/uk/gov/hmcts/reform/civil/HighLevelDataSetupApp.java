@@ -81,7 +81,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     public void createRoleAssignments() {
-        // Do not create role assignments.
+        // Do not create role assignments
         BeftaUtils.defaultLog("Will NOT create role assignments!");
     }
 
