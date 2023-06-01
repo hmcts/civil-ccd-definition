@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 2v1 API test @api-spec-fast @api-specified');
+Feature('CCD 2v1 API test @api-spec-fast @api-specified @api-prod-specified');
 Scenario('2v1 fast claim full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
@@ -20,12 +20,14 @@ Scenario('2v1 fast claim different response no full defence', async ({I, api_spe
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'TWO_V_ONE');
 });
 
-Scenario('2v1 fast claim full admission', async ({I, api_spec_fast}) => {
+//Covered this scenario at line 51
+xScenario('2v1 fast claim full admission', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE');
 });
 
-Scenario('2v1 fast claim part admission', async ({I, api_spec_fast}) => {
+//Covered this scenario at line 59
+xScenario('2v1 fast claim part admission', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', 'TWO_V_ONE');
 });

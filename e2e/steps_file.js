@@ -156,7 +156,7 @@ const CONFIRMATION_MESSAGE = {
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
@@ -271,11 +271,12 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
-        try {
+        //commenting this out, this will give us few minutes back
+        /*try {
           await this.takeScreenshot();
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
-        }
+        }*/
         await steps[i]();
       }
     },
