@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-let caseId='1685631442750289', taskId, hearingDateIsLessThan3Weeks;
+let caseId, taskId, hearingDateIsLessThan3Weeks;
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
