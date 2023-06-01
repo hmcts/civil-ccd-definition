@@ -4,6 +4,7 @@
     "ListElementCode": "expertDetails",
     "ElementLabel": "## Expert details \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "Text",
     "ElementLabel": "Expert name",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "Expert name"
   },
   {
@@ -20,6 +22,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Field of expertise",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "Field of expertise"
   },
   {
@@ -28,6 +31,7 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Estimated cost",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "Estimated cost"
   }
 ]
