@@ -4,6 +4,7 @@
     "ListElementCode": "firstName",
     "FieldType": "Text",
     "ElementLabel": "First name",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "lastName",
     "FieldType": "Text",
     "ElementLabel": "Last name",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "emailAddress",
     "FieldType": "Email",
     "ElementLabel": "Email address",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "phoneNumber",
     "FieldType": "PhoneUK",
     "ElementLabel": "Phone number",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
