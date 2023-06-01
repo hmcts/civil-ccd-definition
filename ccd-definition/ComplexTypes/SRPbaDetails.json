@@ -4,6 +4,7 @@
     "ListElementCode": "fee",
     "ElementLabel": "Hearing Notice fee",
     "FieldType": "Fee",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "paymentDetails",
     "ElementLabel": "Details of PBA payment",
     "FieldType": "PaymentDetails",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "paymentSuccessfulDate",
     "ElementLabel": "Payment successful date",
     "FieldType": "DateTime",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "serviceRequestReference",
     "ElementLabel": "Service Request Reference",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ListElementCode": "applicantsPbaAccounts",
     "ElementLabel": "Claimant solicitor PBA accounts",
     "FieldType": "DynamicList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +44,7 @@
     "ListElementCode": "pbaReference",
     "ElementLabel": "PBA Reference",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
