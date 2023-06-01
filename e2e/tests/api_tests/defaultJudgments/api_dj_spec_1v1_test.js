@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD 1v1 API Spec test @api-dj-1v1, @api-all-non-prod @non-prod-e2e-ft, @api-all-prod, @api-dj');
+Feature('CCD 1v1 API Spec test @api-dj-1v1, @api-dj @api-prod-dj @api-all-non-prod @api-all-prod');
 
 Scenario('Default Judgment Spec claim 1v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 1v2 API test @api-spec @api-spec-1v2 @api-specified  @api-all-non-prod @non-prod-e2e-ft');
+Feature('CCD 1v2 API test @api-spec @api-spec-1v2 @api-specified @api-prod-specified @api-all-non-prod');
 
 Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
@@ -19,12 +19,14 @@ Scenario('1v2 small claim full defence, defendant response', async ({I, api_spec
   await api_spec.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
-Scenario('1v2 small claim full admit', async ({I, api_spec}) => {
+//Covered this scenario at line 65
+xScenario('1v2 small claim full admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO');
 });
 
-Scenario('1v2 small claim part admit', async ({I, api_spec}) => {
+//Covered this scenario at line 72
+xScenario('1v2 small claim part admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO');
 });
