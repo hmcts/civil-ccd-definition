@@ -4,7 +4,7 @@
     "ID": "trialReadyNotified",
     "Label": "Was trial ready notification sent out?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +12,7 @@
     "ID": "trialReadyChecked",
     "Label": "Was trial ready notification sent out?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {

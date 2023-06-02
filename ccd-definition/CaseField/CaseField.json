@@ -12,7 +12,7 @@
     "ID": "solicitorReferences",
     "Label": "Your File Reference",
     "FieldType": "SolicitorReferences",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -131,7 +131,7 @@
     "Label": "Allocated track",
     "FieldType": "FixedList",
     "FieldTypeParameter": "Track",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -208,7 +208,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "_Definition":  "The derived legal date the claim is deemed issued. It is based on the date time when the claim was submitted digitally",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Category":  "CIVIL"
   },
   {
@@ -598,7 +598,7 @@
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -622,7 +622,7 @@
     "ID": "legacyCaseReference",
     "FieldType": "Text",
     "Label": "CaseMan reference number",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1020,7 +1020,7 @@
     "ID": "claimDismissedDeadline",
     "Label": "Case dismissed deadline",
     "FieldType": "DateTime",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1231,7 +1231,7 @@
     "ID": "claimNotificationDeadline",
     "Label": "Claim notification deadline",
     "FieldType": "DateTime",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1239,7 +1239,7 @@
     "ID": "claimDetailsNotificationDeadline",
     "Label": "Case details notification deadline",
     "FieldType": "DateTime",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -2311,7 +2311,7 @@
     "ID": "allPartyNames",
     "Label": "All party names",
     "FieldType": "Text",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -2319,7 +2319,7 @@
     "ID": "unassignedCaseListDisplayOrganisationReferences",
     "Label": "Unassigned Case List Solicitor References",
     "FieldType": "Text",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -2327,7 +2327,7 @@
     "ID": "caseListDisplayDefendantSolicitorReferences",
     "Label": "Case List Display Defendant Solicitor Reference",
     "FieldType": "Text",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -2337,7 +2337,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "_Definition":  "Next deadline on a case",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Category":  "CIVIL"
   },
   {
@@ -2422,7 +2422,7 @@
     "FieldTypeParameter": "CaseAccessCategory",
     "SecurityClassification": "Public",
     "_Definition":  "Case Access Category",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Category":  "CIVIL"
   },
   {

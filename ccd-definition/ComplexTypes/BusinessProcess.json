@@ -13,7 +13,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "BusinessProcessStatus",
     "ElementLabel": "Camunda business process status",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {

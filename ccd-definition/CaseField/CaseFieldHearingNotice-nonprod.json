@@ -49,7 +49,7 @@
     "Label": "Is this a listing or a relisting?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ListingOrRelisting",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -100,7 +100,7 @@
     "Label": " ",
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -150,7 +150,7 @@
     "ID": "hearingDueDate",
     "Label": "Hearing Due Date",
     "FieldType": "Date",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
