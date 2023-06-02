@@ -110,6 +110,26 @@ module.exports = {
         };
         break;
 
+      case 'PART_ADMISSION_SETTLE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponse: {
+            applicant1PartAdmitConfirmAmountPaidSpec: 'Yes',
+          },
+          IntentionToSettleClaim: {
+            applicant1PartAdmitIntentionToSettleClaimSpec: 'Yes',
+          },
+          Mediation: {
+            applicant1ClaimMediationSpecRequiredLip: {
+              hasAgreedFreeMediation: 'Yes'
+            }
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+        };
+        break;
+
       case 'FULL_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,

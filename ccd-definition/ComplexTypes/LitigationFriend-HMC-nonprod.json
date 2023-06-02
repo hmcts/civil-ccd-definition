@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "Party",
+    "ListElementCode": "partyID",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y"
+  }
+]

@@ -34,7 +34,8 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -247,7 +248,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish" : "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -258,7 +260,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "applicant1AcceptAdmitAmountPaidSpec=\"Yes\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish" : "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -295,7 +298,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish" : "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -317,7 +321,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -373,7 +378,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "claimantResponseScenarioFlag=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -394,7 +400,7 @@
     "PageFieldDisplayOrder": 23,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -417,6 +423,16 @@
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag !=\"No\"",
     "DisplayContext": "READONLY",
+    "PageID": "ApplicantDefenceResponseDocument",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
   },
@@ -510,15 +526,15 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-  "CaseFieldID": "ccjJudgmentAmountSummaryLabel",
-  "PageDisplayOrder": 4,
-  "PageFieldDisplayOrder": 1,
-  "DisplayContext": "READONLY",
-  "PageID": "CcjJudgmentSummary",
-  "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec =\"Yes\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"Yes\"",
-  "ShowSummaryChangeOption": "Y"
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountSummaryLabel",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "PageShowCondition": "applicant1AcceptFullAdmitPaymentPlanSpec =\"Yes\" OR applicant1AcceptPartAdmitPaymentPlanSpec =\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -805,7 +821,8 @@
     "PageID": "Mediation",
     "PageShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_TWO\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
@@ -829,7 +846,64 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\"",
-    "ShowSummaryChangeOption" : "Y"
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFileDirectionsQuestionnaire",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FileDirectionsQuestionnaire",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQDisclosureOfElectronicDocuments",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisclosureOfElectronicDocuments",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DisclosureOfNonElectronicDocuments",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQDisclosureReport",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisclosureReport",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQExperts",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Experts",
+    "CaseEventFieldLabel": "Experts",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -853,6 +927,19 @@
     "PageID": "SmallClaimWitnesses",
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"SMALL_CLAIM\"",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Witnesses",
+    "CaseEventFieldLabel": "Witnesses",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -897,6 +984,18 @@
     "CaseEventFieldLabel": "Vulnerability Questions",
     "PageShowCondition": "showConditionFlags CONTAINS \"VULNERABILITY\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQFutureApplicationsLabel",
+    "PageLabel": "",
+    "PageDisplayOrder": 14,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Applications",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",

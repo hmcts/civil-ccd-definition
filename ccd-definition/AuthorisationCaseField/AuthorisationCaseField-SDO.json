@@ -2113,6 +2113,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"

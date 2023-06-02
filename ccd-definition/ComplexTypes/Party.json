@@ -164,5 +164,14 @@
     "ElementLabel": "Phone",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "Party",
+    "ListElementCode": "unavailableDates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "ElementLabel": "Unavailable date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

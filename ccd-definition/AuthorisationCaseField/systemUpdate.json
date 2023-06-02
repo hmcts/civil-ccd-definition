@@ -123,7 +123,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "servedDocumentFiles",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -176,6 +176,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "legacyCaseReference",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "whenToBePaidText",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
