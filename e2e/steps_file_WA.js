@@ -64,7 +64,8 @@ module.exports = function (){
       await this.fillField('#caseRef', caseId);
       await this.click('//button[@type=\'submit\']');
       await this.waitForText(caseId);
-      await this.waitForClickable('//a[contains(text(), \'Specific access\')]', 60);
+      await this.wait(5);
+      await this.waitForText('Specific access', 60);
       await this.click('Specific access');
       await this.wait(5);
       await this.waitForText('Request access');
@@ -106,7 +107,7 @@ module.exports = function (){
     },
 
     verifyApprovedSpecificAccess: async function(caseId) {
-      await this.amOnPage(config.url.manageCase + 'cases/case-details/' + caseId);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Your fee will be calculated based on the statement of value');
     },
 
