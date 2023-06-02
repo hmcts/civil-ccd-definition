@@ -42,6 +42,9 @@ civil-general-applications:
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
+    imagePullPolicy: Always
+    releaseNameOverride: ${SERVICE_NAME}-xui-webapp
+    image: hmctspublic.azurecr.io/xui/webapp:pr-3057
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: https://wa-task-management-api-${SERVICE_FQDN}
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
