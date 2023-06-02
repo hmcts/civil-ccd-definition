@@ -4,6 +4,7 @@
     "ID": "flagLauncher",
     "Label": "Launch the Flags screen",
     "FieldType": "FlagLauncher",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ID": "caseFlags",
     "Label": "Case Flags",
     "FieldType": "Flags",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -72,6 +74,7 @@
     "ID": "urgentFlag",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
