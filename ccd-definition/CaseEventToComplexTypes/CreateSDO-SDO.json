@@ -791,7 +791,7 @@
     "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
-    "EventHintText": "Number of witnesses (claimant), e.g. 4"
+    "EventHintText": "Limit number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -800,7 +800,7 @@
     "ListElementCode": "input3",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
-    "EventHintText": "Number of witnesses (defendant), e.g. 4 "
+    "EventHintText": "Limit number of witnesses (defendant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
