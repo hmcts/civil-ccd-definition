@@ -1191,5 +1191,12 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "otherDetails",
+    "Label": "Other Details",
+    "FieldType": "OtherDetails",
+    "SecurityClassification": "Public"
   }
 ]

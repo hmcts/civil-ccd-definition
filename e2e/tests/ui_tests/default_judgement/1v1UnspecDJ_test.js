@@ -145,21 +145,28 @@ Scenario('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) 
   await WA.verifyApprovedSpecificAccess(caseId);
 }).retry(3);
 
-Scenario('Verify Specific access check for admin @e2e-wa @wa-r4', async ({I, WA, api}) => {
+Scenario('Request Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
    let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
    await I.login(userToBeLoggedIn);
    await WA.runSpecificAccessRequestSteps(caseId);
-   if (config.runWAApiTest) {
-     const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId1, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
-   } else {
-     console.log('WA flag is not enabled');
-     return;
-   }
-   await I.login(config.nbcTeamLeaderWithRegionId1);
-   await WA.runSpecificAccessApprovalSteps(caseId);
-   await I.login(config.userToBeLoggedIn);
-   await WA.verifyApprovedSpecificAccess(caseId);
  }).retry(3);
+
+ Scenario('Approve Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
+  if (config.runWAApiTest) {
+    const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId1, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
+  } else {
+    console.log('WA flag is not enabled');
+    return;
+  }
+  await I.login(config.nbcTeamLeaderWithRegionId1);
+  await WA.runSpecificAccessApprovalSteps(caseId);
+}).retry(3);
+
+Scenario('Verify approved Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
+  let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
+  await I.login(userToBeLoggedIn);
+  await WA.verifyApprovedSpecificAccess(caseId);
+}).retry(3);
 
 Scenario('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacLegalOpsUser);
