@@ -1345,5 +1345,12 @@
     "FieldType": "YesOrNo",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "otherDetails",
+    "Label": "Other Details",
+    "FieldType": "OtherDetails",
+    "SecurityClassification": "Public"
   }
 ]

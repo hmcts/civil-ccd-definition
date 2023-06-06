@@ -2054,6 +2054,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "otherDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoOrderDocument",
     "AccessControl": [
       {
