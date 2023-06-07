@@ -250,7 +250,6 @@
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "ShowSummary": "N",
-    "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0
