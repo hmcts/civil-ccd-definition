@@ -803,9 +803,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "REVIEW_HEARING_EXCEPTION",
-    "UserRoles": [
-      "caseworker-civil-admin"
-    ],
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   }
 ]
