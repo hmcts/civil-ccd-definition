@@ -799,5 +799,13 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "REVIEW_HEARING_EXCEPTION",
+    "UserRoles": [
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRUD"
   }
 ]
