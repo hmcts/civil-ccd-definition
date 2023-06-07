@@ -13,7 +13,7 @@ function assertFieldDefinitionIsValid(row) {
   expect(row.SecurityClassification).to.eq('Public');
   expect(row.Name).to.be.a('string').and.satisfy(isNotEmpty());
   expect(row.Description).to.be.a('string').and.satisfy(isNotEmpty());
-  expect(row.JurisdictionID).to.eql('CIVIL');
+  expect(row.JurisdictionID).to.eql('CIVIL_NIGHTLY');
 }
 
 describe('CaseType', () => {
