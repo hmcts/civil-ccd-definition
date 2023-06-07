@@ -804,7 +804,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "REVIEW_HEARING_EXCEPTION",
     "UserRoles": [
-      "caseworker-civil-admin"
+      "hearing-centre-admin"
     ],
     "CRUD": "CRUD"
   }
