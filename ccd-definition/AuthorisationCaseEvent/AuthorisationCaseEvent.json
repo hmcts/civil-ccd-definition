@@ -802,7 +802,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseStateID": "REVIEW_HEARING_EXCEPTION",
+    "CaseEventID": "REVIEW_HEARING_EXCEPTION",
     "UserRoles": [
       "caseworker-civil-admin"
     ],
