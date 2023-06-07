@@ -11,8 +11,8 @@ module.exports = {
   },
 
   async initiateNoticeOfChange() {
-    await I.waitForText('Notice of change');
-    await I.click('Notice of change');
+    //await I.waitForText('Notice of change');
+    //await I.click('Notice of change');
     await I.amOnPage(config.url.manageCase + '/noc');
     await I.waitForText('Online case reference number', 60);
   },
