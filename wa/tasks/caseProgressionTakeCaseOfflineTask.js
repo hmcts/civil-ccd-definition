@@ -5,7 +5,7 @@ module.exports = {
     location_name: 'Central London County Court',
     location: '20262',
     execution_type: 'Case Management Task',
-    jurisdiction: 'CIVIL',
+    jurisdiction: 'CIVIL_NIGHTLY',
     region: '1',
     case_type_id: 'CIVIL',
     case_category: 'Civil',

@@ -169,7 +169,7 @@ module.exports = {
     type: 'systemupdate'
   },
   definition: {
-    jurisdiction: 'CIVIL',
+    jurisdiction: 'CIVIL_NIGHTLY',
     caseType: 'CIVIL',
   },
   iacLeadershipJudge: {

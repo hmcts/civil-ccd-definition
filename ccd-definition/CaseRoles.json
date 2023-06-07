@@ -4,7 +4,7 @@
     "ID": "[APPLICANTSOLICITORONE]",
     "Name": "Applicant Solicitor 1",
     "Description": "Applicant Solicitor 1 role",
-    "JurisdictionID": "CIVIL",
+    "JurisdictionID": "CIVIL_NIGHTLY",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +12,7 @@
     "ID": "[APPLICANTSOLICITORTWO]",
     "Name": "Applicant Solicitor 2",
     "Description": "Applicant Solicitor 2 role",
-    "JurisdictionID": "CIVIL",
+    "JurisdictionID": "CIVIL_NIGHTLY",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +20,7 @@
     "ID": "[RESPONDENTSOLICITORONE]",
     "Name": "Respondent Solicitor 1",
     "Description": "Respondent Solicitor 1 role",
-    "JurisdictionID": "CIVIL",
+    "JurisdictionID": "CIVIL_NIGHTLY",
     "SecurityClassification": "Public"
   },
   {
@@ -28,7 +28,7 @@
     "ID": "[RESPONDENTSOLICITORTWO]",
     "Name": "Respondent Solicitor 2",
     "Description": "Respondent Solicitor 2 role",
-    "JurisdictionID": "CIVIL",
+    "JurisdictionID": "CIVIL_NIGHTLY",
     "SecurityClassification": "Public"
   },
   {
@@ -36,7 +36,7 @@
     "ID": "[CREATOR]",
     "Name": "Creator",
     "Description": "Creator of case",
-    "JurisdictionID": "CIVIL",
+    "JurisdictionID": "CIVIL_NIGHTLY",
     "SecurityClassification": "Public"
   }
 ]
