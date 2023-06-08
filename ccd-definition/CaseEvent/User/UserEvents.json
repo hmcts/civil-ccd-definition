@@ -100,7 +100,7 @@
     "Description": "Review hearing exception",
     "DisplayOrder": 7,
     "PreConditionState(s)": "*",
-    "PostConditionState": "CASE_PROGRESSION",
+    "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
