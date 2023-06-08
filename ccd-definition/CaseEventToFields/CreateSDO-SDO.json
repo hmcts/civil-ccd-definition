@@ -48,7 +48,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderSmallClaims=\"Yes\""
+    "FieldShowCondition": "drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderRequired=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
