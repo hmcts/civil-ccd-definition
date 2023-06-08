@@ -116,19 +116,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingOrderAndHearingDetails",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"No\" AND orderType=\"DISPOSAL\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-sdo-order"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingJudgesRecital",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
@@ -705,19 +692,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "setSmallClaimsFlag=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-sdo-order"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsJudgesRecital",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
@@ -1020,19 +994,6 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackOrderAndHearingDetails",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 6,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "setFastTrackFlag=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-sdo-order"
   },
   {
     "CaseTypeID": "CIVIL",
