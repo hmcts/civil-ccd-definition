@@ -870,28 +870,14 @@ module.exports = {
     return apiRequest.taskActionByUser(user, taskId, 'complete');
   },
 
-  addCaseNote: async (user) => {
+  reviewHearingExceptionEvent: async (user) => {
     await apiRequest.setupTokens(user);
 
-    eventName = 'ADD_CASE_NOTE';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    assertContainsPopulatedFields(returnedCaseData);
-    caseData = returnedCaseData;
+    eventName = 'REVIEW_HEARING_EXCEPTION';
+    const data = await apiRequest.startEvent(eventName, caseId);
 
-    await validateEventPages(data.ADD_CASE_NOTE);
-
-    await assertSubmittedEvent('CASE_ISSUED', {
-      header: '',
-      body: ''
-    }, false);
-
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
-
-    // caseNote is set to null in service
-    deleteCaseFields('caseNote');
-  },
+    const response = await apiRequest.submitEvent(eventName, data, caseId);
+    },
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);

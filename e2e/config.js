@@ -17,29 +17,34 @@ module.exports = {
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
 
-    /*manageCase: 'https://xui-civil-ccd-pr-2736.preview.platform.hmcts.net',
+    manageCase: 'https://xui-civil-ccd-pr-2769.preview.platform.hmcts.net',
     authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2736.preview.platform.hmcts.net',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-2769.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'https://civil-ccd-pr-2736.preview.platform.hmcts.net',*/
+    civilService: 'https://civil-ccd-pr-2769.preview.platform.hmcts.net',
 
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    //----------------------------------------------------------------------------------------------
-    wiremockService: 'http://localhost:8765'
-  },
+  //   manageCase: process.env.URL || 'http://localhost:3333',
+  //   authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
+  //   ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
+  //   dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
+  //   idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
+  //   civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
+  //   generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
+  //   waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+  //   caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
+  //   //----------------------------------------------------------------------------------------------
+  //   wiremockService: 'http://localhost:8765'
+   },
+  // Preview:
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.S2S_SECRET || 'BTZQFPGY4TUMAFGL'
   },
+  // s2s: {
+  //   microservice: 'civil_service',
+  //   secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+  // },
   s2sForXUI: {
     microservice: 'xui_webapp',
     secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
@@ -115,14 +120,14 @@ module.exports = {
     regionId: '1'
   },
   hearingCenterAdminWithRegionId1: {
-    email: 'hearing_center_admin_reg1@justice.gov.uk',
+    email: 'hearings_admin_region_1_test_user@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
     regionId: '1'
   },
   hearingCenterAdminWithRegionId4: {
-    email: 'hearing_center_admin_region4@justice.gov.uk',
+    email: 'hearings_admin_region_4_test_user@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
@@ -164,8 +169,8 @@ module.exports = {
     regionId: '1'
   },
   systemupdate: {
-    password: defaultPassword,
-    email: 'hmcts.civil+organisation.1.superuser@gmail.com',
+    password: 'Password12',
+    email: 'civil-system-update@mailnesia.com',
     type: 'systemupdate'
   },
   definition: {
@@ -258,7 +263,7 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-  runningEnv: process.env.ENVIRONMENT,
+  runningEnv: 'preview',
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
