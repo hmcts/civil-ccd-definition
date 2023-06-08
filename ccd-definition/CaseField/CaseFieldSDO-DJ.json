@@ -621,14 +621,16 @@
     "ID": "hearingMethodValuesDisposalHearingDJ",
     "Label": " ",
     "FieldType": "DynamicRadioList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingMethodValuesTrialHearingDJ",
     "Label": " ",
     "FieldType": "DynamicRadioList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
 
