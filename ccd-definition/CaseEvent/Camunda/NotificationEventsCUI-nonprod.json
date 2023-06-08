@@ -41,7 +41,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_MEDIATION_AGREEMENT",
-    "Name": "Email: Mediation agreement",
+    "Name": "Email: Mediation Pending",
     "Description": "Notify applicant for mediation agreement",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_MEDIATION_AGREEMENT",
-    "Name": "Email: Mediation agreement",
+    "Name": "Email: Mediation Pending",
     "Description": "Notify defendant for mediation agreement",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
