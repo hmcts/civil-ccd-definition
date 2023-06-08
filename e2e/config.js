@@ -39,7 +39,7 @@ module.exports = {
   // Preview:
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'BTZQFPGY4TUMAFGL'
+    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   // s2s: {
   //   microservice: 'civil_service',
