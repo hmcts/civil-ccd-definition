@@ -6,7 +6,8 @@
   "ElementLabel": " ",
   "FieldType": "FixedList",
   "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
-  "SecurityClassification": "Public"
+  "SecurityClassification": "Public",
+  "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -15,7 +16,8 @@
     "ElementLabel": " The claimant did not attend the trial, but the Judge was satisfied that they had received notice of the trial and it was reasonable to proceed in their absence",
     "FieldType": "Label",
     "FieldShowCondition": "list=\"SATISFIED_REASONABLE_TO_PROCEED\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -24,7 +26,8 @@
     "ElementLabel": " The claimant did not attend the trial and whilst the Judge was satisfied that they had received notice of the trial it was not reasonable to proceed in their absence",
     "FieldType": "Label",
     "FieldShowCondition": "list=\"SATISFIED_NOTICE_OF_TRIAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -33,7 +36,8 @@
     "ElementLabel": " The claimant did not attend the trial, but the Judge was not satisfied that they had received notice of the hearing and it was not reasonable to proceed in their absence",
     "FieldType": "Label",
     "FieldShowCondition": "list=\"NOT_SATISFIED_NOTICE_OF_TRIAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +46,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,7 +56,8 @@
     "ElementLabel": " The defendant did not attend the trial, but the Judge was satisfied that they had received notice of the trial and it was reasonable to proceed in their absence",
     "FieldType": "Label",
     "FieldShowCondition": "listDef=\"SATISFIED_REASONABLE_TO_PROCEED\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -60,7 +66,8 @@
     "ElementLabel": " The defendant did not attend the trial and whilst the Judge was satisfied that they had received notice of the trial it was not reasonable to proceed in their absence",
     "FieldType": "Label",
     "FieldShowCondition": "listDef=\"SATISFIED_NOTICE_OF_TRIAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -69,6 +76,7 @@
     "ElementLabel": " The defendant did not attend the trial, but the Judge was not satisfied that they had received notice of the hearing and it was not reasonable to proceed in their absence",
     "FieldType": "Label",
     "FieldShowCondition": "listDef=\"NOT_SATISFIED_NOTICE_OF_TRIAL\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

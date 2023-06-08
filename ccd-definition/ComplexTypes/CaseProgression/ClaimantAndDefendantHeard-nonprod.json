@@ -6,7 +6,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "FinalOrdersClaimantRepresentationList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -14,7 +15,8 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Claimant",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -23,7 +25,8 @@
     "ElementLabel": "Counsel for claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COUNSEL_FOR_CLAIMANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -32,7 +35,8 @@
     "ElementLabel": "Solicitor for claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"SOLICITOR_FOR_CLAIMANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -41,7 +45,8 @@
     "ElementLabel": "Costs draftsman for the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -50,7 +55,8 @@
     "ElementLabel": "The claimant in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"THE_CLAIMANT_IN_PERSON\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -59,7 +65,8 @@
     "ElementLabel": "Lay representative for the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"LAY_REPRESENTATIVE_FOR_THE_CLAIMANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -68,7 +75,8 @@
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationClaimantList=\"CLAIMANT_NOT_ATTENDING\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -76,7 +84,8 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Defendant",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -85,7 +94,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "FinalOrdersDefendantRepresentationList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -94,7 +104,8 @@
     "ElementLabel": "Counsel for defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COUNSEL_FOR_DEFENDANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -103,7 +114,8 @@
     "ElementLabel": "Solicitor for defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"SOLICITOR_FOR_DEFENDANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -112,7 +124,8 @@
     "ElementLabel": "Costs draftsman for the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -121,7 +134,8 @@
     "ElementLabel": "The defendant in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"THE_DEFENDANT_IN_PERSON\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -130,7 +144,8 @@
     "ElementLabel": "Lay representative for the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -139,7 +154,8 @@
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationDefendantList=\"DEFENDANT_NOT_ATTENDING\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -148,7 +164,8 @@
     "ElementLabel": "### Enter details of representation",
     "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ,
   {
@@ -158,6 +175,7 @@
     "ElementLabel": " ",
     "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

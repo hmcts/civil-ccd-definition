@@ -4,14 +4,16 @@
     "ListElementCode": "detailsRepresentationLabel",
     "ElementLabel": "### Costs reserved",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "detailsRepresentationSecondLabel",
     "ElementLabel": "### Please type in the cost order you wish to make (Optional)",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -19,21 +21,24 @@
     "ElementLabel": " ",
     "HintText": "For example, to whom/when the cost are reserved",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardLabel",
     "ElementLabel": "### The claimant shall pay the defendant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardSecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -41,14 +46,16 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -56,14 +63,16 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostStandardProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -71,21 +80,24 @@
     "Label": " ",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardLabel",
     "ElementLabel": "### The defendant shall pay the claimant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardSecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -93,14 +105,16 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -108,14 +122,16 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostStandardProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -123,21 +139,24 @@
     "Label": " ",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyLabel",
     "ElementLabel": "### The claimant shall pay the defendant's cost of the claim summarily assessed in the sum of",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilySecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -145,14 +164,16 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -160,14 +181,16 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "claimantCostSummarilyProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -175,21 +198,24 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyLabel",
     "ElementLabel": "### The defendant shall pay the claimant's cost of the claim summarily assessed in the sum of",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilySecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -197,14 +223,16 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -212,14 +240,16 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "defendantCostSummarilyProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -227,21 +257,24 @@
     "ElementLabel": " ",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "besPokeCostDetailsLabel",
     "ElementLabel": "### Bespoke costs order",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "besPokeCostDetailsSecondLabel",
     "ElementLabel": "### Please insert cost order you wish to make",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -249,6 +282,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
