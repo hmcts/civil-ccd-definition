@@ -157,6 +157,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocument",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocument",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -242,6 +248,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocRespondentSolTwo",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocStaff",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocClaimant",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocRespondentSol",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocRespondentSolTwo",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
