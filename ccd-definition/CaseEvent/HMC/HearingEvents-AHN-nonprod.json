@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "REVIEW_HEARING_EXCEPTION ",
+    "ID": "REVIEW_HEARING_EXCEPTION",
     "Name": "Review hearing exception",
     "Description": "Triggered when hearing is in an EXCEPTION state",
     "DisplayOrder": 1,
