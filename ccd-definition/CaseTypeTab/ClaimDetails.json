@@ -23,7 +23,8 @@
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "claimInterest",
-    "TabFieldDisplayOrder": 4
+    "TabFieldDisplayOrder": 4,
+    "_Comment":  "DO NOT MERGE THIS PR"
   },
   {
     "CaseTypeID": "CIVIL",
