@@ -1,8 +1,8 @@
 [
   {
     "LiveFrom": "01/01/2017",
-    "ID": "CIVIL_NIGHTLY",
-    "Name": "Civil_NIGHTLY",
+    "ID": "CIVIL",
+    "Name": "Civil",
     "Description": "Civil Jurisdiction",
     "Shuttered": false
   }

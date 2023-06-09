@@ -4,7 +4,7 @@
     "ID": "CIVIL",
     "Name": "Civil",
     "Description": "Civil",
-    "JurisdictionID": "CIVIL_NIGHTLY",
+    "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
   }
 ]

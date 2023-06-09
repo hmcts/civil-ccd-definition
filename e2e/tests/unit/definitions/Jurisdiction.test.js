@@ -9,7 +9,7 @@ const dataProvider = require('../utils/dataProvider');
 function assertFieldDefinitionIsValid(row) {
   expect(row.Name).to.be.a('string').and.satisfy(isNotEmpty());
   expect(row.Description).to.be.a('string').and.satisfy(isNotEmpty());
-  expect(row.ID).to.eql('CIVIL_NIGHTLY');
+  expect(row.ID).to.eql('CIVIL');
 }
 
 describe('Jurisdiction', () => {
