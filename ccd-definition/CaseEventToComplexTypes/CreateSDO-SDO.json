@@ -404,8 +404,24 @@
     "ID": "DisposalHearingHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingHearingTime",
-    "ListElementCode": "time",
+    "ListElementCode": "dateToLabel",
     "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "dateTo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "time",
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
