@@ -158,8 +158,6 @@ const blocked_domains = [
   'google-analytics.com',
   'googletagmanager.com',
 ];
-
-await page.setRequestInterception(true);
 page.on('request', request => {
   const url = request.url()
   if (blocked_domains.some(domain => url.includes(domain))) {
