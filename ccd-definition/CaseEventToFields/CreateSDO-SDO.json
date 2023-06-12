@@ -91,18 +91,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "trialAdditionalDirectionsForFastTrack",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "OrderType",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "orderType=\"DECIDE_DAMAGES\" AND drawDirectionsOrderRequired=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "orderType",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -124,6 +112,18 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "trialAdditionalDirectionsForFastTrack",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "OrderType",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "orderType=\"DECIDE_DAMAGES\" AND drawDirectionsOrderRequired=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
