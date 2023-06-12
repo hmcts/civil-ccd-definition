@@ -62,7 +62,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "GENERAL_APPLICATION_DRAFT",
-    "ListElement": "Application Draft",
+    "ListElement": "Draft Application",
     "DisplayOrder": 19
   }
 ]
