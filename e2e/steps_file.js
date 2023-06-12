@@ -159,7 +159,7 @@ const blocked_domains = [
   'googletagmanager.com',
 ];
 page.on('request', request => {
-  const url = request.url()
+  const url = request.url();
   if (blocked_domains.some(domain => url.includes(domain))) {
     request.abort();
   } else {
