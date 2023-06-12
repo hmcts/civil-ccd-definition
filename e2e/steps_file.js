@@ -153,6 +153,22 @@ const CONFIRMATION_MESSAGE = {
   pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
+const page = this.helpers['Puppeteer'].page;
+const blocked_domains = [
+  'google-analytics.com',
+  'googletagmanager.com',
+];
+
+await page.setRequestInterception(true);
+page.on('request', request => {
+  const url = request.url()
+  if (blocked_domains.some(domain => url.includes(domain))) {
+    request.abort();
+  } else {
+    request.continue();
+  }
+});
+
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
