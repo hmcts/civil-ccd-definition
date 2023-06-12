@@ -135,7 +135,6 @@ const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefa
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
-const requestHearings = require('./pages/hearingsComponent.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 
@@ -991,13 +990,6 @@ module.exports = function () {
         () => caseViewPage.assertUpdatedCaseFlags(caseFlags)
       ]);
       await this.takeScreenshot();
-    },
-
-    async accessHearingsTab(caseId) {
-      eventName = 'Request hearing';
-      await this.triggerStepsWithScreenshot([
-        () => requestHearings.canRequestHearing(caseId)
-      ]);
     },
   });
 };
