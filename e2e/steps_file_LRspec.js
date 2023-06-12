@@ -107,6 +107,7 @@ const CONFIRMATION_MESSAGE = {
   pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
+const I = actor();
 const helper = I.helpers.Puppeteer;
 
 const page = helper.page;
