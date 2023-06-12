@@ -706,7 +706,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "gaDraftDocument",
-    "Label": "Application Draft document",
+    "Label": "Draft Application document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
@@ -715,7 +715,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "gaDraftDocStaff",
-    "Label": "Application Draft document",
+    "Label": "Draft Application document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
@@ -724,7 +724,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "gaDraftDocClaimant",
-    "Label": "Application Draft document",
+    "Label": "Draft Application document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
@@ -733,7 +733,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "gaDraftDocRespondentSol",
-    "Label": "Application Draft document",
+    "Label": "Draft Application document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
@@ -742,7 +742,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "gaDraftDocRespondentSolTwo",
-    "Label": "Application Draft document",
+    "Label": "Draft Application document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
