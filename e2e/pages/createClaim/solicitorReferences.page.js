@@ -8,6 +8,7 @@ module.exports = {
   },
 
   async enterReferences() {
+    await I.blockDomain();
     I.waitForElement(this.fields.applicantReference);
     await I.runAccessibilityTest();
     I.fillField(this.fields.applicantReference, 'Applicant Reference');

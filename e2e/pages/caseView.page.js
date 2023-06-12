@@ -19,6 +19,7 @@ module.exports = {
   goButton: '.button[type="submit"]',
 
   start: async function (event) {
+    await I.blockDomain();
     await I.selectOption(this.fields.eventDropdown, event);
     /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
        Further investigation is required to find (hopefully) a cleaner solution

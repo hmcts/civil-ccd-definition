@@ -64,4 +64,23 @@ module.exports = class BrowserHelpers extends Helper {
       await runAccessibility(url, page);
     }
   }
+
+  async blockDomain() {
+    const blocked_domains = [
+      'google-analytics.com',
+      'googletagmanager.com',
+    ];
+    let helper = this.getHelper();
+    let page = helper.page;
+
+    page.on('request', request => {
+      const url = request.url();
+      if (blocked_domains.some(domain => url.includes(domain))) {
+        request.abort();
+      } else {
+        request.continue();
+      }
+    });
+
+  }
 };

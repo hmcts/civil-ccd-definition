@@ -18,6 +18,7 @@ module.exports = {
   },
 
   async enterNameAndRole(type = '', name = 'John Smith', role = 'Solicitor') {
+    await I.blockDomain();
     I.waitForElement(this.fields[type].name);
     await I.runAccessibilityTest();
     I.fillField(this.fields[type].name, name);

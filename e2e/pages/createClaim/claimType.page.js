@@ -12,6 +12,7 @@ module.exports = {
   },
 
   async selectClaimType() {
+    await I.blockDomain();
     I.waitForElement(this.fields.claimType.id);
     await I.runAccessibilityTest();
     await within(this.fields.claimType.id, () => {

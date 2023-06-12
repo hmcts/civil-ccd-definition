@@ -13,6 +13,7 @@ module.exports = {
   },
 
   async chooseYesUploadParticularsOfClaim() {
+    await I.blockDomain();
     I.waitForElement(this.fields.uploadQuestion.id);
     await I.runAccessibilityTest();
     await within(this.fields.uploadQuestion.id, () => {

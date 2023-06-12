@@ -12,6 +12,7 @@ module.exports = {
   },
 
   async selectCourt() {
+    await I.blockDomain();
     I.waitForElement(this.fields.courtLocation.id);
     await I.runAccessibilityTest();
     I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.claimantPreferredCourt);
