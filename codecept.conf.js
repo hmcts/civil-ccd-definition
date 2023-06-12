@@ -15,18 +15,16 @@ exports.config = {
   ],
   output: 'test-results/functional',
   helpers: {
-    WebDriver: {
+    Puppeteer: {
       restart: false,
-      browser: 'chrome',
       keepCookies: true,
+      show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
+      userDataDir: './tmp/cachePath',
       windowSize: '1200x900',
-      acceptInsecureCerts: true,
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
-      desiredCapabilities: {
-        chromeOptions: {
-          args: ["--headless", "--disable-gpu", "--no-sandbox"]
-        }
-      }
+      chrome: {
+        ignoreHTTPSErrors: true
+      },
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
