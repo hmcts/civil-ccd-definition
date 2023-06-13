@@ -2,6 +2,9 @@ const defaultPassword = 'Password12!';
 const judgeDefaultPassword = 'Hmcts1234';
 const iacDefaultPassword = 'AldgateT0wer';
 
+const judgePassword = (env) => ['aat', 'demo', 'preview'].includes(env) ? judgeDefaultPassword : defaultPassword;
+
+
 module.exports = {
   idamStub: {
     enabled: process.env.IDAM_STUB_ENABLED === 'true',
@@ -72,21 +75,21 @@ module.exports = {
     type: 'admin'
   },
   judgeUserWithRegionId1: {
-    password: judgeDefaultPassword,
+    password: judgePassword(process.env.ENVIRONMENT),
     email: '4917924EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
   judgeUserWithRegionId4: {
-    password: judgeDefaultPassword,
+    password: judgePassword(process.env.ENVIRONMENT),
     email: '4924159EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '4'
   },
   judgeUser2WithRegionId4: {
-    password: judgeDefaultPassword,
+    password: judgePassword(process.env.ENVIRONMENT),
     email: '4924246EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
@@ -100,7 +103,7 @@ module.exports = {
     regionId: '1'
   },
   judgeUserWithRegionId2: {
-    password: judgeDefaultPassword,
+    password: judgePassword(process.env.ENVIRONMENT),
     email: '4915631EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
@@ -172,7 +175,7 @@ module.exports = {
     caseType: 'CIVIL',
   },
   iacLeadershipJudge: {
-    password: judgeDefaultPassword,
+    password: judgePassword(process.env.ENVIRONMENT),
     email: '330127EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL'
@@ -239,7 +242,7 @@ module.exports = {
   },
   feePaidJudge: {
     email: '49932114EMP-@ejudiciary.net',
-    password: judgeDefaultPassword,
+    password: judgePassword(process.env.ENVIRONMENT),
     type: 'judge',
     roleCategory: 'JUDICIAL'
   },
