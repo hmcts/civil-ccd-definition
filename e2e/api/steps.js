@@ -1447,6 +1447,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
     checkCalculated(calculated, responseBody.data);
   }
   if (midEventField && midEventField.dynamicList === true) {
+    console.log('midEventField.id...', midEventField.id);
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
