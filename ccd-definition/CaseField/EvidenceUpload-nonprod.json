@@ -123,7 +123,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabel",
-    "Label": "## expert evidence",
+    "Label": "## Expert evidence",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -426,7 +426,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabelRes",
-    "Label": "## expert evidence",
+    "Label": "## Expert evidence",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
