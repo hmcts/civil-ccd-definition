@@ -196,7 +196,7 @@ module.exports = {
       'GET');
     return response_msg || {};
   },
-  
+
   bundleTriggerEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getBundleTriggerUrl(caseId);
@@ -228,5 +228,14 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     return response.case_details.state || {};
-  }
+  },
+
+  getHearingsPayload: async (user, caseId) => {
+    return restHelper.request(
+      `${config.url.civilService}/serviceHearingValues`, getRequestHeaders(tokens.userAuth), {caseReference: caseId, hearingId: 'HER123123123'}, 'POST')
+      .then(
+        async response =>
+          await response.json()
+      );
+  },
 };
