@@ -77,7 +77,7 @@ module.exports = class BrowserHelpers extends Helper {
     page.on('request', request => {
       const url = request.url();
       if (blocked_domains.some(domain => url.includes(domain))) {
-        request.abort();
+        return request.abort();
       } else {
         request.continue();
       }
