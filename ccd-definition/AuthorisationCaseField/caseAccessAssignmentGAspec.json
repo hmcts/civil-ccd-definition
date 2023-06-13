@@ -223,6 +223,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocument",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocStaff",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocClaimant",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocRespondentSol",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocRespondentSolTwo",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocStaff",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
