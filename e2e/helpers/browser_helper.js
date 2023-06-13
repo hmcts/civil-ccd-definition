@@ -76,11 +76,11 @@ module.exports = class BrowserHelpers extends Helper {
     await page.setRequestInterception(true);
     page.on('request', request => {
       const url = request.url();
+      if (request.isInterceptResolutionHandled()) return;
       if (blocked_domains.some(domain => url.includes(domain))) {
               return Promise.resolve().then(() => request.abort()).catch(e => {
                 console.warn('Error while aborting...', e);});
       } else {
-        if (request.interceptResolutionState().action === 'already-handled') return;
         request.continue();
       }
     });
