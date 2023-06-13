@@ -12,7 +12,7 @@ module.exports = {
   },
 
   async selectPersonalInjuryType() {
-    await I.blockDomain();
+
     I.waitForElement(this.fields.personalInjuryType.id);
     await I.runAccessibilityTest();
     await within(this.fields.personalInjuryType.id, () => {

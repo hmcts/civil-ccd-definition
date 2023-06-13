@@ -77,9 +77,8 @@ module.exports = class BrowserHelpers extends Helper {
     page.on('request', request => {
       const url = request.url();
       if (request.isInterceptResolutionHandled()) return;
-      if (blocked_domains.some(domain => url.includes(domain))) {
-              return Promise.resolve().then(() => request.abort()).catch(e => {
-                console.warn('Error while aborting...', e);});
+      if (requestURL.indexOf("google-analytics.com") > -1) {
+        request.abort();
       } else {
         request.continue();
       }

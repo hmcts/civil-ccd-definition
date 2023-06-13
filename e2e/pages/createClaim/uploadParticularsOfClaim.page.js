@@ -15,7 +15,7 @@ module.exports = {
   },
 
   async upload(file) {
-    await I.blockDomain();
+
     I.waitForElement(this.fields.servedDocumentFiles.options[0]);
     await I.runAccessibilityTest();
     await servedDocuments.upload(file, this.fields.servedDocumentFiles.options);

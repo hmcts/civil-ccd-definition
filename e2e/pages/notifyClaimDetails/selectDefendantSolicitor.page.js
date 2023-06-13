@@ -14,14 +14,14 @@ module.exports = {
 
   async selectSolicitorToNotify(solicitorToNotify = 'both') {
     // eslint-disable-next-line no-prototype-builtins
-    await I.blockDomain();
+
     await this.checkOptionValidity(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify);
     await this.inputResponse(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify);
     await I.clickContinue();
   },
 
   async inputResponse(responseField, responseType) {
-      await I.blockDomain();
+
       I.waitForElement(responseField.id);
       I.selectOption(responseField.id, responseField.options[responseType]);
   },
