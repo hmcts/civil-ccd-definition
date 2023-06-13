@@ -73,6 +73,7 @@ module.exports = class BrowserHelpers extends Helper {
     let helper = this.getHelper();
     let page = helper.page;
 
+    await page.setRequestInterception(true);
     page.on('request', request => {
       const url = request.url();
       if (blocked_domains.some(domain => url.includes(domain))) {
