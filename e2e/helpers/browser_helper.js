@@ -77,9 +77,11 @@ module.exports = class BrowserHelpers extends Helper {
     page.on('request', request => {
       const url = request.url();
       if (blocked_domains.some(domain => url.includes(domain))) {
-        return Promise.resolve().then(() => request.abort()).catch(e => {});
+              return Promise.resolve().then(() => request.abort()).catch(e => {
+                console.warn('Error while aborting...', e);});
       } else {
-        return Promise.resolve().then(() => request.continue()).catch(e => {});
+        return Promise.resolve().then(() => request.continue()).catch(e => {
+          console.warn('Error while continuing...', e);});
       }
     });
 
