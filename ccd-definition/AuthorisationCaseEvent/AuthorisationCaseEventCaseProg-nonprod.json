@@ -262,7 +262,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
