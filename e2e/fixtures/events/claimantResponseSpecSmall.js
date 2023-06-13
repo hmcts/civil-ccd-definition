@@ -68,7 +68,7 @@ module.exports = {
         HearingSupport: {
           applicant1DQHearingSupport: {
             supportRequirements: 'Yes',
-            supportRequirementsAdditional: 'Additional support reasons'
+            supportRequirementsAdditional: 'Test Inc: Language Interpreter'
           }
         },
         VulnerabilityQuestions: {
