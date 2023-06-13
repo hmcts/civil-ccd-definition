@@ -523,7 +523,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_SDO_ORDER_TO_LiP_DEFENDANT",
+    "CaseEventID": "SEND_SDO_ORDER_TO_LIP_DEFENDANT",
     "AccessControl": [
       {
         "UserRoles": [
