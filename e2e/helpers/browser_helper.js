@@ -80,8 +80,8 @@ module.exports = class BrowserHelpers extends Helper {
               return Promise.resolve().then(() => request.abort()).catch(e => {
                 console.warn('Error while aborting...', e);});
       } else {
-        return Promise.resolve().then(() => request.continue()).catch(e => {
-          console.warn('Error while continuing...', e);});
+        if (request.interceptResolutionState().action === "already-handled") return;
+        request.continue();
       }
     });
 
