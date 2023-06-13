@@ -351,12 +351,12 @@ module.exports = {
           applicantsPbaAccounts: {
               value: {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0088192'
+                label:'PBAFUNC12345'
               },
             list_items:[
               {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0088192'
+                label:'PBAFUNC12345'
               },
               {
                 code:'66b21c61-aed1-11ed-8aa3-494efce63912',
