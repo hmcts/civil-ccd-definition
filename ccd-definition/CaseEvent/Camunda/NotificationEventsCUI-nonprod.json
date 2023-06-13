@@ -131,7 +131,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SEND_SDO_ORDER_TO_LiP_DEFENDANT",
+    "ID": "SEND_SDO_ORDER_TO_LIP_DEFENDANT",
     "Name": "Email:Send to Defendant.",
     "Description": "Bulk Email Send to Defendant",
     "PreConditionState(s)": "*",
