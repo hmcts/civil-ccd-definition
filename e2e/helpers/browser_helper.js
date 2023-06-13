@@ -65,7 +65,7 @@ module.exports = class BrowserHelpers extends Helper {
     }
   }
 
-  async blockDomain() {
+  /*async blockDomain() {
     const blocked_domains = [
       'google-analytics.com',
       'googletagmanager.com',
@@ -77,12 +77,12 @@ module.exports = class BrowserHelpers extends Helper {
     page.on('request', request => {
       const url = request.url();
       if (request.isInterceptResolutionHandled()) return;
-      if (requestURL.indexOf("google-analytics.com") > -1) {
+      if (url.indexOf('google-analytics.com') > -1) {
         request.abort();
       } else {
         request.continue();
       }
     });
 
-  }
+  }*/
 };
