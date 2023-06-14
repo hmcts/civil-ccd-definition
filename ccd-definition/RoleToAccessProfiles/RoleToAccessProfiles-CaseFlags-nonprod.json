@@ -106,23 +106,5 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "Claimant",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "CLAIMANT",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "Defendant",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "DEFENDANT",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
   }
 ]
