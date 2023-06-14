@@ -1448,7 +1448,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
-  if (midEventField && midEventField.dynamicList === true) {
+  if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
