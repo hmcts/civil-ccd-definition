@@ -172,7 +172,7 @@ module.exports = {
     caseType: 'CIVIL',
   },
   iacLeadershipJudge: {
-    password: judgeDefaultPassword,
+    password: iacDefaultPassword,
     email: '330127EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL'
