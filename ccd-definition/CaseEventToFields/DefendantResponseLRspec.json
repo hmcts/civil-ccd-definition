@@ -1548,7 +1548,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing availability",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
@@ -1735,7 +1735,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimWitnesses",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1771,7 +1771,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
