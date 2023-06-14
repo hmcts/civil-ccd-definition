@@ -935,6 +935,8 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await I.waitForText('Summary');
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
       }, SIGNED_IN_SELECTOR);
 
