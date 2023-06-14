@@ -175,7 +175,7 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -255,7 +255,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -288,7 +288,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -324,12 +324,12 @@ module.exports = {
           applicantsPbaAccounts: {
               value: {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0088192'
+                label:'PBAFUNC12345'
               },
             list_items:[
               {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0088192'
+                label:'PBAFUNC12345'
               },
               {
                 code:'66b21c61-aed1-11ed-8aa3-494efce63912',
@@ -404,7 +404,7 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -423,7 +423,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 

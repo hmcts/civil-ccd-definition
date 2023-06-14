@@ -301,6 +301,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocument",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocStaff",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocClaimant",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocRespondentSol",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocRespondentSolTwo",
+    "CRUD": "R",
+    "UserRole": "caseworker-civil-staff"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"

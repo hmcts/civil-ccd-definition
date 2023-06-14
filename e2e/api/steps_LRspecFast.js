@@ -137,7 +137,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -203,7 +203,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
@@ -235,13 +235,13 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
   },
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -260,7 +260,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await(checkCaseFlagsEnabled()))) {
       return;
     }
 
