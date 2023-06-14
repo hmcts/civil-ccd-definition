@@ -26,6 +26,8 @@ set -eo pipefail
 ./bin/utils/ccd-add-role.sh "caseflags-admin"
 ./bin/utils/ccd-add-role.sh "caseflags-viewer"
 ./bin/utils/ccd-add-role.sh "caseworker-wa-task-configuration"
+./bin/utils/ccd-add-role.sh "CLAIMANT"
+./bin/utils/ccd-add-role.sh "DEFENDANT"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"
