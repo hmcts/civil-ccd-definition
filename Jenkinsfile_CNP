@@ -189,6 +189,9 @@ withPipeline(type, product, component) {
 
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED='false'
+    stage('Non prod end to end test') {
+      yarnBuilder.yarn('test:non-prod-e2e-ft')
+    }
   }
 
   afterAlways('functionalTest:preview') {
