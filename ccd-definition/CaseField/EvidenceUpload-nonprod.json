@@ -189,7 +189,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabelSmallClaim",
-    "Label": "## expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
+    "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -492,7 +492,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabelSmallClaimRes",
-    "Label": "## expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
+    "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
