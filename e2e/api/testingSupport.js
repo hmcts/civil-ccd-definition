@@ -137,10 +137,6 @@ module.exports =  {
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
-    if(toggle === 'hearing-and-listing-sdo'){
-      return false;
-    }
-
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
