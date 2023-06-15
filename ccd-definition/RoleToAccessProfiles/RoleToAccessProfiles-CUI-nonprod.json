@@ -1,20 +1,20 @@
 [
   {
-    "RoleName" : "Claimant",
+    "RoleName" : "[CLAIMANT]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "CLAIMANT",
+    "AccessProfiles": "CITIZEN-CLAIMANT-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   },
   {
-    "RoleName" : "Defendant",
+    "RoleName" : "[DEFENDANT]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "DEFENDANT",
+    "AccessProfiles": "CITIZEN-DEFENDANT-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   }
 ]
