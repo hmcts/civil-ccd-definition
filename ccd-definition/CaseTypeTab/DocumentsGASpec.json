@@ -214,5 +214,50 @@
     "CaseFieldID": "consentOrderDocument",
     "TabFieldDisplayOrder": 28,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDraftDocument",
+    "TabFieldDisplayOrder": 29,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDraftDocStaff",
+    "TabFieldDisplayOrder": 30,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDraftDocClaimant",
+    "TabFieldDisplayOrder": 31,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDraftDocRespondentSol",
+    "TabFieldDisplayOrder": 32,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "gaDraftDocRespondentSolTwo",
+    "TabFieldDisplayOrder": 33,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }
 ]

@@ -128,9 +128,9 @@ module.exports = {
       respondent1DQRequestedCourt: {
         responseCourtLocations: {
           list_items: [
-            listElement(config.liverpoolCourt)
+            listElement(config.defendantSelectedCourt)
           ],
-          value: listElement(config.liverpoolCourt)
+          value: listElement(config.defendantSelectedCourt)
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
