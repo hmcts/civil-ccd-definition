@@ -33,7 +33,7 @@ const checkHmcEnabled = async () => {
 };
 
 const checkCaseFlagsEnabled = async () => {
-  return false;
+  return checkFlagEnabled('case-flags');
 };
 
 module.exports =  {
