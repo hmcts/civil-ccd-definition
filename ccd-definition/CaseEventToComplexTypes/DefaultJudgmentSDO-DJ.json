@@ -547,7 +547,7 @@
     "ID":"TrialHearingTimeDJ",
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
-    "ListElementCode":"date1",
+    "ListElementCode":"date1Label",
     "FieldDisplayOrder":1,
     "DisplayContext":"OPTIONAL"
   },
@@ -555,8 +555,24 @@
     "ID":"TrialHearingTimeDJ",
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
-    "ListElementCode":"date2",
+    "ListElementCode":"date1",
     "FieldDisplayOrder":2,
+    "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialHearingTimeDJ",
+    "ListElementCode": "dateToToggle",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID":"TrialHearingTimeDJ",
+    "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID":"trialHearingTimeDJ",
+    "ListElementCode":"date2",
+    "FieldDisplayOrder":4,
     "DisplayContext":"OPTIONAL"
   },
   {
@@ -564,7 +580,7 @@
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
     "ListElementCode":"hearingTimeEstimate",
-    "FieldDisplayOrder":3,
+    "FieldDisplayOrder":5,
     "DisplayContext":"MANDATORY"
   },
   {
@@ -572,7 +588,7 @@
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
     "ListElementCode":"otherHours",
-    "FieldDisplayOrder":4,
+    "FieldDisplayOrder":6,
     "DisplayContext":"MANDATORY",
     "FieldShowCondition": "trialHearingTimeDJ.hearingTimeEstimate = \"OTHER\""
   },
@@ -581,7 +597,7 @@
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
     "ListElementCode":"otherMinutes",
-    "FieldDisplayOrder":5,
+    "FieldDisplayOrder":7,
     "DisplayContext":"MANDATORY",
     "FieldShowCondition": "trialHearingTimeDJ.hearingTimeEstimate = \"OTHER\""
   },
@@ -590,7 +606,7 @@
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
     "ListElementCode":"helpText1",
-    "FieldDisplayOrder":6,
+    "FieldDisplayOrder":8,
     "DisplayContext":"MANDATORY"
   },
   {
@@ -598,7 +614,7 @@
     "CaseEventID":"STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID":"trialHearingTimeDJ",
     "ListElementCode":"helpText2",
-    "FieldDisplayOrder":7,
+    "FieldDisplayOrder":9,
     "DisplayContext":"MANDATORY"
   },
   {
