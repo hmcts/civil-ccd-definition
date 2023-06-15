@@ -1453,7 +1453,7 @@
     "ID": "FastTrackHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "dateToLabel",
+    "ListElementCode": "dateToToggle",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -1462,6 +1462,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "dateTo",
+    "FieldShowCondition": "fastTrackHearingTime.dateToToggle=\"SHOW\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
