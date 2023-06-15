@@ -8,6 +8,34 @@ let incidentMessage;
 const MAX_RETRIES = 60;
 const RETRY_TIMEOUT_MS = 5000;
 
+const checkFlagEnabled = async (flag) => {
+  const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+  return await restHelper.request(
+    `${config.url.civilService}/testing-support/feature-toggle/${flag}`,
+    {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`,
+    }, null, 'GET')
+    .then(async response =>  {
+        if (response.status === 200) {
+          const json = await response.json();
+          return json.toggleEnabled;
+        } else {
+          throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+        }
+      }
+    );
+};
+
+const checkHmcEnabled = async () => {
+  return checkFlagEnabled('hmc');
+};
+
+const checkCaseFlagsEnabled = async () => {
+  return false;
+};
+
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -113,10 +141,6 @@ module.exports =  {
       return false;
     }
 
-    if(toggle === 'case-flags'){
-      return false;
-    }
-
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
@@ -219,10 +243,6 @@ module.exports =  {
       );
   },
 
-  checkCaseFlagsEnabled: () => {
-    return false;
-  },
-
   updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
 
@@ -246,6 +266,12 @@ module.exports =  {
       'POST');
 
     return await response.json();
-  }
-
+  },
+  checkCaseFlagsAndHmcEnabled: async () => {
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    const hmcEnabled = await checkHmcEnabled();
+    return caseFlagsEnabled && hmcEnabled;
+  },
+  checkHmcEnabled,
+  checkCaseFlagsEnabled,
 };
