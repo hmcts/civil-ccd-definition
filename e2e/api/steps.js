@@ -546,7 +546,7 @@ module.exports = {
       eventData['acknowledgeClaims'][mpScenario] : eventData['acknowledgeClaims'][mpScenario][solicitor];
 
     //Todo: Remove after caseflags release
-    removeFlagsFieldsFromFixture(fixture);
+    await removeFlagsFieldsFromFixture(fixture);
 
     await validateEventPages(fixture);
 
