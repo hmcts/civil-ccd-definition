@@ -823,7 +823,6 @@
       }
     ]
   },
-  ,
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SERVICE_REQUEST_CLAIM",
