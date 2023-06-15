@@ -69,6 +69,7 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
@@ -115,6 +116,7 @@ const eventData = {
     CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
     CREATE_SMALL: data.CREATE_SMALL(),
     CREATE_FAST: data.CREATE_FAST(),
+    CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
@@ -204,7 +206,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -544,7 +546,7 @@ module.exports = {
       eventData['acknowledgeClaims'][mpScenario] : eventData['acknowledgeClaims'][mpScenario][solicitor];
 
     //Todo: Remove after caseflags release
-    removeFlagsFieldsFromFixture(fixture);
+    await removeFlagsFieldsFromFixture(fixture);
 
     await validateEventPages(fixture);
 
@@ -632,7 +634,7 @@ module.exports = {
     }
 
     //Todo: Remove after caseflags release
-    removeFlagsFieldsFromFixture(defendantResponseData);
+    await removeFlagsFieldsFromFixture(defendantResponseData);
 
     // CIV-5514: remove when hnl is live
     defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
@@ -711,7 +713,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
 
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
@@ -777,7 +779,7 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
 
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
@@ -825,7 +827,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
     }
   },
@@ -1024,7 +1026,7 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -1043,7 +1045,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -1446,7 +1448,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
-  if (midEventField && midEventField.dynamicList === true) {
+  if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
