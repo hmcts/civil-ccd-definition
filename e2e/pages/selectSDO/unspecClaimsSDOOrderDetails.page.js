@@ -8,7 +8,7 @@ module.exports = {
       id: '#smallClaimsHearing_time'
     },
     smallClaimsWitnessStatement : {
-      checkbox: "#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW",
+      checkbox: '#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW',
        claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
        defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
     },
