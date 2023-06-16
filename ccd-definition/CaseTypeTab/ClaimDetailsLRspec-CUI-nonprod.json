@@ -1,0 +1,71 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingManualDetermination",
+    "TabFieldDisplayOrder": 78
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingDefendantProposedPlan",
+    "TabFieldDisplayOrder": 79
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired",
+    "TabFieldDisplayOrder": 80
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "TabFieldDisplayOrder": 81
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1RepaymentPlan",
+    "TabFieldDisplayOrder": 82
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingDefendantFinancialDetails",
+    "TabFieldDisplayOrder": 83
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingClaimantProposedPlan",
+    "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
+    "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
+    "TabFieldDisplayOrder": 85
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
+    "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
+    "TabFieldDisplayOrder": 86
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
+    "TabFieldDisplayOrder": 87
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
+    "TabFieldDisplayOrder": 88
+  }
+]

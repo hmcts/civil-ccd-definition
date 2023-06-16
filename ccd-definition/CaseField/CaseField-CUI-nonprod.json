@@ -20,5 +20,33 @@
     "Label": " ",
     "FieldType": "TranslatedDocument",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingManualDetermination",
+    "Label": "## Manual Determination",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingDefendantProposedPlan",
+    "Label": "Defendant Proposed Plan",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingDefendantFinancialDetails",
+    "Label": "Defendant Financial Details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "headingClaimantProposedPlan",
+    "Label": "Claimant Proposed Plan",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
