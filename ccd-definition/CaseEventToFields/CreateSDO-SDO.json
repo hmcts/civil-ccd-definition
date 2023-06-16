@@ -1068,7 +1068,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"DrawDirectionsOrderSmallClaimsAdditionalDirectionsCreditHire\" OR drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaims CONTAINS \"smallClaimCreditHire\""
+    "FieldShowCondition": "drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"DrawDirectionsOrderSmallClaimsAdditionalDirectionsCreditHire\" OR smallClaims CONTAINS \"smallClaimCreditHire\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1080,7 +1080,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"Yes\" AND drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"DrawDirectionsOrderSmallClaimsAdditionalDirectionsTrafficAccident\" OR drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaims CONTAINS \"smallClaimRoadTrafficAccident\""
+    "FieldShowCondition": "drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"DrawDirectionsOrderSmallClaimsAdditionalDirectionsTrafficAccident\" OR smallClaims CONTAINS \"smallClaimRoadTrafficAccident\""
   },
   {
     "CaseTypeID": "CIVIL",
