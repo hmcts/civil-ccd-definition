@@ -200,7 +200,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user) => {
+  claimantResponse: async (user, judicialReferral = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -226,7 +226,7 @@ module.exports = {
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
     const hearingsEnabled = await checkHmcEnabled();
 
-    if (caseFlagsEnabled && hearingsEnabled) {
+    if (caseFlagsEnabled && hearingsEnabled && judicialReferral) {
       await assertSubmittedEvent('JUDICIAL_REFERRAL');
     }
 
