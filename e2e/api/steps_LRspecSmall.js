@@ -18,7 +18,7 @@ const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
 const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim,
   replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim
 } = require('../helpers/hnlFeatureHelper');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled, checkHmcEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
@@ -223,11 +223,15 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    const hearingsEnabled = await checkHmcEnabled();
+
+    if (caseFlagsEnabled && hearingsEnabled) {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    }
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled && hnlEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
