@@ -8,6 +8,7 @@ module.exports = {
       id: '#smallClaimsHearing_time'
     },
     smallClaimsWitnessStatement : {
+      checkbox: "#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW",
        claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
        defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
     },
@@ -55,6 +56,7 @@ module.exports = {
     await I.runAccessibilityTest();
     if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
       await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
+      await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
       await date.enterDate(this.fields.orderDetailsHearingTime.hearingDateFromId, 40);
