@@ -8,17 +8,13 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {element} = require('../api/dataHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHearings.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
-const {removeHNLFieldsFromClaimData, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim,
-  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim
-} = require('../helpers/hnlFeatureHelper');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled, checkHmcEnabled} = require('./testingSupport');
+const {PBAv3} = require('../fixtures/featureKeys');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkHmcEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
@@ -85,12 +81,6 @@ module.exports = {
       createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
     } else {
       createClaimData = data.CREATE_CLAIM_HEARINGS(scenario, pbaV3);
-    }
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromClaimData(createClaimData);
     }
     //==============================================================
 
@@ -168,17 +158,6 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
     }
 
-    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
-
-    if ((['preview', 'demo'].includes(config.runningEnv)) && response == 'FULL_DEFENCE' && hnlSdoEnabled) {
-      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
-    }
-    if(!hnlSdoEnabled) {
-      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
-        defendantResponseData, solicitor);
-    }
-
     caseData = returnedCaseData;
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -193,7 +172,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlSdoEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
 
@@ -212,13 +191,6 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE();
 
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim(
-        claimantResponseData);
-    }
-
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
@@ -232,7 +204,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if (caseFlagsEnabled && hnlEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
   },
@@ -465,32 +437,4 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const adjustDataForHnl = (inputData, response) => {
-  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
-  if (!response.startsWith('FULL_DEFENCE')) {
-    return inputData;
-  }
-  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
-  return {
-    ...inputData,
-    userInput: {
-      ...inputData.userInput,
-      SmallClaimWitnesses: {
-        [`respondent${respondentNum}DQWitnesses`]: {
-          witnessesToAppear: 'Yes',
-          details: [
-            element({
-              firstName: 'Witness',
-              lastName: 'One',
-              emailAddress: 'witness@email.com',
-              phoneNumber: '07116778998',
-              reasonForWitness: 'None'
-            })
-          ]
-        }
-      }
-    }
-  };
 };

@@ -137,10 +137,6 @@ module.exports =  {
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
-    if(toggle === 'hearing-and-listing-sdo'){
-      return false;
-    }
-
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
@@ -176,31 +172,6 @@ module.exports =  {
              }
            }
          );
-  },
-
-  checkHnlToggleEnabled: async () => {
-    return false;
-    // const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    //
-    // return await restHelper.request(
-    //   `${config.url.civilService}/testing-support/feature-toggle/hearing-and-listing-sdo`,
-    //   {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${authToken}`,
-    //   }, null, 'GET')
-    //   .then(async response =>  {
-    //       if (response.status === 200) {
-    //         const json = await response.json();
-    //         return json.toggleEnabled;
-    //       } else {
-    //         throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-    //       }
-    //     }
-    //   );
-  },
-
-  checkHnlLegalRepToggleEnabled: async () => {
-    return true;
   },
 
   checkCertificateOfServiceIsEnabled: async () => {
