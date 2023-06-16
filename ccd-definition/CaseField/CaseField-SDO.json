@@ -57,7 +57,7 @@
     "ID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DrawDirectionsOrderSmallClaimsAdditionalDirections",
+    "FieldTypeParameter": "SmallTrack",
     "SecurityClassification": "Public"
   },
   {

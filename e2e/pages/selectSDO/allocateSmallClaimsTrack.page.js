@@ -11,8 +11,8 @@ module.exports = {
     },
     drawDirectionsOrderSmallClaimsAdditionalDirections: {
       id: '#drawDirectionsOrderSmallClaimsAdditionalDirections',
-      creditHire: '#drawDirectionsOrderSmallClaimsAdditionalDirections-DrawDirectionsOrderSmallClaimsAdditionalDirectionsCreditHire',
-      roadTrafficAccident: '#drawDirectionsOrderSmallClaimsAdditionalDirections-DrawDirectionsOrderSmallClaimsAdditionalDirectionsTrafficAccident'
+      creditHire: '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimCreditHire',
+      roadTrafficAccident: '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimRoadTrafficAccident'
     }
   },
 
