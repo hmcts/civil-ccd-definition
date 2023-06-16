@@ -9,17 +9,15 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
-const {element} = require('../api/dataHelper');
+const {PBAv3} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {fetchCaseDetails} = require('./apiRequest');
-const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -142,12 +140,6 @@ module.exports = {
     let createClaimData  = {};
 
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromClaimData(createClaimData);
-    }
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -230,18 +222,6 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
-    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
-
-    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
-    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
-      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
-    }
-    if(!hnlSdoEnabled) {
-      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
-        defendantResponseData, solicitor);
-    }
-
     caseData = returnedCaseData;
 
     console.log(`${response} ${scenario}`);
@@ -276,7 +256,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlSdoEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
     deleteCaseFields('respondent1Copy');
@@ -294,13 +274,6 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim(
-        claimantResponseData);
-    }
-
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
@@ -316,7 +289,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
   },
@@ -693,39 +666,4 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const adjustDataForHnl = (inputData, response) => {
-  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
-  if (!response.startsWith('FULL_DEFENCE')) {
-    return inputData;
-  }
-
-  let fullDefence1v1 = false;
-  if(response === 'FULL_DEFENCE' || response == 'FULL_DEFENCE_AFTER_PAYMENT'){
-    fullDefence1v1 = true;
-  }
-
-  const respondentNum = response == fullDefence1v1 ? '1' : '2';
-
-  return {
-    ...inputData,
-    userInput: {
-      ...inputData.userInput,
-      SmallClaimWitnesses: {
-        [`respondent${respondentNum}DQWitnesses`]: {
-          witnessesToAppear: 'Yes',
-          details: [
-            element({
-              firstName: 'Witness',
-              lastName: 'One',
-              emailAddress: 'witness@email.com',
-              phoneNumber: '07116778998',
-              reasonForWitness: 'None'
-            })
-          ]
-        }
-      }
-    }
-  };
 };
