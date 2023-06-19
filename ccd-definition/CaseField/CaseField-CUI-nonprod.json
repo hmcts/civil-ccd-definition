@@ -16,6 +16,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1LiPFinancialDetails",
+    "Label": " ",
+    "FieldType": "FinancialDetailsLiP",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "translatedDocument",
     "Label": " ",
     "FieldType": "TranslatedDocument",

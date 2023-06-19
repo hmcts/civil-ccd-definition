@@ -38,34 +38,166 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "headingClaimantProposedPlan",
-    "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
+    "CaseFieldID": "respondent1BankAccountList",
     "TabFieldDisplayOrder": 84
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
+    "CaseFieldID": "disabilityPremiumPayments",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "severeDisabilityPremiumPayments",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQHomeDetails",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1PartnerAndDependent",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1LiPFinancialDetails",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "defenceAdmitPartEmploymentTypeRequired",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspec",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspec",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "responseClaimAdmitPartEmployer",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "specDefendant1SelfEmploymentDetails",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1CourtOrderPaymentOption",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1CourtOrderDetails",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "specDefendant1Debts",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1LoanCreditOption",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1LoanCreditDetails",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQCarerAllowanceCredit",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQCarerAllowanceCreditFullAdmission",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQRecurringIncomeFA",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQRecurringIncome",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQRecurringExpensesFA",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQRecurringExpenses",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingClaimantProposedPlan",
     "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
     "TabFieldDisplayOrder": 85
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
+    "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
     "TabFieldDisplayOrder": 86
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
+    "CaseFieldID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
+    "FieldShowCondition": "applicant1RepaymentOptionForDefendantSpec = \"*\"",
     "TabFieldDisplayOrder": 87
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
+    "CaseFieldID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
     "TabFieldDisplayOrder": 88
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
+    "TabFieldDisplayOrder": 89
   }
 ]

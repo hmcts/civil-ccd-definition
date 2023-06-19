@@ -52,6 +52,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LiPFinancialDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "translatedDocument",
     "AccessControl": [
       {
