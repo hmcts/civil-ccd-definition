@@ -17,14 +17,17 @@ const respondent1WithPartyName = {
   partyTypeDisplayValue: 'Individual',
 };
 const applicant1 = {
-  type: 'COMPANY',
-  companyName: 'Test Inc',
+  type: 'INDIVIDUAL',
+  individualFirstName: 'Test',
+  individualLastName: 'Inc',
+  partyEmail: 'testinc@example.com',
+  partyPhone: '07898878902',
   primaryAddress: buildAddress('applicant')
 };
 const applicant1WithPartyName = {
   ...applicant1,
   partyName: 'Test Inc',
-  partyTypeDisplayValue: 'Company',
+  partyTypeDisplayValue: 'Individual',
 };
 
 const isPBAv3 = (pbaV3) => {
@@ -32,15 +35,15 @@ const isPBAv3 = (pbaV3) => {
 };
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
-const claimAmount = '85000';
+const claimAmount = '50000';
 
-const validPba = listElement('PBAFUNC12345');
+const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
 module.exports = {
 
   createClaim: (mpScenario, pbaV3) => {
-    const userData = {
+    return {
       userInput: {
         References: {
           CaseAccessCategory: 'SPEC_CLAIM',
@@ -210,116 +213,6 @@ module.exports = {
 
       }
     };
-
-    switch (mpScenario) {
-      case 'ONE_V_ONE':
-        userData.userInput = {
-          ...userData.userInput
-        };
-        break;
-      case 'ONE_V_TWO':
-        userData.userInput = {
-          ...userData.userInput,
-          AddAnotherDefendant: {
-            addRespondent2: 'Yes'
-          },
-
-          SecondDefendant: {
-            respondent2: {
-              type: 'ORGANISATION',
-              organisationName: 'Second Defendant',
-              partyEmail: 'seconddefendant@example.com',
-              primaryAddress: {
-                AddressLine1: '123 Second Close',
-                PostTown: 'Second Town',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-
-          LegalRepresentationRespondent2: {
-            specRespondent2Represented: 'Yes',
-            respondent2: {
-              type: 'ORGANISATION',
-              organisationName: 'Second Defendant',
-              partyName: 'Second Defendant',
-              primaryAddress: {
-                AddressLine1: '123 Second Close',
-                PostTown: 'Second Town',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
-          },
-
-          SameLegalRepresentative: {
-            respondent2SameLegalRepresentative: 'No'
-          },
-
-          SecondDefendantSolicitorOrganisation: {
-            respondent2OrgRegistered: 'Yes',
-            respondent2OrganisationPolicy: {
-              OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
-              Organisation: {
-                OrganisationID: config.defendant2SolicitorOrgId,
-                OrganisationName: 'Civil - Organisation 2'
-              }
-            }
-          },
-
-        };
-
-        userData.midEventData = {
-          ...userData.midEventData,
-
-          LegalRepresentationRespondent2: {
-            specRespondent2Represented: 'Yes',
-            respondent2: {
-              type: 'ORGANISATION',
-              organisationName: 'Second Defendant',
-              partyName: 'Second Defendant',
-              partyTypeDisplayValue: 'Organisation',
-              primaryAddress: {
-                AddressLine1: '123 Second Close',
-                PostTown: 'Second Town',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-        };
-        break;
-      case 'TWO_V_ONE':
-        userData.userInput = {
-          ...userData.userInput,
-          AddAnotherClaimant: {
-            addApplicant2: 'Yes'
-          },
-
-          SecondClaimant: {
-            applicant2: {
-              type: 'ORGANISATION',
-              organisationName: 'Claim 2',
-              partyName: 'Claim 2',
-              partyEmail: 'secondclaimant@example.com',
-              partyTypeDisplayValue: 'Organisation',
-              primaryAddress: {
-                AddressLine1: '43 Montgomery Close',
-                PostTown: 'Norwich',
-                PostCode: 'NR5 9LL'
-              }
-            }
-          },
-          SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
-          }
-        };
-        break;
-    }
-
-    return userData;
   },
   serviceUpdateDto: (caseId, paymentStatus) => {
     return {

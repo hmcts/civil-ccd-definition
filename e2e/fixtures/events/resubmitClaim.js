@@ -1,6 +1,6 @@
 const { listElement } = require('../../api/dataHelper');
 
-const selectedPBA = listElement('PBA0088192');
+const selectedPBA = listElement('PBAFUNC12345');
 module.exports = {
   valid: {
     ResubmitClaim: {
