@@ -15,9 +15,9 @@ if [ ${environment} == preview ]; then
    #for testing prod WTPP config
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*CUI.json"
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*CUI-nonprod.json,*CUI.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*CUI-nonprod.json,*CUI.json"
 elif [ ${environment} == local ]; then
-  # upload doesn't currently work with this command due to SDO and SDO-HNL files
+  # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*CUI.json"
