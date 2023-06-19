@@ -11,13 +11,9 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {removeHNLFieldsFromClaimData,
-  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim,
-  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim
-} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -119,12 +115,6 @@ module.exports = {
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromClaimData(createClaimData);
-    }
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -193,14 +183,6 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim(
-        defendantResponseData, solicitor);
-    }
-
     caseData = returnedCaseData;
 
     console.log(`${response} ${scenario}`);
@@ -222,7 +204,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
 
@@ -241,13 +223,6 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim(
-        claimantResponseData);
-    }
-
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
@@ -261,7 +236,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
   },
