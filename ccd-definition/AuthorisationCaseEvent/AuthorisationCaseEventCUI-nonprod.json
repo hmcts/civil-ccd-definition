@@ -575,6 +575,7 @@
       },
       {
         "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
