@@ -33,6 +33,13 @@
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "date2Label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
     "ListElementCode": "date2",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -53,6 +60,13 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingWitnessOfFact",
+    "ListElementCode": "date3Label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {

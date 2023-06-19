@@ -741,6 +741,51 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocument",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocStaff",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocClaimant",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocRespondentSol",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocRespondentSolTwo",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "consentOrderDocument",
     "Label": "Consent order document",
     "FieldType": "Collection",
