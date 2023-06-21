@@ -16,6 +16,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"

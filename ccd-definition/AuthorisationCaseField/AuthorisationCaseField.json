@@ -2087,6 +2087,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2162,6 +2163,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2235,6 +2237,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2296,6 +2299,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -2616,6 +2620,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -2638,6 +2643,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -2652,6 +2658,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2673,6 +2680,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2694,6 +2702,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2716,6 +2725,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2814,6 +2824,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2835,6 +2846,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2856,6 +2868,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2879,6 +2892,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2902,6 +2916,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2925,6 +2940,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2949,6 +2965,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2970,7 +2987,8 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2991,6 +3009,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3030,7 +3049,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3051,6 +3071,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3072,6 +3093,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3094,6 +3116,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3135,6 +3158,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3203,6 +3227,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3245,6 +3270,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3286,6 +3312,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3308,6 +3335,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile",
           "legal-adviser"
@@ -3332,6 +3360,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile",
           "legal-adviser"
@@ -3356,6 +3385,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3388,6 +3418,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3410,6 +3441,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3432,6 +3464,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3527,6 +3560,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3573,6 +3607,7 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "judge-profile",
           "legal-adviser"
         ],
@@ -4659,6 +4694,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil",
@@ -4685,6 +4721,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
@@ -4710,6 +4747,7 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-systemupdate"
         ],
@@ -4735,6 +4773,7 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-systemupdate"
         ],

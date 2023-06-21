@@ -865,7 +865,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -901,7 +902,8 @@
       },
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -913,7 +915,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -949,7 +952,8 @@
       },
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -962,7 +966,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -992,7 +997,8 @@
       },
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -1052,7 +1058,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1088,7 +1095,8 @@
       },
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -1773,7 +1781,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1793,7 +1802,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1814,7 +1824,8 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1833,7 +1844,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "_Comment": "need both because 1v2 same sol only has respondent solicitor 1 role",
         "CRUD": "CRU"
@@ -1854,7 +1866,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1874,7 +1887,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1894,7 +1908,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -1907,7 +1922,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1927,7 +1943,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1947,7 +1964,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1967,7 +1985,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1987,7 +2006,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2007,7 +2027,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2027,7 +2048,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2047,7 +2069,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2067,7 +2090,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2087,7 +2111,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2107,7 +2132,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2127,7 +2153,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2147,7 +2174,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2167,7 +2195,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2187,7 +2216,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2207,7 +2237,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2227,7 +2258,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2247,7 +2279,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2267,7 +2300,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2287,7 +2321,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2307,7 +2342,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2327,7 +2363,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2347,7 +2384,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2366,7 +2404,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2386,7 +2425,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2406,7 +2446,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2425,7 +2466,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2445,7 +2487,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2465,7 +2508,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2485,7 +2529,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2505,7 +2550,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2526,7 +2572,8 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2545,7 +2592,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2565,7 +2613,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2585,7 +2634,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2605,7 +2655,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2625,7 +2676,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2646,7 +2698,8 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2665,7 +2718,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2686,7 +2740,8 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2705,7 +2760,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2725,7 +2781,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2745,7 +2802,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2764,7 +2822,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2783,7 +2842,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2802,7 +2862,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2821,7 +2882,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2840,7 +2902,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2859,7 +2922,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2878,7 +2942,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2897,7 +2962,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2916,7 +2982,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -2935,7 +3002,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2955,7 +3023,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2975,7 +3044,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2995,7 +3065,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3015,7 +3086,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3035,7 +3107,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -3054,7 +3127,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -3073,7 +3147,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3092,7 +3167,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3111,7 +3187,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3130,7 +3207,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3149,7 +3227,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3168,7 +3247,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3187,7 +3267,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3206,7 +3287,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3225,7 +3307,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3244,7 +3327,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3263,7 +3347,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3282,7 +3367,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3301,7 +3387,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3320,7 +3407,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3339,6 +3427,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3359,6 +3448,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3379,6 +3469,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3399,6 +3490,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3419,6 +3511,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3438,6 +3531,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3457,6 +3551,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3476,6 +3571,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3496,6 +3592,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3516,6 +3613,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3536,6 +3634,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3556,6 +3655,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3576,6 +3676,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3596,6 +3697,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3628,6 +3730,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3648,6 +3751,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3668,6 +3772,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3688,6 +3793,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3708,6 +3814,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3747,6 +3854,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3776,6 +3884,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3798,6 +3907,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3818,6 +3928,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3840,6 +3951,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3853,6 +3965,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3873,6 +3986,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3900,6 +4014,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3920,6 +4035,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -3933,6 +4049,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3953,6 +4070,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3973,6 +4091,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -3993,6 +4112,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4013,6 +4133,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4033,6 +4154,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4053,6 +4175,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4073,6 +4196,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4093,6 +4217,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4113,6 +4238,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4133,6 +4259,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4153,6 +4280,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4173,6 +4301,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4193,6 +4322,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4213,6 +4343,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRUD"
@@ -4232,6 +4363,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4252,6 +4384,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4272,6 +4405,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4292,6 +4426,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4312,6 +4447,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4332,6 +4468,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4352,6 +4489,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4372,6 +4510,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4391,8 +4530,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+           "RES-SOL-ONE-SPEC-PROFILE",
+           "CITIZEN-DEFENDANT-PROFILE",
+           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -4412,6 +4552,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4432,6 +4573,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4452,6 +4594,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4472,6 +4615,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4492,6 +4636,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4512,6 +4657,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4532,6 +4678,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4552,6 +4699,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4572,6 +4720,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4592,6 +4741,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4612,6 +4762,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4632,6 +4783,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4652,6 +4804,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4672,6 +4825,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4692,6 +4846,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4712,6 +4867,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4732,6 +4888,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4752,6 +4909,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4778,7 +4936,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -4797,7 +4956,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -4811,6 +4971,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRUD"
@@ -4825,6 +4986,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRUD"
@@ -4839,6 +5001,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRUD"
@@ -4852,6 +5015,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -4866,6 +5030,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4886,6 +5051,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4908,6 +5074,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -4938,6 +5105,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -4991,6 +5159,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -5012,6 +5181,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -5033,6 +5203,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -5062,6 +5233,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -5141,6 +5313,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -5154,6 +5327,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -5174,6 +5348,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -5221,6 +5396,7 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
@@ -5242,6 +5418,7 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"

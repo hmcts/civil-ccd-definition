@@ -85,7 +85,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -142,7 +143,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -199,7 +201,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -242,7 +245,8 @@
       "RES-SOL-TWO-SPEC-PROFILE",
       "judge-profile",
       "hearing-schedule-access",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   }
