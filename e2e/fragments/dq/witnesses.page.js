@@ -1,5 +1,4 @@
 const {I} = inject();
-const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -38,13 +37,7 @@ module.exports = {
     await within(this.fields(party).witnessesToAppear.id, () => {
       I.click(this.fields(party).witnessesToAppear.options.yes);
     });
-
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!isHNLEnabled) {
-      await this.addWitnessOldFields(party);
-    } else {
-      await this.addWitness(party);
-    }
+    await this.addWitness(party);
     await I.clickContinue();
   },
   async addWitness(party) {
@@ -55,11 +48,5 @@ module.exports = {
     I.fillField(this.fields(party).witnessDetails.element.emailAddress, 'johnsmith@email.com');
     I.fillField(this.fields(party).witnessDetails.element.phoneNumber, '07821016453');
     I.fillField(this.fields(party).witnessDetails.element.reasonForWitness, 'Reason for witness');
-  },
-  async addWitnessOldFields(party) {
-    await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields(party).witnessDetails_oldFields.element.name);
-    I.fillField(this.fields(party).witnessDetails_oldFields.element.name, 'John Smith');
-    I.fillField(this.fields(party).witnessDetails_oldFields.element.reasonForWitness, 'Reason for witness');
   },
 };
