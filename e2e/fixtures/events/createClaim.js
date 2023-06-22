@@ -67,8 +67,8 @@ const applicant1LitigationFriend = {
   primaryAddress: buildAddress('litigant friend')
 };
 
-let selectedPba = listElement('PBA0088192');
-const validPba = listElement('PBA0088192');
+let selectedPba = listElement('PBAFUNC12345');
+const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
 const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
