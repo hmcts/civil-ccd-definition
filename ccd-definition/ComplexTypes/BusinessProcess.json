@@ -31,5 +31,13 @@
     "ElementLabel": "Camunda event name used to trigger business process by sending message",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "BusinessProcess",
+    "ListElementCode": "readyOn",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date Business process Ready",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "camundaEvent = \"DO_NOT_SHOW\""
   }
 ]
