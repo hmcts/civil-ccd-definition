@@ -11,10 +11,6 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkToggleEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
-const {removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
-const {HEARING_AND_LISTING} = require('../fixtures/featureKeys');
-const {element} = require('../api/dataHelper');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends} = require('./dataHelper');
 
@@ -74,12 +70,6 @@ module.exports = {
     let createClaimData  = {};
 
     createClaimData = data.CREATE_CLAIM(scenario);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromClaimData(createClaimData);
-    }
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -111,13 +101,6 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
-
-    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
-
-    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
-    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
-      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
-    }
 
     caseData = returnedCaseData;
 
@@ -364,33 +347,5 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const adjustDataForHnl = (inputData, response) => {
-  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
-  if (!response.startsWith('FULL_DEFENCE')) {
-    return inputData;
-  }
-  const respondentNum = response == 'FULL_DEFENCE' ? '1' : '2';
-  return {
-    ...inputData,
-    userInput: {
-      ...inputData.userInput,
-      SmallClaimWitnesses: {
-        [`respondent${respondentNum}DQWitnesses`]: {
-          witnessesToAppear: 'Yes',
-          details: [
-            element({
-              firstName: 'Witness',
-              lastName: 'One',
-              emailAddress: 'witness@email.com',
-              phoneNumber: '07116778998',
-              reasonForWitness: 'None'
-            })
-          ]
-        }
-      }
-    }
-  };
 };
 

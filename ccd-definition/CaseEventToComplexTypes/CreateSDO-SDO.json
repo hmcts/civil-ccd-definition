@@ -780,34 +780,42 @@
     "ID": "SmallClaimsWitnessStatement",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsWitnessStatement",
-    "ListElementCode": "input2",
+    "ListElementCode": "smallClaimsNumberOfWitnessesToggle",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (claimant), e.g. 4"
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsWitnessStatement",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "EventHintText": "Limit number of witnesses (claimant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "input3",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "EventHintText": "Number of witnesses (defendant), e.g. 4 "
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "EventHintText": "Limit number of witnesses (defendant), e.g. 4"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "input4",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "text",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
@@ -1453,7 +1461,7 @@
     "ID": "FastTrackHearingTime",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "dateToLabel",
+    "ListElementCode": "dateToToggle",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -1462,6 +1470,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "dateTo",
+    "FieldShowCondition": "fastTrackHearingTime.dateToToggle=\"SHOW\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
