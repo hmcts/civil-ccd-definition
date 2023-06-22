@@ -59,6 +59,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSRespondentDetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -66,6 +72,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
@@ -390,6 +408,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant1AddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant2AddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },

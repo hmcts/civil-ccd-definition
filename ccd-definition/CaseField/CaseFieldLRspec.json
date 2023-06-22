@@ -425,6 +425,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2CorrespondenceAddressdetails",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondentDetailLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Confirm name and address</h2>",
     "FieldType": "Label",
@@ -446,6 +453,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant1Address",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant2Address",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondent2HomeAddressDetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
@@ -457,6 +480,22 @@
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant1AddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant2AddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
