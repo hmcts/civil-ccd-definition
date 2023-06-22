@@ -571,14 +571,17 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil",
-          "caseworker-civil-solicitor",
-          "judge-profile",
-          "legal-adviser",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   }
