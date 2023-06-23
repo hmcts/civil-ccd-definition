@@ -90,9 +90,6 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
-    if (['demo'].includes(config.runningEnv)) {
-      await api.triggerBundle(config.systemupdate);
-    }
   }
 });
 
@@ -182,9 +179,6 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
-    if (['demo'].includes(config.runningEnv)) {
-      await api.triggerBundle(config.systemupdate);
-    }
   } else if (['aat'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     if (config.runWAApiTest) {
@@ -216,9 +210,6 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
-    if (['demo'].includes(config.runningEnv)) {
-      await api.triggerBundle(config.systemupdate);
-    }
   } else if (['aat'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
     if (config.runWAApiTest) {

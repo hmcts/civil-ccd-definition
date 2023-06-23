@@ -15,6 +15,13 @@
   },
   {
     "ID": "DisposalHearingQuestionsToExperts",
+    "ListElementCode": "dateLabel",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingQuestionsToExperts",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",

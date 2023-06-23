@@ -1,6 +1,11 @@
 const apiRequest = require('./apiRequest');
 const {element} = require('./dataHelper');
-const {PARTY_FLAGS} = require('../fixtures/caseFlags');
+const {
+  PARTY_FLAGS, SUPPORT_WORKER_FLAG,
+  LANGUAGE_INTERPRETER_FLAG,
+  WHEELCHAIR_ACCESS_FLAG, DETAINED_INDIVIDUAL_FLAG,
+  DISRUPTIVE_INDIVIDUAL
+} = require('../fixtures/caseFlags');
 const chai = require('chai');
 const {expect} = chai;
 
@@ -27,6 +32,26 @@ const getPartyFlags = () => {
   return Object.keys(PARTY_FLAGS).map(key => PARTY_FLAGS[key]);
 };
 
+const getLanguageInterpreterFlag = () => {
+  return Object.keys(LANGUAGE_INTERPRETER_FLAG).map(key => LANGUAGE_INTERPRETER_FLAG[key])[0];
+};
+
+const getRAWheelchairFlag = () => {
+  return Object.keys(WHEELCHAIR_ACCESS_FLAG).map(key => WHEELCHAIR_ACCESS_FLAG[key])[0];
+};
+
+const getSupportWorkerFlag = () => {
+  return Object.keys(SUPPORT_WORKER_FLAG).map(key => SUPPORT_WORKER_FLAG[key])[0];
+};
+
+const getDetainedIndividualFlag = () => {
+  return Object.keys(DETAINED_INDIVIDUAL_FLAG).map(key => DETAINED_INDIVIDUAL_FLAG[key])[0];
+};
+
+const getDisruptiveIndividualFlag = () => {
+  return Object.keys(DISRUPTIVE_INDIVIDUAL).map(key => DISRUPTIVE_INDIVIDUAL[key])[0];
+};
+
 const isCaseLevelFlag = (caseFlagLocation) => caseFlagLocation === 'caseFlags';
 
 const getDefinedCaseFlagLocations = async(user, caseId) => {
@@ -45,9 +70,15 @@ const insertFlags = (targetField, newFlags) => {
     const updated = insertFlags(targetField[0].value, newFlags);
     return [element(updated)];
   } else {
-    return {
-      ...targetField, flags: {...targetField.flags, details: newFlags}
-    };
+    if (targetField.flags  && targetField.flags.details) {
+      return {
+        ...targetField, flags: {...targetField.flags, details: targetField.flags.details && targetField.flags.details.length > 0 ? [...targetField.flags.details, ...newFlags] : newFlags}
+      };
+    } else {
+      return {
+        ...targetField, flags: {...targetField.flags, details: newFlags}
+      };
+    }
   }
 };
 
@@ -70,7 +101,7 @@ const getFlagsField = (caseFlagLocation, caseData) => {
 const assertFlagAdded = (caseData, caseFlagLocation, expectedFlag) => {
   console.log(`Asserting [${caseFlagLocation}] has [${expectedFlag.value.name}] flag.`);
   const actual = getFlagsField(caseFlagLocation, caseData);
-  expect(actual.details).deep.equal([expectedFlag]);
+  expect(actual.details).to.deep.include(expectedFlag);
 };
 const addAndAssertCaseFlag = async (location, flag, caseId) => {
   const response = await addCaseFlag(location, flag, caseId);
@@ -145,4 +176,14 @@ const updateFlag = (targetField) => {
   }
 };
 
-module.exports = { getPartyFlags, getDefinedCaseFlagLocations, addAndAssertCaseFlag, updateAndAssertCaseFlag };
+module.exports = {
+  getPartyFlags,
+  getDefinedCaseFlagLocations,
+  addAndAssertCaseFlag,
+  updateAndAssertCaseFlag,
+  getLanguageInterpreterFlag,
+  getRAWheelchairFlag,
+  getSupportWorkerFlag,
+  getDetainedIndividualFlag,
+  getDisruptiveIndividualFlag
+};
