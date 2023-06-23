@@ -48,7 +48,7 @@ const getExpectedPayload = (serviceId) => {
         }
       ],
         'facilitiesRequired': null,
-        'listingComments': '',
+        'listingComments': null,
         'hearingRequester': '',
         'privateHearingRequiredFlag': false,
         'caseInterpreterRequiredFlag': true,
@@ -347,7 +347,7 @@ const getExpectedPayload = (serviceId) => {
       'facilitiesRequired': [
         '11'
       ],
-      'listingComments': '',
+      'listingComments': null,
       'hearingRequester': '',
       'privateHearingRequiredFlag': false,
       'caseInterpreterRequiredFlag': false,
