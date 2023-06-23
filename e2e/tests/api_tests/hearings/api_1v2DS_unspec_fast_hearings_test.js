@@ -8,7 +8,7 @@ const fastClaimAmount = '11000';
 const serviceId = 'AAA7';
 let caseId;
 
-Feature('CCD 1v1 Unspec small hearings API test @api-hearings-unspec @api-hearings');
+Feature('CCD 1v1 Unspec small hearings API test @api-nonprod @api-hearings-unspec @api-hearings');
 
 Scenario('1v2DS full defence defendant and claimant response', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount);
