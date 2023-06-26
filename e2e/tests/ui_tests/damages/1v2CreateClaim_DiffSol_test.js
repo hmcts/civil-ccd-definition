@@ -30,8 +30,8 @@ let caseNumber;
 
 Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({api}) => {
-  //await I.login(config.applicantSolicitorUser);
+Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+
   //await I.createCase(claimant1, null, respondent1, respondent2, 20000);
   //caseNumber = await I.grabCaseNumber();
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
@@ -39,7 +39,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
 
   const pbaV3 = await checkToggleEnabled(PBAv3);
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
+  await I.login(config.applicantSolicitorUser);
   if (pbaV3) {
     await apiRequest.paymentUpdate(caseNumber, '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseNumber, 'paid'));
