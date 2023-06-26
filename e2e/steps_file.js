@@ -228,6 +228,7 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
+      console.log('Login with user: ' + user.email);
       if (loggedInUser !== user) {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
           await this.signOut();
@@ -359,7 +360,7 @@ module.exports = function () {
 
     async notifyClaimDetails(solicitorToNotify) {
       eventName = 'Notify claim details';
-
+      console.log('Testing: Notify claim details in' );
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...conditionalSteps(!!solicitorToNotify, [
@@ -369,6 +370,7 @@ module.exports = function () {
         () => event.submit('Submit', 'Defendant notified'),
         () => event.returnToCaseDetails()
       ]);
+      console.log('Testing: Notify claim details out' );
     },
 
     async initiateDJUnspec(caseNumber, scenario) {

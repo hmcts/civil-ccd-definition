@@ -162,7 +162,7 @@ module.exports = {
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
         await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
-
+    console.log('----33--------');
     await waitForFinishedBusinessProcess(caseId);
 
 
@@ -173,7 +173,7 @@ module.exports = {
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
-
+    console.log('-----34-------');
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
@@ -197,7 +197,7 @@ module.exports = {
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
     }
-
+    console.log('------35------');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -252,7 +252,7 @@ module.exports = {
         }
         break;
     }
-
+    console.log('-------36-----');
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
@@ -285,7 +285,7 @@ module.exports = {
 
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
+    console.log('-----37-------');
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
@@ -399,7 +399,7 @@ module.exports = {
     }, true);
 
 
-
+    console.log('-----38-------');
     await waitForFinishedBusinessProcess(caseId);
   },
 
