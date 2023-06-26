@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-//const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 //const {PBAv3} = require('../../../fixtures/featureKeys');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
