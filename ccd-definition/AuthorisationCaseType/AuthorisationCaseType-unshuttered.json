@@ -19,7 +19,9 @@
       "caseworker-approver",
       "caseworker-caa",
       "caseworker-civil-systemupdate",
-      "caseworker-wa-task-configuration"
+      "caseworker-wa-task-configuration",
+      "CITIZEN-CLAIMANT-PROFILE",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },

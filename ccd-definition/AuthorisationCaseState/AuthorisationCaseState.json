@@ -6,7 +6,8 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-wa-task-configuration",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
@@ -17,8 +18,9 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-wa-task-configuration",
-      "judge-profile"
-      ],
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
+    ],
     "CRUD": "CRUD"
   },
   {
@@ -172,7 +174,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -202,7 +205,8 @@
     "UserRoles": [
       "caseworker-ras-validation",
       "GS_profile",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "R"
   },
@@ -212,7 +216,8 @@
     "UserRoles": [
       "caseworker-ras-validation",
       "GS_profile",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "R"
   },
@@ -223,7 +228,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -259,7 +265,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -281,7 +288,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -303,7 +311,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -325,7 +334,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
