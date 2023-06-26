@@ -125,7 +125,7 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-
+    console.log('------50------');
     await waitForFinishedBusinessProcess(caseId);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -134,7 +134,7 @@ module.exports = {
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
-
+    console.log('-------51-----');
     await waitForFinishedBusinessProcess(caseId);
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     if(await checkCaseFlagsEnabled()) {
@@ -159,7 +159,7 @@ module.exports = {
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
     }
-
+    console.log('----52--------');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -200,7 +200,7 @@ module.exports = {
         await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
       else
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-
+    console.log('-----53-------');
     await waitForFinishedBusinessProcess(caseId);
 
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
@@ -233,7 +233,7 @@ module.exports = {
       validState = 'JUDICIAL_REFERRAL';
     }
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
+    console.log('--54----------');
     await waitForFinishedBusinessProcess(caseId);
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
     if (caseFlagsEnabled) {

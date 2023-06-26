@@ -99,6 +99,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.respondToDefence('ONE_V_TWO_ONE_LEGAL_REP');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
+  console.log('--------19----');
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 

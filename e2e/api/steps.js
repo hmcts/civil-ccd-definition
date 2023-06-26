@@ -187,7 +187,7 @@ module.exports = {
       header: headerText,
       body: bodyText
     });
-
+    console.log('------------4');
     await waitForFinishedBusinessProcess(caseId);
 
     if (pbaV3) {
@@ -197,6 +197,7 @@ module.exports = {
     }
 
     await assignCase();
+    console.log('----------5--');
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
@@ -246,7 +247,7 @@ module.exports = {
       body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
-
+    console.log('------6------');
     await waitForFinishedBusinessProcess(caseId);
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
@@ -291,6 +292,7 @@ module.exports = {
     });
 
     await assignCase();
+    console.log('--------7----');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PENDING_CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
@@ -306,6 +308,7 @@ module.exports = {
       header: 'Claim pending',
       body: 'Your claim will be processed. Wait for us to contact you.'
     });
+    console.log('---------8---');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PENDING_CASE_ISSUED');
@@ -340,7 +343,7 @@ module.exports = {
       header: 'Documents uploaded successfully',
       body: ''
     });
-
+    console.log('--------9----');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -362,7 +365,7 @@ module.exports = {
       header: 'Notification of claim sent',
       body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
     });
-
+    console.log('--------10----');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -397,7 +400,7 @@ module.exports = {
         header: 'Certificate of Service',
         body: 'You must serve the claim details and'
       });
-
+      console.log('---------11---');
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -423,7 +426,7 @@ module.exports = {
       header: 'Defendant notified',
       body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
     });
-
+    console.log('--------12----');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -466,7 +469,7 @@ module.exports = {
         header: 'Certificate of Service',
         body: 'The defendant(s) must'
       });
-
+      console.log('---------13---');
       await waitForFinishedBusinessProcess(caseId);
 
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -490,7 +493,7 @@ module.exports = {
       header: 'You have updated a legal representative\'s email address',
       body: ' '
     });
-
+    console.log('------14------');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -535,7 +538,7 @@ module.exports = {
       header: '',
       body: ''
     });
-
+    console.log('-------15-----');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -580,7 +583,7 @@ module.exports = {
       header: 'Extension deadline submitted',
       body: 'You must respond to the claimant by'
     });
-
+    console.log('------16------');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -658,7 +661,7 @@ module.exports = {
         body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
           + 'claimant\'s legal representative a notification.'
       });
-
+      console.log('--------17----');
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -669,7 +672,7 @@ module.exports = {
         header: 'You have submitted the Defendant\'s defence',
         body: 'The Claimant legal representative will get a notification'
       });
-
+      console.log('--------18----');
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_APPLICANT_INTENTION');
@@ -725,7 +728,7 @@ module.exports = {
         body: '>We will review the case and contact you to tell you what to do next.'
       });
     }
-
+    console.log('-----20-------');
     await waitForFinishedBusinessProcess(caseId);
     if (!expectedCcdState) {
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -777,7 +780,7 @@ module.exports = {
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'You have added litigation friend details'
     });
-
+    console.log('------21------');
     await waitForFinishedBusinessProcess(caseId);
 
     if(await checkCaseFlagsEnabled()) {
@@ -806,7 +809,7 @@ module.exports = {
       header: '',
       body: ''
     }, false);
-
+    console.log('------22------');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -839,7 +842,7 @@ module.exports = {
       header: '',
       body: ''
     }, false);
-
+    console.log('------23------');
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
@@ -893,7 +896,7 @@ module.exports = {
       header: '',
       body: ''
     }, true);
-
+    console.log('--------24----');
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -914,7 +917,7 @@ module.exports = {
       header: '',
       body: ''
     }, true);
-
+    console.log('------25------');
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -953,7 +956,7 @@ module.exports = {
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
-
+    console.log('----26--------');
     await waitForFinishedBusinessProcess(caseId);
 
   },
@@ -974,7 +977,7 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
     }
 
-
+    console.log('----27--------');
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -1030,7 +1033,7 @@ module.exports = {
   for (let pageId of Object.keys(scheduleData.valid)) {
     await assertValidData(scheduleData, pageId);
   }
-
+    console.log('-------28-----');
   await assertSubmittedEvent('HEARING_READINESS', null, false);
   await waitForFinishedBusinessProcess(caseId);
   },
@@ -1051,7 +1054,7 @@ module.exports = {
       await assertValidData(caseNoteData, pageId);
     }
     delete caseData['noteAdditionDateTime'];
-
+    console.log('-----29-------');
     await assertSubmittedEvent(currentState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1095,7 +1098,7 @@ module.exports = {
     for (let pageId of Object.keys(readinessData.valid)) {
       await assertValidData(readinessData, pageId);
     }
-
+    console.log('-------30-----');
     await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1121,6 +1124,7 @@ module.exports = {
       let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST();
       await validateEventPages(ApplicantEvidenceFastClaimData);
     }
+    console.log('-------31-----');
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1141,6 +1145,7 @@ module.exports = {
       let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
       await validateEventPages(RespondentEvidenceFastClaimData);
     }
+    console.log('-------32-----');
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
   }

@@ -27,7 +27,7 @@ const requestNoticeOfChange = async (caseId, newSolicitor, orgPolicyTag, answers
   const submitNocRequestResponse = await submitNocRequest(caseId, answers, newSolicitor);
   assert.equal(submitNocRequestResponse.status, 201,
     'Expected submitNocRequestResponse api call to return created status');
-
+  console.log('---------55---');
   await waitForFinishedBusinessProcess(caseId);
 
   const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);

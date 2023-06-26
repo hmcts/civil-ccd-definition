@@ -26,7 +26,7 @@ Scenario('Take claim offline', async ({I}) => {
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'partDefence', 'partAdmission');
-
+  console.log('------59------');
   await waitForFinishedBusinessProcess(caseId());
   await I.navigateToCaseDetails(caseNumber);
   await I.assertNoEventsAvailable();

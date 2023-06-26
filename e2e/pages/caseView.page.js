@@ -30,6 +30,7 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
+    console.log('------------2');
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
@@ -38,6 +39,7 @@ module.exports = {
   },
 
   async verifyErrorMessageOnEvent(event, caseId, errorMsg) {
+    console.log('------------3');
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
     await I.navigateToCaseDetails(caseId);
