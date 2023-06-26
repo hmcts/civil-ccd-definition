@@ -37,14 +37,13 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
   caseNumber = await api.getCaseId();
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-  await I.login(config.applicantSolicitorUser);
-  if (pbaV3) {
+  //const pbaV3 = await checkToggleEnabled(PBAv3);
+  //console.log('Is PBAv3 toggle on?: ' + pbaV3 + 'in caseNumber: ' + caseNumber);
+/*  if (pbaV3) {
     await apiRequest.paymentUpdate(caseNumber, '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseNumber, 'paid'));
     console.log('Service request update sent to callback URL');
-  }
+  }*/
 
   /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();

@@ -30,15 +30,14 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   caseNumber = await api_spec.getCaseId();
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-  await LRspec.login(config.applicantSolicitorUser);
+  //const pbaV3 = await checkToggleEnabled(PBAv3);
+  //console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-  if (pbaV3) {
+/*  if (pbaV3) {
     await apiRequest.paymentUpdate(caseNumber, '/service-request-update-claim-issued',
       claimData.serviceUpdateDto(caseNumber, 'paid'));
     console.log('Service request update sent to callback URL');
-  }
+  }*/
   /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseNumber);
