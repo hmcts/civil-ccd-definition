@@ -4,7 +4,6 @@ const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testin
 const {PBAv3} = require('../../../fixtures/featureKeys');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const caseId = () => caseNumber;
 const claimData = require('../../../fixtures/events/createClaimSpec.js');
 const apiRequest = require('./../../../api/apiRequest.js');
 
@@ -35,21 +34,21 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
-    await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseId(), 'paid'));
+    await apiRequest.paymentUpdate(caseNumber, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseNumber, 'paid'));
     console.log('Service request update sent to callback URL');
   }
   /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
+    await serviceRequest.payFee(caseNumber);
   }*/
 
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
-    await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
@@ -99,7 +98,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
-   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await LRspec.waitForText('Summary');
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
@@ -107,23 +106,23 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
 Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), false);
+    await LRspec.evidenceUploadSpec(caseNumber, false);
   }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.defendantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), true);
+    await LRspec.evidenceUploadSpec(caseNumber, true);
   }
 }).retry(3);
 
 Scenario('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await LRspec.waitForText('Summary');
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId() + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
     await LRspec.createHearingScheduled();
     await LRspec.payHearingFee();
   }

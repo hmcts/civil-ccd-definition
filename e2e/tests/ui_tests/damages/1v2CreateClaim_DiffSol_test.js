@@ -11,7 +11,6 @@ const claimData = require('../../../fixtures/events/createClaim.js');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => caseNumber;
 
 /*const claimant1 = {
   litigantInPerson: false
@@ -42,8 +41,8 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
-    await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseId(), 'paid'));
+    await apiRequest.paymentUpdate(caseNumber, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseNumber, 'paid'));
     console.log('Service request update sent to callback URL');
   }
 
@@ -56,7 +55,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   }*/
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
@@ -64,8 +63,8 @@ Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => 
   await I.notifyClaim('both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitors of claim details', async ({I}) => {
@@ -95,7 +94,7 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
 */
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseId());
+  await I.navigateToCaseDetails(caseNumber);
   await I.informAgreedExtensionDate();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   // I.see(caseEventMessage('Inform agreed extension date'));
@@ -134,7 +133,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 20000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseId());
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
 
@@ -165,20 +164,20 @@ Scenario('Judge triggers SDO', async ({I}) => {
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
-    await I.evidenceUpload(caseId(), false);
+    await I.evidenceUpload(caseNumber, false);
   }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
-    await I.evidenceUpload(caseId(), true);
+    await I.evidenceUpload(caseNumber, true);
   }
 }).retry(3);
 
 Scenario('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
+    await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
 }).retry(3);
 
