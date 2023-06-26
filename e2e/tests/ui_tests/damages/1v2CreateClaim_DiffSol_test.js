@@ -13,9 +13,9 @@ const claimData = require('../../../fixtures/events/createClaim.js');
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
-const claimant1 = {
+/*const claimant1 = {
   litigantInPerson: false
-};
+};*/
 /*const respondent1 = {
   represented: true,
   representativeRegistered: true,
