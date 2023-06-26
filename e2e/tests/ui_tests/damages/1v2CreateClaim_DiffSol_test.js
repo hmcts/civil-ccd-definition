@@ -1,13 +1,13 @@
 const config = require('../../../config.js');
 //const {paymentUpdate} = require('../../../api/apiRequest');
 const parties = require('../../../helpers/party');
-const apiRequest = require('./../../../api/apiRequest.js');
+//const apiRequest = require('./../../../api/apiRequest.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
+//const {PBAv3} = require('../../../fixtures/featureKeys');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
-const claimData = require('../../../fixtures/events/createClaim.js');
+//const claimData = require('../../../fixtures/events/createClaim.js');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -30,7 +30,7 @@ let caseNumber;
 
 Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({api}) => {
 
   //await I.createCase(claimant1, null, respondent1, respondent2, 20000);
   //caseNumber = await I.grabCaseNumber();

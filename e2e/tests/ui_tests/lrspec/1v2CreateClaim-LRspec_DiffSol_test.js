@@ -1,11 +1,11 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
+//const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+//const {PBAv3} = require('../../../fixtures/featureKeys');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const claimData = require('../../../fixtures/events/createClaimSpec.js');
-const apiRequest = require('./../../../api/apiRequest.js');
+//const claimData = require('../../../fixtures/events/createClaimSpec.js');
+//const apiRequest = require('./../../../api/apiRequest.js');
 
 /*const respondent1 = {
   represented: true,
@@ -22,7 +22,7 @@ let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
-Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec, api_spec}) => {
+Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
 
   //await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
