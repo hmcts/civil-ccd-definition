@@ -63,7 +63,6 @@ module.exports = {
       await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
     } else if (orderType == 'disposal') {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
-      await this.selectHearingMethodOption('In Person');
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
@@ -74,12 +73,6 @@ module.exports = {
       await I.click(this.fields.fastTrackTrial_type.documentsId);
     }
     await I.clickContinue();
-  },
-
-  async selectHearingMethodOption(text) {
-    let xPath = `//label[contains(text(), '${text}')]`;
-    let inputId = await I.grabAttributeFrom(xPath, 'for');
-    await I.click(`#${inputId}`);
   },
 
   async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {
