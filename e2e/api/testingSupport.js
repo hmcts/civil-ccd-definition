@@ -40,7 +40,7 @@ module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
-    console.log('Testing: WaitingForFinished: ' + caseId)
+    console.log('Testing: WaitingForFinished: ' + caseId);
     await retry(() => {
       return restHelper.request(
         `${config.url.civilService}/testing-support/case/${caseId}/business-process`,
