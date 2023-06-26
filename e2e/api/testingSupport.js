@@ -63,7 +63,7 @@ module.exports =  {
 
   assignCaseToDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
-    console.log('Testing: Calling testing support damages' + caseNumber);
+    console.log('Testing: Calling testing support damages' + caseId);
     await retry(() => {
       return restHelper.request(
         `${config.url.civilService}/testing-support/assign-case/${caseId}/${caseRole}`,
