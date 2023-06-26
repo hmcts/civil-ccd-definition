@@ -4,7 +4,7 @@
     "CaseEventID": "MANAGE_DOCUMENTS",
     "CaseFieldID": "manageDocuments",
     "ListElementCode": "documentName",
-    "EventElementLabel": "Name",
+    "EventElementLabel": "Document Name",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -13,7 +13,7 @@
     "CaseEventID": "MANAGE_DOCUMENTS",
     "CaseFieldID": "manageDocuments",
     "ListElementCode": "documentType",
-    "EventElementLabel": "Type",
+    "EventElementLabel": "Document Type",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },

@@ -3,7 +3,7 @@
     "ID": "StaffDocument",
     "ListElementCode": "documentName",
     "FieldType": "Text",
-    "ElementLabel": "Name",
+    "ElementLabel": "Document Name",
     "SecurityClassification": "Public"
   },
   {
@@ -19,14 +19,14 @@
     "ListElementCode": "documentType",
     "FieldType": "FixedList",
     "FieldTypeParameter": "StaffDocumentType",
-    "ElementLabel": "Type",
+    "ElementLabel": "Document Type",
     "SecurityClassification": "Public"
   },
   {
     "ID": "StaffDocument",
     "ListElementCode": "documentTypeOther",
     "FieldType": "Text",
-    "ElementLabel": "Document type name",
+    "ElementLabel": "What type of document is it?",
     "FieldShowCondition": "documentType=\"OTHER\"",
     "SecurityClassification": "Public"
   },
