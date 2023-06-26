@@ -34,5 +34,21 @@
     "ElementLabel": "Briefly explain your reasons",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "remoteHearingRequested",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you want the hearing to be held remotely?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourtLocationLRspec",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldType": "TextArea",
+    "ElementLabel": "Briefly explain your reasons",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
