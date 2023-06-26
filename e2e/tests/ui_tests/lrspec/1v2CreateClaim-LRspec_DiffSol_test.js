@@ -20,7 +20,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
+Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec222 @e2e-spec-1v2DS @master-e2e-ft');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
@@ -47,7 +47,7 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
-  console.log('CaseNumber spec' + caseNumber);
+  console.log('Testing: CaseNumber spec' + caseNumber);
     await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
   console.log('Assigned roles for defendant 1 and 2', caseNumber);

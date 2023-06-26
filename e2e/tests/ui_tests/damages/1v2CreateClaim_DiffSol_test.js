@@ -55,19 +55,22 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
+  console.log('Testing: Claim 1v2 damages created: ' + caseNumber);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
+  console.log('Testing: Proceed to login' + caseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim('both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
-  console.log('CaseNumber damages' + caseNumber);
+  console.log('Testing: CaseNumber damages' + caseNumber);
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitors of claim details', async ({I}) => {
+  console.log('Testing: Notify claim details' + caseNumber);
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaimDetails('both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
