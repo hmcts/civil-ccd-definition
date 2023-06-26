@@ -55,6 +55,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async ()
 
 Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
+  console.log('Testing: First Defendant solicitor rejects claim logged' + caseNumber);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
     claimType: 'fast',
@@ -65,6 +66,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.secondDefendantSolicitorUser);
+  console.log('Testing: Second Defendant solicitor rejects claim logged' + caseNumber);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
     defendant1Response: 'fullDefence',

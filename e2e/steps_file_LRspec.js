@@ -429,6 +429,7 @@ module.exports = function () {
 
     async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
       eventName = 'Respond to claim';
+      console.log('Testing: Responding to claim Spec');
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
             () => respondentCheckListPage.claimTimelineTemplate(),
@@ -472,11 +473,12 @@ module.exports = function () {
             () => event.submit('Submit', ''),
             () => event.returnToCaseDetails()
          ]);
-
+      console.log('Testing: Responding to claim Spec completed');
     },
 
     async respond1v2DiffLR_FullDefence({secondDefendant = true, defendant1Response = 'fullDefence', claimType = 'fast', defenceType = 'dispute'}) {
           eventName = 'Respond to claim';
+      console.log('Testing: Responding to claim Spec 2 def');
               await this.triggerStepsWithScreenshot([
                 () => caseViewPage.startEvent(eventName, caseId),
                 () => respondentCheckListPage.claimTimelineTemplate(),
@@ -507,7 +509,7 @@ module.exports = function () {
                 () => event.submit('Submit', ''),
                 () => event.returnToCaseDetails()
              ]);
-
+      console.log('Testing: Responding to claim Spec 2 def completed');
         },
 
     async respondToClaimPartAdmit({defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan'}) {
