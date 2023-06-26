@@ -8,7 +8,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 const claimData = require('../../../fixtures/events/createClaimSpec.js');
 const apiRequest = require('./../../../api/apiRequest.js');
 
-const respondent1 = {
+/*const respondent1 = {
   represented: true,
   representativeRegistered: true,
   representativeOrgNumber: 2
@@ -17,13 +17,13 @@ const respondent2 = {
   represented: true,
   sameLegalRepresentativeAsRespondent1: false,
   representativeOrgNumber: 3
-};
+};*/
 
 let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
-Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec, api_spec}) => {
+Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
   //await LRspec.login(config.applicantSolicitorUser);
   //await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);

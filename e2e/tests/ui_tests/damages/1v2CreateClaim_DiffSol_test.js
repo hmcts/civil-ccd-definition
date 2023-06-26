@@ -16,7 +16,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 const claimant1 = {
   litigantInPerson: false
 };
-const respondent1 = {
+/*const respondent1 = {
   represented: true,
   representativeRegistered: true,
   representativeOrgNumber: 2
@@ -25,13 +25,13 @@ const respondent2 = {
   represented: true,
   sameLegalRepresentativeAsRespondent1: false,
   representativeOrgNumber: 2
-};
+};*/
 
 let caseNumber;
 
 Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({api}) => {
   //await I.login(config.applicantSolicitorUser);
   //await I.createCase(claimant1, null, respondent1, respondent2, 20000);
   //caseNumber = await I.grabCaseNumber();
