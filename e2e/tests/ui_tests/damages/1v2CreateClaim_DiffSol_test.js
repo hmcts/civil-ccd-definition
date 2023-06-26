@@ -62,6 +62,7 @@ Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => 
   await I.notifyClaim('both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
+  console.log('CaseNumber damages' + caseNumber);
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);

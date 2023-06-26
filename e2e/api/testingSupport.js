@@ -87,7 +87,7 @@ module.exports =  {
 
   assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
       const authToken = await idamHelper.accessToken(user);
-
+      console.log('CaseNumber obtained: ' + caseId);
       await retry(() => {
         return restHelper.request(
           `${config.url.civilService}/testing-support/assign-case/${caseId}/${caseRole}`,
