@@ -156,7 +156,7 @@ Scenario('Add case flags', async ({I}) => {
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
-   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await I.waitForText('Summary');
    await I.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
