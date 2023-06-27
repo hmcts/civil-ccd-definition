@@ -162,7 +162,8 @@
     "EndButtonLabel": "Take offline",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Comment": "Precondition states need updating when states are refactored"
+    "Comment": "Precondition states need updating when states are refactored",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -252,7 +253,8 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
