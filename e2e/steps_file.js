@@ -346,7 +346,7 @@ module.exports = function () {
 
     async notifyClaim(solicitorToNotify) {
       eventName = 'Notify claim';
-
+      console.log('-11-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...conditionalSteps(!!solicitorToNotify, [
@@ -361,6 +361,7 @@ module.exports = function () {
     async notifyClaimDetails(solicitorToNotify) {
       eventName = 'Notify claim details';
       console.log('Testing: Notify claim details in' );
+      console.log('-12-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...conditionalSteps(!!solicitorToNotify, [
@@ -376,6 +377,7 @@ module.exports = function () {
     async initiateDJUnspec(caseNumber, scenario) {
       caseId = caseNumber;
       eventName = 'Request Default Judgment';
+      console.log('-10-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => unspecifiedDefaultJudmentPage.againstWhichDefendant(scenario),
@@ -389,6 +391,7 @@ module.exports = function () {
 
     async initiateDJSpec(caseId, scenario) {
       eventName = 'Request Default Judgment';
+      console.log('-13-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
@@ -429,7 +432,7 @@ module.exports = function () {
 
     async acknowledgeClaim(respondent1Intention, respondent2Intention, respondent1ClaimIntentionApplicant2, sameSolicitor = false) {
       eventName = 'Acknowledge claim';
-
+      console.log('8------------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentDetails.verifyDetails(),
@@ -443,7 +446,7 @@ module.exports = function () {
 
     async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
       eventName = 'Inform agreed extension date';
-
+      console.log('9------------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
@@ -466,6 +469,7 @@ module.exports = function () {
 
     async confirmTrialReadiness(user, hearingDateIsLessThan3Weeks = false, readyForTrial = 'yes') {
           eventName = 'Confirm trial arrangements';
+      console.log('-7-----------2');
           const confirmationMessage = readyForTrial == 'yes' ? 'You have said this case is ready for trial or hearing' : 'You have said this case is not ready for trial or hearing';
           await this.triggerStepsWithScreenshot([
             ...conditionalSteps(hearingDateIsLessThan3Weeks == false, [
@@ -482,7 +486,7 @@ module.exports = function () {
 
     async addDefendantLitigationFriend(partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
-
+      console.log('-14-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...conditionalSteps(selectPartyType && partyType, [
@@ -496,7 +500,7 @@ module.exports = function () {
 
     async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
       eventName = 'Respond to claim';
-
+      console.log('-6-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
@@ -525,6 +529,7 @@ module.exports = function () {
 
     async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
+      console.log('-15-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.proceedWithClaim(mpScenario),
@@ -553,7 +558,7 @@ module.exports = function () {
 
     async respondToDefenceDropClaim(mpScenario = 'ONE_V_ONE') {
       eventName = 'View and respond to defence';
-
+      console.log('-5-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.dropClaim(mpScenario),
@@ -565,6 +570,7 @@ module.exports = function () {
 
     async fillNotifyClaimCOSForm(caseId, mpScenario) {
       eventName = 'Notify claim';
+      console.log('-16-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => cosNotifyClaimPage.fillNotifyClaimCOSForm('Certificate of Service [defendant1]', DEFENDANT1_NAME),
@@ -577,6 +583,7 @@ module.exports = function () {
 
     async fillLRNotifyClaimCOSForm(caseId, mpScenario) {
       eventName = 'Notify claim';
+      console.log('-4-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => this.clickContinue(),
@@ -589,6 +596,7 @@ module.exports = function () {
 
     async fillNotifyClaimDetailsCOSForm(caseId) {
       eventName = 'Notify claim details';
+      console.log('-17-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => cosNotifyClaimDetailsPage.fillNotifyClaimDetailsCOSForm('Certificate of Service [defendant1]',
@@ -604,6 +612,7 @@ module.exports = function () {
 
     async fillLRNotifyClaimDetailsCOSForm(caseId) {
       eventName = 'Notify claim details';
+      console.log('-3-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => this.clickContinue(),
@@ -636,7 +645,7 @@ module.exports = function () {
 
     async caseProceedsInCaseman() {
       eventName = 'Case proceeds in Caseman';
-
+      console.log('-18-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
@@ -826,6 +835,7 @@ module.exports = function () {
 
     async acknowledgeClaimSpec() {
       eventName = 'Acknowledgement of Service';
+      console.log('-2-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => specConfirmDefendantsDetails.confirmDetails(),
@@ -837,6 +847,7 @@ module.exports = function () {
 
     async respondToClaimSpec(responseType,defenceType,paidAmount) {
       eventName = 'Respond to claim';
+      console.log('-19-----------2');
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => respondentCheckListPage.claimTimelineTemplate(),
@@ -947,7 +958,7 @@ module.exports = function () {
 
     async createCaseFlags(caseFlags) {
       eventName = 'Create case flags';
-
+      console.log('--1----------2');
       for (const {partyName, roleOnCase, details} of caseFlags) {
         for (const {name, flagComment} of details) {
           await this.triggerStepsWithScreenshot([
@@ -974,7 +985,7 @@ module.exports = function () {
 
     async manageCaseFlags(caseFlags) {
       eventName = 'Manage case flags';
-
+      console.log('-20-----------2');
       for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
         await this.triggerStepsWithScreenshot([
           () => caseViewPage.startEvent(eventName, caseId),
