@@ -73,7 +73,7 @@ Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => 
 Scenario('Claimant solicitor notifies defendant solicitors of claim details', async ({I}) => {
   console.log('Testing: Notify claim details' + caseNumber);
   await I.login(config.applicantSolicitorUser);
-  await I.notifyClaimDetails('both');
+  await I.notifyClaimDetails(caseNumber,'both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
   await I.click('Sign out');

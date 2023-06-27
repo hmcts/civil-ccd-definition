@@ -30,7 +30,7 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-    console.log('------------2');
+    console.log('------------2: ' + caseId);
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
