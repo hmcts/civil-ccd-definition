@@ -344,7 +344,7 @@ module.exports = function () {
       ]);
     },
 
-    async notifyClaim(solicitorToNotify) {
+    async notifyClaim(caseId, solicitorToNotify) {
       eventName = 'Notify claim';
       console.log('-11-----------2 --- caseID' + caseId);
       await this.triggerStepsWithScreenshot([

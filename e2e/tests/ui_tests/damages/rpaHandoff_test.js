@@ -76,7 +76,7 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
     await serviceRequest.payFee(caseId());
   }
 
-  await I.notifyClaim();
+  await I.notifyClaim(caseNumber);
   await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await I.notifyClaimDetails();

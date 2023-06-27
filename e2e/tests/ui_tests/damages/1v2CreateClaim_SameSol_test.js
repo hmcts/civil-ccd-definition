@@ -45,7 +45,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have the sa
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.notifyClaim();
+  await I.notifyClaim(caseNumber);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

@@ -45,7 +45,7 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
-  await I.notifyClaim();
+  await I.notifyClaim(caseNumber);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
   await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);

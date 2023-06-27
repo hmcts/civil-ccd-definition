@@ -61,7 +61,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
   console.log('Testing: Proceed to login' + caseNumber);
   await I.login(config.applicantSolicitorUser);
-  await I.notifyClaim('both');
+  await I.notifyClaim(caseNumber,'both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
   console.log('Testing: CaseNumber damages' + caseNumber);

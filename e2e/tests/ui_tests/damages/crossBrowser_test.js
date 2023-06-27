@@ -40,7 +40,7 @@ Scenario('Full end-to-end journey', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
 
-  await I.notifyClaim();
+  await I.notifyClaim(caseNumber);
   console.log('Applicant solicitor notified defendant solicitor of claim');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
