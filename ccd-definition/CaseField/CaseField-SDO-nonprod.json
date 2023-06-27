@@ -1,0 +1,23 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesDisposalHearing",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesSmallClaims",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesFastTrack",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
+  }
+]
