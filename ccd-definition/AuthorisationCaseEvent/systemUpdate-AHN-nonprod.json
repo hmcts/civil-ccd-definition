@@ -1,7 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-<<<<<<< HEAD
     "CaseEventID": "GENERATE_HEARING_NOTICE_HMC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
