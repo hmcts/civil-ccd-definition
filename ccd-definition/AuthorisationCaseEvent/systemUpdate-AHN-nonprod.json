@@ -1,6 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
+<<<<<<< HEAD
     "CaseEventID": "GENERATE_HEARING_NOTICE_HMC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -38,6 +39,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CASE_PROGRESS_HMC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REVIEW_HEARING_EXCEPTION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
