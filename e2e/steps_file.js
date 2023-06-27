@@ -284,7 +284,7 @@ module.exports = function () {
     },
 
     async setCaseId(caseNumber) {
-      this.caseId = caseNumber
+      this.caseId = caseNumber;
     },
 
     async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
