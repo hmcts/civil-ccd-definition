@@ -32,6 +32,7 @@ module.exports = {
 
   async selectFlag(flag) {
     I.waitForElement(fields.flagSelection.id);
+    await I.waitForText(flag, 60);
     await within(fields.flagSelection.radioGroup.id, () => {
       I.click(flag);
     });
