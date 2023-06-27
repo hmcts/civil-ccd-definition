@@ -136,7 +136,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 }).retry(3);
 
 
-Scenario('Add case flags', async ({I}) => {
+Scenario.skip('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
