@@ -430,10 +430,10 @@ module.exports = function () {
                    ]);
         },
 
-    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
+    async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}, caseId) {
       eventName = 'Respond to claim';
       console.log('Testing: Responding to claim Spec');
-      console.log('-24-----------2');
+      console.log('-24-----------2 caseID' + caseId);
           await this.triggerStepsWithScreenshot([
             () => caseViewPage.startEvent(eventName, caseId),
             () => respondentCheckListPage.claimTimelineTemplate(),

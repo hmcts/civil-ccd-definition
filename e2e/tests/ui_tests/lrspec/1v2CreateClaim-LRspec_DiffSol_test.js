@@ -60,7 +60,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
     defendant1Response: 'fullDefence',
     claimType: 'fast',
     defenceType: 'dispute'
-  });
+  }, caseNumber);
   await LRspec.click('Sign out');
 }).retry(3);
 

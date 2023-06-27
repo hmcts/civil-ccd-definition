@@ -346,7 +346,7 @@ module.exports = function () {
 
     async notifyClaim(solicitorToNotify) {
       eventName = 'Notify claim';
-      console.log('-11-----------2');
+      console.log('-11-----------2 --- caseID' + caseId);
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...conditionalSteps(!!solicitorToNotify, [

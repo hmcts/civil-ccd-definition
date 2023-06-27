@@ -63,7 +63,7 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
     defendant1Response: 'fullDefence',
     claimType: 'fast',
     defenceType: 'dispute'
-  });
+  }, caseId());
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
   //await waitForFinishedBusinessProcess(caseId());
