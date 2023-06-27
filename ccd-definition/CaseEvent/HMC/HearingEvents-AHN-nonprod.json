@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "REVIEW_HEARING_EXCEPTION",
+    "Name": "Review hearing exception",
+    "Description": "Triggered when hearing is in an EXCEPTION state",
+    "DisplayOrder": 1,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "Comment": "Triggered when hearing is in an EXCEPTION state",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
+  }
+]
