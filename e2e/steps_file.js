@@ -363,14 +363,11 @@ module.exports = function () {
       ]);
     },
 
-    async notifyClaimDetails(caseNumber, solicitorToNotify) {
+    async notifyClaimDetails(caseId, solicitorToNotify) {
       eventName = 'Notify claim details';
       console.log('Testing: Notify claim details in' );
-      console.log('-12-----------2 Casenumber: ' + caseNumber + ' caseId: '+ this.caseId);
-      if(this.caseId == null) {
-        console.log('CaseId Set');
-        this.caseId = caseNumber;
-      }
+      console.log('-12-----------2 caseId: '+ this.caseId);
+
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...conditionalSteps(!!solicitorToNotify, [
