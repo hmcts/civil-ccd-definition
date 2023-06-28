@@ -73,6 +73,10 @@ module.exports = {
   },
 
   async assertCaseFlagsInfo(numberOfFlags) {
+    if (I.see('We use some essential cookies to make this service work.')) {
+      I.click('Reject analytics cookies');
+      await I.waitForText(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`, 30);
+    }
     I.see(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
   },
 
