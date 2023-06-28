@@ -78,7 +78,8 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('Add case flags', async ({LRspec}) => {
+// Skip case flags scenario as it's covered in the unspec e2e
+Scenario.skip('Add case flags', async ({LRspec}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
