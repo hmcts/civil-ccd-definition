@@ -11,8 +11,8 @@
     "ID": "CourtLocation",
     "ListElementCode": "applicantPreferredCourtLocationList",
     "DisplayContext": "MANDATORY",
-    "ElementLabel": "Court location code",
-    "HintText": "This should be your preferred County Court hearing centre.",
+    "ElementLabel": "Please select your preferred court hearing location",
+    "HintText": "Where the defendant is an individual or a sole trader, the case will be held at the defendant's preferred court.",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
@@ -22,5 +22,29 @@
     "ElementLabel": "Case Location",
     "FieldType": "CaseLocationCivil",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CourtLocation",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "ElementLabel": "Briefly explain your reasons",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "CourtLocation",
+    "ListElementCode": "remoteHearingRequested",
+    "ElementLabel": "Do you want the hearing to be held remotely?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "CourtLocation",
+    "ListElementCode": "reasonForRemoteHearing",
+    "ElementLabel": "Briefly explain your reasons",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
