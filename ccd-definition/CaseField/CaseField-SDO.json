@@ -1190,5 +1190,29 @@
     "Label": "Other Details",
     "FieldType": "OtherDetails",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesDisposalHearing",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesSmallClaims",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesFastTrack",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
