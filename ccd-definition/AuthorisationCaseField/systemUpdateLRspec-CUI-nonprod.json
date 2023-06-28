@@ -178,5 +178,11 @@
     "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1RepaymentPlan",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
   }
 ]
