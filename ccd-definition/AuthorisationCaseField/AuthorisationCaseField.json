@@ -2702,7 +2702,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -2724,7 +2726,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -3223,7 +3227,11 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -4291,14 +4299,19 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
