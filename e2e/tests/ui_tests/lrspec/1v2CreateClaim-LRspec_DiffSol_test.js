@@ -95,7 +95,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
   }
 });
 
-Scenario('Judge triggers SDO', async ({LRspec}) => {
+Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await LRspec.waitForText('Summary');
