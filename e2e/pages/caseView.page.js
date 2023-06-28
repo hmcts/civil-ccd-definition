@@ -62,6 +62,13 @@ module.exports = {
     }
   },
 
+  async rejectCookieBanner() {
+    if (await I.see('We use some essential cookies to make this service work.')) {
+      await I.click('Reject analytics cookies');
+      await I.wait(30);
+    }
+  },
+
   async assertEventsAvailable(events) {
     await I.waitForElement(this.fields.eventDropdown);
     events.forEach(event => I.see(event, this.fields.eventDropdown));
@@ -73,10 +80,6 @@ module.exports = {
   },
 
   async assertCaseFlagsInfo(numberOfFlags) {
-    if (I.see('We use some essential cookies to make this service work.')) {
-      I.click('Reject analytics cookies');
-      await I.waitForText(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`, 30);
-    }
     I.see(`There ${numberOfFlags > 1 ? 'are' : 'is'} ${numberOfFlags} active flag${numberOfFlags > 1 ? 's' : ''} on this case.`);
   },
 
