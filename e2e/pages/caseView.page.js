@@ -65,7 +65,7 @@ module.exports = {
   async rejectCookieBanner() {
     if (await I.see('We use some essential cookies to make this service work.')) {
       await I.click('Reject analytics cookies');
-      await I.wait(30);
+      await I.wait(5);
     }
   },
 
