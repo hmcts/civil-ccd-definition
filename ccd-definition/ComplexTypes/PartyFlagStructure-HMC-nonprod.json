@@ -5,6 +5,6 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "phone = \"DO NOT SHOW\""
   }
 ]
