@@ -450,7 +450,7 @@ module.exports = function () {
       ]);
     },
 
-    async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
+    async informAgreedExtensionDate(caseId, respondentSolicitorNumber = '1') {
       eventName = 'Inform agreed extension date';
       console.log('9------------2');
       await this.triggerStepsWithScreenshot([
@@ -490,7 +490,7 @@ module.exports = function () {
           ]);
         },
 
-    async addDefendantLitigationFriend(partyType, selectPartyType = true) {
+    async addDefendantLitigationFriend(caseId, partyType, selectPartyType = true) {
       eventName = 'Add litigation friend';
       console.log('-14-----------2');
       await this.triggerStepsWithScreenshot([
@@ -504,7 +504,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
+    async respondToClaim(caseId, {party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
       eventName = 'Respond to claim';
       console.log('-6-----------2');
       await this.triggerStepsWithScreenshot([
@@ -533,7 +533,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
+    async respondToDefence(caseId, mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
       console.log('-15-----------2');
       await this.triggerStepsWithScreenshot([
