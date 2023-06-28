@@ -462,7 +462,8 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }

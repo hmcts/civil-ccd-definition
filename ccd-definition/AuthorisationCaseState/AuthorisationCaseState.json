@@ -6,7 +6,8 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-wa-task-configuration",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
@@ -17,7 +18,8 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-wa-task-configuration",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
       ],
     "CRUD": "CRUD"
   },
@@ -37,7 +39,8 @@
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
-      "caseworker-wa-task-configuration"
+      "caseworker-wa-task-configuration",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
@@ -115,7 +118,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -149,7 +153,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -300,7 +305,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }

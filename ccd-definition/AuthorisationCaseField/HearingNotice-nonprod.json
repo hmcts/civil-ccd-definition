@@ -63,7 +63,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingLocationLabel",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
@@ -106,7 +107,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDateLabel",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
@@ -137,7 +139,8 @@
     "CaseFieldID": "hearingTimeHourMinute",
     "UserRoles": [
       "hearing-schedule-access",
-      "caseworker-civil-solicitor"
+      "caseworker-civil-solicitor",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
@@ -177,7 +180,8 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
