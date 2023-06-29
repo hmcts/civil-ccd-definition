@@ -1,4 +1,3 @@
-const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 const {I} = inject();
 
 module.exports = {
@@ -29,28 +28,12 @@ module.exports = {
   },
 
   async selectRequirements(party) {
-
-    let isHnlEnabled = await checkHnlLegalRepToggleEnabled();
-
-    if (!isHnlEnabled) {
-      I.waitForElement(this.fields(party).requirements.options.disabledAccess);
-      await I.runAccessibilityTest();
-      I.checkOption(this.fields(party).requirements.options.signLanguage);
-      I.checkOption(this.fields(party).requirements.options.languageInterpreter);
-      I.checkOption(this.fields(party).requirements.options.other);
-
-      I.fillField(this.fields(party).signLanguageRequired, 'A language');
-      I.fillField(this.fields(party).languageToBeInterpreted, 'A language');
-      I.fillField(this.fields(party).otherSupport, 'Some support');
-    }
-    else  {
-      I.waitForElement(this.fields(party).supportRequirements.id);
-      await I.runAccessibilityTest();
-      await within(this.fields(party).supportRequirements.id, () => {
-        I.click(this.fields(party).supportRequirements.options.yes);
-      });
-      I.fillField(this.fields(party).supportRequirementsAdditional, 'Reason for support');
-    }
+    I.waitForElement(this.fields(party).supportRequirements.id);
+    await I.runAccessibilityTest();
+    await within(this.fields(party).supportRequirements.id, () => {
+      I.click(this.fields(party).supportRequirements.options.yes);
+    });
+    I.fillField(this.fields(party).supportRequirementsAdditional, 'Reason for support');
     await I.clickContinue();
   },
 };
