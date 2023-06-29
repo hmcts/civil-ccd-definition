@@ -127,6 +127,13 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '4'
   },
+  hearingCenterAdminWithRegionId2: {
+    email: 'hearing_center_admin_reg2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '2'
+  },
   hearingCenterAdminWithRegionId12: {
     email: 'CIVIL_WA_func_test_demo_user9@justice.gov.uk',
     password: defaultPassword,
