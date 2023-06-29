@@ -1763,7 +1763,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2RepaymentPlanLabel",
+    "ID": "respondent1RepaymentPlanLabel2",
+    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+  2  "ID": "respondent2RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
