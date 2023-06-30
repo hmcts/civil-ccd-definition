@@ -99,7 +99,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "timelineOfEvents",
     "UserRoles": [
-      "caseworker-civil-solicitor"
+      "caseworker-civil-solicitor",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
@@ -163,7 +164,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakup",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "CITIZEN-DEFENDANT-PROFILE"
+    ],
     "CRUD": "CRUD"
   },
   {
@@ -222,7 +226,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -2860,7 +2865,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -4045,8 +4051,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -4066,7 +4071,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
