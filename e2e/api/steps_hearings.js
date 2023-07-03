@@ -289,7 +289,7 @@ const getExpectedPayload = (serviceId) => {
         'vocabulary': [
         {}
       ],
-        'hearingChannels': null,
+        'hearingChannels': ['INTER'],
         'caseFlags': {
         'flags': [
           {
