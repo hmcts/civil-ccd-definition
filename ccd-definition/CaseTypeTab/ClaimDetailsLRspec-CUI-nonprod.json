@@ -44,6 +44,12 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
+    "CaseFieldID": "headingDisabilityPremiumPayments",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "disabilityPremiumPayments",
     "TabFieldDisplayOrder": 84
   },

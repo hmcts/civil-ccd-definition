@@ -1770,7 +1770,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-  2  "ID": "respondent2RepaymentPlanLabel",
+    "ID": "respondent2RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
