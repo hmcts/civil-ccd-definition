@@ -565,7 +565,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_CSV_FOR_AGREED_MEDIATION",
+    "CaseEventID": "NOTIFY_CYA_ON_AGREED_MEDIATION",
     "AccessControl": [
       {
         "UserRoles": [
