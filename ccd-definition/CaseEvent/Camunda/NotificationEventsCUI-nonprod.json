@@ -157,7 +157,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SEND_CSV_FOR_AGREED_MEDIATION",
+    "ID": "SENDING_CSV_WHEN_AGREED_MEDIATION_SPEC",
     "Name": "Sending CSV File",
     "Description": "Sending CSV File for mediation",
     "PreConditionState(s)": "*",
