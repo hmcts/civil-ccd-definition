@@ -221,6 +221,13 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -251,6 +258,14 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },

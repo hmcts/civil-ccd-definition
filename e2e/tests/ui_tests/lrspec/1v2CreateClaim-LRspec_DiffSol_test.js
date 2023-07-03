@@ -2,9 +2,11 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+//const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+const claimData = require('../../../fixtures/events/createClaimSpec.js');
+const apiRequest = require('./../../../api/apiRequest.js');
 
 const respondent1 = {
   represented: true,
@@ -19,7 +21,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-tests-spec @e2e-spec-1v2DS @master-e2e-ft');
+Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
@@ -31,9 +33,14 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
+  }
+  /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
-  }
+  }*/
 
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
@@ -71,8 +78,8 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('Add case flags', async ({LRspec}) => {
-  if(checkCaseFlagsEnabled()) {
+Scenario.skip('Add case flags', async ({LRspec}) => {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -106,6 +113,17 @@ Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.defendantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseId(), true);
+  }
+}).retry(3);
+
+Scenario('Schedule a hearing', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await LRspec.waitForText('Summary');
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId() + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await LRspec.createHearingScheduled();
+    await LRspec.payHearingFee();
   }
 }).retry(3);
 

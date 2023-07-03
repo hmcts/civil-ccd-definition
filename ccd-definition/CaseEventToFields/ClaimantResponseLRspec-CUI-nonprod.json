@@ -400,7 +400,7 @@
     "PageFieldDisplayOrder": 23,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -423,6 +423,16 @@
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag !=\"No\"",
     "DisplayContext": "READONLY",
+    "PageID": "ApplicantDefenceResponseDocument",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
   },
@@ -955,6 +965,33 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Hearing",
+    "PageLabel": "Hearing availability",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "FieldShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQSmallClaimHearing",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Hearing",
+    "PageLabel": "Hearing availability",
+    "FieldShowCondition": "responseClaimTrack =\"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
@@ -962,6 +999,19 @@
     "DisplayContext": "READONLY",
     "PageID": "ApplicantCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

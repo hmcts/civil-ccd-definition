@@ -8,6 +8,7 @@ module.exports = {
       id: '#smallClaimsHearing_time'
     },
     smallClaimsWitnessStatement : {
+      checkbox: '#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW',
        claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
        defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
     },
@@ -55,12 +56,14 @@ module.exports = {
     await I.runAccessibilityTest();
     if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
       await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
+      await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
       await date.enterDate(this.fields.orderDetailsHearingTime.hearingDateFromId, 40);
       await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
     } else if (orderType == 'disposal') {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
+      await this.selectHearingMethodOption('In Person');
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
@@ -71,6 +74,12 @@ module.exports = {
       await I.click(this.fields.fastTrackTrial_type.documentsId);
     }
     await I.clickContinue();
+  },
+
+  async selectHearingMethodOption(text) {
+    let xPath = `//label[contains(text(), '${text}')]`;
+    let inputId = await I.grabAttributeFrom(xPath, 'for');
+    await I.click(`#${inputId}`);
   },
 
   async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {
