@@ -177,7 +177,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "headingHome",
+    "CaseFieldID": "headingHomeDetails",
     "AccessControl": [
       {
         "UserRoles": [

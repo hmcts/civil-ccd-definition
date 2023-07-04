@@ -73,7 +73,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "headingHome",
+    "ID": "headingHomeDetails",
     "Label": "Where does ${respondent1.partyName} live?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
