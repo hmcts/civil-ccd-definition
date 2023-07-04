@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ApplicationsJudge",
+    "TabLabel": "Applications",
+    "TabDisplayOrder": 8,
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CaseFieldID": "gaDetailsMasterCollection",
+    "TabFieldDisplayOrder": 1
+  }
+]

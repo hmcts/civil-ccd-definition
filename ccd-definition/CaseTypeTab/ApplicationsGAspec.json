@@ -7,18 +7,7 @@
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE"
     ],
-    "CaseFieldID": "generalApplicationsDetails",
-    "TabFieldDisplayOrder": 1
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ApplicationsJudge",
-    "TabLabel": "Applications",
-    "TabDisplayOrder": 8,
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CaseFieldID": "generalApplicationsDetails",
+    "CaseFieldID": "claimantGaAppDetails",
     "TabFieldDisplayOrder": 1
   }
 ]

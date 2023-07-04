@@ -8,27 +8,59 @@
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "SolicitorReferences",
+    "ID": "SmallClaimExperts",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RespondToClaimExperts",
-    "ListElementCode": "expertName",
+    "ListElementCode": "firstName",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "SolicitorReferences",
+    "ID": "SmallClaimExperts",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimExperts",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
+    "ListElementCode": "phoneNumber",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimExperts",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
+    "ListElementCode": "emailAddress",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimExperts",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "ListElementCode": "fieldofExpertise",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SolicitorReferences",
+    "ID": "SmallClaimExperts",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1RespondToClaimExperts",
+    "ListElementCode": "whyRequired",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimExperts",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "ListElementCode": "estimatedCost",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   }
 ]

@@ -1,6 +1,7 @@
-const {listElement} = require('../../api/dataHelper');
+const {listElement, element} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -32,7 +33,6 @@ module.exports = {
         },
         Language: {
           respondent1DQLanguage: {
-            evidence: 'ENGLISH',
             court: 'ENGLISH',
             documents: 'ENGLISH'
           }
@@ -47,11 +47,17 @@ module.exports = {
           respondToCourtLocation: {
             responseCourtLocations: {
               list_items: [
-                listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                listElement(config.defendantSelectedCourt)
               ],
-              value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              value: listElement(config.defendantSelectedCourt)
             },
             reasonForHearingAtSpecificCourt: 'Reasons'
+          }
+        },
+        HearingSupport: {
+          respondent1DQHearingSupport: {
+            supportRequirements: 'Yes',
+            supportRequirementsAdditional: 'Additional support reasons'
           }
         },
         VulnerabilityQuestions: {
@@ -82,6 +88,38 @@ module.exports = {
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
           },
+          SmallClaimExperts: {
+            respondent1DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
+          },
+          SmallClaimWitnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
+          },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
@@ -103,7 +141,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           }
         };
@@ -130,7 +168,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           },
           defenceRoute: {
@@ -184,7 +222,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
 
@@ -217,7 +255,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
 
@@ -231,5 +269,86 @@ module.exports = {
     }
 
     return responseData;
+  },
+
+  respondToClaimForJudicialReferral: () => {
+    return {
+      userInput: {
+        ResponseConfirmNameAddress: {
+          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+        },
+        ResponseConfirmDetails: {
+          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+        },
+        RespondentResponseTypeSpec: {
+          respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+        },
+        defenceRoute: {
+          defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+        },
+        Upload: {
+          detailsOfWhyDoesYouDisputeTheClaim: 'details'
+        },
+        HowToAddTimeline: {
+          specClaimResponseTimelineList: 'MANUAL'
+        },
+        Mediation: {
+          responseClaimMediationSpecRequired: 'No'
+        },
+        SmallClaimExperts: {
+          responseClaimExpertSpecRequired: 'No'
+        },
+        SmallClaimWitnesses: {
+          responseClaimWitnesses: '1'
+        },
+        Language: {
+          respondent1DQLanguage: {
+            court: 'ENGLISH',
+            documents: 'ENGLISH'
+          }
+        },
+        SmallClaimHearing: {
+          respondent1DQHearingSmallClaim: {
+            unavailableDatesRequired: 'No'
+          },
+          SmallClaimHearingInterpreterRequired: 'No'
+        },
+        RequestedCourtLocationLRspec: {
+          respondToCourtLocation: {
+            responseCourtLocations: {
+              list_items: [
+                listElement(config.defendantSelectedCourt)
+              ],
+              value: listElement(config.defendantSelectedCourt)
+            },
+            reasonForHearingAtSpecificCourt: 'Reasons'
+          }
+        },
+        HearingSupport: {
+          respondent1DQHearingSupport: {
+            supportRequirements: 'Yes',
+            supportRequirementsAdditional: 'Sir John Doe: Step free wheelchair access'
+          }
+        },
+        VulnerabilityQuestions: {
+          respondent1DQVulnerabilityQuestions: {
+            vulnerabilityAdjustmentsRequired: 'No'
+          }
+        },
+        StatementOfTruth: {
+          uiStatementOfTruth: {
+            name: 'name',
+            role: 'role'
+          }
+        }
+      },
+      midEventData: {
+        StatementOfTruth: {
+          respondent1DQHearing: {
+            unavailableDatesRequired: 'No'
+          }
+        }
+      }
+    };
   }
 };

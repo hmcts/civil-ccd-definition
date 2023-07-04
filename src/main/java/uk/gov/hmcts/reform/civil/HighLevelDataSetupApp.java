@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
+import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
 import java.util.List;
@@ -39,7 +40,12 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("RES-SOL-ONE-SPEC-PROFILE", "PUBLIC"),
         new CcdRoleConfig("RES-SOL-TWO-UNSPEC-PROFILE", "PUBLIC"),
         new CcdRoleConfig("RES-SOL-TWO-SPEC-PROFILE", "PUBLIC"),
-        new CcdRoleConfig("payment-access", "PUBLIC")
+        new CcdRoleConfig("payment-access", "PUBLIC"),
+        new CcdRoleConfig("caseflags-admin", "PUBLIC"),
+        new CcdRoleConfig("caseflags-viewer", "PUBLIC"),
+        new CcdRoleConfig("caseworker-wa-task-configuration", "PUBLIC"),
+        new CcdRoleConfig("CITIZEN-CLAIMANT-PROFILE", "PUBLIC"),
+        new CcdRoleConfig("CITIZEN-DEFENDANT-PROFILE", "PUBLIC")
     };
 
     private final CcdEnvironment environment;
@@ -82,7 +88,13 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        return true;
+    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
+        int httpStatusCode504 = 504;
+        if (e instanceof ImportException) {
+            ImportException importException = (ImportException) e;
+            return importException.getHttpStatusCode() == httpStatusCode504;
+        }
+        return false;
     }
+
 }

@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
-Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS');
+Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS @api-prod-unspec');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -56,6 +56,14 @@ Scenario('Defendant response Solicitor 2', async ({I, api}) => {
 
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
+});
+
+Scenario('Add case flags', async ({api}) => {
+  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
+
+Scenario('Manage case flags', async ({api}) => {
+  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 AfterSuite(async  ({api}) => {

@@ -16,7 +16,8 @@ module.exports = {
       company: {
         name: `#${partyType}_companyName`
       },
-      address: `#${partyType}_primaryAddress_primaryAddress`,
+      email:  `#${partyType}_partyEmail`,
+      address: `#${partyType}_primaryAddress_primaryAddress`
     };
   },
 
@@ -28,6 +29,10 @@ module.exports = {
     });
 
     I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
+
+    I.fillField(this.fields(partyType).email, `${partyType}@example.com`);
+
+    //==============================================================
 
     await within(this.fields(partyType).address, () => {
       postcodeLookup.enterAddressManually(address);

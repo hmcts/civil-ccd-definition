@@ -4,13 +4,50 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Name",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Witness",
+    "ListElementCode": "firstName",
+    "FieldType": "Text",
+    "ElementLabel": "First name",
+    "SecurityClassification": "Public",
+    "Max": 40,
+    "Searchable": "N"
+  },
+  {
+    "ID": "Witness",
+    "ListElementCode": "lastName",
+    "FieldType": "Text",
+    "ElementLabel": "Last name",
+    "SecurityClassification": "Public",
+    "Max": 40,
+    "Searchable": "N"
+  },
+  {
+    "ID": "Witness",
+    "ListElementCode": "emailAddress",
+    "FieldType": "Email",
+    "ElementLabel": "Email address",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Witness",
+    "ListElementCode": "phoneNumber",
+    "FieldType": "PhoneUK",
+    "ElementLabel": "Phone number",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "Witness",
     "ListElementCode": "reasonForWitness",
-    "FieldType": "TextArea",
+    "FieldType": "Text",
     "ElementLabel": "What event did they witness?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

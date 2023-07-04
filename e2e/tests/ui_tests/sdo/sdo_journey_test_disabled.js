@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 const claimant1 = {
   litigantInPerson: true
@@ -12,7 +13,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo');
+Feature('1v1 - Claim Journey and initiate SDO @e2e-sdo @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -40,3 +41,7 @@ Scenario('Judge initiate SDO without entering damages and allocate small claims 
 Scenario('Judge initiate SDO without entering damages and allocate fast track', async ({I}) => {
   await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
+
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

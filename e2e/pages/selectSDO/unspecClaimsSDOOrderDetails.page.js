@@ -1,16 +1,19 @@
 const {I} = inject();
 
+const date = require('../../fragments/date');
+
 module.exports = {
   fields: {
     smallClaimsHearingTime: {
       id: '#smallClaimsHearing_time'
     },
     smallClaimsWitnessStatement : {
+      checkbox: '#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW',
        claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
        defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
     },
     smallClaimsMethodInPerson: {
-      id: '#smallClaimsMethodInPerson'
+      id: '#smallClaimsMethod-smallClaimsMethodInPerson'
     },
     fastTrackWitnessOfFact : {
        claimantWitnessCount: '#fastTrackWitnessOfFact_input2',
@@ -21,7 +24,7 @@ module.exports = {
       documentsId: '#fastTrackTrial_type-DOCUMENTS'
     },
     fastTrackMethodInPerson: {
-      id: '#fastTrackMethodInPerson'
+      id: '#fastTrackMethod-fastTrackMethodInPerson'
     },
     selectOrderAndHearingDetailsForSDOTask:{
       text: 'Order and hearing details',
@@ -36,11 +39,16 @@ module.exports = {
         video: '#disposalHearingMethod-disposalHearingMethodVideoConferenceHearing',
         telephone: '#disposalHearingMethod-disposalHearingMethodTelephoneHearing'
       },
-      hearingLocation: '#disposalHearingMethodInPerson',
       hearingBundleId: '#disposalHearingBundle_type',
       hearingBundleTypeDocs: '#disposalHearingBundle_type-DOCUMENTS',
       hearingBundleTypeSummary: '#disposalHearingBundle_type-SUMMARY',
       hearingBundleTypeElectronic: '#disposalHearingBundle_type-ELECTRONIC'
+    },
+    orderDetailsHearingTime: {
+      hearingTimeEstimate: {
+        thirtyMinutes: '#smallClaimsHearing_time-THIRTY_MINUTES'
+      },
+      hearingDateFromId:  'dateFrom'
     }
   },
 
@@ -48,22 +56,30 @@ module.exports = {
     await I.runAccessibilityTest();
     if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
       await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
+      await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
-      await I.fillField(this.fields.smallClaimsMethodInPerson.id, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
+      await date.enterDate(this.fields.orderDetailsHearingTime.hearingDateFromId, 40);
+      await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
     } else if (orderType == 'disposal') {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
+      await this.selectHearingMethodOption('In Person');
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
-      await I.fillField(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingLocation, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
       await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
       await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
-      await I.fillField(this.fields.fastTrackMethodInPerson.id, 'Liverpool Civil and Family Court - 35, VERNON STREET, CITY SQUARE - L2 2BX');
+      await I.click(this.fields.fastTrackMethodInPerson.id);
       await I.click(this.fields.fastTrackTrial_type.documentsId);
     }
     await I.clickContinue();
+  },
+
+  async selectHearingMethodOption(text) {
+    let xPath = `//label[contains(text(), '${text}')]`;
+    let inputId = await I.grabAttributeFrom(xPath, 'for');
+    await I.click(`#${inputId}`);
   },
 
   async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {

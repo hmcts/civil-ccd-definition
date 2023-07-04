@@ -1,6 +1,7 @@
-const {listElement, date} = require('../../api/dataHelper');
+const {listElement, date, element} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -36,14 +37,39 @@ module.exports = {
             responseClaimMediationSpecRequired: 'No'
           },
           SmallClaimExperts: {
-            responseClaimExpertSpecRequired: 'No'
+            respondent1DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
           },
           SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -59,19 +85,17 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.defendantSelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -115,7 +139,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           },
         };
@@ -149,7 +173,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           }
         };
@@ -241,7 +265,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           },
           defenceRoute: {
@@ -305,7 +329,6 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -321,19 +344,17 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.defendantSelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -372,7 +393,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           },
 
@@ -414,7 +435,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           }
         };
@@ -443,14 +464,39 @@ module.exports = {
             responseClaimMediationSpecRequired: 'No'
           },
           SmallClaimExperts: {
-            responseClaimExpertSpecRequired: 'No'
+            respondent1DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
           },
           SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
           },
           Language: {
             respondent1DQLanguage: {
-              evidence: 'ENGLISH',
               court: 'ENGLISH',
               documents: 'ENGLISH'
             }
@@ -466,19 +512,17 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                  listElement(config.defendantSelectedCourt)
                 ],
-                value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
-              signLanguageRequired: null,
-              languageToBeInterpreted: null,
-              otherSupport: null,
-              requirements: ['DISABLED_ACCESS', 'HEARING_LOOPS']
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
             }
           },
           VulnerabilityQuestions: {
@@ -523,7 +567,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             },
           }
         };
@@ -559,7 +603,7 @@ module.exports = {
           ResponseConfirmNameAddress: {
             businessProcess: {
               status: 'FINISHED',
-              camundaEvent: 'CREATE_CLAIM_SPEC'
+              camundaEvent: camundaEvent
             }
           }
         };

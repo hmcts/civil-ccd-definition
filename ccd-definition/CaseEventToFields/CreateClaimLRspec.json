@@ -50,6 +50,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "paymentTypePBASpec",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Claimant",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "Comment": "Field to hide the PBAv2 information on the next screens when PBAv3 is active",
+    "FieldShowCondition": "applicant1=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "addApplicant2",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -630,6 +643,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "CaseAccessCategory",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "ClaimAmountDetails",
+    "PageDisplayOrder": 28,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimAmountBreakupSummaryObject = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "claimInterestLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -923,7 +948,8 @@
     "PageDisplayOrder": 37,
     "PageColumnNumber": 1,
     "CaseEventFieldLabel": "Select a PBA",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "paymentTypePBASpec != \"PBAv3\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -935,7 +961,7 @@
     "PageDisplayOrder": 37,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"No\" OR applicantSolicitor1PbaAccountsIsEmpty = \"\""
+    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty != \"Yes\" AND paymentTypePBASpec != \"PBAv3\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -947,7 +973,7 @@
     "PageDisplayOrder": 37,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"Yes\""
+    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"Yes\" AND paymentTypePBASpec != \"PBAv3\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -958,7 +984,8 @@
     "PageID": "PaymentReference",
     "PageDisplayOrder": 38,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "paymentTypePBASpec != \"PBAv3\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1002,7 +1029,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
-    "PageDisplayOrder": 40,
+    "PageDisplayOrder": 39,
     "PageColumnNumber": 1
   }
 ]

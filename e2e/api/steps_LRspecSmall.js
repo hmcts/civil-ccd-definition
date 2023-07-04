@@ -10,34 +10,50 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
+const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHearings.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkAccessProfilesIsEnabled} = require('./testingSupport');
-const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
+const {PBAv3} = require('../fixtures/featureKeys');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkHmcEnabled} = require('./testingSupport');
+const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
+const {CASE_FLAGS} = require('../fixtures/caseFlags');
+const {dateNoWeekends} = require('./dataHelper');
+const sdoTracks = require('../fixtures/events/createSDO');
 
 let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
-  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
-  DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response),
-  DEFENDANT_RESPONSE_1v2: (response) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response),
+  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM_HEARINGS: (scenario, pbaV3) => claimDataHearings.createClaim(scenario, pbaV3),
+  DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE_JUDICIAL_REFERRAL: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForJudicialReferral(),
+  DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
-  INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js')
+  INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
+  CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
 };
 
 const eventData = {
   defendantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
+      FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
+      FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
-      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM')
+      PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
+      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE_JUDICIAL_REFERRAL: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL()
     },
     ONE_V_TWO: {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
+      FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
+      PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
+      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
     }
   }
 };
@@ -48,22 +64,25 @@ module.exports = {
    * Creates a claim
    *
    * @param user user to create the claim
+   * @param scenario
+   * @param hearings
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE') => {
+  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE', hearings = false) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData  = {};
 
-    let isAccessProfilesEnabled = await checkAccessProfilesIsEnabled();
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      createClaimData = data.CREATE_CLAIM_AP(scenario);
+    if (!hearings) {
+      createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
     } else {
-      createClaimData = data.CREATE_CLAIM(scenario);
+      createClaimData = data.CREATE_CLAIM_HEARINGS(scenario, pbaV3);
     }
+    //==============================================================
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -73,12 +92,22 @@ module.exports = {
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    if (isAccessProfilesEnabled && (['preview', 'demo'].includes(config.runningEnv))) {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    } else {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONESPEC', config.defendantSolicitorUser);
-    }
     await waitForFinishedBusinessProcess(caseId);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
+    await waitForFinishedBusinessProcess(caseId);
+    if(await checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -90,9 +119,10 @@ module.exports = {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
+    const pbaV3 = await checkToggleEnabled(PBAv3);
 
-
-    let informAgreedExtensionData = data.INFORM_AGREED_EXTENSION_DATE();
+    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
+    informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
@@ -108,14 +138,25 @@ module.exports = {
     await unAssignAllUsers();
   },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', judicialReferral = false) => {
     await apiRequest.setupTokens(user);
+
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+    if(pbaV3){
+      response = response+'_PBAv3';
+    }
+
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
-    let defendantResponseData = eventData['defendantResponses'][scenario][response];
-    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
+    let defendantResponseData;
+
+    if (!judicialReferral) {
+      defendantResponseData = eventData['defendantResponses'][scenario][response];
+    } else {
+      defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
+    }
 
     caseData = returnedCaseData;
 
@@ -130,10 +171,15 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
+
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user) => {
+  claimantResponse: async (user, judicialReferral = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -144,15 +190,88 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     let claimantResponseData = data.CLAIMANT_RESPONSE();
-    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    //await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    const hearingsEnabled = await checkHmcEnabled();
+
+    if (caseFlagsEnabled && hearingsEnabled && judicialReferral) {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    }
 
     await waitForFinishedBusinessProcess(caseId);
+
+    if (caseFlagsEnabled) {
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
+    }
+  },
+
+  createCaseFlags: async (user) => {
+    if(!(await checkCaseFlagsEnabled())) {
+      return;
+    }
+
+    eventName = 'CREATE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for (const [index, value] of caseFlagLocations.entries()) {
+      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
+
+  manageCaseFlags: async (user) => {
+    if(!(await checkCaseFlagsEnabled())) {
+      return;
+    }
+
+    eventName = 'MANAGE_CASE_FLAGS';
+
+    await apiRequest.setupTokens(user);
+
+    await updateAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+    for(const [index, value] of caseFlagLocations.entries()) {
+      await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
+    }
+  },
+
+  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+    console.log('SDO for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      eventName = 'NotSuitable_SDO';
+    } else {
+      eventName = 'CREATE_SDO';
+    }
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let disposalData = data.CREATE_SDO();
+
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  getCaseId: async () => {
+    console.log(`case created: ${caseId}`);
+    return caseId;
   },
 };
 
@@ -160,7 +279,13 @@ module.exports = {
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = data.userInput[pageId];
+  let userData;
+
+  if (eventName === 'CREATE_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
@@ -301,47 +426,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
-
-// CIV-4203: needs to be removed when court location goes live
-async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        RequestedCourtLocationLRspec: {
-          responseClaimCourtLocationRequired: 'No'
-        }
-      }
-    };
-  }
-  return responseData;
-}
-
-// CIV-4203: needs to be removed when court location goes live
-async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled || !(['preview', 'demo'].includes(config.runningEnv))) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        ApplicantCourtLocationLRspec: {
-          applicant1DQRequestedCourt: {
-            reasonForHearingAtSpecificCourt: 'Reasons',
-            responseCourtCode: '123'
-          }
-        }
-      }
-    };
-  }
-  return responseData;
-}
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);

@@ -27,8 +27,18 @@ module.exports = {
       },
       expertDetails: {
         id: `#${party}DQExperts_details'`,
-        element: {
+        oldElements: {
           name: `#${party}DQExperts_details_0_name`,
+          fieldOfExpertise: `#${party}DQExperts_details_0_fieldOfExpertise`,
+          whyRequired: `#${party}DQExperts_details_0_whyRequired`,
+          estimatedCost: `#${party}DQExperts_details_0_estimatedCost`,
+        },
+        elements: {
+          firstName: `#${party}DQExperts_details_0_firstName`,
+          // lastName: `#${party}DQExperts_details_0_surname`,
+          lastName: `#${party}DQExperts_details_0_lastName`,
+          emailAddress: `#${party}DQExperts_details_0_emailAddress`,
+          phoneNumber: `#${party}DQExperts_details_0_phoneNumber`,
           fieldOfExpertise: `#${party}DQExperts_details_0_fieldOfExpertise`,
           whyRequired: `#${party}DQExperts_details_0_whyRequired`,
           estimatedCost: `#${party}DQExperts_details_0_estimatedCost`,
@@ -53,15 +63,19 @@ module.exports = {
     });
 
     await this.addExpert(party);
+
     await I.clickContinue();
   },
 
   async addExpert(party) {
     await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields(party).expertDetails.element.name);
-    I.fillField(this.fields(party).expertDetails.element.name, 'John Smith');
-    I.fillField(this.fields(party).expertDetails.element.fieldOfExpertise, 'Science');
-    I.fillField(this.fields(party).expertDetails.element.whyRequired, 'Reason why required');
-    I.fillField(this.fields(party).expertDetails.element.estimatedCost, '100');
+    I.waitForElement(this.fields(party).expertDetails.elements.firstName);
+    I.fillField(this.fields(party).expertDetails.elements.firstName, 'John');
+    I.fillField(this.fields(party).expertDetails.elements.lastName, 'Smith');
+    I.fillField(this.fields(party).expertDetails.elements.emailAddress, 'johnsmith@email.com');
+    I.fillField(this.fields(party).expertDetails.elements.phoneNumber, '07000111000');
+    I.fillField(this.fields(party).expertDetails.elements.fieldOfExpertise, 'Science');
+    I.fillField(this.fields(party).expertDetails.elements.whyRequired, 'Reason why required');
+    I.fillField(this.fields(party).expertDetails.elements.estimatedCost, '100');
   },
 };

@@ -55,5 +55,13 @@
     "DefaultValue": "1",
     "FieldDisplayOrder": "7",
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeOrganisationRequest",
+    "CaseEventID": "NOC_REQUEST",
+    "CaseFieldID": "changeOrganisationRequestField",
+    "ListElementCode": "CreatedBy",
+    "FieldDisplayOrder": "8",
+    "DisplayContext": "OPTIONAL"
   }
 ]

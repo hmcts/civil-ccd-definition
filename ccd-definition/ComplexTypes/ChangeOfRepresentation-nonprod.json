@@ -26,5 +26,12 @@
     "FieldType": "DateTime",
     "ElementLabel": "timestamp",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ChangeOfRepresentation",
+    "ListElementCode": "formerRepresentationEmailAddress",
+    "FieldType": "Text",
+    "ElementLabel": "formerRepresentationEmailAddress",
+    "SecurityClassification": "Public"
   }
 ]

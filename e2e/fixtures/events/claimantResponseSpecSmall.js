@@ -1,4 +1,5 @@
-const {listElement} = require('../../api/dataHelper');
+const {listElement, element} = require('../../api/dataHelper');
+const config = require('../../config.js');
 module.exports = {
   claimantResponse: () => {
     return {
@@ -12,14 +13,38 @@ module.exports = {
           }
         },
         SmallClaimExperts: {
-          applicant1ClaimExpertSpecRequired: 'No'
+          applicant1DQExperts: {
+            expertRequired: 'Yes',
+            expertReportsSent: 'NOT_OBTAINED',
+            jointExpertSuitable: 'Yes',
+            details: [
+              element({
+                firstName: 'John',
+                lastName: 'Doe',
+                emailAddress: 'john@doemail.com',
+                phoneNumber: '07111111111',
+                fieldOfExpertise: 'None',
+                whyRequired: 'Testing',
+                estimatedCost: '10000'
+              })
+            ]
+          }
         },
         SmallClaimWitnesses: {
-          applicant1ClaimWitnesses: '1'
+          applicant1DQWitnessesSmallClaim: {
+            details: [
+              element({
+                firstName: 'John',
+                lastName: 'Smith',
+                phoneNumber: '07012345678',
+                emailAddress: 'johnsmith@email.com',
+                reasonForWitness: 'None'
+              })
+            ],
+            witnessesToAppear: 'Yes'}
         },
         Language: {
           applicant1DQLanguage: {
-            evidence: 'ENGLISH',
             court: 'ENGLISH',
             documents: 'ENGLISH'
           }
@@ -33,11 +58,17 @@ module.exports = {
           applicant1DQRequestedCourt: {
             responseCourtLocations: {
               list_items: [
-                listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+                listElement(config.claimantSelectedCourt)
               ],
-              value: listElement('Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ')
+              value: listElement(config.claimantSelectedCourt)
             },
             reasonForHearingAtSpecificCourt: 'Reasons'
+          }
+        },
+        HearingSupport: {
+          applicant1DQHearingSupport: {
+            supportRequirements: 'Yes',
+            supportRequirementsAdditional: 'Test Inc: Language Interpreter'
           }
         },
         VulnerabilityQuestions: {

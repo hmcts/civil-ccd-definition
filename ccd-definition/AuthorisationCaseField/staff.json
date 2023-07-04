@@ -259,6 +259,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "whenToBePaidText",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "withdrawClaim",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -667,6 +673,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimProceedsInCasemanLR",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "amendPartyDetailsLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
@@ -1059,6 +1071,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "nextDeadline",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "CaseAccessCategory",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }

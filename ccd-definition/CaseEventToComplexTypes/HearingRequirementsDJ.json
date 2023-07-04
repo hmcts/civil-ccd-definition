@@ -25,14 +25,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-  "ID": "HearingSupportRequirementsFieldDJ",
-  "CaseEventID": "DEFAULT_JUDGEMENT",
-  "CaseFieldID": "hearingSupportRequirementsDJ",
-  "ListElementCode": "hearingPreferredLocation",
-  "FieldShowCondition": "hearingSupportRequirementsDJ=\"DO NOT SHOW IN UI\"",
-  "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "HearingSupportRequirementsFieldDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
@@ -80,6 +72,20 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "hearingSupportRequirementsDJ",
     "ListElementCode": "hearingDates.hearingUnavailableUntil",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingSupportQuestion",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HearingSupportRequirementsFieldDJ",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "hearingSupportRequirementsDJ",
+    "ListElementCode": "hearingSupportAdditional",
     "DisplayContext": "MANDATORY"
   }
 ]

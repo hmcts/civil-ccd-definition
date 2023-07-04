@@ -5,7 +5,10 @@ module.exports = {
 
   fields: function (partyType) {
     return {
-      litigationFriendName: `#${partyType}LitigationFriend_fullName`,
+      litigationFirstName: `#${partyType}LitigationFriend_firstName`,
+      litigationLastName: `#${partyType}LitigationFriend_lastName`,
+      litigationEmail: `#${partyType}LitigationFriend_emailAddress`,
+      litigationPhone: `#${partyType}LitigationFriend_phoneNumber`,
       litigantInFriendDifferentAddress: {
         id: `#${partyType}LitigationFriend_hasSameAddressAsLitigant`,
         options: {
@@ -19,7 +22,10 @@ module.exports = {
   },
 
   async enterLitigantFriendWithDifferentAddressToLitigant(partyType, address, file) {
-    I.fillField(this.fields(partyType).litigationFriendName, 'John Smith');
+    I.fillField(this.fields(partyType).litigationFirstName, 'John');
+    I.fillField(this.fields(partyType).litigationLastName, 'Smith');
+    I.fillField(this.fields(partyType).litigationEmail, 'jsmith@email.com');
+    I.fillField(this.fields(partyType).litigationPhone, '07123456789');
 
     await within(this.fields(partyType).litigantInFriendDifferentAddress.id, () => {
       I.click(this.fields(partyType).litigantInFriendDifferentAddress.options.no);
