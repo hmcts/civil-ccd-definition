@@ -964,7 +964,6 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
-        () => caseViewPage.rejectCookieBanner(),
         () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);

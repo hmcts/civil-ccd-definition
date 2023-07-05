@@ -1204,11 +1204,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
   if (eventName === 'CREATE_SDO') {
-    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
-      delete caseData.hearingMethodValuesDisposalHearing;
-      delete caseData.hearingMethodValuesFastTrack;
-      delete caseData.hearingMethodValuesSmallClaims;
-    }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
     }
@@ -1232,7 +1227,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete caseData.applicant1OrganisationPolicy;
   }
   try {
-      assert.deepEqual(responseBody.data, caseData);
+    assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);

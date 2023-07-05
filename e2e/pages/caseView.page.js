@@ -62,13 +62,6 @@ module.exports = {
     }
   },
 
-  async rejectCookieBanner() {
-    if (await I.see('We use some essential cookies to make this service work.')) {
-      await I.click('Reject analytics cookies');
-      await I.wait(5);
-    }
-  },
-
   async assertEventsAvailable(events) {
     await I.waitForElement(this.fields.eventDropdown);
     events.forEach(event => I.see(event, this.fields.eventDropdown));
