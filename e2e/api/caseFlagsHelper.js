@@ -70,9 +70,15 @@ const insertFlags = (targetField, newFlags) => {
     const updated = insertFlags(targetField[0].value, newFlags);
     return [element(updated)];
   } else {
-    return {
-      ...targetField, flags: {...targetField.flags, details: targetField.flags.details && targetField.flags.details.length > 0 ? [...targetField.flags.details, ...newFlags] : newFlags}
-    };
+    if (targetField.flags  && targetField.flags.details) {
+      return {
+        ...targetField, flags: {...targetField.flags, details: targetField.flags.details && targetField.flags.details.length > 0 ? [...targetField.flags.details, ...newFlags] : newFlags}
+      };
+    } else {
+      return {
+        ...targetField, flags: {...targetField.flags, details: newFlags}
+      };
+    }
   }
 };
 
