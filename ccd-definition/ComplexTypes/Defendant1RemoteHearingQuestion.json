@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "Defendant1RemoteHearingQuestion",
+    "ListElementCode": "remoteHearingRequested",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you want the hearing to be held remotely?",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "Defendant1RemoteHearingQuestion",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldType": "TextArea",
+    "ElementLabel": "Briefly explain your reasons",
+    "SecurityClassification": "Public"
+  }
+]

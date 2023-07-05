@@ -1079,5 +1079,17 @@
     "CaseFieldID": "CaseAccessCategory",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendant1RemoteHearingQuestion",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendant2RemoteHearingQuestion",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
