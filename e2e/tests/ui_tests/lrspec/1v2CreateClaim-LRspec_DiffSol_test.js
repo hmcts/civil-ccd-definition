@@ -78,6 +78,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.click('Sign out');
 }).retry(3);
 
+// Skip case flags scenario as it's covered in the unspec e2e
 Scenario.skip('Add case flags', async ({LRspec}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
@@ -93,7 +94,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
     await LRspec.createCaseFlags(caseFlags);
     await LRspec.validateCaseFlags(caseFlags);
   }
-});
+}).retry(3);
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
