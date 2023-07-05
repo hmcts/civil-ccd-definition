@@ -4,6 +4,7 @@
     "ListElementCode":"directionComment",
     "FieldType":"TextArea",
     "ElementLabel":"Enter the direction ",
+    "Searchable": "N",
     "SecurityClassification":"Public"
   }
 ]

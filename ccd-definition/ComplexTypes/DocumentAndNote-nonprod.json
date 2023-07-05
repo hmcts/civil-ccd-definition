@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "Case note",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "documentName",
     "FieldType": "Text",
     "ElementLabel": "Name of document",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "FieldType": "Document",
     "ElementLabel": "Document",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png"
   },
   {
@@ -26,6 +29,7 @@
     "ListElementCode": "documentNote",
     "FieldType": "TextArea",
     "ElementLabel": "Add a note about this document",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -34,6 +38,7 @@
     "FieldType": "DateTime",
     "ElementLabel": "Date added",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   }
 ]

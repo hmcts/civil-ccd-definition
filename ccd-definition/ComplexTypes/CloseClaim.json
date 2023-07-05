@@ -5,6 +5,7 @@
     "FieldType": "Date",
     "ElementLabel": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "This label should be set in caseEventToComplexTypes"
   },
   {
@@ -13,6 +14,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Reason",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "This label should be set in caseEventToComplexTypes"
   }
 ]

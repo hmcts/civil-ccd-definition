@@ -5,6 +5,7 @@
     "ID": "DateHeardFinalOrders",
     "ElementLabel": "### Date heard",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,6 +15,7 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
