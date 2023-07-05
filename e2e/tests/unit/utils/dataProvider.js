@@ -9,9 +9,9 @@ const loadFile = file => {
 // Please update this map whenever exclusions are updated in build-release-definition.sh
 // without the *
 const exclusions = new Map([
-  ['preview', ['-prod.json','CUI.json','CUI-nonprod.json']],
-  ['demo', ['UserProfile.json','-prod.json','-CUI-nonprod.json','CUI.json']],
-  ['aat', ['UserProfile.json','-prod.json','-CUI-nonprod.json','CUI.json']],
+  ['preview', ['-prod.json','ClaimantResponseLRspec-nonprod.json']],
+  ['demo', ['UserProfile.json','-prod.json','ClaimantResponseLRspec-nonprod.json']],
+  ['aat', ['UserProfile.json','-prod.json','ClaimantResponseLRspec-nonprod.json']],
   ['prod', ['UserProfile.json','-nonprod.json','GAspec.json','CUI.json']],
   ['staging', ['UserProfile.json','-nonprod.json','GAspec.json','CUI.json']]
 ]);
