@@ -2072,7 +2072,10 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
