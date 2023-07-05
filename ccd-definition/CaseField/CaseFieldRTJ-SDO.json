@@ -5,6 +5,7 @@
     "Label": "Event Description",
     "FieldType": "Text",
     "HintText": "A few words describing the purpose of the event",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ID": "additionalInformation",
     "Label": "Additional Information ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

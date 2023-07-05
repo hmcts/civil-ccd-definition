@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "text",
     "FieldType": "Label",
     "ElementLabel": "Subject to a deduction of:",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "value",
     "FieldType": "Text",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
