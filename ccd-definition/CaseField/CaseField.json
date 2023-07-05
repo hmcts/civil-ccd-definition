@@ -725,6 +725,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRemoteHearing",
+    "Label": " ",
+    "FieldType": "RemoteHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRemoteHearing",
+    "Label": " ",
+    "FieldType": "RemoteHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",

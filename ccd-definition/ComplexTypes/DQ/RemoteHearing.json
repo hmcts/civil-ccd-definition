@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "RemoteHearing",
+    "ListElementCode": "hearingToBeHeldRemotely",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "HintText": "This will be over telephone or video",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RemoteHearing",
+    "ListElementCode": "hearingToBeHeldRemotelyReason",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "FieldShowCondition": "hearingToBeHeldRemotely = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
