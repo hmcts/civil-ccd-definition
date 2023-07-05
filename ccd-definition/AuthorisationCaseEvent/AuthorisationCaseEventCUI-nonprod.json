@@ -587,15 +587,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "MANAGE_DOCUMENTS",
+    "CaseEventID": "GENERATE_RESPONSE_CUI_SEALED",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
+          "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
