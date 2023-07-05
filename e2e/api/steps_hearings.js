@@ -369,12 +369,12 @@ const getExpectedPayload = (serviceId) => {
           'unavailabilityDOW': null,
           'unavailabilityRanges': [
             {
-                'unavailabilityType': 'ALL_DAY',
+                'unavailabilityType': 'All Day',
                 'unavailableFromDate': date(10),
                 'unavailableToDate': date(10)
             },
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(30),
               'unavailableToDate': date(35)
             }
@@ -498,12 +498,12 @@ const getExpectedPayload = (serviceId) => {
           'unavailabilityDOW': null,
           'unavailabilityRanges': [
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(10),
               'unavailableToDate': date(10)
             },
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(30),
               'unavailableToDate': date(35)
             }
@@ -600,12 +600,12 @@ const getExpectedPayload = (serviceId) => {
           'unavailabilityDOW': null,
           'unavailabilityRanges': [
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(10),
               'unavailableToDate': date(10)
             },
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(30),
               'unavailableToDate': date(35)
             }
