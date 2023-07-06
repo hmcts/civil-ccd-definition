@@ -151,7 +151,7 @@ Scenario('Add case flags', async ({I}) => {
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
-});
+}).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);

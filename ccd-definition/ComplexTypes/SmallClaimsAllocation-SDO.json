@@ -4,6 +4,7 @@
     "ListElementCode": "line1",
     "FieldType": "Label",
     "ElementLabel": "****",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "text",
     "FieldType": "Label",
     "ElementLabel": "## Allocation \nThe claim is allocated to the Small Claims track.",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

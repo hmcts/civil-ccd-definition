@@ -5,6 +5,7 @@
     "ElementLabel": "What type is it?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "BreathingSpaceType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "ElementLabel": "Reference Number",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Max": 16
   },
   {
@@ -21,6 +23,7 @@
     "ElementLabel": "When did it start?",
     "HintText": "This is the date Breathing Space started, not the date you received notification of it, for example, 15 01 2022",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,6 +32,7 @@
     "ElementLabel": "Expected end date",
     "HintText": "This is the date Breathing Space is due to finish, for example, 17 03 2022",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -37,6 +41,7 @@
     "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -44,6 +49,7 @@
     "ListElementCode": "eventDescription",
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -52,6 +58,7 @@
     "ElementLabel": "When is the Breathing Space expected to end?",
     "HintText": "This is the date that you have been instructed it will finish",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,6 +67,7 @@
     "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -67,6 +75,7 @@
     "ListElementCode": "eventDescription",
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -74,6 +83,7 @@
     "ListElementCode": "enter",
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceStartInfo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -81,6 +91,7 @@
     "ListElementCode": "lift",
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceLiftInfo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
