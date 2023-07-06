@@ -4,7 +4,6 @@
     "ListElementCode": "unavailableTrialDateFrom",
     "ElementLabel": "Date from",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "unavailableTrialDateTo",
     "ElementLabel": "Date to",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

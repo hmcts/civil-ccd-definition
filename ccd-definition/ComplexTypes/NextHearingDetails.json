@@ -4,7 +4,6 @@
     "ListElementCode": "hearingID",
     "FieldType": "Text",
     "ElementLabel": "ID",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "hearingDateTime",
     "FieldType": "DateTime",
     "ElementLabel": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

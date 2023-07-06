@@ -5,7 +5,6 @@
     "ElementLabel": "### Order on court's own initiative",
     "HintText": " ",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -23,7 +21,6 @@
     "ElementLabel": "### Please enter date",
     "HintText": " ",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,7 +29,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -41,7 +37,6 @@
     "ElementLabel": "### Order without notice",
     "HintText": " ",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -50,7 +45,6 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -59,7 +53,6 @@
     "ElementLabel": "### Please enter date",
     "HintText": " ",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,7 +61,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

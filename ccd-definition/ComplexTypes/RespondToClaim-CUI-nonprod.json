@@ -4,7 +4,6 @@
     "ListElementCode": "timelineComment",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "evidenceComment",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +18,6 @@
     "ListElementCode": "respondent1LiPFinancialDetails",
     "ElementLabel": " ",
     "FieldType": "FinancialDetailsLiP",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -28,7 +25,6 @@
     "ListElementCode": "respondent1MediationLiPResponse",
     "ElementLabel": " ",
     "FieldType": "MediationLiP",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -36,7 +32,6 @@
     "ListElementCode": "respondent1DQExtraDetails",
     "ElementLabel": " ",
     "FieldType": "DQExtraDetailsLip",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -44,7 +39,6 @@
     "ListElementCode": "respondent1DQHearingSupportLip",
     "ElementLabel": " ",
     "FieldType": "HearingSupportLip",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -52,7 +46,6 @@
     "ListElementCode": "respondent1LiPContactPerson",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,7 +53,6 @@
     "ListElementCode": "respondent1LiPCorrespondenceAddress",
     "ElementLabel": " ",
     "FieldType": "AddressUK",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,7 +60,6 @@
     "ListElementCode": "respondent1ResponseLanguage",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
