@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "Your fee will be calculated based on the statement of value",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Statement of value",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Min": 100
   }
 ]

@@ -5,6 +5,7 @@
     "ID": "AppealGrantedRefused",
     "ElementLabel": "### Reasons",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,6 +15,7 @@
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "HintText": "These will appear in a separate N460 document and not within the order",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -22,6 +24,7 @@
     "ID": "AppealGrantedRefused",
     "ElementLabel": "### The application for permission to appeal may be renewed in the appeal court",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -31,6 +34,7 @@
     "ElementLabel": " ",
     "FieldType": "TextArea",
     "HintText": "These will appear in the order and not within a separate N460 document",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +43,7 @@
     "ID": "AppealGrantedRefused",
     "ElementLabel": "### An appeal lies from this judgment order to the",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -47,6 +52,7 @@
     "ID": "AppealGrantedRefused",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -55,6 +61,7 @@
     "ID": "AppealGrantedRefused",
     "ElementLabel": "### Any appeal or application for permission to appeal must be made by no later than 4pm on",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -64,6 +71,7 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
