@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsTimeEstimate",
     "ElementLabel": "The time estimate is",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -27,6 +30,7 @@
     "ElementLabel": "Hour(s)",
     "FieldType": "Number",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "time = \"OTHER\""
   },
   {
@@ -36,6 +40,7 @@
     "FieldType": "Number",
     "Max": 59,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "time = \"OTHER\""
   },
   {
@@ -43,6 +48,7 @@
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -50,6 +56,7 @@
     "ListElementCode": "dateToLabel",
     "ElementLabel": "Date to",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -57,6 +64,7 @@
     "ListElementCode": "dateTo",
     "ElementLabel": " ",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -64,6 +72,7 @@
     "ListElementCode": "dateFromLabel",
     "ElementLabel": "Date from",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -71,6 +80,7 @@
     "ListElementCode": "dateFrom",
     "ElementLabel": " ",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

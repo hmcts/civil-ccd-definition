@@ -4,6 +4,7 @@
     "ListElementCode": "employerDetailsLabel",
     "FieldType": "Label",
     "ElementLabel": "## Name of employer (if employed by someone else) \n",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "EmployerDetail",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
