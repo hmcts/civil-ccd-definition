@@ -4,6 +4,7 @@
     "ID": "cosNotifyClaimDetails1",
     "Label": " ",
     "FieldType": "NotifyClaimDetailsCoS",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ID": "cosNotifyClaimDetails2",
     "Label": " ",
     "FieldType": "NotifyClaimDetailsCoS",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ID": "cosLabelForClaimant1_1",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ID": "cosLabelForClaimant2_1",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ID": "cosLabelForDefendant1",
     "Label": "Defendant's name <br /> ${respondent1.partyName}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +44,7 @@
     "ID": "cosLabelForDefendant2",
     "Label": "Defendant's name <br /> ${respondent2.partyName}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,6 +52,7 @@
     "ID": "defendant1LIPAtClaimIssued",
     "Label": "Is defendant 1 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,6 +60,7 @@
     "ID": "defendant2LIPAtClaimIssued",
     "Label": "Is defendant 2 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,6 +68,7 @@
     "ID": "cosLabel",
     "Label": "# Certificate of Service",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -67,6 +76,7 @@
     "ID": "cosLabelDef1",
     "Label": "# Certificate of Service [defendant1]",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -74,6 +84,7 @@
     "ID": "cosLabelDef2",
     "Label": "# Certificate of Service [defendant2]",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -81,6 +92,7 @@
     "ID": "cosNotifyClaimDefendant1",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -88,6 +100,7 @@
     "ID": "cosNotifyClaimDefendant2",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -95,6 +108,7 @@
     "ID": "cosLabelForClaimant1_2",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -102,6 +116,7 @@
     "ID": "cosLabelTabDef1",
     "Label": "# Defendant 1 details",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -109,6 +124,7 @@
     "ID": "cosLabelTabDef1CoSNc",
     "Label": "Certificate of Service - Notify Claim",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -116,6 +132,7 @@
     "ID": "cosLabelTabDef1CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -123,6 +140,7 @@
     "ID": "cosLabelTabDef2",
     "Label": "# Defendant 2 details",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -130,6 +148,7 @@
     "ID": "cosLabelTabDef2CoSNc",
     "Label": "Certificate of Service - Notify Claim",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -137,6 +156,7 @@
     "ID": "cosLabelTabDef2CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

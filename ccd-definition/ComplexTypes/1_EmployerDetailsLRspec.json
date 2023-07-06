@@ -4,6 +4,7 @@
     "ListElementCode": "employerName",
     "FieldType": "Text",
     "ElementLabel": "Employer's name",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "jobTitle",
     "FieldType": "Text",
     "ElementLabel": "Job title",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
