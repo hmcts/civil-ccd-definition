@@ -5,7 +5,6 @@
     "ID": "FinalOrderRecitalsRecorded",
     "ElementLabel": "### The court records that: (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "ID": "FinalOrderRecitalsRecorded",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

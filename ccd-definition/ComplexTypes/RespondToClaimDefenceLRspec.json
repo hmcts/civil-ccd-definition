@@ -4,7 +4,6 @@
     "ListElementCode": "howMuchWasPaidLabel",
     "ElementLabel": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest. \n",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,7 +12,6 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "How much was paid?",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "Label": "How much was paid?"
   },
   {
@@ -23,7 +21,6 @@
     "ElementLabel": "When was this amount paid?",
     "HintText": "For example, 12 11 2007",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "Label": "When was this amount paid?"
   },
   {
@@ -34,7 +31,6 @@
     "ElementLabel": "How was this amount paid?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HowWasThisAmountPaid",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -45,7 +41,6 @@
     "ElementLabel": "Tell us how",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "FieldShowCondition": "howWasThisAmountPaid = \"OTHER\""
   }
 ]
