@@ -33,7 +33,7 @@ const getExpectedPayload = (serviceId) => {
       ],
         'externalCaseReference': null,
         'caseManagementLocationCode': locationId(),
-        'caseSLAStartDate': date(210),
+        'caseSLAStartDate': date(),
         'autoListFlag': false,
         'hearingType': null,
         'hearingWindow': null,
@@ -265,14 +265,6 @@ const getExpectedPayload = (serviceId) => {
           'screenName': 'hearing-timing',
           'navigation': [
             {
-              'resultValue': 'hearing-link'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-link',
-          'navigation': [
-            {
               'resultValue': 'hearing-additional-instructions'
             }
           ]
@@ -330,7 +322,7 @@ const getExpectedPayload = (serviceId) => {
       ],
       'externalCaseReference': null,
       'caseManagementLocationCode': locationId(),
-      'caseSLAStartDate': date(350),
+      'caseSLAStartDate': date(),
       'autoListFlag': false,
       'hearingType': null,
       'hearingWindow': null,
@@ -749,14 +741,6 @@ const getExpectedPayload = (serviceId) => {
         },
         {
           'screenName': 'hearing-timing',
-          'navigation': [
-            {
-              'resultValue': 'hearing-link'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-link',
           'navigation': [
             {
               'resultValue': 'hearing-additional-instructions'
