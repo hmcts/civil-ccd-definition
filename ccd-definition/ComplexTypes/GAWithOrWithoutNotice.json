@@ -4,6 +4,7 @@
     "ListElementCode": "isWithNoticeLabel",
     "FieldType": "Label",
     "ElementLabel": "<p class=\"govuk-body\">If you select 'No', this is known as making an application without notice – you can only do this if it's permitted by a rule practice direction or court order \n\n If you confirm that the application should be dealt with without notice, the court will then decide if the application should be dealt with without notice</p>\n",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GARadioYesOrNo",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,6 +23,7 @@
     "FieldType": "TextArea",
     "Max": "400",
     "FieldShowCondition": "isWithNotice = \"No\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
