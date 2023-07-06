@@ -2020,6 +2020,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2RepaymentPlanLabel2",
+    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1RepaymentPlan",
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
