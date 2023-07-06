@@ -4,6 +4,7 @@
     "ListElementCode": "canWeUseMediationLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "canWeUseMediationPhoneLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "mediationDisagreementLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "noMediationReasonLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ListElementCode": "noMediationOtherReasonLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +44,7 @@
     "ListElementCode": "companyTelephoneOptionMediationLiP",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,6 +52,7 @@
     "ListElementCode": "companyTelephoneConfirmationMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,6 +60,7 @@
     "ListElementCode": "companyTelephoneContactPersonMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,6 +68,7 @@
     "ListElementCode": "companyTelephonePhoneNumberMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

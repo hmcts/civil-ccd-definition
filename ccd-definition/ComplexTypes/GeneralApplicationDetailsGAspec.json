@@ -4,6 +4,7 @@
     "ListElementCode": "generalApplicationType",
     "FieldType": "Text",
     "ElementLabel": "Application type",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "CaseLink",
     "Label": "Application ID",
     "ElementLabel": "Application ID",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,6 +22,7 @@
     "FieldType": "Text",
     "Label": "Status",
     "ElementLabel": "Status",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -28,6 +31,7 @@
     "FieldType": "DateTime",
     "Label": "Submitted on",
     "ElementLabel": "Submitted on",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
