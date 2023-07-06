@@ -787,7 +787,6 @@
     "CaseFieldID": "respondToCourtLocation",
     "ListElementCode": "responseCourtLocations",
     "EventElementLabel": "Please select your preferred court hearing location",
-    "EventHintText": " ",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -822,7 +821,6 @@
     "CaseFieldID": "respondToCourtLocation2",
     "ListElementCode": "responseCourtLocations",
     "EventElementLabel": "Please select your preferred court hearing location",
-    "EventHintText": " ",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -838,6 +836,7 @@
     "ID": "CourtLocationSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToCourtLocation2",
+    "ListElementCode": "remoteHearingRequested",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
