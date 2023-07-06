@@ -6,6 +6,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "FieldShowCondition": "type = \"DO NOT SHOW\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   }
 ]
