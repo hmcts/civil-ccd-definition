@@ -4,6 +4,7 @@
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "line",
     "FieldType": "Label",
     "ElementLabel": "****",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
