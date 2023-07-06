@@ -4,6 +4,7 @@
     "ID": "applicant1Represented",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "Label": " ",
     "FieldType": "RespondentLiPResponse",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Publish": "Y"
   },
   {
@@ -27,6 +29,7 @@
     "ID": "translatedDocument",
     "Label": " ",
     "FieldType": "TranslatedDocument",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {

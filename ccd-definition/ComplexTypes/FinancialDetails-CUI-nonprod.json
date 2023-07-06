@@ -4,6 +4,7 @@
     "ListElementCode": "partnerPensionLiP",
     "ElementLabel": "Does your partner receive a pension?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "partnerDisabilityLiP",
     "ElementLabel": "Is your partner disabled?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "partnerSevereDisabilityLiP",
     "ElementLabel": "Is your partner severely disabled?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "childrenEducationLiP",
     "ElementLabel": "Children aged 16 to 19 living with you",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
