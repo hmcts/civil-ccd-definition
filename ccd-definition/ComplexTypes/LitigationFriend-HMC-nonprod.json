@@ -6,6 +6,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "FieldShowCondition": "hasSameAddressAsLitigant = \"DO NOT SHOW\"",
+    "Searchable": "N",
     "RetainHiddenValue": "Y"
   }
 ]

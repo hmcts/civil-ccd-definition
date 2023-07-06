@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -26,6 +28,7 @@
     "ListElementCode": "input2",
     "FieldType": "Number",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public",
     "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
@@ -34,6 +37,7 @@
     "ListElementCode": "input3",
     "FieldType": "Number",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public",
     "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
@@ -42,6 +46,7 @@
     "ListElementCode": "input4",
     "FieldType": "Text",
     "ElementLabel": " ",
+   "Searchable": "N",
     "SecurityClassification": "Public",
     "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
@@ -50,6 +55,7 @@
     "ListElementCode": "text",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
