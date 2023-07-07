@@ -13,7 +13,6 @@
     "ListElementCode": "responseCourtLocations",
     "FieldType": "DynamicList",
     "ElementLabel": "Please select your preferred hearing court centre",
-    "HintText": "If the defendant is an individual the case will be held at the defendant's preferred court.",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -40,6 +39,7 @@
     "ListElementCode": "remoteHearingRequested",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you want the hearing to be held remotely?",
+    "HintText": "This will be over telephone or video",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

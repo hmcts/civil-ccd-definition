@@ -787,7 +787,6 @@
     "CaseFieldID": "respondToCourtLocation",
     "ListElementCode": "responseCourtLocations",
     "EventElementLabel": "Please select your preferred court hearing location",
-    "EventHintText": "",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -822,7 +821,6 @@
     "CaseFieldID": "respondToCourtLocation2",
     "ListElementCode": "responseCourtLocations",
     "EventElementLabel": "Please select your preferred court hearing location",
-    "EventHintText": "",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
