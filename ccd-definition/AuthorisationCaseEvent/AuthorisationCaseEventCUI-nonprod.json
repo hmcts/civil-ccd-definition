@@ -189,7 +189,8 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "caseworker-civil",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
@@ -197,7 +198,8 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -274,7 +276,8 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "caseworker-civil",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
@@ -282,7 +285,8 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -304,7 +308,32 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_DOCUMENTS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "caseworker-civil",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
