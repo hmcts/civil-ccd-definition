@@ -5,7 +5,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Date of new hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### List from",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -24,7 +22,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -33,7 +30,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Date to (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -43,7 +39,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -52,7 +47,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Length of new hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -62,7 +56,6 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingLengthFinalOrderList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -72,7 +65,6 @@
     "ElementLabel": " ",
     "FieldType": "CaseHearingLengthElement",
     "FieldShowCondition": "lengthList=\"OTHER\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -81,7 +73,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Alternative hearing location (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -90,7 +81,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
     "FieldType": "DynamicList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -99,7 +89,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Method of hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -110,7 +99,6 @@
     "HintText": "If you want to include any extra information or want to request a certain hearing platform, please include this in the Hearing notes (Optional) section below",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingMethodFinalOrderList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -119,7 +107,6 @@
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Hearing notes (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -129,7 +116,6 @@
     "ElementLabel": " ",
     "HintText": "For example, potentially violent, reading time needed, CVP for hearing",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

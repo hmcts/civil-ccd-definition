@@ -4,7 +4,6 @@
     "ListElementCode": "wantPhoneOrVideoHearing",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "whyPhoneOrVideoHearing",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +18,6 @@
     "ListElementCode": "whyUnavailableForHearing",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -28,7 +25,6 @@
     "ListElementCode": "giveEvidenceYourSelf",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -36,7 +32,6 @@
     "ListElementCode": "triedToSettle",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -44,7 +39,6 @@
     "ListElementCode": "determinationWithoutHearingRequired",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -52,7 +46,6 @@
     "ListElementCode": "determinationWithoutHearingReason",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,7 +53,6 @@
     "ListElementCode": "requestExtra4weeks",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,7 +60,6 @@
     "ListElementCode": "considerClaimantDocuments",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -76,7 +67,6 @@
     "ListElementCode": "considerClaimantDocumentsDetails",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -84,7 +74,6 @@
     "ListElementCode": "respondent1DQLiPExpert",
     "ElementLabel": " ",
     "FieldType": "ExpertLiP",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
