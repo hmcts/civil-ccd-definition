@@ -156,7 +156,7 @@
     "RoleName" : "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
+    "AccessProfiles": "GS_profile,cui-admin-profile",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""

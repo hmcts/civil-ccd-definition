@@ -189,7 +189,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -274,7 +274,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -296,7 +296,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },

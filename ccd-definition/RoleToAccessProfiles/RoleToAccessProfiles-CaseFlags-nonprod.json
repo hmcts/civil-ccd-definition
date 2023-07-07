@@ -48,7 +48,7 @@
     "RoleName" : "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin,cui-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -57,7 +57,7 @@
     "RoleName" : "ctsc",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin,cui-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
