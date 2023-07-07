@@ -4,7 +4,6 @@
     "ListElementCode": "sdoOrderDocument",
     "FieldType": "CaseDocument",
     "ElementLabel": "Document",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

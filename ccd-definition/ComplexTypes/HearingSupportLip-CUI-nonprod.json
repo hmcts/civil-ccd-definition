@@ -4,7 +4,6 @@
     "ListElementCode": "supportRequirementLip",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,7 +12,6 @@
     "ElementLabel": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "RequirementsLip",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
   ]

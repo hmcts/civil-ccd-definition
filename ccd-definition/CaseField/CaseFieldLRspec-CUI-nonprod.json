@@ -4,7 +4,6 @@
     "ID": "respondent1ClaimResponseTypeLabelForSpec",
     "Label": "${respondent1ClaimResponseTypeForSpec}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +18,6 @@
     "ID": "respondent1ClaimAdmitAllBySetDateLabel",
     "Label": "${respondent1.partyName} admits all of the claim and said that they will pay by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -28,7 +25,6 @@
     "ID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -36,7 +32,6 @@
     "ID": "respondent1ClaimResponseDocumentSpec",
     "Label": " ",
     "FieldType": "CaseDocument",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -44,7 +39,6 @@
     "ID": "respondent1PaymentDateToStringSpec",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -52,7 +46,6 @@
     "ID": "applicant1AcceptAdmitAmountPaidSpec",
     "Label": "Does the claimant want to settle the claim for the £${respondToAdmittedClaimOwingAmountPounds} the defendant admitted?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,7 +53,6 @@
     "ID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,7 +60,6 @@
     "ID": "applicantDefenceResponseDocumentAndDQFlag",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -76,7 +67,6 @@
     "ID": "respondent1ClaimPartAdmitImmediatelyLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay the £${respondToAdmittedClaimOwingAmountPounds} immediately. \n\n They must make sure the claimant has the money by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -84,7 +74,6 @@
     "ID": "respondent1ClaimPartAdmitBySetDateLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -92,7 +81,6 @@
     "ID": "respondent1ClaimPartAdmitInstalmentLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay in instalments. \n\n Details of the repayment plan can be found in the Defendant Response form.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -101,7 +89,6 @@
     "Label": "Mediation failed reason",
     "FieldType": "FixedList",
     "FieldTypeParameter": "MediationUnsuccessfulReasons",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -109,7 +96,6 @@
     "ID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">How do you want ${respondent1.partyName} to pay?</h2>",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -118,7 +104,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -126,7 +111,6 @@
     "ID": "applicant1RequestedPaymentDateForDefendantSpec",
     "Label": "When do you want ${respondent1.partyName} to pay?",
     "FieldType": "PaymentBySetDate",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -134,7 +118,6 @@
     "ID": "applicant1SuggestInstalmentsForDefendantSpecHeader",
     "Label": "<h2 class=\"govuk-heading-l\">Suggest instalments for ${respondent1.partyName}</h2>",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -142,7 +125,6 @@
     "ID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
     "FieldType": "Label",
     "Label": "The claim amount is £${totalClaimAmount}. This includes all court fees and interest.\n",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -151,7 +133,6 @@
     "FieldType": "MoneyGBP",
     "Label": "Regular payments of\n",
     "HintText" : "For example, £10",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -160,7 +141,6 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentFrequencyClaimantResponseLRspec",
     "Label": "How often will your client make payments?",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -168,7 +148,6 @@
     "ID": "currentDateboxDefendantSpec",
     "Label": "currentDate",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -177,7 +156,6 @@
     "FieldType": "Date",
     "Label": "Date for first instalment",
     "HintText": "This must be after ${currentDateboxDefendantSpec}",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -185,7 +163,6 @@
     "ID": "ccjPaymentPaidSomeLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} paid some of the amount owed?</h2>",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -193,7 +170,6 @@
     "ID": "ccjPaymentPaidSomeOption",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -201,7 +177,6 @@
     "ID": "ccjPaymentPaidSomeAmount",
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -209,7 +184,6 @@
     "ID": "partAdmitPaidValuePounds",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -217,7 +191,6 @@
     "ID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
     "Label": "${respondent1.partyName} states they paid the claimant £${partAdmitPaidValuePounds} on ${respondent1PaymentDateToStringSpec}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -225,7 +198,6 @@
     "ID": "applicant1PartAdmitConfirmAmountPaidSpec",
     "Label": "Has ${respondent1.partyName} paid the claimant £${partAdmitPaidValuePounds}?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -233,7 +205,6 @@
     "ID": "applicant1PartAdmitIntentionToSettleClaimSpec",
     "Label": "Does the claimant want to settle the claim for the £${partAdmitPaidValuePounds} the defendant has paid?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -241,7 +212,6 @@
     "ID": "applicant1PartAdmitRejectReasonSpec",
     "Label": "Why does the claimant reject their response?",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -249,7 +219,6 @@
     "ID": "claimantUserDetails",
     "Label": "Claimant User Details",
     "FieldType": "UserDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -257,7 +226,6 @@
     "ID": "ccjJudgmentAmountSummaryLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Judgment Amount</h2>",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -265,7 +233,6 @@
     "ID": "ccjJudgmentSummarySubtotalAmount",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -273,7 +240,6 @@
     "ID": "ccjJudgmentAmountSummaryResponse",
     "Label": "${ccjJudgmentStatement}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -281,7 +247,6 @@
     "ID": "ccjJudgmentStatement",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -289,7 +254,6 @@
     "ID": "ccjJudgmentAmountClaimAmountLabel",
     "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -297,7 +261,6 @@
     "ID": "ccjJudgmentAmountClaimAmount",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -305,7 +268,6 @@
     "ID": "ccjJudgmentAmountInterestToDateLabel",
     "Label": "### Interest to date\n\n£${ccjJudgmentAmountInterestToDate}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -313,7 +275,6 @@
     "ID": "ccjJudgmentAmountInterestToDate",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -321,7 +282,6 @@
     "ID": "ccjJudgmentAmountClaimFeeLabel",
     "Label": "### Claim fee amount\n\n£${ccjJudgmentAmountClaimFee}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -329,7 +289,6 @@
     "ID": "ccjJudgmentAmountClaimFee",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -337,7 +296,6 @@
     "ID": "ccjJudgmentAmountSubtotalLabel",
     "Label": "### Subtotal\n\n£${ccjJudgmentSummarySubtotalAmount}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -345,7 +303,6 @@
     "ID": "ccjJudgmentAmountSubtotal",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -353,7 +310,6 @@
     "ID": "ccjPaymentPaidSomeAmountInPoundsLabel",
     "Label": "### Amount already paid\n\n£${ccjPaymentPaidSomeAmountInPounds}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -361,7 +317,6 @@
     "ID": "ccjPaymentPaidSomeAmountInPounds",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -369,7 +324,6 @@
     "ID": "ccjJudgmentTotalStillOwedLabel",
     "Label": "### Total still owed\n\n£${ccjJudgmentTotalStillOwed}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -377,7 +331,6 @@
     "ID": "ccjJudgmentTotalStillOwed",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -385,7 +338,6 @@
     "ID": "respondent1FullAdmitAmountLabel",
     "Label": "Total Claim amount is £${totalClaimAmount}. This includes all court fees and interest.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -393,7 +345,6 @@
     "ID": "caseTitle",
     "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -401,7 +352,6 @@
     "ID": "defendantNameLabel",
     "Label": "### Defendant Name",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -409,7 +359,6 @@
     "ID": "defendantName",
     "Label": "${respondent1.partyName}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -417,7 +366,6 @@
     "ID": "mediationSettlementAgreedAt",
     "Label": "Mediation settlement agreed on",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -425,7 +373,6 @@
     "ID": "mediationAgreementTitle",
     "Label": "## Upload Mediation Agreement",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -433,7 +380,6 @@
     "ID": "staffUploadedDocumentsLabel",
     "Label": "### Staff uploaded documents",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -441,7 +387,6 @@
     "ID": "mediationAgreement",
     "Label": " ",
     "FieldType": "MediationAgreementDocument",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -449,7 +394,6 @@
     "ID": "ccjJudgmentFixedCostOptionLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed costs?</h2>",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -458,7 +402,6 @@
     "Label": " ",
     "HintText": "This will include fixed costs for judgement",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -466,7 +409,6 @@
     "ID": "ccjJudgmentFixedCostAmountLabel",
     "Label": "### Fixed cost amount\n\n£${ccjJudgmentFixedCostAmount}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -474,7 +416,6 @@
     "ID": "ccjJudgmentFixedCostAmount",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -482,7 +423,6 @@
     "ID": "applicant1ClaimMediationSpecRequiredLip",
     "Label": " ",
     "FieldType": "ClaimantMediationLip",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

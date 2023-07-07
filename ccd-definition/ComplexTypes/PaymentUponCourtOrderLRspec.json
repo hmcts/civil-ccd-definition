@@ -4,7 +4,6 @@
     "ListElementCode": "payingDetailsRequired",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "FieldTypeParameter": "PayingExtraInfo",
     "ElementLabel": " ",
     "FieldShowCondition": "payingDetailsRequired = \"Yes\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

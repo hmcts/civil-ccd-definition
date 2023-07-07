@@ -6,7 +6,6 @@
     "HintText": "Select one option.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingNoticeSelection",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -15,7 +14,6 @@
     "Label": "Application details",
     "FieldType": "FixedList",
     "FieldTypeParameter": "HearingAppFor",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -23,7 +21,6 @@
     "ID": "typeOfApplication",
     "Label": "Type of application",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,7 +29,6 @@
     "Label": "Date of application",
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -40,7 +36,6 @@
     "ID": "hearingNoticeListOther",
     "Label": "What hearing notice are you creating?",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -49,7 +44,6 @@
     "Label": "Is this a listing or a relisting?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ListingOrRelisting",
-    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -57,7 +51,6 @@
     "ID": "hearingLocationLabel",
     "Label": "**Location**",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -66,7 +59,6 @@
     "Label": " ",
     "HintText": "Venue",
     "FieldType": "DynamicList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -74,7 +66,6 @@
     "ID": "channelLabel",
     "Label": "**Channel**",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -83,7 +74,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingChannel",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -91,7 +81,6 @@
     "ID": "hearingDateLabel",
     "Label": "**Date**",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -100,7 +89,6 @@
     "Label": " ",
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
-    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -108,7 +96,6 @@
     "ID": "hearingTimeLabel",
     "Label": "**Time**",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -117,7 +104,6 @@
     "Label": "Start time",
     "FieldType": "FixedList",
     "FieldTypeParameter": "HearingTimeHourMinute",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -126,7 +112,6 @@
     "Label": "Duration",
     "FieldType": "FixedList",
     "FieldTypeParameter": "HearingLengthCasePro",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -134,7 +119,6 @@
     "ID": "information",
     "Label": "Is there more information you need to add to the Hearing Notification letter?",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -142,7 +126,6 @@
     "ID": "hearingFee",
     "Label": "Hearing Fee",
     "FieldType": "Fee",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -150,7 +133,6 @@
     "ID": "hearingDueDate",
     "Label": "Hearing Due Date",
     "FieldType": "Date",
-    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -159,7 +141,6 @@
     "Label": "Date of dismissal",
     "HintText": "For example, 27 3 2022",
     "FieldType": "DateTime",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -167,7 +148,6 @@
     "ID": "hearingFeePaymentDetails",
     "Label": "Hearing Payment Details",
     "FieldType": "PaymentDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -175,7 +155,6 @@
     "ID": "claimIssuedPBADetails",
     "Label": "Claim Issued PBA details\n",
     "FieldType": "SRPbaDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -183,7 +162,6 @@
     "ID": "hearingFeePBADetails",
     "Label": "Hearing fee PBA details\n",
     "FieldType": "SRPbaDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -192,7 +170,6 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -200,7 +177,6 @@
     "ID": "relistHearingNotice",
     "Label": "When you click Continue, the next screen will enable you to select to schedule the hearing.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -208,7 +184,6 @@
     "ID": "hearingReferenceNumber",
     "Label": "Hearing reference",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

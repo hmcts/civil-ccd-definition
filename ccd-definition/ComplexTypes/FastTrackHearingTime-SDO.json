@@ -4,7 +4,6 @@
     "ListElementCode": "dateFromLabel",
     "FieldType": "Label",
     "ElementLabel": "Date from",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "dateFrom",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DateToShowToggle",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -30,7 +27,6 @@
     "ElementLabel": "Date to",
     "FieldType": "Date",
     "FieldShowCondition": "dateToToggle=\"SHOW\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,7 +35,6 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackTimeEstimate",
     "ElementLabel": "The time estimate is",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -47,7 +42,6 @@
     "ListElementCode": "otherHours",
     "FieldType": "Number",
     "ElementLabel": "Hours",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -55,7 +49,6 @@
     "ListElementCode": "otherMinutes",
     "FieldType": "Number",
     "ElementLabel": "Minutes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -63,7 +56,6 @@
     "ListElementCode": "helpText1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -71,7 +63,6 @@
     "ListElementCode": "helpText2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

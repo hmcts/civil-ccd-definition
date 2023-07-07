@@ -4,7 +4,6 @@
     "ID": "caseParticipants",
     "Label": "${caseNameHmctsInternal}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ID": "finalOrderSelectionLabel",
     "Label": "**** \n ### What type of order do you wish to make?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrderSelection",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,7 +26,6 @@
     "ID": "caseParticipantsAssistedOrder",
     "Label": "${caseNameHmctsInternal}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -37,7 +33,6 @@
     "ID": "caseParticipantsFreeForm",
     "Label": "${caseNameHmctsInternal}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -45,7 +40,6 @@
     "ID": "finalOrderMadeLabel",
     "Label": "**** \n ## Order Made",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,7 +47,6 @@
     "ID": "finalOrderMadeSelectionLabel",
     "Label": "#### Is this order made following a hearing?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -61,7 +54,6 @@
     "ID": "finalOrderMadeSelection",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -69,7 +61,6 @@
     "ID": "finalOrderDateHeardComplex",
     "Label": " ",
     "FieldType": "DateHeardFinalOrders",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -77,7 +68,6 @@
     "ID": "finalOrderJudgeHeardLabel",
     "Label": "**** \n ## Judge heard from",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -86,7 +76,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -94,7 +83,6 @@
     "ID": "finalOrderRepresentation",
     "Label": " ",
     "FieldType": "FinalOrderRepresentation",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -102,7 +90,6 @@
     "ID": "finalOrderRecitalsLabel",
     "Label": "**** \n ## Recitals",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -111,7 +98,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -119,7 +105,6 @@
     "ID": "finalOrderRecitalsRecorded",
     "Label": " ",
     "FieldType": "FinalOrderRecitalsRecorded",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -127,7 +112,6 @@
     "ID": "finalOrderOrdered",
     "Label": "**** \n ## Ordered",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -135,7 +119,6 @@
     "ID": "finalOrderOrderedThat",
     "Label": "### The court orders that:",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -143,7 +126,6 @@
     "ID": "finalOrderOrderedThatText",
     "Label": " ",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -151,7 +133,6 @@
     "ID": "finalOrderCost",
     "Label": "**** \n ## Costs",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -159,7 +140,6 @@
     "ID": "finalOrderCostSecondaryLabel",
     "Label": "### Select as appropriate",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -168,7 +148,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "AssistedCostTypesList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -176,7 +155,6 @@
     "ID": "assistedOrderCostsReserved",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -184,7 +162,6 @@
     "ID": "assistedOrderCostsDefendantPaySub",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -192,7 +169,6 @@
     "ID": "assistedOrderCostsClaimantPaySub",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -200,7 +176,6 @@
     "ID": "assistedOrderCostsDefendantSum",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -208,7 +183,6 @@
     "ID": "assistedOrderCostsClaimantSum",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -216,7 +190,6 @@
     "ID": "assistedOrderCostsBespoke",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -224,7 +197,6 @@
     "ID": "finalOrderFurtherHearingLabel",
     "Label": "**** \n ## Further hearing (part heard or adjourned)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -233,7 +205,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -241,7 +212,6 @@
     "ID": "finalOrderFurtherHearingComplex",
     "Label": " ",
     "FieldType": "FinalOrderFurtherHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -249,7 +219,6 @@
     "ID": "finalOrderAppealLabel",
     "Label": "**** \n ## Appeal",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -258,7 +227,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrderJudgeHeardShowHide",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -266,7 +234,6 @@
     "ID": "finalOrderAppealComplex",
     "Label": " ",
     "FieldType": "FinalOrderAppeal",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -274,7 +241,6 @@
     "ID": "orderMadeOnDetailsPrimaryLabel",
     "Label": "**** \n ## Order made on court's own initiative/without notice",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -282,7 +248,6 @@
     "ID": "orderMadeOnDetailsSecondaryLabel",
     "Label": "### Select as appropriate",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -291,7 +256,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "OrderMadeOnTypes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -299,7 +263,6 @@
     "ID": "orderMadeOnDetailsOrderCourt",
     "Label": " ",
     "FieldType": "OrderMadeOnDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -307,7 +270,6 @@
     "ID": "orderMadeOnDetailsOrderWithoutNotice",
     "Label": " ",
     "FieldType": "OrderMadeOnDetailsOrderWithoutNotice",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -315,7 +277,6 @@
     "ID": "finalOrderReasonsLabel",
     "Label": "**** \n ## Reasons",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -323,7 +284,6 @@
     "ID": "finalOrderGiveReasonsLabel",
     "Label": "### Do you want to give reasons for the order?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -331,7 +291,6 @@
     "ID": "finalOrderGiveReasonsYesNo",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -339,7 +298,6 @@
     "ID": "finalOrderGiveReasonsComplex",
     "Label": " ",
     "FieldType": "AssistedOrderReasons",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -347,7 +305,6 @@
     "ID": "freeFormRecitalAndOrderLabel",
     "Label": "**** \n ## Recital and order \n ### Insert any recitals and order you wish to make below",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -355,7 +312,6 @@
     "ID": "freeFormRecitalTextArea",
     "Label": " ",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -363,7 +319,6 @@
     "ID": "freeFormRecordedTextAreaLabel",
     "Label": "### It is recorded that:",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -371,7 +326,6 @@
     "ID": "freeFormRecordedTextArea",
     "Label": " ",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -379,7 +333,6 @@
     "ID": "freeFormOrderedLabel",
     "Label": "**** \n ## Ordered \n ### It is ordered that:",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -387,7 +340,6 @@
     "ID": "freeFormOrderedTextArea",
     "Label": " ",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -395,7 +347,6 @@
     "ID": "orderOnCourtsListLabel",
     "Label": "**** \n ## Order made on court's own initiative/without notice \n ### Select as appropriate",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -404,7 +355,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "OrderOnCourtsList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -412,7 +362,6 @@
     "ID": "orderOnCourtInitiative",
     "Label": " ",
     "FieldType": "OrderOnCourtInitiative",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -420,7 +369,6 @@
     "ID": "orderWithoutNotice",
     "Label": " ",
     "FieldType": "OrderWithoutNotice",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -428,7 +376,6 @@
     "ID": "finalOrderDocument",
     "Label": "Order",
     "FieldType": "Document",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -437,7 +384,6 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
