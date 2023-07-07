@@ -247,7 +247,6 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
