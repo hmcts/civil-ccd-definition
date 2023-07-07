@@ -9,7 +9,6 @@
     "HintText": "A judge will still need to approve the hearing",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "hearingType",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,7 +19,6 @@
     "ElementLabel": "Who will set up the telephone hearing ?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "FieldShowCondition": "hearingType = \"TELEPHONE_HEARING\""
   },
   {
@@ -29,7 +27,6 @@
     "ElementLabel": "Preferred location",
     "HintText": "This is needed if the judge decides to hold the hearing in person",
     "FieldType": "DynamicList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -38,7 +35,6 @@
     "ElementLabel": "Preferred Location",
     "FieldType": "Text",
     "DefaultHidden": "No",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -48,7 +44,6 @@
     "ListElementCode": "hearingPreferredTelephoneNumber1",
     "ElementLabel": "Preferred telephone number",
     "FieldType": "PhoneUK",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -58,7 +53,6 @@
     "ListElementCode": "hearingPreferredEmail",
     "ElementLabel": "Preferred email",
     "FieldType": "Email",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -69,7 +63,6 @@
     "ElementLabel": "How long do you estimate the hearing will take?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingLengthEstimate",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -80,7 +73,6 @@
     "ElementLabel": "Hours",
     "FieldType": "Number",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "FieldShowCondition": "hearingLengthEstimate = \"OTHER\""
   },
   {
@@ -90,7 +82,6 @@
     "ListElementCode": "hearingUnavailableDates",
     "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -102,7 +93,6 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "hearingDatesParam",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "FieldShowCondition": "hearingUnavailableDates = \"Yes\""
   },
   {
@@ -110,7 +100,6 @@
     "ListElementCode": "hearingSupportQuestion",
     "ElementLabel": "Does anyone require support for a court hearing?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -119,7 +108,6 @@
     "ElementLabel": "Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "FieldShowCondition": "hearingSupportQuestion=\"Yes\""
   }
 ]

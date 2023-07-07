@@ -5,7 +5,6 @@
     "FieldType": "Text",
     "ElementLabel": "First name",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "RetainHiddenValue": "Y"
   },
   {
@@ -14,7 +13,6 @@
     "FieldType": "Text",
     "ElementLabel": "Last name",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "RetainHiddenValue": "Y"
   },
   {
@@ -23,7 +21,6 @@
     "FieldType": "Text",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "RetainHiddenValue": "Y"
   },
   {
@@ -32,7 +29,6 @@
     "FieldType": "Text",
     "ElementLabel": "Phone",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "RetainHiddenValue": "Y"
   },
   {
@@ -41,7 +37,6 @@
     "FieldType": "Flags",
     "ElementLabel": "flags",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "RetainHiddenValue": "Y"
   }
 ]

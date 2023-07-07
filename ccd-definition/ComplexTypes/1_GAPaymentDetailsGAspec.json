@@ -5,7 +5,6 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "PaymentStatus",
     "ElementLabel": "Payment status",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,7 +12,6 @@
     "ListElementCode": "reference",
     "FieldType": "Text",
     "ElementLabel": "Payment reference returned from successful Payments API call",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "ListElementCode": "errorMessage",
     "FieldType": "Text",
     "ElementLabel": "Payment error message returned from failed Payments API call",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,7 +26,6 @@
     "ListElementCode": "errorCode",
     "FieldType": "Text",
     "ElementLabel": "Payment error code returned from failed Payments API call",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -37,7 +33,6 @@
     "ListElementCode": "customerReference",
     "FieldType": "Text",
     "ElementLabel": "Customer reference",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

@@ -4,7 +4,6 @@
     "ListElementCode": "reasonsLabel",
     "ElementLabel": "### Brief reasons",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "reasonsText",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
