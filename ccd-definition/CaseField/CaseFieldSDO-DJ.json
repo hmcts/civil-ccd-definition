@@ -4,7 +4,6 @@
     "ID": "applicantVRespondentText",
     "Label": " ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ID": "caseManagementOrder",
     "Label": "# ${applicantVRespondentText} \n What order would you like to make",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingSelection",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,7 +26,6 @@
     "ID": "hearingDisposalText2",
     "Label": "This is a hearing that lasts no longer than 30 minutes, with only paper-based evidence presented",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -37,7 +33,6 @@
     "ID": "hearingTrialText2",
     "Label": "This is a hearing which lasts longer than 30 minutes, with spoken and paper-based evidence presented",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,7 +41,6 @@
     "Label": "Select additional directions, if any",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "CaseManagementOrderAdditional",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -54,7 +48,6 @@
     "ID": "caseManagementOrderDisposal",
     "Label": "### ${applicantVRespondentText}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -62,7 +55,6 @@
     "ID": "disposalHearingOrderAndHearingDetailsDJ",
     "Label": "Order and hearing details",
     "FieldType": "DisposalHearingOrderAndHearingDetailsDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -70,7 +62,6 @@
     "ID": "disposalHearingJudgesRecitalDJ",
     "Label": " ",
     "FieldType": "DisposalHearingJudgesRecitalDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -78,7 +69,6 @@
     "ID": "disposalHearingJudgementStatementDJ",
     "Label": "### There is judgment for the claimant for an amount to be decided by the court",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -86,7 +76,6 @@
     "ID": "disposalHearingDisclosureOfDocumentsDJ",
     "Label": " ",
     "FieldType": "DisposalHearingDisclosureOfDocumentsDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -94,7 +83,6 @@
     "ID": "disposalHearingWitnessOfFactDJ",
     "Label": "Witnesses of Fact",
     "FieldType": "DisposalHearingWitnessOfFactDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -102,7 +90,6 @@
     "ID": "disposalHearingMedicalEvidenceDJ",
     "Label": "Medical evidence",
     "FieldType": "DisposalHearingMedicalEvidenceDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -110,7 +97,6 @@
     "ID": "disposalHearingQuestionsToExpertsDJ",
     "Label": "Questions to experts",
     "FieldType": "DisposalHearingQuestionsToExpertsDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -118,7 +104,6 @@
     "ID": "disposalHearingSchedulesOfLossDJ",
     "Label": "Schedules or counter-schedules of loss",
     "FieldType": "DisposalHearingSchedulesOfLossDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -126,7 +111,6 @@
     "ID": "disposalHearingFinalDisposalHearingDJ",
     "Label": "Final disposal hearing",
     "FieldType": "DisposalHearingFinalDisposalHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -134,7 +118,6 @@
     "ID": "disposalHearingFinalDisposalHearingTimeDJ",
     "Label": "Hearing time",
     "FieldType": "DisposalHearingFinalDisposalHearingTimeDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -142,7 +125,6 @@
     "ID": "disposalHearingMethodTitleDJ",
     "Label": "## Hearing Method",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -151,7 +133,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -159,7 +140,6 @@
     "ID": "disposalHearingMethodInPersonDJ",
     "Label": "Hearing location ",
     "FieldType": "DynamicList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -168,7 +148,6 @@
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodVideoConferenceHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -176,7 +155,6 @@
     "ID": "disposalHearingMethodVideoConferenceHearingCourtStatementDJ",
     "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -185,7 +163,6 @@
     "Label": "Who will arrange the call? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodTelephoneHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -193,7 +170,6 @@
     "ID": "disposalHearingMethodTelephoneHearingCourtStatementDJ",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -201,7 +177,6 @@
     "ID": "disposalHearingBundleDJ",
     "Label": " ",
     "FieldType": "DisposalHearingBundleDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -209,7 +184,6 @@
     "ID": "disposalHearingClaimSettlingDJ",
     "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -217,7 +191,6 @@
     "ID": "DisposalHearingCostsDJ",
     "Label": "## Costs \n Costs in the case",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -225,7 +198,6 @@
     "ID": "disposalHearingNotesDJ",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotesDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -233,7 +205,6 @@
     "ID": "disposalHearingHearingNotesDJ",
     "Label": "Hearing notes",
     "FieldType": "DisposalHearingHearingNotesDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -241,7 +212,6 @@
     "ID": "disposalHearingOrderMadeWithoutHearingDJ",
     "Label": "Important notes",
     "FieldType": "DisposalHearingOrderMadeWithoutHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -250,7 +220,6 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "DisposalHearingAddNewDirectionsDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -258,7 +227,6 @@
     "ID": "caseManagementOrderTrial",
     "Label": "### ${applicantVRespondentText}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -266,7 +234,6 @@
     "ID": "trialHearingOrderAndHearingDetailsDJ",
     "Label": "# Order and hearing details \n Warning: you must comply with this order: otherwise, your case might be struck out or some other sanction might be imposed. If you cannot comply, you are expected to make a formal application to the court before any deadline imposed upon you expires.\n ****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -274,7 +241,6 @@
     "ID": "trialHearingJudgesRecitalDJ",
     "Label": "Judge's recital",
     "FieldType": "TrialHearingJudgesRecitalDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -282,7 +248,6 @@
     "ID": "trialHearingAllocation",
     "Label": "### Judgment for the claimant for an sum to be decided by the court \n ### Allocation \n the claim is allocated to the fast track \n ****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -290,7 +255,6 @@
     "ID": "trialFastTrackAltDisputeResolution",
     "Label": "## Alternative dispute resolution \nAt all stages, the parties must consider settling this litigation by any means of Alternative Dispute Resolution. This includes round table conferences, early neutral evaluation, mediation and arbitration. Any party not engaging in any such means proposed by another must upload to the Digital Portal a witness statement giving reasons within 21 days of receipt of that proposal. That witness statement must not be shown to the trial judge until questions of costs arise.",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -298,7 +262,6 @@
     "ID": "trialFastTrackVariationOfDirections",
     "Label": "## Variation of directions \nThe Parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4). Otherwise, the time for compliance with a direction may only be extended by making an application",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -306,7 +269,6 @@
     "ID": "trialFastTrackSettlement",
     "Label": "## Settlement \nEach party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -314,7 +276,6 @@
     "ID": "trialHearingDisclosureOfDocumentsDJ",
     "Label": "Disclosure of documents",
     "FieldType": "TrialHearingDisclosureOfDocumentsDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -322,7 +283,6 @@
     "ID": "trialHearingWitnessOfFactDJ",
     "Label": "Witnesses of fact",
     "FieldType": "TrialHearingWitnessOfFactDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -330,7 +290,6 @@
     "ID": "trialHearingSchedulesOfLossDJ",
     "Label": "Schedule of loss",
     "FieldType": "TrialHearingSchedulesOfLossDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -338,7 +297,6 @@
     "ID": "trialHearingCosts",
     "Label": "## Costs \n Costs in the case \n ****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -346,7 +304,6 @@
     "ID": "trialHearingTrialDJ",
     "Label": "Trial",
     "FieldType": "TrialHearingTrialDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -354,7 +311,6 @@
     "ID": "trialHearingTimeDJ",
     "Label": "Hearing time",
     "FieldType": "TrialHearingTimeDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -362,7 +318,6 @@
     "ID": "trialHearingMethodTitleDJ",
     "Label": "## Hearing method",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -371,7 +326,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -379,7 +333,6 @@
     "ID": "trialHearingMethodInPersonDJ",
     "Label": "Hearing location",
     "FieldType": "DynamicList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -388,7 +341,6 @@
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodVideoConferenceHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -396,7 +348,6 @@
     "ID": "trialHearingMethodVideoConferenceHearingCourtStatementDJ",
     "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -405,7 +356,6 @@
     "Label": "Who will arrange the call? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodTelephoneHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -413,7 +363,6 @@
     "ID": "trialHearingMethodTelephoneHearingCourtStatementDJ",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -421,7 +370,6 @@
     "ID": "trialHearingNotesDJ",
     "Label": "Important",
     "FieldType": "TrialHearingNotesDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -429,7 +377,6 @@
   "ID": "trialHearingHearingNotesDJ",
   "Label": "Hearing notes",
   "FieldType": "TrialHearingHearingNotesDJ",
-  "Searchable": "N",
   "SecurityClassification": "Public"
   },
   {
@@ -437,7 +384,6 @@
     "ID": "trialOrderMadeWithoutHearingDJ",
     "Label": "Important notes",
     "FieldType": "TrialOrderMadeWithoutHearingDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -445,7 +391,6 @@
     "ID": "trialBuildingDispute",
     "Label": "Building dispute",
     "FieldType": "TrialBuildingDispute",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -453,7 +398,6 @@
     "ID": "trialClinicalNegligence",
     "Label": "Clinical negligence",
     "FieldType": "TrialClinicalNegligence",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -461,7 +405,6 @@
     "ID": "trialCreditHire",
     "Label": "Credit hire",
     "FieldType": "TrialCreditHire",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -469,7 +412,6 @@
     "ID": "trialHousingDisrepair",
     "Label": "Housing Disrepair",
     "FieldType": "TrialHousingDisrepair",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -477,7 +419,6 @@
     "ID": "trialEmployersLiability",
     "Label": "Employer's liability",
     "FieldType": "TrialEmployersLiability",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -485,7 +426,6 @@
     "ID": "trialPersonalInjury",
     "Label": "Expert evidence",
     "FieldType": "TrialPersonalInjury",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -493,7 +433,6 @@
     "ID": "trialRoadTrafficAccident",
     "Label": "Road traffic accident",
     "FieldType": "TrialRoadTrafficAccident",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -502,7 +441,6 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "TrialHearingAddNewDirectionsDJ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -510,7 +448,6 @@
     "ID": "orderApplicantVRespondent",
     "Label": "### ${applicantVRespondentText}",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -518,7 +455,6 @@
     "ID": "orderSDODocumentDJ",
     "Label": "View directions order",
     "FieldType": "Document",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -527,7 +463,6 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -536,7 +471,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -545,7 +479,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -554,7 +487,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -563,7 +495,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -572,7 +503,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -581,7 +511,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -590,7 +519,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -599,7 +527,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -608,7 +535,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -617,7 +543,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -626,7 +551,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -635,7 +559,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -644,7 +567,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -653,7 +575,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -662,7 +583,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -671,7 +591,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -680,7 +599,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -689,14 +607,12 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingNotes",
     "Label": "Hearing notes for listing officer",
-    "Searchable": "N",
     "FieldType": "HearingNotes",
     "SecurityClassification": "Public"
   },

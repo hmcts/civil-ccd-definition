@@ -6,7 +6,6 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrdersRepresentationList",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -16,7 +15,6 @@
     "ElementLabel": " ",
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"CLAIMANT_AND_DEFENDANT\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -26,7 +24,6 @@
     "ElementLabel": " ",
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"OTHER_REPRESENTATION\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -35,7 +32,6 @@
     "ID": "FinalOrderRepresentation",
     "ElementLabel": "### Judge considered the papers",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -45,7 +41,6 @@
     "ElementLabel": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrdersJudgePapers",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

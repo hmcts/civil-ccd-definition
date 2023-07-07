@@ -5,7 +5,6 @@
     "FieldType": "Date",
     "ElementLabel": "Date",
     "HintText": "For example, 12 11 2007",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,7 +12,6 @@
     "ListElementCode": "timelineDescription",
     "FieldType": "TextArea",
     "ElementLabel": "What happened",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

@@ -5,7 +5,6 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "AccountType",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,7 +12,6 @@
     "ListElementCode": "jointAccount",
     "ElementLabel": "Joint account",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "ListElementCode": "balance",
     "ElementLabel": "Balance (£)",
     "FieldType": "Number",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
