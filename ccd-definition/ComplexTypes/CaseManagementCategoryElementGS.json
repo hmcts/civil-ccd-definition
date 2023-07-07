@@ -6,7 +6,6 @@
     "Label": "Civil",
     "ElementLabel": "Civil",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -16,7 +15,6 @@
     "Label": "Civil",
     "ElementLabel": "Civil",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

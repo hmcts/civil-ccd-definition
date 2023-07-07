@@ -81,7 +81,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -95,7 +95,7 @@ const getExpectedPayload = (serviceId) => {
             'cftOrganisationID': 'Q1KOKP2'
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -122,7 +122,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -149,7 +149,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -178,7 +178,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -192,7 +192,7 @@ const getExpectedPayload = (serviceId) => {
             'cftOrganisationID': '79ZRSOU'
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         }
       ],
@@ -359,14 +359,14 @@ const getExpectedPayload = (serviceId) => {
             'cftOrganisationID': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': [
+          'unavailabilityRanges': [
             {
-                'unavailabilityType': 'ALL_DAY',
+                'unavailabilityType': 'All Day',
                 'unavailableFromDate': date(10),
                 'unavailableToDate': date(10)
             },
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(30),
               'unavailableToDate': date(35)
             }
@@ -384,7 +384,7 @@ const getExpectedPayload = (serviceId) => {
             'cftOrganisationID': 'Q1KOKP2'
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -411,7 +411,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -438,7 +438,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -465,7 +465,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -488,14 +488,14 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': 'C'
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': [
+          'unavailabilityRanges': [
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(10),
               'unavailableToDate': date(10)
             },
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(30),
               'unavailableToDate': date(35)
             }
@@ -513,7 +513,7 @@ const getExpectedPayload = (serviceId) => {
             'cftOrganisationID': '79ZRSOU'
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -540,7 +540,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -567,7 +567,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -590,14 +590,14 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': [
+          'unavailabilityRanges': [
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(10),
               'unavailableToDate': date(10)
             },
             {
-              'unavailabilityType': 'ALL_DAY',
+              'unavailabilityType': 'All Day',
               'unavailableFromDate': date(30),
               'unavailableToDate': date(35)
             }
@@ -614,7 +614,7 @@ const getExpectedPayload = (serviceId) => {
             'cftOrganisationID': 'H2156A0'
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -641,7 +641,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         },
         {
@@ -670,7 +670,7 @@ const getExpectedPayload = (serviceId) => {
             'custodyStatus': null
           },
           'unavailabilityDOW': null,
-          'unavailabilityRange': null,
+          'unavailabilityRanges': null,
           'hearingSubChannel': null
         }
       ],
