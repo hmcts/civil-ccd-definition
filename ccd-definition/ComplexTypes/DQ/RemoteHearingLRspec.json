@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "RemoteHearingLRspec",
+    "ListElementCode": "remoteHearingRequested",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "HintText": "This will be over telephone or video",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RemoteHearingLRspec",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "FieldShowCondition": "reasonForRemoteHearing = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

@@ -2331,6 +2331,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRemoteHearing",
+    "Label": " ",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRemoteHearing",
+    "Label": " ",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnessesSmallClaim",
     "Label": "Defendant 1 witnesses",
     "FieldType": "Witnesses",
