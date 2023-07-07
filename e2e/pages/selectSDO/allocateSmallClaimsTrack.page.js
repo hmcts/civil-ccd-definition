@@ -8,6 +8,11 @@ module.exports = {
         yes: '#drawDirectionsOrderSmallClaims_Yes',
         no: '#drawDirectionsOrderSmallClaims_No'
       }
+    },
+    drawDirectionsOrderSmallClaimsAdditionalDirections: {
+      id: '#drawDirectionsOrderSmallClaimsAdditionalDirections',
+      creditHire: '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimCreditHire',
+      roadTrafficAccident: '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimRoadTrafficAccident'
     }
   },
 
@@ -17,6 +22,11 @@ module.exports = {
       const { yes, no } = this.fields.drawDirectionsOrderSmallClaims.options;
       I.click(smallClaims ? yes : no);
     });
+    if (smallClaims) {
+      I.waitForElement(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.id);
+      I.checkOption(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.creditHire);
+      I.checkOption(this.fields.drawDirectionsOrderSmallClaimsAdditionalDirections.roadTrafficAccident);
+    }
     await I.clickContinue();
   }
 };
