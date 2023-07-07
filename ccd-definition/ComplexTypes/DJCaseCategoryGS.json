@@ -5,7 +5,6 @@
     "ID": "CaseManagementCategory",
     "ElementLabel": " ",
     "FieldType": "CaseManagementCategoryElement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -15,7 +14,6 @@
     "ElementLabel": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseManagementCategoryElement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
