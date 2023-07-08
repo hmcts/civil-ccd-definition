@@ -726,14 +726,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRemoteHearing",
-    "Label": " ",
+    "Label": "Defendant 1 Remote Hearing Question",
     "FieldType": "RemoteHearing",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQRemoteHearing",
-    "Label": " ",
+    "Label": "Defendant 2 Remote Hearing Question",
     "FieldType": "RemoteHearing",
     "SecurityClassification": "Public"
   },

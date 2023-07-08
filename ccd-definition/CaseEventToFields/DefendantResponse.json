@@ -302,8 +302,10 @@
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
     "PageID": "RequestedCourt",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -312,8 +314,10 @@
     "PageDisplayOrder": 15,
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
     "PageID": "RequestedCourt",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
     "CaseTypeID": "CIVIL",
