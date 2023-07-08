@@ -130,8 +130,8 @@ module.exports = {
         requestHearingAtSpecificCourt: 'Yes'
       },
       respondent1DQRemoteHearing: {
-        hearingToBeHeldRemotely: "Yes",
-        hearingToBeHeldRemotelyReason: "No reasons"
+        hearingToBeHeldRemotely: 'Yes',
+        hearingToBeHeldRemotelyReason: 'No reasons'
       },
     },
     HearingSupport: {
