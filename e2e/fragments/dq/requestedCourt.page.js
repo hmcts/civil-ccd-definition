@@ -42,6 +42,13 @@ module.exports = {
     I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);
 
     I.fillField(this.fields(party).reasonForHearingAtSpecificCourt, 'A reason for the court');
+
+    await within(this.fields(party).hearingToBeHeldRemotely.id, () => {
+      I.click(this.fields(party).hearingToBeHeldRemotely.options.yes);
+    });
+
+    I.fillField(this.fields(party).hearingToBeHeldRemotelyReason, 'Reason for remote hearing');
+
     await I.clickContinue();
   },
 };
