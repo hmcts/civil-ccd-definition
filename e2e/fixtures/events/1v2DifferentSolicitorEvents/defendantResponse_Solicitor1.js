@@ -134,7 +134,24 @@ module.exports = {
         },
         reasonForHearingAtSpecificCourt: 'No reasons',
         requestHearingAtSpecificCourt: 'Yes'
-      }
+      },
+      respondent1DQRemoteHearing: {
+        hearingToBeHeldRemotely: 'Yes',
+        hearingToBeHeldRemotelyReason: 'Reason for remote hearing'
+      },
+    },   RequestedCourt: {
+      respondent1DQRequestedCourt: {
+        responseCourtLocations: {
+          list_items: [
+            listElement(config.defendantSelectedCourt)
+          ],
+          value: listElement(config.defendantSelectedCourt)
+        }
+      },
+      respondent1DQRemoteHearing: {
+        hearingToBeHeldRemotely: 'Yes',
+        hearingToBeHeldRemotelyReason: 'Reason for remote hearing'
+      },
     },
     HearingSupport: {
       respondent1DQHearingSupport: {

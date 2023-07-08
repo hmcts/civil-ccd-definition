@@ -43,7 +43,7 @@ module.exports = {
 
     I.fillField(this.fields(party).reasonForHearingAtSpecificCourt, 'A reason for the court');
 
-    await within(this.fields(party).hearingToBeHeldRemotely.id, () => {
+    await I.selectOption(this.fields(party).hearingToBeHeldRemotely.id, () => {
       I.click(this.fields(party).hearingToBeHeldRemotely.options.yes);
     });
 
