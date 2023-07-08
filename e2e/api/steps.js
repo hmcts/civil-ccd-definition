@@ -623,12 +623,15 @@ module.exports = {
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
     deleteCaseFields('respondent1DQRequestedCourt', 'respondent2DQRequestedCourt');
+    deleteCaseFields('respondent1DQRemoteHearing', 'respondent2DQRemoteHearing');
 
     if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1DQHearing');
       deleteCaseFields('respondent1DQLanguage');
       deleteCaseFields('respondent1DQRequestedCourt');
       deleteCaseFields('respondent2DQRequestedCourt');
+      deleteCaseFields('respondent1DQRemoteHearing');
+      deleteCaseFields('respondent2DQRemoteHearing');
       deleteCaseFields('respondent1ClaimResponseType');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
@@ -1552,6 +1555,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQVulnerabilityQuestions'];
     delete responseBody.data['respondent1DQDraftDirections'];
     delete responseBody.data['respondent1DQRequestedCourt'];
+    delete responseBody.data['respondent1DQRemoteHearing'];
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1DQFurtherInformation'];
     delete responseBody.data['respondent1ResponseDeadline'];
