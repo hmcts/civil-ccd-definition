@@ -16,6 +16,14 @@ module.exports = {
           no: 'No'
         }
       },
+      hearingToBeHeldRemotely: {
+        id: `#${party}DQRequestedCourt_hearingToBeHeldRemotely`,
+        options: {
+          yes: 'Yes',
+          no: 'No'
+        }
+      },
+      hearingToBeHeldRemotelyReason: `#${party}DQRequestedCourt_hearingToBeHeldRemotelyReason`,
 
       reasonForHearingAtSpecificCourt: `#${party}DQRequestedCourt_reasonForHearingAtSpecificCourt`,
       courtLocation: {
