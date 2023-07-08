@@ -17,13 +17,13 @@ module.exports = {
         }
       },
       hearingToBeHeldRemotely: {
-        id: `#${party}DQRequestedCourt_hearingToBeHeldRemotely`,
+        id: `#${party}DQRemoteHearing_hearingToBeHeldRemotely`,
         options: {
           yes: 'Yes',
           no: 'No'
         }
       },
-      hearingToBeHeldRemotelyReason: `#${party}DQRequestedCourt_hearingToBeHeldRemotelyReason`,
+      hearingToBeHeldRemotelyReason: `#${party}DQRemoteHearing_hearingToBeHeldRemotelyReason`,
 
       reasonForHearingAtSpecificCourt: `#${party}DQRequestedCourt_reasonForHearingAtSpecificCourt`,
       courtLocation: {
@@ -43,7 +43,7 @@ module.exports = {
 
     I.fillField(this.fields(party).reasonForHearingAtSpecificCourt, 'A reason for the court');
 
-    await I.selectOption(this.fields(party).hearingToBeHeldRemotely.id, () => {
+    await within(this.fields(party).hearingToBeHeldRemotely.id, () => {
       I.click(this.fields(party).hearingToBeHeldRemotely.options.yes);
     });
 
