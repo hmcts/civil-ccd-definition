@@ -2090,7 +2090,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
