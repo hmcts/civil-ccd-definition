@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD API test @submit-new-claim-as-caseworker @api-specified');
+Feature('CCD API test @api-spec-submit-new-claim-as-caseworker @api-specified');
 
 Scenario('Submit a new claim as a caseworker', async ({I, api_spec}) => {
   await api_spec.createNewClaimWithCaseworker(config.applicantSolicitorUser, 'ONE_V_ONE');
