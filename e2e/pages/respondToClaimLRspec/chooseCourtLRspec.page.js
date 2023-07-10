@@ -45,7 +45,7 @@ module.exports = {
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             respondent2DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',
-              reasonForRemoteHearing: 'No reasons'
+              reasonForRemoteHearing: 'Some reason'
             },
           }
         };
@@ -73,7 +73,7 @@ module.exports = {
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             respondent1DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',
-              reasonForRemoteHearing: 'No reasons'
+              reasonForRemoteHearing: 'Some reason'
             },
           }
         };
@@ -88,7 +88,7 @@ module.exports = {
     this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
     I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
     I.fillField(this.fields(mpScenario).fields.respondent1DQRemoteHearingLRspec.remoteHearingRequested, 'Yes');
-    I.fillField(this.fields(mpScenario).fields.respondent1DQRemoteHearingLRspec.reasonForRemoteHearing, 'No reasons');
+    I.fillField(this.fields(mpScenario).fields.respondent1DQRemoteHearingLRspec.reasonForRemoteHearing, 'Some reason');
     await I.clickContinue();
   }
 };

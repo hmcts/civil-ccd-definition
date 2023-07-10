@@ -88,7 +88,7 @@ module.exports = {
           },
           respondent1DQRemoteHearingLRspec: {
             remoteHearingRequested: 'Yes',
-            reasonForRemoteHearing: 'No reasons'
+            reasonForRemoteHearing: 'Some reasons'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
