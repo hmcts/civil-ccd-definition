@@ -24,6 +24,7 @@ const getRequestHeaders = (userAuth) => {
     'ServiceAuthorization': tokens.s2sAuth
   };
 };
+const getCivilServiceCaseworkerSubmitNewClaimUrl = () => `${config.url.civilService}/cases/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases`;
 
 module.exports = {
   setupTokens: async (user) => {
@@ -105,6 +106,16 @@ module.exports = {
         event: {id: eventName},
         event_data: caseData,
         event_token: tokens.ccdEvent
+      }, 'POST', 201);
+  },
+
+  submitNewClaimAsCaseworker: async (eventName, caseData) => {
+    let url = getCivilServiceCaseworkerSubmitNewClaimUrl();
+
+    return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
+      {
+        data: caseData,
+        event: eventName,
       }, 'POST', 201);
   },
 
