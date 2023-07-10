@@ -1763,9 +1763,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1RepaymentPlanLabel2",
+    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2RepaymentPlanLabel2",
+    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
+    "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2265,7 +2280,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentPayImmediatelyTextAfterDate",
-    "Label": "Any cheques or transfers should be clear in your account.<p>You need to tell us if you’ve settled the claim, for example because the defendant has paid you.</p><p>You can settle for less than the full claim amount.</p><p><h3>If you haven’t been paid.</h3></p><p>If the defendant has not paid you, you can request a County Court Judgment by completing the following form and sending it to the email address below.</p><p><li><a href=\"https://formfinder.hmctsformfinder.justice.gov.uk/n225-eng.pdf\" target=\"_blank\">N225 </a>- Ask for judgment on a claim for a specified amount of money</li></ul></p><p>Email: <a href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></p>",
+    "Label": "Any cheques or transfers should be clear in your account.<p>You need to tell us if you’ve settled the claim, for example because the defendant has paid you.</p><p>You can settle for less than the full claim amount.</p><p><h3>If you haven’t been paid.</h3></p><p>If the defendant has not paid you, you can request a County Court Judgment by completing the following form and sending it to the email address below.</p><p><li><a href=\"https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/961368/n225-eng.pdf\" target=\"_blank\">N225 </a>- Ask for judgment on a claim for a specified amount of money</li></ul></p><p>Email: <a href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></p>",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -2307,5 +2322,97 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "_comment": "used in civil-service to determine and store if respondent 2 triggered respond to claim"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQWitnessesSmallClaim",
+    "Label": "Claimant 1 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimExpertSpecRequired",
+    "Label": "Do you want to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantMPClaimExpertSpecRequired",
+    "Label": "Do you want to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQWitnessesSmallClaim",
+    "Label": "Defendant 1 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQWitnessesSmallClaim",
+    "Label": "Defendant 2 witnesses",
+    "FieldType": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQHearingLRspec",
+    "Label": " ",
+    "FieldType": "HearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQSmallClaimHearing",
+    "Label": " ",
+    "FieldType": "SmallClaimHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired",
+    "Label": "Do you want to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "responseClaimExpertSpecRequired2",
+    "Label": "Do you want to use an expert?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondentInformation",
+    "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name: ${respondent1Copy.partyName}** ${respondent1Copy.soleTraderTradingAs}\n\n**Email:** ${respondent1Copy.partyEmail}\n\n**Phone:** ${respondent1Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSCompanyOrganisationRespondentInformation",
+    "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name: ${respondent1Copy.partyName}** ${respondent1Copy.soleTraderTradingAs}\n\n**Email:** ${respondent1Copy.partyEmail}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSRespondent2Information",
+    "Label": "**Party type:** ${respondent2Copy.partyTypeDisplayValue}\n\n**Name: ${respondent2Copy.partyName}** ${respondent2Copy.soleTraderTradingAs}\n\n**Email:** ${respondent2Copy.partyEmail}\n\n**Phone:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specAoSCompanyOrganisationRespondent2Information",
+    "Label": "**Party type:** ${respondent2Copy.partyTypeDisplayValue}\n\n**Name: ${respondent2Copy.partyName}** ${respondent2Copy.soleTraderTradingAs}\n\n**Email:** ${respondent2Copy.partyEmail}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]

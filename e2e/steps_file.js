@@ -156,7 +156,7 @@ const CONFIRMATION_MESSAGE = {
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
@@ -271,11 +271,12 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
-        try {
+        //commenting this out, this will give us few minutes back
+        /*try {
           await this.takeScreenshot();
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
-        }
+        }*/
         await steps[i]();
       }
     },
@@ -934,6 +935,8 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
       }, SIGNED_IN_SELECTOR);
 
@@ -961,6 +964,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.rejectCookieBanner(),
         () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
