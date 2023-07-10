@@ -60,5 +60,24 @@
     "SecurityClassification": "Public",
     "RegularExpression": "[0-9]{3}",
     "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "remoteHearingRequested",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you want the hearing to be held remotely?",
+    "HintText": "This will be over telephone or video",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "_Comment": "Backend uses same type for both spec and unspec, we have to define this here to avoid ccd-data-store problems"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldType": "TextArea",
+    "ElementLabel": "Briefly explain your reasons",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "_Comment": "Backend uses same type for both spec and unspec, we have to define this here to avoid ccd-data-store problems"
   }
 ]
