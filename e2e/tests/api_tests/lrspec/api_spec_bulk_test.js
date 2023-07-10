@@ -2,11 +2,11 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD API test @api-bulk-spec @api-specified');
+Feature('CCD API test @submit-new-claim-as-caseworker @api-specified');
 
-Scenario('Create claim bulk spec', async ({I, api_spec}) => {
-  await api_spec.createClaimWithNonRepresentedRespondentBulkClaim(config.applicantSolicitorUser, 'ONE_V_ONE');
-  await api_spec.createClaimWithNonRepresentedRespondentBulkClaim(config.applicantSolicitorUser, 'ONE_V_TWO');
+Scenario('Submit a new claim as a caseworker', async ({I, api_spec}) => {
+  await api_spec.createNewClaimWithCaseworker(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api_spec.createNewClaimWithCaseworker(config.applicantSolicitorUser, 'ONE_V_TWO');
 });
 
 
