@@ -5,7 +5,6 @@
     "ListElementCode": "orderSDODocumentDJ",
     "FieldType": "Document",
     "ElementLabel": "Document",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

@@ -4,7 +4,6 @@
     "ID": "drawDirectionsOrderRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ID": "drawDirectionsOrder",
     "Label": " ",
     "FieldType": "JudgementSum",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "Label": "What track are you allocating the claim to?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimsTrack",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -30,7 +27,6 @@
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "SmallTrack",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,7 +35,14 @@
     "Label": "Select additional directions for Fast Track, if any ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FastTrack",
-    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialAdditionalDirectionsForFastTrack",
+    "Label": "Select additional directions for Fast Track, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrack",
     "SecurityClassification": "Public"
   },
   {
@@ -47,7 +50,6 @@
     "ID": "drawDirectionsOrderSmallClaims",
     "Label": "Do you want to allocate this claim to the small claims track?",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -55,8 +57,7 @@
     "ID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DrawDirectionsOrderSmallClaimsAdditionalDirections",
-    "Searchable": "N",
+    "FieldTypeParameter": "SmallTrack",
     "SecurityClassification": "Public"
   },
   {
@@ -65,7 +66,6 @@
     "Label": "What order would you like to make?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "OrderType",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -74,7 +74,6 @@
     "Label": "Select additional directions, if any ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderTypeTrialAdditionalDirections",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -82,7 +81,6 @@
     "ID": "disposalHearingOrderAndHearingDetails",
     "Label": "Order and hearing details",
     "FieldType": "DisposalHearingOrderAndHearingDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -90,7 +88,6 @@
     "ID": "disposalHearingJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "DisposalHearingJudgesRecital",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -98,7 +95,6 @@
     "ID": "disposalHearingJudgementDeductionStatement",
     "Label": " ",
     "FieldType": "DisposalHearingJudgementDeductionStatement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -106,7 +102,6 @@
     "ID": "disposalHearingJudgementDeductionValue",
     "Label": " ",
     "FieldType": "DisposalHearingJudgementDeductionValue",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -114,7 +109,6 @@
     "ID": "disposalHearingDisclosureOfDocumentsStartLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -122,7 +116,6 @@
     "ID": "disposalHearingDisclosureOfDocumentsTitle",
     "Label": "## Disclosure of documents",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -131,7 +124,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -139,7 +131,6 @@
     "ID": "disposalHearingDisclosureOfDocuments",
     "Label": " ",
     "FieldType": "DisposalHearingDisclosureOfDocuments",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -147,7 +138,6 @@
     "ID": "disposalHearingDisclosureOfDocumentsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -155,7 +145,6 @@
     "ID": "disposalHearingWitnessOfFactTitle",
     "Label": "## Witnesses of Fact",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -164,7 +153,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -172,7 +160,6 @@
     "ID": "disposalHearingWitnessOfFact",
     "Label": " ",
     "FieldType": "DisposalHearingWitnessOfFact",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -180,7 +167,6 @@
     "ID": "disposalHearingWitnessOfFactEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -188,7 +174,6 @@
     "ID": "disposalHearingMedicalEvidenceTitle",
     "Label": "## Medical evidence",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -197,7 +182,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -205,7 +189,6 @@
     "ID": "disposalHearingMedicalEvidence",
     "Label": " ",
     "FieldType": "DisposalHearingMedicalEvidence",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -213,7 +196,6 @@
     "ID": "disposalHearingMedicalEvidenceEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -221,7 +203,6 @@
     "ID": "disposalHearingQuestionsToExpertsTitle",
     "Label": "## Questions to experts",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -230,7 +211,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -238,7 +218,6 @@
     "ID": "disposalHearingQuestionsToExperts",
     "Label": " ",
     "FieldType": "DisposalHearingQuestionsToExperts",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -246,7 +225,6 @@
     "ID": "disposalHearingQuestionsToExpertsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -254,7 +232,6 @@
     "ID": "disposalHearingSchedulesOfLossTitle",
     "Label": "## Schedules or counter-schedules of loss",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -263,7 +240,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -271,7 +247,6 @@
     "ID": "disposalHearingSchedulesOfLoss",
     "Label": " ",
     "FieldType": "DisposalHearingSchedulesOfLoss",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -279,7 +254,6 @@
     "ID": "disposalHearingSchedulesOfLossEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -287,7 +261,6 @@
     "ID": "disposalHearingFinalDisposalHearingTitle",
     "Label": "## Hearing time",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -296,7 +269,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -304,7 +276,6 @@
     "ID": "disposalHearingFinalDisposalHearing",
     "Label": " ",
     "FieldType": "DisposalHearingFinalDisposalHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -312,7 +283,6 @@
     "ID": "disposalHearingHearingTime",
     "Label": " ",
     "FieldType": "DisposalHearingHearingTime",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -320,7 +290,6 @@
     "ID": "disposalHearingFinalDisposalHearingEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -328,7 +297,6 @@
     "ID": "disposalHearingMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -337,7 +305,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -346,7 +313,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethod",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -355,7 +321,6 @@
     "Label": "Select hearing location ",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "DisposalHearingMethodInPerson",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -364,7 +329,6 @@
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingMethodVideoConferenceHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -372,7 +336,6 @@
     "ID": "disposalHearingMethodVideoConferenceHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -380,7 +343,6 @@
     "ID": "disposalHearingMethodTelephoneHearing",
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
-    "Searchable": "N",
     "FieldTypeParameter": "DisposalHearingMethodTelephoneHearing",
     "SecurityClassification": "Public"
   },
@@ -389,7 +351,6 @@
     "ID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -397,7 +358,6 @@
     "ID": "disposalHearingHearingNotesStartLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -412,7 +372,6 @@
     "ID": "disposalHearingHearingNotes",
     "Label": "This is only seen by the listing officer",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -420,7 +379,6 @@
     "ID": "disposalOrderWithoutHearing",
     "Label": " ",
     "FieldType": "DisposalOrderWithoutHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -428,7 +386,6 @@
     "ID": "disposalHearingBundleStartLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -436,7 +393,6 @@
     "ID": "disposalHearingBundleTitle",
     "Label": "## Disposal hearing bundle",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -445,7 +401,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -453,7 +408,6 @@
     "ID": "disposalHearingBundle",
     "Label": " ",
     "FieldType": "DisposalHearingBundle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -461,7 +415,6 @@
     "ID": "disposalHearingBundleEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -469,7 +422,6 @@
     "ID": "disposalHearingClaimSettlingTitle",
     "Label": "## Claim Settling",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -478,7 +430,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -486,7 +437,6 @@
     "ID": "disposalHearingClaimSettling",
     "Label": " ",
     "FieldType": "DisposalHearingClaimSettling",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -494,7 +444,6 @@
     "ID": "disposalHearingClaimSettlingEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -502,7 +451,6 @@
     "ID": "disposalHearingCostsTitle",
     "Label": "## Costs",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -511,7 +459,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -519,7 +466,6 @@
     "ID": "disposalHearingCosts",
     "Label": " ",
     "FieldType": "DisposalHearingCosts",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -527,7 +473,6 @@
     "ID": "disposalHearingCostsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -536,7 +481,6 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "DisposalHearingAddNewDirections",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -544,7 +488,6 @@
     "ID": "disposalHearingAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -552,7 +495,6 @@
     "ID": "disposalHearingNotes",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -560,7 +502,6 @@
     "ID": "setSmallClaimsFlag",
     "Label": "small claims flag",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -568,7 +509,6 @@
     "ID": "smallClaimsOrderAndHearingDetails",
     "Label": " ",
     "FieldType": "SmallClaimsOrderAndHearingDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -576,7 +516,6 @@
     "ID": "smallClaimsJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "SmallClaimsJudgesRecital",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -584,7 +523,6 @@
     "ID": "smallClaimsJudgementDeductionStatement",
     "Label": " ",
     "FieldType": "SmallClaimsJudgementDeductionStatement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -592,7 +530,6 @@
     "ID": "smallClaimsJudgementDeductionValue",
     "Label": " ",
     "FieldType": "SmallClaimsJudgementDeductionValue",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -600,7 +537,6 @@
     "ID": "smallClaimsAllocation",
     "Label": " ",
     "FieldType": "SmallClaimsAllocation",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -608,7 +544,6 @@
     "ID": "smallClaimsHearingStartLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -616,7 +551,6 @@
     "ID": "smallClaimsHearingTitle",
     "Label": "## Hearing time",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -625,7 +559,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -633,7 +566,6 @@
     "ID": "smallClaimsHearing",
     "Label": " ",
     "FieldType": "SmallClaimsHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -641,7 +573,6 @@
     "ID": "smallClaimsHearingEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -649,7 +580,6 @@
     "ID": "smallClaimsDocumentsStartLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -657,7 +587,6 @@
     "ID": "smallClaimsDocumentsTitle",
     "Label": "## Documents",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -666,7 +595,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -674,7 +602,6 @@
     "ID": "smallClaimsDocuments",
     "Label": " ",
     "FieldType": "SmallClaimsDocuments",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -682,7 +609,6 @@
     "ID": "smallClaimsDocumentsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -690,7 +616,6 @@
     "ID": "smallClaimsWitnessStatementTitle",
     "Label": "## Witness Statement",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -699,7 +624,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -707,7 +631,6 @@
     "ID": "smallClaimsWitnessStatement",
     "Label": " ",
     "FieldType": "SmallClaimsWitnessStatement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -715,7 +638,6 @@
     "ID": "smallClaimsWitnessStatementEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -723,7 +645,6 @@
     "ID": "smallClaimsMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -732,7 +653,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -741,7 +661,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsMethod",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -750,7 +669,6 @@
     "Label": "Select hearing location ",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "SmallClaimsMethodInPerson",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -759,7 +677,6 @@
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsMethodVideoConferenceHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -768,7 +685,6 @@
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsMethodTelephoneHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -776,7 +692,6 @@
     "ID": "smallClaimsNotes",
     "Label": "Important notes",
     "FieldType": "SmallClaimsNotes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -784,7 +699,6 @@
     "ID": "sdoHearingNotes",
     "Label": "Hearing notes",
     "FieldType": "SDOHearingNotes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -792,7 +706,6 @@
     "ID": "smallClaimsCreditHire",
     "Label": "Credit hire",
     "FieldType": "SmallClaimsCreditHire",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -800,7 +713,6 @@
     "ID": "smallClaimsRoadTrafficAccident",
     "Label": "Road traffic accident ",
     "FieldType": "SmallClaimsRoadTrafficAccident",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -809,7 +721,6 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "SmallClaimsAddNewDirections",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -817,7 +728,6 @@
     "ID": "smallClaimsAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -825,7 +735,6 @@
     "ID": "setFastTrackFlag",
     "Label": "fast track flag",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -833,7 +742,6 @@
     "ID": "fastTrackOrderAndHearingDetails",
     "Label": " ",
     "FieldType": "FastTrackOrderAndHearingDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -841,7 +749,6 @@
     "ID": "fastTrackJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "FastTrackJudgesRecital",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -849,7 +756,6 @@
     "ID": "fastTrackJudgementDeductionStatement",
     "Label": " ",
     "FieldType": "FastTrackJudgementDeductionStatement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -857,7 +763,6 @@
     "ID": "fastTrackJudgementDeductionValue",
     "Label": " ",
     "FieldType": "FastTrackJudgementDeductionValue",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -865,7 +770,6 @@
     "ID": "fastTrackAllocation",
     "Label": " ",
     "FieldType": "FastTrackAllocation",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -873,7 +777,6 @@
     "ID": "fastTrackAltDisputeResolutionStartLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -881,7 +784,6 @@
     "ID": "fastTrackAltDisputeResolutionTitle",
     "Label": "## Alternative dispute resolution",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -890,7 +792,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -898,7 +799,6 @@
     "ID": "fastTrackAltDisputeResolution",
     "Label": " ",
     "FieldType": "FastTrackAltDisputeResolution",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -906,7 +806,6 @@
     "ID": "fastTrackAltDisputeResolutionEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -914,7 +813,6 @@
     "ID": "fastTrackVariationOfDirectionsTitle",
     "Label": "## Variation of directions",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -923,7 +821,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -931,7 +828,6 @@
     "ID": "fastTrackVariationOfDirections",
     "Label": " ",
     "FieldType": "FastTrackVariationOfDirections",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -939,7 +835,6 @@
     "ID": "fastTrackVariationOfDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -947,7 +842,6 @@
     "ID": "fastTrackSettlementTitle",
     "Label": "## Settlement",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -956,7 +850,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -964,7 +857,6 @@
     "ID": "fastTrackSettlement",
     "Label": " ",
     "FieldType": "FastTrackSettlement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -972,7 +864,6 @@
     "ID": "fastTrackSettlementEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -980,7 +871,6 @@
     "ID": "fastTrackDisclosureOfDocumentsTitle",
     "Label": "## Disclosure of documents",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -989,7 +879,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -997,7 +886,6 @@
     "ID": "fastTrackDisclosureOfDocuments",
     "Label": " ",
     "FieldType": "FastTrackDisclosureOfDocuments",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1005,7 +893,6 @@
     "ID": "fastTrackDisclosureOfDocumentsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1013,7 +900,6 @@
     "ID": "fastTrackWitnessOfFactTitle",
     "Label": "## Witnesses of Fact",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1022,7 +908,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1030,7 +915,6 @@
     "ID": "fastTrackWitnessOfFact",
     "Label": " ",
     "FieldType": "FastTrackWitnessOfFact",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1038,7 +922,6 @@
     "ID": "fastTrackWitnessOfFactEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1046,7 +929,6 @@
     "ID": "fastTrackSchedulesOfLossTitle",
     "Label": "## Schedules of loss",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1055,7 +937,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1063,7 +944,6 @@
     "ID": "fastTrackSchedulesOfLoss",
     "Label": " ",
     "FieldType": "FastTrackSchedulesOfLoss",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1071,7 +951,6 @@
     "ID": "fastTrackSchedulesOfLossEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1079,7 +958,6 @@
     "ID": "fastTrackCostsTitle",
     "Label": "## Costs",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1088,7 +966,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1096,7 +973,6 @@
     "ID": "fastTrackCosts",
     "Label": " ",
     "FieldType": "FastTrackCosts",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1104,7 +980,6 @@
     "ID": "fastTrackCostsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1112,7 +987,6 @@
     "ID": "fastTrackTrialTitle",
     "Label": "## Hearing time",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1121,7 +995,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1129,7 +1002,6 @@
     "ID": "fastTrackTrial",
     "Label": " ",
     "FieldType": "FastTrackTrial",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1137,7 +1009,6 @@
     "ID": "fastTrackHearingTime",
     "Label": " ",
     "FieldType": "FastTrackHearingTime",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1145,7 +1016,6 @@
     "ID": "fastTrackTrialEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1153,7 +1023,6 @@
     "ID": "fastTrackMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1162,7 +1031,6 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackMethod",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1171,7 +1039,6 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1180,7 +1047,6 @@
     "Label": "Select hearing location ",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "FastTrackMethodInPerson",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1189,7 +1055,6 @@
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackMethodVideoConferenceHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1198,7 +1063,6 @@
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackMethodTelephoneHearing",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1206,7 +1070,6 @@
     "ID": "fastTrackMethodEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1214,7 +1077,6 @@
     "ID": "fastTrackNotes",
     "Label": " ",
     "FieldType": "FastTrackNotes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1222,7 +1084,6 @@
     "ID": "fastTrackHearingNotes",
     "Label": "Hearing notes",
     "FieldType": "FastTrackHearingNotes",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1230,7 +1091,6 @@
     "ID": "fastTrackOrderWithoutJudgement",
     "Label": "Important notes",
     "FieldType": "FastTrackOrderWithoutJudgement",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1238,7 +1098,6 @@
     "ID": "fastTrackBuildingDispute",
     "Label": "Building dispute",
     "FieldType": "FastTrackBuildingDispute",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1246,7 +1105,6 @@
     "ID": "fastTrackClinicalNegligence",
     "Label": "Clinical negligence",
     "FieldType": "FastTrackClinicalNegligence",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1254,7 +1112,6 @@
     "ID": "fastTrackCreditHire",
     "Label": "Credit hire",
     "FieldType": "FastTrackCreditHire",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1262,7 +1119,6 @@
     "ID": "fastTrackEmployersLiability",
     "Label": "Employer's liability",
     "FieldType": "FastTrackEmployersLiability",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1270,7 +1126,6 @@
     "ID": "fastTrackHousingDisrepair",
     "Label": "Housing Disrepair",
     "FieldType": "FastTrackHousingDisrepair",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1278,7 +1133,6 @@
     "ID": "fastTrackPersonalInjury",
     "Label": "Expert Evidence",
     "FieldType": "FastTrackPersonalInjury",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1286,7 +1140,6 @@
     "ID": "fastTrackRoadTrafficAccident",
     "Label": "Road traffic accident",
     "FieldType": "FastTrackRoadTrafficAccident",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1295,7 +1148,6 @@
     "Label": "Add a new direction",
     "FieldType": "Collection",
     "FieldTypeParameter": "FastTrackAddNewDirections",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1303,7 +1155,6 @@
     "ID": "fastTrackAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1311,7 +1162,6 @@
     "ID": "reasonNotSuitableSDO",
     "Label": "What is the reason for not drawing a Standard Directions Order? \n",
     "FieldType": "ReasonNotSuitableSDO",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1319,7 +1169,6 @@
     "ID": "unsuitableSDODate",
     "Label": "SDO unsuitable date",
     "FieldType": "DateTime",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1327,7 +1176,6 @@
     "ID": "sdoOrderDocument",
     "Label": "View directions order",
     "FieldType": "CaseDocument",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1335,7 +1183,6 @@
     "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1343,7 +1190,6 @@
     "ID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {

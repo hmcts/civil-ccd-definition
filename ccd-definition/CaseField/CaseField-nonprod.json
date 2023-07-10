@@ -5,7 +5,6 @@
     "Label": "change of representation details",
     "FieldType": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
-    "Searchable": "N",
     "Comment": "Field storing noc update details"
   },
   {
@@ -13,7 +12,6 @@
     "ID": "casePaymentWaysToPay",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
