@@ -66,11 +66,11 @@ module.exports = {
                 preferredCourt: config.defendantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]'
+            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             respondent1DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',
               reasonForRemoteHearing: 'No reasons'
-            }
+            },
           }
         };
       }
