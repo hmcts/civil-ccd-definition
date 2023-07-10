@@ -95,11 +95,11 @@ module.exports = {
             role: 'Bulk issuer'
           },
           claimFee: {
-            calculatedAmountInPence: "11500",
-            code: "FEE0206",
-            version: "4"
+            calculatedAmountInPence: '11500',
+            code: 'FEE0206',
+            version: '4'
           },
-          totalClaimAmount: "151234",
+          totalClaimAmount: '151234',
           applicantSolicitor1UserDetails: {
             email: solicitor1Email
           }
@@ -163,11 +163,11 @@ module.exports = {
           role: 'Bulk issuer'
         },
         claimFee: {
-          calculatedAmountInPence: "11500",
-          code: "FEE0206",
-          version: "4"
+          calculatedAmountInPence: '11500',
+          code: 'FEE0206',
+          version: '4'
         },
-        totalClaimAmount: "151234",
+        totalClaimAmount: '151234',
         applicantSolicitor1UserDetails: {
           email: solicitor1Email
         }
