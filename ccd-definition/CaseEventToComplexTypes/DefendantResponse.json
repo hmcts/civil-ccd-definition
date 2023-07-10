@@ -258,8 +258,7 @@
     "CaseFieldID": "respondent1DQRequestedCourt",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Please select your preferred hearing court centre",
-    "EventHintText": "If the defendant is an individual the case will be held at the defendant's preferred court",
+    "EventElementLabel": "Please select your preferred court hearing location",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
   },
@@ -305,8 +304,7 @@
     "CaseFieldID": "respondent2DQRequestedCourt",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Please select your preferred hearing court centre",
-    "EventHintText": "If the defendant is an individual the case will be held at the defendant's preferred court",
+    "EventElementLabel": "Please select your preferred court hearing location",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
   },
