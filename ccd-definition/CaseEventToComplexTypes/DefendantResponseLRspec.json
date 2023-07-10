@@ -801,7 +801,7 @@
   {
     "ID": "CourtLocationSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQRemoteHearing",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "ListElementCode": "remoteHearingRequested",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -809,9 +809,9 @@
   {
     "ID": "CourtLocationSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQRemoteHearing",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "ListElementCode": "reasonForRemoteHearing",
-    "FieldShowCondition": "respondent1DQRemoteHearing.remoteHearingRequested = \"Yes\"",
+    "FieldShowCondition": "respondent1DQRemoteHearingLRspec.remoteHearingRequested = \"Yes\"",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
@@ -835,7 +835,7 @@
   {
     "ID": "CourtLocationSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRemoteHearing",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "ListElementCode": "remoteHearingRequested",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -843,9 +843,9 @@
   {
     "ID": "CourtLocationSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRemoteHearing",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "ListElementCode": "reasonForRemoteHearing",
-    "FieldShowCondition": "respondent2DQRemoteHearing.remoteHearingRequested = \"Yes\"",
+    "FieldShowCondition": "respondent2DQRemoteHearingLRspec.remoteHearingRequested = \"Yes\"",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
   },

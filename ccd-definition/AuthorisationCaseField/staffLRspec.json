@@ -199,13 +199,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQRemoteHearing",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQRemoteHearing",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },

@@ -132,7 +132,7 @@
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent1DQRemoteHearing",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "TabFieldDisplayOrder": 17
   },
   {
@@ -140,7 +140,7 @@
     "TabID": "Hearings",
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent2DQRemoteHearing",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "TabFieldDisplayOrder": 18
   }
 ]

@@ -3,7 +3,7 @@
     "ID": "RemoteHearingLRspec",
     "ListElementCode": "remoteHearingRequested",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Do you want the hearing to be held remotely?",
     "HintText": "This will be over telephone or video",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -12,8 +12,8 @@
     "ID": "RemoteHearingLRspec",
     "ListElementCode": "reasonForRemoteHearing",
     "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "FieldShowCondition": "reasonForRemoteHearing = \"Yes\"",
+    "ElementLabel": "Briefly explain your reasons",
+    "FieldShowCondition": "remoteHearingRequested = \"Yes\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
