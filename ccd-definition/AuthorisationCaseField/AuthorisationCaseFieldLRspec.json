@@ -3518,6 +3518,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1RepaymentPlanLabel2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1RepaymentPlan",
     "AccessControl": [
       {
@@ -3560,6 +3580,26 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2RepaymentPlanLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2RepaymentPlanLabel2",
     "AccessControl": [
       {
         "UserRoles": [
