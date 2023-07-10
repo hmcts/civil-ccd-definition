@@ -1,11 +1,12 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
-//const {PBAv3} = require('../../../fixtures/featureKeys');
-//const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const {checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+const {PBAv3} = require('../../../fixtures/featureKeys');
+const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-//const claimData = require('../../../fixtures/events/createClaimSpec.js');
-//const apiRequest = require('./../../../api/apiRequest.js');
+const {paymentUpdate} = require('../../../api/apiRequest');
+const claimData = require('../../../fixtures/events/createClaimSpec');
+const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 /*const respondent1 = {
   represented: true,
@@ -33,15 +34,13 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   //const pbaV3 = await checkToggleEnabled(PBAv3);
   //console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-/*  if (pbaV3) {
-    await apiRequest.paymentUpdate(caseNumber, '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseNumber, 'paid'));
-    console.log('Service request update sent to callback URL');
-  }*/
-  /*if (pbaV3) {
+  if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseNumber);
-  }*/
+    await serviceRequest.payFee(caseId());
+    await paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
+  }
 
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(3);
@@ -82,6 +81,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
   await LRspec.click('Sign out');
 }).retry(3);
 
+// Skip case flags scenario as it's covered in the unspec e2e
 Scenario.skip('Add case flags', async ({LRspec}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
@@ -97,7 +97,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
     await LRspec.createCaseFlags(caseFlags);
     await LRspec.validateCaseFlags(caseFlags);
   }
-});
+}).retry(3);
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
