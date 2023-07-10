@@ -728,6 +728,7 @@
     "ID": "respondent1DQRemoteHearing",
     "Label": "Defendant 1 Remote Hearing Question",
     "FieldType": "RemoteHearing",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -735,6 +736,7 @@
     "ID": "respondent2DQRemoteHearing",
     "Label": "Defendant 2 Remote Hearing Question",
     "FieldType": "RemoteHearing",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
