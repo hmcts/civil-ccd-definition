@@ -155,7 +155,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
-   {
+  {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT1_FOR_REQUEST_JUDGEMENT_BY_ADMISSION",
     "Name": "Email: Transferred offline",

@@ -189,8 +189,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil",
-          "judge-profile"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -198,8 +197,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "GS_profile"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -276,8 +274,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil",
-          "judge-profile"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -285,8 +282,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "GS_profile"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -300,7 +296,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -308,8 +304,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "GS_profile"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -323,8 +318,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil",
-          "judge-profile"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -332,8 +326,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "GS_profile"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
