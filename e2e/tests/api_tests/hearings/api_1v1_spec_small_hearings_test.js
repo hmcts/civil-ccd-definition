@@ -12,7 +12,7 @@ Feature('CCD 1v1 Spec small hearings API test @api-hearings @api-hearings-spec')
 Scenario('1v1 full defence defendant and claimant response', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, hearingsApi);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, hearingsApi);
-  await api_spec_small.claimantResponse(config.applicantSolicitorUser);
+  await api_spec_small.claimantResponse(config.applicantSolicitorUser, hearingsApi);
 
   caseId = await api_spec_small.getCaseId();
 });
