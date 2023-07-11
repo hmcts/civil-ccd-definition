@@ -5,7 +5,6 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "phone = \"DO NOT SHOW\"",
-    "Searchable": "N"
+    "FieldShowCondition": "phone = \"DO NOT SHOW\""
   }
 ]

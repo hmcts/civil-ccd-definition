@@ -5,7 +5,6 @@
     "FieldType": "Text",
     "ElementLabel": "What you are claiming for",
     "HintText": "Briefly explain each item, for example: broken tiles, roof damage.",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount",
     "Max": "2500000",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

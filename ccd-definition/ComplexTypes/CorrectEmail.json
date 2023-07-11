@@ -4,7 +4,6 @@
     "ListElementCode": "email",
     "FieldType": "Text",
     "ElementLabel": "Your current logged in email is",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "correct",
     "FieldType": "YesOrNo",
     "ElementLabel": "Would you like to use the same email address for notifications related to this claim?",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

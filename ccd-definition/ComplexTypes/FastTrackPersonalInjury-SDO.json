@@ -5,7 +5,6 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,7 +12,6 @@
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,7 +26,6 @@
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -37,7 +33,6 @@
     "ListElementCode": "date2",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -45,7 +40,6 @@
     "ListElementCode": "input3",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,7 +47,6 @@
     "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -61,7 +54,6 @@
     "ListElementCode": "input4",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -69,7 +61,6 @@
     "ListElementCode": "date4",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -77,7 +68,6 @@
     "ListElementCode": "line",
     "FieldType": "Label",
     "ElementLabel": "****",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
