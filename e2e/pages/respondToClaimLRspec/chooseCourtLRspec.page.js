@@ -43,10 +43,14 @@ module.exports = {
               }
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
-            respondent2DQRemoteHearingLRspec: {
-              remoteHearingRequested: 'Yes',
-              reasonForRemoteHearing: 'Some reason'
+            remoteHearingRequested: {
+              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              options: {
+                yes: 'Yes',
+                no: 'No'
+              }
             },
+            reasonForRemoteHearing: '#respondent2DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
        }
