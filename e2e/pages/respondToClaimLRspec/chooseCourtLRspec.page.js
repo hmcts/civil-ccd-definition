@@ -72,13 +72,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: 'select[id$="respondent1DQRemoteHearingLRspec_remoteHearingRequested"]',
+              id: 'select[id$="DQRemoteFearingLRspec_remoteHearingRequested"]',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: '#respondent1DQRemoteHearingLRspec_reasonForRemoteHearing'
+            reasonForRemoteHearing: '#DQRemoteFearingLRspec__reasonForRemoteHearing'
           }
         };
       }
@@ -91,9 +91,8 @@ module.exports = {
     I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
       this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
     I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
-    I.fillField(this.fields(mpScenario).fields.respondent1DQRemoteHearingLRspec.remoteHearingRequested, 'Yes');
-    I.click(this.fields(mpScenario).fields.respondent1DQRemoteHearingLRspec.remoteHearingRequested.options.yes);
-    I.fillField(this.fields(mpScenario).fields.respondent1DQRemoteHearingLRspec.reasonForRemoteHearing, 'Some reason');
+    I.click(this.fields(mpScenario).fields.remoteHearingRequested.options.yes);
+    I.fillField(this.fields(mpScenario).fields.reasonForRemoteHearing, 'Some reason');
     await I.clickContinue();
   }
 };
