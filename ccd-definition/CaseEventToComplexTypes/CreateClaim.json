@@ -18,7 +18,7 @@
   {
     "ID": "CourtLocation",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "courtLocation",
+    "CaseFieldID": "applicant1DQRemoteHearing",
     "ListElementCode": "remoteHearingRequested",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -26,8 +26,8 @@
   {
     "ID": "CourtLocation",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "courtLocation",
-    "FieldShowCondition": "courtLocation.remoteHearingRequested = \"Yes\"",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "FieldShowCondition": "applicant1DQRemoteHearing.remoteHearingRequested = \"Yes\"",
     "ListElementCode": "reasonForRemoteHearing",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"

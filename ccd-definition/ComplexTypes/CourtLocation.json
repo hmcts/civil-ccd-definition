@@ -30,21 +30,5 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "ID": "CourtLocation",
-    "ListElementCode": "remoteHearingRequested",
-    "ElementLabel": "Do you want the hearing to be held remotely?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "CourtLocation",
-    "ListElementCode": "reasonForRemoteHearing",
-    "ElementLabel": "Briefly explain your reasons",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
