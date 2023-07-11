@@ -114,5 +114,26 @@
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1AddressLabel",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
   }
 ]

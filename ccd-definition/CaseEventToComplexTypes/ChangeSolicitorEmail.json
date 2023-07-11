@@ -16,5 +16,70 @@
     "EventElementLabel": "Claimant's legal representative's reference",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1AddressLabel",
+    "ListElementCode": "Label",
+    "EventElementLabel": "Claimant's legal representative's correspondence addresscc",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
   }
 ]
