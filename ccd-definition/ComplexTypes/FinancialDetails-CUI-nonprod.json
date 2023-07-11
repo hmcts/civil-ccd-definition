@@ -2,7 +2,7 @@
   {
     "ID": "FinancialDetailsLiP",
     "ListElementCode": "partnerPensionLiP",
-    "ElementLabel": " ",
+    "ElementLabel": "Does your partner receive a pension?",
     "FieldType": "YesOrNo",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -10,7 +10,7 @@
   {
     "ID": "FinancialDetailsLiP",
     "ListElementCode": "partnerDisabilityLiP",
-    "ElementLabel": " ",
+    "ElementLabel": "Is your partner disabled?",
     "FieldType": "YesOrNo",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -18,7 +18,7 @@
   {
     "ID": "FinancialDetailsLiP",
     "ListElementCode": "partnerSevereDisabilityLiP",
-    "ElementLabel": " ",
+    "ElementLabel": "Is your partner severely disabled?",
     "FieldType": "YesOrNo",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -26,7 +26,7 @@
   {
     "ID": "FinancialDetailsLiP",
     "ListElementCode": "childrenEducationLiP",
-    "ElementLabel": " ",
+    "ElementLabel": "Children aged 16 to 19 living with you",
     "FieldType": "Text",
     "Searchable": "N",
     "SecurityClassification": "Public"
