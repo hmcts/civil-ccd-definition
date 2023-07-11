@@ -103,5 +103,16 @@
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "isApplicant1=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-applicant1-solicitor-email"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "solicitorReferences",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
   }
 ]
