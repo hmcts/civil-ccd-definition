@@ -1538,7 +1538,7 @@
     "CaseEventFieldLabel": " ",
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_DEFENCE\""
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1561,7 +1561,7 @@
     "CaseEventFieldLabel": " ",
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"FULL_DEFENCE\""
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
