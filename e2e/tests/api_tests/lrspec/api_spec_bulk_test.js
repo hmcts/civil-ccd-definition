@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD API test @api-spec-submit-new-claim-as-caseworker @api-specified');
+Feature('CCD API test @api-spec-bulk-claim @api-nonprod');
 
 Scenario('Submit a new claim as a caseworker', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
