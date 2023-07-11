@@ -2726,9 +2726,7 @@
           "legal-adviser",
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "judge-profile",
-          "legal-adviser"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -2752,9 +2750,7 @@
           "legal-adviser",
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "judge-profile",
-          "legal-adviser"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -3279,9 +3275,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "legal-adviser"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -4376,9 +4370,7 @@
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "legal-adviser"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
