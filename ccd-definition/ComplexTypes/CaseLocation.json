@@ -6,7 +6,6 @@
     "ListElementCode": "region",
     "ElementLabel": "Region",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -15,7 +14,6 @@
     "ListElementCode": "baseLocation",
     "ElementLabel": "Base location",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

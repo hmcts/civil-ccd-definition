@@ -6,7 +6,6 @@
     "HintText": "Bundle to hold documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "Bundle",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "ID": "bundleConfiguration",
     "Label": "Bundle configuration",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -22,7 +20,6 @@
     "ID": "TrialBundles",
     "Label": "Trial Bundle",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
