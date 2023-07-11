@@ -44,13 +44,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: 'select[id$="respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio"]',
+              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: 'textarea[id$="respondent2DQRemoteHearingLRspec_reasonForRemoteHearing"]'
+            reasonForRemoteHearing: '#respondent2DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
        }
@@ -76,13 +76,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: 'select[id$="respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio"]',
+              id: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: 'textarea[id$="respondent1DQRemoteHearingLRspec_reasonForRemoteHearing"]'
+            reasonForRemoteHearing: '#respondent1DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
       }
