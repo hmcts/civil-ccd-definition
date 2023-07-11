@@ -22,7 +22,7 @@
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "applicantSolicitor1AddressLabel",
     "ListElementCode": "Label",
-    "EventElementLabel": "Claimant's legal representative's correspondence address",
+    "EventElementLabel": "Claimant's legal representative's correspondence addresscc",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
