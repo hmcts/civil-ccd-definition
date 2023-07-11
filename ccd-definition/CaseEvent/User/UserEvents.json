@@ -275,8 +275,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CHANGE_SOLICITOR_EMAIL",
-    "Name": "Change solicitor email",
-    "Description": "Change solicitor email",
+    "Name": "Change solicitor's information",
+    "Description": "Change solicitor's information",
     "DisplayOrder": 17,
     "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;",
     "PostConditionState": "*",
