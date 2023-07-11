@@ -4,7 +4,8 @@
       "ListElementCode": "email",
       "FieldType": "Text",
       "ElementLabel": "Email",
-      "Searchable": "Y",
+      "Searchable": "N",
       "SecurityClassification": "Public"
     }
   ]
+
