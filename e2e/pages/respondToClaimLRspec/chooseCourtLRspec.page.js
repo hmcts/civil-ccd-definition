@@ -42,7 +42,7 @@ module.exports = {
                 preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]'
+            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
               id: 'select[id$="respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio"]',
               options: {
