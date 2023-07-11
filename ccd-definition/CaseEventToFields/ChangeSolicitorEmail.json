@@ -114,5 +114,16 @@
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
   }
 ]
