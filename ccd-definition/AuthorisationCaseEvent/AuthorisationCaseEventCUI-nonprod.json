@@ -316,7 +316,8 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "judge-profile"
+          "judge-profile",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
