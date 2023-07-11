@@ -1,8 +1,8 @@
 [
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "ADJOURN_VACATE_HEARING",
-    "ListElement": "Adjourn or vacate a hearing",
+    "ListElementCode": "ADJOURN_HEARING",
+    "ListElement": "Adjourn a hearing",
     "DisplayOrder": 1
   },
   {
@@ -32,44 +32,50 @@
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
+    "ListElementCode": "SETTLE_OR_DISCONTINUE_CONSENT",
+    "ListElement": "Settle or Discontinue by consent",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STAY_THE_CLAIM",
     "ListElement": "Stay the claim",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "STRIKE_OUT",
     "ListElement": "Strike out",
-    "DisplayOrder": 7
+    "DisplayOrder": 8
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "SUMMARY_JUDGEMENT",
     "ListElement": "Summary judgment",
-    "DisplayOrder": 8
+    "DisplayOrder": 9
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "UNLESS_ORDER",
     "ListElement": "Unless order",
-    "DisplayOrder": 9
+    "DisplayOrder": 10
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "VARY_JUDGEMENT",
     "ListElement": "Vary judgment",
-    "DisplayOrder": 10
+    "DisplayOrder": 11
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "VARY_ORDER",
     "ListElement": "Vary order",
-    "DisplayOrder": 11
+    "DisplayOrder": 12
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 12
+    "DisplayOrder": 13
   }
 ]

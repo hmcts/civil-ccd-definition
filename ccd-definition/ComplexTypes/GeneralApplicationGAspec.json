@@ -15,6 +15,13 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppConsentOrder",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppUrgencyRequirement",
     "FieldType": "GAUrgencyRecordGAspec",
     "ElementLabel": " ",
@@ -103,7 +110,8 @@
     "ListElementCode": "generalAppN245FormUpload",
     "ElementLabel": "Upload your completed N245 form",
     "FieldType": "Document",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "CategoryID": "applications"
   },
   {
     "ID": "GeneralApplicationGAspec",
@@ -111,8 +119,9 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "ElementLabel": "Upload evidence",
+    "SecurityClassification": "Public",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
-    "SecurityClassification": "Public"
+    "CategoryID": "applications"
   },
   {
     "ID": "GeneralApplicationGAspec",

@@ -17,7 +17,8 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -83,6 +84,25 @@
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "Y",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "MANAGE_DOCUMENTS",
+    "Name": "Manage Documents",
+    "Description": "Manage Documents",
+    "DisplayOrder": 4,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "ShowSummary": "Y",
     "ShowEventNotes": "Y",
     "EndButtonLabel": "Submit",

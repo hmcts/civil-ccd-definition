@@ -8,6 +8,13 @@
           "hearing-schedule-access"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -42,7 +49,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -63,7 +71,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -81,7 +90,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -104,7 +114,9 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -122,7 +134,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -145,7 +158,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -166,7 +180,8 @@
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -207,6 +222,13 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -237,6 +259,14 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },

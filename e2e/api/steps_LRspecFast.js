@@ -11,14 +11,9 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
-const {checkCourtLocationDynamicListIsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {removeHNLFieldsFromClaimData,
-  replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim,
-  replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim
-} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -120,12 +115,6 @@ module.exports = {
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromClaimData(createClaimData);
-    }
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -148,7 +137,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -193,15 +182,6 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
-    defendantResponseData = await replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(defendantResponseData);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseFastClaim(
-        defendantResponseData, solicitor);
-    }
 
     caseData = returnedCaseData;
 
@@ -223,8 +203,8 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlEnabled) {
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
 
@@ -242,14 +222,6 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
-    claimantResponseData = await replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(claimantResponseData);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecFastClaim(
-        claimantResponseData);
-    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -263,13 +235,13 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlEnabled) {
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
   },
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -288,7 +260,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await(checkCaseFlagsEnabled()))) {
       return;
     }
 
@@ -452,47 +424,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
 const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
-
-// CIV-4203: needs to be removed when court location goes live
-async function replaceDefendantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        RequestedCourtLocationLRspec: {
-          responseClaimCourtLocationRequired: 'No'
-        }
-      }
-    };
-  }
-  return responseData;
-}
-
-// CIV-4203: needs to be removed when court location goes live
-async function replaceClaimantResponseWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(responseData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled) {
-    responseData = {
-      ...responseData,
-      userInput: {
-        ...responseData.userInput,
-        ApplicantCourtLocationLRspec: {
-          applicant1DQRequestedCourt: {
-            reasonForHearingAtSpecificCourt: 'Reasons',
-            responseCourtCode: '123'
-          }
-        }
-      }
-    };
-  }
-  return responseData;
-}
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);

@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement, buildAddress} = require('./dataHelper');
+const {listElement} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -24,9 +24,9 @@ const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespo
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
-const {checkNoCToggleEnabled, checkCourtLocationDynamicListIsEnabled, checkHnlLegalRepToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
+const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
-const {removeHNLFieldsFromUnspecClaimData, replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForDefendantResponse, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
@@ -68,6 +68,7 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
@@ -78,7 +79,8 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_SMALL: () => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_APPLICANT_FAST: () => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario)
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
 };
 
 const eventData = {
@@ -113,6 +115,7 @@ const eventData = {
     CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
     CREATE_SMALL: data.CREATE_SMALL(),
     CREATE_FAST: data.CREATE_FAST(),
+    CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
@@ -156,15 +159,7 @@ module.exports = {
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
 
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromUnspecClaimData(createClaimData);
-    }
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -185,11 +180,11 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment has been made via the Service Request Tab.'
+    let bodyText = pbaV3 ? 'Your claim will not be issued until payment is confirmed.'
       : 'Your claim will not be issued until payment is confirmed.';
-
+    let headerText = pbaV3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
+      header: headerText,
       body: bodyText
     });
 
@@ -203,7 +198,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -235,15 +230,6 @@ module.exports = {
         break;
     }
 
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-    createClaimData = await replaceLitigantFriendIfHNLFlagDisabled(createClaimData);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
-      removeHNLFieldsFromUnspecClaimData(createClaimData);
-    }
     //==============================================================
     if (pbaV3) {
       createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
@@ -295,16 +281,7 @@ module.exports = {
     await apiRequest.startEvent(eventName);
 
     let createClaimData = data.CREATE_CLAIM_TERMINATED_PBA;
-    // Remove after court location toggle is removed
-    createClaimData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
-      removeHNLFieldsFromUnspecClaimData(createClaimData);
-    }
     //==============================================================
-
 
     await validateEventPages(createClaimData);
 
@@ -547,7 +524,7 @@ module.exports = {
       eventData['acknowledgeClaims'][mpScenario] : eventData['acknowledgeClaims'][mpScenario][solicitor];
 
     //Todo: Remove after caseflags release
-    removeFlagsFieldsFromFixture(fixture);
+    await removeFlagsFieldsFromFixture(fixture);
 
     await validateEventPages(fixture);
 
@@ -635,21 +612,7 @@ module.exports = {
     }
 
     //Todo: Remove after caseflags release
-    removeFlagsFieldsFromFixture(defendantResponseData);
-
-    // Remove after court location toggle is removed
-    defendantResponseData = await replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
-      defendantResponseData, solicitor);
-
-    // CIV-5514: remove when hnl is live
-    defendantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(defendantResponseData, solicitor, true);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantResponse(
-        defendantResponseData, solicitor);
-    }
+    await removeFlagsFieldsFromFixture(defendantResponseData);
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
@@ -683,11 +646,9 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', defendantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-    if (isHNLEnabled) {
-      await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
-        'From Date should be less than To Date');
-    }
+
+    await assertError('Hearing', defendantResponseData.invalid.Hearing.wrongDateRange,
+      'From Date should be less than To Date');
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
     if (solicitor === 'solicitorOne') {
@@ -718,9 +679,9 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
 
-    if (caseFlagsEnabled && hnlEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
   },
@@ -740,16 +701,6 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
 
-    // CIV-5514: remove when hnl is live
-    claimantResponseData = await replaceDQFieldsIfHNLFlagIsDisabled(claimantResponseData, 'solicitorOne', false);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponse(
-        claimantResponseData);
-    }
-
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
@@ -757,11 +708,9 @@ module.exports = {
       'Unavailable Date cannot be past date');
     await assertError('Hearing', claimantResponseData.invalid.Hearing.moreThanYear,
       'Dates must be within the next 12 months.');
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-    if (isHNLEnabled) {
-      await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
-        'From Date should be less than To Date');
-    }
+
+    await assertError('Hearing', claimantResponseData.invalid.Hearing.wrongDateRange,
+      'From Date should be less than To Date');
 
     if (targetFlag === 'FOR_SDO') {
       console.log('sdo test');
@@ -784,9 +733,9 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
 
-    if (caseFlagsEnabled && hnlEnabled) {
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
   },
@@ -823,7 +772,6 @@ module.exports = {
     caseData = returnedCaseData;
 
     let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
-    fixture = await replaceLitigantFriendIfHNLFlagDisabled(fixture);
 
     await validateEventPages(fixture);
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -832,7 +780,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
     }
   },
@@ -920,6 +868,12 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },
 
+  amendHearingDate: async (user, updatedDate) => {
+    let hearingDate = {};
+    hearingDate = {'hearingDate': updatedDate};
+    await testingSupport.updateCaseData(caseId, hearingDate, user);
+  },
+
   defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
     await apiRequest.setupTokens(user);
 
@@ -1004,8 +958,28 @@ module.exports = {
 
   },
 
+  createFinalOrder: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -1024,7 +998,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -1076,6 +1050,7 @@ module.exports = {
     for (let pageId of Object.keys(caseNoteData.valid)) {
       await assertValidData(caseNoteData, pageId);
     }
+    delete caseData['noteAdditionDateTime'];
 
     await assertSubmittedEvent(currentState, null, false);
     await waitForFinishedBusinessProcess(caseId);
@@ -1210,8 +1185,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   {
     responseBody = clearHearingLocationData(responseBody);
   }
-
-  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
+  if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    responseBody = clearFinalOrderLocationData(responseBody);
+  }
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1228,6 +1204,11 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
   if (eventName === 'CREATE_SDO') {
+    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+      delete caseData.hearingMethodValuesDisposalHearing;
+      delete caseData.hearingMethodValuesFastTrack;
+      delete caseData.hearingMethodValuesSmallClaims;
+    }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
     }
@@ -1247,15 +1228,11 @@ const assertValidData = async (data, pageId, solicitor) => {
     }
   }
 
-
-  if (!isHNLEnabled && eventName === 'CREATE_CLAIM') {
-    caseData = replaceLitigationFriendFields(caseData);
-  }
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
   }
   try {
-    assert.deepEqual(responseBody.data, caseData);
+      assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
@@ -1423,7 +1400,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
-  if (midEventField && midEventField.dynamicList === true) {
+  if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
@@ -1469,69 +1446,6 @@ function checkCalculated(calculated, responseBodyData) {
   });
 }
 
-function replaceLitigationFriendFields(caseData) {
-  if (caseData.applicant1LitigationFriend) {
-    caseData.applicant1LitigationFriend = {
-      fullName: 'John Doe',
-      hasSameAddressAsLitigant: 'No',
-      primaryAddress: buildAddress('litigant friend')
-    };
-  }
-  if (caseData.applicant2LitigationFriend) {
-    caseData.applicant2LitigationFriend = {
-      fullName: 'Jane Doe',
-      hasSameAddressAsLitigant: 'No',
-      primaryAddress: buildAddress('litigant friend')
-    };
-  }
-  if (caseData.respondent1LitigationFriend) {
-    caseData.respondent1LitigationFriend = {
-      fullName: 'Bob the litigant friend',
-      hasSameAddressAsLitigant: 'No',
-      primaryAddress: buildAddress('litigant friend')
-    };
-  }
-  if (caseData.respondent2LitigationFriend) {
-    caseData.respondent2LitigationFriend = {
-      fullName: 'Davif the litigant friend',
-      hasSameAddressAsLitigant: 'No',
-      primaryAddress: buildAddress('litigant friend')
-    };
-  }
-  return caseData;
-}
-
-async function replaceLitigantFriendIfHNLFlagDisabled(responseData) {
-  let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-  // work around for the api  tests
-  if (!isHNLEnabled) {
-    const claimantLitigationPage = responseData.valid.ClaimantLitigationFriend;
-
-    if (claimantLitigationPage) {
-      const updated = replaceLitigationFriendFields(claimantLitigationPage);
-      if (claimantLitigationPage.applicant1LitigationFriend) {
-        claimantLitigationPage.applicant1LitigationFriend = updated.applicant1LitigationFriend;
-      }
-      if (claimantLitigationPage.applicant2LitigationFriend) {
-        claimantLitigationPage.applicant2LitigationFriend = updated.applicant2LitigationFriend;
-      }
-    }
-
-    const respondentLitigationPage = responseData.valid.DefendantLitigationFriend;
-
-    if(respondentLitigationPage) {
-      const updated = replaceLitigationFriendFields(respondentLitigationPage);
-      if (respondentLitigationPage.respondent1LitigationFriend) {
-        respondentLitigationPage.respondent1LitigationFriend = updated.respondent1LitigationFriend;
-      }
-      if (respondentLitigationPage.respondent2LitigationFriend) {
-        respondentLitigationPage.respondent2LitigationFriend = updated.respondent2LitigationFriend;
-      }
-    }
-  }
-  return responseData;
-}
-
 function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
   // eslint-disable-next-line no-unused-vars
@@ -1548,63 +1462,6 @@ async function updateCaseDataWithPlaceholders(data, document) {
   data = lodash.template(JSON.stringify(data))(placeholders);
 
   return JSON.parse(data);
-}
-
-// CIV-4959: needs to be removed when court location goes live
-async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabled(createClaimData) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api  tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled) {
-    createClaimData = {
-      ...createClaimData,
-      valid: {
-        ...createClaimData.valid,
-        Court: {
-          courtLocation: {
-            applicantPreferredCourt: '344'
-          }
-        }
-      }
-    };
-  }
-  return createClaimData;
-}
-
-// CIV-4959: needs to be removed when court location goes live
-async function replaceWithCourtNumberIfCourtLocationDynamicListIsNotEnabledForDefendantResponse(
-  defendantResponseData, solicitor) {
-  let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-  // work around for the api tests
-  console.log(`Court location selected in Env: ${config.runningEnv}`);
-  if (!isCourtListEnabled) {
-    if (solicitor === 'solicitorTwo') {
-      defendantResponseData = {
-        ...defendantResponseData,
-        valid: {
-          ...defendantResponseData.valid,
-          RequestedCourt: {
-            respondent2DQRequestedCourt: {
-              responseCourtCode: '343'
-            }
-          }
-        }
-      };
-    } else {
-      defendantResponseData = {
-        ...defendantResponseData,
-        valid: {
-          ...defendantResponseData.valid,
-          RequestedCourt: {
-            respondent1DQRequestedCourt: {
-              responseCourtCode: '343'
-            }
-          }
-        }
-      };
-    }
-  }
-  return defendantResponseData;
 }
 
 const assignCase = async () => {
@@ -1721,4 +1578,9 @@ const adjustDataForSolicitor = (user, data) => {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
   return fixtureClone;
+};
+
+const clearFinalOrderLocationData = (responseBody) => {
+  delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
 };
