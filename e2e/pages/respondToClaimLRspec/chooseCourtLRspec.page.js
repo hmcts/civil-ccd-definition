@@ -42,15 +42,7 @@ module.exports = {
                 preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
-            remoteHearingRequested: {
-              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
-              options: {
-                yes: 'Yes',
-                no: 'No'
-              }
-            },
-            reasonForRemoteHearing: '#respondent2DQRemoteHearingLRspec_reasonForRemoteHearing'
+            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]'
           }
         };
        }
@@ -95,9 +87,7 @@ module.exports = {
     I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
       this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
     I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
-    await within(this.fields(mpScenario).remoteHearingRequested.id, () => {
-      I.click(this.fields(mpScenario).remoteHearingRequested.options.yes);
-    });
+    I.click(this.fields(mpScenario).remoteHearingRequested.options.yes);
     I.fillField(this.fields(mpScenario).fields.reasonForRemoteHearing, 'Some reason');
     await I.clickContinue();
   }
