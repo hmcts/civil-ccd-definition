@@ -4,6 +4,7 @@
     "ID": "defendantDetailsSpec",
     "Label": "Defendant Details",
     "FieldType": "DynamicRadioList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ID": "bothDefendantsSpec",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ID": "CPRCertifySpec",
     "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ID": "CPRCertifySpecTwoDefendant",
     "Label": "* The time for responding to the claim has expired. \n* The Defendant has not responded to the claim. \n* There is no outstanding application by the Defendant to strike out the claim for summary judgment. \n* The Defendant has not satisfied the whole claim, including costs. \n* The Defendant has not filed an admission together with request for time to pay.\n\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -33,6 +37,7 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_comment": "Used to populate title for partial payment, depending on whether both defendants were selected"
   },
   {
@@ -40,6 +45,7 @@
     "ID": "partialPaymentLabel",
     "Label": "## ${currentDefendant}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -47,6 +53,7 @@
     "ID": "partialPayment",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -54,6 +61,7 @@
     "ID": "partialPaymentAmount",
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -61,6 +69,7 @@
     "ID": "paymentConfirmationTitleSpec",
     "Label": "## Would you like to claim for fixed costs?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,6 +77,7 @@
     "ID": "paymentConfirmationDecisionSpec",
     "Label": "This will include fixed costs for judgment and commencement.",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -75,6 +85,7 @@
     "ID": "repaymentSummaryLabel",
     "Label": "${repaymentSummaryObject}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -82,6 +93,7 @@
     "ID": "repaymentSummaryObject",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -89,6 +101,7 @@
     "ID": "currentDefendantName",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -96,6 +109,7 @@
     "ID": "paymentTypeLabel",
     "Label": "## How do you want ${currentDefendantName} to pay?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -104,6 +118,7 @@
     "Label": "Payment type",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentTypeList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -111,6 +126,7 @@
     "ID": "paymentSetDateLabel",
     "Label": "## When do you want ${currentDefendantName} to pay?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -118,6 +134,7 @@
     "ID": "paymentSetDate",
     "Label": " ",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -125,6 +142,7 @@
     "ID": "repaymentDue",
     "Label": "Total",
     "FieldType": "Number",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -132,6 +150,7 @@
     "ID": "repaymentDetailsLabel",
     "Label": "## Suggest instalments for ${currentDefendantName} \n Total claim amount is £${repaymentDue}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -140,6 +159,7 @@
     "Label": "Regular payments of",
     "HintText": "For example, £10",
     "FieldType": "MoneyGBP",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -148,6 +168,7 @@
     "Label": "How often do you want to receive payments?",
     "FieldTypeParameter": "RepaymentFrequencyDJ",
     "FieldType": "FixedRadioList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -155,6 +176,7 @@
     "ID": "currentDatebox",
     "Label": "date2",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -163,6 +185,7 @@
     "Label": "Date for first instalment",
     "HintText": "This must be after ${currentDatebox}",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
