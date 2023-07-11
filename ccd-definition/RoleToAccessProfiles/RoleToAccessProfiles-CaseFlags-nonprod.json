@@ -12,7 +12,7 @@
     "RoleName" : "judge",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "judge-profile,GS_profile,caseflags-viewer,cui-admin-profile",
+    "AccessProfiles": "judge-profile,GS_profile,caseflags-viewer",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
