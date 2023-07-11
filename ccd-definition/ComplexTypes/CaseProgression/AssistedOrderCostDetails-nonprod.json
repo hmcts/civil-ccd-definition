@@ -4,7 +4,6 @@
     "ListElementCode": "detailsRepresentationLabel",
     "ElementLabel": "### Costs reserved",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,7 +11,6 @@
     "ListElementCode": "detailsRepresentationSecondLabel",
     "ElementLabel": "### Please type in the cost order you wish to make (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,7 +19,6 @@
     "ElementLabel": " ",
     "HintText": "For example, to whom/when the cost are reserved",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,7 +26,6 @@
     "ListElementCode": "claimantCostStandardLabel",
     "ElementLabel": "### The claimant shall pay the defendant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -37,7 +33,6 @@
     "ListElementCode": "claimantCostStandardSecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,7 +41,6 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -54,7 +48,6 @@
     "ListElementCode": "claimantCostStandardDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -63,7 +56,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -71,7 +63,6 @@
     "ListElementCode": "claimantCostStandardProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -80,7 +71,6 @@
     "Label": " ",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -88,7 +78,6 @@
     "ListElementCode": "defendantCostStandardLabel",
     "ElementLabel": "### The defendant shall pay the claimant's cost of the claim to be subject to a detailed assessment on the standard basis if not agreed",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -96,7 +85,6 @@
     "ListElementCode": "defendantCostStandardSecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -105,7 +93,6 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -113,7 +100,6 @@
     "ListElementCode": "defendantCostStandardDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -122,7 +108,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -130,7 +115,6 @@
     "ListElementCode": "defendantCostStandardProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -139,7 +123,6 @@
     "Label": " ",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -147,7 +130,6 @@
     "ListElementCode": "claimantCostSummarilyLabel",
     "ElementLabel": "### The claimant shall pay the defendant's cost of the claim summarily assessed in the sum of",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -155,7 +137,6 @@
     "ListElementCode": "claimantCostSummarilySecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -164,7 +145,6 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -172,7 +152,6 @@
     "ListElementCode": "claimantCostSummarilyDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -181,7 +160,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -189,7 +167,6 @@
     "ListElementCode": "claimantCostSummarilyProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -198,7 +175,6 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -206,7 +182,6 @@
     "ListElementCode": "defendantCostSummarilyLabel",
     "ElementLabel": "### The defendant shall pay the claimant's cost of the claim summarily assessed in the sum of",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -214,7 +189,6 @@
     "ListElementCode": "defendantCostSummarilySecondLabel",
     "ElementLabel": "### £ (Optional)",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -223,7 +197,6 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -231,7 +204,6 @@
     "ListElementCode": "defendantCostSummarilyDateLabel",
     "ElementLabel": "### To be paid by",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -240,7 +212,6 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -248,7 +219,6 @@
     "ListElementCode": "defendantCostSummarilyProtectionLabel",
     "ElementLabel": "#### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -257,7 +227,6 @@
     "ElementLabel": " ",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -265,7 +234,6 @@
     "ListElementCode": "besPokeCostDetailsLabel",
     "ElementLabel": "### Bespoke costs order",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -273,7 +241,6 @@
     "ListElementCode": "besPokeCostDetailsSecondLabel",
     "ElementLabel": "### Please insert cost order you wish to make",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -282,7 +249,6 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
