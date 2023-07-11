@@ -189,8 +189,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
@@ -276,8 +274,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
@@ -299,8 +295,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
@@ -321,8 +315,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
           "cui-admin-profile",
           "judge-profile"
         ],
@@ -643,9 +635,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
