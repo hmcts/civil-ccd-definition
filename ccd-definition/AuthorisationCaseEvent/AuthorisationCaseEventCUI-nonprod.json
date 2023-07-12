@@ -189,7 +189,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "cui-nbc-profile"
         ],
         "CRUD": "CRU"
       },
@@ -274,7 +275,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "cui-nbc-profile"
         ],
         "CRUD": "CRU"
       },
@@ -316,7 +318,7 @@
       {
         "UserRoles": [
           "judge-profile",
-          "hearing-schedule-access",
+          "caseworker-civil-admin",
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
