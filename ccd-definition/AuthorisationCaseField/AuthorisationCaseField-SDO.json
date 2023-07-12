@@ -72,6 +72,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialAdditionalDirectionsForFastTrack",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "drawDirectionsOrderSmallClaims",
     "AccessControl": [
       {
@@ -2077,7 +2090,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
