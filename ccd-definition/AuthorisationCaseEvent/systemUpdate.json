@@ -238,11 +238,5 @@
     "CaseEventID": "migrateCase",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_CVP_JOIN_LINK",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]
