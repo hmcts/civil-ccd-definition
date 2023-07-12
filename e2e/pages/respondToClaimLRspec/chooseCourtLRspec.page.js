@@ -19,7 +19,15 @@ module.exports = {
                 preferredCourt: config.claimantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt',
+            remoteHearingRequested: {
+              id: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              options: {
+                yes: 'Yes',
+                no: 'No'
+              }
+            },
+            reasonForRemoteHearing: '#applicant1DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
       }
@@ -79,6 +87,8 @@ module.exports = {
     I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
     this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
     I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
+    I.selectOption(this.fields(mpScenario).remoteHearingRequested, this.fields(mpScenario).fields.remoteHearingRequested.options.yes);
+    I.fillField(this.fields(mpScenario).fields.reasonForRemoteHearing, 'Some reason');
     await I.clickContinue();
   }
 };

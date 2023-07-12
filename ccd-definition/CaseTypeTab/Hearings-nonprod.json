@@ -126,5 +126,21 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQFurtherInformation",
     "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "applicant1DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "applicant2DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 18
   }
 ]
