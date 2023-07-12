@@ -44,6 +44,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "REVIEW_HEARING_EXCEPTION",
+    "CaseEventID": "SEND_CVP_JOIN_LINK",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
