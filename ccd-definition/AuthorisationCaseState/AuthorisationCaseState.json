@@ -90,6 +90,7 @@
       },
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
