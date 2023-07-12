@@ -1,9 +1,10 @@
 [
+
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_RESPONDENT_SOLICITOR_DJ_RECEIVED",
-    "Name": "Email: Notify DJ",
-    "Description": "Generates default judgment received email",
+    "ID": "GENERATE_RESPONSE_CUI_SEALED",
+    "Name": "Generate Sealed Form",
+    "Description": "Generates Sealed Form Claim Response",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
