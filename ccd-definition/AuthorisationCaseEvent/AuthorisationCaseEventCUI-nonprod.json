@@ -315,7 +315,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "legal-adviser"
+          "judge-profile",
+          "hearing-schedule-access",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
