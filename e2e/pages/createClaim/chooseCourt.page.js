@@ -15,6 +15,8 @@ module.exports = {
     I.waitForElement(this.fields.courtLocation.id);
     await I.runAccessibilityTest();
     I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.claimantPreferredCourt);
+    I.waitForElement('input[id$="applicant1DQRemoteHearing_remoteHearingRequested_No"]');
+    I.checkOption('input[id$="applicant1DQRemoteHearing_remoteHearingRequested_No"]');
     await I.clickContinue();
   }
 };
