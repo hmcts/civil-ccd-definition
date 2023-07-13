@@ -5,7 +5,6 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "ListOfEvidences",
     "ElementLabel": "Please make a selection",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a signed contract.",
     "FieldShowCondition": "evidenceType = \"CONTRACTS_AND_AGREEMENTS\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -23,7 +21,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a surveyor’s report.",
     "FieldShowCondition": "evidenceType = \"EXPERT_WITNESS\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,7 +29,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a letter from the other party.",
     "FieldShowCondition": "evidenceType = \"LETTERS_EMAILS_AND_OTHER_CORRESPONDENCE\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -41,7 +37,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a photo of the work you carried out.",
     "FieldShowCondition": "evidenceType = \"PHOTO_EVIDENCE\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -50,7 +45,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a receipt showing the amount you’ve paid.",
     "FieldShowCondition": "evidenceType = \"RECEIPTS\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -59,7 +53,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a bank statement showing the amount you’ve paid.",
     "FieldShowCondition": "evidenceType = \"STATEMENT_OF_ACCOUNT\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,7 +61,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Describe this evidence in more detail (optional).",
     "FieldShowCondition": "evidenceType = \"OTHER\"",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

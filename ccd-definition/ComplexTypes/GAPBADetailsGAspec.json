@@ -5,7 +5,6 @@
     "ElementLabel": "Application fee to pay",
     "HintText": "  ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,7 +13,6 @@
     "ElementLabel": "You will be able to pay for your application once it has been submitted.",
     "HintText": "  ",
     "FieldType": "Text",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -22,7 +20,6 @@
     "ListElementCode": "fee",
     "ElementLabel": " ",
     "FieldType": "Fee",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -30,7 +27,6 @@
     "ListElementCode": "paymentDetails",
     "ElementLabel": "Details of PBA payment",
     "FieldType": "GAPaymentDetails",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -38,7 +34,6 @@
     "ListElementCode": "paymentSuccessfulDate",
     "ElementLabel": "Payment successful date",
     "FieldType": "DateTime",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

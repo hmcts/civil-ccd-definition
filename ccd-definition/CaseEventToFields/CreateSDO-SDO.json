@@ -48,7 +48,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "drawDirectionsOrderSmallClaims=\"Yes\" AND drawDirectionsOrderRequired=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -112,6 +112,18 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "trialAdditionalDirectionsForFastTrack",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "OrderType",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "orderType=\"DECIDE_DAMAGES\" AND drawDirectionsOrderRequired=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -946,25 +958,25 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimCreditHire\""
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimCreditHire\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimCreditHire\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsRoadTrafficAccident",
-    "PageFieldDisplayOrder": 28,
+    "PageFieldDisplayOrder": 29,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"smallClaimsTrack\" AND smallClaimsCONTAINS\"smallClaimRoadTrafficAccident\""
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimRoadTrafficAccident\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimRoadTrafficAccident\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsAddNewDirections",
-    "PageFieldDisplayOrder": 29,
+    "PageFieldDisplayOrder": 30,
     "DisplayContext": "OPTIONAL",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
@@ -975,7 +987,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsAddNewDirectionsEndLine",
-    "PageFieldDisplayOrder": 30,
+    "PageFieldDisplayOrder": 31,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
@@ -1467,7 +1479,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimBuildingDispute\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimBuildingDispute\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimBuildingDispute\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1479,7 +1491,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimClinicalNegligence\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimClinicalNegligence\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimClinicalNegligence\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1491,7 +1503,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimCreditHire\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimCreditHire\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimCreditHire\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1503,7 +1515,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimEmployersLiability\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimEmployersLiability\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimEmployersLiability\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1515,7 +1527,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimHousingDisrepair\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimHousingDisrepair\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimHousingDisrepair\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1527,7 +1539,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimPersonalInjury\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimPersonalInjury\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimPersonalInjury\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1539,7 +1551,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"No\" AND claimsTrack=\"fastTrack\" AND fastClaimsCONTAINS\"fastClaimRoadTrafficAccident\""
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimRoadTrafficAccident\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimRoadTrafficAccident\""
   },
   {
     "CaseTypeID": "CIVIL",
