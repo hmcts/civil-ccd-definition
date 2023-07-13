@@ -50,8 +50,11 @@ module.exports = {
           applicant1: applicant1,
           addApplicant2: 'No',
           applicantSolicitor1CheckEmail: {
-              correct: 'No',
-            },
+            correct: 'No',
+          },
+          applicantSolicitor1UserDetails: {
+            email: solicitor1Email
+          },
           applicant1OrganisationPolicy: {
             OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
             Organisation: {
@@ -100,10 +103,6 @@ module.exports = {
             version: '4'
           },
           totalClaimAmount: '151234',
-          applicantSolicitor1UserDetails: {
-            email: solicitor1Email
-          }
-
       };
     }
     if (mpScenario == 'ONE_V_TWO') {
@@ -116,7 +115,10 @@ module.exports = {
         applicant1: applicant1,
         addApplicant2: 'No',
         applicantSolicitor1CheckEmail: {
-            correct: 'Yes',
+            correct: 'No',
+        },
+        applicantSolicitor1UserDetails: {
+          email: solicitor1Email
         },
         applicant1OrganisationPolicy: {
           OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
@@ -167,10 +169,7 @@ module.exports = {
           code: 'FEE0206',
           version: '4'
         },
-        totalClaimAmount: '151234',
-        applicantSolicitor1UserDetails: {
-          email: solicitor1Email
-        }
+        totalClaimAmount: '151234'
       };
     }
   },
