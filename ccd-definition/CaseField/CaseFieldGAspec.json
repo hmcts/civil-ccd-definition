@@ -198,6 +198,7 @@
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "CategoryID": "applications",
     "SecurityClassification": "Public"
   },
   {
@@ -292,8 +293,9 @@
     "ID": "generalAppN245FormUpload",
     "Label": "N245 form",
     "FieldType": "Document",
+    "SecurityClassification": "Public",
     "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
-    "SecurityClassification": "Public"
+    "CategoryID": "applications"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -440,6 +442,352 @@
     "CaseTypeID": "CIVIL",
     "ID": "directionOrderDocRespondentSolTwo",
     "Label": "Directions order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaEvidenceDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Upload evidence casefile view",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "CategoryID": "applications"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingOrderDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingOrderDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingOrderDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingOrderDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingOrderDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "hearing order doc in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInformationDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "requestForInfoDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Request for information document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSequentialDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepSeqDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Upload Request for information casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConcurrentDocument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "writtenRepConDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "written sequential document in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocStaff",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocClaimant",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence in casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocRespondentSol",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespDocRespondentSolTwo",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "Label": "Respondent Evidence casefile view",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocument",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocStaff",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocClaimant",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocRespondentSol",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaDraftDocRespondentSolTwo",
+    "Label": "Draft Application document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "consentOrderDocument",
+    "Label": "Consent order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "consentOrderDocStaff",
+    "Label": "Consent order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "consentOrderDocClaimant",
+    "Label": "Consent order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "consentOrderDocRespondentSol",
+    "Label": "Consent order document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "consentOrderDocRespondentSolTwo",
+    "Label": "Consent order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
