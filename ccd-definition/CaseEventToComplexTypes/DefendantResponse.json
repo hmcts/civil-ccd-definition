@@ -258,7 +258,7 @@
     "CaseFieldID": "respondent1DQRequestedCourt",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Please select your preferred court hearing location",
+    "EventElementLabel": "Please select your preferred court hearing location.",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
   },
