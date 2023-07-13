@@ -201,12 +201,11 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    // issues with notifications, failing at NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_CONTINUING_ONLINE_SPEC
-    // if (pbaV3) {
-    //   await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-    //     claimData.serviceUpdateDto(caseId, 'paid'));
-    //   console.log('Service request update sent to callback URL');
-    // }
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
