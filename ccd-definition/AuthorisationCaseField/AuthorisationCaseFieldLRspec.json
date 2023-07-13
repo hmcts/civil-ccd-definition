@@ -3637,7 +3637,7 @@
     ]
   },
   {
-    "CaseTypeID": "Capplicant1IVIL",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFutureApplications",
     "AccessControl": [
       {

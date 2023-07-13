@@ -2058,6 +2058,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQRequestedCourt",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocumentSpec",
     "Label": " ",
     "FieldType": "ResponseDocument",
