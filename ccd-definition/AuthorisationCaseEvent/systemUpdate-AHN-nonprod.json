@@ -40,5 +40,11 @@
     "CaseEventID": "UPDATE_CASE_PROGRESS_HMC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  }
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_CVP_JOIN_LINK",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  ]
 ]
