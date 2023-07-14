@@ -425,6 +425,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondentCorrespondenceAddressLabel",
+    "Label": "**Defendant Legal Representative Details:**<br />${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondent2CorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",

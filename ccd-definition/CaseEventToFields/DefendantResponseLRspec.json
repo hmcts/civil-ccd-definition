@@ -292,6 +292,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseConfirmDetails",
+    "FieldShowCondition": "isRespondent1=\"Yes\"",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
