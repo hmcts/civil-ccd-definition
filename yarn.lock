@@ -1348,7 +1348,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:4.3.4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3":
+"debug@npm:4, debug@npm:4.3.4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -3456,7 +3456,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"md5@npm:^2.1.0":
+"md5@npm:^2.1.0, md5@npm:^2.3.0":
   version: 2.3.0
   resolution: "md5@npm:2.3.0"
   dependencies:
@@ -3624,6 +3624,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"mkdirp@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "mkdirp@npm:3.0.1"
+  bin:
+    mkdirp: dist/cjs/src/bin.js
+  checksum: 972deb188e8fb55547f1e58d66bd6b4a3623bf0c7137802582602d73e6480c1c2268dcbafbfb1be466e00cc7e56ac514d7fd9334b7cf33e3e2ab547c16f83a8d
+  languageName: node
+  linkType: hard
+
 "mocha-junit-reporter@npm:1.23.1":
   version: 1.23.1
   resolution: "mocha-junit-reporter@npm:1.23.1"
@@ -3640,17 +3649,17 @@ fsevents@~2.3.2:
   linkType: hard
 
 "mocha-junit-reporter@npm:^2.0.2":
-  version: 2.1.0
-  resolution: "mocha-junit-reporter@npm:2.1.0"
+  version: 2.2.1
+  resolution: "mocha-junit-reporter@npm:2.2.1"
   dependencies:
-    debug: ^2.2.0
-    md5: ^2.1.0
-    mkdirp: ~0.5.1
+    debug: ^4.3.4
+    md5: ^2.3.0
+    mkdirp: ^3.0.0
     strip-ansi: ^6.0.1
-    xml: ^1.0.0
+    xml: ^1.0.1
   peerDependencies:
     mocha: ">=2.2.5"
-  checksum: 26b3ce65159f36ce3861e0d3b15ec2e6d1dd5aa8b1619665a6d64e1fc8aba6bf37ecd0eb5368663143060ec9a7696b59642b524c870e674d8d4b093c50139ca2
+  checksum: 752c30b1ef7c99eff6d82104f1b7a8179a21f3afefa3df38edb4e2478986a7c74d28b6c4525da5109cba8a4bf31cf697f4cff7584a3784fb9fc40be804fd7351
   languageName: node
   linkType: hard
 
@@ -5415,7 +5424,7 @@ resolve@~1.7.1:
   languageName: node
   linkType: hard
 
-"xml@npm:^1.0.0":
+"xml@npm:^1.0.0, xml@npm:^1.0.1":
   version: 1.0.1
   resolution: "xml@npm:1.0.1"
   checksum: 11b5545ef3f8fec3fa29ce251f50ad7b6c97c103ed4d851306ec23366f5fa4699dd6a942262df52313a0cd1840ab26256da253c023bad3309d8ce46fe6020ca0
