@@ -509,7 +509,7 @@ module.exports = {
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
-          respondent2DQRemoteHearingLRspec: {
+          respondent1DQRemoteHearingLRspec: {
             remoteHearingRequested: 'Yes',
             reasonForRemoteHearing: 'Some reason'
           },
