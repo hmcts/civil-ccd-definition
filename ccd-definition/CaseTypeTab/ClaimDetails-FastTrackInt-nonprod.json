@@ -2,13 +2,13 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQIntermediateClaims",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
     "TabFieldDisplayOrder": 63
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant2DQIntermediateClaims",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
     "TabFieldDisplayOrder": 64
   },
   {

@@ -1,6 +1,6 @@
 [
   {
-    "ID": "IntermediateClaims",
+    "ID": "FixedRecoverableCosts",
     "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity banding?",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "IntermediateClaims",
+    "ID": "FixedRecoverableCosts",
     "ListElementCode": "bandLabel",
     "ElementLabel": " ",
     "FieldType": "Label",
@@ -17,7 +17,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "IntermediateClaims",
+    "ID": "FixedRecoverableCosts",
     "ListElementCode": "band",
     "ElementLabel": "Which complexity band do you believe this claim falls into?",
     "FieldType": "FixedRadioList",
@@ -27,16 +27,16 @@
     "Searchable": "N"
   },
   {
-    "ID": "IntermediateClaims",
+    "ID": "FixedRecoverableCosts",
     "ListElementCode": "complexityBandingAgreed",
-    "ElementLabel": "Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity banding?",
+    "ElementLabel": "Has this complexity banding been agreed with the other party?",
     "FieldType": "YesOrNo",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "IntermediateClaims",
+    "ID": "FixedRecoverableCosts",
     "ListElementCode": "reasons",
     "ElementLabel": "Please give your reasons",
     "FieldType": "TextArea",

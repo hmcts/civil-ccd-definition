@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQIntermediateClaims",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
     "AccessControl": [
       {
         "UserRoles": [
@@ -23,7 +23,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant2DQIntermediateClaims",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
     "AccessControl": [
       {
         "UserRoles": [
@@ -42,7 +42,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1DQIntermediateClaims",
+    "CaseFieldID": "respondent1DQFixedRecoverableCosts",
     "AccessControl": [
       {
         "UserRoles": [
@@ -65,7 +65,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2DQIntermediateClaims",
+    "CaseFieldID": "respondent2DQFixedRecoverableCosts",
     "AccessControl": [
       {
         "UserRoles": [
