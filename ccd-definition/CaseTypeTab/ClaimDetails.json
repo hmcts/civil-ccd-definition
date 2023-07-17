@@ -578,7 +578,6 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
-    "TabFieldDisplayOrder": 81,
-    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
+    "TabFieldDisplayOrder": 81
   }
 ]
