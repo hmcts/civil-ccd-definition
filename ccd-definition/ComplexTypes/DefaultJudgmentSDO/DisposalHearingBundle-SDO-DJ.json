@@ -23,7 +23,7 @@
   {
     "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "type",
-    "FieldType": "MultiSelectList",
+    "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingBundleType",
     "ElementLabel": " ",
     "SecurityClassification": "Public"

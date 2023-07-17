@@ -1,0 +1,47 @@
+[
+  {
+    "ID": "FixedRecoverableCosts",
+    "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity banding?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "ListElementCode": "bandLabel",
+    "ElementLabel": " ",
+    "FieldType": "Label",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "ListElementCode": "band",
+    "ElementLabel": "Which complexity band do you believe this claim falls into?",
+    "FieldType": "FixedRadioList",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "FieldTypeParameter": "ComplexityBand",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "ListElementCode": "complexityBandingAgreed",
+    "ElementLabel": "Has this complexity banding been agreed with the other party?",
+    "FieldType": "YesOrNo",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "ListElementCode": "reasons",
+    "ElementLabel": "Please give your reasons",
+    "FieldType": "TextArea",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

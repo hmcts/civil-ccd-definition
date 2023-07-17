@@ -92,7 +92,7 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         disposalHearingAddNewDirectionsDJ: [],
         disposalHearingBundleDJ: {
           input: 'string',
-          type: ['DOCUMENTS', 'ELECTRONIC', 'SUMMARY']
+          type: 'DOCUMENTS'
         },
         disposalHearingBundleDJToggle: ['SHOW'],
         disposalHearingClaimSettlingDJToggle: ['SHOW'],
