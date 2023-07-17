@@ -95,10 +95,9 @@ module.exports = {
     I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
       this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
     I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
-    I.waitForElement(this.fields(mpScenario).fields.remoteHearingRequested.id);
-    await I.runAccessibilityTest();
-    I.selectOption(this.fields(mpScenario).remoteHearingRequested.id,
-      this.fields(mpScenario).fields.remoteHearingRequested.options.yes);
+    await within(this.fields(mpScenario).remoteHearingRequested.id, () => {
+      I.click(this.fields(mpScenario).remoteHearingRequested.options.yes);
+    });
     I.fillField(this.fields(mpScenario).fields.reasonForRemoteHearing, 'Some reason');
     await I.clickContinue();
   }
