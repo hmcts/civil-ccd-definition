@@ -44,13 +44,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              id: 'select[id$="respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio"]',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: '#respondent2DQRemoteHearingLRspec_reasonForRemoteHearing'
+            reasonForRemoteHearing: 'textarea[id$="respondent2DQRemoteHearingLRspec_reasonForRemoteHearing"]'
           }
         };
        }
@@ -76,13 +76,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              id: 'select[id$="respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio"]',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: '#respondent1DQRemoteHearingLRspec_reasonForRemoteHearing'
+            reasonForRemoteHearing: 'textarea[id$="respondent1DQRemoteHearingLRspec_reasonForRemoteHearing"]'
           }
         };
       }
@@ -95,6 +95,8 @@ module.exports = {
     I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
       this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
     I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
+    I.waitForElement(this.fields(mpScenario).fields.remoteHearingRequested.id);
+    await I.runAccessibilityTest();
     I.selectOption(this.fields(mpScenario).remoteHearingRequested.id,
       this.fields(mpScenario).fields.remoteHearingRequested.options.yes);
     I.fillField(this.fields(mpScenario).fields.reasonForRemoteHearing, 'Some reason');
