@@ -1155,6 +1155,7 @@ const validateEventPages = async (data, solicitor) => {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
+
    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
@@ -1201,6 +1202,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
     addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+  }
+  if (pageId === 'Court' && !(response.applicant1DQRemoteHearing) && data.applicant1DQRemoteHearing) {
+    // CIV-3883 depends on backend having the field
+    response.applicant1DQRemoteHearing = data.applicant1DQRemoteHearing;
   }
 
   if (eventName === 'CREATE_SDO') {
