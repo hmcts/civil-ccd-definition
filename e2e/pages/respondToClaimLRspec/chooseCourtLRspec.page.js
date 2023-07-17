@@ -44,13 +44,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: 'select[id$="respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio"]',
+              id: 'select[id$="remoteHearingRequested_radio"]',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: 'textarea[id$="respondent2DQRemoteHearingLRspec_reasonForRemoteHearing"]'
+            reasonForRemoteHearing: 'textarea[id$="reasonForRemoteHearing"]'
           }
         };
        }
@@ -76,13 +76,13 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: 'respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              id: 'select[id$="remoteHearingRequested_radio"]',
               options: {
                 yes: 'Yes',
                 no: 'No'
               }
             },
-            reasonForRemoteHearing: 'respondent1DQRemoteHearingLRspec_reasonForRemoteHearing'
+            reasonForRemoteHearing: 'textarea[id$="reasonForRemoteHearing"]'
           }
         };
       }
