@@ -1,0 +1,37 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "intermediateClaimsHeader",
+    "Label": "**${allPartyNames}<br />${legacyCaseReference}<br /><hr></hr>**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQIntermediateClaims",
+    "Label": "Claimant 1 Intermediate Claims",
+    "FieldType": "IntermediateClaims",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQIntermediateClaims",
+    "Label": "Claimant 2 Intermediate Claims",
+    "FieldType": "IntermediateClaims",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQIntermediateClaims",
+    "Label": "Defendant 1 Intermediate Claims",
+    "FieldType": "IntermediateClaims",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQIntermediateClaims",
+    "Label": "Defendant 2 Intermediate Claims",
+    "FieldType": "IntermediateClaims",
+    "SecurityClassification": "Public"
+  }
+]
