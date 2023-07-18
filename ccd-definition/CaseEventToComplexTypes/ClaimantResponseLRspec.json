@@ -216,23 +216,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "RequestedCourt",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant2DQRemoteHearingLRspec",
-    "ListElementCode": "remoteHearingRequested",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "RequestedCourt",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant2DQRemoteHearingLRspec",
-    "ListElementCode": "reasonForRemoteHearing",
-    "FieldShowCondition": "applicant2DQRemoteHearingLRspec.remoteHearingRequested = \"Yes\"",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "SmallClaimHearing",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQSmallClaimHearing",
@@ -298,16 +281,6 @@
     "EventElementLabel": "Please select your preferred court hearing location",
     "EventHintText": "Where the defendant is an individual or a sole trader, the case will be held at the defendant's preferred court.",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "RequestedCourtLocationLRspec",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant2DQRequestedCourt",
-    "ListElementCode": "responseCourtLocations",
-    "EventElementLabel": "Please select your preferred court hearing location",
-    "EventHintText": "Where the defendant is an individual or a sole trader, the case will be held at the defendant's preferred court.",
-    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {

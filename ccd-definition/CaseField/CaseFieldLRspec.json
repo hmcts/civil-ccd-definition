@@ -2388,13 +2388,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2DQRemoteHearingLRspec",
-    "Label": "Claimant 2 Remote Hearing Question",
-    "FieldType": "RemoteHearingLRspec",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingLRspec",
     "Label": " ",
     "FieldType": "HearingLRspec",

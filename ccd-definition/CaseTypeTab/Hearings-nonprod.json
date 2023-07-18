@@ -140,14 +140,6 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant2DQRemoteHearingLRspec",
-    "TabFieldDisplayOrder": 18
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Listing notes",
-    "TabDisplayOrder": 5,
     "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "TabFieldDisplayOrder": 19
   },

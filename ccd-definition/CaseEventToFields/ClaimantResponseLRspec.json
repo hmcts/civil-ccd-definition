@@ -82,35 +82,11 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRemoteHearingLRspec",
     "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": " ",
-    "PageID": "ApplicantCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition":""
-
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant2DQRequestedCourt",
-    "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
     "PageID": "ApplicantCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant2DQRemoteHearingLRspec",
-    "PageDisplayOrder": 11,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
-    "PageID": "ApplicantCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition":""
   },
   {
     "CaseTypeID": "CIVIL",
