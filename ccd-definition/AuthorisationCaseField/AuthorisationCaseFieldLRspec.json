@@ -634,6 +634,42 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrespondenceAddressRequired1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrespondenceAddressRequired2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "AccessControl": [
       {
