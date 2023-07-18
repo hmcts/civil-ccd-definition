@@ -384,7 +384,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -392,7 +392,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -400,7 +400,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -408,7 +408,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -416,7 +416,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -424,7 +424,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
@@ -432,7 +432,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
