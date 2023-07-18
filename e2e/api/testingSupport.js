@@ -36,6 +36,10 @@ const checkCaseFlagsEnabled = async () => {
   return checkFlagEnabled('case-flags');
 };
 
+const checkFastTrackUpliftsEnabled = async () => {
+  return checkFlagEnabled('fast-track-uplifts');
+};
+
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -194,26 +198,6 @@ module.exports =  {
       );
   },
 
-  checkFastTrackUpliftsToggleEnabled: async () => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-
-    return await restHelper.request(
-      `${config.url.civilService}/testing-support/feature-toggle/fast-track-uplifts`,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-      }, null, 'GET')
-      .then(async response =>  {
-          if (response.status === 200) {
-            const json = await response.json();
-            return json.toggleEnabled;
-          } else {
-            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-          }
-        }
-      );
-  },
-
   checkPBAv3IsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
@@ -265,4 +249,5 @@ module.exports =  {
   },
   checkHmcEnabled,
   checkCaseFlagsEnabled,
+  checkFastTrackUpliftsEnabled
 };

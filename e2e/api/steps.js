@@ -26,7 +26,7 @@ const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js')
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled,
-  checkFastTrackUpliftsToggleEnabled
+  checkFastTrackUpliftsEnabled
 } = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -701,7 +701,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsToggleEnabled();
+    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
       : data.CLAIMANT_RESPONSE(mpScenario);
 
