@@ -285,9 +285,21 @@
     "DisplayContext": "READONLY",
     "PageID": "ResponseConfirmDetails",
     "PageLabel": "Confirm defendant's name and address",
-    "FieldShowCondition": "isRespondent1=\"Yes\"",
+    "FieldShowCondition": "isRespondent1=\"Yes\" AND specRespondentCorrespondenceAddressRequired!=\"Yes\"",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specRespondentCorrespondenceAddressRequired",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "ResponseConfirmDetails",
+    "FieldShowCondition": "isRespondent1=\"DO NOT SHOW\"",
+    "PageDisplayOrder": 3,
+    "RetainHiddenValue": "Y",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
