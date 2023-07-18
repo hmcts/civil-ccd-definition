@@ -1,4 +1,5 @@
 const {I} = inject();
+const {checkFastTrackUpliftsEnabled} = require('./../../api/testingSupport');
 
 module.exports = {
 
@@ -32,20 +33,23 @@ module.exports = {
   },
 
   async fixedRecoverableCosts(party) {
-    I.waitForElement(this.fields(party).isSubjectToFixedRecoverableCostRegime.id);
-    await I.runAccessibilityTest();
-    I.click(this.fields(party).isSubjectToFixedRecoverableCostRegime.options.yes);
+    let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+    if (fastTrackUpliftsEnabled) {
+      I.waitForElement(this.fields(party).isSubjectToFixedRecoverableCostRegime.id);
+      await I.runAccessibilityTest();
+      I.click(this.fields(party).isSubjectToFixedRecoverableCostRegime.options.yes);
 
-    await within(this.fields(party).band.id, () => {
-      I.click(this.fields(party).band.options.band2);
-    });
+      await within(this.fields(party).band.id, () => {
+        I.click(this.fields(party).band.options.band2);
+      });
 
-    await within(this.fields(party).complexityBandingAgreed.id, () => {
-      I.click(this.fields(party).complexityBandingAgreed.options.yes);
-    });
+      await within(this.fields(party).complexityBandingAgreed.id, () => {
+        I.click(this.fields(party).complexityBandingAgreed.options.yes);
+      });
 
-    I.fillField(this.fields(party).reasons, 'Some good reasons');
+      I.fillField(this.fields(party).reasons, 'Some good reasons');
 
-    await I.clickContinue();
+      await I.clickContinue();
+    }
   }
 };
