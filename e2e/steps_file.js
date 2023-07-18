@@ -51,8 +51,6 @@ const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntentio
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const takeCaseOffline = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
-const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
-
 const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
 
