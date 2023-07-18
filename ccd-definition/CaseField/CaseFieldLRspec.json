@@ -454,21 +454,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "specRespondentCorrespondenceAddressLabel",
-    "Label": "**Defendant Legal Representative Details:**<br />${specRespondentCorrespondenceAddressdetails.AddressLine1}<br />${specRespondentCorrespondenceAddressdetails.AddressLine2}<br />${specRespondentCorrespondenceAddressdetails.AddressLine3}<br />${specRespondentCorrespondenceAddressdetails.PostTown}<br />${specRespondentCorrespondenceAddressdetails.County}<br />${specRespondentCorrespondenceAddressdetails.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "specRespondent2CorrespondenceAddressLabel",
-    "Label": "**Defendant Legal Representative Details:**<br />${specRespondent2CorrespondenceAddressdetails.AddressLine1}<br />${specRespondent2CorrespondenceAddressdetails.AddressLine2}<br />${specRespondent2CorrespondenceAddressdetails.AddressLine3}<br />${specRespondent2CorrespondenceAddressdetails.PostTown}<br />${specRespondent2CorrespondenceAddressdetails.County}<br />${specRespondent2CorrespondenceAddressdetails.PostCode}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "specRespondent2CorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
