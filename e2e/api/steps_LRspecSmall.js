@@ -17,7 +17,6 @@ const {PBAv3} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkHmcEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 
 let caseId, eventName;

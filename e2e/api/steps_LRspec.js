@@ -21,7 +21,6 @@ const {fetchCaseDetails} = require('./apiRequest');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
-const {dateNoWeekends} = require('./dataHelper');
 
 let caseId, eventName;
 let caseData = {};

@@ -1,4 +1,3 @@
-const {dateNoWeekends} = require('../../api/dataHelper');
 
 module.exports = {
   userInput: {

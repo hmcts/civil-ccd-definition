@@ -12,7 +12,6 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {dateNoWeekends} = require('./dataHelper');
 
 let caseId, eventName;
 let caseData = {};
