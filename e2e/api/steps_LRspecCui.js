@@ -170,7 +170,6 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     let informAgreedExtensionData = await data.EXTEND_RESPONSE_DEADLINE_DATE();
-    informAgreedExtensionData.userInput.ResponseDeadlineExtension.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
