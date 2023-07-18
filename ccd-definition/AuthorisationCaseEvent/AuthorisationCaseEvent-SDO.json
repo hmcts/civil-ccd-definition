@@ -19,7 +19,8 @@
         "RES-SOL-ONE-SPEC-PROFILE",
         "RES-SOL-TWO-SPEC-PROFILE",
         "caseworker-civil-admin",
-        "CITIZEN-DEFENDANT-PROFILE"
+        "CITIZEN-DEFENDANT-PROFILE",
+        "CITIZEN-CLAIMANT-PROFILE"
       ],
       "CRUD": "R"
     }
@@ -117,7 +118,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
           "legal-adviser",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -143,7 +145,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
           "judge-profile",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }

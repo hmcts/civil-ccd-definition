@@ -101,7 +101,8 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -462,7 +463,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -909,7 +911,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1041,7 +1044,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -1066,7 +1070,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
@@ -1107,7 +1112,8 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1443,7 +1449,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "uiStatementOfTruth",
     "UserRoles": [
-      "caseworker-civil-solicitor"
+      "caseworker-civil-solicitor",
+      "CITIZEN-CLAIMANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
@@ -1503,7 +1510,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1577,7 +1585,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2101,7 +2110,8 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2622,7 +2632,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3264,7 +3275,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3459,7 +3471,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3684,7 +3697,8 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRUD"
       },
