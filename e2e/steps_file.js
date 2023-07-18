@@ -437,7 +437,7 @@ module.exports = function () {
       ]);
     },
 
-    async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
+    async informAgreedExtensionDate() {
       eventName = 'Inform agreed 28 day extension';
 
       await this.triggerStepsWithScreenshot([
