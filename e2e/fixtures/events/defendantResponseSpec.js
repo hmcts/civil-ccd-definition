@@ -8,7 +8,7 @@ module.exports = {
           specAoSApplicantCorrespondenceAddressRequired: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          tempCorrespondenceAddressRequired2: 'Yes'
         },
       },
     };
@@ -257,7 +257,7 @@ module.exports = {
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempCorrespondenceAddressRequired2: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
@@ -289,7 +289,7 @@ module.exports = {
           specAoSRespondent2HomeAddressRequired: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondent2CorrespondenceAddressRequired: 'Yes'
+          tempCorrespondenceAddressRequired1: 'Yes'
         },
       },
     };
@@ -534,7 +534,7 @@ module.exports = {
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
             specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempCorrespondenceAddressRequired2: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',

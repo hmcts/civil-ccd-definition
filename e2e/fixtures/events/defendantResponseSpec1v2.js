@@ -9,7 +9,7 @@ module.exports = {
           specAoSRespondent2HomeAddressRequired: 'Yes'
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          tempCorrespondenceAddressRequired2: 'Yes'
         },
       },
     };

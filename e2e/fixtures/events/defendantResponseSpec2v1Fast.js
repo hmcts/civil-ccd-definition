@@ -8,7 +8,7 @@ module.exports = {
           specAoSApplicantCorrespondenceAddressRequired: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          tempCorrespondenceAddressRequired2: 'Yes'
         }
       },
     };
