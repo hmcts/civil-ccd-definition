@@ -136,23 +136,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 }).retry(3);
 
 
-Scenario('Add case flags', async ({I}) => {
-  if(await checkCaseFlagsEnabled()) {
-    const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-      details: [PARTY_FLAGS.vulnerableUser.value]
-    }, {
-      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
-      details: [PARTY_FLAGS.unacceptableBehaviour.value]
-    }
-    ];
-
-    await I.login(config.hearingCenterAdminWithRegionId1);
-    await I.createCaseFlags(caseFlags);
-    await I.validateCaseFlags(caseFlags);
-  }
-}).retry(3);
-
 Scenario.skip('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());

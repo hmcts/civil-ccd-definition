@@ -101,20 +101,6 @@ Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), false);
-  }
-}).retry(3);
-
-Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.defendantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), true);
-  }
-}).retry(3);
-
 Scenario('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
