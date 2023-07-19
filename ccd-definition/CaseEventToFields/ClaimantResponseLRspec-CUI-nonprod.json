@@ -177,7 +177,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
+    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -189,7 +189,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
