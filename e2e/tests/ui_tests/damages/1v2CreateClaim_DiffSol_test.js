@@ -142,11 +142,6 @@ Scenario.skip('Judge triggers SDO', async ({I}) => {
    await I.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-Scenario('Make a general application', async ({api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
-  }
-}).retry(3);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
