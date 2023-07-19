@@ -1203,7 +1203,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
     addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
   }
-  if (pageId === 'Court' && !(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
+  if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
     // CIV-3883 depends on backend having the field
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
