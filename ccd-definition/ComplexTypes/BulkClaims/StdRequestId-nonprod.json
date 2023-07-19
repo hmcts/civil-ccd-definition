@@ -1,0 +1,44 @@
+[
+  {
+    "ID": "StdRequestId",
+    "ListElementCode": "createClaimRequestId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "StdRequestId",
+    "ListElementCode": "breathingSpaceRequestId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "StdRequestId",
+    "ListElementCode": "claimStatusUpdateRequestId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "StdRequestId",
+    "ListElementCode": "warrantRequestId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "StdRequestId",
+    "ListElementCode": "judgmentRequestId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "StdRequestId",
+    "ListElementCode": "warrantAndJudgmentRequestId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  }
+]
