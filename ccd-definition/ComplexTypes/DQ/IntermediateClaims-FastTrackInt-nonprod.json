@@ -42,6 +42,7 @@
     "FieldType": "TextArea",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "_comment": "It would not show when isSubjectToFixedRecoverableCostRegime is not selected"
   }
 ]
