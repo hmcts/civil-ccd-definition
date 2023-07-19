@@ -40,7 +40,7 @@ module.exports = {
       I.click(this.fields(party).isSubjectToFixedRecoverableCostRegime.options.yes);
 
       await within(this.fields(party).band.id, () => {
-        I.click(this.fields(party).band.options.band2);
+        I.click(`${this.fields(party).band.id}-${this.fields(party).band.options.band1}`);
       });
 
       await within(this.fields(party).complexityBandingAgreed.id, () => {

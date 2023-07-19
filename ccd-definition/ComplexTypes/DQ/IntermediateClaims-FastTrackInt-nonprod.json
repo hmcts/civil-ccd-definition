@@ -40,8 +40,9 @@
     "ListElementCode": "reasons",
     "ElementLabel": "Please give your reasons",
     "FieldType": "TextArea",
-    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "_comment": "It would not show when isSubjectToFixedRecoverableCostRegime is not selected"
   }
 ]
