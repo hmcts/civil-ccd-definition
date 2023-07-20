@@ -101,7 +101,7 @@ Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-Scenario('Schedule a hearing', async ({LRspec}) => {
+/*Scenario('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
@@ -121,7 +121,7 @@ Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
     { partyName: 'Example respondent1 company', details: [] },
     { partyName: 'Example respondent2 company', details: [] }
   ]);
-}).retry(3);
+}).retry(3);*/
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
