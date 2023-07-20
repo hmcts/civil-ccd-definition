@@ -77,6 +77,7 @@ const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSD
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
+const fixedRecoverableCostsPage = require('./fragments/dq/fixedRecoverableCosts.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const disclosureOfNonElectronicDocumentsPage = require('./fragments/dq/disclosureOfNonElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
@@ -500,6 +501,7 @@ module.exports = function () {
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
           ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
