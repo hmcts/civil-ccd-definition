@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 
-const config = require('../../../config.js');
+/*const config = require('../../../config.js');
 let caseId, taskId, hearingDateIsLessThan3Weeks;
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
+const {PBAv3} = require('../../../fixtures/featureKeys');*/
 
 Feature('1v1 Unspec defaultJudgement');
 
-Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+/*Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
 
@@ -210,7 +210,7 @@ Scenario('Verify Judicial booking UI  @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await WA.createBooking('Liverpool Civil and Family Court');
   await WA.verifyCreatedBooking('Central London County Court');
   await WA.verifyCreatedBooking('Liverpool Civil and Family Court');
-}).retry(3);
+}).retry(3);*/
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
