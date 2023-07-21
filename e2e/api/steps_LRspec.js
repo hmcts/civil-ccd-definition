@@ -201,12 +201,11 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    // issues with notifications, failing at NOTIFY_APPLICANT_SOLICITOR1_FOR_CLAIM_CONTINUING_ONLINE_SPEC
-    // if (pbaV3) {
-    //   await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-    //     claimData.serviceUpdateDto(caseId, 'paid'));
-    //   console.log('Service request update sent to callback URL');
-    // }
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
@@ -497,7 +496,6 @@ const assertValidData = async (data, pageId) => {
 
   const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
-  const test1 = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -715,7 +713,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
-    // expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
-    //   'Unexpected events for state ' + state + ' and user type ' + user.type);
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
