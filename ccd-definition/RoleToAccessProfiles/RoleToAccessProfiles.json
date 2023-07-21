@@ -108,10 +108,10 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "[APPLICANTSOLICITORONE]",
+    "RoleName" : "[APP-SOL-UNSPEC-PROFILE]",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "APP-SOL-UNSPEC-PROFILE,payment-access",
+    "AccessProfiles": "APPLICANTSOLICITORONE,payment-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "UNSPEC_CLAIM"
@@ -145,6 +145,15 @@
   },
   {
     "RoleName" : "case-allocator",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile",
+    "ReadOnly": "Y",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile",
