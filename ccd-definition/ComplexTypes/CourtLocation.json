@@ -12,7 +12,6 @@
     "ListElementCode": "applicantPreferredCourtLocationList",
     "DisplayContext": "MANDATORY",
     "ElementLabel": "Please select your preferred court hearing location",
-    "HintText": "Where the defendant is an individual or a sole trader, the case will be held at the defendant's preferred court.",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
