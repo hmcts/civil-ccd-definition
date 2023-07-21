@@ -79,8 +79,8 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "TRANSLATED_DEFENCE_DOCUMENT",
-    "ListElement": "Translated Defence Document",
+    "ListElementCode": "DEFENCE_TRANSLATED_DOCUMENT",
+    "ListElement": "Defence Translated Document",
     "DisplayOrder": 14
   } 
   
