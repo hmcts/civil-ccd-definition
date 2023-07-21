@@ -2,6 +2,8 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
+const totp = require('totp-generator');
+
 
 let incidentMessage;
 
@@ -10,12 +12,21 @@ const RETRY_TIMEOUT_MS = 5000;
 
 const checkFlagEnabled = async (flag) => {
   const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+  const s2sAuth = await restHelper.retriedRequest(
+    `${config.url.authProviderApi}/lease`,
+    {'Content-Type': 'application/json'},
+    {
+      microservice: config.s2s.microservice,
+      oneTimePassword: totp(config.s2s.secret)
+    })
+    .then(response => response.text());
 
   return await restHelper.request(
     `${config.url.civilService}/testing-support/feature-toggle/${flag}`,
     {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`,
+      'ServiceAuthorization': s2sAuth
     }, null, 'GET')
     .then(async response =>  {
         if (response.status === 200) {
@@ -39,6 +50,14 @@ const checkCaseFlagsEnabled = async () => {
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
 
     await retry(() => {
       return restHelper.request(
@@ -46,6 +65,7 @@ module.exports =  {
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         }, null, 'GET')
         .then(async response => await response.json()).then(response => {
           let businessProcess = response.businessProcess;
@@ -69,7 +89,9 @@ module.exports =  {
         `${config.url.civilService}/testing-support/assign-case/${caseId}/${caseRole}`,
         {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}` },
+          'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
+        },
         {},
         'POST')
         .then(response => {
@@ -93,7 +115,9 @@ module.exports =  {
           `${config.url.civilService}/testing-support/assign-case/${caseId}/${caseRole}`,
           {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}` },
+            'Authorization': `Bearer ${authToken}`,
+            'ServiceAuthorization': s2sAuth
+          },
           {},
           'POST')
           .then(response => {
@@ -116,7 +140,8 @@ module.exports =  {
         `${config.url.civilService}/testing-support/unassign-user`,
         {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`
+          'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         },
         {
           caseIds
@@ -142,6 +167,7 @@ module.exports =  {
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         }, null, 'GET')
         .then(async response =>  {
           if (response.status === 200) {
@@ -162,6 +188,7 @@ module.exports =  {
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
         }, null, 'GET')
          .then(async response =>  {
              if (response.status === 200) {
@@ -182,6 +209,7 @@ module.exports =  {
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': s2sAuth
       }, null, 'GET')
       .then(async response =>  {
           if (response.status === 200) {
@@ -202,6 +230,7 @@ module.exports =  {
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': s2sAuth
       }, null, 'GET')
       .then(async response =>  {
           if (response.status === 200) {
@@ -222,6 +251,7 @@ module.exports =  {
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': s2sAuth
       }, caseData, 'PUT');
   },
 
@@ -231,7 +261,8 @@ module.exports =  {
       `${config.url.civilService}/testing-support/upload/test-document`,
       {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': s2sAuth
       },
       {},
       'POST');
