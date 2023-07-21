@@ -83,6 +83,14 @@ module.exports =  {
 
   assignCaseToDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
 
     await retry(() => {
       return restHelper.request(
@@ -109,6 +117,14 @@ module.exports =  {
 
   assignCaseToLRSpecDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
       const authToken = await idamHelper.accessToken(user);
+      const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
 
       await retry(() => {
         return restHelper.request(
@@ -134,6 +150,15 @@ module.exports =  {
 
   unAssignUserFromCases: async (caseIds, user) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+
 
     await retry(() => {
       return restHelper.request(
@@ -161,6 +186,15 @@ module.exports =  {
 
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+
 
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
@@ -182,8 +216,17 @@ module.exports =  {
 
   checkNoCToggleEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
 
-       return await restHelper.request(
+
+    return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/noc`,
         {
           'Content-Type': 'application/json',
@@ -203,6 +246,15 @@ module.exports =  {
 
   checkCertificateOfServiceIsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+
 
     return await restHelper.request(
       `${config.url.civilService}/testing-support/feature-toggle/isCertificateOfServiceEnabled`,
@@ -224,6 +276,15 @@ module.exports =  {
 
   checkPBAv3IsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+
 
     return await restHelper.request(
       `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
@@ -245,6 +306,15 @@ module.exports =  {
 
   updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+
 
     await restHelper.retriedRequest(
       `${config.url.civilService}/testing-support/case/${caseId}`,
@@ -257,6 +327,15 @@ module.exports =  {
 
   uploadDocument: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+    const s2sAuth = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+
     let response = await restHelper.request(
       `${config.url.civilService}/testing-support/upload/test-document`,
       {
