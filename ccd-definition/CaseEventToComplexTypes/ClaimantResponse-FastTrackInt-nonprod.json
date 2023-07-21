@@ -12,7 +12,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQFixedRecoverableCosts",
     "ListElementCode": "bandLabel",
-    "EventElementLabel": "<div class='form-label'>For information on which complexity band the claim should be in see</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a></div><br />",
+    "EventElementLabel": "<div class='form-label'>For information on complexity bands see</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a></div><br />",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -53,7 +53,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQFixedRecoverableCosts",
     "ListElementCode": "bandLabel",
-    "EventElementLabel": "<div class='form-label'>For information on which complexity band the claim should be in see</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a></div><br />",
+    "EventElementLabel": "<div class='form-label'>For information on complexity bands see</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a></div><br />",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
