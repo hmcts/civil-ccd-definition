@@ -579,15 +579,14 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "CITIZEN-DEFENDANT-PROFILE"
-
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
