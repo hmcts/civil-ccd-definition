@@ -2354,14 +2354,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRemoteHearingLRspec",
-    "Label": "Defendant 1 Remote Hearing Question",
+    "Label": "Defendant 1 Remote Hearing Questions",
     "FieldType": "RemoteHearingLRspec",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQRemoteHearingLRspec",
-    "Label": "Defendant 2 Remote Hearing Question",
+    "Label": "Defendant 2 Remote Hearing Questions",
     "FieldType": "RemoteHearingLRspec",
     "SecurityClassification": "Public"
   },
@@ -2382,7 +2382,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQRemoteHearingLRspec",
-    "Label": "Claimant 1 Remote Hearing Question",
+    "Label": "Claimant 1 Remote Hearing Questions",
     "FieldType": "RemoteHearingLRspec",
     "SecurityClassification": "Public"
   },
