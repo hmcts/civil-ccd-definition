@@ -6,7 +6,7 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "master"
+def camundaBranch = "CIV-9364-camunda_changes_for_demages_multi_claims"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
