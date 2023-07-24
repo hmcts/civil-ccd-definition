@@ -36,7 +36,8 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "Publish": "Y"
+    "Publish": "Y",
+    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -55,7 +56,8 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "Publish": "Y"
+    "Publish": "Y",
+    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
