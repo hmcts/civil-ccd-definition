@@ -345,7 +345,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recital and order \n ### Insert any recitals and order you wish to make below",
+    "Label": "**** \n ## Recitals and order",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -361,7 +361,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecordedTextAreaLabel",
-    "Label": "### It is recorded that:",
+    "Label": "### The court records that:",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -377,7 +377,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedLabel",
-    "Label": "**** \n ## Ordered \n ### It is ordered that:",
+    "Label": "**** \n ## Ordered \n ### The court orders that:",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
