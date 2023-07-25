@@ -9,17 +9,16 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {HEARING_AND_LISTING, PBAv3} = require('../fixtures/featureKeys');
-const {element} = require('../api/dataHelper');
+const {PBAv3} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
+const claimDataBulk = require('../fixtures/events/createClaimSpecBulk.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkCaseFlagsEnabled, checkHnlLegalRepToggleEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {fetchCaseDetails} = require('./apiRequest');
-const {replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim, replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim, removeHNLFieldsFromClaimData} = require('../helpers/hnlFeatureHelper');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -30,6 +29,7 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM_BULK: (scenario, pbaV3) => claimDataBulk.createClaimBulk(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
@@ -142,12 +142,6 @@ module.exports = {
     let createClaimData  = {};
 
     createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
-
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      removeHNLFieldsFromClaimData(createClaimData);
-    }
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -183,7 +177,7 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    if(checkCaseFlagsEnabled()) {
+    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
@@ -191,6 +185,41 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+  },
+
+  createNewClaimWithCaseworker: async (user, scenario) => {
+    const pbaV3 = true;
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+    let createClaimData  = {};
+
+    createClaimData = data.CREATE_CLAIM_BULK(scenario, pbaV3);
+    await apiRequest.setupTokens(user);
+    await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
+    await waitForFinishedBusinessProcess(caseId);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    if(await checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
+    if (scenario === 'ONE_V_ONE') {
+      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'ENTER_BREATHING_SPACE_SPEC');
+      assert.equal(updatedCaseState, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    } else {
+      // one v two/multiparty continuing online not currently supported for LiPs
+      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'SEND_SDO_ORDER_TO_LIP_DEFENDANT');
+      assert.equal(updatedCaseState, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
+
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -230,18 +259,6 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
-    const hnlSdoEnabled = await checkToggleEnabled(HEARING_AND_LISTING);
-
-    //ToDo: Remove when hnlSdoEnabled feature toggle is removed
-    if ((['preview', 'demo'].includes(config.runningEnv)) && hnlSdoEnabled) {
-      defendantResponseData = adjustDataForHnl(defendantResponseData, response);
-    }
-    if(!hnlSdoEnabled) {
-      let solicitor = user === config.defendantSolicitorUser ? 'solicitorOne' : 'solicitorTwo';
-      defendantResponseData = await replaceFieldsIfHNLToggleIsOffForDefendantSpecResponseSmallClaim(
-        defendantResponseData, solicitor);
-    }
-
     caseData = returnedCaseData;
 
     console.log(`${response} ${scenario}`);
@@ -275,8 +292,8 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlSdoEnabled) {
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
     deleteCaseFields('respondent1Copy');
@@ -294,13 +311,6 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
-    // ToDo: Remove and delete function after hnl uplift released
-    const hnlEnabled = await checkHnlLegalRepToggleEnabled();
-    if(!hnlEnabled) {
-      claimantResponseData = await replaceFieldsIfHNLToggleIsOffForClaimantResponseSpecSmallClaim(
-        claimantResponseData);
-    }
-
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
@@ -315,8 +325,8 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = checkCaseFlagsEnabled();
-    if (caseFlagsEnabled && hnlEnabled) {
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
   },
@@ -351,12 +361,12 @@ module.exports = {
           applicantsPbaAccounts: {
               value: {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0088192'
+                label:'PBAFUNC12345'
               },
             list_items:[
               {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0088192'
+                label:'PBAFUNC12345'
               },
               {
                 code:'66b21c61-aed1-11ed-8aa3-494efce63912',
@@ -431,7 +441,7 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -450,7 +460,7 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!checkCaseFlagsEnabled()) {
+    if(!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -618,6 +628,19 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
+const assertCaseworkerSubmittedNewClaim = async (expectedState, caseData) => {
+  const response = await apiRequest.submitNewClaimAsCaseworker(eventName, caseData);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  assert.equal(responseBody.state, expectedState);
+
+  if (eventName === 'CREATE_CLAIM_SPEC') {
+    caseId = responseBody.id;
+    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
+    console.log('Case created: ' + caseId);
+  }
+};
+
 const validateEventPagesDefaultJudgments = async (data, scenario) => {
   //transform the data
   console.log('validateEventPages');
@@ -693,39 +716,4 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
-};
-
-const adjustDataForHnl = (inputData, response) => {
-  //ToDo: Take SmallClaimWitnesses data below and replace SmallClaimWitnesses data in respondToClaimSpec js files when h&l toggled is removed
-  if (!response.startsWith('FULL_DEFENCE')) {
-    return inputData;
-  }
-
-  let fullDefence1v1 = false;
-  if(response === 'FULL_DEFENCE' || response == 'FULL_DEFENCE_AFTER_PAYMENT'){
-    fullDefence1v1 = true;
-  }
-
-  const respondentNum = response == fullDefence1v1 ? '1' : '2';
-
-  return {
-    ...inputData,
-    userInput: {
-      ...inputData.userInput,
-      SmallClaimWitnesses: {
-        [`respondent${respondentNum}DQWitnesses`]: {
-          witnessesToAppear: 'Yes',
-          details: [
-            element({
-              firstName: 'Witness',
-              lastName: 'One',
-              emailAddress: 'witness@email.com',
-              phoneNumber: '07116778998',
-              reasonForWitness: 'None'
-            })
-          ]
-        }
-      }
-    }
-  };
 };

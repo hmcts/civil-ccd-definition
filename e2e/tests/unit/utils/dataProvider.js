@@ -9,13 +9,11 @@ const loadFile = file => {
 // Please update this map whenever exclusions are updated in build-release-definition.sh
 // without the *
 const exclusions = new Map([
-  ['preview', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
-  ['previewHNL', ['-prod.json','-base-nonprod.json','CUI.json','CUI-nonprod.json']],
-  ['previewGA', ['-prod.json','HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
-  ['demo', ['UserProfile.json','-prod.json','-HNL-nonprod.json','-CUI-nonprod.json']],
-  // ['local', ['-prod.json']], upload doesn't currently work with this command due to SDO and SDO-HNL files
-  ['prod', ['UserProfile.json','-nonprod.json','-COS-nonprod.json','GAspec.json','-HNL-nonprod.json','CUI.json','CUI-nonprod.json']],
-  ['default', ['UserProfile.json','GAspec.json','-prod.json','-HNL-nonprod.json','CUI.json','CUI-nonprod.json']]
+  ['preview', ['-prod.json']],
+  ['demo', ['UserProfile.json','-prod.json']],
+  ['aat', ['UserProfile.json','-prod.json']],
+  ['prod', ['UserProfile.json','-nonprod.json','GAspec.json','CUI.json']],
+  ['staging', ['UserProfile.json','-nonprod.json','GAspec.json','CUI.json']]
 ]);
 
 const ccdData = {

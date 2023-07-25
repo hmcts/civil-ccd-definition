@@ -140,7 +140,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabel",
-    "Label": "## expert evidence",
+    "Label": "## Expert evidence",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -215,7 +215,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabelSmallClaim",
-    "Label": "## expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
+    "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -483,7 +483,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabelRes",
-    "Label": "## expert evidence",
+    "Label": "## Expert evidence",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -558,7 +558,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertLabelSmallClaimRes",
-    "Label": "## expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
+    "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"

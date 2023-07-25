@@ -177,7 +177,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
+    "FieldShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -189,7 +189,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
+    "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\" OR showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\" OR showResponseOneVOneFlag=\"ONE_V_ONE_FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
@@ -965,12 +965,51 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingLRspec",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Hearing",
+    "PageLabel": "Hearing availability",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "FieldShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQSmallClaimHearing",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Hearing",
+    "PageLabel": "Hearing availability",
+    "FieldShowCondition": "responseClaimTrack =\"SMALL_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "DisplayContext": "READONLY",
     "PageID": "ApplicantCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingSupport",
+    "CaseEventFieldLabel": "Support with access needs",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

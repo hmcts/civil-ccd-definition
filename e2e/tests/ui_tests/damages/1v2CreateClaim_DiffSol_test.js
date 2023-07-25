@@ -137,7 +137,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 
 
 Scenario('Add case flags', async ({I}) => {
-  if(checkCaseFlagsEnabled()) {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -151,7 +151,7 @@ Scenario('Add case flags', async ({I}) => {
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
-});
+}).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);

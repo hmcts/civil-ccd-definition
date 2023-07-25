@@ -31,5 +31,14 @@
       "caseworker-ras-validation"
     ],
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "CITIZEN-DEFENDANT-PROFILE",
+      "cui-admin-profile",
+      "cui-nbc-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]

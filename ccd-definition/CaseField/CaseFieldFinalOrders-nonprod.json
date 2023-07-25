@@ -345,23 +345,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recital and order \n ### Insert any recitals and order you wish to make below",
+    "Label": "**** \n ## Recitals and order",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "freeFormRecitalTextArea",
-    "Label": " ",
-    "FieldType": "TextArea",
-    "Searchable": "N",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "freeFormRecordedTextAreaLabel",
-    "Label": "### It is recorded that:",
+    "Label": "### The court records that:",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
