@@ -148,7 +148,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertToggleText",
-    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
+    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -223,7 +223,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertToggleTextSmallClaim",
-    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
+    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -336,7 +336,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentJointStatement",
-    "Label": "Joint statement of experts",
+    "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
     "Searchable": "N",
@@ -491,7 +491,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertToggleTextRes",
-    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
+    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -566,7 +566,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "expertToggleTextSmallClaimRes",
-    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint statement of experts \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
+    "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -679,7 +679,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentJointStatementRes",
-    "Label": "Joint statement of experts",
+    "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
     "Searchable": "N",
@@ -814,7 +814,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentJointStatementRes2",
-    "Label": "Joint statement of experts",
+    "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
     "Searchable": "N",
