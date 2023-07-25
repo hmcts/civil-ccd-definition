@@ -2419,7 +2419,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "stdRequestId",
     "Label": " ",
-    "FieldType": "StdRequestId",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Text",
     "SecurityClassification": "Public"
   },
   {
