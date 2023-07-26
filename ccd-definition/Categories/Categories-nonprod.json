@@ -397,7 +397,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertJointStatement",
-    "CategoryLabel": "Joint statement of experts",
+    "CategoryLabel": "Joint Statement of Experts / Single Joint Expert Report",
     "DisplayOrder": "4",
     "ParentCategoryID": "ApplicantExpertDocuments"
   },
@@ -405,7 +405,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertJointStatement",
-    "CategoryLabel": "Joint statement of experts",
+    "CategoryLabel": "Joint Statement of Experts / Single Joint Expert Report",
     "DisplayOrder": "4",
     "ParentCategoryID": "RespondentExpertDocuments"
   },
@@ -413,7 +413,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertJointStatement",
-    "CategoryLabel": "Joint statement of experts",
+    "CategoryLabel": "Joint Statement of Experts / Single Joint Expert Report",
     "DisplayOrder": "4",
     "ParentCategoryID": "RespondentTwoExpertDocuments"
   },
