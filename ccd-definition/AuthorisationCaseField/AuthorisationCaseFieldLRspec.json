@@ -5437,7 +5437,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bulkRequestId",
+    "CaseFieldID": "sdtRequestId",
     "AccessControl": [
       {
         "UserRoles": [
@@ -5455,7 +5455,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "stdRequestId",
+    "CaseFieldID": "sdtRequestIdFromSdt",
     "AccessControl": [
       {
         "UserRoles": [

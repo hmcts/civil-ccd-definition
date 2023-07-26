@@ -2417,7 +2417,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "stdRequestId",
+    "ID": "sdtRequestIdFromSdt",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdtRequestId",
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "Text",
@@ -2426,13 +2433,6 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "bulkCustomerId",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "bulkRequestId",
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
