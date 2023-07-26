@@ -44,6 +44,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "trialAdditionalDirectionsForFastTrack",
+    "Label": "Select additional directions for Fast Track, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrderSmallClaims",
     "Label": "Do you want to allocate this claim to the small claims track?",
     "FieldType": "YesOrNo",
@@ -57,6 +65,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DrawDirectionsOrderSmallClaimsAdditionalDirections",
     "Searchable": "N",
+    "FieldTypeParameter": "SmallTrack",
     "SecurityClassification": "Public"
   },
   {
