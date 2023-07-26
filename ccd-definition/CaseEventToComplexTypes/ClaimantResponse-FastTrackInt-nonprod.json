@@ -1,0 +1,84 @@
+[
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "ListElementCode": "bandLabel",
+    "EventElementLabel": "<div class='form-label'>For information on complexity bands see</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a></div><br />",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "ListElementCode": "band",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "ListElementCode": "complexityBandingAgreed",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "ListElementCode": "reasons",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "ListElementCode": "bandLabel",
+    "EventElementLabel": "<div class='form-label'>For information on complexity bands see</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a></div><br />",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "ListElementCode": "band",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "ListElementCode": "complexityBandingAgreed",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedRecoverableCosts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "ListElementCode": "reasons",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  }
+]
