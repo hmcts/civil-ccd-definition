@@ -551,5 +551,33 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "claimantResponseDocuments",
     "TabFieldDisplayOrder": 77
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
+    "TabFieldDisplayOrder": 78
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "applicant2DQVulnerabilityQuestions",
+    "TabFieldDisplayOrder": 79
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
+    "TabFieldDisplayOrder": 80
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "respondent2DQVulnerabilityQuestions",
+    "TabFieldDisplayOrder": 81
   }
 ]
