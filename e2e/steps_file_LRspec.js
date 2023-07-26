@@ -24,6 +24,7 @@ const proceedPage = require('./pages/respondToDefence/proceed.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
+const fixedRecoverableCosts = require('./fragments/dq/fixedRecoverableCosts.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
 const singleResponse = require('./pages/respondToClaimLRspec/singleResponseLRSpec.page.js');
@@ -608,6 +609,7 @@ module.exports = function () {
                       ]),
                       ... conditionalSteps(claimType === 'fast', [
                        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+                       () => fixedRecoverableCosts.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
                        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
                        () => this.clickContinue(),
                        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),

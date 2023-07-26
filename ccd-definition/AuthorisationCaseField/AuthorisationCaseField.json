@@ -3285,7 +3285,9 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -4370,7 +4372,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -4379,7 +4382,9 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -4849,7 +4854,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }

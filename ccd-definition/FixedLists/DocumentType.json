@@ -76,5 +76,12 @@
     "ListElementCode": "JUDGE_FINAL_ORDER",
     "ListElement": "Judge final order",
     "DisplayOrder": 13
-  }
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFENCE_TRANSLATED_DOCUMENT",
+    "ListElement": "Defence Translated Document",
+    "DisplayOrder": 14
+  } 
+  
 ]
