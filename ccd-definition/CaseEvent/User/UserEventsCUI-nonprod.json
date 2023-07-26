@@ -73,7 +73,8 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "EventEnablingCondition": "respondent1LiPResponse.respondent1ResponseLanguage = \"null\""
   },
   {
     "CaseTypeID": "CIVIL",
