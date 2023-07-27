@@ -36,6 +36,10 @@ const checkCaseFlagsEnabled = async () => {
   return checkFlagEnabled('case-flags');
 };
 
+const checkFastTrackUpliftsEnabled = async () => {
+  return checkFlagEnabled('fast-track-uplifts');
+};
+
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -245,4 +249,5 @@ module.exports =  {
   },
   checkHmcEnabled,
   checkCaseFlagsEnabled,
+  checkFastTrackUpliftsEnabled
 };
