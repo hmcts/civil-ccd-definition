@@ -189,9 +189,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile",
+          "cui-nbc-profile"
         ],
         "CRUD": "CRU"
       },
@@ -231,10 +230,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -276,9 +272,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile",
+          "cui-nbc-profile"
         ],
         "CRUD": "CRU"
       },
@@ -299,9 +294,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -309,7 +302,31 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_DOCUMENTS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -373,7 +390,8 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -592,6 +610,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_CYA_ON_AGREED_MEDIATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_RESPONSE_CUI_SEALED",
     "AccessControl": [
       {
@@ -620,9 +657,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -632,6 +667,28 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
