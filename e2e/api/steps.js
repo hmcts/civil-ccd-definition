@@ -25,7 +25,9 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
-const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled,
+  checkFastTrackUpliftsEnabled
+} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -686,7 +688,7 @@ module.exports = {
     }
   },
 
-  claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag, allocatedTrack) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -699,7 +701,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+    let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
+      : data.CLAIMANT_RESPONSE(mpScenario);
 
     await validateEventPages(claimantResponseData);
 
