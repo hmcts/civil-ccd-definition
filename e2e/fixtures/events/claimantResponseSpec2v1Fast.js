@@ -19,6 +19,14 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'test'
             }
           },
+          FixedRecoverableCosts: {
+            applicant1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocuments: {
             applicant1DQDisclosureOfElectronicDocuments: {
               reachedAgreement: 'No',
