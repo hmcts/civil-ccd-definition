@@ -183,7 +183,11 @@ module.exports = {
             document_url: '${TEST_DOCUMENT_URL}',
               document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
               document_filename: '${TEST_DOCUMENT_FILENAME}'
-          }
+          },
+          applicant1DQRemoteHearing: {
+            hearingToBeHeldRemotely: 'Yes',
+            hearingToBeHeldRemotelyReason: 'No reasons'
+          },
         },
         HearingSupport: {
             applicant1DQHearingSupport: {

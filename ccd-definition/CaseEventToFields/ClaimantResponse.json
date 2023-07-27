@@ -251,6 +251,53 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRequestedCourt",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestedCourt",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRequestedCourt",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestedCourt",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "RequestedCourt",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRemoteHearing",
+    "PageDisplayOrder": 15,
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "RequestedCourt",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,

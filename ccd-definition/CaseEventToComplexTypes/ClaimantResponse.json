@@ -9,6 +9,101 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "RequestedCourt",
+    "ListElementCode": "otherPartyPreferredSite",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRequestedCourt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "responseCourtLocations",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRequestedCourt",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "EventElementLabel": "Please select your preferred court hearing location.",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
+    "_Comment": "Condition to true, must override default"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRequestedCourt",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
+    "_Comment": "Condition to true, must override default"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "hearingToBeHeldRemotely",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "EventElementLabel": "Do you want to the hearing to held remotely?",
+    "EventHintText": "This will be over telephone or video",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "hearingToBeHeldRemotelyReason",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "otherPartyPreferredSite",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRequestedCourt",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "responseCourtLocations",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRequestedCourt",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY",
+    "EventElementLabel": "Please select your preferred court hearing location.",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
+    "_Comment": "Condition to true, must override default"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRequestedCourt",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
+    "_Comment": "Condition to true, must override default"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "hearingToBeHeldRemotely",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRemoteHearing",
+    "EventElementLabel": "Do you want to the hearing to held remotely?",
+    "EventHintText": "This will be over telephone or video",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RequestedCourt",
+    "ListElementCode": "hearingToBeHeldRemotelyReason",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQRemoteHearing",
+    "EventElementLabel": "Briefly explain your reasons",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
     "ID": "DefenceDocument",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DefenceResponseDocument",

@@ -253,6 +253,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2DQRemoteHearing",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "legacyCaseReference",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
