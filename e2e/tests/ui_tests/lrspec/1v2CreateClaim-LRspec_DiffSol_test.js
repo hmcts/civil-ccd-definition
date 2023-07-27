@@ -111,7 +111,7 @@ Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
     await LRspec.payHearingFee();
   }
 }).retry(3);
-
+*/
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
@@ -121,7 +121,7 @@ Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
     { partyName: 'Example respondent1 company', details: [] },
     { partyName: 'Example respondent2 company', details: [] }
   ]);
-}).retry(3);*/
+}).retry(3);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
