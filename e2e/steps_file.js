@@ -75,6 +75,7 @@ const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSD
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
+const fixedRecoverableCostsPage = require('./fragments/dq/fixedRecoverableCosts.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const disclosureOfNonElectronicDocumentsPage = require('./fragments/dq/disclosureOfNonElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
@@ -525,6 +526,7 @@ module.exports = function () {
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+        () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
         ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.
                             enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)

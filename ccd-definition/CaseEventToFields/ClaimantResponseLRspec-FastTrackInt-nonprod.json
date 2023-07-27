@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FixedRecoverableCosts",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "FieldShowCondition": "applicant1ProceedWithClaim=\"Yes\" OR applicant1ProceedWithClaimSpec2v1=\"Yes\"",
+    "PageShowCondition": "responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  }
+]
