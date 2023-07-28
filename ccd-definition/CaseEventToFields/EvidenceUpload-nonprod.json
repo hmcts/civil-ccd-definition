@@ -30,7 +30,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "SelectUploadOptions",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "evidenceUploadOptions != \"\""
   },
   {
     "CaseTypeID": "CIVIL",
