@@ -1,4 +1,5 @@
 const {I} = inject();
+const {checkFastTrackUpliftsEnabled} = require('./../../api/testingSupport');
 
 const date = require('../../fragments/date');
 
@@ -14,6 +15,25 @@ module.exports = {
     },
     smallClaimsMethodInPerson: {
       id: '#smallClaimsMethod-smallClaimsMethodInPerson'
+    },
+    fastTrackAllocation: {
+      assignComplexityBand: {
+        id: '#fastTrackAllocation_assignComplexityBand',
+        options: {
+          yes: 'Yes',
+          no: 'No'
+        }
+      },
+      band: {
+        id: '#fastTrackAllocation_band',
+        options: {
+          band1: 'BAND_1',
+          band2: 'BAND_2',
+          band3: 'BAND_3',
+          band4: 'BAND_4'
+        }
+      },
+      reasons: '#fastTrackAllocation_reasons',
     },
     fastTrackWitnessOfFact : {
        claimantWitnessCount: '#fastTrackWitnessOfFact_input2',
@@ -67,6 +87,17 @@ module.exports = {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
+      let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+      if (fastTrackUpliftsEnabled) {
+        await within(this.fields.fastTrackAllocation.assignComplexityBand.id, () => {
+          I.click(this.fields.fastTrackAllocation.assignComplexityBand.options.yes);
+        });
+        await within(this.fields.fastTrackAllocation.band.id, () => {
+          I.click(`${this.fields.fastTrackAllocation.band.id}-${this.fields.fastTrackAllocation.band.options.band1}`);
+        });
+
+        I.fillField(this.fields.fastTrackAllocation.reasons, 'A very good reason');
+      }
       await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
       await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
