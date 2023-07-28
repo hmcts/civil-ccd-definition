@@ -36,6 +36,7 @@ module.exports = {
     let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (fastTrackUpliftsEnabled) {
       await within(this.fields(party).isSubjectToFixedRecoverableCostRegime.id, () => {
+        I.runAccessibilityTest();
         I.click(`${this.fields(party).isSubjectToFixedRecoverableCostRegime.options.yes}`);
       });
 
