@@ -256,8 +256,8 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "RequestedCourt",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\" AND allocatedTrack!=\"SMALL_CLAIM\"",
+    "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

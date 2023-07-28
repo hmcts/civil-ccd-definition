@@ -45,6 +45,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQRequestedCourt",
+    "Label": " ",
+    "FieldType": "RequestedCourt",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1",
     "Label": "Claimant's details",
     "FieldType": "Party",
