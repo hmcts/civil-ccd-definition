@@ -759,7 +759,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
+
         ],
         "CRUD": "R"
       }
@@ -5048,6 +5050,38 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "casePaymentWaysToPay",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "payment-access",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimIssuedPBADetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

@@ -693,7 +693,7 @@ module.exports = {
     }
   },
 
-  claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag) => {
+  claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag, allocatedTrack) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -706,7 +706,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario);
+    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+    let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
+      : data.CLAIMANT_RESPONSE(mpScenario);
 
     await validateEventPages(claimantResponseData);
 
