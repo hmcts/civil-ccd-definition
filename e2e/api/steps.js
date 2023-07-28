@@ -950,7 +950,7 @@ module.exports = {
     let disposalData = eventData['sdoTracks'][response];
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    if (fastTrackUpliftsEnabled) {
+    if (!fastTrackUpliftsEnabled) {
       removeFastTrackAllocationFromSdoData(disposalData);
     }
 
