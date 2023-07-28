@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD test1v1 API test @api-bulk');
+Feature('Bulk claim 1vs1 SDT user API test @api-bulk');
 
 Scenario('Create claim via civil orchestrator service', async ({api}) => {
   // this will be replaced with a new steps file called steps_bulk
