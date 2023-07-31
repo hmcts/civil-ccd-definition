@@ -751,18 +751,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "REFER_TO_JUDGE",
     "AccessControl": [
       {
