@@ -284,8 +284,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -455,8 +454,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },

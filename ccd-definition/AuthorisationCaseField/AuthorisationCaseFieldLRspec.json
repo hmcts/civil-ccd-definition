@@ -5,8 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -101,8 +100,7 @@
     "CaseFieldID": "timelineOfEvents",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE",
-      "CITIZEN-CLAIMANT-PROFILE"
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
@@ -153,8 +151,7 @@
     "CaseFieldID": "speclistYourEvidenceList",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE",
-      "CITIZEN-CLAIMANT-PROFILE"
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CR"
   },
@@ -169,8 +166,7 @@
     "CaseFieldID": "claimAmountBreakup",
     "UserRoles": [
       "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE",
-      "CITIZEN-CLAIMANT-PROFILE"
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
@@ -231,8 +227,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -257,8 +252,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -277,8 +271,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -303,8 +296,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -317,8 +309,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -337,8 +328,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -357,8 +347,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -371,8 +360,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -391,8 +379,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CR"
       }
@@ -428,8 +415,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -448,8 +434,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -539,8 +524,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -558,8 +542,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -1759,8 +1742,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -1814,8 +1796,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
@@ -1827,8 +1808,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -1846,8 +1826,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
@@ -3967,8 +3946,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3989,8 +3967,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -5113,8 +5090,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -5317,8 +5293,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
