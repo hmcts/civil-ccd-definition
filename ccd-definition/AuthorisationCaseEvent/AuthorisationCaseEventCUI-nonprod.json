@@ -230,10 +230,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "caseworker-civil"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
