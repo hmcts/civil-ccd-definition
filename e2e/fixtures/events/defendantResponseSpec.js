@@ -82,7 +82,7 @@ module.exports = {
               reasonForHearingAtSpecificCourt: 'Reasons',
               caseLocation: {
                 region: '2',
-                baseLocation: '000000'
+                baseLocation: '420219'
               }
             }
           },
