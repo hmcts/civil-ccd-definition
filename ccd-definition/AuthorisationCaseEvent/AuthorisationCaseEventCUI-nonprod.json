@@ -45,7 +45,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
@@ -604,7 +603,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "caseworker-civil-admin"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
