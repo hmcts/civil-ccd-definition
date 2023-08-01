@@ -700,13 +700,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
