@@ -17,6 +17,7 @@ const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
 const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
+const getBulkClaimServiceUrl = () => `${config.url.orchestratorService}/createSDTClaim`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
