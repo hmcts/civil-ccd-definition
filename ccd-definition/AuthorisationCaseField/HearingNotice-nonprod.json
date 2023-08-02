@@ -191,7 +191,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingFee",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "caseworker-civil-solicitor",
+      "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
   },
