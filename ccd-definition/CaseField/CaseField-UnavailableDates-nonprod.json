@@ -1,0 +1,34 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1UnavailableDatesForTab",
+    "Label": "Applicant 1 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2UnavailableDatesForTab",
+    "Label": "Applicant 2 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1UnavailableDatesForTab",
+    "Label": "Respondent 1 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2UnavailableDatesForTab",
+    "Label": "Respondent 2 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public"
+  }
+]
