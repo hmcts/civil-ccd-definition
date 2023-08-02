@@ -198,6 +198,22 @@ module.exports = {
     return response || {};
   },
 
+  createBulkClaim: async (sdtRequestId, claimData) => {
+    let sdtClaimURL = getBulkClaimServiceUrl();
+
+    let response = await restHelper.retriedRequest(sdtClaimURL,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokens.userAuth}`,
+        'SdtRequestId': `${sdtRequestId}`
+      },
+      claimData,
+      'POST')
+      .then(response => response.json());
+
+    return response || {};
+  },
+
   hearingFeePaidEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getHearingFeePaidUrl(caseId);

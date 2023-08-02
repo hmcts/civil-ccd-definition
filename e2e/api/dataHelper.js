@@ -83,5 +83,14 @@ module.exports = {
       Country: address.country,
       PostCode: address.postcode
     };
+  },
+  buildBulkClaimAddress: () => {
+    return {
+      addressLine1: address.buildingAndStreet.lineOne,
+      addressLine2: address.buildingAndStreet.lineTwo,
+      addressLine3: address.town,
+      addressLine4: address.country,
+      postcode: address.postcode
+    };
   }
 };
