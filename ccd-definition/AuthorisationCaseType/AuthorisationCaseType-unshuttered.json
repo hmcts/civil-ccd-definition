@@ -39,7 +39,7 @@
       "CITIZEN-DEFENDANT-PROFILE",
       "cui-admin-profile",
       "cui-nbc-profile",
-      "citizen"
+      "citizen-profile"
     ],
     "CRUD": "CRU"
   }

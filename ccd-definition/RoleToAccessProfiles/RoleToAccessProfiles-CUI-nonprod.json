@@ -21,9 +21,9 @@
     "RoleName" : "idam:citizen",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "citizen",
+    "AccessProfiles": "citizen-profile",
     "ReadOnly": "N",
     "Disabled": "F",
-    "CaseAccessCategories": ""
+    "CaseAccessCategories": "SPEC_CLAIM"
   }
 ]

@@ -600,7 +600,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },
