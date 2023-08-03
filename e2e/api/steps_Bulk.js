@@ -8,7 +8,7 @@ const apiRequest = require('./apiRequest.js');
 const bulkClaimData = require('../fixtures/events/createBulkClaim.js');
 
 const data = {
-  CREATE_BULK_CLAIM: (customerId, amount, claimRef) => bulkClaimData.bulkCreateClaimDto(customerId, amount, claimRef),
+  CREATE_BULK_CLAIM: (customerId, amount) => bulkClaimData.bulkCreateClaimDto(customerId, amount),
 };
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
   createClaimFromSDTRequest: async (user) => {
     let createClaimData;
 
-    createClaimData = data.CREATE_BULK_CLAIM('15678908', '87989', '1568h8992334');
+    createClaimData = data.CREATE_BULK_CLAIM('12345678', '87989');
     //==============================================================
 
     await apiRequest.setupTokens(user);

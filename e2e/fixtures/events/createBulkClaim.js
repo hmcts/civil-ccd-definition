@@ -23,22 +23,22 @@ const applicant1WithPartyName = {
 };
 
 module.exports = {
-  bulkCreateClaimDto: (customerId, amount, claimRef) => {
+  bulkCreateClaimDto: (customerId, amount) => {
     return {
       bulkCustomerId: customerId,
       claimAmount: amount,
       claimant: applicant1WithPartyName,
-      claimantReference: claimRef,
+      claimantReference: 'Claimant org',
       defendant1: respondent1WithPartyName,
-      defendant2: respondent2WithPartyName,
-      interest: {
+      // defendant2: respondent2WithPartyName,
+/*      interest: {
         claimAmountInterestBase: 6,
         interestClaimDate: date(-1),
         interestDailyAmount: 7,
         interestOwedDate: date(-1),
-      },
+      },*/
       particulars: 'particularsValue',
-      reserveRightToClaimInterest: true,
+      reserveRightToClaimInterest: false,
       sotSignature: 'signature',
       sotSignatureRole: 'bulkIssuerRole',
     };
