@@ -216,7 +216,7 @@
           "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
