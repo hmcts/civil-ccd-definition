@@ -374,7 +374,8 @@
     "DisplayContext": "READONLY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValuesApplicant"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -386,7 +387,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\""
+    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -398,7 +399,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\""
+    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -410,7 +411,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\""
+    "FieldShowCondition":"(witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\") AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -422,7 +423,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\""
+    "FieldShowCondition":"(witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\")  AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -434,7 +435,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\""
+    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -446,7 +447,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\""
+    "FieldShowCondition":"(witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\")  AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -458,7 +459,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\""
+    "FieldShowCondition":"(expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\") AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -470,7 +471,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\""
+    "FieldShowCondition":"(expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\") AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -482,7 +483,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\""
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -494,7 +495,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\""
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -506,7 +507,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"CASE_SUMMARY\""
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"CASE_SUMMARY\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -518,7 +519,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\""
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -530,7 +531,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\""
+    "FieldShowCondition":"(trialSelectionEvidence CONTAINS \"AUTHORITIES\" OR trialSelectionEvidenceSmallClaim CONTAINS \"AUTHORITIES\") AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -542,7 +543,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"COSTS\" OR trialSelectionEvidenceSmallClaim CONTAINS \"COSTS\""
+    "FieldShowCondition":"(trialSelectionEvidence CONTAINS \"COSTS\" OR trialSelectionEvidenceSmallClaim CONTAINS \"COSTS\") AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -554,14 +555,193 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateValuesApplicant"
+    "FieldShowCondition":"(trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\") AND caseTypeFlag != \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentDisclosureListApp2",
+    "PageFieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DISCLOSURE_LIST\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentForDisclosureApp2",
+    "PageFieldDisplayOrder": 18,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"disclosureSelectionEvidence CONTAINS \"DOCUMENTS_FOR_DISCLOSURE\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentWitnessStatementApp2",
+    "PageFieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"witnessStatementFlag = \"show_witness_statement\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentWitnessSummaryApp2",
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"witnessSummaryFlag = \"show_witness_summary\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentHearsayNoticeApp2",
+    "PageFieldDisplayOrder": 21,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentReferredInStatementApp2",
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"witnessReferredStatementFlag = \"show_witness_referred\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentExpertReportApp2",
+    "PageFieldDisplayOrder": 23,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"expertReportFlag = \"show_expert_report\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentJointStatementApp2",
+    "PageFieldDisplayOrder": 24,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"expertJointFlag = \"show_joint_expert\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentQuestionsApp2",
+    "PageFieldDisplayOrder": 25,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentAnswersApp2",
+    "PageFieldDisplayOrder": 26,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentCaseSummaryApp2",
+    "PageFieldDisplayOrder": 27,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"CASE_SUMMARY\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentSkeletonArgumentApp2",
+    "PageFieldDisplayOrder": 28,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"trialSelectionEvidence CONTAINS \"SKELETON_ARGUMENT\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentAuthoritiesApp2",
+    "PageFieldDisplayOrder": 29,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"trialAuthorityFlag = \"show_trial_authority\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentCostsApp2",
+    "PageFieldDisplayOrder": 30,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"trialCostsFlag = \"show_trial_costs\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentEvidenceForTrialApp2",
+    "PageFieldDisplayOrder": 31,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"trialDocumentaryFlag = \"show_trial_documentary\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "caseDocumentUploadDate",
-    "PageFieldDisplayOrder": 17,
+    "PageFieldDisplayOrder": 32,
     "DisplayContext": "READONLY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
