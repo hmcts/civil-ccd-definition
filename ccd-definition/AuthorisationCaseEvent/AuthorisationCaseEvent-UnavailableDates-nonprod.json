@@ -11,8 +11,7 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "caseworker-civil-admin",
-          "legal-adviser"
+          "caseworker-civil-admin"
         ],
         "CRUD": "CR"
       }
