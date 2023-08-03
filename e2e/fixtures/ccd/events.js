@@ -161,4 +161,10 @@ module.exports = {
     description: 'Request Judgement by Admission',
     order: 10
   },
+  MANAGE_CONTACT_INFORMATION: {
+    id: 'MANAGE_CONTACT_INFORMATION',
+    name: 'Manage Contact Information',
+    description: 'Updated party contact details',
+    order: 99
+  }
 };
