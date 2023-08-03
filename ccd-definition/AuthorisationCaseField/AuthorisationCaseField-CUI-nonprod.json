@@ -428,7 +428,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "speclistYourEvidenceList",
     "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
+      "CITIZEN-CLAIMANT-PROFILE",
+      "citizen-profile"
     ],
     "CRUD": "CR"
   },
