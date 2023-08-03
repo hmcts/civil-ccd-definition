@@ -2,7 +2,7 @@ plugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
-  id 'maven'
+  id 'maven-publish'
 }
 
 group 'com.github.hmcts'
