@@ -25,6 +25,10 @@ module.exports = {
       bothDefendantsSpec: 'Both defendants',
       currentDefendant: 'Have the defendants paid some of the amount owed?',
       currentDefendantName: 'both defendants',
+      businessProcess: {
+        camundaEvent: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
+        status: 'FINISHED'
+      }
     },
     paymentConfirmationSpec: {
       repaymentSummaryObject: 'The judgment will order the defendants to pay £1580.00, including the claim fee and interest, if applicable, as shown:\n### Claim amount \n £1500.00\n### Claim fee amount \n £80.00\n ## Subtotal \n £1580.00\n\n ## Total still owed \n £1580.00'
