@@ -505,6 +505,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQDraftDirectionsLabel",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
