@@ -1211,6 +1211,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     // CIV-3883 depends on backend having the field
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
+  if (!(responseBody.data.applicant2DQRemoteHearing) && caseData.applicant2DQRemoteHearing) {
+    // CIV-3883 depends on backend having the field
+    responseBody.data.applicant2DQRemoteHearing = caseData.applicant2DQRemoteHearing;
+  }
 
   if (eventName === 'CREATE_SDO') {
     if(['ClaimsTrack', 'OrderType'].includes(pageId)) {

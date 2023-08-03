@@ -114,7 +114,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQRemoteHearing",
+    "CaseFieldID": "applicant2DQRemoteHearing",
     "AccessControl": [
       {
         "UserRoles": [
