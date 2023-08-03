@@ -7,13 +7,5 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Comment": "Field storing noc update details"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "casePaymentWaysToPay",
-    "Label": "Service Request",
-    "FieldType": "WaysToPay",
-    "Searchable": "N",
-    "SecurityClassification": "Public"
   }
 ]
