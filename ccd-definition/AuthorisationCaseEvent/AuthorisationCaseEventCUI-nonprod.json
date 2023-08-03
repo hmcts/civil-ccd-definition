@@ -216,7 +216,7 @@
           "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -754,19 +754,6 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CaseAccessCategory",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile"
-        ],
-        "CRUD": "CRUD"
       }
     ]
   }
