@@ -2,119 +2,25 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
-    "TabFieldDisplayOrder": 63
+    "CaseFieldID": "respondent1DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 36
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "CaseFieldID": "respondent2DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 37
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
     "TabFieldDisplayOrder": 64
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
-    "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1DQExperts",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
     "TabFieldDisplayOrder": 65
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
-    "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant2DQExperts",
-    "TabFieldDisplayOrder": 66
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1RespondToClaimExperts",
-    "TabFieldDisplayOrder": 67
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
-    "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant1DQWitnesses",
-    "TabFieldDisplayOrder": 68
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
-    "TabDisplayOrder": 2,
-    "CaseFieldID": "applicant2DQWitnesses",
-    "TabFieldDisplayOrder": 69
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQLanguage",
-    "TabFieldDisplayOrder": 70
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant2DQLanguage",
-    "TabFieldDisplayOrder": 71
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQHearing",
-    "TabFieldDisplayOrder": 72
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant2DQHearing",
-    "TabFieldDisplayOrder": 73
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQHearingLRspec",
-    "TabFieldDisplayOrder": 74
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQSmallClaimHearing",
-    "TabFieldDisplayOrder": 75
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQRequestedCourt",
-    "TabFieldDisplayOrder": 76
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "TabLabel": "Claim details",
-    "TabDisplayOrder": 2,
-    "CaseFieldID": "courtLocation",
-    "TabFieldDisplayOrder": 77
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQHearingSupport",
-    "TabFieldDisplayOrder": 78
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant2DQHearingSupport",
-    "TabFieldDisplayOrder": 79
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "claimantResponseDocuments",
-    "TabFieldDisplayOrder": 80
   }
 ]
