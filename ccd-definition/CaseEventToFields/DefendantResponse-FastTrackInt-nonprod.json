@@ -1,0 +1,27 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQFixedRecoverableCosts",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "PageID": "FixedRecoverableCosts",
+    "PageShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQFixedRecoverableCosts",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "PageID": "FixedRecoverableCosts",
+    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
+  }
+]
