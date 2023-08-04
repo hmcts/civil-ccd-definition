@@ -25,15 +25,14 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
-const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled,
-  checkFastTrackUpliftsEnabled
-} = require('./testingSupport');
+const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
+const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData} = require('../helpers/fastTrackUpliftsHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -56,11 +55,11 @@ const data = {
   ACKNOWLEDGE_CLAIM_TWO_V_ONE: require('../fixtures/events/2v1Events/acknowledgeClaim_2v1.js'),
   INFORM_AGREED_EXTENSION_DATE: require('../fixtures/events/informAgreeExtensionDate.js'),
   INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
-  DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  DEFENDANT_RESPONSE_SAME_SOLICITOR:  require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
-  DEFENDANT_RESPONSE_SOLICITOR_ONE:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
-  DEFENDANT_RESPONSE_SOLICITOR_TWO:  require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
-  DEFENDANT_RESPONSE_TWO_APPLICANTS:  require('../fixtures/events/2v1Events/defendantResponse_2v1'),
+  DEFENDANT_RESPONSE: (allocatedTrack) => require('../fixtures/events/defendantResponse.js').defendantResponse(allocatedTrack),
+  DEFENDANT_RESPONSE_SAME_SOLICITOR: (allocatedTrack) => require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js').defendantResponse(allocatedTrack),
+  DEFENDANT_RESPONSE_SOLICITOR_ONE: (allocatedTrack) => require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1').defendantResponse(allocatedTrack),
+  DEFENDANT_RESPONSE_SOLICITOR_TWO: (allocatedTrack) => require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2').defendantResponse(allocatedTrack),
+  DEFENDANT_RESPONSE_TWO_APPLICANTS: (allocatedTrack) => require('../fixtures/events/2v1Events/defendantResponse_2v1').defendantResponse(allocatedTrack),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
@@ -104,14 +103,14 @@ const eventData = {
     },
     TWO_V_ONE: data.INFORM_AGREED_EXTENSION_DATE
   },
-  defendantResponses:{
-    ONE_V_ONE: data.DEFENDANT_RESPONSE,
-    ONE_V_TWO_ONE_LEGAL_REP: data.DEFENDANT_RESPONSE_SAME_SOLICITOR,
+  defendantResponses: {
+    ONE_V_ONE: (allocatedTrack) => data.DEFENDANT_RESPONSE(allocatedTrack),
+    ONE_V_TWO_ONE_LEGAL_REP: (allocatedTrack) => data.DEFENDANT_RESPONSE_SAME_SOLICITOR(allocatedTrack),
     ONE_V_TWO_TWO_LEGAL_REP: {
-      solicitorOne: data.DEFENDANT_RESPONSE_SOLICITOR_ONE,
-      solicitorTwo: data.DEFENDANT_RESPONSE_SOLICITOR_TWO
+      solicitorOne: (allocatedTrack) => data.DEFENDANT_RESPONSE_SOLICITOR_ONE(allocatedTrack),
+      solicitorTwo: (allocatedTrack) => data.DEFENDANT_RESPONSE_SOLICITOR_TWO(allocatedTrack)
     },
-    TWO_V_ONE: data.DEFENDANT_RESPONSE_TWO_APPLICANTS
+    TWO_V_ONE: (allocatedTrack) => data.DEFENDANT_RESPONSE_TWO_APPLICANTS(allocatedTrack)
   },
   sdoTracks: {
     CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
@@ -589,7 +588,7 @@ module.exports = {
     deleteCaseFields('isRespondent1');
   },
 
-  defendantResponse: async (user, multipartyScenario, solicitor) => {
+  defendantResponse: async (user, multipartyScenario, solicitor, allocatedTrack) => {
     await apiRequest.setupTokens(user);
     mpScenario = multipartyScenario;
     eventName = 'DEFENDANT_RESPONSE';
@@ -607,9 +606,15 @@ module.exports = {
 
     let defendantResponseData;
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
-      defendantResponseData = eventData['defendantResponses'][mpScenario];
+      defendantResponseData = eventData['defendantResponses'][mpScenario](allocatedTrack);
     } else {
-      defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor];
+      defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
+    }
+    console.log(defendantResponseData);
+
+    //Todo: Remove after fast track uplifts release
+    if(!await checkFastTrackUpliftsEnabled()) {
+      removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData(defendantResponseData);
     }
 
     //Todo: Remove after caseflags release
@@ -1395,6 +1400,8 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
     midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
   } else if(eventName === 'CLAIMANT_RESPONSE'){
     midEventData = data[eventName](mpScenario).midEventData[pageId];
+  } else if(eventName === 'DEFENDANT_RESPONSE'){
+    midEventData = data[eventName]().midEventData[pageId];
   } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
     midEventData = instanceData.midEventData[pageId];
   } else {
