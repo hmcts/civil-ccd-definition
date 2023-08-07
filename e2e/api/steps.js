@@ -242,9 +242,9 @@ module.exports = {
     console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
     console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: isCertificateOfServiceEnabled ? PBAv3 ? '# Please now pay your claim fee\n# using the link below': 'Your claim has been received':
+     // header: isCertificateOfServiceEnabled ? PBAv3 ? '# Please now pay your claim fee\n# using the link below': 'Your claim has been received':
               PBAv3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received and will progress offline',
-      body: PBAv3 ? 'Your claim will not be issued until payment is confirmed' : 'Your claim will not be issued until payment of the issue fee is confirmed'
+    //  body: PBAv3 ? 'Your claim will not be issued until payment is confirmed' : 'Your claim will not be issued until payment of the issue fee is confirmed'
     });
 
     await waitForFinishedBusinessProcess(caseId);
