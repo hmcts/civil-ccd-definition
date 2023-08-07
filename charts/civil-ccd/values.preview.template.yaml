@@ -1,6 +1,6 @@
 civil-service:
   java:
-      keyVaults:
+    keyVaults:
       civil:
         resourceGroup: civil
         secrets:
