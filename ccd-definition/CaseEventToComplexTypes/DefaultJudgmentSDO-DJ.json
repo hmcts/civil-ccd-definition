@@ -328,6 +328,24 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingTimeDJ.time = \"OTHER\""
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingTimeDJ.time = \"OTHER\""
+  },
+  {
     "ID": "DisposalHearingBundleDJ",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "disposalHearingBundleDJ",

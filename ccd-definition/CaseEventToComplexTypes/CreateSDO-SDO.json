@@ -425,6 +425,24 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disposalHearingHearingTime.time = \"OTHER\""
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disposalHearingHearingTime.time = \"OTHER\""
+  },
+  {
     "ID": "DisposalOrderWithoutHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalOrderWithoutHearing",
