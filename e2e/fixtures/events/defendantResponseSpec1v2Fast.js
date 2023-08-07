@@ -41,6 +41,14 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'reason'
             }
           },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
               agreementLikely: 'No',
@@ -246,6 +254,14 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
               reachedAgreement: 'Yes'
@@ -353,6 +369,14 @@ module.exports = {
               status: 'FINISHED',
               camundaEvent: camundaEvent
             }
+          },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
           }
         };
         break;
@@ -382,6 +406,14 @@ module.exports = {
               oneMonthStayRequested: 'No',
               reactionProtocolCompliedWith: 'No',
               reactionProtocolNotCompliedWithReason: 'reason'
+            }
+          },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
             }
           },
           DisclosureOfElectronicDocumentsLRspec: {
@@ -528,7 +560,15 @@ module.exports = {
               status: 'FINISHED',
               camundaEvent: camundaEvent
             }
-          }
+          },
+          FixedRecoverableCosts: {
+            respondent2DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
         };
         break;
 

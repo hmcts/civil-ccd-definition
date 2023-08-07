@@ -42,6 +42,14 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'reason'
             }
           },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
               agreementLikely: 'No',
