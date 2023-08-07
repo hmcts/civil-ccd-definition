@@ -8,7 +8,6 @@
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRU"
@@ -243,7 +242,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRUD"
@@ -256,7 +254,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -268,7 +266,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -280,7 +278,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRUD"
       }
@@ -292,7 +290,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRUD"
@@ -305,7 +302,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -315,7 +312,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "uiStatementOfTruth",
     "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
+      "citizen-profile"
     ],
     "CRUD": "CRUD"
   },
@@ -325,7 +322,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -337,7 +334,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -349,7 +346,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRU"
@@ -362,7 +358,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -374,7 +370,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -386,7 +382,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -398,7 +394,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRUD"
       }
@@ -410,7 +406,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -420,7 +416,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "timelineOfEvents",
     "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
+      "citizen-profile"
     ],
     "CRUD": "CRU"
   },
@@ -428,7 +424,6 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "speclistYourEvidenceList",
     "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE",
       "citizen-profile"
     ],
     "CRUD": "CR"
@@ -437,7 +432,6 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakup",
     "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE",
       "citizen-profile"
     ],
     "CRUD": "CRUD"
@@ -448,7 +442,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CR"
@@ -461,7 +454,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -473,7 +466,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -485,7 +478,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -497,7 +490,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -509,7 +502,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -521,7 +514,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -533,7 +526,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -545,7 +538,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CR"
       }
@@ -557,7 +550,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -569,7 +562,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -581,7 +574,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -593,7 +586,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -605,7 +598,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -617,7 +610,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -629,7 +622,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -641,7 +634,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -653,7 +646,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -665,7 +658,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -677,7 +670,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -689,7 +682,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -701,7 +694,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRU"
@@ -714,7 +706,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRUD"

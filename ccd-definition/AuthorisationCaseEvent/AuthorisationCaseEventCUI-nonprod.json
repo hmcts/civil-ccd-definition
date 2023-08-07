@@ -213,7 +213,6 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRUD"
