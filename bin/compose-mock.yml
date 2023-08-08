@@ -1,0 +1,16 @@
+---
+version: '2.4'
+
+services:
+  wiremock:
+    container_name: wiremock-preview
+    image: wiremock/wiremock
+    volumes:
+      - ./wiremock-mappings:/home/wiremock:rw
+    ports:
+      - 8765:8080
+    networks:
+      - ccd-network
+    command:
+      - -global-response-templating
+
