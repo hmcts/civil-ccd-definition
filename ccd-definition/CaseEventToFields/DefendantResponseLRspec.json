@@ -1144,32 +1144,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentInformation",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmNameAddress",
-    "PageLabel": "",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND respondent1Copy.type!=\"COMPANY\" AND respondent1Copy.type!=\"ORGANISATION\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSCompanyOrganisationRespondentInformation",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmNameAddress",
-    "PageLabel": "",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND respondent1Copy.type!=\"INDIVIDUAL\" AND respondent1Copy.type!=\"SOLE_TRADER\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "tempCorrectedDefendant1AddressRequired",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
@@ -1194,32 +1168,6 @@
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress",
     "RetriesTimeoutURLMidEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2Information",
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmNameAddress",
-    "PageLabel": "",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2Copy.type!=\"COMPANY\" AND respondent2Copy.type!=\"ORGANISATION\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSCompanyOrganisationRespondent2Information",
-    "PageFieldDisplayOrder": 8,
-    "DisplayContext": "READONLY",
-    "PageID": "ResponseConfirmNameAddress",
-    "PageLabel": "",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2Copy.type!=\"INDIVIDUAL\" AND respondent2Copy.type!=\"SOLE_TRADER\""
   },
   {
     "CaseTypeID": "CIVIL",
