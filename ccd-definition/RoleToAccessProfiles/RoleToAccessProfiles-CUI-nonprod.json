@@ -16,5 +16,14 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "SPEC_CLAIM"
+  },
+  {
+    "RoleName" : "idam:citizen",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "citizen-profile",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "SPEC_CLAIM"
   }
 ]
