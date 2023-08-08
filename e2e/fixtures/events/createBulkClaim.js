@@ -22,25 +22,56 @@ const applicant1WithPartyName = {
   name: 'Dr Maddy Jane',
 };
 
+const isWithInterest = (interest) => {
+  return interest;
+};
+
 module.exports = {
-  bulkCreateClaimDto: (customerId, amount) => {
-    return {
-      bulkCustomerId: customerId,
-      claimAmount: amount,
-      claimant: applicant1WithPartyName,
-      claimantReference: 'Claimant org',
-      defendant1: respondent1WithPartyName,
-      // defendant2: respondent2WithPartyName,
-/*      interest: {
-        claimAmountInterestBase: 6,
-        interestClaimDate: date(-1),
-        interestDailyAmount: 7,
-        interestOwedDate: date(-1),
-      },*/
-      particulars: 'particularsValue',
-      reserveRightToClaimInterest: false,
-      sotSignature: 'signature',
-      sotSignatureRole: 'bulkIssuerRole',
-    };
+  bulkCreateClaimDto: (mpScenario, interest, customerId, amount) => {
+    if (mpScenario === 'ONE_V_ONE') {
+      return {
+        bulkCustomerId: customerId,
+        claimantReference: 'Claimant org',
+        claimAmount: amount,
+        claimant: applicant1WithPartyName,
+        defendant1: respondent1WithPartyName,
+        ...(isWithInterest(interest) ? {} : {
+          interest: {
+            dailyAmount: 100,
+            claimDate: date(-1),
+            owedDate: date(-1),
+            claimAmountInterestBase: 5000,
+          },
+        }),
+        sendParticularsSeparately: false,
+        reserveRightToClaimInterest: false,
+        particulars: 'Particulars',
+        sotSignature: 'signature',
+        sotSignatureRole: 'bulkIssuerRole',
+      };
+    }
+    if (mpScenario === 'ONE_V_TWO') {
+      return {
+        bulkCustomerId: customerId,
+        claimantReference: 'Claimant org',
+        claimAmount: amount,
+        claimant: applicant1WithPartyName,
+        defendant1: respondent1WithPartyName,
+        defendant2: respondent2WithPartyName,
+        ...(isWithInterest(interest) ? {} : {
+          interest: {
+            dailyAmount: 100,
+            claimDate: date(-1),
+            owedDate: date(-1),
+            claimAmountInterestBase: 5000,
+          },
+        }),
+        sendParticularsSeparately: false,
+        reserveRightToClaimInterest: false,
+        particulars: 'Particulars',
+        sotSignature: 'signature',
+        sotSignatureRole: 'bulkIssuerRole',
+      };
+    }
   },
 };
