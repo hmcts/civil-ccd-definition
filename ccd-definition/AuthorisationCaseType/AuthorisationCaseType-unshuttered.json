@@ -35,9 +35,11 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE",
       "CITIZEN-DEFENDANT-PROFILE",
       "cui-admin-profile",
-      "cui-nbc-profile"
+      "cui-nbc-profile",
+      "citizen-profile"
     ],
     "CRUD": "CRU"
   }
