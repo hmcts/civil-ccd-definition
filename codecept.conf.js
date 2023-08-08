@@ -13,8 +13,8 @@ exports.config = {
     './e2e/tests/ui_tests/sdo/*_test.js',
     './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/api_tests/hearings/*_test.js',
-    './e2e/tests/ui_tests/hearings/*_test.js',
     './e2e/tests/api_tests/bulkclaim/*_test.js',
+    './e2e/tests/ui_tests/hearings/*_test.js'
   ],
   output: 'test-results/functional',
   helpers: {
