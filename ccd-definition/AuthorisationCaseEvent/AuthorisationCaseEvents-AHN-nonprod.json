@@ -1,31 +1,13 @@
 [
-
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOC_REQUEST",
+    "CaseEventID": "GENERATE_HEARING_NOTICE_HMC",
     "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_FORMER_SOLICITOR",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
@@ -34,17 +16,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_OTHER_SOLICITOR_1",
+    "CaseEventID": "NOTIFY_CLAIMANT_HEARING_HMC",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
@@ -53,17 +31,28 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_OTHER_SOLICITOR_2",
+    "CaseEventID": "NOTIFY_DEFENDANT1_HEARING_HMC",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
-      },
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT2_HEARING_HMC",
+    "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
