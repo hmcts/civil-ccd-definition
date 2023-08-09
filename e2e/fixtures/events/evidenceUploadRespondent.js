@@ -1,4 +1,4 @@
-const {listElement} = require("../../api/dataHelper");
+const {listElement} = require('../../api/dataHelper');
 const selectedOptionApp = listElement('Defendant 1 and 2');
 
 module.exports = {
