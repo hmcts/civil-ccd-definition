@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CONTACT_INFORMATION_UPDATED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CONTACT_INFORMATION_UPDATED_WA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  }
+]

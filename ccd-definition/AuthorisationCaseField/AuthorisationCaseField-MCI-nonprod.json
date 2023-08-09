@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "contactDetailsUpdatedEvent",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
+  }
+]
