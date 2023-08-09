@@ -2414,5 +2414,27 @@
     "Label": "**Party type:** ${respondent2Copy.partyTypeDisplayValue}\n\n**Name: ${respondent2Copy.partyName}** ${respondent2Copy.soleTraderTradingAs}\n\n**Email:** ${respondent2Copy.partyEmail}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdtRequestIdFromSdt",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdtRequestId",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "bulkCustomerId",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
