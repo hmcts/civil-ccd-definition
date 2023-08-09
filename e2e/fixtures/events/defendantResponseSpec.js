@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -26,6 +26,16 @@ module.exports = {
           Mediation: {
             responseClaimMediationSpecRequired: 'No'
           },
+          ...(fastTrack ? {
+            FixedRecoverableCosts: {
+              respondent1DQFixedRecoverableCosts: {
+                isSubjectToFixedRecoverableCostRegime: 'Yes',
+                band: 'BAND_4',
+                complexityBandingAgreed: 'Yes',
+                reasons: 'some reasons'
+              }
+            }
+          } : {}),
           SmallClaimExperts: {
             respondent1DQExperts: {
               expertRequired: 'Yes',
@@ -82,7 +92,7 @@ module.exports = {
               reasonForHearingAtSpecificCourt: 'Reasons',
               caseLocation: {
                 region: '2',
-                baseLocation: '000000'
+                baseLocation: '420219'
               }
             }
           },
