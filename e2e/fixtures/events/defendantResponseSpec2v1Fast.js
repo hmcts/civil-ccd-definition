@@ -42,6 +42,14 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'reason'
             }
           },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
               agreementLikely: 'No',
@@ -115,6 +123,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -273,6 +285,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -446,6 +462,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {

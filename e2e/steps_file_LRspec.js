@@ -448,6 +448,7 @@ module.exports = function () {
             () => this.clickContinue(),
          ... conditionalSteps(claimType === 'fast', [
                 () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
                 () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                 () => this.clickContinue(),
                 () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
@@ -490,6 +491,7 @@ module.exports = function () {
                 () => this.clickContinue(),
              ... conditionalSteps(claimType === 'fast', [
                     () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_2),
+                    () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_2),
                     () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent2'),
                     () => this.clickContinue(),
                     () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_2),
@@ -545,6 +547,7 @@ module.exports = function () {
                ]),
                ... conditionalSteps(claimType === 'fast', [
                   () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                  () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
                   () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                   () => this.clickContinue(),
                   () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),

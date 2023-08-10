@@ -35,9 +35,10 @@ module.exports = {
   async fixedRecoverableCosts(party) {
     let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (fastTrackUpliftsEnabled) {
-      I.waitForElement(this.fields(party).isSubjectToFixedRecoverableCostRegime.id);
-      await I.runAccessibilityTest();
-      I.click(this.fields(party).isSubjectToFixedRecoverableCostRegime.options.yes);
+      await within(this.fields(party).isSubjectToFixedRecoverableCostRegime.id, () => {
+        I.runAccessibilityTest();
+        I.click(`${this.fields(party).isSubjectToFixedRecoverableCostRegime.options.yes}`);
+      });
 
       await within(this.fields(party).band.id, () => {
         I.click(`${this.fields(party).band.id}-${this.fields(party).band.options.band1}`);

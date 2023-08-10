@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -26,6 +26,16 @@ module.exports = {
           Mediation: {
             responseClaimMediationSpecRequired: 'No'
           },
+          ...(fastTrack ? {
+            FixedRecoverableCosts: {
+              respondent1DQFixedRecoverableCosts: {
+                isSubjectToFixedRecoverableCostRegime: 'Yes',
+                band: 'BAND_4',
+                complexityBandingAgreed: 'Yes',
+                reasons: 'some reasons'
+              }
+            }
+          } : {}),
           SmallClaimExperts: {
             respondent1DQExperts: {
               expertRequired: 'Yes',
@@ -85,6 +95,10 @@ module.exports = {
                 baseLocation: '420219'
               }
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -219,6 +233,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           Applications: {
             respondent1DQFutureApplications: {
@@ -363,6 +381,10 @@ module.exports = {
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
           },
+          respondent2DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
+          },
           HearingSupport: {
             respondent2DQHearingSupport: {
                 supportRequirements: 'Yes',
@@ -496,6 +518,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           Applications: {
             respondent1DQFutureApplications: {

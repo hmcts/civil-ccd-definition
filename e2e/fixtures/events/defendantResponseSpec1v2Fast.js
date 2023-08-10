@@ -41,6 +41,14 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'reason'
             }
           },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
               agreementLikely: 'No',
@@ -114,6 +122,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -246,6 +258,14 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
               reachedAgreement: 'Yes'
@@ -283,6 +303,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           Applications: {
             respondent1DQFutureApplications: {
@@ -353,6 +377,14 @@ module.exports = {
               status: 'FINISHED',
               camundaEvent: camundaEvent
             }
+          },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
           }
         };
         break;
@@ -382,6 +414,14 @@ module.exports = {
               oneMonthStayRequested: 'No',
               reactionProtocolCompliedWith: 'No',
               reactionProtocolNotCompliedWithReason: 'reason'
+            }
+          },
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
             }
           },
           DisclosureOfElectronicDocumentsLRspec: {
@@ -435,6 +475,10 @@ module.exports = {
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             }
+          },
+          respondent1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -528,7 +572,15 @@ module.exports = {
               status: 'FINISHED',
               camundaEvent: camundaEvent
             }
-          }
+          },
+          FixedRecoverableCosts: {
+            respondent2DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
         };
         break;
 
