@@ -90,6 +90,10 @@ module.exports = {
               vulnerabilityAdjustmentsRequired: 'No'
             }
           },
+          applicant1DQRemoteHearingLRspec: {
+            remoteHearingRequested: 'Yes',
+            reasonForRemoteHearing: 'Some reason'
+          },
           StatementOfTruth: {
             uiStatementOfTruth: {
               name: 'Solicitor name',
