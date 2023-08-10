@@ -1625,7 +1625,7 @@
     "ID": "respondent2PartyNameLabelRequestedCourt",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1633,7 +1633,7 @@
     "ID": "respondent2PartyNameLabelDraftDirections",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1641,7 +1641,7 @@
     "ID": "respondent2PartyNameLabelHearing",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1649,7 +1649,7 @@
     "ID": "respondent2PartyNameLabelLanguage",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1657,7 +1657,7 @@
     "ID": "respondent2PartyNameLabelWitnesses",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1665,7 +1665,7 @@
     "ID": "respondent2PartyNameLabelExperts",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1673,7 +1673,7 @@
     "ID": "respondent2PartyNameLabelDisclosureReport",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1681,7 +1681,7 @@
     "ID": "respondent2PartyNameLabelVulnerabilityQuestions",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1689,7 +1689,7 @@
     "ID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1697,7 +1697,7 @@
     "ID": "respondent2PartyNameLabelDisclosureOfElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1705,7 +1705,7 @@
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1713,7 +1713,7 @@
     "ID": "applicant1PartyNameLabelVulnerabilityQuestions2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
