@@ -1144,6 +1144,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
+    "PageDisplayOrder": 49,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "RequestedCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
+    "PageDisplayOrder": 49,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "RequestedCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "tempCorrectedDefendant1AddressRequired",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
