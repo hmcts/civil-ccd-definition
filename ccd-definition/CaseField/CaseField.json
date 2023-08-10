@@ -1360,7 +1360,7 @@
     "Label": " ",
     "FieldType": "StatementOfTruth",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
   {
@@ -1368,7 +1368,7 @@
     "ID": "casePaymentHistoryViewer",
     "Label": "Custom Payment History Viewer",
     "FieldType": "CasePaymentHistoryViewer",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1376,7 +1376,7 @@
     "ID": "addApplicant2Label",
     "Label": "You can add another Claimant after you have issued the claim but you will need to submit a separate application.",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1384,7 +1384,7 @@
     "ID": "addApplicant2",
     "Label": "Do you want to add another claimant now?",
     "FieldType": "YesOrNo",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1392,7 +1392,7 @@
     "ID": "applicant2",
     "Label": "Second claimant's details",
     "FieldType": "Party",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1400,7 +1400,7 @@
     "ID": "applicant2LitigationFriendRequired",
     "Label": "Is the second Claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1408,7 +1408,7 @@
     "ID": "applicant2LitigationFriend",
     "Label": "Second Claimant litigation friend details",
     "FieldType": "LitigationFriend",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1416,7 +1416,7 @@
     "ID": "addRespondent2",
     "Label": "Is there another defendant?",
     "FieldType": "YesOrNo",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1424,7 +1424,7 @@
     "ID": "respondent2",
     "Label": "Second defendant's details",
     "FieldType": "Party",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1433,7 +1433,7 @@
     "Label": "Does the second defendant have a legal representative?",
     "HintText": "If they are not legally represented you can still continue with the claim but the Defendant will be served offline (on paper)",
     "FieldType": "YesOrNo",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1441,7 +1441,7 @@
     "ID": "respondent2SameLegalRepresentative",
     "Label": "Does the second defendant have the same legal representative?",
     "FieldType": "YesOrNo",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1449,7 +1449,7 @@
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
     "FieldType": "YesOrNo",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
