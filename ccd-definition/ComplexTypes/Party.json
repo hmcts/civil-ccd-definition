@@ -139,6 +139,16 @@
   },
   {
     "ID": "Party",
+    "ListElementCode": "bulkClaimPartyName",
+    "FieldType": "Text",
+    "ElementLabel": "Party name",
+    "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y",
+    "Searchable": "N",
+    "FieldShowCondition": "type = \"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "Party",
     "ListElementCode": "partyTypeDisplayValue",
     "FieldType": "Text",
     "ElementLabel": "Party type displayed value",
