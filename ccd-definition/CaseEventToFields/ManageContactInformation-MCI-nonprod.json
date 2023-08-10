@@ -9,5 +9,16 @@
     "DisplayContext": "COMPLEX",
     "PageID": "ManageContactInformation",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant1LitigationFriend",
+    "PageLabel": "Manage Contact Information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ManageContactInformation",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
