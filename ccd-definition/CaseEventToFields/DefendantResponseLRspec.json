@@ -285,7 +285,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ResponseConfirmDetails",
     "PageLabel": "Confirm defendant's name and address",
-    "FieldShowCondition": "isRespondent1=\"Yes\"",
+    "FieldShowCondition": "isRespondent1=\"Yes\" AND specRespondentCorrespondenceAddressRequired!=\"Yes\"",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
   },

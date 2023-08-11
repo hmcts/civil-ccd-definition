@@ -61,6 +61,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant1AddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempCorrectedDefendant2AddressRequired",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor2ServiceAddressRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

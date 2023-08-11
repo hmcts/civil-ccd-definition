@@ -272,7 +272,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -280,7 +280,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -288,7 +288,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -296,7 +296,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -304,7 +304,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -312,7 +312,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
@@ -320,7 +320,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -328,7 +328,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -336,7 +336,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -344,7 +344,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -352,7 +352,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -360,7 +360,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -368,7 +368,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
@@ -376,7 +376,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -384,7 +384,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -392,7 +392,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -400,7 +400,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -408,7 +408,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -416,7 +416,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -424,7 +424,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
@@ -432,7 +432,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "tempCorrespondenceAddress",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -728,7 +728,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -736,7 +736,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "AddressLine2",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
@@ -744,7 +744,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "AddressLine3",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -752,7 +752,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "PostTown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
@@ -760,7 +760,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "County",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
@@ -768,7 +768,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "Country",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
@@ -776,7 +776,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
