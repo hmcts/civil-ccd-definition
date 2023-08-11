@@ -418,9 +418,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2CorrespondenceAddressRequired",
+    "Label": "Do you want to enter a different address?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrespondenceAddress",
+    "Label": "Enter the correspondence address of the organisation",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrespondenceAddressRequired1",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrespondenceAddressRequired2",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
@@ -453,6 +482,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant1Address",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant2Address",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specAoSApplicantCorrespondenceAddressRequired",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
@@ -464,6 +509,22 @@
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant1AddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempCorrectedDefendant2AddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -3,14 +3,14 @@ const { I } = inject();
 module.exports = {
   fields: {
     solicitor1Reference: {
-      id: '#specAoSApplicantCorrespondenceAddressRequired_radio',
+      id: '#tempCorrectedDefendant1AddressRequired_radio',
       options: {
         yes: 'Yes',
         no: 'No'
       }
     },
     solicitor2Reference: {
-      id: '#specAoSRespondent2HomeAddressRequired_radio',
+      id: '#tempCorrectedDefendant2AddressRequired_radio',
       options: {
         yes: 'Yes',
         no: 'No'
