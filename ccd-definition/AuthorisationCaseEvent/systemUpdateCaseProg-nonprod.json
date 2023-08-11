@@ -71,9 +71,10 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
+
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SERVICE_REQUEST_API",
+    "CaseEventID": "MAKE_BULK_CLAIM_PAYMENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

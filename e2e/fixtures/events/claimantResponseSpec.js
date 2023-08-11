@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE') => {
+  claimantResponse: (response = 'FULL_DEFENCE', fastTrack = false) => {
     const responseData = {
     };
     switch (response) {
@@ -16,6 +16,16 @@ module.exports = {
               hasAgreedFreeMediation: 'Yes'
             }
           },
+          ...(fastTrack ? {
+            FixedRecoverableCosts: {
+              applicant1DQFixedRecoverableCosts: {
+                isSubjectToFixedRecoverableCostRegime: 'Yes',
+                band: 'BAND_4',
+                complexityBandingAgreed: 'Yes',
+                reasons: 'some reasons'
+              }
+            }
+          } : {}),
           SmallClaimExperts: {
             applicant1DQExperts: {
               expertRequired: 'Yes',
@@ -67,6 +77,10 @@ module.exports = {
                 value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            applicant1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
