@@ -31,7 +31,7 @@ Scenario('Amend party details', async ({api}) => {
 });
 
 Scenario('Acknowledge claim', async ({api}) => {
-  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario);
+  await api.acknowledgeClaim(config.defend.antSolicitorUser, mpScenario);
 });
 
 Scenario('Inform agreed extension date', async ({api}) => {
@@ -51,7 +51,7 @@ Scenario('Claimant response', async ({api}) => {
 });
 
 Scenario('Add case flags', async ({api}) => {
-  await api.createCaseFlags(config.hearingCenterAdminWithRegionId);
+  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 Scenario('Manage case flags', async ({api}) => {
