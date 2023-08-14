@@ -77,6 +77,10 @@ module.exports = {
                 value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            applicant1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -89,10 +93,6 @@ module.exports = {
             applicant1DQVulnerabilityQuestions: {
               vulnerabilityAdjustmentsRequired: 'No'
             }
-          },
-          applicant1DQRemoteHearingLRspec: {
-            remoteHearingRequested: 'Yes',
-            reasonForRemoteHearing: 'Some reason'
           },
           StatementOfTruth: {
             uiStatementOfTruth: {
