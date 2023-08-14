@@ -31,7 +31,7 @@ Scenario('Amend party details', async ({api}) => {
 });
 
 Scenario('Acknowledge claim', async ({api}) => {
-  await api.acknowledgeClaim(config.defend.antSolicitorUser, mpScenario);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario);
 });
 
 Scenario('Inform agreed extension date', async ({api}) => {
