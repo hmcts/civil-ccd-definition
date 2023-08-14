@@ -149,7 +149,8 @@
     "CaseFieldID": "hearingDuration",
     "UserRoles": [
       "hearing-schedule-access",
-      "caseworker-civil-solicitor"
+      "caseworker-civil-solicitor",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
