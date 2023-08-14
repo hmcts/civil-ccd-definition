@@ -282,7 +282,7 @@ module.exports = {
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
         break;
       case 'TWO_V_ONE':
-        if (response === 'DIFF_FULL_DEFENCE') {
+        if (response === 'DIFF_FULL_DEFENCE' || response === 'DIFF_FULL_DEFENCE_PBAv3') {
           await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
         } else {
           await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
