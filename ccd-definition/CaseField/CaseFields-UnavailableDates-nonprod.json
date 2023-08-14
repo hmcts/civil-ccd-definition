@@ -1,0 +1,35 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDatesTitle",
+    "Label": "<h2 class=\"govuk-heading-l\">Unavailable Dates</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDatesSubText",
+    "Label": "Please add any new dates when a party, or any of their attendees, are not available for a hearing.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDates",
+    "Label": "Unavailable Dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyChosen",
+    "Label": "Which party's availability do you want to update?",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
