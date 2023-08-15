@@ -2058,6 +2058,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQRequestedCourt",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocumentSpec",
     "Label": " ",
     "FieldType": "ResponseDocument",
@@ -2346,6 +2353,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRemoteHearingLRspec",
+    "Label": "Defendant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRemoteHearingLRspec",
+    "Label": "Defendant 2 Remote Hearing Questions",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnessesSmallClaim",
     "Label": "Defendant 1 witnesses",
     "FieldType": "Witnesses",
@@ -2358,7 +2379,13 @@
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
-
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRemoteHearingLRspec",
+    "Label": "Claimant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingLRspec",
