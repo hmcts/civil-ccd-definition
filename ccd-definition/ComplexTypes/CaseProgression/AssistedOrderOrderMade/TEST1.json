@@ -1,0 +1,48 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "finalOrderMadeRadioListLabel",
+    "ID": "TEST1",
+    "ElementLabel": "#### Enter date(s) of hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "finalOrderMadeRadioList",
+    "ID": "TEST1",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrderMadeRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "singleDate",
+    "ID": "TEST1",
+    "ElementLabel": " ",
+    "FieldType": "SingleDateHeardFinalOrders",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"SINGLE_DATE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "dateRange",
+    "ID": "TEST1",
+    "ElementLabel": " ",
+    "FieldType": "DateRangeHeardFinalOrders",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"DATE_RANGE\""
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "bespokeRangee",
+    "ID": "TEST1",
+    "ElementLabel": " ",
+    "FieldType": "BespokeDateHeardFinalOrders",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"BESPOKE_RANGE\""
+  }
+]
+
