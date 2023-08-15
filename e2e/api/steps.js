@@ -181,9 +181,8 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment is confirmed.'
-      : 'Your claim will not be issued until payment is confirmed.';
-    let headerText = pbaV3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received';
+    let bodyText = 'Your claim will not be issued until payment is confirmed.';
+    let headerText = '# Please now pay your claim fee%n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
@@ -242,9 +241,8 @@ module.exports = {
     console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
     console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: isCertificateOfServiceEnabled ? 'Your claim has been received':
-        'Your claim has been received and will progress offline',
-      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
+      header: 'Please now pay your claim',
+      body: !isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
 
@@ -287,8 +285,8 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: 'You have until DATE to notify the defendant of the claim and claim details.'
+      header: '# Please now pay your claim fee%n# using the link below',
+      body: 'Your claim will not be issued until payment of the issue fee is confirmed'
     });
 
     await assignCase();
