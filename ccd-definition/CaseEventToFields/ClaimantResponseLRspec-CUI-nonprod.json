@@ -421,7 +421,7 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpecLabel",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
-    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag !=\"No\"",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag !=\"No\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
     "DisplayContext": "READONLY",
     "PageID": "ApplicantDefenceResponseDocument",
     "ShowSummaryChangeOption": "Y"
