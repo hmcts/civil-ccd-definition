@@ -159,7 +159,7 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
-  //  let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
+    let isCertificateOfServiceEnabled = await checkCertificateOfServiceIsEnabled();
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
 
     //==============================================================
@@ -182,15 +182,15 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-   // let bodyText = isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
-   //   'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.';
-   // let headerText = isCertificateOfServiceEnabled ? 'Your claim has been received':
-   //   'Your claim has been received and will progress offline';
+    let bodyText = isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
+     'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.';
+    let headerText = isCertificateOfServiceEnabled ? 'Your claim has been received':
+      'Your claim has been received and will progress offline';
 
-   // await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-   //   header: headerText,
-   //   body: bodyText
-   // });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
+      header: headerText,
+      body: bodyText
+    });
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -245,9 +245,9 @@ module.exports = {
     console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
     console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-     // header: isCertificateOfServiceEnabled ? PBAv3 ? '# Please now pay your claim fee\n# using the link below': 'Your claim has been received':
-      //        PBAv3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received and will progress offline',
-    //  body: PBAv3 ? 'Your claim will not be issued until payment is confirmed' : 'Your claim will not be issued until payment of the issue fee is confirmed'
+      header: isCertificateOfServiceEnabled ? PBAv3 ? '# Please now pay your claim fee\n# using the link below': 'Your claim has been received':
+              PBAv3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received and will progress offline',
+      body: PBAv3 ? 'Your claim will not be issued until payment is confirmed' : 'Your claim will not be issued until payment of the issue fee is confirmed'
     });
 
     await waitForFinishedBusinessProcess(caseId);
