@@ -91,7 +91,7 @@ module.exports = {
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
       linkXPath = '//a[contains(text(), \'fast_track_sdo_\')]';
     }
-    await I.waitForClickable(linkXPath);
+    await I.waitForElement(linkXPath, 60);
     await I.clickContinue();
   }
 };
