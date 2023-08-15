@@ -1,0 +1,86 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "finalOrderMadeRadioListLabel",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "#### Enter date(s) of hearing",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "finalOrderMadeRadioList",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrderMadeRadioList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "singleDateLabel",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "## Single date",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"SINGLE_DATE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "singleDate",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "Single date",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"SINGLE_DATE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "dateRangeLabel",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "## Date range",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"DATE_RANGE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "dateRangeFrom",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "Date From",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"DATE_RANGE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "dateRangeTo",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "Date to",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"DATE_RANGE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "bespokeRangeLabel",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "## Bespoke range",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"BESPOKE_RANGE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "bespokeRangeTextArea",
+    "ID": "DateHeardFinalOrders",
+    "ElementLabel": "Enter a bespoke range of dates for hearing",
+    "HintText": "For example, 16 4 2021, 19-20 4 2021 and 11-12 5 2021",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "finalOrderMadeRadioList=\"BESPOKE_RANGE\""
+  }
+]
