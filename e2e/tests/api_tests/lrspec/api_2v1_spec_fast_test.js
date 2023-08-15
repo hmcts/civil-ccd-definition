@@ -43,7 +43,7 @@ Scenario('2v1 fast claim full defence and not proceed', async ({I, api_spec_fast
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec_fast.claimantResponse(config.applicantSolicitorUser, 'NOT_PROCEED', 'TWO_V_ONE',
-    'AWAITING_APPLICANT_INTENTION');
+    'JUDICIAL_REFERRAL');
 });
 
 Scenario('2v1 fast claim full admission and claimant response', async ({I, api_spec_fast}) => {

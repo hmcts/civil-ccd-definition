@@ -59,7 +59,7 @@ Scenario('1v2 small claim full defence, claimant response not proceed', async ({
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
-    'AWAITING_APPLICANT_INTENTION');
+    'JUDICIAL_REFERRAL');
 });
 
 Scenario('1v2 small claim full admit, claimant response', async ({I, api_spec}) => {
