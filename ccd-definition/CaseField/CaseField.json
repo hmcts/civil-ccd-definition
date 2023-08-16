@@ -1457,7 +1457,7 @@
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
