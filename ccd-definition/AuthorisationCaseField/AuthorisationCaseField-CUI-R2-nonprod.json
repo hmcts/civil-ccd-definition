@@ -486,5 +486,17 @@
         "CRUD": "CRUD"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "businessProcess",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "RU"
+      }
+    ]
   }
 ]
