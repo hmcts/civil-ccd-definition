@@ -26,7 +26,9 @@ const createAssistedOrder = () => {
           }
       },
       finalOrderDateHeardComplex: {
-        date: date(0)
+        singleDateSelection: {
+          singleDate: date(0)
+        }
       },
       orderMadeOnDetailsOrderCourt: {
         ownInitiativeDate: date(0),
