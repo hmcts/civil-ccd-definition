@@ -2,13 +2,26 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
-    "CaseFieldID": "partyChosen",
+    "CaseFieldID": "hidePartyChoice",
     "PageLabel": "Add unavailable dates",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "PartySelection",
+    "FieldShowCondition": "partyChosen=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ADD_UNAVAILABLE_DATES",
+    "CaseFieldID": "partyChosen",
+    "PageLabel": "Add unavailable dates",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "PageID": "PartySelection"
+    "PageID": "PartySelection",
+    "PageShowCondition": "hidePartyChoice=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",

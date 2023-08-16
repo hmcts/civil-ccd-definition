@@ -26,6 +26,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "hidePartyChoice",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "partyChosen",
     "Label": "Which party's availability do you want to update?",
     "FieldType": "DynamicRadioList",
