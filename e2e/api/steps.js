@@ -242,7 +242,7 @@ module.exports = {
     console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: 'Please now pay your claim',
-      body: !isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
+      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
         'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
     });
 
