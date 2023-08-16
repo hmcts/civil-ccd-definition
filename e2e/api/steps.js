@@ -285,8 +285,8 @@ module.exports = {
     await validateEventPages(createClaimData);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: '# Please now pay your claim fee%n# using the link below',
-      body: 'Your claim will not be issued until payment of the issue fee is confirmed'
+      header: 'Your claim has been received',
+      body: 'You have until DATE to notify the defendant of the claim and claim details.'
     });
 
     await assignCase();
