@@ -1,6 +1,3 @@
-const {listElement} = require('../../api/dataHelper');
-const selectedOptionApp = listElement('Defendant 1 and 2');
-
 module.exports = {
   createRespondentSmallClaimsEvidenceUpload: (mpScenario) => {
     switch (mpScenario) {
@@ -11,16 +8,6 @@ module.exports = {
           valid: {
             EvidenceUpload: {
               caseProgAllocatedTrack: 'SMALL_CLAIM'
-            },
-            SelectUploadOptions: {
-              evidenceUploadOptions: {
-                list_items: [
-                  selectedOptionApp,
-                  listElement('Defendant 1: Sir John Doe'),
-                  listElement('Defendant 2: Dr Foo Bar')
-                ],
-                value: selectedOptionApp
-              }
             },
             DocumentSelectionSmallClaim: {
               witnessSelectionEvidenceSmallClaimRes: ['WITNESS_SUMMARY'],
@@ -207,16 +194,6 @@ module.exports = {
           valid: {
             EvidenceUpload: {
               caseProgAllocatedTrack: 'FAST_CLAIM'
-            },
-            SelectUploadOptions: {
-              evidenceUploadOptions: {
-                list_items: [
-                  selectedOptionApp,
-                  listElement('Defendant 1: Sir John Doe'),
-                  listElement('Defendant 2: Dr Foo Bar')
-                ],
-                value: selectedOptionApp
-              }
             },
             DocumentSelectionFastTrack: {
               disclosureSelectionEvidenceRes: ['DISCLOSURE_LIST'],
