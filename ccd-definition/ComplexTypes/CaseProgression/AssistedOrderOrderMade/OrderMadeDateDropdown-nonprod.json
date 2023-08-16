@@ -18,7 +18,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "singleDate",
+    "ListElementCode": "singleDateSelection",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",
     "FieldType": "SingleDateHeardFinalOrders",
@@ -27,7 +27,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "dateRange",
+    "ListElementCode": "dateRangeSelection",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",
     "FieldType": "DateRangeHeardFinalOrders",
@@ -37,7 +37,7 @@
 
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "bespokeRange",
+    "ListElementCode": "bespokeRangeSelection",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",
     "FieldType": "BespokeDateHeardFinalOrders",
