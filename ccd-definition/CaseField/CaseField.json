@@ -1494,7 +1494,7 @@
     "ID": "respondentSolicitor2OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1502,7 +1502,7 @@
     "ID": "respondentSolicitor2OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1511,7 +1511,7 @@
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Max": "24"
   },
   {
