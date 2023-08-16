@@ -1457,7 +1457,7 @@
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1467,7 +1467,7 @@
     "HintText": "Add note detail, including relevant dates and people involved",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Comment": "The note field to be displayed in an event"
   },
   {
@@ -1477,7 +1477,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseNote",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Comment": "The note fields to be displayed in the tab"
   },
   {
@@ -1486,7 +1486,7 @@
     "Label": "Enter the second defendant legal representatives email address to be used for notifications",
     "HintText": "This should be the email address that the defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
     "FieldType": "Email",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1494,7 +1494,7 @@
     "ID": "respondentSolicitor2OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1502,7 +1502,7 @@
     "ID": "respondentSolicitor2OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
-    "Searchable": "Y",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1511,7 +1511,7 @@
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Max": "24"
   },
   {
