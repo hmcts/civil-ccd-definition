@@ -17,7 +17,7 @@
     "ID": "FastTrackAllocation",
     "ListElementCode": "assignComplexityBand",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Do you assign a complexity band to case?",
+    "ElementLabel": "Do you assign a complexity band to the case?",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
