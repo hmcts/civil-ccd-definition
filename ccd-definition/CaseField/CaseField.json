@@ -1457,7 +1457,7 @@
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1467,7 +1467,7 @@
     "HintText": "Add note detail, including relevant dates and people involved",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Comment": "The note field to be displayed in an event"
   },
   {
@@ -1477,7 +1477,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseNote",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "N",
     "Comment": "The note fields to be displayed in the tab"
   },
   {
