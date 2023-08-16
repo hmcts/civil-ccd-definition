@@ -885,6 +885,141 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "documentDisclosureListApp2",
+    "Label": "Disclosure list",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentForDisclosureApp2",
+    "Label": "Documents for disclosure",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentWitnessStatementApp2",
+    "Label": "Witness statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceWitness1",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentWitnessSummaryApp2",
+    "Label": "Witness summary",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceWitness2",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentHearsayNoticeApp2",
+    "Label": "Notice of the intention to rely on hearsay evidence",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceWitness3",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentReferredInStatementApp2",
+    "Label": "Documents referred to in the statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentExpertReportApp2",
+    "Label": "Expert's report",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert1",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentJointStatementApp2",
+    "Label": "Joint Statement of Experts / Single Joint Expert Report",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert2",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentQuestionsApp2",
+    "Label": "Questions for other party's expert or joint experts",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert3",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentAnswersApp2",
+    "Label": "Answers to questions asked by the other party",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert4",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentCaseSummaryApp2",
+    "Label": "Case summary",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentSkeletonArgumentApp2",
+    "Label": "Skeleton argument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentAuthoritiesApp2",
+    "Label": "Authorities",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentCostsApp2",
+    "Label": "Costs",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentEvidenceForTrialApp2",
+    "Label": "Documentary evidence for trial",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "caseDocumentUploadDateRes",
     "Label": "upload date",
     "FieldType": "DateTime",
