@@ -23,8 +23,8 @@ module.exports = {
     /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
        Further investigation is required to find (hopefully) a cleaner solution
      */
-    await I.moveCursorTo(this.goButton);
-    await I.wait(5);
+   // await I.moveCursorTo(this.goButton);
+    await I.wait(15);
     await I.forceClick(this.goButton);
     await I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
