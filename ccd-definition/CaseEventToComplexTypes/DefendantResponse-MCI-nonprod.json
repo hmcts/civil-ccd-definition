@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQExperts",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQExperts",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQWitnesses",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQExperts",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQWitnesses",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2DQWitnesses=\"DO NOT SHOW IN UI\""
+  }
+]
