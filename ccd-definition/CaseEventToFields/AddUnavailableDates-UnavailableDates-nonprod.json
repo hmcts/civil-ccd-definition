@@ -48,7 +48,7 @@
     "CaseFieldID": "additionalUnavailableDates",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y",
     "PageID": "AddAdditionalDates",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates"

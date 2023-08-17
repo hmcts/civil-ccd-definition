@@ -1,7 +1,7 @@
 [
   {
     "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQHearing",
     "ListElementCode": "unavailableDates.eventAdded",
     "FieldDisplayOrder": 1,
@@ -19,7 +19,7 @@
   },
   {
     "ID": "Hearing",
-    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQHearing",
     "ListElementCode": "unavailableDates.eventAdded",
     "FieldDisplayOrder": 1,
