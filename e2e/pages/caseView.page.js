@@ -42,8 +42,8 @@ module.exports = {
     await I.retryUntilExists(async() => {
     await I.navigateToCaseDetails(caseId);
     await I.selectOption(this.fields.eventDropdown, event);
-    await I.moveCursorTo(this.goButton);
-    await I.wait(5);
+   // await I.moveCursorTo(this.goButton);
+    await I.wait(15);
     await I.forceClick(this.goButton);
     await I.waitForText(errorMsg);
   }, locate('#errors'));
