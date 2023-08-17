@@ -153,7 +153,7 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '30000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
@@ -1372,13 +1372,13 @@ const deleteCaseFields = (...caseFields) => {
 };
 
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
-  // console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-  // const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
-  // if (['preview', 'demo'].includes(config.runningEnv)) {
-  //   expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
-  // } else {
-  //   expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
-  // }
+  console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
+  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
+  } else {
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+  }
 };
 
 // const assertCaseNotAvailableToUser = async (user) => {
