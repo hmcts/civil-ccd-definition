@@ -94,5 +94,29 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQFurtherInformation",
     "TabFieldDisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "applicant1DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 14
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 15
   }
 ]

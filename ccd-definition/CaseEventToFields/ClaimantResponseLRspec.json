@@ -80,6 +80,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQRemoteHearingLRspec",
+    "PageDisplayOrder": 11,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "ApplicantCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQFutureApplications",
     "PageLabel": "",
     "PageDisplayOrder": 15,
