@@ -94,6 +94,10 @@ module.exports = {
                 region: '2',
                 baseLocation: '420219'
               }
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -228,6 +232,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           Applications: {
@@ -371,6 +379,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent2DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -505,6 +517,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           Applications: {
