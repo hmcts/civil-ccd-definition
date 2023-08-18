@@ -782,7 +782,8 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "R"
       }
