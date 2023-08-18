@@ -418,29 +418,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToCourtLocation2",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSmallClaim",
     "PageDisplayOrder": 48,
     "PageFieldDisplayOrder": 1,
@@ -660,6 +637,29 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/witnesses",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToCourtLocation",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageDisplayOrder": 49,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestedCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToCourtLocation2",
+    "PageDisplayOrder": 49,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestedCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
