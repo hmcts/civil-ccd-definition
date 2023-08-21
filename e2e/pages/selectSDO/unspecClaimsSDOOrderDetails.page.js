@@ -102,7 +102,9 @@ module.exports = {
       await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
       await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
-      await I.click(this.fields.fastTrackMethodInPerson.id);
+
+      await I.retryUntilExists(() => I.click(this.fields.fastTrackMethodInPerson.id), this.fields.fastTrackMethodInPerson.id);
+
       await I.click(this.fields.fastTrackTrial_type.documentsId);
     }
     await I.clickContinue();
