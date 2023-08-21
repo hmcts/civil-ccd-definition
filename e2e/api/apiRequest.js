@@ -201,7 +201,23 @@ module.exports = {
   createBulkClaim: async (sdtRequestId, claimData) => {
     let sdtClaimURL = getBulkClaimServiceUrl();
 
-    let response = await restHelper.retriedRequest(sdtClaimURL,
+    let response = await restHelper.retriedRequestFor400(sdtClaimURL,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokens.userAuth}`,
+        'SdtRequestId': `${sdtRequestId}`
+      },
+      claimData,
+       'POST')
+      .then(response => response.json());
+
+    return response || {};
+  },
+
+  createBulkClaimForStatusCode201: async (sdtRequestId, claimData) => {
+    let sdtClaimURL = getBulkClaimServiceUrl();
+
+    let response = await restHelper.retriedRequestFor201(sdtClaimURL,
       {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${tokens.userAuth}`,

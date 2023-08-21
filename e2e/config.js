@@ -27,13 +27,13 @@ module.exports = {
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9901',
 
-   /* manageCase: 'https://xui-civil-orchestrator-service-pr-51.preview.platform.hmcts.net',
+    /* manageCase: 'https://xui-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
     authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'http://ccd-data-store-api-civil-orchestrator-service-pr-51.preview.platform.hmcts.net',
+    ccdDataStore: 'http://ccd-data-store-api-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'http://civil-service-civil-orchestrator-service-pr-51.preview.platform.hmcts.net',
-    orchestratorService: 'https://civil-orchestrator-service-pr-51.preview.platform.hmcts.net',*/
+    civilService: 'http://civil-service-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
+    orchestratorService: 'https://civil-orchestrator-service-pr-67.preview.platform.hmcts.net', */
     //----------------------------------------------------------------------------------------------
     wiremockService: 'http://localhost:8765'
   },
@@ -48,6 +48,12 @@ module.exports = {
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+  },
+  applicantSolicitorUserForBulkClaim: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.2@gmail.com',
     type: 'applicant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },

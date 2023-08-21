@@ -27,7 +27,7 @@ const isWithInterest = (interest) => {
 };
 
 module.exports = {
-  bulkCreateClaimDto: (mpScenario, interest, customerId, amount) => {
+  bulkCreateClaimDto: (mpScenario, interest, customerId, amount, postcodeValidation) => {
     if (mpScenario === 'ONE_V_ONE') {
       return {
         bulkCustomerId: customerId,
@@ -35,14 +35,31 @@ module.exports = {
         claimAmount: amount,
         claimant: applicant1WithPartyName,
         defendant1: respondent1WithPartyName,
-        ...(isWithInterest(interest) ? {} : {
+        claimant:{
+          name: "Bulk claim company",
+          address:{
+            addressLine1:"123 fake St",
+            addressLine2:"antrim",
+            postcode:"RG4 7AA"
+          }
+        },
+        defendant1:{
+          name:"Mr defendant1",
+          address:{
+            addressLine1:"Oak tree",
+            addressLine2:"Antrim",
+            addressLine3:"Antrim county",
+            postcode:postcodeValidation,
+          }
+        },
+         /* ...(isWithInterest(interest) ? {} : {
           interest: {
             dailyAmount: 100,
             claimDate: date(-1),
             owedDate: date(-1),
             claimAmountInterestBase: 5000,
           },
-        }),
+        }), */
         sendParticularsSeparately: false,
         reserveRightToClaimInterest: false,
         particulars: 'Particulars',
@@ -58,7 +75,7 @@ module.exports = {
         claimant: applicant1WithPartyName,
         defendant1: respondent1WithPartyName,
         defendant2: respondent2WithPartyName,
-        ...(isWithInterest(interest) ? {} : {
+         ...(isWithInterest(interest) ? {} : {
           interest: {
             dailyAmount: 100,
             claimDate: date(-1),
