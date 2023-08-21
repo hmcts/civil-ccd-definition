@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partyChosen",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-UNSPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-UNSPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRUD"
+  }
+]

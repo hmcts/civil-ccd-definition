@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyChosen",
+    "Label": "Party Choice",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

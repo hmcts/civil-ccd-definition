@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "choosePartyHeader",
+    "Label": "### Which party's contact information do you want to change?\n This includes any other attendees linked to the party, such as:\n* litigation friends\n* experts\n* witnesses\n\n ### Which details do you want to update?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]
