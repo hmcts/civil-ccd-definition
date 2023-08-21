@@ -1,43 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDurationTextApplicant",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDurationTextRespondent1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDurationTextRespondent2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialReadyApplicant",
+    "CaseFieldID": "cosNotifyClaimDetails1",
     "AccessControl": [
       {
         "UserRoles": [
@@ -49,7 +13,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantRevisedHearingRequirements",
+    "CaseFieldID": "cosNotifyClaimDetails2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -61,7 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantHearingOtherComments",
+    "CaseFieldID": "defendant1LIPAtClaimIssued",
     "AccessControl": [
       {
         "UserRoles": [
@@ -73,21 +37,37 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialReadyDocuments",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "evidenceUploadOptions",
+    "CaseFieldID": "defendant2LIPAtClaimIssued",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosNotifyClaimDefendant1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cosNotifyClaimDefendant2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

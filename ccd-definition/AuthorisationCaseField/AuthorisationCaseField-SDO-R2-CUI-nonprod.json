@@ -1,43 +1,19 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDurationTextApplicant",
+    "CaseFieldID": "claimsTrack",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "R"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDurationTextRespondent1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDurationTextRespondent2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialReadyApplicant",
+    "CaseFieldID": "disposalHearingHearingTime",
     "AccessControl": [
       {
         "UserRoles": [
@@ -49,7 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantRevisedHearingRequirements",
+    "CaseFieldID": "disposalHearingHearingNotesTitle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -61,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantHearingOtherComments",
+    "CaseFieldID": "disposalHearingHearingNotes",
     "AccessControl": [
       {
         "UserRoles": [
@@ -73,21 +49,73 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialReadyDocuments",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "evidenceUploadOptions",
+    "CaseFieldID": "disposalOrderWithoutHearing",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "otherDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sdoOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "unsuitableSDODate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   }
