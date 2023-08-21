@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ASSIGN_CASE_TO_APPLICANT1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  }
+]
