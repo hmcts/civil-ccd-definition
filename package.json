@@ -42,6 +42,7 @@
     "test:functional-unspec": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep '@e2e-unspec-1v2DS' --reporter mocha-multi --verbose",
     "test:e2e-cos": "MOCHAWESOME_REPORTFILENAME=functional-cos npx codeceptjs run-workers --suites 2 --grep @e2e-cos --reporter mocha-multi --verbose",
     "test:api-cos": "MOCHAWESOME_REPORTFILENAME=api-cos npx codeceptjs run-workers --suites 4 --grep @api-cos --reporter mocha-multi --verbose",
+    "test:api-bulk": "MOCHAWESOME_REPORTFILENAME=api-bulk npx codeceptjs run --grep @api-bulk --reporter mocha-multi --verbose",
     "test:functional-dj": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep @e2e-dj --reporter mocha-multi --verbose",
     "test:nightly-multiparty": "MOCHAWESOME_REPORTFILENAME=nightly-multiparty npx codeceptjs run --grep '@e2e-nightly' --reporter mocha-multi --verbose",
     "test:rpa": "MOCHAWESOME_REPORTFILENAME=rpa npx codeceptjs run --grep @rpa-handoff-tests --reporter mocha-multi --verbose",
