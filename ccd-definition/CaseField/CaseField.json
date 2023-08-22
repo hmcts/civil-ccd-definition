@@ -2210,5 +2210,19 @@
     "Label": "Claim Issued PBA details\n",
     "FieldType": "SRPbaDetails",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitor1AddressLabel",
+    "Label": "Claimant's legal representative's correspondence address",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1AddressLabel",
+    "Label": "Defendant's legal representative's correspondence address",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
