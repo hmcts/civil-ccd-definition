@@ -87,7 +87,6 @@ module.exports = {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
-      I.wait(60);
       let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
       if (fastTrackUpliftsEnabled) {
         await within(this.fields.fastTrackAllocation.assignComplexityBand.id, () => {
