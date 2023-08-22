@@ -25,16 +25,7 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9901',
-
-    /* manageCase: 'https://xui-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
-    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'http://ccd-data-store-api-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
-    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'http://civil-service-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
-    orchestratorService: 'https://civil-orchestrator-service-pr-67.preview.platform.hmcts.net', */
-    //----------------------------------------------------------------------------------------------
+    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     wiremockService: 'http://localhost:8765'
   },
   s2s: {

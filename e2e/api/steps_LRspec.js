@@ -219,7 +219,7 @@ module.exports = {
       const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'SEND_SDO_ORDER_TO_LIP_DEFENDANT');
       assert.equal(updatedCaseState, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
-   return caseId;
+
   },
 
   informAgreedExtensionDate: async (user) => {

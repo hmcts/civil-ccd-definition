@@ -14,7 +14,7 @@ Scenario('1v1 with No interest - Create claim via SDT', async ({bulks}) => {
 });
 
 Scenario('1v1 with No interest - Create claim via SDT', async ({bulks}) => {
-  await bulks.createClaimFromSDTRequestForPostCodePostive(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
+  await bulks.createClaimFromSDTRequestForPostCodePositive(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
 });
 
 AfterSuite(async ({api}) => {

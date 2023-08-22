@@ -33,22 +33,20 @@ module.exports = {
         bulkCustomerId: customerId,
         claimantReference: 'Claimant org',
         claimAmount: amount,
-        claimant: applicant1WithPartyName,
-        defendant1: respondent1WithPartyName,
         claimant:{
-          name: "Bulk claim company",
+          name: 'Bulk claim company',
           address:{
-            addressLine1:"123 fake St",
-            addressLine2:"antrim",
-            postcode:"RG4 7AA"
+            addressLine1:'123 fake St',
+            addressLine2:'antrim',
+            postcode:'RG4 7AA'
           }
         },
         defendant1:{
-          name:"Mr defendant1",
+          name:'Mr defendant1',
           address:{
-            addressLine1:"Oak tree",
-            addressLine2:"Antrim",
-            addressLine3:"Antrim county",
+            addressLine1:'Oak tree',
+            addressLine2:'Antrim',
+            addressLine3:'Antrim county',
             postcode:postcodeValidation,
           }
         },
