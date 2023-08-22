@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ADD_UNAVAILABLE_DATES",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  }
+]
