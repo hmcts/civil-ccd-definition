@@ -57,7 +57,7 @@
     "CaseFieldID": "applicantSolicitor1ServiceAddress",
     "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "OPTIONAL",
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
