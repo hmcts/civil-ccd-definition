@@ -16,7 +16,17 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    manageCase: process.env.URL || 'http://localhost:3333',
+    manageCase: process.env.URL || 'https://xui-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
+    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'https://ccd-data-store-api-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
+    dmStore: process.env.DM_STORE_URL || 'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: process.env.IDAM_API_URL || 'https://idam-api.aat.platform.hmcts.net',
+    civilService: process.env.CIVIL_SERVICE_URL || 'https://civil-service-civil-orchestrator-service-pr-67.preview.platform.hmcts.net',
+    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL || 'https://civil-ga-ccd-pr-780.preview.platform.hmcts.net',
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://civil-orchestrator-service-pr-67.preview.platform.hmcts.net'
+
+    /*manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
@@ -25,13 +35,13 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
+    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',*/
     //----------------------------------------------------------------------------------------------
-    wiremockService: 'http://localhost:8765'
+    //wiremockService: 'http://localhost:8765'
   },
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.S2S_SECRET || 'BTZQFPGY4TUMAFGL'
   },
   s2sForXUI: {
     microservice: 'xui_webapp',
@@ -265,7 +275,7 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-  runningEnv: process.env.ENVIRONMENT,
+  runningEnv: 'preview',
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
