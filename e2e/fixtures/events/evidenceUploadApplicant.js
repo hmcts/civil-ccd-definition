@@ -132,6 +132,7 @@ module.exports = {
               caseProgAllocatedTrack: 'FAST_CLAIM'
             },
             SelectUploadOptions: {
+              caseTypeFlag: 'do_not_show',
               evidenceUploadOptions: {
                 list_items: [
                   selectedOptionApp,
@@ -206,6 +207,7 @@ module.exports = {
               caseProgAllocatedTrack: 'FAST_CLAIM'
             },
             DocumentSelectionFastTrack: {
+              caseTypeFlag: 'do_not_show',
               disclosureSelectionEvidence: ['DISCLOSURE_LIST'],
               witnessSelectionEvidence: ['WITNESS_SUMMARY'],
               expertSelectionEvidence: ['JOINT_STATEMENT'],
