@@ -401,6 +401,11 @@ module.exports = {
           fastTrackJudgesRecital: {
             input: 'string'
           },
+          fastTrackAllocation: {
+            assignComplexityBand: 'Yes',
+            band: 'BAND_2',
+            reasons: 'reasons'
+          },
           fastTrackDisclosureOfDocuments: {
             input1: 'string',
             date1: date(-1),
@@ -555,6 +560,11 @@ module.exports = {
         FastTrack: {
           fastTrackJudgesRecital: {
             input: 'string'
+          },
+          fastTrackAllocation: {
+            assignComplexityBand: 'Yes',
+            band: 'BAND_2',
+            reasons: 'reasons'
           },
           fastTrackDisclosureOfDocuments: {
             input1: 'string',
@@ -918,6 +928,11 @@ module.exports = {
         FastTrack: {
           fastTrackJudgesRecital: {
             input: 'string'
+          },
+          fastTrackAllocation: {
+            assignComplexityBand: 'Yes',
+            band: 'BAND_2',
+            reasons: 'reasons'
           },
           fastTrackDisclosureOfDocuments: {
             input1: 'string',
