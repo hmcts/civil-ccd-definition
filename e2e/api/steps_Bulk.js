@@ -34,14 +34,14 @@ module.exports = {
     assert.equal(response_msg.errorCode, '001');
   }, */
 
-  createClaimFromSDTRequestForPostCodeNagative: async (user, mpScenario, interest) => {
+  createClaimFromSDTRequestForPostCodeNegative: async (user, mpScenario, interest) => {
     let createClaimData;
 
     createClaimData = data.CREATE_BULK_CLAIM(mpScenario, interest, '12345678', '87989', '4DA');
     //==============================================================
 
     await apiRequest.setupTokens(user);
-    const response_msg = await apiRequest.createBulkClaim('112345', createClaimData);
+    const response_msg = await apiRequest.createBulkClaim('32321323', createClaimData);
    assert.equal(response_msg.errorText, ' First defendant’s postcode is not in England or Wales, ');
    assert.equal(response_msg.errorCode, '008');
   },
@@ -52,7 +52,18 @@ module.exports = {
     createClaimData = data.CREATE_BULK_CLAIM(mpScenario, interest, '12345678', '87989', 'TW13 4DA');
 
     await apiRequest.setupTokens(user);
-    const response_msg = await apiRequest.createBulkClaimForStatusCode201('112345', createClaimData);
+    const response_msg = await apiRequest.createBulkClaimForStatusCode201(Math.random().toString(36).slice(2), createClaimData);
     assert.equal(response_msg.issueDate, null);
+  },
+
+  createClaimFromSDTRequestForDuplicateCaseCheckCall: async (user, mpScenario, interest) => {
+    let createClaimData;
+
+    createClaimData = data.CREATE_BULK_CLAIM(mpScenario, interest, '12345678', '87989', 'TW13 4DA');
+
+    await apiRequest.setupTokens(user);
+    const response_msg = await apiRequest.createBulkClaim('12345678', createClaimData);
+    assert.equal(response_msg.errorText, 'Bad data, Request already processed');
+    assert.equal(response_msg.errorCode, '000');
   },
 };

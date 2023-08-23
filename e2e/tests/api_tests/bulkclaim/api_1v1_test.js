@@ -9,12 +9,16 @@ Feature('Bulk claim 1v1 SDT user API test @api-bulk');
     await bulks.createClaimFromSDTRequest(config.applicantSolicitorUser, mpScenario, false);
 }); */
 
-Scenario('1v1 with No interest - Create claim via SDT', async ({bulks}) => {
-  await bulks.createClaimFromSDTRequestForPostCodeNagative(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
+Scenario('1v1 with No interest - Create claim via SDT - Postcode Negative Validation', async ({bulks}) => {
+  await bulks.createClaimFromSDTRequestForPostCodeNegative(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
 });
 
-Scenario('1v1 with No interest - Create claim via SDT', async ({bulks}) => {
+Scenario('1v1 with No interest - Create claim via SDT - Postcode Positive Validation', async ({bulks}) => {
   await bulks.createClaimFromSDTRequestForPostCodePositive(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
+});
+
+Scenario('1v1 with No interest - Create claim via SDT - Duplicate case check call', async ({bulks}) => {
+  await bulks.createClaimFromSDTRequestForDuplicateCaseCheckCall(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
 });
 
 AfterSuite(async ({api}) => {
