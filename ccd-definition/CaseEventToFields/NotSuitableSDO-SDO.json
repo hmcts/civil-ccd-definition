@@ -51,11 +51,14 @@
     "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
