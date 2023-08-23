@@ -25,6 +25,24 @@ const createAssistedOrder = () => {
             refusedText: '[name] court'
           }
       },
+      finalOrderFurtherHearingComplex: {
+        listFromDate: date(14),
+        lengthList: 'MINUTES_30',
+        datesToAvoidYesNo: 'No',
+        hearingLocationList: {
+          value: {
+            code: 'OTHER_LOCATION',
+            label: 'Other location'
+          },
+          list_items: [
+            {
+              code: 'OTHER_LOCATION',
+              label: 'Other location'
+            }
+          ]
+        },
+        hearingMethodList: 'IN_PERSON',
+      },
       finalOrderDateHeardComplex: {
         singleDateSelection: {
           singleDate: date(0)
