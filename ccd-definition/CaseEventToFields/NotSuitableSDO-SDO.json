@@ -10,5 +10,64 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/not-suitable-reason"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "claimValue",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "claimValuePg",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "PageDisplayOrder": 10,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "allocatedTrack",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "allocatedTrackPg",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "claimantResponseScenarioFlag",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "READONLY",
+    "PageID": "claimantResponseScenarioFlagPg",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "respondent1ClaimResponseIntentionType",
+    "PageID": "respondent1ClaimResponseIntentionTypePg",
+    "PageDisplayOrder": 5,
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "respondent1ClaimResponseType",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "respondent1ClaimResponseTypePg",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]
