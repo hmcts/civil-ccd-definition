@@ -15,47 +15,45 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "claimValue",
+    "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "NotSuitableSDO",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "allocatedTrack",
+    "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "NotSuitableSDO",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "claimantResponseScenarioFlag",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "NotSuitableSDO",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
-    "Publish": "Y"
-  },
-
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "respondent1ClaimResponseIntentionType",
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 1,
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "claimantResponseScenarioFlag",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "NotSuitableSDO",
+    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -64,9 +62,8 @@
     "CaseFieldID": "respondent1ClaimResponseType",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "NotSuitableSDO",
-    "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }
