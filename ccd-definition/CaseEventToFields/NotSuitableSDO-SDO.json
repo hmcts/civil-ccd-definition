@@ -16,9 +16,9 @@
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "claimValue",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "claimValuePg",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "PageDisplayOrder": 10,
     "Publish": "Y"
   },
@@ -28,9 +28,9 @@
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 11,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "allocatedTrackPg",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -39,9 +39,9 @@
     "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 22,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "claimantResponseScenarioFlagPg",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y",
     "Publish": "Y"
@@ -54,8 +54,8 @@
     "PageID": "respondent1ClaimResponseIntentionTypePg",
     "PageDisplayOrder": 5,
     "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "DisplayContext": "OPTIONAL",
+    "PageShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -64,10 +64,10 @@
     "CaseFieldID": "respondent1ClaimResponseType",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "respondent1ClaimResponseTypePg",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }
 ]
