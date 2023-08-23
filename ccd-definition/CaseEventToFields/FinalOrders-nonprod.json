@@ -252,48 +252,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostsDefendantPaySub",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 21,
     "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderAssistedOrder",
-    "FieldShowCondition": "assistedOrderCostList=\"DEFENDANT_COST_STANDARD_BASE\"",
+    "FieldShowCondition": "assistedOrderCostList=\"MAKE_AN_ORDER_FOR_DETAILED_COSTS\"",
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostsClaimantPaySub",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 21,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FinalOrderAssistedOrder",
-    "FieldShowCondition": "assistedOrderCostList=\"CLAIMANT_COST_STANDARD_BASE\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostsDefendantSum",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 21,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FinalOrderAssistedOrder",
-    "FieldShowCondition": "assistedOrderCostList=\"DEFENDANT_COST_SUMMARILY_BASE\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "assistedOrderCostsClaimantSum",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 21,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FinalOrderAssistedOrder",
-    "FieldShowCondition": "assistedOrderCostList=\"CLAIMANT_COST_SUMMARILY_BASE\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
+
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsBespoke",

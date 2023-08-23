@@ -313,31 +313,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "assistedOrderCostsDefendantPaySub",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "assistedOrderCostsClaimantPaySub",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "assistedOrderCostsDefendantSum",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "assistedOrderCostsClaimantSum",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "UserRoles": [
       "judge-profile"
     ],

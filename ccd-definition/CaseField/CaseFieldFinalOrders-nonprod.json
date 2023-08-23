@@ -159,28 +159,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsDefendantPaySub",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsClaimantPaySub",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsDefendantSum",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsClaimantSum",
+    "ID": "assistedOrderMakeAnOrderForCosts",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
     "SecurityClassification": "Public"
