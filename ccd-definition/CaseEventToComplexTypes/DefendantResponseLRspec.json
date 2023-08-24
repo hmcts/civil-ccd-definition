@@ -320,7 +320,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "tempCorrectedDefendant1Address",
+    "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -376,7 +376,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "tempCorrectedDefendant2Address",
+    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -432,7 +432,7 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "tempCorrespondenceAddress",
+    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
@@ -1199,6 +1199,30 @@
     "CaseFieldID": "respondent2DQWitnessesSmallClaim",
     "ListElementCode": "details.reasonForWitness",
     "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "tempCorrectedDefendant2Address",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "tempCorrectedDefendant1Address",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "tempCorrespondenceAddress",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   }
 ]
