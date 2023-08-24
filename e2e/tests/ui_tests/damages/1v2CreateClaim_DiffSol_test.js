@@ -154,8 +154,7 @@ Scenario('Add case flags', async ({I}) => {
 }).retry(3);
 
 Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
-  const updateContactDetailsToggleEnabled = checkToggleEnabled('update-contact-details');
-  if (updateContactDetailsToggleEnabled) {
+  if (await checkToggleEnabled('update-contact-details')) {
     await I.login(config.secondDefendantSolicitorUser);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
     await I.waitForText('Summary');
