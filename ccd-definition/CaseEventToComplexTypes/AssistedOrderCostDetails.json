@@ -43,15 +43,23 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
-    "ListElementCode": "makeAnOrderForCostsClaimantSelectionLabel",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownLabelType1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
-    "ListElementCode": "makeAnOrderForCostsClaimantSelectionTop",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownLabelType2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "assistedOrderClaimantFirstDropdown",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -59,7 +67,7 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
-    "ListElementCode": "makeAnOrderForCostsQOCSLabel",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownAmountLabel",
     "FieldDisplayOrder": 6,
     "DisplayContext": "READONLY"
   },
@@ -67,8 +75,74 @@
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
-    "ListElementCode": "makeAnOrderForCostsQOCSYesOrNo",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownAmount",
     "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownDateLabel",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownDate",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "assistedOrderClaimantSecondDropdownList1",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "assistedOrderClaimantSecondDropdownListLabel",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "assistedOrderClaimantSecondDropdownList2",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "MANDATORY"
+  },
+
+
+
+
+
+
+
+
+
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsQOCSLabel",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsQOCSYesOrNo",
+    "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -76,7 +150,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "ListElementCode": "makeAnOrderForCostsQOCSText",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "READONLY"
   },
   {

@@ -1,12 +1,12 @@
 [
   {
-    "ID": "FinalOrderMakeAnOrderClaimantTop",
+    "ID": "FinalOrderMakeAnOrderClaimantTopList",
     "ListElementCode": "COSTS",
     "ListElement": "Costs (both fixed and summarily assessed as appropriate)",
     "DisplayOrder": 1
   },
   {
-    "ID": "FinalOrderMakeAnOrderClaimantTop",
+    "ID": "FinalOrderMakeAnOrderClaimantTopList",
     "ListElementCode": "SUBJECT_DETAILED_ASSESSMENT",
     "ListElement": "to be subject to detailed assessment",
     "DisplayOrder": 2

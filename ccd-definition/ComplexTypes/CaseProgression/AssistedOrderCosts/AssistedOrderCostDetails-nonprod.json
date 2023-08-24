@@ -38,19 +38,87 @@
   },
   {
     "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "makeAnOrderForCostsClaimantSelectionLabel",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownLabelType1",
     "ElementLabel": "### shall pay the defendant's",
     "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"COSTS\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownLabelType2",
+    "ElementLabel": "### shall pay the defendant's costs",
+    "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantFirstDropdown",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantTopList",
     "FieldShowCondition": "makeAnOrderForCostsList = \"CLAIMANT\"",
     "SecurityClassification": "Public"
   },
   {
     "ID": "AssistedOrderCostDetails",
-    "ListElementCode": "makeAnOrderForCostsClaimantSelectionTop",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownAmountLabel",
+    "ElementLabel": "### in the sum of £",
+    "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"COSTS\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownAmount",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "HintText": "For example, 145.00",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"COSTS\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownDateLabel",
+    "ElementLabel": "### Such sum shall be made by 4pm on",
+    "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"COSTS\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantFirstDropdownDate",
+    "ElementLabel": " ",
+    "FieldType": "Date",
+    "HintText": "For example, 16 4 2021",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"COSTS\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantSecondDropdownList1",
     "ElementLabel": " ",
     "FieldType": "FixedList",
-    "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantTop",
-    "FieldShowCondition": "makeAnOrderForCostsList = \"CLAIMANT\"",
+    "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantSecondList",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantSecondDropdownListLabel",
+    "ElementLabel": " ### Interim payment required?",
+    "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantSecondDropdownList2",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantThirdList",
+    "FieldShowCondition": "assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public"
   },
   {
