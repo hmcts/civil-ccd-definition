@@ -329,6 +329,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "publicFundingCostsProtectionLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "publicFundingCostsProtection",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "publicFundingCostsProtectionDropdown",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderMadeOnDetailsList",
     "UserRoles": [
       "judge-profile"

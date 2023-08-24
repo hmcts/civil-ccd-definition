@@ -24,8 +24,55 @@
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "makeAnOrderForCostsLabel",
-    "ElementLabel": "### TEST",
+    "ElementLabel": "### Make an order for detailed costs/summary costs \n ### The",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "makeAnOrderForCostsList",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimantOrDefendant",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "makeAnOrderForCostsClaimantSelectionLabel",
+    "ElementLabel": "### shall pay the defendant's",
+    "FieldType": "Label",
+    "FieldShowCondition": "makeAnOrderForCostsList = \"CLAIMANT\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "makeAnOrderForCostsClaimantSelectionTop",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantTop",
+    "FieldShowCondition": "makeAnOrderForCostsList = \"CLAIMANT\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "makeAnOrderForCostsQOCSLabel",
+    "ElementLabel": "### Does the paying party have QOCS protection?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "makeAnOrderForCostsQOCSYesOrNo",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "makeAnOrderForCostsQOCSText",
+    "ElementLabel": "Other than by way of permitted set off, there shall be no enforcement of any costs assessed under this order without permission of the court",
+    "FieldType": "Label",
+    "FieldShowCondition": "makeAnOrderForCostsQOCSYesOrNo = \"Yes\"",
     "SecurityClassification": "Public"
   },
   {

@@ -34,6 +34,54 @@
   {
     "ID": "AssistedOrderCostDetails",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsList",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsClaimantSelectionLabel",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsClaimantSelectionTop",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsQOCSLabel",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsQOCSYesOrNo",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
+    "ListElementCode": "makeAnOrderForCostsQOCSText",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "ListElementCode": "besPokeCostDetailsLabel",
     "FieldDisplayOrder": 1,
