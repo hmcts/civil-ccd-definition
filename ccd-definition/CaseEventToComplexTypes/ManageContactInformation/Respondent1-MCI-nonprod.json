@@ -1,0 +1,148 @@
+[
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualTitle",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualFirstName",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "individualLastName",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "companyName",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "organisationName",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderTitle",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderFirstName",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderLastName",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "soleTraderTradingAs",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine1",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine2",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine3",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.PostTown",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.County",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.Country",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.PostCode",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyEmail",
+    "FieldDisplayOrder": 20,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\" OR respondent1.type = \"ORGANISATION\" OR respondent1.type = \"COMPANY\""
+  },
+  {
+    "ID": "Claimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyPhone",
+    "FieldDisplayOrder": 21,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\""
+  }
+]

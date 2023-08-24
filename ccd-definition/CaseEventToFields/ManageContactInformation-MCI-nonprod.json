@@ -19,5 +19,37 @@
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "PageID": "PartySelection"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant1",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ClaimantOne",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "ClaimantTwo",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "partyChosen = \"something\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Respondent1",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "partyChosen = \"something\""
   }
 ]
