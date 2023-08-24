@@ -5,7 +5,8 @@
     "Label": "Applicant 1 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +14,8 @@
     "Label": "Applicant 2 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +23,8 @@
     "Label": "Respondent 1 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -29,7 +32,8 @@
     "Label": "Respondent 2 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
