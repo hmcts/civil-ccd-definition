@@ -126,7 +126,7 @@
     "ListElementCode": "assistedOrderClaimantThirdDropdownLabel",
     "ElementLabel": "### The claimant shall pay £",
     "FieldType": "Label",
-    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\" AND assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public"
   },
   {
@@ -135,7 +135,7 @@
     "ElementLabel": " ",
     "HintText": "For example, 145.00",
     "FieldType": "MoneyGBP",
-    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\" AND assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public"
   },
   {
@@ -143,7 +143,7 @@
     "ListElementCode": "assistedOrderClaimantThirdDropdownDateLabel",
     "ElementLabel": "on account of costs \n ### Such sum shall be made by 4pm on",
     "FieldType": "Label",
-    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\" AND assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public"
   },
   {
@@ -152,7 +152,7 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\" AND assistedOrderClaimantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public"
   },
 
