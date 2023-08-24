@@ -123,6 +123,52 @@
   },
   {
     "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantThirdDropdownLabel",
+    "ElementLabel": "### The claimant shall pay £",
+    "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantThirdDropdownAmount",
+    "ElementLabel": " ",
+    "HintText": "For example, 145.00",
+    "FieldType": "MoneyGBP",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantThirdDropdownDateLabel",
+    "ElementLabel": "on account of costs \n ### Such sum shall be made by 4pm on",
+    "FieldType": "Label",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AssistedOrderCostDetails",
+    "ListElementCode": "assistedOrderClaimantThirdDropdownDate",
+    "ElementLabel": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "FieldShowCondition": "assistedOrderClaimantSecondDropdownList2 = \"YES\"",
+    "SecurityClassification": "Public"
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    "ID": "AssistedOrderCostDetails",
     "ListElementCode": "makeAnOrderForCostsQOCSLabel",
     "ElementLabel": "### Does the paying party have QOCS protection?",
     "FieldType": "Label",
