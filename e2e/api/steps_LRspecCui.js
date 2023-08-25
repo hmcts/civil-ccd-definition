@@ -12,6 +12,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
+const {dateNoWeekends} = require('./dataHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -169,6 +170,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     let informAgreedExtensionData = await data.EXTEND_RESPONSE_DEADLINE_DATE();
+    informAgreedExtensionData.userInput.ResponseDeadlineExtension.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
