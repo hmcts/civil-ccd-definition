@@ -80,7 +80,7 @@ module.exports = {
   INFORM_AGREED_EXTENSION_DATE: {
     description: 'Enter an extension date that has already been agreed with other parties',
     id: 'INFORM_AGREED_EXTENSION_DATE',
-    name: 'Inform agreed extension date',
+    name: 'Inform agreed 28 day extension',
     order: 12
   },
   INFORM_AGREED_EXTENSION_DATE_SPEC: {
