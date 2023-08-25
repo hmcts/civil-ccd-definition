@@ -98,11 +98,11 @@ module.exports = {
                 value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            applicant1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
-          },
-          applicant1DQRemoteHearingLRspec: {
-            remoteHearingRequested: 'Yes',
-            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             applicant1DQHearingSupport: {

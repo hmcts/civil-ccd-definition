@@ -121,11 +121,11 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
-          },
-          respondent1DQRemoteHearingLRspec: {
-            remoteHearingRequested: 'Yes',
-            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {
@@ -302,11 +302,11 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
-          },
-          respondent1DQRemoteHearingLRspec: {
-            remoteHearingRequested: 'Yes',
-            reasonForRemoteHearing: 'Some reason'
           },
           Applications: {
             respondent1DQFutureApplications: {
@@ -474,11 +474,11 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
-          },
-          respondent1DQRemoteHearingLRspec: {
-            remoteHearingRequested: 'Yes',
-            reasonForRemoteHearing: 'Some reason'
           },
           HearingSupport: {
             respondent1DQHearingSupport: {

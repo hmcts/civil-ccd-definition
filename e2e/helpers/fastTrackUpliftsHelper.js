@@ -4,5 +4,8 @@ module.exports = {
   },
   removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData: (data) => {
     delete data.valid.FixedRecoverableCosts;
+  },
+  removeFastTrackAllocationFromSdoData: (data) => {
+    delete data.valid.FastTrack.fastTrackAllocation;
   }
 };
