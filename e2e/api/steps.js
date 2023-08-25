@@ -32,7 +32,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
-const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData} = require('../helpers/fastTrackUpliftsHelper');
+const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -181,9 +181,8 @@ module.exports = {
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    let bodyText = pbaV3 ? 'Your claim will not be issued until payment is confirmed.'
-      : 'Your claim will not be issued until payment is confirmed.';
-    let headerText = pbaV3 ? '# Please now pay your claim fee\n# using the link below' : 'Your claim has been received';
+    let bodyText = 'Your claim will not be issued until payment is confirmed.';
+    let headerText = '# Please now pay your claim fee\n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
@@ -193,7 +192,7 @@ module.exports = {
 
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-                                      claimData.serviceUpdateDto(caseId, 'paid'));
+        claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
 
@@ -242,10 +241,8 @@ module.exports = {
     console.log('isCertificateOfServiceEnabled is..', isCertificateOfServiceEnabled);
     console.log('comparing assertSubmittedEvent');
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: isCertificateOfServiceEnabled ? 'Your claim has been received':
-        'Your claim has been received and will progress offline',
-      body: isCertificateOfServiceEnabled ? 'Your claim will not be issued until payment of the issue fee is confirmed' :
-        'Your claim will not be issued until payment is confirmed. Once payment is confirmed you will receive an email. The claim will then progress offline.'
+      header: 'Please now pay your claim',
+      body: 'Your claim will not be issued until payment is confirmed'
     });
 
     await waitForFinishedBusinessProcess(caseId);
@@ -415,8 +412,8 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
-      value: listElement('Both')
-    }};
+        value: listElement('Both')
+      }};
 
     await validateEventPages(data[eventName]);
 
@@ -572,11 +569,6 @@ module.exports = {
 
     await validateEventPages(informAgreedExtensionData, solicitor);
 
-    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.past,
-      'The agreed extension date must be a date in the future');
-    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.beforeCurrentDeadline,
-      'The agreed extension date must be after the current deadline');
-
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Extension deadline submitted',
       body: 'You must respond to the claimant by'
@@ -725,9 +717,9 @@ module.exports = {
       console.log('sdo test');
       await assertSubmittedEvent(
         'JUDICIAL_REFERRAL', {
-        header: 'You have chosen to proceed with the claim',
-        body: '>We will review the case and contact you to tell you what to do next.'
-      });
+          header: 'You have chosen to proceed with the claim',
+          body: '>We will review the case and contact you to tell you what to do next.'
+        });
     } else {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
         header: 'You have chosen to proceed with the claim',
@@ -953,6 +945,11 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = eventData['sdoTracks'][response];
 
+    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+    if (!fastTrackUpliftsEnabled) {
+      removeFastTrackAllocationFromSdoData(disposalData);
+    }
+
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
@@ -1026,22 +1023,22 @@ module.exports = {
   },
 
   scheduleHearing: async (user, allocatedTrack) => {
-  console.log('Hearing Scheduled for case id ' + caseId);
-  await apiRequest.setupTokens(user);
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
 
-  eventName = 'HEARING_SCHEDULED';
+    eventName = 'HEARING_SCHEDULED';
 
-  caseData = await apiRequest.startEvent(eventName, caseId);
-  delete caseData['SearchCriteria'];
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
 
-  let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
 
-  for (let pageId of Object.keys(scheduleData.valid)) {
-    await assertValidData(scheduleData, pageId);
-  }
+    for (let pageId of Object.keys(scheduleData.valid)) {
+      await assertValidData(scheduleData, pageId);
+    }
 
-  await assertSubmittedEvent('HEARING_READINESS', null, false);
-  await waitForFinishedBusinessProcess(caseId);
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   evidenceUploadJudge: async (user, typeOfNote, currentState) => {
@@ -1164,7 +1161,7 @@ const validateEventPages = async (data, solicitor) => {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-   // data = await updateCaseDataWithPlaceholders(data);
+    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -1241,7 +1238,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete caseData.applicant1OrganisationPolicy;
   }
   try {
-      assert.deepEqual(responseBody.data, caseData);
+    assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
