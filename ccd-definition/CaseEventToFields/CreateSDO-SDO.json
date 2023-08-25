@@ -1277,6 +1277,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateInputValue",
     "FieldShowCondition": "fastTrackWitnessOfFactToggle=\"SHOW\""
   },
   {
