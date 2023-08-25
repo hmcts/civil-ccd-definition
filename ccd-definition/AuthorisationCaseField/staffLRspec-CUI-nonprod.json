@@ -148,5 +148,11 @@
     "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantUserDetails",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
