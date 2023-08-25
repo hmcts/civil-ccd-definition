@@ -21,6 +21,7 @@ const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData} = require('../helpers/fastTrackUpliftsHelper');
 
 
+
 let caseId, eventName;
 let caseData = {};
 
