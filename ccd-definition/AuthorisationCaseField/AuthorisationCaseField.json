@@ -3004,7 +3004,8 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -3027,7 +3028,8 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -5101,6 +5103,43 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantLitigationFriendWarning",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendant2LitigationFriendWarning",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantCommonLitigationFriendWarning",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   }
