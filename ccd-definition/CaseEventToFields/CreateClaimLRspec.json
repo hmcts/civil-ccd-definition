@@ -308,7 +308,8 @@
     "PageColumnNumber": 1,
     "FieldShowCondition": "specRespondentCorrespondenceAddressRequired=\"Yes\"",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specRespondentCorrespondenceAddress"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specRespondentCorrespondenceAddress",
+    "CaseEventFieldLabel": "Enter the correspondence address of the organisation"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -472,7 +473,8 @@
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
     "FieldShowCondition": "specRespondent2CorrespondenceAddressRequired=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Enter the correspondence address of the organisation"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -171,8 +171,16 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondentSolicitor1EmailAddress",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
     "TabFieldDisplayOrder": 24
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondentSolicitor1EmailAddress",
+    "TabFieldDisplayOrder": 25
   },
   {
     "CaseTypeID": "CIVIL",
@@ -181,64 +189,72 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2OrganisationPolicy",
     "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
-    "TabFieldDisplayOrder": 25
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "respondentSolicitor2EmailAddress",
     "TabFieldDisplayOrder": 26
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 27
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondentSolicitor2EmailAddress",
+    "TabFieldDisplayOrder": 28
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "headingDefendantDQ",
-    "TabFieldDisplayOrder": 27,
+    "TabFieldDisplayOrder": 29,
     "FieldShowCondition": "respondent1ClaimResponseType = \"*\" OR respondent1ClaimResponseTypeForSpec = \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent1ClaimResponseType",
-    "TabFieldDisplayOrder": 28
+    "TabFieldDisplayOrder": 30
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2ClaimResponseType",
-    "TabFieldDisplayOrder": 30,
+    "TabFieldDisplayOrder": 31,
     "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
-    "TabFieldDisplayOrder": 31
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
     "TabFieldDisplayOrder": 32
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "TabFieldDisplayOrder": 33
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
-    "TabFieldDisplayOrder": 33,
+    "TabFieldDisplayOrder": 34,
     "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "claimant1ClaimResponseTypeForSpec",
-    "TabFieldDisplayOrder": 34
+    "TabFieldDisplayOrder": 35
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "claimant2ClaimResponseTypeForSpec",
-    "TabFieldDisplayOrder": 35,
+    "TabFieldDisplayOrder": 36,
     "FieldShowCondition": "applicant2 =\"*\""
   },
   {

@@ -434,14 +434,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressdetails",
-    "Label": "Enter the correspondence address of the organisation",
+    "Label": "Defendant's legal representative correspondence address",
     "FieldType": "AddressUK",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent2CorrespondenceAddressdetails",
-    "Label": "Enter the correspondence address of the organisation",
+    "Label": "Defendant 2's legal representative correspondence address",
     "FieldType": "AddressUK",
     "SecurityClassification": "Public",
     "Searchable": "N"
