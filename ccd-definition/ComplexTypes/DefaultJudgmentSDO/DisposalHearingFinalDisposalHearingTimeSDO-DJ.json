@@ -27,5 +27,19 @@
     "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
     "ElementLabel": "The time estimate is",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "otherHours",
+    "FieldType": "Number",
+    "ElementLabel": "Hours",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
+    "ListElementCode": "otherMinutes",
+    "FieldType": "Number",
+    "ElementLabel": "Minutes",
+    "SecurityClassification": "Public"
   }
 ]
