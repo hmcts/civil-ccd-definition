@@ -5,5 +5,60 @@
     "Label": "### Which party's contact information do you want to change?\n This includes any other attendees linked to the party, such as:\n* litigation friends\n* experts\n* witnesses\n\n ### Which details do you want to update?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "individualsAttendingApplicantLRLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the claimant's legal representative.\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "individualsAttendingDefendantLRLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the defendant's legal representative.\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "individualsAttendingApplicantLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the claimant organisation.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "individualsAttendingDefendantLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the defendant organisation.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -86,5 +86,59 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
   }
 ]
