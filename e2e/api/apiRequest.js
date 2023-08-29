@@ -25,7 +25,7 @@ const getRequestHeaders = (userAuth) => {
     'ServiceAuthorization': tokens.s2sAuth
   };
 };
-const getCivilServiceCaseworkerSubmitNewClaimUrl = () => `${config.url.civilService}/cases/caseworkers/create-case}/${tokens.userId}`;
+const getCivilServiceCaseworkerSubmitNewClaimUrl = () => `${config.url.civilService}/cases/caseworkers/create-case/${tokens.userId}`;
 
 module.exports = {
   setupTokens: async (user) => {
