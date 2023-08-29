@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "FastTrackAllocation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackAllocation",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackAllocation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackAllocation",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]

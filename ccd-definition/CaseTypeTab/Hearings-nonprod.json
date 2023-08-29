@@ -4,7 +4,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant1DQHearing",
+    "CaseFieldID": "applicant1DQFurtherInformation",
     "TabFieldDisplayOrder": 1
   },
   {
@@ -12,7 +12,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant2DQHearing",
+    "CaseFieldID": "applicant2DQFurtherInformation",
     "TabFieldDisplayOrder": 2
   },
   {
@@ -20,7 +20,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent1DQHearing",
+    "CaseFieldID": "respondent1DQFurtherInformation",
     "TabFieldDisplayOrder": 3
   },
   {
@@ -28,7 +28,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant1DQFurtherInformation",
+    "CaseFieldID": "applicant1DQHearingSupport",
     "TabFieldDisplayOrder": 4
   },
   {
@@ -36,7 +36,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant2DQFurtherInformation",
+    "CaseFieldID": "applicant2DQHearingSupport",
     "TabFieldDisplayOrder": 5
   },
   {
@@ -44,7 +44,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent1DQFurtherInformation",
+    "CaseFieldID": "respondent1DQHearingSupport",
     "TabFieldDisplayOrder": 6
   },
   {
@@ -52,7 +52,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant1DQHearingSupport",
+    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "TabFieldDisplayOrder": 7
   },
   {
@@ -60,7 +60,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant2DQHearingSupport",
+    "CaseFieldID": "applicant2DQVulnerabilityQuestions",
     "TabFieldDisplayOrder": 8
   },
   {
@@ -68,7 +68,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent1DQHearingSupport",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "TabFieldDisplayOrder": 9
   },
   {
@@ -76,7 +76,7 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
+    "CaseFieldID": "respondent2DQHearingSupport",
     "TabFieldDisplayOrder": 10
   },
   {
@@ -84,40 +84,8 @@
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "applicant2DQVulnerabilityQuestions",
-    "TabFieldDisplayOrder": 11
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Listing notes",
-    "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
-    "TabFieldDisplayOrder": 12
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Listing notes",
-    "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent2DQHearing",
-    "TabFieldDisplayOrder": 13
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Listing notes",
-    "TabDisplayOrder": 5,
-    "CaseFieldID": "respondent2DQHearingSupport",
-    "TabFieldDisplayOrder": 14
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Listing notes",
-    "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
-    "TabFieldDisplayOrder": 15
+    "TabFieldDisplayOrder": 11
   },
   {
     "CaseTypeID": "CIVIL",
@@ -126,5 +94,29 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQFurtherInformation",
     "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "applicant1DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
+    "TabFieldDisplayOrder": 20
   }
 ]
