@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "UnavailableDate",
+    "ListElementCode": "eventAdded",
+    "FieldType": "Text",
+    "ElementLabel": "Event added",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "UnavailableDate",
+    "ListElementCode": "dateAdded",
+    "FieldType": "Date",
+    "ElementLabel": "Date added",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
