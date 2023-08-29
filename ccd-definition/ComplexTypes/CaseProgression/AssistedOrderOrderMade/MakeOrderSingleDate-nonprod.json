@@ -1,17 +1,17 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "dateLabel",
-    "ID": "DateHeardFinalOrders",
-    "ElementLabel": "### Date heard",
+    "ListElementCode": "singleDateLabel",
+    "ID": "SingleDateHeardFinalOrders",
+    "ElementLabel": "## Single date",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "date",
-    "ID": "DateHeardFinalOrders",
-    "ElementLabel": " ",
+    "ListElementCode": "singleDate",
+    "ID": "SingleDateHeardFinalOrders",
+    "ElementLabel": "Single date",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public"
