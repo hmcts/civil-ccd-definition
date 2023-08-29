@@ -4,18 +4,12 @@ const createAssistedOrder = () => {
   return  {
     FinalOrderSelect: {
       finalOrderSelection: 'ASSISTED_ORDER',
-      assistedOrderCostsClaimantPaySub: {
-        claimantCostStandardDate: date(14)
+      assistedOrderMakeAnOrderForCosts: {
+        assistedOrderCostsFirstDropdownDate: date(14),
+        assistedOrderAssessmentThirdDropdownDate: date(14),
+        makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
-      assistedOrderCostsClaimantSum: {
-        claimantCostSummarilyDate: date(14)
-      },
-      assistedOrderCostsDefendantPaySub: {
-        defendantCostStandardDate: date(14)
-      },
-      assistedOrderCostsDefendantSum: {
-        defendantCostSummarilyDate: date(14)
-      },
+      publicFundingCostsProtection: 'No',
       finalOrderAppealComplex: {
         appealGranted: {
           appealDate: date(21)
