@@ -129,7 +129,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },
