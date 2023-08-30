@@ -60,7 +60,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderDateHeardComplex",
     "Label": " ",
-    "FieldType": "DateHeardFinalOrders",
+    "FieldType": "FinalOrderMadeDatesDropdown",
     "SecurityClassification": "Public"
   },
   {
