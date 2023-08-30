@@ -3,7 +3,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.reasonsLabel",
+    "ListElementCode": "appealRefused.GrantedRefusedLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -11,7 +11,7 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.reasonsText",
+    "ListElementCode": "appealRefused.CircuitOrHighCourtList",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -19,48 +19,8 @@
     "ID": "FinalOrderAppeal",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.refusedAppealLabel",
+    "ListElementCode": "appealRefused.GrantedRefusedLabelLinkA",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FinalOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.refusedText",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FinalOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.permissionLabel",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FinalOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.permissionText",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FinalOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.appealDateLabel",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FinalOrderAppeal",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderAppealComplex",
-    "ListElementCode": "appealRefused.appealDate",
-    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   }
 ]

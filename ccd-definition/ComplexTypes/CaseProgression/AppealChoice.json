@@ -1,69 +1,37 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "reasonsLabel",
+    "ListElementCode": "GrantedRefusedLabel",
     "ID": "AppealGrantedRefused",
-    "ElementLabel": "### Reasons",
+    "ElementLabel": "### An appeal lies from this order to",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "reasonsText",
+    "ListElementCode": "CircuitOrHighCourtList",
     "ID": "AppealGrantedRefused",
     "ElementLabel": " ",
-    "FieldType": "TextArea",
-    "HintText": "These will appear in a separate N460 document and not within the order",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CircuitOrHighCourtList",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "permissionLabel",
+    "ListElementCode": "GrantedRefusedLabelLinkA",
     "ID": "AppealGrantedRefused",
-    "ElementLabel": "### The application for permission to appeal may be renewed in the appeal court",
+    "ElementLabel": "at the appropriate appeal centre prescribed in  \n\n<a target=\"_blank\" href=\"https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part52/practice-direction-52b-appeals-in-the-county-courts-and-high-court\">CPR52PDB Table A.</a> \n\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "CircuitOrHighCourtList=\"CIRCUIT_COURT\""
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "permissionText",
+    "ListElementCode": "GrantedRefusedLabelLinkB",
     "ID": "AppealGrantedRefused",
-    "ElementLabel": " ",
-    "FieldType": "TextArea",
-    "HintText": "These will appear in the order and not within a separate N460 document",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ListElementCode": "refusedAppealLabel",
-    "ID": "AppealGrantedRefused",
-    "ElementLabel": "### An appeal lies from this judgment order to the",
+    "ElementLabel": "at the appropriate appeal centre prescribed in  \n\n<a target=\"_blank\" href=\"https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part52/practice-direction-52b-appeals-in-the-county-courts-and-high-court\">CPR52PDB Table B.</a> \n\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ListElementCode": "refusedText",
-    "ID": "AppealGrantedRefused",
-    "ElementLabel": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ListElementCode": "appealDateLabel",
-    "ID": "AppealGrantedRefused",
-    "ElementLabel": "### Any appeal or application for permission to appeal must be made by no later than 4pm on",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ListElementCode": "appealDate",
-    "ID": "AppealGrantedRefused",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "HintText": "For example, 16 4 2021",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "CircuitOrHighCourtList=\"HIGH_COURT\""
   }
 ]
