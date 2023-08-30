@@ -45,7 +45,8 @@ exports.config = {
     api_spec_small: './e2e/api/steps_LRspecSmall.js',
     api_spec_cui: './e2e/api/steps_LRspecCui.js',
     noc: './e2e/api/steps_noc.js',
-    hearings: './e2e/api/steps_hearings.js'
+    hearings: './e2e/api/steps_hearings.js',
+    bulks: './e2e/api/steps_Bulk.js'
   },
   plugins: {
     autoDelay: {
