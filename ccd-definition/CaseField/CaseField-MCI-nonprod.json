@@ -8,6 +8,48 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameMCILabel",
+    "Label": "**Claimant: ${applicant1.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyNameMCILabel",
+    "Label": "**Claimant: ${applicant2.partyName}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1IndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1CompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2IndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2CompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "individualsAttendingApplicantLRLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the claimant's legal representative.\n",
     "FieldType": "Label",
