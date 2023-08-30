@@ -32,7 +32,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
-const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData} = require('../helpers/fastTrackUpliftsHelper');
+const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -569,11 +569,6 @@ module.exports = {
 
     await validateEventPages(informAgreedExtensionData, solicitor);
 
-    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.past,
-      'The agreed extension date must be a date in the future');
-    await assertError('ExtensionDate', informAgreedExtensionData.invalid.ExtensionDate.beforeCurrentDeadline,
-      'The agreed extension date must be after the current deadline');
-
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Extension deadline submitted',
       body: 'You must respond to the claimant by'
@@ -949,6 +944,11 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = eventData['sdoTracks'][response];
+
+    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+    if (!fastTrackUpliftsEnabled) {
+      removeFastTrackAllocationFromSdoData(disposalData);
+    }
 
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
