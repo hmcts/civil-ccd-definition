@@ -102,5 +102,19 @@
     "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "app1LitigationFriendTitle",
+    "Label": "## Litigation friend",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "app1LitigationFriendHeader",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]

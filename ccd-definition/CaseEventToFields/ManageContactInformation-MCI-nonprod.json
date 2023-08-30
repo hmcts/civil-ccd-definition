@@ -317,5 +317,80 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Respondent2Witnesses",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "app1LitigationFriendTitle",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "LitigationFriend"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "app1LitigationFriendHeader",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "LitigationFriend"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant1LitigationFriend",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "LitigationFriend",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "LitigationFriend",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1LitigationFriend",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "LitigationFriend",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2LitigationFriend",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "LitigationFriend",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "genericLitigationFriend",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
+    "PageID": "LitigationFriend",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
