@@ -1,8 +1,8 @@
 [
-  {
+{
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1OrgIndividuals",
+    "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "firstName",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -10,7 +10,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1OrgIndividuals",
+    "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -18,7 +18,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1OrgIndividuals",
+    "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -26,7 +26,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1OrgIndividuals",
+    "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "phone",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -34,16 +34,16 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1OrgIndividuals",
+    "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "flags",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "applicant1OrgIndividuals=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "applicant1LRIndividuals=\"DO NOT SHOW IN UI\""
   },
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1OrgIndividuals",
+    "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "firstName",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -51,7 +51,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1OrgIndividuals",
+    "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -59,7 +59,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1OrgIndividuals",
+    "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -67,7 +67,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1OrgIndividuals",
+    "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "phone",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -75,16 +75,16 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1OrgIndividuals",
+    "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "flags",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent1OrgIndividuals=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent1LRIndividuals=\"DO NOT SHOW IN UI\""
   },
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2OrgIndividuals",
+    "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "firstName",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -92,7 +92,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2OrgIndividuals",
+    "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -100,7 +100,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2OrgIndividuals",
+    "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -108,7 +108,7 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2OrgIndividuals",
+    "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "phone",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
@@ -116,10 +116,10 @@
   {
     "ID": "OrgIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2OrgIndividuals",
+    "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "flags",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent2OrgIndividuals=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "respondent2LRIndividuals=\"DO NOT SHOW IN UI\""
   }
 ]

@@ -247,7 +247,7 @@
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "CRU"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
