@@ -1,6 +1,32 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "additionalUnavailableDates",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partyChosen",
+    "UserRoles": [
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hidePartyChoice",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1UnavailableDatesForTab",
     "AccessControl": [
       {
