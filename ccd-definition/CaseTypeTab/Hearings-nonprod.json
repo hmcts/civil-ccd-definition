@@ -93,7 +93,7 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQFurtherInformation",
-    "TabFieldDisplayOrder": 16
+    "TabFieldDisplayOrder": 12
   },
   {
     "CaseTypeID": "CIVIL",
@@ -101,7 +101,7 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "applicant1DQRemoteHearingLRspec",
-    "TabFieldDisplayOrder": 17
+    "TabFieldDisplayOrder": 13
   },
   {
     "CaseTypeID": "CIVIL",
@@ -109,7 +109,7 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent1DQRemoteHearingLRspec",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 14
   },
   {
     "CaseTypeID": "CIVIL",
@@ -117,6 +117,6 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQRemoteHearingLRspec",
-    "TabFieldDisplayOrder": 20
+    "TabFieldDisplayOrder": 15
   }
 ]
