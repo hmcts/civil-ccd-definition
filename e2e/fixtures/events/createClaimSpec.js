@@ -252,9 +252,6 @@ module.exports = {
           SecondDefendantSolicitorEmail: {
             respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'No'
-          },
 
           SameLegalRepresentative: {
             respondent2SameLegalRepresentative: 'No'
@@ -337,9 +334,6 @@ module.exports = {
           SecondDefendantSolicitorEmail: {
             respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'Yes'
-          },
 
           SameLegalRepresentative: {
             respondent2SameLegalRepresentative: 'Yes'
@@ -389,9 +383,6 @@ module.exports = {
           },
           SecondDefendantSolicitorEmail: {
             respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
-          },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'Yes'
           }
         };
         break;
@@ -644,9 +635,6 @@ module.exports = {
               respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
             }
           },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'Yes'
-          },
 
           SameLegalRepresentative: {
             userInput: {
@@ -717,9 +705,6 @@ module.exports = {
             userInput: {
               respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
             }
-          },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'Yes'
           },
 
           SameLegalRepresentative: {

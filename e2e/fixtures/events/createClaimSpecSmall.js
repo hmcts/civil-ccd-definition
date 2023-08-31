@@ -254,9 +254,6 @@ module.exports = {
           SecondDefendantSolicitorEmail: {
             respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
           },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'No'
-          },
 
           SameLegalRepresentative: {
             respondent2SameLegalRepresentative: 'No'
@@ -317,9 +314,6 @@ module.exports = {
           },
           SecondDefendantSolicitorEmail: {
             respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
-          },
-          specRespondent2CorrespondenceAddress: {
-            specRespondent2CorrespondenceAddressRequired: 'Yes'
           }
         };
         break;
