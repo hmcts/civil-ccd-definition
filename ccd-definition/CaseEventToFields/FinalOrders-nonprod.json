@@ -80,7 +80,7 @@
     "CaseFieldID": "finalOrderDateHeardComplex",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "finalOrderMadeSelection=\"Yes\"",
     "ShowSummaryChangeOption": "N"
