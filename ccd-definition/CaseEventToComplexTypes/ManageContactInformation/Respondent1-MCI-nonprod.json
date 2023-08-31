@@ -5,6 +5,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualTitle",
     "FieldDisplayOrder": 2,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -13,6 +14,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -21,6 +23,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualLastName",
     "FieldDisplayOrder": 4,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -29,6 +32,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "companyName",
     "FieldDisplayOrder": 5,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -37,6 +41,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "organisationName",
     "FieldDisplayOrder": 6,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -45,6 +50,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTitle",
     "FieldDisplayOrder": 7,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -53,6 +59,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderFirstName",
     "FieldDisplayOrder": 8,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -61,6 +68,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderLastName",
     "FieldDisplayOrder": 9,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "MANDATORY"
   },
   {

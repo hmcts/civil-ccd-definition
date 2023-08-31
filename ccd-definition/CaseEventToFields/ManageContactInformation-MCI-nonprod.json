@@ -7,8 +7,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageID": "PartySelection",
-    "PageShowCondition": "partyChosen = \"something\""
+    "PageID": "PartySelection"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,121 +18,165 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "PageID": "PartySelection"
+    "PageID": "PartySelection",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/show-party-field"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1PartyNameMCILabel",
+    "CaseFieldID": "partyChosenId",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N",
-    "PageID": "Claimant1",
-    "PageShowCondition": "partyChosen = \"something\"",
-    "_Comment": "Needs to be behind a toggle for applicant 1 only"
+    "PageID": "partyChosenLabel"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2PartyNameMCILabel",
+    "CaseFieldID": "partyChosenType",
     "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "partyChosenLabel"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant1PartyNameManageContactLabel",
+    "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageID": "Claimant1",
-    "_Comment": "Needs to be behind a toggle for applicant 1 only"
+    "PageID": "Party",
+    "PageShowCondition": "partyChosenId = \"CLAIMANT_1\" OR partyChosen = \"CLAIMANT_2\" OR partyChosenId = \"DEFENDANT_1\" OR partyChosen = \"DEFENDANT_2\"",
+    "FieldShowCondition": "partyChosenId = \"CLAIMANT_1\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1IndividualLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
+    "CaseFieldID": "applicant2PartyNameManageContactLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageID": "Claimant1",
-    "FieldShowCondition": "applicant1.type=\"INDIVIDUAL\"",
-    "_Comment": "+ Needs to be behind a toggle for applicant 1 only "
+    "FieldShowCondition": "partyChosenId = \"CLAIMANT_2\"",
+    "PageID": "Party"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1CompanyLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
+    "CaseFieldID": "respondent1PartyNameManageContactLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageID": "Claimant1",
-    "FieldShowCondition": "applicant1.type=\"COMPANY\" AND applicant1.type=\"ORGANISATION\"",
-    "_Comment": "Needs to be behind a toggle for applicant 2 only"
+    "PageID": "Party",
+    "FieldShowCondition": "partyChosenId = \"DEFENDANT_1\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2IndividualLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
+    "CaseFieldID": "respondent2PartyNameManageContactLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageID": "Claimant1",
-    "FieldShowCondition": "applicant2.type=\"INDIVIDUAL\"",
-    "_Comment": "Needs to be behind a toggle for applicant 1 only"
+    "FieldShowCondition": "partyChosenId = \"DEFENDANT_2\"",
+    "PageID": "Party"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2CompanyLabel",
-    "PageDisplayOrder": 2,
+    "CaseFieldID": "partyTypeIndividualLabel",
+    "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageID": "Claimant1",
-    "FieldShowCondition": "applicant2.type=\"COMPANY\" AND applicant2.type=\"ORGANISATION\"",
-    "_Comment": "Needs to be behind a toggle for applicant 2 only"
+    "PageID": "Party",
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_INDIVIDUAL\" OR partyChosenType=\"CLAIMANT_2_ADMIN_INDIVIDUAL\" OR partyChosenType=\"DEFENDANT_1_ADMIN_INDIVIDUAL\" OR partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
+    "_Comment": "Label for party when party type is INDIVIDUAL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "partyTypeCompanyLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "Party",
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_COMPANY\" OR partyChosenType=\"CLAIMANT_2_ADMIN_COMPANY\" OR partyChosenType=\"CLAIMANT_1_ADMIN_ORGANISATION\" OR partyChosenType=\"CLAIMANT_2_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\" OR partyChosenType=\"DEFENDANT_1_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\" OR partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\"",
+    "_Comment": "Label for party when party type is COMPANY or ORGANISATION"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "partyTypeSoleTraderLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "Party",
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\" OR partyChosenType=\"CLAIMANT_2_ADMIN_SOLE_TRADER\" OR partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\" OR partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
+    "_Comment": "Label for party when party type is Sole Trader"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1IndividualTypeLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Party",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_LR_INDIVIDUAL\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "PageID": "Claimant1",
+    "PageID": "Party",
+    "FieldShowCondition": "partyChosenId = \"CLAIMANT_1\"",
+    "CaseEventFieldLabel": " ",
     "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant2",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "PageID": "Claimant2",
+    "PageID": "Party",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "partyChosen = \"something\""
+    "CaseEventFieldLabel": " ",
+    "FieldShowCondition": "partyChosenId = \"CLAIMANT_2\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1",
-    "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "PageID": "Respondent1",
+    "PageID": "Party",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "partyChosen = \"something\""
+    "CaseEventFieldLabel": " ",
+    "FieldShowCondition": "partyChosenId = \"DEFENDANT_1\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "PageID": "Respondent2",
+    "PageID": "Party",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "partyChosen = \"something\""
+    "FieldShowCondition": "partyChosenId = \"DEFENDANT_2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -143,6 +186,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "ApplicantOrgIndividuals",
+    "PageShowCondition": "partyChosen = \"CLAIMANT_1_INDIVIDUALSORG\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -164,7 +208,7 @@
     "DisplayContext": "READONLY",
     "PageID": "DefendantOrgIndividuals",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "partyChosen = \"somethingToDoWithDefendant\""
+    "PageShowCondition": "partyChosen = \"DEFENDANT_1_INDIVIDUALSORG\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -246,6 +290,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "applicant1Experts",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -256,6 +301,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "applicant2Experts",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -266,6 +312,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "respondent1Experts",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -276,6 +323,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "respondent2Experts",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -286,6 +334,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Applicant1Witnesses",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -296,6 +345,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Applicant2Witnesses",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -306,6 +356,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Respondent1Witnesses",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -316,6 +367,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Respondent2Witnesses",
+    "PageShowCondition": "partyChosen = \"something\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -326,6 +378,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "partyChosen = \"something\"",
     "PageID": "LitigationFriend"
   },
   {
