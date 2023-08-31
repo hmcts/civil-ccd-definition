@@ -129,7 +129,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
           "legal-adviser"
         ],
         "CRUD": "CRU"
@@ -143,7 +142,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
-
+          "judge-profile",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
