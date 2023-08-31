@@ -285,6 +285,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         },
         SecondDefendantSolicitorEmail: {
           respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+        },
+        specRespondent2CorrespondenceAddress: {
+          specRespondent2CorrespondenceAddressRequired: 'No'
         }
       };
     }
