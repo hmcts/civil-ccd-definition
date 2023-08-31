@@ -152,7 +152,7 @@ const secondDefendantSteps = (respondent2, respondent1Represented) => [
       ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
         () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent2'),
         () => specDefendantSolicitorEmailPage.enterSolicitorEmail('2'),
-
+        () => specParty.enterSpecParty('Respondent2'),
       ])
     ])
   ])
