@@ -411,6 +411,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2CorrespondenceAddressSubHeadingLabel",
+    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressRequired",
     "Label": "Do you want to enter a different address?",
     "FieldType": "YesOrNo",
@@ -418,10 +425,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2CorrespondenceAddressRequired",
+    "Label": "Do you want to enter a different address?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specRespondentCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specRespondent2CorrespondenceAddressdetails",
+    "Label": "Defendant 2's legal representative correspondence address",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
