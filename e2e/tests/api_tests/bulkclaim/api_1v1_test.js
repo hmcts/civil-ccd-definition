@@ -3,15 +3,24 @@
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('Bulk claim 1vs1 SDT user API test @api-bulk');
+Feature('Bulk claim 1v1 SDT user API test @api-bulk');
 
-Scenario('Create claim via civil orchestrator service', async ({api}) => {
-  // this will be replaced with a new steps file called steps_bulk
-  // that should have a method for making an api request to new civil orchestrator
-  // have added the url in the config.js as orchestratorService which needs to be used
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+/* Scenario('1v1 with No interest - Create claim via SDT', async ({bulks}) => {
+    await bulks.createClaimFromSDTRequest(config.applicantSolicitorUser, mpScenario, false);
+}); */
+
+Scenario('1v1 with No interest - Create claim via SDT - Postcode Negative Validation', async ({bulks}) => {
+  await bulks.createClaimFromSDTRequestForPostCodeNegative(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
 });
 
-AfterSuite(async  ({api}) => {
-  await api.cleanUp();
+Scenario('1v1 with No interest - Create claim via SDT - Postcode Positive Validation', async ({bulks}) => {
+  await bulks.createClaimFromSDTRequestForPostCodePositive(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
+});
+
+Scenario('1v1 with No interest - Create claim via SDT - Duplicate case check call', async ({bulks}) => {
+  await bulks.createClaimFromSDTRequestForDuplicateCaseCheckCall(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
+});
+
+AfterSuite(async ({api}) => {
+    await api.cleanUp();
 });

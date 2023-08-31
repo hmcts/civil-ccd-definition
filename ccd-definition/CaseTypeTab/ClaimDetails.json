@@ -276,18 +276,6 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondToClaimExperts",
-    "TabFieldDisplayOrder": 40
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "respondToClaimExperts2",
-    "TabFieldDisplayOrder": 41
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent1DQWitnesses",
@@ -300,25 +288,6 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent2DQWitnesses",
     "TabFieldDisplayOrder": 43
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "responseClaimWitnesses",
-    "TabFieldDisplayOrder": 44
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
-    "TabFieldDisplayOrder": 45
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "responseClaimWitnesses2",
-    "TabFieldDisplayOrder": 46,
-    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -484,12 +453,6 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "applicant2DQExperts",
     "TabFieldDisplayOrder": 67
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1RespondToClaimExperts",
-    "TabFieldDisplayOrder": 68
   },
   {
     "CaseTypeID": "CIVIL",
