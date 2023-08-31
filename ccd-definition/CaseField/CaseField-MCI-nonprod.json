@@ -71,11 +71,99 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1IndividualTypeLabel",
+    "Label": "### Title:\n${applicant1.individualTitle}\n\n### First name:\n${applicant1.individualFirstName}\n\n### Last name:\n${applicant1.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2IndividualTypeLabel",
+    "Label": "### Title:\n${applicant2.individualTitle}\n\n### First name:\n${applicant2.individualFirstName}\n\n### Last name:\n${applicant2.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1IndividualTypeLabel",
     "Label": "### Title:\n${respondent1.individualTitle}\n\n### First name:\n${respondent1.individualFirstName}\n\n### Last name:\n${respondent1.individualLastName}\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2IndividualTypeLabel",
+    "Label": "### Title:\n${respondent2.individualTitle}\n\n### First name:\n${respondent2.individualFirstName}\n\n### Last name:\n${respondent2.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1OrganisationTypeLabel",
+    "Label": "### Company name:\n${applicant1.companyName}${applicant1.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2OrganisationTypeLabel",
+    "Label": "### Company name:\n${applicant2.companyName}${applicant2.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrganisationTypeLabel",
+    "Label": "### Company name:\n${respondent1.companyName}${respondent1.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationTypeLabel",
+    "Label": "### Company name:\n${respondent2.companyName}${respondent2.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${applicant1.soleTraderTradingAs}\n\n### First name:\n${applicant1.soleTraderFirstName}\n\n### Last name:\n${applicant1.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${applicant2.soleTraderTradingAs}\n\n### First name:\n${applicant2.soleTraderFirstName}\n\n### Last name:\n${applicant2.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${respondent1.soleTraderTradingAs}\n\n### First name:\n${respondent1.soleTraderFirstName}\n\n### Last name:\n${respondent1.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${respondent2.soleTraderTradingAs}\n\n### First name:\n${respondent2.soleTraderFirstName}\n\n### Last name:\n${respondent2.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company"
   },
   {
     "CaseTypeID": "CIVIL",
