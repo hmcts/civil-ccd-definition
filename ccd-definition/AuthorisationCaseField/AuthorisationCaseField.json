@@ -2087,14 +2087,14 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-solicitor",
-          "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
