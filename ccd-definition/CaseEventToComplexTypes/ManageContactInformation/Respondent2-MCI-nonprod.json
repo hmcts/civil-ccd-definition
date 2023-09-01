@@ -5,6 +5,7 @@
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualTitle",
     "FieldDisplayOrder": 2,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -13,6 +14,7 @@
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -21,6 +23,7 @@
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualLastName",
     "FieldDisplayOrder": 4,
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -28,6 +31,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "companyName",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_2_ADMIN_ORGANISATION\"",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -36,6 +40,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "organisationName",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_2_ADMIN_ORGANISATION\"",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -44,6 +49,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderTitle",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
   },
@@ -52,6 +58,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderFirstName",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -60,6 +67,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderLastName",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
@@ -68,6 +76,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderTradingAs",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
@@ -75,7 +84,7 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine1",
+    "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
@@ -83,15 +92,15 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine2",
+    "ListElementCode": "primaryAddress.AddressLine1",
     "FieldDisplayOrder": 12,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine3",
+    "ListElementCode": "primaryAddress.AddressLine2",
     "FieldDisplayOrder": 13,
     "DisplayContext": "OPTIONAL"
   },
@@ -99,7 +108,7 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.PostTown",
+    "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
   },
@@ -107,7 +116,7 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.County",
+    "ListElementCode": "primaryAddress.PostTown",
     "FieldDisplayOrder": 15,
     "DisplayContext": "OPTIONAL"
   },
@@ -115,8 +124,16 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
+    "ListElementCode": "primaryAddress.County",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.Country",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -124,7 +141,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.PostCode",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -133,8 +150,7 @@
     "CaseFieldID": "respondent2",
     "ListElementCode": "partyEmail",
     "FieldDisplayOrder": 20,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent2.type = \"INDIVIDUAL\" OR respondent2.type = \"SOLE_TRADER\" OR respondent2.type = \"ORGANISATION\" OR respondent2.type = \"COMPANY\""
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SecondDefendant",
@@ -144,5 +160,23 @@
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent2.type = \"INDIVIDUAL\" OR respondent2.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "partyID",
+    "FieldDisplayOrder": 22,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 23,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

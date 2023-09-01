@@ -83,6 +83,14 @@
     "ID": "Defendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine1",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
@@ -152,5 +160,23 @@
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\""
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "partyID",
+    "FieldDisplayOrder": 22,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondent1 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 23,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondent1 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

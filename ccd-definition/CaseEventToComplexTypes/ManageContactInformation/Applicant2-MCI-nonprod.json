@@ -5,6 +5,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualTitle",
     "FieldDisplayOrder": 2,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -99,6 +100,14 @@
     "ID": "SecondClaimant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant2",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SecondClaimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2",
     "ListElementCode": "primaryAddress.AddressLine2",
     "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
@@ -159,5 +168,23 @@
     "ListElementCode": "partyPhone",
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL"
-  }
+  },
+   {
+     "ID": "SecondClaimant",
+     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+     "CaseFieldID": "applicant2",
+     "ListElementCode": "partyID",
+     "FieldDisplayOrder": 22,
+     "DisplayContext": "MANDATORY",
+     "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
+   },
+   {
+     "ID": "SecondClaimant",
+     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+     "CaseFieldID": "applicant2",
+     "ListElementCode": "flags",
+     "FieldDisplayOrder": 23,
+     "DisplayContext": "MANDATORY",
+     "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
+   }
 ]
