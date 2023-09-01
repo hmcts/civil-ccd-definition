@@ -478,5 +478,17 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderDocumentCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
