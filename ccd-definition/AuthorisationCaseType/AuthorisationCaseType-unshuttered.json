@@ -9,8 +9,7 @@
       "admin-access",
       "full-access",
       "hearing-schedule-access",
-      "payment-access",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "payment-access"
     ],
     "CRUD": "CRU"
   },
@@ -32,5 +31,16 @@
       "caseworker-ras-validation"
     ],
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE",
+      "CITIZEN-DEFENDANT-PROFILE",
+      "cui-admin-profile",
+      "cui-nbc-profile",
+      "citizen-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]

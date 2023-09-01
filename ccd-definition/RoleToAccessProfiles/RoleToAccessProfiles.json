@@ -153,15 +153,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "task-supervisor",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile",
-    "ReadOnly": "Y",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "hmcts-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",

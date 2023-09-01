@@ -12,6 +12,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const {PBAv3} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
+const claimDataBulk = require('../fixtures/events/createClaimSpecBulk.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
@@ -28,6 +29,7 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM_BULK: (scenario, pbaV3) => claimDataBulk.createClaimBulk(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
@@ -185,6 +187,41 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
+  createNewClaimWithCaseworker: async (user, scenario) => {
+    const pbaV3 = true;
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+    let createClaimData  = {};
+
+    createClaimData = data.CREATE_CLAIM_BULK(scenario, pbaV3);
+    await apiRequest.setupTokens(user);
+    await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
+    await waitForFinishedBusinessProcess(caseId);
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    if(await checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
+    if (scenario === 'ONE_V_ONE') {
+      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'ENTER_BREATHING_SPACE_SPEC');
+      assert.equal(updatedCaseState, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    } else {
+      // one v two/multiparty continuing online not currently supported for LiPs
+      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'SEND_SDO_ORDER_TO_LIP_DEFENDANT');
+      assert.equal(updatedCaseState, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
+
+  },
+
   informAgreedExtensionDate: async (user) => {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
@@ -245,7 +282,7 @@ module.exports = {
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
         break;
       case 'TWO_V_ONE':
-        if (response === 'DIFF_FULL_DEFENCE') {
+        if (response === 'DIFF_FULL_DEFENCE' || response === 'DIFF_FULL_DEFENCE_PBAv3') {
           await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM');
         } else {
           await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
@@ -583,6 +620,19 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
   }
+
+  if (eventName === 'CREATE_CLAIM_SPEC') {
+    caseId = responseBody.id;
+    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
+    console.log('Case created: ' + caseId);
+  }
+};
+
+const assertCaseworkerSubmittedNewClaim = async (expectedState, caseData) => {
+  const response = await apiRequest.submitNewClaimAsCaseworker(eventName, caseData);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  assert.equal(responseBody.state, expectedState);
 
   if (eventName === 'CREATE_CLAIM_SPEC') {
     caseId = responseBody.id;

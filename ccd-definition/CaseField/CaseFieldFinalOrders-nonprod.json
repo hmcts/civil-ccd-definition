@@ -60,7 +60,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderDateHeardComplex",
     "Label": " ",
-    "FieldType": "DateHeardFinalOrders",
+    "FieldType": "FinalOrderMadeDatesDropdown",
     "SecurityClassification": "Public"
   },
   {
@@ -303,21 +303,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recital and order \n ### Insert any recitals and order you wish to make below",
+    "Label": "**** \n ## Recitals and order",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "freeFormRecitalTextArea",
-    "Label": " ",
-    "FieldType": "TextArea",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "freeFormRecordedTextAreaLabel",
-    "Label": "### It is recorded that:",
+    "Label": "### The court records that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -331,7 +324,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedLabel",
-    "Label": "**** \n ## Ordered \n ### It is ordered that:",
+    "Label": "**** \n ## Ordered \n ### The court orders that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

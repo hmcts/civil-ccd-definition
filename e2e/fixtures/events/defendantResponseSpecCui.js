@@ -67,6 +67,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {

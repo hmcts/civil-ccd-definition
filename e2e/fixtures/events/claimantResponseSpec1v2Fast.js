@@ -11,6 +11,14 @@ module.exports = {
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
+          FixedRecoverableCosts: {
+            applicant1DQFixedRecoverableCosts: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              band: 'BAND_4',
+              complexityBandingAgreed: 'Yes',
+              reasons: 'some reasons'
+            }
+          },
           FileDirectionsQuestionnaire: {
             applicant1DQFileDirectionsQuestionnaire: {
               explainedToClient: ['CONFIRM'],
@@ -90,6 +98,10 @@ module.exports = {
                 value: listElement(config.claimantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            applicant1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {

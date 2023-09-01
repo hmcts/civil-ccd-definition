@@ -6,12 +6,5 @@
     "FieldType": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
     "Comment": "Field storing noc update details"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "casePaymentWaysToPay",
-    "Label": "Service Request",
-    "FieldType": "WaysToPay",
-    "SecurityClassification": "Public"
   }
 ]

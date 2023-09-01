@@ -25,8 +25,8 @@ async function prepareClaim(api, claimAmount) {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
 Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
@@ -48,7 +48,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
-  await prepareClaim(api, claimAmountJudge);
+    await prepareClaim(api, claimAmountJudge);
   await api.createSDO(judgeUser, 'CREATE_FAST');
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);

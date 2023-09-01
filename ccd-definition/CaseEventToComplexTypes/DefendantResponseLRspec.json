@@ -786,6 +786,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToCourtLocation",
     "ListElementCode": "responseCourtLocations",
+    "EventElementLabel": "Please select your preferred court hearing location",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -795,14 +796,32 @@
     "CaseFieldID": "respondToCourtLocation",
     "ListElementCode": "reasonForHearingAtSpecificCourt",
     "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CourtLocationSpec",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
+    "ListElementCode": "remoteHearingRequested",
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "CourtLocationSpec",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldShowCondition": "respondent1DQRemoteHearingLRspec.remoteHearingRequested = \"Yes\"",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "CourtLocationSpec",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToCourtLocation2",
     "ListElementCode": "responseCourtLocations",
-    "PageFieldDisplayOrder": 3,
+    "EventElementLabel": "Please select your preferred court hearing location",
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -810,8 +829,25 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToCourtLocation2",
     "ListElementCode": "reasonForHearingAtSpecificCourt",
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CourtLocationSpec",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
+    "ListElementCode": "remoteHearingRequested",
+    "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "CourtLocationSpec",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldShowCondition": "respondent2DQRemoteHearingLRspec.remoteHearingRequested = \"Yes\"",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "Experts",
