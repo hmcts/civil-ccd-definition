@@ -40,11 +40,8 @@ module.exports = {
        defendantWitnessCount: '#fastTrackWitnessOfFact_input3',
        numberOfPage: '#fastTrackWitnessOfFact_input6'
     },
-    fastTrackTrial_type: {
-      documentsId: '#fastTrackTrial_type-DOCUMENTS'
-    },
-    fastTrackMethodInPerson: {
-      id: '#fastTrackMethod-fastTrackMethodInPerson'
+    fastTrackHearingTime: {
+      hearingDuration: '#fastTrackHearingTime_hearingDuration-ONE_HOUR'
     },
     selectOrderAndHearingDetailsForSDOTask:{
       text: 'Order and hearing details',
@@ -101,8 +98,9 @@ module.exports = {
       await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
       await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
-      await I.click(this.fields.fastTrackMethodInPerson.id);
-      await I.click(this.fields.fastTrackTrial_type.documentsId);
+
+      await this.selectHearingMethodOption('In Person');
+      await I.click(this.fields.fastTrackHearingTime.hearingDuration);
     }
     await I.clickContinue();
   },
