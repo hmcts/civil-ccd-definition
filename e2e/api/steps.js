@@ -634,6 +634,7 @@ module.exports = {
       //delete case flags DQ party fields
       deleteCaseFields('respondent1Experts');
       deleteCaseFields('respondent1Witnesses');
+      deleteCaseFields('respondent1DetailsForClaimDetailsTab');
     }
 
     await validateEventPages(defendantResponseData, solicitor);
@@ -1576,6 +1577,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1ResponseDeadline'];
     delete responseBody.data['respondent1Experts'];
     delete responseBody.data['respondent1Witnesses'];
+    delete responseBody.data['respondent1DetailsForClaimDetailsTab'];
   } else {
     delete responseBody.data['respondent2'];
   }
