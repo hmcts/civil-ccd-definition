@@ -5,7 +5,8 @@
     "Label": "Applicant 1 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +14,8 @@
     "Label": "Applicant 2 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +23,8 @@
     "Label": "Respondent 1 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -29,6 +32,64 @@
     "Label": "Respondent 2 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDatesTitle",
+    "Label": "<h2 class=\"govuk-heading-l\">Unavailable Dates</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDatesSubText",
+    "Label": "Please add any new dates when a party, or any of their attendees, are not available for a hearing.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDatesPartyChoiceQuestion",
+    "Label": "<h2 class=\"govuk-heading-l\">Which party's availability do you want to update?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDatesPartyChoiceSubText",
+    "Label": "You can find the dates that have already been marked as unavailable in the listing notes tab",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "additionalUnavailableDates",
+    "Label": "Unavailable Dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hidePartyChoice",
+    "Label": "Hide party choice",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyChosen",
+    "Label": "Party Choice",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
