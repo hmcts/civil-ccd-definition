@@ -7,7 +7,7 @@ activateShutter=${2:-false}
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
-   excludedFilenamePatterns="-e UserProfile.json,*approver-nonprod.json,*FinalOrders-nonprod.json,*UnavailableDates-nonprod.json,*CUI-nonprod.json,*MCI-nonprod.json,*ANH-nonprod.json,*GAspec.json,*CUI.json"
+   excludedFilenamePatterns="-e *-prod.json""
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == local ]; then
