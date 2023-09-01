@@ -108,6 +108,13 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "TabFieldDisplayOrder": 15
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "applicant2",
@@ -173,6 +180,14 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "FieldShowCondition": "specRespondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 24
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
     "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
     "TabFieldDisplayOrder": 24
   },
@@ -196,7 +211,15 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
-    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "FieldShowCondition": "specRespondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 27
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
     "TabFieldDisplayOrder": 27
   },
   {
