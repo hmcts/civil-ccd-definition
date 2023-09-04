@@ -1,14 +1,14 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ADD_UNAVAILABLE_DATES",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "CR"
+        "CRUD": "CRU"
       }
     ]
   }
