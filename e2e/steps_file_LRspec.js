@@ -449,6 +449,7 @@ module.exports = function () {
          ... conditionalSteps(claimType === 'fast', [
                 () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
                 () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
+                () => this.clickContinue(),
                 () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                 () => this.clickContinue(),
                 () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
