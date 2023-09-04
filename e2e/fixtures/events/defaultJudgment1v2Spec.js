@@ -26,7 +26,7 @@ module.exports = {
       currentDefendant: 'Have the defendants paid some of the amount owed?',
       currentDefendantName: 'both defendants',
       businessProcess: {
-        camundaEvent: 'CREATE_CLAIM_SPEC',
+        camundaEvent: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
         status: 'FINISHED'
       }
     },

@@ -25,7 +25,7 @@ async function prepareClaim(api, claimAmount) {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 

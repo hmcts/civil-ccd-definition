@@ -19,6 +19,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ClaimAdmitAllBySetDateLabel",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CR"
@@ -182,6 +188,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1RepaymentPlan",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defenceRouteRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   }

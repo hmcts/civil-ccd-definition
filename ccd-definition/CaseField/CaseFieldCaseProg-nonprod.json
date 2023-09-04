@@ -242,5 +242,19 @@
     "FieldTypeParameter": "CaseDocument",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "evidenceUploadOptionsLabel",
+    "Label": "You can use the options below to let the court know who this document is from",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "evidenceUploadOptions",
+    "Label": "Select one of the options",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public"
   }
 ]

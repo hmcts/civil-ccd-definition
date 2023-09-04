@@ -2495,5 +2495,42 @@
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePaymentWaysToPay",
+    "Label": "Service Request",
+    "FieldType": "WaysToPay",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedPBADetails",
+    "Label": "Claim Issued PBA details\n",
+    "FieldType": "SRPbaDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantLitigationFriendWarning",
+    "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2LitigationFriendWarning",
+    "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Comment": "Copy field for 1v2DS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantCommonLitigationFriendWarning",
+    "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Comment": "Copy field for 1v2SS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
   }
 ]

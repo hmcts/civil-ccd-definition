@@ -47,5 +47,19 @@
     "ElementLabel": "The time estimate is",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldType": "Number",
+    "ElementLabel": "Hours",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldType": "Number",
+    "ElementLabel": "Minutes",
+    "SecurityClassification": "Public"
   }
 ]

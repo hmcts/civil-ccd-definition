@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "Expert",
+    "ListElementCode": "eventAdded",
+    "FieldType": "Text",
+    "ElementLabel": "Event added",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Expert",
+    "ListElementCode": "dateAdded",
+    "FieldType": "Date",
+    "ElementLabel": "Date added",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

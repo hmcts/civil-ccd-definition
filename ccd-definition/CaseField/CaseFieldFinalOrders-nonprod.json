@@ -68,7 +68,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderDateHeardComplex",
     "Label": " ",
-    "FieldType": "DateHeardFinalOrders",
+    "FieldType": "FinalOrderMadeDatesDropdown",
     "Searchable": "N",
     "SecurityClassification": "Public"
   },
@@ -347,14 +347,6 @@
     "ID": "freeFormRecitalAndOrderLabel",
     "Label": "**** \n ## Recitals and order",
     "FieldType": "Label",
-    "Searchable": "N",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "freeFormRecitalTextArea",
-    "Label": " ",
-    "FieldType": "TextArea",
     "Searchable": "N",
     "SecurityClassification": "Public"
   },

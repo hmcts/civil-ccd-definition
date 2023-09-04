@@ -2339,6 +2339,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQRequestedCourt",
+    "Label": " ",
+    "FieldType": "RequestedCourtLocationLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocumentSpec",
     "Label": " ",
     "FieldType": "ResponseDocument",
@@ -2664,6 +2671,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRemoteHearingLRspec",
+    "Label": "Defendant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRemoteHearingLRspec",
+    "Label": "Defendant 2 Remote Hearing Questions",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnessesSmallClaim",
     "Label": "Defendant 1 witnesses",
     "FieldType": "Witnesses",
@@ -2676,7 +2697,13 @@
     "FieldType": "Witnesses",
     "SecurityClassification": "Public"
   },
-
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRemoteHearingLRspec",
+    "Label": "Claimant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearingLRspec",
+    "SecurityClassification": "Public"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingLRspec",
@@ -2731,6 +2758,28 @@
     "ID": "specAoSCompanyOrganisationRespondent2Information",
     "Label": "**Party type:** ${respondent2Copy.partyTypeDisplayValue}\n\n**Name: ${respondent2Copy.partyName}** ${respondent2Copy.soleTraderTradingAs}\n\n**Email:** ${respondent2Copy.partyEmail}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdtRequestIdFromSdt",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdtRequestId",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "bulkCustomerId",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
