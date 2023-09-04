@@ -8,7 +8,7 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -21,7 +21,7 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -143,6 +143,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrgIndividuals",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2OrgIndividuals",
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"

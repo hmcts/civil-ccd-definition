@@ -167,35 +167,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "individualsAttendingApplicantLRLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the claimant's legal representative.\n",
+    "ID": "LROrgIndividualsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "individualsAttendingDefendantLRLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the defendant's legal representative.\n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "individualsAttendingApplicantLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the claimant organisation.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "individualsAttendingDefendantLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing on behalf of the defendant organisation.",
+    "ID": "orgIndividualsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2OrgIndividuals",
     "Label": "Individuals attending for the organisation details",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",

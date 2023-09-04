@@ -14,6 +14,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_INDIVIDUAL\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -21,6 +22,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualLastName",
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_INDIVIDUAL\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -38,6 +40,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "companyName",
     "FieldDisplayOrder": 6,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_COMPANY\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -46,6 +49,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "organisationName",
     "FieldDisplayOrder": 7,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_ORGANISATION\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -54,6 +58,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderTitle",
     "FieldDisplayOrder": 8,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -62,6 +67,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderFirstName",
     "FieldDisplayOrder": 9,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -70,6 +76,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderLastName",
     "FieldDisplayOrder": 10,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -78,6 +85,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderTradingAs",
     "FieldDisplayOrder": 11,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_ADMIN_SOLE_TRADER\"",
     "DisplayContext": "MANDATORY"
   },
   {

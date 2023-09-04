@@ -32,7 +32,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "companyName",
     "FieldDisplayOrder": 5,
-    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_COMPANY\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -41,7 +41,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "organisationName",
     "FieldDisplayOrder": 6,
-    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_ORGANISATION\"",
     "DisplayContext": "MANDATORY"
   },
   {

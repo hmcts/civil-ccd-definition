@@ -31,7 +31,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "companyName",
-    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_2_ADMIN_ORGANISATION\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\"",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -40,7 +40,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "organisationName",
-    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\" OR partyChosenType=\"DEFENDANT_2_ADMIN_ORGANISATION\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_ORGANISATION\"",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
