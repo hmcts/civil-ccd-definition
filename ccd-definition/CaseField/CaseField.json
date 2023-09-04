@@ -336,7 +336,7 @@
     "Searchable": "N",
     "SecurityClassification": "Public"
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "ID": "claimantSolicitorEmail",
     "Label": "**Claimant’s email address:** ${applicantSolicitor1UserDetails.email}",
@@ -586,12 +586,12 @@
     "SecurityClassification": "Public"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "respondentSharedClaimResponseDocument",
-  "Label": "Upload defence",
-  "FieldType": "ResponseDocument",
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSharedClaimResponseDocument",
+    "Label": "Upload defence",
+    "FieldType": "ResponseDocument",
     "Searchable": "N",
-  "SecurityClassification": "Public"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -690,12 +690,12 @@
     "SecurityClassification": "Public"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "respondent2DQVulnerabilityQuestions",
-  "Label": "Defendant 2 Vulnerability Questions",
-  "FieldType": "VulnerabilityQuestions",
-  "Searchable": "N",
-  "SecurityClassification": "Public"
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQVulnerabilityQuestions",
+    "Label": "Defendant 2 Vulnerability Questions",
+    "FieldType": "VulnerabilityQuestions",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1044,7 +1044,7 @@
     "ID": "applicant1OrganisationPolicy",
     "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1069,7 +1069,7 @@
     "ID": "applicant2OrganisationPolicy",
     "Label": "Applicant 2 organisation policy",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1077,7 +1077,7 @@
     "ID": "respondent1OrganisationPolicy",
     "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -1457,7 +1457,7 @@
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -2494,6 +2494,7 @@
     "ID": "respondent2DetailsDiffLR",
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2501,6 +2502,7 @@
     "ID": "casePaymentWaysToPay",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2508,6 +2510,7 @@
     "ID": "claimIssuedPBADetails",
     "Label": "Claim Issued PBA details\n",
     "FieldType": "SRPbaDetails",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
