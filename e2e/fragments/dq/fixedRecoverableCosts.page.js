@@ -34,7 +34,7 @@ module.exports = {
 
   async fixedRecoverableCosts(party) {
     let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    console.log('fastTrackUpliftsEnabled: ' + fastTrackUpliftsEnabled)
+    console.log('fastTrackUpliftsEnabled: ' + fastTrackUpliftsEnabled);
     if (fastTrackUpliftsEnabled) {
       await within(this.fields(party).isSubjectToFixedRecoverableCostRegime.id, () => {
         I.runAccessibilityTest();
