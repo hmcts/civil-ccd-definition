@@ -10,9 +10,45 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ListElementCode": "typeRepresentationClaimantOneDynamic",
+    "ID": "ClaimantAndDefendantHeard",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "typeRepresentationClaimantTwoDynamic",
+    "ID": "ClaimantAndDefendantHeard",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "typeRepresentationDefendantOneDynamic",
+    "ID": "ClaimantAndDefendantHeard",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "typeRepresentationDefendantTwoDynamic",
+    "ID": "ClaimantAndDefendantHeard",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationClaimantListLabel",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "### Claimant",
+    "ElementLabel": "### Claimant: ${typeRepresentationClaimantOneDynamic}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -20,7 +56,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationCounselForClaimantList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Counsel for claimant",
+    "ElementLabel": "Counsel for ${typeRepresentationClaimantOneDynamic}, the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COUNSEL_FOR_CLAIMANT\"",
     "SecurityClassification": "Public"
@@ -29,7 +65,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationSolicitorForClaimantList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Solicitor for claimant",
+    "ElementLabel": "Solicitor for ${typeRepresentationClaimantOneDynamic}, the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"SOLICITOR_FOR_CLAIMANT\"",
     "SecurityClassification": "Public"
@@ -38,7 +74,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationCostDraftsmanList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Costs draftsman for the claimant",
+    "ElementLabel": "Costs draftsman for the ${typeRepresentationClaimantOneDynamic}, the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public"
@@ -47,7 +83,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationTheClaimantInPersonList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "The claimant in person",
+    "ElementLabel": "${typeRepresentationClaimantOneDynamic}, he claimant, in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"THE_CLAIMANT_IN_PERSON\"",
     "SecurityClassification": "Public"
@@ -56,7 +92,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationLayRepresentativeList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Lay representative for the claimant",
+    "ElementLabel": "Lay representative for ${typeRepresentationClaimantOneDynamic}, the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"LAY_REPRESENTATIVE_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public"
@@ -74,7 +110,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationDefendantListLabel",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "### Defendant",
+    "ElementLabel": "### Defendant: ${typeRepresentationDefendantOneDynamic}",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -91,7 +127,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationCounselForDefendantList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Counsel for defendant",
+    "ElementLabel": "Counsel for ${typeRepresentationDefendantOneDynamic}, the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COUNSEL_FOR_DEFENDANT\"",
     "SecurityClassification": "Public"
