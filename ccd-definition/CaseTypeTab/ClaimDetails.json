@@ -180,7 +180,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
-    "FieldShowCondition": "specRespondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
     "TabFieldDisplayOrder": 24
   },
   {
@@ -211,7 +211,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim Details",
     "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
-    "FieldShowCondition": "specRespondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
+    "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
     "TabFieldDisplayOrder": 27
   },
   {
