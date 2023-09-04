@@ -5,8 +5,7 @@
     "Label": "Applicant 1 unavailable dates",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
