@@ -216,7 +216,7 @@
     "ID": "submittedDate",
     "Label": "Date claim Submitted",
     "FieldType": "DateTime",
-    "Searchable": "N",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
