@@ -136,7 +136,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationSolicitorForDefendantList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Solicitor for defendant",
+    "ElementLabel": "Solicitor for ${typeRepresentationDefendantOneDynamic}, the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"SOLICITOR_FOR_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -145,7 +145,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationCostDraftsmanDefList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Costs draftsman for the defendant",
+    "ElementLabel": "Costs draftsman for ${typeRepresentationDefendantOneDynamic}, the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
@@ -154,7 +154,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationTheDefendantInPersonList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "The defendant in person",
+    "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"THE_DEFENDANT_IN_PERSON\"",
     "SecurityClassification": "Public"
@@ -163,7 +163,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationLayRepresentativeDefList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Lay representative for the defendant",
+    "ElementLabel": "Lay representative for ${typeRepresentationDefendantOneDynamic}, the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public"
