@@ -1162,7 +1162,7 @@ const validateEventPages = async (data, solicitor) => {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    data = await updateCaseDataWithPlaceholders(data);
+    //data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -1261,27 +1261,23 @@ const assertValidData = async (data, pageId, solicitor) => {
  * @param path initially undefined
  */
 function whatsTheDifference(caseData, responseBodyData, path) {
-  if (caseData && responseBodyData) {
-    Object.keys(caseData).forEach(key => {
-      if (Object.keys(responseBodyData || {}).indexOf(key) < 0) {
-        console.log('response does not have ' + appendToPath(path, key)
-          + '. CaseData has ' + JSON.stringify(caseData[key]));
-      } else if (typeof caseData[key] === 'object') {
-        whatsTheDifference(caseData[key], responseBodyData[key], [key]);
-      } else if (caseData[key] !== responseBodyData[key]) {
-        console.log('response and case data are different on ' + appendToPath(path, key));
-        console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
-      }
-    });
-    Object.keys(responseBodyData).forEach(key => {
-      if (Object.keys(caseData).indexOf(key) < 0) {
-        console.log('caseData does not have ' + appendToPath(path, key)
-          + '. Response has ' + JSON.stringify(responseBodyData[key]));
-      }
-    });
-  } else {
-    whatsTheDifference(caseData || {}, responseBodyData || {}, path);
-  }
+  Object.keys(caseData).forEach(key => {
+    if (Object.keys(responseBodyData).indexOf(key) < 0) {
+      console.log('response does not have ' + appendToPath(path, key)
+        + '. CaseData has ' + JSON.stringify(caseData[key]));
+    } else if (typeof caseData[key] === 'object') {
+      whatsTheDifference(caseData[key], responseBodyData[key], [key]);
+    } else if (caseData[key] !== responseBodyData[key]) {
+      console.log('response and case data are different on ' + appendToPath(path, key));
+      console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
+    }
+  });
+  Object.keys(responseBodyData).forEach(key => {
+    if (Object.keys(caseData).indexOf(key) < 0) {
+      console.log('caseData does not have ' + appendToPath(path, key)
+        + '. Response has ' + JSON.stringify(responseBodyData[key]));
+    }
+  });
 }
 
 function appendToPath(path, key) {
