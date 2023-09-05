@@ -360,7 +360,7 @@
     "PageID": "ResponseConfirmDetails",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "specAoSRespondent2CorrespondenceAddressRequired=\"No\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND specAoSRespondent2CorrespondenceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -372,7 +372,7 @@
     "PageID": "ResponseConfirmDetails",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "specAoSRespondentCorrespondenceAddressRequired=\"No\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND specAoSRespondentCorrespondenceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
