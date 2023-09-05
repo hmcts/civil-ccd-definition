@@ -62,5 +62,37 @@
     "ListElementCode": "typeRepresentationComplex.trialProcedureComplex.label3Def",
     "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureDefTwoComplex.listDefTwo",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureDefTwoComplex.label1DefTwo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureDefTwoComplex.label2DefTwo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialNoticeProcedure",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderRepresentation",
+    "ListElementCode": "typeRepresentationComplex.trialProcedureDefTwoComplex.label3DefTwo",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "READONLY"
   }
 ]
