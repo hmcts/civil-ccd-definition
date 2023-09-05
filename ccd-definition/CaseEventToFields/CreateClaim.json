@@ -67,6 +67,7 @@
     "CaseFieldID": "applicant1DQRemoteHearing",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": " ",
     "PageID": "Court",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,

@@ -30,7 +30,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQRemoteHearing",
-    "Label": " ",
+    "Label": "Claimant 1 Remote Hearing Questions",
     "FieldType": "RemoteHearing",
     "SecurityClassification": "Public"
   },
