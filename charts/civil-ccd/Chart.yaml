@@ -39,7 +39,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 
-  # WA
+# WA
   - name: wa-task-management-api
     version: ~0.0.37
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
@@ -56,7 +56,7 @@ dependencies:
     version: 0.0.29
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
-  # WA Crons
+# WA Crons
   - name: wa-task-batch-service
     version: ~0.0.15
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
@@ -65,7 +65,7 @@ dependencies:
     version: ~0.0.3
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
-  # CCD message publisher
+# CCD message publisher
   - name: ccd-message-publisher
     version: ~0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
