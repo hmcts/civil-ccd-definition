@@ -334,7 +334,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseConfirmDetails",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative != \"Yes\"",
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND respondent2SameLegalRepresentative = \"No\"",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
@@ -360,7 +360,7 @@
     "PageID": "ResponseConfirmDetails",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND specAoSRespondent2CorrespondenceAddressRequired=\"No\"",
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND specAoSRespondent2CorrespondenceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "N"
   },
   {

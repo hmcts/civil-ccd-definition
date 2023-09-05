@@ -612,7 +612,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
+          "legal-adviser",
           "judge-profile",
           "caseworker-civil-admin"
         ],
@@ -632,7 +632,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
+          "legal-adviser",
           "judge-profile",
           "caseworker-civil-admin"
         ],
