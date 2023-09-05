@@ -37,7 +37,7 @@ const checkCaseFlagsEnabled = async () => {
 };
 
 const checkFastTrackUpliftsEnabled = async () => {
-  return checkFlagEnabled('fast-track-uplifts');
+  return true;
 };
 
 module.exports =  {
