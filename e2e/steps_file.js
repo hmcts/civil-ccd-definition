@@ -51,8 +51,6 @@ const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntentio
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const takeCaseOffline = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
-const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
-
 const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
 
@@ -77,6 +75,7 @@ const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSD
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
+const fixedRecoverableCostsPage = require('./fragments/dq/fixedRecoverableCosts.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const disclosureOfNonElectronicDocumentsPage = require('./fragments/dq/disclosureOfNonElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
@@ -124,6 +123,7 @@ const hearingNoticeListPage = require('./pages/caseProgression/hearingNoticeList
 const hearingNoticeListTypePage = require('./pages/caseProgression/hearingNoticeListingType.page');
 const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/hearingScheduledChooseDetails.page');
 const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
+const confirmTrialReadinessPage = require('./pages/caseProgression/confirmTrialReadiness.page');
 
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
@@ -148,13 +148,14 @@ const DEFENDANT2_NAME = 'Dr Foo Bar';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
-  offline: 'Your claim has been received and will progress offline'
+  offline: 'Your claim has been received and will progress offline',
+  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.png';
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
@@ -237,7 +238,9 @@ module.exports = function () {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
         }, SIGNED_IN_SELECTOR);
+
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
       }
@@ -267,11 +270,12 @@ module.exports = function () {
 
     triggerStepsWithScreenshot: async function (steps) {
       for (let i = 0; i < steps.length; i++) {
-        try {
+        //commenting this out, this will give us few minutes back
+        /*try {
           await this.takeScreenshot();
         } catch {
           output.log(`Error taking screenshot: ${getScreenshotName()}`);
-        }
+        }*/
         await steps[i]();
       }
     },
@@ -300,7 +304,7 @@ module.exports = function () {
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit',
-          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+          shouldStayOnline ? CONFIRMATION_MESSAGE.pbaV3Online : CONFIRMATION_MESSAGE.offline),
         () => event.returnToCaseDetails(),
       ] : [
         () => continuePage.continue(),
@@ -366,7 +370,8 @@ module.exports = function () {
       ]);
     },
 
-    async initiateDJUnspec(caseId, scenario) {
+    async initiateDJUnspec(caseNumber, scenario) {
+      caseId = caseNumber;
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -433,12 +438,11 @@ module.exports = function () {
       ]);
     },
 
-    async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
-      eventName = 'Inform agreed extension date';
+    async informAgreedExtensionDate() {
+      eventName = 'Inform agreed 28 day extension';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
         () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
       ]);
@@ -453,6 +457,22 @@ module.exports = function () {
             () => hearingScheduledMoreInfoPage.enterMoreInfo(),
             () => event.submit('Submit', ''),
             () => event.returnToCaseDetails()
+          ]);
+        },
+
+    async confirmTrialReadiness(user, hearingDateIsLessThan3Weeks = false, readyForTrial = 'yes') {
+          eventName = 'Confirm trial arrangements';
+          const confirmationMessage = readyForTrial == 'yes' ? 'You have said this case is ready for trial or hearing' : 'You have said this case is not ready for trial or hearing';
+          await this.triggerStepsWithScreenshot([
+            ...conditionalSteps(hearingDateIsLessThan3Weeks == false, [
+              () => caseViewPage.startEvent(eventName, caseId),
+              () => confirmTrialReadinessPage.updateTrialConfirmation(user, readyForTrial, 'yes'),
+              () => event.submit('Submit', confirmationMessage),
+              () => event.returnToCaseDetails()
+            ]),
+            ...conditionalSteps(hearingDateIsLessThan3Weeks == true, [
+              () => caseViewPage.verifyErrorMessageOnEvent(eventName, caseId, 'Trial arrangements had to be confirmed more than 3 weeks before the trial')
+            ])
           ]);
         },
 
@@ -478,6 +498,7 @@ module.exports = function () {
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
           ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
@@ -506,6 +527,7 @@ module.exports = function () {
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+        () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
         ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.
                             enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
@@ -708,15 +730,15 @@ module.exports = function () {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
-          output.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found before try #${tryNumber} was executed`);
           break;
         }
         await action();
         if (await this.waitForSelector(locator) != null) {
-          output.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
           break;
         } else {
-          output.print(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
+          console.log(`retryUntilExists(${locator}): element not found after try #${tryNumber} was executed`);
         }
         if (tryNumber === maxNumberOfTries) {
           throw new Error(`Maximum number of tries (${maxNumberOfTries}) has been reached in search for ${locator}`);
@@ -892,7 +914,7 @@ module.exports = function () {
     async navigateToCaseDetails(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        output.log(`Navigating to case: ${normalizedCaseId}`);
+        console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
       }, SIGNED_IN_SELECTOR);
 
@@ -913,6 +935,8 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
       }, SIGNED_IN_SELECTOR);
 
@@ -940,6 +964,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
+        () => caseViewPage.rejectCookieBanner(),
         () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);

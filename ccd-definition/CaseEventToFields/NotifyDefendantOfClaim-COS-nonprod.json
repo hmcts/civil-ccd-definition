@@ -47,6 +47,28 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "respondent1",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitorToNotify",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
+    "CaseFieldID": "respondent2",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectDefendantSolicitorToNotify",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "notifyClaimLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -54,17 +76,6 @@
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "defendant1LIPAtClaimIssued=\"No\" OR defendant2LIPAtClaimIssued=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "respondent1",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "CertificateOfService1",
-    "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -123,17 +134,6 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateCosNotifyClaimDef1",
     "RetriesTimeoutURLMidEvent": 0,
     "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
-    "CaseFieldID": "respondent2",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "CertificateOfService2",
-    "PageDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL",

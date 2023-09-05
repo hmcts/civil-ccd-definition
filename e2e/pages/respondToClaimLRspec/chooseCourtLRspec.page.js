@@ -1,5 +1,4 @@
 const {I} = inject();
-const {checkCourtLocationDynamicListIsEnabled} = require('./../../api/testingSupport');
 const config = require('./../../config');
 
 module.exports = {
@@ -20,7 +19,15 @@ module.exports = {
                 preferredCourt: config.claimantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt'
+            reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt',
+            remoteHearingRequested: {
+              id: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              options: {
+                yes: 'Yes',
+                no: 'No'
+              }
+            },
+            reasonForRemoteHearing: '#applicant1DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
       }
@@ -43,7 +50,15 @@ module.exports = {
                 preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]'
+            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
+            remoteHearingRequested: {
+              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              options: {
+                yes: 'Yes',
+                no: 'No'
+              }
+            },
+            reasonForRemoteHearing: '#respondent2DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
        }
@@ -67,7 +82,15 @@ module.exports = {
                 preferredCourt: config.defendantSelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]'
+            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
+            remoteHearingRequested: {
+              id: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio',
+              options: {
+                yes: 'Yes',
+                no: 'No'
+              }
+            },
+            reasonForRemoteHearing: '#respondent1DQRemoteHearingLRspec_reasonForRemoteHearing'
           }
         };
       }
@@ -75,27 +98,15 @@ module.exports = {
   },
 
   async chooseCourt(mpScenario) {
-    let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled) {
-      I.waitForElement(this.fields(mpScenario).oldFields.chooseCourtLocation.id);
-      await I.runAccessibilityTest();
-      if (mpScenario == 'ClaimantResponse') {
-        I.fillField(this.fields(mpScenario).oldFields.chooseCourtLocation.id, '343');
-        I.fillField(this.fields(mpScenario).oldFields.reasonForHearingAtSpecificCourt, 'Some reason');
-
-      } else {
-        await within(this.fields(mpScenario).oldFields.chooseCourtLocation.id, () => {
-          I.click(this.fields(mpScenario).oldFields.chooseCourtLocation.options.no);
-        });
-      }
-    }
-    else {
-      I.waitForElement(this.fields(mpScenario).fields.responseCourtLocations.id);
-      await I.runAccessibilityTest();
-      I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
-      this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
-      I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
-    }
+    I.waitForElement(this.fields(mpScenario).fields.responseCourtLocations.id);
+    await I.runAccessibilityTest();
+    I.selectOption(this.fields(mpScenario).fields.responseCourtLocations.id,
+    this.fields(mpScenario).fields.responseCourtLocations.options.preferredCourt);
+    I.fillField(this.fields(mpScenario).fields.reasonForHearingAtSpecificCourt, 'Some reason');
+    await within(this.fields(mpScenario).fields.remoteHearingRequested.id, () => {
+      I.click(this.fields(mpScenario).fields.remoteHearingRequested.options.yes);
+    });
+    I.fillField(this.fields(mpScenario).fields.reasonForRemoteHearing, 'Some reason');
     await I.clickContinue();
   }
 };

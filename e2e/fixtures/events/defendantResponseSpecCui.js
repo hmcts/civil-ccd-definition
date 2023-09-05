@@ -1,5 +1,6 @@
 const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
+const {element} = require('../api/dataHelper');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE') => {
     const responseData = {
@@ -30,7 +31,18 @@ module.exports = {
             responseClaimExpertSpecRequired: 'No'
           },
           SmallClaimWitnesses: {
-            responseClaimWitnesses: '10'
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
           },
           Language: {
             respondent1DQLanguage: {
@@ -55,6 +67,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -345,7 +361,18 @@ module.exports = {
             responseClaimExpertSpecRequired2: 'No'
           },
           SmallClaimWitnesses: {
-            responseClaimWitnesses2: '10'
+            respondent2DQWitnesses: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
           },
           Language: {
             respondent2DQLanguage: {

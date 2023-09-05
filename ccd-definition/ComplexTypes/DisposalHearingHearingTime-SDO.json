@@ -8,16 +8,30 @@
   },
   {
     "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "dateFromLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
     "ListElementCode": "dateFrom",
     "FieldType": "Date",
-    "ElementLabel": "Date from",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "dateToLabel",
+    "FieldType": "Label",
+    "ElementLabel": "Date to",
     "SecurityClassification": "Public"
   },
   {
     "ID": "DisposalHearingHearingTime",
     "ListElementCode": "dateTo",
     "FieldType": "Date",
-    "ElementLabel": "Date to",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
@@ -26,6 +40,20 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
     "ElementLabel": "The time estimate is",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldType": "Number",
+    "ElementLabel": "Hours",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldType": "Number",
+    "ElementLabel": "Minutes",
     "SecurityClassification": "Public"
   }
 ]

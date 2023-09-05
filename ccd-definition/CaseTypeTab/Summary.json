@@ -96,5 +96,13 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "claimIssuedPaymentDetails",
     "TabFieldDisplayOrder": 12
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "otherDetails",
+    "TabFieldDisplayOrder": 13
   }
 ]

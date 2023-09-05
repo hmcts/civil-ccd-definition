@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.26
+version: 0.0.28
 maintainers:
   - name: HMCTS Civil team
 
@@ -19,7 +19,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
-    version: ~0.2.16
+    version: ~1.0.8
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
@@ -31,7 +31,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: idam-pr.enabled
   - name: servicebus
-    version: 1.0.2
+    version: 1.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 
@@ -39,9 +39,9 @@ dependencies:
   - name: wa
     version: 0.1.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: wa.enabled
+    condition: civil-wa.enabled
 # CCD message publisher
   - name: ccd-message-publisher
     version: ~0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: wa.enabled
+    condition: civil-wa.enabled

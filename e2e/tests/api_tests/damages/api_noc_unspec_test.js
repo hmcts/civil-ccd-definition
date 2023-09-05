@@ -7,7 +7,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec');
+Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-nonprod-noc');
 
 Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
@@ -66,7 +66,7 @@ Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', asy
   await api.checkUserCaseAccess(defendantSolicitorUser, true);
 
   await api.defendantResponse(config.defendantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
-  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION');
+  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
 Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({api, noc}) => {
@@ -84,7 +84,7 @@ Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', asy
 
   await api.defendantResponse(config.defendantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'solicitorOne');
   await api.defendantResponse(config.secondDefendantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'solicitorTwo');
-  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION');
+  await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
 Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc}) => {

@@ -8,6 +8,38 @@ let incidentMessage;
 const MAX_RETRIES = 60;
 const RETRY_TIMEOUT_MS = 5000;
 
+const checkFlagEnabled = async (flag) => {
+  const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
+
+  return await restHelper.request(
+    `${config.url.civilService}/testing-support/feature-toggle/${flag}`,
+    {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`,
+    }, null, 'GET')
+    .then(async response =>  {
+        if (response.status === 200) {
+          const json = await response.json();
+          return json.toggleEnabled;
+        } else {
+          throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
+        }
+      }
+    );
+};
+
+const checkHmcEnabled = async () => {
+  return checkFlagEnabled('hmc');
+};
+
+const checkCaseFlagsEnabled = async () => {
+  return checkFlagEnabled('case-flags');
+};
+
+const checkFastTrackUpliftsEnabled = async () => {
+  return checkFlagEnabled('fast-track-uplifts');
+};
+
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -109,14 +141,6 @@ module.exports =  {
   checkToggleEnabled: async (toggle) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
 
-    if(toggle === 'hearing-and-listing-sdo'){
-      return false;
-    }
-
-    if(toggle === 'case-flags'){
-      return false;
-    }
-
     return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
         {
@@ -139,51 +163,6 @@ module.exports =  {
 
        return await restHelper.request(
         `${config.url.civilService}/testing-support/feature-toggle/noc`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-        }, null, 'GET')
-         .then(async response =>  {
-             if (response.status === 200) {
-               const json = await response.json();
-               return json.toggleEnabled;
-             } else {
-               throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-             }
-           }
-         );
-  },
-
-  checkHnlToggleEnabled: async () => {
-    return false;
-    // const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    //
-    // return await restHelper.request(
-    //   `${config.url.civilService}/testing-support/feature-toggle/hearing-and-listing-sdo`,
-    //   {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${authToken}`,
-    //   }, null, 'GET')
-    //   .then(async response =>  {
-    //       if (response.status === 200) {
-    //         const json = await response.json();
-    //         return json.toggleEnabled;
-    //       } else {
-    //         throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-    //       }
-    //     }
-    //   );
-  },
-
-  checkHnlLegalRepToggleEnabled: async () => {
-    return true;
-  },
-
-  checkCourtLocationDynamicListIsEnabled: async () => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-
-       return await restHelper.request(
-        `${config.url.civilService}/testing-support/feature-toggle/court-locations`,
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
@@ -239,10 +218,6 @@ module.exports =  {
       );
   },
 
-  checkCaseFlagsEnabled: () => {
-    return false;
-  },
-
   updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
 
@@ -266,6 +241,13 @@ module.exports =  {
       'POST');
 
     return await response.json();
-  }
-
+  },
+  checkCaseFlagsAndHmcEnabled: async () => {
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    const hmcEnabled = await checkHmcEnabled();
+    return caseFlagsEnabled && hmcEnabled;
+  },
+  checkHmcEnabled,
+  checkCaseFlagsEnabled,
+  checkFastTrackUpliftsEnabled
 };

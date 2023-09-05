@@ -13,7 +13,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "documentOnly",
+    "CaseFieldID": "documentAndName",
     "AccessControl": [
       {
         "UserRoles": [
@@ -38,6 +38,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNoteTypeNoteTA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "noteAdditionDateTime",
     "AccessControl": [
       {
         "UserRoles": [

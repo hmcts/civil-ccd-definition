@@ -56,17 +56,18 @@ module.exports = {
             }
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
               details: [
                 element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
                   reasonForWitness: 'None'
                 })
-              ],
-              witnessesToAppear: 'Yes'}
+              ]
+            }
           },
           Language: {
             respondent1DQLanguage: {
@@ -90,6 +91,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -231,6 +236,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -353,17 +362,18 @@ module.exports = {
             }
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
               details: [
                 element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
                   reasonForWitness: 'None'
                 })
-              ],
-              witnessesToAppear: 'Yes'}
+              ]
+            }
           },
           Language: {
             respondent1DQLanguage: {
@@ -387,6 +397,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {

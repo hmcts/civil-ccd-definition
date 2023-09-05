@@ -13,7 +13,6 @@
     "ListElementCode": "responseCourtLocations",
     "FieldType": "DynamicList",
     "ElementLabel": "Please select your preferred hearing court centre",
-    "HintText": "If the defendant is an individual the case will be held at the defendant's preferred court.",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -85,7 +85,7 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
 }).retry(3);
 
 Scenario('Add case flags', async ({I}) => {
-  if(checkCaseFlagsEnabled()) {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -101,7 +101,7 @@ Scenario('Add case flags', async ({I}) => {
 });
 
 Scenario('Manage case flags', async ({I}) => {
-  if(checkCaseFlagsEnabled()) {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       flagType: 'Vulnerable user',

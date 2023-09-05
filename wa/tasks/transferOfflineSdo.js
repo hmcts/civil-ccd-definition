@@ -15,5 +15,7 @@ module.exports = {
   work_type_label: 'Hearing work',
   permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign' ] },
   description: '[Case is Offline]',
-  role_category: 'ADMIN'
+  role_category: 'ADMIN',
+  minor_priority: 500,
+  major_priority: 5000
 };

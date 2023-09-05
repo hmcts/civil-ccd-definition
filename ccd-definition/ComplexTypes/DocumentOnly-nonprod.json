@@ -1,17 +1,25 @@
 [
   {
-    "ID": "DocumentOnly",
+    "ID": "DocumentAndName",
     "ListElementCode": "documentName",
     "FieldType": "Text",
     "ElementLabel": "Name of document",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "DocumentOnly",
+    "ID": "DocumentAndName",
     "ListElementCode": "document",
     "FieldType": "Document",
     "ElementLabel": "Document",
     "SecurityClassification": "Public",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png"
+  },
+  {
+    "ID": "DocumentAndName",
+    "ListElementCode": "createdDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date added",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "document = \"DO_NOT_SHOW\""
   }
 ]

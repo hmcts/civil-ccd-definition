@@ -1,13 +1,6 @@
 [
   {
     "ID": "RepaymentPlanLRspec",
-    "ListElementCode": "repaymentPlanLabel",
-    "FieldType": "Label",
-    "ElementLabel": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.\n",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "RepaymentPlanLRspec",
     "ListElementCode": "paymentAmount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Regular payments of\n",

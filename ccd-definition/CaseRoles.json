@@ -38,5 +38,21 @@
     "Description": "Creator of case",
     "JurisdictionID": "CIVIL",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "[CLAIMANT]",
+    "Name": "Citizen Claimant",
+    "Description": "Citizen Claimant",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "[DEFENDANT]",
+    "Name": "Citizen Defendant",
+    "Description": "Citizen Defendant",
+    "JurisdictionID": "CIVIL",
+    "SecurityClassification": "Public"
   }
 ]

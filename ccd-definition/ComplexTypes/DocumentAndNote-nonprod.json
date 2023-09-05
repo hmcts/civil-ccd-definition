@@ -27,5 +27,13 @@
     "FieldType": "TextArea",
     "ElementLabel": "Add a note about this document",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "DocumentAndNote",
+    "ListElementCode": "createdDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date added",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   }
 ]
