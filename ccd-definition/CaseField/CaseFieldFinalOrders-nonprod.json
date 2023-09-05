@@ -159,28 +159,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsDefendantPaySub",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsClaimantPaySub",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsDefendantSum",
-    "Label": " ",
-    "FieldType": "AssistedOrderCostDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "assistedOrderCostsClaimantSum",
+    "ID": "assistedOrderMakeAnOrderForCosts",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
     "SecurityClassification": "Public"
@@ -190,6 +169,27 @@
     "ID": "assistedOrderCostsBespoke",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "publicFundingCostsProtectionLabel",
+    "Label": "### Does the paying party have public funding costs protection?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "publicFundingCostsProtection",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "publicFundingCostsProtectionDropdown",
+    "Label": "The paying party has the benefit of cost protection under section 26 of the Legal Aid, Sentencing and Punishment of Offenders Act 2012. The amount of costs that the paying party shall pay shall be determined on an application by the receiving party under rule 16 of the Civil legal Aid (Costs) Regulations 2013. Any objection by the paying party to the amount of costs claimed shall be dealt with on that occasion",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
