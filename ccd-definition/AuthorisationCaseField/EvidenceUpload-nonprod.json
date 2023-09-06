@@ -622,7 +622,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -647,7 +648,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -672,7 +674,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -697,7 +700,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -722,7 +726,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -747,7 +752,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -772,7 +778,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -797,7 +804,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -822,7 +830,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -847,7 +856,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -872,7 +882,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -897,7 +908,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -922,7 +934,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -947,7 +960,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -972,7 +986,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -998,7 +1013,7 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -1008,7 +1023,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -1586,7 +1602,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -2685,7 +2702,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
