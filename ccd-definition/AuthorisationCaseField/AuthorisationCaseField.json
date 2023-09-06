@@ -137,6 +137,8 @@
       },
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -263,6 +265,8 @@
       },
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -299,6 +303,8 @@
       },
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -1857,7 +1863,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
