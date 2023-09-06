@@ -1,19 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ASSIGN_LIP_DEFENDANT",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC_AFTER_PAYMENT",
     "AccessControl": [
       {
