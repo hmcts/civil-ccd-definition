@@ -393,7 +393,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -429,7 +430,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -441,7 +443,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -465,7 +468,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -477,7 +481,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -1893,6 +1898,27 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1LiPResponse",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
       }
     ]
   },
