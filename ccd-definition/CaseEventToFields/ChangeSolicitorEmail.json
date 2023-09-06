@@ -165,6 +165,18 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "applicantSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
   }
 ]
