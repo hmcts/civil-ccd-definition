@@ -3,6 +3,7 @@ module.exports = {
     const extension = {
       userInput: {
         ExtensionDate: {
+          respondentSolicitor1AgreedDeadlineExtension: ''
         }
       },
       midEventData: {
