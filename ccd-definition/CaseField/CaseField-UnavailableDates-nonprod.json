@@ -88,7 +88,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "partyChosen",
     "Label": "Select party",
-    "FieldType": "DynamicList",
+    "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

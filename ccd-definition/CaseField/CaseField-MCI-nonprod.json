@@ -15,6 +15,36 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "expertsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Experts</h2>\n Please update the contact details of any individual who may attend a hearing as an expert.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "witnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Witnesses</h2>\n Please update the contact details of any individual who may attend a hearing as a witness.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "updateWitnessesDetailsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Witnesses",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "updateExpertsDetailsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Experts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "partyChosenType",
     "Label": "Party chosen type",
     "FieldType": "Text",

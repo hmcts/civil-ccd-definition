@@ -2,177 +2,33 @@
   {
     "ID": "Witnesses",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "firstName",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "Witnesses",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.firstName",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "lastName",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "Witnesses",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.lastName",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "email",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "Witnesses",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "phone",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant1DQWitnesses",
-    "ListElementCode": "details.emailAddress",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.firstName",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.lastName",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.emailAddress",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "applicant2DQWitnesses",
-    "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.firstName",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.lastName",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent1DQWitnesses",
-    "ListElementCode": "details.emailAddress",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "witnessesToAppear",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.firstName",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.lastName",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.phoneNumber",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.emailAddress",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Witnesses",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "respondent2DQWitnesses",
-    "ListElementCode": "details.reasonForWitness",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
   }
 ]
