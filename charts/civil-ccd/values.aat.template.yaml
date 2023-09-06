@@ -55,5 +55,8 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
+aac-manage-case-assignment:
+  java:
+    ingressHost: manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net
 civil-wa:
   enabled: false
