@@ -1,21 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "ASSIGN_LIP_DEFENDANT",
-    "Name": "Assign claim to Lip Defendant",
-    "Description": "Assign claim to Lip Defendant",
-    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "CLAIMANT_RESPONSE_CUI",
     "Name": "Claimant Response",
     "Description": "Claimant response to defendant from Citizen",
