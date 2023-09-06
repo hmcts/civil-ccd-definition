@@ -14,14 +14,14 @@ module.exports = {
     if (address) {
       I.waitForElement(this.fields(party).idYes);
       await I.runAccessibilityTest();
-      await I.click('Yes');
+      await I.click(this.fields(party).idYes);
       await within(this.fields(party).container, () => {
         postcodeLookup.enterAddressManually(party, address);
       });
     } else {
       I.waitForElement(this.fields(party).idNo);
       await I.runAccessibilityTest();
-      await I.click('No');
+      await I.click(this.fields(party).idNo);
     }
 
     await I.clickContinue();
