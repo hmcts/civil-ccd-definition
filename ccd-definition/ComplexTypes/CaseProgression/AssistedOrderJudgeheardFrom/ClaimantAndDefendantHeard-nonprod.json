@@ -106,8 +106,6 @@
     "FieldShowCondition": "typeRepresentationClaimantList=\"CLAIMANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public"
   },
-
-
   {
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationClaimantListTwoLabel",
@@ -179,12 +177,6 @@
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"CLAIMANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public"
   },
-
-
-
-
-
-
   {
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationDefendantListLabel",
@@ -331,29 +323,6 @@
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"DEFENDANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public"
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   {
     "CaseTypeID": "CIVIL",
     "ListElementCode": "detailsRepresentationLabel",
