@@ -369,7 +369,7 @@
     "ListElementCode": "detailsRepresentationText",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
-    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
+    "HintText": "For example, the judge heard from Mr Smith, a director of the claimant company and Miss Smith as lay representative for the defendant",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
