@@ -1,13 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "defendantUserDetails",
-    "Label": "Defendant User Details",
-    "FieldType": "UserDetails",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1LiPResponse",
     "Label": " ",
     "FieldType": "ClaimantLiPResponse",
