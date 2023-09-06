@@ -43,8 +43,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
