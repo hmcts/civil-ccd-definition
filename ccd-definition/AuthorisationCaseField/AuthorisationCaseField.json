@@ -1857,7 +1857,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -4598,7 +4599,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -4619,7 +4621,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
