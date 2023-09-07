@@ -42,22 +42,14 @@
     "FieldTypeParameter": "ApplicationAppealList",
     "SecurityClassification": "Public"
   },
+
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "appealGranted",
+    "ListElementCode": "appealGrantedRefusedDropdown",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
-    "FieldType": "AppealGrantedRefused",
-    "FieldShowCondition": "applicationList = \"GRANTED\"",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ListElementCode": "appealRefused",
-    "ID": "FinalOrderAppeal",
-    "ElementLabel": " ",
-    "FieldType": "AppealGrantedRefused",
-    "FieldShowCondition": "applicationList = \"REFUSED\"",
-    "SecurityClassification": "Public"
+    "FieldType": "AppealChoiceFirstDropdown",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "applicationList = \"GRANTED\" OR applicationList = \"REFUSED\""
   }
 ]
