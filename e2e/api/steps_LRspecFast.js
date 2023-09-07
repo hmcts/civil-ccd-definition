@@ -21,6 +21,7 @@ const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData} = require('../helpers/fastTrackUpliftsHelper');
 
 
+
 let caseId, eventName;
 let caseData = {};
 
@@ -241,7 +242,7 @@ module.exports = {
 
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+    if (response === 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
