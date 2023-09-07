@@ -430,8 +430,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -443,8 +442,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -468,8 +466,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
@@ -481,8 +478,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
