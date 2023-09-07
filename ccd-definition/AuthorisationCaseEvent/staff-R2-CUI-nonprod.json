@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseStateID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
