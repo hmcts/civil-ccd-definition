@@ -2992,7 +2992,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -3016,7 +3017,8 @@
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -3417,7 +3419,8 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -4643,7 +4646,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
