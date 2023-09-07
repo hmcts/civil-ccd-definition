@@ -199,6 +199,7 @@ module.exports = {
     await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
     await waitForFinishedBusinessProcess(caseId);
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
+    await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
