@@ -112,6 +112,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Claimant: ${typeRepresentationClaimantTwoDynamic}",
     "FieldType": "Label",
+    "FieldShowCondition": "typeRepresentationClaimantTwoDynamic=\"*\"",
     "SecurityClassification": "Public"
   },
   {
@@ -121,6 +122,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "FinalOrdersClaimantRepresentationList",
+    "FieldShowCondition": "typeRepresentationClaimantTwoDynamic=\"*\"",
     "SecurityClassification": "Public"
   },
   {
@@ -248,8 +250,6 @@
     "FieldShowCondition": "typeRepresentationDefendantList=\"DEFENDANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public"
   },
-
-
   {
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationDefendantTwoListLabel",
@@ -328,11 +328,9 @@
     "ListElementCode": "detailsRepresentationLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Enter details of representation",
-    "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "Label",
     "SecurityClassification": "Public"
-  }
-,
+  },
   {
     "CaseTypeID": "CIVIL",
     "ListElementCode": "detailsRepresentationText",
