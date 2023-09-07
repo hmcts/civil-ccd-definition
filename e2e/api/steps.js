@@ -634,6 +634,7 @@ module.exports = {
       //delete case flags DQ party fields
       deleteCaseFields('respondent1Experts');
       deleteCaseFields('respondent1Witnesses');
+      deleteCaseFields('respondent1DetailsForClaimDetailsTab');
     }
 
     await validateEventPages(defendantResponseData, solicitor);
@@ -1161,7 +1162,7 @@ const validateEventPages = async (data, solicitor) => {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    data = await updateCaseDataWithPlaceholders(data);
+    //data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -1260,27 +1261,23 @@ const assertValidData = async (data, pageId, solicitor) => {
  * @param path initially undefined
  */
 function whatsTheDifference(caseData, responseBodyData, path) {
-  if (caseData && responseBodyData) {
-    Object.keys(caseData).forEach(key => {
-      if (Object.keys(responseBodyData || {}).indexOf(key) < 0) {
-        console.log('response does not have ' + appendToPath(path, key)
-          + '. CaseData has ' + JSON.stringify(caseData[key]));
-      } else if (typeof caseData[key] === 'object') {
-        whatsTheDifference(caseData[key], responseBodyData[key], [key]);
-      } else if (caseData[key] !== responseBodyData[key]) {
-        console.log('response and case data are different on ' + appendToPath(path, key));
-        console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
-      }
-    });
-    Object.keys(responseBodyData).forEach(key => {
-      if (Object.keys(caseData).indexOf(key) < 0) {
-        console.log('caseData does not have ' + appendToPath(path, key)
-          + '. Response has ' + JSON.stringify(responseBodyData[key]));
-      }
-    });
-  } else {
-    whatsTheDifference(caseData || {}, responseBodyData || {}, path);
-  }
+  Object.keys(caseData).forEach(key => {
+    if (Object.keys(responseBodyData).indexOf(key) < 0) {
+      console.log('response does not have ' + appendToPath(path, key)
+        + '. CaseData has ' + JSON.stringify(caseData[key]));
+    } else if (typeof caseData[key] === 'object') {
+      whatsTheDifference(caseData[key], responseBodyData[key], [key]);
+    } else if (caseData[key] !== responseBodyData[key]) {
+      console.log('response and case data are different on ' + appendToPath(path, key));
+      console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
+    }
+  });
+  Object.keys(responseBodyData).forEach(key => {
+    if (Object.keys(caseData).indexOf(key) < 0) {
+      console.log('caseData does not have ' + appendToPath(path, key)
+        + '. Response has ' + JSON.stringify(responseBodyData[key]));
+    }
+  });
 }
 
 function appendToPath(path, key) {
@@ -1576,6 +1573,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1ResponseDeadline'];
     delete responseBody.data['respondent1Experts'];
     delete responseBody.data['respondent1Witnesses'];
+    delete responseBody.data['respondent1DetailsForClaimDetailsTab'];
   } else {
     delete responseBody.data['respondent2'];
   }

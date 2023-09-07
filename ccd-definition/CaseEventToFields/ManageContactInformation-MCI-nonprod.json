@@ -1,0 +1,23 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "choosePartyHeader",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "PartySelection"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "partyChosen",
+    "CaseEventFieldLabel": "Select party",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "PageID": "PartySelection"
+  }
+]
