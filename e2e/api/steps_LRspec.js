@@ -198,16 +198,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
     await waitForFinishedBusinessProcess(caseId);
-
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
-
-    await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
