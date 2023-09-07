@@ -19,32 +19,14 @@
   },
   {
     "ID": "AssistedCostTypesList",
-    "ListElementCode": "DEFENDANT_COST_STANDARD_BASE",
-    "ListElement": "The defendant shall pay the claimant's costs of the claim on the standard basis to be assessed by detailed assessment if not agreed",
+    "ListElementCode": "MAKE_AN_ORDER_FOR_DETAILED_COSTS",
+    "ListElement": "Make an order for detailed/summary costs",
     "DisplayOrder": 4
   },
   {
     "ID": "AssistedCostTypesList",
-    "ListElementCode": "CLAIMANT_COST_STANDARD_BASE",
-    "ListElement": "The claimant shall pay the defendant's costs of the claim on the standard basis to be assessed by detailed assessment if not agreed",
-    "DisplayOrder": 5
-  },
-  {
-    "ID": "AssistedCostTypesList",
-    "ListElementCode": "DEFENDANT_COST_SUMMARILY_BASE",
-    "ListElement": "The defendant shall pay the claimant's costs (both fixed and summarily assessed as appropriate) in the sum of £",
-    "DisplayOrder": 6
-  },
-  {
-    "ID": "AssistedCostTypesList",
-    "ListElementCode": "CLAIMANT_COST_SUMMARILY_BASE",
-    "ListElement": "The claimant shall pay the defendant's costs (both fixed and summarily assessed as appropriate) in the sum of £",
-    "DisplayOrder": 7
-  },
-  {
-    "ID": "AssistedCostTypesList",
     "ListElementCode": "BESPOKE_COSTS_ORDER",
-    "ListElement": "Bespoke costs order (opens free text box)",
-    "DisplayOrder": 8
+    "ListElement": "Bespoke costs order (free text)",
+    "DisplayOrder": 5
   }
 ]

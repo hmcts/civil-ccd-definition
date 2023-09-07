@@ -1,3 +1,4 @@
+
 [
   {
     "CaseTypeID": "CIVIL",
@@ -107,7 +108,8 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-wa-task-configuration"
+          "caseworker-wa-task-configuration",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -125,7 +127,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "caseworker-ras-validation",
           "GS_profile"
         ],
@@ -322,7 +323,8 @@
           "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },

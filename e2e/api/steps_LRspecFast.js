@@ -21,12 +21,13 @@ const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData} = require('../helpers/fastTrackUpliftsHelper');
 
 
+
 let caseId, eventName;
 let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
-  DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, true),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Fast.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_2v1: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec2v1Fast.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, true),
@@ -184,6 +185,11 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
+    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
+    if (!fastTrackUpliftsEnabled) {
+      removeFixedRecoveryCostFieldsFromSpecClaimantResponseData(defendantResponseData);
+    }
+
     caseData = returnedCaseData;
 
     console.log(`${response} ${scenario}`);
@@ -236,7 +242,7 @@ module.exports = {
 
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+    if (response === 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');

@@ -4,29 +4,26 @@ const createAssistedOrder = () => {
   return  {
     FinalOrderSelect: {
       finalOrderSelection: 'ASSISTED_ORDER',
-      assistedOrderCostsClaimantPaySub: {
-        claimantCostStandardDate: date(14)
+      assistedOrderMakeAnOrderForCosts: {
+        assistedOrderCostsFirstDropdownDate: date(14),
+        assistedOrderAssessmentThirdDropdownDate: date(14),
+        makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
-      assistedOrderCostsClaimantSum: {
-        claimantCostSummarilyDate: date(14)
-      },
-      assistedOrderCostsDefendantPaySub: {
-        defendantCostStandardDate: date(14)
-      },
-      assistedOrderCostsDefendantSum: {
-        defendantCostSummarilyDate: date(14)
-      },
+      publicFundingCostsProtection: 'No',
       finalOrderAppealComplex: {
-        appealGranted: {
-          appealDate: date(21)
-        },
-          appealRefused: {
-              appealDate: date(21),
-            refusedText: '[name] court'
+        appealGrantedRefusedDropdown: {
+          appealChoiceSecondDropdownA:{
+            appealGrantedRefusedDate: date(21),
+          },
+          appealChoiceSecondDropdownB:{
+            appealGrantedRefusedDate: date(21),
           }
+        }
       },
       finalOrderDateHeardComplex: {
-        date: date(0)
+        singleDateSelection: {
+          singleDate: date(0)
+        }
       },
       orderMadeOnDetailsOrderCourt: {
         ownInitiativeDate: date(0),
@@ -37,7 +34,7 @@ const createAssistedOrder = () => {
         withOutNoticeDate: date(0),
         withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
-      }
+      },
     },
   };
 };

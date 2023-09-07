@@ -25,7 +25,7 @@ async function prepareClaim(api, claimAmount) {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
@@ -59,7 +59,8 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
-    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
+    // temp disable until https://github.com/hmcts/civil-service/pull/3173/ is merged
+    //await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
   }
 });
 

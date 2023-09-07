@@ -20,7 +20,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },

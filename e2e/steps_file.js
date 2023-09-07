@@ -51,8 +51,6 @@ const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntentio
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const takeCaseOffline = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
-const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
-
 const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
 
@@ -440,12 +438,11 @@ module.exports = function () {
       ]);
     },
 
-    async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
-      eventName = 'Inform agreed extension date';
+    async informAgreedExtensionDate() {
+      eventName = 'Inform agreed 28 day extension';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
         () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
       ]);
@@ -501,6 +498,7 @@ module.exports = function () {
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
           ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
