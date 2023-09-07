@@ -13,7 +13,6 @@ const createAssistedOrder = () => {
         typeRepresentationComplex:{
           typeRepresentationClaimantOneDynamic: 'Test Inc',
           typeRepresentationDefendantOneDynamic: 'Sir John Doe',
-          typeRepresentationDefendantTwoDynamic: 'def two'
         }
       },
       publicFundingCostsProtection: 'No',
