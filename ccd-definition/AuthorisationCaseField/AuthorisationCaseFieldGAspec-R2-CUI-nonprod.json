@@ -1,11 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1Represented",
+    "CaseFieldID": "generalApplications",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -13,23 +13,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1",
+    "CaseFieldID": "generalAppType",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolicitor1PbaAccounts",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -37,11 +25,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1OrganisationPolicy",
+    "CaseFieldID": "generalApplicationType",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -49,35 +37,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolicitor1CheckEmail",
+    "CaseFieldID": "generalAppPBADetails",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "detailsOfClaim",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimIssuedPaymentDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -85,247 +49,75 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "uiStatementOfTruth",
+    "CaseFieldID": "generalAppApplnSolicitor",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppRespondentSolicitors",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppEvidenceDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppRespondentAgreement",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppStatementOfTruthConsent",
     "UserRoles": [
-      "citizen-profile"
+      "CITIZEN-CLAIMANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "addApplicant2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "addRespondent2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1ProceedWithClaim",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQHearingSupport",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolicitor1UserDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specRespondent1Represented",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "timelineOfEvents",
+    "CaseFieldID": "generalAppStatementOfTruth",
     "UserRoles": [
-      "citizen-profile"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "speclistYourEvidenceList",
-    "UserRoles": [
-      "citizen-profile"
-    ],
-    "CRUD": "CR"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimAmountBreakup",
-    "UserRoles": [
-      "citizen-profile"
+      "CITIZEN-CLAIMANT-PROFILE"
     ],
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimInterest",
+    "CaseFieldID": "generalAppUrgencyRequirement",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "interestClaimOptions",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sameRateInterestSelection",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "breakDownInterestTotal",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "breakDownInterestDescription",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "interestClaimFrom",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "interestFromSpecificDate",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "interestFromSpecificDateDescription",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "interestClaimUntil",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CR"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specClaimDetailsDocumentFiles",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -333,11 +125,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specClaimTimelineList",
+    "CaseFieldID": "generalAppInformOtherParty",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -345,11 +137,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specApplicantCorrespondenceAddressRequired",
+    "CaseFieldID": "isApplicationUrgent",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -357,133 +149,345 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "CaseFieldID": "generalAppDetailsOfOrder",
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1ClaimExpertSpecRequired",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1RespondToClaimExperts",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1ClaimWitnesses",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQRequestedCourt",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQSmallClaimHearing",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQLanguage",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQWitnessesSmallClaim",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "totalClaimAmount",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "CaseAccessCategory",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppReasonsOfOrder",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDetails",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantGaAppDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseState",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppSubmittedDateGAspec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "dismissalOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "directionOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppVaryJudgementType",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppParentClaimantIsApplicant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppHearingDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppN245FormUpload",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingNoticeDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalOrderDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "dismissalOrderDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "directionOrderDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaEvidenceDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingOrderDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "requestForInfoDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "writtenRepSeqDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "writtenRepConDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaRespDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "consentOrderDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaDraftDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderDocumentCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
