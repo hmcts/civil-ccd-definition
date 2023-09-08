@@ -27,6 +27,6 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "publish": "Y"
+    "Publish": "Y"
   }
 ]
