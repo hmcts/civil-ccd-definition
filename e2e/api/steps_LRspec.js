@@ -197,15 +197,18 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
     await waitForFinishedBusinessProcess(caseId);
-
+    console.log('Bulk claim created with case id: ' + caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
     await waitForFinishedBusinessProcess(caseId);
     if (scenario === 'ONE_V_ONE') {
-      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'ENTER_BREATHING_SPACE_SPEC');
+      assert.equal(updatedCaseState, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     } else {
-      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      // one v two/multiparty continuing online not currently supported for LiPs
+      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'SEND_SDO_ORDER_TO_LIP_DEFENDANT');
+      assert.equal(updatedCaseState, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
 
   },
