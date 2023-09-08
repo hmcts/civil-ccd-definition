@@ -31,10 +31,6 @@ const respondent2 = {
   primaryAddress: Address
 };
 
-const isPBAv3 = (pbaV3) => {
-  return pbaV3;
-};
-
 const claimAmount = '151234';
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 
