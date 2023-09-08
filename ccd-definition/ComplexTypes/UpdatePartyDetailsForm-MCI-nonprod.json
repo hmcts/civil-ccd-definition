@@ -17,7 +17,7 @@
   },
   {
     "ID": "UpdatePartyDetailsForm",
-    "ListElementCode": "email",
+    "ListElementCode": "emailAddress",
     "FieldType": "Text",
     "ElementLabel": "Email address",
     "SecurityClassification": "Public",
@@ -25,7 +25,7 @@
   },
   {
     "ID": "UpdatePartyDetailsForm",
-    "ListElementCode": "phone",
+    "ListElementCode": "phoneNumber",
     "FieldType": "Text",
     "ElementLabel": "Phone number",
     "SecurityClassification": "Public",

@@ -19,7 +19,7 @@
     "ID": "Experts",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "updateExpertsDetailsForm",
-    "ListElementCode": "email",
+    "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
   },
@@ -27,7 +27,7 @@
     "ID": "Experts",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "updateExpertsDetailsForm",
-    "ListElementCode": "phone",
+    "ListElementCode": "phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
