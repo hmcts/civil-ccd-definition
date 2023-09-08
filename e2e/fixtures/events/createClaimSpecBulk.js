@@ -35,7 +35,7 @@ const claimAmount = '151234';
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 
 module.exports = {
-  createClaimBulk: (mpScenario, pbaV3) => {
+  createClaimBulk: (mpScenario) => {
     if (mpScenario == 'ONE_V_ONE') {
       console.log('1 v 1 claim, with no interest');
       return {

@@ -188,18 +188,15 @@ module.exports = {
   },
 
   createNewClaimWithCaseworker: async (user, scenario) => {
-    const pbaV3 = true;
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM_BULK(scenario, pbaV3);
+    createClaimData = data.CREATE_CLAIM_BULK(scenario);
     await apiRequest.setupTokens(user);
     await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
     await waitForFinishedBusinessProcess(caseId);
-
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
