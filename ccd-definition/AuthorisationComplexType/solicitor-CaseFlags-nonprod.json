@@ -130,7 +130,7 @@
     "CaseFieldID": "applicant1",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "C"
+    "CRUD": "CU"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -263,7 +263,7 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "C"
+    "CRUD": "CU"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -603,7 +603,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
-        "CRUD": "C"
+        "CRUD": "CU"
       }
     ]
   },
@@ -983,7 +983,7 @@
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "C"
+        "CRUD": "CU"
       }
     ]
   },
@@ -1048,7 +1048,7 @@
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "C"
+    "CRUD": "CU"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1111,7 +1111,7 @@
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "C"
+    "CRUD": "CU"
   },
   {
     "CaseTypeID": "CIVIL",
