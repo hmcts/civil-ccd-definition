@@ -13,7 +13,7 @@ global:
   jobKind: CronJob
 
 camunda-bpm:
-  enabled: false # comes from WA chart
+  enabled: true # comes from WA chart
 
 wa:
   enabled: true
