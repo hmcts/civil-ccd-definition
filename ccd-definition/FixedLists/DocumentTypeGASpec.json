@@ -28,5 +28,41 @@
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
     "DisplayOrder": 13
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "REQUEST_FOR_INFORMATION",
+    "ListElement": "Request for information",
+    "DisplayOrder": 14
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WRITTEN_REPRESENTATION_SEQUENTIAL",
+    "ListElement": "Written representation sequential",
+    "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WRITTEN_REPRESENTATION_CONCURRENT",
+    "ListElement": "Written representation concurrent",
+    "DisplayOrder": 16
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_ORDER",
+    "ListElement": "Hearing order",
+    "DisplayOrder": 17
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CONSENT_ORDER",
+    "ListElement": "Consent order",
+    "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "GENERAL_APPLICATION_DRAFT",
+    "ListElement": "Draft Application",
+    "DisplayOrder": 19
   }
 ]

@@ -3,17 +3,15 @@
 set -eu
 
 environment=${1:-prod}
+activateShutter=${2:-false}
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
-   excludedFilenamePatterns="-e *-prod.json,*HNL-nonprod.json,*CUI.json,*CUI-nonprod.json"
-   #for testing HNL uplifting, comment the above line and uncomment below
-   #excludedFilenamePatterns="-e *-prod.json,*-base-nonprod.json,*CUI.json,*CUI-nonprod.json"
-   #for testing ga enhancements please remove *-GAR2GAspec-nonprod.json which are not required for release 1
+   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*HNL-nonprod.json,*CUI-nonprod.json,*CUI.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == local ]; then
-  # upload doesn't currently work with this command due to SDO and SDO-HNL files
+  # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*CUI.json"
@@ -26,6 +24,18 @@ else
   echo "       Either add the new environment to the script or specify a supported environment!"
   exit 1
 fi
+
+# deciding which enviornment should be excluded for unshuttered/shuttered
+if [ "$activateShutter" = true ] ; then
+  echo "We are activating shuttered file for $environment"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-unshuttered.json"
+  echo "${excludedFilenamePatterns}"
+else
+  echo "We are activating unshuttered file for $environment"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-shuttered.json"
+  echo "${excludedFilenamePatterns}"
+fi
+
 
 root_dir=$(realpath $(dirname ${0})/..)
 config_dir=${root_dir}/ccd-definition

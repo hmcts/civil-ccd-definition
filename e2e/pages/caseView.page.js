@@ -23,8 +23,8 @@ module.exports = {
     /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
        Further investigation is required to find (hopefully) a cleaner solution
      */
-    await I.moveCursorTo(this.goButton);
-    await I.wait(5);
+   // await I.moveCursorTo(this.goButton);
+    await I.wait(15);
     await I.forceClick(this.goButton);
     await I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
@@ -37,6 +37,18 @@ module.exports = {
     }, locate('.govuk-heading-l'));
   },
 
+  async verifyErrorMessageOnEvent(event, caseId, errorMsg) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+    await I.navigateToCaseDetails(caseId);
+    await I.selectOption(this.fields.eventDropdown, event);
+   // await I.moveCursorTo(this.goButton);
+    await I.wait(15);
+    await I.forceClick(this.goButton);
+    await I.waitForText(errorMsg);
+  }, locate('#errors'));
+},
+
   async navigateToTab(tabName) {
     let urlBefore = await I.grabCurrentUrl();
     await I.retryUntilUrlChanges(async () => {
@@ -47,6 +59,13 @@ module.exports = {
   async assertNoEventsAvailable() {
     if (await I.hasSelector(this.fields.eventDropdown)) {
       throw new Error('Expected to have no events available');
+    }
+  },
+
+  async rejectCookieBanner() {
+    if (await I.see('We use some essential cookies to make this service work.')) {
+      await I.click('Reject analytics cookies');
+      await I.wait(5);
     }
   },
 

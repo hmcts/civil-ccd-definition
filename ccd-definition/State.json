@@ -89,5 +89,26 @@
     "Name": "Decision Outcome",
     "Description": "Day of Trial state",
     "DisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "All_FINAL_ORDERS_ISSUED",
+    "Name": "All final orders issued",
+    "Description": "All final orders issued",
+    "DisplayOrder": 14
+   },
+   {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_SETTLED",
+    "Name": "Case Settled",
+    "Description": "Case settled",
+    "DisplayOrder": 15
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_STAYED",
+    "Name": "Case Stayed",
+    "Description": "Case stayed",
+    "DisplayOrder": 16
   }
 ]

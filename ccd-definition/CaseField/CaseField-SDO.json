@@ -39,6 +39,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "trialAdditionalDirectionsForFastTrack",
+    "Label": "Select additional directions for Fast Track, if any ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FastTrack",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "drawDirectionsOrderSmallClaims",
     "Label": "Do you want to allocate this claim to the small claims track?",
     "FieldType": "YesOrNo",
@@ -49,7 +57,7 @@
     "ID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DrawDirectionsOrderSmallClaimsAdditionalDirections",
+    "FieldTypeParameter": "SmallTrack",
     "SecurityClassification": "Public"
   },
   {
@@ -1183,5 +1191,36 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "otherDetails",
+    "Label": "Other Details",
+    "FieldType": "OtherDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesDisposalHearing",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesSmallClaims",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingMethodValuesFastTrack",
+    "Label": " ",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -1,5 +1,4 @@
 const {I} = inject();
-const {checkHnlLegalRepToggleEnabled} = require('../../api/testingSupport');
 
 module.exports = {
 
@@ -63,12 +62,7 @@ module.exports = {
       I.click(this.fields(party).jointExpertSuitable.options.yes);
     });
 
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!isHNLEnabled) {
-      await this.addExpertOldFields(party);
-    } else {
-      await this.addExpert(party);
-    }
+    await this.addExpert(party);
 
     await I.clickContinue();
   },
@@ -83,14 +77,5 @@ module.exports = {
     I.fillField(this.fields(party).expertDetails.elements.fieldOfExpertise, 'Science');
     I.fillField(this.fields(party).expertDetails.elements.whyRequired, 'Reason why required');
     I.fillField(this.fields(party).expertDetails.elements.estimatedCost, '100');
-  },
-
-  async addExpertOldFields(party) {
-    await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields(party).expertDetails.oldElements.name);
-    I.fillField(this.fields(party).expertDetails.oldElements.name, 'John Smith');
-    I.fillField(this.fields(party).expertDetails.oldElements.fieldOfExpertise, 'Science');
-    I.fillField(this.fields(party).expertDetails.oldElements.whyRequired, 'Reason why required');
-    I.fillField(this.fields(party).expertDetails.oldElements.estimatedCost, '100');
   },
 };

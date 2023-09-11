@@ -1,14 +1,10 @@
 const {I} = inject();
 const postcodeLookup = require('./addressPostcodeLookup');
-const {checkHnlLegalRepToggleEnabled} = require('../api/testingSupport');
 
 module.exports = {
 
   fields: function (partyType) {
     return {
-      oldFields: {
-        litigationFriendName: `#${partyType}LitigationFriend_fullName`,
-      },
       litigationFirstName: `#${partyType}LitigationFriend_firstName`,
       litigationLastName: `#${partyType}LitigationFriend_lastName`,
       litigationEmail: `#${partyType}LitigationFriend_emailAddress`,
@@ -26,15 +22,10 @@ module.exports = {
   },
 
   async enterLitigantFriendWithDifferentAddressToLitigant(partyType, address, file) {
-    let isHNLEnabled = await checkHnlLegalRepToggleEnabled();
-    if (!isHNLEnabled) {
-      I.fillField(this.fields(partyType).oldFields.litigationFriendName, 'John Smith');
-    } else {
-      I.fillField(this.fields(partyType).litigationFirstName, 'John');
-      I.fillField(this.fields(partyType).litigationLastName, 'Smith');
-      I.fillField(this.fields(partyType).litigationEmail, 'jsmith@email.com');
-      I.fillField(this.fields(partyType).litigationPhone, '07123456789');
-    }
+    I.fillField(this.fields(partyType).litigationFirstName, 'John');
+    I.fillField(this.fields(partyType).litigationLastName, 'Smith');
+    I.fillField(this.fields(partyType).litigationEmail, 'jsmith@email.com');
+    I.fillField(this.fields(partyType).litigationPhone, '07123456789');
 
     await within(this.fields(partyType).litigantInFriendDifferentAddress.id, () => {
       I.click(this.fields(partyType).litigantInFriendDifferentAddress.options.no);

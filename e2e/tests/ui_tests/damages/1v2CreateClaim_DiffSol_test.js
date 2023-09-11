@@ -1,10 +1,13 @@
 const config = require('../../../config.js');
+//const {paymentUpdate} = require('../../../api/apiRequest');
 const parties = require('../../../helpers/party');
+const apiRequest = require('./../../../api/apiRequest.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
-const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+//const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
+const claimData = require('../../../fixtures/events/createClaim.js');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
@@ -37,9 +40,18 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
+  }
+
+  /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
-  }
+    await paymentUpdate(caseId(), '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId(), 'paid'));
+    console.log('Service request update sent to callback URL');
+  }*/
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
@@ -125,7 +137,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 
 
 Scenario('Add case flags', async ({I}) => {
-  if(checkCaseFlagsEnabled()) {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -139,13 +151,22 @@ Scenario('Add case flags', async ({I}) => {
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
-});
+}).retry(3);
+
+Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
+  if (await checkToggleEnabled('update-contact-details')) {
+    await I.login(config.secondDefendantSolicitorUser);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
+    await I.addUnavailableDates(caseId());
+  }
+}).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await I.waitForText('Summary');
-   await I.initiateSDO('yes', 'yes', null, null);
+   await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {

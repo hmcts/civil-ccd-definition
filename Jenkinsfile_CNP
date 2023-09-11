@@ -202,14 +202,13 @@ withPipeline(type, product, component) {
     env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"
-    env.AAC_API_URL="https://manage-case.aat.platform.hmcts.net"
+    env.AAC_API_URL="https://manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net"
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
       ./bin/build-release-ccd-definition.sh staging
-      ./bin/pull-latest-release-asset.sh civil-camunda-bpmn-definition civil-camunda-bpmn-definition.zip
-      ./bin/import-bpmn-diagram.sh .
+      ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
     env.URL="https://civil-ccd-xui-staging.aat.platform.hmcts.net"
     env.CIVIL_SERVICE_URL="https://civil-ccd-staging.aat.platform.hmcts.net"

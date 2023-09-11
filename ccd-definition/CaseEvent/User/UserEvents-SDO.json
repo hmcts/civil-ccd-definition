@@ -1,26 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_SDO",
-    "Name": "Standard Direction Order",
-    "Description": "Standard Direction Order",
-    "DisplayOrder": 17,
-    "PreConditionState(s)": "JUDICIAL_REFERRAL",
-    "PostConditionState": "CASE_PROGRESSION",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "ShowSummary": "Y",
-    "ShowEventNotes": "N",
-    "EndButtonLabel": "Submit",
-    "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Publish": "Y",
-    "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "VIEW_AND_RESPOND_TO_DEFENCE",
     "Name": "View And Respond To Defence",
     "Description": "View And Respond To Defence",
@@ -71,5 +51,25 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CREATE_SDO",
+    "Name": "Standard Direction Order",
+    "Description": "Standard Direction Order",
+    "DisplayOrder": 17,
+    "PreConditionState(s)": "JUDICIAL_REFERRAL",
+    "PostConditionState": "CASE_PROGRESSION",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y",
+    "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
   }
 ]

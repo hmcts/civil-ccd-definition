@@ -1,16 +1,32 @@
 [
   {
     "ID": "FastTrackHearingTime",
-    "ListElementCode": "dateFrom",
-    "FieldType": "Date",
+    "ListElementCode": "dateFromLabel",
+    "FieldType": "Label",
     "ElementLabel": "Date from",
     "SecurityClassification": "Public"
   },
   {
     "ID": "FastTrackHearingTime",
-    "ListElementCode": "dateTo",
+    "ListElementCode": "dateFrom",
     "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "dateToToggle",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DateToShowToggle",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "dateTo",
     "ElementLabel": "Date to",
+    "FieldType": "Date",
+    "FieldShowCondition": "dateToToggle=\"SHOW\"",
     "SecurityClassification": "Public"
   },
   {

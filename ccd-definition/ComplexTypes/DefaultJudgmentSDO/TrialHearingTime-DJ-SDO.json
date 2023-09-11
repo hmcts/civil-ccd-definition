@@ -1,9 +1,24 @@
 [
   {
     "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "date1Label",
+    "FieldType": "Label",
+    "ElementLabel": "Date from",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
     "ListElementCode": "date1",
     "FieldType": "Date",
-    "ElementLabel": "Date from",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "TrialHearingTimeDJ",
+    "ListElementCode": "dateToToggle",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "DateToShowToggle",
+    "ElementLabel": " ",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +26,7 @@
     "ListElementCode": "date2",
     "FieldType": "Date",
     "ElementLabel": "Date to",
+    "FieldShowCondition": "dateToToggle=\"SHOW\"",
     "SecurityClassification": "Public"
   },
   {

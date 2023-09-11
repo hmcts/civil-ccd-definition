@@ -17,6 +17,7 @@ const getCivilServiceUrl = () => `${config.url.civilService}`;
 const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
 const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
+const getBulkClaimServiceUrl = () => `${config.url.orchestratorService}/createSDTClaim`;
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -24,6 +25,7 @@ const getRequestHeaders = (userAuth) => {
     'ServiceAuthorization': tokens.s2sAuth
   };
 };
+const getCivilServiceCaseworkerSubmitNewClaimUrl = () => `${config.url.civilService}/cases/caseworkers/create-case/${tokens.userId}`;
 
 module.exports = {
   setupTokens: async (user) => {
@@ -108,6 +110,16 @@ module.exports = {
       }, 'POST', 201);
   },
 
+  submitNewClaimAsCaseworker: async (eventName, caseData) => {
+    let url = getCivilServiceCaseworkerSubmitNewClaimUrl();
+
+    return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
+      {
+        data: caseData,
+        event: eventName,
+      }, 'POST', 201);
+  },
+
   taskActionByUser: async function(user, taskId, url, expectedStatus = 204) {
     const userToken =  await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
@@ -186,6 +198,38 @@ module.exports = {
     return response || {};
   },
 
+  createBulkClaim: async (sdtRequestId, claimData) => {
+    let sdtClaimURL = getBulkClaimServiceUrl();
+
+    let response = await restHelper.retriedRequestFor400(sdtClaimURL,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokens.userAuth}`,
+        'SdtRequestId': `${sdtRequestId}`
+      },
+      claimData,
+       'POST')
+      .then(response => response.json());
+
+    return response || {};
+  },
+
+  createBulkClaimForStatusCode201: async (sdtRequestId, claimData) => {
+    let sdtClaimURL = getBulkClaimServiceUrl();
+
+    let response = await restHelper.retriedRequestFor201(sdtClaimURL,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokens.userAuth}`,
+        'SdtRequestId': `${sdtRequestId}`
+      },
+      claimData,
+      'POST')
+      .then(response => response.json());
+
+    return response || {};
+  },
+
   hearingFeePaidEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getHearingFeePaidUrl(caseId);
@@ -196,7 +240,7 @@ module.exports = {
       'GET');
     return response_msg || {};
   },
-  
+
   bundleTriggerEvent: async(caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getBundleTriggerUrl(caseId);
@@ -228,5 +272,14 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     return response.case_details.state || {};
-  }
+  },
+
+  getHearingsPayload: async (user, caseId) => {
+    return restHelper.request(
+      `${config.url.civilService}/serviceHearingValues`, getRequestHeaders(tokens.userAuth), {caseReference: caseId, hearingId: 'HER123123123'}, 'POST')
+      .then(
+        async response =>
+          await response.json()
+      );
+  },
 };
