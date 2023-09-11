@@ -4,6 +4,7 @@
     "ListElementCode": "specAoSRespondent2CorrespondenceAddressdetails",
     "FieldType": "AddressUK",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "specAoSRespondent2CorrespondenceAddressRequired",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "generalAppDeadlineNotification",
     "ElementLabel": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

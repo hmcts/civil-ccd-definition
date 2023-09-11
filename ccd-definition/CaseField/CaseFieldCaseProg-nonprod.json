@@ -4,6 +4,7 @@
     "ID": "trialReadyNotified",
     "Label": "Was trial ready notification sent out?",
     "FieldType": "YesOrNo",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ID": "trialReadyChecked",
     "Label": "Was trial ready notification sent out?",
     "FieldType": "YesOrNo",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ID": "caseNameLabelApplicant",
     "Label": "${caseNameHmctsInternal} \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ID": "caseNameLabelRespondent1",
     "Label": "${caseNameHmctsInternal} \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ID": "caseNameLabelRespondent2",
     "Label": "${caseNameHmctsInternal} \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +44,7 @@
     "ID": "hearingDurationTextApplicant",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,6 +52,7 @@
     "ID": "hearingDurationTextRespondent1",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,6 +60,7 @@
     "ID": "hearingDurationTextRespondent2",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,6 +68,7 @@
     "ID": "trialReadyLabelApplicant",
     "Label": "### Is the case ready for Trial or Hearing?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -67,6 +76,7 @@
     "ID": "trialReadyLabelRespondent1",
     "Label": "### Is the case ready for Trial or Hearing?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -74,6 +84,7 @@
     "ID": "trialReadyLabelRespondent2",
     "Label": "### Is the case ready for Trial or Hearing?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -82,6 +93,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialReadyList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -90,6 +102,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialReadyList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -98,6 +111,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialReadyList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -105,6 +119,7 @@
     "ID": "applicationNotReadyApplicant",
     "Label": "### You will need to make an application to the court if this case is not ready for the trial or hearing. \nThe trial or hearing will go ahead as planned on the specified date unless a judge makes an order changing the date of hearing. If you want the date of hearing to be changed (or any other order to make the case ready for trial) you will need to make an application to the court. \n\nYou will still need to provide the following information on trial arrangements. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -112,6 +127,7 @@
     "ID": "applicationNotReadyRespondent1",
     "Label": "### You will need to make an application to the court if this case is not ready for the trial or hearing. \nThe trial or hearing will go ahead as planned on the specified date unless a judge makes an order changing the date of hearing. If you want the date of hearing to be changed (or any other order to make the case ready for trial) you will need to make an application to the court. \n\nYou will still need to provide the following information on trial arrangements. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -119,6 +135,7 @@
     "ID": "applicationNotReadyRespondent2",
     "Label": "### You will need to make an application to the court if this case is not ready for the trial or hearing. \nThe trial or hearing will go ahead as planned on the specified date unless a judge makes an order changing the date of hearing. If you want the date of hearing to be changed (or any other order to make the case ready for trial) you will need to make an application to the court. \n\nYou will still need to provide the following information on trial arrangements. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -126,6 +143,7 @@
     "ID": "applicantRevisedHearingRequirements",
     "Label": " ",
     "FieldType": "RevisedHearingRequirements",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -133,6 +151,7 @@
     "ID": "respondent1RevisedHearingRequirements",
     "Label": " ",
     "FieldType": "RevisedHearingRequirements",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -140,6 +159,7 @@
     "ID": "respondent2RevisedHearingRequirements",
     "Label": " ",
     "FieldType": "RevisedHearingRequirements",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -147,6 +167,7 @@
     "ID": "hearingDurationNotReadyApplicant",
     "Label": "### Hearing Duration \nThe hearing time originally allocated is ${hearingDurationTextApplicant}. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -154,6 +175,7 @@
     "ID": "hearingDurationNotReadyRespondent1",
     "Label": "### Hearing Duration \nThe hearing time originally allocated is ${hearingDurationTextRespondent1}. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -161,6 +183,7 @@
     "ID": "hearingDurationNotReadyRespondent2",
     "Label": "### Hearing Duration \nThe hearing time originally allocated is ${hearingDurationTextRespondent2}. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -168,6 +191,7 @@
     "ID": "hearingDurationReadyApplicant",
     "Label": "### Hearing Duration \nThe hearing time originally allocated is ${hearingDurationTextApplicant}. \n\nIf you require less time please set out in your reasons in the 'Other Information' box below. \n\nIf you think you will need more time for the hearing, you will need to liaise with the other party and make an application to the court. The time allocated to the hearing or trial will not be increased until an application is received, the fee paid, and an order made. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -175,6 +199,7 @@
     "ID": "hearingDurationReadyRespondent1",
     "Label": "### Hearing Duration \nThe hearing time originally allocated is ${hearingDurationTextRespondent1}. \n\nIf you require less time please set out in your reasons in the 'Other Information' box below. \n\nIf you think you will need more time for the hearing, you will need to liaise with the other party and make an application to the court. The time allocated to the hearing or trial will not be increased until an application is received, the fee paid, and an order made. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -182,6 +207,7 @@
     "ID": "hearingDurationReadyRespondent2",
     "Label": "### Hearing Duration \nThe hearing time originally allocated is ${hearingDurationTextRespondent2}. \n\nIf you require less time please set out in your reasons in the 'Other Information' box below. \n\nIf you think you will need more time for the hearing, you will need to liaise with the other party and make an application to the court. The time allocated to the hearing or trial will not be increased until an application is received, the fee paid, and an order made. \n****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -189,6 +215,7 @@
     "ID": "applicantHearingOtherComments",
     "Label": " ",
     "FieldType": "HearingOtherComments",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -196,6 +223,7 @@
     "ID": "respondent1HearingOtherComments",
     "Label": " ",
     "FieldType": "HearingOtherComments",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -203,6 +231,7 @@
     "ID": "respondent2HearingOtherComments",
     "Label": " ",
     "FieldType": "HearingOtherComments",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -211,6 +240,7 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {

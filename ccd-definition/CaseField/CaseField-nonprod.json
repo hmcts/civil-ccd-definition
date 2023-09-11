@@ -5,6 +5,7 @@
     "Label": "change of representation details",
     "FieldType": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "Field storing noc update details"
   }
 ]

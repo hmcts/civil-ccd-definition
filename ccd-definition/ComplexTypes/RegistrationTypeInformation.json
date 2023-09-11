@@ -4,6 +4,7 @@
     "ListElementCode": "registrationType ",
     "FieldType": "Text",
     "ElementLabel": "registration type",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "judgmentDateTime",
     "FieldType": "DateTime",
     "ElementLabel": "Judgment created on",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

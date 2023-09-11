@@ -4,6 +4,7 @@
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "dateFromLabel",
     "FieldType": "Label",
     "ElementLabel": "Date from",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "dateFrom",
     "FieldType": "Date",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "dateToLabel",
     "FieldType": "Label",
     "ElementLabel": "Date to",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ListElementCode": "dateTo",
     "FieldType": "Date",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -40,6 +45,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
     "ElementLabel": "The time estimate is",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {

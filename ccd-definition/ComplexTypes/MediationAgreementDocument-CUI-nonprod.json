@@ -4,6 +4,7 @@
     "ListElementCode": "name",
     "ElementLabel": "Document name",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ElementLabel": "Document type",
     "FieldType": "FixedList",
     "FieldTypeParameter": "MediationDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "ListElementCode": "document",
     "ElementLabel": "Document link",
     "FieldType": "Document",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

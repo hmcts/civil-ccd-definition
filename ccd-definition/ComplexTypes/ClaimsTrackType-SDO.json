@@ -5,6 +5,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimsTrack",
     "ElementLabel": "Claims Track",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ListElementCode": "smallClaimCreditHire",
     "FieldType": "Text",
     "ElementLabel": "Credit Hire",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "ListElementCode": "smallClaimRoadTrafficAccident",
     "FieldType": "Text",
     "ElementLabel": "Road Traffic Accident",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -26,6 +29,7 @@
     "ListElementCode": "fastClaimBuildingDispute",
     "FieldType": "Text",
     "ElementLabel": "Building Dispute",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -33,6 +37,7 @@
     "ListElementCode": "fastClaimClinicalNegligence",
     "FieldType": "Text",
     "ElementLabel": "Clinical Negligence",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -40,6 +45,7 @@
     "ListElementCode": "fastClaimCreditHire",
     "FieldType": "Text",
     "ElementLabel": "Credit Hire",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -47,6 +53,7 @@
     "ListElementCode": "fastClaimEmployersLiability",
     "FieldType": "Text",
     "ElementLabel": "Employers Liability",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -54,6 +61,7 @@
     "ListElementCode": "fastClaimHousingDisrepair",
     "FieldType": "Text",
     "ElementLabel": "Housing Disrepair",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -61,6 +69,7 @@
     "ListElementCode": "fastClaimPersonalInjury",
     "FieldType": "Text",
     "ElementLabel": "Expert evidence",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,6 +77,7 @@
     "ListElementCode": "fastClaimRoadTrafficAccident",
     "FieldType": "Text",
     "ElementLabel": "Road Traffic Accident",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

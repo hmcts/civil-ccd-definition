@@ -4,6 +4,7 @@
     "ListElementCode": "createdBy",
     "FieldType": "Text",
     "ElementLabel": "Created by",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "createdOn",
     "FieldType": "DateTime",
     "ElementLabel": "Created on",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "note",
     "FieldType": "TextArea",
     "ElementLabel": "Note",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

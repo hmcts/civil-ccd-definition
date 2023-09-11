@@ -5,6 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Court location",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": "[0-9]{3}"
   },
   {
@@ -14,6 +15,7 @@
     "ElementLabel": "Court location code",
     "HintText": "This should be your preferred County Court hearing centre.",
     "FieldType": "DynamicList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,6 +23,7 @@
     "ListElementCode": "caseLocation",
     "ElementLabel": "Case Location",
     "FieldType": "CaseLocationCivil",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

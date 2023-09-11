@@ -4,6 +4,7 @@
     "ListElementCode": "startLabel",
     "FieldType": "Label",
     "ElementLabel": "### Hearing Requirements",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ElementLabel": "Has anything changed to the support or adjustments you wish the court and the judge to consider for you, or a witness who will give evidence on your behalf?",
     "HintText": "Check your previous answers in 'Directions questionnaire form' under 'Claim documents'",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,6 +23,7 @@
     "HintText": "For Example, client requires a courtroom with step free access.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "revisedHearingRequirements = \"Yes\""
   },
   {
@@ -29,6 +32,7 @@
     "FieldType": "Label",
     "ElementLabel": "You are reminded that this information will be shared with all other parties.",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "revisedHearingRequirements = \"Yes\""
   },
   {
@@ -36,6 +40,7 @@
     "ListElementCode": "endLine",
     "FieldType": "Label",
     "ElementLabel": "****",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

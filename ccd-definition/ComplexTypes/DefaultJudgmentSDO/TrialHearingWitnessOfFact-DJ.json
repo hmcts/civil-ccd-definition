@@ -4,6 +4,7 @@
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "Number",
     "HintText":"Number of witnesses (claimant), e.g. 4",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,6 +22,7 @@
     "FieldType": "Number",
     "HintText":"Number of witnesses (defendant), e.g. 4",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -27,6 +30,7 @@
     "ListElementCode": "input4",
     "FieldType": "Text",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -34,6 +38,7 @@
     "ListElementCode": "input5",
     "FieldType": "Text",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -42,6 +47,7 @@
     "FieldType": "Number",
     "HintText":"Number of pages, e.g. 4",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -49,6 +55,7 @@
     "ListElementCode": "input7",
     "FieldType": "Text",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -56,6 +63,7 @@
     "ListElementCode": "input8",
     "FieldType": "Text",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -63,6 +71,7 @@
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -70,6 +79,7 @@
     "ListElementCode": "input9",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

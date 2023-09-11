@@ -4,6 +4,7 @@
     "ListElementCode": "calculatedAmountInPence",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount to pay",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "code",
     "FieldType": "Text",
     "ElementLabel": "Code",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "version",
     "FieldType": "Text",
     "ElementLabel": "Version",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

@@ -4,6 +4,7 @@
     "ListElementCode": "liveWithPartnerRequired",
     "FieldType": "YesOrNo",
     "ElementLabel": "Does your client live with a partner?",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Is the partner aged 18 or over?",
     "FieldShowCondition": "liveWithPartnerRequired = \"Yes\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "ListElementCode": "haveAnyChildrenRequired",
     "FieldType": "YesOrNo",
     "ElementLabel": "Does your client have any children?",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -27,6 +30,7 @@
     "FieldType": "ChildrenByAgeGroupDetails",
     "ElementLabel": " ",
     "FieldShowCondition": "haveAnyChildrenRequired = \"Yes\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -35,6 +39,7 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Do any of the children that live your client receive severe disability premium payments",
     "FieldShowCondition": "haveAnyChildrenRequired = \"Yes\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -43,6 +48,7 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Does your client support anyone else financially",
     "HintText": "This can include adults and people your client does not live with",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -52,6 +58,7 @@
     "ElementLabel": "Number of people",
     "FieldShowCondition": "supportedAnyoneFinancialRequired = \"Yes\"",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": "\\d+"
   },
   {
@@ -60,6 +67,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Provide details",
     "FieldShowCondition": "supportedAnyoneFinancialRequired = \"Yes\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

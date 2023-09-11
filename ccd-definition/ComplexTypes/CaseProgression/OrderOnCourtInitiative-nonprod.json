@@ -4,6 +4,7 @@
     "ListElementCode": "onInitiativeSelectionLabel",
     "FieldType": "Label",
     "ElementLabel": "### Order on court's own initiative",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "onInitiativeSelectionTextArea",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "onInitiativeSelectionDateLabel",
     "FieldType": "Label",
     "ElementLabel": "### Please enter date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -26,6 +29,7 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

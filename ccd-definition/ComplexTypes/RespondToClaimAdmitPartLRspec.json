@@ -4,6 +4,7 @@
     "ListElementCode": "whenWillThisAmountBePaidLabel",
     "ElementLabel": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately. \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "ElementLabel": "Enter the date your client will pay on.",
     "HintText": "For example 9 December 2020",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "When will this amount be paid?"
   }
 ]

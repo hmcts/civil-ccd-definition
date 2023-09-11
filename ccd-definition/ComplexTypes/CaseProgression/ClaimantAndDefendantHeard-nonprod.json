@@ -6,6 +6,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "FinalOrdersClaimantRepresentationList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,6 +15,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Claimant",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -23,6 +25,7 @@
     "ElementLabel": "Counsel for claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COUNSEL_FOR_CLAIMANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +35,7 @@
     "ElementLabel": "Solicitor for claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"SOLICITOR_FOR_CLAIMANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -41,6 +45,7 @@
     "ElementLabel": "Costs draftsman for the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -50,6 +55,7 @@
     "ElementLabel": "The claimant in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"THE_CLAIMANT_IN_PERSON\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -59,6 +65,7 @@
     "ElementLabel": "Lay representative for the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"LAY_REPRESENTATIVE_FOR_THE_CLAIMANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -68,6 +75,7 @@
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationClaimantList=\"CLAIMANT_NOT_ATTENDING\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -76,6 +84,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Defendant",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -85,6 +94,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "FinalOrdersDefendantRepresentationList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -94,6 +104,7 @@
     "ElementLabel": "Counsel for defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COUNSEL_FOR_DEFENDANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -103,6 +114,7 @@
     "ElementLabel": "Solicitor for defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"SOLICITOR_FOR_DEFENDANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -112,6 +124,7 @@
     "ElementLabel": "Costs draftsman for the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -121,6 +134,7 @@
     "ElementLabel": "The defendant in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"THE_DEFENDANT_IN_PERSON\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -130,6 +144,7 @@
     "ElementLabel": "Lay representative for the defendant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -139,6 +154,7 @@
     "ElementLabel": " ",
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationDefendantList=\"DEFENDANT_NOT_ATTENDING\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -148,6 +164,7 @@
     "ElementLabel": "### Enter details of representation",
     "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ,
@@ -158,6 +175,7 @@
     "ElementLabel": " ",
     "HintText": "For example, the judge heard from the claimant in person and counsel for the defendant",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

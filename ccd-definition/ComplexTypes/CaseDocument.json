@@ -4,6 +4,7 @@
     "ListElementCode": "documentName",
     "FieldType": "Text",
     "ElementLabel": "Name",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "DocumentType",
     "ElementLabel": "Type",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "ListElementCode": "documentLink",
     "FieldType": "Document",
     "ElementLabel": "Document URL",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -26,6 +29,7 @@
     "ListElementCode": "documentSize",
     "FieldType": "Number",
     "ElementLabel": "Document size",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -33,6 +37,7 @@
     "ListElementCode": "createdDatetime",
     "FieldType": "DateTime",
     "ElementLabel": "Uploaded on",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -40,6 +45,7 @@
     "ListElementCode": "createdBy",
     "FieldType": "Text",
     "ElementLabel": "Uploaded by",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

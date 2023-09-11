@@ -4,6 +4,7 @@
     "ListElementCode": "loanCardDebtDetail",
     "FieldType": "Text",
     "ElementLabel": "Detail of each loan or credit card debt",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "totalOwed",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Total amount owed",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "monthlyPayment",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Monthly payments",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

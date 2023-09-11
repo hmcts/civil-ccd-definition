@@ -5,6 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Type of document",
     "HintText": "For example, contract, invoice, receipt, email, text message, photo, social media message",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "FieldType": "Date",
     "ElementLabel": "Date document was issued or message was sent",
     "HintText": "For example, 12/09/2022",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,6 +23,7 @@
     "ElementLabel": "Document Url",
     "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMG, TIF, TIFF",
     "FieldType": "Document",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -29,6 +32,7 @@
     "ElementLabel": "Uploaded on",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "documentUpload = \"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]

@@ -4,6 +4,7 @@
     "ListElementCode": "organisationToAddID",
     "FieldType": "Text",
     "ElementLabel": "organisationToAddID",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "organisationToRemoveID",
     "FieldType": "Text",
     "ElementLabel": "organisationToRemoveID",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "caseRole",
     "FieldType": "Text",
     "ElementLabel": "caseRole",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "timestamp",
     "FieldType": "DateTime",
     "ElementLabel": "timestamp",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ListElementCode": "formerRepresentationEmailAddress",
     "FieldType": "Text",
     "ElementLabel": "formerRepresentationEmailAddress",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

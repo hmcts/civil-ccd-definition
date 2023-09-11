@@ -5,6 +5,7 @@
     "FieldType": "Label",
     "FieldTypeParameter": "GAHearingScheduleGAspec",
     "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Is there a hearing scheduled related to this application?</p>",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingScheduleGAspec",
     "ElementLabel": "Hearing scheduled related to this application",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -22,6 +24,7 @@
     "FieldTypeParameter": "GAHearingScheduleGAspec",
     "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
     "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Please provide the hearing dates.</p>",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -31,6 +34,7 @@
     "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
     "ElementLabel": " ",
     "HintText": "If there are multiple hearings, then please select the earliest date.",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

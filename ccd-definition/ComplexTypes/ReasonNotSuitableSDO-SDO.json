@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "text",
     "FieldType": "Label",
     "ElementLabel": "If you are a Judge submitting this information, the case will be sent to a listing officer. If a legal Adviser has submitted this information the case will be sent to a judge for review.",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

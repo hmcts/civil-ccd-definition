@@ -4,6 +4,7 @@
     "ID": "caseTypeFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ID": "witnessStatementFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ID": "witnessSummaryFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ID": "witnessReferredStatementFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ID": "expertReportFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +44,7 @@
     "ID": "expertJointFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,6 +52,7 @@
     "ID": "trialAuthorityFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,6 +60,7 @@
     "ID": "trialCostsFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,6 +68,7 @@
     "ID": "trialDocumentaryFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -67,6 +76,7 @@
     "ID": "caseProgAllocatedTrack",
     "Label":" ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -74,6 +84,7 @@
     "ID": "evidenceUploadText",
     "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\". \n\n The other parties will be able to see the documents you have uploaded, and \n you will be able to see their documents \n # Deadlines for uploading documents \n Check the order he court sent you for the deadlines for uploading your documents. If you upload a document after the deadline, you will have to apply to the court to use it at the hearing and the judge will decide if it can be accepted \n\n You do not have to upload all your documents at once. You can return to upload them later. \n # How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files. \n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\". \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP. TIF, TIFF.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -81,6 +92,7 @@
     "ID": "disclosureLabel",
     "Label": "You can select more than one type of document \n\n\n ## Disclosure",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -88,6 +100,7 @@
     "ID": "disclosureToggleText",
     "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information tat you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -96,6 +109,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadDisclosure",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -103,6 +117,7 @@
     "ID": "witnessLabel",
     "Label": "## Witness evidence",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -110,6 +125,7 @@
     "ID": "witnessToggleText",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -118,6 +134,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitness",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -125,6 +142,7 @@
     "ID": "expertLabel",
     "Label": "## Expert evidence",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -132,6 +150,7 @@
     "ID": "expertToggleText",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -140,6 +159,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpert",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -147,6 +167,7 @@
     "ID": "trialLabel",
     "Label": "## Trial Documents",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -154,6 +175,7 @@
     "ID": "trialToggleText",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -162,6 +184,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrial",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -169,6 +192,7 @@
     "ID": "witnessLabelSmallClaim",
     "Label": "You can select more than one type of document \n\n\n ## Witness evidence \n\n Your statement if you are giving evidence, statement written by your witness, summary of evidence",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -176,6 +200,7 @@
     "ID": "witnessToggleTextSmallClaim",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -184,6 +209,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitnessSmallClaim",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -191,6 +217,7 @@
     "ID": "expertLabelSmallClaim",
     "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -198,6 +225,7 @@
     "ID": "expertToggleTextSmallClaim",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -206,6 +234,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpertSmallClaim",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -213,6 +242,7 @@
     "ID": "trialLabelSmallClaim",
     "Label": "## Trial Documents \n\n Documents for your trial including authorities, costs and documentary evidence for trial.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -220,6 +250,7 @@
     "ID": "trialToggleTextSmallClaim",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -228,6 +259,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrialSmallClaim",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -235,6 +267,7 @@
     "ID": "documentUploadLabel",
     "Label": "## You cannot withdraw a document once you have uploaded it \n ****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -243,6 +276,7 @@
     "Label": "Disclosure list",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -251,6 +285,7 @@
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -259,6 +294,7 @@
     "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -267,6 +303,7 @@
     "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -275,6 +312,7 @@
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -283,6 +321,7 @@
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -291,6 +330,7 @@
     "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -299,6 +339,7 @@
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -307,6 +348,7 @@
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -315,6 +357,7 @@
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -323,6 +366,7 @@
     "Label": "Case summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -331,6 +375,7 @@
     "Label": "Skeleton argument",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -339,6 +384,7 @@
     "Label": "Authorities",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -347,6 +393,7 @@
     "Label": "Costs",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -355,6 +402,7 @@
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -362,6 +410,7 @@
     "ID": "caseDocumentUploadDate",
     "Label": "upload date",
     "FieldType": "DateTime",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -370,6 +419,7 @@
     "Label": "Claimant uploaded documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentBundles",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -377,6 +427,7 @@
     "ID": "evidenceUploadTextRes",
     "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\". \n\n The other parties will be able to see the documents you have uploaded, and \n you will be able to see their documents \n # Deadlines for uploading documents \n Check the order he court sent you for the deadlines for uploading your documents. If you upload a document after the deadline, you will have to apply to the court to use it at the hearing and the judge will decide if it can be accepted \n\n You do not have to upload all your documents at once. You can return to upload them later. \n # How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files. \n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\". \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP. TIF, TIFF.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -384,6 +435,7 @@
     "ID": "disclosureLabelRes",
     "Label": "You can select more than one type of document \n\n\n ## Disclosure",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -391,6 +443,7 @@
     "ID": "disclosureToggleTextRes",
     "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information tat you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -399,6 +452,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadDisclosure",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -406,6 +460,7 @@
     "ID": "witnessLabelRes",
     "Label": "## Witness evidence",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -413,6 +468,7 @@
     "ID": "witnessToggleTextRes",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -421,6 +477,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitness",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -428,6 +485,7 @@
     "ID": "expertLabelRes",
     "Label": "## Expert evidence",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -435,6 +493,7 @@
     "ID": "expertToggleTextRes",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -443,6 +502,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpert",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -450,6 +510,7 @@
     "ID": "trialLabelRes",
     "Label": "## Trial Documents",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -457,6 +518,7 @@
     "ID": "trialToggleTextRes",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -465,6 +527,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrial",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -472,6 +535,7 @@
     "ID": "witnessLabelSmallClaimRes",
     "Label": "You can select more than one type of document \n\n\n ## Witness evidence \n\n Your statement if you are giving evidence, statement written by your witness, summary of evidence",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -479,6 +543,7 @@
     "ID": "witnessToggleTextSmallClaimRes",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -487,6 +552,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitnessSmallClaim",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -494,6 +560,7 @@
     "ID": "expertLabelSmallClaimRes",
     "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -501,6 +568,7 @@
     "ID": "expertToggleTextSmallClaimRes",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -509,6 +577,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpertSmallClaim",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -516,6 +585,7 @@
     "ID": "trialLabelSmallClaimRes",
     "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities and Costs.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -523,6 +593,7 @@
     "ID": "trialToggleTextSmallClaimRes",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -531,6 +602,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrialSmallClaim",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -538,6 +610,7 @@
     "ID": "documentUploadLabelRes",
     "Label": "## You cannot withdraw a document once you have uploaded it \n ****",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -546,6 +619,7 @@
     "Label": "Disclosure list",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -554,6 +628,7 @@
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -562,6 +637,7 @@
     "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -570,6 +646,7 @@
     "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -578,6 +655,7 @@
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -586,6 +664,7 @@
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -594,6 +673,7 @@
     "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -602,6 +682,7 @@
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -610,6 +691,7 @@
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -618,6 +700,7 @@
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -626,6 +709,7 @@
     "Label": "Case summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -634,6 +718,7 @@
     "Label": "Skeleton argument",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -642,6 +727,7 @@
     "Label": "Authorities",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -650,6 +736,7 @@
     "Label": "Costs",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -658,6 +745,7 @@
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -666,6 +754,7 @@
     "Label": "Disclosure list",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -674,6 +763,7 @@
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -682,6 +772,7 @@
     "Label": "Witness statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness1",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -690,6 +781,7 @@
     "Label": "Witness summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness2",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -698,6 +790,7 @@
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceWitness3",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -706,6 +799,7 @@
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -714,6 +808,7 @@
     "Label": "Expert's report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert1",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -722,6 +817,7 @@
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert2",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -730,6 +826,7 @@
     "Label": "Questions for other party's expert or joint experts",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -738,6 +835,7 @@
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert4",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -746,6 +844,7 @@
     "Label": "Case summary",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -754,6 +853,7 @@
     "Label": "Skeleton argument",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -762,6 +862,7 @@
     "Label": "Authorities",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -770,6 +871,7 @@
     "Label": "Costs",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadDocumentOnly",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -778,6 +880,7 @@
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -920,6 +1023,7 @@
     "ID": "caseDocumentUploadDateRes",
     "Label": "upload date",
     "FieldType": "DateTime",
+    "Searchable": "Y",
     "SecurityClassification": "Public"
   },
   {
@@ -928,6 +1032,7 @@
     "Label": "Respondent uploaded documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentBundles",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

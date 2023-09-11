@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "text",
     "FieldType": "Label",
     "ElementLabel": "Costs in the case",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

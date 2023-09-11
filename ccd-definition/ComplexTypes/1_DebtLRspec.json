@@ -5,6 +5,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "DebtType",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Repayment amount",
     "HintText": "Only include the amount paid to clear previously missed regular payments",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -21,6 +23,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentFrequency",
     "ElementLabel": "Select one option.",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

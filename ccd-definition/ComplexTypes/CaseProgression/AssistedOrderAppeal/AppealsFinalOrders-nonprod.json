@@ -5,6 +5,7 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### The",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -14,6 +15,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "AppealList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -23,6 +25,7 @@
     "ElementLabel": "Please specify",
     "FieldType": "Text",
     "FieldShowCondition": "list = \"OTHER\"",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -31,6 +34,7 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### application for permission to appeal is",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -40,6 +44,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ApplicationAppealList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
 
@@ -50,6 +55,7 @@
     "ElementLabel": " ",
     "FieldType": "AppealChoiceFirstDropdown",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "applicationList = \"GRANTED\" OR applicationList = \"REFUSED\""
   }
 ]

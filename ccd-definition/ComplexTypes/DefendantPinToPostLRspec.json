@@ -4,6 +4,7 @@
     "ListElementCode": "accessCode",
     "FieldType": "Text",
     "ElementLabel": "Access Code",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "respondentCaseRole",
     "FieldType": "Text",
     "ElementLabel": "Case Role",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ListElementCode": "expiryDate",
     "FieldType": "Date",
     "ElementLabel": "Expiry Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ListElementCode": "citizenCaseRole",
     "FieldType": "Text",
     "ElementLabel": "Citizen Case Role",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

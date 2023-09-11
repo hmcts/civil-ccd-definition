@@ -5,6 +5,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "CPRCertifyAcceptanceDJ",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

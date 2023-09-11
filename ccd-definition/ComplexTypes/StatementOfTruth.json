@@ -5,6 +5,7 @@
     "FieldType": "Label",
     "ElementLabel": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "This label should be set in caseEventToComplexTypes"
   },
   {
@@ -12,6 +13,7 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Full Name",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -19,6 +21,7 @@
     "ListElementCode": "role",
     "FieldType": "Text",
     "ElementLabel": "Role",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

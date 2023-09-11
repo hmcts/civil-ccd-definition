@@ -4,6 +4,7 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "ElementLabel": "Judgment for the claimant for a sum to be decided by the court",
     "HintText": "Subject to a deduction of the percentage below",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Min": 0,
     "Max": 100
   }

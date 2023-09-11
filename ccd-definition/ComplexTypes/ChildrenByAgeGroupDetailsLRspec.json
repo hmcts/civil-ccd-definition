@@ -4,6 +4,7 @@
     "ListElementCode": "ageGroupLabel",
     "ElementLabel": "<p>Enter how many for each age group:</p>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "FieldType": "Text",
     "ElementLabel": "Under 11",
     "RegularExpression": "\\d+",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -20,6 +22,7 @@
     "FieldType": "Text",
     "ElementLabel": "11 to 15",
     "RegularExpression": "\\d+",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -28,6 +31,7 @@
     "FieldType": "Text",
     "ElementLabel": "16 to 19",
     "RegularExpression": "\\d+",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

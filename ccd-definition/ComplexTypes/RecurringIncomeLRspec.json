@@ -5,6 +5,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "IncomeType",
     "ElementLabel": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -13,6 +14,7 @@
     "FieldType": "Text",
     "ElementLabel": "Type of income",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "type = \"OTHER\""
   },
   {
@@ -20,6 +22,7 @@
     "ListElementCode": "amount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount received",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -27,6 +30,7 @@
     "ListElementCode": "frequency",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "WeekMonthPeriod",
+    "Searchable": "N",
     "ElementLabel": "Paid every:",
     "SecurityClassification": "Public"
   }

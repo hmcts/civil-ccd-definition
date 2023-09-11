@@ -5,6 +5,7 @@
     "ElementLabel": "What support do you, your clients, experts or witnesses need?",
     "HintText": "For Example, client requires a courtroom with free access.",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ListElementCode": "endLabel",
     "FieldType": "Label",
     "ElementLabel": "###### You are reminded that this information will be shared with all other parties.",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

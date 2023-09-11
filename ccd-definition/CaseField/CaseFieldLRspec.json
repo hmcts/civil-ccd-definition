@@ -4,6 +4,7 @@
     "ID": "respondStatementOfTruthHeaderLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Statement of truth</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ID": "respondStatementOfTruthLabel",
     "Label": "The defendant believes that the facts stated in the response are true.\n\nI am duly authorised by the defendant to sign this statement.\n\nThe defendant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -18,6 +20,7 @@
     "ID": "respondStatementOfTruthSubmitLabel",
     "Label": "In order to verify the response to claim by a statement of truth please click “submit” on the next screen. Doing so will be taken as verifying the response by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the “submit” button.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -25,6 +28,7 @@
     "ID": "specEligibilityQuestions",
     "Label": "## Issue civil court proceedings\nTo use this service you must be:\n* issuing a claim for a specified (fixed) amount of money\n* have an address in England or Wales and an email address\n* able to pay the full issue fee using Payment by Account (PBA) or card payment\n* serving a claim form in English\n\nThe claimant must:\n\n* have an address in England or Wales\n* not have a civil proceedings order, civil restraint order, or all proceedings order against them\n\nThe claim you’re issuing must not:\n* ordinarily follow the Part 8 procedure\n* be brought under the Consumer Credit Act 1974\n* be against the Crown",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -32,6 +36,7 @@
     "ID": "specCheckList",
     "Label": "## Legal representatives: specified civil money claims service\n### Before you start\nDownload and complete the claim timeline template with all events in your timeline. You will upload the template in this service. \nPlease do not upload password protected documents as this will prevent the claim from being processed.\n\n<a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can complete and upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template. \n\nIf you're claiming interest you will need your interest calculation and dates.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -39,6 +44,7 @@
     "ID": "specRespondentSolicitor1OrganisationEmail",
     "Label": " ",
     "FieldType": "SolicitorOrganisationEmail",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -46,6 +52,7 @@
     "ID": "specRespondentSolicitor1OrgLabel",
     "Label": "## Email for defendant’s legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,6 +60,7 @@
     "ID": "specRespondentSolicitor2OrgLabel",
     "Label": "## Email for second defendant's legal representative \n\nUse the email address of the legal representative's firm if you have it, otherwise use their personal email. \n\n <p class=\"govuk-inset-text\">You can still issue the claim without their email address but the claim will then continue offline.</p>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -60,6 +68,7 @@
     "ID": "specDetailsOfClaimLabel",
     "Label": "## Describe your claim\nDo not give us a detailed timeline - we'll ask for that separately.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -67,6 +76,7 @@
     "ID": "specDetailsOfClaimUploadDocumentLabel",
     "Label": "## Upload supporting documents (optional)\n\n<div class=\"govuk-inset-text\">You can upload documents in support of the claim details above.</div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -75,6 +85,7 @@
     "Label": "Upload file",
     "HintText": "We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "FieldType": "Document",
+    "Searchable": "N",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public"
   },
@@ -84,6 +95,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimTimelineList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -91,6 +103,7 @@
     "ID": "specClaimTimelineListLabel",
     "Label": "## How do you want to add your claim timeline?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -98,6 +111,7 @@
     "ID": "specClaimTimeline",
     "Label": "## Claim timeline\nIf you do not know the exact date, tell us the month and year.\n### Example timeline\n* 12 January 2020 - John Smith gave me a quote to replace the roof.\n* 14 January 2021 - We agreed and signed a contract for the work.\n* 21 March 2021 - I noticed a leak on the landing and told Mr Smith about this.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -105,6 +119,7 @@
     "ID": "calculatedInterestPageLabel",
     "Label": "<details><summary>How interest to date is calculated</summary><div class=\"panel panel-border-narrow\"><p>For most types of debt the rate is usually 8%.</p><p>To calculate this, we use the steps below.</p><ol class=\"list list-number\"><li><p>Work out the yearly interest: take the amount you’re claiming and multiply it by 0.08 (which is 8%).</p></li><li><p>Work out the daily interest: divide your yearly interest from step 1 by 365 (the number of days in a year).</p></li><li><p>Work out the total amount of interest: multiply the daily interest from step 2 by the number of days the debt has been overdue.</p></li></ol><div><strong class=\"govuk-tag govuk-tag--grey\">EXAMPLE</strong><br /><ol class=\"panel list\"><li>The rate of annual interest is 8%.</li><li>Annual interest on, for example, £1,000 is £80 (1000 x 0.08)</li><li>Daily interest on £1,000 is 22p (80 / 365)</li><li>Total amount of interest on £1,000 for 2 days is 44p (80 x 2 / 365)</li></ol></div></div></details><br /> \n\n There may be additional fees as your case progresses. <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/fees-in-the-civil-and-family-courts-main-fees-ex50\">There may be additional fees as your case progresses.</a> ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -113,6 +128,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "TimelineOfEvents",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -120,6 +136,7 @@
     "ID": "speclistYourEvidenceLabel",
     "Label": "## List your evidence\nTell us about any evidence you wish to provide. You do not need to send us any evidence now. If your case goes to a court hearing, and is not settled, you will need to provide evidence.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -128,6 +145,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "EvidenceList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -135,6 +153,7 @@
     "ID": "specClaimAmountLabel",
     "Label": "## Claim Amount\n Your claim can be for single or multiple amounts. Do not include interest or the claim fee, you can add these on the next page.\n\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -143,6 +162,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "ClaimAmountBreakup",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -150,6 +170,7 @@
     "ID": "totalClaimAmount",
     "Label": "Total",
     "FieldType": "Number",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -157,6 +178,7 @@
     "ID": "totalInterest",
     "Label": "Total Interest",
     "FieldType": "Number",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -164,6 +186,7 @@
     "ID": "superClaimType",
     "Label": "Total Interest",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -171,6 +194,7 @@
     "ID": "claimAmountBreakupSummaryLabel",
     "Label": "${claimAmountBreakupSummaryObject}",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -178,6 +202,7 @@
     "ID": "claimAmountBreakupSummaryObject",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -185,6 +210,7 @@
     "ID": "claimInterestLabel",
     "Label": "## Do you want to claim interest?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -192,6 +218,7 @@
     "ID": "claimInterest",
     "Label": "You can claim interest on the money your client is owed. The court will decide if they’re entitled to it.\n\n",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -199,6 +226,7 @@
     "ID": "claimInterestHelpTextLink",
     "Label": "<details><summary><u>Help with interest rates</u></summary><div class=\"panel\">\n\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate. \n\n The court will decide if you're entitled to some, or all, of the interest claimed.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -206,6 +234,7 @@
     "ID": "interestClaimOptionsLabel",
     "Label": "## How do you want to claim interest?\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -214,6 +243,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "InterestOptions",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -221,6 +251,7 @@
     "ID": "sameRateInterestSelectionLabel",
     "Label": "## What annual rate of interest do you want to claim?\n You can claim 8% per year unless you know that a different rate applies\n\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -228,6 +259,7 @@
     "ID": "sameRateInterestSelection",
     "Label": " ",
     "FieldType": "SameRateInterestOptions",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -235,6 +267,7 @@
     "ID": "sameInterestHelpTextLink",
     "Label": "<details><summary><u>Help with interest rates</u></summary><div class=\"panel\">\n\n You can claim 8% interest on money owed to you. This is the statutory rate. If you know that a different rate applies you can use that. For example, if you have a contract with a specific rate. \n\n The court will decide if you're entitled to some, or all, of the interest claimed.</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -242,6 +275,7 @@
     "ID": "breakDownInterestLabel",
     "Label": "## What is the total interest for your claim?\n Calculate interest for different periods of time, or items, and let us know the total. We’ll add it to your claim amount.\n\n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -249,6 +283,7 @@
     "ID": "breakDownInterestTotal",
     "Label": "Total interest amount\n",
     "FieldType": "Number",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -256,6 +291,7 @@
     "ID": "breakDownInterestDescription",
     "Label": "Show how you calculated the amount\n",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -263,6 +299,7 @@
     "ID": "interestClaimFromLabel",
     "Label": "## When are you claiming interest from?\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -271,6 +308,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "InterestClaimFrom",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -278,6 +316,7 @@
     "ID": "interestClaimUntilLabel",
     "Label": "## When are you claiming interest to?\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -286,6 +325,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "InterestClaimUntil",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -293,6 +333,7 @@
     "ID": "interestFromSpecificDateLabel",
     "Label": "## Date you want to claim interest from\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -300,6 +341,7 @@
     "ID": "interestFromSpecificDate",
     "Label": "For example, 22 04 2021\n",
     "FieldType": "Date",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -307,6 +349,7 @@
     "ID": "interestFromSpecificDateDescription",
     "Label": "Explain why you’re claiming from this date\n",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -314,6 +357,7 @@
     "ID": "calculatedInterestLabel",
     "Label": " ${calculatedInterest} ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -321,6 +365,7 @@
     "ID": "calculatedInterest",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -328,6 +373,7 @@
     "ID": "calculatedInterestHeading",
     "Label": "## Total amount of claim",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -335,6 +381,7 @@
     "ID": "specPbaAccountsInformationLabel",
     "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## One PBA listed\n\nTo pay with a different PBA, email: MyHMCTSsupport@justice.gov.uk \n\nAsk for your PBA to be registered with your MyHMCTS account and include your organisation name and PBA number. \n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Two PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nTo remove a PBA, email: MyHMCTSsupport@justice.gov.uk. \n\nInclude the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n</div></details><br />",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -342,6 +389,7 @@
     "ID": "specClaimTimelineUpload",
     "Label": "## Upload Claim timeline template",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -349,6 +397,7 @@
     "ID": "specClaimTemplateDocumentFiles",
     "Label": "Upload files",
     "FieldType": "Document",
+    "Searchable": "N",
     "HintText": "We only accept documents in pdf format. \n\nPlease do not upload password protected documents as this will prevent the claim from being processed.",
     "RegularExpression": ".pdf",
     "SecurityClassification": "Public"
@@ -358,6 +407,7 @@
     "ID": "specRespondentSolicitor1EmailAddress",
     "Label": "Email address",
     "FieldType": "Email",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -365,6 +415,7 @@
     "ID": "specRespondent1Represented",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -372,6 +423,7 @@
     "ID": "specRespondent2Represented",
     "Label": "Does the second defendant have a legal representative?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -379,6 +431,7 @@
     "ID": "specRespondent1RepresentedLabel",
     "Label": "## Does the defendant have a legal representative?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -386,6 +439,7 @@
     "ID": "specCorrespondenceAddressSubHeadingLabel",
     "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -393,6 +447,7 @@
     "ID": "specApplicantCorrespondenceAddressRequired",
     "Label": "Do you want to enter a different address?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -400,6 +455,7 @@
     "ID": "specApplicantCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -407,6 +463,7 @@
     "ID": "specRespondentCorrespondenceAddressSubHeadingLabel",
     "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -414,6 +471,7 @@
     "ID": "specRespondentCorrespondenceAddressRequired",
     "Label": "Do you want to enter a different address?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -421,6 +479,7 @@
     "ID": "specRespondentCorrespondenceAddressdetails",
     "Label": "Enter the correspondence address of the organisation",
     "FieldType": "AddressUK",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -428,6 +487,7 @@
     "ID": "specAoSRespondentDetailLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Confirm name and address</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -435,6 +495,7 @@
     "ID": "specAoSRespondentDetails",
     "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct contact the claimant's legal representative.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -442,6 +503,7 @@
     "ID": "specAoSApplicantCorrespondenceAddressdetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -449,6 +511,7 @@
     "ID": "specAoSRespondent2HomeAddressDetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -456,6 +519,7 @@
     "ID": "specAoSApplicantCorrespondenceAddressRequired",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -463,6 +527,7 @@
     "ID": "specAoSRespondent2HomeAddressRequired",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -470,6 +535,7 @@
     "ID": "specAoSRespondentCorrespondenceAddressRequired",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -477,6 +543,7 @@
     "ID": "specAoSRespondentCorrespondenceAddressdetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -484,6 +551,7 @@
     "ID": "specAoSRespondent2CorrespondenceAddressRequired",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -491,6 +559,7 @@
     "ID": "specAoSRespondent2CorrespondenceAddressdetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -498,6 +567,7 @@
     "ID": "specResponseCheckList",
     "Label": "<p class=\"govuk-inset-text\">You only need to complete this template if you're providing a timeline of events.</p> \n <p>Download and complete the claim timeline template with all events in your timeline. You will upload the template in this service. </p>\n\n <a target=\"_blank\" href=\"https://github.com/hmcts/cmc-citizen-frontend/raw/1ef9e83f68c6c5289f36c27de88780eeb7001cab/src/main/public/pdf/timeline-event-template.pdf\">claim timeline template.</a> \n\nYou can upload as many templates as necessary to record all events in your timeline. \n\nYou can also manually enter your timeline in this service without using the template.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -505,6 +575,7 @@
     "ID": "respondent1ClaimResponseTypeForSpecLabel",
     "Label": "## Defendant: ${respondent1.partyName}\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -512,6 +583,7 @@
     "ID": "respondentMPClaimResponseTypeForSpecLabel",
     "Label": "## Defendant: ${respondent1.partyName} and ${respondent2.partyName}\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -520,6 +592,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -528,6 +601,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -536,6 +610,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -544,6 +619,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -551,6 +627,7 @@
     "ID": "claimant1ClaimResponseTypeForSpecLabel",
     "Label": "## Claimant: ${applicant1.partyName}\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -558,6 +635,7 @@
     "ID": "claimant2ClaimResponseTypeForSpecLabel",
     "Label": "## Claimant: ${applicant2.partyName}\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -566,6 +644,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -574,6 +653,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -582,6 +662,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpecPaidStatus",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -590,6 +671,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseAdmissionType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -598,6 +680,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseAdmissionType",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -605,6 +688,7 @@
     "ID": "specDefenceAdmittedRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -612,6 +696,7 @@
     "ID": "specDefenceAdmitted2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -619,6 +704,7 @@
     "ID": "specDefenceRouteAmountClaimedLabel",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimant? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -626,6 +712,7 @@
     "ID": "specMPDefenceRouteAmountClaimedLabel",
     "Label": "## Why do ${respondent1.partyName} and ${respondent2.partyName} not owe money to the claimant? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -633,6 +720,7 @@
     "ID": "specDefenceRouteAmountClaimedLabel2v1",
     "Label": "## Why does ${respondent1.partyName} not owe money to the claimants? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -640,6 +728,7 @@
     "ID": "specDefenceRouteAmountClaimedRespondent2Label",
     "Label": "## Why does ${respondent2.partyName} not owe money to the claimant? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -647,6 +736,7 @@
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel",
     "Label": "## Has ${respondent1.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -654,6 +744,7 @@
     "ID": "specDefenceRouteAdmittedAmountClaimed2Label",
     "Label": "## Has ${respondent2.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -661,6 +752,7 @@
     "ID": "specDefenceRouteAdmittedAmountClaimedMPLabel",
     "Label": "## Have ${respondent1.partyName} and ${respondent2.partyName} paid the claimant the admitted amount? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -668,6 +760,7 @@
     "ID": "specDefenceRouteAdmittedAmountClaimedLabel2V1",
     "Label": "## Has ${respondent1.partyName} paid the claimants the admitted amount? \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -675,6 +768,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaim",
     "FieldType": "RespondToClaim",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -682,6 +776,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaim2",
     "FieldType": "RespondToClaim",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -689,6 +784,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaim",
     "FieldType": "RespondToClaim",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -696,6 +792,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToAdmittedClaim2",
     "FieldType": "RespondToClaim",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -703,6 +800,7 @@
     "ID": "respondToAdmittedClaimOwingAmount",
     "Label": "How much money does your client admit to owing?",
     "FieldType": "MoneyGBP",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -710,6 +808,7 @@
     "ID": "respondToAdmittedClaimOwingAmount2",
     "Label": "How much money does your client admit to owing?",
     "FieldType": "MoneyGBP",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -717,6 +816,7 @@
     "ID": "respondToAdmittedClaimOwingAmountPounds",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -724,6 +824,7 @@
     "ID": "respondToAdmittedClaimOwingAmountPounds2",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -731,6 +832,7 @@
     "ID": "specDefenceRouteUploadDocumentLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent1.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -738,6 +840,7 @@
     "ID": "specDefenceRouteUploadDocumentLabelRespondent2",
     "Label": "<h2 class=\"govuk-heading-m\">Why does ${respondent2.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -745,6 +848,7 @@
     "ID": "specDefenceRouteUploadDocumentMPLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Why do ${respondent1.partyName} and ${respondent2.partyName} dispute the claim?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -752,6 +856,7 @@
     "ID": "specDefenceRouteUploadDocumentLabel4",
     "Label": "<div><p>Do not give us a detailed timeline - we'll ask for that separately.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -759,6 +864,7 @@
     "ID": "detailsOfWhyDoesYouDisputeTheClaim",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -766,6 +872,7 @@
     "ID": "detailsOfWhyDoesYouDisputeTheClaim2",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -773,6 +880,7 @@
     "ID": "specDefenceRouteUploadDocumentHelpLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Upload supporting evidence (optional)</h2></h1> \n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -780,6 +888,7 @@
     "ID": "specDefenceRouteUploadDocumentHelpLabel2",
     "Label": "<p class=\"govuk-inset-text\">If you've referred to evidence in the above box, please upload them here.</p>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -787,6 +896,7 @@
     "ID": "specDefenceRouteUploadDocumentLabel2",
     "Label": "## ${respondent1.partyName} has paid less than the total claim amount \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -794,6 +904,7 @@
     "ID": "specDefenceRouteUploadDocumentLabel2Respondent2",
     "Label": "## ${respondent2.partyName} has paid less than the total claim amount \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -801,6 +912,7 @@
     "ID": "specDefenceRouteUploadDocumentLabel3",
     "Label": "<div><p>Tell us why your client does not owe the remaining amount.</p><p>If the claimant rejects your explanation you may have to go to a hearing.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -808,6 +920,7 @@
     "ID": "respondent1SpecDefenceResponseDocument",
     "Label": " ",
     "FieldType": "ResponseSpecDocument",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -815,6 +928,7 @@
     "ID": "respondent2SpecDefenceResponseDocument",
     "Label": " ",
     "FieldType": "ResponseSpecDocument",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -822,6 +936,7 @@
     "ID": "specClaimResponseTimelineLabel",
     "Label": "## How do you want to add the claim timeline? ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -830,6 +945,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimTimelineList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -838,6 +954,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimTimelineList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -847,6 +964,7 @@
     "FieldType": "Document",
     "HintText": "We only accept documents in pdf format.",
     "RegularExpression": ".pdf",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -856,6 +974,7 @@
     "FieldType": "Document",
     "HintText": "We only accept documents in pdf format.",
     "RegularExpression": ".pdf",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -864,6 +983,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "TimelineOfEvents",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -872,6 +992,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "TimelineOfEvents",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -879,6 +1000,7 @@
     "ID": "specDefenceRouteManualTimelineLabel",
     "Label": "List the events in order. Provide dates if you know them.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -887,6 +1009,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "EvidenceList",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -894,6 +1017,7 @@
     "ID": "responseClaimTrack",
     "Label": "Enter Claim type",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -901,6 +1025,7 @@
     "ID": "responseClaimMediationSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -908,6 +1033,7 @@
     "ID": "responseMPClaimMediationSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Have ${respondent1.partyName} and ${respondent2.partyName} agreed to free mediation?</h2>\n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -915,6 +1041,7 @@
     "ID": "responseClaimMediationSpecLabelRes2",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent2.partyName} agreed to free mediation?</h2>\n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -922,6 +1049,7 @@
     "ID": "responseClaimMediationSpecLabel2",
     "Label": "<p>Find out more about <a href=\"https://www.gov.uk/guidance/small-claims-mediation-service\" rel=\"noreferrer noopener\" target=\"_blank\">free mediation (opens in a new tab)</a>.</p>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -929,6 +1057,7 @@
     "ID": "responseClaimMediationSpecRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -936,6 +1065,7 @@
     "ID": "responseClaimMediationSpec2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -943,6 +1073,7 @@
     "ID": "responseClaimExpertSpecLabel",
     "Label": "## Use of experts in court",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -950,6 +1081,7 @@
     "ID": "responseClaimCourtLocationLabel",
     "Label": "## Court Location",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -958,6 +1090,7 @@
     "Label": "Do you want hearing to be held at specific court ? \n",
     "HintText": "If the defendant is an individual the case will be held at defendant's preferred court ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -966,6 +1099,7 @@
     "Label": "Do you want hearing to be held at specific court ? \n",
     "HintText": "If the defendant is individual the case will be held at defendant's preferred court ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -973,6 +1107,7 @@
     "ID": "respondToClaimExperts",
     "Label": " ",
     "FieldType": "ExpertDetails",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -980,6 +1115,7 @@
     "ID": "respondToClaimExperts2",
     "Label": " ",
     "FieldType": "ExpertDetails",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -987,6 +1123,7 @@
     "ID": "respondToCourtLocation",
     "Label": "Court Location",
     "FieldType": "RequestedCourtLocationLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -994,6 +1131,7 @@
     "ID": "respondToCourtLocation2",
     "Label": "Court Location",
     "FieldType": "RequestedCourtLocationLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1002,6 +1140,7 @@
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
     "RegularExpression": "\\d+",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1010,6 +1149,7 @@
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
     "RegularExpression": "\\d+",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1017,6 +1157,7 @@
     "ID": "respondent1DQHearingSmallClaim",
     "Label": "Respondent 1 Hearing",
     "FieldType": "SmallClaimHearing",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1024,6 +1165,7 @@
     "ID": "respondent2DQHearingSmallClaim",
     "Label": "Respondent 1 Hearing",
     "FieldType": "SmallClaimHearing",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1031,6 +1173,7 @@
     "ID": "respondent1DQHearingFastClaimLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Hearing availability</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1038,6 +1181,7 @@
     "ID": "respondent1DQHearingFastClaim",
     "Label": " ",
     "FieldType": "HearingLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1045,6 +1189,7 @@
     "ID": "respondent2DQHearingFastClaim",
     "Label": "Respondent 1 Hearing",
     "FieldType": "HearingLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1052,6 +1197,7 @@
     "ID": "SmallClaimHearingInterpreterRequired",
     "FieldType": "YesOrNo",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1059,6 +1205,7 @@
     "ID": "SmallClaimHearingInterpreter2Required",
     "FieldType": "YesOrNo",
     "Label": " ",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1066,6 +1213,7 @@
     "ID": "SmallClaimHearingInterpreterDescription",
     "FieldType": "TextArea",
     "Label": "Type of interpreter",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1073,6 +1221,7 @@
     "ID": "smallClaimHearingInterpreterDescription2",
     "FieldType": "TextArea",
     "Label": "Type of interpreter",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1080,6 +1229,7 @@
     "ID": "claimProceedsInCasemanLR",
     "Label": "Case proceeds in Caseman",
     "FieldType": "ClaimProceedsInCasemanLR",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1087,6 +1237,7 @@
     "ID": "specRespondent1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1094,6 +1245,7 @@
     "ID": "specRespondent2DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1101,6 +1253,7 @@
     "ID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1108,6 +1261,7 @@
     "ID": "specRespondent2DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1115,6 +1269,7 @@
     "ID": "respondent1DQFutureApplicationsLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Application</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1122,6 +1277,7 @@
     "ID": "respondent1DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1129,6 +1285,7 @@
     "ID": "respondent2DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1136,6 +1293,7 @@
     "ID": "additionalInformationForJudge",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1143,6 +1301,7 @@
     "ID": "additionalInformationForJudge2",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1150,6 +1309,7 @@
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1157,6 +1317,7 @@
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds2}?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1164,6 +1325,7 @@
     "ID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabelBothDefendants",
     "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${respondToAdmittedClaimOwingAmountPounds}?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1172,6 +1334,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1180,6 +1343,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1187,6 +1351,7 @@
     "ID": "partAdmissionWhenWillDefendantPayImmediatelyLabel",
     "Label": "You must contact the claimant to arrange payment of the full amount within 5 days. Any cheques or transfers must be clear in their account.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1194,6 +1359,7 @@
     "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
     "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1201,6 +1367,7 @@
     "ID": "partAdmissionWhenWillDefendantPayImmediately2Label",
     "Label": "You must contact the claimant to arrange payment of the full amount within 5 days. Any cheques or transfers must be clear in their account.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1208,6 +1375,7 @@
     "ID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
     "Label": "The claimant can request a County Court Judgment (CCJ) against your client if the amount is not paid immediately.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1216,6 +1384,7 @@
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1224,6 +1393,7 @@
     "Label": " ",
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1231,6 +1401,7 @@
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1238,6 +1409,7 @@
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent2.partyName} in employment?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1245,6 +1417,7 @@
     "ID": "defenceAdmitPartEmploymentTypeRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1252,6 +1425,7 @@
     "ID": "defenceAdmitPartEmploymentType2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1261,6 +1435,7 @@
     "HintText":"Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1270,6 +1445,7 @@
     "HintText":"Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1277,6 +1453,7 @@
     "ID": "respondToClaimAdmitPartUnemployedLRspec",
     "Label": " ",
     "FieldType": "UnemployedComplexTypeLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1284,6 +1461,7 @@
     "ID": "respondToClaimAdmitPartUnemployedLRspec2",
     "Label": " ",
     "FieldType": "UnemployedComplexTypeLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1291,6 +1469,7 @@
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabelRespondent2",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent2.partyName} in employment?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1298,6 +1477,7 @@
     "ID": "defenceAdmitPartEmploymentTypeRequiredRespondent2",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1307,6 +1487,7 @@
     "HintText": "Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1314,6 +1495,7 @@
     "ID": "respondToClaimAdmitPartUnemployedLRspecRespondent2",
     "Label": " ",
     "FieldType": "UnemployedComplexTypeLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1321,6 +1503,7 @@
     "ID": "respondent1CourtOrderPaymentLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} paying money as a result of any court order?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1328,6 +1511,7 @@
     "ID": "respondent2CourtOrderPaymentLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent2.partyName} paying money as a result of any court order?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1335,6 +1519,7 @@
     "ID": "respondent1CourtOrderPayment",
     "Label": " ",
     "FieldType": "PaymentUponCourtOrderLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1342,6 +1527,7 @@
     "ID": "respondent2CourtOrderPayment",
     "Label": " ",
     "FieldType": "PaymentUponCourtOrderLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1349,6 +1535,7 @@
     "ID": "respondent1CourtOrderPaymentOption",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1357,6 +1544,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PaymentOrder",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1364,6 +1552,7 @@
     "ID": "respondent2CourtOrderPaymentOption",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1372,6 +1561,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PaymentOrder",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1379,6 +1569,7 @@
     "ID": "minusBeforeOverdrawnAmount",
     "Label": "<h2 class=\"govuk-heading-l\">List ${respondent1Copy.partyName}'s bank and savings accounts</h2> \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1386,6 +1577,7 @@
     "ID": "minusBeforeOverdrawnAmountRes2",
     "Label": "<h2 class=\"govuk-heading-l\">List ${respondent2Copy.partyName}'s bank and savings accounts</h2> \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1393,6 +1585,7 @@
     "ID": "minusBeforeOverdrawnAmount2",
     "Label": "<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1400,6 +1593,7 @@
     "ID": "minusBeforeOverdrawnAmountRespondent2",
     "Label": "<h2 class=\"govuk-heading-l\">List ${respondent2Copy.partyName}'s bank and savings accounts</h2> \n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1407,6 +1601,7 @@
     "ID": "minusBeforeOverdrawnAmount2Respondent2",
     "Label": "<div><p>Put a minus (-) in front of any overdrawn amounts. For example &pound;-804.45.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1415,6 +1610,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "BankAccount",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1423,6 +1619,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "BankAccount",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1430,6 +1627,7 @@
     "ID": "specFinancialDetailsPurpose",
     "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent1.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1437,6 +1635,7 @@
     "ID": "specFinancialDetailsPurpose2",
     "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent2.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1444,6 +1643,7 @@
     "ID": "specFinancialDetailsPurposeRespondent2",
     "Label": "<h1 class=\"govuk-heading-l\">Details of ${respondent2.partyName}'s finances for the claimant</h1> \n <div><p>Provide details of your client's finances and we'll send them to claimant to review.</p><p>Your proposal can be rejected if the claimant believes your client can pay sooner.</p><p>If this happens, the court will make a new plan using the financial details provided.</p></div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1451,6 +1651,7 @@
     "ID": "specDebtPageLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s debts</h2> \n</div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1458,6 +1659,7 @@
     "ID": "specDebtPageLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent2Copy.partyName}'s debts</h2> \n</div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1465,6 +1667,7 @@
     "ID": "specDefendant1Debts",
     "Label": " ",
     "FieldType": "Debts",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1472,6 +1675,7 @@
     "ID": "specDefendant2Debts",
     "Label": " ",
     "FieldType": "Debts",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1479,6 +1683,7 @@
     "ID": "respondent1LoanCreditOption",
     "Label": "Does your client have any loans, or credit card debts?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1487,6 +1692,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PaymentOption",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1494,6 +1700,7 @@
     "ID": "respondent2LoanCreditOption",
     "Label": "Does your client have any loans, or credit card debts?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1502,6 +1709,7 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "PaymentOption",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1509,6 +1717,7 @@
     "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1.partyName}'s employment details</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1516,6 +1725,7 @@
     "ID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent2.partyName}'s employment details</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1523,6 +1733,7 @@
     "ID": "responseClaimAdmitPartEmployer",
     "Label": " ",
     "FieldType": "AdmitPartEmployer",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1530,6 +1741,7 @@
     "ID": "responseClaimAdmitPartEmployerRespondent2",
     "Label": " ",
     "FieldType": "AdmitPartEmployer",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1537,6 +1749,7 @@
     "ID": "responseClaimAdmitPartEmployer2",
     "Label": " ",
     "FieldType": "AdmitPartEmployer",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1544,6 +1757,7 @@
     "ID": "specSelfEmployedPageLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1Copy.partyName}'s employment details</h2> \n</div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1551,6 +1765,7 @@
     "ID": "specSelfEmployedPageLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent2Copy.partyName}'s employment details</h2> \n</div>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1558,6 +1773,7 @@
     "ID": "specDefendant1SelfEmploymentDetails",
     "Label": " ",
     "FieldType": "SelfEmployment",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1565,6 +1781,7 @@
     "ID": "specDefendant2SelfEmploymentDetails",
     "Label": " ",
     "FieldType": "SelfEmployment",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1572,6 +1789,7 @@
     "ID": "homeOptionsTitleLRspec",
     "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent1.partyName} live?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1579,6 +1797,7 @@
     "ID": "homeOptionsTitleLRspec2",
     "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent2.partyName} live?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1586,6 +1805,7 @@
     "ID": "respondent1DQHomeDetails",
     "Label": " ",
     "FieldType": "HomeDetailsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1593,6 +1813,7 @@
     "ID": "homeOptionsTitleLRspecRespondent2",
     "Label": "<h2 class=\"govuk-heading-l\">Where does ${respondent2.partyName} live?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1600,6 +1821,7 @@
     "ID": "respondent2DQHomeDetails",
     "Label": " ",
     "FieldType": "HomeDetailsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1607,6 +1829,7 @@
     "ID": "respondent1DQIncomeAndExpenseLabel",
     "Label": "## ${respondent1.partyName}'s income and expenses\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1621,6 +1844,7 @@
     "ID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
     "Label": "## ${respondent1.partyName}'s income and expenses\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1629,6 +1853,7 @@
     "Label": "## ${respondent2.partyName}'s income and expenses\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
@@ -1636,6 +1861,7 @@
     "ID": "respondent1DQCarerAllowanceCredit",
     "Label": "Does your client claim Carer's Allowance or Carer's Credit?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1643,6 +1869,7 @@
     "ID": "respondent2DQCarerAllowanceCredit",
     "Label": "Does your client claim Carer's Allowance or Carer's Credit?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1650,6 +1877,7 @@
     "ID": "respondent1DQCarerAllowanceCreditFullAdmission",
     "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1658,6 +1886,7 @@
     "Label": "Does your client claim Carer's Allowance of Carer's Credit?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
@@ -1666,6 +1895,7 @@
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1674,6 +1904,7 @@
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1682,6 +1913,7 @@
     "Label": "Add details of any regular income your client receives:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1691,6 +1923,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringIncome",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
@@ -1699,6 +1932,7 @@
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1707,6 +1941,7 @@
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1715,6 +1950,7 @@
     "Label": "Add details of any regular expenses your client has:",
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1724,6 +1960,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "RecurringExpense",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "not shown, the equivalent is in a different screen: DefendantIncomeExpensesRespondent2"
   },
   {
@@ -1731,6 +1968,7 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Tell us why ${respondent1.partyName} cannot pay immediately</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1738,6 +1976,7 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspecLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">Tell us why ${respondent2.partyName} cannot pay immediately</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1745,6 +1984,7 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1752,6 +1992,7 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1759,6 +2000,7 @@
     "ID": "respondent1RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent1.partyName} </h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1773,6 +2015,7 @@
     "ID": "respondent2RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1788,6 +2031,7 @@
     "ID": "respondent1RepaymentPlan",
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1795,6 +2039,7 @@
     "ID": "respondent2RepaymentPlan",
     "Label": " ",
     "FieldType": "RepaymentPlanLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1802,6 +2047,7 @@
     "ID": "respondent1DQWitnessesLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1809,6 +2055,7 @@
     "ID": "respondent1DQWitnessesRequiredSpec",
     "Label": "Are there any witnesses who should attend the hearing?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1817,6 +2064,7 @@
     "Label": "Witnesses details",
     "FieldType": "Collection",
     "FieldTypeParameter": "Witness",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1824,6 +2072,7 @@
     "ID": "specDefenceFullAdmittedRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1831,6 +2080,7 @@
     "ID": "specDefenceFullAdmitted2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1838,6 +2088,7 @@
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1845,6 +2096,7 @@
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1852,6 +2104,7 @@
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
     "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1859,6 +2112,7 @@
     "ID": "defendantSingleResponseToBothClaimantsLabel",
     "Label": "## Does the defendant intend to file a single response to both claimants?",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1866,6 +2120,7 @@
     "ID": "defendantSingleResponseToBothClaimants",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1873,6 +2128,7 @@
     "ID": "respondent2ClaimResponseTypeForSpecLabel",
     "Label": "## Defendant: ${respondent2.partyName}\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1881,6 +2137,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1888,6 +2145,7 @@
     "ID": "specFullAdmissionOrPartAdmission",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1895,6 +2153,7 @@
     "ID": "sameSolicitorSameResponse",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1902,6 +2161,7 @@
     "ID": "specPaidLessAmountOrDisputesOrPartAdmission",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1910,6 +2170,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "This field is readonly, not shown anywhere, not used in conditions either, should remove"
   },
   {
@@ -1917,6 +2178,7 @@
     "ID": "specFullDefenceOrPartAdmission",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1924,6 +2186,7 @@
     "ID": "specDisputesOrPartAdmission",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1931,6 +2194,7 @@
     "ID": "disabilityPremiumPaymentsLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Does ${respondent1.partyName} receive any disability premium payments?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1938,6 +2202,7 @@
     "ID": "disabilityPremiumPayments",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1945,6 +2210,7 @@
     "ID": "severeDisabilityPremiumPayments",
     "Label": "Does ${respondent1.partyName} receive severe disability premium payments?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1952,6 +2218,7 @@
     "ID": "disabilityPremiumPaymentsRespondent2Label",
     "Label": "<h2 class=\"govuk-heading-l\">Does ${respondent2.partyName} receive any disability premium payments?</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1959,6 +2226,7 @@
     "ID": "disabilityPremiumPaymentsRespondent2",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1966,6 +2234,7 @@
     "ID": "severeDisabilityPremiumPaymentsRespondent2",
     "Label": "Does ${respondent2.partyName} receive severe disability premium payments?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1974,6 +2243,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "readonly, not used in conditions"
   },
   {
@@ -1982,6 +2252,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "readonly, but not used in any condition, can remove"
   },
   {
@@ -1989,6 +2260,7 @@
     "ID": "responseCounterClaimLabel",
     "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -1997,6 +2269,7 @@
     "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comment": "duplicated bc can't combine and and or in show conditions and can't have twice the same field in a screen even if it's a label"
   },
   {
@@ -2004,6 +2277,7 @@
     "ID": "claimantCounterClaimLabel_2v1",
     "Label": "You have chosen to counterclaim. This means your defence cannot continue online. Select 'continue' for instructions on how to counterclaim using form N9B",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2011,6 +2285,7 @@
     "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2018,6 +2293,7 @@
     "ID": "specApplicant2DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2025,6 +2301,7 @@
     "ID": "applicant1DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2032,6 +2309,7 @@
     "ID": "applicant1AdditionalInformationForJudge",
     "Label": " ",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2039,6 +2317,7 @@
     "ID": "applicant1RespondToClaimExperts",
     "Label": " ",
     "FieldType": "ExpertDetails",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2047,6 +2326,7 @@
     "Label": "How many witnesses, including the claimant, will give evidence at the hearing?",
     "FieldType": "Text",
     "RegularExpression": "\\d+",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2054,6 +2334,7 @@
     "ID": "applicant1DQRequestedCourt",
     "Label": " ",
     "FieldType": "RequestedCourtLocationLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2068,6 +2349,7 @@
     "ID": "applicant1DefenceResponseDocumentSpec",
     "Label": " ",
     "FieldType": "ResponseDocument",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2075,6 +2357,7 @@
     "ID": "applicant1DefenceResponseDocumentSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Respond to the defence</h2>\n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2082,6 +2365,7 @@
     "ID": "applicant1DQRequestedCourtSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Claimant's requested court</h2>\n ",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2089,6 +2373,7 @@
     "ID": "applicant1ClaimMediationSpecRequired",
     "Label": "Has the ${applicant1.partyName} agreed to free mediation?",
     "FieldType": "SmallClaimMediation",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2096,6 +2381,7 @@
     "ID": "applicantMPClaimMediationSpecRequired",
     "Label": "Have the claimants agreed to free mediation?",
     "FieldType": "SmallClaimMediation",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2103,6 +2389,7 @@
     "ID": "respondent1PartnerAndDependentLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent1.partyName} partner and dependents</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2110,6 +2397,7 @@
     "ID": "respondent1PartnerAndDependent",
     "Label": " ",
     "FieldType": "PartnerAndDependentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2117,6 +2405,7 @@
     "ID": "respondent2PartnerAndDependentLabel",
     "Label": "<h2 class=\"govuk-heading-l\">${respondent2.partyName} partner and dependents</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2124,6 +2413,7 @@
     "ID": "respondent2PartnerAndDependent",
     "Label": " ",
     "FieldType": "PartnerAndDependentsLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2131,6 +2421,7 @@
     "ID": "applicant1ProceedWithClaimSpec2v1",
     "Label": "Do the claimants want to proceed with the claim?",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2138,6 +2429,7 @@
     "ID": "showHowToAddTimeLinePage",
     "Label": "showHowToAddTimeLinePage",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2145,6 +2437,7 @@
     "ID": "fullAdmissionAndFullAmountPaid",
     "Label": "fullAdmissionAndFullAmountPaid",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2152,6 +2445,7 @@
     "ID": "partAdmittedByEitherRespondents",
     "Label": "partAdmittedByEitherRespondents",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2159,6 +2453,7 @@
     "ID": "neitherCompanyNorOrganisation",
     "Label": "neitherCompanyNorOrganisation",
     "FieldType": "YesOrNo",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2167,6 +2462,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponsePartAdmissionPaymentTimeLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2176,6 +2472,7 @@
     "HintText":"Select both if your client is employed and self-employed",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EmploymentTypeCheckboxFixedListLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2183,6 +2480,7 @@
     "ID": "enterBreathing",
     "FieldType": "BreathingSpaceStartInfo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": " "
   },
   {
@@ -2190,6 +2488,7 @@
     "ID": "liftBreathing",
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": " "
   },
   {
@@ -2197,6 +2496,7 @@
     "ID": "breathingSpaceLabel",
     "Label": "<strong class=\"text-16\">This claim is in Breathing Space</strong>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2204,6 +2504,7 @@
     "ID": "respondent1SmallClaimWitnessesLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2211,6 +2512,7 @@
     "ID": "applicantStatementOfTruthLabel",
     "Label": "The claimant believes that the facts stated in the response are true.\n\nI am duly authorised by the claimant to sign this statement.\n\nThe claimant understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2218,6 +2520,7 @@
     "ID": "applicant1SmallClaimWitnessesLabel",
     "Label": "<h2 class=\"govuk-heading-m\">Witnesses</h2>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2226,6 +2529,7 @@
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ShowConditionFlags",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2233,6 +2537,7 @@
     "ID": "respondent1PinToPostLRspec",
     "Label": " ",
     "FieldType": "DefendantPinToPostLRspec",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2240,6 +2545,7 @@
   "ID": "respondent1DQLanguage",
   "Label": "Welsh language",
   "FieldType": "Language",
+  "Searchable": "N",
   "SecurityClassification": "Public"
 },
   {
@@ -2247,6 +2553,7 @@
     "ID": "respondent2DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2254,6 +2561,7 @@
     "ID": "applicant1DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2261,6 +2569,7 @@
     "ID": "applicant2DQLanguage",
     "Label": "Welsh language",
     "FieldType": "Language",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2268,6 +2577,7 @@
     "ID": "paymentTypePBASpec",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2275,6 +2585,7 @@
     "ID": "respondentPayImmediatelyLabel",
     "Label": "## The defendant said they'll pay you immediately.\n",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2282,6 +2593,7 @@
     "ID": "respondentPayImmediatelyTextBeforeDate",
     "Label": "<p>Claim Number: ${legacyCaseReference}</p><p>They must make sure you have the money by:",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2289,6 +2601,7 @@
     "ID": "respondentPayImmediatelyTextAfterDate",
     "Label": "Any cheques or transfers should be clear in your account.<p>You need to tell us if you’ve settled the claim, for example because the defendant has paid you.</p><p>You can settle for less than the full claim amount.</p><p><h3>If you haven’t been paid.</h3></p><p>If the defendant has not paid you, you can request a County Court Judgment by completing the following form and sending it to the email address below.</p><p><li><a href=\"https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/961368/n225-eng.pdf\" target=\"_blank\">N225 </a>- Ask for judgment on a claim for a specified amount of money</li></ul></p><p>Email: <a href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></p>",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2297,6 +2610,7 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ShowResponseOneVOneFlag",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2304,6 +2618,7 @@
     "ID": "whenToBePaidText",
     "Label": " ",
     "FieldType": "Text",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2312,6 +2627,7 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_comment": "used in civil-service to determine which document belongs to which respondent, to populate preview on claimant response event "
   },
   {
@@ -2320,6 +2636,7 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_comment": "used in civil-service to determine which document belongs to which respondent, to populate preview on claimant response event "
   },
   {
@@ -2328,6 +2645,7 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_comment": "used in civil-service to determine and store if respondent 2 triggered respond to claim"
   },
   {

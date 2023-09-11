@@ -4,6 +4,7 @@
     "ListElementCode": "startLabel",
     "ElementLabel": "### Other information",
     "FieldType": "Label",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ElementLabel": "Is there anything else the court needs to know?",
     "HintText": "For example, a witness needs to leave the court by 3pm due to caring responsibilities.",
     "FieldType": "TextArea",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
