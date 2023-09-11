@@ -4,7 +4,7 @@
     "ID": "INITIATE_GENERAL_APPLICATION",
     "Name": "Make an application",
     "Description": "Application created, post actions triggered",
-    "DisplayOrder": 17,
+    "DisplayOrder": 129,
     "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;IN_MEDIATION;JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

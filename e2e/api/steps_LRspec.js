@@ -203,14 +203,11 @@ module.exports = {
     }
     await waitForFinishedBusinessProcess(caseId);
     if (scenario === 'ONE_V_ONE') {
-      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'ENTER_BREATHING_SPACE_SPEC');
-      assert.equal(updatedCaseState, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     } else {
       // one v two/multiparty continuing online not currently supported for LiPs
-      const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'SEND_SDO_ORDER_TO_LIP_DEFENDANT');
-      assert.equal(updatedCaseState, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
-
   },
 
   informAgreedExtensionDate: async (user) => {

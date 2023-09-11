@@ -264,6 +264,12 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL'
   },
+  bulkClaimSystemUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com', // temporary email
+    type: 'bulk_system_user',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+  },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',

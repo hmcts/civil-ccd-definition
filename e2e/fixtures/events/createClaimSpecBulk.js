@@ -31,7 +31,7 @@ const respondent2 = {
   primaryAddress: Address
 };
 
-const claimAmount = '151234';
+const claimAmount = '1512';
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 
 module.exports = {
@@ -80,7 +80,7 @@ module.exports = {
             name: 'John Doe', // from  SDT: from sotSignature
             role: 'Bulk issuer'  // from SDT, defaulted value as mandatory field
           },
-          totalClaimAmount: '151234', // from SDT: claimAmount
+          totalClaimAmount: '1512', // from SDT: claimAmount
       };
     }
     if (mpScenario == 'ONE_V_TWO') {
@@ -129,7 +129,7 @@ module.exports = {
           name: 'John Doe', // from  SDT: from sotSignature
           role: 'Bulk issuer'  // from SDT, defaulted value as mandatory field
         },
-        totalClaimAmount: '151234', // from SDT: claimAmount
+        totalClaimAmount: '1512', // from SDT: claimAmount
       };
     }
   },
