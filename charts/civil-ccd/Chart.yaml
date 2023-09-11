@@ -37,7 +37,7 @@ dependencies:
 
 # WA
   - name: wa
-    version: 0.1.4
+    version: 0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: wa.enabled
 # CCD message publisher
