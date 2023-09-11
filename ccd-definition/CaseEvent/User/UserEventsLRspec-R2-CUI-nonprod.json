@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "ENTER_BREATHING_SPACE_CUI",
+    "ID": "ENTER_BREATHING_SPACE_LIP",
     "Name": "Enter Breathing Space - LiP",
     "Description": "Enter Breathing Space - Citizen",
     "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",

@@ -1,7 +1,7 @@
 [
   {
     "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "CaseFieldID": "enterBreathing",
     "ListElementCode": "reference",
     "FieldDisplayOrder": 1,
@@ -9,7 +9,7 @@
   },
   {
     "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "CaseFieldID": "enterBreathing",
     "ListElementCode": "start",
     "FieldDisplayOrder": 2,
@@ -17,7 +17,7 @@
   },
   {
     "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "CaseFieldID": "enterBreathing",
     "ListElementCode": "type",
     "FieldDisplayOrder": 3,
@@ -25,7 +25,7 @@
   },
   {
     "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "CaseFieldID": "enterBreathing",
     "ListElementCode": "expectedEnd",
     "FieldDisplayOrder": 4,
@@ -33,7 +33,7 @@
   },
   {
     "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "CaseFieldID": "enterBreathing",
     "ListElementCode": "event",
     "FieldDisplayOrder": 5,
@@ -41,7 +41,7 @@
   },
   {
     "ID": "BreathingSpaceStartInfo",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "CaseFieldID": "enterBreathing",
     "ListElementCode": "eventDescription",
     "FieldDisplayOrder": 6,

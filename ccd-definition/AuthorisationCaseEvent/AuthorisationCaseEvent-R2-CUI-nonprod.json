@@ -463,7 +463,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ENTER_BREATHING_SPACE_CUI",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "AccessControl": [
       {
         "UserRoles": [
