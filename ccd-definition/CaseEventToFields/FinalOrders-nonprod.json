@@ -329,7 +329,7 @@
     "CaseFieldID": "finalOrderAppealComplex",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 27,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "FieldShowCondition": "finalOrderAppealToggle=\"SHOW\"",
     "ShowSummaryChangeOption": "N"
