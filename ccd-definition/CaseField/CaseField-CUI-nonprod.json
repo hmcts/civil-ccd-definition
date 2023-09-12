@@ -91,5 +91,12 @@
     "Label": "Is ${respondent1.partyName} paying money as a result of any court order?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantUserDetails",
+    "Label": "Defendant User Details",
+    "FieldType": "UserDetails",
+    "SecurityClassification": "Public"
   }
 ]
