@@ -205,7 +205,8 @@
     "UserRoles": [
       "caseworker-ras-validation",
       "GS_profile",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "R"
   },
