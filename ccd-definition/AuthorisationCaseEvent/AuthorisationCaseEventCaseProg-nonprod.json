@@ -128,7 +128,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },
