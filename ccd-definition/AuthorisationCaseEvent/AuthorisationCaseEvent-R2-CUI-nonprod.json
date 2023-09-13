@@ -460,5 +460,24 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
+
 ]
