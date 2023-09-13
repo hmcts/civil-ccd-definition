@@ -240,5 +240,29 @@
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "ListElementCode": "OrgPolicyReference",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "ListElementCode": "OrgPolicyReference",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "ChangeSolicitorEmail",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "ListElementCode": "OrgPolicyReference",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
   }
 ]
