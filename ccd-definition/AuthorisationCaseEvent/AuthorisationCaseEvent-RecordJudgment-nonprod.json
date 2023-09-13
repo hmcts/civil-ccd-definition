@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "record-judgment-access"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]

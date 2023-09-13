@@ -1,0 +1,24 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ALL_FINAL_ORDER_ISSUED",
+    "CaseFieldID": "TestField1",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ALL_FINAL_ORDER_ISSUED",
+    "CaseFieldID": "TestField2",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  }
+]
