@@ -1,0 +1,25 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NEXT_HEARING_DATE_UPDATE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "hearing-centre-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
+]

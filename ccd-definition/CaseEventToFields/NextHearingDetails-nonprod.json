@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NEXT_HEARING_DATE_UPDATE",
+    "CaseFieldID": "nextHearingDetails",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "NextHearingDetails",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryContentOption": 1
+  }
+]
