@@ -5,6 +5,7 @@
     "Name": "Update Next Hearing Details",
     "Description": "Update Next Hearing Details",
     "DisplayOrder": 1,
+    "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "Comment": "Event",
     "SecurityClassification": "Public",
