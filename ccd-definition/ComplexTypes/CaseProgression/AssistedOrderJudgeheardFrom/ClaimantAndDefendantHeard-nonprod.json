@@ -83,7 +83,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationTheClaimantInPersonList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "${typeRepresentationClaimantOneDynamic}, he claimant, in person",
+    "ElementLabel": "${typeRepresentationClaimantOneDynamic}, the claimant, in person",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"THE_CLAIMANT_IN_PERSON\"",
     "SecurityClassification": "Public"
