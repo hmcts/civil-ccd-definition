@@ -23,7 +23,7 @@
     "CaseFieldID": "applicantSolicitor1ServiceAddress",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "ChangeSolicitorEmail",
@@ -71,7 +71,7 @@
     "CaseFieldID": "applicantSolicitor1ServiceAddress",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "ChangeSolicitorEmail",
@@ -79,7 +79,7 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
     "ListElementCode": "AddressLine1",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "ChangeSolicitorEmail",
@@ -127,6 +127,6 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
     "ListElementCode": "PostCode",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   }
 ]
