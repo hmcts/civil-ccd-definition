@@ -165,6 +165,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "Respondent2SolicitorEmail",
+    "FieldShowCondition": "respondentSolicitor2ServiceAddressRequired=\"Yes\"",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y"
   },
