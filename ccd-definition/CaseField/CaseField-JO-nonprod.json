@@ -1,16 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "TestField1",
-    "Label": "Label1",
+    "ID": "joCaseTitle",
+    "Label": "## ${applicant1.partyName} v ${respondent1.partyName}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "TestField2",
-    "Label": "Label2",
+    "ID": "whyRecorded",
+    "Label": "Why is this Judgment being recorded?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
