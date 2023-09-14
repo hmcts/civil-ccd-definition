@@ -86,8 +86,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Respondent1SolicitorEmail",
     "PageLabel": "Respondent representative’s service address",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentSolicitor1ServiceAddress.PostCode = \"\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -154,8 +153,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Respondent2SolicitorEmail",
     "PageLabel": "Respondent representative’s service address",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentSolicitor2ServiceAddress.PostCode = \"\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -232,8 +230,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "Applicant1SolicitorEmail",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "applicantSolicitor1ServiceAddress.PostCode = \"\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
