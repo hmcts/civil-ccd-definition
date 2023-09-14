@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "MarkJudgmentPaid",
+    "ListElementCode": "dateOfFullPaymentMade",
+    "ElementLabel": "Enter the date the judgement was paid in full",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Definition":  "Enter the date the judgement was paid in full"
+  },
+  {
+    "ID": "MarkJudgmentPaid",
+    "ListElementCode": "confirmFullPaymentMade",
+    "ElementLabel": "I confirm that this judgment can be marked as paid in full",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmJudgementPaidInFull",
+    "SecurityClassification": "Public",
+    "Definition":  "I confirm that this judgment can be marked as paid in full"
+  }
+]

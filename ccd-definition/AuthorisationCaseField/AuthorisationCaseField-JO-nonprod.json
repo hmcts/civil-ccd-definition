@@ -1,17 +1,9 @@
 [
-  {
+   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "TestField1",
+    "CaseFieldID": "judgementPaidInFull",
     "UserRoles": [
-      "record-judgment-access"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "TestField2",
-    "UserRoles": [
-      "record-judgment-access"
+      "caseworker-civil", "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   }

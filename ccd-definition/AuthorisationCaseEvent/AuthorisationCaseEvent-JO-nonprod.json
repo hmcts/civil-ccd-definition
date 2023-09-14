@@ -1,11 +1,11 @@
 [
-  {
+   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "JUDGEMENT_PAID_IN_FULL",
     "AccessControl": [
       {
         "UserRoles": [
-          "record-judgment-access"
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
