@@ -246,6 +246,7 @@
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
+    "EventElementLabel": "Claimant's legal representative's reference",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
@@ -254,6 +255,7 @@
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
+    "EventElementLabel": "Defendant's legal representative's reference",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
@@ -262,6 +264,7 @@
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
+    "EventElementLabel": "Defendant's legal representative's reference",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   }
