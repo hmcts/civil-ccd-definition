@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1LiPResponse",
+    "Label": " ",
+    "FieldType": "ClaimantLiPResponse",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
+  }
+]
