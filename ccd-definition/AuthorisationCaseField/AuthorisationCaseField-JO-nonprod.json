@@ -1,10 +1,29 @@
 [
-   {
+  {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgementPaidInFull",
+    "CaseFieldID": "TestField1",
     "UserRoles": [
-      "caseworker-civil", "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
-  }
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "TestField2",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },{
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "judgementPaidInFull",
+  "UserRoles": [
+    "caseworker-civil", "caseworker-civil-admin"
+  ],
+  "CRUD": "CRU"
+}
 ]

@@ -1,10 +1,10 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ALL_FINAL_ORDERS_ISSUED",
+    "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "TestField1",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -12,10 +12,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ALL_FINAL_ORDERS_ISSUED",
+    "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "TestField2",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
