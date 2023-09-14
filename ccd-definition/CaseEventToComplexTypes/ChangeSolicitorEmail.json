@@ -6,7 +6,7 @@
     "ListElementCode": "email",
     "EventElementLabel": "Claimant's legal representative's email address",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "ChangeSolicitorEmail",
