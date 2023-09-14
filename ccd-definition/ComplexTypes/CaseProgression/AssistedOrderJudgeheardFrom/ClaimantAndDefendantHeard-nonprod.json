@@ -74,7 +74,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationCostDraftsmanList",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Costs draftsman for the ${typeRepresentationClaimantOneDynamic}, the claimant",
+    "ElementLabel": "Costs draftsman for ${typeRepresentationClaimantOneDynamic}, the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public"
@@ -147,7 +147,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationCostDraftsmanListTwo",
     "ID": "ClaimantAndDefendantHeard",
-    "ElementLabel": "Costs draftsman for the ${typeRepresentationClaimantTwoDynamic}, the claimant",
+    "ElementLabel": "Costs draftsman for ${typeRepresentationClaimantTwoDynamic}, the claimant",
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public"
