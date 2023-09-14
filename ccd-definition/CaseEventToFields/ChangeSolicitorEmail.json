@@ -38,18 +38,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
-    "CaseFieldID": "tempTextCopy1",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "Respondent1SolicitorEmail",
-    "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondentSolicitor1EmailAddress=\"DO_NOT_SHOW_IN_UI\"",
-    "retainHiddenValues": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "amendRespondent1SolicitorEmailLabel",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
@@ -177,6 +165,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "Respondent2SolicitorEmail",
+    "FieldShowCondition": "respondentSolicitor2ServiceAddressRequired=\"Yes\"",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y"
   },

@@ -526,11 +526,5 @@
     "CaseFieldID": "caseNamePublic",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempTextCopy1",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
   }
 ]

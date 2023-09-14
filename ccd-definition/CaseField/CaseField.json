@@ -2247,12 +2247,5 @@
     "Label": "Defendant's legal representative's correspondence address",
     "FieldType": "Label",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "tempTextCopy1",
-    "Label": "Use to hold a copy of a value",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
   }
 ]
