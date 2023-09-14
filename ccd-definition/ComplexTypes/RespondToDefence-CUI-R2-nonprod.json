@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1DQExtraDetails",
+    "ElementLabel": " ",
+    "FieldType": "DQExtraDetailsLip",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1DQHearingSupportLip",
+    "ElementLabel": " ",
+    "FieldType": "HearingSupportLip",
+    "SecurityClassification": "Public"
+  }
+]
