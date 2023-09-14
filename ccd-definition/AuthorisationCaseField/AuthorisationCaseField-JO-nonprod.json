@@ -4,7 +4,8 @@
     "CaseFieldID": "TestField1",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil"
+      "caseworker-civil",
+      "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
   },
@@ -13,7 +14,8 @@
     "CaseFieldID": "TestField2",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil"
+      "caseworker-civil",
+      "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
   }
