@@ -12,11 +12,12 @@
     "Label": "Label2",
     "FieldType": "Label",
     "SecurityClassification": "Public"
-  },{
+  },
+  {
   "CaseTypeID": "CIVIL",
   "ID": "judgementPaidInFull",
   "Label": " ",
   "FieldType": "MarkJudgmentPaid",
   "SecurityClassification": "Public"
-}
+  }
 ]
