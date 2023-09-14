@@ -3,7 +3,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "TestField1",
     "UserRoles": [
-      "record-judgment-access"
+      "caseworker-civil-admin",
+      "caseworker-civil"
     ],
     "CRUD": "CRU"
   },
@@ -11,7 +12,8 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "TestField2",
     "UserRoles": [
-      "record-judgment-access"
+      "caseworker-civil-admin",
+      "caseworker-civil"
     ],
     "CRUD": "CRU"
   }

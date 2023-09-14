@@ -5,7 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "record-judgment-access"
+          "caseworker-civil-admin",
+          "caseworker-civil"
         ],
         "CRUD": "CRU"
       }

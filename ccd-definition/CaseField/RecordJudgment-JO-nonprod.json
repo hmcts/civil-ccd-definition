@@ -1,24 +1,16 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "TestField1",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RecordJudgment",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ID": "TestField1",
+    "Label": "Label1",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "TestField2",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RecordJudgment",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ID": "TestField2",
+    "Label": "Label2",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   }
 ]
