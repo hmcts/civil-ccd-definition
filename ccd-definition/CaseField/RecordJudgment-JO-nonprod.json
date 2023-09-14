@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ALL_FINAL_ORDER_ISSUED",
+    "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "TestField1",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -12,7 +12,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ALL_FINAL_ORDER_ISSUED",
+    "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "TestField2",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
