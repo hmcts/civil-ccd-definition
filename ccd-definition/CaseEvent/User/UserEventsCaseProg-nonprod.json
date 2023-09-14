@@ -14,8 +14,7 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
     "CaseTypeID": "CIVIL",
