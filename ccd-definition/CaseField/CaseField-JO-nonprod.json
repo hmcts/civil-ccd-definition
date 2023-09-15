@@ -10,16 +10,69 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joCaseTitle",
-    "Label": "## ${applicant1.partyName} v ${respondent1.partyName}",
+    "Label": "${applicant1.partyName} v ${respondent1.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "whyRecorded",
+    "ID": "joJudgementRecordReason",
     "Label": "Why is this Judgment being recorded?",
-    "FieldType": "Label",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoJudgementRecordReasonList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joOrderMadeDate",
+    "Label": "Enter the date the judge made an order",
+    "HintText": "For example, 16 04 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joAmountOrdered",
+    "Label": "Enter the amount of the judgment ordered",
+    "HintText": "For example £451.00",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joAmountCostOrdered",
+    "Label": "Enter the amount of the costs ordered (Optional)",
+    "HintText": "For example £50.00",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRePaymentPlanSelection",
+    "Label": "Select how the judgment will be paid",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoRePaymentPlanSelectionList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgementPaymentDetails",
+    "Label": " ",
+    "FieldType": "InstallmentPaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joPaymentToBeMadeByDate",
+    "Label": "Enter the date the judgment will be paid by",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

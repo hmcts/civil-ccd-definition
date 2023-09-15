@@ -25,12 +25,80 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "whyRecorded",
+    "CaseFieldID": "joJudgementRecordReason",
     "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joOrderMadeDate",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joAmountOrdered",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joAmountCostOrdered",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joRePaymentPlanSelection",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgementPaymentDetails",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "joRePaymentPlanSelection = \"PAY_IN_INSTALLMENT\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joPaymentToBeMadeByDate",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "joRePaymentPlanSelection = \"PAY_BY_DATE\""
   }
 ]
