@@ -84,7 +84,7 @@
           "caseworker-civil-admin",
           "caseworker-civil"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
