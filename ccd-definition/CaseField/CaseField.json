@@ -1329,7 +1329,7 @@
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Max": "24"
+    "_Max": "24"
   },
   {
     "CaseTypeID": "CIVIL",
