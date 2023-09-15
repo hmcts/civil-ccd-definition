@@ -1,6 +1,22 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "joJudgementStatusDetails",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joIsLiveJudgementExists",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "judgmentDetails",
     "Label": " ",
     "FieldType": "Label",
@@ -73,6 +89,24 @@
     "Label": "Enter the date the judgment will be paid by",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joIsRegisteredWithRTL",
+    "Label": "Should this judgment be registered with RTL?",
+    "HintText": "This judgment should only be registered with RTL if the judge has ordered the amount should be paid in instalments, or if the claimant has applied to enforce the judgment",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joSameJudgment",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoSameJudgmentConfirm",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
