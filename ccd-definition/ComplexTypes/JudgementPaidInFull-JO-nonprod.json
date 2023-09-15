@@ -3,6 +3,7 @@
     "ID": "MarkJudgmentPaid",
     "ListElementCode": "dateOfFullPaymentMade",
     "ElementLabel": "Enter the date the judgement was paid in full",
+    "HintText": "For example, 16 04 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Definition":  "Enter the date the judgement was paid in full"
@@ -10,7 +11,7 @@
   {
     "ID": "MarkJudgmentPaid",
     "ListElementCode": "confirmFullPaymentMade",
-    "ElementLabel": "I confirm that this judgment can be marked as paid in full",
+    "ElementLabel": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmJudgementPaidInFull",
     "SecurityClassification": "Public",
