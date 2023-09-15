@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "RECORD_JUDGMENT",
-    "Name": "Judgment details",
+    "Name": "Record Judgment",
     "Description": "Record Judgment",
     "DisplayOrder": 1,
     "PreConditionState(s)": "All_FINAL_ORDERS_ISSUED",

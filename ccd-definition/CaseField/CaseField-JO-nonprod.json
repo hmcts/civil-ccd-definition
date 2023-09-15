@@ -1,6 +1,14 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "judgmentDetails",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "joCaseTitle",
     "Label": "## ${applicant1.partyName} v ${respondent1.partyName}",
     "FieldType": "Label",
