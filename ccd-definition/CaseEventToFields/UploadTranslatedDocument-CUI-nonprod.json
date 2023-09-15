@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
-    "CaseFieldID": "translatedDocument",
+    "CaseFieldID": "translatedDocuments",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",

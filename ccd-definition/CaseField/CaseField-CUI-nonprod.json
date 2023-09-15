@@ -24,7 +24,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "translatedDocument",
+    "ID": "translatedDocuments",
     "Label": "Translated Document",
     "FieldType": "Collection",
     "FieldTypeParameter": "TranslatedDocument",
