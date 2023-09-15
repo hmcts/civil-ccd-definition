@@ -2,23 +2,35 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "TestField1",
+    "CaseFieldID": "judgmentDetails",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
+    "PageLabel": "Judgment details",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "TestField2",
+    "CaseFieldID": "joCaseTitle",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "whyRecorded",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
   }
 ]

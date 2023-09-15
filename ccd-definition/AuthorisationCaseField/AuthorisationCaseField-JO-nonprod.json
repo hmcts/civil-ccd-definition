@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "TestField1",
+    "CaseFieldID": "judgmentDetails",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil",
@@ -11,7 +11,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "TestField2",
+    "CaseFieldID": "joCaseTitle",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "whyRecorded",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil",
