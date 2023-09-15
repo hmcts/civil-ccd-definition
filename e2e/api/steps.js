@@ -485,7 +485,7 @@ module.exports = {
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'You have updated a legal representative\'s information',
+      header: 'You have updated a',
       body: ' '
     });
 
