@@ -106,10 +106,11 @@
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
     "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 10,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "PageID": "Respondent1SolicitorEmail",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
+    "retainHiddenValues": "Y",
     "FieldShowCondition": "respondentSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
   },
   {
@@ -173,10 +174,11 @@
     "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "PageID": "Respondent2SolicitorEmail",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
+    "retainHiddenValues": "Y",
     "FieldShowCondition": "respondentSolicitor2ServiceAddress=\"DO NOT SHOW UI\""
   },
   {
@@ -250,10 +252,11 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
     "CaseEventFieldLabel": " ",
     "PageFieldDisplayOrder": 6,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N",
+    "retainHiddenValues": "Y",
     "FieldShowCondition": "applicantSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
   }
 ]
