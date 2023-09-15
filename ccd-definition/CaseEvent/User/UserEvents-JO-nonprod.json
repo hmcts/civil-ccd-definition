@@ -19,7 +19,7 @@
   },
   {
   "CaseTypeID": "CIVIL",
-  "ID": "JUDGEMENT_PAID_IN_FULL",
+  "ID": "JUDGMENT_PAID_IN_FULL",
   "Name": "Mark Judgment as Paid in full",
   "Description": "Mark Judgment as Paid' in full",
   "DisplayOrder": 2,

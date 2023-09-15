@@ -15,7 +15,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "JUDGEMENT_PAID_IN_FULL",
+    "CaseEventID": "JUDGMENT_PAID_IN_FULL",
     "AccessControl": [
       {
         "UserRoles": [

@@ -1,0 +1,17 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDGMENT_PAID_IN_FULL",
+    "CaseFieldID": "joJudgmentPaidInFull",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "N",
+    "PageID": "MarkJudgmentPaidInFull",
+    "PageLabel": "Mark a judgment as paid in full",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0,
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+  }
+]
