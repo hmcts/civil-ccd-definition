@@ -216,7 +216,8 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       },
