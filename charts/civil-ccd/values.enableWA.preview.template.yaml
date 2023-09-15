@@ -15,12 +15,12 @@ global:
 camunda-bpm:
   enabled: true # comes from WA chart
 
-wa:
+civil-wa:
   enabled: true
-  wa:
+  civil-wa:
     postgresql:
       enabled: false
-  wa-case-event-handler:
+  civil-wa-case-event-handler:
     java:
       secrets:
         AZURE_SERVICE_BUS_CONNECTION_STRING:
