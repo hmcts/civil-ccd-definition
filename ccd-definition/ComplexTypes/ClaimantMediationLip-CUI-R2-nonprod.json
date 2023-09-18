@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "canWeUseMediationLiP",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "canWeUseMediationPhoneLiP",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "mediationDisagreementLiP",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "noMediationReasonLiP",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "noMediationOtherReasonLiP",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "companyTelephoneOptionMediationLiP",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "companyTelephoneConfirmationMediationLiP",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "companyTelephoneContactPersonMediationLiP",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantMediationLip",
+    "ListElementCode": "companyTelephonePhoneNumberMediationLiP",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

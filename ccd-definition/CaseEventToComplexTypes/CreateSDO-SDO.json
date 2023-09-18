@@ -425,6 +425,24 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "otherHours",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disposalHearingHearingTime.time = \"OTHER\""
+  },
+  {
+    "ID": "DisposalHearingHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingHearingTime",
+    "ListElementCode": "otherMinutes",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "disposalHearingHearingTime.time = \"OTHER\""
+  },
+  {
     "ID": "DisposalOrderWithoutHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalOrderWithoutHearing",
@@ -790,7 +808,7 @@
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "EventHintText": "Limit number of witnesses (claimant), e.g. 4"
   },
   {
@@ -799,7 +817,7 @@
     "CaseFieldID": "smallClaimsWitnessStatement",
     "ListElementCode": "input3",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "EventHintText": "Limit number of witnesses (defendant), e.g. 4"
   },
   {
@@ -1074,22 +1092,6 @@
     "ListElementCode": "line1",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FastTrackAllocation",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackAllocation",
-    "ListElementCode": "label",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FastTrackAllocation",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackAllocation",
-    "ListElementCode": "text",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackAltDisputeResolution",
