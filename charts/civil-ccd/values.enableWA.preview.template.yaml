@@ -1,6 +1,3 @@
-civil-wa:
-  enabled: true
-
 servicebus:
   enabled: true
   releaseNameOverride: ${SERVICE_NAME}-asb
@@ -16,23 +13,31 @@ global:
   jobKind: CronJob
 
 camunda-bpm:
-  enabled: true # comes from WA chart
+  # comes from WA chart
   java:
     ingressHost: camunda-${SERVICE_FQDN}
 
-wa-case-event-handler:
-  java:
-    ingressHost: wa-case-event-handler-${SERVICE_FQDN}
-    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
-    secrets:
-      AZURE_SERVICE_BUS_CONNECTION_STRING:
-        secretRef: civil-sb-preview
-        key: connectionString
-    environment:
-      AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
-      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
-      #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
-      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+civil-wa:
+  enabled: true
+  wa:
+    postgresql:
+      enabled: false
+  wa-case-event-handler:
+    java:
+      ingressHost: wa-case-event-handler-${SERVICE_FQDN}
+      releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
+      secrets:
+        AZURE_SERVICE_BUS_CONNECTION_STRING:
+          secretRef: civil-sb-preview
+          key: connectionString
+      environment:
+        CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
+        CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
+        ROLE_ASSIGNMENT_URL: http://{{ .Release.Name }}-am-role-assignment-service
+        AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+        AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+        #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
+        AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
 
 ccd-message-publisher:
   java:
