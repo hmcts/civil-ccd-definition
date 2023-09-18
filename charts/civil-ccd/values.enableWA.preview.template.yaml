@@ -19,6 +19,8 @@ camunda-bpm:
 
 civil-wa:
   enabled: true
+
+wa:
   wa:
     postgresql:
       enabled: false
