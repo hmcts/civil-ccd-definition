@@ -59,8 +59,8 @@ const applicant2WithPartyName = {
 };
 
 const applicant1LitigationFriend = {
-  firstName: 'Bob',
-  lastName: 'the litigant friend',
+  firstName: 'Applicant 1',
+  lastName: 'Litigation Friend',
   emailAddress: 'bobthelitigant@litigants.com',
   phoneNumber: '07123456789',
   hasSameAddressAsLitigant: 'No',
