@@ -1,3 +1,6 @@
+civil-wa:
+  enabled: true
+
 servicebus:
   enabled: true
   releaseNameOverride: ${SERVICE_NAME}-asb
@@ -15,21 +18,19 @@ global:
 camunda-bpm:
   enabled: true # comes from WA chart
 
-civil-wa:
-  enabled: true
-  civil-wa:
-    postgresql:
-      enabled: false
-  civil-wa-case-event-handler:
-    java:
-      secrets:
-        AZURE_SERVICE_BUS_CONNECTION_STRING:
-          secretRef: civil-sb-preview
-          key: connectionString
-      environment:
-        AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
-        AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
-        AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+wa-case-event-handler:
+  java:
+    ingressHost: wa-case-event-handler-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
+    secrets:
+      AZURE_SERVICE_BUS_CONNECTION_STRING:
+        secretRef: civil-sb-preview
+        key: connectionString
+    environment:
+      AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+      AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+      #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
+      AZURE_SERVICE_BUS_CCD_CASE_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
 
 ccd-message-publisher:
   java:
