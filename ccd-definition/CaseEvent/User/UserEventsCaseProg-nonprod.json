@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "HEARING_SCHEDULED",
     "Name": "Hearing Scheduled",
-    "Description": "Hearing Scheduled",
+    "Description": "Create a hearing notice",
     "DisplayOrder": 18,
     "PreConditionState(s)": "CASE_PROGRESSION",
     "PostConditionState": "HEARING_READINESS",
