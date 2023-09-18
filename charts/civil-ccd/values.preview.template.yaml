@@ -1,3 +1,6 @@
+civil-wa:
+  enabled: false
+
 civil-service:
   java:
     keyVaults:
@@ -62,8 +65,6 @@ ccd:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
 camunda-bpm:
+  enabled: false
   java:
     ingressHost: camunda-${SERVICE_FQDN}
-
-civil-wa:
-  enabled: false

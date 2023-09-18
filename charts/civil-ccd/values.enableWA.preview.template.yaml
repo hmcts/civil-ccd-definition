@@ -17,6 +17,8 @@ global:
 
 camunda-bpm:
   enabled: true # comes from WA chart
+  java:
+    ingressHost: camunda-${SERVICE_FQDN}
 
 wa-case-event-handler:
   java:
