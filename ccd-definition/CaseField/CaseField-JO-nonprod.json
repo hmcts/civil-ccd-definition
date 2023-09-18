@@ -1,15 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joJudgementStatusDetails",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joIsLiveJudgementExists",
+    "ID": "joIsLiveJudgmentExists",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
@@ -25,7 +17,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joCaseTitle",
+    "ID": "joPartiesNames",
     "Label": "${applicant1.partyName} v ${respondent1.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
@@ -33,17 +25,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joJudgementRecordReason",
+    "ID": "joJudgmentRecordReason",
     "Label": "Why is this Judgment being recorded?",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "JoJudgementRecordReasonList",
+    "FieldTypeParameter": "JoJudgmentRecordReasonList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "joOrderMadeDate",
-    "Label": "Enter the date the judge made an order",
+    "Label": "Enter the date the judge made the order",
     "HintText": "For example, 16 04 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public",
@@ -78,9 +70,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joJudgementPaymentDetails",
+    "ID": "joJudgmentInstalmentDetails",
     "Label": " ",
-    "FieldType": "InstallmentPaymentDetails",
+    "FieldType": "InstalmentPaymentDetails",
     "SecurityClassification": "Public"
   },
   {
@@ -105,7 +97,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "joSameJudgment",
     "Label": " ",
-    "FieldType": "FixedRadioList",
+    "FieldType": "MultiSelectList",
     "FieldTypeParameter": "JoSameJudgmentConfirm",
     "SecurityClassification": "Public",
     "Searchable": "N"
