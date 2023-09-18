@@ -792,5 +792,14 @@
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "gaRespondDoc",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "Label": "Application Respond Response Document",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
