@@ -17,7 +17,7 @@ camunda-bpm:
 
 civil-wa:
   enabled: true
-  wa:
+  civil-wa:
     postgresql:
       enabled: false
   civil-wa-case-event-handler:
