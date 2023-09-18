@@ -175,6 +175,7 @@
     "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "FieldShowCondition": "applicantSolicitor1ServiceAddressRequired=\"Yes\"",
+    "CaseEventFieldLabel": "Enter the correspondence address of the organisation",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -239,6 +240,7 @@
     "PageDisplayOrder": 15,
     "PageColumnNumber": 1,
     "FieldShowCondition": "respondentSolicitor1ServiceAddressRequired=\"Yes\"",
+    "CaseEventFieldLabel": "Enter the correspondence address of the organisation",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -523,6 +525,7 @@
     "PageLabel": "Second respondent representative’s service address",
     "PageDisplayOrder": 22,
     "PageColumnNumber": 1,
+    "CaseEventFieldLabel": "Enter the correspondence address of the organisation",
     "FieldShowCondition": "respondentSolicitor2ServiceAddressRequired=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
