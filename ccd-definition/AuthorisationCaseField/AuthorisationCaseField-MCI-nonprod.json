@@ -156,7 +156,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -165,7 +165,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -174,7 +174,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -183,7 +183,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -192,7 +192,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -201,7 +201,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -210,7 +210,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin"
     ],
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
