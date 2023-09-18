@@ -137,6 +137,8 @@
       },
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -263,6 +265,8 @@
       },
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -299,6 +303,8 @@
       },
       {
         "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
@@ -5153,6 +5159,42 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicantSolicitor1AddressLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSolicitor1AddressLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
