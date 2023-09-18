@@ -17,6 +17,7 @@ const assertPartyFlags = (flagsParent, roleOnCase) => {
 
 const assertLitigationFriendFlags = (flagsParent, roleOnCase) => {
   if(flagsParent) {
+    console.log(flagsParent);
     console.log(`${assertionText} [${roleOnCase}]`);
     assert.deepEqual(flagsParent.flags, {
       partyName: `${flagsParent.firstName} ${flagsParent.lastName}`,
