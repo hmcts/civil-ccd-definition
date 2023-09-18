@@ -9,6 +9,12 @@ const createAssistedOrder = () => {
         assistedOrderAssessmentThirdDropdownDate: date(14),
         makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
+      finalOrderRepresentation: {
+        typeRepresentationComplex:{
+          typeRepresentationClaimantOneDynamic: 'Test Inc',
+          typeRepresentationDefendantOneDynamic: 'Sir John Doe',
+        }
+      },
       publicFundingCostsProtection: 'No',
       finalOrderAppealComplex: {
         appealGrantedRefusedDropdown: {
