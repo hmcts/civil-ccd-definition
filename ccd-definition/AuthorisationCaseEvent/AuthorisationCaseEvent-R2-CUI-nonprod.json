@@ -475,6 +475,7 @@
      ]
   },
   {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_CUI",
     "AccessControl": [
       {
