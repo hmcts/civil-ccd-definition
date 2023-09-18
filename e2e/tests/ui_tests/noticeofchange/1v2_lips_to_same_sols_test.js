@@ -6,10 +6,8 @@ Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-
 
 Scenario('Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.notifyClaimLip(config.applicantSolicitorUser);
-    await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
-  }
+  await api.notifyClaimLip(config.applicantSolicitorUser);
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
 });
 
 Scenario('Respondent 1 files NoC with org2 solicitor', async ({I, api}) => {
