@@ -14,7 +14,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joCaseTitle",
+    "CaseFieldID": "joPartiesNames",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
@@ -25,7 +25,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgementRecordReason",
+    "CaseFieldID": "joJudgmentRecordReason",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",
@@ -42,6 +42,7 @@
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-amount-paid",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -80,7 +81,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgementPaymentDetails",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "COMPLEX",
     "PageID": "RecordJudgment",
@@ -115,13 +116,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joSameJudgment",
+    "CaseFieldID": "addRespondent2",
+    "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "RecordJudgment",
+    "FieldShowCondition": "joRePaymentPlanSelection = \"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "respondentResponseIsSame",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "READONLY",
+    "PageID": "RecordJudgment",
+    "FieldShowCondition": "joRePaymentPlanSelection = \"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joSameJudgment",
+    "PageFieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2Copy.type=\"INDIVIDUAL\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame = \"No\""
   }
 ]

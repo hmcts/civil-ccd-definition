@@ -1,24 +1,24 @@
 [
   {
-    "ID": "InstallmentPaymentDetails",
+    "ID": "InstalmentPaymentDetails",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgementPaymentDetails",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
     "ListElementCode": "installmentAmount",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "InstallmentPaymentDetails",
+    "ID": "InstalmentPaymentDetails",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgementPaymentDetails",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
     "ListElementCode": "paymentFrequency",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "InstallmentPaymentDetails",
+    "ID": "InstalmentPaymentDetails",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgementPaymentDetails",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
     "ListElementCode": "firstInstallmentDate",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"

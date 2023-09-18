@@ -1,12 +1,12 @@
 [
   {
-    "ID": "JoJudgementRecordReasonList",
+    "ID": "JoJudgmentRecordReasonList",
     "ListElementCode": "DETERMINATION_OF_MEANS",
     "ListElement": "A caseworker has carried out a determination of means and has made a judgment by determination",
     "DisplayOrder": 1
   },
   {
-    "ID": "JoJudgementRecordReasonList",
+    "ID": "JoJudgmentRecordReasonList",
     "ListElementCode": "JUDGE_ORDER",
     "ListElement": "A judge has made an order",
     "DisplayOrder": 2
