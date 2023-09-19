@@ -102,9 +102,9 @@ module.exports = {
     order: 16
   },
   CHANGE_SOLICITOR_EMAIL: {
-    description: 'Change solicitor email',
+    description: 'Change solicitor\'s information',
     id: 'CHANGE_SOLICITOR_EMAIL',
-    name: 'Change solicitor email',
+    name: 'Change solicitor\'s information',
     order: 17
   },
   ENTER_BREATHING_SPACE_SPEC: {
@@ -161,4 +161,10 @@ module.exports = {
     description: 'Request Judgement by Admission',
     order: 10
   },
+  MANAGE_CONTACT_INFORMATION: {
+    id: 'MANAGE_CONTACT_INFORMATION',
+    name: 'Manage Contact Information',
+    description: 'Updated party contact details',
+    order: 99
+  }
 };

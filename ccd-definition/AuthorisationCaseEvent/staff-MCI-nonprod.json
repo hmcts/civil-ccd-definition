@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "defendantUserDetails",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   }
