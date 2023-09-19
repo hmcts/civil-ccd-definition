@@ -128,25 +128,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "respondentResponseIsSame",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 12,
-    "DisplayContext": "READONLY",
-    "PageID": "RecordJudgment",
-    "FieldShowCondition": "joPaymentPlanSelection = \"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joSameJudgment",
-    "PageFieldDisplayOrder": 13,
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame = \"No\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   }
 ]
