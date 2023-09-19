@@ -1,6 +1,16 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joJudgmentStatusDetails",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIsLiveJudgmentExists",
     "UserRoles": [
       "caseworker-civil-admin",

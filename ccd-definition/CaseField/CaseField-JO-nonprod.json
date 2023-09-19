@@ -1,6 +1,14 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentStatusDetails",
+    "Label": " ",
+    "FieldType": "JoJudgmentStatusDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "joIsLiveJudgmentExists",
     "Label": " ",
     "FieldType": "YesOrNo",
