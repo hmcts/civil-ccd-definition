@@ -81,7 +81,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joRePaymentPlanSelection",
+    "CaseFieldID": "joPaymentPlanSelection",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil",

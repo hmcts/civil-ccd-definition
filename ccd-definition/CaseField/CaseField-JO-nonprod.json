@@ -69,10 +69,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joRePaymentPlanSelection",
+    "ID": "joPaymentPlanSelection",
     "Label": "Select how the judgment will be paid",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "JoRePaymentPlanSelectionList",
+    "FieldTypeParameter": "JoPaymentPlanSelectionList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

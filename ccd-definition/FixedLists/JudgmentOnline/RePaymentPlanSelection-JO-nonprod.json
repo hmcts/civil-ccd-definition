@@ -1,18 +1,18 @@
 [
   {
-    "ID": "JoRePaymentPlanSelectionList",
+    "ID": "JoPaymentPlanSelectionList",
     "ListElementCode": "PAY_IN_INSTALLMENT",
     "ListElement": "Paid in instalments",
     "DisplayOrder": 1
   },
   {
-    "ID": "JoRePaymentPlanSelectionList",
+    "ID": "JoPaymentPlanSelectionList",
     "ListElementCode": "PAY_BY_DATE",
     "ListElement": "Paid by date",
     "DisplayOrder": 2
   },
   {
-    "ID": "JoRePaymentPlanSelectionList",
+    "ID": "JoPaymentPlanSelectionList",
     "ListElementCode": "PAY_IMMEDIATELY",
     "ListElement": "Paid immediately",
     "DisplayOrder": 3
