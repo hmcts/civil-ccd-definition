@@ -18,7 +18,7 @@
     "ID": "JoJudgmentStatusDetails",
     "ListElementCode": "joRtlState",
     "ElementLabel": " ",
-    "FieldType": "Label",
+    "FieldType": "Text",
     "SecurityClassification": "Public"
   }
 ]
