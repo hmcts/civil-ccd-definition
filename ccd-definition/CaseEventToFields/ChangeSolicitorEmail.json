@@ -61,6 +61,61 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Respondent1SolicitorEmail",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondentSolicitor1AddressLabel",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "Respondent1SolicitorEmail",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondentSolicitor1ServiceAddressRequired",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Respondent1SolicitorEmail",
+    "PageLabel": "Respondent representative’s service address",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Respondent1SolicitorEmail",
+    "FieldShowCondition": "respondentSolicitor1ServiceAddressRequired=\"Yes\"",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "Respondent1SolicitorEmail",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "retainHiddenValues": "Y",
+    "FieldShowCondition": "respondentSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "amendRespondent2SolicitorEmailLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -84,6 +139,51 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Respondent2SolicitorEmail",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondentSolicitor2ServiceAddressRequired",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Respondent2SolicitorEmail",
+    "PageLabel": "Respondent representative’s service address",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Respondent2SolicitorEmail",
+    "FieldShowCondition": "respondentSolicitor2ServiceAddressRequired=\"Yes\"",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "Respondent2SolicitorEmail",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y",
+    "retainHiddenValues": "Y",
+    "FieldShowCondition": "respondentSolicitor2ServiceAddress=\"DO NOT SHOW UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
     "CaseFieldID": "amendApplicant1SolicitorEmailLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -103,5 +203,60 @@
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "isApplicant1=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-applicant1-solicitor-email"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicant1OrganisationPolicy",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1AddressLabel",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddressRequired",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "Applicant1SolicitorEmail",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "applicantSolicitor1ServiceAddress",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "COMPLEX",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "applicantSolicitor1ServiceAddressRequired=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CHANGE_SOLICITOR_EMAIL",
+    "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
+    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "Applicant1SolicitorEmail",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N",
+    "retainHiddenValues": "Y",
+    "FieldShowCondition": "applicantSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
   }
 ]
