@@ -109,7 +109,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application \n Before uploading a file, make sure it: \n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* has an accurate file name - for example: \n WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc",
+    "Label": "## Upload any evidence that supports your application \n Before uploading a file, make sure it: \n* is 100MB or smaller \n* is one of the following file types: JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* has an accurate file name - for example: \n WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
