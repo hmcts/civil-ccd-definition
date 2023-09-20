@@ -113,7 +113,7 @@
   {
   "CaseTypeID": "CIVIL",
   "ID": "joJudgmentPaidInFull",
-  "Label": "${applicant1.partyName} v ${respondent1.partyName}",
+  "Label": " ",
   "FieldType": "MarkJudgmentPaid",
   "SecurityClassification": "Public"
   }

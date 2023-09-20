@@ -2,9 +2,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "JUDGMENT_PAID_IN_FULL",
+    "CaseFieldID": "joPartiesNames",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "MarkJudgmentPaidInFull",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDGMENT_PAID_IN_FULL",
     "CaseFieldID": "joJudgmentPaidInFull",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "N",
     "PageID": "MarkJudgmentPaidInFull",
