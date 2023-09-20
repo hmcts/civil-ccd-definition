@@ -1092,7 +1092,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1ServiceAddress",
-    "Label": "Enter the correspondence address of the organisation",
+    "Label": "Defendant's legal representative Correspondence address",
     "FieldType": "AddressUK",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -1109,7 +1109,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2ServiceAddress",
-    "Label": "Enter the correspondence address of the organisation",
+    "Label": "Defendant 2's legal representative Correspondence address",
     "FieldType": "AddressUK",
     "Searchable": "N",
     "SecurityClassification": "Public"
