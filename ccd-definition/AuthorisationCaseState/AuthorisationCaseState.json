@@ -38,7 +38,10 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
-      "caseworker-civil-solicitor",
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE",
       "caseworker-civil-admin",
       "caseworker-wa-task-configuration",
       "CITIZEN-DEFENDANT-PROFILE"
