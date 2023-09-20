@@ -26,7 +26,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joPartiesNames",
-    "Label": "${applicant1.partyName} v ${respondent1.partyName}",
+    "Label": "${applicant1.partyName} v ${respondent1.partyName} ${respondent2.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -61,7 +61,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joAmountCostOrdered",
-    "Label": "Enter the amount of the costs ordered (Optional)",
+    "Label": "Enter the amount of the costs ordered",
     "HintText": "For example £50.00",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
