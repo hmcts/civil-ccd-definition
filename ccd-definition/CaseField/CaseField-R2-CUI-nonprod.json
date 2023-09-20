@@ -1,9 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendantUserDetails",
-    "Label": "Defendant User Details",
-    "FieldType": "UserDetails",
-    "SecurityClassification": "Public"
-  }
-]
