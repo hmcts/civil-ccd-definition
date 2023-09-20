@@ -481,6 +481,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "LIP_CLAIM_SETTLED",
     "AccessControl": [
       {
