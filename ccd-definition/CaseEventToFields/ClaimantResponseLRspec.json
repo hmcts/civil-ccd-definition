@@ -84,7 +84,7 @@
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
+    "CaseEventFieldLabel": "Remote Hearing",
     "PageID": "ApplicantCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y"
   },
