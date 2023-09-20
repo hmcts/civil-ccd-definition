@@ -1,0 +1,24 @@
+[
+  {
+    "ID": "JoJudgmentStatusDetails",
+    "ListElementCode": "judgmentStatusTypes",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "JudgmentStatusDetailsList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "JoJudgmentStatusDetails",
+    "ListElementCode": "lastUpdatedDate",
+    "ElementLabel": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "JoJudgmentStatusDetails",
+    "ListElementCode": "joRtlState",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]

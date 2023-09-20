@@ -42,7 +42,7 @@
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-amount-paid",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateDates",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -70,7 +70,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joRePaymentPlanSelection",
+    "CaseFieldID": "joPaymentPlanSelection",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",
@@ -88,7 +88,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "joRePaymentPlanSelection = \"PAY_IN_INSTALLMENT\""
+    "FieldShowCondition": "joPaymentPlanSelection = \"PAY_IN_INSTALLMENT\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -100,7 +100,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "joRePaymentPlanSelection = \"PAY_BY_DATE\""
+    "FieldShowCondition": "joPaymentPlanSelection = \"PAY_BY_DATE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -121,19 +121,7 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
-    "FieldShowCondition": "joRePaymentPlanSelection = \"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "respondentResponseIsSame",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 12,
-    "DisplayContext": "READONLY",
-    "PageID": "RecordJudgment",
-    "FieldShowCondition": "joRePaymentPlanSelection = \"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "joPaymentPlanSelection = \"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -141,12 +129,12 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joSameJudgment",
-    "PageFieldDisplayOrder": 13,
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondentResponseIsSame = \"No\""
+    "FieldShowCondition": "addRespondent2 = \"Yes\""
   }
 ]
