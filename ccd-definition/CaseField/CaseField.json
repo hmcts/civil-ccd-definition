@@ -586,12 +586,12 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondentSharedClaimResponseDocument",
-    "Label": "Upload defence",
-    "FieldType": "ResponseDocument",
-    "Searchable": "N",
-    "SecurityClassification": "Public"
+  "CaseTypeID": "CIVIL",
+  "ID": "respondentSharedClaimResponseDocument",
+  "Label": "Upload defence",
+  "FieldType": "ResponseDocument",
+  "Searchable": "N",
+  "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -690,12 +690,12 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQVulnerabilityQuestions",
-    "Label": "Defendant 2 Vulnerability Questions",
-    "FieldType": "VulnerabilityQuestions",
-    "Searchable": "N",
-    "SecurityClassification": "Public"
+  "CaseTypeID": "CIVIL",
+  "ID": "respondent2DQVulnerabilityQuestions",
+  "Label": "Defendant 2 Vulnerability Questions",
+  "FieldType": "VulnerabilityQuestions",
+  "Searchable": "N",
+  "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1512,7 +1512,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Max": "24"
+    "_Max": "24"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2540,5 +2540,190 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Comment": "Copy field for 1v2SS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicantSolicitor1AddressLabel",
+    "Label": "Claimant's legal representative's correspondence address",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSolicitor1AddressLabel",
+    "Label": "Defendant's legal representative's correspondence address",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "changeOfRepresentation",
+    "Label": "change of representation details",
+    "FieldType": "ChangeOfRepresentation",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Comment": "Field storing noc update details"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDetails1",
+    "Label": " ",
+    "FieldType": "NotifyClaimDetailsCoS",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDetails2",
+    "Label": " ",
+    "FieldType": "NotifyClaimDetailsCoS",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant1_1",
+    "Label": "Claimant's name <br /> ${applicant1.partyName}",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant2_1",
+    "Label": "Claimant's name <br /> ${applicant1.partyName}",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant1",
+    "Label": "Defendant's name <br /> ${respondent1.partyName}",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForDefendant2",
+    "Label": "Defendant's name <br /> ${respondent2.partyName}",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1LIPAtClaimIssued",
+    "Label": "Is defendant 1 is litigant Party at claim issue?",
+    "FieldType": "YesOrNo",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2LIPAtClaimIssued",
+    "Label": "Is defendant 2 is litigant Party at claim issue?",
+    "FieldType": "YesOrNo",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabel",
+    "Label": "# Certificate of Service",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelDef1",
+    "Label": "# Certificate of Service [defendant1]",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelDef2",
+    "Label": "# Certificate of Service [defendant2]",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDefendant1",
+    "Label": " ",
+    "FieldType": "NotifyClaimCoS",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosNotifyClaimDefendant2",
+    "Label": " ",
+    "FieldType": "NotifyClaimCoS",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelForClaimant1_2",
+    "Label": "Claimant's name <br /> ${applicant1.partyName}",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1",
+    "Label": "# Defendant 1 details",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1CoSNc",
+    "Label": "Certificate of Service - Notify Claim",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef1CoSNcd",
+    "Label": "Certificate of Service - Notify Claim Details",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2",
+    "Label": "# Defendant 2 details",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2CoSNc",
+    "Label": "Certificate of Service - Notify Claim",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cosLabelTabDef2CoSNcd",
+    "Label": "Certificate of Service - Notify Claim Details",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   }
 ]
