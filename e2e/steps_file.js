@@ -131,6 +131,8 @@ const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDe
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
 
+const addUnavailableDatesPage = require('./pages/addUnavailableDates/unavailableDates.page');
+
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
@@ -641,6 +643,20 @@ module.exports = function () {
         () => takeCaseOffline.takeCaseOffline()
       ]);
       await this.takeScreenshot();
+    },
+
+    async addUnavailableDates(caseId) {
+      eventName = 'Add Unavailable Dates';
+      const url = config.url.manageCase + '/cases/case-details/' + caseId;
+
+      await this.amOnPage(url + '/trigger/ADD_UNAVAILABLE_DATES/ADD_UNAVAILABLE_DATESAddAdditionalDates');
+      await this.waitForText('Add unavailable dates');
+      await this.triggerStepsWithScreenshot([
+        () => addUnavailableDatesPage.enterUnavailableDates(),
+        () => event.submit('Submit', 'Availability updated'),
+        () => event.returnToCaseDetails(),
+        () => addUnavailableDatesPage.confirmSubmission(url + '#Listing%20notes'),
+      ]);
     },
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {

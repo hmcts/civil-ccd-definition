@@ -1,19 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ASSIGN_LIP_DEFENDANT",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC_AFTER_PAYMENT",
     "AccessControl": [
       {
@@ -471,6 +458,36 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }
