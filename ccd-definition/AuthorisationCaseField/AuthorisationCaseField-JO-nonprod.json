@@ -21,7 +21,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgmentDetails",
+    "CaseFieldID": "lblRecordJudgment",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil",
@@ -121,7 +121,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joSameJudgment",
+    "CaseFieldID": "joConfirmSentToBothDef",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil",

@@ -1,6 +1,6 @@
 [
   {
-    "ID": "JudgmentStatusDetailsList",
+    "ID": "JudgmentStatusDetails",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joJudgmentStatusDetails",
     "ListElementCode": "judgmentStatusTypes",
@@ -8,7 +8,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "JudgmentStatusDetailsList",
+    "ID": "JudgmentStatusDetails",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joJudgmentStatusDetails",
     "ListElementCode": "lastUpdatedDate",
@@ -16,7 +16,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "JudgmentStatusDetailsList",
+    "ID": "JudgmentStatusDetails",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joJudgmentStatusDetails",
     "ListElementCode": "joRtlState",
