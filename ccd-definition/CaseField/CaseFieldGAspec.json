@@ -197,7 +197,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "CategoryID": "applications",
     "SecurityClassification": "Public"
   },
@@ -294,7 +294,7 @@
     "Label": "N245 form",
     "FieldType": "Document",
     "SecurityClassification": "Public",
-    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "CategoryID": "applications"
   },
   {
