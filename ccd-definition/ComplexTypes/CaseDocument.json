@@ -41,5 +41,13 @@
     "FieldType": "Text",
     "ElementLabel": "Uploaded by",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseDocument",
+    "ListElementCode": "ownedBy",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CaseRoleType",
+    "ElementLabel": "Owned by",
+    "SecurityClassification": "Public"
   }
 ]
