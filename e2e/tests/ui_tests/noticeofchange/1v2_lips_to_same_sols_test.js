@@ -2,14 +2,12 @@ const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const judgeUser = config.judgeUserWithRegionId1;
 
-Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @non-prod-e2e-ft @e2e-nightly-nonprod');
+Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @master-e2e-ft');
 
 Scenario('Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.notifyClaimLip(config.applicantSolicitorUser);
-    await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
-  }
+  await api.notifyClaimLip(config.applicantSolicitorUser);
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
 });
 
 Scenario('Respondent 1 files NoC with org2 solicitor', async ({I, api}) => {
