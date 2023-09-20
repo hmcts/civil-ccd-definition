@@ -182,7 +182,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestionsYesOrNo",
-    "ElementLabel": "Is anyone who will participate in the hearing vulnerable?\nPlease give details of the vulnerability and the support or adjustments that you want the court to consider.",
+    "ElementLabel": "Is anyone who will participate in the hearing vulnerable?",
     "FieldType": "YesOrNo",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
     "SecurityClassification": "Public"
