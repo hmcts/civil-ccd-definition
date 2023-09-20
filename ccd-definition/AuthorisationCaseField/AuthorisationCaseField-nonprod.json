@@ -1,12 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "changeOrganisationRequestField",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "businessProcess",
     "AccessControl": [
       {
