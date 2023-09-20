@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "judgmentDetails",
+    "CaseFieldID": "lblRecordJudgment",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
@@ -128,7 +128,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joSameJudgment",
+    "CaseFieldID": "joConfirmSentToBothDef",
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY",
     "PageID": "RecordJudgment",

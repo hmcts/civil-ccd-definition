@@ -4,7 +4,7 @@
     "ListElementCode": "judgmentStatusTypes",
     "ElementLabel": " ",
     "FieldType": "FixedList",
-    "FieldTypeParameter": "JudgmentStatusDetailsList",
+    "FieldTypeParameter": "JudgmentStatusTypeList",
     "SecurityClassification": "Public"
   },
   {
