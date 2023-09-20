@@ -182,7 +182,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestionsYesOrNo",
-    "ElementLabel": "Do you believe you, or a witness who will give evidence on your behalf, are vulnerable?",
+    "ElementLabel": "Is anyone who will participate in the hearing vulnerable?\nPlease give details of the vulnerability and the support or adjustments that you want the court to consider.",
     "FieldType": "YesOrNo",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
     "SecurityClassification": "Public"
@@ -190,7 +190,7 @@
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "vulnerabilityQuestion",
-    "ElementLabel": "How are you or the witness vulnerable and what support or adjustments do you want the court to consider?",
+    "ElementLabel": "Please give details of the vulnerability and the support or adjustments that you want the court to consider.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "FieldShowCondition": "vulnerabilityQuestionsYesOrNo = \"Yes\""
