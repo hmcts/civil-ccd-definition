@@ -37,5 +37,18 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_DEFENDANT_CLAIMANT_SETTLE_THE_CLAIM",
+    "Name": "Email: Claim is settled",
+    "Description": "Notify defendant that claim is settled.",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
