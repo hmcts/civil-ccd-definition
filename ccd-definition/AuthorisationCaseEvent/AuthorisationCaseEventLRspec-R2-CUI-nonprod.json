@@ -289,7 +289,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_LIP_APPLICANT1_BREATHING_SPACE_ENTER",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_BREATHING_SPACE_ENTER",
     "AccessControl": [
       {
         "UserRoles": [
