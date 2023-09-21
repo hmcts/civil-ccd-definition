@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_LIP_RESPONDENT_CLAIMANT_CONFIRM_TO_PROCEED",
+    "Name": "Email: C confirms to proceed",
+    "Description": "Notify respondent that claimant confirms to proceed.",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+
+]
