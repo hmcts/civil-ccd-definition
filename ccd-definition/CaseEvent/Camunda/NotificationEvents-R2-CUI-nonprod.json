@@ -1,0 +1,29 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_APPLICANT1_BREATHING_SPACE_LIP",
+    "Name": "Email:Breathing Space Lip",
+    "Description": "Notify applicant1 Breathing space lip",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_RESPONDENT_BREATHING_SPACE_LIP",
+    "Name": "Email:Breathing Space Lip",
+    "Description": "Notify Respondent Breathing space lip",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
