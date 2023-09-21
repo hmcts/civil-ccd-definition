@@ -159,7 +159,7 @@
     "ListElementCode": "partyPhone",
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent2.type = \"INDIVIDUAL\" OR respondent2.type = \"SOLE_TRADER\""
+    "FieldShowCondition": "specRespondent2Represented != \"No\""
   },
   {
     "ID": "SecondDefendant",

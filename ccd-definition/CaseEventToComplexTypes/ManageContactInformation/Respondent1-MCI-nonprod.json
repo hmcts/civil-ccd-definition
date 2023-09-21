@@ -150,7 +150,7 @@
     "ListElementCode": "partyEmail",
     "FieldDisplayOrder": 20,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\" OR respondent1.type = \"ORGANISATION\" OR respondent1.type = \"COMPANY\""
+    "FieldShowCondition": "specRespondent1Represented != \"No\""
   },
   {
     "ID": "Defendant",

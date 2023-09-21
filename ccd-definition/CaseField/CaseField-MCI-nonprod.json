@@ -290,5 +290,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1EmailLabel",
+    "Label": "### Email:\n${respondent1.partyEmail}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for CUI users because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2EmailLabel",
+    "Label": "### Email:\n${respondent2.partyEmail}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for CUI users because these fields are not editable"
   }
 ]
