@@ -13,7 +13,7 @@
 },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_APPLICANT1_BREATHING_SPACE_LIP",
+    "ID": "NOTIFY_LIP_APPLICANT1_BREATHING_SPACE_ENTER",
     "Name": "Email:Breathing Space Lip",
     "Description": "Notify applicant1 Breathing space lip",
     "PreConditionState(s)": "*",
@@ -27,7 +27,7 @@
 
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_RESPONDENT_BREATHING_SPACE_LIP",
+    "ID": "NOTIFY_LIP_RESPONDENT_BREATHING_SPACE_ENTER",
     "Name": "Email:Breathing Space Lip",
     "Description": "Notify Respondent Breathing space lip",
     "PreConditionState(s)": "*",

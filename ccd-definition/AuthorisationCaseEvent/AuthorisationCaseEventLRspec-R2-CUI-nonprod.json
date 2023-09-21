@@ -289,7 +289,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_BREATHING_SPACE_ENTER",
+    "CaseEventID": "NOTIFY_LIP_APPLICANT1_BREATHING_SPACE_ENTER",
     "AccessControl": [
       {
         "UserRoles": [
@@ -325,11 +325,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT1_BREATHING_SPACE_LIP",
+    "CaseEventID": "NOTIFY_LIP_APPLICANT1_BREATHING_SPACE_ENTER",
     "AccessControl": [
       {
-
-
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
@@ -346,7 +344,7 @@
 
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_RESPONDENT_BREATHING_SPACE_LIP",
+    "CaseEventID": "NOTIFY_LIP_RESPONDENT_BREATHING_SPACE_ENTER",
     "AccessControl": [
       {
         "UserRoles": [
