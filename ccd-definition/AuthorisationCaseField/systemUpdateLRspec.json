@@ -77,6 +77,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tempAddress1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

@@ -469,6 +469,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "tempAddress1",
+    "Label": "Add the address you want",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specAoSRespondent2HomeAddressDetails",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
@@ -477,6 +484,13 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specAoSApplicantCorrespondenceAddressRequired",
+    "Label": "Is this address correct?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tempAddress1Required",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"

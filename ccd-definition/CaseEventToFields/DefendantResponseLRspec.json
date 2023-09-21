@@ -274,7 +274,7 @@
     "PageLabel": "Defendant's legal representative's reference (optional)",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress",
     "RetriesTimeoutURLMidEvent": 0
   },
   {
@@ -342,7 +342,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
+    "CaseFieldID": "respondentSolicitor1ServiceAddressRequired",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseConfirmDetails",
@@ -366,13 +366,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "COMPLEX",
     "PageID": "ResponseConfirmDetails",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND specAoSRespondentCorrespondenceAddressRequired=\"No\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND respondentSolicitor1ServiceAddressRequired=\"No\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
