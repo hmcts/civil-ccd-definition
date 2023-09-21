@@ -575,7 +575,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressRequired",
+    "CaseFieldID": "tempAddress2Required",
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
     "PageID": "ResponseConfirmNameAddress",
@@ -588,16 +588,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
+    "CaseFieldID": "tempAddress2",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "COMPLEX",
     "PageID": "ResponseConfirmNameAddress",
     "PageLabel": "",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "specAoSRespondent2HomeAddressRequired=\"No\"",
+    "FieldShowCondition": "tempAddress2Required=\"No\"",
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specCorrespondenceAddress",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/confirm-details",
     "RetriesTimeoutURLMidEvent": 0
   },
   {

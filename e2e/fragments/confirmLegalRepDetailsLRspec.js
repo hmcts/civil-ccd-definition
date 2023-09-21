@@ -10,7 +10,7 @@ module.exports = {
       }
     },
     solicitor2Reference: {
-      id: '#specAoSRespondent2CorrespondenceAddressRequired_radio',
+      id: '#respondentSolicitor2ServiceAddressRequired_radio',
       options: {
         yes: 'Yes',
         no: 'No'
