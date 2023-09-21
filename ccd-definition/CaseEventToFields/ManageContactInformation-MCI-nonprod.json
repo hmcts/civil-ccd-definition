@@ -454,22 +454,67 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "app1LitigationFriendTitle",
+    "CaseFieldID": "litigationFriendTitle",
     "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "partyChosen = \"something\"",
+    "PageShowCondition": "partyChosen = \"CLAIMANT_1_LITIGATION_FRIEND\" OR partyChosen = \"CLAIMANT_2_LITIGATION_FRIEND\" OR partyChosen = \"DEFENDANT_1_LITIGATION_FRIEND\" OR partyChosen = \"DEFENDANT_2_LITIGATION_FRIEND\"",
     "PageID": "LitigationFriend"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "app1LitigationFriendHeader",
+    "CaseFieldID": "litigationFriendHeader",
     "PageDisplayOrder": 17,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "partyChosenType = \"CLAIMANT_1_LITIGATION_FRIEND_ADMIN\" OR partyChosenType = \"CLAIMANT_2_LITIGATION_FRIEND_ADMIN\" OR partyChosenType = \"DEFENDANT_1_LITIGATION_FRIEND_ADMIN\" OR partyChosenType = \"DEFENDANT_2_LITIGATION_FRIEND_ADMIN\"",
+    "PageID": "LitigationFriend"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant1LitigationFriendTypeLabel",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "partyChosenType = \"CLAIMANT_1_LITIGATION_FRIEND_LR\"",
+    "PageID": "LitigationFriend"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2LitigationFriendTypeLabel",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "partyChosenType = \"CLAIMANT_2_LITIGATION_FRIEND_LR\"",
+    "PageID": "LitigationFriend"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "defendant1LitigationFriendTypeLabel",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "partyChosenType = \"DEFENDANT_1_LITIGATION_FRIEND_LR\"",
+    "PageID": "LitigationFriend"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "defendant2LitigationFriendTypeLabel",
+    "PageDisplayOrder": 17,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "partyChosenType = \"DEFENDANT_2_LITIGATION_FRIEND_LR\"",
     "PageID": "LitigationFriend"
   },
   {
@@ -477,10 +522,11 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1LitigationFriend",
     "PageDisplayOrder": 17,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
+    "FieldShowCondition": "partyChosen = \"CLAIMANT_1_LITIGATION_FRIEND\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -488,10 +534,11 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant2LitigationFriend",
     "PageDisplayOrder": 17,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
+    "FieldShowCondition": "partyChosen = \"CLAIMANT_2_LITIGATION_FRIEND\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -499,10 +546,11 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1LitigationFriend",
     "PageDisplayOrder": 17,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
+    "FieldShowCondition": "partyChosen = \"DEFENDANT_1_LITIGATION_FRIEND\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -510,10 +558,11 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2LitigationFriend",
     "PageDisplayOrder": 17,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
+    "FieldShowCondition": "partyChosen = \"DEFENDANT_2_LITIGATION_FRIEND\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -521,10 +570,11 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "genericLitigationFriend",
     "PageDisplayOrder": 17,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
+    "FieldShowCondition": "partyChosen = \"DO_NOT_SHOW\"",
     "ShowSummaryChangeOption": "Y"
   }
 ]

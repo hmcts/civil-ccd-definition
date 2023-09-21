@@ -6,6 +6,7 @@
     "ListElementCode": "firstName",
     "EventHintText": "You can only update this information if you have a signed order from a judge",
     "FieldDisplayOrder": 1,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_LITIGATION_FRIEND_ADMIN\"",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -15,6 +16,7 @@
     "ListElementCode": "lastName",
     "EventHintText": "You can only update this information if you have a signed order from a judge",
     "FieldDisplayOrder": 2,
+    "FieldShowCondition": "partyChosenType=\"CLAIMANT_2_LITIGATION_FRIEND_ADMIN\"",
     "DisplayContext": "MANDATORY"
   },
   {

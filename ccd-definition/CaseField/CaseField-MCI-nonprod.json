@@ -247,16 +247,48 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "app1LitigationFriendTitle",
+    "ID": "litigationFriendTitle",
     "Label": "## Litigation friend",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "app1LitigationFriendHeader",
+    "ID": "litigationFriendHeader",
     "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name",
     "FieldType": "Label",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1LitigationFriendTypeLabel",
+    "Label": "### First name:\n${applicant1LitigationFriend.firstName}\n\n### Last name:\n${applicant1LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriendTypeLabel",
+    "Label": "### First name:\n${applicant2LitigationFriend.firstName}\n\n### Last name:\n${applicant2LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1LitigationFriendTypeLabel",
+    "Label": "### First name:\n${respondent1LitigationFriend.firstName}\n\n### Last name:\n${respondent1LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2LitigationFriendTypeLabel",
+    "Label": "### First name:\n${respondent2LitigationFriend.firstName}\n\n### Last name:\n${respondent2LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable"
   }
 ]
