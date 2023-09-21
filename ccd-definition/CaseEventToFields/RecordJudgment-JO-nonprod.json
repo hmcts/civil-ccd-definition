@@ -88,7 +88,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "joPaymentPlanSelection = \"PAY_IN_INSTALLMENT\""
+    "FieldShowCondition": "joPaymentPlanSelection = \"PAY_IN_INSTALMENTS\""
   },
   {
     "CaseTypeID": "CIVIL",
