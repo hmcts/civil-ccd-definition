@@ -26,6 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT1_CLAIM_SUBMITTED",
     "Name": "Claim Submitted",
     "Description": "Notify applicant1 claim submitted",
