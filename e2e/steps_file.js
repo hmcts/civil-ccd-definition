@@ -157,6 +157,9 @@ const CONFIRMATION_MESSAGE = {
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
+const setCaseId = (id) => {
+  caseId = id;
+};
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
@@ -240,7 +243,7 @@ module.exports = function () {
             console.log(`Signing in user: ${user.type}`);
             await loginPage.signIn(user);
           }
-          await this.waitForSelector(SIGNED_IN_SELECTOR);
+          await this.waitForSelector(SIGNED_IN_SELECTOR, 3);
         }, SIGNED_IN_SELECTOR);
 
         loggedInUser = user;
@@ -248,6 +251,7 @@ module.exports = function () {
       }
     },
 
+    setCaseId,
     grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
 

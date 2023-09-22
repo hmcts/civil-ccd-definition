@@ -29,15 +29,15 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
+Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft @testGL');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
+Scenario.skip('E2E Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, respondent2, 20000);
   caseNumber = await I.grabCaseNumber();
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+   const pbaV3 = await checkToggleEnabled(PBAv3);
+   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
     await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
@@ -56,6 +56,11 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   //await I.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
+
+Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  I.setCaseId(await api.getCaseId());
+});
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -110,7 +115,7 @@ Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     defendant1Response: 'fullDefence',
-    claimValue: 20000});
+    claimValue: 30000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -121,7 +126,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_2,
     defendant2Response: 'fullDefence',
-    claimValue: 20000});
+    claimValue: 30000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -129,12 +134,11 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 20000);
+  await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 30000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
-
 
 Scenario('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
