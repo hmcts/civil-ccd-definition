@@ -1,3 +1,4 @@
+const config = require("./e2e/config");
 exports.config = {
   tests: [
     './e2e/tests/*_test.js',
@@ -58,6 +59,41 @@ exports.config = {
         'selectOption',
         'attachFile',
       ],
+    },
+    autoLogin: {
+      enabled: true,
+      saveToFile: true,
+      inject: 'loginAs',
+      users: {
+        organisation1Solicitor1: {
+          login: (I) => I.login(config.applicantSolicitorUser),
+          // if we see `Admin` on page, we assume we are logged in
+          check: (I) => {
+            I.amOnPage(config.url.manageCase, 90);
+          }
+        },
+        organisation2Solicitor1: {
+          login: (I) => I.login(config.defendantSolicitorUser),
+          // if we see `Admin` on page, we assume we are logged in
+          check: (I) => {
+            I.amOnPage(config.url.manageCase, 90);
+          }
+        },
+        organisation3Solicitor1: {
+          login: (I) => I.login(config.secondDefendantSolicitorUser),
+          // if we see `Admin` on page, we assume we are logged in
+          check: (I) => {
+            I.amOnPage(config.url.manageCase, 90);
+          }
+        },
+        region1Judge: {
+          login: (I) => I.login(config.judgeUserWithRegionId1),
+          // if we see `Admin` on page, we assume we are logged in
+          check: (I) => {
+            I.amOnPage(config.url.manageCase, 90);
+          }
+        },
+      }
     },
     retryFailedStep: {
       enabled: true,
