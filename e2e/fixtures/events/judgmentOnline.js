@@ -2,45 +2,18 @@ const {date} = require('../../api/dataHelper');
 
 const recordJudgmentDet = () => {
   return  {
-    FinalOrderSelect: {
-      finalOrderSelection: 'ASSISTED_ORDER',
-      assistedOrderMakeAnOrderForCosts: {
-        assistedOrderCostsFirstDropdownDate: date(14),
-        assistedOrderAssessmentThirdDropdownDate: date(14),
-        makeAnOrderForCostsQOCSYesOrNo: 'No',
+    RecordJudgment: {
+      joJudgmentRecordReason: 'DETERMINATION_OF_MEANS',
+      joOrderMadeDate: '2023-09-19',
+      joAmountOrdered: '40000',
+      joAmountCostOrdered: '20000',
+      joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
+      joJudgmentInstalmentDetails: {
+        instalmentAmount: '10000',
+        paymentFrequency: 'MONTHLY',
+        firstInstalmentDate: '2023-09-23'
       },
-      finalOrderRepresentation: {
-        typeRepresentationComplex:{
-          typeRepresentationClaimantOneDynamic: 'Test Inc',
-          typeRepresentationDefendantOneDynamic: 'Sir John Doe',
-        }
-      },
-      publicFundingCostsProtection: 'No',
-      finalOrderAppealComplex: {
-        appealGrantedRefusedDropdown: {
-          appealChoiceSecondDropdownA:{
-            appealGrantedRefusedDate: date(21),
-          },
-          appealChoiceSecondDropdownB:{
-            appealGrantedRefusedDate: date(21),
-          }
-        }
-      },
-      finalOrderDateHeardComplex: {
-        singleDateSelection: {
-          singleDate: date(0)
-        }
-      },
-      orderMadeOnDetailsOrderCourt: {
-        ownInitiativeDate: date(0),
-        ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
-          ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
-      },
-      orderMadeOnDetailsOrderWithoutNotice: {
-        withOutNoticeDate: date(0),
-        withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
-          ' set aside, vary or stay the order. Any such application must be made by 4pm on'
-      },
+      joIsRegisteredWithRTL: 'Yes'
     },
   };
 };
