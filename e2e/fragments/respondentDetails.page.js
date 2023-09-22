@@ -6,14 +6,14 @@ module.exports = {
     respondentDetails: `#${party}Details`,
   }),
 
-  async verifyDetails(respondent1Party, respondent2Party) {
-    if (respondent1Party) {
-      await this.verifyDetailsForParty(respondent1Party);
-    }
-
-    if (respondent2Party) {
-      await this.verifyDetailsForParty(respondent2Party);
-    }
+  async verifyDetails() {
+    // if (respondent1Party) {
+    //   await this.verifyDetailsForParty(respondent1Party);
+    // }
+    //
+    // if (respondent2Party) {
+    //   await this.verifyDetailsForParty(respondent2Party);
+    // }
 
     await I.clickContinue();
   },

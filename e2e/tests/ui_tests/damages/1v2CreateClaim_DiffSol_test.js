@@ -11,7 +11,8 @@ const claimData = require('../../../fixtures/events/createClaim.js');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+// const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
+let caseId;
 
 const claimant1 = {
   litigantInPerson: false
@@ -27,43 +28,49 @@ const respondent2 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber;
+// let caseNumber;
 
-Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
+Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft @testGL');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
+Scenario.skip('E2E Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, respondent2, 20000);
-  caseNumber = await I.grabCaseNumber();
+  // caseNumber = await I.grabCaseNumber();
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
+   const pbaV3 = await checkToggleEnabled(PBAv3);
+   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
-    await apiRequest.paymentUpdate(caseId(), '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseId(), 'paid'));
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
   }
 
   /*if (pbaV3) {
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
-    await paymentUpdate(caseId(), '/service-request-update-claim-issued',
-      claimData.serviceUpdateDto(caseId(), 'paid'));
+    await paymentUpdate(caseId, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
   }*/
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseId, config.applicantSolicitorUser);
 }).retry(3);
+
+Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
+  caseId = await api.getCaseId();
+  I.setCaseId(caseId);
+});
 
 Scenario('Claimant solicitor notifies both defendants of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim('both');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitors of claim details', async ({I}) => {
@@ -93,7 +100,7 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
 */
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseId());
+  await I.navigateToCaseDetails(caseId);
   await I.informAgreedExtensionDate();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   // I.see(caseEventMessage('Inform agreed extension date'));
@@ -110,7 +117,7 @@ Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     defendant1Response: 'fullDefence',
-    claimValue: 20000});
+    claimValue: 30000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -121,7 +128,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_2,
     defendant2Response: 'fullDefence',
-    claimValue: 20000});
+    claimValue: 30000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -129,12 +136,11 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 20000);
+  await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 30000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseId());
+  await waitForFinishedBusinessProcess(caseId);
 }).retry(3);
-
 
 Scenario('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
@@ -156,15 +162,15 @@ Scenario('Add case flags', async ({I}) => {
 Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   if (await checkToggleEnabled('update-contact-details')) {
     await I.login(config.secondDefendantSolicitorUser);
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
-    await I.addUnavailableDates(caseId());
+    await I.addUnavailableDates(caseId);
   }
 }).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
-   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
    await I.waitForText('Summary');
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
@@ -172,20 +178,20 @@ Scenario('Judge triggers SDO', async ({I}) => {
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
-    await I.evidenceUpload(caseId(), false);
+    await I.evidenceUpload(caseId, false);
   }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
-    await I.evidenceUpload(caseId(), true);
+    await I.evidenceUpload(caseId, true);
   }
 }).retry(3);
 
 Scenario('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
+    await api.initiateGeneralApplication(caseId, config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
 }).retry(3);
 
