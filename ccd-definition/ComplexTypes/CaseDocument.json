@@ -48,6 +48,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "CaseRoleType",
     "ElementLabel": "Owned by",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "createdDatetime = \"DO_NOT_SHOW\""
   }
 ]
