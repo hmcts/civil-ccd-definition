@@ -63,6 +63,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageContactDetailsEventUsed",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1",
     "AccessControl": [
       {
@@ -298,21 +311,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "genericLitigationFriend",
+    "CaseFieldID": "contactDetailsChangedLabel",
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
           "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "R"
       }
     ]
   }

@@ -15,6 +15,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "manageContactDetailsEventUsed",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "expertsLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Experts</h2>\n Please update the contact details of any individual who may attend a hearing as an expert.",
     "FieldType": "Label",
@@ -306,5 +313,13 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "_Comment": "Label for CUI users because these fields are not editable"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "contactDetailsChangedLabel",
+    "Label": "### Details of this claim have been updated.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for contact details have changed on the case details tab screen"
   }
 ]

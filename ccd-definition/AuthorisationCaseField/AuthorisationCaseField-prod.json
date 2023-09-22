@@ -317,24 +317,5 @@
         "CRUD": "CRUD"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "genericLitigationFriend",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
   }
 ]
