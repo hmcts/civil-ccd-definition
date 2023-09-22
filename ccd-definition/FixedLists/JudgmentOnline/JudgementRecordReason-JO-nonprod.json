@@ -2,7 +2,7 @@
   {
     "ID": "JoJudgmentRecordReasonList",
     "ListElementCode": "DETERMINATION_OF_MEANS",
-    "ListElement": "A caseworker has carried out a determination of means and has made a judgment by determination",
+    "ListElement": "A determination of means has been made",
     "DisplayOrder": 1
   },
   {

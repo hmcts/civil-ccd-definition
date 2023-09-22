@@ -1,7 +1,7 @@
 [
   {
     "ID": "JoPaymentPlanSelectionList",
-    "ListElementCode": "PAY_IN_INSTALLMENT",
+    "ListElementCode": "PAY_IN_INSTALMENTS",
     "ListElement": "Paid in instalments",
     "DisplayOrder": 1
   },
