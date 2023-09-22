@@ -139,10 +139,10 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 Scenario('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
     }, {
-      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
+      partyName: 'John Smith', roleOnCase: 'Defendant solicitor 1 witness',
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }
     ];
