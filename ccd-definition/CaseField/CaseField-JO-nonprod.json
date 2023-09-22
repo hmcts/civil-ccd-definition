@@ -26,7 +26,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joPartiesNames",
-    "Label": "${caseNameHmctsInternal}",
+    "Label": "**${caseNameHmctsInternal}** <br> <br>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -34,7 +34,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joJudgmentRecordReason",
-    "Label": "Why is this Judgment being recorded?",
+    "Label": "Why is this judgment being recorded?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "JoJudgmentRecordReasonList",
     "SecurityClassification": "Public",
@@ -43,7 +43,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joOrderMadeDate",
-    "Label": "Enter the date the judge made the order",
+    "Label": "Enter the date the determination was made or the date the judge made the order",
     "HintText": "For example, 16 04 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public",
