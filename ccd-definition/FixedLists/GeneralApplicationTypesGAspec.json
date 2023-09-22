@@ -32,8 +32,8 @@
   },
   {
     "ID": "GeneralApplicationTypesGAspec",
-    "ListElementCode": "CONSENT_TO_SETTLE_BY_CONSENT",
-    "ListElement": "consent to Settle by consent",
+    "ListElementCode": "SETTLE_BY_CONSENT",
+    "ListElement": "Settle by consent",
     "DisplayOrder": 6
   },
   {
