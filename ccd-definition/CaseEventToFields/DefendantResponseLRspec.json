@@ -1107,7 +1107,7 @@
     "PageDisplayOrder": 49,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
+    "CaseEventFieldLabel": "Remote Hearing",
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
@@ -1120,7 +1120,7 @@
     "PageDisplayOrder": 49,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
+    "CaseEventFieldLabel": "Remote Hearing",
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
