@@ -20,6 +20,12 @@ module.exports = {
           code: 'FEE0209',
           version: '3'
         };
+      case '20000':
+        return {
+          calculatedAmountInPence: '100000',
+          code: 'FEE0209',
+          version: '3'
+        };
       case '30000':
           return {
             calculatedAmountInPence: '150000',

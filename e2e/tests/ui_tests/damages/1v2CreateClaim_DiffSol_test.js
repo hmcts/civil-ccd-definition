@@ -59,7 +59,7 @@ Scenario.skip('E2E Claimant solicitor raises a claim against 2 defendants who ha
 }).retry(3);
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', '2000');
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', '20000');
   caseId = await api.getCaseId();
   I.setCaseId(caseId);
 });
