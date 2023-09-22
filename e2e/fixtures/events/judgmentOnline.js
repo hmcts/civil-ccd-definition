@@ -64,6 +64,16 @@ const recordJudgmentJudgeOrder = () => {
   };
 };
 
+const judgmentPaid = () => {
+  return {
+    MarkJudgmentPaidInFull :{
+    joJudgmentPaidInFull: {
+      dateOfFullPaymentMade: '2023-02-09',
+      confirmFullPaymentMade:["CONFIRMED"]
+      }
+    },
+  };
+};
 
 module.exports = {
   recordJudgment: (whyRecorded, paymentPlanSelection) => {
@@ -76,13 +86,10 @@ module.exports = {
         valid: recordJudgmentJudgeOrder()
       };
     }
-
-    // DETERMINATION_OF_MEANS,
-    //   JUDGE_ORDER
-    //
-    // 'PAY_IN_INSTALMENTS'
-    //   'PAY_BY_DATE'
-    //   'PAY_IMMEDIATELY'
-
+  },
+  markJudgmentPaidInFull: () => {
+      return {
+        valid: judgmentPaid()
+      };
   }
 };
