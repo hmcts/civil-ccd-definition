@@ -869,6 +869,64 @@
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
+
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine2",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "AddressLine3",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "PostTown",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "County",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "Country",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "specRespondentCorrespondenceAddress",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "ListElementCode": "PostCode",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+
   {
     "ID": "SecondSolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
