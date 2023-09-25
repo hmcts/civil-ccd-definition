@@ -130,6 +130,16 @@
     "CRUD": "CRU"
   },
   {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "lblMarkPaidInFull",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "joJudgmentPaidInFull",
   "UserRoles": [
