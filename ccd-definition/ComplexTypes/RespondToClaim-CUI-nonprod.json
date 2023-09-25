@@ -61,5 +61,12 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": " helpWithFeesReferenceNumberLip",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

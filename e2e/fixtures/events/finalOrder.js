@@ -9,15 +9,22 @@ const createAssistedOrder = () => {
         assistedOrderAssessmentThirdDropdownDate: date(14),
         makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
+      finalOrderRepresentation: {
+        typeRepresentationComplex:{
+          typeRepresentationClaimantOneDynamic: 'Test Inc',
+          typeRepresentationDefendantOneDynamic: 'Sir John Doe',
+        }
+      },
       publicFundingCostsProtection: 'No',
       finalOrderAppealComplex: {
-        appealGranted: {
-          appealDate: date(21)
-        },
-          appealRefused: {
-              appealDate: date(21),
-            refusedText: '[name] court'
+        appealGrantedRefusedDropdown: {
+          appealChoiceSecondDropdownA:{
+            appealGrantedRefusedDate: date(21),
+          },
+          appealChoiceSecondDropdownB:{
+            appealGrantedRefusedDate: date(21),
           }
+        }
       },
       finalOrderDateHeardComplex: {
         singleDateSelection: {

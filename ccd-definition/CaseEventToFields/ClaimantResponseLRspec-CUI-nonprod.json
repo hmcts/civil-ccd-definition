@@ -834,7 +834,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_TWO\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
@@ -846,7 +847,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
