@@ -25,7 +25,8 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
-const judgmentOnline = require('../fixtures/events/judgmentOnline.js');
+const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
+const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -83,7 +84,8 @@ const data = {
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
-  RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline.recordJudgment(whyRecorded, paymentPlanSelection),
+  RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
+  RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
 };
 
 const eventData = {
@@ -1177,7 +1179,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  recordJudgment: async (user, whyRecorded, paymentPlanSelection) => {
+  recordJudgment: async (user, mpscenario, whyRecorded, paymentPlanSelection) => {
     console.log(`case in All final orders issued ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -1187,7 +1189,11 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data.RECORD_JUDGMENT(whyRecorded, paymentPlanSelection, mpScenario));
+    if (mpScenario === 'ONE_V_ONE') {
+      await validateEventPages(data.RECORD_JUDGMENT(whyRecorded, paymentPlanSelection));
+    } else {
+      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO(whyRecorded, paymentPlanSelection));
+    }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
