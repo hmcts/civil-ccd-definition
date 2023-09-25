@@ -84,6 +84,7 @@ const data = {
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline.recordJudgment(whyRecorded, paymentPlanSelection),
+  JUDGMENT_PAID_IN_FULL: () => judgmentOnline.markJudgmentPaidInFull(),
 };
 
 const eventData = {
@@ -1197,7 +1198,29 @@ module.exports = {
     //TODO assert isLiveJudgmentExists === Yes?
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+  markJudgmentPaidInFull: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.JUDGMENT_PAID_IN_FULL(mpScenario));
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: '# Judgment marked as paid in full'
+    }, true);
+
+    //TODO assert isLiveJudgmentExists === Yes?
+
+    await waitForFinishedBusinessProcess(caseId);
   }
+
 };
 
 // Functions
