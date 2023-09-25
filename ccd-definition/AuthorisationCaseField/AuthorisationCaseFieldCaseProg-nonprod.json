@@ -314,10 +314,10 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
+          "APP-SOL-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   }
