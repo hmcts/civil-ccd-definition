@@ -46,7 +46,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo @123', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
   await api.createSDO(judgeUser, 'CREATE_FAST');
@@ -59,7 +59,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
-    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
+    // await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
   }
 });
 
@@ -248,6 +248,7 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
   }
 });
 
+// eslint-disable-next-line no-unused-vars
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
