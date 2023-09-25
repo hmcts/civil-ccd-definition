@@ -112,5 +112,11 @@
     "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "changeOrganisationRequestField",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
   }
 ]

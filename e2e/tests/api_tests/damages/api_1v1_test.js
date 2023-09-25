@@ -58,12 +58,10 @@ Scenario('Manage case flags', async ({api}) => {
   await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
-Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos @api-nonprod-cos', async ({api}) => {
+Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.notifyClaimLip(config.applicantSolicitorUser);
-    await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
-  }
+  await api.notifyClaimLip(config.applicantSolicitorUser);
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
 });
 
 Scenario('Create claim and move it to caseman', async ({api}) => {
