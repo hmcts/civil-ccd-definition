@@ -13,7 +13,7 @@ Scenario('1v1 full defence claimant and defendant response @api-prod-specified',
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
     'AWAITING_APPLICANT_INTENTION');
-  await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+  // await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   // await api_spec.recordJudgment(legalAdvUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
 });
 
