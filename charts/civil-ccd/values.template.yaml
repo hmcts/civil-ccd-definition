@@ -56,6 +56,7 @@ civil-general-applications:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3216'
     releaseNameOverride: ${SERVICE_NAME}-java
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
