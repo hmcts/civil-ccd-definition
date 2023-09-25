@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_PARTY_IDS",
+    "CaseEventID": "UPDATE_MISSING_FIELDS",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
