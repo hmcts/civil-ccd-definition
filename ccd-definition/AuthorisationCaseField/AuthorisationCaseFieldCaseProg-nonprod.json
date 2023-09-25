@@ -314,6 +314,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
