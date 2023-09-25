@@ -10,15 +10,15 @@ Scenario('Applicant solicitor creates claim again 2 respondent LiPs and cos noti
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
 });
 
-Scenario('Respondent 1 files NoC with org2 solicitor', async ({I, api}) => {
+Scenario('Respondent 1 files NoC with org2 solicitor', async ({I, api, loginAs}) => {
   let caseId = await api.getCaseId();
-  await I.login(config.defendantSolicitorUser);
+  await loginAs('organisation2Solicitor1');
   await I.initiateNoticeOfChange(caseId, 'Sir John Doe');
 });
 
-Scenario('Respondent 2 files NoC with org2 solicitor', async ({I, api}) => {
+Scenario('Respondent 2 files NoC with org2 solicitor', async ({I, api, loginAs}) => {
   let caseId = await api.getCaseId();
-  await I.login(config.defendantSolicitorUser);
+  await loginAs('organisation2Solicitor1');
   await I.initiateNoticeOfChange(caseId, 'Dr Foo Bar');
 });
 

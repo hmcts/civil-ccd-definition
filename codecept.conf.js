@@ -93,6 +93,20 @@ exports.config = {
             I.amOnPage(config.url.manageCase, 90);
           }
         },
+        region1HearingCentreAdmin: {
+          login: (I) => I.login(config.hearingCenterAdminWithRegionId1),
+          // if we see `Admin` on page, we assume we are logged in
+          check: (I) => {
+            I.amOnPage(config.url.manageCase, 90);
+          }
+        },
+        admin: {
+          login: (I) => I.login(config.adminUser),
+          // if we see `Admin` on page, we assume we are logged in
+          check: (I) => {
+            I.amOnPage(config.url.manageCase, 90);
+          }
+        }
       }
     },
     retryFailedStep: {
