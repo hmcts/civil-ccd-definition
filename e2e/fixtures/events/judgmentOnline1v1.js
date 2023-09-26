@@ -102,8 +102,10 @@ module.exports = {
           return {
             valid: recordJudgmentJudOrdInst()
           };
+        }
       }
-    }
+      break;
+
       case 'PAY_BY_DATE': {
         if (whyRecorded === 'DETERMINATION_OF_MEANS') {
           return {
@@ -115,6 +117,8 @@ module.exports = {
           };
         }
       }
+      break;
+
       case 'PAY_IMMEDIATELY': {
         if (whyRecorded === 'DETERMINATION_OF_MEANS') {
           return {
@@ -126,6 +130,7 @@ module.exports = {
           };
         }
       }
+      break;
     }
   }
 };

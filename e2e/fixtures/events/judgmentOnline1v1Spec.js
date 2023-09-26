@@ -72,7 +72,7 @@ module.exports = {
             },
           };
         }
-      };
+      }
       break;
 
       case 'PAY_IMMEDIATELY':{

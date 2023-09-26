@@ -21,7 +21,7 @@ async function prepareClaim(api, claimAmount) {
   await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
 }
 
-Scenario('1v2 full defence unspecified - caseworker records judgment (Det.of means - pay instalments) @api-unspec @api-tests-1v2 @api-jo @api-non-prod-jo', async ({I, api}) => {
+Scenario('1v2 full defence unspecified - caseworker records judgment (Det.of means - pay instalments) @api-unspec @api-tests-1v2 @api-jo @api-non-prod-jo', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(legalAdvUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');

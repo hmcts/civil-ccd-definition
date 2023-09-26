@@ -7,15 +7,6 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
-let fastTrackDirectionsTask, taskId;
-let smallClaimDirectionsTask, legalAdvisorSmallClaimsTrackDirectionsTask;
-let transferOfflineSdoTask;
-if (config.runWAApiTest) {
-  fastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
-  smallClaimDirectionsTask = require('../../../../wa/tasks/smallClaimDirectionsTask.js');
-  legalAdvisorSmallClaimsTrackDirectionsTask = require('../../../../wa/tasks/legalAdvisorSmallClaimsTrackDirectionsTask.js');
-  transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
-}
 
 Feature('Record Judgment 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-non-prod-jo');
 

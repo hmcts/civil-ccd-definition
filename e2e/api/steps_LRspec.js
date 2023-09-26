@@ -23,10 +23,10 @@ const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../he
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const lodash = require("lodash");
-const createFinalOrderSpec = require("../fixtures/events/finalOrderSpec");
-const judgmentOnline1v1Spec = require("../fixtures/events/judgmentOnline1v1Spec");
-const judgmentOnline1v2Spec = require("../fixtures/events/judgmentOnline1v2Spec");
+const lodash = require('lodash');
+const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
+const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
+const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 
 let caseId, eventName;
 let caseData = {};
