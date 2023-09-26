@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "UPDATE_PARTY_IDS",
-    "Name": "Update party IDs",
-    "Description": "Update case data with missing party IDs",
+    "ID": "UPDATE_MISSING_FIELDS",
+    "Name": "Update missing fields",
+    "Description": "Update case data with missing fields",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
