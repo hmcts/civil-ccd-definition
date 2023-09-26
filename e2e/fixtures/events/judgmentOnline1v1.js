@@ -94,7 +94,7 @@ const markJudgmentPaid = () => {
   return {
     MarkJudgmentPaidInFull :{
       joJudgmentPaidInFull: {
-        dateOfFullPaymentMade: '2023-26-09',
+        dateOfFullPaymentMade:  date(-5),
         confirmFullPaymentMade:["CONFIRMED"]
       }
     },

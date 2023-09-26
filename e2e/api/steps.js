@@ -1220,11 +1220,9 @@ module.exports = {
 
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
     }, true);
-
-    //TODO assert isLiveJudgmentExists === Yes?
 
     await waitForFinishedBusinessProcess(caseId);
   }
