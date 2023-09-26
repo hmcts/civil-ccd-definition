@@ -980,9 +980,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1179,7 +1179,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  recordJudgment: async (user, mpscenario, whyRecorded, paymentPlanSelection) => {
+  recordJudgment: async (user, mpScenario, whyRecorded, paymentPlanSelection) => {
     console.log(`case in All final orders issued ${caseId}`);
     await apiRequest.setupTokens(user);
 
