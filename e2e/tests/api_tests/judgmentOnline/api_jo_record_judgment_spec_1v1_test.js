@@ -5,9 +5,9 @@ const mpScenario = 'ONE_V_ONE';
 const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local; //TODO change to tribunalCaseworkerWithRegionId4 ???
 const judgeUser = config.judgeUserWithRegionId1;
 
-Feature('CCD 1v1 API test spec - Record Judgment @api-spec @api-tests-1v1 @api-jo @api-non-prod-jo');
+Feature('Record Judgment 1v1 API test spec @api-spec @api-tests-1v1 @api-jo @api-non-prod-jo');
 
-Scenario('Default Judgment Spec claim 1v1 - Record Judgment', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);

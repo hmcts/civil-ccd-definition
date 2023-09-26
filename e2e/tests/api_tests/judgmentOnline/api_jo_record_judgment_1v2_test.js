@@ -8,7 +8,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local; //TODO change to tribunalCaseworkerWithRegionId4 ???
 const claimAmountJudge = '11000';
 
-Feature('CCD 1v2 API test unspec - Record Judgment @api-unspec @api-tests-1v2 @api-jo @api-non-prod-jo');
+Feature('Record Judgment 1v2 API test unspec @api-unspec @api-tests-1v2 @api-jo @api-non-prod-jo');
 
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);

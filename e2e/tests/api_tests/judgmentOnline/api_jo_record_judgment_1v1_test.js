@@ -17,7 +17,7 @@ if (config.runWAApiTest) {
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
 }
 
-Feature('CCD 1v1 API test unspec - Record Judgment @api-unspec @api-tests-1v1 @api-jo @api-non-prod-jo');
+Feature('Record Judgment 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-non-prod-jo');
 
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
