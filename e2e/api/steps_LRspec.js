@@ -24,9 +24,9 @@ const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateA
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const lodash = require("lodash");
-const createFinalOrder = require("../fixtures/events/finalOrder");
-const judgmentOnline1v1 = require("../fixtures/events/judgmentOnline1v1");
-const judgmentOnline1v2 = require("../fixtures/events/judgmentOnline1v2");
+const createFinalOrderSpec = require("../fixtures/events/finalOrderSpec");
+const judgmentOnline1v1Spec = require("../fixtures/events/judgmentOnline1v1Spec");
+const judgmentOnline1v2Spec = require("../fixtures/events/judgmentOnline1v2Spec");
 
 let caseId, eventName;
 let caseData = {};
@@ -45,9 +45,9 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
-  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
-  RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
-  RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
+  FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
+  RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
+  RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
 };
 
 const eventData = {
@@ -495,9 +495,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER'));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER'));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
@@ -519,9 +519,9 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     if (mpScenario === 'ONE_V_ONE') {
-      await validateEventPages(data.RECORD_JUDGMENT(whyRecorded, paymentPlanSelection));
+      await validateEventPages(data.RECORD_JUDGMENT_SPEC(whyRecorded, paymentPlanSelection));
     } else {
-      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO(whyRecorded, paymentPlanSelection));
+      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
@@ -766,7 +766,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
-  for (let pageId of Object.keys(data.valid)) {
+  for (let pageId of Object.keys(data.userInput)) {
     if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);

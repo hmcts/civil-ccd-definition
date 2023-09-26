@@ -2,10 +2,10 @@ const config = require('../../../config.js');
 
 const mpScenario = 'ONE_V_ONE';
 const judgeUser = config.judgeUserWithRegionId1;
-// const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
-const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local; //TODO change to tribunalCaseworkerWithRegionId4 ???
+// const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 let fastTrackDirectionsTask, taskId;
 let smallClaimDirectionsTask, legalAdvisorSmallClaimsTrackDirectionsTask;
