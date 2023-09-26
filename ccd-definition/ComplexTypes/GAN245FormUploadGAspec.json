@@ -10,7 +10,7 @@
   {
     "ID": "GAN245FormUpload",
     "ListElementCode": "generalAppN245Label",
-    "ElementLabel": "<br/>When you upload the form, include the case number in the file name.\n\nIf you have printed off the form and filled it in by hand, make sure the size of your saved file is no more than 100MB.\n\nSave your file as either: JPG, PNG, SVG, GIF, DOC, DOCX or PDF",
+    "ElementLabel": "## How to upload your evidence \n Before uploading your form, include N245 in the name, for example \"N245 Applicant Name\" \n\n Each document must be less than 100MB. You can upload the following file types: \n\n Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"

@@ -121,7 +121,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## Upload any evidence that supports your application \n Before uploading a file, make sure it: \n* is 100mb or smaller \n* is one of the following file types: JPG, PNG, SVG, DOC, DOCX, DOT, PDF, RTF, XLT or XLSX \n* has an accurate file name - for example: \n WitnessStatement_JaneDoe_FirstDefendant_01_3_2022.doc",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -218,7 +218,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "Label": "Upload evidence",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "CategoryID": "applications",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -328,7 +328,7 @@
     "Label": "N245 form",
     "FieldType": "Document",
     "SecurityClassification": "Public",
-    "RegularExpression": ".pdf,.doc,.docx,.jpg,.svg,.gif,.png",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "Searchable": "N",
     "CategoryID": "applications"
   },

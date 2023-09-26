@@ -26,9 +26,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "translatedDocument",
-    "Label": " ",
-    "FieldType": "TranslatedDocument",
+    "ID": "translatedDocuments",
+    "Label": "Translated Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TranslatedDocument",
     "Searchable": "N",
     "SecurityClassification": "Public"
   },
