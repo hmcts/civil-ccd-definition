@@ -14,5 +14,10 @@
     "ListElementCode": "N9_REQUEST_MORE_TIME",
     "ListElement": "N9 (Request more time)"
   },
-  { "ID": "StaffDocumentType", "ListElementCode": "OTHER", "ListElement": "Other" }
+  { "ID": "StaffDocumentType", "ListElementCode": "OTHER", "ListElement": "Other" },
+  {
+    "ID": "StaffDocumentType",
+    "ListElementCode": "MEDIATION_AGREEMENT",
+    "ListElement": "Mediation Agreement",
+  }
 ]
