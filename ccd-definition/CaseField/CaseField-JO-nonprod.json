@@ -109,5 +109,23 @@
     "FieldTypeParameter": "JoConfirmSentToBothDef",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joSetAsideDate",
+    "Label": "Enter the date of the order setting aside the judgment",
+    "HintText": "For example, 16 04 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joConfirmReadOrderForSetAside",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "JoConfirmReadOrderForSetAside",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

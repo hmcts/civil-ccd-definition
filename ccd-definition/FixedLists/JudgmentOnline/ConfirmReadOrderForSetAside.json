@@ -1,0 +1,8 @@
+[
+  {
+    "ID": "JoConfirmReadOrderForSetAside",
+    "ListElementCode": "CONFIRM",
+    "ListElement": "I confirm that I've read the order setting aside the judgment",
+    "DisplayOrder": 1
+  }
+]
