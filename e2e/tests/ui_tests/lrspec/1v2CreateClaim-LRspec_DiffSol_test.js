@@ -56,7 +56,6 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
     claimType: 'fast',
     defenceType: 'dispute'
   });
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
@@ -67,13 +66,11 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects cl
     claimType: 'fast',
     defenceType: 'dispute'
   });
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec, loginAs}) => {
   await loginAs('organisation1Solicitor1');
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
-  await LRspec.click('Sign out');
 }).retry(3);
 
 // Skip case flags scenario as it's covered in the unspec e2e
