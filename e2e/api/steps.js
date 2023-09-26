@@ -1228,6 +1228,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   }
+
 };
 
 // Functions
