@@ -95,7 +95,7 @@ const markJudgmentPaid = () => {
     MarkJudgmentPaidInFull :{
       joJudgmentPaidInFull: {
         dateOfFullPaymentMade:  date(-5),
-        confirmFullPaymentMade:["CONFIRMED"]
+        confirmFullPaymentMade:['CONFIRMED']
       }
     },
   };
@@ -114,7 +114,7 @@ module.exports = {
             valid: recordJudgmentJudOrdInst()
           };
       }
-    }
+    } break;
       case 'PAY_BY_DATE': {
         if (whyRecorded === 'DETERMINATION_OF_MEANS') {
           return {
@@ -125,7 +125,7 @@ module.exports = {
             valid: recordJudgmentJudOrdByDate()
           };
         }
-      }
+      }break;
       case 'PAY_IMMEDIATELY': {
         if (whyRecorded === 'DETERMINATION_OF_MEANS') {
           return {
