@@ -119,10 +119,11 @@
     "Searchable": "N"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "joJudgmentPaidInFull",
-  "Label": " ",
-  "FieldType": "MarkJudgmentPaid",
-  "SecurityClassification": "Public"
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentPaidInFull",
+    "Label": " ",
+    "FieldType": "MarkJudgmentPaid",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
