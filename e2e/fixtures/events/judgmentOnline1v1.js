@@ -22,7 +22,7 @@ const recordJudgmentJudOrdInst = () => {
   return {
     RecordJudgment: {
       joJudgmentRecordReason: 'JUDGE_ORDER',
-      joOrderMadeDate: date(-1),
+      joOrderMadeDate: date(-10),
       joAmountOrdered: '40000',
       joAmountCostOrdered: '20000',
       joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
@@ -81,11 +81,22 @@ const recordJudgmentJudOrdImmed = () => {
   return {
     RecordJudgment: {
       joJudgmentRecordReason: 'JUDGE_ORDER',
-      joOrderMadeDate: date(-1),
+      joOrderMadeDate: date(-35),
       joAmountOrdered: '40000',
       joAmountCostOrdered: '20000',
       joPaymentPlanSelection: 'PAY_IMMEDIATELY',
       joIsRegisteredWithRTL: 'Yes'
+    },
+  };
+};
+
+const markJudgmentPaid = () => {
+  return {
+    MarkJudgmentPaidInFull :{
+      joJudgmentPaidInFull: {
+        dateOfFullPaymentMade: '2023-26-09',
+        confirmFullPaymentMade:["CONFIRMED"]
+      }
     },
   };
 };
@@ -127,5 +138,12 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  markJudgmentPaidInFull: () => {
+
+  return {
+    valid: markJudgmentPaid()
+  };
+
+}
 };

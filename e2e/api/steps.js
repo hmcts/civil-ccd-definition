@@ -86,6 +86,7 @@ const data = {
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
+  JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
 };
 
 const eventData = {
@@ -1194,6 +1195,29 @@ module.exports = {
     } else {
       await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO(whyRecorded, paymentPlanSelection));
     }
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
+
+    //TODO assert isLiveJudgmentExists === Yes?
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+
+    await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
+
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',

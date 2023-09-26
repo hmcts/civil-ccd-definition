@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+
 const mpScenario = 'ONE_V_ONE';
 const judgeUser = config.judgeUserWithRegionId1;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
@@ -16,7 +17,7 @@ if (config.runWAApiTest) {
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
 }
 
-Feature('CCD 1v1 API test');
+Feature('CCD 1v1 API test unspec - Record Judgment @api-unspec @api-tests-1v1 @api-jo @api-non-prod-jo');
 
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
@@ -28,23 +29,21 @@ async function prepareClaim(api, claimAmount) {
   await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
 }
 
-Scenario('1v1 full defence unspecified - marks payment in full within 30 days @api-jo @api-non-prod-jo', async ({api}) => {
+Scenario('1v1 full defence unspecified - Mark payment full within 30 days', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.recordJudgment(legalAdvUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
-    await api.markJudgmentPaidInFull(legalAdvUser);
+    await api.recordJudgment(legalAdvUser, mpScenario, 'JUDGE_ORDER', 'PAY_IN_INSTALMENTS');
+    await api.markJudgmentPaid(legalAdvUser);
   }
 });
 
-Scenario('1v1 full defence unspecified - marks payment in full after 30 days @api-jo @api-non-prod-jo', async ({api}) => {
+Scenario('1v1 full defence unspecified - Mark payment full after 30 days', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.recordJudgment(legalAdvUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
-    await api.markJudgmentPaidInFull(legalAdvUser);
+    await api.recordJudgment(legalAdvUser, mpScenario, 'JUDGE_ORDER', 'PAY_IMMEDIATELY');
+    await api.markJudgmentPaid(legalAdvUser);
   }
 });
-
-
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
