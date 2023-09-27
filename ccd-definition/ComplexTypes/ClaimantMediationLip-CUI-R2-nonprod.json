@@ -5,7 +5,8 @@
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -13,7 +14,8 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -21,7 +23,8 @@
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -29,7 +32,8 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -37,7 +41,8 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -45,7 +50,8 @@
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -53,7 +59,8 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -61,7 +68,8 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "ClaimantMediationLip",
@@ -69,6 +77,7 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
