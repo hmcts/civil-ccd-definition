@@ -47,5 +47,14 @@
     "ElementLabel": "Uploaded by",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CaseDocument",
+    "ListElementCode": "ownedBy",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CaseRoleType",
+    "ElementLabel": "Owned by",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "createdDatetime = \"DO_NOT_SHOW\""
   }
 ]
