@@ -158,7 +158,7 @@ module.exports = {
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const pbaV3 = true;
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
 
     //==============================================================
@@ -1323,7 +1323,7 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    //assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
     if(submittedCallbackResponseContains.body) {
       assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
     }
@@ -1376,7 +1376,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
-    //expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
   }
 };
 
