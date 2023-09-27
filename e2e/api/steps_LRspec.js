@@ -27,7 +27,6 @@ const lodash = require('lodash');
 const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
 const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
-const judgmentOnline1v1 = require("../fixtures/events/judgmentOnline1v1");
 
 let caseId, eventName;
 let caseData = {};

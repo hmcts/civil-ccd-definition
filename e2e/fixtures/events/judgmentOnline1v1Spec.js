@@ -113,7 +113,7 @@ module.exports = {
       SetAsideJudgment: {
         joSetAsideDate: '2008-06-06'
       }
-    }
+    };
     return setAsideJudgment;
   }
 };
