@@ -8,7 +8,7 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v2 API test spec @api-spec @api-tests-1v2 @api-jo @api-non-prod-jo');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-non-prod-jo');
 
 Scenario('Record Judgment Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
