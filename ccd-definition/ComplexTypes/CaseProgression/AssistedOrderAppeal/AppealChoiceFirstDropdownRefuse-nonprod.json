@@ -23,7 +23,7 @@
     "ElementLabel": " ",
     "FieldType": "AppealChoiceSecondDropdownARefuse",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "circuitOrHighCourtList = \"CIRCUIT_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"CIRCUIT_COURT\""
   },
 
   {
