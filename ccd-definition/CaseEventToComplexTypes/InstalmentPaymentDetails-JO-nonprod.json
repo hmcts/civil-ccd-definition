@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "InstalmentPaymentDetails",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "ListElementCode": "instalmentAmount",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "InstalmentPaymentDetails",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "ListElementCode": "paymentFrequency",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "InstalmentPaymentDetails",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "ListElementCode": "firstInstalmentDate",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]
