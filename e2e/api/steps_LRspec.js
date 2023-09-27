@@ -359,7 +359,7 @@ module.exports = {
               value: {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
                 label:'PBAFUNC12345'
-            },
+              },
             list_items:[
               {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
@@ -387,17 +387,17 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: [
+            {
+              value: {
               registrationType: 'R',
               judgmentDateTime: dateTime(0)
             },
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-          registrationTypeRespondentTwo: [
-            {
-              value: {
-                registrationType: 'R',
-                judgmentDateTime: dateTime(0)
-              },
-              id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
     } else if (scenario === 'TWO_V_ONE') {
@@ -405,11 +405,11 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: []
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
       };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
     } else {
@@ -417,11 +417,11 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: []
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
       };
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
     }
