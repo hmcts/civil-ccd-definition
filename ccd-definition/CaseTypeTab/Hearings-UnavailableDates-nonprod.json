@@ -5,7 +5,7 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "applicant1UnavailableDatesForTab",
-    "TabFieldDisplayOrder": 4
+    "TabFieldDisplayOrder": 16
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +13,7 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "applicant2UnavailableDatesForTab",
-    "TabFieldDisplayOrder": 9
+    "TabFieldDisplayOrder": 17
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +21,7 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent1UnavailableDatesForTab",
-    "TabFieldDisplayOrder": 13
+    "TabFieldDisplayOrder": 18
   },
   {
     "CaseTypeID": "CIVIL",
@@ -29,6 +29,6 @@
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2UnavailableDatesForTab",
-    "TabFieldDisplayOrder": 18
+    "TabFieldDisplayOrder": 19
   }
 ]
