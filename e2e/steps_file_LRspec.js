@@ -144,7 +144,7 @@ const firstDefendantSteps = () => [
 const secondDefendantSteps = (respondent2, respondent1Represented) => [
   ...conditionalSteps(respondent2, [
     () => party.enterParty('respondent2', address),
-    () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(parties.RESPONDENT_SOLICITOR_2, respondent2.represented),
+    () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(respondent2.represented),
     ...conditionalSteps(respondent2 && respondent2.represented, [
       ...conditionalSteps(respondent1Represented, [
         () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
@@ -152,7 +152,7 @@ const secondDefendantSteps = (respondent2, respondent1Represented) => [
       ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
         () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent2'),
         () => specDefendantSolicitorEmailPage.enterSolicitorEmail('2'),
-
+        () => specParty.enterSpecParty('Respondent2'),
       ])
     ])
   ])

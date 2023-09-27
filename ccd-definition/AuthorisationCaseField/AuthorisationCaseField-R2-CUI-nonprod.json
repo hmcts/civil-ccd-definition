@@ -510,7 +510,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "translatedDocument",
+    "CaseFieldID": "translatedDocuments",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2175,6 +2175,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
