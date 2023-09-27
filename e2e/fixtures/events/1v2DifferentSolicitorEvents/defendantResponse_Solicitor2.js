@@ -30,15 +30,6 @@ module.exports = {
             respondentSolicitor1Reference: 'Respondent reference'
           }
         },
-        Upload: {
-          respondent2ClaimResponseDocument: {
-            file: {
-              document_url: '${TEST_DOCUMENT_URL}',
-              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-              document_filename: '${TEST_DOCUMENT_FILENAME}'
-            }
-          }
-        },
         FileDirectionsQuestionnaire: {
           respondent2DQFileDirectionsQuestionnaire: {
             explainedToClient: ['CONFIRM'],
