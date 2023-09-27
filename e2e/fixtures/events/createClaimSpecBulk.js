@@ -31,41 +31,38 @@ const respondent2 = {
   primaryAddress: Address
 };
 
-const isPBAv3 = (pbaV3) => {
-  return pbaV3;
-};
-
-const claimAmount = '151234';
+const claimAmount = '1512';
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 
 module.exports = {
-  createClaimBulk: (mpScenario, pbaV3) => {
+  createClaimBulk: (mpScenario) => {
     if (mpScenario == 'ONE_V_ONE') {
-      console.log('1 v 1 claim, with interest');
+      console.log('1 v 1 claim, with no interest');
       return {
+          sdtRequestIdFromSdt: 'testRequestID', // from SDT: sdtRequestIdFromSdt
           CaseAccessCategory: 'SPEC_CLAIM',
           solicitorReferences: {
-            applicantSolicitor1Reference: 'SDT:claimReference', // SDT: claimReference
+            applicantSolicitor1Reference: 'SDT:claimReference', // from  SDT: claimReference
           },
-          applicant1: applicant1,
-          addApplicant2: 'No',
+          applicant1: applicant1,  // SDT: claimant details
+          addApplicant2: 'No',  // from SDT: derived (SDT will not have 2 claimants)
           applicantSolicitor1CheckEmail: {
             correct: 'No',
           },
           applicantSolicitor1UserDetails: {
             email: solicitor1Email
           },
-          applicant1OrganisationPolicy: {
+          applicant1OrganisationPolicy: {  // from SDT: derived from customerID user
             OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
             Organisation: {
               OrganisationID: config.claimantSolicitorOrgId
             }
           },
-          specApplicantCorrespondenceAddressRequired: 'No',
-          respondent1: respondent1,
-          specRespondent1Represented: 'No',
-          addRespondent2: 'No',
-          detailsOfClaim: 'SDT:particulars', // SDT:particulars
+          specApplicantCorrespondenceAddressRequired: 'No', // Does not exist in SDT, but mandatory require a value
+          respondent1: respondent1,  // from SDT: defendant1 details
+          specRespondent1Represented: 'No',  // from SDT: respondent will not be represented
+          addRespondent2: 'No', // from SDT: derived from defendant2 details existing, no if not existing
+          detailsOfClaim: 'SDT:particulars', // from SDT: defaulted to 'particulars'
           timelineOfEvents: [{
             value: {
               timelineDate: '2021-02-20', // Does not exist in SDT, but mandatory require a value
@@ -74,119 +71,66 @@ module.exports = {
           }],
           claimAmountBreakup: [{
             value: {
-              claimReason: 'amount reason',
-              claimAmount: claimAmount // SDT: claimAmount
+              claimReason: 'amount reason',  // Does not exist in SDT, but mandatory require a value
+              claimAmount: claimAmount // Does not exist in SDT, but mandatory require a value
             }
           }],
-          claimInterest: 'Yes', // SDT: reserveRightToClaimInterest
-          interestClaimOptions: 'SAME_RATE_INTEREST',
-          sameRateInterestSelection: {
-            sameRateInterestType: 'SAME_RATE_INTEREST_8_PC'
-          },
-          interestClaimFrom: 'FROM_A_SPECIFIC_DATE',
-          interestFromSpecificDate: '2021-02-20', // SDT: owedDate  or claimDate
-          interestFromSpecificDateDescription: 'test description',
-          interestClaimUntil: 'UNTIL_SETTLED_OR_JUDGEMENT_MADE',
-          claimIssuedPaymentDetails: {
-            customerReference: 'Applicant reference'
-          },
-          ...(!isPBAv3(pbaV3) ? {} : {
-            paymentTypePBASpec: 'PBAv3'
-          }),
+          claimInterest: 'No', // from SDT: reserveRightToClaimInterest
           uiStatementOfTruth: {
-            name: 'John Doe', // SDT: sotSignature
-            role: 'Bulk issuer'
+            name: 'John Doe', // from  SDT: from sotSignature
+            role: 'Bulk issuer'  // from SDT, defaulted value as mandatory field
           },
-          claimFee: {
-            calculatedAmountInPence: '11500',
-            code: 'FEE0206',
-            version: '4'
-          },
-          totalClaimAmount: '151234',
+          totalClaimAmount: '1512', // from SDT: claimAmount
       };
     }
     if (mpScenario == 'ONE_V_TWO') {
-      console.log('1 v 2 claim, with interest');
+      console.log('1 v 2 claim, with no interest');
       return {
+        sdtRequestIdFromSdt: 'testRequestID', // from SDT: sdtRequestIdFromSdt
         CaseAccessCategory: 'SPEC_CLAIM',
         solicitorReferences: {
-          applicantSolicitor1Reference: 'SDT:claimReference', // 'SDT:claimReference'
+          applicantSolicitor1Reference: 'SDT:claimReference', // from  SDT: claimReference
         },
-        applicant1: applicant1,
-        addApplicant2: 'No',
+        applicant1: applicant1,  // SDT: claimant details
+        addApplicant2: 'No',  // from SDT: derived (SDT will not have 2 claimants)
         applicantSolicitor1CheckEmail: {
-            correct: 'No',
+          correct: 'No',
         },
         applicantSolicitor1UserDetails: {
           email: solicitor1Email
         },
-        applicant1OrganisationPolicy: {
+        applicant1OrganisationPolicy: {  // from SDT: derived from customerID user
           OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
           Organisation: {
             OrganisationID: config.claimantSolicitorOrgId
           }
         },
-        specApplicantCorrespondenceAddressRequired: 'No',
-        respondent1: respondent1,
-        specRespondent1Represented: 'No',
+        specApplicantCorrespondenceAddressRequired: 'No', // Does not exist in SDT, but mandatory require a value
+        respondent1: respondent1,  // from SDT: defendant1 details
+        specRespondent1Represented: 'No',  // from SDT: respondent will not be represented
         addRespondent2: 'Yes',
         respondent2: respondent2,
         specRespondent2Represented: 'No',
-        detailsOfClaim: 'SDT:particulars', // SDT:particulars
+        detailsOfClaim: 'SDT:particulars', // from SDT: defaulted to 'particulars'
         timelineOfEvents: [{
-            value: {
-              timelineDate: '2021-02-20', // Does not exist in SDT, but mandatory require a value
-              timelineDescription: 'event 1' // Does not exist in SDT, but mandatory require a value
-            }
+          value: {
+            timelineDate: '2021-02-20', // Does not exist in SDT, but mandatory require a value
+            timelineDescription: 'event 1' // Does not exist in SDT, but mandatory require a value
+          }
         }],
         claimAmountBreakup: [{
           value: {
-            claimReason: 'amount reason',
-            claimAmount: claimAmount // SDT: claimAmount
-            }
+            claimReason: 'amount reason',  // Does not exist in SDT, but mandatory require a value
+            claimAmount: claimAmount // Does not exist in SDT, but mandatory require a value
+          }
         }],
-        claimInterest: 'Yes', // SDT:  reserveRightToClaimInterest
-        interestClaimOptions: 'SAME_RATE_INTEREST',
-        sameRateInterestSelection: {
-            sameRateInterestType: 'SAME_RATE_INTEREST_8_PC'
-          },
-        interestClaimFrom: 'FROM_A_SPECIFIC_DATE',
-        interestFromSpecificDate: '2021-02-20', // SDT: owedDate or claimDate
-        interestFromSpecificDateDescription: 'test description',
-        interestClaimUntil: 'UNTIL_SETTLED_OR_JUDGEMENT_MADE',
-        claimIssuedPaymentDetails: {
-          customerReference: 'Applicant reference'
-        },
-        ...(!isPBAv3(pbaV3) ? {} : {
-          paymentTypePBASpec: 'PBAv3'
-        }),
+        claimInterest: 'No', // from SDT: reserveRightToClaimInterest
         uiStatementOfTruth: {
-          name: 'John Doe', // SDT: sotSignature
-          role: 'Bulk issuer'
+          name: 'John Doe', // from  SDT: from sotSignature
+          role: 'Bulk issuer'  // from SDT, defaulted value as mandatory field
         },
-        claimFee: {
-          calculatedAmountInPence: '11500',
-          code: 'FEE0206',
-          version: '4'
-        },
-        totalClaimAmount: '151234'
+        totalClaimAmount: '1512', // from SDT: claimAmount
       };
     }
-  },
-
-  serviceUpdateDto: (caseId, paymentStatus) => {
-    return {
-      service_request_reference: '1324646546456',
-      ccd_case_number: caseId,
-      service_request_amount: '167.00',
-      service_request_status: paymentStatus,
-      payment: {
-        payment_amount: 167.00,
-
-        payment_reference: '13213223',
-        payment_method: 'by account',
-        case_reference: 'example of case ref'
-      }
-    };
   },
 };
