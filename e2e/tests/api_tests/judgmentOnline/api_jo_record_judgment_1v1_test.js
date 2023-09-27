@@ -64,5 +64,5 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
 });
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });

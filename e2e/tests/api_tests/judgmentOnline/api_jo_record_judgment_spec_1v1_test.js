@@ -24,5 +24,5 @@ Scenario('Record Judgment Spec claim 1v1', async ({I, api_spec}) => {
 });
 
 AfterSuite(async  ({api_spec}) => {
-  //await api_spec.cleanUp();
+  await api_spec.cleanUp();
 });

@@ -171,7 +171,7 @@ module.exports = {
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -356,7 +356,7 @@ module.exports = {
       let claimIssuedPBADetails = {
         claimIssuedPBADetails:{
           applicantsPbaAccounts: {
-            value: {
+              value: {
               code:'66b21c60-aed1-11ed-8aa3-494efce63912',
               label:'PBAFUNC12345'
             },

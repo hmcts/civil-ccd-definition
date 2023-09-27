@@ -30,5 +30,5 @@ Scenario('1v2 full defence unspecified - caseworker records judgment (Det.of mea
 });
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });
