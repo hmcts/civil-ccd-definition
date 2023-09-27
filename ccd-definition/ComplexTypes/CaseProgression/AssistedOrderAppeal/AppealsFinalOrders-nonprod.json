@@ -49,21 +49,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "appealGrantedDropdown",
-    "ID": "FinalOrderAppeal",
-    "ElementLabel": " ",
-    "FieldType": "AppealChoiceFirstDropdownGrant",
-    "SecurityClassification": "Public",
-    "FieldShowCondition": "applicationList = \"GRANTED\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ListElementCode": "appealRefusedDropdown",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
     "FieldType": "AppealChoiceFirstDropdownRefuse",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "applicationList = \"REFUSED\""
+    "FieldShowCondition": "applicationList = \"GRANTED\" OR applicationList = \"REFUSED\"",
     "Searchable": "N"
   }
 ]

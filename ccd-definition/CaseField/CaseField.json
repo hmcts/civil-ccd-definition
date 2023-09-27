@@ -1059,7 +1059,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1ServiceAddress",
-    "Label": "Enter the correspondence address of the organisation",
+    "Label": "Claimant's legal representative correspondence address",
     "FieldType": "AddressUK",
     "Searchable": "N",
     "SecurityClassification": "Public"
