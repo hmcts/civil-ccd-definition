@@ -52,5 +52,17 @@
     "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "UserRole": "caseworker-approver",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_ISSUED",
+    "UserRole": "caseworker-approver",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
+    "UserRole": "caseworker-approver",
+    "CRUD": "CRUD"
   }
 ]
