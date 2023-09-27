@@ -186,7 +186,7 @@ module.exports = {
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee';
+    let headerText = '# Please now pay your claim fee\n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
