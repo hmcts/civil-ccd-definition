@@ -690,7 +690,6 @@ module.exports = {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
-    deleteCaseFields('respondent1DQDraftDirections');
 
     await apiRequest.setupTokens(user);
 
