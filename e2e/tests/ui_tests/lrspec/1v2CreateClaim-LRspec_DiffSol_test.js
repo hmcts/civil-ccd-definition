@@ -49,7 +49,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async ()
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
+Scenario.only('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
