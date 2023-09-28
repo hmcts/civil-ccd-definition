@@ -15,6 +15,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDGMENT_PAID_IN_FULL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SET_ASIDE_JUDGMENT",
     "AccessControl": [
       {

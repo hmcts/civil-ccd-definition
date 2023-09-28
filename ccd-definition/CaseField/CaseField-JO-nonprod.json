@@ -112,6 +112,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "lblMarkPaidInFull",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentPaidInFull",
+    "Label": " ",
+    "FieldType": "MarkJudgmentPaid",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "joSetAsideDate",
     "Label": "Enter the date of the order setting aside the judgment",
     "HintText": "For example, 16 04 2021",
