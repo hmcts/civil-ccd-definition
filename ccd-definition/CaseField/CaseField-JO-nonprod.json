@@ -1,0 +1,129 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentStatusDetails",
+    "Label": " ",
+    "FieldType": "JoJudgmentStatusDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joIsLiveJudgmentExists",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "lblRecordJudgment",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joPartiesNames",
+    "Label": "**${caseNameHmctsInternal}** <br> <br>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentRecordReason",
+    "Label": "Why is this judgment being recorded?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoJudgmentRecordReasonList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joOrderMadeDate",
+    "Label": "Enter the date the determination was made or the date the judge made the order",
+    "HintText": "For example, 16 04 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joAmountOrdered",
+    "Label": "Enter the amount of the judgment ordered",
+    "HintText": "For example £451.00",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joAmountCostOrdered",
+    "Label": "Enter the amount of the costs ordered",
+    "HintText": "For example £50.00",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joPaymentPlanSelection",
+    "Label": "Select how the judgment will be paid",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoPaymentPlanSelectionList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentInstalmentDetails",
+    "Label": " ",
+    "FieldType": "InstalmentPaymentDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joPaymentToBeMadeByDate",
+    "Label": "Enter the date the judgment will be paid by",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joIsRegisteredWithRTL",
+    "Label": "Should this judgment be registered with RTL?",
+    "HintText": "This judgment should only be registered with RTL if the judge has ordered the amount should be paid in instalments, or if the claimant has applied to enforce the judgment",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joConfirmSentToBothDef",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "JoConfirmSentToBothDef",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "lblMarkPaidInFull",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentPaidInFull",
+    "Label": " ",
+    "FieldType": "MarkJudgmentPaid",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

@@ -133,8 +133,7 @@
     "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
     "CaseFieldID": "applicant1DQRemoteHearing",
-    "TabFieldDisplayOrder": 17,
-    "TabShowCondition":"respondent1ClaimResponseType= \"*\" OR respondent2ClaimResponseType= \"*\""
+    "TabFieldDisplayOrder": 17
   },
   {
     "CaseTypeID": "CIVIL",

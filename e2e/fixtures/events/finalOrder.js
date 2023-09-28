@@ -17,11 +17,19 @@ const createAssistedOrder = () => {
       },
       publicFundingCostsProtection: 'No',
       finalOrderAppealComplex: {
-        appealGrantedRefusedDropdown: {
-          appealChoiceSecondDropdownA:{
+        appealGrantedDropdown: {
+          appealChoiceSecondDropdownA: {
             appealGrantedRefusedDate: date(21),
           },
-          appealChoiceSecondDropdownB:{
+          appealChoiceSecondDropdownB: {
+            appealGrantedRefusedDate: date(21),
+          }
+        },
+        appealRefusedDropdown: {
+          appealChoiceSecondDropdownA: {
+            appealGrantedRefusedDate: date(21),
+          },
+          appealChoiceSecondDropdownB: {
             appealGrantedRefusedDate: date(21),
           }
         }
