@@ -92,6 +92,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
@@ -99,6 +100,7 @@
       },
       {
         "UserRoles": [
+          "GS_profile",
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-admin",
