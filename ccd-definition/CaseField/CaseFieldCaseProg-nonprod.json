@@ -226,13 +226,5 @@
     "Label": "Select one of the options",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "userCaseRole",
-    "Label": " ",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "CaseRoleType",
-    "SecurityClassification": "Public"
   }
 ]
