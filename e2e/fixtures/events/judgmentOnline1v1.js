@@ -90,6 +90,17 @@ const recordJudgmentJudOrdImmed = () => {
   };
 };
 
+const markJudgmentPaid = () => {
+  return {
+    MarkJudgmentPaidInFull :{
+      joJudgmentPaidInFull: {
+        dateOfFullPaymentMade:  date(-5),
+        confirmFullPaymentMade:['CONFIRMED']
+      }
+    },
+  };
+};
+
 module.exports = {
   recordJudgment: (whyRecorded, paymentPlanSelection) => {
     switch (paymentPlanSelection) {
@@ -132,5 +143,12 @@ module.exports = {
       }
       break;
     }
+  },
+
+  markJudgmentPaidInFull: () => {
+
+    return {
+      valid: markJudgmentPaid()
+    };
   }
 };
