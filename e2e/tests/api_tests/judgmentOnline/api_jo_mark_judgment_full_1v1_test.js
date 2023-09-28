@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
-const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local; //TODO change to tribunalCaseworkerWithRegionId4 ???
+//const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local; //TODO change to tribunalCaseworkerWithRegionId4 ???
 const claimAmountJudge = '11000';
 Feature('Mark Judgment paid in full 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-nonprod');
 
@@ -22,16 +22,16 @@ async function prepareClaim(api, claimAmount) {
 Scenario('1v1 full defence unspecified - Mark payment full within 30 days', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.recordJudgment(legalAdvUser, mpScenario, 'JUDGE_ORDER', 'PAY_IN_INSTALMENTS');
-    await api.markJudgmentPaid(legalAdvUser);
+    await api.recordJudgment(judgeUser, mpScenario, 'JUDGE_ORDER', 'PAY_IN_INSTALMENTS');
+    await api.markJudgmentPaid(judgeUser);
   }
 });
 
 Scenario('1v1 full defence unspecified - Mark payment full after 30 days', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.recordJudgment(legalAdvUser, mpScenario, 'JUDGE_ORDER', 'PAY_IMMEDIATELY');
-    await api.markJudgmentPaid(legalAdvUser);
+    await api.recordJudgment(judgeUser, mpScenario, 'JUDGE_ORDER', 'PAY_IMMEDIATELY');
+    await api.markJudgmentPaid(judgeUser);
   }
 });
 
