@@ -20,7 +20,7 @@
     "CaseTypeID": "CIVIL",
     "ListElementCode": "datesToAvoidDatesBottomText",
     "ID": "FinalOrderFurtherHearingDatesAvoid",
-    "ElementLabel": "upload the dates on which they are available for a hearing",
+    "ElementLabel": "upload the dates on which they are unavailable for a hearing",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   }
