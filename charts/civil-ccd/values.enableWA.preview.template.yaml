@@ -12,6 +12,9 @@ servicebus:
 global:
   jobKind: CronJob
 
+civil-camunda-bpm:
+  enabled: false
+
 camunda-bpm:
   # comes from WA chart
   java:
