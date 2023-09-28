@@ -1,5 +1,6 @@
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3263'
     keyVaults:
       civil:
         resourceGroup: civil
