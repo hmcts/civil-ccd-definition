@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const judgeUser = config.judgeUserWithRegionId1;
-const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+//const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
@@ -24,7 +24,7 @@ async function prepareClaim(api, claimAmount) {
 Scenario('1v2 full defence unspecified - caseworker records judgment (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.recordJudgment(legalAdvUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api.recordJudgment(judgeUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
   }
 });
 
