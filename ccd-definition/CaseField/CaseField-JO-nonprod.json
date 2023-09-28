@@ -109,5 +109,21 @@
     "FieldTypeParameter": "JoConfirmSentToBothDef",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "lblMarkPaidInFull",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joJudgmentPaidInFull",
+    "Label": " ",
+    "FieldType": "MarkJudgmentPaid",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
