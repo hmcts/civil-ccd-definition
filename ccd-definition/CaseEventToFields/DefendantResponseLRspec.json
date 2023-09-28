@@ -1511,31 +1511,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": "Remote Hearing",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
-    "PageDisplayOrder": 49,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": "Remote Hearing",
-    "PageID": "RequestedCourtLocationLRspec",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
     "PageDisplayOrder": 49,
     "PageFieldDisplayOrder": 2,
@@ -1654,6 +1629,31 @@
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
     "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQRemoteHearingLRspec",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Remote Hearing",
+    "PageID": "RequestedCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\""
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQRemoteHearingLRspec",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Remote Hearing",
+    "PageID": "RequestedCourtLocationLRspec",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
