@@ -25,6 +25,42 @@
     "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
   },
   {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.PostTown",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.roleOnCase",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.partyName",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQExperts",
