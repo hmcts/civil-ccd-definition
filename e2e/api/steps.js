@@ -1200,8 +1200,6 @@ module.exports = {
       body: ''
     }, true);
 
-    //TODO assert isLiveJudgmentExists === Yes?
-
     await waitForFinishedBusinessProcess(caseId);
   }
 };
