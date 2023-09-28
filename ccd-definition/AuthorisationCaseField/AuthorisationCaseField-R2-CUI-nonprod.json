@@ -2325,5 +2325,18 @@
         "CRUD": "RU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "helpWithFees",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
