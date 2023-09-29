@@ -1074,7 +1074,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "pcqId",
-    "Label": "",
+    "Label": "PCQ id",
     "FieldType": "Text",
     "SecurityClassification": "Public"
   },
