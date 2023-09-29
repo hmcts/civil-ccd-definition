@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "JudgmentStatusDetails",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgmentStatusDetails",
+    "ListElementCode": "judgmentStatusTypes",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "JudgmentStatusDetails",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgmentStatusDetails",
+    "ListElementCode": "lastUpdatedDate",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "JudgmentStatusDetails",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgmentStatusDetails",
+    "ListElementCode": "joRtlState",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]
