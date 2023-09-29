@@ -2,10 +2,10 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO';
-const judgeUser = config.judgeUserWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 //const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
-// const judgeUser = config.judgeUserWithRegionId1Local;
+// const caseWorkerUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 
 Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nonprod');
@@ -16,8 +16,8 @@ Scenario('Record Judgment Spec claim 1v2', async ({I, api_spec}) => {
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario);
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'JUDICIAL_REFERRAL');
-    await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
-    await api_spec.recordJudgment(judgeUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.createFinalOrderJO(caseWorkerUser, 'FREE_FORM_ORDER');
+    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
   }
 });
 

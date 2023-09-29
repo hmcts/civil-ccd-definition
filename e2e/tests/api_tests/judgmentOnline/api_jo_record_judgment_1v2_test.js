@@ -1,10 +1,10 @@
 const config = require('../../../config.js');
 
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-const judgeUser = config.judgeUserWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 //const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
-// const judgeUser = config.judgeUserWithRegionId1Local;
+// const caseWorkerUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 
@@ -18,13 +18,13 @@ async function prepareClaim(api, claimAmount) {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-  await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+  await api.createFinalOrderJO(caseWorkerUser, 'FREE_FORM_ORDER');
 }
 
 Scenario('1v2 full defence unspecified - caseworker records judgment (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.recordJudgment(judgeUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
   }
 });
 
