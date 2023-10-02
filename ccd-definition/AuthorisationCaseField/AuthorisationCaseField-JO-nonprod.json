@@ -128,5 +128,45 @@
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "lblMarkPaidInFull",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "joJudgmentPaidInFull",
+  "UserRoles": [
+    "caseworker-civil",
+    "caseworker-civil-admin",
+    "caseworker-civil-staff"
+  ],
+  "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joConfirmReadOrderForSetAside",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
   }
 ]
