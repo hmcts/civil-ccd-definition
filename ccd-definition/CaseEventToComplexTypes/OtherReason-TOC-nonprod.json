@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "TransferCaseReason",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "tocTransferCaseReason",
+    "ListElementCode": "tocTransferCaseReason",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+]

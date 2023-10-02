@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "ReasonForNoSdo",
+    "ListElementCode": "TRANSFER_THE_CASE",
+    "ListElement": "Transfer the case to another hearing court location centre",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ReasonForNoSdo",
+    "ListElementCode": "OTHER_REASON",
+    "ListElement": "Other reason",
+    "DisplayOrder": 2
+  }
+]
