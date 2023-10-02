@@ -297,6 +297,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderCost",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderCostSecondaryLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostList",
     "UserRoles": [
       "judge-profile"
