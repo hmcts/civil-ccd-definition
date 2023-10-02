@@ -17,13 +17,22 @@ async function prepareClaim(api, claimAmount) {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-  await api.createFinalOrderJO(caseWorkerUser, 'FREE_FORM_ORDER');
+  await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
 }
 
-Scenario('1v2 full defence unspecified - caseworker records judgment (Det.of means - pay instalments)', async ({api}) => {
+Scenario('1v2 full defence unspecified - caseworker records judgment with set aside (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api.setAsideJudgment(caseWorkerUser);
+  }
+});
+
+Scenario('1v2 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaim(api, claimAmountJudge);
+    await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api.markJudgmentPaid(caseWorkerUser);
   }
 });
 

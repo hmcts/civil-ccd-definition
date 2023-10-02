@@ -16,13 +16,14 @@ async function prepareClaim(api, claimAmount) {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-  await api.createFinalOrderJO(caseWorkerUser, 'FREE_FORM_ORDER');
+  await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
 }
 
 Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api.markJudgmentPaid(caseWorkerUser);
   }
 });
 
@@ -30,6 +31,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of mea
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    await api.markJudgmentPaid(caseWorkerUser);
   }
 });
 
@@ -37,6 +39,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of mea
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
+    await api.markJudgmentPaid(caseWorkerUser);
   }
 });
 
@@ -44,6 +47,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_IN_INSTALMENTS');
+    await api.setAsideJudgment(caseWorkerUser);
   }
 });
 
@@ -51,6 +55,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_BY_DATE');
+    await api.setAsideJudgment(caseWorkerUser);
   }
 });
 
@@ -58,6 +63,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_IMMEDIATELY');
+    await api.setAsideJudgment(caseWorkerUser);
   }
 });
 

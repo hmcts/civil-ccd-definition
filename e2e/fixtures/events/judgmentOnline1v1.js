@@ -18,6 +18,14 @@ const recordJudgmentDetInst = () => {
   };
 };
 
+const setAsideJudgment = () => {
+  return  {
+    SetAsideJudgment: {
+      joSetAsideDate: '2008-06-06'
+    }
+  };
+};
+
 const recordJudgmentJudOrdInst = () => {
   return {
     RecordJudgment: {
@@ -149,6 +157,12 @@ module.exports = {
 
     return {
       valid: markJudgmentPaid()
+    };
+  },
+
+  setAsideJudgment : () => {
+    return {
+      valid : setAsideJudgment()
     };
   }
 };

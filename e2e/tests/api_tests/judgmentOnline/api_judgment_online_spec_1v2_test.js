@@ -9,14 +9,27 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 
 Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nonprod');
 
-Scenario('Record Judgment Spec claim 1v2', async ({I, api_spec}) => {
+Scenario('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario);
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'JUDICIAL_REFERRAL');
-    await api_spec.createFinalOrderJO(caseWorkerUser, 'FREE_FORM_ORDER');
+    await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.setAsideJudgment(caseWorkerUser);
+  }
+});
+
+Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
+    await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
+      'JUDICIAL_REFERRAL');
+    await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.markJudgmentPaid(caseWorkerUser);
   }
 });
 

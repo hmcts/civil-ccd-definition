@@ -105,5 +105,28 @@ module.exports = {
       break;
     }
     return recordJudgment;
+  },
+  setAsideJudgment: () => {
+    const setAsideJudgment = {};
+    setAsideJudgment.userInput = {
+      ...setAsideJudgment.userInput,
+      SetAsideJudgment: {
+        joSetAsideDate: '2008-06-06'
+      }
+    };
+    return setAsideJudgment;
+  },
+  markJudgmentPaidInFull: () => {
+    const markJudgmentPaid = {};
+    markJudgmentPaid.userInput = {
+      ...markJudgmentPaid.userInput,
+      MarkJudgmentPaidInFull: {
+        joJudgmentPaidInFull: {
+          dateOfFullPaymentMade:  date(-5),
+          confirmFullPaymentMade:['CONFIRMED']
+        }
+      }
+    };
+    return markJudgmentPaid;
   }
 };
