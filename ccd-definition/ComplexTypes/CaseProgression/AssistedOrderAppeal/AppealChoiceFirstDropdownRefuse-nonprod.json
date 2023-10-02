@@ -9,7 +9,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "circuitOrHighCourtList",
+    "ListElementCode": "circuitOrHighCourtListRefuse",
     "ID": "AppealChoiceFirstDropdownRefuse",
     "ElementLabel": " ",
     "FieldType": "FixedList",
@@ -23,7 +23,7 @@
     "ElementLabel": " ",
     "FieldType": "AppealChoiceSecondDropdownARefuse",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "circuitOrHighCourtList = \"CIRCUIT_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"CIRCUIT_COURT\""
   },
 
   {
@@ -33,6 +33,6 @@
     "ElementLabel": " ",
     "FieldType": "AppealChoiceSecondDropdownBRefuse",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "circuitOrHighCourtList = \"HIGH_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"HIGH_COURT\""
   }
 ]
