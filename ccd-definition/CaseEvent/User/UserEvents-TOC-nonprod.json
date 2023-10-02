@@ -5,7 +5,7 @@
     "Name": "Transfer online case",
     "Description": "Transfer online case",
     "DisplayOrder": 1,
-    "PreConditionState(s)": "IN_MEDIATION;JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME;",
+    "PreConditionState(s)": "IN_MEDIATION;JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
