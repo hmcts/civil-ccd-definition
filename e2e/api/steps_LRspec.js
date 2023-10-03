@@ -217,7 +217,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     console.log('Bulk claim created with case id: ' + caseId);
     // payment is made, we need to wait for response and the processing of another business process
-    await new Promise(resolve => setTimeout(resolve, 20000));
+    await new Promise(resolve => setTimeout(resolve, 30000));
     if (scenario === 'ONE_V_ONE') {
       await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     } else {
