@@ -463,6 +463,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT1_CLAIM_SUBMITTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_CUI",
     "AccessControl": [
       {
