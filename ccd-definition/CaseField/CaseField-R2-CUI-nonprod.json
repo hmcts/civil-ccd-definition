@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1AdditionalLipPartyDetails",
+    "Label": "Defendant Additional Details",
+    "FieldType": "AdditionalLipPartyDetails",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AdditionalLipPartyDetails",
+    "Label": "Respondent Additional Details",
+    "FieldType": "AdditionalLipPartyDetails",
+    "SecurityClassification": "Public"
+  }
+]
