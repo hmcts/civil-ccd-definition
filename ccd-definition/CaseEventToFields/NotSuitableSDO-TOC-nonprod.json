@@ -48,7 +48,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "tocOtherReasons",
+    "CaseFieldID": "reasonNotSuitableSDO",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "NotSuitableSDO",

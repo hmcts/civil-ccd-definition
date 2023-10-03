@@ -1,21 +1,21 @@
 [
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "ListElementCode": "txt1TocOtherReasons",
     "ElementLabel": "The case will be taken offline automatically.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "ListElementCode": "txt2TocOtherReasons",
     "ElementLabel": "If you are judge submitting this information, the case will be sent to a listing officer. If a legal advisor has submitted this information, the case will be sent to a judge for review.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OtherReasons",
-    "ListElementCode": "reasonTocOtherReasons",
+    "ID": "ReasonNotSuitableSDO",
+    "ListElementCode": "input",
     "ElementLabel": "Give reasons",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"

@@ -1,25 +1,25 @@
 [
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "tocOtherReasons",
+    "CaseFieldID": "reasonNotSuitableSDO",
     "ListElementCode": "txt1TocOtherReasons",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "tocOtherReasons",
+    "CaseFieldID": "reasonNotSuitableSDO",
     "ListElementCode": "txt2TocOtherReasons",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "tocOtherReasons",
-    "ListElementCode": "reasonTocOtherReasons",
+    "CaseFieldID": "reasonNotSuitableSDO",
+    "ListElementCode": "input",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
