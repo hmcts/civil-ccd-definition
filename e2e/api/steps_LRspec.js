@@ -198,11 +198,9 @@ module.exports = {
     await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
     await waitForFinishedBusinessProcess(caseId);
     console.log('Bulk claim created with case id: ' + caseId);
-    // payment is made, we need to wait for response and the processing of another business process
-    await new Promise(resolve => setTimeout(resolve, 20000));
-    await waitForFinishedBusinessProcess(caseId);
     if (scenario === 'ONE_V_ONE') {
-      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertSubmittedEventNewBulkClaim('ENTER_BREATHING_SPACE_SPEC');
+      console.log('Bulk claim can proceed ' + caseId);
     } else {
       // one v two/multiparty continuing online not currently supported for LiPs
       await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -594,6 +592,10 @@ function update(currentObject, modifications) {
   }
   return modified;
 }
+
+const assertSubmittedEventNewBulkClaim = async (eventName) => {
+  await apiRequest.startEvent(eventName, caseId);
+};
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
