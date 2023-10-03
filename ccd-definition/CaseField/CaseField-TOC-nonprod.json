@@ -9,7 +9,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "reasonNotSuitableSDO",
+    "ID": "notSuitableSdoOptions",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ReasonNotSuitableSDOList",

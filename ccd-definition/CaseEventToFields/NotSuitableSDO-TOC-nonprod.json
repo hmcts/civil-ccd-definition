@@ -24,7 +24,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "reasonNotSuitableSDO",
+    "CaseFieldID": "notSuitableSdoOptions",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "NotSuitableSDO",
@@ -43,7 +43,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "reasonNotSuitableSDO = \"CHANGE_LOCATION\""
+    "FieldShowCondition": "notSuitableSdoOptions = \"CHANGE_LOCATION\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -55,6 +55,6 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "reasonNotSuitableSDO = \"OTHER_REASONS\""
+    "FieldShowCondition": "notSuitableSdoOptions = \"OTHER_REASONS\""
   }
 ]
