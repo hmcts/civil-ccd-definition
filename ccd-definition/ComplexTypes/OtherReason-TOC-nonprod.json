@@ -1,29 +1,22 @@
 [
   {
-    "ID": "TransferCaseReason",
-    "ListElementCode": "label",
-    "ElementLabel": "##Transfer the case to another hearing court location centre",
+    "ID": "OtherReasons",
+    "ListElementCode": "txt1TocOtherReasons",
+    "ElementLabel": "The case will be taken offline automatically.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "TransferCaseReason",
-    "ListElementCode": "text",
-    "ElementLabel": "Give details",
+    "ID": "OtherReasons",
+    "ListElementCode": "txt2TocOtherReasons",
+    "ElementLabel": "If you are judge submitting this information, the case will be sent to a listing officer. If a legal advisor has submitted this information, the case will be sent to a judge for review.",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "TransferCaseReason",
-    "ListElementCode": "text",
-    "ElementLabel": "State the court location name where the case will be transferred and the reason as to why the case needs to be transferred to another hearing court centre (i.e. Transfer the case to Leicester County Court. This case is not on our court jurisdiction to draw an order)",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "TransferCaseReason",
-    "ListElementCode": "input",
-    "ElementLabel": " testText1",
+    "ID": "OtherReasons",
+    "ListElementCode": "reasonTocOtherReasons",
+    "ElementLabel": "Give reasons",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }

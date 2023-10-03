@@ -1,24 +1,16 @@
 [
   {
-    "ID": "JoJudgmentStatusDetails",
-    "ListElementCode": "judgmentStatusTypes",
-    "ElementLabel": " ",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "JudgmentStatusTypeList",
+    "ID": "TransferCaseReason",
+    "ListElementCode": "txtTransferCaseReason",
+    "ElementLabel": "Give details <br> State the court location name where the case will be transferred and the reason as to why the case needs to be transferred to another hearing court centre (i.e. Transfer the case to Leicester County Court. This case is not on our court jurisdiction to draw an order)",
+    "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "JoJudgmentStatusDetails",
-    "ListElementCode": "lastUpdatedDate",
+    "ID": "TransferCaseReason",
+    "ListElementCode": "reasonForCaseTransferJudgeTxt",
     "ElementLabel": " ",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "JoJudgmentStatusDetails",
-    "ListElementCode": "joRtlState",
-    "ElementLabel": " ",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
 ]

@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "OtherReasons",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "tocOtherReasons",
+    "ListElementCode": "txt1TocOtherReasons",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "OtherReasons",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "tocOtherReasons",
+    "ListElementCode": "txt2TocOtherReasons",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "OtherReasons",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "tocOtherReasons",
+    "ListElementCode": "reasonTocOtherReasons",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]

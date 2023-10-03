@@ -1,26 +1,18 @@
 [
   {
-    "ID": "JudgmentStatusDetails",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgmentStatusDetails",
-    "ListElementCode": "judgmentStatusTypes",
+    "ID": "TransferCaseReason",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "tocTransferCaseReason",
+    "ListElementCode": "txtTransferCaseReason",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
-    "ID": "JudgmentStatusDetails",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgmentStatusDetails",
-    "ListElementCode": "lastUpdatedDate",
+    "ID": "TransferCaseReason",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "tocTransferCaseReason",
+    "ListElementCode": "reasonForCaseTransferJudgeTxt",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "JudgmentStatusDetails",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joJudgmentStatusDetails",
-    "ListElementCode": "joRtlState",
-    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]

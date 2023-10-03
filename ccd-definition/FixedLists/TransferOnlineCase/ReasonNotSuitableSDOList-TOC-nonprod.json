@@ -1,13 +1,13 @@
 [
   {
-    "ID": "ReasonForNoSdo",
-    "ListElementCode": "TRANSFER_THE_CASE",
+    "ID": "ReasonNotSuitableSDOList",
+    "ListElementCode": "CHANGE_LOCATION",
     "ListElement": "Transfer the case to another hearing court location centre",
     "DisplayOrder": 1
   },
   {
-    "ID": "ReasonForNoSdo",
-    "ListElementCode": "OTHER_REASON",
+    "ID": "ReasonNotSuitableSDOList",
+    "ListElementCode": "OTHER_REASONS",
     "ListElement": "Other reason",
     "DisplayOrder": 2
   }
