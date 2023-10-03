@@ -19,7 +19,7 @@ async function prepareClaim(api, claimAmount) {
   await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
 }
 
-Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of means - pay instalments)', async ({api}) => {
+Scenario('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
@@ -27,7 +27,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of mea
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of means - pay by date)', async ({api}) => {
+Scenario('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay by date)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
@@ -35,7 +35,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of mea
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment (Det.of means - pay immediately)', async ({api}) => {
+Scenario('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay immediately)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
@@ -51,7 +51,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Order - pay by date)', async ({api}) => {
+Scenario('1v1 full defence unspecified - caseworker records judgment with set aside (Judge Order - pay by date)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_BY_DATE');
@@ -59,7 +59,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Order - pay immediately)', async ({api}) => {
+Scenario('1v1 full defence unspecified - caseworker records judgment with set aside (Judge Order - pay immediately)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_IMMEDIATELY');
