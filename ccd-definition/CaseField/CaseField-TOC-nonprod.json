@@ -26,9 +26,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "reasonNotSuitableSDO",
+    "ID": "tocOtherReasons",
     "Label": "Other reason",
-    "FieldType": "ReasonNotSuitableSDO",
+    "FieldType": "OtherReasons",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
