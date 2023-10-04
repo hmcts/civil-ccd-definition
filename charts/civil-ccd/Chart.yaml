@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.29
+version: 0.0.30
 maintainers:
   - name: HMCTS Civil team
 
@@ -45,7 +45,7 @@ dependencies:
 
 # WA
   - name: wa
-    version: 0.1.7
+    version: 1.0.0
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
 # CCD message publisher
